@@ -15,4 +15,6 @@ jobs:
             - node_modules
           key: dependencies-{{ checksum "package.json" }}
       - run: yarn lint
-      - run: yarn test
+      - run: yarn test:ci
+      - store_test_results:
+          path: ./junit.xml
