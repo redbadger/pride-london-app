@@ -1,21 +1,26 @@
+get-cache: &get-cache
+  restore_cache:
+    key: dependencies-{{ checksum "package.json" }}
+save-cache: &save-cache
+  save_cache:
+    paths:
+      - node_modules
+    key: dependencies-{{ checksum "package.json" }}
+
 version: 2
 jobs:
+  # build is a reserved job name for running circleci locally
   build:
     docker:
       - image: circleci/node:9.3
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - dependencies-{{ checksum "package.json" }}
+      - <<: *get-cache
       - run:
           name: Install dependencies
           command: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: dependencies-{{ checksum "package.json" }}
+      - <<: *save-cache
       - run:
           name: Lint source
           command: yarn lint
@@ -24,6 +29,43 @@ jobs:
           command: yarn test:ci
       - store_test_results:
           path: ./junit.xml
+  deploy-branch:
+    docker:
+      - image: circleci/node:9.3
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - <<: *get-cache
       - run:
           name: Deploy branch
           command: 'if [ "$CI_PULL_REQUEST" != "" ]; then yarn appr; fi'
+  deploy-test:
+    docker:
+      - image: circleci/node:9.3
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - <<: *get-cache
+      - run:
+          name: Login to Expo
+          command: node node_modules/exp/bin/exp.js login -u $EXP_USERNAME -p $EXP_PASSWORD --non-interactive
+      - run:
+          name: Publish to Expo
+          command: node node_modules/exp/bin/exp.js publish
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
+      - deploy-branch:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master
+      - deploy-test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
