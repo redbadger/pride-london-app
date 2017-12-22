@@ -9,12 +9,21 @@ jobs:
       - restore_cache:
           keys:
           - dependencies-{{ checksum "package.json" }}
-      - run: yarn install
+      - run:
+          name: Install dependencies
+          command: yarn install
       - save_cache:
           paths:
             - node_modules
           key: dependencies-{{ checksum "package.json" }}
-      - run: yarn lint
-      - run: yarn test:ci
+      - run:
+          name: Lint source
+          command: yarn lint
+      - run:
+          name: Unit test
+          command: yarn test:ci
       - store_test_results:
           path: ./junit.xml
+      - run:
+          name: Deploy branch
+          command: 'if [ "$CI_PULL_REQUEST" != "" ]; then yarn appr; fi'
