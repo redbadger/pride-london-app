@@ -8,11 +8,11 @@
 
 * [Running](#running)
   * [`yarn start`](#yarn-start)
-    * [`yarn test`](#yarn-test)
-    * [`yarn ios`](#yarn-ios)
-    * [`yarn android`](#yarn-android)
+  * [`yarn test`](#yarn-test)
+  * [`yarn ios`](#yarn-ios)
+  * [`yarn android`](#yarn-android)
 * [Contributing](#contributing)
-  * [Links](#links)
+* [Links](#links)
 
 <!-- tocstop -->
 
@@ -30,15 +30,15 @@ Runs your app in development mode.
 
 Open it in the [Expo app](https://expo.io) on your phone to view it. It will reload if you save edits to your files, and you will see build errors and logs in the terminal.
 
-#### `yarn test`
+### `yarn test`
 
 Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
 
-#### `yarn ios`
+### `yarn ios`
 
 Like `npm start`, but also attempts to open your app in the iOS Simulator if you're on a Mac and have it installed.
 
-#### `yarn android`
+### `yarn android`
 
 Like `npm start`, but also attempts to open your app on a connected Android device or emulator. Requires an installation of Android build tools, see [create react native app Readme](./docs/create-react-native-app.md) and the [React Native docs](https://facebook.github.io/react-native/docs/getting-started.html) for detailed setup.
 
@@ -50,7 +50,7 @@ When a build is completed on a branch, [BadgerBot](https://github.com/badgerbot)
 
 All branches built off master are deployed to [Pride London](https://expo.io/@redbadger/pride-london) on Expo.
 
-### Links
+## Links
 
 * [Ci Pipeline](https://circleci.com/gh/redbadger/workflows/pride-london-app): View and debug builds
 * [Expo page](https://expo.io/@redbadger/pride-london): View deployed test builds, and load them into your Expo app.
