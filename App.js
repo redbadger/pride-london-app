@@ -1,21 +1,61 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { createClient } from "contentful/dist/contentful.browser.min";
+import config from "./config";
 
-const App = () => (
-  <View style={styles.container}>
-    <Text>Open up App.js to start working on your app!</Text>
-    <Text>Changes you make will automatically reload.</Text>
-    <Text>Shake your phone to open the developer menu.</Text>
-  </View>
-);
+const {
+  CONTENTFUL_SPACE,
+  CONTENTFUL_ACCESS_TOKEN,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_API_KEY,
+  FIREBASE_DATABASE_URL
+} = config;
 
-export default App;
+const client = createClient({
+  space: CONTENTFUL_SPACE,
+  accessToken: CONTENTFUL_ACCESS_TOKEN
+});
+const firebaseConfig = {
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  databaseURL: FIREBASE_DATABASE_URL
+};
+
+export default class extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      events: { items: [] }
+    };
+  }
+
+  async componentDidMount() {
+    const events = await client.getEntries();
+
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({
+      events
+    });
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        {this.state.events.items.map(event => (
+          <View key={event.sys.id}>
+            <Text>{event.fields.name}</Text>
+          </View>
+        ))}
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     backgroundColor: "#fff",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center"
   }
 });
