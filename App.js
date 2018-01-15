@@ -6,8 +6,6 @@ import { createClient } from "contentful/dist/contentful.browser.min";
 import firebase from "firebase";
 import config from "./config";
 
-import { Ionicons } from "@expo/vector-icons";
-
 const {
   CONTENTFUL_SPACE,
   CONTENTFUL_ACCESS_TOKEN,
@@ -125,7 +123,6 @@ export default class extends React.Component {
     const { signedIn, displayName, profilePictureUrl, userId } = this.state;
     return (
       <View style={styles.container}>
-        <Ionicons name="md-checkmark-circle" size={32} color="green" />
         <View style={styles.header}>
           {signedIn && (
             <View style={styles.profile}>
@@ -149,9 +146,12 @@ export default class extends React.Component {
             extraData={this.state.savedEvents}
             renderItem={({ item: event }) => (
               <ListItem
-                switchButton
-                hideChevron
-                onSwitch={() =>
+                rightIcon={{
+                  name: this.isFavourited(event.sys.id)
+                    ? "favorite"
+                    : "favorite-border"
+                }}
+                onPressRightIcon={() =>
                   this.isFavourited(event.sys.id)
                     ? this.unsaveEvent(userId, event.sys.id)
                     : saveEvent(userId, event.sys.id)
@@ -159,7 +159,6 @@ export default class extends React.Component {
                 title={event.fields.name}
                 key={event.sys.id}
                 style={styles.eventItem}
-                switched={this.isFavourited(event.sys.id)}
               />
             )}
           />
