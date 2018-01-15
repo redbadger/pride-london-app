@@ -149,7 +149,8 @@ export default class extends React.Component {
                 rightIcon={{
                   name: this.isFavourited(event.sys.id)
                     ? "favorite"
-                    : "favorite-border"
+                    : "favorite-border",
+                  color: "#ea3585"
                 }}
                 onPressRightIcon={() =>
                   this.isFavourited(event.sys.id)
