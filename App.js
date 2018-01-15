@@ -52,11 +52,19 @@ const signOut = async () => {
   }
 };
 
+const saveEvent = async (userId, eventId) => {
+  firebase
+    .database()
+    .ref(`savedEvents/${userId}`)
+    .push(eventId);
+};
+
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: { items: [] }
+      events: { items: [] },
+      savedEvents: {}
     };
   }
 
@@ -77,7 +85,7 @@ export default class extends React.Component {
           userId: user.uid
         });
 
-        const savedEventsRef = firebase
+        firebase
           .database()
           .ref(`savedEvents/${user.uid}`)
           .on("value", snapshot => {
@@ -95,21 +103,36 @@ export default class extends React.Component {
     });
   }
 
+  async unsaveEvent(userId, eventId) {
+    const recordId = Object.keys(this.state.savedEvents).find(
+      key => this.state.savedEvents[key] === eventId
+    );
+    firebase
+      .database()
+      .ref(`savedEvents/${userId}/${recordId}`)
+      .remove();
+  }
+
+  isFavourited(eventId) {
+    return Object.values(this.state.savedEvents).includes(eventId);
+  }
+
   render() {
-    const { signedIn, displayName, profilePictureUrl } = this.state;
+    const { signedIn, displayName, profilePictureUrl, userId } = this.state;
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.header}>
           {signedIn && (
-            <View>
+            <View style={styles.profile}>
               <Image
                 style={{ width: 50, height: 50 }}
                 source={{ uri: profilePictureUrl }}
               />
-              <Text>Hello {displayName}</Text>
+              <Text style={styles.displayName}>{displayName}</Text>
             </View>
           )}
           <Button
+            style={{ height: 40 }}
             onPress={() => (signedIn ? signOut() : signIn())}
             title={signedIn ? "Sign Out" : "Sign In"}
           />
@@ -117,9 +140,20 @@ export default class extends React.Component {
         <FlatList
           data={this.state.events.items}
           keyExtractor={item => item.sys.id}
+          extraData={this.state.savedEvents}
           renderItem={({ item: event }) => (
-            <View key={event.sys.id}>
+            <View key={event.sys.id} style={styles.eventItem}>
               <Text>{event.fields.name}</Text>
+              <Button
+                onPress={() =>
+                  this.isFavourited(event.sys.id)
+                    ? this.unsaveEvent(userId, event.sys.id)
+                    : saveEvent(userId, event.sys.id)
+                }
+                title={
+                  this.isFavourited(event.sys.id) ? "Unfavourite" : "Favourite"
+                }
+              />
             </View>
           )}
         />
@@ -131,10 +165,28 @@ export default class extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "column",
     padding: 20,
     paddingTop: 40,
-    backgroundColor: "#fff",
-    alignItems: "flex-start",
-    justifyContent: "center"
+    backgroundColor: "#fff"
+  },
+  header: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    maxHeight: 60,
+    alignItems: "center"
+  },
+  profile: {
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  displayName: {
+    paddingLeft: 10
+  },
+  eventItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   }
 });
