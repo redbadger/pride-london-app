@@ -1,8 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, FlatList, Image, Button } from "react-native";
+import { List, ListItem } from "react-native-elements";
+
 import { createClient } from "contentful/dist/contentful.browser.min";
 import firebase from "firebase";
 import config from "./config";
+
+import { Ionicons } from "@expo/vector-icons";
 
 const {
   CONTENTFUL_SPACE,
@@ -121,6 +125,7 @@ export default class extends React.Component {
     const { signedIn, displayName, profilePictureUrl, userId } = this.state;
     return (
       <View style={styles.container}>
+        <Ionicons name="md-checkmark-circle" size={32} color="green" />
         <View style={styles.header}>
           {signedIn && (
             <View style={styles.profile}>
@@ -137,26 +142,28 @@ export default class extends React.Component {
             title={signedIn ? "Sign Out" : "Sign In"}
           />
         </View>
-        <FlatList
-          data={this.state.events.items}
-          keyExtractor={item => item.sys.id}
-          extraData={this.state.savedEvents}
-          renderItem={({ item: event }) => (
-            <View key={event.sys.id} style={styles.eventItem}>
-              <Text>{event.fields.name}</Text>
-              <Button
-                onPress={() =>
+        <List>
+          <FlatList
+            data={this.state.events.items}
+            keyExtractor={item => item.sys.id}
+            extraData={this.state.savedEvents}
+            renderItem={({ item: event }) => (
+              <ListItem
+                switchButton
+                hideChevron
+                onSwitch={() =>
                   this.isFavourited(event.sys.id)
                     ? this.unsaveEvent(userId, event.sys.id)
                     : saveEvent(userId, event.sys.id)
                 }
-                title={
-                  this.isFavourited(event.sys.id) ? "Unfavourite" : "Favourite"
-                }
+                title={event.fields.name}
+                key={event.sys.id}
+                style={styles.eventItem}
+                switched={this.isFavourited(event.sys.id)}
               />
-            </View>
-          )}
-        />
+            )}
+          />
+        </List>
       </View>
     );
   }
