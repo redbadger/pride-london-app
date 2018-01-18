@@ -9,9 +9,23 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.67.0"
+
 default_platform(:ios)
 
 platform :ios do
+
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
   desc "Push a new beta build to TestFlight"
   lane :beta do
     increment_build_number(xcodeproj: "pridelondon.xcodeproj")
