@@ -1,199 +1,86 @@
-import React from "react";
-import { StyleSheet, Text, View, FlatList, Image, Button } from "react-native";
-import { List, ListItem } from "react-native-elements";
+import React, { Component } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
+import MockClient from "./MockClient";
 
-import { createClient } from "contentful/dist/contentful.browser.min";
-import firebase from "firebase";
-import config from "./config";
-
-const {
-  CONTENTFUL_SPACE,
-  CONTENTFUL_ACCESS_TOKEN,
-  FIREBASE_AUTH_DOMAIN,
-  FIREBASE_API_KEY,
-  FIREBASE_DATABASE_URL
-} = config;
-
-const client = createClient({
-  space: CONTENTFUL_SPACE,
-  accessToken: CONTENTFUL_ACCESS_TOKEN
+const client = MockClient; // Swap this out for the Contentful client in prod
+const EVENTS_CONTENT_TYPE_SYS_ID = 123; // This will eventually be dynamic, based on the id in Contentful
+const styles = StyleSheet.create({
+  heroImage: {
+    alignSelf: "center",
+    width: 400,
+    height: 300
+  }
 });
-const firebaseConfig = {
-  apiKey: FIREBASE_API_KEY,
-  authDomain: FIREBASE_AUTH_DOMAIN,
-  databaseURL: FIREBASE_DATABASE_URL
-};
 
-// Initialise once due to hot module reloading
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
-
-const signIn = async () => {
-  const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
-    "326891754486282",
-    {
-      permissions: ["public_profile"]
-    }
-  );
-  if (type === "success") {
-    const credential = firebase.auth.FacebookAuthProvider.credential(token);
-    try {
-      firebase.auth().signInWithCredential(credential);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-};
-
-const signOut = async () => {
-  try {
-    await firebase.auth().signOut();
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-const saveEvent = async (userId, eventId) => {
-  firebase
-    .database()
-    .ref(`savedEvents/${userId}`)
-    .push(eventId);
-};
-
-export default class extends React.Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: { items: [] },
-      savedEvents: {}
+      isLoading: true
     };
   }
 
-  async componentDidMount() {
-    const events = await client.getEntries();
-
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({
-      events
-    });
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          displayName: user.displayName,
-          profilePictureUrl: user.photoURL,
-          signedIn: true,
-          userId: user.uid
-        });
-
-        firebase
-          .database()
-          .ref(`savedEvents/${user.uid}`)
-          .on("value", snapshot => {
-            this.setState({ savedEvents: snapshot.val() || {} });
-          });
-      } else {
-        this.setState({
-          displayName: "",
-          profilePictureUrl: "",
-          userId: "",
-          signedIn: false,
-          savedEvents: {}
-        });
-      }
-    });
-  }
-
-  async unsaveEvent(userId, eventId) {
-    const recordId = Object.keys(this.state.savedEvents).find(
-      key => this.state.savedEvents[key] === eventId
-    );
-    firebase
-      .database()
-      .ref(`savedEvents/${userId}/${recordId}`)
-      .remove();
-  }
-
-  isFavourited(eventId) {
-    return Object.values(this.state.savedEvents).includes(eventId);
+  componentDidMount() {
+    return client
+      .getEntries({
+        content_type: EVENTS_CONTENT_TYPE_SYS_ID
+      })
+      .then(responseJson => {
+        this.setState(
+          {
+            isLoading: false,
+            dataSource: responseJson
+          },
+          () => {
+            // do something with new state
+          }
+        );
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   render() {
-    const { signedIn, displayName, profilePictureUrl, userId } = this.state;
+    if (this.state.isLoading) {
+      return (
+        <View style={{ flex: 1, paddingTop: 20 }}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
+
     return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          {signedIn && (
-            <View style={styles.profile}>
+      <View style={{ flex: 1, paddingTop: 20 }}>
+        <FlatList
+          data={this.state.dataSource}
+          renderItem={({ item }) => (
+            <View style={{ padding: 10 }}>
+              <Text>{item.name}</Text>
+              <Text>{item.addressName}</Text>
+              <Text>
+                {item.startTime} - {item.endTime}
+              </Text>
+              <Text>
+                {item.lowestPrice} - {item.highestPrice}
+              </Text>
               <Image
-                style={{ width: 50, height: 50 }}
-                source={{ uri: profilePictureUrl }}
+                style={styles.heroImage}
+                resizeMode="contain"
+                source={{ uri: item.heroImage }}
               />
-              <Text style={styles.displayName}>{displayName}</Text>
             </View>
           )}
-          <Button
-            style={{ height: 40 }}
-            onPress={() => (signedIn ? signOut() : signIn())}
-            title={signedIn ? "Sign Out" : "Sign In"}
-          />
-        </View>
-        <List>
-          <FlatList
-            data={this.state.events.items}
-            keyExtractor={item => item.sys.id}
-            extraData={this.state.savedEvents}
-            renderItem={({ item: event }) => (
-              <ListItem
-                rightIcon={{
-                  name: this.isFavourited(event.sys.id)
-                    ? "favorite"
-                    : "favorite-border",
-                  color: "#ea3585"
-                }}
-                onPressRightIcon={() =>
-                  this.isFavourited(event.sys.id)
-                    ? this.unsaveEvent(userId, event.sys.id)
-                    : saveEvent(userId, event.sys.id)
-                }
-                title={event.fields.name}
-                key={event.sys.id}
-                style={styles.eventItem}
-              />
-            )}
-          />
-        </List>
+          keyExtractor={(item, index) => index}
+        />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    padding: 20,
-    paddingTop: 40,
-    backgroundColor: "#fff"
-  },
-  header: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    maxHeight: 60,
-    alignItems: "center"
-  },
-  profile: {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  displayName: {
-    paddingLeft: 10
-  },
-  eventItem: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  }
-});

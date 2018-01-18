@@ -1,0 +1,94 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "name": "Carols by Candelight",
+      "addressName": "Two Brewers",
+      "addressUrl":
+        "http://maps.google.com/?q=114%20Clapham%20High%20Street%20London,%20England,%20SW4%207UJ%20United%20Kingdom",
+      "heroImage":
+        "https://static1.squarespace.com/static/5907d5c737c581f99cdc2760/59593a3503596e73b402c512/5a14460a8165f5db96e875c7/1511279491572/O66A5859.jpg",
+      "startTime": "5:00 PM",
+      "endTime": "7:00 PM",
+      "lowestPrice": "£10",
+      "highestPrice": "£20",
+      "eventCategory": ["Bars and club", "Bars and clubs", "Fundraisers"],
+      "body": "Fun singing in the evening",
+      "accessibilityInformation": "Accessible to all",
+      "related": "None",
+      "ticketUrl": "https://prideinlondon.org/events/carols-by-candlelight"
+    },
+    {
+      "id": 1,
+      "name": "Fancy a Femme singles night",
+      "addressName": "SHE Soho",
+      "addressUrl":
+        "http://maps.google.com/?q=114%20Clapham%20High%20Street%20London,%20England,%20SW4%207UJ%20United%20Kingdom",
+      "heroImage":
+        "https://static1.squarespace.com/static/5907d5c737c581f99cdc2760/59593a3503596e73b402c512/595aa3b472af65691b74c84c/1499298138942/event-fancy-a-femme-singles-night.jpg",
+      "startTime": "5:30 PM",
+      "endTime": "8:00 PM",
+      "lowestPrice": "£10",
+      "highestPrice": "£20",
+      "eventCategory": ["Westminster", "under £20", "Dating"],
+      "body": "Fun singing in the evening",
+      "accessibilityInformation": "Accessible to all",
+      "related": "None",
+      "ticketUrl": "https://prideinlondon.org/events/carols-by-candlelight"
+    },
+    {
+      "id": 2,
+      "name": "Lesbian history tour for singles",
+      "addressName": "Leicester Square London, England, WC2H United Kingdom",
+      "addressUrl":
+        "http://maps.google.com/?q=Leicester%20Square%20London,%20England,%20WC2H%20United%20Kingdom",
+      "heroImage":
+        "https://static1.squarespace.com/static/5907d5c737c581f99cdc2760/59593a3503596e73b402c512/595aa2e2db29d6b964984774/1499298125471/event-lesbian-history-tour-for-singles.jpg",
+      "startTime": "6:30 PM",
+      "endTime": "10:00 PM",
+      "lowestPrice": "£40",
+      "highestPrice": "£40",
+      "eventCategory": ["Westminster", "under £40", "Dating"],
+      "body": "Fun singing in the evening",
+      "accessibilityInformation": "Accessible to all",
+      "related": "None",
+      "ticketUrl": "https://prideinlondon.org/events/carols-by-candlelight"
+    },
+    {
+      "id": 3,
+      "name": "Quentin Crisp : Naked Hope at Jermyn Street Theatre",
+      "addressName": "Jermyn Street Theatre",
+      "addressUrl":
+        "http://maps.google.com/?q=Jermyn%20Street%20Theatre,%2016B%20Jermyn%20Street%20London,%20England,%20SW1Y%206ST%20United%20Kingdom",
+      "heroImage":
+        "https://static1.squarespace.com/static/5907d5c737c581f99cdc2760/59593a3503596e73b402c512/595aa1bb1b10e3d1b09a0dd8/1499298113439/event-quentin-crisp-naked-hope-at-jermyn-street-theatre.jpg",
+      "startTime": "7:30 PM",
+      "endTime": "9:00 PM",
+      "lowestPrice": "£20",
+      "highestPrice": "£20",
+      "eventCategory": ["Westminster", "under £20", "Dating"],
+      "body": "Fun singing in the evening",
+      "accessibilityInformation": "Accessible to all",
+      "related": "None",
+      "ticketUrl": "https://prideinlondon.org/events/carols-by-candlelight"
+    },
+    {
+      "id": 4,
+      "name": "Moonlight Screening",
+      "addressName": "Prince Charles Cinema",
+      "addressUrl":
+        "http://maps.google.com/?q=Prince%20Charles%20Cinema,%207%20Leicester%20Place%20London,%20England,%20WC2H%207BY%20United%20Kingdom",
+      "heroImage":
+        "https://static1.squarespace.com/static/5907d5c737c581f99cdc2760/59593a3503596e73b402c512/595aa08786e6c0ee7f9a3810/1499298101434/event-moonlight-screening.jpg",
+      "startTime": "3:30 PM",
+      "endTime": "5:15 PM",
+      "lowestPrice": "£10",
+      "highestPrice": "£10",
+      "eventCategory": ["Westminster", "under £10", "Dating"],
+      "body": "Fun singing in the evening",
+      "accessibilityInformation": "Accessible to all",
+      "related": "None",
+      "ticketUrl": "https://prideinlondon.org/events/carols-by-candlelight"
+    }
+  ]
+}
