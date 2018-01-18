@@ -110,8 +110,8 @@ def releasekeypass = getPassword("markholland","android_keystore")
 def releasekeyalias = getPassword("markholland","android_keystore")
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
 
     defaultConfig {
         applicationId "com.pridelondon"
