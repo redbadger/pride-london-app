@@ -16,5 +16,28 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+.DS_Store
+
 # test results
 junit.xml
+
+# config
+config.js
+
+# android
+android/app/build/
+android/build
+.gradle
+
+# keystore
+*.keystore
+
+# Play console
+android/Google Play Android Developer*.json
+
+# android studio
+android/.idea
+android/**/*.iml
+android/local.properties
+
+
