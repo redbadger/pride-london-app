@@ -79,13 +79,13 @@ workflows:
   node-android-ios:
     jobs:
       - build
-      - android:
+      - ios:
           requires:
             - build
           filters:
             branches:
               ignore: master
-      - ios:
+      - android:
           requires:
             - build
           filters:
