@@ -79,15 +79,9 @@ workflows:
   node-android-ios:
     jobs:
       - build
-      - ios:
-          requires:
-            - build
-          filters:
-            branches:
-              ignore: master
       - android:
           requires:
             - build
-          filters:
-            branches:
-              ignore: master
+      - ios:
+          requires:
+            - build
