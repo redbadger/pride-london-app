@@ -1,0 +1,93 @@
+get-cache: &get-cache
+  restore_cache:
+    key: dependencies-{{ checksum "package.json" }}
+save-cache: &save-cache
+  save_cache:
+    paths:
+      - node_modules
+    key: dependencies-{{ checksum "package.json" }}
+
+version: 2
+jobs:
+  # build is a reserved job name for running circleci locally
+  build:
+    docker:
+      - image: circleci/node:9.3
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - <<: *get-cache
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - <<: *save-cache
+      - run:
+          name: Lint source
+          command: yarn lint
+      - run:
+          name: Unit test
+          command: yarn test:ci
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+      - store_test_results:
+          path: ./junit.xml
+
+  android:
+    working_directory: ~/repo/android
+    docker:
+      - image: circleci/android:api-27-node8-alpha
+    steps:
+      - checkout:
+          path: ~/repo
+      - attach_workspace:
+          at: ~/repo
+      - run: bundle install
+      # - run: bundle exec fastlane test
+      - store_test_results:
+          path: ~/repo/android/reports
+
+  ios:
+    macos:
+      xcode: "9.0"
+    working_directory: /Users/distiller/project/ios
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: /Users/distiller/project
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - run: yarn
+      - run: bundle install
+      - run: bundle exec fastlane test
+      - run:
+          command: cp $FL_OUTPUT_DIR/scan/report.junit $FL_OUTPUT_DIR/scan/results.xml
+          when: always
+      - store_artifacts:
+          path: /Users/distiller/project/output
+      - store_test_results:
+          path: /Users/distiller/project/output/scan
+
+workflows:
+  version: 2
+  node-android-ios:
+    jobs:
+      - build
+      - ios:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master
+      - android:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master
