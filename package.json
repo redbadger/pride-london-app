@@ -31,7 +31,6 @@
     "preset": "react-native"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"],
-    "README.md": ["markdown-toc -i", "git add"]
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   }
 }
