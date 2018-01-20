@@ -1,0 +1,3 @@
+rootProject.name = 'PrideLondonApp'
+
+include ':app'
