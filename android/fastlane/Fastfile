@@ -1,0 +1,10 @@
+fastlane_version "2.67.0"
+
+default_platform :android
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+end
