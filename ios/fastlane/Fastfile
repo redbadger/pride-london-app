@@ -9,6 +9,6 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    gym(scheme: "PrideLondonApp")
+    scan(scheme: "PrideLondonApp")
   end
 end
