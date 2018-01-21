@@ -1,0 +1,14 @@
+{
+  "name": "pride-london-app",
+  "reason": {
+    "react-jsx": 2
+  },
+  "bsc-flags": ["-bs-super-errors"],
+  "bs-dependencies": ["bs-react-native", "reason-react"],
+  "sources": [
+    {
+      "dir": "re"
+    }
+  ],
+  "refmt": 3
+}
