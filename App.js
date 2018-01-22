@@ -1,40 +1,88 @@
 // @flow
 
-import React from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import React, { Component } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
+import ContentfulClient from "./src/Contentful/Client";
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload \n Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
+export default class App extends Component {
+  constructor(props) {
+    super(props);
 
-const App = () => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>Welcome to Pride London!</Text>
-    <Text style={styles.instructions}>To get started, edit App.js</Text>
-    <Text style={styles.instructions}>{instructions}</Text>
-  </View>
-);
+    this.state = {
+      isLoading: true
+    };
+
+    this.client = new ContentfulClient();
+  }
+
+  componentDidMount() {
+    return this.client
+      .allEvents()
+      .then(events => {
+        this.setState(
+          {
+            isLoading: false,
+            eventsData: events
+          },
+          () => {
+            // do something with new state
+          }
+        );
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  render() {
+    if (this.state.isLoading) {
+      return (
+        <View style={{ flex: 1, paddingTop: 20 }}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
+
+    return (
+      <View style={{ flex: 1, paddingTop: 20 }}>
+        <FlatList
+          data={this.state.eventsData}
+          renderItem={({ item }) => (
+            <View style={{ padding: 10 }}>
+              <Text>{item.name}</Text>
+              <Text>{item.addressName}</Text>
+              <Text>
+                {new Date(item.startTime).toLocaleString("en-UK")} -{" "}
+                {new Date(item.endTime).toLocaleString("en-UK")}
+              </Text>
+              <Text>
+                {item.lowestPrice} - {item.highestPrice}
+              </Text>
+              <Image
+                style={styles.heroImage}
+                resizeMode="contain"
+                source={{ uri: item.heroImage }}
+              />
+            </View>
+          )}
+          keyExtractor={(item, index) => index}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
+  heroImage: {
+    alignSelf: "center",
+    width: 400,
+    height: 300
   }
 });
-
-export default App;
