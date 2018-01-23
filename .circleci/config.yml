@@ -44,7 +44,6 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run: bundle install
-      - run: bundle update fastlane
       - run: bundle exec fastlane test
       - store_test_results:
           path: ~/project/android/reports
@@ -66,8 +65,7 @@ jobs:
       # differ between the macOS image and the Docker containers above.
       - run: yarn
       - run: bundle install
-      - run: bundle update fastlane
-      - run: bundle exec fastlane test
+      # - run: bundle exec fastlane test
       - run:
           command: cp $FL_OUTPUT_DIR/scan/report.junit $FL_OUTPUT_DIR/scan/results.xml
           when: always
