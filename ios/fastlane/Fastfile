@@ -21,7 +21,7 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
     # fetch previously generated certificates, but don't generate new ones if none already exist
-    match(type: "appstore", readonly: false)
+    match(type: "appstore", readonly: true)
     # ensure we're on the "master" git branch
     ensure_git_branch(branch: "deploy-ios")
     # set the app build number from our previously generated config
