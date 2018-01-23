@@ -23,11 +23,11 @@ platform :ios do
     # fetch previously generated certificates, but don't generate new ones if none already exist
     match(type: "appstore", readonly: true)
     # ensure we're on the "master" git branch
-    ensure_git_branch(branch: "deploy-ios")
+    ensure_git_branch(branch: "master")
     # set the app build number from our previously generated config
     increment_build_number
     # set the app version from our previously generated config
-    # increment_version_number
+    increment_version_number
     # build the app for app store export
     gym(
       clean: true,
