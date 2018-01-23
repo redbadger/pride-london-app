@@ -12,10 +12,10 @@ platform :ios do
     scan(scheme: "PrideLondonApp")
   end
 
-  desc "Ad-hoc build"
-  lane :adhoc do
-    match(type: "adhoc")
-    gym(export_method: "ad-hoc", scheme: "PrideLondonApp")
+  desc "Development build"
+  lane :development do
+    match(type: "development")
+    gym(export_method: "development", scheme: "PrideLondonApp")
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
