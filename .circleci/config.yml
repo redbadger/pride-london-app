@@ -69,7 +69,7 @@ jobs:
       # - run:
       #     command: cp $FL_OUTPUT_DIR/scan/report.junit $FL_OUTPUT_DIR/scan/results.xml
       #     when: always
-      - run: bundle exec fastlane development
+      - run: bundle exec fastlane adhoc
       - store_artifacts:
           path: /Users/distiller/project/output
       - store_test_results:
