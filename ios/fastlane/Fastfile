@@ -38,6 +38,8 @@ platform :ios do
     # upload to TestFlight and notify testers
     testflight(
       skip_submission: true
+      distribute_external:false,
+      skip_waiting_for_build_processing:true
     )
   end
 end
