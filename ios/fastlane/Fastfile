@@ -14,7 +14,7 @@ platform :ios do
 
   desc "Development build"
   lane :development do
-    match(type: "development")
+    match(type: "appstore")
     gym(export_method: "development", scheme: "PrideLondonApp")
   end
 
