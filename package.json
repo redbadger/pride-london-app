@@ -9,9 +9,12 @@
       "node node_modules/react-native/local-cli/cli.js run-android",
     "test": "jest",
     "precommit": "lint-staged",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "update-contentful": "node services/updateContentTypes.js"
   },
   "dependencies": {
+    "contentful-management": "^4.1.2",
+    "ramda": "^0.25.0",
     "react": "16.2.0",
     "react-native": "0.52.0"
   },
