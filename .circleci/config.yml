@@ -66,9 +66,9 @@ jobs:
       - run: yarn
       - run: bundle install
       # - run: bundle exec fastlane test
-      - run:
-          command: cp $FL_OUTPUT_DIR/scan/report.junit $FL_OUTPUT_DIR/scan/results.xml
-          when: always
+      # - run:
+      #     command: cp $FL_OUTPUT_DIR/scan/report.junit $FL_OUTPUT_DIR/scan/results.xml
+      #     when: always
       - run: bundle exec fastlane adhoc
       - store_artifacts:
           path: /Users/distiller/project/output
