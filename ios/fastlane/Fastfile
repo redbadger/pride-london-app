@@ -12,6 +12,12 @@ platform :ios do
     scan(scheme: "PrideLondonApp")
   end
 
+  desc "Ad-hoc build"
+  lane :adhoc do
+    match(type: "adhoc")
+    gym(export_method: "ad-hoc")
+  end
+
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
     # fetch previously generated certificates, but don't generate new ones if none already exist
