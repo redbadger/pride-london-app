@@ -80,9 +80,16 @@ workflows:
   node-android-ios:
     jobs:
       - build
-      - android:
+      - build-android:
           requires:
             - build
-      - ios:
+      - build-ios:
           requires:
             - build
+      - beta-ios:
+          requires:
+            - build-ios
+          filters:
+            branches:
+              only:
+                - deploy-ios
