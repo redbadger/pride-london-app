@@ -111,4 +111,4 @@ workflows:
           filters:
             branches:
               only:
-                - deploy-ios
+                - master
