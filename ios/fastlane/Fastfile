@@ -29,8 +29,6 @@ platform :ios do
       build_number: latest_testflight_build_number + 1,
       xcodeproj: "PrideLondonApp.xcodeproj"
     )
-    # set the app version from our previously generated config
-    # increment_version_number
     # build the app for app store export
     gym(
       clean: true,
