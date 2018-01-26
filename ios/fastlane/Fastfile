@@ -1,4 +1,4 @@
-fastlane_version "2.67.0"
+fastlane_version "2.78.0"
 
 default_platform :ios
 
@@ -10,5 +10,37 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     scan(scheme: "PrideLondonApp")
+  end
+
+  desc "Signed build"
+  lane :build do
+    match(type: "appstore")
+    gym(export_method: "app-store", scheme: "PrideLondonApp")
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  lane :beta do
+    # fetch previously generated certificates, but don't generate new ones if none already exist
+    match(type: "appstore", readonly: true)
+    # ensure we're on the "master" git branch
+    ensure_git_branch(branch: "master")
+    # set the app build number from our previously generated config
+    increment_build_number(
+      build_number: latest_testflight_build_number + 1,
+      xcodeproj: "PrideLondonApp.xcodeproj"
+    )
+    # build the app for app store export
+    gym(
+      clean: true,
+      export_method: 'app-store',
+      scheme: "PrideLondonApp",
+      output_directory: "./build-tools/deploy/data"
+    )
+    # upload to TestFlight and notify testers
+    testflight(
+      skip_submission: true,
+      distribute_external: false,
+      skip_waiting_for_build_processing: true
+    )
   end
 end
