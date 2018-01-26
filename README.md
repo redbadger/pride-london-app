@@ -55,7 +55,7 @@ To make an update to Content Types in Contentful:
 
 3. Once the migration has run, use the export command to store the Content Types (and Content) as JSON in this repo in the 'data' directory
    ```
-   contentful-export --space-id $DEV_SPACE_ID --management-token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --export-dir ./data --content-file contentful-pride-${XX}.json --skip-roles
+   contentful-export --space-id $DEV_SPACE_ID --management-token $CONTENTFUL_MANAGEMENT_ACCESS_TOKEN --config config/contentful-export.json
    ```
 
 For more information, see the following Contentful docs:

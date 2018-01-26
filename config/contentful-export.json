@@ -1,0 +1,7 @@
+{
+  "exportDir": "./data",
+  "contentFile": "content-types.json",
+  "skipContent": true,
+  "skipRoles": true,
+  "skip-webhooks": true
+}
