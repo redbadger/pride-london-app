@@ -15,8 +15,7 @@
   "plugins": [
     "flowtype",
     "react",
-    "react-native",
-    "jsx-a11y"
+    "react-native"
   ],
   "parserOptions": {
     "ecmaVersion": 2017,
