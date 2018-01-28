@@ -8,6 +8,7 @@
 
 * [Running](#running)
   * [Prerequisites](#prerequisites)
+  * [Environment Variables](#environment-variables)
   * [Running](#running-1)
 * [Contributing](#contributing)
 * [Links](#links)
@@ -24,6 +25,16 @@
 * `npm install -g react-native-cli`
 
 More information on getting started can be found here: https://facebook.github.io/react-native/docs/getting-started.html under the `Building prodjects with React Native` tab.
+
+### Environment Variables
+
+In order to run the application locally you will need to find and add some environment variables to the project. These can be found in `.env.example`. Copy this file into another file called `.env`:
+
+```bash
+cp .env.example .env
+```
+
+And fill in the required variables from the appropriate developer portals (e.g. app.contentful.com/spaces/\<space-id\>/api/keys).
 
 ### Running
 

@@ -54,3 +54,6 @@ buck-out/
 
 # Deco IDE
 *.deco
+
+# Environment variables
+.env
