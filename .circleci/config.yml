@@ -49,8 +49,8 @@ jobs:
           at: ~/project
       - run: bundle install
       - run: bundle exec fastlane build
-      - store_test_results:
-          path: ~/project/android/reports
+      - store_artifacts:
+          path: ~/project/android/app/build/outputs
 
   build-ios:
     macos:
@@ -80,8 +80,6 @@ jobs:
       - run: bundle exec fastlane build
       - store_artifacts:
           path: /Users/distiller/project/output
-      - store_test_results:
-          path: /Users/distiller/project/output/scan
 
   beta-ios:
     macos:
