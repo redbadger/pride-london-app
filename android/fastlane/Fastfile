@@ -7,4 +7,12 @@ platform :android do
   lane :test do
     gradle(task: "test")
   end
+
+  desc "Build application"
+  lane :build do
+    gradle(
+      task: 'assemble',
+      build_type: 'Release'
+    )
+  end
 end
