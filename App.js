@@ -14,9 +14,9 @@ const instructions = Platform.select({
 const App = () => (
   <View style={styles.container}>
     <Text style={styles.welcome}>Welcome to Pride London!</Text>
-    <Text style={styles.instructions}>{`Contentful space ID: ${
-      Config.CONTENTFUL_SPACE_ID
-    }`}</Text>
+    <Text style={styles.instructions}>
+      {`Contentful space ID: ${Config.CONTENTFUL_SPACE_ID}`}
+    </Text>
     <Text style={styles.instructions}>To get started, edit App.js</Text>
     <Text style={styles.instructions}>{instructions}</Text>
   </View>
