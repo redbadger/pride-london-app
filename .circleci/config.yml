@@ -71,6 +71,7 @@ jobs:
       - run:
           name: Generate .env
           command: node generate-dotenv.js
+          working_directory: /Users/distiller/project
       - run: bundle install
       # - run: bundle exec fastlane test
       # - run:
