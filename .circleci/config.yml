@@ -27,10 +27,14 @@ jobs:
       - run:
           name: Unit test
           command: yarn test
+      - run:
+          name: Generate .env
+          command: node generate-dotenv.js
       - persist_to_workspace:
           root: ~/project
           paths:
             - node_modules
+            - .env
       - store_test_results:
           path: ~/project/junit.xml
 
