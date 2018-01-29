@@ -49,7 +49,7 @@ class App extends React.Component<{}, State> {
             <Text>{event.fields.name[locale]}</Text>
           )}
           refreshing={this.state.refreshing}
-          onRefresh={this.onRefreshEvents()}
+          onRefresh={this.onRefreshEvents}
         />
       </SafeAreaView>
     );
