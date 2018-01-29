@@ -3,12 +3,19 @@
 import React from "react";
 import { StyleSheet, Text, FlatList, SafeAreaView } from "react-native";
 import { getEvents, updateEvents } from "./integrations/cms";
+import type { Event } from "./integrations/cms";
 
 const locale = "en-GB";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+type State = {
+  events: Event[],
+  loaded: boolean,
+  refreshing: boolean
+};
+
+class App extends React.Component<{}, State> {
+  constructor() {
+    super();
 
     this.state = {
       events: [],
@@ -24,7 +31,7 @@ class App extends React.Component {
     this.setState({ events, loaded: true });
   }
 
-  onRefreshEvents = async () => {
+  onRefreshEvents = () => {
     this.setState({ refreshing: true }, async () => {
       const events = await updateEvents();
       this.setState({ events, refreshing: false });
@@ -42,7 +49,7 @@ class App extends React.Component {
             <Text>{event.fields.name[locale]}</Text>
           )}
           refreshing={this.state.refreshing}
-          onRefresh={this.onRefreshEvents}
+          onRefresh={this.onRefreshEvents()}
         />
       </SafeAreaView>
     );

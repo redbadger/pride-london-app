@@ -5,12 +5,23 @@ import Config from "react-native-config";
 import { createClient } from "contentful/dist/contentful.browser.min";
 import { saveEvents, loadEvents } from "./storage";
 
+export type Event = {
+  sys: {
+    id: string
+  },
+  fields: {
+    name: {
+      [string]: string
+    }
+  }
+};
+
 const client = createClient({
   space: Config.CONTENTFUL_SPACE_ID,
   accessToken: Config.CONTENTFUL_API_KEY
 });
 
-export const getEvents = async () => {
+export const getEvents = async (): Promise<Event[]> => {
   const localEventsData = await loadEvents();
   const hasLocalEventsData =
     !!localEventsData && localEventsData.events.length > 0;
@@ -22,8 +33,7 @@ export const getEvents = async () => {
   return updateEvents();
 };
 
-export const updateEvents = async () => {
-  console.log(">>> updating events");
+export const updateEvents = async (): Promise<Event[]> => {
   const localEventsData = await loadEvents();
   const hasLocalEventsData =
     !!localEventsData && localEventsData.events.length > 0;
