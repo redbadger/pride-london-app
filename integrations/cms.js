@@ -16,7 +16,23 @@ export type Event = {
   }
 };
 
-const client = createClient({
+type EventData = {
+  entries: Event[],
+  nextSyncToken: string
+};
+
+type SyncOpts = {
+  type: string,
+  content_type: string,
+  initial: boolean,
+  nextSyncToken: string
+};
+
+type Client = {
+  sync: SyncOpts => Promise<EventData>
+};
+
+const client: Client = createClient({
   space: Config.CONTENTFUL_SPACE_ID,
   accessToken: Config.CONTENTFUL_API_KEY
 });

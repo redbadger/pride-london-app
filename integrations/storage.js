@@ -24,6 +24,6 @@ export const saveEvents = async (
 };
 
 export const loadEvents = async (): Promise<EventsData> => {
-  const stringData = await AsyncStorage.getItem(EVENTS_KEY);
+  const stringData: string = await AsyncStorage.getItem(EVENTS_KEY);
   return JSON.parse(stringData);
 };

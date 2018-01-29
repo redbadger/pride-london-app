@@ -25,6 +25,9 @@ jobs:
           name: Lint source
           command: yarn lint
       - run:
+          name: Type check
+          command: yarn flow
+      - run:
           name: Unit test
           command: yarn test
       - run:
