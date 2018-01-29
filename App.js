@@ -2,7 +2,9 @@
 
 import React from "react";
 import { StyleSheet, Text, FlatList, SafeAreaView } from "react-native";
-import { getEvents } from "./integrations/cms";
+import { getEvents, updateEvents } from "./integrations/cms";
+
+const locale = "en-GB";
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +12,8 @@ class App extends React.Component {
 
     this.state = {
       events: [],
-      loaded: false
+      loaded: false,
+      refreshing: false
     };
   }
 
@@ -21,6 +24,13 @@ class App extends React.Component {
     this.setState({ events, loaded: true });
   }
 
+  onRefreshEvents = async () => {
+    this.setState({ refreshing: true }, async () => {
+      const events = await updateEvents();
+      this.setState({ events, refreshing: false });
+    });
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -28,7 +38,11 @@ class App extends React.Component {
         <FlatList
           data={this.state.events}
           keyExtractor={event => event.sys.id}
-          renderItem={({ item: event }) => <Text>{event.fields.name}</Text>}
+          renderItem={({ item: event }) => (
+            <Text>{event.fields.name[locale]}</Text>
+          )}
+          refreshing={this.state.refreshing}
+          onRefresh={this.onRefreshEvents}
         />
       </SafeAreaView>
     );

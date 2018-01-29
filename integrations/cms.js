@@ -3,17 +3,53 @@
 import Config from "react-native-config";
 // force contentful SDK to use browser API
 import { createClient } from "contentful/dist/contentful.browser.min";
+import { saveEvents, loadEvents } from "./storage";
 
 const client = createClient({
   space: Config.CONTENTFUL_SPACE_ID,
   accessToken: Config.CONTENTFUL_API_KEY
 });
 
-// eslint-disable-next-line import/prefer-default-export
 export const getEvents = async () => {
-  const eventData = await client.getEntries({
+  const localEventsData = await loadEvents();
+  const hasLocalEventsData =
+    !!localEventsData && localEventsData.events.length > 0;
+
+  if (hasLocalEventsData) {
+    return localEventsData.events;
+  }
+
+  return updateEvents();
+};
+
+export const updateEvents = async () => {
+  console.log(">>> updating events");
+  const localEventsData = await loadEvents();
+  const hasLocalEventsData =
+    !!localEventsData && localEventsData.events.length > 0;
+  const defaultSyncOpts = {
+    type: "Entry",
     content_type: "event"
+  };
+
+  const syncOpts = hasLocalEventsData
+    ? {
+        initial: false,
+        nextSyncToken: localEventsData.syncToken
+      }
+    : {
+        initial: true
+      };
+
+  const eventData = await client.sync({
+    ...defaultSyncOpts,
+    ...syncOpts
   });
 
-  return eventData.items;
+  const savedEventsData = await saveEvents(
+    eventData.entries,
+    eventData.nextSyncToken
+  );
+
+  return savedEventsData.events;
 };
