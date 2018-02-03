@@ -1,0 +1,172 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "pidogbsfcldn"
+          }
+        },
+        "id": "event",
+        "type": "ContentType",
+        "createdAt": "2018-01-25T14:17:18.484Z",
+        "updatedAt": "2018-01-26T16:46:59.128Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "7y51AzI1bzKmVjwEwAJWBK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "7y51AzI1bzKmVjwEwAJWBK"
+          }
+        },
+        "publishedCounter": 6,
+        "version": 12,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "7y51AzI1bzKmVjwEwAJWBK"
+          }
+        },
+        "publishedVersion": 11,
+        "firstPublishedAt": "2018-01-25T14:17:18.797Z",
+        "publishedAt": "2018-01-26T16:46:59.128Z"
+      },
+      "displayField": "name",
+      "name": "Event",
+      "description": "Events during Pride 2018",
+      "fields": [
+        {
+          "id": "name",
+          "name": "Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "location",
+          "name": "Location",
+          "type": "Location",
+          "localized": false,
+          "required": false,
+          "validations": [],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "startTime",
+          "name": "Start time",
+          "type": "Date",
+          "localized": false,
+          "required": false,
+          "validations": [],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    }
+  ],
+  "editorInterfaces": [
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "pidogbsfcldn",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 10,
+        "createdAt": "2018-01-25T14:17:19.037Z",
+        "createdBy": {
+          "sys": {
+            "id": "7y51AzI1bzKmVjwEwAJWBK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2018-01-26T16:46:59.644Z",
+        "updatedBy": {
+          "sys": {
+            "id": "7y51AzI1bzKmVjwEwAJWBK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "event",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "name",
+          "widgetId": "singleLine"
+        },
+        {
+          "fieldId": "location",
+          "widgetId": "locationEditor"
+        },
+        {
+          "fieldId": "startTime",
+          "widgetId": "datePicker"
+        }
+      ]
+    }
+  ],
+  "locales": [
+    {
+      "name": "UK English",
+      "code": "en-GB",
+      "fallbackCode": null,
+      "default": true,
+      "contentManagementApi": true,
+      "contentDeliveryApi": true,
+      "optional": false,
+      "sys": {
+        "type": "Locale",
+        "id": "19E3BnDNF8cmkNwHzz1h4Y",
+        "version": 0,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "pidogbsfcldn"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "7y51AzI1bzKmVjwEwAJWBK"
+          }
+        },
+        "createdAt": "2018-01-25T12:13:59Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "7y51AzI1bzKmVjwEwAJWBK"
+          }
+        },
+        "updatedAt": "2018-01-25T12:13:59Z"
+      }
+    }
+  ]
+}
