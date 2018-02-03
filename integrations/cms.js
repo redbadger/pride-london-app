@@ -15,30 +15,36 @@ export type Event = {
     }
   }
 };
-
 type EventData = {
   entries: Event[],
   nextSyncToken: string
 };
-
 type SyncOpts = {
   type: string,
   content_type: string,
   initial: boolean,
   nextSyncToken: string
 };
-
 type Client = {
   sync: SyncOpts => Promise<EventData>
 };
+
+type UpdateEvents = () => Promise<Event[]>;
+type GetEvents = (
+  loadEvents?: loadEvents,
+  updateEvents?: updateEvents
+) => Promise<Event[]>;
 
 const client: Client = createClient({
   space: Config.CONTENTFUL_SPACE_ID,
   accessToken: Config.CONTENTFUL_API_KEY
 });
 
-export const getEvents = async (): Promise<Event[]> => {
-  const localEventsData = await loadEvents();
+export const getEvents: GetEvents = async (
+  loadEventsFn = loadEvents,
+  updateEventsFn = updateEvents
+) => {
+  const localEventsData = await loadEventsFn();
   const hasLocalEventsData =
     !!localEventsData && localEventsData.events.length > 0;
 
@@ -46,11 +52,15 @@ export const getEvents = async (): Promise<Event[]> => {
     return localEventsData.events;
   }
 
-  return updateEvents();
+  return updateEventsFn();
 };
 
-export const updateEvents = async (): Promise<Event[]> => {
-  const localEventsData = await loadEvents();
+export const updateEvents: UpdateEvents = async (
+  loadEventsFn = loadEvents,
+  saveEventsFn = saveEvents,
+  clientObj = client
+) => {
+  const localEventsData = await loadEventsFn();
   const hasLocalEventsData =
     !!localEventsData && localEventsData.events.length > 0;
   const defaultSyncOpts = {
@@ -67,12 +77,12 @@ export const updateEvents = async (): Promise<Event[]> => {
         initial: true
       };
 
-  const eventData = await client.sync({
+  const eventData = await clientObj.sync({
     ...defaultSyncOpts,
     ...syncOpts
   });
 
-  const savedEventsData = await saveEvents(
+  const savedEventsData = await saveEventsFn(
     eventData.entries,
     eventData.nextSyncToken
   );

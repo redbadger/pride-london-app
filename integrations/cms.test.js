@@ -1,8 +1,145 @@
-import { getEvents } from "./cms";
+import { getEvents, updateEvents } from "./cms";
 
-test("getEvents returns event items from client", async () => {
-  const events = await getEvents();
+describe("getEvents", () => {
+  it("returns local events data if found", async () => {
+    const mockLocalEvents = {
+      events: [{}]
+    };
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockUpdateEvents = jest.fn();
 
-  expect(events).toBeDefined();
-  expect(Array.isArray(events)).toBe(true);
+    const events = await getEvents(mockLoadEvents, mockUpdateEvents);
+
+    expect(mockUpdateEvents).not.toHaveBeenCalled();
+    expect(events).toBe(mockLocalEvents.events);
+  });
+
+  it("updates events if local events list is empty", async () => {
+    const mockLocalEvents = {
+      events: []
+    };
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockUpdateEvents = jest.fn();
+
+    await getEvents(mockLoadEvents, mockUpdateEvents);
+
+    expect(mockUpdateEvents).toHaveBeenCalled();
+  });
+
+  it("updates events if local events not found", async () => {
+    const mockLocalEvents = null;
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockUpdateEvents = jest.fn();
+
+    await getEvents(mockLoadEvents, mockUpdateEvents);
+
+    expect(mockUpdateEvents).toHaveBeenCalled();
+  });
+});
+
+describe("updateEvents", () => {
+  it("downloads full event data if local events list is empty", async () => {
+    const mockLocalEvents = {
+      events: []
+    };
+    const mockSavedEvents = {
+      events: []
+    };
+    const downloadedEventData = {
+      entries: [],
+      nextSyncToken: "abc"
+    };
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockSaveEvents = jest.fn(() => mockSavedEvents);
+    const mockClient = {
+      sync: jest.fn(() => downloadedEventData)
+    };
+
+    const updatedEvents = await updateEvents(
+      mockLoadEvents,
+      mockSaveEvents,
+      mockClient
+    );
+
+    expect(mockClient.sync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        initial: true
+      })
+    );
+    expect(mockSaveEvents).toHaveBeenCalledWith(
+      downloadedEventData.entries,
+      downloadedEventData.nextSyncToken
+    );
+    expect(updatedEvents).toBe(mockSavedEvents.events);
+  });
+
+  it("downloads full event data if local events not found", async () => {
+    const mockLocalEvents = null;
+    const mockSavedEvents = {
+      events: []
+    };
+    const downloadedEventData = {
+      entries: [],
+      nextSyncToken: "abc"
+    };
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockSaveEvents = jest.fn(() => mockSavedEvents);
+    const mockClient = {
+      sync: jest.fn(() => downloadedEventData)
+    };
+
+    const updatedEvents = await updateEvents(
+      mockLoadEvents,
+      mockSaveEvents,
+      mockClient
+    );
+
+    expect(mockClient.sync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        initial: true
+      })
+    );
+    expect(mockSaveEvents).toHaveBeenCalledWith(
+      downloadedEventData.entries,
+      downloadedEventData.nextSyncToken
+    );
+    expect(updatedEvents).toBe(mockSavedEvents.events);
+  });
+
+  it("downloads delta update if local events are found", async () => {
+    const mockLocalEvents = {
+      events: [{}],
+      syncToken: "123"
+    };
+    const mockSavedEvents = {
+      events: []
+    };
+    const downloadedEventData = {
+      entries: [],
+      nextSyncToken: "abc"
+    };
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockSaveEvents = jest.fn(() => mockSavedEvents);
+    const mockClient = {
+      sync: jest.fn(() => downloadedEventData)
+    };
+
+    const updatedEvents = await updateEvents(
+      mockLoadEvents,
+      mockSaveEvents,
+      mockClient
+    );
+
+    expect(mockClient.sync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        initial: false,
+        nextSyncToken: mockLocalEvents.syncToken
+      })
+    );
+    expect(mockSaveEvents).toHaveBeenCalledWith(
+      downloadedEventData.entries,
+      downloadedEventData.nextSyncToken
+    );
+    expect(updatedEvents).toBe(mockSavedEvents.events);
+  });
 });

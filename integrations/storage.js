@@ -8,12 +8,15 @@ type EventsData = {
   syncToken: string
 };
 
-const EVENTS_KEY = "@EventsStore:events";
-
-export const saveEvents = async (
+type SaveEvents = (
   newEvents: Event[],
   syncToken: string
-): Promise<EventsData> => {
+) => Promise<EventsData>;
+type LoadEvents = () => Promise<EventsData>;
+
+const EVENTS_KEY = "@EventsStore:events";
+
+export const saveEvents: SaveEvents = async (newEvents, syncToken) => {
   const localEventsData = await loadEvents();
   const events = localEventsData
     ? [...newEvents, ...localEventsData.events]
@@ -23,7 +26,7 @@ export const saveEvents = async (
   return eventsData;
 };
 
-export const loadEvents = async (): Promise<EventsData> => {
+export const loadEvents: LoadEvents = async () => {
   const stringData: string = await AsyncStorage.getItem(EVENTS_KEY);
   return JSON.parse(stringData);
 };
