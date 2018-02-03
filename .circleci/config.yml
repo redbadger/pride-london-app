@@ -27,10 +27,14 @@ jobs:
       - run:
           name: Unit test
           command: yarn test
+      - run:
+          name: Generate .env
+          command: node generate-dotenv.js
       - persist_to_workspace:
           root: ~/project
           paths:
             - node_modules
+            - .env
       - store_test_results:
           path: ~/project/junit.xml
 
@@ -44,9 +48,9 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run: bundle install
-      - run: bundle exec fastlane test
-      - store_test_results:
-          path: ~/project/android/reports
+      - run: bundle exec fastlane build
+      - store_artifacts:
+          path: ~/project/android/app/build/outputs
 
   build-ios:
     macos:
@@ -64,6 +68,10 @@ jobs:
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - run: yarn
+      - run:
+          name: Generate .env
+          command: node generate-dotenv.js
+          working_directory: /Users/distiller/project
       - run: bundle install
       # - run: bundle exec fastlane test
       # - run:
@@ -72,8 +80,6 @@ jobs:
       - run: bundle exec fastlane build
       - store_artifacts:
           path: /Users/distiller/project/output
-      - store_test_results:
-          path: /Users/distiller/project/output/scan
 
   beta-ios:
     macos:
@@ -91,6 +97,10 @@ jobs:
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - run: yarn
+      - run:
+          name: Generate .env
+          command: node generate-dotenv.js
+          working_directory: /Users/distiller/project
       - run: bundle install
       - run: bundle exec fastlane beta
 
