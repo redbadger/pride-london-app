@@ -86,6 +86,13 @@ export const updateEvents: UpdateEvents = async (
 
   const cmsData = await clientObj.sync(syncOpts);
 
+  if (
+    hasLocalEventsData &&
+    localEventsData.syncToken === cmsData.nextSyncToken
+  ) {
+    return localEventsData;
+  }
+
   const events = cmsData.entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
   );

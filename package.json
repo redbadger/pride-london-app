@@ -7,7 +7,7 @@
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "run-android":
       "node node_modules/react-native/local-cli/cli.js run-android",
-    "test": "jest",
+    "test": "jest src",
     "precommit": "lint-staged",
     "lint": "eslint ."
   },

@@ -40,7 +40,8 @@ describe("getEvents", () => {
 describe("updateEvents", () => {
   it("downloads full event data if local events list is empty", async () => {
     const mockLocalEvents = {
-      events: []
+      events: [],
+      syncToken: "123"
     };
     const mockSavedEvents = {
       events: []
@@ -226,5 +227,37 @@ describe("updateEvents", () => {
       downloadedEventData.nextSyncToken
     );
     expect(updatedEvents).toBe(mockSavedEvents.events);
+  });
+
+  it("does not send delta to local storage if syncToken has not changed", async () => {
+    const mockLocalEvents = {
+      events: [{}],
+      syncToken: "123"
+    };
+    const downloadedEventData = {
+      entries: [],
+      deletedEntries: [],
+      nextSyncToken: "123"
+    };
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockSaveEvents = jest.fn();
+    const mockClient = {
+      sync: jest.fn(() => downloadedEventData)
+    };
+
+    const updatedEvents = await updateEvents(
+      mockLoadEvents,
+      mockSaveEvents,
+      mockClient
+    );
+
+    expect(mockClient.sync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        initial: false,
+        nextSyncToken: mockLocalEvents.syncToken
+      })
+    );
+    expect(mockSaveEvents).not.toHaveBeenCalled();
+    expect(updatedEvents).toBe(mockLocalEvents);
   });
 });
