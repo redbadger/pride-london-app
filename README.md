@@ -10,7 +10,10 @@
   * [Prerequisites](#prerequisites)
   * [Environment Variables](#environment-variables)
   * [Running](#running-1)
+    * [iOS](#ios)
+    * [Android](#android)
 * [Contributing](#contributing)
+  * [Architecture Decision Records](#architecture-decision-records)
 * [Links](#links)
 
 <!-- tocstop -->
@@ -19,10 +22,10 @@
 
 ### Prerequisites
 
-* Install Xcode from the App Store
+* Install Xcode from the App Store and accept the license agreement.
 * `brew install node`
 * `brew install watchman`
-* `npm install -g react-native-cli`
+* `yarn global add react-native-cli`
 
 More information on getting started can be found here: https://facebook.github.io/react-native/docs/getting-started.html under the `Building prodjects with React Native` tab.
 
@@ -38,16 +41,37 @@ And fill in the required variables from the appropriate developer portals (e.g. 
 
 ### Running
 
-* `react-native run-ios`
+#### iOS
+
+* `yarn run-ios [--simulator="iPhone X"]`
+
+#### Android
+
+The quickest way is to have an Android device connected with [unknown sources enabled](https://www.androidcentral.com/unknown-sources)
+
+* `yarn run-android`
+
+Instructions for setting up an Android emulator can be found [here](https://developer.android.com/studio/run/emulator.html)
 
 ## Contributing
 
 Pieces of work currently up for grabs will be listed on the [issues page](https://github.com/redbadger/pride-london-app/issues) and tracked on the [projects page](https://github.com/redbadger/pride-london-app/projects). If you are able to work on the piece of work, comment on the issue. You can also discuss the feature in the isssue page. Be honest about if you have the time to work on it, there's no shame in parking a piece of work and letting someone else pick it up if you're too busy.
 
 All Pull Requests are built by [CircleCI](https://circleci.com/gh/redbadger/workflows/pride-london-app)
-Merging a Pull Request to the master branch will trigger a build number increase and will deploy to TestFight for iOS device testing.
+Merging a Pull Request to the master branch will trigger a build number increase and deploy to TestFight for iOS device testing.
 
 Submit your Pull Request from a repo fork and one of the core dev team will review and merge it.
+
+### Architecture Decision Records
+
+We will keep a collection of records for "architecturally significant" decisions: those that affect the structure, non-functional characteristics, dependencies, interfaces, or construction techniques.
+
+When making such changes please include a new ADR in your PR for future prosperity.
+
+* Install `adr-tools`: https://github.com/npryce/adr-tools
+* To create a new record: `adr new Implement as Unix shell scripts`
+
+To find out more about ADRs have a read of this article: http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
 
 ## Links
 
