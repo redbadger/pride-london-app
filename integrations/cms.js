@@ -21,7 +21,7 @@ export type Event = {
     }
   }
 };
-type Deletion = {
+export type Deletion = {
   sys: {
     id: string
   }
@@ -88,8 +88,13 @@ export const updateEvents: UpdateEvents = async (
   const events = cmsData.entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
   );
+  const deletedEvents = cmsData.deletedEntries;
 
-  const savedEventsData = await saveEventsFn(events, cmsData.nextSyncToken);
+  const savedEventsData = await saveEventsFn(
+    events,
+    deletedEvents,
+    cmsData.nextSyncToken
+  );
 
   return savedEventsData.events;
 };

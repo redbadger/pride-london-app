@@ -47,6 +47,7 @@ describe("updateEvents", () => {
     };
     const downloadedEventData = {
       entries: [],
+      deletedEntries: [],
       nextSyncToken: "abc"
     };
     const mockLoadEvents = () => mockLocalEvents;
@@ -68,6 +69,7 @@ describe("updateEvents", () => {
     );
     expect(mockSaveEvents).toHaveBeenCalledWith(
       downloadedEventData.entries,
+      [],
       downloadedEventData.nextSyncToken
     );
     expect(updatedEvents).toBe(mockSavedEvents.events);
@@ -85,6 +87,7 @@ describe("updateEvents", () => {
         { sys: { contentType: { sys: { id: "event" } } } },
         { sys: { contentType: { sys: { id: "page" } } } }
       ],
+      deletedEntries: [],
       nextSyncToken: "abc"
     };
     const mockLoadEvents = () => mockLocalEvents;
@@ -106,6 +109,7 @@ describe("updateEvents", () => {
     );
     expect(mockSaveEvents).toHaveBeenCalledWith(
       [{ sys: { contentType: { sys: { id: "event" } } } }],
+      [],
       downloadedEventData.nextSyncToken
     );
     expect(updatedEvents).toBe(mockSavedEvents.events);
@@ -118,6 +122,7 @@ describe("updateEvents", () => {
     };
     const downloadedEventData = {
       entries: [],
+      deletedEntries: [],
       nextSyncToken: "abc"
     };
     const mockLoadEvents = () => mockLocalEvents;
@@ -139,6 +144,7 @@ describe("updateEvents", () => {
     );
     expect(mockSaveEvents).toHaveBeenCalledWith(
       downloadedEventData.entries,
+      [],
       downloadedEventData.nextSyncToken
     );
     expect(updatedEvents).toBe(mockSavedEvents.events);
@@ -154,6 +160,7 @@ describe("updateEvents", () => {
     };
     const downloadedEventData = {
       entries: [],
+      deletedEntries: [],
       nextSyncToken: "abc"
     };
     const mockLoadEvents = () => mockLocalEvents;
@@ -176,6 +183,46 @@ describe("updateEvents", () => {
     );
     expect(mockSaveEvents).toHaveBeenCalledWith(
       downloadedEventData.entries,
+      [],
+      downloadedEventData.nextSyncToken
+    );
+    expect(updatedEvents).toBe(mockSavedEvents.events);
+  });
+
+  it("sends deletions to local storage if found", async () => {
+    const mockLocalEvents = {
+      events: [{ sys: { id: "1" } }],
+      syncToken: "123"
+    };
+    const mockSavedEvents = {
+      events: []
+    };
+    const downloadedEventData = {
+      entries: [],
+      deletedEntries: [{ sys: { id: "1" } }],
+      nextSyncToken: "abc"
+    };
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockSaveEvents = jest.fn(() => mockSavedEvents);
+    const mockClient = {
+      sync: jest.fn(() => downloadedEventData)
+    };
+
+    const updatedEvents = await updateEvents(
+      mockLoadEvents,
+      mockSaveEvents,
+      mockClient
+    );
+
+    expect(mockClient.sync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        initial: false,
+        nextSyncToken: mockLocalEvents.syncToken
+      })
+    );
+    expect(mockSaveEvents).toHaveBeenCalledWith(
+      downloadedEventData.entries,
+      downloadedEventData.deletedEntries,
       downloadedEventData.nextSyncToken
     );
     expect(updatedEvents).toBe(mockSavedEvents.events);
