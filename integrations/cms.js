@@ -7,7 +7,13 @@ import { saveEvents, loadEvents } from "./storage";
 
 export type Event = {
   sys: {
-    id: string
+    id: string,
+    type: string,
+    contentType: {
+      sys: {
+        id: string
+      }
+    }
   },
   fields: {
     name: {
@@ -15,15 +21,19 @@ export type Event = {
     }
   }
 };
+type Deletion = {
+  sys: {
+    id: string
+  }
+};
 type EventData = {
   entries: Event[],
+  deletedEntries: Deletion[],
   nextSyncToken: string
 };
 type SyncOpts = {
-  type: string,
-  content_type: string,
   initial: boolean,
-  nextSyncToken: string
+  nextSyncToken?: string
 };
 type Client = {
   sync: SyncOpts => Promise<EventData>
@@ -63,10 +73,6 @@ export const updateEvents: UpdateEvents = async (
   const localEventsData = await loadEventsFn();
   const hasLocalEventsData =
     !!localEventsData && localEventsData.events.length > 0;
-  const defaultSyncOpts = {
-    type: "Entry",
-    content_type: "event"
-  };
 
   const syncOpts = hasLocalEventsData
     ? {
@@ -77,15 +83,13 @@ export const updateEvents: UpdateEvents = async (
         initial: true
       };
 
-  const eventData = await clientObj.sync({
-    ...defaultSyncOpts,
-    ...syncOpts
-  });
+  const cmsData = await clientObj.sync(syncOpts);
 
-  const savedEventsData = await saveEventsFn(
-    eventData.entries,
-    eventData.nextSyncToken
+  const events = cmsData.entries.filter(
+    entry => entry.sys.contentType.sys.id === "event"
   );
+
+  const savedEventsData = await saveEventsFn(events, cmsData.nextSyncToken);
 
   return savedEventsData.events;
 };

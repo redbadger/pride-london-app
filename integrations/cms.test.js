@@ -73,6 +73,44 @@ describe("updateEvents", () => {
     expect(updatedEvents).toBe(mockSavedEvents.events);
   });
 
+  it("saves only event entries of cms data", async () => {
+    const mockLocalEvents = {
+      events: []
+    };
+    const mockSavedEvents = {
+      events: []
+    };
+    const downloadedEventData = {
+      entries: [
+        { sys: { contentType: { sys: { id: "event" } } } },
+        { sys: { contentType: { sys: { id: "page" } } } }
+      ],
+      nextSyncToken: "abc"
+    };
+    const mockLoadEvents = () => mockLocalEvents;
+    const mockSaveEvents = jest.fn(() => mockSavedEvents);
+    const mockClient = {
+      sync: jest.fn(() => downloadedEventData)
+    };
+
+    const updatedEvents = await updateEvents(
+      mockLoadEvents,
+      mockSaveEvents,
+      mockClient
+    );
+
+    expect(mockClient.sync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        initial: true
+      })
+    );
+    expect(mockSaveEvents).toHaveBeenCalledWith(
+      [{ sys: { contentType: { sys: { id: "event" } } } }],
+      downloadedEventData.nextSyncToken
+    );
+    expect(updatedEvents).toBe(mockSavedEvents.events);
+  });
+
   it("downloads full event data if local events not found", async () => {
     const mockLocalEvents = null;
     const mockSavedEvents = {
