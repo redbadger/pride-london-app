@@ -258,6 +258,6 @@ describe("updateEvents", () => {
       })
     );
     expect(mockSaveEvents).not.toHaveBeenCalled();
-    expect(updatedEvents).toBe(mockLocalEvents);
+    expect(updatedEvents).toBe(mockLocalEvents.events);
   });
 });

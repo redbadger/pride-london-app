@@ -9,7 +9,8 @@
       "node node_modules/react-native/local-cli/cli.js run-android",
     "test": "jest src",
     "precommit": "lint-staged",
-    "lint": "eslint ."
+    "lint": "eslint src",
+    "flow": "flow src"
   },
   "dependencies": {
     "contentful": "^5.0.5",

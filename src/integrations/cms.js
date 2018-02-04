@@ -90,7 +90,7 @@ export const updateEvents: UpdateEvents = async (
     hasLocalEventsData &&
     localEventsData.syncToken === cmsData.nextSyncToken
   ) {
-    return localEventsData;
+    return localEventsData.events;
   }
 
   const events = cmsData.entries.filter(
