@@ -16,17 +16,24 @@ type LoadEvents = () => Promise<EventsData>;
 
 const EVENTS_KEY = "@EventsStore:events";
 
-export const saveEvents: SaveEvents = async (newEvents, syncToken) => {
-  const localEventsData = await loadEvents();
+export const saveEvents: SaveEvents = async (
+  newEvents,
+  syncToken,
+  loadEventsFn = loadEvents,
+  AsyncStorageObj = AsyncStorage
+) => {
+  const localEventsData = await loadEventsFn();
   const events = localEventsData
     ? [...newEvents, ...localEventsData.events]
     : newEvents;
   const eventsData = { events, syncToken };
-  await AsyncStorage.setItem(EVENTS_KEY, JSON.stringify(eventsData));
+  await AsyncStorageObj.setItem(EVENTS_KEY, JSON.stringify(eventsData));
   return eventsData;
 };
 
-export const loadEvents: LoadEvents = async () => {
-  const stringData: string = await AsyncStorage.getItem(EVENTS_KEY);
+export const loadEvents: LoadEvents = async (
+  AsyncStorageObj = AsyncStorage
+) => {
+  const stringData: string = await AsyncStorageObj.getItem(EVENTS_KEY);
   return JSON.parse(stringData);
 };
