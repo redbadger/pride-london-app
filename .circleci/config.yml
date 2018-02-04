@@ -32,7 +32,7 @@ jobs:
           command: yarn test
       - run:
           name: Generate .env
-          command: node generate-dotenv.js
+          command: node ./scripts/generate-dotenv.js
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -73,7 +73,7 @@ jobs:
       - run: yarn
       - run:
           name: Generate .env
-          command: node generate-dotenv.js
+          command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
       # - run: bundle exec fastlane test
@@ -102,7 +102,7 @@ jobs:
       - run: yarn
       - run:
           name: Generate .env
-          command: node generate-dotenv.js
+          command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
       - run: bundle exec fastlane beta
