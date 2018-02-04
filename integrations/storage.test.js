@@ -19,6 +19,7 @@ describe("saveEvents", () => {
       ],
       syncToken: "abc"
     };
+    const expectedStringifiedEvents = '{"sys":{"id":"1"}},{"sys":{"id":"2"}}';
 
     const savedEvents = await saveEvents(
       newEvents,
@@ -30,9 +31,12 @@ describe("saveEvents", () => {
 
     expect(mockAsyncStorage.setItem).toHaveBeenCalledWith(
       expect.any(String),
-      JSON.stringify(expectedEventsData)
+      expect.stringContaining(expectedStringifiedEvents)
     );
-    expect(savedEvents).toEqual(expectedEventsData);
+    expect(savedEvents.events).toEqual(
+      expect.arrayContaining(expectedEventsData.events)
+    );
+    expect(savedEvents.syncToken).toEqual(expectedEventsData.syncToken);
   });
 
   it("adds events to local storage if local events are empty", async () => {
@@ -101,6 +105,41 @@ describe("saveEvents", () => {
     const mockAsyncStorage = { setItem: jest.fn() };
     const expectedEventsData = {
       events: [{ sys: { id: "2" } }],
+      syncToken: "abc"
+    };
+
+    const savedEvents = await saveEvents(
+      newEvents,
+      deletedEvents,
+      syncToken,
+      mockLoadEvents,
+      mockAsyncStorage
+    );
+
+    expect(mockAsyncStorage.setItem).toHaveBeenCalledWith(
+      expect.any(String),
+      JSON.stringify(expectedEventsData)
+    );
+    expect(savedEvents).toEqual(expectedEventsData);
+  });
+
+  it("updates events in local storage when new revision provided", async () => {
+    const newEvents = [{ sys: { id: "1", revision: 2 } }];
+    const deletedEvents = [];
+    const syncToken = "abc";
+    const mockLoadEvents = async () => ({
+      events: [
+        { sys: { id: "1", revision: 1 } },
+        { sys: { id: "2", revision: 1 } }
+      ],
+      syncToken: "123"
+    });
+    const mockAsyncStorage = { setItem: jest.fn() };
+    const expectedEventsData = {
+      events: [
+        { sys: { id: "1", revision: 2 } },
+        { sys: { id: "2", revision: 1 } }
+      ],
       syncToken: "abc"
     };
 

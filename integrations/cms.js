@@ -13,7 +13,8 @@ export type Event = {
       sys: {
         id: string
       }
-    }
+    },
+    revision: number
   },
   fields: {
     name: {
