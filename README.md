@@ -12,6 +12,7 @@
   * [Running](#running-1)
     * [iOS](#ios)
     * [Android](#android)
+  * [Debugging](#debugging)
 * [Generating test data](#generating-test-data)
 * [Contributing](#contributing)
   * [Architecture Decision Records](#architecture-decision-records)
@@ -53,6 +54,12 @@ The quickest way is to have an Android device connected with [unknown sources en
 * `yarn run-android`
 
 Instructions for setting up an Android emulator can be found [here](https://developer.android.com/studio/run/emulator.html)
+
+### Debugging
+
+iOS: Press Cmd+R to reload \n Cmd+D or shake for dev
+
+Android: Double tap R on your keyboard to reload,+, shake or press menu button for dev menu.
 
 ## Generating test data
 
