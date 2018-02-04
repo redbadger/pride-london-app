@@ -32,7 +32,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["./generate-dotenv.js", "**/*.test.js"],
+        "devDependencies": ["./generate-dotenv.js", "**/scripts/*.js", "**/*.test.js"],
         "optionalDependencies": false,
         "peerDependencies": false
       }
