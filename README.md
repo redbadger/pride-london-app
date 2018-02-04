@@ -12,6 +12,7 @@
   * [Running](#running-1)
     * [iOS](#ios)
     * [Android](#android)
+* [Generating test data](#generating-test-data)
 * [Contributing](#contributing)
   * [Architecture Decision Records](#architecture-decision-records)
 * [Links](#links)
@@ -52,6 +53,22 @@ The quickest way is to have an Android device connected with [unknown sources en
 * `yarn run-android`
 
 Instructions for setting up an Android emulator can be found [here](https://developer.android.com/studio/run/emulator.html)
+
+## Generating test data
+
+In order to fill the test CMS space with test data you can use our `generate-content` script. It goes without saying make sure you are doing this on a test CMS rather than production.
+
+To generate test data:
+
+```bash
+node ./scripts/generate-content.js generate -s <space_id> -a <access_token>
+```
+
+To delete the generated data again:
+
+```bash
+node ./scripts/generate-content.js delete -s <space_id> -a <access_token>
+```
 
 ## Contributing
 
