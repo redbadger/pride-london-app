@@ -24,23 +24,25 @@ const App = () => (
 
 const bgColor = "#F5FCFF";
 const textColor = "#333333";
+const fontFamily = Platform.OS === "ios" ? "AvenirNext-Regular" : "Roboto";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: bgColor
   },
   welcome: {
     fontSize: 20,
     textAlign: "center",
-    margin: 10
+    marginBottom: 10,
+    fontFamily
   },
   instructions: {
     textAlign: "center",
     color: textColor,
-    marginBottom: 5
+    marginBottom: 5,
+    fontFamily
   }
 });
 
