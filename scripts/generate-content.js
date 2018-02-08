@@ -20,7 +20,7 @@ const generateEvents = (spaceId, accessToken) => {
       const toGenerate = Math.max(0, 150 - totalEvents);
 
       console.log(`Space contains ${totalEvents} events`);
-      console.log(`Genrating ${toGenerate} events`);
+      console.log(`Generating ${toGenerate} events`);
 
       const newEntries = Array.from(Array(toGenerate)).map(() => ({
         fields: {
