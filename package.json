@@ -7,11 +7,13 @@
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "run-android":
       "node node_modules/react-native/local-cli/cli.js run-android",
-    "test": "jest",
+    "test": "jest src",
     "precommit": "lint-staged",
-    "lint": "eslint ."
+    "lint": "eslint src",
+    "flow": "flow src"
   },
   "dependencies": {
+    "contentful": "^5.0.5",
     "react": "16.2.0",
     "react-native": "0.52.0",
     "react-native-config": "^0.11.5"
@@ -20,6 +22,8 @@
     "babel-eslint": "^8.2.1",
     "babel-jest": "22.1.0",
     "babel-preset-react-native": "4.0.0",
+    "commander": "^2.13.0",
+    "contentful-management": "^4.1.4",
     "dotenv": "^4.0.0",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -33,6 +37,7 @@
     "husky": "^0.14.3",
     "jest": "22.1.4",
     "lint-staged": "^6.0.0",
+    "lorem-ipsum": "^1.0.4",
     "markdown-toc": "^1.2.0",
     "prettier": "^1.10.2",
     "react-test-renderer": "16.2.0"
