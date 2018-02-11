@@ -2,7 +2,7 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import EventCard from "./EventCard";
-import type { Event } from "./integrations/cms";
+import type { Event } from "../integrations/cms";
 
 type Props = {
   locale: string,

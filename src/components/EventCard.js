@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { imageBgColor, cardBgColor, textColor } from "./constants/colors";
+import { imageBgColor, cardBgColor, textColor } from "../constants/colors";
 
 type Props = {
   name: string

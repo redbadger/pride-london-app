@@ -51,7 +51,10 @@
   "jest": {
     "preset": "react-native",
     "setupTestFrameworkScriptFile": "<rootDir>src/setup-tests.js",
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ]
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"],

@@ -2,7 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import EventList from "./EventList";
-import type { Event } from "./integrations/cms";
+import type { Event } from "../integrations/cms";
 
 const events: Event[] = [
   { sys: { id: "1" }, fields: { name: { "en-GB": "some event" } } },

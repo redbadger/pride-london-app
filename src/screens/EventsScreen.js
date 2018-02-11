@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet, Text, SafeAreaView } from "react-native";
 import { getEvents, updateEvents } from "../integrations/cms";
 import type { Event } from "../integrations/cms";
-import EventList from "../EventList";
+import EventList from "../components/EventList";
 import { bgColor } from "../constants/colors";
 
 const locale = "en-GB";
