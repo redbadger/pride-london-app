@@ -1,9 +1,11 @@
 // @flow
 
 import React from "react";
-import { StyleSheet, Text, FlatList, SafeAreaView } from "react-native";
+import { StyleSheet, Text, SafeAreaView } from "react-native";
 import { getEvents, updateEvents } from "./integrations/cms";
 import type { Event } from "./integrations/cms";
+import EventList from "./EventList";
+import { bgColor } from "./constants/colors";
 
 const locale = "en-GB";
 
@@ -42,12 +44,9 @@ class App extends React.Component<{}, State> {
     return (
       <SafeAreaView style={styles.container}>
         {!this.state.loaded && <Text>Loading...</Text>}
-        <FlatList
-          data={this.state.events}
-          keyExtractor={event => event.sys.id}
-          renderItem={({ item: event }) => (
-            <Text>{event.fields.name[locale]}</Text>
-          )}
+        <EventList
+          locale={locale}
+          events={this.state.events}
           refreshing={this.state.refreshing}
           onRefresh={this.onRefreshEvents}
         />
@@ -55,8 +54,6 @@ class App extends React.Component<{}, State> {
     );
   }
 }
-
-const bgColor = "#F5FCFF";
 
 const styles = StyleSheet.create({
   container: {
