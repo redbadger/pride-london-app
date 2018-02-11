@@ -150,8 +150,10 @@ workflows:
       - pr-ios:
           requires:
             - build
-          branches:
-            ignore: master
+          filters:
+            branches:
+              ignore: 
+                - master
       - beta-ios:
           requires:
             - build-ios
