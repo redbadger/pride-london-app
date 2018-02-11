@@ -26,26 +26,24 @@ platform :ios do
     #   xcodebuild: 
     #   scheme: "PrideLondonApp"
     # )
-    Dir.chdir "../" do
-      tmp_path = "/tmp/fastlane_build"
+    tmp_path = "/tmp/fastlane_build"
 
-      xcodebuild(
-        configuration: "Release",
-        sdk: "iphonesimulator",
-        derivedDataPath: tmp_path,
-        xcargs: "CONFIGURATION_BUILD_DIR=" + tmp_path,
-        scheme: "PrideLondonApp"
-      )
+    xcodebuild(
+      configuration: "Release",
+      sdk: "iphonesimulator",
+      derivedDataPath: tmp_path,
+      xcargs: "CONFIGURATION_BUILD_DIR=" + tmp_path,
+      scheme: "PrideLondonApp"
+    )
 
-      app_path = Dir[File.join(tmp_path, "**", "*.app")].last
+    app_path = Dir[File.join(tmp_path, "**", "*.app")].last
 
-      zipped_bundle = Actions::ZipAction.run(path: app_path, output_path: File.join(tmp_path, "Result.zip"))
+    zipped_bundle = Actions::ZipAction.run(path: app_path, output_path: File.join(tmp_path, "Result.zip"))
 
-      appetize(
-        path: zipped_bundle,
-        platform: "ios"
-      )
-    end
+    appetize(
+      path: zipped_bundle,
+      platform: "ios"
+    )
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
