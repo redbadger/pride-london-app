@@ -16,11 +16,14 @@ platform :ios do
   lane :build do
     match(type: "appstore")
     # gym(export_method: "app-store", scheme: "PrideLondonApp")
-    xcodebuild(
-      scheme: "PrideLondonApp",
-      configuration: "Release",
-      sdk: "iphonesimulator",
-      # xcargs: "CONFIGURATION_BUILD_DIR=" + "./build-tools/deploy/data"
+    # xcodebuild(
+    #   scheme: "PrideLondonApp",
+    #   configuration: "Release",
+    #   sdk: "iphonesimulator",
+    #   xcargs: "CONFIGURATION_BUILD_DIR=" + "./build-tools/deploy/data"  
+    # )
+    build_and_upload_to_appetize(
+      scheme: "PrideLondonApp"
     )
   end
 
