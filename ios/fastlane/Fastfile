@@ -12,7 +12,7 @@ platform :ios do
     scan(scheme: "PrideLondonApp")
   end
 
-  desc "Signed build"
+  desc "Signed simulator build"
   lane :build do
     match(type: "appstore")
     # gym(export_method: "app-store", scheme: "PrideLondonApp")
@@ -29,21 +29,18 @@ platform :ios do
     Dir.chdir "../" do
       tmp_path = "/tmp/fastlane_build"
 
-      #seems not possible tu use gym here because is only made to do ipa archive
-      xcodebuild_configs = {
+      xcodebuild(
         configuration: "Release",
         sdk: "iphonesimulator",
         derivedDataPath: tmp_path,
         xcargs: "CONFIGURATION_BUILD_DIR=" + tmp_path,
         scheme: "PrideLondonApp"
-      }
-
-      Actions::XcodebuildAction.run(xcodebuild_configs)
+      )
 
       app_path = Dir[File.join(tmp_path, "**", "*.app")].last
 
       zipped_bundle = Actions::ZipAction.run(path: app_path, output_path: File.join(tmp_path, "Result.zip"))
-      
+
       appetize(
         path: zipped_bundle,
         platform: "ios"
