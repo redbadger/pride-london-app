@@ -17,7 +17,6 @@ platform :ios do
     match(type: "appstore")
     # gym(export_method: "app-store", scheme: "PrideLondonApp")
     xcodebuild(
-      archive: true,
       scheme: "PrideLondonApp",
       configuration: "Release",
       sdk: "iphonesimulator"
