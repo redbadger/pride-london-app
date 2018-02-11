@@ -15,7 +15,13 @@ platform :ios do
   desc "Signed build"
   lane :build do
     match(type: "appstore")
-    gym(export_method: "app-store", scheme: "PrideLondonApp")
+    # gym(export_method: "app-store", scheme: "PrideLondonApp")
+    xcodebuild(
+      archive: true,
+      scheme: "PrideLondonApp",
+      configuration: "Release",
+      sdk: "iphonesimulator"
+    )
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
