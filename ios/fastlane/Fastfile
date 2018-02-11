@@ -26,28 +26,30 @@ platform :ios do
     #   xcodebuild: 
     #   scheme: "PrideLondonApp"
     # )
-    tmp_path = "/tmp/fastlane_build"
+    Dir.chdir "../" do
+      tmp_path = "/tmp/fastlane_build"
 
-    #seems not possible tu use gym here because is only made to do ipa archive
-    xcodebuild_configs = {
-      configuration: "Release",
-      sdk: "iphonesimulator",
-      derivedDataPath: tmp_path,
-      xcargs: "CONFIGURATION_BUILD_DIR=" + tmp_path,
-      scheme: "PrideLondonApp"
-    }
+      #seems not possible tu use gym here because is only made to do ipa archive
+      xcodebuild_configs = {
+        configuration: "Release",
+        sdk: "iphonesimulator",
+        derivedDataPath: tmp_path,
+        xcargs: "CONFIGURATION_BUILD_DIR=" + tmp_path,
+        scheme: "PrideLondonApp"
+      }
 
-    Actions::XcodebuildAction.run(xcodebuild_configs)
+      Actions::XcodebuildAction.run(xcodebuild_configs)
 
-    app_path = Dir[File.join(tmp_path, "**", "*.app")].last
+      app_path = Dir[File.join(tmp_path, "**", "*.app")].last
 
-    zipped_bundle = Actions::ZipAction.run(path: app_path, output_path: File.join(tmp_path, "Result.zip"))
+      zipped_bundle = Actions::ZipAction.run(path: app_path, output_path: File.join(tmp_path, "Result.zip"))
 
-    Actions::AppetizeAction.run(
-      path: zipped_bundle,
-      platform: "ios",
-      note: "#{ENV["ghprbSourceBranch"]}"
-    )
+      Actions::AppetizeAction.run(
+        path: zipped_bundle,
+        platform: "ios",
+        note: "#{ENV["ghprbSourceBranch"]}"
+      )
+    end
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
