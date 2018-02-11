@@ -46,8 +46,7 @@ platform :ios do
 
       Actions::AppetizeAction.run(
         path: zipped_bundle,
-        platform: "ios",
-        note: "#{ENV["ghprbSourceBranch"]}"
+        platform: "ios"
       )
     end
   end
