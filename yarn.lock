@@ -3560,6 +3560,10 @@ lodash.templatesettings@^3.0.0:
     lodash._reinterpolate "^3.0.0"
     lodash.escape "^3.0.0"
 
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+
 lodash@^3.5.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
@@ -3674,21 +3678,21 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
 
-metro-core@0.24.6, metro-core@^0.24.1:
-  version "0.24.6"
-  resolved "https://registry.yarnpkg.com/metro-core/-/metro-core-0.24.6.tgz#fe75f06bbb21d594f8eed75880fb5cc9e0ccddf7"
+metro-core@0.24.7, metro-core@^0.24.3:
+  version "0.24.7"
+  resolved "https://registry.yarnpkg.com/metro-core/-/metro-core-0.24.7.tgz#89e4fbea5bad574eb971459ebfa74c028f52d278"
   dependencies:
-    lodash "^4.16.6"
+    lodash.throttle "^4.1.1"
 
-metro-source-map@0.24.6:
-  version "0.24.6"
-  resolved "https://registry.yarnpkg.com/metro-source-map/-/metro-source-map-0.24.6.tgz#6c64b958b47696e365aacf508e726ae5820959a4"
+metro-source-map@0.24.7:
+  version "0.24.7"
+  resolved "https://registry.yarnpkg.com/metro-source-map/-/metro-source-map-0.24.7.tgz#b13d0ae6417c2a2cd3d521ae6cd898196748ec0b"
   dependencies:
     source-map "^0.5.6"
 
-metro@^0.24.1:
-  version "0.24.6"
-  resolved "https://registry.yarnpkg.com/metro/-/metro-0.24.6.tgz#a7b01c3c7d1d1868f232d2d92a8bc4ecc251e909"
+metro@^0.24.3:
+  version "0.24.7"
+  resolved "https://registry.yarnpkg.com/metro/-/metro-0.24.7.tgz#42cecdb236b702d16243812294f7d3b97c43378d"
   dependencies:
     absolute-path "^0.0.0"
     async "^2.4.0"
@@ -3717,10 +3721,10 @@ metro@^0.24.1:
     json-stable-stringify "^1.0.1"
     json5 "^0.4.0"
     left-pad "^1.1.3"
-    lodash "^4.16.6"
+    lodash.throttle "^4.1.1"
     merge-stream "^1.0.1"
-    metro-core "0.24.6"
-    metro-source-map "0.24.6"
+    metro-core "0.24.7"
+    metro-source-map "0.24.7"
     mime-types "2.1.11"
     mkdirp "^0.5.1"
     request "^2.79.0"
@@ -4426,9 +4430,9 @@ react-native-config@^0.11.5:
   version "0.11.5"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
 
-react-native@0.52.0:
-  version "0.52.0"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.52.0.tgz#9784663a2aa40b30c87d4c9c06ef26cf8d419d91"
+react-native@0.53.0:
+  version "0.53.0"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.53.0.tgz#d57b49b1683f3bbfffd098fd07f7be0ff9e9df74"
   dependencies:
     absolute-path "^0.0.0"
     art "^0.10.0"
@@ -4457,8 +4461,8 @@ react-native@0.52.0:
     graceful-fs "^4.1.3"
     inquirer "^3.0.6"
     lodash "^4.16.6"
-    metro "^0.24.1"
-    metro-core "^0.24.1"
+    metro "^0.24.3"
+    metro-core "^0.24.3"
     mime "^1.3.4"
     minimist "^1.2.0"
     mkdirp "^0.5.1"
