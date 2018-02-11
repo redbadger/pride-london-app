@@ -16,7 +16,8 @@
     "contentful": "^5.0.5",
     "react": "16.2.0",
     "react-native": "0.53.0",
-    "react-native-config": "^0.11.5"
+    "react-native-config": "^0.11.5",
+    "react-navigation": "^1.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
