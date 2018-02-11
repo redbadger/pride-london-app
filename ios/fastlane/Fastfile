@@ -43,8 +43,8 @@ platform :ios do
       app_path = Dir[File.join(tmp_path, "**", "*.app")].last
 
       zipped_bundle = Actions::ZipAction.run(path: app_path, output_path: File.join(tmp_path, "Result.zip"))
-
-      Actions::AppetizeAction.run(
+      
+      appetize(
         path: zipped_bundle,
         platform: "ios"
       )
