@@ -5,7 +5,6 @@ default_platform :ios
 
 private_lane :githubStatusUpdate do |options|
   statusUrl = "https://#{ENV["GITHUB_USERNAME"]}:#{ENV["GITHUB_TOKEN"]}@api.github.com/repos/#{ENV["CIRCLE_PROJECT_USERNAME"]}/#{ENV["CIRCLE_PROJECT_REPONAME"]}/statuses/#{ENV["CIRCLE_SHA1"]}";
-  puts statusUrl
 
   response = HTTParty.post(
     statusUrl,
@@ -30,7 +29,14 @@ platform :ios do
   end
 
   desc "Signed simulator build"
-  lane :build do
+  lane :build_sim do
+    githubStatusUpdate(
+      context: 'Appetize iOS',
+      state: 'pending',
+      url: "https://appetize.io/dashboard",
+      description: 'iOS deployment in progress'
+    )
+
     match(type: "appstore")
 
     tmp_path = "/tmp/fastlane_build"
@@ -50,13 +56,6 @@ platform :ios do
       output_path: File.join(tmp_path, "Result.zip")
     )
 
-    githubStatusUpdate(
-      context: 'Appetize iOS',
-      state: 'pending',
-      url: "https://appetize.io/dashboard",
-      description: 'iOS build in progress'
-    )
-
     appetize(
       path: zipped_bundle,
       platform: "ios"
@@ -66,7 +65,7 @@ platform :ios do
       context: 'Appetize iOS',
       state: 'success',
       url: "#{lane_context[SharedValues::APPETIZE_APP_URL]}",
-      description: 'iOS build succeeded'
+      description: 'iOS build deployed'
     )
   end
 

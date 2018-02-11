@@ -75,7 +75,7 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
-      - run: bundle exec fastlane build
+      - run: bundle exec fastlane build_sim
       - store_artifacts:
           path: /Users/distiller/project/output
 
@@ -113,9 +113,13 @@ workflows:
       - build-ios:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - master
       - beta-ios:
           requires:
-            - build-ios
+            - build
           filters:
             branches:
               only:
