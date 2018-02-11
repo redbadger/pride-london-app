@@ -55,6 +55,35 @@ jobs:
       - store_artifacts:
           path: ~/project/android/app/build/outputs
 
+  pr-ios:
+    macos:
+      xcode: "9.2.0"
+    working_directory: /Users/distiller/project/ios
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: /Users/distiller/project
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - run: yarn
+      - run:
+          name: Generate .env
+          command: node ./scripts/generate-dotenv.js
+          working_directory: /Users/distiller/project
+      - run: bundle install
+      # - run: bundle exec fastlane test
+      # - run:
+      #     command: cp $FL_OUTPUT_DIR/scan/report.junit $FL_OUTPUT_DIR/scan/results.xml
+      #     when: always
+      - run: bundle exec fastlane pr
+      - store_artifacts:
+          path: /Users/distiller/project/output
+
   build-ios:
     macos:
       xcode: "9.2.0"
@@ -118,6 +147,13 @@ workflows:
       - build-ios:
           requires:
             - build
+      - pr-ios:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: 
+                - master
       - beta-ios:
           requires:
             - build-ios

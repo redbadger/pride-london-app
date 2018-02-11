@@ -1,4 +1,4 @@
-fastlane_version "2.78.0"
+fastlane_version "2.80.0"
 
 default_platform :ios
 
@@ -16,6 +16,15 @@ platform :ios do
   lane :build do
     match(type: "appstore")
     gym(export_method: "app-store", scheme: "PrideLondonApp")
+  end
+
+  lane :pr do
+    danger(
+      danger_id: "pr-build",
+      dangerfile: "./Dangerfile",
+      github_api_token: ENV["DANGER_GITHUB_API_TOKEN"],
+      verbose: true
+    )
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
