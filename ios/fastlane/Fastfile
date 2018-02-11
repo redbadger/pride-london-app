@@ -21,7 +21,7 @@ platform :ios do
   lane :pr do
     danger(
       danger_id: "pr-build",
-      dangerfile: "../Dangerfile",
+      dangerfile: "Dangerfile",
       github_api_token: ENV["DANGER_GITHUB_API_TOKEN"],
       verbose: true
     )
