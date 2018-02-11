@@ -1,6 +1,22 @@
-fastlane_version "2.80.0"
+require 'httparty'
 
+fastlane_version "2.80.0"
 default_platform :ios
+
+private_lane :githubStatusUpdate do |options|
+  statusUrl = "https://#{ENV["GITHUB_USERNAME"]}:#{ENV["GITHUB_TOKEN"]}@api.github.com/repos/#{ENV["CIRCLE_PROJECT_USERNAME"]}/#{ENV["CIRCLE_PROJECT_REPONAME"]}/statuses/#{ENV["GIT_COMMIT"]}";
+
+  response = HTTParty.post(
+    statusUrl,
+    :body => {
+      :context => options[:context],
+      :state => options[:state],
+      :description => options[:description],
+      :target_url => options[:url]
+    }.to_json,
+    :headers => { 'Content-Type' => 'application/json' }
+  )
+end
 
 platform :ios do
   before_all do
@@ -33,9 +49,23 @@ platform :ios do
       output_path: File.join(tmp_path, "Result.zip")
     )
 
+    githubStatusUpdate(
+      context: 'Appetize iOS',
+      state: 'pending',
+      url: "https://appetize.io/dashboard",
+      description: 'iOS build in progress'
+    )
+
     appetize(
       path: zipped_bundle,
       platform: "ios"
+    )
+
+    githubStatusUpdate(
+      context: 'Appetize iOS',
+      state: 'success',
+      url: "#{lane_context[SharedValues::APPETIZE_APP_URL]}",
+      description: 'iOS build succeeded'
     )
   end
 
