@@ -4,7 +4,7 @@ fastlane_version "2.80.0"
 default_platform :ios
 
 private_lane :githubStatusUpdate do |options|
-  statusUrl = "https://#{ENV["GITHUB_USERNAME"]}:#{ENV["GITHUB_TOKEN"]}@api.github.com/repos/#{ENV["CIRCLE_PROJECT_USERNAME"]}/#{ENV["CIRCLE_PROJECT_REPONAME"]}/statuses/#{ENV["GIT_COMMIT"]}";
+  statusUrl = "https://#{ENV["GITHUB_USERNAME"]}:#{ENV["GITHUB_TOKEN"]}@api.github.com/repos/#{ENV["CIRCLE_PROJECT_USERNAME"]}/#{ENV["CIRCLE_PROJECT_REPONAME"]}/statuses/#{ENV["CIRCLE_SHA1"]}";
   puts statusUrl
 
   response = HTTParty.post(
