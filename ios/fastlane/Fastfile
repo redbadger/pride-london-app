@@ -18,6 +18,14 @@ platform :ios do
     gym(export_method: "app-store", scheme: "PrideLondonApp")
   end
 
+  lane :pr do
+    danger(
+      danger_id: "pr-build",
+      github_api_token: ENV["DANGER_GITHUB_API_TOKEN"],
+      verbose: true
+    )
+  end
+
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
     # fetch previously generated certificates, but don't generate new ones if none already exist
