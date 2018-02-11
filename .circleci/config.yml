@@ -151,8 +151,7 @@ workflows:
           requires:
             - build
           branches:
-            ignore:
-              - master
+            ignore: master
       - beta-ios:
           requires:
             - build-ios
