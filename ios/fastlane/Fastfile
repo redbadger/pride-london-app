@@ -20,7 +20,6 @@ platform :ios do
       scheme: "PrideLondonApp",
       configuration: "Release",
       sdk: "iphonesimulator",
-      derivedDataPath: "./build-tools/deploy/data",
       xcargs: "CONFIGURATION_BUILD_DIR=" + "./build-tools/deploy/data"
     )
   end
