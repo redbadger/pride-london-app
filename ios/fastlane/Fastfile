@@ -15,17 +15,7 @@ platform :ios do
   desc "Signed simulator build"
   lane :build do
     match(type: "appstore")
-    # gym(export_method: "app-store", scheme: "PrideLondonApp")
-    # xcodebuild(
-    #   scheme: "PrideLondonApp",
-    #   configuration: "Release",
-    #   sdk: "iphonesimulator",
-    #   xcargs: "CONFIGURATION_BUILD_DIR=" + "./build-tools/deploy/data"  
-    # )
-    # build_and_upload_to_appetize(
-    #   xcodebuild: 
-    #   scheme: "PrideLondonApp"
-    # )
+
     tmp_path = "/tmp/fastlane_build"
 
     xcodebuild(
@@ -38,7 +28,10 @@ platform :ios do
 
     app_path = Dir[File.join(tmp_path, "**", "*.app")].last
 
-    zipped_bundle = Actions::ZipAction.run(path: app_path, output_path: File.join(tmp_path, "Result.zip"))
+    zipped_bundle = zip(
+      path: app_path, 
+      output_path: File.join(tmp_path, "Result.zip")
+    )
 
     appetize(
       path: zipped_bundle,
