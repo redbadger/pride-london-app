@@ -1081,8 +1081,8 @@ bplist-parser@0.1.1:
     big-integer "^1.6.7"
 
 brace-expansion@^1.1.7:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.8.tgz#c07b211c7c952ec1f8efd51a77ef0d1d3990a292"
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
   dependencies:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
@@ -1284,7 +1284,11 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.11.0, commander@^2.13.0, commander@^2.9.0, commander@~2.13.0:
+commander@^2.11.0, commander@^2.13.0, commander@^2.9.0:
+  version "2.14.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.14.1.tgz#2235123e37af8ca3c65df45b026dbd357b01b9aa"
+
+commander@~2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.13.0.tgz#6964bca67685df7c1f1430c584f07d7597885b9c"
 
@@ -1388,11 +1392,17 @@ content-type@~1.0.1:
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
 
 contentful-management@^4.1.4:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-4.1.4.tgz#f4f6beea98f24d225bdca736f87daff5c557a3c2"
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-4.2.0.tgz#58225f32904a91325dc54c28cfa394daca5130b9"
   dependencies:
     "@contentful/axios" "^0.18.0"
     contentful-sdk-core "^5.0.0"
+    lodash "^4.17.4"
+
+contentful-resolve-response@^1.0.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/contentful-resolve-response/-/contentful-resolve-response-1.1.2.tgz#1391c2c8b6ba13eb1a41cf5a4ef0fea234ce27b4"
+  dependencies:
     lodash "^4.17.4"
 
 contentful-sdk-core@^5.0.0, contentful-sdk-core@^5.0.1:
@@ -1403,10 +1413,11 @@ contentful-sdk-core@^5.0.0, contentful-sdk-core@^5.0.1:
     qs "^6.5.1"
 
 contentful@^5.0.5:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/contentful/-/contentful-5.0.5.tgz#41cd6b05c23d870da992460c2f07f5f7ebcfd463"
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-5.1.0.tgz#75c830c1d2b7b89bc502cfc62ca6e16f8bec6e39"
   dependencies:
     "@contentful/axios" "^0.18.0"
+    contentful-resolve-response "^1.0.2"
     contentful-sdk-core "^5.0.1"
     json-stringify-safe "^5.0.1"
     lodash "^4.17.4"
@@ -3350,8 +3361,8 @@ levn@^0.3.0, levn@~0.3.0:
     type-check "~0.3.2"
 
 lint-staged@^6.0.0:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-6.0.1.tgz#855f2993ab4a265430e2fd9828427e648d65e6b4"
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-6.1.0.tgz#28f600c10a6cbd249ceb003118a1552e53544a93"
   dependencies:
     app-root-path "^2.0.0"
     chalk "^2.1.0"
@@ -3568,9 +3579,13 @@ lodash@^3.5.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.6, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.6, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+lodash@^4.17.4:
+  version "4.17.5"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -3579,8 +3594,8 @@ log-symbols@^1.0.2:
     chalk "^1.0.0"
 
 log-symbols@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.1.0.tgz#f35fa60e278832b538dc4dddcbb478a45d3e3be6"
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
   dependencies:
     chalk "^2.0.1"
 
@@ -5126,8 +5141,8 @@ string_decoder@~1.0.3:
     safe-buffer "~5.1.0"
 
 stringify-object@^3.2.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/stringify-object/-/stringify-object-3.2.1.tgz#2720c2eff940854c819f6ee252aaeb581f30624d"
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/stringify-object/-/stringify-object-3.2.2.tgz#9853052e5a88fb605a44cd27445aa257ad7ffbcd"
   dependencies:
     get-own-enumerable-property-symbols "^2.0.1"
     is-obj "^1.0.1"
