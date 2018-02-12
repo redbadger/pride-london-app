@@ -60,7 +60,7 @@ jobs:
             curl \
             -F "status=2" \
             -F "notify=0" \
-            -F "ipa=@~/project/android/app/build/outputs/apk/app-release.apk" \
+            -F "ipa=@./project/android/app/build/outputs/apk/app-release.apk" \
             -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
             https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ANDROID_APP_ID/app_versions/upload
       - store_artifacts:
