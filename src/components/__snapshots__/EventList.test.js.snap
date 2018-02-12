@@ -2,6 +2,11 @@
 
 exports[`renders correctly 1`] = `
 <FlatList
+  contentContainerStyle={
+    Object {
+      "paddingTop": 10,
+    }
+  }
   data={
     Array [
       Object {

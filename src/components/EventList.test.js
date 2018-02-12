@@ -40,6 +40,7 @@ it("renders correctly", () => {
       locale="en-GB"
       refreshing={false}
       onRefresh={() => {}}
+      onPress={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
