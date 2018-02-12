@@ -50,6 +50,7 @@ jobs:
           path: ~/project
       - attach_workspace:
           at: ~/project
+      - run: git clone git@github.com:redbadger/pride-android-secrets.git
       - run: bundle install
       - run: bundle exec fastlane build
       - store_artifacts:
