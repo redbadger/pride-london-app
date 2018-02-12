@@ -55,6 +55,12 @@ jobs:
       - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD" >> .gradle/gradle.properties
       - run: bundle install
       - run: bundle exec fastlane build
+      - run: curl \
+      -F "status=2" \
+      -F "notify=0" \
+      -F "ipa=~/project/android/build/outputs/apk/app-release.apk" \
+      -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
+      https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ANDROID_APP_ID/app_versions/upload
       - store_artifacts:
           path: ~/project/android/app/build/outputs
 
