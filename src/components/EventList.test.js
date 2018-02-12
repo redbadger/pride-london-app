@@ -5,8 +5,32 @@ import EventList from "./EventList";
 import type { Event } from "../integrations/cms";
 
 const events: Event[] = [
-  { sys: { id: "1" }, fields: { name: { "en-GB": "some event" } } },
-  { sys: { id: "2" }, fields: { name: { "en-GB": "some other" } } }
+  {
+    sys: {
+      id: "1",
+      type: "",
+      contentType: { sys: { id: "" } },
+      revision: 1
+    },
+    fields: {
+      name: {
+        "en-GB": "some event"
+      }
+    }
+  },
+  {
+    sys: {
+      id: "2",
+      type: "",
+      contentType: { sys: { id: "" } },
+      revision: 1
+    },
+    fields: {
+      name: {
+        "en-GB": "some other"
+      }
+    }
+  }
 ];
 
 it("renders correctly", () => {

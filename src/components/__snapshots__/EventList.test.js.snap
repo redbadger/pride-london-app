@@ -11,7 +11,14 @@ exports[`renders correctly 1`] = `
           },
         },
         "sys": Object {
+          "contentType": Object {
+            "sys": Object {
+              "id": "",
+            },
+          },
           "id": "1",
+          "revision": 1,
+          "type": "",
         },
       },
       Object {
@@ -21,7 +28,14 @@ exports[`renders correctly 1`] = `
           },
         },
         "sys": Object {
+          "contentType": Object {
+            "sys": Object {
+              "id": "",
+            },
+          },
           "id": "2",
+          "revision": 1,
+          "type": "",
         },
       },
     ]
