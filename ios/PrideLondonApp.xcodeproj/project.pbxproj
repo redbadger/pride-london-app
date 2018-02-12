@@ -1150,7 +1150,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
 				PRODUCT_NAME = PrideLondonApp;
-				PROVISIONING_PROFILE = "5dcbb6f3-453d-4fdb-916f-8d2eee290db3";
+				PROVISIONING_PROFILE = "e828b1cc-f5e4-4eda-a782-9adc28ee6f25";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development org.prideinlondon.festival";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1180,7 +1180,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
 				PRODUCT_NAME = PrideLondonApp;
-				PROVISIONING_PROFILE = "e56f77f1-ae2f-4ce3-8876-af83fd7f2d3e";
+				PROVISIONING_PROFILE = "4c82a347-359f-4613-b253-a79edd192dea";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore org.prideinlondon.festival";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

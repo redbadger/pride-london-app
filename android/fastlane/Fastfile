@@ -15,4 +15,27 @@ platform :android do
       build_type: 'Release'
     )
   end
+
+  desc "Deploy Alpha"
+  lane :alpha do
+    gradle(
+      task: 'assemble',
+      build_type: 'Release'
+    )
+
+    # Push to Hockey
+    hockey(
+      api_token: hockey_api_token,
+      apk: 
+      notes: release_notes,
+    )
+  end
+
+  desc "Deploy Beta"
+  lane :beta do
+    gradle(
+      task: 'assemble',
+      build_type: 'Release'
+    )
+  end
 end
