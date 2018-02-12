@@ -116,13 +116,13 @@ workflows:
       - build-android:
           requires:
             - build
-      - build-ios:
-          requires:
-            - build
-      - beta-ios:
-          requires:
-            - build-ios
-          filters:
-            branches:
-              only:
-                - master
+      # - build-ios:
+      #     requires:
+      #       - build
+      # - beta-ios:
+      #     requires:
+      #       - build-ios
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
