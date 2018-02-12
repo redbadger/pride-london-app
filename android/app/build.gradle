@@ -118,10 +118,12 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file(System.getenv("KEYSTORE"))
-            storePassword System.getenv("KEYSTORE_PASSWORD")
-            keyAlias System.getenv("KEY_ALIAS")
-            keyPassword System.getenv("KEY_PASSWORD")
+            Properties props = new Properties()
+            props.load(new FileInputStream(file("../.gradle/gradle.properties")))
+            storeFile file(props['keystore'])
+            storePassword props['keystore.password']
+            keyAlias props['keystore.alias']
+            keyPassword props['keystore.keypass']
         }
     }
     buildTypes {

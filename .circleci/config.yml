@@ -51,6 +51,8 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run: git clone git@github.com:redbadger/pride-android-secrets.git
+      - run: mkdir -p ~/.gradle
+      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD" >> ~/.gradle/gradle.properties
       - run: bundle install
       - run: bundle exec fastlane build
       - store_artifacts:
