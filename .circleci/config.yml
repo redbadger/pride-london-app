@@ -56,15 +56,14 @@ jobs:
       - run: bundle install
       - run: bundle exec fastlane build
       - run: 
-				command: |
-					if [ "${CIRCLE_BRANCH}" == "android-deploy" ]; then
-						curl \
-						-F "status=2" \
-						-F "notify=0" \
-						-F "ipa=@./app/build/outputs/apk/app-release.apk" \
-						-H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
-						https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ANDROID_APP_ID/app_versions/upload
-					fi  
+				if [ "${CIRCLE_BRANCH}" == "android-deploy" ]; then
+					curl \
+					-F "status=2" \
+					-F "notify=0" \
+					-F "ipa=@./app/build/outputs/apk/app-release.apk" \
+					-H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
+					https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ANDROID_APP_ID/app_versions/upload
+				fi  
       - store_artifacts:
           path: ~/project/android/app/build/outputs
 
