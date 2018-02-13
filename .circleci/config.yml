@@ -58,12 +58,13 @@ jobs:
       # Only deploy build from master branch
       - run: 
             command: |
-                if [ "${CIRCLE_BRANCH}" == "android-deploy" ]; then
+                if [ "${CIRCLE_BRANCH}" == "master" ]; then
                     GIT_COMMIT_DESC=`git log --format=%B -n 1 $CIRCLE_SHA1`
                     curl \
                     -F "status=2" \
                     -F "notify=1" \
                     -F "notes=$GIT_COMMIT_DESC" \
+                    -F "commit_sha=$CIRCLE_SHA1"
                     -F "ipa=@./app/build/outputs/apk/app-release.apk" \
                     -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
                     https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ANDROID_APP_ID/app_versions/upload
@@ -131,13 +132,13 @@ workflows:
       - build-android:
           requires:
             - build
-      # - build-ios:
-      #     requires:
-      #       - build
-      # - beta-ios:
-      #     requires:
-      #       - build-ios
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
+      - build-ios:
+          requires:
+            - build
+      - beta-ios:
+          requires:
+            - build-ios
+          filters:
+            branches:
+              only:
+                - master
