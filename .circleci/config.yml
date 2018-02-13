@@ -8,6 +8,8 @@ save-cache: &save-cache
     key: dependencies-{{ checksum "package.json" }}
 
 version: 2
+environment:
+    GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
 jobs:
   # build is a reserved job name for running circleci locally
   build:
@@ -55,12 +57,14 @@ jobs:
       - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD" >> .gradle/gradle.properties
       - run: bundle install
       - run: bundle exec fastlane build
+      # Only deploy build from master branch
       - run: 
             command: |
                 if [ "${CIRCLE_BRANCH}" == "android-deploy" ]; then
                     curl \
                     -F "status=2" \
                     -F "notify=0" \
+                    -F "notes=$GIT_COMMIT_DESC" \
                     -F "ipa=@./app/build/outputs/apk/app-release.apk" \
                     -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
                     https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ANDROID_APP_ID/app_versions/upload
