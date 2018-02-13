@@ -43,8 +43,6 @@ jobs:
 
   build-android:
     working_directory: ~/project/android
-    environment:
-        GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
     docker:
       - image: circleci/android:api-27-node8-alpha
     steps:
@@ -61,6 +59,7 @@ jobs:
       - run: 
             command: |
                 if [ "${CIRCLE_BRANCH}" == "android-deploy" ]; then
+                    GIT_COMMIT_DESC=git log --format=oneline -n 1 $CIRCLE_SHA1
                     curl \
                     -F "status=2" \
                     -F "notify=0" \
