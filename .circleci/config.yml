@@ -62,7 +62,7 @@ jobs:
                     GIT_COMMIT_DESC=`git log --format=%B -n 1 $CIRCLE_SHA1`
                     curl \
                     -F "status=2" \
-                    -F "notify=0" \
+                    -F "notify=1" \
                     -F "notes=$GIT_COMMIT_DESC" \
                     -F "ipa=@./app/build/outputs/apk/app-release.apk" \
                     -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
