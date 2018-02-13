@@ -59,7 +59,7 @@ jobs:
       - run: 
             command: |
                 if [ "${CIRCLE_BRANCH}" == "android-deploy" ]; then
-                    GIT_COMMIT_DESC=git log --format=oneline -n 1 $CIRCLE_SHA1
+                    GIT_COMMIT_DESC=`git log --pretty=oneline --abbrev-commit -n1 $CIRCLE_SHA1`
                     curl \
                     -F "status=2" \
                     -F "notify=0" \
