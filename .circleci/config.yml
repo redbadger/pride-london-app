@@ -8,8 +8,6 @@ save-cache: &save-cache
     key: dependencies-{{ checksum "package.json" }}
 
 version: 2
-environment:
-    GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
 jobs:
   # build is a reserved job name for running circleci locally
   build:
@@ -45,6 +43,8 @@ jobs:
 
   build-android:
     working_directory: ~/project/android
+    environment:
+        GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
     docker:
       - image: circleci/android:api-27-node8-alpha
     steps:
