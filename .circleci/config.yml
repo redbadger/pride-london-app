@@ -58,7 +58,7 @@ jobs:
       # Only deploy build from master branch
       - run: 
             command: |
-                if [ "${CIRCLE_BRANCH}" == "fix-android-deploy" ]; then
+                if [ "${CIRCLE_BRANCH}" == "master" ]; then
                     GIT_COMMIT_DESC=`git log --format=%B -n 1 $CIRCLE_SHA1`
                     curl \
                     -F "status=2" \
