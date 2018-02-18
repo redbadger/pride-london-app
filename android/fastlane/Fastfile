@@ -20,17 +20,17 @@ platform :android do
   lane :alpha do |options|
     build
     if options[:submit]
-      hockey
+      deploy_hockey
     end
   end
 
   desc "Deploy to HockeyApp"
-  lane hockey do |options|
-    notes = sh("git log --format=%B -n 1 options[:commit_sha]")  
+  lane :deploy_hockey do |options|
+    notes = sh("git log --format=%B -n 1 #{options[:commit_sha]}")
     hockey(
       api_token: options[:api_token],
       public_identifier: options[:app_id],
-      ipa: "./app/build/outputs/apk/app-release.apk",
+      apk:"./app/build/outputs/apk/app-release.apk",
       notes: notes,
       status: options[:status],
       notify: options[:notify],
