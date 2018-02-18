@@ -18,7 +18,7 @@ platform :android do
 
   desc "Build and deploy to Alpha lane"
   lane :alpha do |options|
-    #build
+    build
     if options[:submit]
       deploy_hockey(
         commit_sha: options[:commit_sha],
