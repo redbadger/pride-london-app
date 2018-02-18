@@ -2,6 +2,7 @@
 import React from "react";
 import { View } from "react-native";
 import type { NavigationNavigatorProps } from "react-navigation";
+import text from "../constants/text";
 
 class EventsScreen extends React.Component<{}> {
   static navigationOptions = ({
@@ -9,7 +10,8 @@ class EventsScreen extends React.Component<{}> {
   }: NavigationNavigatorProps<*, *>) => {
     const { params } = navigation.state;
     return {
-      title: params ? params.eventName : "Details"
+      title: params ? params.eventName : "Details",
+      tabBarLabel: text.tabEvents
     };
   };
 

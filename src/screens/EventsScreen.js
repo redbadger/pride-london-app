@@ -5,7 +5,8 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { getEvents, updateEvents } from "../integrations/cms";
 import type { Event } from "../integrations/cms";
 import EventList from "../components/EventList";
-import { bgColor } from "../constants/colors";
+import FilterHeader from "../components/FilterHeader";
+import { bgColor, headerBgColor } from "../constants/colors";
 import { EVENT_DETAILS } from "../constants/routes";
 
 const locale = "en-GB";
@@ -22,7 +23,12 @@ type State = {
 
 class EventsScreen extends React.Component<Props, State> {
   static navigationOptions = {
-    title: "PRIDE IN LONDON"
+    headerMode: "none",
+    headerStyle: {
+      backgroundColor: headerBgColor,
+      height: 0,
+      borderBottomWidth: 0
+    }
   };
 
   constructor() {
@@ -52,6 +58,7 @@ class EventsScreen extends React.Component<Props, State> {
   render() {
     return (
       <SafeAreaView style={styles.container}>
+        <FilterHeader />
         {!this.state.loaded && <Text>Loading...</Text>}
         <EventList
           locale={locale}
@@ -70,7 +77,8 @@ class EventsScreen extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: bgColor
+    backgroundColor: bgColor,
+    borderBottomWidth: 0
   }
 });
 

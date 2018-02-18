@@ -8,8 +8,8 @@ import { EVENT_LIST, EVENT_DETAILS } from "./constants/routes";
 
 const EventsStack = StackNavigator(
   {
-    [EVENT_LIST]: { screen: EventsScreen },
-    [EVENT_DETAILS]: { screen: EventDetailsScreen }
+    [EVENT_LIST]: { screen: EventsScreen, tabBarLabel: "Events" },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Events" }
   },
   {
     initialRouteName: EVENT_LIST
@@ -18,14 +18,15 @@ const EventsStack = StackNavigator(
 
 export default TabNavigator(
   {
-    Home: { screen: EventsStack },
-    Saved: { screen: () => <View /> },
+    Home: { screen: () => <View /> },
+    Events: { screen: EventsStack },
     Parade: { screen: () => <View /> },
-    Donate: { screen: () => <View /> },
+    Saved: { screen: () => <View /> },
     More: { screen: () => <View /> }
   },
   {
     tabBarComponent: TabBarBottom,
-    tabBarPosition: "bottom"
+    tabBarPosition: "bottom",
+    initialRouteName: "Events"
   }
 );
