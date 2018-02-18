@@ -16,12 +16,14 @@ platform :android do
     )
   end
 
-  desc "Build application"
+  desc "Build and deploy to Alpha lane"
   lane :alpha do |options|
-    gradle(
-      task: 'assemble',
-      build_type: 'Release'
-    )
+    build
+    hockey
+  end
+
+  desc "Deploy to HockeyApp"
+  lane hockey do |options|
     if options[:submit]
       hockey(
         api_token: options[:api_token],
