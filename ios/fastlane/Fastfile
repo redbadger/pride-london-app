@@ -26,8 +26,8 @@ platform :ios do
   desc "Alpha build and deploy"
   lane :alpha do |options|
     build(
-      match_type: "appstore",
-      export_method: "app-store",
+      match_type: "adhoc", 
+      export_method: "ad-hoc",
       configuration: "Release"
     )
     if options[:submit]
@@ -83,6 +83,6 @@ platform :ios do
     register_devices(
       devices_file: "./devices.txt"
     )
-    match(force: true)
+    match(force_for_new_devices: true)
   end
 end
