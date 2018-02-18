@@ -28,7 +28,7 @@ platform :ios do
     build(
       match_type: "adhoc", 
       export_method: "ad-hoc",
-      configuration: "Adhoc"
+      configuration: "Release"
     )
     if options[:submit]
       deploy_hockey(
