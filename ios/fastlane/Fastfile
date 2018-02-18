@@ -26,9 +26,9 @@ platform :ios do
   desc "Alpha build and deploy"
   lane :alpha do |options|
     build(
-      match_type: "development", 
-      export_method: "development",
-      configuration: "Debug"
+      match_type: "appstore",
+      export_method: "app-store",
+      configuration: "Release"
     )
     if options[:submit]
       deploy_hockey(
