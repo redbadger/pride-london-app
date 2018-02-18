@@ -1180,8 +1180,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
 				PRODUCT_NAME = PrideLondonApp;
-				PROVISIONING_PROFILE = "ac539f2d-ae22-4693-b560-a90159d3366f";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival";
+				PROVISIONING_PROFILE = "b6d5655b-3380-463b-875d-b24f97efddf3";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore org.prideinlondon.festival";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
