@@ -30,7 +30,7 @@ platform :android do
     hockey(
       api_token: options[:api_token],
       public_identifier: options[:app_id],
-      ipa: options[:ipa],
+      ipa: "./app/build/outputs/apk/app-release.apk",
       notes: notes,
       status: options[:status],
       notify: options[:notify],
