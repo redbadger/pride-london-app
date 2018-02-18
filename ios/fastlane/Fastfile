@@ -13,18 +13,18 @@ platform :ios do
   end
 
   desc "Signed build"
-  lane :build do
+  lane :build do |options|
     match(type: "appstore", readonly: true)
     gym(
       clean: true,
-      export_method: "app-store",
+      export_method: options[:export_method],
       scheme: "PrideLondonApp"
     )
   end
 
   desc "Alpha build and deploy"
   lane :alpha do |options|
-    build
+    build(export_method: "development")
     if options[:submit]
       deploy_hockey(
         commit_sha: options[:commit_sha],
@@ -43,7 +43,7 @@ platform :ios do
       build_number: latest_testflight_build_number + 1,
       xcodeproj: "PrideLondonApp.xcodeproj"
     )
-    build
+    build(export_method: "app-store")
     deploy_testflight  
   end
 
@@ -67,5 +67,13 @@ platform :ios do
       notify: options[:notify],
       commit_sha: options[:commit_sha]
     )
+  end
+
+  desc "Add devices"
+  lane :devices do |options|
+    register_devices(
+      devices_file: "./devices.txt"
+    )
+    match(force: true)
   end
 end
