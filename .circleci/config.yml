@@ -60,14 +60,14 @@ jobs:
                 if [ "${CIRCLE_BRANCH}" == "pipeline" ]; then
                     GIT_COMMIT_DESC=`git log --format=%B -n 1 $CIRCLE_SHA1`
                     bundle exec fastlane alpha \
-                    submit: true \
-                    api_token: $HOCKEY_APP_TOKEN \
-                    app_id: $HOCKEY_APP_ANDROID_APP_ID \
-                    ipa: "./app/build/outputs/apk/app-release.apk" \
-                    notes: $GIT_COMMIT_DESC \
-                    status: "2" \
-                    notify: "0" \
-                    commit_sha: $CIRCLE_SHA1
+                    submit:true \
+                    api_token:$HOCKEY_APP_TOKEN \
+                    app_id:$HOCKEY_APP_ANDROID_APP_ID \
+                    ipa:"./app/build/outputs/apk/app-release.apk" \
+                    notes:$GIT_COMMIT_DESC \
+                    status:"2" \
+                    notify:"0" \
+                    commit_sha:$CIRCLE_SHA1
                 fi  
       - store_artifacts:
           path: ~/project/android/app/build/outputs
