@@ -57,7 +57,7 @@ jobs:
       # Only deploy build from master branch
       - run: 
             command: |
-                if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                if [ "${CIRCLE_BRANCH}" == "pipeline" ]; then
                     GIT_COMMIT_DESC=`git log --format=%B -n 1 $CIRCLE_SHA1`
                     bundle exec fastlane alpha \
                     submit: true \
