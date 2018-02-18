@@ -1,6 +1,22 @@
-fastlane_version "2.80.0"
+require 'httparty'
 
+fastlane_version "2.80.0"
 default_platform :ios
+
+private_lane :githubStatusUpdate do |options|
+  statusUrl = "https://#{ENV["GITHUB_USERNAME"]}:#{ENV["GITHUB_TOKEN"]}@api.github.com/repos/#{ENV["CIRCLE_PROJECT_USERNAME"]}/#{ENV["CIRCLE_PROJECT_REPONAME"]}/statuses/#{ENV["CIRCLE_SHA1"]}";
+
+  response = HTTParty.post(
+    statusUrl,
+    :body => {
+      :context => options[:context],
+      :state => options[:state],
+      :description => options[:description],
+      :target_url => options[:url]
+    }.to_json,
+    :headers => { 'Content-Type' => 'application/json' }
+  )
+end
 
 platform :ios do
   before_all do
@@ -12,10 +28,45 @@ platform :ios do
     scan(scheme: "PrideLondonApp")
   end
 
-  desc "Signed build"
-  lane :build do
+  desc "Signed simulator build"
+  lane :build_sim do
+    githubStatusUpdate(
+      context: 'Appetize iOS',
+      state: 'pending',
+      url: "https://appetize.io/dashboard",
+      description: 'iOS deployment in progress'
+    )
+
     match(type: "appstore")
-    gym(export_method: "app-store", scheme: "PrideLondonApp")
+
+    tmp_path = "/tmp/fastlane_build"
+
+    xcodebuild(
+      configuration: "Release",
+      sdk: "iphonesimulator",
+      derivedDataPath: tmp_path,
+      xcargs: "CONFIGURATION_BUILD_DIR=" + tmp_path,
+      scheme: "PrideLondonApp"
+    )
+
+    app_path = Dir[File.join(tmp_path, "**", "*.app")].last
+
+    zipped_bundle = zip(
+      path: app_path, 
+      output_path: File.join(tmp_path, "Result.zip")
+    )
+
+    appetize(
+      path: zipped_bundle,
+      platform: "ios"
+    )
+
+    githubStatusUpdate(
+      context: 'Appetize iOS',
+      state: 'success',
+      url: "#{lane_context[SharedValues::APPETIZE_APP_URL]}",
+      description: 'iOS build deployed'
+    )
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
