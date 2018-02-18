@@ -116,10 +116,21 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            Properties props = new Properties()
+            props.load(new FileInputStream(file("../.gradle/gradle.properties")))
+            storeFile file(props['keystore'])
+            storePassword props['keystore.password']
+            keyAlias props['keystore.alias']
+            keyPassword props['keystore.keypass']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
