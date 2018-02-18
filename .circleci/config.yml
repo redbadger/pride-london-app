@@ -94,7 +94,15 @@ jobs:
       # - run:
       #     command: cp $FL_OUTPUT_DIR/scan/report.junit $FL_OUTPUT_DIR/scan/results.xml
       #     when: always
-      - run: bundle exec fastlane build
+      - run: 
+        - command: |
+            bundle exec fastlane alpha \
+            submit:true \
+            api_token:$HOCKEY_APP_TOKEN \
+            app_id:$HOCKEY_APP_IOS_APP_ID \
+            status:"2" \
+            notify:"0" \
+            commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: /Users/distiller/project/output
 
