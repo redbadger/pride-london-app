@@ -28,13 +28,13 @@ platform :android do
   lane :deploy_hockey do |options|
     notes = sh("git log --format=%B -n 1 #{options[:commit_sha]}")
     hockey(
-      api_token:options[:api_token],
-      public_identifier:options[:app_id],
-      apk:"./app/build/outputs/apk/app-release.apk",
-      notes:notes,
-      status:options[:status],
-      notify:options[:notify],
-      commit_sha:options[:commit_sha]
+      api_token: options[:api_token],
+      public_identifier: options[:app_id],
+      apk: "./app/build/outputs/apk/app-release.apk",
+      notes: notes,
+      status: options[:status],
+      notify: options[:notify],
+      commit_sha: options[:commit_sha]
     )
   end
 end
