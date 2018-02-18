@@ -54,20 +54,20 @@ jobs:
       - run: mkdir -p .gradle 
       - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD" >> .gradle/gradle.properties
       - run: bundle install
-      - run: bundle exec fastlane build
       # Only deploy build from master branch
       - run: 
             command: |
                 if [ "${CIRCLE_BRANCH}" == "master" ]; then
                     GIT_COMMIT_DESC=`git log --format=%B -n 1 $CIRCLE_SHA1`
-                    curl \
-                    -F "status=2" \
-                    -F "notify=1" \
-                    -F "notes=$GIT_COMMIT_DESC" \
-                    -F "commit_sha=$CIRCLE_SHA1" \
-                    -F "ipa=@./app/build/outputs/apk/app-release.apk" \
-                    -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
-                    https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ANDROID_APP_ID/app_versions/upload
+                    bundle exec fastlane alpha \
+                    submit: true \
+                    api_token: $HOCKEY_APP_TOKEN \
+                    app_id: $HOCKEY_APP_ANDROID_APP_ID \
+                    ipa: "./app/build/outputs/apk/app-release.apk" \
+                    notes: $GIT_COMMIT_DESC \
+                    status: "2" \
+                    notify: "0" \
+                    commit_sha: $CIRCLE_SHA1
                 fi  
       - store_artifacts:
           path: ~/project/android/app/build/outputs

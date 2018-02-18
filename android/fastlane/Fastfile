@@ -15,4 +15,23 @@ platform :android do
       build_type: 'Release'
     )
   end
+
+  desc "Build application"
+  lane :alpha do |options|
+    gradle(
+      task: 'assemble',
+      build_type: 'Release'
+    )
+    if options[:submit]
+      hockey(
+        api_token: options[:api_token],
+        public_identifier: options[:app_id],
+        ipa: options[:ipa],
+        notes: options[:notes],
+        status: options[:status],
+        notify: options[:notify],
+        commit_sha: options[:commit_sha]
+      )
+    end
+  end
 end
