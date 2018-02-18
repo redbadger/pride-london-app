@@ -26,7 +26,13 @@ platform :ios do
   lane :alpha do |options|
     build
     if options[:submit]
-      deploy_hockey(options: options)
+      deploy_hockey(
+        commit_sha: options[:commit_sha],
+        api_token: options[:api_token],
+        app_id: options[:app_id],
+        status: "2",
+        notify: "0",
+      )
     end
   end
 
@@ -38,11 +44,11 @@ platform :ios do
       xcodeproj: "PrideLondonApp.xcodeproj"
     )
     build
-    testflight  
+    deploy_testflight  
   end
 
   desc "Upload to TestFlight and notify testers"
-  lane :testflight do
+  lane :deploy_testflight do
     testflight(
       skip_submission: true,
       distribute_external: false,
@@ -52,6 +58,7 @@ platform :ios do
 
   desc "Upload to HockeyApp and notify testers"
   lane :deploy_hockey do |options|
+    notes = sh("git log --format=%B -n 1 #{options[:commit_sha]}")
     hockey(
       api_token: options[:api_token],
       public_identifier: options[:app_id],
