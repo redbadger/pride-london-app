@@ -10,7 +10,8 @@
     "test": "jest src",
     "precommit": "lint-staged",
     "lint": "eslint src",
-    "flow": "flow src"
+    "flow": "flow src",
+    "postinstall": "react-native-schemes-manager all"
   },
   "dependencies": {
     "contentful": "^5.0.5",
@@ -40,6 +41,7 @@
     "lorem-ipsum": "^1.0.4",
     "markdown-toc": "^1.2.0",
     "prettier": "^1.10.2",
+    "react-native-schemes-manager": "^1.0.1",
     "react-test-renderer": "16.2.0"
   },
   "jest": {
@@ -48,5 +50,9 @@
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"],
     "README.md": ["markdown-toc -i", "git add"]
+  },
+  "xcodeSchemes": {
+    "Debug": [],
+    "Release": ["Adhoc"]
   }
 }
