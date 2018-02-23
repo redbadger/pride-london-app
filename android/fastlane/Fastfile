@@ -22,7 +22,6 @@ platform :android do
       task: "assemble",
       build_type: "release",
       flavor: "alpha",
-      project_dir: "./"
     )
   end
 

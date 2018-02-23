@@ -41,7 +41,6 @@ jobs:
       - store_test_results:
           path: ~/project/junit.xml
 
-
   alpha-android:
     working_directory: ~/project/android
     docker:
