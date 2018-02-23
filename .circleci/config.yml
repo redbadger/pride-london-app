@@ -157,12 +157,24 @@ workflows:
       - alpha-android:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - master
       - alpha-ios:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - master
       - beta-android:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - master
       - beta-ios:
           requires:
             - build
