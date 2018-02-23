@@ -171,10 +171,6 @@ workflows:
       - beta-android:
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
       - beta-ios:
           requires:
             - build
