@@ -16,7 +16,7 @@ platform :ios do
   lane :build do |options|
     match(
       type: options[:match_type], 
-      app_identifier: "org.prideinlondon.festival.alpha",
+      app_identifier: options[:app_identifier],
       readonly: true
     )
     gym(
@@ -32,7 +32,8 @@ platform :ios do
     build(
       match_type: "adhoc", 
       export_method: "ad-hoc",
-      configuration: "Adhoc"
+      configuration: "Adhoc",
+      app_identifier: "org.prideinlondon.festival.alpha"
     )
     if options[:submit]
       deploy_hockey(
@@ -55,7 +56,8 @@ platform :ios do
     build(
       match_type: "appstore",
       export_method: "app-store",
-      configuration: "Release"
+      configuration: "Release",
+      app_identifier: "org.prideinlondon.festival"
     )
     if options[:submit]
       deploy_testflight 
@@ -63,7 +65,8 @@ platform :ios do
     build(
       match_type: "adhoc", 
       export_method: "ad-hoc",
-      configuration: "Adhoc"
+      configuration: "Adhoc",
+      app_identifier: "org.prideinlondon.festival.alpha"
     )
     if options[:submit]
       deploy_hockey(
