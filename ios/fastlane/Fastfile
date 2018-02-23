@@ -14,7 +14,11 @@ platform :ios do
 
   desc "Signed build"
   lane :build do |options|
-    match(type: options[:match_type], readonly: true)
+    match(
+      type: options[:match_type], 
+      app_identifier: "org.prideinlondon.festival.alpha",
+      readonly: true
+    )
     gym(
       clean: true,
       export_method: options[:export_method],
