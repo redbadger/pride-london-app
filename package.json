@@ -13,7 +13,7 @@
     "flow": "flow src",
     "fix-xcode": "react-native-schemes-manager all",
     "postinstall": "yarn fix-xcode",
-    "version": "./version-ios.sh"
+    "postversion": "react-native-version"
   },
   "dependencies": {
     "contentful": "^5.0.5",
@@ -44,6 +44,7 @@
     "markdown-toc": "^1.2.0",
     "prettier": "^1.10.2",
     "react-native-schemes-manager": "^1.0.1",
+    "react-native-version": "^2.4.1",
     "react-test-renderer": "16.2.0"
   },
   "jest": {
