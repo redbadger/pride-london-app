@@ -138,6 +138,10 @@ android {
             applicationId 'com.pridelondonapp.alpha'
             resValue "string", "build_config_package", "com.pridelondonapp"
         }
+        beta {
+            applicationId 'com.pridelondonapp'
+            resValue "string", "build_config_package", "com.pridelondonapp"
+        }
     }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->

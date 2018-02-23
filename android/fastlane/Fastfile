@@ -9,10 +9,11 @@ platform :android do
   end
 
   desc "Build application"
-  lane :build do
+  lane :build_beta do
     gradle(
       task: 'assemble',
-      build_type: 'Release'
+      build_type: 'Release',
+      flavor: "beta",
     )
   end
 
@@ -43,7 +44,7 @@ platform :android do
 
   desc "Build and deploy to Beta lane"
   lane :beta do |options|
-    build
+    build_beta
     if options[:submit]
       apk_path = "./app/build/outputs/apk/app-release.apk"
       deploy_hockey(
