@@ -46,7 +46,7 @@ platform :android do
   lane :beta do |options|
     build_beta
     if options[:submit]
-      apk_path = "./app/build/outputs/apk/app-release.apk"
+      apk_path = "./app/build/outputs/apk/app-beta-release.apk"
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
