@@ -133,6 +133,12 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    productFlavors {
+        alpha {
+            applicationId 'com.pridelondonapp.alpha'
+            resValue "string", "build_config_package", "com.pridelondonapp"
+        }
+    }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
