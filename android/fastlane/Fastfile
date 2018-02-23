@@ -16,9 +16,19 @@ platform :android do
     )
   end
 
+  desc "Build alpha"
+  lane :build_alpha do
+    gradle(
+      task: "assemble",
+      build_type: "release",
+      flavor: "alpha",
+      project_dir: "./"
+    )
+  end
+
   desc "Build and deploy to Alpha lane"
   lane :alpha do |options|
-    build
+    build_alpha
     if options[:submit]
       deploy_hockey(
         commit_sha: options[:commit_sha],
@@ -26,6 +36,20 @@ platform :android do
         app_id: options[:app_id],
         status: "2",
         notify: "0",
+      )
+    end
+  end
+
+  desc "Build and deploy to Beta lane"
+  lane :beta do |options|
+    build
+    if options[:submit]
+      deploy_hockey(
+        commit_sha: options[:commit_sha],
+        api_token: options[:api_token],
+        app_id: options[:app_id],
+        status: "2",
+        notify: "1",
       )
     end
   end

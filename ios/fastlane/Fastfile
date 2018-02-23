@@ -41,8 +41,8 @@ platform :ios do
     end
   end
 
-  desc "Submit a new Beta Build to Apple TestFlight"
-  lane :beta do
+  desc "Beta build and deploy"
+  lane :beta do |options|
     ensure_git_branch(branch: "master")
     increment_build_number(
       build_number: latest_testflight_build_number + 1,
@@ -53,7 +53,16 @@ platform :ios do
       export_method: "app-store",
       configuration: "Release"
     )
-    deploy_testflight  
+    if options[:submit]
+      deploy_testflight  
+      deploy_hockey(
+        commit_sha: options[:commit_sha],
+        api_token: options[:api_token],
+        app_id: options[:app_id],
+        status: "2",
+        notify: "1",
+      )
+    end
   end
 
   desc "Upload to TestFlight and notify testers"
