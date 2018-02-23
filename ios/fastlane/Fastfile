@@ -54,7 +54,14 @@ platform :ios do
       configuration: "Release"
     )
     if options[:submit]
-      deploy_testflight  
+      deploy_testflight 
+    end
+    build(
+      match_type: "adhoc", 
+      export_method: "ad-hoc",
+      configuration: "Adhoc"
+    )
+    if options[:submit]
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
