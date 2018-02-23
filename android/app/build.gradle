@@ -104,7 +104,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 22
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
-        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        versionName "1.0.3"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
