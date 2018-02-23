@@ -1256,7 +1256,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
-				PRODUCT_NAME = "PrideLondonApp Alpha";
+				PRODUCT_NAME = "Pride Alpha";
 				PROVISIONING_PROFILE = "ac539f2d-ae22-4693-b560-a90159d3366f";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival";
 				VERSIONING_SYSTEM = "apple-generic";
