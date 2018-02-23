@@ -30,10 +30,12 @@ platform :android do
   lane :alpha do |options|
     build_alpha
     if options[:submit]
+      apk_path = "./app/build/outputs/apk/app-alpha-release.apk"
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
         app_id: options[:app_id],
+        apk_path: apk_path,
         status: "2",
         notify: "0",
       )
@@ -44,10 +46,12 @@ platform :android do
   lane :beta do |options|
     build
     if options[:submit]
+      apk_path = "./app/build/outputs/apk/app-release.apk"
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
         app_id: options[:app_id],
+        apk_path: apk_path,
         status: "2",
         notify: "1",
       )
@@ -60,7 +64,7 @@ platform :android do
     hockey(
       api_token: options[:api_token],
       public_identifier: options[:app_id],
-      apk: "./app/build/outputs/apk/app-release.apk",
+      apk: options[:apk_path],
       notes: notes,
       status: options[:status],
       notify: options[:notify],
