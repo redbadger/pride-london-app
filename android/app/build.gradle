@@ -74,7 +74,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+    inputExcludes: ["ios/**", "*.test.*"]
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -102,8 +103,7 @@ android {
         applicationId "com.pridelondonapp"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionName "1.0.3"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -131,6 +131,16 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
+        }
+    }
+    productFlavors {
+        alpha {
+            applicationId 'com.pridelondonapp.alpha'
+            resValue "string", "build_config_package", "com.pridelondonapp"
+        }
+        beta {
+            applicationId 'com.pridelondonapp'
+            resValue "string", "build_config_package", "com.pridelondonapp"
         }
     }
     // applicationVariants are e.g. debug, release
