@@ -13,7 +13,7 @@ const locale = "en-GB";
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
-  loaded: boolean,
+  loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>
 };
@@ -32,7 +32,7 @@ class EventsScreen extends React.Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <FilterHeader />
-        {!this.props.loaded && <Text>Loading...</Text>}
+        {this.props.loading && <Text>Loading...</Text>}
         <EventList
           locale={locale}
           events={this.props.events}

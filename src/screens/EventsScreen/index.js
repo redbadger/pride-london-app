@@ -1,10 +1,25 @@
+// @flow
 import { connect } from "react-redux";
+import type { Connector } from "react-redux";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
+import type { Event } from "../../integrations/cms";
 import { updateEvents } from "../../actions";
 import Component from "./component";
 
+type OwnProps = {
+  navigation: NavigationScreenProp<NavigationState>
+};
+
+type Props = {
+  events: Event[],
+  loading: boolean,
+  refreshing: boolean,
+  updateEvents: () => Promise<void>
+} & OwnProps;
+
 const mapStateToProps = state => ({
   events: state.events,
-  loaded: !state.loading,
+  loading: state.loading,
   refreshing: state.refreshing
 });
 
@@ -12,4 +27,9 @@ const mapDispatchToProps = () => ({
   updateEvents
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
+const connector: Connector<OwnProps, Props> = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default connector(Component);

@@ -8,7 +8,7 @@ describe("EventsScreen Component", () => {
       <Component
         navigation={{ navigate: () => {} }}
         events={[]}
-        loaded
+        loading={false}
         refreshing={false}
         updateEvents={() => {}}
       />
@@ -21,7 +21,7 @@ describe("EventsScreen Component", () => {
       <Component
         navigation={{ navigate: () => {} }}
         events={[]}
-        loaded={false}
+        loading
         refreshing={false}
         updateEvents={() => {}}
       />
