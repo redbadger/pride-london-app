@@ -1,0 +1,36 @@
+// @flow
+import type { Event } from "../integrations/cms";
+import type { EventsAction } from "../actions";
+
+type State = {|
+  events: Event[],
+  loading: boolean,
+  refreshing: boolean
+|};
+
+const defaultState = {
+  events: [],
+  loading: true,
+  refreshing: false
+};
+
+const events = (state: State = defaultState, action: EventsAction) => {
+  switch (action.type) {
+    case "REQUEST_EVENTS":
+      return {
+        ...state,
+        loading: true,
+        refreshing: false
+      };
+    case "RECEIVE_EVENTS":
+      return {
+        ...state,
+        loading: false,
+        refreshing: false,
+        events: action.payload ? action.payload.events : state.events
+      };
+    default:
+      return state;
+  }
+};
+export default events;

@@ -16,7 +16,7 @@ const EventsStack = StackNavigator(
   }
 );
 
-export default TabNavigator(
+const TabBar = TabNavigator(
   {
     Home: { screen: () => <View /> },
     Events: { screen: EventsStack },
@@ -30,3 +30,5 @@ export default TabNavigator(
     initialRouteName: "Events"
   }
 );
+
+export default TabBar;
