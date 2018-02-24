@@ -1131,7 +1131,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = VZ6G7FCBVU;
 				HEADER_SEARCH_PATHS = (
@@ -1162,7 +1162,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = VZ6G7FCBVU;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1186,7 +1186,7 @@
 			};
 			name = Release;
 		};
-		16175EE92039EB8400C89BFF /* Adhoc */ = {
+		1604963B20418C16007BB17C /* AdhocBeta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1228,15 +1228,15 @@
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Adhoc;
+			name = AdhocBeta;
 		};
-		16175EEA2039EB8400C89BFF /* Adhoc */ = {
+		1604963C20418C16007BB17C /* AdhocBeta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.alpha;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.beta;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = VZ6G7FCBVU;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1252,15 +1252,15 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival.alpha;
-				PRODUCT_NAME = "Pride Alpha";
-				PROVISIONING_PROFILE = "fa187394-876e-4e9b-8a54-19ecbbef1f3e";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival.alpha";
+				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival.beta;
+				PRODUCT_NAME = "Pride Beta";
+				PROVISIONING_PROFILE = "a451db04-c40a-416e-a3b5-182d917d6f38";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival.beta";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Adhoc;
+			name = AdhocBeta;
 		};
-		16175EEB2039EB8400C89BFF /* Adhoc */ = {
+		1604963D20418C16007BB17C /* AdhocBeta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1288,7 +1288,111 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PrideLondonApp.app/PrideLondonApp";
 			};
-			name = Adhoc;
+			name = AdhocBeta;
+		};
+		16175EE92039EB8400C89BFF /* AdhocAlpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AdhocAlpha;
+		};
+		16175EEA2039EB8400C89BFF /* AdhocAlpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.alpha;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 24;
+				DEVELOPMENT_TEAM = VZ6G7FCBVU;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+				);
+				INFOPLIST_FILE = PrideLondonApp/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
+				INFOPLIST_PREPROCESS = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival.alpha;
+				PRODUCT_NAME = "Pride Alpha";
+				PROVISIONING_PROFILE = "fa187394-876e-4e9b-8a54-19ecbbef1f3e";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival.alpha";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = AdhocAlpha;
+		};
+		16175EEB2039EB8400C89BFF /* AdhocAlpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = VZ6G7FCBVU;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+				);
+				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PrideLondonApp.app/PrideLondonApp";
+			};
+			name = AdhocAlpha;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1393,7 +1497,8 @@
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
 				00E356F71AD99517003FC87E /* Release */,
-				16175EEB2039EB8400C89BFF /* Adhoc */,
+				16175EEB2039EB8400C89BFF /* AdhocAlpha */,
+				1604963D20418C16007BB17C /* AdhocBeta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1403,7 +1508,8 @@
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
 				13B07F951A680F5B00A75B9A /* Release */,
-				16175EEA2039EB8400C89BFF /* Adhoc */,
+				16175EEA2039EB8400C89BFF /* AdhocAlpha */,
+				1604963C20418C16007BB17C /* AdhocBeta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1413,7 +1519,8 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
-				16175EE92039EB8400C89BFF /* Adhoc */,
+				16175EE92039EB8400C89BFF /* AdhocAlpha */,
+				1604963B20418C16007BB17C /* AdhocBeta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
