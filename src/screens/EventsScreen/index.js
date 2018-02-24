@@ -23,9 +23,9 @@ const mapStateToProps = state => ({
   refreshing: state.refreshing
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = {
   updateEvents
-});
+};
 
 const connector: Connector<OwnProps, Props> = connect(
   mapStateToProps,
