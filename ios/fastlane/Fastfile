@@ -106,6 +106,20 @@ platform :ios do
     register_devices(
       devices_file: "./devices.txt"
     )
-    match(force_for_new_devices: true)
+    match(
+      type: "development",
+      app_identifier: "org.prideinlondon.festival",
+      force_for_new_devices: true
+    )
+    match(
+      type: "adhoc",
+      app_identifier: "org.prideinlondon.festival.alpha",
+      force_for_new_devices: true
+    )
+    match(
+      type: "adhoc",
+      app_identifier: "org.prideinlondon.festival.beta",
+      force_for_new_devices: true
+    )
   end
 end
