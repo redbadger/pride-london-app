@@ -1,4 +1,4 @@
-import { getEvents, updateEvents } from "./";
+import { getEvents, updateEvents } from "./events";
 
 describe("getEvents", () => {
   it("calls correct actions with expected payloads", async () => {
