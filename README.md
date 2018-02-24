@@ -6,17 +6,17 @@
 
 <!-- toc -->
 
-- [Running](#running)
+* [Running](#running)
   * [Prerequisites](#prerequisites)
   * [Environment Variables](#environment-variables)
   * [Running](#running-1)
-    + [iOS](#ios)
-    + [Android](#android)
+    * [iOS](#ios)
+    * [Android](#android)
   * [Debugging](#debugging)
-- [Generating test data](#generating-test-data)
-- [Contributing](#contributing)
+* [Generating test data](#generating-test-data)
+* [Contributing](#contributing)
   * [Architecture Decision Records](#architecture-decision-records)
-- [Links](#links)
+* [Links](#links)
 
 <!-- tocstop -->
 

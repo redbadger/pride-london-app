@@ -1,68 +1,32 @@
 // @flow
-
+import { View } from "react-native";
 import React from "react";
-import { StyleSheet, Text, FlatList, SafeAreaView } from "react-native";
-import { getEvents, updateEvents } from "./integrations/cms";
-import type { Event } from "./integrations/cms";
+import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
+import EventsScreen from "./screens/EventsScreen";
+import EventDetailsScreen from "./screens/EventDetailsScreen";
+import { EVENT_LIST, EVENT_DETAILS } from "./constants/routes";
 
-const locale = "en-GB";
-
-type State = {
-  events: Event[],
-  loaded: boolean,
-  refreshing: boolean
-};
-
-class App extends React.Component<{}, State> {
-  constructor() {
-    super();
-
-    this.state = {
-      events: [],
-      loaded: false,
-      refreshing: false
-    };
+const EventsStack = StackNavigator(
+  {
+    [EVENT_LIST]: { screen: EventsScreen, tabBarLabel: "Events" },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Events" }
+  },
+  {
+    initialRouteName: EVENT_LIST
   }
+);
 
-  async componentDidMount() {
-    const events = await getEvents();
-
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({ events, loaded: true });
+export default TabNavigator(
+  {
+    Home: { screen: () => <View /> },
+    Events: { screen: EventsStack },
+    Parade: { screen: () => <View /> },
+    Saved: { screen: () => <View /> },
+    More: { screen: () => <View /> }
+  },
+  {
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: "bottom",
+    initialRouteName: "Events"
   }
-
-  onRefreshEvents = () => {
-    this.setState({ refreshing: true }, async () => {
-      const events = await updateEvents();
-      this.setState({ events, refreshing: false });
-    });
-  };
-
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        {!this.state.loaded && <Text>Loading...</Text>}
-        <FlatList
-          data={this.state.events}
-          keyExtractor={event => event.sys.id}
-          renderItem={({ item: event }) => (
-            <Text>{event.fields.name[locale]}</Text>
-          )}
-          refreshing={this.state.refreshing}
-          onRefresh={this.onRefreshEvents}
-        />
-      </SafeAreaView>
-    );
-  }
-}
-
-const bgColor = "#F5FCFF";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: bgColor
-  }
-});
-
-export default App;
+);

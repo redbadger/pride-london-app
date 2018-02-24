@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "borderRadius": 5,
+      "flexDirection": "row",
+      "height": 95,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#C1C1C1",
+        "height": 95,
+        "width": 95,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "padding": 15,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "#272727",
+          "fontWeight": "bold",
+        }
+      }
+    >
+      some event
+    </Text>
+  </View>
+</View>
+`;

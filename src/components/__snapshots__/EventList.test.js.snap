@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<FlatList
+  contentContainerStyle={
+    Object {
+      "paddingTop": 10,
+    }
+  }
+  data={
+    Array [
+      Object {
+        "fields": Object {
+          "name": Object {
+            "en-GB": "some event",
+          },
+        },
+        "sys": Object {
+          "contentType": Object {
+            "sys": Object {
+              "id": "",
+            },
+          },
+          "id": "1",
+          "revision": 1,
+          "type": "",
+        },
+      },
+      Object {
+        "fields": Object {
+          "name": Object {
+            "en-GB": "some other",
+          },
+        },
+        "sys": Object {
+          "contentType": Object {
+            "sys": Object {
+              "id": "",
+            },
+          },
+          "id": "2",
+          "revision": 1,
+          "type": "",
+        },
+      },
+    ]
+  }
+  disableVirtualization={false}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onEndReachedThreshold={2}
+  onRefresh={[Function]}
+  refreshing={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  updateCellsBatchingPeriod={50}
+  windowSize={21}
+/>
+`;
