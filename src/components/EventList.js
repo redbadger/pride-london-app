@@ -26,7 +26,12 @@ const EventList = ({
     renderItem={({ item: event }) => (
       <View style={styles.eventListItem}>
         <TouchableOpacity onPress={() => onPress(event.fields.name[locale])}>
-          <EventCard name={event.fields.name[locale]} />
+          <EventCard
+            date={event.fields.startTime[locale]}
+            name={event.fields.name[locale]}
+            locationName="Arts, Theatre, Leicester Square"
+            startTime={event.fields.startTime[locale]}
+          />
         </TouchableOpacity>
       </View>
     )}
