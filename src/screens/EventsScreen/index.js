@@ -4,6 +4,11 @@ import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../integrations/cms";
 import { updateEvents } from "../../actions/events";
+import {
+  selectEvents,
+  selectEventsLoading,
+  selectEventsRefreshing
+} from "../../selectors/events";
 import Component from "./component";
 
 type OwnProps = {
@@ -18,9 +23,9 @@ type Props = {
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  events: state.events.events,
-  loading: state.events.loading,
-  refreshing: state.events.refreshing
+  events: selectEvents(state),
+  loading: selectEventsLoading(state),
+  refreshing: selectEventsRefreshing(state)
 });
 
 const mapDispatchToProps = {
