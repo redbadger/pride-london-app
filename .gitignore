@@ -21,6 +21,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+*.dSYM.*
 
 # Android/IntelliJ
 #
@@ -40,6 +41,7 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+*.jks
 
 # fastlane
 #
@@ -51,6 +53,7 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+*devices.txt
 
 # Deco IDE
 *.deco

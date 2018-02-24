@@ -41,7 +41,7 @@ jobs:
       - store_test_results:
           path: ~/project/junit.xml
 
-  build-android:
+  alpha-android:
     working_directory: ~/project/android
     docker:
       - image: circleci/android:api-27-node8-alpha
@@ -50,12 +50,46 @@ jobs:
           path: ~/project
       - attach_workspace:
           at: ~/project
+      - run: git clone git@github.com:redbadger/pride-android-secrets.git
+      - run: mkdir -p .gradle 
+      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD" >> .gradle/gradle.properties
       - run: bundle install
-      - run: bundle exec fastlane build
+      # Only deploy build from master branch
+      - run: 
+            command: |
+                bundle exec fastlane alpha \
+                submit:true \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
+                commit_sha:$CIRCLE_SHA1 
       - store_artifacts:
           path: ~/project/android/app/build/outputs
 
-  build-ios:
+  beta-android:
+    working_directory: ~/project/android
+    docker:
+      - image: circleci/android:api-27-node8-alpha
+    steps:
+      - checkout:
+          path: ~/project
+      - attach_workspace:
+          at: ~/project
+      - run: git clone git@github.com:redbadger/pride-android-secrets.git
+      - run: mkdir -p .gradle 
+      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD" >> .gradle/gradle.properties
+      - run: bundle install
+      # Only deploy build from master branch
+      - run: 
+            command: |
+                bundle exec fastlane beta \
+                submit:true \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
+                commit_sha:$CIRCLE_SHA1
+      - store_artifacts:
+          path: ~/project/android/app/build/outputs
+
+  alpha-ios:
     macos:
       xcode: "9.2.0"
     working_directory: /Users/distiller/project/ios
@@ -76,11 +110,13 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
-      # - run: bundle exec fastlane test
-      # - run:
-      #     command: cp $FL_OUTPUT_DIR/scan/report.junit $FL_OUTPUT_DIR/scan/results.xml
-      #     when: always
-      - run: bundle exec fastlane build
+      - run: 
+            command: |
+                bundle exec fastlane alpha \
+                submit:true \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
+                commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: /Users/distiller/project/output
 
@@ -105,22 +141,43 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
-      - run: bundle exec fastlane beta
+      - run: 
+            command: |
+                bundle exec fastlane beta \
+                submit:true \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
+                commit_sha:$CIRCLE_SHA1
 
 workflows:
   version: 2
   node-android-ios:
     jobs:
       - build
-      - build-android:
+      - alpha-android:
           requires:
             - build
-      - build-ios:
+          filters:
+            branches:
+              ignore:
+                - master
+      - alpha-ios:
           requires:
             - build
+          filters:
+            branches:
+              ignore:
+                - master
+      - beta-android:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
       - beta-ios:
           requires:
-            - build-ios
+            - build
           filters:
             branches:
               only:

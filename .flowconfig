@@ -20,6 +20,8 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
+.*/node_modules/config-chain/.*
+
 [include]
 
 [libs]

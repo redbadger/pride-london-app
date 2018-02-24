@@ -1,4 +1,4 @@
-fastlane_version "2.80.0"
+fastlane_version "2.82.0"
 
 default_platform :ios
 
@@ -13,34 +13,99 @@ platform :ios do
   end
 
   desc "Signed build"
-  lane :build do
-    match(type: "appstore")
-    gym(export_method: "app-store", scheme: "PrideLondonApp")
+  lane :build do |options|
+    match(
+      type: options[:match_type], 
+      app_identifier: options[:app_identifier],
+      readonly: true
+    )
+    gym(
+      clean: true,
+      export_method: options[:export_method],
+      configuration: options[:configuration],
+      scheme: "PrideLondonApp"
+    )
   end
 
-  desc "Submit a new Beta Build to Apple TestFlight"
-  lane :beta do
-    # fetch previously generated certificates, but don't generate new ones if none already exist
-    match(type: "appstore", readonly: true)
-    # ensure we're on the "master" git branch
+  desc "Alpha build and deploy"
+  lane :alpha do |options|
+    build(
+      match_type: "adhoc", 
+      export_method: "ad-hoc",
+      configuration: "Adhoc",
+      app_identifier: "org.prideinlondon.festival.alpha"
+    )
+    if options[:submit]
+      deploy_hockey(
+        commit_sha: options[:commit_sha],
+        api_token: options[:api_token],
+        app_id: options[:app_id],
+        status: "2",
+        notify: "0",
+      )
+    end
+  end
+
+  desc "Beta build and deploy"
+  lane :beta do |options|
     ensure_git_branch(branch: "master")
-    # set the app build number from our previously generated config
     increment_build_number(
       build_number: latest_testflight_build_number + 1,
       xcodeproj: "PrideLondonApp.xcodeproj"
     )
-    # build the app for app store export
-    gym(
-      clean: true,
-      export_method: 'app-store',
-      scheme: "PrideLondonApp",
-      output_directory: "./build-tools/deploy/data"
+    build(
+      match_type: "appstore",
+      export_method: "app-store",
+      configuration: "Release",
+      app_identifier: "org.prideinlondon.festival"
     )
-    # upload to TestFlight and notify testers
+    if options[:submit]
+      deploy_testflight 
+    end
+    build(
+      match_type: "adhoc", 
+      export_method: "ad-hoc",
+      configuration: "Adhoc",
+      app_identifier: "org.prideinlondon.festival.alpha"
+    )
+    if options[:submit]
+      deploy_hockey(
+        commit_sha: options[:commit_sha],
+        api_token: options[:api_token],
+        app_id: options[:app_id],
+        status: "2",
+        notify: "1",
+      )
+    end
+  end
+
+  desc "Upload to TestFlight and notify testers"
+  lane :deploy_testflight do
     testflight(
       skip_submission: true,
       distribute_external: false,
       skip_waiting_for_build_processing: true
     )
+  end
+
+  desc "Upload to HockeyApp and notify testers"
+  lane :deploy_hockey do |options|
+    notes = sh("git log --format=%B -n 1 #{options[:commit_sha]}")
+    hockey(
+      api_token: options[:api_token],
+      public_identifier: options[:app_id],
+      notes: notes,
+      status: options[:status],
+      notify: options[:notify],
+      commit_sha: options[:commit_sha]
+    )
+  end
+
+  desc "Add devices"
+  lane :devices do |options|
+    register_devices(
+      devices_file: "./devices.txt"
+    )
+    match(force_for_new_devices: true)
   end
 end

@@ -82,7 +82,7 @@ node ./scripts/generate-content.js delete -s <space_id> -a <access_token>
 Pieces of work currently up for grabs will be listed on the [issues page](https://github.com/redbadger/pride-london-app/issues) and tracked on the [projects page](https://github.com/redbadger/pride-london-app/projects). If you are able to work on the piece of work, comment on the issue. You can also discuss the feature in the isssue page. Be honest about if you have the time to work on it, there's no shame in parking a piece of work and letting someone else pick it up if you're too busy.
 
 All Pull Requests are built by [CircleCI](https://circleci.com/gh/redbadger/workflows/pride-london-app)
-Merging a Pull Request to the master branch will trigger a build number increase and deploy to TestFight for iOS device testing.
+Merging a Pull Request to the master branch will trigger a build number increase followed by a deploy to TestFight for iOS devices and to HockeyApp for Android devices.
 
 Submit your Pull Request from a repo fork and one of the core dev team will review and merge it.
 
