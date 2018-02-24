@@ -17,6 +17,7 @@
     "react": "16.2.0",
     "react-native": "0.53.0",
     "react-native-config": "^0.11.5",
+    "react-native-push-notification": "^3.0.2",
     "react-navigation": "^1.0.3"
   },
   "devDependencies": {
