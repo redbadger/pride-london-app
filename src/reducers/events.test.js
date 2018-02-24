@@ -1,6 +1,6 @@
-import reducer from "./";
+import reducer from "./events";
 
-describe("Root reducer", () => {
+describe("Events reducer", () => {
   it("initialises with default state", () => {
     // $FlowFixMe
     const state = reducer(undefined, {});

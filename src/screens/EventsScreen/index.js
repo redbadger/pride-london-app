@@ -18,9 +18,9 @@ type Props = {
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  events: state.events,
-  loading: state.loading,
-  refreshing: state.refreshing
+  events: state.events.events,
+  loading: state.events.loading,
+  refreshing: state.events.refreshing
 });
 
 const mapDispatchToProps = {
