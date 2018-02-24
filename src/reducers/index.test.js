@@ -20,6 +20,18 @@ describe("Root reducer", () => {
     expect(state.refreshing).toBe(false);
   });
 
+  it("sets refreshing flag for REQUEST_UPDATE_EVENTS action", () => {
+    const initialState = {
+      events: [],
+      loading: false,
+      refreshing: false
+    };
+    const state = reducer(initialState, { type: "REQUEST_UPDATE_EVENTS" });
+
+    expect(state.loading).toBe(false);
+    expect(state.refreshing).toBe(true);
+  });
+
   it("saves events from RECEIVE_EVENTS action", () => {
     const initialState = {
       events: [],
