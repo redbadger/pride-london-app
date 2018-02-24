@@ -139,6 +139,10 @@ android {
             resValue "string", "build_config_package", "com.pridelondonapp"
         }
         beta {
+            applicationId 'com.pridelondonapp.beta'
+            resValue "string", "build_config_package", "com.pridelondonapp"
+        }
+        production {
             applicationId 'com.pridelondonapp'
             resValue "string", "build_config_package", "com.pridelondonapp"
         }
