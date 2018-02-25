@@ -104,7 +104,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 22
         versionName "1.0.4"
-        versionCode project.versionCode
+        props.load(new FileInputStream(file("../.gradle/gradle.properties")))
+        versionCode props['versionCode']
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
