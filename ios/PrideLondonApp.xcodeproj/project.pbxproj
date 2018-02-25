@@ -326,6 +326,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PrideLondonApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PrideLondonApp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		166018CE2043526D0093B336 /* fabric.properties */ = {isa = PBXFileReference; lastKnownFileType = text; name = fabric.properties; path = PrideLondonApp/fabric.properties; sourceTree = "<group>"; };
 		16964194204301BF0058AF96 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		16964195204301BF0058AF96 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -455,6 +456,7 @@
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				166018CE2043526D0093B336 /* fabric.properties */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -1041,7 +1043,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "apiKey=$(sed -n '1p' < fabric.properties)\napiSecret=$(sed -n '2p' < fabric.properties)\n/usr/libexec/PlistBuddy -c \"Set :Fabric:APIKey string $apiKey\" ./Info.plist\n./Fabric.framework/run $apiKey $apiSecret\n";
+			shellScript = "apiKey=$(sed -n '1p' < ./PrideLondonApp/fabric.properties)\napiSecret=$(sed -n '2p' < ./PrideLondonApp/fabric.properties)\n/usr/libexec/PlistBuddy -c \"Set :Fabric:APIKey string $apiKey\" ./Info.plist\n./Fabric.framework/run $apiKey $apiSecret\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

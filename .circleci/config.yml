@@ -118,7 +118,7 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
-      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./fabric.properties
+      - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
                 bundle exec fastlane alpha \
@@ -154,7 +154,7 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
-      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./fabric.properties
+      - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
                 bundle exec fastlane beta \
