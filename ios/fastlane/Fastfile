@@ -29,6 +29,7 @@ platform :ios do
 
   desc "Alpha build and deploy"
   lane :alpha do |options|
+    increment_build_number(options[:ci_build_num])
     build(
       match_type: "adhoc", 
       export_method: "ad-hoc",
@@ -123,8 +124,8 @@ platform :ios do
   def build_notes(commit_sha)
     date = Time.now.strftime('%F')
     time = Time.now.strftime('%T')
-    commit_msg = sh("git log --format=%B -n 1 #{commit_sha}")
-    notes = "#{commit_msg.chomp} from #{git_branch} on #{date} at #{time}"
+    commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
+    notes = "#{commit_msg} from #{git_branch} on #{date} at #{time}"
     return notes
   end
 
