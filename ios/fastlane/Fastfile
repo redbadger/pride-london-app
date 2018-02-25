@@ -72,6 +72,7 @@ platform :ios do
     if options[:submit]
       deploy_testflight 
     end
+    increment_build_number(build_number:options[:ci_build_num])
     build(
       match_type: "adhoc", 
       export_method: "ad-hoc",
@@ -79,6 +80,14 @@ platform :ios do
       app_identifier: "org.prideinlondon.festival.beta"
     )
     if options[:submit]
+      notes = build_notes(options[:commit_sha])
+      deploy_fabric(
+        api_token: options[:fabric_api_token],
+        build_secret: options[:fabric_build_secret],
+        notes: notes,
+        groups: options[:fabric_groups],
+        notify: true,
+      )
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
