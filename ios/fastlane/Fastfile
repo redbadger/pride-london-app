@@ -40,13 +40,13 @@ platform :ios do
         api_token: "661b62c388fcdc91402d7b88ec61df3716f42ab3",
         build_secret: "d49ccfeb4263fbb0d7a6e9c6f50122693b772c23376c1e34d560b19079984efc"
       )
-      # deploy_hockey(
-      #   commit_sha: options[:commit_sha],
-      #   api_token: options[:api_token],
-      #   app_id: options[:app_id],
-      #   status: "2",
-      #   notify: "0",
-      # )
+      deploy_hockey(
+        commit_sha: options[:commit_sha],
+        api_token: options[:api_token],
+        app_id: options[:app_id],
+        status: "2",
+        notify: "0",
+      )
     end
   end
 
