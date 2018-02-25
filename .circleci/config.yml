@@ -118,6 +118,7 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
+      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./fabric.properties
       - run: 
             command: |
                 bundle exec fastlane alpha \
@@ -153,6 +154,7 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
+      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./fabric.properties
       - run: 
             command: |
                 bundle exec fastlane beta \

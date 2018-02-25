@@ -24,8 +24,6 @@
 	<string>1</string>
 	<key>Fabric</key>
 	<dict>
-		<key>APIKey</key>
-		<string>661b62c388fcdc91402d7b88ec61df3716f42ab3</string>
 		<key>Kits</key>
 		<array>
 			<dict>
