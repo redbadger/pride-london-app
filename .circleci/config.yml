@@ -118,6 +118,7 @@ jobs:
                 app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
                 fabric_api_token:$FABRIC_API_TOKEN \
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
                 commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: /Users/distiller/project/output

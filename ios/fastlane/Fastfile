@@ -41,7 +41,9 @@ platform :ios do
       deploy_fabric(
         api_token: options[:fabric_api_token],
         build_secret: options[:fabric_build_secret],
-        notes: notes
+        notes: notes,
+        groups: options[:fabric_groups],
+        notify: false,
       )
       deploy_hockey(
         commit_sha: options[:commit_sha],
@@ -112,7 +114,10 @@ platform :ios do
   lane :deploy_fabric do |options|
     crashlytics(
       api_token: options[:api_token],
-      build_secret: options[:build_secret]
+      build_secret: options[:build_secret],
+      notes: options[:notes],
+      groups: options[:groups],
+      notifications: options[:notify]
     )
   end
 
