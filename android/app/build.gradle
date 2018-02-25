@@ -106,7 +106,7 @@ android {
         versionName "1.0.4"
         Properties props = new Properties()
         props.load(new FileInputStream(file("../.gradle/gradle.properties")))
-        versionCode "${props['versionCode']}"
+        versionCode props['versionCode'].toInteger()
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
