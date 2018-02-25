@@ -29,7 +29,7 @@ platform :ios do
 
   desc "Alpha build and deploy"
   lane :alpha do |options|
-    increment_build_number(options[:ci_build_num])
+    increment_build_number(build_number:options[:ci_build_num])
     build(
       match_type: "adhoc", 
       export_method: "ad-hoc",
