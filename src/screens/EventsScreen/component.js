@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { StyleSheet, Text, SafeAreaView } from "react-native";
+import { StyleSheet, Text, SafeAreaView, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../integrations/cms";
 import EventList from "../../components/EventList";
@@ -20,18 +20,12 @@ type Props = {
 
 class EventsScreen extends React.Component<Props> {
   static navigationOptions = {
-    headerMode: "none",
-    headerStyle: {
-      backgroundColor: headerBgColor,
-      height: 0,
-      borderBottomWidth: 0
-    }
+    header: <FilterHeader />
   };
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <FilterHeader />
         {this.props.loading && <Text>Loading...</Text>}
         <EventList
           locale={locale}

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet, StatusBar, SafeAreaView } from "react-native";
 import {
   headerBgColor,
   filterButtonColor,
@@ -8,20 +8,24 @@ import {
 import text from "../constants/text";
 
 const FilterHeader = () => (
-  <View style={styles.container}>
+  <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
     <StatusBar barStyle="light-content" />
-    <View style={styles.filterButton}>
-      <Text style={styles.buttonText}>{text.filterButton}</Text>
+    <View style={styles.content}>
+      <View style={styles.filterButton}>
+        <Text style={styles.buttonText}>{text.filterButton}</Text>
+      </View>
     </View>
-  </View>
+  </SafeAreaView>
 );
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: headerBgColor
+  },
+  content: {
     height: 45,
     paddingHorizontal: 20,
-    paddingBottom: 15,
-    backgroundColor: headerBgColor
+    paddingBottom: 15
   },
   filterButton: {
     flex: 1,
