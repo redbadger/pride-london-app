@@ -36,8 +36,7 @@ platform :ios do
       app_identifier: "org.prideinlondon.festival.alpha"
     )
     if options[:submit]
-      notes = sh("git log --format=%B -n 1 #{options[:commit_sha]}")
-      notes.prepend(git_branch)
+      notes = build_notes(options[:commit_sha])
       deploy_fabric(
         api_token: options[:fabric_api_token],
         build_secret: options[:fabric_build_secret],
@@ -119,6 +118,14 @@ platform :ios do
       groups: options[:groups],
       notifications: options[:notify]
     )
+  end
+
+  def build_notes(commit_sha)
+    date = Time.now.strftime('%F')
+    time = Time.now.strftime('%T')
+    commit_msg = sh("git log --format=%B -n 1 #{commit_sha}")
+    notes = "#{commit_msg.chomp} from #{git_branch} on #{date} at #{time}"
+    return notes
   end
 
   desc "Add devices"
