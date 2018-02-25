@@ -134,7 +134,7 @@ platform :ios do
     date = Time.now.strftime('%F')
     time = Time.now.strftime('%T')
     commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
-    notes = "#{commit_msg} from #{git_branch} on #{date} at #{time}"
+    notes = "#{git_branch}/#{commit_msg} on #{date} at #{time}"
     return notes
   end
 

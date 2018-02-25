@@ -92,7 +92,7 @@ platform :android do
     crashlytics(
       api_token: options[:api_token],
       build_secret: options[:build_secret],
-      apk: options[:apk_path],
+      apk_path: options[:apk_path],
       notes: options[:notes],
       groups: options[:groups],
       notifications: options[:notify]
@@ -103,7 +103,7 @@ platform :android do
     date = Time.now.strftime('%F')
     time = Time.now.strftime('%T')
     commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
-    notes = "#{commit_msg} from #{git_branch} on #{date} at #{time}"
+    notes = "#{git_branch}/#{commit_msg} on #{date} at #{time}"
     return notes
   end
 end
