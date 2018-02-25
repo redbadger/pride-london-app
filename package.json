@@ -70,6 +70,6 @@
   },
   "xcodeSchemes": {
     "Debug": [],
-    "Release": ["Adhoc", "AdhocAlpha", "AdhocBeta"]
+    "Release": ["AdhocAlpha", "AdhocBeta"]
   }
 }
