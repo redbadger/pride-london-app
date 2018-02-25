@@ -1041,7 +1041,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "apiKey=$(sed -n '1p' < fabric.properties)\napiSecret=$(sed -n '2p' < fabric.properties)\n./Fabric.framework/run $apiKey $apiSecret\n/usr/libexec/PlistBuddy -c \"Set :Fabric:APIKey string $apiKey\" $(PROJECT_DIR)/Info.plist";
+			shellScript = "apiKey=$(sed -n '1p' < fabric.properties)\napiSecret=$(sed -n '2p' < fabric.properties)\n/usr/libexec/PlistBuddy -c \"Set :Fabric:APIKey string $apiKey\" ./Info.plist\n./Fabric.framework/run $apiKey $apiSecret\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
