@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Events reducer initialises with default state 1`] = `
+Object {
+  "events": Array [],
+  "loading": true,
+  "refreshing": false,
+}
+`;
