@@ -149,11 +149,43 @@ jobs:
                 app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
                 commit_sha:$CIRCLE_SHA1
 
+  e2e-ios:
+    macos:
+      xcode: "9.2.0"
+    working_directory: /Users/distiller/project/
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: /Users/distiller/project
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - run:
+          command: |
+              brew update
+              brew tap wix/brew
+              brew install --HEAD applesimutils
+              yarn global add detox-cli
+              yarn global add react-native-cli
+      - run: yarn
+      - run:
+          name: Generate .env
+          command: node ./scripts/generate-dotenv.js
+          working_directory: /Users/distiller/project
+      - run: yarn test:e2e:build
+      - run: yarn test:e2e
+
+
 workflows:
   version: 2
   node-android-ios:
     jobs:
       - build
+      - e2e-ios
       - alpha-android:
           requires:
             - build
@@ -164,6 +196,7 @@ workflows:
       - alpha-ios:
           requires:
             - build
+            - e2e-ios            
           filters:
             branches:
               ignore:
@@ -178,6 +211,7 @@ workflows:
       - beta-ios:
           requires:
             - build
+            - e2e-ios
           filters:
             branches:
               only:
