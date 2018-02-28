@@ -8,7 +8,7 @@ import {
 import text from "../constants/text";
 
 const FilterHeader = () => (
-  <View style={styles.container}>
+  <View testID="filter-header" style={styles.container}>
     <StatusBar barStyle="light-content" />
     <View style={styles.filterButton}>
       <Text style={styles.buttonText}>{text.filterButton}</Text>

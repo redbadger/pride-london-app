@@ -9,6 +9,8 @@
     "run-android":
       "node node_modules/react-native/local-cli/cli.js run-android",
     "test": "jest src",
+    "test:e2e": "detox test -c ios.sim.debug",
+    "test:e2e:build": "detox build",
     "precommit": "lint-staged",
     "lint": "eslint src",
     "flow": "flow src",
@@ -33,6 +35,7 @@
     "babel-preset-react-native": "4.0.0",
     "commander": "^2.13.0",
     "contentful-management": "^4.1.4",
+    "detox": "^7.1.0",
     "dotenv": "^5.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -75,5 +78,19 @@
   "xcodeSchemes": {
     "Debug": [],
     "Release": ["AdhocAlpha", "AdhocBeta"]
+  },
+  "detox": {
+    "test-runner": "jest",
+    "runner-config": "e2e/config.json",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath":
+          "ios/build/Build/Products/Debug-iphonesimulator/PrideLondonApp.app",
+        "build":
+          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 7"
+      }
+    }
   }
 }
