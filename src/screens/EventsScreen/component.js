@@ -1,11 +1,12 @@
 // @flow
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
+import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../integrations/cms";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/FilterHeader";
-import { bgColor, headerBgColor } from "../../constants/colors";
+import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 
 const locale = "en-GB";

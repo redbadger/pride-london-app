@@ -5662,9 +5662,9 @@ react-native-mock@^0.3.1:
     react-timer-mixin "^0.13.3"
     warning "^2.1.0"
 
-react-native-safe-area-view@^0.6.0:
+react-native-safe-area-view@^0.6.0, react-native-safe-area-view@robbiemccorkell/react-native-safe-area-view:
   version "0.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.6.0.tgz#ce01eb27905a77780219537e0f53fe9c783a8b3d"
+  resolved "https://codeload.github.com/robbiemccorkell/react-native-safe-area-view/tar.gz/508961b3e20acb7815331213bcea2d0ad600ff46"
   dependencies:
     hoist-non-react-statics "^2.3.1"
 
