@@ -10,3 +10,4 @@ export const filterButtontextColor = "#ADADAD";
 
 // EVENT DETAILS
 export const eventDetailsBgColor = "#fff";
+export const eventCategoryLabelBgColor = "#d8d8d8";

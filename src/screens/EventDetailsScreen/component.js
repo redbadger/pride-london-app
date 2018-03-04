@@ -4,7 +4,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import Heading from "../../components/Heading";
-import { eventDetailsBgColor } from "../../constants/colors";
+import {
+  eventDetailsBgColor,
+  eventCategoryLabelBgColor
+} from "../../constants/colors";
 import type { Event } from "../../integrations/cms";
 
 const locale = "en-GB";
@@ -43,6 +46,13 @@ class EventDetailsScreen extends React.Component<Props> {
         />
         <View style={styles.content}>
           <Heading text={this.props.event.fields.name[locale]} />
+          <Text>
+            <Heading
+              style={styles.categoryLabel}
+              text={`  ${this.props.event.fields.eventCategory[locale]}  `}
+              level={3}
+            />
+          </Text>
           <Text>{JSON.stringify(this.props.event)}</Text>
         </View>
       </View>
@@ -60,7 +70,11 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    padding: 15,
     backgroundColor: eventDetailsBgColor
+  },
+  categoryLabel: {
+    backgroundColor: eventCategoryLabelBgColor
   }
 });
 

@@ -17,9 +17,8 @@ export type Event = {
     revision: number
   },
   fields: {
-    name: {
-      [string]: string
-    }
+    name: { [string]: string },
+    eventCategory: { [string]: string }
   }
 };
 export type Deletion = {
