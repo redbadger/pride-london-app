@@ -7,7 +7,7 @@ import Heading from "../../components/Heading";
 type IconItemProps = {
   icon: Node,
   title: string,
-  children: Node
+  children?: Node
 };
 
 const IconItem = ({ icon, title, children }: IconItemProps) => (
@@ -19,6 +19,9 @@ const IconItem = ({ icon, title, children }: IconItemProps) => (
     </View>
   </View>
 );
+IconItem.defaultProps = {
+  children: null
+};
 
 const styles = StyleSheet.create({
   iconItem: {

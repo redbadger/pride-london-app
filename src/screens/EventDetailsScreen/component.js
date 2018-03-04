@@ -47,21 +47,29 @@ class EventDetailsScreen extends React.Component<Props> {
           <View style={styles.categoryLabelContainer}>
             <CategoryLabel categoryName={event.fields.eventCategory[locale]} />
           </View>
-          <IconItem
-            icon={<Text type="xSmall">icn</Text>}
-            title={`${startTime.toLocaleDateString(
-              locale,
-              dateFormat
-            )} - ${endTime.toLocaleDateString(locale, dateFormat)}`}
-          >
-            <Text type="small">
-              {`${startTime.toLocaleTimeString(
+          <View style={styles.iconItemWrapper}>
+            <IconItem
+              icon={<Text type="xSmall">icn</Text>}
+              title={`${startTime.toLocaleDateString(
                 locale,
-                timeFormat
-              )} - ${endTime.toLocaleTimeString(locale, timeFormat)}`}
-            </Text>
-          </IconItem>
-          {/* <Text>{JSON.stringify(this.props.event)}</Text> */}
+                dateFormat
+              )} - ${endTime.toLocaleDateString(locale, dateFormat)}`}
+            >
+              <Text type="small">
+                {`${startTime.toLocaleTimeString(
+                  locale,
+                  timeFormat
+                )} - ${endTime.toLocaleTimeString(locale, timeFormat)}`}
+              </Text>
+            </IconItem>
+          </View>
+          <View style={styles.iconItemWrapper}>
+            <IconItem
+              icon={<Text type="xSmall">icn</Text>}
+              title={event.fields.locationName[locale]}
+            />
+          </View>
+          <Text>{JSON.stringify(this.props.event)}</Text>
         </View>
       </ScrollView>
     );
@@ -81,6 +89,9 @@ const styles = StyleSheet.create({
   categoryLabelContainer: {
     marginTop: 16,
     marginBottom: 28
+  },
+  iconItemWrapper: {
+    marginBottom: 20
   }
 });
 

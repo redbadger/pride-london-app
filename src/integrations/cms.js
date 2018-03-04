@@ -20,7 +20,8 @@ export type Event = {
     name: { [string]: string },
     eventCategory: { [string]: string },
     startTime: { [string]: string },
-    endTime: { [string]: string }
+    endTime: { [string]: string },
+    locationName: { [string]: string }
   }
 };
 export type Deletion = {
