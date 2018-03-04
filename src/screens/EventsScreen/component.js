@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../integrations/cms";
@@ -21,12 +21,13 @@ type Props = {
 
 class EventsScreen extends React.Component<Props> {
   static navigationOptions = {
-    header: <FilterHeader />
+    header: null
   };
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        <FilterHeader />
         {this.props.loading && <Text>Loading...</Text>}
         <EventList
           locale={locale}
@@ -39,7 +40,7 @@ class EventsScreen extends React.Component<Props> {
             this.props.navigation.navigate(EVENT_DETAILS, { eventName });
           }}
         />
-      </SafeAreaView>
+      </View>
     );
   }
 }
@@ -47,8 +48,7 @@ class EventsScreen extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: bgColor,
-    borderBottomWidth: 0
+    backgroundColor: bgColor
   }
 });
 
