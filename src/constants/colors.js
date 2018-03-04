@@ -7,3 +7,6 @@ export const textColor = "#272727";
 
 export const filterButtonColor = "#5C5C5C";
 export const filterButtontextColor = "#ADADAD";
+
+// EVENT DETAILS
+export const eventDetailsBgColor = "#fff";

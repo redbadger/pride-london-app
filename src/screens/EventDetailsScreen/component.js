@@ -3,6 +3,11 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
+import Heading from "../../components/Heading";
+import { eventDetailsBgColor } from "../../constants/colors";
+import type { Event } from "../../integrations/cms";
+
+const locale = "en-GB";
 
 type HeaderProps = {
   onBackButtonPress: () => void
@@ -19,32 +24,44 @@ const Header = ({ onBackButtonPress }: HeaderProps) => (
 );
 
 type Props = {
-  navigation: NavigationScreenProp<{ params: { eventName: String } }>
+  navigation: NavigationScreenProp<{ params: { eventId: String } }>,
+  event: Event
 };
 
-class EventsScreen extends React.Component<Props> {
+class EventDetailsScreen extends React.Component<Props> {
   static navigationOptions = {
     header: null
   };
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Header
           onBackButtonPress={() => {
             this.props.navigation.goBack(null);
           }}
         />
-        <Text>{this.props.navigation.state.params.eventName}</Text>
+        <View style={styles.content}>
+          <Heading text={this.props.event.fields.name[locale]} />
+          <Text>{JSON.stringify(this.props.event)}</Text>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   header: {
+    height: 180,
     padding: 22
+  },
+  content: {
+    flex: 1,
+    backgroundColor: eventDetailsBgColor
   }
 });
 
-export default EventsScreen;
+export default EventDetailsScreen;

@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../integrations/cms";
 import EventList from "../../components/EventList";
@@ -36,8 +35,8 @@ class EventsScreen extends React.Component<Props> {
           onRefresh={() => {
             this.props.updateEvents();
           }}
-          onPress={(eventName: string) => {
-            this.props.navigation.navigate(EVENT_DETAILS, { eventName });
+          onPress={(eventId: string) => {
+            this.props.navigation.navigate(EVENT_DETAILS, { eventId });
           }}
         />
       </View>
