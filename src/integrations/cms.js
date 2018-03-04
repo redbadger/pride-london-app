@@ -18,7 +18,9 @@ export type Event = {
   },
   fields: {
     name: { [string]: string },
-    eventCategory: { [string]: string }
+    eventCategory: { [string]: string },
+    startTime: { [string]: string },
+    endTime: { [string]: string }
   }
 };
 export type Deletion = {

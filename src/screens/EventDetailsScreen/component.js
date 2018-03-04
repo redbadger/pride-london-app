@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import Header from "./Header";
 import IconItem from "./IconItem";
@@ -23,33 +23,55 @@ class EventDetailsScreen extends React.Component<Props> {
   };
 
   render() {
+    const { event } = this.props;
+    const startTime = new Date(this.props.event.fields.startTime[locale]);
+    const endTime = new Date(this.props.event.fields.endTime[locale]);
+    const dateFormat = {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    };
+    const timeFormat = {
+      hour: "numeric",
+      minute: "numeric"
+    };
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Header
           onBackButtonPress={() => {
             this.props.navigation.goBack(null);
           }}
         />
         <View style={styles.content}>
-          <Heading text={this.props.event.fields.name[locale]} />
+          <Heading text={event.fields.name[locale]} />
           <View style={styles.categoryLabelContainer}>
-            <CategoryLabel
-              categoryName={this.props.event.fields.eventCategory[locale]}
-            />
+            <CategoryLabel categoryName={event.fields.eventCategory[locale]} />
           </View>
-          <IconItem icon={<Text type="xSmall">icn</Text>} title="10 June 2018">
-            <Text type="small">23:10</Text>
+          <IconItem
+            icon={<Text type="xSmall">icn</Text>}
+            title={`${startTime.toLocaleDateString(
+              locale,
+              dateFormat
+            )} - ${endTime.toLocaleDateString(locale, dateFormat)}`}
+          >
+            <Text type="small">
+              {`${startTime.toLocaleTimeString(
+                locale,
+                timeFormat
+              )} - ${endTime.toLocaleTimeString(locale, timeFormat)}`}
+            </Text>
           </IconItem>
           {/* <Text>{JSON.stringify(this.props.event)}</Text> */}
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: eventDetailsBgColor
   },
   content: {
     flex: 1,
