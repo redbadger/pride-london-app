@@ -64,6 +64,9 @@
   "resolutions": {
     "react-native-safe-area-view": "robbiemccorkell/react-native-safe-area-view"
   },
+  "rnpm": {
+    "assets": ["./assets/fonts/"]
+  },
   "jest": {
     "preset": "react-native",
     "setupTestFrameworkScriptFile": "<rootDir>src/setup-tests.js",
