@@ -8,6 +8,7 @@ import CategoryLabel from "./CategoryLabel";
 import Heading from "../../components/Heading";
 import Text from "../../components/Text";
 import { eventDetailsBgColor } from "../../constants/colors";
+import text from "../../constants/text";
 import type { Event } from "../../integrations/cms";
 
 const locale = "en-GB";
@@ -69,7 +70,25 @@ class EventDetailsScreen extends React.Component<Props> {
               title={event.fields.locationName[locale]}
             />
           </View>
-          <Text>{JSON.stringify(this.props.event)}</Text>
+          <View style={styles.iconItemWrapper}>
+            <IconItem
+              icon={<Text type="xSmall">icn</Text>}
+              title={`${text.eventDetailsPrice}${
+                event.fields.eventPriceLow[locale]
+              }`}
+            />
+          </View>
+          <View style={styles.iconItemWrapper}>
+            <IconItem
+              icon={<Text type="xSmall">icn</Text>}
+              title={text.eventDetailsAccessibility}
+            >
+              <Text type="small">
+                {event.fields.accessibilityOptions[locale].join(", ")}
+              </Text>
+            </IconItem>
+          </View>
+          {/* <Text>{JSON.stringify(this.props.event)}</Text> */}
         </View>
       </ScrollView>
     );

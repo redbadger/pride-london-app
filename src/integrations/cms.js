@@ -21,7 +21,10 @@ export type Event = {
     eventCategory: { [string]: string },
     startTime: { [string]: string },
     endTime: { [string]: string },
-    locationName: { [string]: string }
+    locationName: { [string]: string },
+    eventPriceLow: { [string]: number },
+    eventPriceHigh: { [string]: number },
+    accessibilityOptions: { [string]: string[] }
   }
 };
 export type Deletion = {
