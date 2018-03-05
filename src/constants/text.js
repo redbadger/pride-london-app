@@ -3,5 +3,6 @@ export default {
   filterButton: "I'm interested in...",
   eventDetailsPrice: "From: £",
   eventDetailsAccessibility: "Accessibility",
-  eventDetailsAccessibilityDetails: "Accessibility Details"
+  eventDetailsAccessibilityDetails: "Accessibility Details",
+  eventDetailsContact: "Contact"
 };

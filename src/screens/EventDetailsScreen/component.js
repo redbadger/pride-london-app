@@ -98,9 +98,32 @@ class EventDetailsScreen extends React.Component<Props> {
         <View style={styles.sectionDivider} />
         <View style={styles.content}>
           {event.fields.accessibilityDetails && (
-            <View>
+            <View style={styles.detailsSection}>
               <Text type="h2">{text.eventDetailsAccessibilityDetails}</Text>
-              <Text>{event.fields.accessibilityDetails[locale]}</Text>
+              <View style={styles.accessibilityDetailsItem}>
+                <Text>{event.fields.accessibilityDetails[locale]}</Text>
+              </View>
+            </View>
+          )}
+          {(event.fields.email || event.fields.phone) && (
+            <View style={styles.detailsSection}>
+              <Text type="h2">{text.eventDetailsContact}</Text>
+              {event.fields.email && (
+                <View style={styles.contactItem}>
+                  <IconItem
+                    icon={<Text type="xSmall">icn</Text>}
+                    title={event.fields.email[locale]}
+                  />
+                </View>
+              )}
+              {event.fields.phone && (
+                <View style={styles.contactItem}>
+                  <IconItem
+                    icon={<Text type="xSmall">icn</Text>}
+                    title={event.fields.phone[locale]}
+                  />
+                </View>
+              )}
             </View>
           )}
         </View>
@@ -129,6 +152,15 @@ const styles = StyleSheet.create({
   sectionDivider: {
     height: 4,
     backgroundColor: eventDetailsHeaderBgColor
+  },
+  detailsSection: {
+    marginBottom: 20
+  },
+  accessibilityDetailsItem: {
+    marginTop: 8
+  },
+  contactItem: {
+    marginTop: 16
   }
 });
 

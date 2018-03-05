@@ -26,7 +26,9 @@ export type Event = {
     eventPriceHigh: { [string]: number },
     accessibilityOptions: { [string]: string[] },
     eventDescription: { [string]: string },
-    accessibilityDetails: { [string]: string }
+    accessibilityDetails: { [string]: string },
+    email: { [string]: string },
+    phone: { [string]: string }
   }
 };
 export type Deletion = {
