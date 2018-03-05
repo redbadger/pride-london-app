@@ -121,7 +121,7 @@ android {
             Properties props = new Properties()
             File propertiesFile = new File("../.gradle/gradle.properties");
             if (propertiesFile.exists()) {
-                props.load(new FileInputStream(propertiesFile))
+                props.load(propertiesFile)
                 storeFile file(props['keystore'])
                 storePassword props['keystore.password']
                 keyAlias props['keystore.alias']
