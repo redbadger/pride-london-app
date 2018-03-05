@@ -7,7 +7,10 @@ import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
 import Heading from "../../components/Heading";
 import Text from "../../components/Text";
-import { eventDetailsBgColor } from "../../constants/colors";
+import {
+  eventDetailsBgColor,
+  eventDetailsHeaderBgColor
+} from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event } from "../../integrations/cms";
 
@@ -88,8 +91,12 @@ class EventDetailsScreen extends React.Component<Props> {
               </Text>
             </IconItem>
           </View>
-          {/* <Text>{JSON.stringify(this.props.event)}</Text> */}
         </View>
+        <View style={styles.sectionDivider} />
+        <View style={styles.content}>
+          <Text markdown>{event.fields.eventDescription[locale]}</Text>
+        </View>
+        {/* <Text>{JSON.stringify(this.props.event)}</Text> */}
       </ScrollView>
     );
   }
@@ -111,6 +118,10 @@ const styles = StyleSheet.create({
   },
   iconItemWrapper: {
     marginBottom: 20
+  },
+  sectionDivider: {
+    height: 4,
+    backgroundColor: eventDetailsHeaderBgColor
   }
 });
 
