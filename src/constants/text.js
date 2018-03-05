@@ -2,5 +2,6 @@ export default {
   tabEvents: "Events",
   filterButton: "I'm interested in...",
   eventDetailsPrice: "From: £",
-  eventDetailsAccessibility: "Accessibility"
+  eventDetailsAccessibility: "Accessibility",
+  eventDetailsAccessibilityDetails: "Accessibility Details"
 };

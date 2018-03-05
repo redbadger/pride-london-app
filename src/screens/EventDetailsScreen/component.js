@@ -96,7 +96,14 @@ class EventDetailsScreen extends React.Component<Props> {
           <Text markdown>{event.fields.eventDescription[locale]}</Text>
         </View>
         <View style={styles.sectionDivider} />
-        {/* <Text>{JSON.stringify(this.props.event)}</Text> */}
+        <View style={styles.content}>
+          {event.fields.accessibilityDetails && (
+            <View>
+              <Text type="h2">{text.eventDetailsAccessibilityDetails}</Text>
+              <Text>{event.fields.accessibilityDetails[locale]}</Text>
+            </View>
+          )}
+        </View>
       </ScrollView>
     );
   }
