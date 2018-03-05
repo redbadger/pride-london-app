@@ -94,6 +94,7 @@ platform :ios do
         app_id: options[:app_id],
         status: "2",
         notify: "1",
+        notes: notes,
       )
     end
   end

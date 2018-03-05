@@ -46,6 +46,7 @@ platform :android do
         apk_path: apk_path,
         status: "2",
         notify: "0",
+        notes: notes,
       )
     end
   end
@@ -70,6 +71,7 @@ platform :android do
         apk_path: apk_path,
         status: "2",
         notify: "1",
+        notes: notes,
       )
     end
   end
