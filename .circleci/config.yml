@@ -55,7 +55,6 @@ jobs:
       - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
       - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
       - run: bundle install
-      # Only deploy build from master branch
       - run: 
             command: |
                 bundle exec fastlane alpha \
@@ -83,7 +82,6 @@ jobs:
       - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
       - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
       - run: bundle install
-      # Only deploy build from master branch
       - run: 
             command: |
                 bundle exec fastlane beta \
