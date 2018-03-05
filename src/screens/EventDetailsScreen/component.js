@@ -95,6 +95,7 @@ class EventDetailsScreen extends React.Component<Props> {
         <View style={styles.content}>
           <Text markdown>{event.fields.eventDescription[locale]}</Text>
         </View>
+        <View style={styles.sectionDivider} />
         {/* <Text>{JSON.stringify(this.props.event)}</Text> */}
       </ScrollView>
     );

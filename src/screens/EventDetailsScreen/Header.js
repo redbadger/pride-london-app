@@ -1,6 +1,12 @@
 // @flow
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar
+} from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import { eventDetailsHeaderBgColor } from "../../constants/colors";
 
@@ -10,6 +16,7 @@ type HeaderProps = {
 
 const Header = ({ onBackButtonPress }: HeaderProps) => (
   <SafeAreaView style={styles.container}>
+    <StatusBar barStyle="default" animated />
     <View style={styles.header}>
       <TouchableOpacity onPress={onBackButtonPress}>
         <Text>Back</Text>

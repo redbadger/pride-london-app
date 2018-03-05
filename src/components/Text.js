@@ -27,12 +27,6 @@ Text.defaultProps = {
 };
 
 const textStyles = {
-  text: {
-    fontFamily: "Roboto",
-    fontSize: 16,
-    lineHeight: 24
-  },
-  /* eslint-disable react-native/no-unused-styles */
   h1: {
     fontFamily: "Poppins-Bold",
     fontSize: 24,
@@ -48,9 +42,26 @@ const textStyles = {
     fontSize: 16,
     lineHeight: 24
   },
-  h4: {},
-  h5: {},
-  h6: {},
+  h4: {
+    fontFamily: "Roboto",
+    fontSize: 16,
+    lineHeight: 24
+  },
+  h5: {
+    fontFamily: "Roboto",
+    fontSize: 16,
+    lineHeight: 24
+  },
+  h6: {
+    fontFamily: "Roboto",
+    fontSize: 16,
+    lineHeight: 24
+  },
+  text: {
+    fontFamily: "Roboto",
+    fontSize: 16,
+    lineHeight: 24
+  },
   small: {
     fontFamily: "Roboto",
     fontSize: 14,
@@ -61,7 +72,6 @@ const textStyles = {
     fontSize: 12,
     lineHeight: 16
   }
-  /* eslint-enable */
 };
 
 const styles = StyleSheet.create(textStyles);
