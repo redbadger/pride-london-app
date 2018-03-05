@@ -57,9 +57,24 @@ Instructions for setting up an Android emulator can be found [here](https://deve
 
 ### Debugging
 
-iOS: Press Cmd+R to reload \n Cmd+D or shake for dev
+The recommended tool for debugging is [React Native Debugger](https://github.com/jhen0409/react-native-debugger) which has built in support for Redux Devtools.
 
-Android: Double tap R on your keyboard to reload,+, shake or press menu button for dev menu.
+To install React Native Debugger:
+
+```bash
+brew update && brew cask install react-native-debugger
+```
+
+Then to debug:
+
+1. Close any other debugger windows you have open
+1. Open the App from your Applications folder
+1. Start debugging in the app using one of the following methods:
+
+| Platform    | Command                                                                           |
+| ----------- | --------------------------------------------------------------------------------- |
+| **iOS**     | Press Cmd+R to reload, Cmd+D or shake for dev.                                    |
+| **Android** | Double tap R on your keyboard to reload, shake or press menu button for dev menu. |
 
 ## Generating test data
 
