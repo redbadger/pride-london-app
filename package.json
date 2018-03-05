@@ -1,6 +1,6 @@
 {
   "name": "pride-london-app",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "flow": "flow src",
     "fix-xcode": "react-native-schemes-manager all",
     "postinstall": "yarn fix-xcode",
-    "postversion": "react-native-version"
+    "postversion": "react-native-version --reset-build"
   },
   "dependencies": {
     "contentful": "^5.0.5",
