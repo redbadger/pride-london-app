@@ -2,7 +2,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { Node } from "react";
-import Heading from "../../components/Heading";
+import Text from "../../components/Text";
 
 type IconItemProps = {
   icon: Node,
@@ -14,7 +14,7 @@ const IconItem = ({ icon, title, children }: IconItemProps) => (
   <View style={styles.iconItem}>
     <View style={styles.icon}>{icon}</View>
     <View style={styles.item}>
-      <Heading level={3} text={title} />
+      <Text type="h3">{title}</Text>
       {children}
     </View>
   </View>

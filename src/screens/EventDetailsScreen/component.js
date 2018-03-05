@@ -5,7 +5,6 @@ import type { NavigationScreenProp } from "react-navigation";
 import Header from "./Header";
 import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
-import Heading from "../../components/Heading";
 import Text from "../../components/Text";
 import {
   eventDetailsBgColor,
@@ -47,7 +46,7 @@ class EventDetailsScreen extends React.Component<Props> {
           }}
         />
         <View style={styles.content}>
-          <Heading text={event.fields.name[locale]} />
+          <Text type="h1">{event.fields.name[locale]}</Text>
           <View style={styles.categoryLabelContainer}>
             <CategoryLabel categoryName={event.fields.eventCategory[locale]} />
           </View>
