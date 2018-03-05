@@ -119,9 +119,9 @@ android {
     signingConfigs {
         release {
             Properties props = new Properties()
-            File propertiesFile = new File("../.gradle/gradle.properties");
+            File propertiesFile = new File(".gradle/gradle.properties");
             if (propertiesFile.exists()) {
-                props.load(propertiesFile)
+                props.load(new FileInputStream(propertiesFile))
                 storeFile file(props['keystore'])
                 storePassword props['keystore.password']
                 keyAlias props['keystore.alias']
