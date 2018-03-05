@@ -12,3 +12,5 @@ export const filterButtontextColor = "#ADADAD";
 export const eventDetailsBgColor = "#fff";
 export const eventDetailsHeaderBgColor = "#F2F2F2";
 export const eventCategoryLabelBgColor = "#d8d8d8";
+export const eventDetailsBuyButtonColor = "#d8d8d8";
+export const eventDetailsBuyButtonTextColor = "#ffffff";

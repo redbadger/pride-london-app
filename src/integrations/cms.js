@@ -28,7 +28,8 @@ export type Event = {
     eventDescription: { [string]: string },
     accessibilityDetails: { [string]: string },
     email: { [string]: string },
-    phone: { [string]: string }
+    phone: { [string]: string },
+    ticketingUrl: { [string]: string }
   }
 };
 export type Deletion = {

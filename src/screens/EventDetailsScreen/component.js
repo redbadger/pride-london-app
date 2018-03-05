@@ -6,6 +6,7 @@ import Header from "./Header";
 import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
 import Text from "../../components/Text";
+import Button from "../../components/Button";
 import {
   eventDetailsBgColor,
   eventDetailsHeaderBgColor
@@ -126,6 +127,12 @@ class EventDetailsScreen extends React.Component<Props> {
               )}
             </View>
           )}
+          <View style={styles.buyButton}>
+            <Button
+              text={text.eventDetailsBuyButton}
+              url={event.fields.ticketingUrl[locale]}
+            />
+          </View>
         </View>
       </ScrollView>
     );
@@ -160,6 +167,9 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   contactItem: {
+    marginTop: 16
+  },
+  buyButton: {
     marginTop: 16
   }
 });

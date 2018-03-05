@@ -4,5 +4,6 @@ export default {
   eventDetailsPrice: "From: £",
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",
-  eventDetailsContact: "Contact"
+  eventDetailsContact: "Contact",
+  eventDetailsBuyButton: "Buy Tickets"
 };
