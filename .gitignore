@@ -60,6 +60,3 @@ buck-out/
 
 # Environment variables
 .env
-
-# CocoaPods
-ios/Pods/
