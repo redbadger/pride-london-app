@@ -1,12 +1,11 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import MapView, { Marker } from "react-native-maps";
-import { showLocation } from "react-native-map-link";
+import { View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import Header from "./Header";
 import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
+import EventMap from "./EventMap";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
 import {
@@ -21,14 +20,6 @@ const locale = "en-GB";
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: String } }>,
   event: Event
-};
-
-const onMapPress = (lat, lon, title) => {
-  showLocation({
-    latitude: lat,
-    longitude: lon,
-    title
-  });
 };
 
 class EventDetailsScreen extends React.Component<Props> {
@@ -107,36 +98,13 @@ class EventDetailsScreen extends React.Component<Props> {
         <View style={styles.sectionDivider} />
         <View style={styles.content}>
           <Text markdown>{event.fields.eventDescription[locale]}</Text>
-          <TouchableOpacity
-            style={styles.mapWrapper}
-            onPress={() =>
-              onMapPress(
-                event.fields.location[locale].lat,
-                event.fields.location[locale].lon,
-                event.fields.locationName[locale]
-              )
-            }
-          >
-            <MapView
-              style={styles.map}
-              initialRegion={{
-                latitude: event.fields.location[locale].lat,
-                longitude: event.fields.location[locale].lon,
-                latitudeDelta: 0.008,
-                longitudeDelta: 0.008
-              }}
-              scrollEnabled={false}
-              zoomEnabled={false}
-              loadingEnabled
-            >
-              <Marker
-                coordinate={{
-                  latitude: event.fields.location[locale].lat,
-                  longitude: event.fields.location[locale].lon
-                }}
-              />
-            </MapView>
-          </TouchableOpacity>
+          <View style={styles.mapWrapper}>
+            <EventMap
+              lat={event.fields.location[locale].lat}
+              lon={event.fields.location[locale].lon}
+              locationName={event.fields.locationName[locale]}
+            />
+          </View>
         </View>
         <View style={styles.sectionDivider} />
         <View style={styles.content}>
@@ -205,12 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: eventDetailsHeaderBgColor
   },
   mapWrapper: {
-    borderRadius: 6,
-    overflow: "hidden",
     marginTop: 8
-  },
-  map: {
-    height: 160
   },
   detailsSection: {
     marginBottom: 20
