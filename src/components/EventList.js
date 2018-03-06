@@ -26,7 +26,7 @@ const EventList = ({
     renderItem={({ item: event }) => (
       <View style={styles.eventListItem}>
         <TouchableOpacity
-          delayPressIn={10}
+          delayPressIn={50}
           onPress={() => onPress(event.fields.name[locale])}
         >
           <EventCard name={event.fields.name[locale]} />
