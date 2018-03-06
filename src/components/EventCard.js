@@ -41,13 +41,15 @@ const styles = StyleSheet.create({
     overflow: "hidden"
   },
   imageContainer: {
-    width: 95,
+    width: 114,
     height: 108,
     backgroundColor: imageBgColor
   },
   eventCardDetails: {
     flex: 1,
-    padding: 15,
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingHorizontal: 8,
     justifyContent: "space-around"
   },
   eventDate: {

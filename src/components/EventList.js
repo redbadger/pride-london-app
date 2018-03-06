@@ -29,7 +29,7 @@ const EventList = ({
           <EventCard
             date={event.fields.startTime[locale]}
             name={event.fields.name[locale]}
-            locationName="Arts, Theatre, Leicester Square"
+            locationName="Arts, Theatre"
             startTime={event.fields.startTime[locale]}
           />
         </TouchableOpacity>

@@ -18,7 +18,7 @@ const FilterHeader = () => (
 
 const styles = StyleSheet.create({
   container: {
-    height: 45,
+    height: 188,
     paddingHorizontal: 20,
     paddingBottom: 15,
     backgroundColor: headerBgColor
