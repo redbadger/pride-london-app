@@ -105,8 +105,11 @@ android {
         targetSdkVersion 22
         versionName "1.0.4"
         Properties props = new Properties()
-        props.load(new FileInputStream(file("../.gradle/gradle.properties")))
-        versionCode props['versionCode'].toInteger()
+        File propertiesFile = new File("../.gradle/gradle.properties");
+        if (propertiesFile.exists()) {
+            props.load(new FileInputStream(propertiesFile))
+            versionCode props['version  Code'].toInteger()
+        }
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
