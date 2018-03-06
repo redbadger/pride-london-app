@@ -49,11 +49,17 @@ And fill in the required variables from the appropriate developer portals (e.g. 
 
 #### Android
 
-The quickest way is to have an Android device connected with [unknown sources enabled](https://www.androidcentral.com/unknown-sources)
+* Install [Android Studio](https://developer.android.com/studio/index.html).
+* Open Android Studio and install the Android SDK with the default settings.
+* Make sure you have Java 8 installed (Java 9 won't work). You can point `JAVA_HOME` to the embedded JDK from Android Studio to make sure you have JDK version, which works with Android.
+* In Android Studio "Open an existing Android project" and select the `./android` folder in this repository.
+  * This will automatically try to build the project. You will see the Gradle process running.
+  * When dependencies are missing (e.g. SDK Platform or build tools), it will error and show a link to install them (e.g. "Install Build Tool XX.X.X and sync project"). Click on the link to resolve.
+  * It will also automatically create the file `./android/local.properties` with a prop `sdk.dir=<path to your android sdk>`, which is required for the build.
+  * Create an emulator. Click on the AVD Manager icon in the toolbar (this will appear when the project compiled correctly). Create a new AVD.
+* Add `<path to your android adk>/platform-tools` to your `PATH`. This is required because React Native will run `adb`.
 
 * `yarn run-android`
-
-Instructions for setting up an Android emulator can be found [here](https://developer.android.com/studio/run/emulator.html)
 
 ### Debugging
 

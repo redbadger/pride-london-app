@@ -103,6 +103,7 @@ android {
         applicationId "com.pridelondonapp"
         minSdkVersion 16
         targetSdkVersion 22
+        versionCode 1
         versionName "1.0.4"
         Properties props = new Properties()
         File propertiesFile = new File("../.gradle/gradle.properties");
@@ -125,7 +126,7 @@ android {
     signingConfigs {
         release {
             Properties props = new Properties()
-            File propertiesFile = new File(".gradle/gradle.properties");
+            File propertiesFile = new File(".gradle/gradle.properties")
             if (propertiesFile.exists()) {
                 props.load(new FileInputStream(propertiesFile))
                 storeFile file(props['keystore'])
@@ -201,7 +202,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile('com.crashlytics.sdk.android:crashlytics:2.9.0@aar') {
-        transitive = true;
+        transitive = true
     }
 }
 
