@@ -59,7 +59,9 @@ class EventDetailsScreen extends React.Component<Props> {
         <View style={styles.content}>
           <Text type="h1">{event.fields.name[locale]}</Text>
           <View style={styles.categoryLabelContainer}>
-            <CategoryLabel categoryName={event.fields.eventCategory[locale]} />
+            {event.fields.eventCategories[locale].map(categoryName => (
+              <CategoryLabel key={categoryName} categoryName={categoryName} />
+            ))}
           </View>
           <View style={styles.iconItemWrapper}>
             <IconItem
@@ -191,7 +193,9 @@ const styles = StyleSheet.create({
   },
   categoryLabelContainer: {
     marginTop: 16,
-    marginBottom: 28
+    marginBottom: 28,
+    flexDirection: "row",
+    flexWrap: "wrap"
   },
   iconItemWrapper: {
     marginBottom: 20

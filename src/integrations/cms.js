@@ -18,7 +18,7 @@ export type Event = {
   },
   fields: {
     name: { [string]: string },
-    eventCategory: { [string]: string },
+    eventCategories: { [string]: string[] },
     startTime: { [string]: string },
     endTime: { [string]: string },
     location: { [string]: { lat: number, lon: number } },
