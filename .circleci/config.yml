@@ -52,15 +52,18 @@ jobs:
           at: ~/project
       - run: git clone git@github.com:redbadger/pride-android-secrets.git
       - run: mkdir -p .gradle 
-      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD" >> .gradle/gradle.properties
+      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
+      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
       - run: bundle install
-      # Only deploy build from master branch
       - run: 
             command: |
                 bundle exec fastlane alpha \
                 submit:true \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
                 commit_sha:$CIRCLE_SHA1 
       - store_artifacts:
           path: ~/project/android/app/build/outputs
@@ -76,15 +79,18 @@ jobs:
           at: ~/project
       - run: git clone git@github.com:redbadger/pride-android-secrets.git
       - run: mkdir -p .gradle 
-      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD" >> .gradle/gradle.properties
+      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
+      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
       - run: bundle install
-      # Only deploy build from master branch
       - run: 
             command: |
                 bundle exec fastlane beta \
                 submit:true \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
                 commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: ~/project/android/app/build/outputs
@@ -110,12 +116,17 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
+      - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
                 bundle exec fastlane alpha \
                 submit:true \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                ci_build_num:$CIRCLE_BUILD_NUM \
                 commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: /Users/distiller/project/output
@@ -141,12 +152,17 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
+      - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
                 bundle exec fastlane beta \
                 submit:true \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                ci_build_num:$CIRCLE_BUILD_NUM \
                 commit_sha:$CIRCLE_SHA1
 
 workflows:
