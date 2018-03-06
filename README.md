@@ -54,10 +54,13 @@ And fill in the required variables from the appropriate developer portals (e.g. 
 * Make sure you have Java 8 installed (Java 9 won't work). You can point `JAVA_HOME` to the embedded JDK from Android Studio to make sure you have JDK version, which works with Android.
 * In Android Studio "Open an existing Android project" and select the `./android` folder in this repository.
   * This will automatically try to build the project. You will see the Gradle process running.
-  * When dependencies are missing (e.g. SDK Platform or build tools), it will error and show a link to install them (e.g. "Install Build Tool XX.X.X and sync project"). Click on the link to resolve.
+  * When dependencies are missing (e.g. SDK Platform or build tools), it will error and show a link to install them (e.g. "Install Build Tool XX.X.X and sync project"). Click on the link to resolve. This may happen a few times until you get a BUILD SUCCESSFUL in the 'Messages' tab
   * It will also automatically create the file `./android/local.properties` with a prop `sdk.dir=<path to your android sdk>`, which is required for the build.
-  * Create an emulator. Click on the AVD Manager icon in the toolbar (this will appear when the project compiled correctly). Create a new AVD.
-* Add `<path to your android adk>/platform-tools` to your `PATH`. This is required because React Native will run `adb`.
+  * Create an emulator. Click on the Android Virtual Device Manager icon (4th from the far right) in the toolbar (this will appear when the project compiled correctly). Create a new AVD.
+  * choose any device you want
+  * select a system image - choose one in the list recommended and click on the download link next to the image name. It will automatically start downloading
+  * click next through to finish. Then start your virtual device by clicking the green play button under actions. You should see the emulator pop up. You can now close Android Studio
+* Add `<path to your android sdk>/platform-tools` to your `PATH`. This is required because React Native will run `adb`.
 
 * `yarn run-android`
 
