@@ -5651,6 +5651,10 @@ react-native-easy-markdown@^1.1.9:
   dependencies:
     simple-markdown "^0.1.1"
 
+react-native-maps@0.16.4:
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.16.4.tgz#c18c3cab8cd0ce05431cd74dac11a39afaa579e4"
+
 react-native-mock@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/react-native-mock/-/react-native-mock-0.3.1.tgz#13d22433c5351a8a7fb8aedd7862b614d087851c"
