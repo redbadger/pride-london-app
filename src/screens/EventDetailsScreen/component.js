@@ -2,7 +2,6 @@
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import MapView, { Marker } from "react-native-maps";
 import Header from "./Header";
 import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
@@ -40,7 +39,6 @@ class EventDetailsScreen extends React.Component<Props> {
       hour: "numeric",
       minute: "numeric"
     };
-    console.log(event);
     return (
       <ScrollView style={styles.container}>
         <Header
@@ -97,24 +95,6 @@ class EventDetailsScreen extends React.Component<Props> {
         <View style={styles.sectionDivider} />
         <View style={styles.content}>
           <Text markdown>{event.fields.eventDescription[locale]}</Text>
-          <MapView
-            style={styles.map}
-            initialRegion={{
-              latitude: event.fields.location[locale].lat,
-              longitude: event.fields.location[locale].lon,
-              latitudeDelta: 0.008,
-              longitudeDelta: 0.008
-            }}
-            scrollEnabled={false}
-            zoomEnabled={false}
-          >
-            <Marker
-              coordinate={{
-                latitude: event.fields.location[locale].lat,
-                longitude: event.fields.location[locale].lon
-              }}
-            />
-          </MapView>
         </View>
         <View style={styles.sectionDivider} />
         <View style={styles.content}>
@@ -179,10 +159,6 @@ const styles = StyleSheet.create({
   sectionDivider: {
     height: 4,
     backgroundColor: eventDetailsHeaderBgColor
-  },
-  map: {
-    height: 160,
-    borderRadius: 6
   },
   detailsSection: {
     marginBottom: 20

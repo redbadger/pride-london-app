@@ -21,7 +21,6 @@ export type Event = {
     eventCategory: { [string]: string },
     startTime: { [string]: string },
     endTime: { [string]: string },
-    location: { [string]: { lat: number, lon: number } },
     locationName: { [string]: string },
     eventPriceLow: { [string]: number },
     eventPriceHigh: { [string]: number },
