@@ -5651,6 +5651,10 @@ react-native-easy-markdown@^1.1.9:
   dependencies:
     simple-markdown "^0.1.1"
 
+react-native-map-link@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-map-link/-/react-native-map-link-1.0.6.tgz#22fe6059cfd571441f475f8d60b973b28f565687"
+
 react-native-maps@0.16.4:
   version "0.16.4"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.16.4.tgz#c18c3cab8cd0ce05431cd74dac11a39afaa579e4"

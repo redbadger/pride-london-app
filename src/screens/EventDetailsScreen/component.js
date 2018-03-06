@@ -1,7 +1,8 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
+import { showLocation } from "react-native-map-link";
 import type { NavigationScreenProp } from "react-navigation";
 import Header from "./Header";
 import IconItem from "./IconItem";
@@ -20,6 +21,14 @@ const locale = "en-GB";
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: String } }>,
   event: Event
+};
+
+const onMapPress = (lat, lon, title) => {
+  showLocation({
+    latitude: lat,
+    longitude: lon,
+    title
+  });
 };
 
 class EventDetailsScreen extends React.Component<Props> {
@@ -96,7 +105,16 @@ class EventDetailsScreen extends React.Component<Props> {
         <View style={styles.sectionDivider} />
         <View style={styles.content}>
           <Text markdown>{event.fields.eventDescription[locale]}</Text>
-          <View style={styles.mapWrapper}>
+          <TouchableOpacity
+            style={styles.mapWrapper}
+            onPress={() =>
+              onMapPress(
+                event.fields.location[locale].lat,
+                event.fields.location[locale].lon,
+                event.fields.locationName[locale]
+              )
+            }
+          >
             <MapView
               style={styles.map}
               initialRegion={{
@@ -116,7 +134,7 @@ class EventDetailsScreen extends React.Component<Props> {
                 }}
               />
             </MapView>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.sectionDivider} />
         <View style={styles.content}>
