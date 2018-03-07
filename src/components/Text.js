@@ -78,6 +78,8 @@ const textStyles = {
 };
 
 const markdownStyles = {
+  // "u" - underline is listed in react-native-easy-markdown
+  // but doesn't exist in the markdown spec so should be rendered bold
   u: {
     fontWeight: "bold"
   }
