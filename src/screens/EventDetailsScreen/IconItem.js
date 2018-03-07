@@ -3,24 +3,27 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { Node } from "react";
 import Text from "../../components/Text";
+import type { TextType } from "../../components/Text";
 
 type IconItemProps = {
   icon: Node,
   title: string,
-  children?: Node
+  children?: Node,
+  titleType?: TextType
 };
 
-const IconItem = ({ icon, title, children }: IconItemProps) => (
+const IconItem = ({ icon, title, titleType, children }: IconItemProps) => (
   <View style={styles.iconItem}>
     <View style={styles.icon}>{icon}</View>
     <View style={styles.item}>
-      <Text type="h3">{title}</Text>
+      <Text type={titleType}>{title}</Text>
       {children}
     </View>
   </View>
 );
 IconItem.defaultProps = {
-  children: null
+  children: null,
+  titleType: "h3"
 };
 
 const styles = StyleSheet.create({

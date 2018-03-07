@@ -5,9 +5,20 @@ import Markdown from "react-native-easy-markdown";
 import type { Node } from "react";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
+export type TextType =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "text"
+  | "small"
+  | "xSmall";
+
 type Props = {
   children: Node,
-  type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "text" | "small" | "xSmall",
+  type?: TextType,
   markdown?: boolean,
   style?: StyleObj
 };

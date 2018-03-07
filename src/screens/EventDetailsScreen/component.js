@@ -132,6 +132,7 @@ const renderEventDetails = event =>
                 <IconItem
                   icon={<Text type="xSmall">icn</Text>}
                   title={event.fields.email[locale]}
+                  titleType="text"
                 />
               </View>
             )}
@@ -140,6 +141,7 @@ const renderEventDetails = event =>
                 <IconItem
                   icon={<Text type="xSmall">icn</Text>}
                   title={event.fields.phone[locale]}
+                  titleType="text"
                 />
               </View>
             )}
