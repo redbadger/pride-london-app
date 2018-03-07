@@ -24,12 +24,35 @@
 
 ### Prerequisites
 
-* Install Xcode from the App Store and accept the license agreement.
+#### General
+
 * `brew install node`
 * `brew install watchman`
 * `yarn global add react-native-cli`
 
 More information on getting started can be found here: https://facebook.github.io/react-native/docs/getting-started.html under the `Building prodjects with React Native` tab.
+
+#### iOS
+
+* Install Xcode from the App Store and accept the license agreement.
+
+#### Android
+
+* Install [Android Studio](https://developer.android.com/studio/index.html).
+* Install the Android SDK and necessary components.
+  * Open Android Studio. If this is the first time you open it, it will prompt you to install the Android SDK. You can proceed with the default settings.
+  * Select "Open an existing Android Studio project" and select the `./android` folder in this repository. This will help you to get the necessary dependencies installed.
+  * Android Studio will automatically try to build the project. You will see the Gradle process running.
+  * When dependencies are missing (e.g. SDK Platform or build tools), it will error and show a link to install them (e.g. "Install Build Tool xx.x.x and sync project"). Click on the link to resolve. Repeat this until you get a BUILD SUCCESSFUL message.
+  * It will also automatically create the file `./android/local.properties` with a entry `sdk.dir=<path to your android sdk>`, which is required for the build to work.
+* Create and start an emulator (aka AVD (Android Virtual Device)).
+  * Open Android Studio and click on the AVD Manager icon (4th from the far right) in the toolbar (this will appear when the project compiled correctly).
+  * Choose any device you want.
+  * Select a system image. Choose a recommended one. Click on the download link next to the image name. It will automatically start downloading.
+  * Click next through to finish.
+  * Start your AVD by clicking the green play button under actions.
+* Add `<path to your android sdk>/platform-tools` to your `PATH`. This is required because React Native will run `adb` to install the app on your emulator/device.
+* Make sure you have Java 8 installed (Java 9 won't work). If you wany, you can point `JAVA_HOME` to the embedded JDK from Android Studio to make sure you have a JDK version, which works with Android.
 
 ### Environment Variables
 
@@ -48,19 +71,6 @@ And fill in the required variables from the appropriate developer portals (e.g. 
 * `yarn run-ios [--simulator="iPhone X"]`
 
 #### Android
-
-* Install [Android Studio](https://developer.android.com/studio/index.html).
-* Open Android Studio and install the Android SDK with the default settings.
-* Make sure you have Java 8 installed (Java 9 won't work). You can point `JAVA_HOME` to the embedded JDK from Android Studio to make sure you have JDK version, which works with Android.
-* In Android Studio "Open an existing Android project" and select the `./android` folder in this repository.
-  * This will automatically try to build the project. You will see the Gradle process running.
-  * When dependencies are missing (e.g. SDK Platform or build tools), it will error and show a link to install them (e.g. "Install Build Tool XX.X.X and sync project"). Click on the link to resolve. This may happen a few times until you get a BUILD SUCCESSFUL in the 'Messages' tab
-  * It will also automatically create the file `./android/local.properties` with a prop `sdk.dir=<path to your android sdk>`, which is required for the build.
-  * Create an emulator. Click on the Android Virtual Device Manager icon (4th from the far right) in the toolbar (this will appear when the project compiled correctly). Create a new AVD.
-  * choose any device you want
-  * select a system image - choose one in the list recommended and click on the download link next to the image name. It will automatically start downloading
-  * click next through to finish. Then start your virtual device by clicking the green play button under actions. You should see the emulator pop up. You can now close Android Studio
-* Add `<path to your android sdk>/platform-tools` to your `PATH`. This is required because React Native will run `adb`.
 
 * `yarn run-android`
 
