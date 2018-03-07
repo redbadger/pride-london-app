@@ -13,6 +13,7 @@ import {
   eventDetailsHeaderBgColor
 } from "../../constants/colors";
 import text from "../../constants/text";
+import strings from "../../constants/strings";
 import type { Event } from "../../integrations/cms";
 
 const locale = "en-GB";
@@ -84,6 +85,16 @@ class EventDetailsScreen extends React.Component<Props> {
               }`}
             />
           </View>
+          {event.fields.venueDetails[locale].includes(
+            strings.venuedetailsGenderNeutralToilets
+          ) && (
+            <View style={styles.iconItemWrapper}>
+              <IconItem
+                icon={<Text type="xSmall">icn</Text>}
+                title={text.eventDetailsGenderNeutralToilets}
+              />
+            </View>
+          )}
           <View style={styles.iconItemWrapper}>
             <IconItem
               icon={<Text type="xSmall">icn</Text>}
@@ -106,44 +117,53 @@ class EventDetailsScreen extends React.Component<Props> {
             />
           </View>
         </View>
-        <View style={styles.sectionDivider} />
-        <View style={styles.content}>
-          {event.fields.accessibilityDetails && (
-            <View style={styles.detailsSection}>
-              <Text type="h2">{text.eventDetailsAccessibilityDetails}</Text>
-              <View style={styles.accessibilityDetailsItem}>
-                <Text>{event.fields.accessibilityDetails[locale]}</Text>
-              </View>
-            </View>
-          )}
-          {(event.fields.email || event.fields.phone) && (
-            <View style={styles.detailsSection}>
-              <Text type="h2">{text.eventDetailsContact}</Text>
-              {event.fields.email && (
-                <View style={styles.contactItem}>
-                  <IconItem
-                    icon={<Text type="xSmall">icn</Text>}
-                    title={event.fields.email[locale]}
+        {(event.fields.accessibilityDetails ||
+          event.fields.email ||
+          event.fields.phone ||
+          event.fields.ticketingUrl) && (
+          <View>
+            <View style={styles.sectionDivider} />
+            <View style={styles.content}>
+              {event.fields.accessibilityDetails && (
+                <View style={styles.detailsSection}>
+                  <Text type="h2">{text.eventDetailsAccessibilityDetails}</Text>
+                  <View style={styles.accessibilityDetailsItem}>
+                    <Text>{event.fields.accessibilityDetails[locale]}</Text>
+                  </View>
+                </View>
+              )}
+              {(event.fields.email || event.fields.phone) && (
+                <View style={styles.detailsSection}>
+                  <Text type="h2">{text.eventDetailsContact}</Text>
+                  {event.fields.email && (
+                    <View style={styles.contactItem}>
+                      <IconItem
+                        icon={<Text type="xSmall">icn</Text>}
+                        title={event.fields.email[locale]}
+                      />
+                    </View>
+                  )}
+                  {event.fields.phone && (
+                    <View style={styles.contactItem}>
+                      <IconItem
+                        icon={<Text type="xSmall">icn</Text>}
+                        title={event.fields.phone[locale]}
+                      />
+                    </View>
+                  )}
+                </View>
+              )}
+              {event.fields.ticketingUrl && (
+                <View style={styles.buyButton}>
+                  <Button
+                    text={text.eventDetailsBuyButton}
+                    url={event.fields.ticketingUrl[locale]}
                   />
                 </View>
               )}
-              {event.fields.phone && (
-                <View style={styles.contactItem}>
-                  <IconItem
-                    icon={<Text type="xSmall">icn</Text>}
-                    title={event.fields.phone[locale]}
-                  />
-                </View>
-              )}
             </View>
-          )}
-          <View style={styles.buyButton}>
-            <Button
-              text={text.eventDetailsBuyButton}
-              url={event.fields.ticketingUrl[locale]}
-            />
           </View>
-        </View>
+        )}
       </ScrollView>
     );
   }

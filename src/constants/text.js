@@ -5,5 +5,6 @@ export default {
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",
   eventDetailsContact: "Contact",
-  eventDetailsBuyButton: "Buy Tickets"
+  eventDetailsBuyButton: "Buy Tickets",
+  eventDetailsGenderNeutralToilets: "Gender neutral toilets"
 };

@@ -30,7 +30,8 @@ export type Event = {
     accessibilityDetails: { [string]: string },
     email: { [string]: string },
     phone: { [string]: string },
-    ticketingUrl: { [string]: string }
+    ticketingUrl: { [string]: string },
+    venueDetails: { [string]: string[] }
   }
 };
 export type Deletion = {
