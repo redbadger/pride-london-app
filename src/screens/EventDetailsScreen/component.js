@@ -90,16 +90,19 @@ class EventDetailsScreen extends React.Component<Props> {
               />
             </View>
           )}
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="xSmall">icn</Text>}
-              title={text.eventDetailsAccessibility}
-            >
-              <Text type="small">
-                {event.fields.accessibilityOptions[locale].join(", ")}
-              </Text>
-            </IconItem>
-          </View>
+          {event.fields.accessibilityOptions &&
+            event.fields.accessibilityOptions[locale].length > 0 && (
+              <View style={styles.iconItemWrapper}>
+                <IconItem
+                  icon={<Text type="xSmall">icn</Text>}
+                  title={text.eventDetailsAccessibility}
+                >
+                  <Text type="small">
+                    {event.fields.accessibilityOptions[locale].join(", ")}
+                  </Text>
+                </IconItem>
+              </View>
+            )}
         </View>
         <View style={styles.sectionDivider} />
         <View style={styles.content}>
