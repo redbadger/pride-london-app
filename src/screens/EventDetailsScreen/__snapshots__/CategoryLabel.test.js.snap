@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Text
+  markdown={false}
+  style={
+    Object {
+      "backgroundColor": "#d8d8d8",
+      "color": "#fff",
+      "marginBottom": 8,
+      "marginRight": 8,
+      "paddingHorizontal": 8,
+    }
+  }
+  type="h3"
+>
+  music
+</Text>
+`;
