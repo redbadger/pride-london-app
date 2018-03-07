@@ -3,6 +3,7 @@ import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import formatDate from "date-fns/format";
+import isSameDay from "date-fns/is_same_day";
 import Header from "./Header";
 import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
@@ -35,6 +36,17 @@ class EventDetailsScreen extends React.Component<Props> {
     const endTime = new Date(this.props.event.fields.endTime[locale]);
     const dateFormat = "DD MMMM YYYY";
     const timeFormat = "HH:mm";
+    const dateDisplay = isSameDay(startTime, endTime)
+      ? formatDate(startTime, dateFormat)
+      : `${formatDate(startTime, dateFormat)} - ${formatDate(
+          endTime,
+          dateFormat
+        )}`;
+    const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
+      endTime,
+      timeFormat
+    )}`;
+
     return (
       <ScrollView style={styles.container}>
         <Header
@@ -50,19 +62,8 @@ class EventDetailsScreen extends React.Component<Props> {
             ))}
           </View>
           <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="xSmall">icn</Text>}
-              title={`${formatDate(startTime, dateFormat)} - ${formatDate(
-                endTime,
-                dateFormat
-              )}`}
-            >
-              <Text type="small">
-                {`${formatDate(startTime, timeFormat)} - ${formatDate(
-                  endTime,
-                  timeFormat
-                )}`}
-              </Text>
+            <IconItem icon={<Text type="xSmall">icn</Text>} title={dateDisplay}>
+              <Text type="small">{timeDisplay}</Text>
             </IconItem>
           </View>
           <View style={styles.iconItemWrapper}>
