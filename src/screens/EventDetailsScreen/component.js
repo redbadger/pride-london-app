@@ -25,6 +25,138 @@ type Props = {
   event: Event
 };
 
+const renderEventOverview = event => {
+  const startTime = new Date(event.fields.startTime[locale]);
+  const endTime = new Date(event.fields.endTime[locale]);
+  const dateFormat = "DD MMMM YYYY";
+  const timeFormat = "HH:mm";
+  const dateDisplay = isSameDay(startTime, endTime)
+    ? formatDate(startTime, dateFormat)
+    : `${formatDate(startTime, dateFormat)} - ${formatDate(
+        endTime,
+        dateFormat
+      )}`;
+  const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
+    endTime,
+    timeFormat
+  )}`;
+
+  return (
+    <View style={styles.content}>
+      <Text type="h1">{event.fields.name[locale]}</Text>
+      <View style={styles.categoryLabelContainer}>
+        {event.fields.eventCategories[locale].map(categoryName => (
+          <CategoryLabel key={categoryName} categoryName={categoryName} />
+        ))}
+      </View>
+      <View style={styles.iconItemWrapper}>
+        <IconItem icon={<Text type="xSmall">icn</Text>} title={dateDisplay}>
+          <Text type="small">{timeDisplay}</Text>
+        </IconItem>
+      </View>
+      <View style={styles.iconItemWrapper}>
+        <IconItem
+          icon={<Text type="xSmall">icn</Text>}
+          title={event.fields.locationName[locale]}
+        />
+      </View>
+      <View style={styles.iconItemWrapper}>
+        <IconItem
+          icon={<Text type="xSmall">icn</Text>}
+          title={`${text.eventDetailsPrice}${
+            event.fields.eventPriceLow[locale]
+          }`}
+        />
+      </View>
+      {event.fields.venueDetails[locale].includes(
+        strings.venuedetailsGenderNeutralToilets
+      ) && (
+        <View style={styles.iconItemWrapper}>
+          <IconItem
+            icon={<Text type="xSmall">icn</Text>}
+            title={text.eventDetailsGenderNeutralToilets}
+          />
+        </View>
+      )}
+      {event.fields.accessibilityOptions &&
+        event.fields.accessibilityOptions[locale].length > 0 && (
+          <View style={styles.iconItemWrapper}>
+            <IconItem
+              icon={<Text type="xSmall">icn</Text>}
+              title={text.eventDetailsAccessibility}
+            >
+              <Text type="small">
+                {event.fields.accessibilityOptions[locale].join(", ")}
+              </Text>
+            </IconItem>
+          </View>
+        )}
+    </View>
+  );
+};
+
+const renderEventDescription = event => (
+  <View style={styles.content}>
+    <Text markdown>{event.fields.eventDescription[locale]}</Text>
+    <View style={styles.mapWrapper}>
+      <EventMap
+        lat={event.fields.location[locale].lat}
+        lon={event.fields.location[locale].lon}
+        locationName={event.fields.locationName[locale]}
+      />
+    </View>
+  </View>
+);
+
+const renderEventDetails = event =>
+  (event.fields.accessibilityDetails ||
+    event.fields.email ||
+    event.fields.phone ||
+    event.fields.ticketingUrl) && (
+    <View>
+      <View style={styles.sectionDivider} />
+      <View style={styles.content}>
+        {event.fields.accessibilityDetails && (
+          <View style={styles.detailsSection}>
+            <Text type="h2">{text.eventDetailsAccessibilityDetails}</Text>
+            <View style={styles.accessibilityDetailsItem}>
+              <Text>{event.fields.accessibilityDetails[locale]}</Text>
+            </View>
+          </View>
+        )}
+        {(event.fields.email || event.fields.phone) && (
+          <View style={styles.detailsSection}>
+            <Text type="h2">{text.eventDetailsContact}</Text>
+            {event.fields.email && (
+              <View style={styles.contactItem}>
+                <IconItem
+                  icon={<Text type="xSmall">icn</Text>}
+                  title={event.fields.email[locale]}
+                />
+              </View>
+            )}
+            {event.fields.phone && (
+              <View style={styles.contactItem}>
+                <IconItem
+                  icon={<Text type="xSmall">icn</Text>}
+                  title={event.fields.phone[locale]}
+                />
+              </View>
+            )}
+          </View>
+        )}
+        {event.fields.ticketingUrl && (
+          <View style={styles.buyButton}>
+            <Button
+              text={text.eventDetailsBuyButton}
+              url={event.fields.ticketingUrl[locale]}
+            />
+          </View>
+        )}
+      </View>
+    </View>
+  );
+
 class EventDetailsScreen extends React.Component<Props> {
   static navigationOptions = {
     header: null
@@ -32,21 +164,6 @@ class EventDetailsScreen extends React.Component<Props> {
 
   render() {
     const { event } = this.props;
-    const startTime = new Date(this.props.event.fields.startTime[locale]);
-    const endTime = new Date(this.props.event.fields.endTime[locale]);
-    const dateFormat = "DD MMMM YYYY";
-    const timeFormat = "HH:mm";
-    const dateDisplay = isSameDay(startTime, endTime)
-      ? formatDate(startTime, dateFormat)
-      : `${formatDate(startTime, dateFormat)} - ${formatDate(
-          endTime,
-          dateFormat
-        )}`;
-    const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
-      endTime,
-      timeFormat
-    )}`;
-
     return (
       <ScrollView style={styles.container}>
         <Header
@@ -54,114 +171,10 @@ class EventDetailsScreen extends React.Component<Props> {
             this.props.navigation.goBack(null);
           }}
         />
-        <View style={styles.content}>
-          <Text type="h1">{event.fields.name[locale]}</Text>
-          <View style={styles.categoryLabelContainer}>
-            {event.fields.eventCategories[locale].map(categoryName => (
-              <CategoryLabel key={categoryName} categoryName={categoryName} />
-            ))}
-          </View>
-          <View style={styles.iconItemWrapper}>
-            <IconItem icon={<Text type="xSmall">icn</Text>} title={dateDisplay}>
-              <Text type="small">{timeDisplay}</Text>
-            </IconItem>
-          </View>
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="xSmall">icn</Text>}
-              title={event.fields.locationName[locale]}
-            />
-          </View>
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="xSmall">icn</Text>}
-              title={`${text.eventDetailsPrice}${
-                event.fields.eventPriceLow[locale]
-              }`}
-            />
-          </View>
-          {event.fields.venueDetails[locale].includes(
-            strings.venuedetailsGenderNeutralToilets
-          ) && (
-            <View style={styles.iconItemWrapper}>
-              <IconItem
-                icon={<Text type="xSmall">icn</Text>}
-                title={text.eventDetailsGenderNeutralToilets}
-              />
-            </View>
-          )}
-          {event.fields.accessibilityOptions &&
-            event.fields.accessibilityOptions[locale].length > 0 && (
-              <View style={styles.iconItemWrapper}>
-                <IconItem
-                  icon={<Text type="xSmall">icn</Text>}
-                  title={text.eventDetailsAccessibility}
-                >
-                  <Text type="small">
-                    {event.fields.accessibilityOptions[locale].join(", ")}
-                  </Text>
-                </IconItem>
-              </View>
-            )}
-        </View>
+        {renderEventOverview(event)}
         <View style={styles.sectionDivider} />
-        <View style={styles.content}>
-          <Text markdown>{event.fields.eventDescription[locale]}</Text>
-          <View style={styles.mapWrapper}>
-            <EventMap
-              lat={event.fields.location[locale].lat}
-              lon={event.fields.location[locale].lon}
-              locationName={event.fields.locationName[locale]}
-            />
-          </View>
-        </View>
-        {(event.fields.accessibilityDetails ||
-          event.fields.email ||
-          event.fields.phone ||
-          event.fields.ticketingUrl) && (
-          <View>
-            <View style={styles.sectionDivider} />
-            <View style={styles.content}>
-              {event.fields.accessibilityDetails && (
-                <View style={styles.detailsSection}>
-                  <Text type="h2">{text.eventDetailsAccessibilityDetails}</Text>
-                  <View style={styles.accessibilityDetailsItem}>
-                    <Text>{event.fields.accessibilityDetails[locale]}</Text>
-                  </View>
-                </View>
-              )}
-              {(event.fields.email || event.fields.phone) && (
-                <View style={styles.detailsSection}>
-                  <Text type="h2">{text.eventDetailsContact}</Text>
-                  {event.fields.email && (
-                    <View style={styles.contactItem}>
-                      <IconItem
-                        icon={<Text type="xSmall">icn</Text>}
-                        title={event.fields.email[locale]}
-                      />
-                    </View>
-                  )}
-                  {event.fields.phone && (
-                    <View style={styles.contactItem}>
-                      <IconItem
-                        icon={<Text type="xSmall">icn</Text>}
-                        title={event.fields.phone[locale]}
-                      />
-                    </View>
-                  )}
-                </View>
-              )}
-              {event.fields.ticketingUrl && (
-                <View style={styles.buyButton}>
-                  <Button
-                    text={text.eventDetailsBuyButton}
-                    url={event.fields.ticketingUrl[locale]}
-                  />
-                </View>
-              )}
-            </View>
-          </View>
-        )}
+        {renderEventDescription(event)}
+        {renderEventDetails(event)}
       </ScrollView>
     );
   }
