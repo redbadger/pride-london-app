@@ -14,7 +14,10 @@ type Props = {
 
 const Text = ({ children, type, markdown, style }: Props) =>
   markdown ? (
-    <Markdown style={style} markdownStyles={textStyles}>
+    <Markdown
+      style={style}
+      markdownStyles={{ ...textStyles, ...markdownStyles }}
+    >
       {children}
     </Markdown>
   ) : (
@@ -33,17 +36,17 @@ const textStyles = {
     lineHeight: 28
   },
   h2: {
-    fontFamily: "Roboto",
+    fontFamily: "Poppins-SemiBold",
     fontSize: 18,
     lineHeight: 24
   },
   h3: {
-    fontFamily: "Roboto",
+    fontFamily: "Poppins-SemiBold",
     fontSize: 16,
     lineHeight: 24
   },
   h4: {
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Medium",
     fontSize: 16,
     lineHeight: 24
   },
@@ -71,6 +74,12 @@ const textStyles = {
     fontFamily: "Roboto",
     fontSize: 12,
     lineHeight: 16
+  }
+};
+
+const markdownStyles = {
+  u: {
+    fontWeight: "bold"
   }
 };
 
