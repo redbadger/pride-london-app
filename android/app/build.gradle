@@ -95,6 +95,16 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+/**
+ * Use generated version code from Fastlane if available.
+ */
+def androidVersionCode = 1
+if (file("../.gradle/gradle.properties").exists()) {
+    def props = new Properties()
+    file("../.gradle/gradle.properties").withReader { props.load(it) }
+    androidVersionCode = props['versionCode'].toInteger()
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -103,14 +113,8 @@ android {
         applicationId "com.pridelondonapp"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
+        versionCode androidVersionCode
         versionName "1.0.4"
-        Properties props = new Properties()
-        File propertiesFile = new File("../.gradle/gradle.properties");
-        if (propertiesFile.exists()) {
-            props.load(new FileInputStream(propertiesFile))
-            versionCode props['version  Code'].toInteger()
-        }
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
