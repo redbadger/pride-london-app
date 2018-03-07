@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
   categoryLabelContainer: {
     marginTop: 16,
-    marginBottom: 28,
+    marginBottom: 20,
     flexDirection: "row",
     flexWrap: "wrap"
   },
