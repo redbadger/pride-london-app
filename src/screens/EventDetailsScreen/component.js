@@ -2,6 +2,7 @@
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
+import formatDate from "date-fns/format";
 import Header from "./Header";
 import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
@@ -32,15 +33,8 @@ class EventDetailsScreen extends React.Component<Props> {
     const { event } = this.props;
     const startTime = new Date(this.props.event.fields.startTime[locale]);
     const endTime = new Date(this.props.event.fields.endTime[locale]);
-    const dateFormat = {
-      day: "2-digit",
-      month: "long",
-      year: "numeric"
-    };
-    const timeFormat = {
-      hour: "numeric",
-      minute: "numeric"
-    };
+    const dateFormat = "DD MMMM YYYY";
+    const timeFormat = "HH:mm";
     return (
       <ScrollView style={styles.container}>
         <Header
@@ -58,16 +52,16 @@ class EventDetailsScreen extends React.Component<Props> {
           <View style={styles.iconItemWrapper}>
             <IconItem
               icon={<Text type="xSmall">icn</Text>}
-              title={`${startTime.toLocaleDateString(
-                locale,
+              title={`${formatDate(startTime, dateFormat)} - ${formatDate(
+                endTime,
                 dateFormat
-              )} - ${endTime.toLocaleDateString(locale, dateFormat)}`}
+              )}`}
             >
               <Text type="small">
-                {`${startTime.toLocaleTimeString(
-                  locale,
+                {`${formatDate(startTime, timeFormat)} - ${formatDate(
+                  endTime,
                   timeFormat
-                )} - ${endTime.toLocaleTimeString(locale, timeFormat)}`}
+                )}`}
               </Text>
             </IconItem>
           </View>
