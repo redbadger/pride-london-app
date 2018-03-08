@@ -1,8 +1,13 @@
-const getEventsState = state => state.events;
+// @flow
+import type { State } from "../reducers";
 
-export const selectEvents = state => getEventsState(state).events;
-export const selectEventsLoading = state => getEventsState(state).loading;
-export const selectEventsRefreshing = state => getEventsState(state).refreshing;
+const getEventsState = (state: State) => state.events;
 
-export const selectEventById = (state, id) =>
+export const selectEvents = (state: State) => getEventsState(state).events;
+export const selectEventsLoading = (state: State) =>
+  getEventsState(state).loading;
+export const selectEventsRefreshing = (state: State) =>
+  getEventsState(state).refreshing;
+
+export const selectEventById = (state: State, id: string) =>
   selectEvents(state).find(event => event.sys.id === id);
