@@ -50,9 +50,11 @@ const renderEventOverview = event => {
         ))}
       </View>
       <View style={styles.iconItemWrapper}>
-        <IconItem icon={<Text type="xSmall">icn</Text>} title={dateDisplay}>
-          <Text type="small">{timeDisplay}</Text>
-        </IconItem>
+        <IconItem
+          icon={<Text type="xSmall">icn</Text>}
+          title={dateDisplay}
+          content={<Text type="small">{timeDisplay}</Text>}
+        />
       </View>
       <View style={styles.iconItemWrapper}>
         <IconItem
@@ -84,11 +86,12 @@ const renderEventOverview = event => {
             <IconItem
               icon={<Text type="xSmall">icn</Text>}
               title={text.eventDetailsAccessibility}
-            >
-              <Text type="small">
-                {event.fields.accessibilityOptions[locale].join(", ")}
-              </Text>
-            </IconItem>
+              content={
+                <Text type="small">
+                  {event.fields.accessibilityOptions[locale].join(", ")}
+                </Text>
+              }
+            />
           </View>
         )}
     </View>

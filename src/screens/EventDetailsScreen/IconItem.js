@@ -5,24 +5,24 @@ import type { Node } from "react";
 import Text from "../../components/Text";
 import type { TextType } from "../../components/Text";
 
-type IconItemProps = {
+type IconItemProps = {|
   icon: Node,
   title: string,
-  children?: Node,
+  content?: Node,
   titleType?: TextType
-};
+|};
 
-const IconItem = ({ icon, title, titleType, children }: IconItemProps) => (
+const IconItem = ({ icon, title, titleType, content }: IconItemProps) => (
   <View style={styles.iconItem}>
     <View style={styles.icon}>{icon}</View>
     <View style={styles.item}>
       <Text type={titleType}>{title}</Text>
-      {children}
+      {content}
     </View>
   </View>
 );
 IconItem.defaultProps = {
-  children: null,
+  content: null,
   titleType: "h3"
 };
 

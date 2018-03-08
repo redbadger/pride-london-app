@@ -11,11 +11,13 @@ it("renders correctly", () => {
   expect(output).toMatchSnapshot();
 });
 
-it("renders children", () => {
+it("renders content", () => {
   const output = shallow(
-    <IconItem icon={<Text>Some icon</Text>} title="some thing">
-      <Text>Some child</Text>
-    </IconItem>
+    <IconItem
+      icon={<Text>Some icon</Text>}
+      title="some thing"
+      content={<Text>Some child</Text>}
+    />
   );
 
   const texts = output.find("Text");
