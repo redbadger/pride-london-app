@@ -5,4 +5,4 @@ export const selectEventsLoading = state => getEventsState(state).loading;
 export const selectEventsRefreshing = state => getEventsState(state).refreshing;
 
 export const selectEventById = (state, id) =>
-  getEventsState(state).events.find(event => event.sys.id === id);
+  selectEvents(state).find(event => event.sys.id === id);
