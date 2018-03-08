@@ -9,5 +9,5 @@ export const selectEventsLoading = (state: State) =>
 export const selectEventsRefreshing = (state: State) =>
   getEventsState(state).refreshing;
 
-export const selectEventById = (state: State, id: string) =>
+export const selectEventById = (state: State, id: String) =>
   selectEvents(state).find(event => event.sys.id === id);
