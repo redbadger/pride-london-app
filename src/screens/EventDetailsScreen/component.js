@@ -69,7 +69,7 @@ const renderEventOverview = event => {
         />
       </View>
       {event.fields.venueDetails[locale].includes(
-        strings.venuedetailsGenderNeutralToilets
+        strings.venueDetailsGenderNeutralToilets
       ) && (
         <View style={styles.iconItemWrapper}>
           <IconItem
