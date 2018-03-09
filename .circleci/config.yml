@@ -34,7 +34,7 @@ save_gems_cache: &save_gems_cache
   save_cache:
     key: *gems_key
     paths:
-- vendor/bundle
+      - vendor/bundle
 
 version: 2
 jobs:
