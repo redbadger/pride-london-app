@@ -108,11 +108,19 @@ jobs:
     working_directory: ~/project/android
     docker:
       - image: circleci/android:api-27-node8-alpha
+    environment:
+      TERM: dumb
     steps:
       - checkout:
           path: ~/project
       - attach_workspace:
           at: ~/project
+      - <<: *restore_gradle_cache
+      - <<: *restore_gems_cache
+      - <<: *ruby_dependencies
+      - <<: *android_dependencies
+      - <<: *save_gradle_cache
+      - <<: *save_gems_cache
       - run: git clone git@github.com:redbadger/pride-android-secrets.git
       - run: mkdir -p .gradle 
       - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
