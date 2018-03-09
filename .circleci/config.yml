@@ -6,6 +6,11 @@ save-cache: &save-cache
     paths:
       - node_modules
     key: dependencies-{{ checksum "package.json" }}
+android-secrets: &android-secrets
+  - run: git clone git@github.com:redbadger/pride-android-secrets.git
+  - run: mkdir -p .gradle 
+  - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
+  - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties  
 
 version: 2
 jobs:
@@ -50,10 +55,7 @@ jobs:
           path: ~/project
       - attach_workspace:
           at: ~/project
-      - run: git clone git@github.com:redbadger/pride-android-secrets.git
-      - run: mkdir -p .gradle 
-      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
-      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
+      - <<: *android-secrets
       - run: bundle install
       - run: 
             command: |
@@ -77,10 +79,7 @@ jobs:
           path: ~/project
       - attach_workspace:
           at: ~/project
-      - run: git clone git@github.com:redbadger/pride-android-secrets.git
-      - run: mkdir -p .gradle 
-      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
-      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
+      - <<: *android-secrets
       - run: bundle install
       - run: 
             command: |
