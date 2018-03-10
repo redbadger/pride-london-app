@@ -7,25 +7,16 @@ import {
   cardBgColor,
   textColor
 } from "../constants/colors";
-import format from "date-fns/format";
 
 type Props = {
   name: string,
   locationName: string,
   date: string,
   price: string,
-  startTime: integer,
-  endTime: integer
+  startTime: integer
 };
 
-const EventCard = ({
-  date,
-  name,
-  locationName,
-  endTime,
-  startTime,
-  price
-}: Props) => (
+const EventCard = ({ date, name, locationName, startTime, price }: Props) => (
   <View style={styles.eventCard}>
     <View style={styles.imageContainer}>
       <View style={styles.priceTagContainer}>
@@ -34,19 +25,17 @@ const EventCard = ({
     </View>
     <View style={styles.eventCardDetails}>
       <View style={styles.heartButtonContainer}>
-        <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventDate}>
-          {date}
+        <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventTime}>
+          {startTime}
         </Text>
         <View>
-          <Text>heart</Text>
+          <Text style={styles.heartIcon}>heart</Text>
         </View>
       </View>
       <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventName}>
         {name}
       </Text>
-      <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventTime}>
-        {startTime}
-      </Text>
+
       <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventLocation}>
         {locationName}
       </Text>
@@ -72,9 +61,12 @@ const styles = StyleSheet.create({
     backgroundColor: priceTagBgColor
   },
   heartButtonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  heartIcon: {
     width: 44,
-    height: 44,
-    flexDirection: "row"
+    height: 44
   },
   eventCardDetails: {
     flex: 1,
