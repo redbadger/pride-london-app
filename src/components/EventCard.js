@@ -11,12 +11,11 @@ import {
 type Props = {
   name: string,
   locationName: string,
-  date: string,
   price: string,
   startTime: integer
 };
 
-const EventCard = ({ date, name, locationName, startTime, price }: Props) => (
+const EventCard = ({ name, locationName, startTime, price }: Props) => (
   <View style={styles.eventCard}>
     <View style={styles.imageContainer}>
       <View style={styles.priceTagContainer}>
@@ -24,21 +23,20 @@ const EventCard = ({ date, name, locationName, startTime, price }: Props) => (
       </View>
     </View>
     <View style={styles.eventCardDetails}>
-      <View style={styles.heartButtonContainer}>
-        <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventTime}>
-          {startTime}
-        </Text>
-        <View>
-          <Text style={styles.heartIcon}>heart</Text>
-        </View>
-      </View>
-      <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventName}>
-        {name}
+      <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventTime}>
+        {startTime}
       </Text>
-
+      <View style={styles.eventNameContainer}>
+        <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventName}>
+          {name}
+        </Text>
+      </View>
       <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventLocation}>
         {locationName}
       </Text>
+    </View>
+    <View style={styles.heartButtonContainer}>
+      <Text style={styles.heartIcon}>heart</Text>
     </View>
   </View>
 );
@@ -75,15 +73,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     justifyContent: "space-around"
   },
-  eventDate: {
-    fontSize: 14
+  eventNameContainer: {
+    flexDirection: "row"
   },
   eventName: {
     color: textColor,
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    flexWrap: "wrap"
   },
   eventPrice: {
+    fontSize: 14,
     alignContent: "center"
   },
   eventTime: {
