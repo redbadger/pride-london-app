@@ -25,9 +25,13 @@ type Props = {
   event: Event
 };
 
+const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
+
 const renderEventOverview = event => {
-  const startTime = new Date(event.fields.startTime[locale]);
-  const endTime = new Date(event.fields.endTime[locale]);
+  const startTime = removeTimezoneFromDateString(
+    event.fields.startTime[locale]
+  );
+  const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
   const dateFormat = "DD MMMM YYYY";
   const timeFormat = "HH:mm";
   const dateDisplay = isSameDay(startTime, endTime)
