@@ -1,9 +1,6 @@
 // @flow
 import type { Dispatch } from "redux";
-import {
-  getEvents as getEventsCms,
-  updateEvents as updateEventsCms
-} from "../integrations/cms";
+import { getCmsData, updateCmsData } from "../integrations/cms";
 import type { Event } from "../integrations/cms";
 import type { StandardAction } from "./";
 
@@ -15,14 +12,18 @@ type EventsPayload = { events: Event[] };
 
 export type EventsAction = StandardAction<EventsActionType, EventsPayload>;
 
-export const getEvents = (getEventsFn: getEventsCms = getEventsCms) => async (
+export const getEvents = (getCmsDataFn: getCmsData = getCmsData) => async (
   dispatch: Dispatch<EventsAction>
 ) => {
   dispatch({
     type: "REQUEST_EVENTS"
   });
 
-  const events = await getEventsFn();
+  const cmsData = await getCmsDataFn();
+
+  const events = cmsData.entries.filter(
+    entry => entry.sys.contentType.sys.id === "event"
+  );
 
   dispatch({
     type: "RECEIVE_EVENTS",
@@ -33,13 +34,17 @@ export const getEvents = (getEventsFn: getEventsCms = getEventsCms) => async (
 };
 
 export const updateEvents = (
-  updateEventsFn: updateEventsCms = updateEventsCms
+  updateCmsDataFn: updateCmsData = updateCmsData
 ) => async (dispatch: Dispatch<EventsAction>) => {
   dispatch({
     type: "REQUEST_UPDATE_EVENTS"
   });
 
-  const events = await updateEventsFn();
+  const cmsData = await updateCmsDataFn();
+
+  const events = cmsData.entries.filter(
+    entry => entry.sys.contentType.sys.id === "event"
+  );
 
   dispatch({
     type: "RECEIVE_EVENTS",
