@@ -122,7 +122,7 @@ android {
         applicationId "com.pridelondonapp"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 1
+        versionCode androidVersionCode
         versionName "1.0.4"
         ndk {
             abiFilters "armeabi-v7a", "x86"
