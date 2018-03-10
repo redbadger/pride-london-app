@@ -3,8 +3,7 @@
   "env": {
     "jest": true,
     "node": true,
-    "react-native/react-native": true,
-    "detox": true
+    "react-native/react-native": true
   },
   "extends": [
     "airbnb",
