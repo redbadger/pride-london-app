@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  onPress={[Function]}
+  style={
+    Object {
+      "borderRadius": 6,
+      "overflow": "hidden",
+    }
+  }
+>
+  <MapView
+    initialRegion={
+      Object {
+        "latitude": 100,
+        "latitudeDelta": 0.008,
+        "longitude": 200,
+        "longitudeDelta": 0.008,
+      }
+    }
+    loadingEnabled={true}
+    scrollEnabled={false}
+    style={
+      Object {
+        "height": 160,
+      }
+    }
+    zoomEnabled={false}
+  >
+    <MapMarker
+      coordinate={
+        Object {
+          "latitude": 100,
+          "longitude": 200,
+        }
+      }
+      onPress={[Function]}
+    />
+  </MapView>
+</TouchableOpacity>
+`;

@@ -27,7 +27,7 @@ const EventList = ({
       <View style={styles.eventListItem}>
         <TouchableOpacity
           delayPressIn={50}
-          onPress={() => onPress(event.fields.name[locale])}
+          onPress={() => onPress(event.sys.id)}
         >
           <EventCard
             date={event.fields.startTime[locale]}
