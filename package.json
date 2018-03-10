@@ -7,7 +7,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "run-android":
-      "node node_modules/react-native/local-cli/cli.js run-android",
+      "node node_modules/react-native/local-cli/cli.js run-android --appId com.pridelondonapp.dev --variant devDebug",
     "test": "jest src",
     "precommit": "lint-staged",
     "lint": "eslint src",

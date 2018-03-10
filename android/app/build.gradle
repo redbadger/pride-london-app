@@ -95,6 +95,16 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+/**
+ * Use generated version code from Fastlane if available.
+ */
+def androidVersionCode = 1
+if (file("../.gradle/gradle.properties").exists()) {
+    def props = new Properties()
+    file("../.gradle/gradle.properties").withReader { props.load(it) }
+    androidVersionCode = props['versionCode'].toInteger()
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -103,13 +113,8 @@ android {
         applicationId "com.pridelondonapp"
         minSdkVersion 16
         targetSdkVersion 22
+        versionCode androidVersionCode
         versionName "1.0.4"
-        Properties props = new Properties()
-        File propertiesFile = new File("../.gradle/gradle.properties");
-        if (propertiesFile.exists()) {
-            props.load(new FileInputStream(propertiesFile))
-            versionCode props['version  Code'].toInteger()
-        }
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -125,7 +130,7 @@ android {
     signingConfigs {
         release {
             Properties props = new Properties()
-            File propertiesFile = new File(".gradle/gradle.properties");
+            File propertiesFile = new File(".gradle/gradle.properties")
             if (propertiesFile.exists()) {
                 props.load(new FileInputStream(propertiesFile))
                 storeFile file(props['keystore'])
@@ -149,14 +154,22 @@ android {
         alpha {
             applicationId 'com.pridelondonapp.alpha'
             resValue "string", "build_config_package", "com.pridelondonapp"
+            resValue "string", "app_name", "Pride Alpha"
         }
         beta {
             applicationId 'com.pridelondonapp.beta'
             resValue "string", "build_config_package", "com.pridelondonapp"
+            resValue "string", "app_name", "Pride Beta"
+        }
+        dev {
+            applicationId 'com.pridelondonapp.dev'
+            resValue "string", "build_config_package", "com.pridelondonapp"
+            resValue "string", "app_name", "Pride DEV"
         }
         production {
             applicationId 'com.pridelondonapp'
             resValue "string", "build_config_package", "com.pridelondonapp"
+            resValue "string", "app_name", "Pride London App"
         }
     }
     // applicationVariants are e.g. debug, release
@@ -201,7 +214,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile('com.crashlytics.sdk.android:crashlytics:2.9.0@aar') {
-        transitive = true;
+        transitive = true
     }
 }
 

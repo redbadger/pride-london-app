@@ -91,11 +91,12 @@ platform :android do
 
   desc "Upload to Beta by Fabric"
   lane :deploy_fabric do |options|
+    File.write("./notes.txt", options[:notes])
     crashlytics(
       api_token: options[:api_token],
       build_secret: options[:build_secret],
       apk_path: options[:apk_path],
-      notes: options[:notes],
+      notes_path: "fastlane/notes.txt",
       groups: options[:groups],
       notifications: options[:notify]
     )
