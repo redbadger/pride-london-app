@@ -50,9 +50,6 @@ jobs:
     docker:
       - image: circleci/node:9.3
     working_directory: ~/project
-    dependencies:
-      pre:
-        - xcrun instruments -w "iPhone 7 (10.2) [" || true
     steps:
       - checkout
       - <<: *get-cache
@@ -225,6 +222,9 @@ jobs:
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
     shell: /bin/bash --login -o pipefail
+    dependencies:
+      pre:
+        - xcrun instruments -w "iPhone 7 (10.2) [" || true
     steps:
       - checkout:
           path: /Users/distiller/project
