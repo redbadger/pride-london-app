@@ -28,7 +28,7 @@ gems-key: &gems-key
 restore-gradlecache: &restore-gradle-cache
   restore_cache:
     key: *gradle-key 
-restore-gems-cache: &restoregems-cache
+restore-gems-cache: &restore-gems-cache
   restore_cache:
     key: *gems-key
 save-gradle-cache: &save-gradle-cache
