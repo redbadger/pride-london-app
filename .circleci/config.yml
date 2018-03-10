@@ -64,17 +64,12 @@ jobs:
           name: Type check
           command: yarn flow
       - run:
+          name: Unit test
           command: |
               curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
               chmod +x ./cc-test-reporter
-      - run:
-          command: 
               ./cc-test-reporter before-build
-      - run:
-          name: Unit test
-          command: yarn test
-      - run:
-          command: 
+              yarn test
               ./cc-test-reporter after-build
       - run:
           name: Generate .env
