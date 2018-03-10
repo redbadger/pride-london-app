@@ -104,6 +104,16 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+/**
+ * Use generated version code from Fastlane if available.
+ */
+def androidVersionCode = 1
+if (file("../.gradle/gradle.properties").exists()) {
+    def props = new Properties()
+    file("../.gradle/gradle.properties").withReader { props.load(it) }
+    androidVersionCode = props['versionCode'].toInteger()
+}
+
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -114,12 +124,6 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0.4"
-        Properties props = new Properties()
-        File propertiesFile = new File("../.gradle/gradle.properties");
-        if (propertiesFile.exists()) {
-            props.load(new FileInputStream(propertiesFile))
-            versionCode props['version  Code'].toInteger()
-        }
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -161,16 +165,24 @@ android {
             dimension "tier"
             applicationId 'com.pridelondonapp.alpha'
             resValue "string", "build_config_package", "com.pridelondonapp"
+            resValue "string", "app_name", "Pride Alpha"
         }
         beta {
             dimension "tier"
             applicationId 'com.pridelondonapp.beta'
             resValue "string", "build_config_package", "com.pridelondonapp"
+            resValue "string", "app_name", "Pride Beta"
+        }
+        dev {
+            applicationId 'com.pridelondonapp.dev'
+            resValue "string", "build_config_package", "com.pridelondonapp"
+            resValue "string", "app_name", "Pride DEV"
         }
         production {
             dimension "tier"
             applicationId 'com.pridelondonapp'
             resValue "string", "build_config_package", "com.pridelondonapp"
+            resValue "string", "app_name", "Pride London App"
         }
     }
     // applicationVariants are e.g. debug, release
