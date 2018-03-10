@@ -54,6 +54,12 @@ jobs:
       - checkout
       - <<: *get-cache
       - run:
+          name: Test reporter status
+          command: |
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+              chmod +x ./cc-test-reporter
+              ./cc-test-reporter before-build
+      - run:
           name: Install dependencies
           command: yarn install
       - <<: *save-cache
@@ -66,9 +72,6 @@ jobs:
       - run:
           name: Unit test
           command: |
-              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-              chmod +x ./cc-test-reporter
-              ./cc-test-reporter before-build
               yarn test
               ./cc-test-reporter after-build
       - run:
@@ -79,8 +82,6 @@ jobs:
           paths:
             - node_modules
             - .env
-      - store_test_results:
-          path: ~/project/junit.xml
 
   alpha-android:
     working_directory: ~/project/android
