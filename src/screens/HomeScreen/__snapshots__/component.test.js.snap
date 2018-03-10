@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeScreen Component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#808080",
+      "flex": 1,
+    }
+  }
+/>
+`;

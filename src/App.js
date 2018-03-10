@@ -4,6 +4,7 @@ import React from "react";
 import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
+import HomeScreen from "./screens/HomeScreen";
 import { EVENT_LIST, EVENT_DETAILS } from "./constants/routes";
 
 const EventsStack = StackNavigator(
@@ -18,7 +19,7 @@ const EventsStack = StackNavigator(
 
 export default TabNavigator(
   {
-    Home: { screen: () => <View /> },
+    Home: { screen: HomeScreen },
     Events: { screen: EventsStack },
     Parade: { screen: () => <View /> },
     Saved: { screen: () => <View /> },
