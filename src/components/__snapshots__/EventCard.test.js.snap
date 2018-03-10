@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#FFFFFF",
       "borderRadius": 5,
       "flexDirection": "row",
       "height": 95,
