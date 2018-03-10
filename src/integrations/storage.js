@@ -1,7 +1,8 @@
 // @flow
 
 import { AsyncStorage } from "react-native";
-import type { Event, Deletion } from "./cms";
+import type { Deletion } from "./cms";
+import type { Event } from "../data/event";
 
 type EventsData = {
   events: Event[],

@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector, MapStateToProps } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
-import type { Event } from "../../integrations/cms";
+import type { Event } from "../../data/event";
 import type { State } from "../../reducers";
 import { selectEventById } from "../../selectors/events";
 import Component from "./component";

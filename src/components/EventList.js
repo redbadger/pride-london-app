@@ -1,12 +1,20 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { StyleSheet, SectionList, TouchableOpacity, View } from "react-native";
+import { format, parse } from "date-fns";
+
 import EventCard from "./EventCard";
-import type { Event } from "../integrations/cms";
+import Text from "./Text";
+import type { EventDays } from "../data/event";
+import {
+  eventListBgColor,
+  eventListHeaderBgColor,
+  eventListHeaderColor
+} from "../constants/colors";
 
 type Props = {
   locale: string,
-  events: Event[],
+  events: EventDays,
   refreshing: boolean,
   onRefresh: () => void,
   onPress: (eventName: string) => void
@@ -19,10 +27,20 @@ const EventList = ({
   onRefresh,
   onPress
 }: Props) => (
-  <FlatList
+  <SectionList
     contentContainerStyle={styles.container}
-    data={events}
     keyExtractor={event => event.sys.id}
+    sections={events.map(it => ({
+      data: it,
+      title: format(parse(it[0].fields.startTime[locale]), "dddd D MMMM")
+    }))}
+    renderSectionHeader={({ section }) => (
+      <Text type="h2" style={styles.sectionHeader}>
+        {section.title}
+      </Text>
+    )}
+    ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
+    SectionSeparatorComponent={() => <View style={styles.sectionSeparator} />}
     renderItem={({ item: event }) => (
       <View style={styles.eventListItem}>
         <TouchableOpacity
@@ -39,12 +57,26 @@ const EventList = ({
 );
 
 const styles = StyleSheet.create({
+  itemSeparator: {
+    height: 10
+  },
+  sectionSeparator: {
+    height: 16
+  },
   container: {
-    paddingTop: 10
+    paddingTop: 0,
+    backgroundColor: eventListBgColor
   },
   eventListItem: {
-    paddingHorizontal: 15,
-    paddingBottom: 10
+    paddingHorizontal: 15
+  },
+  sectionHeader: {
+    height: 32,
+    paddingTop: 6,
+    paddingBottom: 2,
+    textAlign: "center",
+    backgroundColor: eventListHeaderBgColor,
+    color: eventListHeaderColor
   }
 });
 
