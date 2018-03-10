@@ -6,7 +6,35 @@ exports[`HomeScreen Component renders correctly 1`] = `
     Object {
       "backgroundColor": "#808080",
       "flex": 1,
+      "flexDirection": "row",
     }
   }
-/>
+>
+  <ScrollView
+    contentContainerStyle={
+      Object {
+        "backgroundColor": "#808080",
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "margin": 4,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "margin": 4,
+        }
+      }
+    />
+  </ScrollView>
+</SafeAreaView>
 `;
