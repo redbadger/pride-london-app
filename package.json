@@ -79,7 +79,8 @@
     "snapshotSerializers": ["enzyme-to-json/serializer"],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation)"
-    ]
+    ],
+    "collectCoverage": true
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"],
