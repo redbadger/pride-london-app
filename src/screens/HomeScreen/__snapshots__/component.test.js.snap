@@ -2,7 +2,13 @@
 
 exports[`HomeScreen Component renders correctly 1`] = `
 <SafeAreaView>
-  <ScrollView>
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+      }
+    }
+  >
     <View
       style={
         Object {
@@ -50,7 +56,6 @@ exports[`HomeScreen Component renders correctly 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "#FFFFFF",
           "flex": 1,
           "flexDirection": "row",
           "margin": 6,

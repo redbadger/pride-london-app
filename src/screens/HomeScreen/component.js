@@ -32,7 +32,7 @@ class HomeScreen extends PureComponent<Props> {
     return (
       <SafeAreaView>
         {this.props.loading && <Text>Loading...</Text>}
-        <ScrollView>
+        <ScrollView style={styles.scroller}>
           <View style={styles.header}>
             <Text>Header - TBD</Text>
           </View>
@@ -93,6 +93,9 @@ function splitEvents(elements: any[]): any[][] {
 }
 
 const styles = StyleSheet.create({
+  scroller: {
+    backgroundColor: cardBgColor
+  },
   header: {
     height: 200,
     alignItems: "center",
@@ -109,8 +112,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    margin: 6,
-    backgroundColor: cardBgColor
+    margin: 6
   },
   viewLeft: {
     flex: 1,
