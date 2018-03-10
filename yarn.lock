@@ -3831,6 +3831,10 @@ jest-message-util@^22.2.0:
     slash "^1.0.0"
     stack-utils "^1.0.1"
 
+jest-mock-now@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/jest-mock-now/-/jest-mock-now-1.2.0.tgz#c2deecca00e2b30d72a51dcadbfffc0f8777cc39"
+
 jest-mock@^22.2.0:
   version "22.2.0"
   resolved "https://registry.yarnpkg.com/jest-mock/-/jest-mock-22.2.0.tgz#444b3f9488a7473adae09bc8a77294afded397a7"
