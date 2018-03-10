@@ -1,24 +1,46 @@
 // @flow
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { imageBgColor, cardBgColor, textColor } from "../constants/colors";
+import {
+  priceTagBgColor,
+  imageBgColor,
+  cardBgColor,
+  textColor
+} from "../constants/colors";
 import format from "date-fns/format";
 
 type Props = {
   name: string,
   locationName: string,
   date: string,
+  price: string,
   startTime: integer,
   endTime: integer
 };
 
-const EventCard = ({ date, name, locationName, endTime, startTime }: Props) => (
+const EventCard = ({
+  date,
+  name,
+  locationName,
+  endTime,
+  startTime,
+  price
+}: Props) => (
   <View style={styles.eventCard}>
-    <View style={styles.imageContainer} />
+    <View style={styles.imageContainer}>
+      <View style={styles.priceTagContainer}>
+        <Text style={styles.eventPrice}>{price}</Text>
+      </View>
+    </View>
     <View style={styles.eventCardDetails}>
-      <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventDate}>
-        {date}
-      </Text>
+      <View style={styles.heartButtonContainer}>
+        <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventDate}>
+          {date}
+        </Text>
+        <View>
+          <Text>heart</Text>
+        </View>
+      </View>
       <Text ellipsizeMode="tail" numberOfLines={1} style={styles.eventName}>
         {name}
       </Text>
@@ -35,7 +57,6 @@ const EventCard = ({ date, name, locationName, endTime, startTime }: Props) => (
 const styles = StyleSheet.create({
   eventCard: {
     height: 108,
-    borderRadius: 5,
     backgroundColor: cardBgColor,
     flexDirection: "row",
     overflow: "hidden"
@@ -44,6 +65,16 @@ const styles = StyleSheet.create({
     width: 114,
     height: 108,
     backgroundColor: imageBgColor
+  },
+  priceTagContainer: {
+    width: 41,
+    height: 23,
+    backgroundColor: priceTagBgColor
+  },
+  heartButtonContainer: {
+    width: 44,
+    height: 44,
+    flexDirection: "row"
   },
   eventCardDetails: {
     flex: 1,
@@ -59,6 +90,9 @@ const styles = StyleSheet.create({
     color: textColor,
     fontSize: 16,
     fontWeight: "bold"
+  },
+  eventPrice: {
+    alignContent: "center"
   },
   eventTime: {
     fontSize: 14

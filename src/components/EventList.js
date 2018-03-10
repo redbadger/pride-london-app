@@ -29,7 +29,13 @@ const EventList = ({
           delayPressIn={50}
           onPress={() => onPress(event.fields.name[locale])}
         >
-          <EventCard name={event.fields.name[locale]} />
+          <EventCard
+            date={event.fields.startTime[locale]}
+            name={event.fields.name[locale]}
+            locationName="Arts, Theatre"
+            price="£16"
+            startTime={event.fields.startTime[locale]}
+          />
         </TouchableOpacity>
       </View>
     )}

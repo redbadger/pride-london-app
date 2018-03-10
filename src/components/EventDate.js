@@ -9,11 +9,9 @@ const EventDate = () => (
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 10,
-    backgroundColor: "red"
+    fontSize: 10
   },
   dateContainer: {
-    backgroundColor: "blue",
     alignItems: "center"
   }
 });
