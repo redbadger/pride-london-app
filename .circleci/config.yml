@@ -6,6 +6,42 @@ save-cache: &save-cache
     paths:
       - node_modules
     key: dependencies-{{ checksum "package.json" }}
+android-secrets: &android-secrets
+  run: 
+    command: |
+      git clone git@github.com:redbadger/pride-android-secrets.git
+      mkdir -p .gradle 
+      echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
+      echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties  
+ruby-dependencies: &ruby-dependencies
+  run:
+    name: Download Ruby Dependencies
+    command: bundle check || bundle install --path vendor/bundle
+android-dependencies: &android-dependencies
+  run:
+    name: Download Android Dependencies
+    command: ./gradlew androidDependencies
+gradle-key: &gradle-key
+  jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+gems-key: &gems-key
+  gems-{{ checksum "Gemfile.lock" }}
+restore-gradlecache: &restore-gradle-cache
+  restore_cache:
+    key: *gradle-key 
+restore-gems-cache: &restore-gems-cache
+  restore_cache:
+    key: *gems-key
+save-gradle-cache: &save-gradle-cache
+  save_cache:
+    key: *gradle-key
+    paths:
+      - ~/.gradle
+      - ~/.m2
+save-gems-cache: &save-gems-cache
+  save_cache:
+    key: *gems-key
+    paths:
+      - vendor/bundle
 
 version: 2
 jobs:
@@ -45,16 +81,20 @@ jobs:
     working_directory: ~/project/android
     docker:
       - image: circleci/android:api-27-node8-alpha
+    environment:
+      TERM: dumb
     steps:
       - checkout:
           path: ~/project
       - attach_workspace:
           at: ~/project
-      - run: git clone git@github.com:redbadger/pride-android-secrets.git
-      - run: mkdir -p .gradle 
-      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
-      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
-      - run: bundle install
+      - <<: *android-secrets
+      - <<: *restore-gradle-cache
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - <<: *save-gems-cache
       - run: 
             command: |
                 bundle exec fastlane alpha \
@@ -72,16 +112,20 @@ jobs:
     working_directory: ~/project/android
     docker:
       - image: circleci/android:api-27-node8-alpha
+    environment:
+      TERM: dumb
     steps:
       - checkout:
           path: ~/project
       - attach_workspace:
           at: ~/project
-      - run: git clone git@github.com:redbadger/pride-android-secrets.git
-      - run: mkdir -p .gradle 
-      - run: echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
-      - run: echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
-      - run: bundle install
+      - <<: *android-secrets
+      - <<: *restore-gradle-cache
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - <<: *save-gems-cache
       - run: 
             command: |
                 bundle exec fastlane beta \
