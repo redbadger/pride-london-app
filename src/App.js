@@ -5,7 +5,7 @@ import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import HomeScreen from "./screens/HomeScreen";
-import { EVENT_LIST, EVENT_DETAILS } from "./constants/routes";
+import { EVENT_LIST, EVENT_DETAILS, HOME } from "./constants/routes";
 
 const EventsStack = StackNavigator(
   {
@@ -16,10 +16,19 @@ const EventsStack = StackNavigator(
     initialRouteName: EVENT_LIST
   }
 );
+const HomeStack = StackNavigator(
+  {
+    [HOME]: { screen: HomeScreen, tabBarLabel: "Events" },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Events" }
+  },
+  {
+    initialRouteName: HOME
+  }
+);
 
 export default TabNavigator(
   {
-    Home: { screen: HomeScreen },
+    Home: { screen: HomeStack },
     Events: { screen: EventsStack },
     Parade: { screen: () => <View /> },
     Saved: { screen: () => <View /> },

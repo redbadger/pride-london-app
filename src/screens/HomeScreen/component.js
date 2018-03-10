@@ -1,14 +1,23 @@
 // @flow
 import React, { PureComponent } from "react";
-import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
+import {
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  View,
+  TouchableOpacity
+} from "react-native";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
 import type { Event } from "../../integrations/cms";
 import EventTile from "../../components/EventTile";
 import { cardBgColor, imageBgColor } from "../../constants/colors";
+import { EVENT_DETAILS } from "../../constants/routes";
 
 const locale = "en-GB";
 
 type Props = {
+  navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
   loading: boolean
 };
@@ -34,22 +43,36 @@ class HomeScreen extends PureComponent<Props> {
           <View style={styles.container}>
             <View style={styles.viewLeft}>
               {left.map(event => (
-                <View style={styles.tileWrapper}>
+                <TouchableOpacity
+                  style={styles.tileWrapper}
+                  onPress={() => {
+                    this.props.navigation.navigate(EVENT_DETAILS, {
+                      eventId: event.sys.id
+                    });
+                  }}
+                >
                   <EventTile
                     name={event.fields.name[locale]}
                     date="Fri, 15 June"
                   />
-                </View>
+                </TouchableOpacity>
               ))}
             </View>
             <View style={styles.viewRight}>
               {right.map(event => (
-                <View style={styles.tileWrapper}>
+                <TouchableOpacity
+                  style={styles.tileWrapper}
+                  onPress={() => {
+                    this.props.navigation.navigate(EVENT_DETAILS, {
+                      eventId: event.sys.id
+                    });
+                  }}
+                >
                   <EventTile
                     name={event.fields.name[locale]}
                     date="Fri, 15 June"
                   />
-                </View>
+                </TouchableOpacity>
               ))}
             </View>
           </View>
