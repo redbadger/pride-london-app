@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     height: 169,
-    paddingHorizontal: 20,
     paddingTop: 8,
     paddingBottom: 12
   },
@@ -39,26 +38,30 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 44,
     backgroundColor: filterButtonColor,
-    padding: 10,
+    marginLeft: 8,
     borderRadius: 4,
     alignItems: "center"
   },
   mapButton: {
-    marginLeft: 12,
+    marginHorizontal: 12,
     width: 52,
     height: 52,
     backgroundColor: filterButtonColor,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     borderRadius: 25
   },
   filterButtonText: {
     color: filterButtontextColor,
-    fontWeight: "bold",
-    fontSize: 18
+    fontFamily: "Poppins-Bold",
+    fontSize: 18,
+    margin: 10
   },
   mapButtonText: {
-    fontSize: 14
+    color: filterButtontextColor,
+    fontFamily: "Poppins-Bold",
+    fontSize: 14,
+    paddingBottom: 6
   }
 });
 
