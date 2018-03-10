@@ -69,7 +69,7 @@ exports[`renders correctly 1`] = `
             style={Object {}}
             type="small"
           >
-            12:00 - 19:00
+            11:00 - 18:00
           </Text>
         }
         icon={
