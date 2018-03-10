@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EventsScreen Component renders correctly 1`] = `
-<SafeAreaView
+<View
   style={
     Object {
       "backgroundColor": "#808080",
-      "borderBottomWidth": 0,
       "flex": 1,
     }
   }
@@ -18,5 +17,5 @@ exports[`EventsScreen Component renders correctly 1`] = `
     onRefresh={[Function]}
     refreshing={false}
   />
-</SafeAreaView>
+</View>
 `;

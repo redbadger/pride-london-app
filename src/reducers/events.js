@@ -3,7 +3,7 @@ import type { Reducer } from "redux";
 import type { Event } from "../integrations/cms";
 import type { EventsAction } from "../actions/events";
 
-type State = {
+export type State = {
   events: Event[],
   loading: boolean,
   refreshing: boolean

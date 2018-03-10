@@ -1,10 +1,8 @@
-// @flow
 import React from "react";
 import { shallow } from "enzyme";
 import EventList from "./EventList";
-import type { Event } from "../integrations/cms";
 
-const events: Event[] = [
+const events = [
   {
     sys: {
       id: "1",

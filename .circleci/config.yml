@@ -54,6 +54,12 @@ jobs:
       - checkout
       - <<: *get-cache
       - run:
+          name: Test reporter status
+          command: |
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+              chmod +x ./cc-test-reporter
+              ./cc-test-reporter before-build
+      - run:
           name: Install dependencies
           command: yarn install
       - <<: *save-cache
@@ -65,7 +71,9 @@ jobs:
           command: yarn flow
       - run:
           name: Unit test
-          command: yarn test
+          command: |
+              yarn test
+              ./cc-test-reporter after-build
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
@@ -74,8 +82,6 @@ jobs:
           paths:
             - node_modules
             - .env
-      - store_test_results:
-          path: ~/project/junit.xml
 
   alpha-android:
     working_directory: ~/project/android

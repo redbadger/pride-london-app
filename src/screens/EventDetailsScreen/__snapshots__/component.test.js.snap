@@ -1,0 +1,347 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ScrollView
+  style={
+    Object {
+      "backgroundColor": "#FFF",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    onBackButtonPress={[Function]}
+  />
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFF",
+        "flex": 1,
+        "padding": 15,
+      }
+    }
+  >
+    <Text
+      markdown={false}
+      style={Object {}}
+      type="h1"
+    >
+      Pride in the Park
+    </Text>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "marginBottom": 20,
+          "marginTop": 16,
+        }
+      }
+    >
+      <CategoryLabel
+        categoryName="Community"
+        key="Community"
+      />
+      <CategoryLabel
+        categoryName="Social and Networking"
+        key="Social and Networking"
+      />
+      <CategoryLabel
+        categoryName="Sports and Activities"
+        key="Sports and Activities"
+      />
+      <CategoryLabel
+        categoryName="Music"
+        key="Music"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 20,
+        }
+      }
+    >
+      <IconItem
+        content={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="small"
+          >
+            11:00 - 18:00
+          </Text>
+        }
+        icon={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="xSmall"
+          >
+            icn
+          </Text>
+        }
+        title="09 July 2017 - 15 July 2018"
+        titleType="h3"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 20,
+        }
+      }
+    >
+      <IconItem
+        content={null}
+        icon={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="xSmall"
+          >
+            icn
+          </Text>
+        }
+        title="Vauxhall Pleasure Gardens"
+        titleType="h3"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 20,
+        }
+      }
+    >
+      <IconItem
+        content={null}
+        icon={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="xSmall"
+          >
+            icn
+          </Text>
+        }
+        title="From: £19.95"
+        titleType="h3"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 20,
+        }
+      }
+    >
+      <IconItem
+        content={null}
+        icon={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="xSmall"
+          >
+            icn
+          </Text>
+        }
+        title="Gender neutral toilets"
+        titleType="h3"
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "marginBottom": 20,
+        }
+      }
+    >
+      <IconItem
+        content={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="small"
+          >
+            Accessible Toilets, Hearing loop installed
+          </Text>
+        }
+        icon={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="xSmall"
+          >
+            icn
+          </Text>
+        }
+        title="Accessibility"
+        titleType="h3"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "height": 4,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFF",
+        "flex": 1,
+        "padding": 15,
+      }
+    }
+  >
+    <Text
+      markdown={true}
+      style={Object {}}
+      type="text"
+    >
+      Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+
+Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.
+    </Text>
+    <View
+      style={
+        Object {
+          "marginTop": 8,
+        }
+      }
+    >
+      <EventMap
+        lat={51.4875152}
+        locationName="Vauxhall Pleasure Gardens"
+        lon={-0.12092150000000856}
+      />
+    </View>
+  </View>
+  <View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#F2F2F2",
+          "height": 4,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "#FFF",
+          "flex": 1,
+          "padding": 15,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <Text
+          markdown={false}
+          style={Object {}}
+          type="h2"
+        >
+          Accessibility Details
+        </Text>
+        <View
+          style={
+            Object {
+              "marginTop": 8,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="text"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <Text
+          markdown={false}
+          style={Object {}}
+          type="h2"
+        >
+          Contact
+        </Text>
+        <View
+          style={
+            Object {
+              "marginTop": 16,
+            }
+          }
+        >
+          <IconItem
+            content={null}
+            icon={
+              <Text
+                markdown={false}
+                style={Object {}}
+                type="xSmall"
+              >
+                icn
+              </Text>
+            }
+            title="john.smith@eventname.com"
+            titleType="text"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "marginTop": 16,
+            }
+          }
+        >
+          <IconItem
+            content={null}
+            icon={
+              <Text
+                markdown={false}
+                style={Object {}}
+                type="xSmall"
+              >
+                icn
+              </Text>
+            }
+            title="07891234567"
+            titleType="text"
+          />
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "marginTop": 16,
+          }
+        }
+      >
+        <Button
+          text="Buy Tickets"
+          url="https://prideinlondon.org/pride-in-the-park/"
+        />
+      </View>
+    </View>
+  </View>
+</ScrollView>
+`;
