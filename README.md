@@ -20,21 +20,31 @@
 
 <!-- tocstop -->
 
-## Running
+## Installation and setup
 
 ### Prerequisites
 
-#### General
-
-* `brew install node`
-* `brew install watchman`
-* `yarn global add react-native-cli`
+* [Node.js](https://nodejs.org/en/download/)
+* [Watchman](https://facebook.github.io/watchman/docs/install.html)
+* [Install Yarn](https://yarnpkg.com/en/docs/install)
+* `$ yarn global add react-native-cli`
 
 More information on getting started can be found here: https://facebook.github.io/react-native/docs/getting-started.html under the `Building prodjects with React Native` tab.
+
+#### General
+
+Clone the repository
+
+`$ git clone git@github.com:redbadger/pride-london-app.git`
+
+And install dependencies
+
+`$ yarn`
 
 #### iOS
 
 * Install Xcode from the App Store and accept the license agreement.
+* Run Xcode once so that it can install additional components it will need.
 
 #### Android
 
@@ -43,15 +53,19 @@ More information on getting started can be found here: https://facebook.github.i
   * Open Android Studio. If this is the first time you open it, it will prompt you to install the Android SDK. You can proceed with the default settings.
   * Select "Open an existing Android Studio project" and select the `./android` folder in this repository. This will help you to get the necessary dependencies installed.
   * Android Studio will automatically try to build the project. You will see the Gradle process running.
-  * When dependencies are missing (e.g. SDK Platform or build tools), it will error and show a link to install them (e.g. "Install Build Tool xx.x.x and sync project"). Click on the link to resolve. Repeat this until you get a BUILD SUCCESSFUL message.
-  * It will also automatically create the file `./android/local.properties` with a entry `sdk.dir=<path to your android sdk>`, which is required for the build to work.
+  * When dependencies are missing (e.g. SDK Platform or build tools), it will error and show a link to install them (e.g. "Install Build Tool xx.x.x and sync project"). Click on the link (in the Gradle Sync tab) to resolve. Repeat this until you get a BUILD SUCCESSFUL message.
+  * It will also automatically create the file `./android/local.properties` with a entry `sdk.dir=<path to your android sdk>`, which is required for the build to work. You will need this in the next step
 * Create and start an emulator (aka AVD (Android Virtual Device)).
   * Open Android Studio and click on the AVD Manager icon (4th from the far right) in the toolbar (this will appear when the project compiled correctly).
   * Choose any device you want.
-  * Select a system image. Choose a recommended one. Click on the download link next to the image name. It will automatically start downloading.
+  * Select a system image. Choose a recommended one (e.g. API 27). Click on the download link next to the image name. It will automatically start downloading.
   * Click next through to finish.
   * Start your AVD by clicking the green play button under actions.
-* Add `<path to your android sdk>/platform-tools` to your `PATH`. This is required because React Native will run `adb` to install the app on your emulator/device.
+* Add `<path to your android sdk>/platform-tools` (find it in `./android/local.properties`) to your `PATH`. This is required because React Native will run `adb` to install the app on your emulator/device. e.g. add
+  ```
+  export PATH="<path-to-sdk>/platform-tools:$PATH"
+  ```
+  to your `.bashrc`/`.zshrc`
 * Make sure you have Java 8 installed (Java 9 won't work). If you wany, you can point `JAVA_HOME` to the embedded JDK from Android Studio to make sure you have a JDK version, which works with Android.
 
 ### Environment Variables
@@ -62,15 +76,15 @@ In order to run the application locally you will need to find and add some envir
 cp .env.example .env
 ```
 
-And fill in the required variables from the appropriate developer portals (e.g. app.contentful.com/spaces/\<space-id\>/api/keys).
+And fill in the required variables from the appropriate developer portals (e.g. app.contentful.com/spaces/\<space-id\>/api/keys) - use the Delivery API key.
 
-### Running
+## Running
 
-#### iOS
+### iOS
 
 * `yarn run-ios [--simulator="iPhone X"]`
 
-#### Android
+### Android
 
 * `yarn run-android`
 
