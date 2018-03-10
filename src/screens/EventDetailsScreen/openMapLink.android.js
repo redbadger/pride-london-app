@@ -6,5 +6,7 @@ import { Linking } from "react-native";
  * https://developer.android.com/guide/components/intents-common.html#Maps
  */
 export default async (lat: number, lng: number, label: string) => {
-  await Linking.openURL(`geo:0,0?q=${lat},${lng}(${label})`);
+  await Linking.openURL(
+    `geo:0,0?q=${lat},${lng}(${encodeURIComponent(label)})`
+  );
 };
