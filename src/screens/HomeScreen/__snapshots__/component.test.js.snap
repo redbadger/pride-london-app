@@ -1,15 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeScreen Component renders correctly 1`] = `
-<SafeAreaView
-  style={
-    Object {
-      "backgroundColor": "#FFFFFF",
-      "flex": 1,
-      "flexDirection": "row",
-    }
-  }
->
+<SafeAreaView>
   <ScrollView>
     <View
       style={
@@ -32,7 +24,10 @@ exports[`HomeScreen Component renders correctly 1`] = `
     <View
       style={
         Object {
-          "marginLeft": 12,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginLeft": 18,
+          "marginRight": 18,
           "paddingTop": 18,
         }
       }
@@ -42,7 +37,14 @@ exports[`HomeScreen Component renders correctly 1`] = `
         style={Object {}}
         type="h2"
       >
-        Featured Events
+        Featured events
+      </Text>
+      <Text
+        markdown={false}
+        style={Object {}}
+        type="text"
+      >
+        View all
       </Text>
     </View>
     <View
@@ -51,6 +53,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
           "backgroundColor": "#FFFFFF",
           "flex": 1,
           "flexDirection": "row",
+          "margin": 6,
         }
       }
     >
@@ -58,7 +61,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
         style={
           Object {
             "flex": 1,
-            "margin": 8,
+            "marginLeft": 6,
           }
         }
       />
@@ -66,7 +69,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
         style={
           Object {
             "flex": 1,
-            "margin": 8,
+            "marginRight": 6,
           }
         }
       />

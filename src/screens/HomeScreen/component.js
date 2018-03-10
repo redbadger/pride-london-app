@@ -21,32 +21,33 @@ class HomeScreen extends PureComponent<Props> {
   render() {
     const [left: Event[], right: Event[]] = splitEvents(this.props.events);
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView>
         {this.props.loading && <Text>Loading...</Text>}
         <ScrollView>
           <View style={styles.header}>
             <Text>Header - TBD</Text>
           </View>
           <View style={styles.title}>
-            <Text type="h2">Featured Events</Text>
+            <Text type="h2">Featured events</Text>
+            <Text type="text">View all</Text>
           </View>
           <View style={styles.container}>
-            <View style={styles.view}>
+            <View style={styles.viewLeft}>
               {left.map(event => (
-                <View style={styles.tileWrapperLeft}>
+                <View style={styles.tileWrapper}>
                   <EventTile
                     name={event.fields.name[locale]}
-                    date="Fri, 15th June"
+                    date="Fri, 15 June"
                   />
                 </View>
               ))}
             </View>
-            <View style={styles.view}>
+            <View style={styles.viewRight}>
               {right.map(event => (
-                <View style={styles.tileWrapperRight}>
+                <View style={styles.tileWrapper}>
                   <EventTile
                     name={event.fields.name[locale]}
-                    date="Fri, 15th June"
+                    date="Fri, 15 June"
                   />
                 </View>
               ))}
@@ -76,24 +77,29 @@ const styles = StyleSheet.create({
     backgroundColor: imageBgColor
   },
   title: {
-    marginLeft: 12,
-    paddingTop: 18
+    flexDirection: "row",
+    marginLeft: 18,
+    marginRight: 18,
+    paddingTop: 18,
+    justifyContent: "space-between"
   },
   container: {
     flex: 1,
     flexDirection: "row",
+    margin: 6,
     backgroundColor: cardBgColor
   },
-  view: {
+  viewLeft: {
     flex: 1,
-    margin: 8
+    marginLeft: 6
   },
-  tileWrapperLeft: {
-    marginLeft: 4,
-    marginBottom: 8
+  viewRight: {
+    flex: 1,
+    marginRight: 6
   },
-  tileWrapperRight: {
-    marginRight: 4,
+  tileWrapper: {
+    marginLeft: 6,
+    marginRight: 6,
     marginBottom: 8
   }
 });

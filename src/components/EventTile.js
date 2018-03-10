@@ -12,7 +12,7 @@ type Props = {
 const EventTile = ({ name, date }: Props) => (
   <View style={styles.eventTile}>
     <View style={styles.imageContainer} />
-    <View style={styles.eventTileDetails}>
+    <View style={styles.details}>
       <Text type="small" ellipsizeMode="tail" numberOfLines={2}>
         {date}
       </Text>
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     height: 120,
     backgroundColor: imageBgColor
   },
-  eventTileDetails: {
-    height: 65,
+  details: {
+    height: 80,
     paddingTop: 8
   }
 });
