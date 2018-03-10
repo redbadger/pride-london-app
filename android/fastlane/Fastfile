@@ -31,6 +31,14 @@ platform :android do
     build_alpha
     if options[:submit]
       apk_path = "./app/build/outputs/apk/app-alpha-release.apk"
+      notes = build_notes(options[:commit_sha])
+      deploy_fabric(
+        api_token: options[:fabric_api_token],
+        build_secret: options[:fabric_build_secret],
+        notes: notes,
+        groups: options[:fabric_groups],
+        notify: false,
+      )
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
@@ -38,6 +46,7 @@ platform :android do
         apk_path: apk_path,
         status: "2",
         notify: "0",
+        notes: notes,
       )
     end
   end
@@ -47,6 +56,14 @@ platform :android do
     build_beta
     if options[:submit]
       apk_path = "./app/build/outputs/apk/app-beta-release.apk"
+      notes = build_notes(options[:commit_sha])
+      deploy_fabric(
+        api_token: options[:fabric_api_token],
+        build_secret: options[:fabric_build_secret],
+        notes: notes,
+        groups: options[:fabric_groups],
+        notify: true,
+      )
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
@@ -54,21 +71,42 @@ platform :android do
         apk_path: apk_path,
         status: "2",
         notify: "1",
+        notes: notes,
       )
     end
   end
 
   desc "Deploy to HockeyApp"
   lane :deploy_hockey do |options|
-    notes = sh("git log --format=%B -n 1 #{options[:commit_sha]}")
     hockey(
       api_token: options[:api_token],
       public_identifier: options[:app_id],
       apk: options[:apk_path],
-      notes: notes,
+      notes: options[:notes],
       status: options[:status],
       notify: options[:notify],
       commit_sha: options[:commit_sha]
     )
+  end
+
+  desc "Upload to Beta by Fabric"
+  lane :deploy_fabric do |options|
+    File.write("./notes.txt", options[:notes])
+    crashlytics(
+      api_token: options[:api_token],
+      build_secret: options[:build_secret],
+      apk_path: options[:apk_path],
+      notes_path: "fastlane/notes.txt",
+      groups: options[:groups],
+      notifications: options[:notify]
+    )
+  end
+
+  def build_notes(commit_sha)
+    date = Time.now.strftime('%F')
+    time = Time.now.strftime('%T')
+    commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
+    notes = "#{git_branch}/#{commit_msg} on #{date} at #{time}"
+    return notes
   end
 end

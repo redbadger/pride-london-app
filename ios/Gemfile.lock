@@ -59,6 +59,8 @@ GEM
       xcodeproj (>= 1.5.2, < 2.0.0)
       xcpretty (>= 0.2.4, < 1.0.0)
       xcpretty-travis-formatter (>= 0.0.3)
+    fastlane-plugin-get_unprovisioned_devices_from_hockey (0.1.1)
+      json
     gh_inspector (1.1.2)
     google-api-client (0.13.6)
       addressable (~> 2.5, >= 2.5.1)
@@ -140,6 +142,7 @@ PLATFORMS
 
 DEPENDENCIES
   fastlane
+  fastlane-plugin-get_unprovisioned_devices_from_hockey
 
 BUNDLED WITH
    1.16.1

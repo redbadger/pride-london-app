@@ -29,6 +29,7 @@ platform :ios do
 
   desc "Alpha build and deploy"
   lane :alpha do |options|
+    increment_build_number(build_number:options[:ci_build_num])
     build(
       match_type: "adhoc", 
       export_method: "ad-hoc",
@@ -36,12 +37,21 @@ platform :ios do
       app_identifier: "org.prideinlondon.festival.alpha"
     )
     if options[:submit]
+      notes = build_notes(options[:commit_sha])
+      deploy_fabric(
+        api_token: options[:fabric_api_token],
+        build_secret: options[:fabric_build_secret],
+        notes: notes,
+        groups: options[:fabric_groups],
+        notify: false,
+      )
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
         app_id: options[:app_id],
         status: "2",
         notify: "0",
+        notes: notes
       )
     end
   end
@@ -62,6 +72,7 @@ platform :ios do
     if options[:submit]
       deploy_testflight 
     end
+    increment_build_number(build_number:options[:ci_build_num])
     build(
       match_type: "adhoc", 
       export_method: "ad-hoc",
@@ -69,12 +80,21 @@ platform :ios do
       app_identifier: "org.prideinlondon.festival.beta"
     )
     if options[:submit]
+      notes = build_notes(options[:commit_sha])
+      deploy_fabric(
+        api_token: options[:fabric_api_token],
+        build_secret: options[:fabric_build_secret],
+        notes: notes,
+        groups: options[:fabric_groups],
+        notify: true,
+      )
       deploy_hockey(
         commit_sha: options[:commit_sha],
         api_token: options[:api_token],
         app_id: options[:app_id],
         status: "2",
         notify: "1",
+        notes: notes,
       )
     end
   end
@@ -88,24 +108,55 @@ platform :ios do
     )
   end
 
-  desc "Upload to HockeyApp and notify testers"
+  desc "Upload to HockeyApp"
   lane :deploy_hockey do |options|
-    notes = sh("git log --format=%B -n 1 #{options[:commit_sha]}")
     hockey(
       api_token: options[:api_token],
       public_identifier: options[:app_id],
-      notes: notes,
+      notes: options[:notes],
       status: options[:status],
       notify: options[:notify],
       commit_sha: options[:commit_sha]
     )
   end
 
+  desc "Upload to Beta by Fabric"
+  lane :deploy_fabric do |options|
+    crashlytics(
+      api_token: options[:api_token],
+      build_secret: options[:build_secret],
+      notes: options[:notes],
+      groups: options[:groups],
+      notifications: options[:notify]
+    )
+  end
+
+  def build_notes(commit_sha)
+    date = Time.now.strftime('%F')
+    time = Time.now.strftime('%T')
+    commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
+    notes = "#{git_branch}/#{commit_msg} on #{date} at #{time}"
+    return notes
+  end
+
   desc "Add devices"
   lane :devices do |options|
-    register_devices(
-      devices_file: "./devices.txt"
+    new_devices = get_unprovisioned_devices_from_hockey(app_bundle_id:'org.prideinlondon.festival', api_token:options[:api_token])
+    register_devices(devices: new_devices)
+    match(
+      type: "development",
+      app_identifier: "org.prideinlondon.festival",
+      force_for_new_devices: true
     )
-    match(force_for_new_devices: true)
+    match(
+      type: "adhoc",
+      app_identifier: "org.prideinlondon.festival.alpha",
+      force_for_new_devices: true
+    )
+    match(
+      type: "adhoc",
+      app_identifier: "org.prideinlondon.festival.beta",
+      force_for_new_devices: true
+    )
   end
 end

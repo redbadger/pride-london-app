@@ -25,13 +25,11 @@ const EventList = ({
     keyExtractor={event => event.sys.id}
     renderItem={({ item: event }) => (
       <View style={styles.eventListItem}>
-        <TouchableOpacity onPress={() => onPress(event.fields.name[locale])}>
-          <EventCard
-            date={event.fields.startTime[locale]}
-            name={event.fields.name[locale]}
-            locationName="Arts, Theatre"
-            startTime={event.fields.startTime[locale]}
-          />
+        <TouchableOpacity
+          delayPressIn={50}
+          onPress={() => onPress(event.fields.name[locale])}
+        >
+          <EventCard name={event.fields.name[locale]} />
         </TouchableOpacity>
       </View>
     )}

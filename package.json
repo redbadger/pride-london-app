@@ -1,19 +1,20 @@
 {
   "name": "pride-london-app",
-  "version": "1.0.3",
+  "version": "1.0.4",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "run-android":
-      "node node_modules/react-native/local-cli/cli.js run-android",
+      "node node_modules/react-native/local-cli/cli.js run-android --appId com.pridelondonapp.dev --variant devDebug",
     "test": "jest src",
     "precommit": "lint-staged",
     "lint": "eslint src",
     "flow": "flow src",
     "fix-xcode": "react-native-schemes-manager all",
     "postinstall": "yarn fix-xcode",
-    "postversion": "react-native-version"
+    "postversion": "react-native-version --reset-build"
   },
   "dependencies": {
     "contentful": "^5.0.5",
@@ -21,7 +22,11 @@
     "react": "16.2.0",
     "react-native": "0.53.0",
     "react-native-config": "^0.11.5",
-    "react-navigation": "^1.0.3"
+    "react-navigation": "^1.0.3",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
@@ -41,7 +46,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.6.1",
     "eslint-plugin-react-native": "^3.2.1",
-    "flow-bin": "^0.63.0",
+    "flow-bin": "^0.65.0",
     "flow-typed": "^2.3.0",
     "glow": "^1.2.2",
     "husky": "^0.14.3",
