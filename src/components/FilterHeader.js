@@ -13,10 +13,10 @@ const FilterHeader = () => (
     <StatusBar barStyle="light-content" animated />
     <View style={styles.content}>
       <View style={styles.filterButton}>
-        <Text style={styles.buttonText}>{text.filterButton}</Text>
+        <Text style={styles.filterButtonText}>{text.filterButton}</Text>
       </View>
       <View style={styles.mapButton}>
-        <Text style={styles.buttonText}>Map</Text>
+        <Text style={styles.mapButtonText}>Map</Text>
       </View>
     </View>
   </SafeAreaView>
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   content: {
     alignItems: "center",
     flexDirection: "row",
+    height: 169,
     paddingHorizontal: 20,
     paddingTop: 8,
     paddingBottom: 12
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   filterButton: {
     flex: 1,
     flexDirection: "row",
-    height: 43,
+    height: 44,
     backgroundColor: filterButtonColor,
     padding: 10,
     borderRadius: 4,
@@ -51,9 +52,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 25
   },
-  buttonText: {
+  filterButtonText: {
     color: filterButtontextColor,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: 18
+  },
+  mapButtonText: {
+    fontSize: 14
   }
 });
 
