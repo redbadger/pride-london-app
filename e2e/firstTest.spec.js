@@ -1,4 +1,4 @@
-describe("Example", () => {
+describe("Pride App", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
   });

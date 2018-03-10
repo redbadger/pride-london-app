@@ -3,7 +3,8 @@
   "env": {
     "jest": true,
     "node": true,
-    "react-native/react-native": true
+    "react-native/react-native": true,
+    "detox": true
   },
   "extends": [
     "airbnb",
@@ -12,7 +13,12 @@
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
-  "plugins": ["flowtype", "react", "react-native"],
+  "plugins": [
+    "flowtype",
+    "react",
+    "react-native",
+    "detox"
+  ],
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module",
@@ -32,7 +38,11 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/scripts/*.js", "**/*.test.js", "**/setup-tests.js"],
+        "devDependencies": [
+          "**/scripts/*.js",
+          "**/*.test.js",
+          "**/setup-tests.js"
+        ],
         "optionalDependencies": false,
         "peerDependencies": false
       }
