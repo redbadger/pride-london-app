@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      Object {},
+    ]
+  }
+>
+  Some text
+</Text>
+`;
+
+exports[`renders markdown component based on flag 1`] = `
+<Markdown
+  debug={false}
+  markdownStyles={
+    Object {
+      "h1": Object {
+        "fontFamily": "Poppins-Bold",
+        "fontSize": 24,
+        "lineHeight": 28,
+      },
+      "h2": Object {
+        "fontFamily": "Poppins-SemiBold",
+        "fontSize": 18,
+        "lineHeight": 24,
+      },
+      "h3": Object {
+        "fontFamily": "Poppins-SemiBold",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      "h4": Object {
+        "fontFamily": "Roboto-Medium",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      "h5": Object {
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      "h6": Object {
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      "small": Object {
+        "fontFamily": "Roboto",
+        "fontSize": 14,
+        "lineHeight": 20,
+      },
+      "text": Object {
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      "u": Object {
+        "fontWeight": "bold",
+      },
+      "xSmall": Object {
+        "fontFamily": "Roboto",
+        "fontSize": 12,
+        "lineHeight": 16,
+      },
+    }
+  }
+  parseInline={false}
+  style={Object {}}
+  useDefaultStyles={true}
+>
+  **Some markdown**
+</Markdown>
+`;
