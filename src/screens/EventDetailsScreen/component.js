@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import formatDate from "date-fns/format";
@@ -166,7 +166,7 @@ const renderEventDetails = event =>
     </View>
   );
 
-class EventDetailsScreen extends React.Component<Props> {
+class EventDetailsScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
   };

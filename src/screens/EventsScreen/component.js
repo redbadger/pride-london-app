@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../integrations/cms";
@@ -18,7 +18,7 @@ type Props = {
   updateEvents: () => Promise<void>
 };
 
-class EventsScreen extends React.Component<Props> {
+class EventsScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
   };
