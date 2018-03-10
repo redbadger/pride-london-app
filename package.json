@@ -1,6 +1,6 @@
 {
   "name": "pride-london-app",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "contentful": "^5.0.5",
     "react": "16.2.0",
-    "react-native": "0.53.0",
+    "react-native": "0.54.0",
     "react-native-config": "^0.11.5",
     "react-navigation": "^1.0.3",
     "react-redux": "^5.0.7",

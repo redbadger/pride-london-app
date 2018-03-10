@@ -78,7 +78,16 @@ project.ext.react = [
     inputExcludes: ["ios/**", "*.test.*"]
 ]
 
-apply from: "../../node_modules/react-native/react.gradle"
+/**
+ * Until we upgraded react-native to a version, which includes this PR
+ * we need to use this react.gradle file, which was copied from the PR:
+ * https://github.com/facebook/react-native/pull/17967
+ *
+ * Once this is officially included in react-native we can revert back
+ * to this and delete the react.gradle file:
+ * apply from: "../../node_modules/react-native/react.gradle"
+ */
+apply from: "../react.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -106,15 +115,15 @@ if (file("../.gradle/gradle.properties").exists()) {
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
         applicationId "com.pridelondonapp"
-        minSdkVersion 16
-        targetSdkVersion 22
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode androidVersionCode
-        versionName "1.0.4"
+        versionName "1.0.5"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -150,13 +159,16 @@ android {
             ext.enableCrashlytics = false
         }
     }
+    flavorDimensions "tier"
     productFlavors {
         alpha {
+            dimension "tier"
             applicationId 'com.pridelondonapp.alpha'
             resValue "string", "build_config_package", "com.pridelondonapp"
             resValue "string", "app_name", "Pride Alpha"
         }
         beta {
+            dimension "tier"
             applicationId 'com.pridelondonapp.beta'
             resValue "string", "build_config_package", "com.pridelondonapp"
             resValue "string", "app_name", "Pride Beta"
@@ -167,6 +179,7 @@ android {
             resValue "string", "app_name", "Pride DEV"
         }
         production {
+            dimension "tier"
             applicationId 'com.pridelondonapp'
             resValue "string", "build_config_package", "com.pridelondonapp"
             resValue "string", "app_name", "Pride London App"
@@ -209,11 +222,11 @@ repositories {
 }
 
 dependencies {
-    compile project(':react-native-config')
-    compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:23.0.1"
-    compile "com.facebook.react:react-native:+"  // From node_modules
-    compile('com.crashlytics.sdk.android:crashlytics:2.9.0@aar') {
+    implementation project(':react-native-config')
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
+    implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.0@aar') {
         transitive = true
     }
 }
