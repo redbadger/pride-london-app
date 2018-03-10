@@ -1,9 +1,10 @@
 // @flow
 import React, { PureComponent } from "react";
-import { StyleSheet, Text, SafeAreaView, ScrollView, View } from "react-native";
+import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
+import Text from "../../components/Text";
 import type { Event } from "../../integrations/cms";
 import EventTile from "../../components/EventTile";
-import { bgColor } from "../../constants/colors";
+import { cardBgColor, imageBgColor } from "../../constants/colors";
 
 const locale = "en-GB";
 
@@ -22,20 +23,34 @@ class HomeScreen extends PureComponent<Props> {
     return (
       <SafeAreaView style={styles.container}>
         {this.props.loading && <Text>Loading...</Text>}
-        <ScrollView contentContainerStyle={styles.container}>
-          <View style={styles.view}>
-            {left.map(event => (
-              <View style={styles.tileWrapperLeft}>
-                <EventTile name={event.fields.name[locale]} />
-              </View>
-            ))}
+        <ScrollView>
+          <View style={styles.header}>
+            <Text>Header - TBD</Text>
           </View>
-          <View style={styles.view}>
-            {right.map(event => (
-              <View style={styles.tileWrapperRight}>
-                <EventTile name={event.fields.name[locale]} />
-              </View>
-            ))}
+          <View style={styles.title}>
+            <Text type="h2">Featured Events</Text>
+          </View>
+          <View style={styles.container}>
+            <View style={styles.view}>
+              {left.map(event => (
+                <View style={styles.tileWrapperLeft}>
+                  <EventTile
+                    name={event.fields.name[locale]}
+                    date="Fri, 15th June"
+                  />
+                </View>
+              ))}
+            </View>
+            <View style={styles.view}>
+              {right.map(event => (
+                <View style={styles.tileWrapperRight}>
+                  <EventTile
+                    name={event.fields.name[locale]}
+                    date="Fri, 15th June"
+                  />
+                </View>
+              ))}
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -54,14 +69,24 @@ function splitEvents(elements: any[]): any[][] {
 }
 
 const styles = StyleSheet.create({
+  header: {
+    height: 200,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: imageBgColor
+  },
+  title: {
+    marginLeft: 12,
+    paddingTop: 18
+  },
   container: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: bgColor
+    backgroundColor: cardBgColor
   },
   view: {
     flex: 1,
-    margin: 4
+    margin: 8
   },
   tileWrapperLeft: {
     marginLeft: 4,

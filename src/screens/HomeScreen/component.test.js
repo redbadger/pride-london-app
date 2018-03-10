@@ -11,7 +11,7 @@ describe("HomeScreen Component", () => {
   it("renders loading indicator when loading", () => {
     const output = shallow(<Component loading events={[]} />);
 
-    const loadingText = output.find("Text");
+    const loadingText = output.find("Text").first();
 
     expect(loadingText.children().text()).toEqual("Loading...");
   });
