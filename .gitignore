@@ -60,3 +60,5 @@ buck-out/
 
 # Environment variables
 .env
+
+fabric.properties

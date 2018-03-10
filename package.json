@@ -1,13 +1,13 @@
 {
   "name": "pride-london-app",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "run-android":
-      "node node_modules/react-native/local-cli/cli.js run-android",
+      "node node_modules/react-native/local-cli/cli.js run-android --appId com.pridelondonapp.dev --variant devDebug",
     "test": "jest src",
     "test:e2e": "detox test -c ios.sim.debug",
     "test:e2e:build": "detox build",
@@ -16,7 +16,7 @@
     "flow": "flow src",
     "fix-xcode": "react-native-schemes-manager all",
     "postinstall": "yarn fix-xcode",
-    "postversion": "react-native-version"
+    "postversion": "react-native-version --reset-build"
   },
   "dependencies": {
     "contentful": "^5.0.5",
