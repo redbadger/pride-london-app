@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <ScrollView
   style={
     Object {
-      "backgroundColor": "#fff",
+      "backgroundColor": "#FFF",
       "flex": 1,
     }
   }
@@ -15,7 +15,7 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
-        "backgroundColor": "#fff",
+        "backgroundColor": "#FFF",
         "flex": 1,
         "padding": 15,
       }
@@ -63,6 +63,15 @@ exports[`renders correctly 1`] = `
       }
     >
       <IconItem
+        content={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="small"
+          >
+            12:00 - 19:00
+          </Text>
+        }
         icon={
           <Text
             markdown={false}
@@ -74,15 +83,7 @@ exports[`renders correctly 1`] = `
         }
         title="09 July 2017 - 15 July 2018"
         titleType="h3"
-      >
-        <Text
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          12:00 - 19:00
-        </Text>
-      </IconItem>
+      />
     </View>
     <View
       style={
@@ -92,6 +93,7 @@ exports[`renders correctly 1`] = `
       }
     >
       <IconItem
+        content={null}
         icon={
           <Text
             markdown={false}
@@ -113,6 +115,7 @@ exports[`renders correctly 1`] = `
       }
     >
       <IconItem
+        content={null}
         icon={
           <Text
             markdown={false}
@@ -134,6 +137,7 @@ exports[`renders correctly 1`] = `
       }
     >
       <IconItem
+        content={null}
         icon={
           <Text
             markdown={false}
@@ -155,6 +159,15 @@ exports[`renders correctly 1`] = `
       }
     >
       <IconItem
+        content={
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="small"
+          >
+            Accessible Toilets, Hearing loop installed
+          </Text>
+        }
         icon={
           <Text
             markdown={false}
@@ -166,15 +179,7 @@ exports[`renders correctly 1`] = `
         }
         title="Accessibility"
         titleType="h3"
-      >
-        <Text
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          Accessible Toilets, Hearing loop installed
-        </Text>
-      </IconItem>
+      />
     </View>
   </View>
   <View
@@ -188,7 +193,7 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
-        "backgroundColor": "#fff",
+        "backgroundColor": "#FFF",
         "flex": 1,
         "padding": 15,
       }
@@ -229,7 +234,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
     <View
       style={
         Object {
-          "backgroundColor": "#fff",
+          "backgroundColor": "#FFF",
           "flex": 1,
           "padding": 15,
         }
@@ -287,6 +292,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         >
           <IconItem
+            content={null}
             icon={
               <Text
                 markdown={false}
@@ -308,6 +314,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         >
           <IconItem
+            content={null}
             icon={
               <Text
                 markdown={false}
