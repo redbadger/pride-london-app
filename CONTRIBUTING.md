@@ -32,7 +32,7 @@ Code style is checked and enforced by [Prettier](https://prettier.io/), we
 highly recommend installing an extension for your favourite editor and
 formatting on save.
 
-Basic static analysis is done by [ESLint]()https://eslint.org/, most editor
+Basic static analysis is done by [ESLint](https://eslint.org/), most editor
 support error highlighting, which is also highly recommended.
 
 ### Unit tests and test coverage
@@ -47,8 +47,10 @@ to run unit tests. When working on a feature it may be useful to run Jest in
 watch mode by
 
 ```
-$ yarn test -- --watch
+$ yarn test --watch
 ```
+
+(You may need to use `-- --watch` if you have an older version of yarn)
 
 Tests are collocated with the files they are testing, with an extra `.test` in
 front of the extention (e.g. `events.test.js`).
