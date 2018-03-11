@@ -3,7 +3,10 @@ import type { State } from "../reducers";
 
 const getEventsState = (state: State) => state.events;
 
-export const selectEvents = (state: State) => getEventsState(state).events;
+export const selectEvents = (state: State) =>
+  getEventsState(state).data.entries.filter(
+    entry => entry.sys.contentType.sys.id === "event"
+  );
 export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;
 export const selectEventsRefreshing = (state: State) =>
