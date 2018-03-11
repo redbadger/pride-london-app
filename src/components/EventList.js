@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { StyleSheet, SectionList, TouchableOpacity, View } from "react-native";
-import { format, parse } from "date-fns";
+import { format } from "date-fns";
 
 import EventCard from "./EventCard";
 import Text from "./Text";
@@ -32,7 +32,7 @@ const EventList = ({
     keyExtractor={event => event.sys.id}
     sections={events.map(it => ({
       data: it,
-      title: format(parse(it[0].fields.startTime[locale]), "dddd D MMMM")
+      title: format(it[0].fields.startTime[locale], "dddd D MMMM")
     }))}
     renderSectionHeader={({ section }) => (
       <Text type="h2" style={styles.sectionHeader}>

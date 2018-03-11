@@ -7,13 +7,11 @@ const locale = "en-GB";
 
 const groupByStartTime = (events: Event[]): EventDays => {
   const sections = events
-    .sort((a: Event, b: Event) => {
-      const diff =
+    .sort(
+      (a: Event, b: Event) =>
         parseDate(a.fields.startTime[locale]) -
-        parseDate(b.fields.startTime[locale]);
-
-      return diff / Math.abs(diff);
-    })
+        parseDate(b.fields.startTime[locale])
+    )
     .reduce(
       ({ days, buffer }, event) => {
         if (buffer.length < 1) return { days, buffer: [event] };
