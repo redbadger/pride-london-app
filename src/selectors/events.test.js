@@ -1,21 +1,41 @@
 import {
   selectEvents,
+  selectFeaturedEvents,
   selectEventsLoading,
   selectEventsRefreshing
 } from "./events";
 
 describe("selectEvents", () => {
   it("selects property", () => {
-    const events = [];
+    const data = {
+      entries: [{ sys: { contentType: { sys: { id: "event" } } } }]
+    };
     const state = {
       events: {
-        events
+        data
       }
     };
 
     const selected = selectEvents(state);
 
-    expect(selected).toBe(events);
+    expect(selected).toEqual(data.entries);
+  });
+});
+
+describe("selectFeaturedEvents", () => {
+  it("selects property", () => {
+    const data = {
+      entries: [{ sys: { contentType: { sys: { id: "featuredEvents" } } } }]
+    };
+    const state = {
+      events: {
+        data
+      }
+    };
+
+    const selected = selectFeaturedEvents(state);
+
+    expect(selected).toEqual(data.entries);
   });
 });
 
