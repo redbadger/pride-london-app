@@ -7,6 +7,10 @@ export const selectEvents = (state: State) =>
   getEventsState(state).data.entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
   );
+export const selectFeaturedEvents = (state: State) =>
+  getEventsState(state).data.entries.filter(
+    entry => entry.sys.contentType.sys.id === "featuredEvents"
+  );
 export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;
 export const selectEventsRefreshing = (state: State) =>
