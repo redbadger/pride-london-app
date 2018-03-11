@@ -2,7 +2,9 @@ import {
   selectEvents,
   selectFeaturedEvents,
   selectEventsLoading,
-  selectEventsRefreshing
+  selectEventsRefreshing,
+  selectEventById,
+  selectAssetById
 } from "./events";
 
 describe("selectEvents", () => {
@@ -66,5 +68,39 @@ describe("selectEventsRefreshing", () => {
     const selected = selectEventsRefreshing(state);
 
     expect(selected).toBe(refreshing);
+  });
+});
+
+describe("selectEventById", () => {
+  it("selects event from list", () => {
+    const data = {
+      entries: [{ sys: { id: "1", contentType: { sys: { id: "event" } } } }]
+    };
+    const state = {
+      events: {
+        data
+      }
+    };
+
+    const selected = selectEventById(state, "1");
+
+    expect(selected).toEqual(data.entries[0]);
+  });
+});
+
+describe("selectAssetById", () => {
+  it("selects asset from list", () => {
+    const data = {
+      assets: [{ sys: { id: "1" } }]
+    };
+    const state = {
+      events: {
+        data
+      }
+    };
+
+    const selected = selectAssetById(state, "1");
+
+    expect(selected).toEqual(data.assets[0]);
   });
 });

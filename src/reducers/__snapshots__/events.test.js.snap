@@ -3,6 +3,7 @@
 exports[`Events reducer initialises with default state 1`] = `
 Object {
   "data": Object {
+    "assets": Array [],
     "entries": Array [],
   },
   "loading": true,

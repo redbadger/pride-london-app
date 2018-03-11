@@ -18,6 +18,10 @@ export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;
 export const selectEventsRefreshing = (state: State) =>
   getEventsState(state).refreshing;
+export const selectAssets = (state: State) => getEventsState(state).data.assets;
 
 export const selectEventById = (state: State, id: String) =>
   selectEvents(state).find(event => event.sys.id === id);
+
+export const selectAssetById = (state: State, id: String) =>
+  selectAssets(state).find(asset => asset.sys.id === id);

@@ -3,7 +3,8 @@ import { getCmsData, updateCmsData } from "./cms";
 describe("getCmsData", () => {
   it("returns local cms data if found", async () => {
     const mockLocalEntries = {
-      entries: [{}]
+      entries: [{}],
+      assets: [{}]
     };
     const mockLoadCmsData = () => mockLocalEntries;
     const mockUpdateCmsData = jest.fn();
@@ -29,11 +30,14 @@ describe("updateCmsData", () => {
   it("downloads full cms data if local cms data not found is empty", async () => {
     const mockLocalCmsData = null;
     const mockSavedCmsData = {
-      entries: []
+      entries: [],
+      assets: []
     };
     const downloadedCmsData = {
       entries: [],
+      assets: [],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "abc"
     };
     const mockLoadCmsData = () => mockLocalCmsData;
@@ -60,11 +64,14 @@ describe("updateCmsData", () => {
   it("downloads full cms data if local cms data not found", async () => {
     const mockLocalCmsData = null;
     const mockSavedCmsData = {
-      entries: []
+      entries: [],
+      assets: []
     };
     const downloadedCmsData = {
       entries: [],
+      assets: [],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "abc"
     };
     const mockLoadCmsData = () => mockLocalCmsData;
@@ -91,14 +98,18 @@ describe("updateCmsData", () => {
   it("downloads delta update if local cms data is found", async () => {
     const mockLocalCmsData = {
       entries: [{}],
+      assets: [{}],
       syncToken: "123"
     };
     const mockSavedCmsData = {
-      entries: []
+      entries: [],
+      assets: []
     };
     const downloadedCmsData = {
       entries: [],
+      assets: [],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "abc"
     };
     const mockLoadCmsData = () => mockLocalCmsData;
@@ -126,11 +137,14 @@ describe("updateCmsData", () => {
   it("does not send delta to local storage if syncToken has not changed", async () => {
     const mockLocalCmsData = {
       entries: [{}],
+      assets: [{}],
       syncToken: "123"
     };
     const downloadedCmsData = {
       entries: [],
+      assets: [],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "123"
     };
     const mockLoadCmsData = () => mockLocalCmsData;

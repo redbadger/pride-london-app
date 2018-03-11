@@ -1,10 +1,11 @@
 // @flow
 
 import { AsyncStorage } from "react-native";
-import type { CmsData, CmsEntries } from "./cms";
+import type { CmsData, CmsEntries, CmsEntry, Asset } from "./cms";
 
 export type SavedData = {
   entries: CmsEntries[],
+  assets: CmsEntry<Asset>[],
   syncToken: string
 };
 
@@ -31,6 +32,14 @@ const addOrUpdateEntry = (entries, newEntry) => {
 const entryNotDeleted = (entry, deletedEntryIds) =>
   !deletedEntryIds.includes(entry.sys.id);
 
+const updateCmsEntryList = (newList, deletedList, localList) => {
+  const deletedEntryIds = deletedList.map(deletedEntry => deletedEntry.sys.id);
+
+  return newList
+    .reduce(addOrUpdateEntry, localList)
+    .filter(entry => entryNotDeleted(entry, deletedEntryIds));
+};
+
 export const saveCmsData: SaveCmsData = async (
   cmsData: CmsData,
   loadCmsDataFn = loadCmsData,
@@ -38,18 +47,21 @@ export const saveCmsData: SaveCmsData = async (
 ) => {
   const localCmsData = await loadCmsDataFn();
   const localEntries = localCmsData ? localCmsData.entries : [];
+  const localAssets = localCmsData ? localCmsData.assets : [];
 
-  const syncToken = cmsData.nextSyncToken;
-  const newEntries = cmsData.entries;
-  const deletedEntryIds = cmsData.deletedEntries.map(
-    deletedEntry => deletedEntry.sys.id
+  const entries = updateCmsEntryList(
+    cmsData.entries,
+    cmsData.deletedEntries,
+    localEntries
+  );
+  const assets = updateCmsEntryList(
+    cmsData.assets,
+    cmsData.deletedAssets,
+    localAssets
   );
 
-  const entries = newEntries
-    .reduce(addOrUpdateEntry, localEntries)
-    .filter(entry => entryNotDeleted(entry, deletedEntryIds));
-
-  const newCmsData = { entries, syncToken };
+  const syncToken = cmsData.nextSyncToken;
+  const newCmsData = { entries, assets, syncToken };
 
   await AsyncStorageObj.setItem(DATA_KEY, JSON.stringify(newCmsData));
 

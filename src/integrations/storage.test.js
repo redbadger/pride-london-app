@@ -4,16 +4,25 @@ describe("saveCmsData", () => {
   it("appends entries to list found in local storage", async () => {
     const cmsData = {
       entries: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
+      assets: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "abc"
     };
     const mockLoadCmsData = async () => ({
       entries: [{ sys: { id: "3" } }, { sys: { id: "4" } }],
+      assets: [{ sys: { id: "3" } }, { sys: { id: "4" } }],
       syncToken: "123"
     });
     const mockAsyncStorage = { setItem: jest.fn() };
     const expectedCmsData = {
       entries: [
+        { sys: { id: "1" } },
+        { sys: { id: "2" } },
+        { sys: { id: "3" } },
+        { sys: { id: "4" } }
+      ],
+      assets: [
         { sys: { id: "1" } },
         { sys: { id: "2" } },
         { sys: { id: "3" } },
@@ -36,22 +45,29 @@ describe("saveCmsData", () => {
     expect(savedEntries.entries).toEqual(
       expect.arrayContaining(expectedCmsData.entries)
     );
+    expect(savedEntries.assets).toEqual(
+      expect.arrayContaining(expectedCmsData.assets)
+    );
     expect(savedEntries.syncToken).toEqual(expectedCmsData.syncToken);
   });
 
   it("adds entries to local storage if local entries are empty", async () => {
     const cmsData = {
       entries: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
+      assets: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "abc"
     };
     const mockLoadCmsData = async () => ({
       entries: [],
+      assets: [],
       syncToken: "123"
     });
     const mockAsyncStorage = { setItem: jest.fn() };
     const expectedCmsData = {
       entries: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
+      assets: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
       syncToken: "abc"
     };
 
@@ -71,13 +87,16 @@ describe("saveCmsData", () => {
   it("adds entries to local storage if local entries are not found", async () => {
     const cmsData = {
       entries: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
+      assets: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "abc"
     };
     const mockLoadCmsData = async () => null;
     const mockAsyncStorage = { setItem: jest.fn() };
     const expectedCmsData = {
       entries: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
+      assets: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
       syncToken: "abc"
     };
 
@@ -97,16 +116,20 @@ describe("saveCmsData", () => {
   it("removes entries from local storage if listed in deletions", async () => {
     const cmsData = {
       entries: [],
+      assets: [],
       deletedEntries: [{ sys: { id: "1" } }],
+      deletedAssets: [{ sys: { id: "1" } }],
       nextSyncToken: "abc"
     };
     const mockLoadCmsData = async () => ({
       entries: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
+      assets: [{ sys: { id: "1" } }, { sys: { id: "2" } }],
       syncToken: "123"
     });
     const mockAsyncStorage = { setItem: jest.fn() };
     const expectedCmsData = {
       entries: [{ sys: { id: "2" } }],
+      assets: [{ sys: { id: "2" } }],
       syncToken: "abc"
     };
 
@@ -126,11 +149,17 @@ describe("saveCmsData", () => {
   it("updates entries in local storage when new revision provided", async () => {
     const cmsData = {
       entries: [{ sys: { id: "1", revision: 2 } }],
+      assets: [{ sys: { id: "1", revision: 2 } }],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "abc"
     };
     const mockLoadCmsData = async () => ({
       entries: [
+        { sys: { id: "1", revision: 1 } },
+        { sys: { id: "2", revision: 1 } }
+      ],
+      assets: [
         { sys: { id: "1", revision: 1 } },
         { sys: { id: "2", revision: 1 } }
       ],
@@ -139,6 +168,10 @@ describe("saveCmsData", () => {
     const mockAsyncStorage = { setItem: jest.fn() };
     const expectedCmsData = {
       entries: [
+        { sys: { id: "1", revision: 2 } },
+        { sys: { id: "2", revision: 1 } }
+      ],
+      assets: [
         { sys: { id: "1", revision: 2 } },
         { sys: { id: "2", revision: 1 } }
       ],

@@ -43,6 +43,24 @@ export type FeaturedEvents = {
   events: { [string]: CmsEntry<Event>[] }
 };
 
+export type Asset = {
+  title: { [string]: string },
+  file: {
+    [string]: {
+      contentType: string,
+      fileName: string,
+      url: string,
+      details: {
+        size: number,
+        image: {
+          height: number,
+          width: number
+        }
+      }
+    }
+  }
+};
+
 export type CmsEntries = CmsEntry<Event> | CmsEntry<FeaturedEvents>;
 
 type SyncOpts = {
@@ -52,6 +70,8 @@ type SyncOpts = {
 export type CmsData = {
   entries: CmsEntries[],
   deletedEntries: CmsEntries[],
+  assets: CmsEntry<Asset>[],
+  deletedAssets: CmsEntry<Asset>[],
   nextSyncToken: string
 };
 type Client = {
@@ -99,10 +119,12 @@ export const updateCmsData: UpdateCmsData = async (
   const syncOpts = hasLocalCmsData
     ? {
         initial: false,
-        nextSyncToken: localCmsData.syncToken
+        nextSyncToken: localCmsData.syncToken,
+        resolveLinks: false
       }
     : {
-        initial: true
+        initial: true,
+        resolveLinks: false
       };
 
   const cmsData = await clientObj.sync(syncOpts);
