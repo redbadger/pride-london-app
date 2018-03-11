@@ -1,61 +1,102 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<FlatList
+<SectionList
+  ItemSeparatorComponent={[Function]}
+  SectionSeparatorComponent={[Function]}
   contentContainerStyle={
     Object {
-      "paddingTop": 10,
+      "backgroundColor": "rgb(226, 226, 226)",
+      "paddingTop": 0,
     }
   }
-  data={
-    Array [
-      Object {
-        "fields": Object {
-          "name": Object {
-            "en-GB": "some event",
-          },
-        },
-        "sys": Object {
-          "contentType": Object {
-            "sys": Object {
-              "id": "",
-            },
-          },
-          "id": "1",
-          "revision": 1,
-          "type": "",
-        },
-      },
-      Object {
-        "fields": Object {
-          "name": Object {
-            "en-GB": "some other",
-          },
-        },
-        "sys": Object {
-          "contentType": Object {
-            "sys": Object {
-              "id": "",
-            },
-          },
-          "id": "2",
-          "revision": 1,
-          "type": "",
-        },
-      },
-    ]
-  }
+  data={Array []}
   disableVirtualization={false}
   horizontal={false}
   initialNumToRender={10}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
-  numColumns={1}
   onEndReachedThreshold={2}
   onRefresh={[Function]}
   refreshing={false}
   renderItem={[Function]}
+  renderSectionHeader={[Function]}
   scrollEventThrottle={50}
+  sections={
+    Array [
+      Object {
+        "data": Array [
+          Object {
+            "fields": Object {
+              "name": Object {
+                "en-GB": "some event",
+              },
+              "startTime": Object {
+                "en-GB": "2018-07-10T00:00",
+              },
+            },
+            "sys": Object {
+              "contentType": Object {
+                "sys": Object {
+                  "id": "",
+                },
+              },
+              "id": "1",
+              "revision": 1,
+              "type": "",
+            },
+          },
+          Object {
+            "fields": Object {
+              "name": Object {
+                "en-GB": "some other",
+              },
+              "startTime": Object {
+                "en-GB": "2018-07-10T00:00",
+              },
+            },
+            "sys": Object {
+              "contentType": Object {
+                "sys": Object {
+                  "id": "",
+                },
+              },
+              "id": "2",
+              "revision": 1,
+              "type": "",
+            },
+          },
+        ],
+        "title": "Tuesday 10 July",
+      },
+      Object {
+        "data": Array [
+          Object {
+            "fields": Object {
+              "name": Object {
+                "en-GB": "some other",
+              },
+              "startTime": Object {
+                "en-GB": "2018-07-11T00:00",
+              },
+            },
+            "sys": Object {
+              "contentType": Object {
+                "sys": Object {
+                  "id": "",
+                },
+              },
+              "id": "2",
+              "revision": 1,
+              "type": "",
+            },
+          },
+        ],
+        "title": "Wednesday 11 July",
+      },
+    ]
+  }
+  stickySectionHeadersEnabled={true}
   updateCellsBatchingPeriod={50}
   windowSize={21}
 />
