@@ -46,6 +46,7 @@
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-import-resolver-react-native": "^0.1.0",
     "eslint-plugin-flowtype": "^2.43.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
@@ -78,7 +79,8 @@
     "snapshotSerializers": ["enzyme-to-json/serializer"],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation)"
-    ]
+    ],
+    "collectCoverage": true
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"],

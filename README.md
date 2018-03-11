@@ -1,6 +1,8 @@
 # Pride in London App
 
 [![CircleCI](https://circleci.com/gh/redbadger/pride-london-app.svg?style=svg&circle-token=9de45c24a3720e16a6d568c0868750e1d0fe8e40)](https://circleci.com/gh/redbadger/pride-london-app)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/maintainability)](https://codeclimate.com/github/redbadger/pride-london-app/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/test_coverage)](https://codeclimate.com/github/redbadger/pride-london-app/test_coverage)
 
 <!-- Generateed with markdown-toc (https://github.com/jonschlinkert/markdown-toc) -->
 
