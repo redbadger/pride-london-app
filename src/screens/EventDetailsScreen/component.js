@@ -16,13 +16,13 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { Event } from "../../integrations/cms";
+import type { Event, CmsEntry } from "../../integrations/cms";
 
 const locale = "en-GB";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: String } }>,
-  event: Event
+  event: CmsEntry<Event>
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);

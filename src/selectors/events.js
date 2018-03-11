@@ -1,13 +1,16 @@
 // @flow
 import type { State } from "../reducers";
+import type { CmsEntry, Event, FeaturedEvents } from "../integrations/cms";
 
 const getEventsState = (state: State) => state.events;
 
-export const selectEvents = (state: State) =>
+export const selectEvents = (state: State): CmsEntry<Event>[] =>
   getEventsState(state).data.entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
   );
-export const selectFeaturedEvents = (state: State) =>
+export const selectFeaturedEvents = (
+  state: State
+): CmsEntry<FeaturedEvents>[] =>
   getEventsState(state).data.entries.filter(
     entry => entry.sys.contentType.sys.id === "featuredEvents"
   );

@@ -6,7 +6,8 @@ import { createClient } from "contentful/dist/contentful.browser.min";
 import { saveCmsData, loadCmsData } from "./storage";
 import type { SavedData } from "./storage";
 
-export type Event = {
+export type CmsEntry<Fields> = {
+  fields: Fields,
   sys: {
     id: string,
     type: string,
@@ -16,33 +17,41 @@ export type Event = {
       }
     },
     revision: number
-  },
-  fields: {
-    name: { [string]: string },
-    eventCategories: { [string]: string[] },
-    startTime: { [string]: string },
-    endTime: { [string]: string },
-    location: { [string]: { lat: number, lon: number } },
-    locationName: { [string]: string },
-    eventPriceLow: { [string]: number },
-    eventPriceHigh: { [string]: number },
-    accessibilityOptions: { [string]: string[] },
-    eventDescription: { [string]: string },
-    accessibilityDetails: { [string]: string },
-    email: { [string]: string },
-    phone: { [string]: string },
-    ticketingUrl: { [string]: string },
-    venueDetails: { [string]: string[] }
   }
 };
+
+export type Event = {
+  name: { [string]: string },
+  eventCategories: { [string]: string[] },
+  startTime: { [string]: string },
+  endTime: { [string]: string },
+  location: { [string]: { lat: number, lon: number } },
+  locationName: { [string]: string },
+  eventPriceLow: { [string]: number },
+  eventPriceHigh: { [string]: number },
+  accessibilityOptions: { [string]: string[] },
+  eventDescription: { [string]: string },
+  accessibilityDetails: { [string]: string },
+  email: { [string]: string },
+  phone: { [string]: string },
+  ticketingUrl: { [string]: string },
+  venueDetails: { [string]: string[] }
+};
+
+export type FeaturedEvents = {
+  title: { [string]: string },
+  events: { [string]: CmsEntry<Event>[] }
+};
+
+export type CmsEntries = CmsEntry<Event> | CmsEntry<FeaturedEvents>;
 
 type SyncOpts = {
   initial: boolean,
   nextSyncToken?: string
 };
 export type CmsData = {
-  entries: Object[],
-  deletedEntries: Object[],
+  entries: CmsEntries[],
+  deletedEntries: CmsEntries[],
   nextSyncToken: string
 };
 type Client = {

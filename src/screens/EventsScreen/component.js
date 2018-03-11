@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event } from "../../integrations/cms";
+import type { Event, CmsEntry } from "../../integrations/cms";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/FilterHeader";
 import { bgColor } from "../../constants/colors";
@@ -12,7 +12,7 @@ const locale = "en-GB";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  events: Event[],
+  events: CmsEntry<Event>[],
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>

@@ -2,11 +2,11 @@
 import React from "react";
 import { View, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import EventCard from "./EventCard";
-import type { Event } from "../integrations/cms";
+import type { Event, CmsEntry } from "../integrations/cms";
 
 type Props = {
   locale: string,
-  events: Event[],
+  events: CmsEntry<Event>[],
   refreshing: boolean,
   onRefresh: () => void,
   onPress: (eventName: string) => void
