@@ -1,11 +1,12 @@
 // @flow
 import React from "react";
 import { StyleSheet, SectionList, TouchableOpacity, View } from "react-native";
+import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
 import { format } from "date-fns";
 
 import EventCard from "./EventCard";
 import Text from "./Text";
-import type { EventDays } from "../data/event";
+import type { Event, EventDays } from "../data/event";
 import {
   eventListBgColor,
   eventListHeaderBgColor,
@@ -20,6 +21,34 @@ type Props = {
   onPress: (eventName: string) => void
 };
 
+const separator = style => () => <View style={style} />;
+
+type ItemProps = { item: Event };
+const renderItem = (styles, locale, onPress) => ({
+  item: event
+}: ItemProps) => (
+  <View style={styles.eventListItem}>
+    <TouchableOpacity delayPressIn={50} oPress={() => onPress(event.sys.id)}>
+      <EventCard name={event.fields.name[locale]} />
+    </TouchableOpacity>
+  </View>
+);
+
+type Section = SectionBase<Event> & { title: string };
+
+type SectionProps = { section: Section };
+const renderSectionHeader = styles => ({ section }: SectionProps) => (
+  <Text type="h2" style={styles.sectionHeader}>
+    {section.title}
+  </Text>
+);
+
+const eventSections = (events: EventDays, locale: string): Section[] =>
+  events.map(it => ({
+    data: it,
+    title: format(it[0].fields.startTime[locale], "dddd D MMMM")
+  }));
+
 const EventList = ({
   events,
   locale,
@@ -28,29 +57,13 @@ const EventList = ({
   onPress
 }: Props) => (
   <SectionList
-    contentContainerStyle={styles.container}
+    sections={eventSections(events, locale)}
+    renderSectionHeader={renderSectionHeader(styles)}
+    renderItem={renderItem(styles, locale, onPress)}
     keyExtractor={event => event.sys.id}
-    sections={events.map(it => ({
-      data: it,
-      title: format(it[0].fields.startTime[locale], "dddd D MMMM")
-    }))}
-    renderSectionHeader={({ section }) => (
-      <Text type="h2" style={styles.sectionHeader}>
-        {section.title}
-      </Text>
-    )}
-    ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
-    SectionSeparatorComponent={() => <View style={styles.sectionSeparator} />}
-    renderItem={({ item: event }) => (
-      <View style={styles.eventListItem}>
-        <TouchableOpacity
-          delayPressIn={50}
-          onPress={() => onPress(event.sys.id)}
-        >
-          <EventCard name={event.fields.name[locale]} />
-        </TouchableOpacity>
-      </View>
-    )}
+    contentContainerStyle={styles.container}
+    ItemSeparatorComponent={separator(styles.itemSeparator)}
+    SectionSeparatorComponent={separator(styles.sectionSeparator)}
     refreshing={refreshing}
     onRefresh={onRefresh}
   />
