@@ -7,8 +7,8 @@ import FilterHeaderButton from "./FilterHeaderButton";
 import {
   eventListHeaderBgColor,
   headerBgColor,
-  filterButtonColor,
-  filterButtontextColor
+  interestButtonBgColor,
+  interestButtonTextColor
 } from "../constants/colors";
 import text from "../constants/text";
 
@@ -72,26 +72,26 @@ const styles = StyleSheet.create({
   interestButton: {
     flex: 1,
     height: 44,
-    backgroundColor: filterButtonColor,
+    backgroundColor: interestButtonBgColor,
     marginLeft: 8,
     paddingHorizontal: 12,
     borderRadius: 4,
     justifyContent: "center"
   },
   interestButtonText: {
-    color: filterButtontextColor
+    color: interestButtonTextColor
   },
   mapButton: {
     marginHorizontal: 12,
     width: 52,
     height: 52,
-    backgroundColor: filterButtonColor,
+    backgroundColor: interestButtonBgColor,
     alignItems: "center",
     justifyContent: "flex-end",
     borderRadius: 25
   },
   mapButtonText: {
-    color: filterButtontextColor,
+    color: interestButtonTextColor,
     fontFamily: "Poppins-Bold",
     fontSize: 14,
     paddingBottom: 6

@@ -9,7 +9,7 @@ exports[`renders correctly 1`] = `
   }
   style={
     Object {
-      "backgroundColor": "#3A3A3A",
+      "backgroundColor": "#A5A5A5",
     }
   }
 >
@@ -21,11 +21,8 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
-        "alignItems": "center",
-        "flexDirection": "row",
         "paddingBottom": 12,
-        "paddingHorizontal": 20,
-        "paddingTop": 8,
+        "paddingTop": 16,
       }
     }
   >
@@ -33,56 +30,126 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#5C5C5C",
-          "borderRadius": 4,
-          "flex": 1,
           "flexDirection": "row",
-          "height": 43,
-          "padding": 10,
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <View
         style={
           Object {
-            "color": "#ADADAD",
-            "fontWeight": "bold",
+            "backgroundColor": "#545454",
+            "borderRadius": 4,
+            "flex": 1,
+            "height": 44,
+            "justifyContent": "center",
+            "marginLeft": 8,
+            "paddingHorizontal": 12,
           }
         }
       >
-        I'm interested in...
-      </Text>
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "#FFFFFF",
+            }
+          }
+          type="h2"
+        >
+          I'm interested in...
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#545454",
+            "borderRadius": 25,
+            "height": 52,
+            "justifyContent": "flex-end",
+            "marginHorizontal": 12,
+            "width": 52,
+          }
+        }
+      >
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "fontFamily": "Poppins-Bold",
+              "fontSize": 14,
+              "paddingBottom": 6,
+            }
+          }
+          type="text"
+        >
+          Map
+        </Text>
+      </View>
     </View>
     <View
       style={
         Object {
-          "alignItems": "center",
-          "backgroundColor": "#5C5C5C",
-          "borderRadius": 25,
-          "height": 52,
-          "justifyContent": "center",
-          "marginLeft": 12,
-          "width": 52,
+          "flexDirection": "row",
+          "marginTop": 8,
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <FilterDropdown
+        options={
+          Array [
+            "Any day",
+            "Today",
+            "Tomorrow",
+            "This weekend",
+            "Next week",
+            "Choose dates",
+          ]
+        }
         style={
           Object {
-            "color": "#ADADAD",
-            "fontWeight": "bold",
+            "marginLeft": 8,
           }
         }
-      >
-        Map
-      </Text>
+      />
+      <FilterDropdown
+        options={
+          Array [
+            "Any time",
+            "Morning",
+            "Afternoon",
+            "Evening",
+          ]
+        }
+        style={
+          Object {
+            "marginLeft": 8,
+          }
+        }
+      />
+      <FilterHeaderButton
+        onPress={[Function]}
+        style={
+          Object {
+            "marginLeft": 8,
+          }
+        }
+        text="Filters"
+      />
     </View>
   </View>
+  <View
+    style={
+      Object {
+        "borderBottomColor": "rgb(216, 216, 216)",
+        "borderLeftColor": "rgb(216, 216, 216)",
+        "borderLeftWidth": 750,
+        "borderRightColor": "#A5A5A5",
+        "borderTopColor": "#A5A5A5",
+        "borderTopWidth": 16,
+      }
+    }
+  />
 </withOrientation>
 `;

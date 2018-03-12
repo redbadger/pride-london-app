@@ -3,6 +3,10 @@ import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
+import {
+  filterButtonBorderColor,
+  filterButtonTextColor
+} from "../constants/colors";
 
 type Props = {
   text: string,
@@ -28,21 +32,18 @@ FilterHeaderButton.defaultProps = {
   style: {}
 };
 
-const filterBorderColor = "#FFF";
-const filterColor = "#FFF";
-
 const styles = StyleSheet.create({
   button: {
     height: 32,
     paddingHorizontal: 8,
     borderWidth: 1,
-    borderColor: filterBorderColor,
+    borderColor: filterButtonBorderColor,
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center"
   },
   buttonText: {
-    color: filterColor
+    color: filterButtonTextColor
   }
 });
 

@@ -5,8 +5,12 @@ export const headerBgColor = "#A5A5A5";
 
 export const textColor = "#272727";
 
-export const filterButtonColor = "#545454";
-export const filterButtontextColor = "#FFFFFF";
+// FILTER HEADER
+
+export const interestButtonBgColor = "#545454";
+export const interestButtonTextColor = "#FFFFFF";
+export const filterButtonBorderColor = "#FFFFFF";
+export const filterButtonTextColor = "#FFFFFF";
 
 // EVENT LIST
 

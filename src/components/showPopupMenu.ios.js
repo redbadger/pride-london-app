@@ -8,7 +8,7 @@ export default function(options: string[]): Promise<string> {
     ActionSheetIOS.showActionSheetWithOptions(
       {
         options: actionSheetOptions,
-        cancelButtonIndex: options.length - 1
+        cancelButtonIndex: actionSheetOptions.length - 1
       },
       buttonIndex => {
         if (buttonIndex !== actionSheetOptions.length - 1) {

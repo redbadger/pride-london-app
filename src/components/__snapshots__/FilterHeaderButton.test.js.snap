@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderColor": "#FFFFFF",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "height": 32,
+        "justifyContent": "center",
+        "paddingHorizontal": 8,
+      },
+      Object {
+        "marginTop": 16,
+      },
+    ]
+  }
+>
+  <Text
+    markdown={false}
+    style={
+      Object {
+        "color": "#FFFFFF",
+      }
+    }
+    type="text"
+  >
+    1-2-3 filtered
+  </Text>
+</TouchableOpacity>
+`;
