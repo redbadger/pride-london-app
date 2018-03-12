@@ -1,26 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<withOrientation
+<ImageBackground
+  resizeMode="cover"
+  source={
+    Object {
+      "uri": "https://image.jpg",
+    }
+  }
   style={
     Object {
-      "backgroundColor": "#F2F2F2",
+      "flex": 1,
+      "height": 180,
     }
   }
 >
-  <StatusBar
-    animated={true}
-    barStyle="default"
-    showHideTransition="fade"
-  />
-  <View
+  <withOrientation
     style={
       Object {
-        "height": 180,
         "padding": 22,
       }
     }
   >
+    <StatusBar
+      animated={true}
+      barStyle="default"
+      showHideTransition="fade"
+    />
     <TouchableOpacity
       activeOpacity={0.2}
       onPress={[Function]}
@@ -33,6 +39,6 @@ exports[`renders correctly 1`] = `
         Back
       </Text>
     </TouchableOpacity>
-  </View>
-</withOrientation>
+  </withOrientation>
+</ImageBackground>
 `;

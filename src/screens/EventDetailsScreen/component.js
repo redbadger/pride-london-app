@@ -16,13 +16,14 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { CmsEvent } from "../../integrations/cms";
+import type { CmsEvent, CmsAsset } from "../../integrations/cms";
 
 const locale = "en-GB";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: String } }>,
-  event: CmsEvent
+  event: CmsEvent,
+  getAssetById: id => CmsAsset
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
@@ -172,13 +173,17 @@ class EventDetailsScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { event } = this.props;
+    const { event, getAssetById } = this.props;
+    const headerImage = getAssetById(
+      event.fields.individualEventPicture[locale].sys.id
+    );
     return (
       <ScrollView style={styles.container}>
         <Header
           onBackButtonPress={() => {
             this.props.navigation.goBack(null);
           }}
+          imageUrl={`https:${headerImage.fields.file[locale].url}`}
         />
         {renderEventOverview(event)}
         <View style={styles.sectionDivider} />
