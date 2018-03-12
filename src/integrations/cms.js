@@ -43,25 +43,34 @@ export type FeaturedEvents = {
   events: { [string]: CmsEntry<Event>[] }
 };
 
-export type Asset = {
-  title: { [string]: string },
-  file: {
-    [string]: {
-      contentType: string,
-      fileName: string,
-      url: string,
-      details: {
-        size: number,
-        image: {
-          height: number,
-          width: number
+export type CmsAsset = {
+  fields: {
+    title: { [string]: string },
+    file: {
+      [string]: {
+        contentType: string,
+        fileName: string,
+        url: string,
+        details: {
+          size: number,
+          image: {
+            height: number,
+            width: number
+          }
         }
       }
     }
+  },
+  sys: {
+    id: string,
+    type: "Asset",
+    revision: number
   }
 };
 
-export type CmsEntries = CmsEntry<Event> | CmsEntry<FeaturedEvents>;
+export type CmsEvent = CmsEntry<Event>;
+export type CmsFeaturedEvents = CmsEntry<FeaturedEvents>;
+export type CmsEntries = CmsEvent | CmsFeaturedEvents;
 
 type SyncOpts = {
   initial: boolean,
@@ -70,8 +79,8 @@ type SyncOpts = {
 export type CmsData = {
   entries: CmsEntries[],
   deletedEntries: CmsEntries[],
-  assets: CmsEntry<Asset>[],
-  deletedAssets: CmsEntry<Asset>[],
+  assets: CmsAsset[],
+  deletedAssets: CmsAsset[],
   nextSyncToken: string
 };
 type Client = {

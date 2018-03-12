@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event, CmsEntry } from "../../integrations/cms";
+import type { CmsEvent } from "../../integrations/cms";
 import { updateEvents } from "../../actions/events";
 import {
   selectEvents,
@@ -16,7 +16,7 @@ type OwnProps = {
 };
 
 type Props = {
-  events: CmsEntry<Event>[],
+  events: CmsEvent[],
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>
