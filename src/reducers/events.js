@@ -1,6 +1,6 @@
 // @flow
 import type { Reducer } from "redux";
-import type { Event } from "../integrations/cms";
+import type { Event } from "../data/event";
 import type { EventsAction } from "../actions/events";
 
 export type State = {
