@@ -1,10 +1,11 @@
 import React from "react";
-import { View, StyleSheet, StatusBar } from "react-native";
+import { Dimensions, View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import Text from "./Text";
 import FilterHeaderDropdown from "./FilterHeaderDropdown";
 import FilterHeaderButton from "./FilterHeaderButton";
 import {
+  eventListHeaderBgColor,
   headerBgColor,
   filterButtonColor,
   filterButtontextColor
@@ -51,16 +52,17 @@ const FilterHeader = () => (
         />
       </View>
     </View>
+    <View style={styles.shape} />
   </SafeAreaView>
 );
 
+const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
     backgroundColor: headerBgColor
   },
   content: {
-    height: 169,
-    paddingTop: 12,
+    paddingTop: 16,
     paddingBottom: 12
   },
   contentInterest: {
@@ -100,6 +102,14 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     marginLeft: 8
+  },
+  shape: {
+    borderTopColor: headerBgColor,
+    borderRightColor: headerBgColor,
+    borderBottomColor: eventListHeaderBgColor,
+    borderLeftColor: eventListHeaderBgColor,
+    borderTopWidth: 16,
+    borderLeftWidth: width
   }
 });
 
