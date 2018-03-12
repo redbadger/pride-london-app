@@ -2,7 +2,8 @@ import React from "react";
 import { View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import Text from "./Text";
-import FilterDropdown from "./FilterDropdown";
+import FilterHeaderDropdown from "./FilterHeaderDropdown";
+import FilterHeaderButton from "./FilterHeaderButton";
 import {
   headerBgColor,
   filterButtonColor,
@@ -24,10 +25,10 @@ const FilterHeader = () => (
   <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
     <StatusBar barStyle="light-content" animated />
     <View style={styles.content}>
-      <View style={styles.contentSearch}>
-        <View style={styles.filterButton}>
-          <Text type="h2" style={styles.filterButtonText}>
-            {text.filterButton}
+      <View style={styles.contentInterest}>
+        <View style={styles.interestButton}>
+          <Text type="h2" style={styles.interestButtonText}>
+            {text.filterByInterest}
           </Text>
         </View>
         <View style={styles.mapButton}>
@@ -35,8 +36,19 @@ const FilterHeader = () => (
         </View>
       </View>
       <View style={styles.contentFilters}>
-        <FilterDropdown options={OPTIONS_DAY} />
-        <FilterDropdown options={OPTIONS_TIME} />
+        <FilterHeaderDropdown
+          options={OPTIONS_DAY}
+          style={styles.filterButton}
+        />
+        <FilterHeaderDropdown
+          options={OPTIONS_TIME}
+          style={styles.filterButton}
+        />
+        <FilterHeaderButton
+          text="Filters"
+          onPress={() => {}}
+          style={styles.filterButton}
+        />
       </View>
     </View>
   </SafeAreaView>
@@ -51,11 +63,11 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 12
   },
-  contentSearch: {
+  contentInterest: {
     alignItems: "center",
     flexDirection: "row"
   },
-  filterButton: {
+  interestButton: {
     flex: 1,
     height: 44,
     backgroundColor: filterButtonColor,
@@ -63,6 +75,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 4,
     justifyContent: "center"
+  },
+  interestButtonText: {
+    color: filterButtontextColor
   },
   mapButton: {
     marginHorizontal: 12,
@@ -73,9 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     borderRadius: 25
   },
-  filterButtonText: {
-    color: filterButtontextColor
-  },
   mapButtonText: {
     color: filterButtontextColor,
     fontFamily: "Poppins-Bold",
@@ -83,8 +95,11 @@ const styles = StyleSheet.create({
     paddingBottom: 6
   },
   contentFilters: {
-    marginLeft: 8,
-    flexDirection: "row"
+    flexDirection: "row",
+    marginTop: 8
+  },
+  filterButton: {
+    marginLeft: 8
   }
 });
 
