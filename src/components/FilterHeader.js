@@ -25,7 +25,7 @@ const OPTIONS_TIME = ["Any time", "Morning", "Afternoon", "Evening"];
 const FilterHeader = () => (
   <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
     <StatusBar barStyle="light-content" animated />
-    <View style={styles.content}>
+    <View testID="filter-header" style={styles.content}>
       <View style={styles.contentInterest}>
         <View style={styles.interestButton}>
           <Text type="h2" style={styles.interestButtonText}>

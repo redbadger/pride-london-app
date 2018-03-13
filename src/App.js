@@ -1,5 +1,5 @@
 // @flow
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import React from "react";
 import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
 import EventsScreen from "./screens/EventsScreen";
@@ -16,9 +16,29 @@ const EventsStack = StackNavigator(
   }
 );
 
+EventsStack.navigationOptions = {
+  tabBarTestIDProps: {
+    testID: "events-tab-button",
+    accessibilityLabel: "events-tab-button"
+  }
+};
+
+const HomeScreen = () => (
+  <View testID="home-screen">
+    <Text>Home</Text>
+  </View>
+);
+
+HomeScreen.navigationOptions = {
+  tabBarTestIDProps: {
+    testID: "home-tab-button",
+    accessibilityLabel: "home-tab-button"
+  }
+};
+
 export default TabNavigator(
   {
-    Home: { screen: () => <View /> },
+    Home: { screen: HomeScreen },
     Events: { screen: EventsStack },
     Parade: { screen: () => <View /> },
     Saved: { screen: () => <View /> },
