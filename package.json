@@ -9,7 +9,8 @@
     "run-android":
       "node node_modules/react-native/local-cli/cli.js run-android --appId com.pridelondonapp.dev --variant devDebug",
     "test": "jest src",
-    "test:e2e": "detox test -c ios.sim.debug",
+    "test:e2e": "yarn test:e2e:build && yarn test:e2e:run",
+    "test:e2e:run": "detox test -c ios.sim.debug",
     "test:e2e:build": "detox build",
     "precommit": "lint-staged",
     "lint": "eslint src",
