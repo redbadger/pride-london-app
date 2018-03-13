@@ -5,35 +5,8 @@ import Config from "react-native-config";
 import { createClient } from "contentful/dist/contentful.browser.min";
 import { saveEvents, loadEvents } from "./storage";
 
-export type Event = {
-  sys: {
-    id: string,
-    type: string,
-    contentType: {
-      sys: {
-        id: string
-      }
-    },
-    revision: number
-  },
-  fields: {
-    name: { [string]: string },
-    eventCategories: { [string]: string[] },
-    startTime: { [string]: string },
-    endTime: { [string]: string },
-    location: { [string]: { lat: number, lon: number } },
-    locationName: { [string]: string },
-    eventPriceLow: { [string]: number },
-    eventPriceHigh: { [string]: number },
-    accessibilityOptions: { [string]: string[] },
-    eventDescription: { [string]: string },
-    accessibilityDetails: { [string]: string },
-    email: { [string]: string },
-    phone: { [string]: string },
-    ticketingUrl: { [string]: string },
-    venueDetails: { [string]: string[] }
-  }
-};
+import type { Event } from "../data/event";
+
 export type Deletion = {
   sys: {
     id: string

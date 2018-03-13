@@ -46,5 +46,8 @@
         "peerDependencies": false
       }
     ]
+  },
+  "settings": {
+    "import/resolver": "react-native"
   }
 }
