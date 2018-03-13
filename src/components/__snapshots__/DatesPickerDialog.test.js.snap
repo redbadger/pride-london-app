@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  animationType="slide"
+  hardwareAccelerated={false}
+  onRequestClose={[Function]}
+  presentationStyle="fullScreen"
+  visible={true}
+>
+  <SafeAreaView
+    style={
+      Object {
+        "backgroundColor": "#F2F2F2",
+      }
+    }
+  >
+    <StatusBar
+      animated={true}
+      barStyle="default"
+      showHideTransition="fade"
+    />
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 56,
+          "justifyContent": "space-between",
+          "paddingHorizontal": 16,
+        }
+      }
+    >
+      <HeaderButton
+        disabled={false}
+        onPress={[Function]}
+      >
+        Cancel
+      </HeaderButton>
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "#272727",
+          }
+        }
+        type="h2"
+      >
+        Choose Dates
+      </Text>
+      <HeaderButton
+        disabled={true}
+        onPress={[Function]}
+      >
+        Apply
+      </HeaderButton>
+    </View>
+  </SafeAreaView>
+  <Calendar
+    markedDates={Object {}}
+    onDayPress={[Function]}
+    theme={
+      Object {
+        "textDayFontFamily": "Roboto",
+        "textDayFontSize": 16,
+        "textDayHeaderFontFamily": "Roboto",
+        "textDayHeaderFontSize": 16,
+        "textMonthFontFamily": "Roboto",
+        "textMonthFontSize": 16,
+      }
+    }
+  />
+</Component>
+`;

@@ -97,7 +97,8 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <FilterDropdown
+      <FilterHeaderDropdown
+        onChange={[Function]}
         options={
           Array [
             "Any day",
@@ -113,8 +114,10 @@ exports[`renders correctly 1`] = `
             "marginLeft": 8,
           }
         }
+        value="Any day"
       />
-      <FilterDropdown
+      <FilterHeaderDropdown
+        onChange={[Function]}
         options={
           Array [
             "Any time",
@@ -128,6 +131,7 @@ exports[`renders correctly 1`] = `
             "marginLeft": 8,
           }
         }
+        value="Any time"
       />
       <FilterHeaderButton
         onPress={[Function]}
@@ -151,6 +155,11 @@ exports[`renders correctly 1`] = `
         "borderTopWidth": 16,
       }
     }
+  />
+  <DatesPickerDialog
+    onCancel={[Function]}
+    onDatesSelected={[Function]}
+    visible={false}
   />
 </withOrientation>
 `;

@@ -5888,6 +5888,13 @@ react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-native-calendars@^1.17.4:
+  version "1.17.4"
+  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.17.4.tgz#5a3b53264d9ea7ca9292d827bc92eb8083bc5dcc"
+  dependencies:
+    prop-types "^15.5.10"
+    xdate "^0.8.0"
+
 react-native-config@^0.11.5:
   version "0.11.5"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
@@ -7457,6 +7464,10 @@ xcode@^0.9.1:
     pegjs "^0.10.0"
     simple-plist "^0.2.1"
     uuid "3.0.1"
+
+xdate@^0.8.0:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/xdate/-/xdate-0.8.2.tgz#d7b033c00485d02695baf0044f4eacda3fc961a3"
 
 xml-name-validator@^2.0.1:
   version "2.0.1"

@@ -13,14 +13,21 @@ const options = ["Apple", "Bananas", "Kiwi"];
 it("renders correctly", () => {
   const style = { marginTop: 16 };
   const output = shallow(
-    <FilterHeaderDropdown options={options} style={style} />
+    <FilterHeaderDropdown
+      options={options}
+      onChange={() => {}}
+      style={style}
+      value="Apple"
+    />
   );
   expect(output).toMatchSnapshot();
 });
 
 it("shows popup menu on press", async () => {
-  const output = shallow(<FilterHeaderDropdown options={options} />);
-  expect(output.state("picked")).toBe("Apple");
+  const onChange = jest.fn();
+  const output = shallow(
+    <FilterHeaderDropdown options={options} onChange={onChange} value="Apple" />
+  );
 
   // Simulate ref (should then be passed to showPopupMenu)
   const onRef = output.find(FilterHeaderButton).prop("onRef");
@@ -32,14 +39,16 @@ it("shows popup menu on press", async () => {
   output.simulate("press");
   expect(untypedShowPopupMenu).toHaveBeenCalledWith(options, nodeRef);
 
-  // Validate state changed
+  // Validate onChange called
   await new Promise(resolve => setTimeout(resolve));
-  expect(output.state("picked")).toBe("Bananas");
+  expect(onChange).toHaveBeenCalledWith("Bananas");
 });
 
 it("shows popup menu on press (popup dismissed)", async () => {
-  const output = shallow(<FilterHeaderDropdown options={options} />);
-  expect(output.state("picked")).toBe("Apple");
+  const onChange = jest.fn();
+  const output = shallow(
+    <FilterHeaderDropdown options={options} onChange={onChange} value="Apple" />
+  );
 
   // Open popup menu and dismiss it (return undefined)
   output.simulate("press");
@@ -47,7 +56,7 @@ it("shows popup menu on press (popup dismissed)", async () => {
 
   // Validate state not changed
   await new Promise(resolve => setTimeout(resolve));
-  expect(output.state("picked")).toBe("Apple");
+  expect(onChange).not.toHaveBeenCalled();
 });
 
 afterEach(() => {

@@ -7,20 +7,14 @@ import showPopupMenu from "./showPopupMenu";
 
 type Props = {
   options: string[],
+  onChange: Function,
+  value: string,
   style?: StyleObj
 };
 
-type State = {
-  picked: string
-};
-
-class FilterDropdown extends React.PureComponent<Props, State> {
+class FilterHeaderDropdown extends React.PureComponent<Props> {
   static defaultProps = {
     style: {}
-  };
-
-  state = {
-    picked: this.props.options[0]
   };
 
   onRef = (button: Node) => {
@@ -32,14 +26,14 @@ class FilterDropdown extends React.PureComponent<Props, State> {
   openPicker = async () => {
     const result = await showPopupMenu(this.props.options, this.buttonRef);
     if (result) {
-      this.setState({ picked: result });
+      this.props.onChange(result);
     }
   };
 
   render() {
     return (
       <FilterHeaderButton
-        text={`${this.state.picked} ▾`}
+        text={`${this.props.value} ▾`}
         onPress={this.openPicker}
         style={this.props.style}
         onRef={this.onRef}
@@ -48,4 +42,4 @@ class FilterDropdown extends React.PureComponent<Props, State> {
   }
 }
 
-export default FilterDropdown;
+export default FilterHeaderDropdown;

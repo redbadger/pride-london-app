@@ -1,9 +1,12 @@
+// @flow
 import React from "react";
 import { Dimensions, View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import Text from "./Text";
+import formatDate from "date-fns/format";
+import DatesPickerDialog from "./DatesPickerDialog";
 import FilterHeaderDropdown from "./FilterHeaderDropdown";
 import FilterHeaderButton from "./FilterHeaderButton";
+import Text from "./Text";
 import {
   eventListHeaderBgColor,
   headerBgColor,
@@ -22,39 +25,88 @@ const OPTIONS_DAY = [
 ];
 const OPTIONS_TIME = ["Any time", "Morning", "Afternoon", "Evening"];
 
-const FilterHeader = () => (
-  <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
-    <StatusBar barStyle="light-content" animated />
-    <View testID="filter-header" style={styles.content}>
-      <View style={styles.contentInterest}>
-        <View style={styles.interestButton}>
-          <Text type="h2" style={styles.interestButtonText}>
-            {text.filterByInterest}
-          </Text>
+type Props = {};
+type State = {
+  datesPickerVisible: boolean,
+  filterDate: string,
+  filterTime: string
+};
+
+class FilterHeader extends React.PureComponent<Props, State> {
+  state = {
+    datesPickerVisible: false,
+    filterDate: "Any day",
+    filterTime: "Any time"
+  };
+
+  onFilterDateChanged = (newDate: string) => {
+    if (newDate === "Choose dates") {
+      this.setState({ datesPickerVisible: true });
+    } else {
+      this.setState({ filterDate: newDate });
+    }
+  };
+
+  onFilterTimeChanged = (newTime: string) => {
+    this.setState({ filterTime: newTime });
+  };
+
+  onFilterCustomDatesCancelled = () => {
+    this.setState({ datesPickerVisible: false });
+  };
+
+  onFilterCustomDatesSelected = (customDate: Date) => {
+    this.setState({
+      datesPickerVisible: false,
+      filterDate: formatDate(customDate, "D MMM")
+    });
+  };
+
+  render() {
+    return (
+      <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
+        <StatusBar barStyle="light-content" animated />
+        <View testID="filter-header" style={styles.content}>
+          <View style={styles.contentInterest}>
+            <View style={styles.interestButton}>
+              <Text type="h2" style={styles.interestButtonText}>
+                {text.filterByInterest}
+              </Text>
+            </View>
+            <View style={styles.mapButton}>
+              <Text style={styles.mapButtonText}>Map</Text>
+            </View>
+          </View>
+          <View style={styles.contentFilters}>
+            <FilterHeaderDropdown
+              options={OPTIONS_DAY}
+              onChange={this.onFilterDateChanged}
+              style={styles.filterButton}
+              value={this.state.filterDate}
+            />
+            <FilterHeaderDropdown
+              options={OPTIONS_TIME}
+              onChange={this.onFilterTimeChanged}
+              style={styles.filterButton}
+              value={this.state.filterTime}
+            />
+            <FilterHeaderButton
+              text="Filters"
+              onPress={() => {}}
+              style={styles.filterButton}
+            />
+          </View>
         </View>
-        <View style={styles.mapButton}>
-          <Text style={styles.mapButtonText}>Map</Text>
-        </View>
-      </View>
-      <View style={styles.contentFilters}>
-        <FilterHeaderDropdown
-          options={OPTIONS_DAY}
-          style={styles.filterButton}
+        <View style={styles.shape} />
+        <DatesPickerDialog
+          onCancel={this.onFilterCustomDatesCancelled}
+          onDatesSelected={this.onFilterCustomDatesSelected}
+          visible={this.state.datesPickerVisible}
         />
-        <FilterHeaderDropdown
-          options={OPTIONS_TIME}
-          style={styles.filterButton}
-        />
-        <FilterHeaderButton
-          text="Filters"
-          onPress={() => {}}
-          style={styles.filterButton}
-        />
-      </View>
-    </View>
-    <View style={styles.shape} />
-  </SafeAreaView>
-);
+      </SafeAreaView>
+    );
+  }
+}
 
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
