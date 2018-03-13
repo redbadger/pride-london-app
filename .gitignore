@@ -58,6 +58,9 @@ buck-out/
 # Deco IDE
 *.deco
 
+# VSCode
+settings.json
+
 # Environment variables
 .env
 

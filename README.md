@@ -127,6 +127,12 @@ To delete the generated data again:
 node ./scripts/generate-content.js delete -s <space_id> -a <access_token>
 ```
 
+### Tests
+
+#### E2E
+
+End to end tests use [Detox](https://github.com/wix/detox/blob/master/docs/README.md) with [Jest](https://facebook.github.io/jest/docs/en/api.html) as the test runner. Some [setup](https://github.com/wix/detox/blob/master/docs/Introduction.GettingStarted.md) is required for running the tests locally.
+
 ## Contributing
 
 Pieces of work currently up for grabs will be listed on the [issues page](https://github.com/redbadger/pride-london-app/issues) and tracked on the [projects page](https://github.com/redbadger/pride-london-app/projects). If you are able to work on the piece of work, comment on the issue. You can also discuss the feature in the isssue page. Be honest about if you have the time to work on it, there's no shame in parking a piece of work and letting someone else pick it up if you're too busy.
