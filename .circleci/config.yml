@@ -245,16 +245,16 @@ jobs:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
-      - run: yarn test:e2e:build
       - run: yarn test:e2e
-
 
 workflows:
   version: 2
   node-android-ios:
     jobs:
       - build
-      - e2e-ios
+      - e2e-ios:
+          requires:
+            - build
       - alpha-android:
           requires:
             - build
@@ -264,8 +264,7 @@ workflows:
                 - master
       - alpha-ios:
           requires:
-            - build
-            - e2e-ios            
+            - build           
           filters:
             branches:
               ignore:
@@ -280,7 +279,6 @@ workflows:
       - beta-ios:
           requires:
             - build
-            - e2e-ios
           filters:
             branches:
               only:
