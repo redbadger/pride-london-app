@@ -264,7 +264,7 @@ workflows:
                 - master
       - alpha-ios:
           requires:
-            - build           
+            - build     
           filters:
             branches:
               ignore:
