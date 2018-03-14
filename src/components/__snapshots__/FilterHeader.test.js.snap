@@ -97,41 +97,23 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <FilterHeaderDropdown
-        onChange={[Function]}
-        options={
-          Array [
-            "Any day",
-            "Today",
-            "Tomorrow",
-            "This weekend",
-            "Next week",
-            "Choose dates",
-          ]
-        }
+      <FilterHeaderButton
+        onPress={[Function]}
         style={
           Object {
             "marginLeft": 8,
           }
         }
-        value="Any day"
+        text="Any day"
       />
-      <FilterHeaderDropdown
-        onChange={[Function]}
-        options={
-          Array [
-            "Any time",
-            "Morning",
-            "Afternoon",
-            "Evening",
-          ]
-        }
+      <FilterHeaderButton
+        onPress={[Function]}
         style={
           Object {
             "marginLeft": 8,
           }
         }
-        value="Any time"
+        text="Any time"
       />
       <FilterHeaderButton
         onPress={[Function]}
@@ -159,6 +141,11 @@ exports[`renders correctly 1`] = `
   <DatesPickerDialog
     onCancel={[Function]}
     onDatesSelected={[Function]}
+    visible={false}
+  />
+  <TimesPickerDialog
+    onCancel={[Function]}
+    onTimesSelected={[Function]}
     visible={false}
   />
 </withOrientation>

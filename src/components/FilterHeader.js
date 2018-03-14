@@ -4,8 +4,8 @@ import { Dimensions, View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import formatDate from "date-fns/format";
 import DatesPickerDialog from "./DatesPickerDialog";
-import FilterHeaderDropdown from "./FilterHeaderDropdown";
 import FilterHeaderButton from "./FilterHeaderButton";
+import TimesPickerDialog from "./TimesPickerDialog";
 import Text from "./Text";
 import {
   eventListHeaderBgColor,
@@ -15,19 +15,10 @@ import {
 } from "../constants/colors";
 import text from "../constants/text";
 
-const OPTIONS_DAY = [
-  "Any day",
-  "Today",
-  "Tomorrow",
-  "This weekend",
-  "Next week",
-  "Choose dates"
-];
-const OPTIONS_TIME = ["Any time", "Morning", "Afternoon", "Evening"];
-
 type Props = {};
 type State = {
   datesPickerVisible: boolean,
+  timesPickerVisible: boolean,
   filterDate: string,
   filterTime: string
 };
@@ -35,30 +26,53 @@ type State = {
 class FilterHeader extends React.PureComponent<Props, State> {
   state = {
     datesPickerVisible: false,
+    timesPickerVisible: false,
     filterDate: "Any day",
     filterTime: "Any time"
   };
 
-  onFilterDateChanged = (newDate: string) => {
-    if (newDate === "Choose dates") {
-      this.setState({ datesPickerVisible: true });
-    } else {
-      this.setState({ filterDate: newDate });
-    }
+  onFilterDatePress = () => {
+    this.setState({ datesPickerVisible: true });
   };
 
-  onFilterTimeChanged = (newTime: string) => {
-    this.setState({ filterTime: newTime });
+  onFilterTimePress = () => {
+    this.setState({ timesPickerVisible: true });
   };
 
   onFilterCustomDatesCancelled = () => {
     this.setState({ datesPickerVisible: false });
   };
 
-  onFilterCustomDatesSelected = (customDate: Date) => {
+  onFilterCustomDatesSelected = (startDate?: Date, endDate?: Date) => {
+    let filterDate = "Any day";
+    if (startDate && endDate) {
+      filterDate = `${formatDate(startDate, "D MMM")} - ${formatDate(
+        endDate,
+        "D MMM"
+      )}`;
+    } else if (startDate) {
+      filterDate = formatDate(startDate, "D MMM");
+    }
+
     this.setState({
       datesPickerVisible: false,
-      filterDate: formatDate(customDate, "D MMM")
+      filterDate
+    });
+  };
+
+  onFilterCustomTimesCancelled = () => {
+    this.setState({ timesPickerVisible: false });
+  };
+
+  onFilterCustomTimesSelected = (times: string[]) => {
+    let filterTime = "Any time";
+    if (times.length < 3) {
+      filterTime = times.join(", ");
+    }
+
+    this.setState({
+      timesPickerVisible: false,
+      filterTime
     });
   };
 
@@ -78,17 +92,15 @@ class FilterHeader extends React.PureComponent<Props, State> {
             </View>
           </View>
           <View style={styles.contentFilters}>
-            <FilterHeaderDropdown
-              options={OPTIONS_DAY}
-              onChange={this.onFilterDateChanged}
+            <FilterHeaderButton
+              text={this.state.filterDate}
+              onPress={this.onFilterDatePress}
               style={styles.filterButton}
-              value={this.state.filterDate}
             />
-            <FilterHeaderDropdown
-              options={OPTIONS_TIME}
-              onChange={this.onFilterTimeChanged}
+            <FilterHeaderButton
+              text={this.state.filterTime}
+              onPress={this.onFilterTimePress}
               style={styles.filterButton}
-              value={this.state.filterTime}
             />
             <FilterHeaderButton
               text="Filters"
@@ -102,6 +114,11 @@ class FilterHeader extends React.PureComponent<Props, State> {
           onCancel={this.onFilterCustomDatesCancelled}
           onDatesSelected={this.onFilterCustomDatesSelected}
           visible={this.state.datesPickerVisible}
+        />
+        <TimesPickerDialog
+          onCancel={this.onFilterCustomTimesCancelled}
+          onTimesSelected={this.onFilterCustomTimesSelected}
+          visible={this.state.timesPickerVisible}
         />
       </SafeAreaView>
     );

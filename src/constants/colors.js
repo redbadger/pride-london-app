@@ -4,7 +4,7 @@ export const imageBgColor = "#C1C1C1";
 export const headerBgColor = "#A5A5A5";
 
 export const textColor = "#272727";
-export const textColorDisabled = "rgb(200, 200, 200)";
+export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 
 // FILTER HEADER
 

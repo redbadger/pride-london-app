@@ -35,19 +35,11 @@ exports[`renders correctly 1`] = `
             "borderBottomWidth": 1,
             "flexDirection": "row",
             "height": 40,
-            "justifyContent": "space-between",
+            "justifyContent": "center",
             "paddingHorizontal": 16,
           }
         }
       >
-        <View
-          style={
-            Object {
-              "flexGrow": 1,
-              "width": 0,
-            }
-          }
-        />
         <Text
           markdown={false}
           style={
@@ -57,49 +49,23 @@ exports[`renders correctly 1`] = `
           }
           type="h3"
         >
-          Select dates
+          Select time
         </Text>
-        <View
-          style={
-            Object {
-              "flexGrow": 1,
-              "width": 0,
-            }
-          }
-        >
-          <TouchableOpacity
-            activeOpacity={0.2}
-            onPress={[Function]}
-            style={
-              Object {
-                "alignSelf": "flex-end",
-              }
-            }
-          >
-            <Text
-              markdown={false}
-              style={Object {}}
-              type="text"
-            >
-              Clear
-            </Text>
-          </TouchableOpacity>
-        </View>
       </View>
-      <Calendar
-        markedDates={Object {}}
-        markingType="simple"
-        onDayPress={[Function]}
-        theme={
-          Object {
-            "textDayFontFamily": "Roboto",
-            "textDayFontSize": 16,
-            "textDayHeaderFontFamily": "Roboto",
-            "textDayHeaderFontSize": 16,
-            "textMonthFontFamily": "Roboto",
-            "textMonthFontSize": 16,
-          }
-        }
+      <CheckBox
+        checked={true}
+        label="Morning"
+        onChange={[Function]}
+      />
+      <CheckBox
+        checked={true}
+        label="Afternoon"
+        onChange={[Function]}
+      />
+      <CheckBox
+        checked={true}
+        label="Evening"
+        onChange={[Function]}
       />
     </View>
     <TouchableOpacity

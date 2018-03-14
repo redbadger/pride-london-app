@@ -1,46 +1,23 @@
 // @flow
 import React from "react";
-import type { Node } from "react";
 import {
+  Dimensions,
   Modal,
-  SafeAreaView,
-  StatusBar,
   StyleSheet,
   TouchableOpacity,
   View
 } from "react-native";
-import { Calendar, LocaleConfig } from "react-native-calendars";
+import { Calendar } from "react-native-calendars";
+import formatDate from "date-fns/format";
+import addDays from "date-fns/add_days";
 import Text from "./Text";
 import {
-  eventDetailsHeaderBgColor,
+  cardBgColor,
   textColor,
-  textColorDisabled
+  eventDetailsHeaderBgColor,
+  eventListHeaderColor,
+  dialogBackdropColor
 } from "../constants/colors";
-
-LocaleConfig.locales[""] = {
-  ...LocaleConfig.locales[""],
-  dayNamesShort: ["S", "M", "T", "W", "T", "F", "S"]
-};
-
-type HeaderButtonProps = {
-  children: Node,
-  disabled?: boolean,
-  onPress: Function
-};
-
-const HeaderButton = ({ children, disabled, onPress }: HeaderButtonProps) => (
-  <TouchableOpacity disabled={disabled} onPress={onPress}>
-    <Text
-      style={[styles.headerButton, disabled && styles.headerButtonDisabled]}
-    >
-      {children}
-    </Text>
-  </TouchableOpacity>
-);
-
-HeaderButton.defaultProps = {
-  disabled: false
-};
 
 type CalendarDay = {
   year: number,
@@ -57,90 +34,166 @@ type Props = {
 };
 
 type State = {
-  startDate?: string
+  startDate?: string,
+  endDate?: string
 };
 
 class DatesPickerDialog extends React.PureComponent<Props, State> {
   state = {};
 
   onDaySelected = (day: CalendarDay) => {
-    this.setState({ startDate: day.dateString });
-  };
-
-  onApply = () => {
-    if (this.state.startDate) {
-      this.props.onDatesSelected(new Date(this.state.startDate));
+    if (!this.state.startDate) {
+      this.setState({ startDate: day.dateString });
+    } else {
+      this.setState({ endDate: day.dateString });
     }
   };
 
+  clear = () => {
+    this.setState({
+      startDate: undefined,
+      endDate: undefined
+    });
+  };
+
+  apply = () => {
+    this.props.onDatesSelected(
+      this.state.startDate && new Date(this.state.startDate),
+      this.state.endDate && new Date(this.state.endDate)
+    );
+  };
+
   render() {
+    const { startDate, endDate } = this.state;
+
+    const title = startDate
+      ? `${formatDate(startDate, "D MMM")} - ${
+          endDate ? formatDate(endDate, "D MMM") : ""
+        }`
+      : "Select dates";
+
     const markedDates = {};
-    if (this.state.startDate) {
-      markedDates[this.state.startDate] = {
+    let markingType = "simple";
+    if (startDate && endDate) {
+      markingType = "period";
+      const template = {
+        color: eventListHeaderColor,
+        textColor: cardBgColor
+      };
+
+      // Start
+      markedDates[startDate] = {
+        ...template,
+        startingDay: true
+      };
+
+      // In between
+      let inBetweenDate = startDate;
+      do {
+        inBetweenDate = formatDate(addDays(inBetweenDate, 1), "YYYY-MM-DD");
+        markedDates[inBetweenDate] = { ...template };
+      } while (inBetweenDate !== endDate);
+
+      // End
+      markedDates[endDate] = {
+        ...template,
+        endingDay: true
+      };
+    } else if (startDate) {
+      markedDates[startDate] = {
         selected: true,
-        selectedColor: "rgb(51, 51, 51)"
+        selectedColor: eventListHeaderColor
       };
     }
 
     return (
       <Modal
-        animationType="slide"
+        animationType="fade"
         onRequestClose={this.props.onCancel}
-        presentationStyle="fullScreen"
+        transparent
         visible={this.props.visible}
       >
-        <SafeAreaView style={styles.headerContainer}>
-          <StatusBar barStyle="default" animated />
-          <View style={styles.header}>
-            <HeaderButton onPress={this.props.onCancel}>Cancel</HeaderButton>
-            <Text type="h2" style={styles.headerTitle}>
-              Choose Dates
-            </Text>
-            <HeaderButton
-              onPress={this.onApply}
-              disabled={!this.state.startDate}
-            >
-              Apply
-            </HeaderButton>
+        <View style={styles.container}>
+          <View style={styles.content}>
+            <View style={styles.header}>
+              <View style={styles.headerSide} />
+              <Text type="h3" style={styles.headerTitle}>
+                {title}
+              </Text>
+              <View style={styles.headerSide}>
+                <TouchableOpacity
+                  onPress={this.clear}
+                  style={styles.cancelButton}
+                >
+                  <Text>Clear</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <Calendar
+              markedDates={markedDates}
+              markingType={markingType}
+              onDayPress={this.onDaySelected}
+              theme={{
+                textDayFontFamily: "Roboto",
+                textMonthFontFamily: "Roboto",
+                textDayHeaderFontFamily: "Roboto",
+                textDayFontSize: 16,
+                textMonthFontSize: 16,
+                textDayHeaderFontSize: 16
+              }}
+            />
           </View>
-        </SafeAreaView>
-        <Calendar
-          markedDates={markedDates}
-          onDayPress={this.onDaySelected}
-          theme={{
-            textDayFontFamily: "Roboto",
-            textMonthFontFamily: "Roboto",
-            textDayHeaderFontFamily: "Roboto",
-            textDayFontSize: 16,
-            textMonthFontSize: 16,
-            textDayHeaderFontSize: 16
-          }}
-        />
+          <TouchableOpacity onPress={this.apply} style={styles.applyButton}>
+            <Text style={styles.applyButtonText}>Show XX events</Text>
+          </TouchableOpacity>
+        </View>
       </Modal>
     );
   }
 }
 
+const { height } = Dimensions.get("window");
 const styles = StyleSheet.create({
-  headerContainer: {
-    backgroundColor: eventDetailsHeaderBgColor
+  container: {
+    justifyContent: "center",
+    height,
+    padding: 16,
+    backgroundColor: dialogBackdropColor
+  },
+  content: {
+    backgroundColor: cardBgColor,
+    borderRadius: 4,
+    paddingBottom: 8
   },
   header: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
-    height: 56,
-    paddingHorizontal: 16
+    justifyContent: "space-between",
+    height: 40,
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: eventDetailsHeaderBgColor
   },
-  headerButton: {
-    flex: 0,
-    color: textColor
-  },
-  headerButtonDisabled: {
-    color: textColorDisabled
+  headerSide: {
+    width: 0,
+    flexGrow: 1
   },
   headerTitle: {
     color: textColor
+  },
+  cancelButton: {
+    alignSelf: "flex-end"
+  },
+  applyButton: {
+    backgroundColor: eventListHeaderColor,
+    borderRadius: 4,
+    height: 48,
+    marginTop: 8,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  applyButtonText: {
+    color: cardBgColor
   }
 });
 

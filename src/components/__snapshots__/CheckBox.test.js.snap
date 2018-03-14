@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<TouchableOpacity
+  accessibilityComponentType="radiobutton_unchecked"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  activeOpacity={0.2}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "padding": 8,
+    }
+  }
+>
+  <Text
+    markdown={false}
+    style={Object {}}
+    type="text"
+  >
+    Bananas
+  </Text>
+</TouchableOpacity>
+`;
+
+exports[`renders correctly when checked 1`] = `
+<TouchableOpacity
+  accessibilityComponentType="radiobutton_checked"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
+  activeOpacity={0.2}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "padding": 8,
+    }
+  }
+>
+  <Text
+    markdown={false}
+    style={Object {}}
+    type="text"
+  >
+    Bananas
+  </Text>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/components/check-box-checked.png",
+      }
+    }
+  />
+</TouchableOpacity>
+`;
