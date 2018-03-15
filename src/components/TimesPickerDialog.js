@@ -1,21 +1,7 @@
 // @flow
 import React from "react";
-import {
-  Dimensions,
-  Modal,
-  StyleSheet,
-  TouchableOpacity,
-  View
-} from "react-native";
 import CheckBox from "./CheckBox";
-import Text from "./Text";
-import {
-  cardBgColor,
-  textColor,
-  eventDetailsHeaderBgColor,
-  eventListHeaderColor,
-  dialogBackdropColor
-} from "../constants/colors";
+import Dialog from "./Dialog";
 
 type Props = {
   onTimesSelected: Function,
@@ -69,80 +55,31 @@ class TimesPickerDialog extends React.PureComponent<Props, State> {
 
   render() {
     return (
-      <Modal
-        animationType="fade"
-        onRequestClose={this.props.onCancel}
-        transparent
+      <Dialog
+        applyButtonText="Show XX events"
+        onApply={this.apply}
+        onCancel={this.props.onCancel}
+        title="Select time"
         visible={this.props.visible}
       >
-        <View style={styles.container}>
-          <View style={styles.content}>
-            <View style={styles.header}>
-              <Text type="h3" style={styles.headerTitle}>
-                Select time
-              </Text>
-            </View>
-            <CheckBox
-              onChange={this.toggleMorning}
-              checked={this.state.morning}
-              label="Morning"
-            />
-            <CheckBox
-              onChange={this.toggleAfternoon}
-              checked={this.state.afternoon}
-              label="Afternoon"
-            />
-            <CheckBox
-              onChange={this.toggleEvening}
-              checked={this.state.evening}
-              label="Evening"
-            />
-          </View>
-          <TouchableOpacity onPress={this.apply} style={styles.applyButton}>
-            <Text style={styles.applyButtonText}>Show XX events</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+        <CheckBox
+          onChange={this.toggleMorning}
+          checked={this.state.morning}
+          label="Morning"
+        />
+        <CheckBox
+          onChange={this.toggleAfternoon}
+          checked={this.state.afternoon}
+          label="Afternoon"
+        />
+        <CheckBox
+          onChange={this.toggleEvening}
+          checked={this.state.evening}
+          label="Evening"
+        />
+      </Dialog>
     );
   }
 }
-
-const { height } = Dimensions.get("window");
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    height,
-    padding: 16,
-    backgroundColor: dialogBackdropColor
-  },
-  content: {
-    backgroundColor: cardBgColor,
-    borderRadius: 4,
-    paddingBottom: 8
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    height: 40,
-    paddingHorizontal: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: eventDetailsHeaderBgColor
-  },
-  headerTitle: {
-    color: textColor
-  },
-  applyButton: {
-    backgroundColor: eventListHeaderColor,
-    borderRadius: 4,
-    height: 48,
-    marginTop: 8,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  applyButtonText: {
-    color: cardBgColor
-  }
-});
 
 export default TimesPickerDialog;

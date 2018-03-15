@@ -2,7 +2,6 @@
 import React from "react";
 import { Dimensions, View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import formatDate from "date-fns/format";
 import DatesPickerDialog from "./DatesPickerDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimesPickerDialog from "./TimesPickerDialog";
@@ -14,6 +13,8 @@ import {
   interestButtonTextColor
 } from "../constants/colors";
 import text from "../constants/text";
+import type { DateOrDateRange } from "../data/date-range";
+import { formatDateRange } from "../data/formatters";
 
 type Props = {};
 type State = {
@@ -43,16 +44,8 @@ class FilterHeader extends React.PureComponent<Props, State> {
     this.setState({ datesPickerVisible: false });
   };
 
-  onFilterCustomDatesSelected = (startDate?: Date, endDate?: Date) => {
-    let filterDate = "Any day";
-    if (startDate && endDate) {
-      filterDate = `${formatDate(startDate, "D MMM")} - ${formatDate(
-        endDate,
-        "D MMM"
-      )}`;
-    } else if (startDate) {
-      filterDate = formatDate(startDate, "D MMM");
-    }
+  onFilterCustomDatesSelected = (dates: ?DateOrDateRange) => {
+    const filterDate = dates ? formatDateRange(dates) : "Any day";
 
     this.setState({
       datesPickerVisible: false,
