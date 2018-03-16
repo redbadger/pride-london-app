@@ -7,7 +7,7 @@ import { updateEvents } from "../../actions/events";
 import {
   selectEventsLoading,
   selectEventsRefreshing,
-  selectEventsGroupedByDay
+  selectFilteredEventsGroupedByDay
 } from "../../selectors/events";
 import Component from "./component";
 
@@ -23,7 +23,7 @@ type Props = {
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  events: selectEventsGroupedByDay(state),
+  events: selectFilteredEventsGroupedByDay(state),
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state)
 });

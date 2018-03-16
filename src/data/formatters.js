@@ -1,7 +1,7 @@
 // @flow
 
 import formatDate from "date-fns/format";
-import type { DateOrDateRange } from "./date-range";
+import type { DateOrDateRange } from "./date-time";
 
 export const formatShortDate = (date: string | Date) =>
   formatDate(date, "D MMM");

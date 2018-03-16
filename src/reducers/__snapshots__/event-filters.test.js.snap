@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event filters reducer initialises with default state 1`] = `
+Object {
+  "date": null,
+  "time": Array [
+    "morning",
+    "afternoon",
+    "evening",
+  ],
+}
+`;

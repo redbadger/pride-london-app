@@ -2,24 +2,24 @@
 import React from "react";
 import { Calendar } from "react-native-calendars";
 import { shallow } from "enzyme";
-import DatesPicker from "./DatesPicker";
+import DateRangePicker from "./DateRangePicker";
 
 describe("renders correctly", () => {
   it("no dates", () => {
-    const output = shallow(<DatesPicker onChange={() => {}} />);
+    const output = shallow(<DateRangePicker onChange={() => {}} />);
     expect(output).toMatchSnapshot();
   });
 
   it("only startDate", () => {
     const output = shallow(
-      <DatesPicker onChange={() => {}} dateRange="2018-01-01" />
+      <DateRangePicker onChange={() => {}} dateRange="2018-01-01" />
     );
     expect(output).toMatchSnapshot();
   });
 
   it("startDate before endDate", () => {
     const output = shallow(
-      <DatesPicker
+      <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-02" }}
       />
@@ -29,7 +29,7 @@ describe("renders correctly", () => {
 
   it("startDate after endDate", () => {
     const output = shallow(
-      <DatesPicker
+      <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-02", endDate: "2018-01-01" }}
       />
@@ -39,7 +39,7 @@ describe("renders correctly", () => {
 
   it("startDate equals endDate", () => {
     const output = shallow(
-      <DatesPicker
+      <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
       />
@@ -51,7 +51,7 @@ describe("renders correctly", () => {
 describe("onChange", () => {
   const render = (onChange, dateRange) => {
     const output = shallow(
-      <DatesPicker onChange={onChange} dateRange={dateRange} />
+      <DateRangePicker onChange={onChange} dateRange={dateRange} />
     );
     return output.find(Calendar).prop("onDayPress");
   };

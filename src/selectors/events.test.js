@@ -2,8 +2,18 @@ import {
   selectEvents,
   selectEventsLoading,
   selectEventsRefreshing,
-  selectEventsGroupedByDay
+  selectFilteredEvents,
+  selectFilteredEventsGroupedByDay
 } from "./events";
+import { buildEventFilter } from "./event-filters";
+
+jest.mock("./event-filters", () => ({
+  buildEventFilter: jest.fn()
+}));
+
+beforeEach(() => {
+  buildEventFilter.mockReturnValue(() => true);
+});
 
 describe("selectEvents", () => {
   it("selects property", () => {
@@ -50,7 +60,48 @@ describe("selectEventsRefreshing", () => {
   });
 });
 
-describe("selectEventsGroupedByDay", () => {
+describe("selectFilteredEvents", () => {
+  it("filters events using the buildEventFilter function", () => {
+    const mockFilter = jest
+      .fn()
+      .mockReturnValue(false)
+      .mockReturnValueOnce(true);
+    buildEventFilter.mockReturnValue(mockFilter);
+
+    const state = {
+      events: {
+        events: [
+          { fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } } },
+          { fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } } }
+        ]
+      }
+    };
+
+    const expected = [
+      { fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } } }
+    ];
+    const actual = selectFilteredEvents(state);
+
+    expect(actual).toEqual(expected);
+    expect(buildEventFilter).toHaveBeenCalledWith(state);
+    expect(mockFilter).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe("selectFilteredEventsGroupedByDay", () => {
+  it("returns empty array when no events exist", () => {
+    const state = {
+      events: {
+        events: []
+      }
+    };
+
+    const expected = [];
+    const actual = selectFilteredEventsGroupedByDay(state);
+
+    expect(actual).toEqual(expected);
+  });
+
   it("separates two individual events by day and sorts", () => {
     const state = {
       events: {
@@ -65,7 +116,7 @@ describe("selectEventsGroupedByDay", () => {
       [{ fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } } }],
       [{ fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } } }]
     ];
-    const actual = selectEventsGroupedByDay(state);
+    const actual = selectFilteredEventsGroupedByDay(state);
 
     expect(actual).toEqual(expected);
   });
@@ -86,7 +137,7 @@ describe("selectEventsGroupedByDay", () => {
         { fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } } }
       ]
     ];
-    const actual = selectEventsGroupedByDay(state);
+    const actual = selectFilteredEventsGroupedByDay(state);
 
     expect(actual).toEqual(expected);
   });
@@ -114,7 +165,7 @@ describe("selectEventsGroupedByDay", () => {
         { fields: { startTime: { "en-GB": "2018-08-02T03:00:00" } } }
       ]
     ];
-    const actual = selectEventsGroupedByDay(state);
+    const actual = selectFilteredEventsGroupedByDay(state);
 
     expect(actual).toEqual(expected);
   });
@@ -151,8 +202,12 @@ describe("selectEventsGroupedByDay", () => {
       ],
       [{ fields: { startTime: { "en-GB": "2018-08-05T02:00:00" } } }]
     ];
-    const actual = selectEventsGroupedByDay(state);
+    const actual = selectFilteredEventsGroupedByDay(state);
 
     expect(actual).toEqual(expected);
   });
+});
+
+afterEach(() => {
+  buildEventFilter.mockReset();
 });

@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <Dialog
-  applyButtonText="Show XX events"
+  applyButtonText="Apply"
   headerRight={
     <TouchableOpacity
       activeOpacity={0.2}
@@ -22,7 +22,7 @@ exports[`renders correctly 1`] = `
   title="Select dates"
   visible={true}
 >
-  <DatesPicker
+  <DateRangePicker
     dateRange={null}
     onChange={[Function]}
   />

@@ -113,7 +113,7 @@ exports[`renders correctly 1`] = `
             "marginLeft": 8,
           }
         }
-        text="Any time"
+        text="morning"
       />
       <FilterHeaderButton
         onPress={[Function]}
@@ -138,9 +138,9 @@ exports[`renders correctly 1`] = `
       }
     }
   />
-  <DatesPickerDialog
+  <Connect(DateRangePickerDialog)
+    onApply={[Function]}
     onCancel={[Function]}
-    onDatesSelected={[Function]}
     visible={false}
   />
   <TimesPickerDialog

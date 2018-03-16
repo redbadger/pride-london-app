@@ -6,3 +6,5 @@ export type DateRange = {
 };
 
 export type DateOrDateRange = string | DateRange;
+
+export type Time = "morning" | "afternoon" | "evening";

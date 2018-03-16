@@ -2,7 +2,7 @@
 import React from "react";
 import { Dimensions, View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import DatesPickerDialog from "./DatesPickerDialog";
+import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimesPickerDialog from "./TimesPickerDialog";
 import Text from "./Text";
@@ -13,63 +13,48 @@ import {
   interestButtonTextColor
 } from "../constants/colors";
 import text from "../constants/text";
-import type { DateOrDateRange } from "../data/date-range";
+import type { DateOrDateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
 
-type Props = {};
+type Props = {
+  dateFilter: ?DateOrDateRange,
+  timeFilter: Time[]
+};
 type State = {
   datesPickerVisible: boolean,
-  timesPickerVisible: boolean,
-  filterDate: string,
-  filterTime: string
+  timesPickerVisible: boolean
 };
 
 class FilterHeader extends React.PureComponent<Props, State> {
   state = {
     datesPickerVisible: false,
-    timesPickerVisible: false,
-    filterDate: "Any day",
-    filterTime: "Any time"
+    timesPickerVisible: false
   };
 
-  onFilterDatePress = () => {
+  showDatePicker = () => {
     this.setState({ datesPickerVisible: true });
   };
 
-  onFilterTimePress = () => {
-    this.setState({ timesPickerVisible: true });
-  };
-
-  onFilterCustomDatesCancelled = () => {
+  hideDatePicker = () => {
     this.setState({ datesPickerVisible: false });
   };
 
-  onFilterCustomDatesSelected = (dates: ?DateOrDateRange) => {
-    const filterDate = dates ? formatDateRange(dates) : "Any day";
-
-    this.setState({
-      datesPickerVisible: false,
-      filterDate
-    });
+  showTimePicker = () => {
+    this.setState({ timesPickerVisible: true });
   };
 
-  onFilterCustomTimesCancelled = () => {
+  hideTimePicker = () => {
     this.setState({ timesPickerVisible: false });
   };
 
-  onFilterCustomTimesSelected = (times: string[]) => {
-    let filterTime = "Any time";
-    if (times.length < 3) {
-      filterTime = times.join(", ");
-    }
-
-    this.setState({
-      timesPickerVisible: false,
-      filterTime
-    });
-  };
-
   render() {
+    const { dateFilter, timeFilter } = this.props;
+    const formattedDateFilter = dateFilter
+      ? formatDateRange(dateFilter)
+      : "Any day";
+    const formattedTimeFilter =
+      timeFilter.length < 3 ? timeFilter.join(", ") : "Any time";
+
     return (
       <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
         <StatusBar barStyle="light-content" animated />
@@ -86,13 +71,13 @@ class FilterHeader extends React.PureComponent<Props, State> {
           </View>
           <View style={styles.contentFilters}>
             <FilterHeaderButton
-              text={this.state.filterDate}
-              onPress={this.onFilterDatePress}
+              text={formattedDateFilter}
+              onPress={this.showDatePicker}
               style={styles.filterButton}
             />
             <FilterHeaderButton
-              text={this.state.filterTime}
-              onPress={this.onFilterTimePress}
+              text={formattedTimeFilter}
+              onPress={this.showTimePicker}
               style={styles.filterButton}
             />
             <FilterHeaderButton
@@ -103,14 +88,14 @@ class FilterHeader extends React.PureComponent<Props, State> {
           </View>
         </View>
         <View style={styles.shape} />
-        <DatesPickerDialog
-          onCancel={this.onFilterCustomDatesCancelled}
-          onDatesSelected={this.onFilterCustomDatesSelected}
+        <DateFilterDialog
+          onApply={this.hideDatePicker}
+          onCancel={this.hideDatePicker}
           visible={this.state.datesPickerVisible}
         />
         <TimesPickerDialog
-          onCancel={this.onFilterCustomTimesCancelled}
-          onTimesSelected={this.onFilterCustomTimesSelected}
+          onCancel={this.hideTimePicker}
+          onTimesSelected={this.hideTimePicker}
           visible={this.state.timesPickerVisible}
         />
       </SafeAreaView>

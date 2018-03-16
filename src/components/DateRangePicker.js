@@ -5,7 +5,7 @@ import formatDate from "date-fns/format";
 import addDays from "date-fns/add_days";
 import isBefore from "date-fns/is_before";
 import { cardBgColor, eventListHeaderColor } from "../constants/colors";
-import type { DateRange, DateOrDateRange } from "../data/date-range";
+import type { DateRange, DateOrDateRange } from "../data/date-time";
 
 type CalendarDay = {
   year: number,
@@ -30,7 +30,7 @@ type Props = {
   dateRange?: ?DateOrDateRange
 };
 
-class DatesPicker extends React.PureComponent<Props> {
+class DateRangePicker extends React.PureComponent<Props> {
   onDaySelected = (day: CalendarDay) => {
     const { dateRange, onChange } = this.props;
     if (!dateRange) {
@@ -113,4 +113,4 @@ class DatesPicker extends React.PureComponent<Props> {
   }
 }
 
-export default DatesPicker;
+export default DateRangePicker;
