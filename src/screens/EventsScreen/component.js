@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { EventDays } from "../../data/event";
 import EventList from "../../components/EventList";
-import FilterHeader from "../../components/FilterHeader";
+import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 

@@ -1,5 +1,7 @@
 // @flow
-import { parse as parseDate, differenceInCalendarDays } from "date-fns";
+import parseDate from "date-fns/parse";
+import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
+import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
 import type { Event, EventDays } from "../data/event";
 
@@ -29,7 +31,9 @@ const groupByStartTime = (events: Event[]): EventDays => {
       { days: [], buffer: [] }
     );
 
-  return [...sections.days, sections.buffer];
+  return sections.buffer.length > 0
+    ? [...sections.days, sections.buffer]
+    : sections.days;
 };
 
 const getEventsState = (state: State) => state.events;
@@ -43,5 +47,8 @@ export const selectEventsRefreshing = (state: State) =>
 export const selectEventById = (state: State, id: String) =>
   selectEvents(state).find(event => event.sys.id === id);
 
-export const selectEventsGroupedByDay = (state: State): EventDays =>
-  groupByStartTime(getEventsState(state).events);
+export const selectFilteredEvents = (state: State) =>
+  selectEvents(state).filter(buildEventFilter(state));
+
+export const selectFilteredEventsGroupedByDay = (state: State): EventDays =>
+  groupByStartTime(selectFilteredEvents(state));

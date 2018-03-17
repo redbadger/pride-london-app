@@ -9,7 +9,7 @@ exports[`EventsScreen Component renders correctly 1`] = `
     }
   }
 >
-  <FilterHeader />
+  <Connect(FilterHeader) />
   <EventList
     events={Array []}
     locale="en-GB"

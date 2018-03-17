@@ -1,13 +1,23 @@
 export const bgColor = "#808080";
 export const cardBgColor = "#FFFFFF";
 export const imageBgColor = "#C1C1C1";
-export const headerBgColor = "#3A3A3A";
+export const headerBgColor = "#A5A5A5";
 export const priceTagBgColor = "#989898";
 
 export const textColor = "#272727";
 
-export const filterButtonColor = "#5C5C5C";
-export const filterButtontextColor = "#ADADAD";
+export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
+export const dialogBgColor = "#FFFFFF";
+export const dialogApplyButtonBgColor = "rgb(51, 51, 51)";
+export const dialogApplyButtonTextColor = "#FFFFFF";
+export const dialogHeaderDividerColor = "#F2F2F2";
+
+// FILTER HEADER
+
+export const interestButtonBgColor = "#545454";
+export const interestButtonTextColor = "#FFFFFF";
+export const filterButtonBorderColor = "#FFFFFF";
+export const filterButtonTextColor = "#FFFFFF";
 
 // EVENT LIST
 
