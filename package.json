@@ -24,7 +24,7 @@
     "contentful": "^5.0.5",
     "date-fns": "^1.29.0",
     "react": "16.2.0",
-    "react-native": "0.54.0",
+    "react-native": "0.54.2",
     "react-native-calendars": "^1.17.4",
     "react-native-config": "^0.11.5",
     "react-native-easy-markdown": "^1.1.9",
