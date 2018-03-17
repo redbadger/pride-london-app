@@ -1,14 +1,20 @@
 // @flow
 import {
-  selectDateFilter,
-  selectTimeFilter,
   buildDateFilter,
   buildDateRangeFilter,
-  buildDateOrDateRangeFilter,
-  buildTimeFilter,
+  buildTimeFilter
+} from "./basic-event-filters";
+import {
+  selectDateFilter,
+  selectTimeFilter,
   buildEventFilter
 } from "./event-filters";
 import type { Event } from "../data/event";
+
+jest.mock("./basic-event-filters");
+const untypedBuildDateFilter: any = buildDateFilter;
+const untypedBuildDateRangeFilter: any = buildDateRangeFilter;
+const untypedBuildTimeFilter: any = buildTimeFilter;
 
 const buildState = ({ date, time }) => ({
   events: {
@@ -21,6 +27,14 @@ const buildState = ({ date, time }) => ({
     time
   }
 });
+
+const buildEvent = (startTime: string, endTime: string) =>
+  (({
+    fields: {
+      startTime: { "en-GB": startTime },
+      endTime: { "en-GB": endTime }
+    }
+  }: any): Event);
 
 describe("selectDateFilter", () => {
   it("returns the date part of the eventFilters", () => {
@@ -46,104 +60,98 @@ describe("selectTimeFilter", () => {
   });
 });
 
-describe("buildDateFilter", () => {
-  const partialEvent = {
-    fields: {
-      startTime: { "en-GB": "2018-08-02T12:00:00" },
-      endTime: { "en-GB": "2018-08-05T12:00:00" }
-    }
-  };
-  const event = ((partialEvent: any): Event);
+describe("buildEventFilter", () => {
+  const event = buildEvent("2018-08-02T08:00:00", "2018-08-02T15:00:00");
 
-  it("returns true when event starts on the given date", () => {
-    const filter = buildDateFilter("2018-08-02");
+  it("builds always truthy date filter when date is null", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+
+    const state = buildState({
+      date: null,
+      time: ["morning", "afternoon", "evening"]
+    });
+    const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
+    expect(untypedBuildDateFilter).not.toHaveBeenCalled();
+    expect(untypedBuildDateRangeFilter).not.toHaveBeenCalled();
   });
 
-  it("returns true when event ends on the given date", () => {
-    const filter = buildDateFilter("2018-08-05");
+  it("builds date filter when date is a string", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+    untypedBuildDateFilter.mockReturnValue(() => true);
+
+    const state = buildState({
+      date: "2018-08-02",
+      time: ["morning", "afternoon", "evening"]
+    });
+    const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
+    expect(untypedBuildDateFilter).toHaveBeenCalledWith(
+      state.eventFilters.date
+    );
+    expect(untypedBuildDateRangeFilter).not.toHaveBeenCalled();
   });
 
-  it("returns true when event starts before and ends after the given date", () => {
-    const filter = buildDateFilter("2018-08-04");
+  it("builds date range filter when date is a range", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+    untypedBuildDateRangeFilter.mockReturnValue(() => true);
+
+    const state = buildState({
+      date: {
+        startDate: "2018-08-02",
+        endDate: "2018-08-03"
+      },
+      time: ["morning", "afternoon", "evening"]
+    });
+    const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
+    expect(untypedBuildDateFilter).not.toHaveBeenCalled();
+    expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(
+      state.eventFilters.date
+    );
   });
 
-  it("returns false otherwise", () => {
-    const filter = buildDateFilter("2018-08-10");
+  it("builds time filter", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+
+    const state = buildState({
+      date: null,
+      time: ["morning", "afternoon", "evening"]
+    });
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+    expect(untypedBuildTimeFilter).toHaveBeenCalledWith(
+      state.eventFilters.time
+    );
+  });
+
+  it("builds filter, which returns false time filter return false", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => false);
+    untypedBuildDateFilter.mockReturnValue(() => true);
+
+    const state = buildState({
+      date: "2018-02-01",
+      time: ["morning", "afternoon", "evening"]
+    });
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(false);
+  });
+
+  it("builds filter, which returns false date filter return false", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+    untypedBuildDateFilter.mockReturnValue(() => false);
+
+    const state = buildState({
+      date: "2018-02-01",
+      time: ["morning", "afternoon", "evening"]
+    });
+    const filter = buildEventFilter(state);
     expect(filter(event)).toBe(false);
   });
 });
 
-describe("buildDateRangeFilter", () => {
-  const partialEvent = {
-    fields: {
-      startTime: { "en-GB": "2018-08-02T12:00:00" },
-      endTime: { "en-GB": "2018-08-05T12:00:00" }
-    }
-  };
-  const event = ((partialEvent: any): Event);
-
-  it("returns true when event starts within the given range", () => {
-    const filter = buildDateRangeFilter({
-      startDate: "2018-08-01",
-      endDate: "2018-08-04"
-    });
-    expect(filter(event)).toBe(true);
-  });
-
-  it("returns true when event ends within the given range", () => {
-    const filter = buildDateRangeFilter({
-      startDate: "2018-08-04",
-      endDate: "2018-08-10"
-    });
-    expect(filter(event)).toBe(true);
-  });
-
-  it("returns true when event starts before and ends after the given range", () => {
-    const filter = buildDateRangeFilter({
-      startDate: "2018-08-01",
-      endDate: "2018-08-10"
-    });
-    expect(filter(event)).toBe(true);
-  });
-
-  it("returns false otherwise", () => {
-    const filter = buildDateRangeFilter({
-      startDate: "2018-07-29",
-      endDate: "2018-08-01"
-    });
-    expect(filter(event)).toBe(false);
-  });
-});
-
-describe("buildTimeFilter", () => {
-  const partialEvent = {
-    fields: {
-      startTime: { "en-GB": "2018-08-02T08:00:00" },
-      endTime: { "en-GB": "2018-08-02T15:00:00" }
-    }
-  };
-  const event = ((partialEvent: any): Event);
-
-  it("checks for morning", () => {
-    const filter = buildTimeFilter(["morning"]);
-    expect(filter(event)).toBe(true);
-  });
-
-  it("checks for afternoon", () => {
-    const filter = buildTimeFilter(["afternoon"]);
-    expect(filter(event)).toBe(true);
-  });
-
-  it("checks for evening", () => {
-    const filter = buildTimeFilter(["evening"]);
-    expect(filter(event)).toBe(false);
-  });
-
-  it("combines multiple times with OR", () => {
-    const filter = buildTimeFilter(["morning", "evening"]);
-    expect(filter(event)).toBe(true);
-  });
+afterEach(() => {
+  untypedBuildDateFilter.mockReset();
+  untypedBuildDateRangeFilter.mockReset();
+  untypedBuildTimeFilter.mockReset();
 });

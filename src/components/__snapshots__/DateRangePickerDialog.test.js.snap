@@ -1,6 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`renders correctly with date selection 1`] = `
+<Dialog
+  applyButtonText="Apply"
+  headerRight={
+    <TouchableOpacity
+      activeOpacity={0.2}
+      onPress={[Function]}
+    >
+      <Text
+        markdown={false}
+        style={Object {}}
+        type="text"
+      >
+        Clear
+      </Text>
+    </TouchableOpacity>
+  }
+  onApply={[Function]}
+  onCancel={[Function]}
+  title="2 Feb -"
+  visible={true}
+>
+  <DateRangePicker
+    dateRange="2018-02-02"
+    onChange={[Function]}
+  />
+</Dialog>
+`;
+
+exports[`renders correctly without date selection 1`] = `
 <Dialog
   applyButtonText="Apply"
   headerRight={

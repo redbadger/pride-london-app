@@ -12,9 +12,13 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(0, 0, 0, 0.7)",
-        "height": 1334,
+        "bottom": 0,
         "justifyContent": "center",
+        "left": 0,
         "padding": 16,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
       }
     }
   >

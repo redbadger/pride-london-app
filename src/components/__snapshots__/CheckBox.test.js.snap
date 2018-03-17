@@ -11,12 +11,14 @@ exports[`renders correctly 1`] = `
   activeOpacity={0.2}
   onPress={[Function]}
   style={
-    Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "space-between",
-      "padding": 8,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      Object {},
+    ]
   }
 >
   <Text
@@ -41,12 +43,14 @@ exports[`renders correctly when checked 1`] = `
   activeOpacity={0.2}
   onPress={[Function]}
   style={
-    Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "space-between",
-      "padding": 8,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      },
+      Object {},
+    ]
   }
 >
   <Text

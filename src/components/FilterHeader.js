@@ -1,13 +1,12 @@
 // @flow
 import React from "react";
-import { Dimensions, View, StyleSheet, StatusBar } from "react-native";
+import { View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
-import TimesPickerDialog from "./TimesPickerDialog";
+import TimeFilterDialog from "./ConnectedTimeFilterDialog";
 import Text from "./Text";
 import {
-  eventListHeaderBgColor,
   headerBgColor,
   interestButtonBgColor,
   interestButtonTextColor
@@ -20,6 +19,7 @@ type Props = {
   dateFilter: ?DateOrDateRange,
   timeFilter: Time[]
 };
+
 type State = {
   datesPickerVisible: boolean,
   timesPickerVisible: boolean
@@ -51,9 +51,11 @@ class FilterHeader extends React.PureComponent<Props, State> {
     const { dateFilter, timeFilter } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
-      : "Any day";
+      : text.anyDay;
     const formattedTimeFilter =
-      timeFilter.length < 3 ? timeFilter.join(", ") : "Any time";
+      timeFilter.length < 3
+        ? timeFilter.map(time => text.time[time]).join(", ")
+        : text.anyTime;
 
     return (
       <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
@@ -81,21 +83,20 @@ class FilterHeader extends React.PureComponent<Props, State> {
               style={styles.filterButton}
             />
             <FilterHeaderButton
-              text="Filters"
+              text={text.filters}
               onPress={() => {}}
               style={styles.filterButton}
             />
           </View>
         </View>
-        <View style={styles.shape} />
         <DateFilterDialog
           onApply={this.hideDatePicker}
           onCancel={this.hideDatePicker}
           visible={this.state.datesPickerVisible}
         />
-        <TimesPickerDialog
+        <TimeFilterDialog
+          onApply={this.hideTimePicker}
           onCancel={this.hideTimePicker}
-          onTimesSelected={this.hideTimePicker}
           visible={this.state.timesPickerVisible}
         />
       </SafeAreaView>
@@ -103,7 +104,6 @@ class FilterHeader extends React.PureComponent<Props, State> {
   }
 }
 
-const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
     backgroundColor: headerBgColor
@@ -149,14 +149,6 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     marginLeft: 8
-  },
-  shape: {
-    borderTopColor: headerBgColor,
-    borderRightColor: headerBgColor,
-    borderBottomColor: eventListHeaderBgColor,
-    borderLeftColor: eventListHeaderBgColor,
-    borderTopWidth: 16,
-    borderLeftWidth: width
   }
 });
 

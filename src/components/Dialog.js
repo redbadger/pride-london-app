@@ -1,13 +1,7 @@
 // @flow
 import React from "react";
 import type { Node } from "react";
-import {
-  Dimensions,
-  Modal,
-  StyleSheet,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import Text from "./Text";
 import {
   cardBgColor,
@@ -72,11 +66,10 @@ Dialog.defaultProps = {
   onCancel: () => {}
 };
 
-const { height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
+    ...StyleSheet.absoluteFillObject,
     justifyContent: "center",
-    height,
     padding: 16,
     backgroundColor: dialogBackdropColor
   },
