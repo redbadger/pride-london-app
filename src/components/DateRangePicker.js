@@ -63,6 +63,22 @@ const getMarkedDateRange = (dateRange: DateRange) => {
   return markedDates;
 };
 
+const getCalendarMarkingProps = (dateRange: ?DateOrDateRange) => {
+  if (dateRange && typeof dateRange === "string") {
+    return {
+      markingType: "simple",
+      markedDates: getMarkedDate(dateRange)
+    };
+  } else if (dateRange && typeof dateRange === "object") {
+    return {
+      markingType: "period",
+      markedDates: getMarkedDateRange(dateRange)
+    };
+  }
+
+  return {};
+};
+
 type Props = {
   onChange: DateOrDateRange => void,
   dateRange?: ?DateOrDateRange
@@ -96,15 +112,7 @@ class DateRangePicker extends React.PureComponent<Props> {
         ? getSortedDateRange(this.props.dateRange)
         : this.props.dateRange;
 
-    let markingType;
-    let markedDates;
-    if (dateRange && typeof dateRange === "string") {
-      markingType = "simple";
-      markedDates = getMarkedDate(dateRange);
-    } else if (dateRange && typeof dateRange === "object") {
-      markingType = "period";
-      markedDates = getMarkedDateRange(dateRange);
-    }
+    const { markingType, markedDates } = getCalendarMarkingProps(dateRange);
 
     return (
       <Calendar
