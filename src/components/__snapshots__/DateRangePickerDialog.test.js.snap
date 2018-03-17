@@ -5,6 +5,12 @@ exports[`renders correctly with date selection 1`] = `
   applyButtonText="Apply"
   headerRight={
     <TouchableOpacity
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
       activeOpacity={0.2}
       onPress={[Function]}
     >
@@ -34,6 +40,12 @@ exports[`renders correctly without date selection 1`] = `
   applyButtonText="Apply"
   headerRight={
     <TouchableOpacity
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
       activeOpacity={0.2}
       onPress={[Function]}
     >

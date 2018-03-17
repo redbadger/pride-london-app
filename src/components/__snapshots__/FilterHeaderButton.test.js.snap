@@ -2,6 +2,12 @@
 
 exports[`renders correctly 1`] = `
 <TouchableOpacity
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
   activeOpacity={0.2}
   onPress={[Function]}
   style={

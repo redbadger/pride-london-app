@@ -54,7 +54,12 @@ const Dialog = ({
         </View>
         {children}
       </View>
-      <TouchableOpacity onPress={onApply} style={styles.applyButton}>
+      <TouchableOpacity
+        accessibilityTraits={["button"]}
+        accessibilityComponentType="button"
+        onPress={onApply}
+        style={styles.applyButton}
+      >
         <Text style={styles.applyButtonText}>{applyButtonText}</Text>
       </TouchableOpacity>
     </View>

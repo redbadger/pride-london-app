@@ -17,6 +17,8 @@ type Props = {
 
 const FilterHeaderButton = ({ text, onPress, onRef, style }: Props) => (
   <TouchableOpacity
+    accessibilityTraits={["button"]}
+    accessibilityComponentType="button"
     style={[styles.button, style]}
     onPress={onPress}
     ref={onRef}

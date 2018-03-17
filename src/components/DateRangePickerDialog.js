@@ -32,7 +32,11 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
       <Dialog
         applyButtonText={this.props.applyButtonText}
         headerRight={
-          <TouchableOpacity onPress={this.clear}>
+          <TouchableOpacity
+            accessibilityTraits={["button"]}
+            accessibilityComponentType="button"
+            onPress={this.clear}
+          >
             <Text>Clear</Text>
           </TouchableOpacity>
         }
