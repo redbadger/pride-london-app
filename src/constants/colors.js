@@ -2,6 +2,7 @@ export const bgColor = "#808080";
 export const cardBgColor = "#FFFFFF";
 export const imageBgColor = "#C1C1C1";
 export const headerBgColor = "#A5A5A5";
+export const priceTagBgColor = "#989898";
 
 export const textColor = "#272727";
 

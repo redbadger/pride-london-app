@@ -2,7 +2,7 @@
 import React from "react";
 import { StyleSheet, SectionList, TouchableOpacity, View } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
-import { format } from "date-fns";
+import formatDate from "date-fns/format";
 
 import EventCard from "./EventCard";
 import Text from "./Text";
@@ -28,8 +28,19 @@ const renderItem = (styles, locale, onPress) => ({
   item: event
 }: ItemProps) => (
   <View style={styles.eventListItem}>
-    <TouchableOpacity delayPressIn={50} oPress={() => onPress(event.sys.id)}>
-      <EventCard name={event.fields.name[locale]} />
+    <TouchableOpacity
+      accessibilityTraits={["button"]}
+      accessibilityComponentType="button"
+      delayPressIn={50}
+      onPress={() => onPress(event.sys.id)}
+    >
+      <EventCard
+        name={event.fields.name[locale]}
+        locationName={event.fields.locationName[locale]}
+        price={event.fields.eventPriceLow[locale]}
+        startTime={event.fields.startTime[locale]}
+        endTime={event.fields.endTime[locale]}
+      />
     </TouchableOpacity>
   </View>
 );
@@ -46,7 +57,7 @@ const renderSectionHeader = styles => ({ section }: SectionProps) => (
 const eventSections = (events: EventDays, locale: string): Section[] =>
   events.map(it => ({
     data: it,
-    title: format(it[0].fields.startTime[locale], "dddd D MMMM")
+    title: formatDate(it[0].fields.startTime[locale], "dddd D MMMM")
   }));
 
 const EventList = ({
