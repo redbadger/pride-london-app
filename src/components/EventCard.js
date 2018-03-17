@@ -16,7 +16,8 @@ type Props = {
   locationName: string,
   price: number,
   startTime: string,
-  endTime: string
+  endTime: string,
+  isFree: boolean
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
 
@@ -25,7 +26,8 @@ const EventCard = ({
   locationName,
   startTime,
   endTime,
-  price
+  price,
+  isFree
 }: Props) => {
   const eventStartTime = removeTimezoneFromDateString(startTime);
   const eventEndTime = removeTimezoneFromDateString(endTime);
@@ -38,7 +40,11 @@ const EventCard = ({
     <View style={styles.eventCard}>
       <View style={styles.imageContainer}>
         <View style={styles.eventPriceContainer}>
-          <Text style={styles.eventPrice}>£{price}</Text>
+          {isFree ? (
+            <Text style={styles.eventPrice}>From £{price}</Text>
+          ) : (
+            <Text style={styles.eventPrice}>Free</Text>
+          )}
         </View>
       </View>
       <View style={styles.eventCardDetails}>

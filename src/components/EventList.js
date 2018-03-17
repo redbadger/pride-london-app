@@ -40,6 +40,7 @@ const renderItem = (styles, locale, onPress) => ({
         price={event.fields.eventPriceLow[locale]}
         startTime={event.fields.startTime[locale]}
         endTime={event.fields.endTime[locale]}
+        isFree={event.fields.isFree[locale]}
       />
     </TouchableOpacity>
   </View>

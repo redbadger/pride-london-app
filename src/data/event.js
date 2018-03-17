@@ -25,7 +25,8 @@ export type Event = {
     email: { [string]: string },
     phone: { [string]: string },
     ticketingUrl: { [string]: string },
-    venueDetails: { [string]: string[] }
+    venueDetails: { [string]: string[] },
+    isFree: { [string]: boolean }
   }
 };
 
