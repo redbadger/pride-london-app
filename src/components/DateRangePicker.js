@@ -25,6 +25,44 @@ const getSortedDateRange = (dates: DateRange) => {
     : dates;
 };
 
+const getMarkedDate = (date: string) => ({
+  [date]: {
+    selected: true,
+    selectedColor: eventListHeaderColor
+  }
+});
+
+const getMarkedDateRange = (dateRange: DateRange) => {
+  const { startDate, endDate } = dateRange;
+  const template = {
+    color: eventListHeaderColor,
+    textColor: cardBgColor
+  };
+
+  const markedDates = {};
+
+  // Start
+  markedDates[startDate] = {
+    ...template,
+    startingDay: true
+  };
+
+  // In between
+  let inBetweenDate = startDate;
+  do {
+    inBetweenDate = formatDate(addDays(inBetweenDate, 1), "YYYY-MM-DD");
+    markedDates[inBetweenDate] = { ...template };
+  } while (inBetweenDate !== endDate);
+
+  // End
+  markedDates[endDate] = {
+    ...template,
+    endingDay: true
+  };
+
+  return markedDates;
+};
+
 type Props = {
   onChange: DateOrDateRange => void,
   dateRange?: ?DateOrDateRange
@@ -58,41 +96,14 @@ class DateRangePicker extends React.PureComponent<Props> {
         ? getSortedDateRange(this.props.dateRange)
         : this.props.dateRange;
 
-    const markedDates = {};
     let markingType;
+    let markedDates;
     if (dateRange && typeof dateRange === "string") {
       markingType = "simple";
-      markedDates[dateRange] = {
-        selected: true,
-        selectedColor: eventListHeaderColor
-      };
+      markedDates = getMarkedDate(dateRange);
     } else if (dateRange && typeof dateRange === "object") {
-      const { startDate, endDate } = dateRange;
-
       markingType = "period";
-      const template = {
-        color: eventListHeaderColor,
-        textColor: cardBgColor
-      };
-
-      // Start
-      markedDates[startDate] = {
-        ...template,
-        startingDay: true
-      };
-
-      // In between
-      let inBetweenDate = startDate;
-      do {
-        inBetweenDate = formatDate(addDays(inBetweenDate, 1), "YYYY-MM-DD");
-        markedDates[inBetweenDate] = { ...template };
-      } while (inBetweenDate !== endDate);
-
-      // End
-      markedDates[endDate] = {
-        ...template,
-        endingDay: true
-      };
+      markedDates = getMarkedDateRange(dateRange);
     }
 
     return (

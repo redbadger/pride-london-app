@@ -2,7 +2,6 @@
 
 exports[`renders correctly no dates 1`] = `
 <Calendar
-  markedDates={Object {}}
   onDayPress={[Function]}
   theme={
     Object {
