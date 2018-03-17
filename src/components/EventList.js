@@ -21,38 +21,22 @@ type Props = {
   onRefresh: () => void,
   onPress: (eventName: string) => void
 };
-const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
+
 const separator = style => () => <View style={style} />;
 
 type ItemProps = { item: Event };
 const renderItem = (styles, locale, onPress) => ({
   item: event
 }: ItemProps) => {
-  const startTime = removeTimezoneFromDateString(
-    event.fields.startTime[locale]
-  );
-  const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
-  const dateFormat = "DD MMMM YYYY";
-  const timeFormat = "HH:mm";
-  const dateDisplay = isSameDay(startTime, endTime)
-    ? formatDate(startTime, dateFormat)
-    : `${formatDate(startTime, dateFormat)} - ${formatDate(
-        endTime,
-        dateFormat
-      )}`;
-  const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
-    endTime,
-    timeFormat
-  )}`;
   return (
     <View style={styles.eventListItem}>
       <TouchableOpacity delayPressIn={50} onPress={() => onPress(event.sys.id)}>
         <EventCard
-          date={dateDisplay}
           name={event.fields.name[locale]}
           locationName={event.fields.locationName[locale]}
           price="£16"
-          startTime={timeDisplay}
+          eventStartTime={event.fields.startTime[locale]}
+          eventEndTime={event.fields.endTime[locale]}
         />
       </TouchableOpacity>
     </View>
