@@ -34,7 +34,7 @@ const renderItem = (styles, locale, onPress) => ({
         <EventCard
           name={event.fields.name[locale]}
           locationName={event.fields.locationName[locale]}
-          price="£16"
+          price={event.fields.eventPriceLow[locale]}
           eventStartTime={event.fields.startTime[locale]}
           eventEndTime={event.fields.endTime[locale]}
         />

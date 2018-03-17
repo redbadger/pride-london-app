@@ -4,10 +4,12 @@ import { View, StyleSheet } from "react-native";
 import isSameDay from "date-fns/is_same_day";
 import formatDate from "date-fns/format";
 import {
+  eventListBgColor,
   priceTagBgColor,
   imageBgColor,
   cardBgColor,
-  textColor
+  textColor,
+  priceTagTextColor
 } from "../constants/colors";
 import Text from "./Text";
 
@@ -29,14 +31,7 @@ const EventCard = ({
 }: Props) => {
   const startTime = removeTimezoneFromDateString(eventStartTime);
   const endTime = removeTimezoneFromDateString(eventEndTime);
-  const dateFormat = "DD MMMM YYYY";
   const timeFormat = "HH:mm";
-  const dateDisplay = isSameDay(startTime, endTime)
-    ? formatDate(startTime, dateFormat)
-    : `${formatDate(startTime, dateFormat)} - ${formatDate(
-        endTime,
-        dateFormat
-      )}`;
   const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
     endTime,
     timeFormat
@@ -44,8 +39,8 @@ const EventCard = ({
   return (
     <View style={styles.eventCard}>
       <View style={styles.imageContainer}>
-        <View style={styles.priceTagContainer}>
-          <Text style={styles.eventPrice}>{price}</Text>
+        <View style={styles.eventPriceContainer}>
+          <Text style={styles.eventPrice}>£{price}</Text>
         </View>
       </View>
       <View style={styles.eventCardDetails}>
@@ -60,9 +55,6 @@ const EventCard = ({
         <Text ellipsizeMode="tail" style={styles.eventLocation}>
           {locationName}
         </Text>
-      </View>
-      <View style={styles.heartButtonContainer}>
-        <Text style={styles.heartIcon}>heart</Text>
       </View>
     </View>
   );
@@ -80,44 +72,39 @@ const styles = StyleSheet.create({
     height: 108,
     backgroundColor: imageBgColor
   },
-  priceTagContainer: {
-    width: 41,
+  eventPriceContainer: {
     height: 23,
-    backgroundColor: priceTagBgColor
-  },
-  heartButtonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  heartIcon: {
-    width: 44,
-    height: 44
+    backgroundColor: priceTagBgColor,
+    position: "absolute",
+    paddingHorizontal: 8,
+    borderRadius: 2
   },
   eventCardDetails: {
     flex: 1,
-    paddingTop: 12,
-    paddingBottom: 12,
-    paddingHorizontal: 8,
-    justifyContent: "space-around"
+    padding: 8
   },
   eventNameContainer: {
     flexDirection: "row"
   },
   eventName: {
+    fontFamily: "Poppins-SemiBold",
     color: textColor,
     fontSize: 16,
-    fontWeight: "bold",
-    flexWrap: "wrap"
+    lineHeight: 20,
+    paddingTop: 4
   },
   eventPrice: {
     fontSize: 14,
-    alignContent: "center"
+    color: eventListBgColor
   },
   eventTime: {
-    fontSize: 14
+    fontSize: 14,
+    lineHeight: 20
   },
   eventLocation: {
-    fontSize: 12
+    fontSize: 12,
+    lineHeight: 16,
+    paddingTop: 4
   }
 });
 
