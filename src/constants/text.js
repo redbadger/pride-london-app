@@ -1,7 +1,12 @@
+// @flow
 export default {
   tabEvents: "Events",
   filterByInterest: "I'm interested in...",
   filters: "Filters",
+  filterPickerApply: (numberOfEvents: number) =>
+    `Show ${numberOfEvents} events`,
+  filterDayPickerTitle: "Select dates",
+  filterTimePickerTitle: "Select time",
   eventDetailsPrice: "From: £",
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",

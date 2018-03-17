@@ -4,6 +4,7 @@ import { TouchableOpacity } from "react-native";
 import DateRangePicker from "./DateRangePicker";
 import Dialog from "./Dialog";
 import Text from "./Text";
+import text from "../constants/text";
 import type { DateOrDateRange } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
 
@@ -25,7 +26,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
     const { dateRange } = this.props;
     const title = dateRange
       ? formatDateRange(dateRange, { dateSuffix: " -" })
-      : "Select dates";
+      : text.filterDayPickerTitle;
 
     return (
       <Dialog

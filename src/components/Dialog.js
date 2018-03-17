@@ -4,11 +4,12 @@ import type { Node } from "react";
 import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import Text from "./Text";
 import {
-  cardBgColor,
-  textColor,
-  eventDetailsHeaderBgColor,
-  eventListHeaderColor,
-  dialogBackdropColor
+  dialogBackdropColor,
+  dialogBgColor,
+  dialogApplyButtonBgColor,
+  dialogApplyButtonTextColor,
+  dialogHeaderDividerColor,
+  textColor
 } from "../constants/colors";
 
 type Props = {
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: dialogBackdropColor
   },
   content: {
-    backgroundColor: cardBgColor,
+    backgroundColor: dialogBgColor,
     borderRadius: 4,
     paddingBottom: 8
   },
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     height: 40,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
-    borderBottomColor: eventDetailsHeaderBgColor
+    borderBottomColor: dialogHeaderDividerColor
   },
   headerSide: {
     width: 0,
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     color: textColor
   },
   applyButton: {
-    backgroundColor: eventListHeaderColor,
+    backgroundColor: dialogApplyButtonBgColor,
     borderRadius: 4,
     height: 48,
     marginTop: 8,
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   applyButtonText: {
-    color: cardBgColor
+    color: dialogApplyButtonTextColor
   }
 });
 

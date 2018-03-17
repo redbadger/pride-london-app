@@ -6,6 +6,7 @@ import type { DateOrDateRange } from "../data/date-time";
 import { selectFilteredEvents } from "../selectors/events";
 import { selectDateFilter } from "../selectors/event-filters";
 import Component from "./DateRangePickerDialog";
+import text from "../constants/text";
 
 type OwnProps = {
   onApply: () => void,
@@ -20,7 +21,7 @@ type Props = {
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  applyButtonText: `Show ${selectFilteredEvents(state).length} events`,
+  applyButtonText: text.filterPickerApply(selectFilteredEvents(state).length),
   dateRange: selectDateFilter(state)
 });
 

@@ -24,10 +24,10 @@ type Props = {
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  applyButtonText: `Show ${selectFilteredEvents(state).length} events`,
+  applyButtonText: text.filterPickerApply(selectFilteredEvents(state).length),
   options: OPTIONS.map(option => text.time[option]),
   selectedIndexes: selectTimeFilter(state).map(time => OPTIONS.indexOf(time)),
-  title: "Select time"
+  title: text.filterTimePickerTitle
 });
 
 const mapDispatchToProps = {

@@ -11,6 +11,7 @@
     "airbnb",
     "plugin:flowtype/recommended",
     "prettier",
+    "prettier/flowtype",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
