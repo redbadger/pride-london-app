@@ -9,6 +9,10 @@
     "run-android":
       "node node_modules/react-native/local-cli/cli.js run-android --appId com.pridelondonapp.dev --variant devDebug",
     "test": "jest src",
+    "test:e2e": "yarn test:e2e:build && yarn test:e2e:run",
+    "test:e2e:dev": "detox test --reuse",
+    "test:e2e:run": "detox test -c ios.sim.debug",
+    "test:e2e:build": "detox build",
     "precommit": "lint-staged",
     "lint": "eslint src",
     "flow": "flow src",
@@ -39,6 +43,7 @@
     "babel-preset-react-native": "4.0.0",
     "commander": "^2.13.0",
     "contentful-management": "^4.1.4",
+    "detox": "^7.1.0",
     "dotenv": "^5.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -46,6 +51,8 @@
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-detox": "^1.0.0",
+    "eslint-import-resolver-react-native": "^0.1.0",
     "eslint-plugin-flowtype": "^2.43.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
@@ -78,7 +85,8 @@
     "snapshotSerializers": ["enzyme-to-json/serializer"],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation)"
-    ]
+    ],
+    "collectCoverage": true
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"],
@@ -87,5 +95,19 @@
   "xcodeSchemes": {
     "Debug": [],
     "Release": ["AdhocAlpha", "AdhocBeta"]
+  },
+  "detox": {
+    "test-runner": "jest",
+    "runner-config": "e2e/config.json",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath":
+          "ios/build/Build/Products/Debug-iphonesimulator/PrideLondonApp.app",
+        "build":
+          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 7"
+      }
+    }
   }
 }

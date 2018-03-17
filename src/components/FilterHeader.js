@@ -11,7 +11,7 @@ import text from "../constants/text";
 const FilterHeader = () => (
   <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
     <StatusBar barStyle="light-content" animated />
-    <View style={styles.content}>
+    <View testID="filter-header" style={styles.content}>
       <View style={styles.filterButton}>
         <Text style={styles.buttonText}>{text.filterButton}</Text>
       </View>

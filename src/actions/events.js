@@ -4,7 +4,7 @@ import {
   getEvents as getEventsCms,
   updateEvents as updateEventsCms
 } from "../integrations/cms";
-import type { Event } from "../integrations/cms";
+import type { Event } from "../data/event";
 import type { StandardAction } from "./";
 
 type EventsActionType =

@@ -28,6 +28,7 @@ exports[`renders correctly 1`] = `
         "paddingTop": 8,
       }
     }
+    testID="filter-header"
   >
     <View
       style={

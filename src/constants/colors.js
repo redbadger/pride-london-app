@@ -9,6 +9,12 @@ export const textColor = "#272727";
 export const filterButtonColor = "#5C5C5C";
 export const filterButtontextColor = "#ADADAD";
 
+// EVENT LIST
+
+export const eventListBgColor = "rgb(226, 226, 226)";
+export const eventListHeaderBgColor = "rgb(216, 216, 216)";
+export const eventListHeaderColor = "rgb(51, 51, 51)";
+
 // EVENT DETAILS
 export const eventDetailsBgColor = "#FFF";
 export const eventDetailsHeaderBgColor = "#F2F2F2";
