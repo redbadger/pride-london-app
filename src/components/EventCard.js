@@ -1,39 +1,37 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import isSameDay from "date-fns/is_same_day";
 import formatDate from "date-fns/format";
 import {
   eventListBgColor,
   priceTagBgColor,
   imageBgColor,
   cardBgColor,
-  textColor,
-  priceTagTextColor
+  textColor
 } from "../constants/colors";
 import Text from "./Text";
 
 type Props = {
   name: string,
   locationName: string,
-  price: string,
-  eventStartTime: integer,
-  eventEndTime: integer
+  price: number,
+  startTime: string,
+  endTime: string
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
 
 const EventCard = ({
   name,
   locationName,
-  eventStartTime,
-  eventEndTime,
+  startTime,
+  endTime,
   price
 }: Props) => {
-  const startTime = removeTimezoneFromDateString(eventStartTime);
-  const endTime = removeTimezoneFromDateString(eventEndTime);
+  const eventStartTime = removeTimezoneFromDateString(startTime);
+  const eventEndTime = removeTimezoneFromDateString(endTime);
   const timeFormat = "HH:mm";
-  const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
-    endTime,
+  const timeDisplay = `${formatDate(eventStartTime, timeFormat)} - ${formatDate(
+    eventEndTime,
     timeFormat
   )}`;
   return (
@@ -44,17 +42,11 @@ const EventCard = ({
         </View>
       </View>
       <View style={styles.eventCardDetails}>
-        <Text ellipsizeMode="tail" style={styles.eventTime}>
-          {timeDisplay}
-        </Text>
+        <Text style={styles.eventTime}>{timeDisplay}</Text>
         <View style={styles.eventNameContainer}>
-          <Text ellipsizeMode="tail" style={styles.eventName}>
-            {name}
-          </Text>
+          <Text style={styles.eventName}>{name}</Text>
         </View>
-        <Text ellipsizeMode="tail" style={styles.eventLocation}>
-          {locationName}
-        </Text>
+        <Text style={styles.eventLocation}>{locationName}</Text>
       </View>
     </View>
   );

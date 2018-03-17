@@ -2,8 +2,7 @@
 import React from "react";
 import { StyleSheet, SectionList, TouchableOpacity, View } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
-import { format as formatDate } from "date-fns";
-import isSameDay from "date-fns/is_same_day";
+import formatDate from "date-fns/format";
 
 import EventCard from "./EventCard";
 import Text from "./Text";
@@ -27,21 +26,24 @@ const separator = style => () => <View style={style} />;
 type ItemProps = { item: Event };
 const renderItem = (styles, locale, onPress) => ({
   item: event
-}: ItemProps) => {
-  return (
-    <View style={styles.eventListItem}>
-      <TouchableOpacity delayPressIn={50} onPress={() => onPress(event.sys.id)}>
-        <EventCard
-          name={event.fields.name[locale]}
-          locationName={event.fields.locationName[locale]}
-          price={event.fields.eventPriceLow[locale]}
-          eventStartTime={event.fields.startTime[locale]}
-          eventEndTime={event.fields.endTime[locale]}
-        />
-      </TouchableOpacity>
-    </View>
-  );
-};
+}: ItemProps) => (
+  <View style={styles.eventListItem}>
+    <TouchableOpacity
+      accessibilityTraits={["button"]}
+      accessibilityComponentType="button"
+      delayPressIn={50}
+      onPress={() => onPress(event.sys.id)}
+    >
+      <EventCard
+        name={event.fields.name[locale]}
+        locationName={event.fields.locationName[locale]}
+        price={event.fields.eventPriceLow[locale]}
+        startTime={event.fields.startTime[locale]}
+        endTime={event.fields.endTime[locale]}
+      />
+    </TouchableOpacity>
+  </View>
+);
 
 type Section = SectionBase<Event> & { title: string };
 
