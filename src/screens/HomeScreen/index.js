@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event } from "../../integrations/cms";
+import type { Event } from "../../data/event";
 import { selectEvents, selectEventsLoading } from "../../selectors/events";
 import Component from "./component";
 

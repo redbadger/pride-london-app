@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
-import type { Event } from "../../integrations/cms";
+import type { Event } from "../../data/event";
 import EventTile from "../../components/EventTile";
 import { cardBgColor, imageBgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
@@ -30,7 +30,7 @@ class HomeScreen extends PureComponent<Props> {
   render() {
     const [left: Event[], right: Event[]] = splitEvents(this.props.events);
     return (
-      <SafeAreaView>
+      <SafeAreaView testID="home-screen">
         {this.props.loading && <Text>Loading...</Text>}
         <ScrollView style={styles.scroller}>
           <View style={styles.header}>

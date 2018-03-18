@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeScreen Component renders correctly 1`] = `
-<SafeAreaView>
+<SafeAreaView
+  testID="home-screen"
+>
   <ScrollView
     style={
       Object {
