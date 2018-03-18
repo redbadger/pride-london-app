@@ -15,20 +15,4 @@ describe("EventsScreen Component", () => {
     );
     expect(output).toMatchSnapshot();
   });
-
-  it("renders loading indicator when loading", () => {
-    const output = shallow(
-      <Component
-        navigation={{ navigate: () => {} }}
-        events={[]}
-        loading
-        refreshing={false}
-        updateEvents={() => {}}
-      />
-    );
-
-    const loadingText = output.find("Text");
-
-    expect(loadingText.children().text()).toEqual("Loading...");
-  });
 });

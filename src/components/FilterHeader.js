@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, StatusBar } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
+import { View, StyleSheet } from "react-native";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
@@ -59,8 +58,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
         : text.anyTime;
 
     return (
-      <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
-        <StatusBar barStyle="light-content" animated />
+      <View style={styles.container}>
         <View testID="filter-header" style={styles.content}>
           <View style={styles.contentInterest}>
             <View style={styles.interestButton}>
@@ -100,7 +98,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
           onCancel={this.hideTimePicker}
           visible={this.state.timesPickerVisible}
         />
-      </SafeAreaView>
+      </View>
     );
   }
 }
