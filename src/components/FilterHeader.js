@@ -1,59 +1,154 @@
+// @flow
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
+import DateFilterDialog from "./ConnectedDateFilterDialog";
+import FilterHeaderButton from "./FilterHeaderButton";
+import TimeFilterDialog from "./ConnectedTimeFilterDialog";
+import Text from "./Text";
 import {
   headerBgColor,
-  filterButtonColor,
-  filterButtontextColor
+  interestButtonBgColor,
+  interestButtonTextColor
 } from "../constants/colors";
 import text from "../constants/text";
+import type { DateOrDateRange, Time } from "../data/date-time";
+import { formatDateRange } from "../data/formatters";
 
-const FilterHeader = () => (
-  <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
-    <StatusBar barStyle="light-content" animated />
-    <View style={styles.content}>
-      <View style={styles.filterButton}>
-        <Text style={styles.buttonText}>{text.filterButton}</Text>
-      </View>
-      <View style={styles.mapButton}>
-        <Text style={styles.buttonText}>Map</Text>
-      </View>
-    </View>
-  </SafeAreaView>
-);
+type Props = {
+  dateFilter: ?DateOrDateRange,
+  timeFilter: Time[]
+};
+
+type State = {
+  datesPickerVisible: boolean,
+  timesPickerVisible: boolean
+};
+
+class FilterHeader extends React.PureComponent<Props, State> {
+  state = {
+    datesPickerVisible: false,
+    timesPickerVisible: false
+  };
+
+  showDatePicker = () => {
+    this.setState({ datesPickerVisible: true });
+  };
+
+  hideDatePicker = () => {
+    this.setState({ datesPickerVisible: false });
+  };
+
+  showTimePicker = () => {
+    this.setState({ timesPickerVisible: true });
+  };
+
+  hideTimePicker = () => {
+    this.setState({ timesPickerVisible: false });
+  };
+
+  render() {
+    const { dateFilter, timeFilter } = this.props;
+    const formattedDateFilter = dateFilter
+      ? formatDateRange(dateFilter)
+      : text.anyDay;
+    const formattedTimeFilter =
+      timeFilter.length < 3
+        ? timeFilter.map(time => text.time[time]).join(", ")
+        : text.anyTime;
+
+    return (
+      <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
+        <StatusBar barStyle="light-content" animated />
+        <View testID="filter-header" style={styles.content}>
+          <View style={styles.contentInterest}>
+            <View style={styles.interestButton}>
+              <Text type="h2" style={styles.interestButtonText}>
+                {text.filterByInterest}
+              </Text>
+            </View>
+            <View style={styles.mapButton}>
+              <Text style={styles.mapButtonText}>Map</Text>
+            </View>
+          </View>
+          <View style={styles.contentFilters}>
+            <FilterHeaderButton
+              text={formattedDateFilter}
+              onPress={this.showDatePicker}
+              style={styles.filterButton}
+            />
+            <FilterHeaderButton
+              text={formattedTimeFilter}
+              onPress={this.showTimePicker}
+              style={styles.filterButton}
+            />
+            <FilterHeaderButton
+              text={text.filters}
+              onPress={() => {}}
+              style={styles.filterButton}
+            />
+          </View>
+        </View>
+        <DateFilterDialog
+          onApply={this.hideDatePicker}
+          onCancel={this.hideDatePicker}
+          visible={this.state.datesPickerVisible}
+        />
+        <TimeFilterDialog
+          onApply={this.hideTimePicker}
+          onCancel={this.hideTimePicker}
+          visible={this.state.timesPickerVisible}
+        />
+      </SafeAreaView>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: headerBgColor
   },
   content: {
-    alignItems: "center",
-    flexDirection: "row",
-    paddingHorizontal: 20,
-    paddingTop: 8,
+    paddingTop: 16,
     paddingBottom: 12
   },
-  filterButton: {
+  contentInterest: {
+    alignItems: "center",
+    flexDirection: "row"
+  },
+  interestButton: {
     flex: 1,
-    flexDirection: "row",
-    height: 43,
-    backgroundColor: filterButtonColor,
-    padding: 10,
+    height: 44,
+    backgroundColor: interestButtonBgColor,
+    marginLeft: 8,
+    paddingHorizontal: 12,
     borderRadius: 4,
-    alignItems: "center"
+    justifyContent: "center"
+  },
+  interestButtonText: {
+    color: interestButtonTextColor
   },
   mapButton: {
-    marginLeft: 12,
+    marginHorizontal: 12,
     width: 52,
     height: 52,
-    backgroundColor: filterButtonColor,
+    backgroundColor: interestButtonBgColor,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     borderRadius: 25
   },
-  buttonText: {
-    color: filterButtontextColor,
-    fontWeight: "bold"
+  mapButtonText: {
+    color: interestButtonTextColor,
+    fontFamily: "Poppins-Bold",
+    fontSize: 14,
+    paddingBottom: 6
+  },
+  contentFilters: {
+    flexDirection: "row",
+    marginTop: 8
+  },
+  filterButton: {
+    marginLeft: 8
   }
 });
 

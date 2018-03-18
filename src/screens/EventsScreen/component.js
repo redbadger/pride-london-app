@@ -2,9 +2,9 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event } from "../../integrations/cms";
+import type { EventDays } from "../../data/event";
 import EventList from "../../components/EventList";
-import FilterHeader from "../../components/FilterHeader";
+import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 
@@ -12,7 +12,7 @@ const locale = "en-GB";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  events: Event[],
+  events: EventDays,
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>
@@ -27,18 +27,21 @@ class EventsScreen extends PureComponent<Props> {
     return (
       <View style={styles.container}>
         <FilterHeader />
-        {this.props.loading && <Text>Loading...</Text>}
-        <EventList
-          locale={locale}
-          events={this.props.events}
-          refreshing={this.props.refreshing}
-          onRefresh={() => {
-            this.props.updateEvents();
-          }}
-          onPress={(eventId: string) => {
-            this.props.navigation.navigate(EVENT_DETAILS, { eventId });
-          }}
-        />
+        {this.props.loading ? (
+          <Text>Loading...</Text>
+        ) : (
+          <EventList
+            locale={locale}
+            events={this.props.events}
+            refreshing={this.props.refreshing}
+            onRefresh={() => {
+              this.props.updateEvents();
+            }}
+            onPress={(eventId: string) => {
+              this.props.navigation.navigate(EVENT_DETAILS, { eventId });
+            }}
+          />
+        )}
       </View>
     );
   }

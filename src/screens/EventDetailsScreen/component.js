@@ -16,7 +16,7 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { Event } from "../../integrations/cms";
+import type { Event } from "../../data/event";
 
 const locale = "en-GB";
 

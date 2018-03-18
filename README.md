@@ -1,6 +1,8 @@
 # Pride in London App
 
 [![CircleCI](https://circleci.com/gh/redbadger/pride-london-app.svg?style=svg&circle-token=9de45c24a3720e16a6d568c0868750e1d0fe8e40)](https://circleci.com/gh/redbadger/pride-london-app)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/maintainability)](https://codeclimate.com/github/redbadger/pride-london-app/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/test_coverage)](https://codeclimate.com/github/redbadger/pride-london-app/test_coverage)
 
 <!-- Generateed with markdown-toc (https://github.com/jonschlinkert/markdown-toc) -->
 
@@ -125,14 +127,17 @@ To delete the generated data again:
 node ./scripts/generate-content.js delete -s <space_id> -a <access_token>
 ```
 
+### Tests
+
+#### E2E
+
+End to end tests use [Detox](https://github.com/wix/detox/blob/master/docs/README.md) with [Jest](https://facebook.github.io/jest/docs/en/api.html) as the test runner. Some [setup](https://github.com/wix/detox/blob/master/docs/Introduction.GettingStarted.md) is required for running the tests locally.
+
 ## Contributing
 
 Pieces of work currently up for grabs will be listed on the [issues page](https://github.com/redbadger/pride-london-app/issues) and tracked on the [projects page](https://github.com/redbadger/pride-london-app/projects). If you are able to work on the piece of work, comment on the issue. You can also discuss the feature in the isssue page. Be honest about if you have the time to work on it, there's no shame in parking a piece of work and letting someone else pick it up if you're too busy.
 
-All Pull Requests are built by [CircleCI](https://circleci.com/gh/redbadger/workflows/pride-london-app)
-Merging a Pull Request to the master branch will trigger a build number increase followed by a deploy to TestFight for iOS devices and to HockeyApp for Android devices.
-
-Submit your Pull Request from a repo fork and one of the core dev team will review and merge it.
+Follow the [contribution guidelines](./CONTRIBUTING.md) to have a smooth experience getting your changes in.
 
 ### Architecture Decision Records
 

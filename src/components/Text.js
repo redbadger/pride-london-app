@@ -44,17 +44,20 @@ const textStyles = {
   h1: {
     fontFamily: "Poppins-Bold",
     fontSize: 24,
-    lineHeight: 28
+    lineHeight: 28,
+    includeFontPadding: false
   },
   h2: {
     fontFamily: "Poppins-SemiBold",
     fontSize: 18,
-    lineHeight: 24
+    lineHeight: 24,
+    includeFontPadding: false
   },
   h3: {
     fontFamily: "Poppins-SemiBold",
     fontSize: 16,
-    lineHeight: 24
+    lineHeight: 24,
+    includeFontPadding: false
   },
   h4: {
     fontFamily: "Roboto-Medium",

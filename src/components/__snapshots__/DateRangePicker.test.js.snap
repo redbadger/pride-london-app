@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly no dates 1`] = `
+<Calendar
+  onDayPress={[Function]}
+  theme={
+    Object {
+      "textDayFontFamily": "Roboto",
+      "textDayFontSize": 16,
+      "textDayHeaderFontFamily": "Roboto",
+      "textDayHeaderFontSize": 16,
+      "textMonthFontFamily": "Roboto",
+      "textMonthFontSize": 16,
+    }
+  }
+/>
+`;
+
+exports[`renders correctly only startDate 1`] = `
+<Calendar
+  markedDates={
+    Object {
+      "2018-01-01": Object {
+        "selected": true,
+        "selectedColor": "rgb(51, 51, 51)",
+      },
+    }
+  }
+  markingType="simple"
+  onDayPress={[Function]}
+  theme={
+    Object {
+      "textDayFontFamily": "Roboto",
+      "textDayFontSize": 16,
+      "textDayHeaderFontFamily": "Roboto",
+      "textDayHeaderFontSize": 16,
+      "textMonthFontFamily": "Roboto",
+      "textMonthFontSize": 16,
+    }
+  }
+/>
+`;
+
+exports[`renders correctly startDate after endDate 1`] = `
+<Calendar
+  markedDates={
+    Object {
+      "2018-01-01": Object {
+        "color": "rgb(51, 51, 51)",
+        "startingDay": true,
+        "textColor": "#FFFFFF",
+      },
+      "2018-01-02": Object {
+        "color": "rgb(51, 51, 51)",
+        "endingDay": true,
+        "textColor": "#FFFFFF",
+      },
+    }
+  }
+  markingType="period"
+  onDayPress={[Function]}
+  theme={
+    Object {
+      "textDayFontFamily": "Roboto",
+      "textDayFontSize": 16,
+      "textDayHeaderFontFamily": "Roboto",
+      "textDayHeaderFontSize": 16,
+      "textMonthFontFamily": "Roboto",
+      "textMonthFontSize": 16,
+    }
+  }
+/>
+`;
+
+exports[`renders correctly startDate before endDate 1`] = `
+<Calendar
+  markedDates={
+    Object {
+      "2018-01-01": Object {
+        "color": "rgb(51, 51, 51)",
+        "startingDay": true,
+        "textColor": "#FFFFFF",
+      },
+      "2018-01-02": Object {
+        "color": "rgb(51, 51, 51)",
+        "endingDay": true,
+        "textColor": "#FFFFFF",
+      },
+    }
+  }
+  markingType="period"
+  onDayPress={[Function]}
+  theme={
+    Object {
+      "textDayFontFamily": "Roboto",
+      "textDayFontSize": 16,
+      "textDayHeaderFontFamily": "Roboto",
+      "textDayHeaderFontSize": 16,
+      "textMonthFontFamily": "Roboto",
+      "textMonthFontSize": 16,
+    }
+  }
+/>
+`;
+
+exports[`renders correctly startDate equals endDate 1`] = `
+<Calendar
+  markedDates={
+    Object {
+      "2018-01-01": Object {
+        "selected": true,
+        "selectedColor": "rgb(51, 51, 51)",
+      },
+    }
+  }
+  markingType="simple"
+  onDayPress={[Function]}
+  theme={
+    Object {
+      "textDayFontFamily": "Roboto",
+      "textDayFontSize": 16,
+      "textDayHeaderFontFamily": "Roboto",
+      "textDayHeaderFontSize": 16,
+      "textMonthFontFamily": "Roboto",
+      "textMonthFontSize": 16,
+    }
+  }
+/>
+`;

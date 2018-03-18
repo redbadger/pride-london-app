@@ -2,12 +2,12 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event } from "../../integrations/cms";
+import type { EventDays } from "../../data/event";
 import { updateEvents } from "../../actions/events";
 import {
-  selectEvents,
   selectEventsLoading,
-  selectEventsRefreshing
+  selectEventsRefreshing,
+  selectFilteredEventsGroupedByDay
 } from "../../selectors/events";
 import Component from "./component";
 
@@ -16,14 +16,14 @@ type OwnProps = {
 };
 
 type Props = {
-  events: Event[],
+  events: EventDays,
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  events: selectEvents(state),
+  events: selectFilteredEventsGroupedByDay(state),
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state)
 });

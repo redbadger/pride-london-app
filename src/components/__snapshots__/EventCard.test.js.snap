@@ -5,9 +5,8 @@ exports[`renders correctly 1`] = `
   style={
     Object {
       "backgroundColor": "#FFFFFF",
-      "borderRadius": 5,
       "flexDirection": "row",
-      "height": 95,
+      "height": 108,
       "overflow": "hidden",
     }
   }
@@ -16,32 +15,92 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "backgroundColor": "#C1C1C1",
-        "height": 95,
-        "width": 95,
+        "height": 108,
+        "width": 114,
       }
     }
-  />
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#989898",
+          "borderRadius": 2,
+          "height": 23,
+          "paddingHorizontal": 8,
+          "position": "absolute",
+        }
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "rgb(226, 226, 226)",
+            "fontSize": 14,
+          }
+        }
+        type="text"
+      >
+        £
+        16
+      </Text>
+    </View>
+  </View>
   <View
     style={
       Object {
         "flex": 1,
-        "padding": 15,
+        "padding": 8,
       }
     }
   >
     <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      numberOfLines={1}
+      markdown={false}
       style={
         Object {
-          "color": "#272727",
-          "fontWeight": "bold",
+          "fontSize": 14,
+          "lineHeight": 20,
+        }
+      }
+      type="text"
+    >
+      12:12 - 13:12
+    </Text>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
         }
       }
     >
-      some event
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "#272727",
+            "fontFamily": "Poppins-SemiBold",
+            "fontSize": 16,
+            "lineHeight": 20,
+            "paddingTop": 4,
+          }
+        }
+        type="text"
+      >
+        name
+      </Text>
+    </View>
+    <Text
+      markdown={false}
+      style={
+        Object {
+          "fontSize": 12,
+          "lineHeight": 16,
+          "paddingTop": 4,
+        }
+      }
+      type="text"
+    >
+      location
     </Text>
   </View>
 </View>

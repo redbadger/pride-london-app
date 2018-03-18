@@ -3,16 +3,24 @@
   "env": {
     "jest": true,
     "node": true,
-    "react-native/react-native": true
+    "react-native/react-native": true,
+    "detox/detox": true,
+    "mocha": true
   },
   "extends": [
     "airbnb",
     "plugin:flowtype/recommended",
     "prettier",
+    "prettier/flowtype",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
-  "plugins": ["flowtype", "react", "react-native"],
+  "plugins": [
+    "flowtype",
+    "react",
+    "react-native",
+    "detox"
+  ],
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module",
@@ -32,10 +40,17 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/scripts/*.js", "**/*.test.js", "**/setup-tests.js"],
+        "devDependencies": [
+          "**/scripts/*.js",
+          "**/*.test.js",
+          "**/setup-tests.js"
+        ],
         "optionalDependencies": false,
         "peerDependencies": false
       }
     ]
+  },
+  "settings": {
+    "import/resolver": "react-native"
   }
 }

@@ -1,5 +1,5 @@
 // @flow
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import React from "react";
 import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
 import EventsScreen from "./screens/EventsScreen";
@@ -25,6 +25,20 @@ const HomeStack = StackNavigator(
     initialRouteName: HOME
   }
 );
+
+EventsStack.navigationOptions = {
+  tabBarTestIDProps: {
+    testID: "events-tab-button",
+    accessibilityLabel: "events-tab-button"
+  }
+};
+
+HomeStack.navigationOptions = {
+  tabBarTestIDProps: {
+    testID: "home-tab-button",
+    accessibilityLabel: "home-tab-button"
+  }
+};
 
 export default TabNavigator(
   {
