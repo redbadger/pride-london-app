@@ -1,7 +1,7 @@
 // @flow
 import type { Dispatch } from "redux";
 import { getCmsData, updateCmsData } from "../integrations/cms";
-import type { SavedData } from "../integrations/storage";
+import type { SavedData } from "../integrations/cms";
 import type { StandardAction } from "./";
 
 type CmsActionType =
@@ -11,9 +11,9 @@ type CmsActionType =
 
 export type CmsAction = StandardAction<CmsActionType, SavedData>;
 
-export const getEvents = (getCmsDataFn: getCmsData = getCmsData) => async (
-  dispatch: Dispatch<CmsAction>
-) => {
+export const getEvents = (
+  getCmsDataFn: typeof getCmsData = getCmsData
+) => async (dispatch: Dispatch<CmsAction>) => {
   dispatch({
     type: "REQUEST_CMS_DATA"
   });
@@ -27,7 +27,7 @@ export const getEvents = (getCmsDataFn: getCmsData = getCmsData) => async (
 };
 
 export const updateEvents = (
-  updateCmsDataFn: updateCmsData = updateCmsData
+  updateCmsDataFn: typeof updateCmsData = updateCmsData
 ) => async (dispatch: Dispatch<CmsAction>) => {
   dispatch({
     type: "REQUEST_UPDATE_CMS_DATA"

@@ -2,7 +2,7 @@
 import { AsyncStorage } from "react-native";
 import type { CmsEntry } from "./cms";
 
-export type SavedData = {
+type SavedData = {
   entries: CmsEntry[],
   assets: Object[],
   syncToken: string
@@ -15,13 +15,6 @@ type CmsData = {
   deletedAssets: Object[],
   nextSyncToken: string
 };
-
-type LoadCmsData = (AsyncStorageObj?: AsyncStorage) => Promise<SavedData>;
-type SaveCmsData = (
-  cmsData: CmsData,
-  loadCmsDataFn?: LoadCmsData,
-  AsyncStorageObj: AsyncStorage
-) => Promise<SavedData>;
 
 const DATA_KEY = "@CmsStore:data";
 
@@ -47,11 +40,11 @@ const updateCmsEntryList = (newList, deletedList, localList) => {
     .filter(entry => entryNotDeleted(entry, deletedEntryIds));
 };
 
-export const saveCmsData: SaveCmsData = async (
-  cmsData,
-  loadCmsDataFn = loadCmsData,
-  AsyncStorageObj = AsyncStorage
-) => {
+export const saveCmsData = async (
+  cmsData: CmsData,
+  loadCmsDataFn: typeof loadCmsData = loadCmsData,
+  AsyncStorageObj: AsyncStorage = AsyncStorage
+): Promise<SavedData> => {
   const localCmsData = await loadCmsDataFn();
   const localEntries = localCmsData ? localCmsData.entries : [];
   const localAssets = localCmsData ? localCmsData.assets : [];
@@ -75,9 +68,9 @@ export const saveCmsData: SaveCmsData = async (
   return newCmsData;
 };
 
-export const loadCmsData: LoadCmsData = async (
+export const loadCmsData = async (
   AsyncStorageObj: AsyncStorage = AsyncStorage
-) => {
+): Promise<SavedData> => {
   const stringData = await AsyncStorageObj.getItem(DATA_KEY);
   return JSON.parse(stringData);
 };

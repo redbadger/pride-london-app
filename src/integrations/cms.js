@@ -4,7 +4,6 @@ import Config from "react-native-config";
 // force contentful SDK to use browser API
 import { createClient } from "contentful/dist/contentful.browser.min";
 import { saveCmsData, loadCmsData } from "./storage";
-import type { SavedData } from "./storage";
 import type { Event, FeaturedEvents, Asset } from "../data/event";
 
 export type CmsEntry = Event | FeaturedEvents;
@@ -15,6 +14,11 @@ export type CmsData = {
   deletedAssets: Asset[],
   nextSyncToken: string
 };
+export type SavedData = {
+  entries: CmsEntry[],
+  assets: Asset[],
+  syncToken: string
+};
 
 type SyncOpts = {
   initial: boolean,
@@ -24,26 +28,15 @@ type Client = {
   sync: SyncOpts => Promise<CmsData>
 };
 
-type UpdateCmsData = (
-  loadCmsDataFn?: loadCmsData,
-  saveCmsDataFn: saveCmsData,
-  clientObj?: Client
-) => Promise<SavedData>;
-
-type GetCmsData = (
-  loadCmsDataFn?: loadCmsData,
-  updateCmsDataFn?: UpdateCmsData
-) => Promise<SavedData>;
-
 const client: Client = createClient({
   space: Config.CONTENTFUL_SPACE_ID,
   accessToken: Config.CONTENTFUL_API_KEY
 });
 
-export const getCmsData: GetCmsData = async (
-  loadCmsDataFn = loadCmsData,
-  updateCmsDataFn = updateCmsData
-) => {
+export const getCmsData = async (
+  loadCmsDataFn: typeof loadCmsData = loadCmsData,
+  updateCmsDataFn: typeof updateCmsData = updateCmsData
+): Promise<SavedData> => {
   const localCmsData = await loadCmsDataFn();
   const hasLocalCmsData = !!localCmsData;
 
@@ -54,11 +47,11 @@ export const getCmsData: GetCmsData = async (
   return updateCmsDataFn();
 };
 
-export const updateCmsData: UpdateCmsData = async (
-  loadCmsDataFn = loadCmsData,
-  saveCmsDataFn = saveCmsData,
-  clientObj = client
-) => {
+export const updateCmsData = async (
+  loadCmsDataFn: typeof loadCmsData = loadCmsData,
+  saveCmsDataFn: typeof saveCmsData = saveCmsData,
+  clientObj: Client = client
+): Promise<SavedData> => {
   const localCmsData = await loadCmsDataFn();
   const hasLocalCmsData = !!localCmsData;
 
