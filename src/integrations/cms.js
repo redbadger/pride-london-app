@@ -3,91 +3,76 @@
 import Config from "react-native-config";
 // force contentful SDK to use browser API
 import { createClient } from "contentful/dist/contentful.browser.min";
-import { saveEvents, loadEvents } from "./storage";
+import { saveCmsData, loadCmsData } from "./storage";
+import type { Event, FeaturedEvents, Asset } from "../data/event";
 
-import type { Event } from "../data/event";
-
-export type Deletion = {
-  sys: {
-    id: string
-  }
-};
-type EventData = {
-  entries: Event[],
-  deletedEntries: Deletion[],
+export type CmsEntry = Event | FeaturedEvents;
+export type CmsData = {
+  entries: CmsEntry[],
+  deletedEntries: CmsEntry[],
+  assets: Asset[],
+  deletedAssets: Asset[],
   nextSyncToken: string
 };
+export type SavedData = {
+  entries: CmsEntry[],
+  assets: Asset[],
+  syncToken: string
+};
+
 type SyncOpts = {
   initial: boolean,
   nextSyncToken?: string
 };
 type Client = {
-  sync: SyncOpts => Promise<EventData>
+  sync: SyncOpts => Promise<CmsData>
 };
-
-type UpdateEvents = () => Promise<Event[]>;
-type GetEvents = (
-  loadEvents?: loadEvents,
-  updateEvents?: updateEvents
-) => Promise<Event[]>;
 
 const client: Client = createClient({
   space: Config.CONTENTFUL_SPACE_ID,
   accessToken: Config.CONTENTFUL_API_KEY
 });
 
-export const getEvents: GetEvents = async (
-  loadEventsFn = loadEvents,
-  updateEventsFn = updateEvents
-) => {
-  const localEventsData = await loadEventsFn();
-  const hasLocalEventsData =
-    !!localEventsData && localEventsData.events.length > 0;
+export const getCmsData = async (
+  loadCmsDataFn: typeof loadCmsData = loadCmsData,
+  updateCmsDataFn: typeof updateCmsData = updateCmsData
+): Promise<SavedData> => {
+  const localCmsData = await loadCmsDataFn();
+  const hasLocalCmsData = !!localCmsData;
 
-  if (hasLocalEventsData) {
-    return localEventsData.events;
+  if (hasLocalCmsData) {
+    return localCmsData;
   }
 
-  return updateEventsFn();
+  return updateCmsDataFn();
 };
 
-export const updateEvents: UpdateEvents = async (
-  loadEventsFn = loadEvents,
-  saveEventsFn = saveEvents,
-  clientObj = client
-) => {
-  const localEventsData = await loadEventsFn();
-  const hasLocalEventsData =
-    !!localEventsData && localEventsData.events.length > 0;
+export const updateCmsData = async (
+  loadCmsDataFn: typeof loadCmsData = loadCmsData,
+  saveCmsDataFn: typeof saveCmsData = saveCmsData,
+  clientObj: Client = client
+): Promise<SavedData> => {
+  const localCmsData = await loadCmsDataFn();
+  const hasLocalCmsData = !!localCmsData;
 
-  const syncOpts = hasLocalEventsData
+  const syncOpts = hasLocalCmsData
     ? {
         initial: false,
-        nextSyncToken: localEventsData.syncToken
+        nextSyncToken: localCmsData.syncToken,
+        resolveLinks: false
       }
     : {
-        initial: true
+        initial: true,
+        resolveLinks: false
       };
 
   const cmsData = await clientObj.sync(syncOpts);
 
-  if (
-    hasLocalEventsData &&
-    localEventsData.syncToken === cmsData.nextSyncToken
-  ) {
-    return localEventsData.events;
+  if (hasLocalCmsData && localCmsData.syncToken === cmsData.nextSyncToken) {
+    return localCmsData;
   }
 
-  const events = cmsData.entries.filter(
-    entry => entry.sys.contentType.sys.id === "event"
-  );
-  const deletedEvents = cmsData.deletedEntries;
+  const savedCmsData = await saveCmsDataFn(cmsData);
 
-  const savedEventsData = await saveEventsFn(
-    events,
-    deletedEvents,
-    cmsData.nextSyncToken
-  );
-
-  return savedEventsData.events;
+  return savedCmsData;
 };
