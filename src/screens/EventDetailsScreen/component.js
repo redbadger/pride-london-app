@@ -23,7 +23,7 @@ const locale = "en-GB";
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: String } }>,
   event: CmsEvent,
-  getAssetById: id => CmsAsset
+  getAssetById: string => CmsAsset
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
@@ -171,6 +171,7 @@ class EventDetailsScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
   };
+  static defaultProps = {};
 
   render() {
     const { event, getAssetById } = this.props;

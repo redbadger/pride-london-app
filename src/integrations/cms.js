@@ -21,26 +21,51 @@ export type CmsEntry<Fields> = {
 };
 
 export type Event = {
-  name: { [string]: string },
-  eventCategories: { [string]: string[] },
-  startTime: { [string]: string },
-  endTime: { [string]: string },
-  location: { [string]: { lat: number, lon: number } },
-  locationName: { [string]: string },
-  eventPriceLow: { [string]: number },
-  eventPriceHigh: { [string]: number },
-  accessibilityOptions: { [string]: string[] },
-  eventDescription: { [string]: string },
-  accessibilityDetails: { [string]: string },
-  email: { [string]: string },
-  phone: { [string]: string },
-  ticketingUrl: { [string]: string },
-  venueDetails: { [string]: string[] }
+  fields: {
+    name: { [string]: string },
+    eventCategories: { [string]: string[] },
+    startTime: { [string]: string },
+    endTime: { [string]: string },
+    location: { [string]: { lat: number, lon: number } },
+    locationName: { [string]: string },
+    eventPriceLow: { [string]: number },
+    eventPriceHigh: { [string]: number },
+    accessibilityOptions: { [string]: string[] },
+    eventDescription: { [string]: string },
+    accessibilityDetails: { [string]: string },
+    email: { [string]: string },
+    phone: { [string]: string },
+    ticketingUrl: { [string]: string },
+    venueDetails: { [string]: string[] },
+    individualEventPicture: { [string]: { sys: { id: string } } }
+  },
+  sys: {
+    id: string,
+    type: string,
+    contentType: {
+      sys: {
+        id: "event"
+      }
+    },
+    revision: number
+  }
 };
 
 export type FeaturedEvents = {
-  title: { [string]: string },
-  events: { [string]: CmsEntry<Event>[] }
+  fields: {
+    title: { [string]: string },
+    events: { [string]: Event[] }
+  },
+  sys: {
+    id: string,
+    type: string,
+    contentType: {
+      sys: {
+        id: "featuredEvents"
+      }
+    },
+    revision: number
+  }
 };
 
 export type CmsAsset = {
@@ -68,8 +93,8 @@ export type CmsAsset = {
   }
 };
 
-export type CmsEvent = CmsEntry<Event>;
-export type CmsFeaturedEvents = CmsEntry<FeaturedEvents>;
+export type CmsEvent = Event;
+export type CmsFeaturedEvents = FeaturedEvents;
 export type CmsEntries = CmsEvent | CmsFeaturedEvents;
 
 type SyncOpts = {
