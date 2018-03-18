@@ -12,7 +12,7 @@ describe("Event filters reducer", () => {
   it("updates state with filters from payload for UPDATE_EVENT_FILTERS action", () => {
     const initialState = {
       date: null,
-      time: ["morning", "afternoon", "evening"]
+      time: new Set()
     };
     const state = reducer(initialState, {
       type: "UPDATE_EVENT_FILTERS",
