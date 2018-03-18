@@ -5,19 +5,15 @@ import type { CmsEntry } from "../integrations/cms";
 import type { Asset } from "../data/event";
 
 export type State = {
-  data: {
-    entries: CmsEntry[],
-    assets: Asset[]
-  },
+  entries: CmsEntry[],
+  assets: Asset[],
   loading: boolean,
   refreshing: boolean
 };
 
 const defaultState = {
-  data: {
-    entries: [],
-    assets: []
-  },
+  entries: [],
+  assets: [],
   loading: true,
   refreshing: false
 };
@@ -44,7 +40,8 @@ const events: Reducer<State, CmsAction> = (
         ...state,
         loading: false,
         refreshing: false,
-        data: action.payload
+        entries: action.payload ? action.payload.entries : [],
+        assets: action.payload ? action.payload.assets : []
       };
     default:
       return state;

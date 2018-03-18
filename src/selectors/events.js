@@ -39,18 +39,18 @@ const groupByStartTime = (events: Event[]): EventDays => {
 const getEventsState = (state: State) => state.events;
 
 export const selectEvents = (state: State): Event[] =>
-  ((getEventsState(state).data.entries.filter(
+  ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
   ): any[]): Event[]);
 export const selectFeaturedEvents = (state: State) =>
-  getEventsState(state).data.entries.filter(
+  getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "featuredEvents"
   );
 export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;
 export const selectEventsRefreshing = (state: State) =>
   getEventsState(state).refreshing;
-export const selectAssets = (state: State) => getEventsState(state).data.assets;
+export const selectAssets = (state: State) => getEventsState(state).assets;
 
 export const selectEventById = (state: State, id: String) =>
   selectEvents(state).find(event => event.sys.id === id);

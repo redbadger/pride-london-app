@@ -18,10 +18,8 @@ const untypedBuildTimeFilter: any = buildTimeFilter;
 
 const buildState = ({ date, time }) => ({
   events: {
-    data: {
-      entries: [],
-      assets: []
-    },
+    entries: [],
+    assets: [],
     loading: false,
     refreshing: false
   },
