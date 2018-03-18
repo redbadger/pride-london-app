@@ -24,9 +24,15 @@ export const buildDateRangeFilter = (date: DateRange) => (event: Event) =>
     event.fields.endTime[locale]
   );
 
-export const buildTimeFilter = (time: Time[]) => (event: Event) =>
-  (time.includes("morning") && getHours(event.fields.startTime[locale]) < 12) ||
-  (time.includes("afternoon") &&
-    (getHours(event.fields.startTime[locale]) < 18 &&
-      getHours(event.fields.endTime[locale]) > 12)) ||
-  (time.includes("evening") && getHours(event.fields.endTime[locale]) >= 18);
+export const buildTimeFilter = (time: Time) => {
+  if (time === "morning") {
+    return (event: Event) => getHours(event.fields.startTime[locale]) < 12;
+  } else if (time === "afternoon") {
+    return (event: Event) =>
+      getHours(event.fields.startTime[locale]) < 18 &&
+      getHours(event.fields.endTime[locale]) > 12;
+  }
+
+  // time === "evening"
+  return (event: Event) => getHours(event.fields.endTime[locale]) >= 18;
+};

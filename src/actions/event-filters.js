@@ -5,7 +5,7 @@ import type { StandardAction } from "./";
 type EventFiltersActionType = "UPDATE_EVENT_FILTERS";
 type EventFiltersPayload = {
   date?: ?DateOrDateRange,
-  time?: Time[]
+  time?: Set<Time>
 };
 
 export type EventFiltersAction = StandardAction<
