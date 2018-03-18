@@ -1,23 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly with any date and any time (empty time set) 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
-  }
+<View
   style={
     Object {
       "backgroundColor": "#A5A5A5",
     }
   }
 >
-  <StatusBar
-    animated={true}
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <View
     style={
       Object {
@@ -136,27 +126,17 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</View>
 `;
 
 exports[`renders correctly with any date and any time 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
-  }
+<View
   style={
     Object {
       "backgroundColor": "#A5A5A5",
     }
   }
 >
-  <StatusBar
-    animated={true}
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <View
     style={
       Object {
@@ -275,27 +255,17 @@ exports[`renders correctly with any date and any time 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</View>
 `;
 
 exports[`renders correctly with date range and two times 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
-  }
+<View
   style={
     Object {
       "backgroundColor": "#A5A5A5",
     }
   }
 >
-  <StatusBar
-    animated={true}
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <View
     style={
       Object {
@@ -414,27 +384,17 @@ exports[`renders correctly with date range and two times 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</View>
 `;
 
 exports[`renders correctly with single date and single time 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
-  }
+<View
   style={
     Object {
       "backgroundColor": "#A5A5A5",
     }
   }
 >
-  <StatusBar
-    animated={true}
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <View
     style={
       Object {
@@ -553,5 +513,5 @@ exports[`renders correctly with single date and single time 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</View>
 `;

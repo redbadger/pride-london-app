@@ -1,9 +1,15 @@
 // @flow
 import React from "react";
-import { StyleSheet, SectionList, TouchableOpacity, View } from "react-native";
+import {
+  Animated,
+  StyleSheet,
+  SectionList,
+  TouchableOpacity,
+  View
+} from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
+import type { Props as ScrollViewProps } from "react-native/Libraries/Components/ScrollView/ScrollView";
 import formatDate from "date-fns/format";
-
 import EventCard from "./EventCard";
 import Text from "./Text";
 import type { Event, EventDays, Asset } from "../data/event";
@@ -13,11 +19,9 @@ import {
   eventListHeaderColor
 } from "../constants/colors";
 
-type Props = {
+type Props = ScrollViewProps & {
   locale: string,
   events: EventDays,
-  refreshing: boolean,
-  onRefresh: () => void,
   onPress: (eventName: string) => void,
   getAssetById: string => Asset
 };
@@ -51,7 +55,6 @@ const renderItem = (styles, locale, onPress, getAssetById) => ({
 );
 
 type Section = SectionBase<Event> & { title: string };
-
 type SectionProps = { section: Section };
 const renderSectionHeader = styles => ({ section }: SectionProps) => (
   <Text type="h2" style={styles.sectionHeader}>
@@ -65,24 +68,25 @@ const eventSections = (events: EventDays, locale: string): Section[] =>
     title: formatDate(it[0].fields.startTime[locale], "dddd D MMMM")
   }));
 
+const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 const EventList = ({
+  contentContainerStyle,
   events,
   locale,
-  refreshing,
-  onRefresh,
   onPress,
-  getAssetById
+  getAssetById,
+  ...otherScrollViewProps
 }: Props) => (
-  <SectionList
+  <AnimatedSectionList
     sections={eventSections(events, locale)}
     renderSectionHeader={renderSectionHeader(styles)}
     renderItem={renderItem(styles, locale, onPress, getAssetById)}
     keyExtractor={event => event.sys.id}
-    contentContainerStyle={styles.container}
+    contentContainerStyle={[styles.container, contentContainerStyle]}
     ItemSeparatorComponent={separator(styles.itemSeparator)}
     SectionSeparatorComponent={separator(styles.sectionSeparator)}
-    refreshing={refreshing}
-    onRefresh={onRefresh}
+    stickySectionHeadersEnabled
+    {...otherScrollViewProps}
   />
 );
 

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EventsScreen Component renders correctly 1`] = `
-<View
+<withOrientation
   style={
     Object {
       "backgroundColor": "#808080",
@@ -9,14 +9,53 @@ exports[`EventsScreen Component renders correctly 1`] = `
     }
   }
 >
-  <Connect(FilterHeader) />
+  <StatusBar
+    animated={true}
+    barStyle="light-content"
+    showHideTransition="fade"
+  />
   <EventList
+    contentContainerStyle={
+      Object {
+        "paddingTop": 120,
+      }
+    }
     events={Array []}
     getAssetById={[Function]}
     locale="en-GB"
     onPress={[Function]}
-    onRefresh={[Function]}
-    refreshing={false}
+    onScroll={[Function]}
+    refreshControl={
+      <RefreshControlMock
+        onRefresh={[Function]}
+        progressViewOffset={140}
+        refreshing={false}
+      />
+    }
+    scrollEventThrottle={1}
   />
-</View>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "height": 120,
+          "left": 0,
+          "paddingTop": 20,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <Connect(FilterHeader) />
+  </AnimatedComponent>
+</withOrientation>
 `;
