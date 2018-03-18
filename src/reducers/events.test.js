@@ -9,10 +9,8 @@ describe("Events reducer", () => {
 
   it("sets loading flag for REQUEST_CMS_DATA action", () => {
     const initialState = {
-      data: {
-        entries: [],
-        assets: []
-      },
+      entries: [],
+      assets: [],
       loading: false,
       refreshing: false
     };
@@ -24,10 +22,8 @@ describe("Events reducer", () => {
 
   it("sets refreshing flag for REQUEST_UPDATE_CMS_DATA action", () => {
     const initialState = {
-      data: {
-        entries: [],
-        assets: []
-      },
+      entries: [],
+      assets: [],
       loading: false,
       refreshing: false
     };
@@ -39,10 +35,8 @@ describe("Events reducer", () => {
 
   it("saves events from RECEIVE_CMS_DATA action", () => {
     const initialState = {
-      data: {
-        entries: [],
-        assets: []
-      },
+      entries: [],
+      assets: [],
       loading: true,
       refreshing: false
     };
@@ -54,6 +48,7 @@ describe("Events reducer", () => {
 
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
-    expect(state.data).toBe(newCmsData);
+    expect(state.entries).toBe(newCmsData.entries);
+    expect(state.assets).toBe(newCmsData.assets);
   });
 });

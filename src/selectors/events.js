@@ -3,7 +3,7 @@ import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
-import type { Event, EventDays } from "../data/event";
+import type { Event, FeaturedEvents, EventDays } from "../data/event";
 
 const locale = "en-GB";
 
@@ -43,9 +43,9 @@ export const selectEvents = (state: State): Event[] =>
     entry => entry.sys.contentType.sys.id === "event"
   ): any[]): Event[]);
 export const selectFeaturedEvents = (state: State) =>
-  getEventsState(state).entries.filter(
+  ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "featuredEvents"
-  );
+  ): any[]): FeaturedEvents[]);
 export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;
 export const selectEventsRefreshing = (state: State) =>
