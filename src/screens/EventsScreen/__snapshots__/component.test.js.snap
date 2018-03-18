@@ -21,6 +21,7 @@ exports[`EventsScreen Component renders correctly 1`] = `
       }
     }
     events={Array []}
+    getAssetById={[Function]}
     locale="en-GB"
     onPress={[Function]}
     onScroll={[Function]}

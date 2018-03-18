@@ -16,13 +16,14 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { Event } from "../../data/event";
+import type { Event, Asset } from "../../data/event";
 
 const locale = "en-GB";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: String } }>,
-  event: Event
+  event: Event,
+  getAssetById: string => Asset
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
@@ -170,15 +171,20 @@ class EventDetailsScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
   };
+  static defaultProps = {};
 
   render() {
-    const { event } = this.props;
+    const { event, getAssetById } = this.props;
+    const headerImage = getAssetById(
+      event.fields.individualEventPicture[locale].sys.id
+    );
     return (
       <ScrollView style={styles.container}>
         <Header
           onBackButtonPress={() => {
             this.props.navigation.goBack(null);
           }}
+          imageUrl={`https:${headerImage.fields.file[locale].url}`}
         />
         {renderEventOverview(event)}
         <View style={styles.sectionDivider} />

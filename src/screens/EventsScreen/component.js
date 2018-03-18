@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import SaveAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { EventDays } from "../../data/event";
+import type { EventDays, Asset } from "../../data/event";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";
@@ -24,7 +24,8 @@ type Props = {
   events: EventDays,
   loading: boolean,
   refreshing: boolean,
-  updateEvents: () => Promise<void>
+  updateEvents: () => Promise<void>,
+  getAssetById: string => Asset
 };
 
 class EventsScreen extends PureComponent<Props> {
@@ -63,6 +64,7 @@ class EventsScreen extends PureComponent<Props> {
         <EventList
           locale={locale}
           events={this.props.events}
+          getAssetById={this.props.getAssetById}
           onPress={(eventId: string) => {
             this.props.navigation.navigate(EVENT_DETAILS, { eventId });
           }}

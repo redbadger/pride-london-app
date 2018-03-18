@@ -12,7 +12,7 @@ import type { Props as ScrollViewProps } from "react-native/Libraries/Components
 import formatDate from "date-fns/format";
 import EventCard from "./EventCard";
 import Text from "./Text";
-import type { Event, EventDays } from "../data/event";
+import type { Event, EventDays, Asset } from "../data/event";
 import {
   eventListBgColor,
   eventListHeaderBgColor,
@@ -22,13 +22,14 @@ import {
 type Props = ScrollViewProps & {
   locale: string,
   events: EventDays,
-  onPress: (eventName: string) => void
+  onPress: (eventName: string) => void,
+  getAssetById: string => Asset
 };
 
 const separator = style => () => <View style={style} />;
 
 type ItemProps = { item: Event };
-const renderItem = (styles, locale, onPress) => ({
+const renderItem = (styles, locale, onPress, getAssetById) => ({
   item: event
 }: ItemProps) => (
   <View style={styles.eventListItem}>
@@ -44,6 +45,10 @@ const renderItem = (styles, locale, onPress) => ({
         price={event.fields.eventPriceLow[locale]}
         startTime={event.fields.startTime[locale]}
         endTime={event.fields.endTime[locale]}
+        imageUrl={`https:${
+          getAssetById(event.fields.eventsListPicture[locale].sys.id).fields
+            .file[locale].url
+        }`}
       />
     </TouchableOpacity>
   </View>
@@ -69,12 +74,13 @@ const EventList = ({
   events,
   locale,
   onPress,
+  getAssetById,
   ...otherScrollViewProps
 }: Props) => (
   <AnimatedSectionList
     sections={eventSections(events, locale)}
     renderSectionHeader={renderSectionHeader(styles)}
-    renderItem={renderItem(styles, locale, onPress)}
+    renderItem={renderItem(styles, locale, onPress, getAssetById)}
     keyExtractor={event => event.sys.id}
     contentContainerStyle={[styles.container, contentContainerStyle]}
     ItemSeparatorComponent={separator(styles.itemSeparator)}

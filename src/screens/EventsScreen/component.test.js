@@ -11,6 +11,7 @@ describe("EventsScreen Component", () => {
         loading={false}
         refreshing={false}
         updateEvents={() => {}}
+        getAssetById={() => {}}
       />
     );
     expect(output).toMatchSnapshot();

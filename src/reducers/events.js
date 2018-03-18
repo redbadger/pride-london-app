@@ -1,43 +1,47 @@
 // @flow
 import type { Reducer } from "redux";
-import type { Event } from "../data/event";
-import type { EventsAction } from "../actions/events";
+import type { CmsAction } from "../actions/events";
+import type { CmsEntry } from "../integrations/cms";
+import type { Asset } from "../data/event";
 
 export type State = {
-  events: Event[],
+  entries: CmsEntry[],
+  assets: Asset[],
   loading: boolean,
   refreshing: boolean
 };
 
 const defaultState = {
-  events: [],
+  entries: [],
+  assets: [],
   loading: true,
   refreshing: false
 };
 
-const events: Reducer<State, EventsAction> = (
+const events: Reducer<State, CmsAction> = (
   state: State = defaultState,
-  action: EventsAction
+  action: CmsAction
 ) => {
   switch (action.type) {
-    case "REQUEST_EVENTS":
+    case "REQUEST_CMS_DATA":
       return {
         ...state,
         loading: true,
         refreshing: false
       };
-    case "REQUEST_UPDATE_EVENTS":
+    case "REQUEST_UPDATE_CMS_DATA":
       return {
         ...state,
         loading: false,
         refreshing: true
       };
-    case "RECEIVE_EVENTS":
+    case "RECEIVE_CMS_DATA":
       return {
         ...state,
         loading: false,
         refreshing: false,
-        events: action.payload ? action.payload.events : state.events
+        entries: action.payload ? action.payload.entries : [],
+        assets: action.payload ? action.payload.assets : []
       };
     default:
       return state;

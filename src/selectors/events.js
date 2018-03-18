@@ -3,7 +3,7 @@ import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
-import type { Event, EventDays } from "../data/event";
+import type { Event, FeaturedEvents, EventDays } from "../data/event";
 
 const locale = "en-GB";
 
@@ -38,14 +38,27 @@ const groupByStartTime = (events: Event[]): EventDays => {
 
 const getEventsState = (state: State) => state.events;
 
-export const selectEvents = (state: State) => getEventsState(state).events;
+// Type hack to force array filter to one type https://github.com/facebook/flow/issues/1915
+export const selectEvents = (state: State): Event[] =>
+  ((getEventsState(state).entries.filter(
+    entry => entry.sys.contentType.sys.id === "event"
+  ): any[]): Event[]);
+export const selectFeaturedEvents = (state: State) =>
+  ((getEventsState(state).entries.filter(
+    entry => entry.sys.contentType.sys.id === "featuredEvents"
+  ): any[]): FeaturedEvents[]);
+
 export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;
 export const selectEventsRefreshing = (state: State) =>
   getEventsState(state).refreshing;
+export const selectAssets = (state: State) => getEventsState(state).assets;
 
 export const selectEventById = (state: State, id: String) =>
   selectEvents(state).find(event => event.sys.id === id);
+
+export const selectAssetById = (state: State, id: String) =>
+  selectAssets(state).find(asset => asset.sys.id === id);
 
 export const selectFilteredEvents = (state: State) =>
   selectEvents(state).filter(buildEventFilter(state));

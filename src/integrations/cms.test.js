@@ -1,263 +1,171 @@
-import { getEvents, updateEvents } from "./cms";
+import { getCmsData, updateCmsData } from "./cms";
 
-describe("getEvents", () => {
-  it("returns local events data if found", async () => {
-    const mockLocalEvents = {
-      events: [{}]
+describe("getCmsData", () => {
+  it("returns local cms data if found", async () => {
+    const mockLocalEntries = {
+      entries: [{}],
+      assets: [{}]
     };
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockUpdateEvents = jest.fn();
+    const mockLoadCmsData = () => mockLocalEntries;
+    const mockUpdateCmsData = jest.fn();
 
-    const events = await getEvents(mockLoadEvents, mockUpdateEvents);
+    const entries = await getCmsData(mockLoadCmsData, mockUpdateCmsData);
 
-    expect(mockUpdateEvents).not.toHaveBeenCalled();
-    expect(events).toBe(mockLocalEvents.events);
+    expect(mockUpdateCmsData).not.toHaveBeenCalled();
+    expect(entries).toBe(mockLocalEntries);
   });
 
-  it("updates events if local events list is empty", async () => {
-    const mockLocalEvents = {
-      events: []
-    };
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockUpdateEvents = jest.fn();
+  it("updates events if local cms data not found", async () => {
+    const mockLocalCmsData = null;
+    const mockLoadCmsData = () => mockLocalCmsData;
+    const mockUpdateCmsData = jest.fn();
 
-    await getEvents(mockLoadEvents, mockUpdateEvents);
+    await getCmsData(mockLoadCmsData, mockUpdateCmsData);
 
-    expect(mockUpdateEvents).toHaveBeenCalled();
-  });
-
-  it("updates events if local events not found", async () => {
-    const mockLocalEvents = null;
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockUpdateEvents = jest.fn();
-
-    await getEvents(mockLoadEvents, mockUpdateEvents);
-
-    expect(mockUpdateEvents).toHaveBeenCalled();
+    expect(mockUpdateCmsData).toHaveBeenCalled();
   });
 });
 
-describe("updateEvents", () => {
-  it("downloads full event data if local events list is empty", async () => {
-    const mockLocalEvents = {
-      events: [],
+describe("updateCmsData", () => {
+  it("downloads full cms data if local cms data not found is empty", async () => {
+    const mockLocalCmsData = null;
+    const mockSavedCmsData = {
+      entries: [],
+      assets: []
+    };
+    const downloadedCmsData = {
+      entries: [],
+      assets: [],
+      deletedEntries: [],
+      deletedAssets: [],
+      nextSyncToken: "abc"
+    };
+    const mockLoadCmsData = () => mockLocalCmsData;
+    const mockSaveCmsData = jest.fn(() => mockSavedCmsData);
+    const mockClient = {
+      sync: jest.fn(() => downloadedCmsData)
+    };
+
+    const updatedCmsData = await updateCmsData(
+      mockLoadCmsData,
+      mockSaveCmsData,
+      mockClient
+    );
+
+    expect(mockClient.sync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        initial: true
+      })
+    );
+    expect(mockSaveCmsData).toHaveBeenCalledWith(downloadedCmsData);
+    expect(updatedCmsData).toBe(mockSavedCmsData);
+  });
+
+  it("downloads full cms data if local cms data not found", async () => {
+    const mockLocalCmsData = null;
+    const mockSavedCmsData = {
+      entries: [],
+      assets: []
+    };
+    const downloadedCmsData = {
+      entries: [],
+      assets: [],
+      deletedEntries: [],
+      deletedAssets: [],
+      nextSyncToken: "abc"
+    };
+    const mockLoadCmsData = () => mockLocalCmsData;
+    const mockSaveCmsData = jest.fn(() => mockSavedCmsData);
+    const mockClient = {
+      sync: jest.fn(() => downloadedCmsData)
+    };
+
+    const updatedCmsData = await updateCmsData(
+      mockLoadCmsData,
+      mockSaveCmsData,
+      mockClient
+    );
+
+    expect(mockClient.sync).toHaveBeenCalledWith(
+      expect.objectContaining({
+        initial: true
+      })
+    );
+    expect(mockSaveCmsData).toHaveBeenCalledWith(downloadedCmsData);
+    expect(updatedCmsData).toBe(mockSavedCmsData);
+  });
+
+  it("downloads delta update if local cms data is found", async () => {
+    const mockLocalCmsData = {
+      entries: [{}],
+      assets: [{}],
       syncToken: "123"
     };
-    const mockSavedEvents = {
-      events: []
-    };
-    const downloadedEventData = {
+    const mockSavedCmsData = {
       entries: [],
-      deletedEntries: [],
-      nextSyncToken: "abc"
+      assets: []
     };
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockSaveEvents = jest.fn(() => mockSavedEvents);
-    const mockClient = {
-      sync: jest.fn(() => downloadedEventData)
-    };
-
-    const updatedEvents = await updateEvents(
-      mockLoadEvents,
-      mockSaveEvents,
-      mockClient
-    );
-
-    expect(mockClient.sync).toHaveBeenCalledWith(
-      expect.objectContaining({
-        initial: true
-      })
-    );
-    expect(mockSaveEvents).toHaveBeenCalledWith(
-      downloadedEventData.entries,
-      [],
-      downloadedEventData.nextSyncToken
-    );
-    expect(updatedEvents).toBe(mockSavedEvents.events);
-  });
-
-  it("saves only event entries of cms data", async () => {
-    const mockLocalEvents = {
-      events: []
-    };
-    const mockSavedEvents = {
-      events: []
-    };
-    const downloadedEventData = {
-      entries: [
-        { sys: { contentType: { sys: { id: "event" } } } },
-        { sys: { contentType: { sys: { id: "page" } } } }
-      ],
-      deletedEntries: [],
-      nextSyncToken: "abc"
-    };
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockSaveEvents = jest.fn(() => mockSavedEvents);
-    const mockClient = {
-      sync: jest.fn(() => downloadedEventData)
-    };
-
-    const updatedEvents = await updateEvents(
-      mockLoadEvents,
-      mockSaveEvents,
-      mockClient
-    );
-
-    expect(mockClient.sync).toHaveBeenCalledWith(
-      expect.objectContaining({
-        initial: true
-      })
-    );
-    expect(mockSaveEvents).toHaveBeenCalledWith(
-      [{ sys: { contentType: { sys: { id: "event" } } } }],
-      [],
-      downloadedEventData.nextSyncToken
-    );
-    expect(updatedEvents).toBe(mockSavedEvents.events);
-  });
-
-  it("downloads full event data if local events not found", async () => {
-    const mockLocalEvents = null;
-    const mockSavedEvents = {
-      events: []
-    };
-    const downloadedEventData = {
+    const downloadedCmsData = {
       entries: [],
+      assets: [],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "abc"
     };
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockSaveEvents = jest.fn(() => mockSavedEvents);
+    const mockLoadCmsData = () => mockLocalCmsData;
+    const mockSaveCmsData = jest.fn(() => mockSavedCmsData);
     const mockClient = {
-      sync: jest.fn(() => downloadedEventData)
+      sync: jest.fn(() => downloadedCmsData)
     };
 
-    const updatedEvents = await updateEvents(
-      mockLoadEvents,
-      mockSaveEvents,
-      mockClient
-    );
-
-    expect(mockClient.sync).toHaveBeenCalledWith(
-      expect.objectContaining({
-        initial: true
-      })
-    );
-    expect(mockSaveEvents).toHaveBeenCalledWith(
-      downloadedEventData.entries,
-      [],
-      downloadedEventData.nextSyncToken
-    );
-    expect(updatedEvents).toBe(mockSavedEvents.events);
-  });
-
-  it("downloads delta update if local events are found", async () => {
-    const mockLocalEvents = {
-      events: [{}],
-      syncToken: "123"
-    };
-    const mockSavedEvents = {
-      events: []
-    };
-    const downloadedEventData = {
-      entries: [],
-      deletedEntries: [],
-      nextSyncToken: "abc"
-    };
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockSaveEvents = jest.fn(() => mockSavedEvents);
-    const mockClient = {
-      sync: jest.fn(() => downloadedEventData)
-    };
-
-    const updatedEvents = await updateEvents(
-      mockLoadEvents,
-      mockSaveEvents,
+    const updatedCmsData = await updateCmsData(
+      mockLoadCmsData,
+      mockSaveCmsData,
       mockClient
     );
 
     expect(mockClient.sync).toHaveBeenCalledWith(
       expect.objectContaining({
         initial: false,
-        nextSyncToken: mockLocalEvents.syncToken
+        nextSyncToken: mockLocalCmsData.syncToken
       })
     );
-    expect(mockSaveEvents).toHaveBeenCalledWith(
-      downloadedEventData.entries,
-      [],
-      downloadedEventData.nextSyncToken
-    );
-    expect(updatedEvents).toBe(mockSavedEvents.events);
-  });
-
-  it("sends deletions to local storage if found", async () => {
-    const mockLocalEvents = {
-      events: [{ sys: { id: "1" } }],
-      syncToken: "123"
-    };
-    const mockSavedEvents = {
-      events: []
-    };
-    const downloadedEventData = {
-      entries: [],
-      deletedEntries: [{ sys: { id: "1" } }],
-      nextSyncToken: "abc"
-    };
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockSaveEvents = jest.fn(() => mockSavedEvents);
-    const mockClient = {
-      sync: jest.fn(() => downloadedEventData)
-    };
-
-    const updatedEvents = await updateEvents(
-      mockLoadEvents,
-      mockSaveEvents,
-      mockClient
-    );
-
-    expect(mockClient.sync).toHaveBeenCalledWith(
-      expect.objectContaining({
-        initial: false,
-        nextSyncToken: mockLocalEvents.syncToken
-      })
-    );
-    expect(mockSaveEvents).toHaveBeenCalledWith(
-      downloadedEventData.entries,
-      downloadedEventData.deletedEntries,
-      downloadedEventData.nextSyncToken
-    );
-    expect(updatedEvents).toBe(mockSavedEvents.events);
+    expect(mockSaveCmsData).toHaveBeenCalledWith(downloadedCmsData);
+    expect(updatedCmsData).toBe(mockSavedCmsData);
   });
 
   it("does not send delta to local storage if syncToken has not changed", async () => {
-    const mockLocalEvents = {
-      events: [{}],
+    const mockLocalCmsData = {
+      entries: [{}],
+      assets: [{}],
       syncToken: "123"
     };
-    const downloadedEventData = {
+    const downloadedCmsData = {
       entries: [],
+      assets: [],
       deletedEntries: [],
+      deletedAssets: [],
       nextSyncToken: "123"
     };
-    const mockLoadEvents = () => mockLocalEvents;
-    const mockSaveEvents = jest.fn();
+    const mockLoadCmsData = () => mockLocalCmsData;
+    const mockSaveCmsData = jest.fn();
     const mockClient = {
-      sync: jest.fn(() => downloadedEventData)
+      sync: jest.fn(() => downloadedCmsData)
     };
 
-    const updatedEvents = await updateEvents(
-      mockLoadEvents,
-      mockSaveEvents,
+    const updatedCmsData = await updateCmsData(
+      mockLoadCmsData,
+      mockSaveCmsData,
       mockClient
     );
 
     expect(mockClient.sync).toHaveBeenCalledWith(
       expect.objectContaining({
         initial: false,
-        nextSyncToken: mockLocalEvents.syncToken
+        nextSyncToken: mockLocalCmsData.syncToken
       })
     );
-    expect(mockSaveEvents).not.toHaveBeenCalled();
-    expect(updatedEvents).toBe(mockLocalEvents.events);
+    expect(mockSaveCmsData).not.toHaveBeenCalled();
+    expect(updatedCmsData).toBe(mockLocalCmsData);
   });
 });
