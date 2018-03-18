@@ -11,6 +11,7 @@ it("renders correctly", () => {
       price={16}
       startTime="2018-09-16T12:12:12+01:00"
       endTime="2018-09-16T13:12:12+01:00"
+      imageUrl="https://image.jpg"
     />
   );
   expect(output).toMatchSnapshot();
