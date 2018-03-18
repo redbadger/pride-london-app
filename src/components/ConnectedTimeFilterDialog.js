@@ -26,14 +26,16 @@ type Props = {
 const mapStateToProps = state => ({
   applyButtonText: text.filterPickerApply(selectFilteredEvents(state).length),
   options: OPTIONS.map(option => text.time[option]),
-  selectedIndexes: selectTimeFilter(state).map(time => OPTIONS.indexOf(time)),
+  selectedIndexes: Array.from(selectTimeFilter(state)).map(time =>
+    OPTIONS.indexOf(time)
+  ),
   title: text.filterTimePickerTitle
 });
 
 const mapDispatchToProps = {
   onChange: selectedIndexes =>
     updateEventFilters({
-      time: selectedIndexes.map(index => OPTIONS[index])
+      time: new Set(selectedIndexes.map(index => OPTIONS[index]))
     })
 };
 

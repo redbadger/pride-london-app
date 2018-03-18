@@ -9,7 +9,7 @@ type OwnProps = {};
 
 type Props = {
   dateFilter: ?DateOrDateRange,
-  timeFilter: Time[]
+  timeFilter: Set<Time>
 } & OwnProps;
 
 const mapStateToProps = state => ({
