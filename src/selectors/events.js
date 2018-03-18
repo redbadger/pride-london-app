@@ -38,6 +38,7 @@ const groupByStartTime = (events: Event[]): EventDays => {
 
 const getEventsState = (state: State) => state.events;
 
+// Type hack to force array filter to one type https://github.com/facebook/flow/issues/1915
 export const selectEvents = (state: State): Event[] =>
   ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
@@ -46,6 +47,7 @@ export const selectFeaturedEvents = (state: State) =>
   ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "featuredEvents"
   ): any[]): FeaturedEvents[]);
+
 export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;
 export const selectEventsRefreshing = (state: State) =>
