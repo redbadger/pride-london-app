@@ -1,12 +1,13 @@
 // @flow
 import type { Reducer } from "redux";
 import type { CmsAction } from "../actions/events";
-import type { CmsEntries, CmsAsset } from "../integrations/cms";
+import type { CmsEntry } from "../integrations/cms";
+import type { Asset } from "../data/event";
 
 export type State = {
   data: {
-    entries: CmsEntries[],
-    assets: CmsAsset[]
+    entries: CmsEntry[],
+    assets: Asset[]
   },
   loading: boolean,
   refreshing: boolean

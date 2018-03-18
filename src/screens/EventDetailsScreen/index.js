@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector, MapStateToProps } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
-import type { CmsEvent } from "../../integrations/cms";
+import type { Event } from "../../data/event";
 import type { State } from "../../reducers";
 import { selectEventById, selectAssetById } from "../../selectors/events";
 import Component from "./component";
@@ -12,7 +12,7 @@ type OwnProps = {
 };
 
 type Props = {
-  event: CmsEvent
+  event: Event
 } & OwnProps;
 
 const mapStateToProps: MapStateToProps<State, OwnProps, *> = (

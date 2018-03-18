@@ -1,16 +1,16 @@
 // @flow
 import { AsyncStorage } from "react-native";
-import type { CmsEntries } from "./cms";
+import type { CmsEntry } from "./cms";
 
 export type SavedData = {
-  entries: CmsEntries[],
+  entries: CmsEntry[],
   assets: Object[],
   syncToken: string
 };
 
 type CmsData = {
-  entries: CmsEntries[],
-  deletedEntries: CmsEntries[],
+  entries: CmsEntry[],
+  deletedEntries: CmsEntry[],
   assets: Object[],
   deletedAssets: Object[],
   nextSyncToken: string
