@@ -16,7 +16,8 @@ export type Event = {
     phone: { [string]: string },
     ticketingUrl: { [string]: string },
     venueDetails: { [string]: string[] },
-    individualEventPicture: { [string]: { sys: { id: string } } }
+    individualEventPicture: { [string]: { sys: { id: string } } },
+    eventsListPicture: { [string]: { sys: { id: string } } }
   },
   sys: {
     id: string,
