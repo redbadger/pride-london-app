@@ -51,6 +51,6 @@ export default TabNavigator(
   {
     tabBarComponent: TabBarBottom,
     tabBarPosition: "bottom",
-    initialRouteName: "Events"
+    initialRouteName: "Home"
   }
 );
