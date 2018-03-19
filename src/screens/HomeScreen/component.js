@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
-import type { Event } from "../../data/event";
+import type { Event, Asset } from "../../data/event";
 import EventTile from "../../components/EventTile";
 import { cardBgColor, imageBgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
@@ -19,14 +19,44 @@ const locale = "en-GB";
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
-  loading: boolean
+  loading: boolean,
+  getAssetById: string => Asset
 };
+
+type ColumnProps = {
+  column: number,
+  events: Event[],
+  onPress: (eventId: string) => void,
+  getAssetById: string => Asset
+};
+const Column = ({ column, events, onPress, getAssetById }: ColumnProps) => (
+  <View style={column === 0 ? styles.viewLeft : styles.viewRight}>
+    {events.map(event => (
+      <TouchableOpacity
+        key={event.sys.id}
+        style={styles.tileWrapper}
+        onPress={() => onPress(event.sys.id)}
+      >
+        <EventTile
+          name={event.fields.name[locale]}
+          date="Fri, 15 June"
+          imageUrl={`https:${
+            getAssetById(event.fields.eventsListPicture[locale].sys.id).fields
+              .file[locale].url
+          }`}
+        />
+      </TouchableOpacity>
+    ))}
+  </View>
+);
 
 class HomeScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
   };
-
+  onPress = (eventId: string) => {
+    this.props.navigation.navigate(EVENT_DETAILS, { eventId });
+  };
   render() {
     const [left: Event[], right: Event[]] = splitEvents(this.props.events);
     return (
@@ -41,40 +71,18 @@ class HomeScreen extends PureComponent<Props> {
             <Text type="text">View all</Text>
           </View>
           <View style={styles.container}>
-            <View style={styles.viewLeft}>
-              {left.map(event => (
-                <TouchableOpacity
-                  style={styles.tileWrapper}
-                  onPress={() => {
-                    this.props.navigation.navigate(EVENT_DETAILS, {
-                      eventId: event.sys.id
-                    });
-                  }}
-                >
-                  <EventTile
-                    name={event.fields.name[locale]}
-                    date="Fri, 15 June"
-                  />
-                </TouchableOpacity>
-              ))}
-            </View>
-            <View style={styles.viewRight}>
-              {right.map(event => (
-                <TouchableOpacity
-                  style={styles.tileWrapper}
-                  onPress={() => {
-                    this.props.navigation.navigate(EVENT_DETAILS, {
-                      eventId: event.sys.id
-                    });
-                  }}
-                >
-                  <EventTile
-                    name={event.fields.name[locale]}
-                    date="Fri, 15 June"
-                  />
-                </TouchableOpacity>
-              ))}
-            </View>
+            <Column
+              column={0}
+              events={left}
+              onPress={this.onPress}
+              getAssetById={this.props.getAssetById}
+            />
+            <Column
+              column={1}
+              events={right}
+              onPress={this.onPress}
+              getAssetById={this.props.getAssetById}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>

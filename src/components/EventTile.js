@@ -1,17 +1,22 @@
 // @flow
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import Text from "../components/Text";
 import { imageBgColor, cardBgColor } from "../constants/colors";
 
 type Props = {
   name: string,
-  date: string
+  date: string,
+  imageUrl: string
 };
 
-const EventTile = ({ name, date }: Props) => (
+const EventTile = ({ name, date, imageUrl }: Props) => (
   <View style={styles.eventTile}>
-    <View style={styles.imageContainer} />
+    <ImageBackground
+      style={styles.imageContainer}
+      source={{ uri: imageUrl }}
+      resizeMode="cover"
+    />
     <View style={styles.details}>
       <Text type="small" ellipsizeMode="tail" numberOfLines={2}>
         {date}
