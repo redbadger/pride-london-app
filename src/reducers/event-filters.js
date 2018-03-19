@@ -5,12 +5,12 @@ import type { EventFiltersAction } from "../actions/event-filters";
 
 export type State = {
   date: ?DateOrDateRange,
-  time: Time[]
+  time: Set<Time>
 };
 
 const defaultState = {
   date: null,
-  time: ["morning", "afternoon", "evening"]
+  time: new Set()
 };
 
 const eventFilters: Reducer<State, EventFiltersAction> = (

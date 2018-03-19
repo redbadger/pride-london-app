@@ -78,22 +78,17 @@ describe("buildTimeFilter", () => {
   const event = buildEvent("2018-08-02T08:00:00", "2018-08-02T15:00:00");
 
   it("checks for morning", () => {
-    const filter = buildTimeFilter(["morning"]);
+    const filter = buildTimeFilter("morning");
     expect(filter(event)).toBe(true);
   });
 
   it("checks for afternoon", () => {
-    const filter = buildTimeFilter(["afternoon"]);
+    const filter = buildTimeFilter("afternoon");
     expect(filter(event)).toBe(true);
   });
 
   it("checks for evening", () => {
-    const filter = buildTimeFilter(["evening"]);
+    const filter = buildTimeFilter("evening");
     expect(filter(event)).toBe(false);
-  });
-
-  it("combines multiple times with OR", () => {
-    const filter = buildTimeFilter(["morning", "evening"]);
-    expect(filter(event)).toBe(true);
   });
 });

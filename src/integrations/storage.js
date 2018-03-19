@@ -1,64 +1,76 @@
 // @flow
-
 import { AsyncStorage } from "react-native";
-import type { Deletion } from "./cms";
-import type { Event } from "../data/event";
+import type { CmsEntry } from "./cms";
 
-type EventsData = {
-  events: Event[],
+type SavedData = {
+  entries: CmsEntry[],
+  assets: Object[],
   syncToken: string
 };
 
-type SaveEvents = (
-  newEvents: Event[],
-  deletedEvents: Deletion[],
-  syncToken: string
-) => Promise<EventsData>;
-type LoadEvents = () => Promise<EventsData>;
+type CmsData = {
+  entries: CmsEntry[],
+  deletedEntries: CmsEntry[],
+  assets: Object[],
+  deletedAssets: Object[],
+  nextSyncToken: string
+};
 
-const EVENTS_KEY = "@EventsStore:events";
+const DATA_KEY = "@CmsStore:data";
 
-const addOrUpdateEvent = (events, newEvent) => {
-  const indexToUpdate = events.findIndex(
-    localEvent => localEvent.sys.id === newEvent.sys.id
+const addOrUpdateEntry = (entries, newEntry) => {
+  const indexToUpdate = entries.findIndex(
+    localEvent => localEvent.sys.id === newEntry.sys.id
   );
   if (indexToUpdate > -1) {
-    events.splice(indexToUpdate, 1, newEvent);
-    return events;
+    entries.splice(indexToUpdate, 1, newEntry);
+    return entries;
   }
-  return events.concat(newEvent);
+  return entries.concat(newEntry);
 };
 
-const eventNotDeleted = (event, deletedEventIds) =>
-  !deletedEventIds.includes(event.sys.id);
+const entryNotDeleted = (entry, deletedEntryIds) =>
+  !deletedEntryIds.includes(entry.sys.id);
 
-export const saveEvents: SaveEvents = async (
-  newEvents,
-  deletedEvents,
-  syncToken,
-  loadEventsFn = loadEvents,
-  AsyncStorageObj = AsyncStorage
-) => {
-  const localEventsData = await loadEventsFn();
-  const localEvents = localEventsData ? localEventsData.events : [];
-  const deletedEventIds = deletedEvents.map(
-    deletedEvent => deletedEvent.sys.id
+const updateCmsEntryList = (newList, deletedList, localList) => {
+  const deletedEntryIds = deletedList.map(deletedEntry => deletedEntry.sys.id);
+
+  return newList
+    .reduce(addOrUpdateEntry, localList)
+    .filter(entry => entryNotDeleted(entry, deletedEntryIds));
+};
+
+export const saveCmsData = async (
+  cmsData: CmsData,
+  loadCmsDataFn: typeof loadCmsData = loadCmsData,
+  AsyncStorageObj: AsyncStorage = AsyncStorage
+): Promise<SavedData> => {
+  const localCmsData = await loadCmsDataFn();
+  const localEntries = localCmsData ? localCmsData.entries : [];
+  const localAssets = localCmsData ? localCmsData.assets : [];
+
+  const entries = updateCmsEntryList(
+    cmsData.entries,
+    cmsData.deletedEntries,
+    localEntries
+  );
+  const assets = updateCmsEntryList(
+    cmsData.assets,
+    cmsData.deletedAssets,
+    localAssets
   );
 
-  const events = newEvents
-    .reduce(addOrUpdateEvent, localEvents)
-    .filter(event => eventNotDeleted(event, deletedEventIds));
+  const syncToken = cmsData.nextSyncToken;
+  const newCmsData = { entries, assets, syncToken };
 
-  const eventsData = { events, syncToken };
+  await AsyncStorageObj.setItem(DATA_KEY, JSON.stringify(newCmsData));
 
-  await AsyncStorageObj.setItem(EVENTS_KEY, JSON.stringify(eventsData));
-
-  return eventsData;
+  return newCmsData;
 };
 
-export const loadEvents: LoadEvents = async (
-  AsyncStorageObj = AsyncStorage
-) => {
-  const stringData: string = await AsyncStorageObj.getItem(EVENTS_KEY);
+export const loadCmsData = async (
+  AsyncStorageObj: AsyncStorage = AsyncStorage
+): Promise<SavedData> => {
+  const stringData = await AsyncStorageObj.getItem(DATA_KEY);
   return JSON.parse(stringData);
 };
