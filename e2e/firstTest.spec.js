@@ -3,7 +3,7 @@ describe("Pride App", () => {
     await device.reloadReactNative();
   });
 
-  it("should start on events tab", async () => {
+  it("should start on Home page", async () => {
     await expect(element(by.id("home-screen"))).toBeVisible();
   });
 
