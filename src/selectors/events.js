@@ -54,10 +54,10 @@ export const selectEventsRefreshing = (state: State) =>
   getEventsState(state).refreshing;
 export const selectAssets = (state: State) => getEventsState(state).assets;
 
-export const selectEventById = (state: State, id: String) =>
+export const selectEventById = (state: State, id: string) =>
   selectEvents(state).find(event => event.sys.id === id);
 
-export const selectAssetById = (state: State, id: String) =>
+export const selectAssetById = (state: State, id: string) =>
   selectAssets(state).find(asset => asset.sys.id === id);
 
 export const selectFilteredEvents = (state: State) =>
@@ -65,3 +65,15 @@ export const selectFilteredEvents = (state: State) =>
 
 export const selectFilteredEventsGroupedByDay = (state: State): EventDays =>
   groupByStartTime(selectFilteredEvents(state));
+
+export const selectFeaturedEventsByTitle = (state: State, title: string) => {
+  const featured = selectFeaturedEvents(state).find(
+    entry => entry.fields.title[locale] === title
+  );
+  if (featured == null) {
+    return [];
+  }
+  return featured.fields.events[locale].map((e: Event) =>
+    selectEventById(state, e.sys.id)
+  );
+};

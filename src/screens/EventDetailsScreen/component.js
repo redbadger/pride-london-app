@@ -21,7 +21,7 @@ import type { Event, Asset } from "../../data/event";
 const locale = "en-GB";
 
 type Props = {
-  navigation: NavigationScreenProp<{ params: { eventId: String } }>,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
   event: Event,
   getAssetById: string => Asset
 };

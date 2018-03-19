@@ -8,7 +8,7 @@ import { selectEventById, selectAssetById } from "../../selectors/events";
 import Component from "./component";
 
 type OwnProps = {
-  navigation: NavigationScreenProp<{ params: { eventId: String } }>
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>
 };
 
 type Props = {

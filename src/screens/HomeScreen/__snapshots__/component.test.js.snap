@@ -64,21 +64,15 @@ exports[`HomeScreen Component renders correctly 1`] = `
         }
       }
     >
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "marginLeft": 6,
-          }
-        }
+      <Column
+        column={0}
+        events={Array []}
+        onPress={[Function]}
       />
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "marginRight": 6,
-          }
-        }
+      <Column
+        column={1}
+        events={Array []}
+        onPress={[Function]}
       />
     </View>
   </ScrollView>
