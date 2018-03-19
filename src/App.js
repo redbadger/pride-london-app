@@ -18,8 +18,9 @@ const EventsStack = StackNavigator(
 );
 const HomeStack = StackNavigator(
   {
-    [HOME]: { screen: HomeScreen, tabBarLabel: "Events" },
-    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Events" }
+    [HOME]: { screen: HomeScreen, tabBarLabel: "Home" },
+    [EVENT_LIST]: { screen: EventsScreen, tabBarLabel: "Home" },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Home" }
   },
   {
     initialRouteName: HOME

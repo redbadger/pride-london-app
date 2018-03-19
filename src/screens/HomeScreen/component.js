@@ -12,7 +12,7 @@ import Text from "../../components/Text";
 import type { Event, Asset } from "../../data/event";
 import EventTile from "../../components/EventTile";
 import { cardBgColor, imageBgColor } from "../../constants/colors";
-import { EVENT_DETAILS } from "../../constants/routes";
+import { EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 
 const locale = "en-GB";
 
@@ -54,8 +54,11 @@ class HomeScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
   };
-  onPress = (eventId: string) => {
+  eventDetails = (eventId: string) => {
     this.props.navigation.navigate(EVENT_DETAILS, { eventId });
+  };
+  eventList = () => {
+    this.props.navigation.navigate(EVENT_LIST);
   };
   render() {
     const [left: Event[], right: Event[]] = splitEvents(this.props.events);
@@ -68,19 +71,21 @@ class HomeScreen extends PureComponent<Props> {
           </View>
           <View style={styles.title}>
             <Text type="h2">Featured events</Text>
-            <Text type="text">View all</Text>
+            <TouchableOpacity onPress={this.eventList}>
+              <Text type="text">View all</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.container}>
             <Column
               column={0}
               events={left}
-              onPress={this.onPress}
+              onPress={this.eventDetails}
               getAssetById={this.props.getAssetById}
             />
             <Column
               column={1}
               events={right}
-              onPress={this.onPress}
+              onPress={this.eventDetails}
               getAssetById={this.props.getAssetById}
             />
           </View>
