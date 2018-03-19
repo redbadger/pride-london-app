@@ -2,8 +2,12 @@
 const contentful = require("contentful-management");
 const loremIpsum = require("lorem-ipsum");
 const program = require("commander");
+const dateFns = require("date-fns");
 
 const PRODUCTION_SPACE = "0ho16wyr4i9n";
+
+const getRandomIntInclusive = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
 
 const generateEvents = (spaceId, accessToken) => {
   const client = contentful.createClient({
@@ -29,6 +33,9 @@ const generateEvents = (spaceId, accessToken) => {
         field => field.id === "eventCategories"
       ).items.validations[0].in;
 
+      const festivalStartDate = "2018-06-09";
+      const festivalLengthDays = 28;
+
       const newEntries = Array.from(Array(toGenerate)).map(() => {
         const randomAsset =
           assets.items[Math.floor(Math.random() * assets.items.length)];
@@ -41,6 +48,15 @@ const generateEvents = (spaceId, accessToken) => {
                 Math.floor(Math.random() * assets.items.length)
               ]
             : filteredCategories;
+
+        const eventStartDate = dateFns.addDays(
+          festivalStartDate,
+          getRandomIntInclusive(0, festivalLengthDays)
+        );
+        const eventEndDate = dateFns.addDays(
+          eventStartDate,
+          getRandomIntInclusive(0, 4)
+        );
 
         return {
           fields: {
@@ -56,8 +72,8 @@ const generateEvents = (spaceId, accessToken) => {
             locationName: {
               "en-GB": loremIpsum({ count: 4, units: "words" })
             },
-            startTime: { "en-GB": "2017-07-08T11:00+00:00" },
-            endTime: { "en-GB": "2017-07-08T14:00+00:00" },
+            startTime: { "en-GB": eventStartDate },
+            endTime: { "en-GB": eventEndDate },
             isFree: { "en-GB": false },
             eventPriceLow: { "en-GB": 5 },
             eventPriceHigh: { "en-GB": 20 },
