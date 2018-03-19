@@ -72,7 +72,12 @@ const deleteGeneratedEvents = (spaceId, accessToken) => {
       const deletionPromises = entryIds.map(entryId =>
         space
           .getEntry(entryId)
-          .then(entry => entry.unpublish())
+          .then(entry => {
+            if (entry.isPublished()) {
+              return entry.unpublish();
+            }
+            return entry;
+          })
           .then(entry => entry.delete())
       );
 
