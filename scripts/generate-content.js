@@ -13,29 +13,80 @@ const generateEvents = (spaceId, accessToken) => {
   client
     .getSpace(spaceId)
     .then(async space => {
+      const eventType = await space.getContentType("event");
+      const assets = await space.getAssets();
       const { total: totalEvents } = await space.getEntries({
         content_type: "event",
         limit: 0
       });
-      const toGenerate = Math.max(0, 150 - totalEvents);
+      // const toGenerate = Math.max(0, 150 - totalEvents);
+      const toGenerate = 5;
 
       console.log(`Space contains ${totalEvents} events`);
       console.log(`Generating ${toGenerate} events`);
 
-      const newEntries = Array.from(Array(toGenerate)).map(() => ({
-        fields: {
-          name: {
-            "en-GB": `Generated: ${loremIpsum({ count: 4, units: "words" })}`
-          },
-          location: {
-            "en-GB": {
-              lon: -0.13319109999997636,
-              lat: 51.5143379
+      const eventCategories = eventType.fields.find(
+        field => field.id === "eventCategories"
+      ).items.validations[0].in;
+
+      const newEntries = Array.from(Array(toGenerate)).map(() => {
+        const randomAsset =
+          assets.items[Math.floor(Math.random() * assets.items.length)];
+        const filteredCategories = eventCategories.filter(
+          () => Math.random() >= 0.8
+        );
+        const selectedCategories =
+          filteredCategories.length === 0
+            ? filteredCategories[
+                Math.floor(Math.random() * assets.items.length)
+              ]
+            : filteredCategories;
+
+        return {
+          fields: {
+            name: {
+              "en-GB": `Generated: ${loremIpsum({ count: 4, units: "words" })}`
+            },
+            location: {
+              "en-GB": {
+                lon: -0.13319109999997636,
+                lat: 51.5143379
+              }
+            },
+            locationName: {
+              "en-GB": loremIpsum({ count: 4, units: "words" })
+            },
+            startTime: { "en-GB": "2017-07-08T11:00+00:00" },
+            endTime: { "en-GB": "2017-07-08T14:00+00:00" },
+            isFree: { "en-GB": false },
+            eventPriceLow: { "en-GB": 5 },
+            eventPriceHigh: { "en-GB": 20 },
+            eventDescription: {
+              "en-GB": loremIpsum({ count: 2, units: "paragraphs" })
+            },
+            ticketingUrl: { "en-GB": "https://prideinlondon.org/" },
+            eventCategories: { "en-GB": selectedCategories },
+            individualEventPicture: {
+              "en-GB": {
+                sys: {
+                  id: randomAsset.sys.id,
+                  linkType: "Asset",
+                  type: "Link"
+                }
+              }
+            },
+            eventsListPicture: {
+              "en-GB": {
+                sys: {
+                  id: randomAsset.sys.id,
+                  linkType: "Asset",
+                  type: "Link"
+                }
+              }
             }
-          },
-          startTime: { "en-GB": "2017-07-08T11:00+00:00" }
-        }
-      }));
+          }
+        };
+      });
 
       const newEntryPromises = newEntries.map(entry =>
         space
@@ -43,9 +94,7 @@ const generateEvents = (spaceId, accessToken) => {
           .then(createdEntry => createdEntry.publish())
       );
 
-      const savedEntries = await Promise.all(newEntryPromises);
-
-      console.log(savedEntries);
+      await Promise.all(newEntryPromises);
     })
     .catch(console.error);
 };
