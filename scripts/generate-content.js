@@ -9,6 +9,9 @@ const PRODUCTION_SPACE = "0ho16wyr4i9n";
 const getRandomIntInclusive = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
+const generateRandomFloat = (min, max, decimals) =>
+  parseFloat((Math.random() * (max - min) + min).toFixed(decimals));
+
 const generateEvents = (spaceId, accessToken) => {
   const client = contentful.createClient({
     accessToken
@@ -36,6 +39,11 @@ const generateEvents = (spaceId, accessToken) => {
       const festivalStartDate = "2018-06-09T09:00:00";
       const festivalLengthDays = 28;
       const eventHourRange = 12;
+
+      const minLatitude = 51.509179;
+      const maxLatitude = 51.523622;
+      const minLongitude = -0.149135;
+      const maxLongitude = -0.108933;
 
       const newEntries = Array.from(Array(toGenerate)).map(() => {
         const randomAsset =
@@ -68,6 +76,9 @@ const generateEvents = (spaceId, accessToken) => {
           .toISOString()
           .slice(0, -8)}+00:00`;
 
+        const latitude = generateRandomFloat(minLatitude, maxLatitude, 6);
+        const longitude = generateRandomFloat(minLongitude, maxLongitude, 6);
+
         const isFree = Math.random() >= 0.5;
         const eventPriceLow = isFree ? 0 : 5;
         const eventPriceHigh = isFree ? 0 : 20;
@@ -81,8 +92,8 @@ const generateEvents = (spaceId, accessToken) => {
             },
             location: {
               "en-GB": {
-                lon: -0.13319109999997636,
-                lat: 51.5143379
+                lat: latitude,
+                lon: longitude
               }
             },
             locationName: {
