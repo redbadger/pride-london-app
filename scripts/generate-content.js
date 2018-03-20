@@ -33,8 +33,9 @@ const generateEvents = (spaceId, accessToken) => {
         field => field.id === "eventCategories"
       ).items.validations[0].in;
 
-      const festivalStartDate = "2018-06-09";
+      const festivalStartDate = "2018-06-09T09:00:00";
       const festivalLengthDays = 28;
+      const eventHourRange = 12;
 
       const newEntries = Array.from(Array(toGenerate)).map(() => {
         const randomAsset =
@@ -49,14 +50,29 @@ const generateEvents = (spaceId, accessToken) => {
               ]
             : filteredCategories;
 
-        const eventStartDate = dateFns.addDays(
-          festivalStartDate,
-          getRandomIntInclusive(0, festivalLengthDays)
-        );
-        const eventEndDate = dateFns.addDays(
-          eventStartDate,
-          getRandomIntInclusive(0, 4)
-        );
+        const eventStartDate = `${dateFns
+          .addHours(
+            dateFns.addDays(
+              festivalStartDate,
+              getRandomIntInclusive(0, festivalLengthDays)
+            ),
+            getRandomIntInclusive(0, eventHourRange)
+          )
+          .toISOString()
+          .slice(0, -8)}+00:00`;
+        const eventEndDate = `${dateFns
+          .addHours(
+            dateFns.addDays(eventStartDate, getRandomIntInclusive(0, 4)),
+            getRandomIntInclusive(0, 2)
+          )
+          .toISOString()
+          .slice(0, -8)}+00:00`;
+
+        const isFree = Math.random() >= 0.5;
+        const eventPriceLow = isFree ? 0 : 5;
+        const eventPriceHigh = isFree ? 0 : 20;
+        const ticketingUrl =
+          Math.random() >= 0.5 ? "https://prideinlondon.org/" : undefined;
 
         return {
           fields: {
@@ -74,13 +90,13 @@ const generateEvents = (spaceId, accessToken) => {
             },
             startTime: { "en-GB": eventStartDate },
             endTime: { "en-GB": eventEndDate },
-            isFree: { "en-GB": false },
-            eventPriceLow: { "en-GB": 5 },
-            eventPriceHigh: { "en-GB": 20 },
+            isFree: { "en-GB": isFree },
+            eventPriceLow: { "en-GB": eventPriceLow },
+            eventPriceHigh: { "en-GB": eventPriceHigh },
             eventDescription: {
               "en-GB": loremIpsum({ count: 2, units: "paragraphs" })
             },
-            ticketingUrl: { "en-GB": "https://prideinlondon.org/" },
+            ticketingUrl: { "en-GB": ticketingUrl },
             eventCategories: { "en-GB": selectedCategories },
             individualEventPicture: {
               "en-GB": {
