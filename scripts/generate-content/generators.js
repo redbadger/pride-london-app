@@ -56,7 +56,7 @@ const generateEventPrice = () => {
 const generateSelectedCategories = categories => {
   const filteredCategories = categories.filter(() => Math.random() >= 0.8);
   return filteredCategories.length === 0
-    ? filteredCategories[Math.floor(Math.random() * categories.items.length)]
+    ? [categories[Math.floor(Math.random() * categories.length)]]
     : filteredCategories;
 };
 

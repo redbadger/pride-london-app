@@ -6,6 +6,7 @@ const {
 } = require("./generate-content/contentful");
 
 const PRODUCTION_SPACE = "0ho16wyr4i9n";
+const DEFAULT_GENERATE_NUMBER = 150;
 
 const getContentfulOpts = cmd => {
   const spaceId = cmd.space_id || process.env.CONTENTFUL_SPACE_ID;
@@ -25,15 +26,16 @@ const getContentfulOpts = cmd => {
 };
 
 program
-  .command("generate")
+  .command("generate [num]")
   .option("-s, --space_id <spaceId>", "Contenful Space ID")
   .option(
     "-a, --access_token <accessToken>",
     "Contentful management access token"
   )
-  .action(cmd => {
+  .action((num, cmd) => {
+    const generateCount = parseInt(num, 10) || DEFAULT_GENERATE_NUMBER;
     const { spaceId, accessToken } = getContentfulOpts(cmd);
-    return generateEvents(spaceId, accessToken);
+    return generateEvents(spaceId, accessToken, generateCount);
   });
 
 program

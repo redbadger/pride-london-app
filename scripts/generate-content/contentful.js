@@ -2,7 +2,9 @@
 const contentful = require("contentful-management");
 const { generateEvent } = require("./generators");
 
-const generateEvents = (spaceId, accessToken) => {
+const MAX_EVENTS = 150;
+
+const generateEvents = (spaceId, accessToken, count) => {
   const client = contentful.createClient({
     accessToken
   });
@@ -16,8 +18,8 @@ const generateEvents = (spaceId, accessToken) => {
         content_type: "event",
         limit: 0
       });
-      // const toGenerate = Math.max(0, 150 - totalEvents);
-      const toGenerate = 5;
+      const toGenerate =
+        count + totalEvents >= MAX_EVENTS ? MAX_EVENTS - totalEvents : count;
 
       console.log(`Space contains ${totalEvents} events`);
       console.log(`Generating ${toGenerate} events`);
