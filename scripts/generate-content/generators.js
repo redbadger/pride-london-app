@@ -16,15 +16,7 @@ const getRandomIntInclusive = (min, max) =>
 const generateRandomFloat = (min, max, decimals) =>
   parseFloat((Math.random() * (max - min) + min).toFixed(decimals));
 
-const generateEvent = (categories, assets) => {
-  const randomAsset =
-    assets.items[Math.floor(Math.random() * assets.items.length)];
-  const filteredCategories = categories.filter(() => Math.random() >= 0.8);
-  const selectedCategories =
-    filteredCategories.length === 0
-      ? filteredCategories[Math.floor(Math.random() * assets.items.length)]
-      : filteredCategories;
-
+const generateEventDates = () => {
   const eventStartDate = `${dateFns
     .addHours(
       dateFns.addDays(
@@ -43,12 +35,41 @@ const generateEvent = (categories, assets) => {
     .toISOString()
     .slice(0, -8)}+00:00`;
 
+  return { eventStartDate, eventEndDate };
+};
+
+const generateEventLocation = () => {
   const latitude = generateRandomFloat(minLatitude, maxLatitude, 6);
   const longitude = generateRandomFloat(minLongitude, maxLongitude, 6);
 
+  return { latitude, longitude };
+};
+
+const generateEventPrice = () => {
   const isFree = Math.random() >= 0.5;
   const eventPriceLow = isFree ? 0 : 5;
   const eventPriceHigh = isFree ? 0 : 20;
+
+  return { isFree, eventPriceLow, eventPriceHigh };
+};
+
+const generateSelectedCategories = categories => {
+  const filteredCategories = categories.filter(() => Math.random() >= 0.8);
+  return filteredCategories.length === 0
+    ? filteredCategories[Math.floor(Math.random() * categories.items.length)]
+    : filteredCategories;
+};
+
+const generateAsset = assets =>
+  assets.items[Math.floor(Math.random() * assets.items.length)];
+
+const generateEvent = (categories, assets) => {
+  const asset = generateAsset(assets);
+  const selectedCategories = generateSelectedCategories(categories);
+  const { eventStartDate, eventEndDate } = generateEventDates();
+  const { latitude, longitude } = generateEventLocation();
+  const { isFree, eventPriceLow, eventPriceHigh } = generateEventPrice();
+
   const ticketingUrl =
     Math.random() >= 0.5 ? "https://prideinlondon.org/" : undefined;
 
@@ -79,7 +100,7 @@ const generateEvent = (categories, assets) => {
       individualEventPicture: {
         "en-GB": {
           sys: {
-            id: randomAsset.sys.id,
+            id: asset.sys.id,
             linkType: "Asset",
             type: "Link"
           }
@@ -88,7 +109,7 @@ const generateEvent = (categories, assets) => {
       eventsListPicture: {
         "en-GB": {
           sys: {
-            id: randomAsset.sys.id,
+            id: asset.sys.id,
             linkType: "Asset",
             type: "Link"
           }
