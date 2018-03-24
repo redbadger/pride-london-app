@@ -65,6 +65,7 @@ it("renders correctly", () => {
       refreshing={false}
       onRefresh={() => {}}
       onPress={() => {}}
+      getAssetById={() => {}}
     />
   );
   expect(output).toMatchSnapshot();

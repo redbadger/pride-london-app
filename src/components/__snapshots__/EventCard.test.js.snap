@@ -11,7 +11,13 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     }
   }
 >
-  <View
+  <ImageBackground
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "https://image.jpg",
+      }
+    }
     style={
       Object {
         "backgroundColor": "#C1C1C1",
@@ -254,7 +260,7 @@ exports[`renders correctly when isFree is true 1`] = `
         Free
       </Text>
     </View>
-  </View>
+  </ImageBackground>
   <View
     style={
       Object {

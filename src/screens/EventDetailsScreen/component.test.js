@@ -3,6 +3,30 @@ import { shallow } from "enzyme";
 import Component from "./component";
 
 it("renders correctly", () => {
+  const getAssetById = () => ({
+    sys: {
+      space: {
+        sys: { type: "Link", linkType: "Space", id: "n2o4hgsv6wcx" }
+      },
+      id: "HNLFqItbkAmW8ssqQECIy",
+      type: "Asset",
+      createdAt: "2018-03-04T10:13:53.398Z",
+      updatedAt: "2018-03-04T10:13:53.398Z",
+      revision: 1
+    },
+    fields: {
+      title: { "en-GB": "Pride in the Park" },
+      file: {
+        "en-GB": {
+          url:
+            "//images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
+          details: { size: 136320, image: { width: 1024, height: 576 } },
+          fileName: "event-pride-in-the-park_1.jpg",
+          contentType: "image/jpeg"
+        }
+      }
+    }
+  });
   const navigation = {
     goBack: () => {}
   };
@@ -31,18 +55,6 @@ it("renders correctly", () => {
             createdAt: "2018-03-04T10:13:53.398Z",
             updatedAt: "2018-03-04T10:13:53.398Z",
             revision: 1
-          },
-          fields: {
-            title: { "en-GB": "Pride in the Park" },
-            file: {
-              "en-GB": {
-                url:
-                  "//images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
-                details: { size: 136320, image: { width: 1024, height: 576 } },
-                fileName: "event-pride-in-the-park_1.jpg",
-                contentType: "image/jpeg"
-              }
-            }
           }
         }
       },
@@ -57,18 +69,6 @@ it("renders correctly", () => {
             createdAt: "2018-03-04T10:13:53.398Z",
             updatedAt: "2018-03-04T10:13:53.398Z",
             revision: 1
-          },
-          fields: {
-            title: { "en-GB": "Pride in the Park" },
-            file: {
-              "en-GB": {
-                url:
-                  "//images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
-                details: { size: 136320, image: { width: 1024, height: 576 } },
-                fileName: "event-pride-in-the-park_1.jpg",
-                contentType: "image/jpeg"
-              }
-            }
           }
         }
       },
@@ -96,6 +96,12 @@ it("renders correctly", () => {
     }
   };
 
-  const output = shallow(<Component navigation={navigation} event={event} />);
+  const output = shallow(
+    <Component
+      navigation={navigation}
+      event={event}
+      getAssetById={getAssetById}
+    />
+  );
   expect(output).toMatchSnapshot();
 });

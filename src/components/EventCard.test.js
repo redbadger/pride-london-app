@@ -13,6 +13,7 @@ it("renders correctly when isFree is true", () => {
       isFree
       eventPriceLow={0}
       eventPriceHigh={0}
+      imageUrl="https://image.jpg"
     />
   );
   expect(output).toMatchSnapshot();
@@ -27,6 +28,7 @@ it("renders correctly when isFree is false and there is a price range", () => {
       isFree={false}
       eventPriceLow={12}
       eventPriceHigh={14}
+      imageUrl="https://image.jpg"
     />
   );
   expect(output).toMatchSnapshot();
@@ -41,6 +43,7 @@ it("renders correctly when isFree is false and there's only one price", () => {
       isFree={false}
       eventPriceLow={12}
       eventPriceHigh={12}
+      imageUrl="https://image.jpg"
     />
   );
   expect(output).toMatchSnapshot();

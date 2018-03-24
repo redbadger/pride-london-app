@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import formatDate from "date-fns/format";
 import {
   eventListBgColor,
@@ -18,6 +18,7 @@ type Props = {
   eventPriceHigh: number,
   startTime: string,
   endTime: string,
+  imageUrl: string,
   isFree: boolean
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
@@ -38,6 +39,7 @@ const EventCard = ({
   locationName,
   startTime,
   endTime,
+  imageUrl,
   eventPriceLow,
   eventPriceHigh,
   isFree
@@ -52,13 +54,17 @@ const EventCard = ({
 
   return (
     <View style={styles.eventCard}>
-      <View style={styles.imageContainer}>
+      <ImageBackground
+        style={styles.imageContainer}
+        source={{ uri: imageUrl }}
+        resizeMode="cover"
+      >
         <View style={styles.eventPriceContainer}>
           <Text style={styles.eventPrice}>
             {getEventPrice(isFree, eventPriceLow, eventPriceHigh)}
           </Text>
         </View>
-      </View>
+      </ImageBackground>
       <View style={styles.eventCardDetails}>
         <Text style={styles.eventTime}>{timeDisplay}</Text>
         <View style={styles.eventNameContainer}>

@@ -17,7 +17,7 @@ import { formatDateRange } from "../data/formatters";
 
 type Props = {
   dateFilter: ?DateOrDateRange,
-  timeFilter: Time[]
+  timeFilter: Set<Time>
 };
 
 type State = {
@@ -52,9 +52,10 @@ class FilterHeader extends React.PureComponent<Props, State> {
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
       : text.anyDay;
+    const timeArray = Array.from(timeFilter);
     const formattedTimeFilter =
-      timeFilter.length < 3
-        ? timeFilter.map(time => text.time[time]).join(", ")
+      timeArray.length > 0 && timeArray.length < 3
+        ? timeArray.map(time => text.time[time]).join(", ")
         : text.anyTime;
 
     return (
