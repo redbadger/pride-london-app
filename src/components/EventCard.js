@@ -4,13 +4,13 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import formatDate from "date-fns/format";
 import {
   eventListBgColor,
+  eventPriceColor,
   priceTagBgColor,
   imageBgColor,
   cardBgColor,
   textColor,
-  lightNavyBlue,
-  white,
-  eventCardShadow
+  eventCardShadow,
+  eventCardTextColor
 } from "../constants/colors";
 import Text from "./Text";
 
@@ -63,13 +63,15 @@ const EventCard = ({
         resizeMode="cover"
       >
         <View style={styles.eventPriceContainer}>
-          <Text style={styles.eventPrice}>
+          <Text type="small" style={styles.eventPrice}>
             {getEventPrice(isFree, eventPriceLow, eventPriceHigh)}
           </Text>
         </View>
       </ImageBackground>
       <View style={styles.eventCardDetails}>
-        <Text style={styles.eventTime}>{timeDisplay}</Text>
+        <Text type="small" style={styles.eventTime}>
+          {timeDisplay}
+        </Text>
         <View style={styles.eventNameContainer}>
           <Text type="h3" style={styles.eventName}>
             {name}
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
   },
   eventPriceContainer: {
     height: 23,
-    backgroundColor: lightNavyBlue,
+    backgroundColor: eventCardTextColor,
     position: "absolute",
     paddingHorizontal: 8,
     borderRadius: 2
@@ -108,25 +110,21 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   eventName: {
-    color: lightNavyBlue,
+    color: eventCardTextColor,
     paddingTop: 4
   },
   eventPrice: {
     fontFamily: "Roboto-Bold",
-    fontSize: 14,
-    color: white,
-    lineHeight: 20
+    color: eventPriceColor
   },
   eventTime: {
-    fontSize: 14,
-    lineHeight: 20,
-    color: lightNavyBlue
+    color: eventCardTextColor
   },
   eventLocation: {
     fontSize: 12,
     lineHeight: 16,
     paddingTop: 4,
-    color: lightNavyBlue
+    color: eventCardTextColor
   }
 });
 

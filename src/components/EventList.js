@@ -13,7 +13,6 @@ import {
   eventListHeaderColor,
   lightNavyBlue,
   lightGrey,
-  white,
   sectionHeaderShadow,
   eventCardShadow
 } from "../constants/colors";
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingTop: 0,
-    backgroundColor: white
+    backgroundColor: eventListBgColor
   },
   eventListItem: {
     paddingHorizontal: 16,
@@ -114,7 +113,6 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     height: 40,
-    fontSize: 18,
     paddingTop: 8,
     paddingBottom: 8,
     paddingHorizontal: 15,
@@ -125,6 +123,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 2,
     shadowOpacity: 0.8
+    // android: (elevation = "6dp")
   }
 });
 
