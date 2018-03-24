@@ -64,3 +64,33 @@ Test coverage is calculated by Code Climate and reported on pull requests.
 We don't have any specific target (because it's an easy metric to game and
 the coverage itself is not the point, only an indicator), but test coverage
 should not drop with changes.
+
+## Reporting bugs
+
+If you find a bug, please report it by creating an issue [on the issues page](https://github.com/redbadger/pride-london-app/issues) of the repo.
+
+#### Template for reporting bugs:
+
+Give your issue a descriptive `Title` that helps identify the nature of the problem at first glance.
+
+In the body of the issue, please provide the following information:
+
+### Description of issue
+
+Describe the error in as much detail as possible.
+
+### Expected behaviour
+
+If it's a functional issue, describe what would have been the correct behaviour.
+
+### Steps to reproduce
+
+List the exact steps you took to arrive at the issue.
+
+### OS / Browser / Device model
+
+List all the devices and browsers effected, with specific version numbers.
+
+## Screenshots
+
+If it's a visual bug, please provide screenshots or screen captures.
