@@ -48,12 +48,12 @@ exports[`renders correctly startDate after endDate 1`] = `
       "2018-01-01": Object {
         "color": "rgb(51, 51, 51)",
         "startingDay": true,
-        "textColor": "#FFFFFF",
+        "textColor": "rgb(255, 255, 255)",
       },
       "2018-01-02": Object {
         "color": "rgb(51, 51, 51)",
         "endingDay": true,
-        "textColor": "#FFFFFF",
+        "textColor": "rgb(255, 255, 255)",
       },
     }
   }
@@ -79,12 +79,12 @@ exports[`renders correctly startDate before endDate 1`] = `
       "2018-01-01": Object {
         "color": "rgb(51, 51, 51)",
         "startingDay": true,
-        "textColor": "#FFFFFF",
+        "textColor": "rgb(255, 255, 255)",
       },
       "2018-01-02": Object {
         "color": "rgb(51, 51, 51)",
         "endingDay": true,
-        "textColor": "#FFFFFF",
+        "textColor": "rgb(255, 255, 255)",
       },
     }
   }

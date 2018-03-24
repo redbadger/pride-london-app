@@ -56,20 +56,20 @@ const renderEventOverview = event => {
       </View>
       <View style={styles.iconItemWrapper}>
         <IconItem
-          icon={<Text type="xSmall">icn</Text>}
+          icon={<Text type="small">icn</Text>}
           title={dateDisplay}
           content={<Text type="small">{timeDisplay}</Text>}
         />
       </View>
       <View style={styles.iconItemWrapper}>
         <IconItem
-          icon={<Text type="xSmall">icn</Text>}
+          icon={<Text type="small">icn</Text>}
           title={event.fields.locationName[locale]}
         />
       </View>
       <View style={styles.iconItemWrapper}>
         <IconItem
-          icon={<Text type="xSmall">icn</Text>}
+          icon={<Text type="small">icn</Text>}
           title={`${text.eventDetailsPrice}${
             event.fields.eventPriceLow[locale]
           }`}
@@ -81,7 +81,7 @@ const renderEventOverview = event => {
         ) && (
           <View style={styles.iconItemWrapper}>
             <IconItem
-              icon={<Text type="xSmall">icn</Text>}
+              icon={<Text type="small">icn</Text>}
               title={text.eventDetailsGenderNeutralToilets}
             />
           </View>
@@ -90,7 +90,7 @@ const renderEventOverview = event => {
         event.fields.accessibilityOptions[locale].length > 0 && (
           <View style={styles.iconItemWrapper}>
             <IconItem
-              icon={<Text type="xSmall">icn</Text>}
+              icon={<Text type="small">icn</Text>}
               title={text.eventDetailsAccessibility}
               content={
                 <Text type="small">
@@ -139,7 +139,7 @@ const renderEventDetails = event =>
             {event.fields.email && (
               <View style={styles.contactItem}>
                 <IconItem
-                  icon={<Text type="xSmall">icn</Text>}
+                  icon={<Text type="small">icn</Text>}
                   title={event.fields.email[locale]}
                   titleType="text"
                 />
@@ -148,7 +148,7 @@ const renderEventDetails = event =>
             {event.fields.phone && (
               <View style={styles.contactItem}>
                 <IconItem
-                  icon={<Text type="xSmall">icn</Text>}
+                  icon={<Text type="small">icn</Text>}
                   title={event.fields.phone[locale]}
                   titleType="text"
                 />

@@ -3,31 +3,45 @@ import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import formatDate from "date-fns/format";
 import {
-  eventListBgColor,
-  priceTagBgColor,
-  imageBgColor,
   cardBgColor,
-  textColor
+  eventPriceBgColor,
+  eventCardTextColor,
+  eventPriceColor
 } from "../constants/colors";
 import Text from "./Text";
 
 type Props = {
   name: string,
   locationName: string,
-  price: number,
+  eventPriceLow: number,
+  eventPriceHigh: number,
   startTime: string,
   endTime: string,
-  imageUrl: string
+  imageUrl: string,
+  isFree: boolean
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
+const getEventPrice = (isFree, eventPriceLow, eventPriceHigh) => {
+  let displayPrice;
+  if (isFree) {
+    displayPrice = "Free";
+  } else if (eventPriceLow === eventPriceHigh) {
+    displayPrice = `£${eventPriceLow}`;
+  } else {
+    displayPrice = `From £${eventPriceLow}`;
+  }
+  return displayPrice;
+};
 
 const EventCard = ({
   name,
   locationName,
   startTime,
   endTime,
-  price,
-  imageUrl
+  imageUrl,
+  eventPriceLow,
+  eventPriceHigh,
+  isFree
 }: Props) => {
   const eventStartTime = removeTimezoneFromDateString(startTime);
   const eventEndTime = removeTimezoneFromDateString(endTime);
@@ -36,6 +50,7 @@ const EventCard = ({
     eventEndTime,
     timeFormat
   )}`;
+
   return (
     <View style={styles.eventCard}>
       <ImageBackground
@@ -44,13 +59,19 @@ const EventCard = ({
         resizeMode="cover"
       >
         <View style={styles.eventPriceContainer}>
-          <Text style={styles.eventPrice}>£{price}</Text>
+          <Text type="price" style={styles.eventPrice}>
+            {getEventPrice(isFree, eventPriceLow, eventPriceHigh)}
+          </Text>
         </View>
       </ImageBackground>
       <View style={styles.eventCardDetails}>
-        <Text style={styles.eventTime}>{timeDisplay}</Text>
+        <Text type="small" style={styles.eventTime}>
+          {timeDisplay}
+        </Text>
         <View style={styles.eventNameContainer}>
-          <Text style={styles.eventName}>{name}</Text>
+          <Text type="h3" style={styles.eventName}>
+            {name}
+          </Text>
         </View>
         <Text style={styles.eventLocation}>{locationName}</Text>
       </View>
@@ -63,19 +84,19 @@ const styles = StyleSheet.create({
     height: 108,
     backgroundColor: cardBgColor,
     flexDirection: "row",
-    overflow: "hidden"
+    overflow: "hidden",
+    borderRadius: 5
   },
   imageContainer: {
     width: 114,
-    height: 108,
-    backgroundColor: imageBgColor
+    height: 108
   },
   eventPriceContainer: {
     height: 23,
-    backgroundColor: priceTagBgColor,
+    backgroundColor: eventPriceBgColor,
     position: "absolute",
-    paddingHorizontal: 8,
-    borderRadius: 2
+    paddingHorizontal: 5,
+    justifyContent: "center"
   },
   eventCardDetails: {
     flex: 1,
@@ -85,24 +106,20 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   eventName: {
-    fontFamily: "Poppins-SemiBold",
-    color: textColor,
-    fontSize: 16,
-    lineHeight: 20,
+    color: eventCardTextColor,
     paddingTop: 4
   },
   eventPrice: {
-    fontSize: 14,
-    color: eventListBgColor
+    color: eventPriceColor
   },
   eventTime: {
-    fontSize: 14,
-    lineHeight: 20
+    color: eventCardTextColor
   },
   eventLocation: {
     fontSize: 12,
     lineHeight: 16,
-    paddingTop: 4
+    paddingTop: 4,
+    color: eventCardTextColor
   }
 });
 
