@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     height: 23,
     backgroundColor: eventCardTextColor,
     position: "absolute",
-    paddingHorizontal: 8,
+    paddingHorizontal: 5,
     justifyContent: "center"
   },
   eventCardDetails: {
