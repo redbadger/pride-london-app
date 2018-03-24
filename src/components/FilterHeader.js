@@ -7,7 +7,6 @@ import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
 import Text from "./Text";
 import {
-  headerBgColor,
   interestButtonBgColor,
   interestButtonTextColor,
   filterBgColor

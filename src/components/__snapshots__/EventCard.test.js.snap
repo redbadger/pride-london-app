@@ -4,7 +4,8 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
 <View
   style={
     Object {
-      "backgroundColor": "#FFFFFF",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderRadius": 5,
       "flexDirection": "row",
       "height": 108,
       "overflow": "hidden",
@@ -20,7 +21,6 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     }
     style={
       Object {
-        "backgroundColor": "#C1C1C1",
         "height": 108,
         "width": 114,
       }
@@ -29,10 +29,10 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     <View
       style={
         Object {
-          "backgroundColor": "#989898",
-          "borderRadius": 2,
+          "backgroundColor": "rgb(45, 47, 127)",
           "height": 23,
-          "paddingHorizontal": 8,
+          "justifyContent": "center",
+          "paddingHorizontal": 5,
           "position": "absolute",
         }
       }
@@ -41,11 +41,10 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
         markdown={false}
         style={
           Object {
-            "color": "rgb(226, 226, 226)",
-            "fontSize": 14,
+            "color": "rgb(255, 255, 255)",
           }
         }
-        type="text"
+        type="price"
       >
         From £12
       </Text>
@@ -63,11 +62,10 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       markdown={false}
       style={
         Object {
-          "fontSize": 14,
-          "lineHeight": 20,
+          "color": "rgb(45, 47, 127)",
         }
       }
-      type="text"
+      type="small"
     >
       12:12 - 13:12
     </Text>
@@ -82,14 +80,11 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
         markdown={false}
         style={
           Object {
-            "color": "#272727",
-            "fontFamily": "Poppins-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 20,
+            "color": "rgb(45, 47, 127)",
             "paddingTop": 4,
           }
         }
-        type="text"
+        type="h3"
       >
         name
       </Text>
@@ -98,6 +93,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       markdown={false}
       style={
         Object {
+          "color": "rgb(45, 47, 127)",
           "fontSize": 12,
           "lineHeight": 16,
           "paddingTop": 4,
@@ -115,7 +111,8 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
 <View
   style={
     Object {
-      "backgroundColor": "#FFFFFF",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderRadius": 5,
       "flexDirection": "row",
       "height": 108,
       "overflow": "hidden",
@@ -131,7 +128,6 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     }
     style={
       Object {
-        "backgroundColor": "#C1C1C1",
         "height": 108,
         "width": 114,
       }
@@ -140,10 +136,10 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     <View
       style={
         Object {
-          "backgroundColor": "#989898",
-          "borderRadius": 2,
+          "backgroundColor": "rgb(45, 47, 127)",
           "height": 23,
-          "paddingHorizontal": 8,
+          "justifyContent": "center",
+          "paddingHorizontal": 5,
           "position": "absolute",
         }
       }
@@ -152,11 +148,10 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
         markdown={false}
         style={
           Object {
-            "color": "rgb(226, 226, 226)",
-            "fontSize": 14,
+            "color": "rgb(255, 255, 255)",
           }
         }
-        type="text"
+        type="price"
       >
         £12
       </Text>
@@ -174,11 +169,10 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       markdown={false}
       style={
         Object {
-          "fontSize": 14,
-          "lineHeight": 20,
+          "color": "rgb(45, 47, 127)",
         }
       }
-      type="text"
+      type="small"
     >
       12:12 - 13:12
     </Text>
@@ -193,14 +187,11 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
         markdown={false}
         style={
           Object {
-            "color": "#272727",
-            "fontFamily": "Poppins-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 20,
+            "color": "rgb(45, 47, 127)",
             "paddingTop": 4,
           }
         }
-        type="text"
+        type="h3"
       >
         name
       </Text>
@@ -209,6 +200,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       markdown={false}
       style={
         Object {
+          "color": "rgb(45, 47, 127)",
           "fontSize": 12,
           "lineHeight": 16,
           "paddingTop": 4,
@@ -226,7 +218,8 @@ exports[`renders correctly when isFree is true 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#FFFFFF",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderRadius": 5,
       "flexDirection": "row",
       "height": 108,
       "overflow": "hidden",
@@ -242,7 +235,6 @@ exports[`renders correctly when isFree is true 1`] = `
     }
     style={
       Object {
-        "backgroundColor": "#C1C1C1",
         "height": 108,
         "width": 114,
       }
@@ -251,10 +243,10 @@ exports[`renders correctly when isFree is true 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "#989898",
-          "borderRadius": 2,
+          "backgroundColor": "rgb(45, 47, 127)",
           "height": 23,
-          "paddingHorizontal": 8,
+          "justifyContent": "center",
+          "paddingHorizontal": 5,
           "position": "absolute",
         }
       }
@@ -263,11 +255,10 @@ exports[`renders correctly when isFree is true 1`] = `
         markdown={false}
         style={
           Object {
-            "color": "rgb(226, 226, 226)",
-            "fontSize": 14,
+            "color": "rgb(255, 255, 255)",
           }
         }
-        type="text"
+        type="price"
       >
         Free
       </Text>
@@ -285,11 +276,10 @@ exports[`renders correctly when isFree is true 1`] = `
       markdown={false}
       style={
         Object {
-          "fontSize": 14,
-          "lineHeight": 20,
+          "color": "rgb(45, 47, 127)",
         }
       }
-      type="text"
+      type="small"
     >
       12:12 - 13:12
     </Text>
@@ -304,14 +294,11 @@ exports[`renders correctly when isFree is true 1`] = `
         markdown={false}
         style={
           Object {
-            "color": "#272727",
-            "fontFamily": "Poppins-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 20,
+            "color": "rgb(45, 47, 127)",
             "paddingTop": 4,
           }
         }
-        type="text"
+        type="h3"
       >
         name
       </Text>
@@ -320,6 +307,7 @@ exports[`renders correctly when isFree is true 1`] = `
       markdown={false}
       style={
         Object {
+          "color": "rgb(45, 47, 127)",
           "fontSize": 12,
           "lineHeight": 16,
           "paddingTop": 4,

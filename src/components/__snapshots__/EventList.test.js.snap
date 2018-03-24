@@ -6,7 +6,7 @@ exports[`renders correctly 1`] = `
   SectionSeparatorComponent={[Function]}
   contentContainerStyle={
     Object {
-      "backgroundColor": "rgb(226, 226, 226)",
+      "backgroundColor": "rgb(255, 255, 255)",
       "paddingTop": 0,
     }
   }
@@ -20,6 +20,7 @@ exports[`renders correctly 1`] = `
   onRefresh={[Function]}
   refreshing={false}
   renderItem={[Function]}
+  renderSectionFooter={[Function]}
   renderSectionHeader={[Function]}
   scrollEventThrottle={50}
   sections={
