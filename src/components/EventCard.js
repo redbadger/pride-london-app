@@ -14,20 +14,35 @@ import Text from "./Text";
 type Props = {
   name: string,
   locationName: string,
-  price: number,
+  eventPriceLow: number,
+  eventPriceHigh: number,
   startTime: string,
   endTime: string,
-  imageUrl: string
+  imageUrl: string,
+  isFree: boolean
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
+const getEventPrice = (isFree, eventPriceLow, eventPriceHigh) => {
+  let displayPrice;
+  if (isFree) {
+    displayPrice = "Free";
+  } else if (eventPriceLow === eventPriceHigh) {
+    displayPrice = `£${eventPriceLow}`;
+  } else {
+    displayPrice = `From £${eventPriceLow}`;
+  }
+  return displayPrice;
+};
 
 const EventCard = ({
   name,
   locationName,
   startTime,
   endTime,
-  price,
-  imageUrl
+  imageUrl,
+  eventPriceLow,
+  eventPriceHigh,
+  isFree
 }: Props) => {
   const eventStartTime = removeTimezoneFromDateString(startTime);
   const eventEndTime = removeTimezoneFromDateString(endTime);
@@ -36,6 +51,7 @@ const EventCard = ({
     eventEndTime,
     timeFormat
   )}`;
+
   return (
     <View style={styles.eventCard}>
       <ImageBackground
@@ -44,7 +60,9 @@ const EventCard = ({
         resizeMode="cover"
       >
         <View style={styles.eventPriceContainer}>
-          <Text style={styles.eventPrice}>£{price}</Text>
+          <Text style={styles.eventPrice}>
+            {getEventPrice(isFree, eventPriceLow, eventPriceHigh)}
+          </Text>
         </View>
       </ImageBackground>
       <View style={styles.eventCardDetails}>

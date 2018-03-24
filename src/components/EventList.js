@@ -38,13 +38,15 @@ const renderItem = (styles, locale, onPress, getAssetById) => ({
       <EventCard
         name={event.fields.name[locale]}
         locationName={event.fields.locationName[locale]}
-        price={event.fields.eventPriceLow[locale]}
+        eventPriceLow={event.fields.eventPriceLow[locale]}
+        eventPriceHigh={event.fields.eventPriceHigh[locale]}
         startTime={event.fields.startTime[locale]}
         endTime={event.fields.endTime[locale]}
         imageUrl={`https:${
           getAssetById(event.fields.eventsListPicture[locale].sys.id).fields
             .file[locale].url
         }`}
+        isFree={event.fields.isFree[locale]}
       />
     </TouchableOpacity>
   </View>
