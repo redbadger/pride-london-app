@@ -27,6 +27,7 @@ export const eventListHeaderColor = "rgb(51, 51, 51)";
 export const eventCardTextColor = "rgb(45, 47, 127)";
 export const eventPriceColor = "rgb(255, 255, 255)";
 export const eventCardShadow = "rgba(0, 0, 0, 0.2)";
+export const eventPriceBgColor = "rgb(45, 47, 127)";
 export const sectionHeaderBgColor = "rgb(243, 243, 243)";
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
 

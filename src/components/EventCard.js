@@ -3,9 +3,10 @@ import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import formatDate from "date-fns/format";
 import {
-  eventListBgColor,
-  eventPriceColor,
-  eventCardTextColor
+  cardBgColor,
+  eventPriceBgColor,
+  eventCardTextColor,
+  eventPriceColor
 } from "../constants/colors";
 import Text from "./Text";
 
@@ -58,7 +59,7 @@ const EventCard = ({
         resizeMode="cover"
       >
         <View style={styles.eventPriceContainer}>
-          <Text type="small" style={styles.eventPrice}>
+          <Text type="price" style={styles.eventPrice}>
             {getEventPrice(isFree, eventPriceLow, eventPriceHigh)}
           </Text>
         </View>
@@ -81,7 +82,7 @@ const EventCard = ({
 const styles = StyleSheet.create({
   eventCard: {
     height: 108,
-    backgroundColor: eventListBgColor,
+    backgroundColor: cardBgColor,
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
   },
   eventPriceContainer: {
     height: 23,
-    backgroundColor: eventCardTextColor,
+    backgroundColor: eventPriceBgColor,
     position: "absolute",
     paddingHorizontal: 5,
     justifyContent: "center"
@@ -109,7 +110,6 @@ const styles = StyleSheet.create({
     paddingTop: 4
   },
   eventPrice: {
-    fontFamily: "Roboto-Bold",
     color: eventPriceColor
   },
   eventTime: {
