@@ -50,7 +50,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
         From £12
       </Text>
     </View>
-  </View>
+  </ImageBackground>
   <View
     style={
       Object {
@@ -122,7 +122,13 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     }
   }
 >
-  <View
+  <ImageBackground
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "https://image.jpg",
+      }
+    }
     style={
       Object {
         "backgroundColor": "#C1C1C1",
@@ -155,7 +161,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
         £12
       </Text>
     </View>
-  </View>
+  </ImageBackground>
   <View
     style={
       Object {
@@ -227,7 +233,13 @@ exports[`renders correctly when isFree is true 1`] = `
     }
   }
 >
-  <View
+  <ImageBackground
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "https://image.jpg",
+      }
+    }
     style={
       Object {
         "backgroundColor": "#C1C1C1",
