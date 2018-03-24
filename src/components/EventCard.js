@@ -7,7 +7,10 @@ import {
   priceTagBgColor,
   imageBgColor,
   cardBgColor,
-  textColor
+  textColor,
+  lightNavyBlue,
+  white,
+  eventCardShadow
 } from "../constants/colors";
 import Text from "./Text";
 
@@ -68,7 +71,9 @@ const EventCard = ({
       <View style={styles.eventCardDetails}>
         <Text style={styles.eventTime}>{timeDisplay}</Text>
         <View style={styles.eventNameContainer}>
-          <Text style={styles.eventName}>{name}</Text>
+          <Text type="h3" style={styles.eventName}>
+            {name}
+          </Text>
         </View>
         <Text style={styles.eventLocation}>{locationName}</Text>
       </View>
@@ -81,16 +86,16 @@ const styles = StyleSheet.create({
     height: 108,
     backgroundColor: cardBgColor,
     flexDirection: "row",
-    overflow: "hidden"
+    overflow: "hidden",
+    borderRadius: 5
   },
   imageContainer: {
     width: 114,
-    height: 108,
-    backgroundColor: imageBgColor
+    height: 108
   },
   eventPriceContainer: {
     height: 23,
-    backgroundColor: priceTagBgColor,
+    backgroundColor: lightNavyBlue,
     position: "absolute",
     paddingHorizontal: 8,
     borderRadius: 2
@@ -103,24 +108,25 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   eventName: {
-    fontFamily: "Poppins-SemiBold",
-    color: textColor,
-    fontSize: 16,
-    lineHeight: 20,
+    color: lightNavyBlue,
     paddingTop: 4
   },
   eventPrice: {
+    fontFamily: "Roboto-Bold",
     fontSize: 14,
-    color: eventListBgColor
+    color: white,
+    lineHeight: 20
   },
   eventTime: {
     fontSize: 14,
-    lineHeight: 20
+    lineHeight: 20,
+    color: lightNavyBlue
   },
   eventLocation: {
     fontSize: 12,
     lineHeight: 16,
-    paddingTop: 4
+    paddingTop: 4,
+    color: lightNavyBlue
   }
 });
 

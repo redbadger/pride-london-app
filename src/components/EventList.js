@@ -10,7 +10,12 @@ import type { Event, EventDays, Asset } from "../data/event";
 import {
   eventListBgColor,
   eventListHeaderBgColor,
-  eventListHeaderColor
+  eventListHeaderColor,
+  lightNavyBlue,
+  lightGrey,
+  white,
+  sectionHeaderShadow,
+  eventCardShadow
 } from "../constants/colors";
 
 type Props = {
@@ -97,18 +102,29 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingTop: 0,
-    backgroundColor: eventListBgColor
+    backgroundColor: white
   },
   eventListItem: {
-    paddingHorizontal: 15
+    paddingHorizontal: 16,
+    paddingBottom: 12,
+    shadowColor: eventCardShadow,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 5,
+    shadowOpacity: 0.8
   },
   sectionHeader: {
-    height: 32,
-    paddingTop: 6,
-    paddingBottom: 2,
-    textAlign: "center",
-    backgroundColor: eventListHeaderBgColor,
-    color: eventListHeaderColor
+    height: 40,
+    fontSize: 18,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingHorizontal: 15,
+    textAlign: "left",
+    backgroundColor: lightGrey,
+    color: lightNavyBlue,
+    shadowColor: sectionHeaderShadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 2,
+    shadowOpacity: 0.8
   }
 });
 

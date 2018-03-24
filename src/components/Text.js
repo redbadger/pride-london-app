@@ -56,7 +56,7 @@ const textStyles = {
   h3: {
     fontFamily: "Poppins-SemiBold",
     fontSize: 16,
-    lineHeight: 24,
+    lineHeight: 20,
     includeFontPadding: false
   },
   h4: {
