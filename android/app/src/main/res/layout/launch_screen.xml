@@ -5,4 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/splash_bg"
     android:gravity="center">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="24dp"
+        android:src="@mipmap/icon"
+    />
 </LinearLayout>
