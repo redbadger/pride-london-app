@@ -12,9 +12,10 @@ import {
   eventListHeaderBgColor,
   eventListHeaderColor,
   lightNavyBlue,
-  lightGrey,
   sectionHeaderShadow,
-  eventCardShadow
+  sectionHeaderBgColor,
+  eventCardShadow,
+  eventCardTextColor
 } from "../constants/colors";
 
 type Props = {
@@ -32,28 +33,28 @@ type ItemProps = { item: Event };
 const renderItem = (styles, locale, onPress, getAssetById) => ({
   item: event
 }: ItemProps) => (
-  <View style={styles.eventListItem}>
-    <TouchableOpacity
-      accessibilityTraits={["button"]}
-      accessibilityComponentType="button"
-      delayPressIn={50}
-      onPress={() => onPress(event.sys.id)}
-    >
-      <EventCard
-        name={event.fields.name[locale]}
-        locationName={event.fields.locationName[locale]}
-        eventPriceLow={event.fields.eventPriceLow[locale]}
-        eventPriceHigh={event.fields.eventPriceHigh[locale]}
-        startTime={event.fields.startTime[locale]}
-        endTime={event.fields.endTime[locale]}
-        imageUrl={`https:${
-          getAssetById(event.fields.eventsListPicture[locale].sys.id).fields
-            .file[locale].url
-        }`}
-        isFree={event.fields.isFree[locale]}
-      />
-    </TouchableOpacity>
-  </View>
+  <TouchableOpacity
+    style={styles.eventListItem}
+    accessibilityTraits={["button"]}
+    accessibilityComponentType="button"
+    delayPressIn={50}
+    onPress={() => onPress(event.sys.id)}
+  >
+    <EventCard
+      name={event.fields.name[locale]}
+      locationName={event.fields.locationName[locale]}
+      eventPriceLow={event.fields.eventPriceLow[locale]}
+      eventPriceHigh={event.fields.eventPriceHigh[locale]}
+      startTime={event.fields.startTime[locale]}
+      endTime={event.fields.endTime[locale]}
+      imageUrl={`https:${
+        getAssetById(event.fields.eventsListPicture[locale].sys.id).fields.file[
+          locale
+        ].url
+      }`}
+      isFree={event.fields.isFree[locale]}
+    />
+  </TouchableOpacity>
 );
 
 type Section = SectionBase<Event> & { title: string };
@@ -80,8 +81,10 @@ const EventList = ({
   getAssetById
 }: Props) => (
   <SectionList
+    stickySectionHeadersEnabled
     sections={eventSections(events, locale)}
     renderSectionHeader={renderSectionHeader(styles)}
+    renderSectionFooter={separator(styles.sectionFooter)}
     renderItem={renderItem(styles, locale, onPress, getAssetById)}
     keyExtractor={event => event.sys.id}
     contentContainerStyle={styles.container}
@@ -94,36 +97,47 @@ const EventList = ({
 
 const styles = StyleSheet.create({
   itemSeparator: {
-    height: 10
+    height: 12
   },
   sectionSeparator: {
-    height: 16
+    height: 6
   },
   container: {
     paddingTop: 0,
     backgroundColor: eventListBgColor
   },
   eventListItem: {
-    paddingHorizontal: 16,
-    paddingBottom: 12,
+    marginHorizontal: 16,
+    borderRadius: 5,
+    // The below properties are required for ioS shadow
     shadowColor: eventCardShadow,
     shadowOffset: { width: 0, height: 1 },
-    shadowRadius: 5,
-    shadowOpacity: 0.8
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    // The below properties are required for android shadow
+    borderWidth: 0,
+    elevation: 3,
+    backgroundColor: eventListBgColor
   },
   sectionHeader: {
     height: 40,
-    paddingTop: 8,
-    paddingBottom: 8,
-    paddingHorizontal: 15,
-    textAlign: "left",
-    backgroundColor: lightGrey,
     color: lightNavyBlue,
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    backgroundColor: sectionHeaderBgColor,
+
+    // The below properties are required for ioS shadow
     shadowColor: sectionHeaderShadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 2,
-    shadowOpacity: 0.8
-    // android: (elevation = "6dp")
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    // The below properties are required for android shadow
+    borderWidth: 0,
+    elevation: 3,
+    marginBottom: 6
+  },
+  sectionFooter: {
+    height: 6
   }
 });
 
