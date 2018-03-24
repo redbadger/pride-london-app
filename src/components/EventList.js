@@ -9,13 +9,10 @@ import Text from "./Text";
 import type { Event, EventDays, Asset } from "../data/event";
 import {
   eventListBgColor,
-  eventListHeaderBgColor,
-  eventListHeaderColor,
-  lightNavyBlue,
+  eventCardTextColor,
   sectionHeaderShadow,
   sectionHeaderBgColor,
-  eventCardShadow,
-  eventCardTextColor
+  eventCardShadow
 } from "../constants/colors";
 
 type Props = {
@@ -121,7 +118,7 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     height: 40,
-    color: lightNavyBlue,
+    color: eventCardTextColor,
     paddingVertical: 8,
     paddingHorizontal: 15,
     backgroundColor: sectionHeaderBgColor,

@@ -10,7 +10,7 @@ import {
   headerBgColor,
   interestButtonBgColor,
   interestButtonTextColor,
-  lightNavyBlue
+  filterBgColor
 } from "../constants/colors";
 import text from "../constants/text";
 import type { DateOrDateRange, Time } from "../data/date-time";
@@ -108,7 +108,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: lightNavyBlue
+    backgroundColor: filterBgColor
   },
   content: {
     paddingTop: 16,

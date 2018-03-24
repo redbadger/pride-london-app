@@ -5,11 +5,6 @@ import formatDate from "date-fns/format";
 import {
   eventListBgColor,
   eventPriceColor,
-  priceTagBgColor,
-  imageBgColor,
-  cardBgColor,
-  textColor,
-  eventCardShadow,
   eventCardTextColor
 } from "../constants/colors";
 import Text from "./Text";
@@ -86,7 +81,7 @@ const EventCard = ({
 const styles = StyleSheet.create({
   eventCard: {
     height: 108,
-    backgroundColor: cardBgColor,
+    backgroundColor: eventListBgColor,
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5
@@ -99,7 +94,8 @@ const styles = StyleSheet.create({
     height: 23,
     backgroundColor: eventCardTextColor,
     position: "absolute",
-    paddingHorizontal: 8
+    paddingHorizontal: 8,
+    justifyContent: "center"
   },
   eventCardDetails: {
     flex: 1,
