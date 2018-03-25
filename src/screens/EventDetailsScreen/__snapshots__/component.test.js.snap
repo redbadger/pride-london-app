@@ -13,12 +13,12 @@ exports[`renders correctly 1`] = `
     imageUrl="https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg"
     onBackButtonPress={[Function]}
   />
-  <View
+  <ContentPadding
     style={
       Object {
         "backgroundColor": "#FFF",
         "flex": 1,
-        "padding": 15,
+        "paddingVertical": 15,
       }
     }
   >
@@ -182,7 +182,7 @@ exports[`renders correctly 1`] = `
         titleType="h3"
       />
     </View>
-  </View>
+  </ContentPadding>
   <View
     style={
       Object {
@@ -191,12 +191,12 @@ exports[`renders correctly 1`] = `
       }
     }
   />
-  <View
+  <ContentPadding
     style={
       Object {
         "backgroundColor": "#FFF",
         "flex": 1,
-        "padding": 15,
+        "paddingVertical": 15,
       }
     }
   >
@@ -222,8 +222,10 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         lon={-0.12092150000000856}
       />
     </View>
-  </View>
-  <View>
+  </ContentPadding>
+  <ContentPadding
+    style={Object {}}
+  >
     <View
       style={
         Object {
@@ -237,7 +239,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         Object {
           "backgroundColor": "#FFF",
           "flex": 1,
-          "padding": 15,
+          "paddingVertical": 15,
         }
       }
     >
@@ -343,6 +345,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         />
       </View>
     </View>
-  </View>
+  </ContentPadding>
 </ScrollView>
 `;

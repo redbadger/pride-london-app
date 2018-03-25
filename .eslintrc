@@ -41,7 +41,7 @@
       "error",
       {
         "devDependencies": [
-          "**/scripts/*.js",
+          "**/scripts/**/*.js",
           "**/*.test.js",
           "**/setup-tests.js"
         ],
