@@ -42,7 +42,11 @@ exports[`HomeScreen Component renders correctly 1`] = `
     >
       <Text
         markdown={false}
-        style={Object {}}
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
+        }
         type="h2"
       >
         Featured events
@@ -53,7 +57,11 @@ exports[`HomeScreen Component renders correctly 1`] = `
       >
         <Text
           markdown={false}
-          style={Object {}}
+          style={
+            Object {
+              "color": "rgb(45, 47, 127)",
+            }
+          }
           type="text"
         >
           View all

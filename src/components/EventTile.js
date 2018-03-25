@@ -1,8 +1,13 @@
 // @flow
+import { format } from "date-fns";
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import Text from "../components/Text";
-import { imageBgColor, cardBgColor } from "../constants/colors";
+import {
+  imageBgColor,
+  cardBgColor,
+  eventTileTextColor
+} from "../constants/colors";
 
 type Props = {
   name: string,
@@ -18,10 +23,15 @@ const EventTile = ({ name, date, imageUrl }: Props) => (
       resizeMode="cover"
     />
     <View style={styles.details}>
-      <Text type="small" ellipsizeMode="tail" numberOfLines={2}>
-        {date}
+      <Text type="small" style={{ color: eventTileTextColor }}>
+        {format(date, "ddd, D MMMM")}
       </Text>
-      <Text type="h4" ellipsizeMode="tail" numberOfLines={2}>
+      <Text
+        type="h4"
+        style={{ color: eventTileTextColor }}
+        ellipsizeMode="tail"
+        numberOfLines={2}
+      >
         {name}
       </Text>
     </View>

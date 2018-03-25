@@ -11,8 +11,12 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
 import type { Event, Asset } from "../../data/event";
 import EventTile from "../../components/EventTile";
-import { cardBgColor, imageBgColor } from "../../constants/colors";
-import { EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
+import {
+  cardBgColor,
+  imageBgColor,
+  titleTextColor
+} from "../../constants/colors";
+import { EVENT_DETAILS } from "../../constants/routes";
 
 const locale = "en-GB";
 
@@ -36,10 +40,13 @@ const Column = ({ column, events, onPress, getAssetById }: ColumnProps) => (
         key={event.sys.id}
         style={styles.tileWrapper}
         onPress={() => onPress(event.sys.id)}
+        accessibilityTraits={["button"]}
+        accessibilityComponentType="button"
+        delayPressIn={50}
       >
         <EventTile
           name={event.fields.name[locale]}
-          date="Fri, 15 June"
+          date={event.fields.startTime[locale]}
           imageUrl={`https:${
             getAssetById(event.fields.eventsListPicture[locale].sys.id).fields
               .file[locale].url
@@ -57,9 +64,7 @@ class HomeScreen extends PureComponent<Props> {
   eventDetails = (eventId: string) => {
     this.props.navigation.navigate(EVENT_DETAILS, { eventId });
   };
-  eventList = () => {
-    this.props.navigation.navigate(EVENT_LIST);
-  };
+  eventList = () => {};
   render() {
     const [left: Event[], right: Event[]] = splitEvents(this.props.events);
     return (
@@ -70,9 +75,13 @@ class HomeScreen extends PureComponent<Props> {
             <Text>Header - TBD</Text>
           </View>
           <View style={styles.title}>
-            <Text type="h2">Featured events</Text>
+            <Text type="h2" style={{ color: titleTextColor }}>
+              Featured events
+            </Text>
             <TouchableOpacity onPress={this.eventList}>
-              <Text type="text">View all</Text>
+              <Text type="text" style={{ color: titleTextColor }}>
+                View all
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.container}>
