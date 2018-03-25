@@ -7,7 +7,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
   <ScrollView
     style={
       Object {
-        "backgroundColor": "#FFFFFF",
+        "backgroundColor": "rgb(255, 255, 255)",
       }
     }
   >
@@ -47,13 +47,18 @@ exports[`HomeScreen Component renders correctly 1`] = `
       >
         Featured events
       </Text>
-      <Text
-        markdown={false}
-        style={Object {}}
-        type="text"
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
       >
-        View all
-      </Text>
+        <Text
+          markdown={false}
+          style={Object {}}
+          type="text"
+        >
+          View all
+        </Text>
+      </TouchableOpacity>
     </View>
     <View
       style={
