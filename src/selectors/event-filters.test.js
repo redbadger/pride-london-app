@@ -9,7 +9,7 @@ import {
   selectTimeFilter,
   buildEventFilter
 } from "./event-filters";
-import type { State as EventFiltersState } from "../reducers/event-filters";
+import type { DateOrDateRange, Time } from "../data/date-time";
 import type { Event } from "../data/event";
 
 jest.mock("./basic-event-filters");
@@ -17,7 +17,17 @@ const untypedBuildDateFilter: any = buildDateFilter;
 const untypedBuildDateRangeFilter: any = buildDateRangeFilter;
 const untypedBuildTimeFilter: any = buildTimeFilter;
 
-const buildState = ({ date, time }: EventFiltersState) => ({
+export type BuildStateArguments = {
+  date: ?DateOrDateRange,
+  time: Set<Time>,
+  categories?: Set<string>
+};
+
+const buildState = ({
+  date,
+  time,
+  categories = new Set()
+}: BuildStateArguments) => ({
   events: {
     entries: [],
     assets: [],
@@ -26,15 +36,27 @@ const buildState = ({ date, time }: EventFiltersState) => ({
   },
   eventFilters: {
     date,
-    time
+    time,
+    categories
   }
 });
 
-const buildEvent = (startTime: string, endTime: string) =>
+export type BuildEventArguments = {
+  startTime: string,
+  endTime: string,
+  categories?: Array<string>
+};
+
+const buildEvent = ({
+  startTime,
+  endTime,
+  categories = []
+}: BuildEventArguments) =>
   (({
     fields: {
       startTime: { "en-GB": startTime },
-      endTime: { "en-GB": endTime }
+      endTime: { "en-GB": endTime },
+      categories: { "en-GB": categories }
     }
   }: any): Event);
 
@@ -64,7 +86,10 @@ describe("selectTimeFilter", () => {
 });
 
 describe("buildEventFilter", () => {
-  const event = buildEvent("2018-08-02T08:00:00", "2018-08-02T15:00:00");
+  const event = buildEvent({
+    startTime: "2018-08-02T08:00:00",
+    endTime: "2018-08-02T15:00:00"
+  });
 
   it("builds always truthy date filter when date is null", () => {
     untypedBuildTimeFilter.mockReturnValue(() => true);
