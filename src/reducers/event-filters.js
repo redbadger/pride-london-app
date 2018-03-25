@@ -5,10 +5,12 @@ import type { EventFiltersAction } from "../actions/event-filters";
 
 export type State = {
   date: ?DateOrDateRange,
-  time: Set<Time>
+  time: Set<Time>,
+  categories: Set<string>
 };
 
 const defaultState = {
+  categories: new Set(), // When this is empty it signifies no category filter.
   date: null,
   time: new Set()
 };
