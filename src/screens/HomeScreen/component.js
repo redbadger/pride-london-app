@@ -27,46 +27,18 @@ type Props = {
   getAssetById: string => Asset
 };
 
-type ColumnProps = {
-  column: number,
-  events: Event[],
-  onPress: (eventId: string) => void,
-  getAssetById: string => Asset
-};
-const Column = ({ column, events, onPress, getAssetById }: ColumnProps) => (
-  <View style={column === 0 ? styles.viewLeft : styles.viewRight}>
-    {events.map(event => (
-      <TouchableOpacity
-        key={event.sys.id}
-        style={styles.tileWrapper}
-        onPress={() => onPress(event.sys.id)}
-        accessibilityTraits={["button"]}
-        accessibilityComponentType="button"
-        delayPressIn={50}
-      >
-        <EventTile
-          name={event.fields.name[locale]}
-          date={event.fields.startTime[locale]}
-          imageUrl={`https:${
-            getAssetById(event.fields.eventsListPicture[locale].sys.id).fields
-              .file[locale].url
-          }`}
-        />
-      </TouchableOpacity>
-    ))}
-  </View>
-);
-
 class HomeScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
   };
+
   eventDetails = (eventId: string) => {
     this.props.navigation.navigate(EVENT_DETAILS, { eventId });
   };
+
   eventList = () => {};
+
   render() {
-    const [left: Event[], right: Event[]] = splitEvents(this.props.events);
     return (
       <SafeAreaView testID="home-screen">
         {this.props.loading && <Text>Loading...</Text>}
@@ -74,7 +46,7 @@ class HomeScreen extends PureComponent<Props> {
           <View style={styles.header}>
             <Text>Header - TBD</Text>
           </View>
-          <View style={styles.title}>
+          <View style={styles.sectionTitle}>
             <Text type="h2" style={{ color: titleTextColor }}>
               Featured events
             </Text>
@@ -85,33 +57,31 @@ class HomeScreen extends PureComponent<Props> {
             </TouchableOpacity>
           </View>
           <View style={styles.container}>
-            <Column
-              column={0}
-              events={left}
-              onPress={this.eventDetails}
-              getAssetById={this.props.getAssetById}
-            />
-            <Column
-              column={1}
-              events={right}
-              onPress={this.eventDetails}
-              getAssetById={this.props.getAssetById}
-            />
+            {this.props.events.map(event => (
+              <TouchableOpacity
+                key={event.sys.id}
+                style={styles.tile}
+                onPress={() => this.eventDetails(event.sys.id)}
+                accessibilityTraits={["button"]}
+                accessibilityComponentType="button"
+                delayPressIn={50}
+              >
+                <EventTile
+                  name={event.fields.name[locale]}
+                  date={event.fields.startTime[locale]}
+                  imageUrl={`https:${
+                    this.props.getAssetById(
+                      event.fields.eventsListPicture[locale].sys.id
+                    ).fields.file[locale].url
+                  }`}
+                />
+              </TouchableOpacity>
+            ))}
           </View>
         </ScrollView>
       </SafeAreaView>
     );
   }
-}
-
-function splitEvents(elements: any[]): any[][] {
-  const left = [];
-  const right = [];
-  elements.forEach((v, i) => {
-    const arr = i % 2 === 0 ? left : right;
-    arr.push(v);
-  });
-  return [left, right];
 }
 
 const styles = StyleSheet.create({
@@ -124,29 +94,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: imageBgColor
   },
-  title: {
+  sectionTitle: {
     flexDirection: "row",
-    marginLeft: 18,
-    marginRight: 18,
+    marginHorizontal: 16,
     paddingTop: 18,
     justifyContent: "space-between"
   },
   container: {
     flex: 1,
     flexDirection: "row",
-    margin: 6
+    flexWrap: "wrap",
+    margin: 12
   },
-  viewLeft: {
-    flex: 1,
-    marginLeft: 6
-  },
-  viewRight: {
-    flex: 1,
-    marginRight: 6
-  },
-  tileWrapper: {
-    marginLeft: 6,
-    marginRight: 6,
+  tile: {
+    width: "50%",
+    paddingHorizontal: 4,
     marginBottom: 8
   }
 });

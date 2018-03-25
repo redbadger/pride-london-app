@@ -34,8 +34,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
         Object {
           "flexDirection": "row",
           "justifyContent": "space-between",
-          "marginLeft": 18,
-          "marginRight": 18,
+          "marginHorizontal": 16,
           "paddingTop": 18,
         }
       }
@@ -73,21 +72,11 @@ exports[`HomeScreen Component renders correctly 1`] = `
         Object {
           "flex": 1,
           "flexDirection": "row",
-          "margin": 6,
+          "flexWrap": "wrap",
+          "margin": 12,
         }
       }
-    >
-      <Column
-        column={0}
-        events={Array []}
-        onPress={[Function]}
-      />
-      <Column
-        column={1}
-        events={Array []}
-        onPress={[Function]}
-      />
-    </View>
+    />
   </ScrollView>
 </SafeAreaView>
 `;
