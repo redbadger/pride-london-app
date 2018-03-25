@@ -4,7 +4,7 @@ exports[`EventsScreen Component renders correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#808080",
+      "backgroundColor": "rgb(255, 255, 255)",
       "flex": 1,
     }
   }
