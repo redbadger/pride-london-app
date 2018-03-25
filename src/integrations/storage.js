@@ -1,5 +1,6 @@
 // @flow
 import { AsyncStorage } from "react-native";
+import isBefore from "date-fns/is_before";
 import type { CmsEntry } from "./cms";
 import locale from "../data/locale";
 
@@ -33,25 +34,21 @@ const addOrUpdateEntry = (entries, newEntry) => {
 const entryNotDeleted = (entry, deletedEntryIds) =>
   !deletedEntryIds.includes(entry.sys.id);
 
-const correctDates = item => {
-  if (!item.fields) {
-    return item;
+const correctDates = (entry: Object) => {
+  if (!entry.fields) {
+    return entry;
   }
 
-  const { startTime, endTime } = item.fields;
+  const { startTime, endTime } = entry.fields;
 
-  if (
-    !startTime &&
-    !endTime &&
-    new Date(endTime[locale]) < new Date(startTime[locale])
-  ) {
-    return item;
+  if (!startTime && !endTime && isBefore(endTime[locale], startTime[locale])) {
+    return entry;
   }
 
   return {
-    ...item,
+    ...entry,
     fields: {
-      ...item.fields,
+      ...entry.fields,
       startTime: endTime,
       endTime: startTime
     }
