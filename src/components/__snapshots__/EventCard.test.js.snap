@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`renders correctly when isFree is false and there is a price range 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#FFFFFF",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderRadius": 5,
       "flexDirection": "row",
       "height": 108,
       "overflow": "hidden",
@@ -20,7 +21,6 @@ exports[`renders correctly 1`] = `
     }
     style={
       Object {
-        "backgroundColor": "#C1C1C1",
         "height": 108,
         "width": 114,
       }
@@ -29,10 +29,10 @@ exports[`renders correctly 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "#989898",
-          "borderRadius": 2,
+          "backgroundColor": "rgb(45, 47, 127)",
           "height": 23,
-          "paddingHorizontal": 8,
+          "justifyContent": "center",
+          "paddingHorizontal": 5,
           "position": "absolute",
         }
       }
@@ -41,14 +41,12 @@ exports[`renders correctly 1`] = `
         markdown={false}
         style={
           Object {
-            "color": "rgb(226, 226, 226)",
-            "fontSize": 14,
+            "color": "rgb(255, 255, 255)",
           }
         }
-        type="text"
+        type="price"
       >
-        £
-        16
+        From £12
       </Text>
     </View>
   </ImageBackground>
@@ -64,11 +62,10 @@ exports[`renders correctly 1`] = `
       markdown={false}
       style={
         Object {
-          "fontSize": 14,
-          "lineHeight": 20,
+          "color": "rgb(45, 47, 127)",
         }
       }
-      type="text"
+      type="small"
     >
       12:12 - 13:12
     </Text>
@@ -83,14 +80,11 @@ exports[`renders correctly 1`] = `
         markdown={false}
         style={
           Object {
-            "color": "#272727",
-            "fontFamily": "Poppins-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 20,
+            "color": "rgb(45, 47, 127)",
             "paddingTop": 4,
           }
         }
-        type="text"
+        type="h3"
       >
         name
       </Text>
@@ -99,6 +93,221 @@ exports[`renders correctly 1`] = `
       markdown={false}
       style={
         Object {
+          "color": "rgb(45, 47, 127)",
+          "fontSize": 12,
+          "lineHeight": 16,
+          "paddingTop": 4,
+        }
+      }
+      type="text"
+    >
+      location
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders correctly when isFree is false and there's only one price 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderRadius": 5,
+      "flexDirection": "row",
+      "height": 108,
+      "overflow": "hidden",
+    }
+  }
+>
+  <ImageBackground
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "https://image.jpg",
+      }
+    }
+    style={
+      Object {
+        "height": 108,
+        "width": 114,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(45, 47, 127)",
+          "height": 23,
+          "justifyContent": "center",
+          "paddingHorizontal": 5,
+          "position": "absolute",
+        }
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "rgb(255, 255, 255)",
+          }
+        }
+        type="price"
+      >
+        £12
+      </Text>
+    </View>
+  </ImageBackground>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "padding": 8,
+      }
+    }
+  >
+    <Text
+      markdown={false}
+      style={
+        Object {
+          "color": "rgb(45, 47, 127)",
+        }
+      }
+      type="small"
+    >
+      12:12 - 13:12
+    </Text>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+            "paddingTop": 4,
+          }
+        }
+        type="h3"
+      >
+        name
+      </Text>
+    </View>
+    <Text
+      markdown={false}
+      style={
+        Object {
+          "color": "rgb(45, 47, 127)",
+          "fontSize": 12,
+          "lineHeight": 16,
+          "paddingTop": 4,
+        }
+      }
+      type="text"
+    >
+      location
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders correctly when isFree is true 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(255, 255, 255)",
+      "borderRadius": 5,
+      "flexDirection": "row",
+      "height": 108,
+      "overflow": "hidden",
+    }
+  }
+>
+  <ImageBackground
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "https://image.jpg",
+      }
+    }
+    style={
+      Object {
+        "height": 108,
+        "width": 114,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(45, 47, 127)",
+          "height": 23,
+          "justifyContent": "center",
+          "paddingHorizontal": 5,
+          "position": "absolute",
+        }
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "rgb(255, 255, 255)",
+          }
+        }
+        type="price"
+      >
+        Free
+      </Text>
+    </View>
+  </ImageBackground>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "padding": 8,
+      }
+    }
+  >
+    <Text
+      markdown={false}
+      style={
+        Object {
+          "color": "rgb(45, 47, 127)",
+        }
+      }
+      type="small"
+    >
+      12:12 - 13:12
+    </Text>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+            "paddingTop": 4,
+          }
+        }
+        type="h3"
+      >
+        name
+      </Text>
+    </View>
+    <Text
+      markdown={false}
+      style={
+        Object {
+          "color": "rgb(45, 47, 127)",
           "fontSize": 12,
           "lineHeight": 16,
           "paddingTop": 4,

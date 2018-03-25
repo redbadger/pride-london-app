@@ -7,9 +7,9 @@ import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
 import Text from "./Text";
 import {
-  headerBgColor,
   interestButtonBgColor,
-  interestButtonTextColor
+  interestButtonTextColor,
+  filterBgColor
 } from "../constants/colors";
 import text from "../constants/text";
 import type { DateOrDateRange, Time } from "../data/date-time";
@@ -107,7 +107,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: headerBgColor
+    backgroundColor: filterBgColor
   },
   content: {
     paddingTop: 16,

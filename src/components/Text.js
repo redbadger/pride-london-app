@@ -10,11 +10,10 @@ export type TextType =
   | "h2"
   | "h3"
   | "h4"
-  | "h5"
-  | "h6"
   | "text"
   | "small"
-  | "xSmall";
+  | "price"
+  | "tabBarItem";
 
 type Props = {
   children: Node,
@@ -56,21 +55,11 @@ const textStyles = {
   h3: {
     fontFamily: "Poppins-SemiBold",
     fontSize: 16,
-    lineHeight: 24,
+    lineHeight: 20,
     includeFontPadding: false
   },
   h4: {
     fontFamily: "Roboto-Medium",
-    fontSize: 16,
-    lineHeight: 24
-  },
-  h5: {
-    fontFamily: "Roboto",
-    fontSize: 16,
-    lineHeight: 24
-  },
-  h6: {
-    fontFamily: "Roboto",
     fontSize: 16,
     lineHeight: 24
   },
@@ -84,10 +73,16 @@ const textStyles = {
     fontSize: 14,
     lineHeight: 20
   },
-  xSmall: {
-    fontFamily: "Roboto",
+  price: {
+    fontFamily: "Roboto-Bold",
+    fontSize: 14,
+    lineHeight: 20
+  },
+  tabBarItem: {
+    fontFamily: "Poppins-Bold",
     fontSize: 12,
-    lineHeight: 16
+    lineHeight: 16,
+    includeFontPadding: false
   }
 };
 
