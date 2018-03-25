@@ -1,4 +1,8 @@
-// Ideally the keys here should be consts, but currently these are setup in contentful only as the label, hence we need to use this for the key too. If we move to realise categories as its own content type.
+// Ideally the keys here should be consts, but currently these are setup in
+// contentful only as the label, hence we need to use this for the key too.
+// If we move to realise categories as its own content type then this will
+// go away and we will fetch this data.
+
 const categories = {
   "Cabaret and Variety": {
     label: "Cabaret and Variety"
