@@ -8,7 +8,7 @@ import EventCard from "./EventCard";
 import Text from "./Text";
 import type { Event, EventDays, Asset } from "../data/event";
 import {
-  eventListBgColor,
+  bgColor,
   eventCardTextColor,
   sectionHeaderShadow,
   sectionHeaderBgColor,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingTop: 0,
-    backgroundColor: eventListBgColor
+    backgroundColor: bgColor
   },
   eventListItem: {
     marginHorizontal: 16,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     // The below properties are required for android shadow
     borderWidth: 0,
     elevation: 3,
-    backgroundColor: eventListBgColor
+    backgroundColor: bgColor
   },
   sectionHeader: {
     height: 40,

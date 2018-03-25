@@ -1,4 +1,4 @@
-export const bgColor = "#808080";
+export const bgColor = "rgb(255, 255, 255)";
 export const cardBgColor = "rgb(255, 255, 255)";
 export const imageBgColor = "#C1C1C1";
 export const headerBgColor = "#A5A5A5";
@@ -21,7 +21,6 @@ export const filterButtonTextColor = "rgb(44, 218, 157)";
 
 // EVENT LIST
 
-export const eventListBgColor = "rgb(255, 255, 255)";
 export const eventListHeaderBgColor = "rgb(216, 216, 216)";
 export const eventListHeaderColor = "rgb(51, 51, 51)";
 export const eventCardTextColor = "rgb(45, 47, 127)";

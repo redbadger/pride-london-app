@@ -32,6 +32,7 @@
     "react-native-maps": "0.16.4",
     "react-native-safe-area-view":
       "robbiemccorkell/react-native-safe-area-view",
+    "react-native-splash-screen": "^3.0.6",
     "react-navigation": "^1.0.3",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
