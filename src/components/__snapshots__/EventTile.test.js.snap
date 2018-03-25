@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(255, 255, 255)",
+      "flexDirection": "column",
+      "overflow": "hidden",
+    }
+  }
+>
+  <ImageBackground
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "http://placekitten.com/200/400",
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "#C1C1C1",
+        "borderRadius": 4,
+        "height": 120,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "height": 80,
+        "paddingTop": 8,
+      }
+    }
+  >
+    <Text
+      markdown={false}
+      style={
+        Object {
+          "color": "rgb(45, 47, 127)",
+        }
+      }
+      type="small"
+    >
+      Fri, 17 March
+    </Text>
+    <Text
+      ellipsizeMode="tail"
+      markdown={false}
+      numberOfLines={2}
+      style={
+        Object {
+          "color": "rgb(45, 47, 127)",
+        }
+      }
+      type="h4"
+    >
+      Hello Pride
+    </Text>
+  </View>
+</View>
+`;
