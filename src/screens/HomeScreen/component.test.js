@@ -3,7 +3,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import Component from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
-import type { Event, Asset } from "../../data/event";
+import type { Event } from "../../data/event";
 
 const generateEvents = (count = 2): Event[] =>
   Array.from(Array(count)).map(
@@ -30,17 +30,7 @@ const generateEvents = (count = 2): Event[] =>
       }: any)
   );
 
-const asset: Asset = ({
-  fields: {
-    file: {
-      "en-GB": {
-        url: "http://example.com/image.png"
-      }
-    }
-  }
-}: any);
-
-const getAssetById = jest.fn().mockReturnValue(asset);
+const getAssetUrl = jest.fn().mockReturnValue("http://example.com/image.png");
 const navigation: any = {
   navigate: jest.fn()
 };
@@ -53,7 +43,7 @@ describe("HomeScreen Component", () => {
         loading={false}
         featuredEventsTitle="Featured events"
         featuredEvents={generateEvents(2)}
-        getAssetById={getAssetById}
+        getAssetUrl={getAssetUrl}
         {...props}
       />
     );
@@ -62,15 +52,17 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(5);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetById).toHaveBeenCalledTimes(4);
-    expect(getAssetById).toHaveBeenCalledWith("asset1");
+    expect(getAssetUrl).toHaveBeenCalledTimes(4);
+    expect(getAssetUrl).toHaveBeenCalledWith({
+      "en-GB": { sys: { id: "asset1" } }
+    });
   });
 
   it("renders max 6 events", () => {
     const featuredEvents = generateEvents(10);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetById).toHaveBeenCalledTimes(6);
+    expect(getAssetUrl).toHaveBeenCalledTimes(6);
   });
 
   it("renders loading indicator when loading", () => {
@@ -103,6 +95,6 @@ describe("HomeScreen Component", () => {
 });
 
 afterEach(() => {
-  getAssetById.mockClear();
+  getAssetUrl.mockClear();
   navigation.navigate.mockClear();
 });

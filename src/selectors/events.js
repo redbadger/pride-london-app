@@ -3,7 +3,7 @@ import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
-import type { Event, FeaturedEvents, EventDays } from "../data/event";
+import type { Asset, Event, FeaturedEvents, EventDays } from "../data/event";
 
 const locale = "en-GB";
 
@@ -57,8 +57,8 @@ export const selectAssets = (state: State) => getEventsState(state).assets;
 export const selectEventById = (state: State, id: string) =>
   selectEvents(state).find(event => event.sys.id === id);
 
-export const selectAssetById = (state: State, id: string) =>
-  selectAssets(state).find(asset => asset.sys.id === id);
+export const selectAssetById = (state: State, id: string): Asset =>
+  (selectAssets(state).find(asset => asset.sys.id === id): any);
 
 export const selectFilteredEvents = (state: State) =>
   selectEvents(state).filter(buildEventFilter(state));

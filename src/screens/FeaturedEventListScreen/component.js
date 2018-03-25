@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import type { EventDays, Asset } from "../../data/event";
+import type { EventDays, LocalizedFieldRef } from "../../data/event";
 import EventList from "../../components/EventList";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
@@ -12,7 +12,7 @@ const locale = "en-GB";
 type Props = {
   navigation: NavigationScreenProp<{ params: { title: string } }>,
   events: EventDays,
-  getAssetById: string => Asset
+  getAssetUrl: LocalizedFieldRef => string
 };
 
 class EventsScreen extends PureComponent<Props> {
@@ -37,7 +37,7 @@ class EventsScreen extends PureComponent<Props> {
           onPress={(eventId: string) => {
             this.props.navigation.navigate(EVENT_DETAILS, { eventId });
           }}
-          getAssetById={this.props.getAssetById}
+          getAssetUrl={this.props.getAssetUrl}
         />
       </View>
     );

@@ -20,11 +20,7 @@ const navigation: NavigationScreenProp<{
 describe("FeaturedEventListScreen Component", () => {
   it("renders correctly", () => {
     const output = shallow(
-      <Component
-        navigation={navigation}
-        events={[]}
-        getAssetById={() => ({}: any)}
-      />
+      <Component navigation={navigation} events={[]} getAssetUrl={() => ""} />
     );
     expect(output).toMatchSnapshot();
   });
@@ -36,11 +32,7 @@ describe("FeaturedEventListScreen Component", () => {
 
   it("navigates to event details on event item press", () => {
     const output = shallow(
-      <Component
-        navigation={navigation}
-        events={[]}
-        getAssetById={() => ({}: any)}
-      />
+      <Component navigation={navigation} events={[]} getAssetUrl={() => ""} />
     );
     const onPress = output.find(EventList).prop("onPress");
     onPress("my-event");

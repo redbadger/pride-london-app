@@ -61,11 +61,7 @@ exports[`renders correctly when checked 1`] = `
     Bananas
   </Text>
   <Image
-    source={
-      Object {
-        "testUri": "../../../src/components/check-box-checked.png",
-      }
-    }
+    source={1}
   />
 </TouchableOpacity>
 `;

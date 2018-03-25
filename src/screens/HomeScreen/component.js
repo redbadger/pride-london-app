@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
-import type { Event, Asset } from "../../data/event";
+import type { Event, LocalizedFieldRef } from "../../data/event";
 import EventTile from "../../components/EventTile";
 import {
   cardBgColor,
@@ -25,7 +25,7 @@ type Props = {
   featuredEventsTitle: string,
   featuredEvents: Event[],
   loading: boolean,
-  getAssetById: string => Asset
+  getAssetUrl: LocalizedFieldRef => string
 };
 
 class HomeScreen extends PureComponent<Props> {
@@ -48,7 +48,7 @@ class HomeScreen extends PureComponent<Props> {
     // Never show more than 6 events.
     const eventsCount = Math.min(
       6,
-      this.props.featuredEvents.length - this.props.featuredEvents.length % 2
+      Math.floor(this.props.featuredEvents.length / 2) * 2
     );
     const events = this.props.featuredEvents.slice(0, eventsCount);
 
@@ -81,11 +81,9 @@ class HomeScreen extends PureComponent<Props> {
                 <EventTile
                   name={event.fields.name[locale]}
                   date={event.fields.startTime[locale]}
-                  imageUrl={`https:${
-                    this.props.getAssetById(
-                      event.fields.eventsListPicture[locale].sys.id
-                    ).fields.file[locale].url
-                  }`}
+                  imageUrl={this.props.getAssetUrl(
+                    event.fields.eventsListPicture
+                  )}
                 />
               </TouchableOpacity>
             ))}

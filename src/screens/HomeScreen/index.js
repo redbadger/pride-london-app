@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import strings from "../../constants/strings";
-import type { Event, Asset } from "../../data/event";
+import type { Event, LocalizedFieldRef } from "../../data/event";
+import getAssetUrl from "../../data/get-asset-url";
 import {
   selectFeaturedEventsByTitle,
   selectEventsLoading,
@@ -19,7 +20,7 @@ type Props = {
   featuredEventsTitle: string,
   featuredEvents: Event[],
   loading: boolean,
-  getAssetById: string => Asset
+  getAssetUrl: LocalizedFieldRef => string
 } & OwnProps;
 
 const mapStateToProps = state => ({
@@ -29,7 +30,7 @@ const mapStateToProps = state => ({
     strings.featuredEventsTitle
   ),
   loading: selectEventsLoading(state),
-  getAssetById: id => selectAssetById(state, id)
+  getAssetUrl: getAssetUrl(id => selectAssetById(state, id))
 });
 
 const mapDispatchToProps = {};

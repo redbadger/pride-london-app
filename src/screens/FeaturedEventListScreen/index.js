@@ -2,7 +2,8 @@
 import { connect } from "react-redux";
 import type { Connector, MapStateToProps } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
-import type { EventDays, Asset } from "../../data/event";
+import type { EventDays, LocalizedFieldRef } from "../../data/event";
+import getAssetUrl from "../../data/get-asset-url";
 import type { State } from "../../reducers";
 import {
   groupEventsByStartTime,
@@ -17,7 +18,7 @@ type OwnProps = {
 
 type Props = {
   events: EventDays,
-  getAssetById: string => Asset
+  getAssetUrl: LocalizedFieldRef => string
 } & OwnProps;
 
 const mapStateToProps: MapStateToProps<State, OwnProps, *> = (
@@ -27,7 +28,7 @@ const mapStateToProps: MapStateToProps<State, OwnProps, *> = (
   events: groupEventsByStartTime(
     selectFeaturedEventsByTitle(state, ownProps.navigation.state.params.title)
   ),
-  getAssetById: id => selectAssetById(state, id)
+  getAssetUrl: getAssetUrl(id => selectAssetById(state, id))
 });
 
 // $FlowFixMe

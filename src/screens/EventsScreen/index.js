@@ -2,7 +2,8 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { EventDays, Asset } from "../../data/event";
+import type { EventDays, LocalizedFieldRef } from "../../data/event";
+import getAssetUrl from "../../data/get-asset-url";
 import { updateEvents } from "../../actions/events";
 import {
   groupEventsByStartTime,
@@ -22,14 +23,14 @@ type Props = {
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>,
-  getAssetById: string => Asset
+  getAssetUrl: LocalizedFieldRef => string
 } & OwnProps;
 
 const mapStateToProps = state => ({
   events: groupEventsByStartTime(selectFilteredEvents(state)),
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state),
-  getAssetById: id => selectAssetById(state, id)
+  getAssetUrl: getAssetUrl(id => selectAssetById(state, id))
 });
 
 const mapDispatchToProps = {

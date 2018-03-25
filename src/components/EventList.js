@@ -6,7 +6,7 @@ import formatDate from "date-fns/format";
 
 import EventCard from "./EventCard";
 import Text from "./Text";
-import type { Event, EventDays, Asset } from "../data/event";
+import type { Event, EventDays, LocalizedFieldRef } from "../data/event";
 import {
   bgColor,
   eventCardTextColor,
@@ -21,13 +21,13 @@ type Props = {
   refreshing?: boolean,
   onRefresh?: () => void,
   onPress: (eventName: string) => void,
-  getAssetById: string => Asset
+  getAssetUrl: LocalizedFieldRef => string
 };
 
 const separator = style => () => <View style={style} />;
 
 type ItemProps = { item: Event };
-const renderItem = (styles, locale, onPress, getAssetById) => ({
+const renderItem = (styles, locale, onPress, getAssetUrl) => ({
   item: event
 }: ItemProps) => (
   <TouchableOpacity
@@ -44,11 +44,7 @@ const renderItem = (styles, locale, onPress, getAssetById) => ({
       eventPriceHigh={event.fields.eventPriceHigh[locale]}
       startTime={event.fields.startTime[locale]}
       endTime={event.fields.endTime[locale]}
-      imageUrl={`https:${
-        getAssetById(event.fields.eventsListPicture[locale].sys.id).fields.file[
-          locale
-        ].url
-      }`}
+      imageUrl={getAssetUrl(event.fields.eventsListPicture)}
       isFree={event.fields.isFree[locale]}
     />
   </TouchableOpacity>
@@ -75,14 +71,14 @@ const EventList = ({
   refreshing,
   onRefresh,
   onPress,
-  getAssetById
+  getAssetUrl
 }: Props) => (
   <SectionList
     stickySectionHeadersEnabled
     sections={eventSections(events, locale)}
     renderSectionHeader={renderSectionHeader(styles)}
     renderSectionFooter={separator(styles.sectionFooter)}
-    renderItem={renderItem(styles, locale, onPress, getAssetById)}
+    renderItem={renderItem(styles, locale, onPress, getAssetUrl)}
     keyExtractor={event => event.sys.id}
     contentContainerStyle={styles.container}
     ItemSeparatorComponent={separator(styles.itemSeparator)}

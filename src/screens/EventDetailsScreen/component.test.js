@@ -1,36 +1,17 @@
+// @flow
 import React from "react";
+import type { NavigationScreenProp } from "react-navigation";
 import { shallow } from "enzyme";
 import Component from "./component";
+import type { Event } from "../../data/event";
 
 it("renders correctly", () => {
-  const getAssetById = () => ({
-    sys: {
-      space: {
-        sys: { type: "Link", linkType: "Space", id: "n2o4hgsv6wcx" }
-      },
-      id: "HNLFqItbkAmW8ssqQECIy",
-      type: "Asset",
-      createdAt: "2018-03-04T10:13:53.398Z",
-      updatedAt: "2018-03-04T10:13:53.398Z",
-      revision: 1
-    },
-    fields: {
-      title: { "en-GB": "Pride in the Park" },
-      file: {
-        "en-GB": {
-          url:
-            "//images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
-          details: { size: 136320, image: { width: 1024, height: 576 } },
-          fileName: "event-pride-in-the-park_1.jpg",
-          contentType: "image/jpeg"
-        }
-      }
-    }
-  });
-  const navigation = {
+  const getAssetUrl = () =>
+    "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
+  const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
     goBack: () => {}
-  };
-  const event = {
+  }: any);
+  const event: Event = ({
     fields: {
       name: { "en-GB": "Pride in the Park" },
       location: { "en-GB": { lon: -0.12092150000000856, lat: 51.4875152 } },
@@ -94,13 +75,13 @@ it("renders correctly", () => {
       phone: { "en-GB": "07891234567" },
       venueDetails: { "en-GB": ["Gender neutral toilets"] }
     }
-  };
+  }: any);
 
   const output = shallow(
     <Component
       navigation={navigation}
       event={event}
-      getAssetById={getAssetById}
+      getAssetUrl={getAssetUrl}
     />
   );
   expect(output).toMatchSnapshot();

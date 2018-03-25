@@ -4,14 +4,14 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#808080",
+      "backgroundColor": "rgb(255, 255, 255)",
       "flex": 1,
     }
   }
 >
   <EventList
     events={Array []}
-    getAssetById={[Function]}
+    getAssetUrl={[Function]}
     locale="en-GB"
     onPress={[Function]}
     refreshing={false}

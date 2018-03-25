@@ -1,4 +1,6 @@
 // @flow
+export type LocalizedFieldRef = { [string]: { sys: { id: string } } };
+
 export type Event = {
   fields: {
     name: { [string]: string },
@@ -17,8 +19,8 @@ export type Event = {
     phone: { [string]: string },
     ticketingUrl: { [string]: string },
     venueDetails: { [string]: string[] },
-    individualEventPicture: { [string]: { sys: { id: string } } },
-    eventsListPicture: { [string]: { sys: { id: string } } }
+    individualEventPicture: LocalizedFieldRef,
+    eventsListPicture: LocalizedFieldRef
   },
   sys: {
     id: string,
