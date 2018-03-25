@@ -75,16 +75,17 @@ const renderEventOverview = event => {
           }`}
         />
       </View>
-      {event.fields.venueDetails[locale].includes(
-        strings.venueDetailsGenderNeutralToilets
-      ) && (
-        <View style={styles.iconItemWrapper}>
-          <IconItem
-            icon={<Text type="small">icn</Text>}
-            title={text.eventDetailsGenderNeutralToilets}
-          />
-        </View>
-      )}
+      {event.fields.venueDetails &&
+        event.fields.venueDetails[locale].includes(
+          strings.venueDetailsGenderNeutralToilets
+        ) && (
+          <View style={styles.iconItemWrapper}>
+            <IconItem
+              icon={<Text type="small">icn</Text>}
+              title={text.eventDetailsGenderNeutralToilets}
+            />
+          </View>
+        )}
       {event.fields.accessibilityOptions &&
         event.fields.accessibilityOptions[locale].length > 0 && (
           <View style={styles.iconItemWrapper}>
