@@ -97,22 +97,6 @@ describe("onChange", () => {
       endDate: "2018-11-25"
     });
     onDayPress(getCalendarDay("2018-11-28"));
-    expect(onChange).toHaveBeenCalledWith({
-      startDate: "2018-11-22",
-      endDate: "2018-11-28"
-    });
-  });
-
-  it("reports sorted date range when second day is changed", () => {
-    const onChange = jest.fn();
-    const onDayPress = render(onChange, {
-      startDate: "2018-11-22",
-      endDate: "2018-11-25"
-    });
-    onDayPress(getCalendarDay("2018-11-10"));
-    expect(onChange).toHaveBeenCalledWith({
-      startDate: "2018-11-10",
-      endDate: "2018-11-22"
-    });
+    expect(onChange).toHaveBeenCalledWith("2018-11-28");
   });
 });

@@ -27,8 +27,10 @@ const getSortedDateRange = (dates: DateRange) => {
 
 const getMarkedDate = (date: string) => ({
   [date]: {
-    selected: true,
-    selectedColor: eventListHeaderColor
+    startingDay: true,
+    endingDay: true,
+    color: eventListHeaderColor,
+    textColor: cardBgColor
   }
 });
 
@@ -63,17 +65,17 @@ const getMarkedDateRange = (dateRange: DateRange) => {
   return markedDates;
 };
 
-const getCalendarMarkingProps = (dateRange: ?DateOrDateRange) => {
-  if (dateRange && typeof dateRange === "string") {
-    return {
-      markingType: "simple",
-      markedDates: getMarkedDate(dateRange)
-    };
-  } else if (dateRange && typeof dateRange === "object") {
-    return {
-      markingType: "period",
-      markedDates: getMarkedDateRange(dateRange)
-    };
+const getMarkedDates = (dateRange: ?DateOrDateRange) => {
+  if (!dateRange) {
+    return {};
+  }
+
+  if (typeof dateRange === "string") {
+    return getMarkedDate(dateRange);
+  }
+
+  if (typeof dateRange === "object") {
+    return getMarkedDateRange(dateRange);
   }
 
   return {};
@@ -87,21 +89,14 @@ type Props = {
 class DateRangePicker extends React.PureComponent<Props> {
   onDaySelected = (day: CalendarDay) => {
     const { dateRange, onChange } = this.props;
-    if (!dateRange) {
-      onChange(day.dateString);
-    } else if (typeof dateRange === "string") {
+
+    if (!dateRange || typeof dateRange !== "string") {
+      return onChange(day.dateString);
+    }
+
+    if (typeof dateRange === "string") {
       onChange(
-        getSortedDateRange({
-          startDate: dateRange,
-          endDate: day.dateString
-        })
-      );
-    } else {
-      onChange(
-        getSortedDateRange({
-          ...dateRange,
-          endDate: day.dateString
-        })
+        getSortedDateRange({ startDate: dateRange, endDate: day.dateString })
       );
     }
   };
@@ -112,12 +107,10 @@ class DateRangePicker extends React.PureComponent<Props> {
         ? getSortedDateRange(this.props.dateRange)
         : this.props.dateRange;
 
-    const { markingType, markedDates } = getCalendarMarkingProps(dateRange);
-
     return (
       <Calendar
-        markedDates={markedDates}
-        markingType={markingType}
+        markedDates={getMarkedDates(dateRange)}
+        markingType="period"
         onDayPress={this.onDaySelected}
         theme={{
           textDayFontFamily: "Roboto",
