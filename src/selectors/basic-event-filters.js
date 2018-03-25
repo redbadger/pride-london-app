@@ -37,10 +37,11 @@ export const buildTimeFilter = (time: Time) => {
   return (event: Event) => getHours(event.fields.endTime[locale]) >= 18;
 };
 
-export const buildCategoryFilter = (categories: Set<String>) => {
+export const buildCategoryFilter = (categories: Set<string>) => {
   if (categories.size === 0) {
-    return () => true;
+    /* eslint-disable no-unused-vars */
+    return (_: any) => true;
   }
   return (event: Event) =>
-    event.fields.categories[locale].some(value => categories.has(value));
+    event.fields.eventCategories[locale].some(value => categories.has(value));
 };

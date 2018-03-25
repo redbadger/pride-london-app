@@ -6,7 +6,7 @@ import type { EventFiltersAction } from "../actions/event-filters";
 export type State = {
   date: ?DateOrDateRange,
   time: Set<Time>,
-  categories: Set<String>
+  categories: Set<string>
 };
 
 const defaultState = {

@@ -8,14 +8,14 @@ import {
 import type { Event } from "../data/event";
 
 export type BuildEventArguments = {
-  startTime: string,
-  endTime: string,
-  categories: Array<string>
+  startTime?: string,
+  endTime?: string,
+  categories?: Array<string>
 };
 
 const buildEvent = ({
-  startTime,
-  endTime,
+  startTime = "2018-08-02T12:00:00",
+  endTime = "2018-08-05T12:00:00",
   categories = []
 }: BuildEventArguments) =>
   (({
