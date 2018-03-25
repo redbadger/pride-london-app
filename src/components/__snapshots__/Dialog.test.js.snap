@@ -8,14 +8,12 @@ exports[`renders correctly 1`] = `
   transparent={true}
   visible={true}
 >
-  <View
+  <TouchableWithoutFeedback
+    onPress={[Function]}
     style={
       Object {
-        "backgroundColor": "rgba(0, 0, 0, 0.7)",
         "bottom": 0,
-        "justifyContent": "center",
         "left": 0,
-        "padding": 16,
         "position": "absolute",
         "right": 0,
         "top": 0,
@@ -25,97 +23,114 @@ exports[`renders correctly 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "#FFFFFF",
-          "borderRadius": 4,
-          "paddingBottom": 8,
+          "backgroundColor": "rgba(0, 0, 0, 0.7)",
+          "bottom": 0,
+          "justifyContent": "center",
+          "left": 0,
+          "padding": 16,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
         }
       }
     >
-      <View
+      <TouchableWithoutFeedback>
+        <View
+          style={
+            Object {
+              "backgroundColor": "#FFFFFF",
+              "borderRadius": 4,
+              "paddingBottom": 8,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "borderBottomColor": "#F2F2F2",
+                "borderBottomWidth": 1,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "space-between",
+                "paddingHorizontal": 16,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexGrow": 1,
+                    "width": 0,
+                  },
+                  Object {
+                    "alignItems": "flex-start",
+                  },
+                ]
+              }
+            />
+            <Text
+              markdown={false}
+              style={
+                Object {
+                  "color": "#272727",
+                }
+              }
+              type="h3"
+            >
+              Hello World
+            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexGrow": 1,
+                    "width": 0,
+                  },
+                  Object {
+                    "alignItems": "flex-end",
+                  },
+                ]
+              }
+            />
+          </View>
+          Lorem Ipsum is placeholder text commonly used...
+        </View>
+      </TouchableWithoutFeedback>
+      <TouchableOpacity
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "button",
+          ]
+        }
+        activeOpacity={0.2}
+        onPress={[Function]}
         style={
           Object {
             "alignItems": "center",
-            "borderBottomColor": "#F2F2F2",
-            "borderBottomWidth": 1,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "space-between",
-            "paddingHorizontal": 16,
+            "backgroundColor": "rgb(51, 51, 51)",
+            "borderRadius": 4,
+            "height": 48,
+            "justifyContent": "center",
+            "marginTop": 8,
           }
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "flexGrow": 1,
-                "width": 0,
-              },
-              Object {
-                "alignItems": "flex-start",
-              },
-            ]
-          }
-        />
         <Text
           markdown={false}
           style={
             Object {
-              "color": "#272727",
+              "color": "#FFFFFF",
             }
           }
-          type="h3"
+          type="text"
         >
-          Hello World
+          Bye
         </Text>
-        <View
-          style={
-            Array [
-              Object {
-                "flexGrow": 1,
-                "width": 0,
-              },
-              Object {
-                "alignItems": "flex-end",
-              },
-            ]
-          }
-        />
-      </View>
-      Lorem Ipsum is placeholder text commonly used...
+      </TouchableOpacity>
     </View>
-    <TouchableOpacity
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      activeOpacity={0.2}
-      onPress={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "rgb(51, 51, 51)",
-          "borderRadius": 4,
-          "height": 48,
-          "justifyContent": "center",
-          "marginTop": 8,
-        }
-      }
-    >
-      <Text
-        markdown={false}
-        style={
-          Object {
-            "color": "#FFFFFF",
-          }
-        }
-        type="text"
-      >
-        Bye
-      </Text>
-    </TouchableOpacity>
-  </View>
+  </TouchableWithoutFeedback>
 </Component>
 `;
