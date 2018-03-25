@@ -113,6 +113,8 @@ Then to debug:
 
 ## Generating test data
 
+> Note: You do not need to do this if you are just getting your environment set up. This is for filling the remote CMS with mock data for testing purposes.
+
 In order to fill the test CMS space with test data you can use our `generate-content` script. It goes without saying make sure you are doing this on a test CMS rather than production.
 
 To generate test data:
@@ -121,10 +123,24 @@ To generate test data:
 node ./scripts/generate-content.js generate -s <space_id> -a <access_token>
 ```
 
+To specify a specific number of items to generate just pass a number as the first argument:
+
+```bash
+node ./scripts/generate-content.js generate -s <space_id> -a <access_token> 5
+```
+
 To delete the generated data again:
 
 ```bash
 node ./scripts/generate-content.js delete -s <space_id> -a <access_token>
+```
+
+For both commands you can skup the `-s` and `-a` flags by setting the environment variables `CONTENTFUL_SPACE_ID` and `CONTENTFUL_MANAGEMENT_KEY` respectively. E.g.
+
+```bash
+export CONTENTFUL_SPACE_ID=<space_id>
+export CONTENTFUL_MANAGEMENT_KEY=<access_token>
+node ./scripts/generate-content.js generate 5
 ```
 
 ### Tests
