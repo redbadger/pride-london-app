@@ -76,7 +76,60 @@ exports[`HomeScreen Component renders correctly 1`] = `
           "margin": 12,
         }
       }
-    />
+    >
+      <TouchableOpacity
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "button",
+          ]
+        }
+        activeOpacity={0.2}
+        delayPressIn={50}
+        key="1"
+        onPress={[Function]}
+        style={
+          Object {
+            "marginBottom": 8,
+            "paddingHorizontal": 4,
+            "width": "50%",
+          }
+        }
+        testID="event-tile-1"
+      >
+        <EventTile
+          date="2018-07-10T00:00"
+          imageUrl="https:http://example.com/image.png"
+          name="some event"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "button",
+          ]
+        }
+        activeOpacity={0.2}
+        delayPressIn={50}
+        key="2"
+        onPress={[Function]}
+        style={
+          Object {
+            "marginBottom": 8,
+            "paddingHorizontal": 4,
+            "width": "50%",
+          }
+        }
+        testID="event-tile-2"
+      >
+        <EventTile
+          date="2018-07-10T00:00"
+          imageUrl="https:http://example.com/image.png"
+          name="some other"
+        />
+      </TouchableOpacity>
+    </View>
   </ScrollView>
 </SafeAreaView>
 `;

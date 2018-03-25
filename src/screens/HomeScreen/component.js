@@ -65,6 +65,7 @@ class HomeScreen extends PureComponent<Props> {
                 accessibilityTraits={["button"]}
                 accessibilityComponentType="button"
                 delayPressIn={50}
+                testID={`event-tile-${event.sys.id}`}
               >
                 <EventTile
                   name={event.fields.name[locale]}
