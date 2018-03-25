@@ -11,6 +11,7 @@ describe("Event filters reducer", () => {
 
   it("updates state with filters from payload for UPDATE_EVENT_FILTERS action", () => {
     const initialState = {
+      categories: new Set(),
       date: null,
       time: new Set()
     };
@@ -21,6 +22,7 @@ describe("Event filters reducer", () => {
       }
     });
 
+    expect(state.categories).toBe(initialState.categories);
     expect(state.date).toBe("2018-03-12");
     expect(state.time).toBe(initialState.time);
   });
