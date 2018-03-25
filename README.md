@@ -84,7 +84,18 @@ And fill in the required variables from the appropriate developer portals (e.g. 
 
 ### iOS
 
+#### Simulator
+
 * `yarn run-ios [--simulator="iPhone X"]`
+
+##### Physical device
+
+If you want to run on a physical iPhone device you need to:
+
+* Ask to be added to the team with your apple ID email, and accept the invitation
+* Follow the steps described [here](https://facebook.github.io/react-native/docs/running-on-device.html) make sure to select the "LONDON LGBT COMMUNITY PRIDE C.I.C." team
+* in X-Code, select your device in the devise listed and click Build and Run
+* If the keychain is prompting for your password, make sure to input it and select "Always Allow"
 
 ### Android
 
