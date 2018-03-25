@@ -36,3 +36,11 @@ export const buildTimeFilter = (time: Time) => {
   // time === "evening"
   return (event: Event) => getHours(event.fields.endTime[locale]) >= 18;
 };
+
+export const buildCategoryFilter = (categories: Set<String>) => {
+  if (categories.size === 0) {
+    return () => true;
+  }
+  return (event: Event) =>
+    event.fields.categories[locale].some(value => categories.has(value));
+};
