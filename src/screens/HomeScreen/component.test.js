@@ -2,7 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Component from "./component";
-import { EVENT_DETAILS } from "../../constants/routes";
+import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import type { Event, Asset } from "../../data/event";
 
 const generateEvents = (count = 2): Event[] =>
@@ -51,24 +51,24 @@ describe("HomeScreen Component", () => {
       <Component
         navigation={navigation}
         loading={false}
-        title="Featured events"
-        events={generateEvents(2)}
+        featuredEventsTitle="Featured events"
+        featuredEvents={generateEvents(2)}
         getAssetById={getAssetById}
         {...props}
       />
     );
 
   it("renders correctly", () => {
-    const events = generateEvents(5);
-    const output = render({ events });
+    const featuredEvents = generateEvents(5);
+    const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
     expect(getAssetById).toHaveBeenCalledTimes(4);
     expect(getAssetById).toHaveBeenCalledWith("asset1");
   });
 
   it("renders max 6 events", () => {
-    const events = generateEvents(10);
-    const output = render({ events });
+    const featuredEvents = generateEvents(10);
+    const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
     expect(getAssetById).toHaveBeenCalledTimes(6);
   });
@@ -83,9 +83,17 @@ describe("HomeScreen Component", () => {
     expect(loadingText.children().text()).toEqual("Loading...");
   });
 
+  it("navigates to featured event list when tapped", () => {
+    const output = render();
+    const viewAll = output.find({ testID: "view-all" });
+    viewAll.simulate("press");
+    expect(navigation.navigate).toHaveBeenCalledWith(FEATURED_EVENT_LIST, {
+      title: "Featured events"
+    });
+  });
+
   it("navigates to event when tapped", () => {
     const output = render();
-
     const eventTile = output.find({ testID: "event-tile-1" });
     eventTile.simulate("press");
     expect(navigation.navigate).toHaveBeenCalledWith(EVENT_DETAILS, {

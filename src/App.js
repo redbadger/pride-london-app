@@ -4,8 +4,14 @@ import React from "react";
 import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
+import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
-import { EVENT_LIST, EVENT_DETAILS, HOME } from "./constants/routes";
+import {
+  EVENT_LIST,
+  EVENT_DETAILS,
+  FEATURED_EVENT_LIST,
+  HOME
+} from "./constants/routes";
 
 const EventsStack = StackNavigator(
   {
@@ -16,11 +22,15 @@ const EventsStack = StackNavigator(
     initialRouteName: EVENT_LIST
   }
 );
+
 const HomeStack = StackNavigator(
   {
     [HOME]: { screen: HomeScreen, tabBarLabel: "Home" },
-    [EVENT_LIST]: { screen: EventsScreen, tabBarLabel: "Home" },
-    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Home" }
+    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Home" },
+    [FEATURED_EVENT_LIST]: {
+      screen: FeaturedEventListScreen,
+      tabBarLabel: "Home"
+    }
   },
   {
     initialRouteName: HOME

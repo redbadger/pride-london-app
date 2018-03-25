@@ -7,7 +7,7 @@ import type { Event, FeaturedEvents, EventDays } from "../data/event";
 
 const locale = "en-GB";
 
-const groupByStartTime = (events: Event[]): EventDays => {
+export const groupEventsByStartTime = (events: Event[]): EventDays => {
   const sections = events
     .sort(
       (a: Event, b: Event) =>
@@ -63,9 +63,6 @@ export const selectAssetById = (state: State, id: string) =>
 export const selectFilteredEvents = (state: State) =>
   selectEvents(state).filter(buildEventFilter(state));
 
-export const selectFilteredEventsGroupedByDay = (state: State): EventDays =>
-  groupByStartTime(selectFilteredEvents(state));
-
 export const selectFeaturedEventsByTitle = (state: State, title: string) => {
   const featured = selectFeaturedEvents(state).find(
     entry => entry.fields.title[locale] === title
@@ -73,7 +70,8 @@ export const selectFeaturedEventsByTitle = (state: State, title: string) => {
   if (featured == null) {
     return [];
   }
-  return featured.fields.events[locale].map((e: Event) =>
+
+  return ((featured.fields.events[locale].map(e =>
     selectEventById(state, e.sys.id)
-  );
+  ): any): Event[]);
 };

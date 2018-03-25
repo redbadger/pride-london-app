@@ -18,8 +18,8 @@ import {
 type Props = {
   locale: string,
   events: EventDays,
-  refreshing: boolean,
-  onRefresh: () => void,
+  refreshing?: boolean,
+  onRefresh?: () => void,
   onPress: (eventName: string) => void,
   getAssetById: string => Asset
 };
@@ -91,6 +91,11 @@ const EventList = ({
     onRefresh={onRefresh}
   />
 );
+
+EventList.defaultProps = {
+  refreshing: false,
+  onRefresh: undefined
+};
 
 const styles = StyleSheet.create({
   itemSeparator: {

@@ -16,15 +16,18 @@ type OwnProps = {
 };
 
 type Props = {
-  title: string,
-  events: Event[],
+  featuredEventsTitle: string,
+  featuredEvents: Event[],
   loading: boolean,
   getAssetById: string => Asset
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  title: strings.featuredEventsTitle,
-  events: selectFeaturedEventsByTitle(state, strings.featuredEventsTitle),
+  featuredEventsTitle: strings.featuredEventsTitle,
+  featuredEvents: selectFeaturedEventsByTitle(
+    state,
+    strings.featuredEventsTitle
+  ),
   loading: selectEventsLoading(state),
   getAssetById: id => selectAssetById(state, id)
 });

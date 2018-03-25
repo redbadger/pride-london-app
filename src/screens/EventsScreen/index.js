@@ -5,9 +5,10 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { EventDays, Asset } from "../../data/event";
 import { updateEvents } from "../../actions/events";
 import {
+  groupEventsByStartTime,
   selectEventsLoading,
   selectEventsRefreshing,
-  selectFilteredEventsGroupedByDay,
+  selectFilteredEvents,
   selectAssetById
 } from "../../selectors/events";
 import Component from "./component";
@@ -25,7 +26,7 @@ type Props = {
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  events: selectFilteredEventsGroupedByDay(state),
+  events: groupEventsByStartTime(selectFilteredEvents(state)),
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state),
   getAssetById: id => selectAssetById(state, id)

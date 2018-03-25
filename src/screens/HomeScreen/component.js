@@ -16,14 +16,14 @@ import {
   imageBgColor,
   titleTextColor
 } from "../../constants/colors";
-import { EVENT_DETAILS } from "../../constants/routes";
+import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 
 const locale = "en-GB";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  title: string,
-  events: Event[],
+  featuredEventsTitle: string,
+  featuredEvents: Event[],
   loading: boolean,
   getAssetById: string => Asset
 };
@@ -37,16 +37,20 @@ class HomeScreen extends PureComponent<Props> {
     this.props.navigation.navigate(EVENT_DETAILS, { eventId });
   };
 
-  eventList = () => {};
+  eventList = () => {
+    this.props.navigation.navigate(FEATURED_EVENT_LIST, {
+      title: this.props.featuredEventsTitle
+    });
+  };
 
   render() {
     // Show only even number of events (2, 4 or 6).
     // Never show more than 6 events.
     const eventsCount = Math.min(
       6,
-      this.props.events.length - this.props.events.length % 2
+      this.props.featuredEvents.length - this.props.featuredEvents.length % 2
     );
-    const events = this.props.events.slice(0, eventsCount);
+    const events = this.props.featuredEvents.slice(0, eventsCount);
 
     return (
       <SafeAreaView testID="home-screen">
@@ -57,9 +61,9 @@ class HomeScreen extends PureComponent<Props> {
           </View>
           <View style={styles.sectionTitle}>
             <Text type="h2" style={{ color: titleTextColor }}>
-              {this.props.title}
+              {this.props.featuredEventsTitle}
             </Text>
-            <TouchableOpacity onPress={this.eventList}>
+            <TouchableOpacity onPress={this.eventList} testID="view-all">
               <Text style={{ color: titleTextColor }}>View all</Text>
             </TouchableOpacity>
           </View>
