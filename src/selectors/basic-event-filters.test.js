@@ -22,7 +22,7 @@ const buildEvent = ({
     fields: {
       startTime: { "en-GB": startTime },
       endTime: { "en-GB": endTime },
-      categories: { "en-GB": categories }
+      eventCategories: { "en-GB": categories }
     }
   }: any): Event);
 
