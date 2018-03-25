@@ -1,7 +1,7 @@
 // @flow
 import { AsyncStorage } from "react-native";
 import type { CmsEntry } from "./cms";
-import { localAssets } from "../data/locale";
+import locale from "../data/locale";
 
 type SavedData = {
   entries: CmsEntry[],

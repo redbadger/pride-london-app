@@ -18,7 +18,7 @@ import {
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event, LocalizedFieldRef } from "../../data/event";
-import { locale } from "../../data/locale";
+import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
