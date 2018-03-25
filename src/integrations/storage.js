@@ -32,12 +32,40 @@ const addOrUpdateEntry = (entries, newEntry) => {
 const entryNotDeleted = (entry, deletedEntryIds) =>
   !deletedEntryIds.includes(entry.sys.id);
 
+const correctDates = item => {
+  const locale = "en-GB";
+
+  if (!item.fields) {
+    return item;
+  }
+
+  const { startTime, endTime } = item.fields;
+
+  if (
+    !startTime &&
+    !endTime &&
+    new Date(endTime["en-GB"]) < new Date(startTime["en-GB"])
+  ) {
+    return item;
+  }
+
+  return {
+    ...item,
+    fields: {
+      ...item.fields,
+      startTime: endTime,
+      endTime: startTime
+    }
+  };
+};
+
 const updateCmsEntryList = (newList, deletedList, localList) => {
   const deletedEntryIds = deletedList.map(deletedEntry => deletedEntry.sys.id);
 
   return newList
     .reduce(addOrUpdateEntry, localList)
-    .filter(entry => entryNotDeleted(entry, deletedEntryIds));
+    .filter(entry => entryNotDeleted(entry, deletedEntryIds))
+    .map(correctDates);
 };
 
 export const saveCmsData = async (
