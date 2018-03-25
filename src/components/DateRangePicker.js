@@ -74,11 +74,7 @@ const getMarkedDates = (dateRange: ?DateOrDateRange) => {
     return getMarkedDate(dateRange);
   }
 
-  if (typeof dateRange === "object") {
-    return getMarkedDateRange(dateRange);
-  }
-
-  return {};
+  return getMarkedDateRange(dateRange);
 };
 
 type Props = {
@@ -94,11 +90,9 @@ class DateRangePicker extends React.PureComponent<Props> {
       return onChange(day.dateString);
     }
 
-    if (typeof dateRange === "string") {
-      onChange(
-        getSortedDateRange({ startDate: dateRange, endDate: day.dateString })
-      );
-    }
+    onChange(
+      getSortedDateRange({ startDate: dateRange, endDate: day.dateString })
+    );
   };
 
   render() {
