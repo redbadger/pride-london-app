@@ -90,7 +90,7 @@ class DateRangePicker extends React.PureComponent<Props> {
       return onChange(day.dateString);
     }
 
-    onChange(
+    return onChange(
       getSortedDateRange({ startDate: dateRange, endDate: day.dateString })
     );
   };
