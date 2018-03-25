@@ -4,8 +4,7 @@ import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
 import type { Asset, Event, FeaturedEvents, EventDays } from "../data/event";
-
-const locale = "en-GB";
+import { locale } from "../data/locale";
 
 export const groupEventsByStartTime = (events: Event[]): EventDays => {
   const sections = events

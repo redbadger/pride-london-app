@@ -1,6 +1,7 @@
 // @flow
 import { AsyncStorage } from "react-native";
 import type { CmsEntry } from "./cms";
+import { localAssets } from "../data/locale";
 
 type SavedData = {
   entries: CmsEntry[],
@@ -33,8 +34,6 @@ const entryNotDeleted = (entry, deletedEntryIds) =>
   !deletedEntryIds.includes(entry.sys.id);
 
 const correctDates = item => {
-  const locale = "en-GB";
-
   if (!item.fields) {
     return item;
   }
@@ -44,7 +43,7 @@ const correctDates = item => {
   if (
     !startTime &&
     !endTime &&
-    new Date(endTime["en-GB"]) < new Date(startTime["en-GB"])
+    new Date(endTime[locale]) < new Date(startTime[locale])
   ) {
     return item;
   }
