@@ -5,48 +5,30 @@ import Component from "./component";
 import { EVENT_DETAILS } from "../../constants/routes";
 import type { Event, Asset } from "../../data/event";
 
-const events: Event[] = ([
-  {
-    sys: {
-      id: "1"
-    },
-    fields: {
-      name: {
-        "en-GB": "some event"
-      },
-      eventsListPicture: {
-        "en-GB": {
-          sys: {
-            id: "asset1"
+const generateEvents = (count = 2): Event[] =>
+  Array.from(Array(count)).map(
+    (_, i) =>
+      ({
+        sys: {
+          id: String(i + 1)
+        },
+        fields: {
+          name: {
+            "en-GB": "some other"
+          },
+          eventsListPicture: {
+            "en-GB": {
+              sys: {
+                id: `asset${i + 1}`
+              }
+            }
+          },
+          startTime: {
+            "en-GB": "2018-07-10T00:00"
           }
         }
-      },
-      startTime: {
-        "en-GB": "2018-07-10T00:00"
-      }
-    }
-  },
-  {
-    sys: {
-      id: "2"
-    },
-    fields: {
-      name: {
-        "en-GB": "some other"
-      },
-      eventsListPicture: {
-        "en-GB": {
-          sys: {
-            id: "asset2"
-          }
-        }
-      },
-      startTime: {
-        "en-GB": "2018-07-10T00:00"
-      }
-    }
-  }
-]: any);
+      }: any)
+  );
 
 const asset: Asset = ({
   fields: {
@@ -64,29 +46,37 @@ const navigation: any = {
 };
 
 describe("HomeScreen Component", () => {
-  it("renders correctly", () => {
-    const output = shallow(
+  const render = props =>
+    shallow(
       <Component
         navigation={navigation}
         loading={false}
-        events={events}
+        title="Featured events"
+        events={generateEvents(2)}
         getAssetById={getAssetById}
+        {...props}
       />
     );
+
+  it("renders correctly", () => {
+    const events = generateEvents(5);
+    const output = render({ events });
     expect(output).toMatchSnapshot();
-    expect(getAssetById).toHaveBeenCalledTimes(events.length);
+    expect(getAssetById).toHaveBeenCalledTimes(4);
     expect(getAssetById).toHaveBeenCalledWith("asset1");
   });
 
+  it("renders max 6 events", () => {
+    const events = generateEvents(10);
+    const output = render({ events });
+    expect(output).toMatchSnapshot();
+    expect(getAssetById).toHaveBeenCalledTimes(6);
+  });
+
   it("renders loading indicator when loading", () => {
-    const output = shallow(
-      <Component
-        navigation={navigation}
-        loading
-        events={[]}
-        getAssetById={getAssetById}
-      />
-    );
+    const output = render({
+      loading: true
+    });
 
     const loadingText = output.find("Text").first();
 
@@ -94,14 +84,7 @@ describe("HomeScreen Component", () => {
   });
 
   it("navigates to event when tapped", () => {
-    const output = shallow(
-      <Component
-        navigation={navigation}
-        loading={false}
-        events={events}
-        getAssetById={getAssetById}
-      />
-    );
+    const output = render();
 
     const eventTile = output.find({ testID: "event-tile-1" });
     eventTile.simulate("press");

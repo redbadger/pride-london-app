@@ -1,3 +1,4 @@
 export default {
-  venueDetailsGenderNeutralToilets: "Gender neutral toilets"
+  venueDetailsGenderNeutralToilets: "Gender neutral toilets",
+  featuredEventsTitle: "Featured events"
 };

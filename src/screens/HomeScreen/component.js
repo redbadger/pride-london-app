@@ -22,6 +22,7 @@ const locale = "en-GB";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
+  title: string,
   events: Event[],
   loading: boolean,
   getAssetById: string => Asset
@@ -39,6 +40,14 @@ class HomeScreen extends PureComponent<Props> {
   eventList = () => {};
 
   render() {
+    // Show only even number of events (2, 4 or 6).
+    // Never show more than 6 events.
+    const eventsCount = Math.min(
+      6,
+      this.props.events.length - this.props.events.length % 2
+    );
+    const events = this.props.events.slice(0, eventsCount);
+
     return (
       <SafeAreaView testID="home-screen">
         {this.props.loading && <Text>Loading...</Text>}
@@ -48,16 +57,14 @@ class HomeScreen extends PureComponent<Props> {
           </View>
           <View style={styles.sectionTitle}>
             <Text type="h2" style={{ color: titleTextColor }}>
-              Featured events
+              {this.props.title}
             </Text>
             <TouchableOpacity onPress={this.eventList}>
-              <Text type="text" style={{ color: titleTextColor }}>
-                View all
-              </Text>
+              <Text style={{ color: titleTextColor }}>View all</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.container}>
-            {this.props.events.map(event => (
+            {events.map(event => (
               <TouchableOpacity
                 key={event.sys.id}
                 style={styles.tile}

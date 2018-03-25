@@ -2,6 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
+import strings from "../../constants/strings";
 import type { Event, Asset } from "../../data/event";
 import {
   selectFeaturedEventsByTitle,
@@ -15,13 +16,15 @@ type OwnProps = {
 };
 
 type Props = {
+  title: string,
   events: Event[],
   loading: boolean,
   getAssetById: string => Asset
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  events: selectFeaturedEventsByTitle(state, "Parties"),
+  title: strings.featuredEventsTitle,
+  events: selectFeaturedEventsByTitle(state, strings.featuredEventsTitle),
   loading: selectEventsLoading(state),
   getAssetById: id => selectAssetById(state, id)
 });
