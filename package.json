@@ -88,6 +88,9 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation)"
     ],
+    "moduleNameMapper": {
+      "\\.(png|gif|jpeg|jpg)$": "RelativeImageStub"
+    },
     "collectCoverage": true
   },
   "lint-staged": {

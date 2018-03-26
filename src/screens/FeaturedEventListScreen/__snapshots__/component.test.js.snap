@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EventsScreen Component renders correctly 1`] = `
+exports[`FeaturedEventListScreen Component renders correctly 1`] = `
 <View
   style={
     Object {
@@ -9,13 +9,11 @@ exports[`EventsScreen Component renders correctly 1`] = `
     }
   }
 >
-  <Connect(FilterHeader) />
   <EventList
     events={Array []}
     getAssetUrl={[Function]}
     locale="en-GB"
     onPress={[Function]}
-    onRefresh={[Function]}
     refreshing={false}
   />
 </View>
