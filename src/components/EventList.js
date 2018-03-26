@@ -6,9 +6,10 @@ import formatDate from "date-fns/format";
 
 import EventCard from "./EventCard";
 import Text from "./Text";
+import ContentPadding from "./ContentPadding";
 import type { Event, EventDays, Asset } from "../data/event";
 import {
-  eventListBgColor,
+  bgColor,
   eventCardTextColor,
   sectionHeaderShadow,
   sectionHeaderBgColor,
@@ -30,37 +31,40 @@ type ItemProps = { item: Event };
 const renderItem = (styles, locale, onPress, getAssetById) => ({
   item: event
 }: ItemProps) => (
-  <TouchableOpacity
-    style={styles.eventListItem}
-    accessibilityTraits={["button"]}
-    accessibilityComponentType="button"
-    delayPressIn={50}
-    onPress={() => onPress(event.sys.id)}
-  >
-    <EventCard
-      name={event.fields.name[locale]}
-      locationName={event.fields.locationName[locale]}
-      eventPriceLow={event.fields.eventPriceLow[locale]}
-      eventPriceHigh={event.fields.eventPriceHigh[locale]}
-      startTime={event.fields.startTime[locale]}
-      endTime={event.fields.endTime[locale]}
-      imageUrl={`https:${
-        getAssetById(event.fields.eventsListPicture[locale].sys.id).fields.file[
-          locale
-        ].url
-      }`}
-      isFree={event.fields.isFree[locale]}
-    />
-  </TouchableOpacity>
+  <ContentPadding>
+    <TouchableOpacity
+      style={styles.eventListItem}
+      accessibilityTraits={["button"]}
+      accessibilityComponentType="button"
+      delayPressIn={50}
+      onPress={() => onPress(event.sys.id)}
+    >
+      <EventCard
+        name={event.fields.name[locale]}
+        locationName={event.fields.locationName[locale]}
+        eventPriceLow={event.fields.eventPriceLow[locale]}
+        eventPriceHigh={event.fields.eventPriceHigh[locale]}
+        startTime={event.fields.startTime[locale]}
+        endTime={event.fields.endTime[locale]}
+        imageUrl={`https:${
+          getAssetById(event.fields.eventsListPicture[locale].sys.id).fields
+            .file[locale].url
+        }`}
+        isFree={event.fields.isFree[locale]}
+      />
+    </TouchableOpacity>
+  </ContentPadding>
 );
 
 type Section = SectionBase<Event> & { title: string };
 
 type SectionProps = { section: Section };
 const renderSectionHeader = styles => ({ section }: SectionProps) => (
-  <Text type="h2" style={styles.sectionHeader}>
-    {section.title}
-  </Text>
+  <ContentPadding style={styles.sectionHeader}>
+    <Text type="h2" style={styles.sectionHeaderText}>
+      {section.title}
+    </Text>
+  </ContentPadding>
 );
 
 const eventSections = (events: EventDays, locale: string): Section[] =>
@@ -101,10 +105,9 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingTop: 0,
-    backgroundColor: eventListBgColor
+    backgroundColor: bgColor
   },
   eventListItem: {
-    marginHorizontal: 16,
     borderRadius: 5,
     // The below properties are required for ioS shadow
     shadowColor: eventCardShadow,
@@ -114,13 +117,11 @@ const styles = StyleSheet.create({
     // The below properties are required for android shadow
     borderWidth: 0,
     elevation: 3,
-    backgroundColor: eventListBgColor
+    backgroundColor: bgColor
   },
   sectionHeader: {
     height: 40,
-    color: eventCardTextColor,
-    paddingVertical: 8,
-    paddingHorizontal: 15,
+    justifyContent: "center",
     backgroundColor: sectionHeaderBgColor,
 
     // The below properties are required for ioS shadow
@@ -132,6 +133,9 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 3,
     marginBottom: 6
+  },
+  sectionHeaderText: {
+    color: eventCardTextColor
   },
   sectionFooter: {
     height: 6

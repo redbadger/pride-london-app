@@ -6,6 +6,7 @@ import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
 import Text from "./Text";
+import ContentPadding from "./ContentPadding";
 import {
   interestButtonBgColor,
   interestButtonTextColor,
@@ -61,35 +62,37 @@ class FilterHeader extends React.PureComponent<Props, State> {
     return (
       <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
         <StatusBar barStyle="light-content" animated />
-        <View testID="filter-header" style={styles.content}>
-          <View style={styles.contentInterest}>
-            <View style={styles.interestButton}>
-              <Text type="h2" style={styles.interestButtonText}>
-                {text.filterByInterest}
-              </Text>
+        <ContentPadding>
+          <View testID="filter-header" style={styles.content}>
+            <View style={styles.contentInterest}>
+              <View style={styles.interestButton}>
+                <Text type="h2" style={styles.interestButtonText}>
+                  {text.filterByInterest}
+                </Text>
+              </View>
+              <View style={styles.mapButton}>
+                <Text style={styles.mapButtonText}>Map</Text>
+              </View>
             </View>
-            <View style={styles.mapButton}>
-              <Text style={styles.mapButtonText}>Map</Text>
+            <View style={styles.contentFilters}>
+              <FilterHeaderButton
+                text={formattedDateFilter}
+                onPress={this.showDatePicker}
+                style={styles.filterButton}
+              />
+              <FilterHeaderButton
+                text={formattedTimeFilter}
+                onPress={this.showTimePicker}
+                style={styles.filterButton}
+              />
+              <FilterHeaderButton
+                text={text.filters}
+                onPress={() => {}}
+                style={styles.filterButton}
+              />
             </View>
           </View>
-          <View style={styles.contentFilters}>
-            <FilterHeaderButton
-              text={formattedDateFilter}
-              onPress={this.showDatePicker}
-              style={styles.filterButton}
-            />
-            <FilterHeaderButton
-              text={formattedTimeFilter}
-              onPress={this.showTimePicker}
-              style={styles.filterButton}
-            />
-            <FilterHeaderButton
-              text={text.filters}
-              onPress={() => {}}
-              style={styles.filterButton}
-            />
-          </View>
-        </View>
+        </ContentPadding>
         <DateFilterDialog
           onApply={this.hideDatePicker}
           onCancel={this.hideDatePicker}
@@ -121,7 +124,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 44,
     backgroundColor: interestButtonBgColor,
-    marginLeft: 8,
     paddingHorizontal: 12,
     borderRadius: 4,
     justifyContent: "center"
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
     color: interestButtonTextColor
   },
   mapButton: {
-    marginHorizontal: 12,
+    marginLeft: 12,
     width: 52,
     height: 52,
     backgroundColor: interestButtonBgColor,
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   filterButton: {
-    marginLeft: 8
+    marginRight: 8
   }
 });
 
