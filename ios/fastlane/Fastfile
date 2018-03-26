@@ -1,4 +1,4 @@
-fastlane_version "2.82.0"
+fastlane_version "2.87.0"
 
 default_platform :ios
 
@@ -59,19 +59,6 @@ platform :ios do
   desc "Beta build and deploy"
   lane :beta do |options|
     ensure_git_branch(branch: "master")
-    increment_build_number(
-      build_number: latest_testflight_build_number + 1,
-      xcodeproj: "PrideLondonApp.xcodeproj"
-    )
-    build(
-      match_type: "appstore",
-      export_method: "app-store",
-      configuration: "Release",
-      app_identifier: "org.prideinlondon.festival"
-    )
-    if options[:submit]
-      deploy_testflight 
-    end
     increment_build_number(build_number:options[:ci_build_num])
     build(
       match_type: "adhoc", 
@@ -96,6 +83,21 @@ platform :ios do
         notify: "1",
         notes: notes,
       )
+    end
+    # Testflight builds can be promoted to production so 
+    # we have to do another build with appstore signing
+    increment_build_number(
+      build_number: latest_testflight_build_number + 1,
+      xcodeproj: "PrideLondonApp.xcodeproj"
+    )
+    build(
+      match_type: "appstore",
+      export_method: "app-store",
+      configuration: "Release",
+      app_identifier: "org.prideinlondon.festival"
+    )
+    if options[:submit]
+      deploy_testflight 
     end
   end
 
