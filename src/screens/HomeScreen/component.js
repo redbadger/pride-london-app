@@ -63,7 +63,14 @@ class HomeScreen extends PureComponent<Props> {
             <Text type="h2" style={{ color: titleTextColor }}>
               {this.props.featuredEventsTitle}
             </Text>
-            <TouchableOpacity onPress={this.eventList} testID="view-all">
+            <TouchableOpacity
+              style={styles.sectionTitleButton}
+              onPress={this.eventList}
+              accessibilityTraits={["button"]}
+              accessibilityComponentType="button"
+              delayPressIn={50}
+              testID="view-all"
+            >
               <Text style={{ color: titleTextColor }}>View all</Text>
             </TouchableOpacity>
           </View>
@@ -107,14 +114,20 @@ const styles = StyleSheet.create({
   sectionTitle: {
     flexDirection: "row",
     marginHorizontal: 16,
-    paddingTop: 18,
-    justifyContent: "space-between"
+    marginTop: 12,
+    marginBottom: 6,
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  sectionTitleButton: {
+    minHeight: 44,
+    justifyContent: "center"
   },
   container: {
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    margin: 12
+    marginHorizontal: 12
   },
   tile: {
     width: "50%",

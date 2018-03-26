@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
-        "height": 80,
+        "minHeight": 80,
         "paddingTop": 8,
       }
     }

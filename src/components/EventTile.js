@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     backgroundColor: imageBgColor
   },
   details: {
-    height: 80,
+    minHeight: 80,
     paddingTop: 8
   }
 });
