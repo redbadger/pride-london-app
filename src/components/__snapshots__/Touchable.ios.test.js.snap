@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<TouchableOpacity
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  activeOpacity={0.2}
+  delayPressIn={50}
+  style={
+    Array [
+      Object {
+        "justifyContent": "center",
+        "minHeight": 44,
+        "minWidth": 44,
+      },
+      Object {
+        "borderRadius": 2,
+      },
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Hello
+  </Text>
+</TouchableOpacity>
+`;

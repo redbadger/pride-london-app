@@ -9,7 +9,7 @@ const Touchable = ({ children, style, ...props }: TouchableProps) => (
     background={TouchableNativeFeedback.SelectableBackground()}
     {...props}
   >
-    <View style={[styles.default, style]}>{children}</View>
+    <View style={[styles.defaults, style]}>{children}</View>
   </TouchableNativeFeedback>
 );
 
@@ -18,7 +18,7 @@ Touchable.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  default: {
+  defaults: {
     minHeight: 44,
     minWidth: 44,
     justifyContent: "center"

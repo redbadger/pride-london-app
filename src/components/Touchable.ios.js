@@ -5,7 +5,7 @@ import type { TouchableProps } from "./TouchableTypes";
 import { TouchableDefaultProps } from "./TouchableTypes";
 
 const Touchable = ({ children, style, ...props }: TouchableProps) => (
-  <TouchableOpacity style={[styles.default, style]} {...props}>
+  <TouchableOpacity style={[styles.defaults, style]} {...props}>
     {children}
   </TouchableOpacity>
 );
@@ -16,7 +16,7 @@ Touchable.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  default: {
+  defaults: {
     minHeight: 44,
     minWidth: 44,
     justifyContent: "center"
