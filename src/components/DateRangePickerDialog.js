@@ -1,9 +1,9 @@
 // @flow
 import React from "react";
-import { TouchableOpacity } from "react-native";
 import DateRangePicker from "./DateRangePicker";
 import Dialog from "./Dialog";
 import Text from "./Text";
+import Touchable from "./Touchable";
 import text from "../constants/text";
 import type { DateOrDateRange } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
@@ -32,13 +32,9 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
       <Dialog
         applyButtonText={this.props.applyButtonText}
         headerRight={
-          <TouchableOpacity
-            accessibilityTraits={["button"]}
-            accessibilityComponentType="button"
-            onPress={this.clear}
-          >
+          <Touchable onPress={this.clear}>
             <Text>Clear</Text>
-          </TouchableOpacity>
+          </Touchable>
         }
         onApply={this.props.onApply}
         onCancel={this.props.onCancel}

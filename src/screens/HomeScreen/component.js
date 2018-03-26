@@ -1,16 +1,11 @@
 // @flow
 import React, { PureComponent } from "react";
-import {
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-  View,
-  TouchableOpacity
-} from "react-native";
+import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
 import type { Event, LocalizedFieldRef } from "../../data/event";
 import EventTile from "../../components/EventTile";
+import Touchable from "../../components/Touchable";
 import {
   cardBgColor,
   imageBgColor,
@@ -63,26 +58,16 @@ class HomeScreen extends PureComponent<Props> {
             <Text type="h2" style={{ color: titleTextColor }}>
               {this.props.featuredEventsTitle}
             </Text>
-            <TouchableOpacity
-              style={styles.sectionTitleButton}
-              onPress={this.eventList}
-              accessibilityTraits={["button"]}
-              accessibilityComponentType="button"
-              delayPressIn={50}
-              testID="view-all"
-            >
+            <Touchable onPress={this.eventList} testID="view-all">
               <Text style={{ color: titleTextColor }}>View all</Text>
-            </TouchableOpacity>
+            </Touchable>
           </View>
           <View style={styles.container}>
             {events.map(event => (
-              <TouchableOpacity
+              <Touchable
                 key={event.sys.id}
                 style={styles.tile}
                 onPress={() => this.eventDetails(event.sys.id)}
-                accessibilityTraits={["button"]}
-                accessibilityComponentType="button"
-                delayPressIn={50}
                 testID={`event-tile-${event.sys.id}`}
               >
                 <EventTile
@@ -92,7 +77,7 @@ class HomeScreen extends PureComponent<Props> {
                     event.fields.eventsListPicture
                   )}
                 />
-              </TouchableOpacity>
+              </Touchable>
             ))}
           </View>
         </ScrollView>
@@ -118,10 +103,6 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     justifyContent: "space-between",
     alignItems: "center"
-  },
-  sectionTitleButton: {
-    minHeight: 44,
-    justifyContent: "center"
   },
   container: {
     flex: 1,

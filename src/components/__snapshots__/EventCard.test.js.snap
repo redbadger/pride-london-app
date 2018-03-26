@@ -4,7 +4,6 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
 <View
   style={
     Object {
-      "backgroundColor": "rgb(255, 255, 255)",
       "borderRadius": 5,
       "flexDirection": "row",
       "height": 108,
@@ -111,7 +110,6 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
 <View
   style={
     Object {
-      "backgroundColor": "rgb(255, 255, 255)",
       "borderRadius": 5,
       "flexDirection": "row",
       "height": 108,
@@ -218,7 +216,6 @@ exports[`renders correctly when isFree is true 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "rgb(255, 255, 255)",
       "borderRadius": 5,
       "flexDirection": "row",
       "height": 108,

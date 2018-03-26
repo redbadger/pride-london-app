@@ -4,7 +4,6 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "rgb(255, 255, 255)",
       "flexDirection": "column",
       "overflow": "hidden",
     }

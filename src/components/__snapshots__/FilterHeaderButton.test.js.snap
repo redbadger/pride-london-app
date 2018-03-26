@@ -1,23 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<TouchableOpacity
+<Touchable
   accessibilityComponentType="button"
   accessibilityTraits={
     Array [
       "button",
     ]
   }
-  activeOpacity={0.2}
+  delayPressIn={50}
   onPress={[Function]}
   style={
     Array [
       Object {
         "alignItems": "center",
-        "borderColor": "rgb(44, 218, 157)",
-        "borderRadius": 4,
-        "borderWidth": 1,
-        "height": 32,
         "justifyContent": "center",
         "paddingHorizontal": 8,
       },
@@ -32,11 +28,12 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "color": "rgb(44, 218, 157)",
+        "fontFamily": "Roboto-Medium",
       }
     }
     type="text"
   >
     1-2-3 filtered
   </Text>
-</TouchableOpacity>
+</Touchable>
 `;

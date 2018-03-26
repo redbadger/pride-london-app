@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
-import { StyleSheet, TouchableOpacity, Linking } from "react-native";
+import { StyleSheet, Linking } from "react-native";
+import Touchable from "./Touchable";
 import Text from "./Text";
 import {
   eventDetailsBuyButtonColor,
@@ -19,9 +20,9 @@ const onPress = url => {
 };
 
 const Button = ({ text, url }: Props) => (
-  <TouchableOpacity style={styles.button} onPress={() => onPress(url)}>
+  <Touchable style={styles.button} onPress={() => onPress(url)}>
     <Text style={styles.text}>{text}</Text>
-  </TouchableOpacity>
+  </Touchable>
 );
 Button.defaultProps = {
   url: ""
@@ -29,7 +30,6 @@ Button.defaultProps = {
 
 const styles = StyleSheet.create({
   button: {
-    height: 40,
     backgroundColor: eventDetailsBuyButtonColor,
     borderRadius: 4,
     alignItems: "center",
