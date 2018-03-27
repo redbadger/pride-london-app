@@ -77,3 +77,10 @@ export type Asset = {
 };
 
 export type EventDays = Event[][];
+
+export type EventCategory = {
+  label: string,
+  color: string
+};
+export type EventCategoriesMap = { [string]: EventCategory };
+export type EventCategoriesList = EventCategory[];
