@@ -345,6 +345,20 @@ describe("buildEventFilter", () => {
     expect(filter(event)).toBe(false);
   });
 
+  it("builds category filter, which returns false when category filter return false", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+    untypedBuildDateFilter.mockReturnValue(() => true);
+    untypedBuildCategoryFilter.mockReturnValue(() => false);
+
+    const state = buildState({
+      date: null,
+      time: new Set(),
+      categories: new Set(["Community"])
+    });
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(false);
+  });
+
   it("builds category filter, which returns true when category filter return true", () => {
     untypedBuildTimeFilter.mockReturnValue(() => true);
     untypedBuildDateFilter.mockReturnValue(() => true);
