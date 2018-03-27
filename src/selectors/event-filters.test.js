@@ -2,7 +2,8 @@
 import {
   buildDateFilter,
   buildDateRangeFilter,
-  buildTimeFilter
+  buildTimeFilter,
+  buildCategoryFilter
 } from "./basic-event-filters";
 import {
   selectDateFilter,
@@ -16,6 +17,7 @@ jest.mock("./basic-event-filters");
 const untypedBuildDateFilter: any = buildDateFilter;
 const untypedBuildDateRangeFilter: any = buildDateRangeFilter;
 const untypedBuildTimeFilter: any = buildTimeFilter;
+const untypedBuildCategoryFilter: any = buildCategoryFilter;
 
 export type BuildStateArguments = {
   date: ?DateOrDateRange,
@@ -321,10 +323,53 @@ describe("buildEventFilter", () => {
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(false);
   });
+
+  it("builds category filter, which returns false when category filter return false", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+    untypedBuildDateFilter.mockReturnValue(() => true);
+    untypedBuildCategoryFilter.mockReturnValue(() => false);
+
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        categories: new Set(["Community"])
+      },
+      {
+        date: null,
+        time: new Set(),
+        categories: new Set(["Community"])
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(false);
+  });
+
+  it("builds category filter, which returns true when category filter return true", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+    untypedBuildDateFilter.mockReturnValue(() => true);
+    untypedBuildCategoryFilter.mockReturnValue(() => true);
+
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        categories: new Set(["Community"])
+      },
+      {
+        date: null,
+        time: new Set(),
+        categories: new Set(["Community"])
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+  });
 });
 
 afterEach(() => {
   untypedBuildDateFilter.mockReset();
   untypedBuildDateRangeFilter.mockReset();
   untypedBuildTimeFilter.mockReset();
+  untypedBuildCategoryFilter.mockReset();
 });
