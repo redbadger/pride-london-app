@@ -1,8 +1,9 @@
 // @flow
 import React from "react";
 import type { Node } from "react";
-import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Modal, StyleSheet, View } from "react-native";
 import Text from "./Text";
+import Touchable from "./Touchable";
 import {
   dialogBackdropColor,
   dialogBgColor,
@@ -54,14 +55,9 @@ const Dialog = ({
         </View>
         {children}
       </View>
-      <TouchableOpacity
-        accessibilityTraits={["button"]}
-        accessibilityComponentType="button"
-        onPress={onApply}
-        style={styles.applyButton}
-      >
+      <Touchable onPress={onApply} style={styles.applyButton}>
         <Text style={styles.applyButtonText}>{applyButtonText}</Text>
-      </TouchableOpacity>
+      </Touchable>
     </View>
   </Modal>
 );

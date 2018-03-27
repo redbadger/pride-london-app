@@ -4,15 +4,25 @@ exports[`renders correctly with date selection 1`] = `
 <Dialog
   applyButtonText="Apply"
   headerRight={
-    <TouchableOpacity
+    <Touchable
       accessibilityComponentType="button"
       accessibilityTraits={
         Array [
           "button",
         ]
       }
-      activeOpacity={0.2}
+      accessible={undefined}
+      delayLongPress={undefined}
+      delayPressIn={50}
+      delayPressOut={undefined}
+      disabled={undefined}
+      hitSlop={undefined}
+      onLongPress={undefined}
       onPress={[Function]}
+      onPressIn={undefined}
+      onPressOut={undefined}
+      pressRetentionOffset={undefined}
+      style={undefined}
     >
       <Text
         markdown={false}
@@ -21,7 +31,7 @@ exports[`renders correctly with date selection 1`] = `
       >
         Clear
       </Text>
-    </TouchableOpacity>
+    </Touchable>
   }
   onApply={[Function]}
   onCancel={[Function]}
@@ -39,15 +49,25 @@ exports[`renders correctly without date selection 1`] = `
 <Dialog
   applyButtonText="Apply"
   headerRight={
-    <TouchableOpacity
+    <Touchable
       accessibilityComponentType="button"
       accessibilityTraits={
         Array [
           "button",
         ]
       }
-      activeOpacity={0.2}
+      accessible={undefined}
+      delayLongPress={undefined}
+      delayPressIn={50}
+      delayPressOut={undefined}
+      disabled={undefined}
+      hitSlop={undefined}
+      onLongPress={undefined}
       onPress={[Function]}
+      onPressIn={undefined}
+      onPressOut={undefined}
+      pressRetentionOffset={undefined}
+      style={undefined}
     >
       <Text
         markdown={false}
@@ -56,7 +76,7 @@ exports[`renders correctly without date selection 1`] = `
       >
         Clear
       </Text>
-    </TouchableOpacity>
+    </Touchable>
   }
   onApply={[Function]}
   onCancel={[Function]}

@@ -15,21 +15,26 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <withOrientation
-    style={
-      Object {
-        "padding": 22,
-      }
-    }
-  >
+  <withOrientation>
     <StatusBar
       animated={true}
       barStyle="default"
       showHideTransition="fade"
     />
-    <TouchableOpacity
-      activeOpacity={0.2}
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
       onPress={[Function]}
+      style={
+        Object {
+          "padding": 8,
+        }
+      }
     >
       <Text
         accessible={true}
@@ -38,7 +43,7 @@ exports[`renders correctly 1`] = `
       >
         Back
       </Text>
-    </TouchableOpacity>
+    </Touchable>
   </withOrientation>
 </ImageBackground>
 `;

@@ -84,14 +84,14 @@ exports[`renders correctly 1`] = `
       </View>
       Lorem Ipsum is placeholder text commonly used...
     </View>
-    <TouchableOpacity
+    <Touchable
       accessibilityComponentType="button"
       accessibilityTraits={
         Array [
           "button",
         ]
       }
-      activeOpacity={0.2}
+      delayPressIn={50}
       onPress={[Function]}
       style={
         Object {
@@ -115,7 +115,7 @@ exports[`renders correctly 1`] = `
       >
         Bye
       </Text>
-    </TouchableOpacity>
+    </Touchable>
   </View>
 </Component>
 `;

@@ -1,8 +1,9 @@
 // @flow
 import React from "react";
-import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
+import Touchable from "./Touchable";
 
 import checkBoxCheckedUrl from "./check-box-checked.png";
 
@@ -14,7 +15,7 @@ type Props = {
 };
 
 const CheckBox = ({ checked, label, onChange, style }: Props) => (
-  <TouchableOpacity
+  <Touchable
     accessibilityComponentType={
       checked ? "radiobutton_checked" : "radiobutton_unchecked"
     }
@@ -24,7 +25,7 @@ const CheckBox = ({ checked, label, onChange, style }: Props) => (
   >
     <Text>{label}</Text>
     {checked && <Image source={checkBoxCheckedUrl} />}
-  </TouchableOpacity>
+  </Touchable>
 );
 
 CheckBox.defaultProps = {

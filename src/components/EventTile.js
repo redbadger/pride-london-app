@@ -3,11 +3,7 @@ import { format } from "date-fns";
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import Text from "../components/Text";
-import {
-  imageBgColor,
-  cardBgColor,
-  eventTileTextColor
-} from "../constants/colors";
+import { imageBgColor, eventTileTextColor } from "../constants/colors";
 
 type Props = {
   name: string,
@@ -40,7 +36,6 @@ const EventTile = ({ name, date, imageUrl }: Props) => (
 
 const styles = StyleSheet.create({
   eventTile: {
-    backgroundColor: cardBgColor,
     flexDirection: "column",
     overflow: "hidden"
   },

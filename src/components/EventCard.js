@@ -3,7 +3,6 @@ import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import formatDate from "date-fns/format";
 import {
-  cardBgColor,
   eventPriceBgColor,
   eventCardTextColor,
   eventPriceColor
@@ -82,7 +81,6 @@ const EventCard = ({
 const styles = StyleSheet.create({
   eventCard: {
     height: 108,
-    backgroundColor: cardBgColor,
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5

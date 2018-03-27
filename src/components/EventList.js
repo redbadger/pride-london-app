@@ -1,12 +1,13 @@
 // @flow
 import React from "react";
-import { StyleSheet, SectionList, TouchableOpacity, View } from "react-native";
+import { StyleSheet, SectionList, View } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
 import formatDate from "date-fns/format";
 
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import Text from "./Text";
+import Touchable from "./Touchable";
 import type { Event, EventDays, LocalizedFieldRef } from "../data/event";
 import {
   bgColor,
@@ -32,11 +33,8 @@ const renderItem = (styles, locale, onPress, getAssetUrl) => ({
   item: event
 }: ItemProps) => (
   <ContentPadding>
-    <TouchableOpacity
+    <Touchable
       style={styles.eventListItem}
-      accessibilityTraits={["button"]}
-      accessibilityComponentType="button"
-      delayPressIn={50}
       onPress={() => onPress(event.sys.id)}
     >
       <EventCard
@@ -49,7 +47,7 @@ const renderItem = (styles, locale, onPress, getAssetUrl) => ({
         imageUrl={getAssetUrl(event.fields.eventsListPicture)}
         isFree={event.fields.isFree[locale]}
       />
-    </TouchableOpacity>
+    </Touchable>
   </ContentPadding>
 );
 
