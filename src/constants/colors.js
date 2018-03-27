@@ -43,3 +43,8 @@ export const eventDetailsBuyButtonTextColor = "#FFFFFF";
 
 export const titleTextColor = "rgb(45, 47, 127)";
 export const eventTileTextColor = "rgb(45, 47, 127)";
+
+// CATEGORIES DRAWER
+
+export const categoriesDrawerBgColor = "rgb(45, 47, 127)";
+export const categoriesDrawerCancelColor = "rgb(44, 218, 157)";
