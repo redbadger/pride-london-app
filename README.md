@@ -48,6 +48,26 @@ And install dependencies
 * Install Xcode from the App Store and accept the license agreement.
 * Run Xcode once so that it can install additional components it will need.
 
+To develop on a real device locally you will need to install the development provisioning profile from fastlane.
+
+Install fastlane using
+
+```
+[sudo] gem install fastlane -NV
+```
+
+or alternatively using `brew cask install fastlane`
+
+You can then run the following command from the ios folder:
+
+```
+fastlane match --readonly
+```
+
+You will need access to the private `match-ios-certificates` repo and will be prompted for the passphrase. Ask on the channel to get this sent to you in a secure way ;) On success you should be presented with the installed certificates and provisioning profile for org.prideinlondon.festival.
+
+Next, open Xcode and the PrideLondonApp.xcodeproj. Plug in your device via USB, and select it in the device dropdown in the top left of Xcode. Then hit the build (Play) button.
+
 #### Android
 
 * Install [Android Studio](https://developer.android.com/studio/index.html).
