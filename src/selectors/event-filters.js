@@ -40,7 +40,6 @@ export const buildEventFilter = (
     selectStagedFilters
   );
   const timeArray = Array.from(time);
-  const categoriesArray = Array.from(categories);
   const dateFilter: (event: Event) => boolean = date
     ? buildDateOrDateRangeFilter(date)
     : () => true;
@@ -49,9 +48,7 @@ export const buildEventFilter = (
       ? buildTimesFilter(timeArray)
       : () => true;
   const categoryFilter: (event: Event) => boolean =
-    categoriesArray.length > 0
-      ? buildCategoryFilter(categoriesArray)
-      : () => true;
+    categories.size > 0 ? buildCategoryFilter(categories) : () => true;
 
   return (event: Event) =>
     dateFilter(event) && timeFilter(event) && categoryFilter(event);
