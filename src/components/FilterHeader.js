@@ -27,6 +27,7 @@ import { formatDateRange } from "../data/formatters";
 import chevronRightImg from "../../assets/images/chevronRight.png";
 
 type Props = {
+  onFilterCategoriesPress: Function,
   dateFilter: ?DateOrDateRange,
   timeFilter: Set<Time>
 };
@@ -59,7 +60,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { dateFilter, timeFilter } = this.props;
+    const { dateFilter, timeFilter, onFilterCategoriesPress } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
       : text.anyDay;
@@ -86,6 +87,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
                   accessibilityTraits={["button"]}
                   accessibilityComponentType="button"
                   style={styles.categoriesFilterButton}
+                  onPress={onFilterCategoriesPress}
                 >
                   <Image source={chevronRightImg} />
                 </TouchableOpacity>
@@ -127,6 +129,10 @@ class FilterHeader extends React.PureComponent<Props, State> {
     );
   }
 }
+
+FilterHeader.defaultProps = {
+  onFilterCategoriesPress: () => {}
+};
 
 const styles = StyleSheet.create({
   container: {

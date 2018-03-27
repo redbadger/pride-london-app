@@ -85,6 +85,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
               ]
             }
             activeOpacity={0.2}
+            onPress={[Function]}
             style={
               Object {
                 "alignItems": "center",
@@ -267,6 +268,7 @@ exports[`renders correctly with any date and any time 1`] = `
               ]
             }
             activeOpacity={0.2}
+            onPress={[Function]}
             style={
               Object {
                 "alignItems": "center",
@@ -449,6 +451,7 @@ exports[`renders correctly with date range and two times 1`] = `
               ]
             }
             activeOpacity={0.2}
+            onPress={[Function]}
             style={
               Object {
                 "alignItems": "center",
@@ -631,6 +634,7 @@ exports[`renders correctly with single date and single time 1`] = `
               ]
             }
             activeOpacity={0.2}
+            onPress={[Function]}
             style={
               Object {
                 "alignItems": "center",

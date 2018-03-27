@@ -24,10 +24,16 @@ class EventsScreen extends PureComponent<Props> {
     header: null
   };
 
+  handleFilterCategoriesPress = () => {
+    this.props.navigation.navigate("DrawerOpen");
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <FilterHeader />
+        <FilterHeader
+          onFilterCategoriesPress={this.handleFilterCategoriesPress}
+        />
         {this.props.loading ? (
           <Text>Loading...</Text>
         ) : (
