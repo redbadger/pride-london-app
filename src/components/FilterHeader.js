@@ -1,6 +1,12 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, StatusBar } from "react-native";
+import {
+  View,
+  StyleSheet,
+  StatusBar,
+  TouchableOpacity,
+  Image
+} from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
@@ -10,11 +16,15 @@ import ContentPadding from "./ContentPadding";
 import {
   interestButtonBgColor,
   interestButtonTextColor,
-  filterBgColor
+  filterBgColor,
+  filterShowMeTextColor,
+  categoriesFilterButtonBgColor
 } from "../constants/colors";
 import text from "../constants/text";
 import type { DateOrDateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
+
+import chevronRightImg from "../../assets/images/chevronRight.png";
 
 type Props = {
   dateFilter: ?DateOrDateRange,
@@ -65,10 +75,20 @@ class FilterHeader extends React.PureComponent<Props, State> {
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
             <View style={styles.contentInterest}>
+              <Text type="h1" style={styles.showMeTitle}>
+                Show me
+              </Text>
               <View style={styles.interestButton}>
                 <Text type="h2" style={styles.interestButtonText}>
                   {text.filterByInterest}
                 </Text>
+                <TouchableOpacity
+                  accessibilityTraits={["button"]}
+                  accessibilityComponentType="button"
+                  style={styles.categoriesFilterButton}
+                >
+                  <Image source={chevronRightImg} />
+                </TouchableOpacity>
               </View>
               <View style={styles.mapButton}>
                 <Text style={styles.mapButtonText}>Map</Text>
@@ -118,15 +138,32 @@ const styles = StyleSheet.create({
   },
   contentInterest: {
     alignItems: "center",
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  showMeTitle: {
+    color: filterShowMeTextColor,
+    paddingTop: 5,
+    marginRight: 8
+  },
+  categoriesFilterButton: {
+    width: 38,
+    height: 40,
+    backgroundColor: categoriesFilterButtonBgColor,
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4
   },
   interestButton: {
     flex: 1,
-    height: 44,
+    height: 40,
     backgroundColor: interestButtonBgColor,
-    paddingHorizontal: 12,
     borderRadius: 4,
-    justifyContent: "center"
+    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 8
   },
   interestButtonText: {
     color: interestButtonTextColor

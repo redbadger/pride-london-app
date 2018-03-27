@@ -1,7 +1,7 @@
 // @flow
 export default {
   tabEvents: "Events",
-  filterByInterest: "I'm interested in...",
+  filterByInterest: "All events",
   filters: "Filters",
   filterPickerApply: (numberOfEvents: number) =>
     `Show ${numberOfEvents} events`,

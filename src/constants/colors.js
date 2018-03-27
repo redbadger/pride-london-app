@@ -13,9 +13,11 @@ export const dialogHeaderDividerColor = "#F2F2F2";
 
 // FILTER HEADER
 
+export const filterShowMeTextColor = "#FFFFFF";
+export const categoriesFilterButtonBgColor = "rgb(25, 26, 71)";
 export const filterBgColor = "rgb(45, 47, 127)";
 export const interestButtonBgColor = "rgb(32, 33, 90)";
-export const interestButtonTextColor = "rgb(44, 218, 157)";
+export const interestButtonTextColor = "#FFFFFF";
 export const filterButtonBorderColor = "rgb(44, 218, 157)";
 export const filterButtonTextColor = "rgb(44, 218, 157)";
 
