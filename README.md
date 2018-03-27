@@ -61,7 +61,7 @@ or alternatively using `brew cask install fastlane`
 You can then run the following command from the ios folder:
 
 ```
-fastlane match --readonly
+fastlane match development --readonly
 ```
 
 You will need access to the private `match-ios-certificates` repo and will be prompted for the passphrase. Ask on the channel to get this sent to you in a secure way ;) On success you should be presented with the installed certificates and provisioning profile for org.prideinlondon.festival.
