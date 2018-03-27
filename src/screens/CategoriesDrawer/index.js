@@ -1,5 +1,7 @@
+// @flow
 import React, { PureComponent } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import {
   categoriesDrawerBgColor,

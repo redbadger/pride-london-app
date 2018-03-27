@@ -38,6 +38,10 @@ type State = {
 };
 
 class FilterHeader extends React.PureComponent<Props, State> {
+  static defaultProps = {
+    onFilterCategoriesPress: () => {}
+  };
+
   state = {
     datesPickerVisible: false,
     timesPickerVisible: false
@@ -129,10 +133,6 @@ class FilterHeader extends React.PureComponent<Props, State> {
     );
   }
 }
-
-FilterHeader.defaultProps = {
-  onFilterCategoriesPress: () => {}
-};
 
 const styles = StyleSheet.create({
   container: {
