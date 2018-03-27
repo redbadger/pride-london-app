@@ -7,6 +7,7 @@ export default {
     `Show ${numberOfEvents} events`,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
+  filterTitle: "Show me",
   eventDetailsPrice: "From: £",
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",

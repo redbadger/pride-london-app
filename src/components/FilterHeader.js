@@ -75,8 +75,8 @@ class FilterHeader extends React.PureComponent<Props, State> {
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
             <View style={styles.contentInterest}>
-              <Text type="h1" style={styles.showMeTitle}>
-                Show me
+              <Text type="h1" style={styles.filterTitle}>
+                {text.filterTitle}
               </Text>
               <View style={styles.interestButton}>
                 <Text type="h2" style={styles.interestButtonText}>
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between"
   },
-  showMeTitle: {
+  filterTitle: {
     color: filterShowMeTextColor,
     paddingTop: 5,
     marginRight: 8

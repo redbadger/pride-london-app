@@ -35,18 +35,34 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
+            "justifyContent": "space-between",
           }
         }
       >
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "marginRight": 8,
+              "paddingTop": 5,
+            }
+          }
+          type="h1"
+        >
+          Show me
+        </Text>
         <View
           style={
             Object {
+              "alignItems": "center",
               "backgroundColor": "rgb(32, 33, 90)",
               "borderRadius": 4,
               "flex": 1,
-              "height": 44,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "space-between",
+              "paddingLeft": 8,
             }
           }
         >
@@ -54,13 +70,37 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "rgb(44, 218, 157)",
+                "color": "#FFFFFF",
               }
             }
             type="h2"
           >
-            I'm interested in...
+            All events
           </Text>
+          <TouchableOpacity
+            accessibilityComponentType="button"
+            accessibilityTraits={
+              Array [
+                "button",
+              ]
+            }
+            activeOpacity={0.2}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgb(25, 26, 71)",
+                "borderBottomRightRadius": 4,
+                "borderTopRightRadius": 4,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 38,
+              }
+            }
+          >
+            <Image
+              source={1}
+            />
+          </TouchableOpacity>
         </View>
         <View
           style={
@@ -79,7 +119,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "rgb(44, 218, 157)",
+                "color": "#FFFFFF",
                 "fontFamily": "Poppins-Bold",
                 "fontSize": 14,
                 "paddingBottom": 6,
@@ -177,18 +217,34 @@ exports[`renders correctly with any date and any time 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
+            "justifyContent": "space-between",
           }
         }
       >
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "marginRight": 8,
+              "paddingTop": 5,
+            }
+          }
+          type="h1"
+        >
+          Show me
+        </Text>
         <View
           style={
             Object {
+              "alignItems": "center",
               "backgroundColor": "rgb(32, 33, 90)",
               "borderRadius": 4,
               "flex": 1,
-              "height": 44,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "space-between",
+              "paddingLeft": 8,
             }
           }
         >
@@ -196,13 +252,37 @@ exports[`renders correctly with any date and any time 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "rgb(44, 218, 157)",
+                "color": "#FFFFFF",
               }
             }
             type="h2"
           >
-            I'm interested in...
+            All events
           </Text>
+          <TouchableOpacity
+            accessibilityComponentType="button"
+            accessibilityTraits={
+              Array [
+                "button",
+              ]
+            }
+            activeOpacity={0.2}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgb(25, 26, 71)",
+                "borderBottomRightRadius": 4,
+                "borderTopRightRadius": 4,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 38,
+              }
+            }
+          >
+            <Image
+              source={1}
+            />
+          </TouchableOpacity>
         </View>
         <View
           style={
@@ -221,7 +301,7 @@ exports[`renders correctly with any date and any time 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "rgb(44, 218, 157)",
+                "color": "#FFFFFF",
                 "fontFamily": "Poppins-Bold",
                 "fontSize": 14,
                 "paddingBottom": 6,
@@ -319,18 +399,34 @@ exports[`renders correctly with date range and two times 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
+            "justifyContent": "space-between",
           }
         }
       >
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "marginRight": 8,
+              "paddingTop": 5,
+            }
+          }
+          type="h1"
+        >
+          Show me
+        </Text>
         <View
           style={
             Object {
+              "alignItems": "center",
               "backgroundColor": "rgb(32, 33, 90)",
               "borderRadius": 4,
               "flex": 1,
-              "height": 44,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "space-between",
+              "paddingLeft": 8,
             }
           }
         >
@@ -338,13 +434,37 @@ exports[`renders correctly with date range and two times 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "rgb(44, 218, 157)",
+                "color": "#FFFFFF",
               }
             }
             type="h2"
           >
-            I'm interested in...
+            All events
           </Text>
+          <TouchableOpacity
+            accessibilityComponentType="button"
+            accessibilityTraits={
+              Array [
+                "button",
+              ]
+            }
+            activeOpacity={0.2}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgb(25, 26, 71)",
+                "borderBottomRightRadius": 4,
+                "borderTopRightRadius": 4,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 38,
+              }
+            }
+          >
+            <Image
+              source={1}
+            />
+          </TouchableOpacity>
         </View>
         <View
           style={
@@ -363,7 +483,7 @@ exports[`renders correctly with date range and two times 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "rgb(44, 218, 157)",
+                "color": "#FFFFFF",
                 "fontFamily": "Poppins-Bold",
                 "fontSize": 14,
                 "paddingBottom": 6,
@@ -461,18 +581,34 @@ exports[`renders correctly with single date and single time 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
+            "justifyContent": "space-between",
           }
         }
       >
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "marginRight": 8,
+              "paddingTop": 5,
+            }
+          }
+          type="h1"
+        >
+          Show me
+        </Text>
         <View
           style={
             Object {
+              "alignItems": "center",
               "backgroundColor": "rgb(32, 33, 90)",
               "borderRadius": 4,
               "flex": 1,
-              "height": 44,
-              "justifyContent": "center",
-              "paddingHorizontal": 12,
+              "flexDirection": "row",
+              "height": 40,
+              "justifyContent": "space-between",
+              "paddingLeft": 8,
             }
           }
         >
@@ -480,13 +616,37 @@ exports[`renders correctly with single date and single time 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "rgb(44, 218, 157)",
+                "color": "#FFFFFF",
               }
             }
             type="h2"
           >
-            I'm interested in...
+            All events
           </Text>
+          <TouchableOpacity
+            accessibilityComponentType="button"
+            accessibilityTraits={
+              Array [
+                "button",
+              ]
+            }
+            activeOpacity={0.2}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgb(25, 26, 71)",
+                "borderBottomRightRadius": 4,
+                "borderTopRightRadius": 4,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 38,
+              }
+            }
+          >
+            <Image
+              source={1}
+            />
+          </TouchableOpacity>
         </View>
         <View
           style={
@@ -505,7 +665,7 @@ exports[`renders correctly with single date and single time 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "rgb(44, 218, 157)",
+                "color": "#FFFFFF",
                 "fontFamily": "Poppins-Bold",
                 "fontSize": 14,
                 "paddingBottom": 6,
