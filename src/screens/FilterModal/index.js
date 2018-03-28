@@ -7,10 +7,13 @@ import Touchable from "../../components/Touchable";
 import ContentPadding, {
   calculateHorizontalPadding
 } from "../../components/ContentPadding";
+import SectionHeader from "../../components/SectionHeader";
+import CheckBox from "../../components/CheckBox";
 import {
   interestButtonTextColor,
   filterBgColor,
-  bgColor
+  bgColor,
+  filterModalShadow
 } from "../../constants/colors";
 
 const CancelButton = ({ onPress }: { onPress: () => void }) => (
@@ -34,75 +37,13 @@ class FilterModal extends PureComponent<{}> {
     return (
       <SafeAreaView style={styles.flex}>
         <ScrollView style={styles.flex}>
+          <SectionHeader title="Price" hasShadow={false} />
           <ContentPadding>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
-            <Text>Filter Events</Text>
+            <CheckBox
+              onChange={() => {}}
+              checked
+              label="Show only free events"
+            />
           </ContentPadding>
         </ScrollView>
         <View style={styles.footer}>
@@ -123,7 +64,18 @@ const styles = StyleSheet.create({
   footer: {
     height: 60,
     paddingVertical: 8,
-    backgroundColor: bgColor
+    backgroundColor: bgColor,
+
+    // ios shadow
+    shadowColor: filterModalShadow,
+    shadowOffset: { width: 0, height: -10 },
+    shadowOpacity: 0.6,
+    shadowRadius: 5,
+
+    // android shadow
+    borderWidth: 0,
+    elevation: 3,
+    marginTop: 6
   }
 });
 

@@ -5,12 +5,17 @@ import Touchable from "./Touchable";
 import Text from "./Text";
 import {
   eventDetailsBuyButtonColor,
-  eventDetailsBuyButtonTextColor
+  eventDetailsBuyButtonTextColor,
+  buttonPrimaryBackground,
+  buttonPrimaryTextColor
 } from "../constants/colors";
+
+type ButtonType = "primary";
 
 type Props = {
   text: string,
-  url?: string
+  url?: string,
+  type?: ButtonType
 };
 
 const onPress = url => {
@@ -19,13 +24,16 @@ const onPress = url => {
   }
 };
 
-const Button = ({ text, url }: Props) => (
-  <Touchable style={styles.button} onPress={() => onPress(url)}>
-    <Text style={styles.text}>{text}</Text>
+const Button = ({ text, url, type = "primary" }: Props) => (
+  <Touchable style={[styles.button, styles[type]]} onPress={() => onPress(url)}>
+    <Text type="h2" style={[styles.text, styles[`${type}Text`]]}>
+      {text}
+    </Text>
   </Touchable>
 );
 Button.defaultProps = {
-  url: ""
+  url: "",
+  type: "primary"
 };
 
 const styles = StyleSheet.create({
@@ -34,6 +42,14 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center"
+  },
+  // eslint-disable-next-line react-native/no-unused-styles
+  primary: {
+    backgroundColor: buttonPrimaryBackground
+  },
+  // eslint-disable-next-line react-native/no-unused-styles
+  primaryText: {
+    color: buttonPrimaryTextColor
   },
   text: {
     color: eventDetailsBuyButtonTextColor
