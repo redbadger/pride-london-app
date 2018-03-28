@@ -6,6 +6,7 @@ import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
+import FilterModal from "./screens/FilterModal";
 import {
   EVENT_LIST,
   EVENT_DETAILS,
@@ -37,6 +38,35 @@ const HomeStack = StackNavigator(
   }
 );
 
+const TabNav = TabNavigator(
+  {
+    Home: { screen: HomeStack },
+    Events: { screen: EventsStack },
+    Parade: { screen: () => <View /> },
+    Saved: { screen: () => <View /> },
+    More: { screen: () => <View /> }
+  },
+  {
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: "bottom",
+    initialRouteName: "Home"
+  }
+);
+
+const RootStack = StackNavigator(
+  {
+    Main: {
+      screen: TabNav
+    },
+    FilterModal: {
+      screen: FilterModal
+    }
+  },
+  {
+    mode: "modal"
+  }
+);
+
 EventsStack.navigationOptions = {
   tabBarTestIDProps: {
     testID: "events-tab-button",
@@ -51,17 +81,4 @@ HomeStack.navigationOptions = {
   }
 };
 
-export default TabNavigator(
-  {
-    Home: { screen: HomeStack },
-    Events: { screen: EventsStack },
-    Parade: { screen: () => <View /> },
-    Saved: { screen: () => <View /> },
-    More: { screen: () => <View /> }
-  },
-  {
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: "bottom",
-    initialRouteName: "Home"
-  }
-);
+export default RootStack;

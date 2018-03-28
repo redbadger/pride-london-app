@@ -9,7 +9,8 @@ type OwnProps = {};
 
 type Props = {
   dateFilter: ?DateOrDateRange,
-  timeFilter: Set<Time>
+  timeFilter: Set<Time>,
+  onFilterButtonPress: () => void
 } & OwnProps;
 
 const mapStateToProps = state => ({

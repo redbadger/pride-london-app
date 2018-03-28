@@ -18,7 +18,8 @@ import { formatDateRange } from "../data/formatters";
 
 type Props = {
   dateFilter: ?DateOrDateRange,
-  timeFilter: Set<Time>
+  timeFilter: Set<Time>,
+  onFilterButtonPress: () => void
 };
 
 type State = {
@@ -49,7 +50,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { dateFilter, timeFilter } = this.props;
+    const { dateFilter, timeFilter, onFilterButtonPress } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
       : text.anyDay;
@@ -70,9 +71,6 @@ class FilterHeader extends React.PureComponent<Props, State> {
                   {text.filterByInterest}
                 </Text>
               </View>
-              <View style={styles.mapButton}>
-                <Text style={styles.mapButtonText}>Map</Text>
-              </View>
             </View>
             <View style={styles.contentFilters}>
               <FilterHeaderButton
@@ -87,7 +85,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
               />
               <FilterHeaderButton
                 text={text.filters}
-                onPress={() => {}}
+                onPress={onFilterButtonPress}
                 style={styles.filterButton}
               />
             </View>
@@ -130,21 +128,6 @@ const styles = StyleSheet.create({
   },
   interestButtonText: {
     color: interestButtonTextColor
-  },
-  mapButton: {
-    marginLeft: 12,
-    width: 52,
-    height: 52,
-    backgroundColor: interestButtonBgColor,
-    alignItems: "center",
-    justifyContent: "flex-end",
-    borderRadius: 25
-  },
-  mapButtonText: {
-    color: interestButtonTextColor,
-    fontFamily: "Poppins-Bold",
-    fontSize: 14,
-    paddingBottom: 6
   },
   contentFilters: {
     flexDirection: "row",

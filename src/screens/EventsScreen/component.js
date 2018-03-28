@@ -25,23 +25,32 @@ class EventsScreen extends PureComponent<Props> {
   };
 
   render() {
+    const {
+      navigation,
+      updateEvents,
+      events,
+      refreshing,
+      getAssetUrl
+    } = this.props;
     return (
       <View style={styles.container}>
-        <FilterHeader />
+        <FilterHeader
+          onFilterButtonPress={() => navigation.navigate("FilterModal")}
+        />
         {this.props.loading ? (
           <Text>Loading...</Text>
         ) : (
           <EventList
             locale={locale}
-            events={this.props.events}
-            refreshing={this.props.refreshing}
+            events={events}
+            refreshing={refreshing}
             onRefresh={() => {
-              this.props.updateEvents();
+              updateEvents();
             }}
             onPress={(eventId: string) => {
-              this.props.navigation.navigate(EVENT_DETAILS, { eventId });
+              navigation.navigate(EVENT_DETAILS, { eventId });
             }}
-            getAssetUrl={this.props.getAssetUrl}
+            getAssetUrl={getAssetUrl}
           />
         )}
       </View>

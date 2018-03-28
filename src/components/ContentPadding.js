@@ -9,8 +9,11 @@ type Props = {
   style?: StyleObj
 };
 
+export const calculateHorizontalPadding = () =>
+  Dimensions.get("window").width >= 360 ? 16 : 8;
+
 const ContentPadding = ({ children, style }: Props) => {
-  const paddingHorizontal = Dimensions.get("window").width >= 360 ? 16 : 8;
+  const paddingHorizontal = calculateHorizontalPadding();
   return <View style={[{ paddingHorizontal }, style]}>{children}</View>;
 };
 ContentPadding.defaultProps = {

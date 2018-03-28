@@ -72,7 +72,9 @@ const EventCard = ({
             {name}
           </Text>
         </View>
-        <Text style={styles.eventLocation}>{locationName}</Text>
+        <Text type="small" style={styles.eventLocation}>
+          {locationName}
+        </Text>
       </View>
     </View>
   );
@@ -114,8 +116,6 @@ const styles = StyleSheet.create({
     color: eventCardTextColor
   },
   eventLocation: {
-    fontSize: 12,
-    lineHeight: 16,
     paddingTop: 4,
     color: eventCardTextColor
   }
