@@ -35,7 +35,7 @@ class FilterModal extends PureComponent<{}> {
 
   render() {
     return (
-      <SafeAreaView style={styles.flex}>
+      <SafeAreaView style={styles.flex} forceInset={{ bottom: "always" }}>
         <ScrollView style={styles.flex}>
           <SectionHeader title="Price" hasShadow={false} />
           <ContentPadding>
