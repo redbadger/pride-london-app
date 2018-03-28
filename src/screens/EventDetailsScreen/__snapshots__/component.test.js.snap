@@ -341,6 +341,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       >
         <Button
           text="Buy Tickets"
+          type="primary"
           url="https://prideinlondon.org/pride-in-the-park/"
         />
       </View>

@@ -11,22 +11,32 @@ exports[`renders correctly 1`] = `
   delayPressIn={50}
   onPress={[Function]}
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#D8D8D8",
-      "borderRadius": 4,
-      "justifyContent": "center",
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#D8D8D8",
+        "borderRadius": 4,
+        "justifyContent": "center",
+      },
+      Object {
+        "backgroundColor": "rgb(44, 218, 157)",
+      },
+    ]
   }
 >
   <Text
     markdown={false}
     style={
-      Object {
-        "color": "#FFFFFF",
-      }
+      Array [
+        Object {
+          "color": "#FFFFFF",
+        },
+        Object {
+          "color": "rgb(45, 47, 127)",
+        },
+      ]
     }
-    type="text"
+    type="h2"
   >
     a button
   </Text>
