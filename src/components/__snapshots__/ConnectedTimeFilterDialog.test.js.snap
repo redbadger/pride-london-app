@@ -3,55 +3,64 @@
 exports[`ConnectedTimeFilterDialog renders component 1`] = `
 <Dialog
   applyButtonText="Show 0 events"
-  headerRight={
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      accessible={undefined}
-      delayLongPress={undefined}
-      delayPressIn={50}
-      delayPressOut={undefined}
-      disabled={undefined}
-      hitSlop={undefined}
-      onLongPress={undefined}
-      onPress={[Function]}
-      onPressIn={undefined}
-      onPressOut={undefined}
-      pressRetentionOffset={undefined}
-      style={undefined}
-    >
-      <Text
-        markdown={false}
-        style={Object {}}
-        type="text"
-      >
-        Clear
-      </Text>
-    </Touchable>
-  }
   onApply={[Function]}
   onCancel={[Function]}
-  title="Select dates"
+  title="Select time"
   visible={true}
 >
-  <DateRangePicker
-    dateRange={null}
+  <CheckBox
+    checked={false}
+    key="Morning"
+    label="Morning"
     onChange={[Function]}
+    style={
+      Object {
+        "height": 48,
+        "paddingHorizontal": 16,
+      }
+    }
+  />
+  <CheckBox
+    checked={false}
+    key="Afternoon"
+    label="Afternoon"
+    onChange={[Function]}
+    style={
+      Object {
+        "height": 48,
+        "paddingHorizontal": 16,
+      }
+    }
+  />
+  <CheckBox
+    checked={false}
+    key="Evening"
+    label="Evening"
+    onChange={[Function]}
+    style={
+      Object {
+        "height": 48,
+        "paddingHorizontal": 16,
+      }
+    }
   />
 </Dialog>
 `;
 
 exports[`ConnectedTimeFilterDialog renders connector 1`] = `
-<DateRangePickerDialog
+<MultiSelectDialog
   applyButtonText="Show 0 events"
-  dateRange={null}
   onApply={[Function]}
   onCancel={[Function]}
   onChange={[Function]}
+  options={
+    Array [
+      "Morning",
+      "Afternoon",
+      "Evening",
+    ]
+  }
+  selectedIndexes={Array []}
   store={
     Object {
       "clearActions": [Function],
@@ -83,6 +92,7 @@ exports[`ConnectedTimeFilterDialog renders connector 1`] = `
       "unsubscribe": [Function],
     }
   }
+  title="Select time"
   visible={true}
 />
 `;

@@ -2,7 +2,7 @@ import React from "react";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { shallow } from "enzyme";
-import ConnectedTimeFilterDialog from "./ConnectedDateFilterDialog";
+import ConnectedTimeFilterDialog from "./ConnectedTimeFilterDialog";
 
 const initialState = {
   events: {
@@ -110,14 +110,15 @@ describe("ConnectedTimeFilterDialog", () => {
 
     output
       .dive()
-      .find("DateRangePicker")
+      .find("CheckBox")
+      .first()
       .props()
-      .onChange("2018-02-02");
+      .onChange();
 
     const actions = store.getActions();
 
-    expect(actions).toEqual([
-      { type: "STAGE_EVENT_FILTERS", payload: { date: "2018-02-02" } }
-    ]);
+    expect(actions[0]).toEqual(
+      expect.objectContaining({ type: "STAGE_EVENT_FILTERS" })
+    );
   });
 });
