@@ -8,7 +8,8 @@ import type { Event } from "../data/event";
 import type { DateOrDateRange, Time } from "../data/date-time";
 import type { State } from "../reducers";
 
-const getEventFiltersState = (state: State) => state.eventFilters;
+const getEventFiltersState = (state: State) =>
+  state.eventFilters.selectedFilters;
 
 export const selectDateFilter = (state: State) =>
   getEventFiltersState(state).date;

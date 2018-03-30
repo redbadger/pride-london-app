@@ -35,9 +35,11 @@ const buildState = ({
     refreshing: false
   },
   eventFilters: {
-    date,
-    time,
-    categories
+    selectedFilters: {
+      date,
+      time,
+      categories
+    }
   }
 });
 
@@ -115,7 +117,7 @@ describe("buildEventFilter", () => {
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateFilter).toHaveBeenCalledWith(
-      state.eventFilters.date
+      state.eventFilters.selectedFilters.date
     );
     expect(untypedBuildDateRangeFilter).not.toHaveBeenCalled();
   });
@@ -135,7 +137,7 @@ describe("buildEventFilter", () => {
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateFilter).not.toHaveBeenCalled();
     expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(
-      state.eventFilters.date
+      state.eventFilters.selectedFilters.date
     );
   });
 

@@ -3,16 +3,22 @@ import type { Reducer } from "redux";
 import type { DateOrDateRange, Time } from "../data/date-time";
 import type { EventFiltersAction } from "../actions/event-filters";
 
-export type State = {
+type FilterCollection = {
   date: ?DateOrDateRange,
   time: Set<Time>,
   categories: Set<string>
 };
 
+export type State = {
+  selectedFilters: FilterCollection
+};
+
 const defaultState = {
-  categories: new Set(), // When this is empty it signifies no category filter.
-  date: null,
-  time: new Set()
+  selectedFilters: {
+    categories: new Set(), // When this is empty it signifies no category filter.
+    date: null,
+    time: new Set()
+  }
 };
 
 const eventFilters: Reducer<State, EventFiltersAction> = (
@@ -23,7 +29,10 @@ const eventFilters: Reducer<State, EventFiltersAction> = (
     case "UPDATE_EVENT_FILTERS":
       return {
         ...state,
-        ...action.payload
+        selectedFilters: {
+          ...state.selectedFilters,
+          ...action.payload
+        }
       };
     default:
       return state;
