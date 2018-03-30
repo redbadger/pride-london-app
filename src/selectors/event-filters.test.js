@@ -23,11 +23,10 @@ export type BuildStateArguments = {
   categories?: Set<string>
 };
 
-const buildState = ({
-  date,
-  time,
-  categories = new Set()
-}: BuildStateArguments) => ({
+const buildState = (
+  selectedFilers: BuildStateArguments,
+  stagedFilters: BuildStateArguments
+) => ({
   events: {
     entries: [],
     assets: [],
@@ -36,9 +35,14 @@ const buildState = ({
   },
   eventFilters: {
     selectedFilters: {
-      date,
-      time,
-      categories
+      date: selectedFilers.date,
+      time: selectedFilers.time,
+      categories: selectedFilers.categories || new Set()
+    },
+    stagedFilters: {
+      date: stagedFilters.date,
+      time: stagedFilters.time,
+      categories: stagedFilters.categories || new Set()
     }
   }
 });
@@ -64,25 +68,70 @@ const buildEvent = ({
 
 describe("selectDateFilter", () => {
   it("returns the date part of the eventFilters", () => {
-    const state = buildState({
-      date: "2018-01-01",
-      time: new Set(["morning"])
-    });
+    const state = buildState(
+      {
+        date: "2018-01-01",
+        time: new Set(["morning"])
+      },
+      {
+        date: "2018-01-02",
+        time: new Set(["morning"])
+      }
+    );
 
     const actual = selectDateFilter(state);
     expect(actual).toBe("2018-01-01");
+  });
+
+  it("returns the date part of the staged eventFilters", () => {
+    const state = buildState(
+      {
+        date: "2018-01-01",
+        time: new Set(["morning"])
+      },
+      {
+        date: "2018-01-02",
+        time: new Set(["morning"])
+      }
+    );
+
+    const actual = selectDateFilter(state, true);
+    expect(actual).toBe("2018-01-02");
   });
 });
 
 describe("selectTimeFilter", () => {
   it("returns the time part of the eventFilters", () => {
     const time = new Set(["morning"]);
-    const state = buildState({
-      date: "2018-01-01",
-      time
-    });
+    const state = buildState(
+      {
+        date: "2018-01-01",
+        time
+      },
+      {
+        date: "2018-01-01",
+        time: new Set(["afternoon"])
+      }
+    );
 
     const actual = selectTimeFilter(state);
+    expect(actual).toBe(time);
+  });
+
+  it("returns the time part of the staged eventFilters", () => {
+    const time = new Set(["afternoon"]);
+    const state = buildState(
+      {
+        date: "2018-01-01",
+        time: new Set(["morning"])
+      },
+      {
+        date: "2018-01-01",
+        time
+      }
+    );
+
+    const actual = selectTimeFilter(state, true);
     expect(actual).toBe(time);
   });
 });
@@ -96,10 +145,16 @@ describe("buildEventFilter", () => {
   it("builds always truthy date filter when date is null", () => {
     untypedBuildTimeFilter.mockReturnValue(() => true);
 
-    const state = buildState({
-      date: null,
-      time: new Set(["morning", "afternoon", "evening"])
-    });
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(["morning", "afternoon", "evening"])
+      },
+      {
+        date: null,
+        time: new Set(["morning", "afternoon", "evening"])
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateFilter).not.toHaveBeenCalled();
@@ -110,10 +165,16 @@ describe("buildEventFilter", () => {
     untypedBuildTimeFilter.mockReturnValue(() => true);
     untypedBuildDateFilter.mockReturnValue(() => true);
 
-    const state = buildState({
-      date: "2018-08-02",
-      time: new Set(["morning", "afternoon", "evening"])
-    });
+    const state = buildState(
+      {
+        date: "2018-08-02",
+        time: new Set(["morning", "afternoon", "evening"])
+      },
+      {
+        date: "2018-08-02",
+        time: new Set(["morning", "afternoon", "evening"])
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateFilter).toHaveBeenCalledWith(
@@ -122,17 +183,48 @@ describe("buildEventFilter", () => {
     expect(untypedBuildDateRangeFilter).not.toHaveBeenCalled();
   });
 
+  it("builds staged date filter when date is a string", () => {
+    untypedBuildTimeFilter.mockReturnValue(() => true);
+    untypedBuildDateFilter.mockReturnValue(() => true);
+
+    const state = buildState(
+      {
+        date: "2018-08-02",
+        time: new Set(["morning", "afternoon", "evening"])
+      },
+      {
+        date: "2018-08-03",
+        time: new Set(["morning", "afternoon", "evening"])
+      }
+    );
+    const filter = buildEventFilter(state, true);
+    expect(filter(event)).toBe(true);
+    expect(untypedBuildDateFilter).toHaveBeenCalledWith(
+      state.eventFilters.stagedFilters.date
+    );
+    expect(untypedBuildDateRangeFilter).not.toHaveBeenCalled();
+  });
+
   it("builds date range filter when date is a range", () => {
     untypedBuildTimeFilter.mockReturnValue(() => true);
     untypedBuildDateRangeFilter.mockReturnValue(() => true);
 
-    const state = buildState({
-      date: {
-        startDate: "2018-08-02",
-        endDate: "2018-08-03"
+    const state = buildState(
+      {
+        date: {
+          startDate: "2018-08-02",
+          endDate: "2018-08-03"
+        },
+        time: new Set(["morning", "afternoon", "evening"])
       },
-      time: new Set(["morning", "afternoon", "evening"])
-    });
+      {
+        date: {
+          startDate: "2018-08-02",
+          endDate: "2018-08-03"
+        },
+        time: new Set(["morning", "afternoon", "evening"])
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateFilter).not.toHaveBeenCalled();
@@ -142,20 +234,32 @@ describe("buildEventFilter", () => {
   });
 
   it("builds always truthy time filter when time array is empty", () => {
-    const state = buildState({
-      date: null,
-      time: new Set()
-    });
+    const state = buildState(
+      {
+        date: null,
+        time: new Set()
+      },
+      {
+        date: null,
+        time: new Set()
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).not.toHaveBeenCalled();
   });
 
   it("builds always truthy time filter when time array contains all possible values", () => {
-    const state = buildState({
-      date: null,
-      time: new Set(["morning", "afternoon", "evening"])
-    });
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(["morning", "afternoon", "evening"])
+      },
+      {
+        date: null,
+        time: new Set(["morning", "afternoon", "evening"])
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).not.toHaveBeenCalled();
@@ -166,10 +270,16 @@ describe("buildEventFilter", () => {
       .mockReturnValue(() => true)
       .mockReturnValueOnce(() => false);
 
-    const state = buildState({
-      date: null,
-      time: new Set(["morning", "evening"])
-    });
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(["morning", "evening"])
+      },
+      {
+        date: null,
+        time: new Set(["morning", "evening"])
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).toHaveBeenCalledWith("morning");
@@ -180,10 +290,16 @@ describe("buildEventFilter", () => {
     untypedBuildTimeFilter.mockReturnValue(() => false);
     untypedBuildDateFilter.mockReturnValue(() => true);
 
-    const state = buildState({
-      date: "2018-02-01",
-      time: new Set(["morning"])
-    });
+    const state = buildState(
+      {
+        date: "2018-02-01",
+        time: new Set(["morning"])
+      },
+      {
+        date: "2018-02-01",
+        time: new Set(["morning"])
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(false);
   });
@@ -192,10 +308,16 @@ describe("buildEventFilter", () => {
     untypedBuildTimeFilter.mockReturnValue(() => true);
     untypedBuildDateFilter.mockReturnValue(() => false);
 
-    const state = buildState({
-      date: "2018-02-01",
-      time: new Set(["morning", "afternoon", "evening"])
-    });
+    const state = buildState(
+      {
+        date: "2018-02-01",
+        time: new Set(["morning", "afternoon", "evening"])
+      },
+      {
+        date: "2018-02-01",
+        time: new Set(["morning", "afternoon", "evening"])
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(false);
   });

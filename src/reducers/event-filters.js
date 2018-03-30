@@ -10,11 +10,17 @@ type FilterCollection = {
 };
 
 export type State = {
-  selectedFilters: FilterCollection
+  selectedFilters: FilterCollection,
+  stagedFilters: FilterCollection
 };
 
 const defaultState = {
   selectedFilters: {
+    categories: new Set(), // When this is empty it signifies no category filter.
+    date: null,
+    time: new Set()
+  },
+  stagedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
     time: new Set()
@@ -26,13 +32,23 @@ const eventFilters: Reducer<State, EventFiltersAction> = (
   action: EventFiltersAction
 ) => {
   switch (action.type) {
-    case "UPDATE_EVENT_FILTERS":
+    case "STAGE_EVENT_FILTERS":
       return {
         ...state,
-        selectedFilters: {
-          ...state.selectedFilters,
+        stagedFilters: {
+          ...state.stagedFilters,
           ...action.payload
         }
+      };
+    case "COMMIT_EVENT_FILTERS":
+      return {
+        ...state,
+        selectedFilters: state.stagedFilters
+      };
+    case "CLEAR_STAGED_EVENT_FILTERS":
+      return {
+        ...state,
+        stagedFilters: state.selectedFilters
       };
     default:
       return state;

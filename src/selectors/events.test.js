@@ -346,7 +346,42 @@ describe("selectFilteredEvents", () => {
     const actual = selectFilteredEvents(state);
 
     expect(actual).toEqual(expected);
-    expect(buildEventFilter).toHaveBeenCalledWith(state);
+    expect(buildEventFilter).toHaveBeenCalledWith(state, false);
+    expect(mockFilter).toHaveBeenCalledTimes(2);
+  });
+
+  it("filters events using the buildEventFilter function with staged filters", () => {
+    const mockFilter = jest
+      .fn()
+      .mockReturnValue(false)
+      .mockReturnValueOnce(true);
+    buildEventFilter.mockReturnValue(mockFilter);
+
+    const state = {
+      events: {
+        entries: [
+          {
+            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            sys: { contentType: { sys: { id: "event" } } }
+          },
+          {
+            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            sys: { contentType: { sys: { id: "event" } } }
+          }
+        ]
+      }
+    };
+
+    const expected = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+        sys: { contentType: { sys: { id: "event" } } }
+      }
+    ];
+    const actual = selectFilteredEvents(state, true);
+
+    expect(actual).toEqual(expected);
+    expect(buildEventFilter).toHaveBeenCalledWith(state, true);
     expect(mockFilter).toHaveBeenCalledTimes(2);
   });
 });

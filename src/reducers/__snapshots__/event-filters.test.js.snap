@@ -7,5 +7,10 @@ Object {
     "date": null,
     "time": Set {},
   },
+  "stagedFilters": Object {
+    "categories": Set {},
+    "date": null,
+    "time": Set {},
+  },
 }
 `;

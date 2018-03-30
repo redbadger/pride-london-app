@@ -60,8 +60,10 @@ export const selectEventById = (state: State, id: string) =>
 export const selectAssetById = (state: State, id: string): Asset =>
   (selectAssets(state).find(asset => asset.sys.id === id): any);
 
-export const selectFilteredEvents = (state: State) =>
-  selectEvents(state).filter(buildEventFilter(state));
+export const selectFilteredEvents = (
+  state: State,
+  selectStagedFilters?: boolean = false
+) => selectEvents(state).filter(buildEventFilter(state, selectStagedFilters));
 
 export const selectFeaturedEventsByTitle = (state: State, title: string) => {
   const featured = selectFeaturedEvents(state).find(
