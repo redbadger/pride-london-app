@@ -9,7 +9,8 @@ import {
   categoriesDrawerCancelColor,
   whiteColor,
   darkBlueGreyTwoColor,
-  eucalyptusGreenColor
+  eucalyptusGreenColor,
+  lightNavyBlueColor
 } from "../../constants/colors";
 import text from "../../constants/text";
 
@@ -22,6 +23,10 @@ type Props = {
 class CategoriesDrawer extends PureComponent<Props> {
   handleClose = () => {
     this.props.navigation.navigate("DrawerClose");
+  };
+
+  handleShowCategories = () => {
+    // TODO
   };
 
   render() {
@@ -39,6 +44,14 @@ class CategoriesDrawer extends PureComponent<Props> {
           </Text>
           <View style={styles.selectedCategoriesPills}>
             <Text style={styles.zeroSelected}>{text.zeroSelected}</Text>
+          </View>
+          <View>
+            <TouchableOpacity
+              style={styles.showEventsButton}
+              onPress={this.handleShowCategories}
+            >
+              <Text style={styles.showEventsText}>Show 213 events</Text>
+            </TouchableOpacity>
           </View>
         </ContentPadding>
       </SafeAreaView>
@@ -66,17 +79,31 @@ const styles = StyleSheet.create({
   },
   selectedCategoriesPills: {
     backgroundColor: darkBlueGreyTwoColor,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 11,
+    paddingBottom: 9,
     paddingLeft: 16,
     paddingRight: 16,
-    borderRadius: 4,
-    marginBottom: 16
+    borderRadius: 4
   },
   zeroSelected: {
     fontFamily: "Poppins-SemiBold",
     color: eucalyptusGreenColor,
     fontSize: 18
+  },
+  showEventsButton: {
+    backgroundColor: eucalyptusGreenColor,
+    width: "100%",
+    paddingTop: 13,
+    paddingBottom: 11,
+    borderRadius: 4,
+    marginTop: 16,
+    marginBottom: 16
+  },
+  showEventsText: {
+    fontFamily: "Poppins-SemiBold",
+    color: lightNavyBlueColor,
+    fontSize: 18,
+    textAlign: "center"
   }
 });
 
