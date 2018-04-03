@@ -5,6 +5,7 @@ import Text from "../../components/Text";
 import text from "../../constants/text";
 import {
   whiteColor,
+  coralColor,
   darkBlueGreyTwoColor,
   eucalyptusGreenColor
 } from "../../constants/colors";
@@ -37,7 +38,13 @@ const Header = ({ onClose, onClearAll }: Props) => (
       {text.filterTitle}
     </Text>
     <View style={styles.selectedCategoriesPills}>
-      <Text type="h2" style={styles.zeroSelected}>
+      {/* <Text type="h3" style={styles.categoryPill}>
+        Cabaret & Variety
+      </Text>
+      <Text type="h3" style={styles.categoryPill}>
+        Nightlife
+      </Text> */}
+      <Text type="h3" style={styles.zeroSelected}>
         {text.zeroSelected}
       </Text>
     </View>
@@ -64,15 +71,25 @@ const styles = StyleSheet.create({
   },
   selectedCategoriesPills: {
     backgroundColor: darkBlueGreyTwoColor,
-    paddingTop: 11,
-    paddingBottom: 9,
+    padding: 10,
     paddingLeft: 16,
-    paddingRight: 16,
     borderRadius: 4,
-    marginBottom: 16
+    marginBottom: 16,
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row"
   },
   zeroSelected: {
-    color: eucalyptusGreenColor
+    color: eucalyptusGreenColor,
+    paddingTop: 2
+  },
+  categoryPill: {
+    color: whiteColor,
+    backgroundColor: coralColor,
+    paddingTop: 2,
+    paddingLeft: 5,
+    paddingRight: 5,
+    marginRight: 11
   }
 });
 
