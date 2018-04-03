@@ -12,12 +12,13 @@ import {
   lightNavyBlueColor
 } from "../../constants/colors";
 import text from "../../constants/text";
-
 import ContentPadding from "../../components/ContentPadding";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  events: Event[]
+  events: Event[],
+  onFiltersChange: Function,
+  onClearAll: Function
 };
 
 class CategoriesFilterScreen extends PureComponent<Props> {
@@ -26,12 +27,26 @@ class CategoriesFilterScreen extends PureComponent<Props> {
     tabBarVisible: false
   };
 
+  static defaultProps = {
+    onFiltersChange: () => {},
+    onClearAll: () => {}
+  };
+
   handleClose = () => {
     this.props.navigation.goBack();
   };
 
+  handleClearAll = () => {
+    this.props.onClearAll();
+  };
+
   handleShowCategories = () => {
-    // TODO
+    this.props.navigation.pop();
+  };
+
+  handleFilterChange = () => {
+    // TODO: Apply result from actual category selection
+    this.props.onFiltersChange(["Music"]);
   };
 
   render() {
@@ -50,7 +65,10 @@ class CategoriesFilterScreen extends PureComponent<Props> {
                   {text.cancel}
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.actionButton} onPress={() => {}}>
+              <TouchableOpacity
+                style={styles.actionButton}
+                onPress={this.handleClearAll}
+              >
                 <Text type="h4" style={styles.actionButtonText}>
                   {text.clearAll}
                 </Text>
@@ -65,7 +83,11 @@ class CategoriesFilterScreen extends PureComponent<Props> {
               </Text>
             </View>
           </View>
-          <View style={styles.categoriesList} />
+          <View style={styles.categoriesList}>
+            <TouchableOpacity onPress={this.handleFilterChange}>
+              <Text type="h4">Music</Text>
+            </TouchableOpacity>
+          </View>
           <View>
             <TouchableOpacity
               style={styles.showEventsButton}
