@@ -38,13 +38,17 @@ class CategoriesDrawer extends PureComponent<Props> {
               style={styles.cancelButton}
               onPress={this.handleClose}
             >
-              <Text style={styles.cancelButtonText}>{text.cancel}</Text>
+              <Text type="h4" style={styles.cancelButtonText}>
+                {text.cancel}
+              </Text>
             </TouchableOpacity>
             <Text type="h1" style={styles.filterTitle}>
               {text.filterTitle}
             </Text>
             <View style={styles.selectedCategoriesPills}>
-              <Text style={styles.zeroSelected}>{text.zeroSelected}</Text>
+              <Text type="h2" style={styles.zeroSelected}>
+                {text.zeroSelected}
+              </Text>
             </View>
           </View>
           <View style={styles.categoriesList} />
@@ -53,7 +57,9 @@ class CategoriesDrawer extends PureComponent<Props> {
               style={styles.showEventsButton}
               onPress={this.handleShowCategories}
             >
-              <Text style={styles.showEventsText}>{text.showEvents(213)}</Text>
+              <Text type="h2" style={styles.showEventsText}>
+                {text.showEvents(213)}
+              </Text>
             </TouchableOpacity>
           </View>
         </ContentPadding>
@@ -75,9 +81,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   cancelButtonText: {
-    color: categoriesDrawerCancelColor,
-    fontFamily: "Roboto-Medium",
-    fontSize: 16
+    color: categoriesDrawerCancelColor
   },
   filterTitle: {
     color: whiteColor,
@@ -94,9 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   zeroSelected: {
-    fontFamily: "Poppins-SemiBold",
-    color: eucalyptusGreenColor,
-    fontSize: 18
+    color: eucalyptusGreenColor
   },
   categoriesList: {
     backgroundColor: eucalyptusGreenColor,
@@ -112,9 +114,7 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   showEventsText: {
-    fontFamily: "Poppins-SemiBold",
     color: lightNavyBlueColor,
-    fontSize: 18,
     textAlign: "center"
   }
 });
