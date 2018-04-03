@@ -6,7 +6,7 @@ import type { EventDays, LocalizedFieldRef } from "../../data/event";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";
-import { EVENT_DETAILS } from "../../constants/routes";
+import { EVENT_DETAILS, EVENT_CATEGORY_FILTER } from "../../constants/routes";
 
 const locale = "en-GB";
 
@@ -25,7 +25,7 @@ class EventsScreen extends PureComponent<Props> {
   };
 
   handleFilterCategoriesPress = () => {
-    this.props.navigation.navigate("DrawerOpen");
+    this.props.navigation.navigate(EVENT_CATEGORY_FILTER);
   };
 
   render() {

@@ -1,12 +1,7 @@
 // @flow
-import { View, Dimensions } from "react-native";
+import { View } from "react-native";
 import React from "react";
-import {
-  TabNavigator,
-  TabBarBottom,
-  StackNavigator,
-  DrawerNavigator
-} from "react-navigation";
+import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
@@ -16,13 +11,15 @@ import {
   EVENT_LIST,
   EVENT_DETAILS,
   FEATURED_EVENT_LIST,
-  HOME
+  HOME,
+  EVENT_CATEGORY_FILTER
 } from "./constants/routes";
 
 const EventsStack = StackNavigator(
   {
     [EVENT_LIST]: { screen: EventsScreen, tabBarLabel: "Events" },
-    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Events" }
+    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Events" },
+    [EVENT_CATEGORY_FILTER]: { screen: CategoriesDrawer, tabBarLabel: "Events" }
   },
   {
     initialRouteName: EVENT_LIST
@@ -72,17 +69,4 @@ const TabNavigation = TabNavigator(
   }
 );
 
-const AppNavigation = DrawerNavigator(
-  {
-    tabs: {
-      screen: TabNavigation
-    }
-  },
-  {
-    contentComponent: CategoriesDrawer,
-    drawerPosition: "right",
-    drawerWidth: Dimensions.get("window").width
-  }
-);
-
-export default AppNavigation;
+export default TabNavigation;

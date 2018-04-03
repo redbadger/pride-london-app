@@ -21,8 +21,13 @@ type Props = {
 };
 
 class CategoriesDrawer extends PureComponent<Props> {
+  static navigationOptions = {
+    header: null,
+    tabBarVisible: false
+  };
+
   handleClose = () => {
-    this.props.navigation.navigate("DrawerClose");
+    this.props.navigation.pop();
   };
 
   handleShowCategories = () => {
