@@ -2,12 +2,13 @@
 import { StyleSheet } from "react-native";
 import * as colors from "./colors";
 
+const showEvents = (numberOfEvents: number) => `Show ${numberOfEvents} events`;
+
 export default {
   tabEvents: "Events",
   filterByInterest: "All events",
   filters: "Filters",
-  filterPickerApply: (numberOfEvents: number) =>
-    `Show ${numberOfEvents} events`,
+  filterPickerApply: showEvents,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
   filterTitle: "Show me",
@@ -25,7 +26,8 @@ export default {
     evening: "Evening"
   },
   cancel: "Cancel",
-  zeroSelected: "0 selected"
+  zeroSelected: "0 selected",
+  showEvents
 };
 
 export const textStyles = StyleSheet.create({

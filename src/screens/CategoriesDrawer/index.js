@@ -50,7 +50,7 @@ class CategoriesDrawer extends PureComponent<Props> {
               style={styles.showEventsButton}
               onPress={this.handleShowCategories}
             >
-              <Text style={styles.showEventsText}>Show 213 events</Text>
+              <Text style={styles.showEventsText}>{text.showEvents(213)}</Text>
             </TouchableOpacity>
           </View>
         </ContentPadding>
