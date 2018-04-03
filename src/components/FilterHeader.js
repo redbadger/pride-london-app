@@ -37,6 +37,8 @@ type State = {
   timesPickerVisible: boolean
 };
 
+// $FlowFixMe
+// Leaving this here for the PR review. Not really sure how to fix the warning.
 class FilterHeader extends React.PureComponent<Props, State> {
   static defaultProps = {
     onFilterCategoriesPress: () => {}
