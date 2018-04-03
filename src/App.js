@@ -6,20 +6,23 @@ import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
-import CategoriesDrawer from "./screens/CategoriesDrawer";
+import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
 import {
   EVENT_LIST,
   EVENT_DETAILS,
   FEATURED_EVENT_LIST,
   HOME,
-  EVENT_CATEGORY_FILTER
+  EVENT_CATEGORIES_FILTER
 } from "./constants/routes";
 
 const EventsStack = StackNavigator(
   {
     [EVENT_LIST]: { screen: EventsScreen, tabBarLabel: "Events" },
     [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Events" },
-    [EVENT_CATEGORY_FILTER]: { screen: CategoriesDrawer, tabBarLabel: "Events" }
+    [EVENT_CATEGORIES_FILTER]: {
+      screen: CategoriesFilterScreen,
+      tabBarLabel: "Events"
+    }
   },
   {
     initialRouteName: EVENT_LIST

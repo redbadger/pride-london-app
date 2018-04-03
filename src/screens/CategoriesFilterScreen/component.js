@@ -6,8 +6,6 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../data/event";
 import Text from "../../components/Text";
 import {
-  categoriesDrawerBgColor,
-  categoriesDrawerCancelColor,
   whiteColor,
   darkBlueGreyTwoColor,
   eucalyptusGreenColor,
@@ -22,7 +20,7 @@ type Props = {
   events: Event[]
 };
 
-class CategoriesDrawer extends PureComponent<Props> {
+class CategoriesFilterScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null,
     tabBarVisible: false
@@ -80,7 +78,7 @@ class CategoriesDrawer extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: categoriesDrawerBgColor
+    backgroundColor: lightNavyBlueColor
   },
   contents: {
     flex: 1,
@@ -90,7 +88,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   cancelButtonText: {
-    color: categoriesDrawerCancelColor
+    color: eucalyptusGreenColor
   },
   filterTitle: {
     color: whiteColor,
@@ -128,4 +126,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CategoriesDrawer;
+export default CategoriesFilterScreen;

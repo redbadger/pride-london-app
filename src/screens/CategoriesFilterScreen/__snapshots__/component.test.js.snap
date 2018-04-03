@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <withOrientation
   style={
     Object {
-      "backgroundColor": "rgb(45, 47, 127)",
+      "backgroundColor": "#2d2f7f",
       "flex": 1,
     }
   }
@@ -31,7 +31,7 @@ exports[`renders correctly 1`] = `
           markdown={false}
           style={
             Object {
-              "color": "rgb(44, 218, 157)",
+              "color": "#2cda9d",
             }
           }
           type="h4"
