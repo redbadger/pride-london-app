@@ -41,14 +41,21 @@ class CategoriesFilterScreen extends PureComponent<Props> {
       <SafeAreaView style={styles.container}>
         <ContentPadding style={styles.contents}>
           <View>
-            <TouchableOpacity
-              style={styles.cancelButton}
-              onPress={this.handleClose}
-            >
-              <Text type="h4" style={styles.cancelButtonText}>
-                {text.cancel}
-              </Text>
-            </TouchableOpacity>
+            <View style={styles.actionButtons}>
+              <TouchableOpacity
+                style={styles.actionButton}
+                onPress={this.handleClose}
+              >
+                <Text type="h4" style={styles.actionButtonText}>
+                  {text.cancel}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.actionButton} onPress={() => {}}>
+                <Text type="h4" style={styles.actionButtonText}>
+                  {text.clearAll}
+                </Text>
+              </TouchableOpacity>
+            </View>
             <Text type="h1" style={styles.filterTitle}>
               {text.filterTitle}
             </Text>
@@ -84,10 +91,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between"
   },
-  cancelButton: {
+  actionButtons: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 10
   },
-  cancelButtonText: {
+  actionButton: {
+    width: 60
+  },
+  actionButtonText: {
     color: eucalyptusGreenColor
   },
   filterTitle: {

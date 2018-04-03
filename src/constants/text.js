@@ -27,7 +27,8 @@ export default {
   },
   cancel: "Cancel",
   zeroSelected: "0 selected",
-  showEvents
+  showEvents,
+  clearAll: "Clear all"
 };
 
 export const textStyles = StyleSheet.create({
