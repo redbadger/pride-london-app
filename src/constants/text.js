@@ -23,7 +23,9 @@ export default {
     morning: "Morning",
     afternoon: "Afternoon",
     evening: "Evening"
-  }
+  },
+  cancel: "Cancel",
+  zeroSelected: "0 selected"
 };
 
 export const textStyles = StyleSheet.create({
