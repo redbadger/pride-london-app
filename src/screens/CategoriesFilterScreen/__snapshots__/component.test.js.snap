@@ -157,7 +157,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
           }
           type="h2"
         >
-          Show 1 events
+          Show 1 event
         </Text>
       </TouchableOpacity>
     </View>

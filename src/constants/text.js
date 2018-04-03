@@ -2,7 +2,17 @@
 import { StyleSheet } from "react-native";
 import * as colors from "./colors";
 
-const showEvents = (numberOfEvents: number) => `Show ${numberOfEvents} events`;
+const showEvents = (numberOfEvents: number) => {
+  if (numberOfEvents <= 0) {
+    return "No events";
+  }
+
+  if (numberOfEvents === 1) {
+    return "Show 1 event";
+  }
+
+  return `Show ${numberOfEvents} events`;
+};
 
 export default {
   tabEvents: "Events",
