@@ -43,7 +43,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
           markdown={false}
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#ffffff",
               "marginRight": 8,
               "paddingTop": 5,
             }
@@ -70,7 +70,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#ffffff",
               }
             }
             type="h2"
@@ -120,7 +120,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#ffffff",
                 "fontFamily": "Poppins-Bold",
                 "fontSize": 14,
                 "paddingBottom": 6,
@@ -226,7 +226,7 @@ exports[`renders correctly with any date and any time 1`] = `
           markdown={false}
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#ffffff",
               "marginRight": 8,
               "paddingTop": 5,
             }
@@ -253,7 +253,7 @@ exports[`renders correctly with any date and any time 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#ffffff",
               }
             }
             type="h2"
@@ -303,7 +303,7 @@ exports[`renders correctly with any date and any time 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#ffffff",
                 "fontFamily": "Poppins-Bold",
                 "fontSize": 14,
                 "paddingBottom": 6,
@@ -409,7 +409,7 @@ exports[`renders correctly with date range and two times 1`] = `
           markdown={false}
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#ffffff",
               "marginRight": 8,
               "paddingTop": 5,
             }
@@ -436,7 +436,7 @@ exports[`renders correctly with date range and two times 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#ffffff",
               }
             }
             type="h2"
@@ -486,7 +486,7 @@ exports[`renders correctly with date range and two times 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#ffffff",
                 "fontFamily": "Poppins-Bold",
                 "fontSize": 14,
                 "paddingBottom": 6,
@@ -592,7 +592,7 @@ exports[`renders correctly with single date and single time 1`] = `
           markdown={false}
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#ffffff",
               "marginRight": 8,
               "paddingTop": 5,
             }
@@ -619,7 +619,7 @@ exports[`renders correctly with single date and single time 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#ffffff",
               }
             }
             type="h2"
@@ -669,7 +669,7 @@ exports[`renders correctly with single date and single time 1`] = `
             markdown={false}
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#ffffff",
                 "fontFamily": "Poppins-Bold",
                 "fontSize": 14,
                 "paddingBottom": 6,

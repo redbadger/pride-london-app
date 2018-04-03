@@ -23,7 +23,7 @@ exports[`renders correctly 1`] = `
     markdown={false}
     style={
       Object {
-        "color": "#FFFFFF",
+        "color": "#ffffff",
       }
     }
     type="text"

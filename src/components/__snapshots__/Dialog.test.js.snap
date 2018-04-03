@@ -25,7 +25,7 @@ exports[`renders correctly 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "#FFFFFF",
+          "backgroundColor": "#ffffff",
           "borderRadius": 4,
           "paddingBottom": 8,
         }
@@ -108,7 +108,7 @@ exports[`renders correctly 1`] = `
         markdown={false}
         style={
           Object {
-            "color": "#FFFFFF",
+            "color": "#ffffff",
           }
         }
         type="text"
