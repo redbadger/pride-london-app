@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<withOrientation
+  style={
+    Object {
+      "backgroundColor": "rgb(45, 47, 127)",
+      "flex": 1,
+    }
+  }
+>
+  <ContentPadding
+    style={
+      Object {
+        "flex": 1,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "marginTop": 10,
+          }
+        }
+      >
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "rgb(44, 218, 157)",
+            }
+          }
+          type="h4"
+        >
+          Cancel
+        </Text>
+      </TouchableOpacity>
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "#ffffff",
+            "marginBottom": 6,
+            "marginTop": 14,
+          }
+        }
+        type="h1"
+      >
+        Show me
+      </Text>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#20215a",
+            "borderRadius": 4,
+            "marginBottom": 16,
+            "paddingBottom": 9,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 11,
+          }
+        }
+      >
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "#2cda9d",
+            }
+          }
+          type="h2"
+        >
+          0 selected
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#2cda9d",
+          "flex": 1,
+        }
+      }
+    />
+    <View>
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#2cda9d",
+            "borderRadius": 4,
+            "marginBottom": 16,
+            "marginTop": 16,
+            "paddingBottom": 11,
+            "paddingTop": 13,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          markdown={false}
+          style={
+            Object {
+              "color": "#2d2f7f",
+              "textAlign": "center",
+            }
+          }
+          type="h2"
+        >
+          Show 1 events
+        </Text>
+      </TouchableOpacity>
+    </View>
+  </ContentPadding>
+</withOrientation>
+`;
