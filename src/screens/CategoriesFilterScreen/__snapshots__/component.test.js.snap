@@ -18,27 +18,59 @@ exports[`renders correctly 1`] = `
     }
   >
     <View>
-      <TouchableOpacity
-        activeOpacity={0.2}
-        onPress={[Function]}
+      <View
         style={
           Object {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
             "marginTop": 10,
+            "width": "100%",
           }
         }
       >
-        <Text
-          markdown={false}
+        <TouchableOpacity
+          activeOpacity={0.2}
+          onPress={[Function]}
           style={
             Object {
-              "color": "#2cda9d",
+              "width": 60,
             }
           }
-          type="h4"
         >
-          Cancel
-        </Text>
-      </TouchableOpacity>
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "#2cda9d",
+              }
+            }
+            type="h4"
+          >
+            Cancel
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.2}
+          onPress={[Function]}
+          style={
+            Object {
+              "width": 60,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "#2cda9d",
+              }
+            }
+            type="h4"
+          >
+            Clear all
+          </Text>
+        </TouchableOpacity>
+      </View>
       <Text
         markdown={false}
         style={
