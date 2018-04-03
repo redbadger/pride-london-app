@@ -26,7 +26,7 @@ import { formatDateRange } from "../data/formatters";
 
 import chevronRightImg from "../../assets/images/chevronRight.png";
 
-type Props = {
+export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateOrDateRange,
   timeFilter: Set<Time>
@@ -37,8 +37,6 @@ type State = {
   timesPickerVisible: boolean
 };
 
-// $FlowFixMe
-// Leaving this here for the PR review. Not really sure how to fix the warning.
 class FilterHeader extends React.PureComponent<Props, State> {
   static defaultProps = {
     onFilterCategoriesPress: () => {}
