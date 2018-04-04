@@ -20,7 +20,9 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
   onFiltersChange: Function,
-  onClearAll: Function
+  onApplyFilters: Function,
+  onClearAll: Function,
+  onClose: Function
 };
 
 const categoryList = (locale: string): EventCategoryList =>
@@ -34,10 +36,13 @@ class CategoriesFilterScreen extends PureComponent<Props> {
 
   static defaultProps = {
     onFiltersChange: () => {},
-    onClearAll: () => {}
+    onApplyFilters: () => {},
+    onClearAll: () => {},
+    onClose: () => {}
   };
 
   handleClose = () => {
+    this.props.onClose();
     this.props.navigation.goBack();
   };
 
@@ -45,7 +50,8 @@ class CategoriesFilterScreen extends PureComponent<Props> {
     this.props.onClearAll();
   };
 
-  handleShowCategories = () => {
+  handleApplyFilters = () => {
+    this.props.onApplyFilters();
     this.props.navigation.pop();
   };
 
@@ -72,7 +78,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
           <View>
             <TouchableOpacity
               style={styles.showEventsButton}
-              onPress={this.handleShowCategories}
+              onPress={this.handleApplyFilters}
             >
               <Text type="h2" style={styles.showEventsText}>
                 {text.showEvents(events.length)}

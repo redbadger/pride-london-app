@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 import { shallow } from "enzyme";
 import Container from "./";
 
-const navigation: NavigationScreenProp<*> = ({}: any);
+const navigation: NavigationScreenProp<*> = ({ goBack: jest.fn() }: any);
 
 const mockStore = configureStore([thunk]);
 
@@ -32,7 +32,7 @@ const initialState = {
 };
 
 describe("CategoriesFilterScreen Container", () => {
-  it("dispatches filter stage", () => {
+  it("dispatches stage filters action with categories payload", () => {
     const store = mockStore(initialState);
     const output = shallow(<Container store={store} navigation={navigation} />);
 
@@ -48,5 +48,32 @@ describe("CategoriesFilterScreen Container", () => {
         }
       }
     ]);
+  });
+
+  it("dispatches commit filters action to apply filters", () => {
+    const store = mockStore(initialState);
+    const output = shallow(<Container store={store} navigation={navigation} />);
+
+    output.props().onApplyFilters();
+
+    const actions = store.getActions();
+
+    expect(actions).toEqual([{ type: "COMMIT_EVENT_FILTERS" }]);
+  });
+
+  it("dispatches clear staged filters action and closes filter screen", () => {
+    const store = mockStore(initialState);
+    const output = shallow(<Container store={store} navigation={navigation} />);
+
+    output
+      .dive()
+      .find("Header")
+      .props()
+      .onClose();
+
+    const actions = store.getActions();
+
+    expect(navigation.goBack).toBeCalled();
+    expect(actions).toEqual([{ type: "CLEAR_STAGED_EVENT_FILTERS" }]);
   });
 });

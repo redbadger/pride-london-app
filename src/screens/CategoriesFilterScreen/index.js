@@ -2,7 +2,11 @@
 import { connect } from "react-redux";
 import type { Connector, MapStateToProps } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
-import { stageEventFilters } from "../../actions/event-filters";
+import {
+  stageEventFilters,
+  commitEventFilters,
+  clearStagedEventFilters
+} from "../../actions/event-filters";
 import type { Event } from "../../data/event";
 import type { State } from "../../reducers";
 import { selectFilteredEvents } from "../../selectors/events";
@@ -17,13 +21,15 @@ type Props = {
 } & OwnProps;
 
 const mapStateToProps: MapStateToProps<State, OwnProps, *> = state => ({
-  events: selectFilteredEvents(state)
+  events: selectFilteredEvents(state, true)
 });
 
 const mapDispatchToProps = {
+  onApplyFilters: () => commitEventFilters(),
   onFiltersChange: (categories: Array<string>) =>
     stageEventFilters({ categories: new Set(categories) }),
-  onClearAll: () => stageEventFilters({ categories: new Set() })
+  onClearAll: () => stageEventFilters({ categories: new Set() }),
+  onClose: () => clearStagedEventFilters()
 };
 
 const connector: Connector<OwnProps, Props> = connect(
