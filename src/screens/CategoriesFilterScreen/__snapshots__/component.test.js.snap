@@ -40,55 +40,13 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     }
   >
     <CategoriesFilterList
-      categories={
-        Array [
-          Object {
-            "color": "#ff5b44",
-            "label": "Cabaret and Variety",
-          },
-          Object {
-            "color": "#2acfff",
-            "label": "Community",
-          },
-          Object {
-            "color": "#2c77e5",
-            "label": "Talks and Debates",
-          },
-          Object {
-            "color": "#7de2d1",
-            "label": "Film and Screenings",
-          },
-          Object {
-            "color": "#fc4984",
-            "label": "Plays and Theatre",
-          },
-          Object {
-            "color": "#00a3bd",
-            "label": "Social and Networking",
-          },
-          Object {
-            "color": "#ffd95e",
-            "label": "Nightlife",
-          },
-          Object {
-            "color": "#bc01ff",
-            "label": "Exhibition and Tours",
-          },
-          Object {
-            "color": "#c3d30e",
-            "label": "Sports and Activities",
-          },
-          Object {
-            "color": "#ff88f1",
-            "label": "Health",
-          },
-          Object {
-            "color": "#5770d1",
-            "label": "Music",
-          },
-        ]
-      }
+      locale="en-GB"
       onPress={[Function]}
+      stagedCategories={
+        Set {
+          "Music",
+        }
+      }
     />
   </View>
   <ContentPadding

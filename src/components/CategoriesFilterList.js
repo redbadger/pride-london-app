@@ -2,29 +2,43 @@
 import React from "react";
 import { StyleSheet, ScrollView, TouchableOpacity, View } from "react-native";
 import Text from "./Text";
-import type { EventCategoryList } from "../data/event";
 import { filterBgColor, whiteColor } from "../constants/colors";
+import categories from "../constants/event-categories";
 
 type Props = {
-  categories: EventCategoryList
+  locale: string,
+  stagedCategories: Set<string>,
+  onPress: Function
 };
 
-const CategoriesFilterList = ({ categories }: Props) => (
+const CategoriesFilterList = ({ locale, stagedCategories, onPress }: Props) => (
   <ScrollView style={styles.container}>
-    {categories.map(category => (
-      <TouchableOpacity
-        key={category.label}
-        style={styles.itemContainer}
-        accessibilityTraits={["button"]}
-        accessibilityComponentType="button"
-        delayPressIn={50}
-      >
-        <View
-          style={[styles.itemDecoration, { backgroundColor: category.color }]} // eslint-disable-line react-native/no-inline-styles
-        />
-        <Text style={styles.itemText}>{category.label}</Text>
-      </TouchableOpacity>
-    ))}
+    {Object.keys(categories[locale]).map(key => {
+      const category = categories[locale][key];
+
+      return (
+        <TouchableOpacity
+          key={category.label}
+          style={styles.itemContainer}
+          accessibilityTraits={["button"]}
+          accessibilityComponentType="button"
+          delayPressIn={50}
+          onPress={() => onPress(category.label)}
+        >
+          <View
+            style={[
+              styles.itemDecoration,
+              // eslint-disable-next-line react-native/no-inline-styles
+              {
+                backgroundColor: category.color,
+                width: stagedCategories.has(category.label) ? 48 : 16
+              }
+            ]}
+          />
+          <Text style={styles.itemText}>{category.label}</Text>
+        </TouchableOpacity>
+      );
+    })}
   </ScrollView>
 );
 

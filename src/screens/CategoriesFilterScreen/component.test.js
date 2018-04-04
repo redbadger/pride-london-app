@@ -21,7 +21,9 @@ describe("CategoriesFilterScreen Component", () => {
       }
     ]: any);
 
-    const component = render({ events });
+    const stagedCategories: Set<string> = new Set(["Music"]);
+
+    const component = render({ events, stagedCategories });
 
     expect(component).toMatchSnapshot();
   });

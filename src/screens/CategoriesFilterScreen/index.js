@@ -17,16 +17,18 @@ type OwnProps = {
 };
 
 type Props = {
-  events: Event[]
+  events: Event[],
+  stagedCategories: Set<string>
 } & OwnProps;
 
 const mapStateToProps: MapStateToProps<State, OwnProps, *> = state => ({
-  events: selectFilteredEvents(state, true)
+  events: selectFilteredEvents(state, true),
+  stagedCategories: state.eventFilters.stagedFilters.categories
 });
 
 const mapDispatchToProps = {
   onApplyFilters: () => commitEventFilters(),
-  onFiltersChange: (categories: Array<string>) =>
+  onFiltersChange: (categories: Set<string>) =>
     stageEventFilters({ categories: new Set(categories) }),
   onClearAll: () => stageEventFilters({ categories: new Set() }),
   onClose: () => clearStagedEventFilters()
