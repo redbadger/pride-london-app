@@ -4,7 +4,8 @@ import type { Connector, MapStateToProps } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
 import {
   stageEventFilters,
-  commitEventFilters
+  commitEventFilters,
+  clearStagedEventFilters
 } from "../../actions/event-filters";
 import type { Event } from "../../data/event";
 import type { State } from "../../reducers";
@@ -27,7 +28,7 @@ const mapDispatchToProps = {
   onApplyFilters: () => commitEventFilters(),
   onFiltersChange: (categories: Array<string>) =>
     stageEventFilters({ categories: new Set(categories) }),
-  onClearAll: () => stageEventFilters({ categories: new Set() })
+  onClearAll: () => clearStagedEventFilters()
 };
 
 const connector: Connector<OwnProps, Props> = connect(
