@@ -13,7 +13,7 @@ import text from "../../constants/text";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "./Header";
 import categories from "../../constants/event-categories";
-import CategoriesDrawerList from "../../components/CategoriesDrawerList";
+import CategoriesFilterList from "../../components/CategoriesFilterList";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -61,7 +61,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         <ContentPadding style={styles.contents}>
           <Header onClose={this.handleClose} onClearAll={this.handleClearAll} />
           <View style={styles.categoriesList}>
-            <CategoriesDrawerList
+            <CategoriesFilterList
               categories={categoryList("en-GB")}
               onPress={this.handleFilterChange}
             />
