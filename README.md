@@ -171,5 +171,5 @@ To find out more about ADRs have a read of this article: http://thinkrelevance.c
 
 * [CI Pipeline](https://circleci.com/gh/redbadger/workflows/pride-london-app): View and debug builds
 
-We would like to thank [BrowserStack](https://www.browserstack.com) for allowing us to use their resources to test the Pride in London App for free! 
+* We would like to thank [BrowserStack](https://www.browserstack.com) for allowing us to use their resources to test the Pride in London App for free! 
 [![alt text](https://github.com/redbadger/pride-london-app/blob/add-browserstack-logo/browserstack-logo-600x315.png)](https://www.browserstack.com)
