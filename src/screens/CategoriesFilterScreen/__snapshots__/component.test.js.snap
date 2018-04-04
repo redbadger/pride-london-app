@@ -17,99 +17,10 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       }
     }
   >
-    <View>
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginTop": 10,
-            "width": "100%",
-          }
-        }
-      >
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-          style={
-            Object {
-              "width": 60,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#2cda9d",
-              }
-            }
-            type="h4"
-          >
-            Cancel
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-          style={
-            Object {
-              "width": 60,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#2cda9d",
-              }
-            }
-            type="h4"
-          >
-            Clear all
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <Text
-        markdown={false}
-        style={
-          Object {
-            "color": "#ffffff",
-            "marginBottom": 6,
-            "marginTop": 14,
-          }
-        }
-        type="h1"
-      >
-        Show me
-      </Text>
-      <View
-        style={
-          Object {
-            "backgroundColor": "#20215a",
-            "borderRadius": 4,
-            "marginBottom": 16,
-            "paddingBottom": 9,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 11,
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "#2cda9d",
-            }
-          }
-          type="h2"
-        >
-          0 selected
-        </Text>
-      </View>
-    </View>
+    <Header
+      onClearAll={[Function]}
+      onClose={[Function]}
+    />
     <View
       style={
         Object {
