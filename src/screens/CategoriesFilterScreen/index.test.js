@@ -49,4 +49,15 @@ describe("CategoriesFilterScreen Container", () => {
       }
     ]);
   });
+
+  it("dispatches commit filters action to apply filters", () => {
+    const store = mockStore(initialState);
+    const output = shallow(<Container store={store} navigation={navigation} />);
+
+    output.props().onApplyFilters();
+
+    const actions = store.getActions();
+
+    expect(actions).toEqual([{ type: "COMMIT_EVENT_FILTERS" }]);
+  });
 });
