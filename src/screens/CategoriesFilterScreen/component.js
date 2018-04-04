@@ -21,7 +21,8 @@ type Props = {
   events: Event[],
   onFiltersChange: Function,
   onApplyFilters: Function,
-  onClearAll: Function
+  onClearAll: Function,
+  onClose: Function
 };
 
 const categoryList = (locale: string): EventCategoryList =>
@@ -36,11 +37,12 @@ class CategoriesFilterScreen extends PureComponent<Props> {
   static defaultProps = {
     onFiltersChange: () => {},
     onApplyFilters: () => {},
-    onClearAll: () => {}
+    onClearAll: () => {},
+    onClose: () => {}
   };
 
   handleClose = () => {
-    this.handleClearAll();
+    this.props.onClose();
     this.props.navigation.goBack();
   };
 
