@@ -32,22 +32,46 @@ const initialState = {
 };
 
 describe("CategoriesFilterScreen Container", () => {
-  it("dispatches stage filters action with categories payload", () => {
-    const store = mockStore(initialState);
-    const output = shallow(<Container store={store} navigation={navigation} />);
+  describe("dispatches stage filters action with categories payload", () => {
+    it("removes the selected category from the payload if it was already staged", () => {
+      const store = mockStore(initialState);
+      const output = shallow(
+        <Container store={store} navigation={navigation} />
+      );
 
-    output.props().onFiltersChange(new Set(["Music"]));
+      output.props().toggleCategoryFilter(new Set(["Music", "Dance"]), "Music");
 
-    const actions = store.getActions();
+      const actions = store.getActions();
 
-    expect(actions).toEqual([
-      {
-        type: "STAGE_EVENT_FILTERS",
-        payload: {
-          categories: new Set(["Music"])
+      expect(actions).toEqual([
+        {
+          type: "STAGE_EVENT_FILTERS",
+          payload: {
+            categories: new Set(["Dance"])
+          }
         }
-      }
-    ]);
+      ]);
+    });
+
+    it("adds the selected category to the payload if it was not already staged", () => {
+      const store = mockStore(initialState);
+      const output = shallow(
+        <Container store={store} navigation={navigation} />
+      );
+
+      output.props().toggleCategoryFilter(new Set(["Music", "Dance"]), "Music");
+
+      const actions = store.getActions();
+
+      expect(actions).toEqual([
+        {
+          type: "STAGE_EVENT_FILTERS",
+          payload: {
+            categories: new Set(["Dance"])
+          }
+        }
+      ]);
+    });
   });
 
   it("dispatches commit filters action to apply filters", () => {

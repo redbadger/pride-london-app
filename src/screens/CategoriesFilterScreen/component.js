@@ -21,7 +21,7 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
   stagedCategories: Set<string>,
-  onFiltersChange: Function,
+  toggleCategoryFilter: Function,
   onApplyFilters: Function,
   onClearAll: Function,
   onClose: Function
@@ -34,7 +34,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
   };
 
   static defaultProps = {
-    onFiltersChange: () => {},
+    toggleCategoryFilter: () => {},
     onApplyFilters: () => {},
     onClearAll: () => {},
     onClose: () => {}
@@ -55,9 +55,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
   };
 
   handleFilterChange = (categoryLabel: string) => {
-    const newList = new Set([...this.props.stagedCategories]);
-    if (!newList.delete(categoryLabel)) newList.add(categoryLabel);
-    this.props.onFiltersChange(newList);
+    this.props.toggleCategoryFilter(this.props.stagedCategories, categoryLabel);
   };
 
   render() {

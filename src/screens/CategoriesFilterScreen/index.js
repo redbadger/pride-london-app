@@ -28,8 +28,11 @@ const mapStateToProps: MapStateToProps<State, OwnProps, *> = state => ({
 
 const mapDispatchToProps = {
   onApplyFilters: () => commitEventFilters(),
-  onFiltersChange: (categories: Set<string>) =>
-    stageEventFilters({ categories: new Set(categories) }),
+  toggleCategoryFilter: (stagedCategories, categoryLabel) => {
+    const categories = new Set([...stagedCategories]);
+    if (!categories.delete(categoryLabel)) categories.add(categoryLabel);
+    return stageEventFilters({ categories });
+  },
   onClearAll: () => stageEventFilters({ categories: new Set() }),
   onClose: () => clearStagedEventFilters()
 };
