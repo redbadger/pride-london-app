@@ -83,4 +83,3 @@ export type EventCategory = {
   color: string
 };
 export type EventCategoryMap = { [string]: { [string]: EventCategory } };
-export type EventCategoryList = EventCategory[];

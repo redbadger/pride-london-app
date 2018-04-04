@@ -36,7 +36,7 @@ describe("CategoriesFilterScreen Container", () => {
     const store = mockStore(initialState);
     const output = shallow(<Container store={store} navigation={navigation} />);
 
-    output.props().onFiltersChange(["Music"]);
+    output.props().onFiltersChange(new Set(["Music"]));
 
     const actions = store.getActions();
 

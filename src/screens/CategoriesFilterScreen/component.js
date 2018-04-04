@@ -3,7 +3,7 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event, EventCategoryList } from "../../data/event";
+import type { Event } from "../../data/event";
 import Text from "../../components/Text";
 import {
   blackColor,
@@ -13,20 +13,19 @@ import {
 import text from "../../constants/text";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "./Header";
-import categories from "../../constants/event-categories";
 import CategoriesFilterList from "../../components/CategoriesFilterList";
+
+const locale = "en-GB";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
+  stagedCategories: Set<string>,
   onFiltersChange: Function,
   onApplyFilters: Function,
   onClearAll: Function,
   onClose: Function
 };
-
-const categoryList = (locale: string): EventCategoryList =>
-  Object.keys(categories[locale]).map(key => categories[locale][key]);
 
 class CategoriesFilterScreen extends PureComponent<Props> {
   static navigationOptions = {
@@ -55,13 +54,14 @@ class CategoriesFilterScreen extends PureComponent<Props> {
     this.props.navigation.pop();
   };
 
-  handleFilterChange = () => {
-    // TODO: Apply result from actual category selection
-    this.props.onFiltersChange(["Music"]);
+  handleFilterChange = (categoryLabel: string) => {
+    const newList = new Set([...this.props.stagedCategories]);
+    if (!newList.delete(categoryLabel)) newList.add(categoryLabel);
+    this.props.onFiltersChange(newList);
   };
 
   render() {
-    const { events } = this.props;
+    const { events, stagedCategories } = this.props;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -70,7 +70,8 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         </ContentPadding>
         <View style={styles.list}>
           <CategoriesFilterList
-            categories={categoryList("en-GB")}
+            locale={locale}
+            stagedCategories={stagedCategories}
             onPress={this.handleFilterChange}
           />
         </View>
