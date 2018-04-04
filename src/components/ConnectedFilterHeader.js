@@ -2,11 +2,10 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import { selectDateFilter, selectTimeFilter } from "../selectors/event-filters";
-import Component from "./FilterHeader";
 import type { Props as ComponentProps } from "./FilterHeader";
+import Component from "./FilterHeader";
 
 type OwnProps = {};
-
 type Props = ComponentProps & OwnProps;
 
 const mapStateToProps = state => ({
