@@ -6,6 +6,7 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event, EventCategoryList } from "../../data/event";
 import Text from "../../components/Text";
 import {
+  blackColor,
   eucalyptusGreenColor,
   lightNavyBlueColor
 } from "../../constants/colors";
@@ -58,14 +59,16 @@ class CategoriesFilterScreen extends PureComponent<Props> {
 
     return (
       <SafeAreaView style={styles.container}>
-        <ContentPadding style={styles.contents}>
+        <ContentPadding style={styles.header}>
           <Header onClose={this.handleClose} onClearAll={this.handleClearAll} />
-          <View style={styles.categoriesList}>
-            <CategoriesFilterList
-              categories={categoryList("en-GB")}
-              onPress={this.handleFilterChange}
-            />
-          </View>
+        </ContentPadding>
+        <View style={styles.list}>
+          <CategoriesFilterList
+            categories={categoryList("en-GB")}
+            onPress={this.handleFilterChange}
+          />
+        </View>
+        <ContentPadding style={styles.footer}>
           <View>
             <TouchableOpacity
               style={styles.showEventsButton}
@@ -85,15 +88,33 @@ class CategoriesFilterScreen extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "space-between",
     backgroundColor: lightNavyBlueColor
   },
-  contents: {
-    flex: 1,
-    justifyContent: "space-between"
+  header: {
+    borderWidth: 0,
+    // The below properties are required for ioS shadow
+    shadowColor: blackColor,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    // The below properties are required for android shadow
+    backgroundColor: lightNavyBlueColor,
+    elevation: 15
   },
-  categoriesList: {
+  list: {
     backgroundColor: eucalyptusGreenColor,
     flex: 1
+  },
+  footer: {
+    // The below properties are required for ioS shadow
+    shadowColor: blackColor,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    // The below properties are required for android shadow
+    backgroundColor: lightNavyBlueColor,
+    elevation: 30
   },
   showEventsButton: {
     backgroundColor: eucalyptusGreenColor,

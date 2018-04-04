@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { StyleSheet, ScrollView, TouchableOpacity, View } from "react-native";
-import ContentPadding from "./ContentPadding";
 import Text from "./Text";
 import type { EventCategoryList } from "../data/event";
 import { filterBgColor, whiteColor } from "../constants/colors";
@@ -21,11 +20,9 @@ const CategoriesFilterList = ({ categories }: Props) => (
         delayPressIn={50}
       >
         <View
-          style={{ height: 48, width: 16, backgroundColor: category.color }} // eslint-disable-line react-native/no-inline-styles
+          style={[styles.itemDecoration, { backgroundColor: category.color }]} // eslint-disable-line react-native/no-inline-styles
         />
-        <ContentPadding style={styles.item}>
-          <Text style={styles.itemText}>{category.label}</Text>
-        </ContentPadding>
+        <Text style={styles.itemText}>{category.label}</Text>
       </TouchableOpacity>
     ))}
   </ScrollView>
@@ -44,8 +41,14 @@ const styles = StyleSheet.create({
     width: 339,
     height: 48
   },
-  item: {},
+  itemDecoration: {
+    height: 48,
+    width: 16
+  },
   itemText: {
+    height: 48,
+    paddingTop: 12,
+    paddingLeft: 16,
     color: whiteColor,
     textAlign: "left",
     fontFamily: "Poppins-Bold",
