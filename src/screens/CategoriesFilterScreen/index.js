@@ -28,7 +28,8 @@ const mapDispatchToProps = {
   onApplyFilters: () => commitEventFilters(),
   onFiltersChange: (categories: Array<string>) =>
     stageEventFilters({ categories: new Set(categories) }),
-  onClearAll: () => clearStagedEventFilters()
+  onClearAll: () => stageEventFilters({ categories: new Set() }),
+  onClose: () => clearStagedEventFilters()
 };
 
 const connector: Connector<OwnProps, Props> = connect(
