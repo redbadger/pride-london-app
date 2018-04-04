@@ -6,7 +6,6 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../data/event";
 import Text from "../../components/Text";
 import {
-  blackColor,
   eucalyptusGreenColor,
   lightNavyBlueColor
 } from "../../constants/colors";
@@ -98,11 +97,6 @@ const styles = StyleSheet.create({
   },
   header: {
     borderWidth: 0,
-    // The below properties are required for ioS shadow
-    shadowColor: blackColor,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 3,
     // The below properties are required for android shadow
     backgroundColor: lightNavyBlueColor,
     elevation: 15
@@ -112,11 +106,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   footer: {
-    // The below properties are required for ioS shadow
-    shadowColor: blackColor,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 3,
     // The below properties are required for android shadow
     backgroundColor: lightNavyBlueColor,
     elevation: 30

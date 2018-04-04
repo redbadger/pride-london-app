@@ -1,9 +1,10 @@
 // @flow
 import React from "react";
-import { StyleSheet, ScrollView, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Text from "./Text";
 import { filterBgColor, whiteColor } from "../constants/colors";
 import categories from "../constants/event-categories";
+import ShadowedScrollView from "./ShadowedScrollView";
 
 type Props = {
   locale: string,
@@ -12,7 +13,7 @@ type Props = {
 };
 
 const CategoriesFilterList = ({ locale, stagedCategories, onPress }: Props) => (
-  <ScrollView style={styles.container}>
+  <ShadowedScrollView style={styles.container}>
     {Object.keys(categories[locale]).map(key => {
       const category = categories[locale][key];
 
@@ -39,7 +40,7 @@ const CategoriesFilterList = ({ locale, stagedCategories, onPress }: Props) => (
         </TouchableOpacity>
       );
     })}
-  </ScrollView>
+  </ShadowedScrollView>
 );
 
 const styles = StyleSheet.create({
@@ -50,7 +51,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     marginBottom: 8,
-    paddingTop: 8,
     paddingBottom: 12,
     width: 339,
     height: 48
