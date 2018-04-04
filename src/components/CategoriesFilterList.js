@@ -10,7 +10,7 @@ type Props = {
   categories: EventCategoryList
 };
 
-const CategoriesDrawerList = ({ categories }: Props) => (
+const CategoriesFilterList = ({ categories }: Props) => (
   <ScrollView style={styles.container}>
     {categories.map(category => (
       <TouchableOpacity
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CategoriesDrawerList;
+export default CategoriesFilterList;
