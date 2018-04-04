@@ -6,14 +6,23 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     Object {
       "backgroundColor": "#2d2f7f",
       "flex": 1,
+      "justifyContent": "space-between",
     }
   }
 >
   <ContentPadding
     style={
       Object {
-        "flex": 1,
-        "justifyContent": "space-between",
+        "backgroundColor": "#2d2f7f",
+        "borderWidth": 0,
+        "elevation": 15,
+        "shadowColor": "#111111",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 3,
       }
     }
   >
@@ -21,27 +30,82 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       onClearAll={[Function]}
       onClose={[Function]}
     />
-    <View
-      style={
-        Object {
-          "backgroundColor": "#2cda9d",
-          "flex": 1,
-        }
+  </ContentPadding>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#2cda9d",
+        "flex": 1,
       }
-    >
-      <TouchableOpacity
-        activeOpacity={0.2}
-        onPress={[Function]}
-      >
-        <Text
-          markdown={false}
-          style={Object {}}
-          type="h4"
-        >
-          Music
-        </Text>
-      </TouchableOpacity>
-    </View>
+    }
+  >
+    <CategoriesFilterList
+      categories={
+        Array [
+          Object {
+            "color": "#ff5b44",
+            "label": "Cabaret and Variety",
+          },
+          Object {
+            "color": "#2acfff",
+            "label": "Community",
+          },
+          Object {
+            "color": "#2c77e5",
+            "label": "Talks and Debates",
+          },
+          Object {
+            "color": "#7de2d1",
+            "label": "Film and Screenings",
+          },
+          Object {
+            "color": "#fc4984",
+            "label": "Plays and Theatre",
+          },
+          Object {
+            "color": "#00a3bd",
+            "label": "Social and Networking",
+          },
+          Object {
+            "color": "#ffd95e",
+            "label": "Nightlife",
+          },
+          Object {
+            "color": "#bc01ff",
+            "label": "Exhibition and Tours",
+          },
+          Object {
+            "color": "#c3d30e",
+            "label": "Sports and Activities",
+          },
+          Object {
+            "color": "#ff88f1",
+            "label": "Health",
+          },
+          Object {
+            "color": "#5770d1",
+            "label": "Music",
+          },
+        ]
+      }
+      onPress={[Function]}
+    />
+  </View>
+  <ContentPadding
+    style={
+      Object {
+        "backgroundColor": "#2d2f7f",
+        "elevation": 30,
+        "shadowColor": "#111111",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 3,
+      }
+    }
+  >
     <View>
       <TouchableOpacity
         activeOpacity={0.2}

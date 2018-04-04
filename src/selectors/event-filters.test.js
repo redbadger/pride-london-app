@@ -350,11 +350,18 @@ describe("buildEventFilter", () => {
     untypedBuildDateFilter.mockReturnValue(() => true);
     untypedBuildCategoryFilter.mockReturnValue(() => false);
 
-    const state = buildState({
-      date: null,
-      time: new Set(),
-      categories: new Set(["Community"])
-    });
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        categories: new Set(["Community"])
+      },
+      {
+        date: null,
+        time: new Set(),
+        categories: new Set(["Community"])
+      }
+    );
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(false);
   });
