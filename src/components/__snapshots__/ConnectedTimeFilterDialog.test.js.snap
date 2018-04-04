@@ -2,7 +2,7 @@
 
 exports[`ConnectedTimeFilterDialog renders component 1`] = `
 <Dialog
-  applyButtonText="Show 0 events"
+  applyButtonText="No events"
   onApply={[Function]}
   onCancel={[Function]}
   title="Select time"
@@ -49,7 +49,7 @@ exports[`ConnectedTimeFilterDialog renders component 1`] = `
 
 exports[`ConnectedTimeFilterDialog renders connector 1`] = `
 <MultiSelectDialog
-  applyButtonText="Show 0 events"
+  applyButtonText="No events"
   onApply={[Function]}
   onCancel={[Function]}
   onChange={[Function]}
