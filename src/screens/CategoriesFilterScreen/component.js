@@ -3,7 +3,7 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event } from "../../data/event";
+import type { Event, EventCategoryList } from "../../data/event";
 import Text from "../../components/Text";
 import {
   eucalyptusGreenColor,
@@ -12,6 +12,8 @@ import {
 import text from "../../constants/text";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "./Header";
+import categories from "../../constants/event-categories";
+import CategoriesDrawerList from "../../components/CategoriesDrawerList";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -19,6 +21,9 @@ type Props = {
   onFiltersChange: Function,
   onClearAll: Function
 };
+
+const categoryList = (locale: string): EventCategoryList =>
+  Object.keys(categories[locale]).map(key => categories[locale][key]);
 
 class CategoriesFilterScreen extends PureComponent<Props> {
   static navigationOptions = {
@@ -56,9 +61,10 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         <ContentPadding style={styles.contents}>
           <Header onClose={this.handleClose} onClearAll={this.handleClearAll} />
           <View style={styles.categoriesList}>
-            <TouchableOpacity onPress={this.handleFilterChange}>
-              <Text type="h4">Music</Text>
-            </TouchableOpacity>
+            <CategoriesDrawerList
+              categories={categoryList("en-GB")}
+              onPress={this.handleFilterChange}
+            />
           </View>
           <View>
             <TouchableOpacity
