@@ -34,6 +34,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
   };
 
   handleClose = () => {
+    this.handleClearAll();
     this.props.navigation.goBack();
   };
 
