@@ -32,7 +32,7 @@ const initialState = {
 };
 
 describe("CategoriesFilterScreen Container", () => {
-  it("dispatches filter stage", () => {
+  it("dispatches stage filters action with categories payload", () => {
     const store = mockStore(initialState);
     const output = shallow(<Container store={store} navigation={navigation} />);
 
