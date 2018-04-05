@@ -15,15 +15,13 @@ const CategoriesFilterList = ({ locale, stagedCategories, onPress }: Props) => (
   <ScrollView style={styles.container}>
     {Object.keys(categories[locale]).map(key => {
       const category = categories[locale][key];
-
       return (
         <TouchableOpacity
           key={category.label}
           style={styles.itemContainer}
           accessibilityTraits={["button"]}
           accessibilityComponentType="button"
-          delayPressIn={50}
-          onPress={() => onPress(category.label)}
+          onPressIn={() => onPress(category.label)}
         >
           <View
             style={[
