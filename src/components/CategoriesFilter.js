@@ -26,31 +26,44 @@ class CategoriesFilter extends Component<
     onPress: () => {}
   };
 
-  state = {
-    textWidth: 0
-  };
+  constructor(props: CategoriesFilterProps) {
+    super(props);
+
+    // No initial animation
+    Animated.timing(this.decorationWidth, {
+      toValue: Number(props.selected),
+      duration: 0,
+      useNativeDriver: true
+    }).start();
+
+    this.state = {
+      textWidth: 0
+    };
+  }
+
+  componentWillReceiveProps(props: CategoriesFilterProps) {
+    Animated.timing(this.decorationWidth, {
+      toValue: Number(props.selected),
+      duration: 200,
+      useNativeDriver: true
+    }).start();
+  }
 
   decorationWidth = new Animated.Value(0);
 
+  // Measuring text width on initial render
   handleOnLayout = (event: { nativeEvent: { layout: { width: number } } }) =>
     this.setState({ textWidth: event.nativeEvent.layout.width });
 
   render() {
-    const { category, onPress, selected } = this.props;
+    const { category, onPress } = this.props;
     const { textWidth } = this.state;
     return (
       <TouchableOpacity
         style={styles.itemContainer}
         accessibilityTraits={["button"]}
         accessibilityComponentType="button"
-        onPress={() => {
-          Animated.timing(this.decorationWidth, {
-            toValue: Number(!selected),
-            duration: 300,
-            useNativeDriver: true
-          }).start();
-          onPress(category.label);
-        }}
+        onPress={() => onPress(category.label)}
       >
         <Animated.View
           style={[
