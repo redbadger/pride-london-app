@@ -6,7 +6,6 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../data/event";
 import Text from "../../components/Text";
 import {
-  blackColor,
   eucalyptusGreenColor,
   lightNavyBlueColor
 } from "../../constants/colors";

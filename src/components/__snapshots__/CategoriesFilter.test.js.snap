@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoriesFilter Component renders correctly 1`] = `
+<TouchableOpacity
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  activeOpacity={0.2}
+  onPress={[Function]}
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "height": 48,
+      "marginBottom": 8,
+      "paddingBottom": 12,
+      "position": "relative",
+    }
+  }
+>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "height": 48,
+          "position": "absolute",
+          "width": 750,
+        },
+        Object {
+          "backgroundColor": "#ffffff",
+          "transform": Array [
+            Object {
+              "translateX": -734,
+            },
+          ],
+        },
+      ]
+    }
+  />
+  <View
+    onLayout={[Function]}
+  >
+    <Text
+      markdown={false}
+      style={
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "Poppins-Bold",
+          "fontSize": 24,
+          "height": 48,
+          "letterSpacing": 0,
+          "lineHeight": 28,
+          "paddingLeft": 28,
+          "paddingTop": 12,
+          "textAlign": "left",
+        }
+      }
+      type="text"
+    >
+      Music
+    </Text>
+  </View>
+</TouchableOpacity>
+`;

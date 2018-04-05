@@ -1,10 +1,10 @@
 // @flow
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import Text from "./Text";
-import { filterBgColor, whiteColor } from "../constants/colors";
+import { StyleSheet } from "react-native";
+import { filterBgColor } from "../constants/colors";
 import categories from "../constants/event-categories";
 import ShadowedScrollView from "./ShadowedScrollView";
+import CategoriesFilter from "./CategoriesFilter";
 
 type Props = {
   locale: string,
@@ -18,25 +18,12 @@ const CategoriesFilterList = ({ locale, stagedCategories, onPress }: Props) => (
       const category = categories[locale][key];
 
       return (
-        <TouchableOpacity
+        <CategoriesFilter
           key={category.label}
-          style={styles.itemContainer}
-          accessibilityTraits={["button"]}
-          accessibilityComponentType="button"
-          onPressIn={() => onPress(category.label)}
-        >
-          <View
-            style={[
-              styles.itemDecoration,
-              // eslint-disable-next-line react-native/no-inline-styles
-              {
-                backgroundColor: category.color,
-                width: stagedCategories.has(category.label) ? 48 : 16
-              }
-            ]}
-          />
-          <Text style={styles.itemText}>{category.label}</Text>
-        </TouchableOpacity>
+          category={category}
+          selected={stagedCategories.has(category.label)}
+          onPress={onPress}
+        />
       );
     })}
   </ShadowedScrollView>
@@ -45,29 +32,6 @@ const CategoriesFilterList = ({ locale, stagedCategories, onPress }: Props) => (
 const styles = StyleSheet.create({
   container: {
     backgroundColor: filterBgColor
-  },
-  itemContainer: {
-    flex: 1,
-    flexDirection: "row",
-    marginBottom: 8,
-    paddingBottom: 12,
-    width: 339,
-    height: 48
-  },
-  itemDecoration: {
-    height: 48,
-    width: 16
-  },
-  itemText: {
-    height: 48,
-    paddingTop: 12,
-    paddingLeft: 16,
-    color: whiteColor,
-    textAlign: "left",
-    fontFamily: "Poppins-Bold",
-    fontSize: 24,
-    lineHeight: 28,
-    letterSpacing: 0
   }
 });
 
