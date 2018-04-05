@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     width: 60
   },
   actionButtonText: {
-    color: eucalyptusGreenColor
+    color: whiteColor
   },
   filterTitle: {
     color: whiteColor,
