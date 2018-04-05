@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CategoriesFilterList Component renders correctly 1`] = `
+exports[`List Component renders correctly 1`] = `
 <ShadowedScrollView
   style={
     Object {
@@ -8,7 +8,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     }
   }
 >
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#ff5b44",
@@ -19,7 +19,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#2acfff",
@@ -30,7 +30,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#2c77e5",
@@ -41,7 +41,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#7de2d1",
@@ -52,7 +52,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#fc4984",
@@ -63,7 +63,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#00a3bd",
@@ -74,7 +74,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#ffd95e",
@@ -85,7 +85,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#bc01ff",
@@ -96,7 +96,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#c3d30e",
@@ -107,7 +107,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#ff88f1",
@@ -118,7 +118,7 @@ exports[`CategoriesFilterList Component renders correctly 1`] = `
     onPress={[Function]}
     selected={false}
   />
-  <CategoriesFilter
+  <ListItem
     category={
       Object {
         "color": "#5770d1",

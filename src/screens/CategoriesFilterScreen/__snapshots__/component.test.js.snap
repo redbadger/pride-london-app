@@ -30,7 +30,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       }
     }
   >
-    <CategoriesFilterList
+    <List
       locale="en-GB"
       onPress={[Function]}
       stagedCategories={

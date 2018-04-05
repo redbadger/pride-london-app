@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CategoriesFilter Component renders correctly 1`] = `
+exports[`ListItem Component renders correctly 1`] = `
 <TouchableOpacity
   accessibilityComponentType="button"
   accessibilityTraits={
@@ -33,12 +33,24 @@ exports[`CategoriesFilter Component renders correctly 1`] = `
           "backgroundColor": "#ffffff",
           "transform": Array [
             Object {
-              "translateX": -734,
+              "translateX": -1468,
             },
           ],
         },
       ]
     }
+  />
+  <Image
+    height={20}
+    source={1}
+    style={
+      Object {
+        "marginLeft": 6,
+        "marginTop": 16,
+        "position": "absolute",
+      }
+    }
+    width={20}
   />
   <View
     onLayout={[Function]}
@@ -53,8 +65,8 @@ exports[`CategoriesFilter Component renders correctly 1`] = `
           "height": 48,
           "letterSpacing": 0,
           "lineHeight": 28,
-          "paddingLeft": 28,
-          "paddingTop": 12,
+          "paddingLeft": 32,
+          "paddingTop": 14,
           "textAlign": "left",
         }
       }
