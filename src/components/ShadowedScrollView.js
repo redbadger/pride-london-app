@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { StyleSheet, ScrollView, View, Animated } from "react-native";
+import { StyleSheet, ScrollView, View, Animated, Platform } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import { blackColor } from "../constants/colors";
 
@@ -9,58 +9,63 @@ type Props = {
   style: StyleObj
 };
 
-type State = {
-  topShadowOpacity: number,
-  bottomShadowOpacity: number
-};
+const maxShadowOpacity: number = 1;
+const shadowFadeDuration: number = 200;
+const maxScrollEventThrottle: number = 16;
 
-const maxShadowOpacity = 1;
+class ShadowedScrollView extends React.PureComponent<Props> {
+  // eslint-disable-next-line react/sort-comp
+  topShadowOpacity: Object;
+  bottomShadowOpacity: Object;
+  contentViewHeight: number;
+  scrollViewHeight: number;
 
-class ShadowedScrollView extends React.PureComponent<Props, State> {
+  fadeShadow = (shadowAnimation: Object, toValue: number) => {
+    Animated.timing(shadowAnimation, {
+      toValue,
+      duration: shadowFadeDuration
+    }).start();
+  };
+
+  fadeTopShadow = (toValue: number) =>
+    this.fadeShadow(this.topShadowOpacity, toValue);
+
+  fadeBottomShadow = (toValue: number) =>
+    this.fadeShadow(this.bottomShadowOpacity, toValue);
+
   componentWillMount() {
-    this.topShadowAnimatedOpacity = new Animated.Value(0);
-    this.bottomShadowAnimatedOpacity = new Animated.Value(1);
+    this.topShadowOpacity = new Animated.Value(0);
+    this.bottomShadowOpacity = new Animated.Value(1);
   }
 
   handleScroll = (event: Object) => {
     const maxScrollOffset = this.contentViewHeight - this.scrollViewHeight;
     const currentScrollOffset = event.nativeEvent.contentOffset.y;
 
-    if (
-      this.topShadowAnimatedOpacity._value === 1 &&
-      currentScrollOffset <= 0
-    ) {
-      Animated.timing(this.topShadowAnimatedOpacity, {
-        toValue: 0,
-        duration: 200
-      }).start();
+    // eslint-disable-next-line no-underscore-dangle
+    if (this.topShadowOpacity._value === 1 && currentScrollOffset <= 0) {
+      this.fadeTopShadow(0);
     }
 
-    if (this.topShadowAnimatedOpacity._value === 0 && currentScrollOffset > 0) {
-      Animated.timing(this.topShadowAnimatedOpacity, {
-        toValue: 1,
-        duration: 200
-      }).start();
+    // eslint-disable-next-line no-underscore-dangle
+    if (this.topShadowOpacity._value === 0 && currentScrollOffset > 0) {
+      this.fadeTopShadow(1);
     }
 
     if (
-      this.bottomShadowAnimatedOpacity._value === 1 &&
+      // eslint-disable-next-line no-underscore-dangle
+      this.bottomShadowOpacity._value === 1 &&
       currentScrollOffset > maxScrollOffset
     ) {
-      Animated.timing(this.bottomShadowAnimatedOpacity, {
-        toValue: 0,
-        duration: 200
-      }).start();
+      this.fadeBottomShadow(0);
     }
 
     if (
-      this.bottomShadowAnimatedOpacity._value === 0 &&
+      // eslint-disable-next-line no-underscore-dangle
+      this.bottomShadowOpacity._value === 0 &&
       currentScrollOffset < maxScrollOffset
     ) {
-      Animated.timing(this.bottomShadowAnimatedOpacity, {
-        toValue: 1,
-        duration: 200
-      }).start();
+      this.fadeBottomShadow(1);
     }
   };
 
@@ -77,15 +82,15 @@ class ShadowedScrollView extends React.PureComponent<Props, State> {
   render() {
     const { style, children } = this.props;
 
-    const topShadowStyle = {
-      opacity: this.topShadowAnimatedOpacity.interpolate({
+    const topShadowOpacityStyle = {
+      opacity: this.topShadowOpacity.interpolate({
         inputRange: [0, 1],
         outputRange: [0, 1]
       })
     };
 
-    const bottomShadowStyle = {
-      opacity: this.bottomShadowAnimatedOpacity.interpolate({
+    const bottomShadowOpacityStyle = {
+      opacity: this.bottomShadowOpacity.interpolate({
         inputRange: [0, 1],
         outputRange: [0, 1]
       })
@@ -93,15 +98,17 @@ class ShadowedScrollView extends React.PureComponent<Props, State> {
 
     return (
       <View style={[styles.container, style]}>
-        <Animated.View style={[styles.topShadow, topShadowStyle]} />
+        <Animated.View style={[styles.topShadow, topShadowOpacityStyle]} />
         <ScrollView
           onLayout={this.handleScrollViewLayout}
           onScroll={this.handleScroll}
-          scrollEventThrottle={16}
+          scrollEventThrottle={maxScrollEventThrottle}
         >
           <View onLayout={this.handleContentViewLayout}>{children}</View>
         </ScrollView>
-        <Animated.View style={[styles.bottomShadow, bottomShadowStyle]} />
+        <Animated.View
+          style={[styles.bottomShadow, bottomShadowOpacityStyle]}
+        />
       </View>
     );
   }
@@ -119,11 +126,17 @@ const styles = StyleSheet.create({
     left: 0,
     top: -10,
     backgroundColor: blackColor,
-    // The below properties are required for ioS shadow
-    shadowColor: blackColor,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: maxShadowOpacity,
-    shadowRadius: 5
+    ...Platform.select({
+      ios: {
+        shadowColor: blackColor,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: maxShadowOpacity,
+        shadowRadius: 5
+      },
+      android: {
+        elevation: 15
+      }
+    })
   },
   bottomShadow: {
     width: "100%",
@@ -132,11 +145,17 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: -10,
     backgroundColor: blackColor,
-    // The below properties are required for ioS shadow
-    shadowColor: blackColor,
-    shadowOffset: { width: 0, height: -1 },
-    shadowOpacity: maxShadowOpacity,
-    shadowRadius: 5
+    ...Platform.select({
+      ios: {
+        shadowColor: blackColor,
+        shadowOffset: { width: 0, height: -1 },
+        shadowOpacity: maxShadowOpacity,
+        shadowRadius: 5
+      },
+      android: {
+        elevation: 30
+      }
+    })
   }
 });
 

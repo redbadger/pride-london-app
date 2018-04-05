@@ -72,7 +72,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
             onPress={this.handleFilterChange}
           />
         </View>
-        <ContentPadding style={styles.footer}>
+        <ContentPadding>
           <View>
             <TouchableOpacity
               style={styles.showEventsButton}
@@ -96,19 +96,11 @@ const styles = StyleSheet.create({
     backgroundColor: lightNavyBlueColor
   },
   header: {
-    borderWidth: 0,
-    // The below properties are required for android shadow
-    backgroundColor: lightNavyBlueColor,
-    elevation: 15
+    borderWidth: 0
   },
   list: {
     backgroundColor: eucalyptusGreenColor,
     flex: 1
-  },
-  footer: {
-    // The below properties are required for android shadow
-    backgroundColor: lightNavyBlueColor,
-    elevation: 30
   },
   showEventsButton: {
     backgroundColor: eucalyptusGreenColor,
