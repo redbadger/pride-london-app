@@ -11,7 +11,7 @@ import {
   eucalyptusGreenColor
 } from "../../constants/colors";
 
-const locale = "en-GB";
+export const locale = "en-GB";
 
 type Props = {
   selectedCategories: Set<string>
