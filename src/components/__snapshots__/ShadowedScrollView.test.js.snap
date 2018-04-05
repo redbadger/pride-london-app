@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "overflow": "hidden",
+      },
+      Object {},
+    ]
+  }
+>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#111111",
+          "height": 10,
+          "left": 0,
+          "position": "absolute",
+          "shadowColor": "#111111",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 5,
+          "top": -10,
+          "width": "100%",
+        },
+        Object {
+          "opacity": 0,
+        },
+      ]
+    }
+  />
+  <ScrollView
+    onLayout={[Function]}
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+  >
+    <View
+      onLayout={[Function]}
+    />
+  </ScrollView>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#111111",
+          "bottom": -10,
+          "height": 10,
+          "left": 0,
+          "position": "absolute",
+          "shadowColor": "#111111",
+          "shadowOffset": Object {
+            "height": -1,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 5,
+          "width": "100%",
+        },
+        Object {
+          "opacity": 1,
+        },
+      ]
+    }
+  />
+</View>
+`;

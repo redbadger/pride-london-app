@@ -14,6 +14,11 @@ const shadowFadeDuration: number = 200;
 const maxScrollEventThrottle: number = 16;
 
 class ShadowedScrollView extends React.PureComponent<Props> {
+  static defaultProps = {
+    children: [],
+    style: {}
+  };
+
   // eslint-disable-next-line react/sort-comp
   topShadowOpacity: Object;
   bottomShadowOpacity: Object;
@@ -38,10 +43,9 @@ class ShadowedScrollView extends React.PureComponent<Props> {
     this.bottomShadowOpacity = new Animated.Value(1);
   }
 
-  handleScroll = (event: Object) => {
+  handleScroll = (event: { nativeEvent: { contentOffset: { y: number } } }) => {
     const maxScrollOffset = this.contentViewHeight - this.scrollViewHeight;
     const currentScrollOffset = event.nativeEvent.contentOffset.y;
-
     // eslint-disable-next-line no-underscore-dangle
     if (this.topShadowOpacity._value === 1 && currentScrollOffset <= 0) {
       this.fadeTopShadow(0);
