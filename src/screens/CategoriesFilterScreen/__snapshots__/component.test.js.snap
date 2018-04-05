@@ -13,9 +13,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
   <ContentPadding
     style={
       Object {
-        "backgroundColor": "#2d2f7f",
         "borderWidth": 0,
-        "elevation": 15,
       }
     }
   >
@@ -43,12 +41,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     />
   </View>
   <ContentPadding
-    style={
-      Object {
-        "backgroundColor": "#2d2f7f",
-        "elevation": 30,
-      }
-    }
+    style={Object {}}
   >
     <View>
       <TouchableOpacity
