@@ -12,7 +12,7 @@ import {
 import text from "../../constants/text";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "./Header";
-import CategoriesFilterList from "../../components/CategoriesFilterList";
+import List from "./List";
 
 const locale = "en-GB";
 
@@ -66,7 +66,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
           <Header onClose={this.handleClose} onClearAll={this.handleClearAll} />
         </ContentPadding>
         <View style={styles.list}>
-          <CategoriesFilterList
+          <List
             locale={locale}
             stagedCategories={stagedCategories}
             onPress={this.handleFilterChange}

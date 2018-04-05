@@ -5,28 +5,26 @@ import {
   TouchableOpacity,
   View,
   Animated,
-  Dimensions
+  Dimensions,
+  Image
 } from "react-native";
-import Text from "./Text";
-import { whiteColor } from "../constants/colors";
+import Text from "../../components/Text";
+import { whiteColor } from "../../constants/colors";
+import whiteCheck from "../../../assets/images/whiteCheck.png";
+import type { EventCategory } from "../../data/event";
 
-import type { EventCategory } from "../data/event";
-
-type CategoriesFilterProps = {
+type ListItemProps = {
   category: EventCategory,
   onPress: Function,
   selected: boolean
 };
 
-class CategoriesFilter extends Component<
-  CategoriesFilterProps,
-  { textWidth: number }
-> {
+class ListItem extends Component<ListItemProps, { textWidth: number }> {
   static defaultProps = {
     onPress: () => {}
   };
 
-  constructor(props: CategoriesFilterProps) {
+  constructor(props: ListItemProps) {
     super(props);
 
     // No initial animation
@@ -37,11 +35,11 @@ class CategoriesFilter extends Component<
     }).start();
 
     this.state = {
-      textWidth: 0
+      textWidth: 16 - Dimensions.get("window").width
     };
   }
 
-  componentWillReceiveProps(props: CategoriesFilterProps) {
+  componentWillReceiveProps(props: ListItemProps) {
     Animated.timing(this.decorationWidth, {
       toValue: Number(props.selected),
       duration: 200,
@@ -56,7 +54,7 @@ class CategoriesFilter extends Component<
     this.setState({ textWidth: event.nativeEvent.layout.width });
 
   render() {
-    const { category, onPress } = this.props;
+    const { category, onPress, selected } = this.props;
     const { textWidth } = this.state;
     return (
       <TouchableOpacity
@@ -85,6 +83,14 @@ class CategoriesFilter extends Component<
             }
           ]}
         />
+        {selected && (
+          <Image
+            source={whiteCheck}
+            width={20}
+            height={20}
+            style={styles.check}
+          />
+        )}
         <View onLayout={this.handleOnLayout}>
           <Text style={styles.itemText}>{category.label}</Text>
         </View>
@@ -107,10 +113,15 @@ const styles = StyleSheet.create({
     height: 48,
     width: Dimensions.get("window").width
   },
+  check: {
+    position: "absolute",
+    marginTop: 16,
+    marginLeft: 6
+  },
   itemText: {
     height: 48,
-    paddingLeft: 28,
-    paddingTop: 12,
+    paddingLeft: 32,
+    paddingTop: 14,
     color: whiteColor,
     textAlign: "left",
     fontFamily: "Poppins-Bold",
@@ -120,4 +131,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CategoriesFilter;
+export default ListItem;

@@ -1,11 +1,11 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import CategoriesFilterList from "./CategoriesFilterList";
+import List from "./List";
 
-const render = props => shallow(<CategoriesFilterList {...props} />);
+const render = props => shallow(<List {...props} />);
 
-describe("CategoriesFilterList Component", () => {
+describe("List Component", () => {
   it("renders correctly", () => {
     const stagedCategories: Set<string> = new Set(["Music"]);
     const onPress = () => {};
