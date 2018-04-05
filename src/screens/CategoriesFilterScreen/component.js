@@ -63,7 +63,11 @@ class CategoriesFilterScreen extends PureComponent<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <ContentPadding style={styles.header}>
-          <Header onClose={this.handleClose} onClearAll={this.handleClearAll} />
+          <Header
+            onClose={this.handleClose}
+            onClearAll={this.handleClearAll}
+            selectedCategories={stagedCategories}
+          />
         </ContentPadding>
         <View style={styles.list}>
           <List

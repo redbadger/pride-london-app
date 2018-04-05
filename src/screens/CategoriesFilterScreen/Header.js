@@ -3,16 +3,13 @@ import React from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Text from "../../components/Text";
 import text from "../../constants/text";
-import {
-  whiteColor,
-  coralColor,
-  darkBlueGreyTwoColor,
-  eucalyptusGreenColor
-} from "../../constants/colors";
+import { whiteColor } from "../../constants/colors";
+import CategoriesPills from "./CategoriesPills";
 
 type Props = {
   onClose: Function,
-  onClearAll: Function
+  onClearAll: Function,
+  selectedCategories: Set<string>
 };
 
 type ActionButtonProps = {
@@ -28,7 +25,7 @@ const ActionButton = ({ label, onPress }: ActionButtonProps) => (
   </TouchableOpacity>
 );
 
-const Header = ({ onClose, onClearAll }: Props) => (
+const Header = ({ onClose, onClearAll, selectedCategories }: Props) => (
   <View>
     <View style={styles.actionButtons}>
       <ActionButton label={text.cancel} onPress={onClose} />
@@ -37,17 +34,7 @@ const Header = ({ onClose, onClearAll }: Props) => (
     <Text type="h1" style={styles.filterTitle}>
       {text.filterTitle}
     </Text>
-    <View style={styles.selectedCategoriesPills}>
-      {/* <Text type="h3" style={styles.categoryPill}>
-        Cabaret & Variety
-      </Text>
-      <Text type="h3" style={styles.categoryPill}>
-        Nightlife
-      </Text> */}
-      <Text type="h3" style={styles.zeroSelected}>
-        {text.zeroSelected}
-      </Text>
-    </View>
+    <CategoriesPills selectedCategories={selectedCategories} />
   </View>
 );
 
@@ -68,28 +55,6 @@ const styles = StyleSheet.create({
     color: whiteColor,
     marginTop: 14,
     marginBottom: 6
-  },
-  selectedCategoriesPills: {
-    backgroundColor: darkBlueGreyTwoColor,
-    padding: 10,
-    paddingLeft: 16,
-    borderRadius: 4,
-    marginBottom: 16,
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "row"
-  },
-  zeroSelected: {
-    color: eucalyptusGreenColor,
-    paddingTop: 2
-  },
-  categoryPill: {
-    color: whiteColor,
-    backgroundColor: coralColor,
-    paddingTop: 2,
-    paddingLeft: 5,
-    paddingRight: 5,
-    marginRight: 11
   }
 });
 

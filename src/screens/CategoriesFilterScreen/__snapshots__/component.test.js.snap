@@ -20,6 +20,11 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     <Header
       onClearAll={[Function]}
       onClose={[Function]}
+      selectedCategories={
+        Set {
+          "Music",
+        }
+      }
     />
   </ContentPadding>
   <View
