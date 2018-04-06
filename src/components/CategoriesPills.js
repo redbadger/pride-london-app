@@ -54,11 +54,6 @@ class CategoriesPills extends React.PureComponent<Props> {
   render() {
     const { style, selectedCategories } = this.props;
 
-    const gradientColors = Platform.select({
-      ios: ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"],
-      android: ["rgba(0, 0, 0, 0.3)", "rgba(0, 0, 0, 0)"]
-    });
-
     return (
       <View style={[styles.selectedCategoriesPills, style]}>
         {selectedCategories.size === 0 ? (
@@ -71,7 +66,7 @@ class CategoriesPills extends React.PureComponent<Props> {
               style={styles.scrollShadowLeft}
               end={{ x: 0, y: 0.5 }}
               start={{ x: 1.0, y: 0.5 }}
-              colors={gradientColors}
+              colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
             />
             <ScrollView
               ref={(ref: ?Object) => {
@@ -89,7 +84,7 @@ class CategoriesPills extends React.PureComponent<Props> {
               style={styles.scrollShadowRight}
               end={{ x: 1.0, y: 0.5 }}
               start={{ x: 0, y: 0.5 }}
-              colors={gradientColors}
+              colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
             />
           </View>
         )}
