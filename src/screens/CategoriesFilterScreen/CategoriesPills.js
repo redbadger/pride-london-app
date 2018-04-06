@@ -3,7 +3,7 @@ import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import Text from "../../components/Text";
 import text from "../../constants/text";
-import eventCategories from "../../constants/event-categories";
+import { getCategoryColor } from "../../constants/event-categories";
 import {
   whiteColor,
   coralColor,
@@ -11,11 +11,23 @@ import {
   eucalyptusGreenColor
 } from "../../constants/colors";
 
-export const locale = "en-GB";
+const locale = "en-GB";
 
 type Props = {
   selectedCategories: Set<string>
 };
+
+const CategoryPill = ({ name }: { name: string }) => (
+  <Text
+    type="h3"
+    style={[
+      styles.categoryPill,
+      { backgroundColor: getCategoryColor(name, locale) }
+    ]}
+  >
+    {name}
+  </Text>
+);
 
 const categoryLabels = (selectedCategories: Set<string>) =>
   Array.from(selectedCategories);
@@ -29,16 +41,7 @@ const CategoriesPills = ({ selectedCategories }: Props) => (
     ) : (
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {categoryLabels(selectedCategories).map(name => (
-          <Text
-            key={name}
-            type="h3"
-            style={[
-              styles.categoryPill,
-              { backgroundColor: eventCategories[locale][name].color }
-            ]}
-          >
-            {name}
-          </Text>
+          <CategoryPill key={name} name={name} />
         ))}
       </ScrollView>
     )}

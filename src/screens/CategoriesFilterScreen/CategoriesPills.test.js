@@ -1,8 +1,9 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import eventCategories from "../../constants/event-categories";
-import CategoriesPills, { locale } from "./CategoriesPills";
+import * as colors from "../../constants/colors";
+
+import CategoriesPills from "./CategoriesPills";
 
 const render = props => shallow(<CategoriesPills {...props} />);
 
@@ -27,13 +28,13 @@ describe("CategoriesPills Component", () => {
   });
 
   it("renders pills with the category color", () => {
-    const category = "Community";
-    const expectedColor = eventCategories[locale][category].color;
+    const expectedColor = colors.brightLightBlueColor;
     const selectedCategories: Set<string> = new Set(["Community"]);
     const output = render({ selectedCategories });
+
     const pillCustomStyles = output
-      .find("ScrollView")
-      .children()
+      .find("CategoryPill")
+      .dive()
       .prop("style")[1];
 
     expect(pillCustomStyles.backgroundColor).toEqual(expectedColor);
