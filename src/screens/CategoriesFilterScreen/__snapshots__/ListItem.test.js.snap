@@ -58,17 +58,22 @@ exports[`ListItem Component renders correctly 1`] = `
     <Text
       markdown={false}
       style={
-        Object {
-          "color": "#ffffff",
-          "fontFamily": "Poppins-Bold",
-          "fontSize": 24,
-          "height": 48,
-          "letterSpacing": 0,
-          "lineHeight": 28,
-          "paddingLeft": 32,
-          "paddingTop": 14,
-          "textAlign": "left",
-        }
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Poppins-Bold",
+            "fontSize": 24,
+            "height": 48,
+            "letterSpacing": 0,
+            "lineHeight": 28,
+            "paddingLeft": 32,
+            "paddingTop": 14,
+            "textAlign": "left",
+          },
+          Object {
+            "color": "#ffffff",
+          },
+        ]
       }
       type="text"
     >

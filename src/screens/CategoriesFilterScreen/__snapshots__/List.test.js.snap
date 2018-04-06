@@ -78,6 +78,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#ffd95e",
+        "contrast": true,
         "label": "Nightlife",
       }
     }

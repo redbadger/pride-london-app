@@ -3,7 +3,7 @@ import React from "react";
 import {
   View,
   StyleSheet,
-  TouchableOpacity,
+  TouchableHighlight,
   Image,
   Dimensions
 } from "react-native";
@@ -33,14 +33,14 @@ const CategoriesFilterButton = ({
   style,
   onPress
 }: CategoriesFilterButtonProps) => (
-  <TouchableOpacity
+  <TouchableHighlight
     accessibilityTraits={["button"]}
     accessibilityComponentType="button"
     style={[styles.categoriesFilterButton, style]}
     onPress={onPress}
   >
     <Image source={chevronRightImg} />
-  </TouchableOpacity>
+  </TouchableHighlight>
 );
 
 CategoriesFilterButton.defaultProps = {
@@ -76,8 +76,7 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
 const styles = StyleSheet.create({
   contentInterest: {
     alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between"
+    flexDirection: "row"
   },
   filterTitle: {
     color: filterShowMeTextColor,
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     top: 0
   },
   interestButton: {
-    flex: 1,
+    width: 145,
     height: 40,
     backgroundColor: interestButtonBgColor,
     borderRadius: 4,

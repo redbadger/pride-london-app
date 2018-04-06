@@ -34,7 +34,8 @@ const categories: EventCategoryMap = {
     },
     Nightlife: {
       label: "Nightlife",
-      color: colors.yellowColor
+      color: colors.yellowColor,
+      contrast: true
     },
     "Exhibition and Tours": {
       label: "Exhibition and Tours",
@@ -54,8 +55,5 @@ const categories: EventCategoryMap = {
     }
   }
 };
-
-export const getCategoryColor = (category: string, locale: string) =>
-  categories[locale][category].color;
 
 export default categories;

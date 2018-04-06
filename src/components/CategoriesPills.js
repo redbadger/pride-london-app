@@ -5,8 +5,9 @@ import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
 import text from "../constants/text";
-import { getCategoryColor } from "../constants/event-categories";
+import eventCategories from "../constants/event-categories";
 import {
+  blackColor,
   whiteColor,
   coralColor,
   darkBlueGreyTwoColor,
@@ -15,19 +16,22 @@ import {
 
 const locale = "en-GB";
 
+const categoryStyleColors = (category: string) => {
+  const categoryData = eventCategories[locale][category];
+
+  return {
+    backgroundColor: categoryData.color,
+    color: categoryData.contrast ? blackColor : whiteColor
+  };
+};
+
 type Props = {
   selectedCategories: Set<string>,
   style?: StyleObj
 };
 
 const CategoryPill = ({ name }: { name: string }) => (
-  <Text
-    type="h3"
-    style={[
-      styles.categoryPill,
-      { backgroundColor: getCategoryColor(name, locale) }
-    ]}
-  >
+  <Text type="h3" style={[styles.categoryPill, categoryStyleColors(name)]}>
     {name}
   </Text>
 );
@@ -37,7 +41,6 @@ class CategoriesPills extends React.PureComponent<Props> {
     style: {}
   };
 
-  // eslint-disable-next-line react/sort-comp
   scrollView: ?Object;
 
   scrollToLastPill = () => {
