@@ -1,31 +1,16 @@
 // @flow
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  StatusBar,
-  TouchableOpacity,
-  Image
-} from "react-native";
+import { View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
-import Text from "./Text";
 import ContentPadding from "./ContentPadding";
-import {
-  interestButtonBgColor,
-  interestButtonTextColor,
-  filterBgColor,
-  filterShowMeTextColor,
-  categoriesFilterButtonBgColor
-} from "../constants/colors";
+import FilterHeaderCategories from "./FilterHeaderCategories";
+import { filterBgColor } from "../constants/colors";
 import text from "../constants/text";
 import type { DateOrDateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
-import chevronRightImg from "../../assets/images/chevronRight.png";
-import CategoriesPills from "./CategoriesPills";
 
 export type Props = {
   onFilterCategoriesPress: Function,
@@ -37,29 +22,6 @@ export type Props = {
 type State = {
   datesPickerVisible: boolean,
   timesPickerVisible: boolean
-};
-
-type CategoriesFilterButtonProps = {
-  style?: StyleObj,
-  onPress: Function
-};
-
-const CategoriesFilterButton = ({
-  style,
-  onPress
-}: CategoriesFilterButtonProps) => (
-  <TouchableOpacity
-    accessibilityTraits={["button"]}
-    accessibilityComponentType="button"
-    style={[styles.categoriesFilterButton, style]}
-    onPress={onPress}
-  >
-    <Image source={chevronRightImg} />
-  </TouchableOpacity>
-);
-
-CategoriesFilterButton.defaultProps = {
-  style: {}
 };
 
 class FilterHeader extends React.PureComponent<Props, State> {
@@ -109,27 +71,10 @@ class FilterHeader extends React.PureComponent<Props, State> {
         <StatusBar barStyle="light-content" animated />
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
-            {selectedCategories.size === 0 ? (
-              <View style={styles.contentInterest}>
-                <Text type="h1" style={styles.filterTitle}>
-                  {text.filterTitle}
-                </Text>
-                <View style={styles.interestButton}>
-                  <Text type="h2" style={styles.interestButtonText}>
-                    {text.filterByInterest}
-                  </Text>
-                  <CategoriesFilterButton onPress={onFilterCategoriesPress} />
-                </View>
-              </View>
-            ) : (
-              <View style={styles.categoryPillsContainer}>
-                <CategoriesPills selectedCategories={selectedCategories} />
-                <CategoriesFilterButton
-                  style={styles.categoriesFilterOverButton}
-                  onPress={onFilterCategoriesPress}
-                />
-              </View>
-            )}
+            <FilterHeaderCategories
+              onFilterPress={onFilterCategoriesPress}
+              selectedCategories={selectedCategories}
+            />
             <View style={styles.contentFilters}>
               <FilterHeaderButton
                 text={formattedDateFilter}
@@ -171,46 +116,6 @@ const styles = StyleSheet.create({
   content: {
     paddingTop: 16,
     paddingBottom: 12
-  },
-  contentInterest: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  filterTitle: {
-    color: filterShowMeTextColor,
-    paddingTop: 5,
-    marginRight: 8
-  },
-  categoriesFilterButton: {
-    width: 38,
-    height: 40,
-    backgroundColor: categoriesFilterButtonBgColor,
-    justifyContent: "center",
-    alignItems: "center",
-    borderTopRightRadius: 4,
-    borderBottomRightRadius: 4
-  },
-  categoryPillsContainer: {
-    position: "relative"
-  },
-  categoriesFilterOverButton: {
-    position: "absolute",
-    right: 0,
-    top: 0
-  },
-  interestButton: {
-    flex: 1,
-    height: 40,
-    backgroundColor: interestButtonBgColor,
-    borderRadius: 4,
-    justifyContent: "space-between",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: 8
-  },
-  interestButtonText: {
-    color: interestButtonTextColor
   },
   contentFilters: {
     flexDirection: "row",

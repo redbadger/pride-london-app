@@ -30,59 +30,10 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
       }
       testID="filter-header"
     >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "#ffffff",
-              "marginRight": 8,
-              "paddingTop": 5,
-            }
-          }
-          type="h1"
-        >
-          Show me
-        </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
-              "borderRadius": 4,
-              "flex": 1,
-              "flexDirection": "row",
-              "height": 40,
-              "justifyContent": "space-between",
-              "paddingLeft": 8,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#ffffff",
-              }
-            }
-            type="h2"
-          >
-            All events
-          </Text>
-          <CategoriesFilterButton
-            onPress={[Function]}
-            style={Object {}}
-          />
-        </View>
-      </View>
+      <FilterHeaderCategories
+        onFilterPress={[Function]}
+        selectedCategories={Set {}}
+      />
       <View
         style={
           Object {
@@ -164,59 +115,10 @@ exports[`renders correctly with any date and any time 1`] = `
       }
       testID="filter-header"
     >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "#ffffff",
-              "marginRight": 8,
-              "paddingTop": 5,
-            }
-          }
-          type="h1"
-        >
-          Show me
-        </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
-              "borderRadius": 4,
-              "flex": 1,
-              "flexDirection": "row",
-              "height": 40,
-              "justifyContent": "space-between",
-              "paddingLeft": 8,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#ffffff",
-              }
-            }
-            type="h2"
-          >
-            All events
-          </Text>
-          <CategoriesFilterButton
-            onPress={[Function]}
-            style={Object {}}
-          />
-        </View>
-      </View>
+      <FilterHeaderCategories
+        onFilterPress={[Function]}
+        selectedCategories={Set {}}
+      />
       <View
         style={
           Object {
@@ -298,59 +200,10 @@ exports[`renders correctly with date range and two times 1`] = `
       }
       testID="filter-header"
     >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "#ffffff",
-              "marginRight": 8,
-              "paddingTop": 5,
-            }
-          }
-          type="h1"
-        >
-          Show me
-        </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
-              "borderRadius": 4,
-              "flex": 1,
-              "flexDirection": "row",
-              "height": 40,
-              "justifyContent": "space-between",
-              "paddingLeft": 8,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#ffffff",
-              }
-            }
-            type="h2"
-          >
-            All events
-          </Text>
-          <CategoriesFilterButton
-            onPress={[Function]}
-            style={Object {}}
-          />
-        </View>
-      </View>
+      <FilterHeaderCategories
+        onFilterPress={[Function]}
+        selectedCategories={Set {}}
+      />
       <View
         style={
           Object {
@@ -432,59 +285,10 @@ exports[`renders correctly with single date and single time 1`] = `
       }
       testID="filter-header"
     >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "#ffffff",
-              "marginRight": 8,
-              "paddingTop": 5,
-            }
-          }
-          type="h1"
-        >
-          Show me
-        </Text>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
-              "borderRadius": 4,
-              "flex": 1,
-              "flexDirection": "row",
-              "height": 40,
-              "justifyContent": "space-between",
-              "paddingLeft": 8,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#ffffff",
-              }
-            }
-            type="h2"
-          >
-            All events
-          </Text>
-          <CategoriesFilterButton
-            onPress={[Function]}
-            style={Object {}}
-          />
-        </View>
-      </View>
+      <FilterHeaderCategories
+        onFilterPress={[Function]}
+        selectedCategories={Set {}}
+      />
       <View
         style={
           Object {
