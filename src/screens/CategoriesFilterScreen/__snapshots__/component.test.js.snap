@@ -30,7 +30,6 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
   <View
     style={
       Object {
-        "backgroundColor": "#2cda9d",
         "flex": 1,
       }
     }

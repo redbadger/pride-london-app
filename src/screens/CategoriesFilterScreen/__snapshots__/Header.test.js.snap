@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component renders correctly 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginTop": 10,
+        "width": "100%",
+      }
+    }
+  >
+    <ActionButton
+      label="Cancel"
+      onPress={[Function]}
+    />
+  </View>
+  <Text
+    markdown={false}
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginBottom": 6,
+        "marginTop": 14,
+      }
+    }
+    type="h1"
+  >
+    Show me
+  </Text>
+  <CategoriesPills
+    selectedCategories={Set {}}
+  />
+</View>
+`;

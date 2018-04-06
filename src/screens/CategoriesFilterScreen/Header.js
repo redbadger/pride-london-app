@@ -7,14 +7,14 @@ import { whiteColor } from "../../constants/colors";
 import CategoriesPills from "./CategoriesPills";
 
 type Props = {
-  onClose: Function,
-  onClearAll: Function,
+  onClose?: Function,
+  onClearAll?: Function,
   selectedCategories: Set<string>
 };
 
 type ActionButtonProps = {
   label: string,
-  onPress: Function
+  onPress?: Function
 };
 
 const ActionButton = ({ label, onPress }: ActionButtonProps) => (
@@ -25,11 +25,17 @@ const ActionButton = ({ label, onPress }: ActionButtonProps) => (
   </TouchableOpacity>
 );
 
+ActionButton.defaultProps = {
+  onPress: () => {}
+};
+
 const Header = ({ onClose, onClearAll, selectedCategories }: Props) => (
   <View>
     <View style={styles.actionButtons}>
       <ActionButton label={text.cancel} onPress={onClose} />
-      <ActionButton label={text.clearAll} onPress={onClearAll} />
+      {selectedCategories.size > 0 && (
+        <ActionButton label={text.clearAll} onPress={onClearAll} />
+      )}
     </View>
     <Text type="h1" style={styles.filterTitle}>
       {text.filterTitle}
@@ -37,6 +43,11 @@ const Header = ({ onClose, onClearAll, selectedCategories }: Props) => (
     <CategoriesPills selectedCategories={selectedCategories} />
   </View>
 );
+
+Header.defaultProps = {
+  onClose: () => {},
+  onClearAll: () => {}
+};
 
 const styles = StyleSheet.create({
   actionButtons: {

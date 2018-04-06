@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
     borderWidth: 0
   },
   list: {
-    backgroundColor: eucalyptusGreenColor,
     flex: 1
   },
   showEventsButton: {
