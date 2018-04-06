@@ -22,6 +22,8 @@ class ShadowedScrollView extends React.PureComponent<Props> {
   // eslint-disable-next-line react/sort-comp
   topShadowOpacity: Object;
   bottomShadowOpacity: Object;
+  isTopShadowPresent: boolean = false;
+  isBottomShadowPresent: boolean = true;
   contentViewHeight: number;
   scrollViewHeight: number;
 
@@ -48,13 +50,25 @@ class ShadowedScrollView extends React.PureComponent<Props> {
     const maxScrollOffset = this.contentViewHeight - this.scrollViewHeight - 10;
     const currentScrollOffset = event.nativeEvent.contentOffset.y;
 
-    if (currentScrollOffset <= 0) this.fadeTopShadow(0);
+    if (this.isTopShadowPresent && currentScrollOffset <= 0) {
+      this.isTopShadowPresent = false;
+      this.fadeTopShadow(0);
+    }
 
-    if (currentScrollOffset > 0) this.fadeTopShadow(1);
+    if (!this.isTopShadowPresent && currentScrollOffset > 0) {
+      this.isTopShadowPresent = true;
+      this.fadeTopShadow(1);
+    }
 
-    if (currentScrollOffset > maxScrollOffset) this.fadeBottomShadow(0);
+    if (this.isBottomShadowPresent && currentScrollOffset > maxScrollOffset) {
+      this.isBottomShadowPresent = false;
+      this.fadeBottomShadow(0);
+    }
 
-    if (currentScrollOffset < maxScrollOffset) this.fadeBottomShadow(1);
+    if (!this.isBottomShadowPresent && currentScrollOffset < maxScrollOffset) {
+      this.isBottomShadowPresent = true;
+      this.fadeBottomShadow(1);
+    }
   };
 
   handleScrollViewLayout = (event: Object) => {
