@@ -67,8 +67,7 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
 const styles = StyleSheet.create({
   contentInterest: {
     alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between"
+    flexDirection: "row"
   },
   filterTitle: {
     color: filterShowMeTextColor,
@@ -93,7 +92,7 @@ const styles = StyleSheet.create({
     top: 0
   },
   interestButton: {
-    flex: 1,
+    width: 145,
     height: 40,
     backgroundColor: interestButtonBgColor,
     borderRadius: 4,
