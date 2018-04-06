@@ -1,15 +1,15 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
-import Text from "../../components/Text";
-import text from "../../constants/text";
-import { getCategoryColor } from "../../constants/event-categories";
+import Text from "./Text";
+import text from "../constants/text";
+import { getCategoryColor } from "../constants/event-categories";
 import {
   whiteColor,
   coralColor,
   darkBlueGreyTwoColor,
   eucalyptusGreenColor
-} from "../../constants/colors";
+} from "../constants/colors";
 
 const locale = "en-GB";
 
@@ -48,10 +48,10 @@ const CategoriesPills = ({ selectedCategories }: Props) => (
 const styles = StyleSheet.create({
   selectedCategoriesPills: {
     backgroundColor: darkBlueGreyTwoColor,
-    padding: 10,
+    height: 40,
+    padding: 8,
     paddingLeft: 16,
     borderRadius: 4,
-    marginBottom: 16,
     display: "flex",
     flexDirection: "row"
   },
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   categoryPill: {
     color: whiteColor,
     backgroundColor: coralColor,
-    paddingTop: 2,
+    paddingTop: 3,
     paddingLeft: 5,
     paddingRight: 5,
     marginRight: 11

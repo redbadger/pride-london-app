@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import * as colors from "../../constants/colors";
+import * as colors from "../constants/colors";
 
 import CategoriesPills from "./CategoriesPills";
 
