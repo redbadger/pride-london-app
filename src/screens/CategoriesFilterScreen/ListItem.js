@@ -57,6 +57,7 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
   render() {
     const { category, onPress, selected } = this.props;
     const { textWidth } = this.state;
+    const textColor = selected && category.contrast ? blackColor : whiteColor;
 
     return (
       <TouchableOpacity
@@ -96,12 +97,7 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
           />
         )}
         <View onLayout={this.handleOnLayout}>
-          <Text
-            style={[
-              styles.itemText,
-              { color: selected && category.contrast ? blackColor : whiteColor }
-            ]}
-          >
+          <Text style={[styles.itemText, { color: textColor }]}>
             {category.label}
           </Text>
         </View>
