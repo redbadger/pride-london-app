@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, StyleSheet, TouchableHighlight, Image } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import {
   interestButtonBgColor,
@@ -27,14 +27,14 @@ const CategoriesFilterButton = ({
   style,
   onPress
 }: CategoriesFilterButtonProps) => (
-  <TouchableOpacity
+  <TouchableHighlight
     accessibilityTraits={["button"]}
     accessibilityComponentType="button"
     style={[styles.categoriesFilterButton, style]}
     onPress={onPress}
   >
     <Image source={chevronRightImg} />
-  </TouchableOpacity>
+  </TouchableHighlight>
 );
 
 CategoriesFilterButton.defaultProps = {
