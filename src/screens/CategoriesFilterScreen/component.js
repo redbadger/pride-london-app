@@ -81,6 +81,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
             <TouchableOpacity
               style={styles.showEventsButton}
               onPress={this.handleApplyFilters}
+              disabled={!events.length}
             >
               <Text type="h2" style={styles.showEventsText}>
                 {text.showEvents(events.length)}

@@ -50,6 +50,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     <View>
       <TouchableOpacity
         activeOpacity={0.2}
+        disabled={false}
         onPress={[Function]}
         style={
           Object {
