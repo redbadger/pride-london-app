@@ -77,59 +77,10 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
           >
             All events
           </Text>
-          <TouchableOpacity
-            accessibilityComponentType="button"
-            accessibilityTraits={
-              Array [
-                "button",
-              ]
-            }
-            activeOpacity={0.2}
+          <CategoriesFilterButton
             onPress={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "rgb(25, 26, 71)",
-                "borderBottomRightRadius": 4,
-                "borderTopRightRadius": 4,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 38,
-              }
-            }
-          >
-            <Image
-              source={1}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
-              "borderRadius": 25,
-              "height": 52,
-              "justifyContent": "flex-end",
-              "marginLeft": 12,
-              "width": 52,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Poppins-Bold",
-                "fontSize": 14,
-                "paddingBottom": 6,
-              }
-            }
-            type="text"
-          >
-            Map
-          </Text>
+            style={Object {}}
+          />
         </View>
       </View>
       <View
@@ -260,59 +211,10 @@ exports[`renders correctly with any date and any time 1`] = `
           >
             All events
           </Text>
-          <TouchableOpacity
-            accessibilityComponentType="button"
-            accessibilityTraits={
-              Array [
-                "button",
-              ]
-            }
-            activeOpacity={0.2}
+          <CategoriesFilterButton
             onPress={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "rgb(25, 26, 71)",
-                "borderBottomRightRadius": 4,
-                "borderTopRightRadius": 4,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 38,
-              }
-            }
-          >
-            <Image
-              source={1}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
-              "borderRadius": 25,
-              "height": 52,
-              "justifyContent": "flex-end",
-              "marginLeft": 12,
-              "width": 52,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Poppins-Bold",
-                "fontSize": 14,
-                "paddingBottom": 6,
-              }
-            }
-            type="text"
-          >
-            Map
-          </Text>
+            style={Object {}}
+          />
         </View>
       </View>
       <View
@@ -443,59 +345,10 @@ exports[`renders correctly with date range and two times 1`] = `
           >
             All events
           </Text>
-          <TouchableOpacity
-            accessibilityComponentType="button"
-            accessibilityTraits={
-              Array [
-                "button",
-              ]
-            }
-            activeOpacity={0.2}
+          <CategoriesFilterButton
             onPress={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "rgb(25, 26, 71)",
-                "borderBottomRightRadius": 4,
-                "borderTopRightRadius": 4,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 38,
-              }
-            }
-          >
-            <Image
-              source={1}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
-              "borderRadius": 25,
-              "height": 52,
-              "justifyContent": "flex-end",
-              "marginLeft": 12,
-              "width": 52,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Poppins-Bold",
-                "fontSize": 14,
-                "paddingBottom": 6,
-              }
-            }
-            type="text"
-          >
-            Map
-          </Text>
+            style={Object {}}
+          />
         </View>
       </View>
       <View
@@ -626,59 +479,10 @@ exports[`renders correctly with single date and single time 1`] = `
           >
             All events
           </Text>
-          <TouchableOpacity
-            accessibilityComponentType="button"
-            accessibilityTraits={
-              Array [
-                "button",
-              ]
-            }
-            activeOpacity={0.2}
+          <CategoriesFilterButton
             onPress={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "rgb(25, 26, 71)",
-                "borderBottomRightRadius": 4,
-                "borderTopRightRadius": 4,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 38,
-              }
-            }
-          >
-            <Image
-              source={1}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
-              "borderRadius": 25,
-              "height": 52,
-              "justifyContent": "flex-end",
-              "marginLeft": 12,
-              "width": 52,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            style={
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Poppins-Bold",
-                "fontSize": 14,
-                "paddingBottom": 6,
-              }
-            }
-            type="text"
-          >
-            Map
-          </Text>
+            style={Object {}}
+          />
         </View>
       </View>
       <View

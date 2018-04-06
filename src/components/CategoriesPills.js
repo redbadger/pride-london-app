@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
 import text from "../constants/text";
 import { getCategoryColor } from "../constants/event-categories";
@@ -14,7 +15,8 @@ import {
 const locale = "en-GB";
 
 type Props = {
-  selectedCategories: Set<string>
+  selectedCategories: Set<string>,
+  style?: StyleObj
 };
 
 const CategoryPill = ({ name }: { name: string }) => (
@@ -29,8 +31,8 @@ const CategoryPill = ({ name }: { name: string }) => (
   </Text>
 );
 
-const CategoriesPills = ({ selectedCategories }: Props) => (
-  <View style={styles.selectedCategoriesPills}>
+const CategoriesPills = ({ selectedCategories, style }: Props) => (
+  <View style={[styles.selectedCategoriesPills, style]}>
     {selectedCategories.size === 0 ? (
       <Text type="h3" style={styles.zeroSelected}>
         {text.zeroSelected}
@@ -44,6 +46,10 @@ const CategoriesPills = ({ selectedCategories }: Props) => (
     )}
   </View>
 );
+
+CategoriesPills.defaultProps = {
+  style: {}
+};
 
 const styles = StyleSheet.create({
   selectedCategoriesPills: {

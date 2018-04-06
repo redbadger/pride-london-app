@@ -8,6 +8,7 @@ import {
   Image
 } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
@@ -23,18 +24,42 @@ import {
 import text from "../constants/text";
 import type { DateOrDateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
-
 import chevronRightImg from "../../assets/images/chevronRight.png";
+import CategoriesPills from "./CategoriesPills";
 
 export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateOrDateRange,
-  timeFilter: Set<Time>
+  timeFilter: Set<Time>,
+  selectedCategories: Set<string>
 };
 
 type State = {
   datesPickerVisible: boolean,
   timesPickerVisible: boolean
+};
+
+type CategoriesFilterButtonProps = {
+  style?: StyleObj,
+  onPress: Function
+};
+
+const CategoriesFilterButton = ({
+  style,
+  onPress
+}: CategoriesFilterButtonProps) => (
+  <TouchableOpacity
+    accessibilityTraits={["button"]}
+    accessibilityComponentType="button"
+    style={[styles.categoriesFilterButton, style]}
+    onPress={onPress}
+  >
+    <Image source={chevronRightImg} />
+  </TouchableOpacity>
+);
+
+CategoriesFilterButton.defaultProps = {
+  style: {}
 };
 
 class FilterHeader extends React.PureComponent<Props, State> {
@@ -64,7 +89,12 @@ class FilterHeader extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { dateFilter, timeFilter, onFilterCategoriesPress } = this.props;
+    const {
+      dateFilter,
+      timeFilter,
+      onFilterCategoriesPress,
+      selectedCategories
+    } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
       : text.anyDay;
@@ -79,27 +109,27 @@ class FilterHeader extends React.PureComponent<Props, State> {
         <StatusBar barStyle="light-content" animated />
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
-            <View style={styles.contentInterest}>
-              <Text type="h1" style={styles.filterTitle}>
-                {text.filterTitle}
-              </Text>
-              <View style={styles.interestButton}>
-                <Text type="h2" style={styles.interestButtonText}>
-                  {text.filterByInterest}
+            {selectedCategories.size === 0 ? (
+              <View style={styles.contentInterest}>
+                <Text type="h1" style={styles.filterTitle}>
+                  {text.filterTitle}
                 </Text>
-                <TouchableOpacity
-                  accessibilityTraits={["button"]}
-                  accessibilityComponentType="button"
-                  style={styles.categoriesFilterButton}
+                <View style={styles.interestButton}>
+                  <Text type="h2" style={styles.interestButtonText}>
+                    {text.filterByInterest}
+                  </Text>
+                  <CategoriesFilterButton onPress={onFilterCategoriesPress} />
+                </View>
+              </View>
+            ) : (
+              <View style={styles.categoryPillsContainer}>
+                <CategoriesPills selectedCategories={selectedCategories} />
+                <CategoriesFilterButton
+                  style={styles.categoriesFilterOverButton}
                   onPress={onFilterCategoriesPress}
-                >
-                  <Image source={chevronRightImg} />
-                </TouchableOpacity>
+                />
               </View>
-              <View style={styles.mapButton}>
-                <Text style={styles.mapButtonText}>Map</Text>
-              </View>
-            </View>
+            )}
             <View style={styles.contentFilters}>
               <FilterHeaderButton
                 text={formattedDateFilter}
@@ -161,6 +191,14 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   },
+  categoryPillsContainer: {
+    position: "relative"
+  },
+  categoriesFilterOverButton: {
+    position: "absolute",
+    right: 0,
+    top: 0
+  },
   interestButton: {
     flex: 1,
     height: 40,
@@ -173,21 +211,6 @@ const styles = StyleSheet.create({
   },
   interestButtonText: {
     color: interestButtonTextColor
-  },
-  mapButton: {
-    marginLeft: 12,
-    width: 52,
-    height: 52,
-    backgroundColor: interestButtonBgColor,
-    alignItems: "center",
-    justifyContent: "flex-end",
-    borderRadius: 25
-  },
-  mapButtonText: {
-    color: interestButtonTextColor,
-    fontFamily: "Poppins-Bold",
-    fontSize: 14,
-    paddingBottom: 6
   },
   contentFilters: {
     flexDirection: "row",

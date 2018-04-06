@@ -32,6 +32,11 @@ exports[`Header Component renders correctly 1`] = `
   </Text>
   <CategoriesPills
     selectedCategories={Set {}}
+    style={
+      Object {
+        "marginBottom": 16,
+      }
+    }
   />
 </View>
 `;

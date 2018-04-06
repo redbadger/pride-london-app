@@ -8,8 +8,8 @@ exports[`CategoriesPills Component renders correctly 1`] = `
       "borderRadius": 4,
       "display": "flex",
       "flexDirection": "row",
-      "marginBottom": 16,
-      "padding": 10,
+      "height": 40,
+      "padding": 8,
       "paddingLeft": 16,
     }
   }

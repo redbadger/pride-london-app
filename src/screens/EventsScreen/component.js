@@ -10,13 +10,14 @@ import { EVENT_DETAILS, EVENT_CATEGORIES_FILTER } from "../../constants/routes";
 
 const locale = "en-GB";
 
-type Props = {
+export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>,
-  getAssetUrl: LocalizedFieldRef => string
+  getAssetUrl: LocalizedFieldRef => string,
+  selectedCategories: Set<string>
 };
 
 class EventsScreen extends PureComponent<Props> {
@@ -33,6 +34,7 @@ class EventsScreen extends PureComponent<Props> {
       <View style={styles.container}>
         <FilterHeader
           onFilterCategoriesPress={this.handleFilterCategoriesPress}
+          selectedCategories={this.props.selectedCategories}
         />
         {this.props.loading ? (
           <Text>Loading...</Text>

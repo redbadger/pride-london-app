@@ -4,7 +4,7 @@ import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Text from "../../components/Text";
 import text from "../../constants/text";
 import { whiteColor } from "../../constants/colors";
-import CategoriesPills from "./CategoriesPills";
+import CategoriesPills from "../../components/CategoriesPills";
 
 type Props = {
   onClose?: Function,
@@ -40,7 +40,10 @@ const Header = ({ onClose, onClearAll, selectedCategories }: Props) => (
     <Text type="h1" style={styles.filterTitle}>
       {text.filterTitle}
     </Text>
-    <CategoriesPills selectedCategories={selectedCategories} />
+    <CategoriesPills
+      style={styles.categoriesPills}
+      selectedCategories={selectedCategories}
+    />
   </View>
 );
 
@@ -61,6 +64,9 @@ const styles = StyleSheet.create({
   },
   actionButtonText: {
     color: whiteColor
+  },
+  categoriesPills: {
+    marginBottom: 16
   },
   filterTitle: {
     color: whiteColor,
