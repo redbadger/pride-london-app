@@ -29,9 +29,6 @@ const CategoryPill = ({ name }: { name: string }) => (
   </Text>
 );
 
-const categoryLabels = (selectedCategories: Set<string>) =>
-  Array.from(selectedCategories);
-
 const CategoriesPills = ({ selectedCategories }: Props) => (
   <View style={styles.selectedCategoriesPills}>
     {selectedCategories.size === 0 ? (
@@ -40,7 +37,7 @@ const CategoriesPills = ({ selectedCategories }: Props) => (
       </Text>
     ) : (
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {categoryLabels(selectedCategories).map(name => (
+        {Array.from(selectedCategories).map(name => (
           <CategoryPill key={name} name={name} />
         ))}
       </ScrollView>
