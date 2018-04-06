@@ -7,10 +7,9 @@ exports[`CategoriesPills Component renders correctly 1`] = `
       Object {
         "backgroundColor": "#20215a",
         "borderRadius": 4,
-        "display": "flex",
+        "flex": 1,
         "flexDirection": "row",
         "height": 40,
-        "width": "100%",
       },
       Object {},
     ]

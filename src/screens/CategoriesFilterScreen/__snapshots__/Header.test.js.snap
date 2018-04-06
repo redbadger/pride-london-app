@@ -30,13 +30,19 @@ exports[`Header Component renders correctly 1`] = `
   >
     Show me
   </Text>
-  <CategoriesPills
-    selectedCategories={Set {}}
+  <View
     style={
       Object {
+        "height": 40,
         "marginBottom": 16,
+        "width": "100%",
       }
     }
-  />
+  >
+    <CategoriesPills
+      selectedCategories={Set {}}
+      style={Object {}}
+    />
+  </View>
 </View>
 `;

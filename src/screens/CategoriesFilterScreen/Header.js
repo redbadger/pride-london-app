@@ -40,10 +40,9 @@ const Header = ({ onClose, onClearAll, selectedCategories }: Props) => (
     <Text type="h1" style={styles.filterTitle}>
       {text.filterTitle}
     </Text>
-    <CategoriesPills
-      style={styles.categoriesPills}
-      selectedCategories={selectedCategories}
-    />
+    <View style={styles.categoriesPills}>
+      <CategoriesPills selectedCategories={selectedCategories} />
+    </View>
   </View>
 );
 
@@ -66,6 +65,8 @@ const styles = StyleSheet.create({
     color: whiteColor
   },
   categoriesPills: {
+    width: "100%",
+    height: 40,
     marginBottom: 16
   },
   filterTitle: {

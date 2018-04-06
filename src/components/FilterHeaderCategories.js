@@ -84,10 +84,7 @@ const styles = StyleSheet.create({
     marginRight: 8
   },
   categoryPillsContainer: {
-    position: "relative"
-  },
-  categoryPills: {
-    width: Dimensions.get("window").width - 50
+    flexDirection: "row"
   },
   categoriesFilterButton: {
     width: 38,
@@ -98,11 +95,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   },
-  categoriesFilterOverButton: {
-    position: "absolute",
-    right: 0,
-    top: 0
+  categoryPills: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0
   },
+  categoriesFilterOverButton: {},
   interestButton: {
     width: 145,
     height: 40,

@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, Platform } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
@@ -54,6 +54,11 @@ class CategoriesPills extends React.PureComponent<Props> {
   render() {
     const { style, selectedCategories } = this.props;
 
+    const gradientColors = Platform.select({
+      ios: ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"],
+      android: ["rgba(0, 0, 0, 0.3)", "rgba(0, 0, 0, 0)"]
+    });
+
     return (
       <View style={[styles.selectedCategoriesPills, style]}>
         {selectedCategories.size === 0 ? (
@@ -64,9 +69,9 @@ class CategoriesPills extends React.PureComponent<Props> {
           <View style={styles.scrollView}>
             <LinearGradient
               style={styles.scrollShadowLeft}
-              start={{ x: 0.5, y: 1.0 }}
-              stop={{ x: 1.0, y: 0.5 }}
-              colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
+              end={{ x: 0, y: 0.5 }}
+              start={{ x: 1.0, y: 0.5 }}
+              colors={gradientColors}
             />
             <ScrollView
               ref={(ref: ?Object) => {
@@ -82,9 +87,9 @@ class CategoriesPills extends React.PureComponent<Props> {
             </ScrollView>
             <LinearGradient
               style={styles.scrollShadowRight}
-              start={{ x: 0.5, y: 1.0 }}
-              stop={{ x: 1.0, y: 0.5 }}
-              colors={["rgba(0, 0, 0, 0.3)", "rgba(0, 0, 0, 0)"]}
+              end={{ x: 1.0, y: 0.5 }}
+              start={{ x: 0, y: 0.5 }}
+              colors={gradientColors}
             />
           </View>
         )}
@@ -96,10 +101,9 @@ class CategoriesPills extends React.PureComponent<Props> {
 const styles = StyleSheet.create({
   selectedCategoriesPills: {
     backgroundColor: darkBlueGreyTwoColor,
-    width: "100%",
+    flex: 1,
     height: 40,
     borderRadius: 4,
-    display: "flex",
     flexDirection: "row"
   },
   zeroSelected: {
@@ -118,6 +122,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     width: "100%",
+    height: 40,
     paddingTop: 8,
     paddingBottom: 8
   },
