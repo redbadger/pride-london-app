@@ -33,7 +33,7 @@ exports[`ListItem Component renders correctly 1`] = `
           "backgroundColor": "#ffffff",
           "transform": Array [
             Object {
-              "translateX": -1468,
+              "translateX": -1472,
             },
           ],
         },
