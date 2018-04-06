@@ -5,27 +5,37 @@ exports[`renders correctly 1`] = `
   style={Object {}}
 >
   <AnimatedComponent
-    colors={
-      Array [
-        "rgba(0, 0, 0, 0.3)",
-        "rgba(255, 255, 255, 0)",
-      ]
-    }
     style={
       Array [
         Object {
-          "height": 20,
+          "height": 15,
           "left": 0,
           "position": "absolute",
           "top": 0,
           "width": "100%",
+          "zIndex": 1,
         },
         Object {
           "opacity": 0,
         },
       ]
     }
-  />
+  >
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0.3)",
+          "rgba(0, 0, 0, 0)",
+        ]
+      }
+      style={
+        Object {
+          "height": 15,
+          "width": "100%",
+        }
+      }
+    />
+  </AnimatedComponent>
   <ScrollView
     onLayout={[Function]}
     onScroll={[Function]}
@@ -36,17 +46,11 @@ exports[`renders correctly 1`] = `
     />
   </ScrollView>
   <AnimatedComponent
-    colors={
-      Array [
-        "rgba(255, 255, 255, 0)",
-        "rgba(0, 0, 0, 0.3)",
-      ]
-    }
     style={
       Array [
         Object {
           "bottom": 0,
-          "height": 10,
+          "height": 15,
           "left": 0,
           "position": "absolute",
           "width": "100%",
@@ -56,6 +60,21 @@ exports[`renders correctly 1`] = `
         },
       ]
     }
-  />
+  >
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0.3)",
+        ]
+      }
+      style={
+        Object {
+          "height": 15,
+          "width": "100%",
+        }
+      }
+    />
+  </AnimatedComponent>
 </View>
 `;
