@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ScrollView, Platform } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
