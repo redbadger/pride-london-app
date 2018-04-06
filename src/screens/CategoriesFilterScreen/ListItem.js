@@ -9,8 +9,9 @@ import {
   Image
 } from "react-native";
 import Text from "../../components/Text";
-import { whiteColor } from "../../constants/colors";
+import { whiteColor, blackColor } from "../../constants/colors";
 import whiteCheck from "../../../assets/images/whiteCheck.png";
+import blackCheck from "../../../assets/images/blackCheck.png";
 import type { EventCategory } from "../../data/event";
 
 type ListItemProps = {
@@ -56,6 +57,7 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
   render() {
     const { category, onPress, selected } = this.props;
     const { textWidth } = this.state;
+
     return (
       <TouchableOpacity
         style={styles.itemContainer}
@@ -66,18 +68,20 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
         <Animated.View
           style={[
             styles.itemDecoration,
-            // eslint-disable-next-line react-native/no-inline-styles
             {
               backgroundColor: category.color,
               transform: [
                 {
-                  translateX: this.decorationWidth.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [
-                      16 - Dimensions.get("window").width,
-                      16 - Dimensions.get("window").width + textWidth
-                    ]
-                  })
+                  translateX: this.decorationWidth.interpolate(
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    {
+                      inputRange: [0, 1],
+                      outputRange: [
+                        16 - Dimensions.get("window").width,
+                        16 - Dimensions.get("window").width + textWidth
+                      ]
+                    }
+                  )
                 }
               ]
             }
@@ -85,14 +89,21 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
         />
         {selected && (
           <Image
-            source={whiteCheck}
+            source={category.contrast ? blackCheck : whiteCheck}
             width={20}
             height={20}
             style={styles.check}
           />
         )}
         <View onLayout={this.handleOnLayout}>
-          <Text style={styles.itemText}>{category.label}</Text>
+          <Text
+            style={[
+              styles.itemText,
+              { color: selected && category.contrast ? blackColor : whiteColor }
+            ]}
+          >
+            {category.label}
+          </Text>
         </View>
       </TouchableOpacity>
     );
