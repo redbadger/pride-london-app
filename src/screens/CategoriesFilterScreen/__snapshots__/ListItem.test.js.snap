@@ -16,7 +16,7 @@ exports[`ListItem Component renders correctly 1`] = `
       "flexDirection": "row",
       "height": 48,
       "marginBottom": 8,
-      "paddingBottom": 12,
+      "paddingTop": 8,
       "position": "relative",
     }
   }
@@ -65,9 +65,8 @@ exports[`ListItem Component renders correctly 1`] = `
             "fontSize": 24,
             "height": 48,
             "letterSpacing": 0,
-            "lineHeight": 28,
             "paddingLeft": 32,
-            "paddingTop": 14,
+            "paddingTop": 10,
             "textAlign": "left",
           },
           Object {

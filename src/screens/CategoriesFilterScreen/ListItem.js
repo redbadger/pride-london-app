@@ -79,7 +79,7 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
                       inputRange: [0, 1],
                       outputRange: [
                         16 - Dimensions.get("window").width,
-                        16 - Dimensions.get("window").width + textWidth
+                        12 - Dimensions.get("window").width + textWidth
                       ]
                     }
                   )
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     position: "relative",
     marginBottom: 8,
-    paddingBottom: 12,
+    paddingTop: 8,
     height: 48
   },
   itemDecoration: {
@@ -128,12 +128,11 @@ const styles = StyleSheet.create({
   itemText: {
     height: 48,
     paddingLeft: 32,
-    paddingTop: 14,
+    paddingTop: 10,
     color: whiteColor,
     textAlign: "left",
     fontFamily: "Poppins-Bold",
     fontSize: 24,
-    lineHeight: 28,
     letterSpacing: 0
   }
 });

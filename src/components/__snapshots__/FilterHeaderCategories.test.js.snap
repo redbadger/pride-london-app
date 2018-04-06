@@ -6,7 +6,6 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
     Object {
       "alignItems": "center",
       "flexDirection": "row",
-      "justifyContent": "space-between",
     }
   }
 >
@@ -29,11 +28,11 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
         "alignItems": "center",
         "backgroundColor": "rgb(32, 33, 90)",
         "borderRadius": 4,
-        "flex": 1,
         "flexDirection": "row",
         "height": 40,
         "justifyContent": "space-between",
         "paddingLeft": 8,
+        "width": 145,
       }
     }
   >
