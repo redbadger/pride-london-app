@@ -57,7 +57,7 @@ HomeStack.navigationOptions = {
   }
 };
 
-const TabNavigation = TabNavigator(
+export default TabNavigator(
   {
     Home: { screen: HomeStack },
     Events: { screen: EventsStack },
@@ -71,5 +71,3 @@ const TabNavigation = TabNavigator(
     initialRouteName: "Home"
   }
 );
-
-export default TabNavigation;
