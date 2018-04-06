@@ -1,35 +1,22 @@
 // @flow
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  StatusBar,
-  TouchableOpacity,
-  Image
-} from "react-native";
+import { View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
-import Text from "./Text";
 import ContentPadding from "./ContentPadding";
-import {
-  interestButtonBgColor,
-  interestButtonTextColor,
-  filterBgColor,
-  filterShowMeTextColor,
-  categoriesFilterButtonBgColor
-} from "../constants/colors";
+import FilterHeaderCategories from "./FilterHeaderCategories";
+import { filterBgColor } from "../constants/colors";
 import text from "../constants/text";
 import type { DateOrDateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
 
-import chevronRightImg from "../../assets/images/chevronRight.png";
-
 export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateOrDateRange,
-  timeFilter: Set<Time>
+  timeFilter: Set<Time>,
+  selectedCategories: Set<string>
 };
 
 type State = {
@@ -64,7 +51,12 @@ class FilterHeader extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { dateFilter, timeFilter, onFilterCategoriesPress } = this.props;
+    const {
+      dateFilter,
+      timeFilter,
+      onFilterCategoriesPress,
+      selectedCategories
+    } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
       : text.anyDay;
@@ -79,27 +71,10 @@ class FilterHeader extends React.PureComponent<Props, State> {
         <StatusBar barStyle="light-content" animated />
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
-            <View style={styles.contentInterest}>
-              <Text type="h1" style={styles.filterTitle}>
-                {text.filterTitle}
-              </Text>
-              <View style={styles.interestButton}>
-                <Text type="h2" style={styles.interestButtonText}>
-                  {text.filterByInterest}
-                </Text>
-                <TouchableOpacity
-                  accessibilityTraits={["button"]}
-                  accessibilityComponentType="button"
-                  style={styles.categoriesFilterButton}
-                  onPress={onFilterCategoriesPress}
-                >
-                  <Image source={chevronRightImg} />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.mapButton}>
-                <Text style={styles.mapButtonText}>Map</Text>
-              </View>
-            </View>
+            <FilterHeaderCategories
+              onFilterPress={onFilterCategoriesPress}
+              selectedCategories={selectedCategories}
+            />
             <View style={styles.contentFilters}>
               <FilterHeaderButton
                 text={formattedDateFilter}
@@ -141,53 +116,6 @@ const styles = StyleSheet.create({
   content: {
     paddingTop: 16,
     paddingBottom: 12
-  },
-  contentInterest: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  filterTitle: {
-    color: filterShowMeTextColor,
-    paddingTop: 5,
-    marginRight: 8
-  },
-  categoriesFilterButton: {
-    width: 38,
-    height: 40,
-    backgroundColor: categoriesFilterButtonBgColor,
-    justifyContent: "center",
-    alignItems: "center",
-    borderTopRightRadius: 4,
-    borderBottomRightRadius: 4
-  },
-  interestButton: {
-    flex: 1,
-    height: 40,
-    backgroundColor: interestButtonBgColor,
-    borderRadius: 4,
-    justifyContent: "space-between",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: 8
-  },
-  interestButtonText: {
-    color: interestButtonTextColor
-  },
-  mapButton: {
-    marginLeft: 12,
-    width: 52,
-    height: 52,
-    backgroundColor: interestButtonBgColor,
-    alignItems: "center",
-    justifyContent: "flex-end",
-    borderRadius: 25
-  },
-  mapButtonText: {
-    color: interestButtonTextColor,
-    fontFamily: "Poppins-Bold",
-    fontSize: 14,
-    paddingBottom: 6
   },
   contentFilters: {
     flexDirection: "row",

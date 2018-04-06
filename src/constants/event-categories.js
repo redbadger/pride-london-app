@@ -55,4 +55,7 @@ const categories: EventCategoryMap = {
   }
 };
 
+export const getCategoryColor = (category: string, locale: string) =>
+  categories[locale][category].color;
+
 export default categories;

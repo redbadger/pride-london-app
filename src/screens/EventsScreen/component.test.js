@@ -18,6 +18,7 @@ describe("EventsScreen Component", () => {
         refreshing={false}
         updateEvents={() => Promise.resolve()}
         getAssetUrl={() => ""}
+        selectedCategories={new Set()}
       />
     );
     expect(output).toMatchSnapshot();
@@ -32,6 +33,7 @@ describe("EventsScreen Component", () => {
         refreshing={false}
         updateEvents={() => Promise.resolve()}
         getAssetUrl={() => ""}
+        selectedCategories={new Set()}
       />
     );
 

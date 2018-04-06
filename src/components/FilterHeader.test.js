@@ -8,9 +8,14 @@ import TimeFilterDialog from "./ConnectedTimeFilterDialog";
 import type { DateOrDateRange, Time } from "../data/date-time";
 
 const render = (
-  props: { dateFilter: ?DateOrDateRange, timeFilter: Set<Time> } = {
+  props: {
+    dateFilter: ?DateOrDateRange,
+    timeFilter: Set<Time>,
+    selectedCategories?: Set<string>
+  } = {
     dateFilter: null,
-    timeFilter: new Set(["morning"])
+    timeFilter: new Set(["morning"]),
+    selectedCategories: new Set()
   }
 ) => shallow(<FilterHeader {...props} />);
 
@@ -18,7 +23,8 @@ describe("renders correctly", () => {
   it("with any date and any time", () => {
     const output = render({
       dateFilter: null,
-      timeFilter: new Set(["morning", "afternoon", "evening"])
+      timeFilter: new Set(["morning", "afternoon", "evening"]),
+      selectedCategories: new Set()
     });
     expect(output).toMatchSnapshot();
   });
@@ -26,7 +32,8 @@ describe("renders correctly", () => {
   it("with any date and any time (empty time set)", () => {
     const output = render({
       dateFilter: null,
-      timeFilter: new Set()
+      timeFilter: new Set(),
+      selectedCategories: new Set()
     });
     expect(output).toMatchSnapshot();
   });
@@ -34,7 +41,8 @@ describe("renders correctly", () => {
   it("with single date and single time", () => {
     const output = render({
       dateFilter: "2018-02-02",
-      timeFilter: new Set(["afternoon"])
+      timeFilter: new Set(["afternoon"]),
+      selectedCategories: new Set()
     });
     expect(output).toMatchSnapshot();
   });
@@ -45,7 +53,8 @@ describe("renders correctly", () => {
         startDate: "2018-02-02",
         endDate: "2018-02-03"
       },
-      timeFilter: new Set(["morning", "afternoon"])
+      timeFilter: new Set(["morning", "afternoon"]),
+      selectedCategories: new Set()
     });
     expect(output).toMatchSnapshot();
   });

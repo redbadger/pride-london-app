@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterHeaderCategories Component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <Text
+    markdown={false}
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginRight": 8,
+        "paddingTop": 5,
+      }
+    }
+    type="h1"
+  >
+    Show me
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgb(32, 33, 90)",
+        "borderRadius": 4,
+        "flex": 1,
+        "flexDirection": "row",
+        "height": 40,
+        "justifyContent": "space-between",
+        "paddingLeft": 8,
+      }
+    }
+  >
+    <Text
+      markdown={false}
+      style={
+        Object {
+          "color": "#ffffff",
+        }
+      }
+      type="h2"
+    >
+      All events
+    </Text>
+    <CategoriesFilterButton
+      onPress={[Function]}
+      style={Object {}}
+    />
+  </View>
+</View>
+`;

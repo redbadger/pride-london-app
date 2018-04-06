@@ -3,21 +3,18 @@ import React from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 import Text from "../../components/Text";
 import text from "../../constants/text";
-import {
-  whiteColor,
-  coralColor,
-  darkBlueGreyTwoColor,
-  eucalyptusGreenColor
-} from "../../constants/colors";
+import { whiteColor } from "../../constants/colors";
+import CategoriesPills from "../../components/CategoriesPills";
 
 type Props = {
-  onClose: Function,
-  onClearAll: Function
+  onClose?: Function,
+  onClearAll?: Function,
+  selectedCategories: Set<string>
 };
 
 type ActionButtonProps = {
   label: string,
-  onPress: Function
+  onPress?: Function
 };
 
 const ActionButton = ({ label, onPress }: ActionButtonProps) => (
@@ -28,28 +25,32 @@ const ActionButton = ({ label, onPress }: ActionButtonProps) => (
   </TouchableOpacity>
 );
 
-const Header = ({ onClose, onClearAll }: Props) => (
+ActionButton.defaultProps = {
+  onPress: () => {}
+};
+
+const Header = ({ onClose, onClearAll, selectedCategories }: Props) => (
   <View>
     <View style={styles.actionButtons}>
       <ActionButton label={text.cancel} onPress={onClose} />
-      <ActionButton label={text.clearAll} onPress={onClearAll} />
+      {selectedCategories.size > 0 && (
+        <ActionButton label={text.clearAll} onPress={onClearAll} />
+      )}
     </View>
     <Text type="h1" style={styles.filterTitle}>
       {text.filterTitle}
     </Text>
-    <View style={styles.selectedCategoriesPills}>
-      {/* <Text type="h3" style={styles.categoryPill}>
-        Cabaret & Variety
-      </Text>
-      <Text type="h3" style={styles.categoryPill}>
-        Nightlife
-      </Text> */}
-      <Text type="h3" style={styles.zeroSelected}>
-        {text.zeroSelected}
-      </Text>
-    </View>
+    <CategoriesPills
+      style={styles.categoriesPills}
+      selectedCategories={selectedCategories}
+    />
   </View>
 );
+
+Header.defaultProps = {
+  onClose: () => {},
+  onClearAll: () => {}
+};
 
 const styles = StyleSheet.create({
   actionButtons: {
@@ -62,34 +63,15 @@ const styles = StyleSheet.create({
     width: 60
   },
   actionButtonText: {
-    color: eucalyptusGreenColor
+    color: whiteColor
+  },
+  categoriesPills: {
+    marginBottom: 16
   },
   filterTitle: {
     color: whiteColor,
     marginTop: 14,
     marginBottom: 6
-  },
-  selectedCategoriesPills: {
-    backgroundColor: darkBlueGreyTwoColor,
-    padding: 10,
-    paddingLeft: 16,
-    borderRadius: 4,
-    marginBottom: 16,
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "row"
-  },
-  zeroSelected: {
-    color: eucalyptusGreenColor,
-    paddingTop: 2
-  },
-  categoryPill: {
-    color: whiteColor,
-    backgroundColor: coralColor,
-    paddingTop: 2,
-    paddingLeft: 5,
-    paddingRight: 5,
-    marginRight: 11
   }
 });
 
