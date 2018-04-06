@@ -1,6 +1,12 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Dimensions
+} from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import {
   interestButtonBgColor,
@@ -56,7 +62,10 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
     </View>
   ) : (
     <View style={styles.categoryPillsContainer}>
-      <CategoriesPills selectedCategories={selectedCategories} />
+      <CategoriesPills
+        style={styles.categoryPills}
+        selectedCategories={selectedCategories}
+      />
       <CategoriesFilterButton
         style={styles.categoriesFilterOverButton}
         onPress={onFilterPress}
@@ -77,6 +86,9 @@ const styles = StyleSheet.create({
   },
   categoryPillsContainer: {
     position: "relative"
+  },
+  categoryPills: {
+    width: Dimensions.get("window").width - 50
   },
   categoriesFilterButton: {
     width: 38,

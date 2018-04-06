@@ -10,8 +10,7 @@ exports[`CategoriesPills Component renders correctly 1`] = `
         "display": "flex",
         "flexDirection": "row",
         "height": 40,
-        "padding": 8,
-        "paddingLeft": 16,
+        "width": "100%",
       },
       Object {},
     ]
@@ -22,7 +21,8 @@ exports[`CategoriesPills Component renders correctly 1`] = `
     style={
       Object {
         "color": "#2cda9d",
-        "paddingTop": 2,
+        "paddingLeft": 8,
+        "paddingTop": 11,
       }
     }
     type="h3"
