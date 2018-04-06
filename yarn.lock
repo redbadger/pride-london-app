@@ -5958,6 +5958,12 @@ react-native-easy-markdown@^1.1.9:
   dependencies:
     simple-markdown "^0.1.1"
 
+react-native-linear-gradient@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-map-link@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/react-native-map-link/-/react-native-map-link-1.0.6.tgz#22fe6059cfd571441f475f8d60b973b28f565687"

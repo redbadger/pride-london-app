@@ -1,17 +1,19 @@
 // @flow
 import React from "react";
-import { StyleSheet, ScrollView, View, Animated, Platform } from "react-native";
+import { StyleSheet, ScrollView, View, Animated } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
-import { blackColor } from "../constants/colors";
 
 type Props = {
   children: Array<Object>,
   style: StyleObj
 };
 
-const maxShadowOpacity: number = 1;
-const shadowFadeDuration: number = 200;
+const shadowFadeDuration: number = 100;
 const maxScrollEventThrottle: number = 16;
+
+const LinearGrad: any = props => <LinearGradient {...props} />;
+const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGrad);
 
 class ShadowedScrollView extends React.PureComponent<Props> {
   static defaultProps = {
@@ -25,18 +27,19 @@ class ShadowedScrollView extends React.PureComponent<Props> {
   contentViewHeight: number;
   scrollViewHeight: number;
 
-  fadeShadow = (shadowAnimation: Object, toValue: number) => {
-    Animated.timing(shadowAnimation, {
-      toValue,
-      duration: shadowFadeDuration
-    }).start();
-  };
-
   fadeTopShadow = (toValue: number) =>
-    this.fadeShadow(this.topShadowOpacity, toValue);
+    Animated.timing(this.topShadowOpacity, {
+      toValue,
+      duration: shadowFadeDuration,
+      useNativeDriver: true
+    }).start();
 
   fadeBottomShadow = (toValue: number) =>
-    this.fadeShadow(this.bottomShadowOpacity, toValue);
+    Animated.timing(this.bottomShadowOpacity, {
+      toValue,
+      duration: shadowFadeDuration,
+      useNativeDriver: true
+    }).start();
 
   componentWillMount() {
     this.topShadowOpacity = new Animated.Value(0);
@@ -44,33 +47,19 @@ class ShadowedScrollView extends React.PureComponent<Props> {
   }
 
   handleScroll = (event: { nativeEvent: { contentOffset: { y: number } } }) => {
-    const maxScrollOffset = this.contentViewHeight - this.scrollViewHeight;
+    const maxScrollOffset = this.contentViewHeight - this.scrollViewHeight - 10;
     const currentScrollOffset = event.nativeEvent.contentOffset.y;
     // eslint-disable-next-line no-underscore-dangle
-    if (this.topShadowOpacity._value === 1 && currentScrollOffset <= 0) {
-      this.fadeTopShadow(0);
-    }
+    if (currentScrollOffset <= 0) this.fadeTopShadow(0);
 
     // eslint-disable-next-line no-underscore-dangle
-    if (this.topShadowOpacity._value === 0 && currentScrollOffset > 0) {
-      this.fadeTopShadow(1);
-    }
+    if (currentScrollOffset > 0) this.fadeTopShadow(1);
 
-    if (
-      // eslint-disable-next-line no-underscore-dangle
-      this.bottomShadowOpacity._value === 1 &&
-      currentScrollOffset > maxScrollOffset
-    ) {
-      this.fadeBottomShadow(0);
-    }
+    // eslint-disable-next-line no-underscore-dangle
+    if (currentScrollOffset > maxScrollOffset) this.fadeBottomShadow(0);
 
-    if (
-      // eslint-disable-next-line no-underscore-dangle
-      this.bottomShadowOpacity._value === 0 &&
-      currentScrollOffset < maxScrollOffset
-    ) {
-      this.fadeBottomShadow(1);
-    }
+    // eslint-disable-next-line no-underscore-dangle
+    if (currentScrollOffset < maxScrollOffset) this.fadeBottomShadow(1);
   };
 
   handleScrollViewLayout = (event: Object) => {
@@ -101,8 +90,11 @@ class ShadowedScrollView extends React.PureComponent<Props> {
     };
 
     return (
-      <View style={[styles.container, style]}>
-        <Animated.View style={[styles.topShadow, topShadowOpacityStyle]} />
+      <View style={style}>
+        <AnimatedLinearGradient
+          colors={["rgba(0, 0, 0, 0.3)", "rgba(255, 255, 255, 0)"]}
+          style={[styles.topShadow, topShadowOpacityStyle]}
+        />
         <ScrollView
           onLayout={this.handleScrollViewLayout}
           onScroll={this.handleScroll}
@@ -110,7 +102,8 @@ class ShadowedScrollView extends React.PureComponent<Props> {
         >
           <View onLayout={this.handleContentViewLayout}>{children}</View>
         </ScrollView>
-        <Animated.View
+        <AnimatedLinearGradient
+          colors={["rgba(255, 255, 255, 0)", "rgba(0, 0, 0, 0.3)"]}
           style={[styles.bottomShadow, bottomShadowOpacityStyle]}
         />
       </View>
@@ -119,47 +112,19 @@ class ShadowedScrollView extends React.PureComponent<Props> {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    overflow: "hidden"
-  },
   topShadow: {
     width: "100%",
-    height: 10,
+    height: 20,
     position: "absolute",
     left: 0,
-    top: -10,
-    backgroundColor: blackColor,
-    ...Platform.select({
-      ios: {
-        shadowColor: blackColor,
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: maxShadowOpacity,
-        shadowRadius: 5
-      },
-      android: {
-        elevation: 15
-      }
-    })
+    top: 0
   },
   bottomShadow: {
     width: "100%",
     height: 10,
     position: "absolute",
     left: 0,
-    bottom: -10,
-    backgroundColor: blackColor,
-    ...Platform.select({
-      ios: {
-        shadowColor: blackColor,
-        shadowOffset: { width: 0, height: -1 },
-        shadowOpacity: maxShadowOpacity,
-        shadowRadius: 5
-      },
-      android: {
-        elevation: 30
-      }
-    })
+    bottom: 0
   }
 });
 
