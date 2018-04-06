@@ -31,25 +31,49 @@ const CategoryPill = ({ name }: { name: string }) => (
   </Text>
 );
 
-const CategoriesPills = ({ selectedCategories, style }: Props) => (
-  <View style={[styles.selectedCategoriesPills, style]}>
-    {selectedCategories.size === 0 ? (
-      <Text type="h3" style={styles.zeroSelected}>
-        {text.zeroSelected}
-      </Text>
-    ) : (
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {Array.from(selectedCategories).map(name => (
-          <CategoryPill key={name} name={name} />
-        ))}
-      </ScrollView>
-    )}
-  </View>
-);
+class CategoriesPills extends React.PureComponent<Props> {
+  static defaultProps = {
+    style: {}
+  };
 
-CategoriesPills.defaultProps = {
-  style: {}
-};
+  // eslint-disable-next-line react/sort-comp
+  scrollView: ?Object;
+
+  scrollToLastPill = () => {
+    if (!this.scrollView) {
+      return;
+    }
+
+    this.scrollView.scrollToEnd({ animated: false });
+  };
+
+  render() {
+    const { style, selectedCategories } = this.props;
+
+    return (
+      <View style={[styles.selectedCategoriesPills, style]}>
+        {selectedCategories.size === 0 ? (
+          <Text type="h3" style={styles.zeroSelected}>
+            {text.zeroSelected}
+          </Text>
+        ) : (
+          <ScrollView
+            ref={(ref: ?Object) => {
+              this.scrollView = ref;
+            }}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            onContentSizeChange={this.scrollToLastPill}
+          >
+            {Array.from(selectedCategories).map(name => (
+              <CategoryPill key={name} name={name} />
+            ))}
+          </ScrollView>
+        )}
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   selectedCategoriesPills: {

@@ -42,7 +42,7 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
   componentWillReceiveProps(props: ListItemProps) {
     Animated.timing(this.decorationWidth, {
       toValue: Number(props.selected),
-      duration: 200,
+      duration: 100,
       useNativeDriver: true
     }).start();
   }
