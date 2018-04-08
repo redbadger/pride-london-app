@@ -1,12 +1,5 @@
 // @flow
-import { formatShortDate, formatDateRange } from "./formatters";
-
-describe("formatShortDate", () => {
-  it("formats correctly", () => {
-    const result = formatShortDate("2018-01-01");
-    expect(result).toBe("1 Jan");
-  });
-});
+import { formatDateRange } from "./formatters";
 
 describe("formatDateRange", () => {
   it("formats date correctly", () => {

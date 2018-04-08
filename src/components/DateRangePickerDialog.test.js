@@ -31,6 +31,13 @@ describe("renders correctly", () => {
     });
     expect(output).toMatchSnapshot();
   });
+
+  it("with range selection", () => {
+    const output = render({
+      dateRange: { startDate: "2018-02-02", endDate: "2018-02-08" }
+    });
+    expect(output).toMatchSnapshot();
+  });
 });
 
 it("calls onChange with null when user presses clear button", () => {

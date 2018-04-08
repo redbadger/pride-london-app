@@ -18,6 +18,15 @@ type Props = {
   forceNewRange: boolean
 };
 
+const formatTitle = (dateRange: ?DateRange): string => {
+  if (!dateRange) return text.filterDayPickerTitle;
+
+  return (
+    formatDateRange(dateRange) +
+    (dateRange.startDate === dateRange.endDate ? " -" : "")
+  );
+};
+
 class DateRangePickerDialog extends React.PureComponent<Props> {
   clear = () => {
     this.props.onChange(null);
@@ -25,9 +34,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
 
   render() {
     const { dateRange, forceNewRange } = this.props;
-    const title = dateRange
-      ? formatDateRange(dateRange)
-      : text.filterDayPickerTitle;
+    const title = formatTitle(dateRange);
 
     return (
       <Dialog

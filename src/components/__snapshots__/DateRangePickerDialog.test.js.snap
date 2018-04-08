@@ -35,13 +35,64 @@ exports[`renders correctly with date selection 1`] = `
   }
   onApply={[Function]}
   onCancel={[Function]}
-  title="2 Feb"
+  title="2 Feb -"
   visible={true}
 >
   <DateRangePicker
     dateRange={
       Object {
         "endDate": "2018-02-02",
+        "startDate": "2018-02-02",
+      }
+    }
+    forceNewRange={false}
+    onChange={[Function]}
+  />
+</Dialog>
+`;
+
+exports[`renders correctly with range selection 1`] = `
+<Dialog
+  applyButtonText="Apply"
+  headerRight={
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      accessible={undefined}
+      delayLongPress={undefined}
+      delayPressIn={50}
+      delayPressOut={undefined}
+      disabled={undefined}
+      hitSlop={undefined}
+      onLongPress={undefined}
+      onPress={[Function]}
+      onPressIn={undefined}
+      onPressOut={undefined}
+      pressRetentionOffset={undefined}
+      style={undefined}
+    >
+      <Text
+        markdown={false}
+        style={Object {}}
+        type="text"
+      >
+        Clear
+      </Text>
+    </Touchable>
+  }
+  onApply={[Function]}
+  onCancel={[Function]}
+  title="2 Feb - 8 Feb"
+  visible={true}
+>
+  <DateRangePicker
+    dateRange={
+      Object {
+        "endDate": "2018-02-08",
         "startDate": "2018-02-02",
       }
     }
