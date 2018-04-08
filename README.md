@@ -4,7 +4,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/maintainability)](https://codeclimate.com/github/redbadger/pride-london-app/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/test_coverage)](https://codeclimate.com/github/redbadger/pride-london-app/test_coverage)
 
-
 <!-- Generateed with markdown-toc (https://github.com/jonschlinkert/markdown-toc) -->
 
 <!-- toc -->
@@ -171,5 +170,5 @@ To find out more about ADRs have a read of this article: http://thinkrelevance.c
 
 * [CI Pipeline](https://circleci.com/gh/redbadger/workflows/pride-london-app): View and debug builds
 
-* We would like to thank [BrowserStack](https://www.browserstack.com) for allowing us to use their resources to test the Pride in London App for free! 
-[![BrowserStack Logo](images/browserstack-logo-600x315.png)](https://www.browserstack.com)
+* We would like to thank [BrowserStack](https://www.browserstack.com) for allowing us to use their resources to test the Pride in London App for free!
+  [![BrowserStack Logo](images/browserstack-logo-600x315.png)](https://www.browserstack.com)

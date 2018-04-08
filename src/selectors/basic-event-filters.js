@@ -8,14 +8,6 @@ import type { DateRange, Time } from "../data/date-time";
 
 const locale = "en-GB";
 
-export const buildDateFilter = (date: string) => (event: Event) =>
-  areRangesOverlapping(
-    startOfDay(date),
-    endOfDay(date),
-    event.fields.startTime[locale],
-    event.fields.endTime[locale]
-  );
-
 export const buildDateRangeFilter = (date: DateRange) => (event: Event) =>
   areRangesOverlapping(
     startOfDay(date.startDate),

@@ -6,13 +6,19 @@ import DateRangePicker from "./DateRangePicker";
 
 describe("renders correctly", () => {
   it("no dates", () => {
-    const output = shallow(<DateRangePicker onChange={() => {}} />);
+    const output = shallow(
+      <DateRangePicker onChange={() => {}} forceNewRange={false} />
+    );
     expect(output).toMatchSnapshot();
   });
 
   it("only startDate", () => {
     const output = shallow(
-      <DateRangePicker onChange={() => {}} dateRange="2018-01-01" />
+      <DateRangePicker
+        onChange={() => {}}
+        dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
+        forceNewRange={false}
+      />
     );
     expect(output).toMatchSnapshot();
   });
@@ -22,6 +28,7 @@ describe("renders correctly", () => {
       <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-02" }}
+        forceNewRange={false}
       />
     );
     expect(output).toMatchSnapshot();
@@ -32,6 +39,7 @@ describe("renders correctly", () => {
       <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-02", endDate: "2018-01-01" }}
+        forceNewRange={false}
       />
     );
     expect(output).toMatchSnapshot();
@@ -42,6 +50,7 @@ describe("renders correctly", () => {
       <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
+        forceNewRange={false}
       />
     );
     expect(output).toMatchSnapshot();
@@ -51,7 +60,11 @@ describe("renders correctly", () => {
 describe("onChange", () => {
   const render = (onChange, dateRange) => {
     const output = shallow(
-      <DateRangePicker onChange={onChange} dateRange={dateRange} />
+      <DateRangePicker
+        onChange={onChange}
+        dateRange={dateRange}
+        forceNewRange={false}
+      />
     );
     return output.find(Calendar).prop("onDayPress");
   };
@@ -67,12 +80,18 @@ describe("onChange", () => {
     const onChange = jest.fn();
     const onDayPress = render(onChange, null);
     onDayPress(getCalendarDay("2018-01-01"));
-    expect(onChange).toHaveBeenCalledWith("2018-01-01");
+    expect(onChange).toHaveBeenCalledWith({
+      startDate: "2018-01-01",
+      endDate: "2018-01-01"
+    });
   });
 
   it("reports date range when second day is selected", () => {
     const onChange = jest.fn();
-    const onDayPress = render(onChange, "2018-11-22");
+    const onDayPress = render(onChange, {
+      startDate: "2018-11-22",
+      endDate: "2018-11-22"
+    });
     onDayPress(getCalendarDay("2018-11-25"));
     expect(onChange).toHaveBeenCalledWith({
       startDate: "2018-11-22",
@@ -82,7 +101,10 @@ describe("onChange", () => {
 
   it("reports sorted date range when second day is selected", () => {
     const onChange = jest.fn();
-    const onDayPress = render(onChange, "2018-11-22");
+    const onDayPress = render(onChange, {
+      startDate: "2018-11-22",
+      endDate: "2018-11-22"
+    });
     onDayPress(getCalendarDay("2018-11-05"));
     expect(onChange).toHaveBeenCalledWith({
       startDate: "2018-11-05",
@@ -98,21 +120,8 @@ describe("onChange", () => {
     });
     onDayPress(getCalendarDay("2018-11-28"));
     expect(onChange).toHaveBeenCalledWith({
-      startDate: "2018-11-22",
+      startDate: "2018-11-28",
       endDate: "2018-11-28"
-    });
-  });
-
-  it("reports sorted date range when second day is changed", () => {
-    const onChange = jest.fn();
-    const onDayPress = render(onChange, {
-      startDate: "2018-11-22",
-      endDate: "2018-11-25"
-    });
-    onDayPress(getCalendarDay("2018-11-10"));
-    expect(onChange).toHaveBeenCalledWith({
-      startDate: "2018-11-10",
-      endDate: "2018-11-22"
     });
   });
 });
