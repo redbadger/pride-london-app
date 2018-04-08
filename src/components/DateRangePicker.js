@@ -5,7 +5,7 @@ import formatDate from "date-fns/format";
 import addDays from "date-fns/add_days";
 import isBefore from "date-fns/is_before";
 import { cardBgColor, eventListHeaderColor } from "../constants/colors";
-import type { DateRange, DateOrDateRange } from "../data/date-time";
+import type { DateRange } from "../data/date-time";
 
 type CalendarDay = {
   year: number,
@@ -15,20 +15,17 @@ type CalendarDay = {
   dateString: string
 };
 
-const getSortedDateRange = (dates: DateRange) => {
-  if (dates.startDate === dates.endDate) {
-    return dates.startDate;
-  }
-
-  return isBefore(dates.endDate, dates.startDate)
+const getSortedDateRange = (dates: DateRange) =>
+  isBefore(dates.endDate, dates.startDate)
     ? { startDate: dates.endDate, endDate: dates.startDate }
     : dates;
-};
 
 const getMarkedDate = (date: string) => ({
   [date]: {
-    selected: true,
-    selectedColor: eventListHeaderColor
+    startingDay: true,
+    endingDay: true,
+    color: eventListHeaderColor,
+    textColor: cardBgColor
   }
 });
 
@@ -63,61 +60,54 @@ const getMarkedDateRange = (dateRange: DateRange) => {
   return markedDates;
 };
 
-const getCalendarMarkingProps = (dateRange: ?DateOrDateRange) => {
-  if (dateRange && typeof dateRange === "string") {
-    return {
-      markingType: "simple",
-      markedDates: getMarkedDate(dateRange)
-    };
-  } else if (dateRange && typeof dateRange === "object") {
-    return {
-      markingType: "period",
-      markedDates: getMarkedDateRange(dateRange)
-    };
+const getMarkedDates = (dateRange: ?DateRange) => {
+  if (!dateRange) {
+    return {};
   }
 
-  return {};
+  if (dateRange.startDate === dateRange.endDate) {
+    return getMarkedDate(dateRange.startDate);
+  }
+
+  return getMarkedDateRange(dateRange);
 };
 
 type Props = {
-  onChange: DateOrDateRange => void,
-  dateRange?: ?DateOrDateRange
+  onChange: DateRange => void,
+  dateRange?: ?DateRange,
+  forceNewRange: boolean
 };
 
 class DateRangePicker extends React.PureComponent<Props> {
   onDaySelected = (day: CalendarDay) => {
-    const { dateRange, onChange } = this.props;
-    if (!dateRange) {
-      onChange(day.dateString);
-    } else if (typeof dateRange === "string") {
-      onChange(
-        getSortedDateRange({
-          startDate: dateRange,
-          endDate: day.dateString
-        })
-      );
-    } else {
-      onChange(
-        getSortedDateRange({
-          ...dateRange,
-          endDate: day.dateString
-        })
-      );
+    const { dateRange, onChange, forceNewRange } = this.props;
+
+    if (
+      !dateRange ||
+      forceNewRange ||
+      dateRange.startDate !== dateRange.endDate
+    ) {
+      return onChange({ startDate: day.dateString, endDate: day.dateString });
     }
+
+    return onChange(
+      getSortedDateRange({
+        startDate: dateRange.startDate,
+        endDate: day.dateString
+      })
+    );
   };
 
   render() {
-    const dateRange =
-      this.props.dateRange && typeof this.props.dateRange === "object"
-        ? getSortedDateRange(this.props.dateRange)
-        : this.props.dateRange;
-
-    const { markingType, markedDates } = getCalendarMarkingProps(dateRange);
+    const dateRange = this.props.dateRange
+      ? getSortedDateRange(this.props.dateRange)
+      : this.props.dateRange;
 
     return (
       <Calendar
-        markedDates={markedDates}
-        markingType={markingType}
+        current={dateRange ? dateRange.startDate : null}
+        markedDates={getMarkedDates(dateRange)}
+        markingType="period"
         onDayPress={this.onDaySelected}
         theme={{
           textDayFontFamily: "Roboto",

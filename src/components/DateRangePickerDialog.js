@@ -5,16 +5,26 @@ import Dialog from "./Dialog";
 import Text from "./Text";
 import Touchable from "./Touchable";
 import text from "../constants/text";
-import type { DateOrDateRange } from "../data/date-time";
+import type { DateRange } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
 
 type Props = {
   applyButtonText: string,
-  dateRange: ?DateOrDateRange,
+  dateRange: ?DateRange,
   onApply: () => void,
   onCancel: () => void,
-  onChange: (?DateOrDateRange) => void,
-  visible: boolean
+  onChange: (?DateRange) => void,
+  visible: boolean,
+  forceNewRange: boolean
+};
+
+const formatTitle = (dateRange: ?DateRange): string => {
+  if (!dateRange) return text.filterDayPickerTitle;
+
+  return (
+    formatDateRange(dateRange) +
+    (dateRange.startDate === dateRange.endDate ? " -" : "")
+  );
 };
 
 class DateRangePickerDialog extends React.PureComponent<Props> {
@@ -23,10 +33,8 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
   };
 
   render() {
-    const { dateRange } = this.props;
-    const title = dateRange
-      ? formatDateRange(dateRange, { dateSuffix: " -" })
-      : text.filterDayPickerTitle;
+    const { dateRange, forceNewRange } = this.props;
+    const title = formatTitle(dateRange);
 
     return (
       <Dialog
@@ -41,7 +49,11 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
         title={title}
         visible={this.props.visible}
       >
-        <DateRangePicker onChange={this.props.onChange} dateRange={dateRange} />
+        <DateRangePicker
+          onChange={this.props.onChange}
+          dateRange={dateRange}
+          forceNewRange={forceNewRange}
+        />
       </Dialog>
     );
   }

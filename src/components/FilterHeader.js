@@ -9,12 +9,12 @@ import ContentPadding from "./ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
 import { filterBgColor } from "../constants/colors";
 import text from "../constants/text";
-import type { DateOrDateRange, Time } from "../data/date-time";
+import type { DateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
 
 export type Props = {
   onFilterCategoriesPress: Function,
-  dateFilter: ?DateOrDateRange,
+  dateFilter: ?DateRange,
   timeFilter: Set<Time>,
   selectedCategories: Set<string>
 };

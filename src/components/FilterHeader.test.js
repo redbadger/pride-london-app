@@ -5,11 +5,11 @@ import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeader from "./FilterHeader";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
-import type { DateOrDateRange, Time } from "../data/date-time";
+import type { DateRange, Time } from "../data/date-time";
 
 const render = (
   props: {
-    dateFilter: ?DateOrDateRange,
+    dateFilter: ?DateRange,
     timeFilter: Set<Time>,
     selectedCategories?: Set<string>
   } = {
@@ -40,7 +40,7 @@ describe("renders correctly", () => {
 
   it("with single date and single time", () => {
     const output = render({
-      dateFilter: "2018-02-02",
+      dateFilter: { startDate: "2018-02-02", endDate: "2018-02-02" },
       timeFilter: new Set(["afternoon"]),
       selectedCategories: new Set()
     });

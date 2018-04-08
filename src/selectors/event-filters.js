@@ -1,12 +1,11 @@
 // @flow
 import {
-  buildDateFilter,
   buildDateRangeFilter,
   buildTimeFilter,
   buildCategoryFilter
 } from "./basic-event-filters";
 import type { Event } from "../data/event";
-import type { DateOrDateRange, Time } from "../data/date-time";
+import type { Time } from "../data/date-time";
 import type { State } from "../reducers";
 
 const getEventFiltersState = (state: State, selectStagedFilters: boolean) =>
@@ -23,8 +22,8 @@ export const selectTimeFilter = (
   selectStagedFilters?: boolean = false
 ) => getEventFiltersState(state, selectStagedFilters).time;
 
-const buildDateOrDateRangeFilter = (date: DateOrDateRange) =>
-  typeof date === "string" ? buildDateFilter(date) : buildDateRangeFilter(date);
+export const selectIsStagingFilters = (state: State): boolean =>
+  state.eventFilters.stagedFilters !== state.eventFilters.selectedFilters;
 
 const buildTimesFilter = (times: Time[]) => {
   const filters = times.map(time => buildTimeFilter(time));
@@ -41,7 +40,7 @@ export const buildEventFilter = (
   );
   const timeArray = Array.from(time);
   const dateFilter: (event: Event) => boolean = date
-    ? buildDateOrDateRangeFilter(date)
+    ? buildDateRangeFilter(date)
     : () => true;
   const timeFilter: (event: Event) => boolean =
     timeArray.length > 0 && timeArray.length < 3
