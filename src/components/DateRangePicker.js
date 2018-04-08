@@ -79,10 +79,6 @@ type Props = {
 };
 
 class DateRangePicker extends React.PureComponent<Props> {
-  defaultProps: {
-    forceNewRange: false
-  };
-
   onDaySelected = (day: CalendarDay) => {
     const { dateRange, onChange, forceNewRange } = this.props;
 
