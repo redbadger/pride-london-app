@@ -27,8 +27,8 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		16964196204301DC0058AF96 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16964194204301BF0058AF96 /* Crashlytics.framework */; };
 		16964197204301DF0058AF96 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16964195204301BF0058AF96 /* Fabric.framework */; };
-		16A8073F20176FE2000DE1F1 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		3E67D28869C44E63B2795DC9 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F30F2CFAEF426BA05F1A4F /* libSplashScreen.a */; };
+		4D99DF92207A5AA0001A4C8A /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		55C92420D9A1453FB374D8D9 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88788B71E6054B03A6B62D25 /* Poppins-BoldItalic.ttf */; };
 		5AB34E6B207774FD00E0E793 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB34E412077745700E0E793 /* libBVLinearGradient.a */; };
 		6C97CA7A2A0B4E109318EAAE /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE16C4ADDF4FA1AB14EAE4 /* Poppins-ExtraBold.ttf */; };
@@ -421,7 +421,7 @@
 			files = (
 				5AB34E6B207774FD00E0E793 /* libBVLinearGradient.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
-				16A8073F20176FE2000DE1F1 /* libRCTAnimation.a in Frameworks */,
+				4D99DF92207A5AA0001A4C8A /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,

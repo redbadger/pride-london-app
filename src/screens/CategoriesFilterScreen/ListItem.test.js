@@ -7,6 +7,10 @@ import type { EventCategory } from "../../data/event";
 const render = props => shallow(<ListItem {...props} />);
 
 describe("ListItem Component", () => {
+  beforeEach(() => {
+    jest.mock("NativeAnimatedHelper");
+  });
+
   it("renders correctly", () => {
     const category: EventCategory = { label: "Music", color: "#ffffff" };
     const component = render({ category, selected: true });
