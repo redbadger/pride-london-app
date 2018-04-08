@@ -209,8 +209,8 @@ describe("correctDates", () => {
         {
           sys: { id: "1" },
           fields: {
-            startTime: { "en-GB": "2018-07-07T17:30+01:00" },
-            endTime: { "en-GB": "2018-07-07T18:30+01:00" }
+            startTime: { "en-GB": "2018-07-07T22:30+01:00" },
+            endTime: { "en-GB": "2018-07-07T10:30+01:00" }
           }
         }
       ],
@@ -230,8 +230,8 @@ describe("correctDates", () => {
         {
           sys: { id: "1" },
           fields: {
-            startTime: { "en-GB": "2018-07-07T18:30+01:00" },
-            endTime: { "en-GB": "2018-07-07T17:30+01:00" }
+            startTime: { "en-GB": "2018-07-07T10:30+01:00" },
+            endTime: { "en-GB": "2018-07-07T22:30+01:00" }
           }
         }
       ],
