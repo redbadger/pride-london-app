@@ -24,6 +24,21 @@ const initialState = {
     }
   }
 };
+
+const singleDateFilters = {
+  categories: new Set(),
+  date: { startDate: "2018-02-02", endDate: "2018-02-02" },
+  time: new Set()
+};
+
+const singleDateFilterState = {
+  ...initialState,
+  eventFilters: {
+    selectedFilters: singleDateFilters,
+    stagedFilters: singleDateFilters
+  }
+};
+
 const mockStore = configureStore([thunk]);
 
 describe("ConnectedDateFilterDialog", () => {
@@ -119,5 +134,19 @@ describe("ConnectedDateFilterDialog", () => {
     expect(actions).toEqual([
       { type: "STAGE_EVENT_FILTERS", payload: { date: "2018-02-02" } }
     ]);
+  });
+
+  it("forces a new range when not staging filters", () => {
+    const store = mockStore(singleDateFilterState);
+    const output = shallow(
+      <ConnectedDateFilterDialog
+        store={store}
+        onApply={() => {}}
+        onCancel={() => {}}
+        visible
+      />
+    );
+
+    expect(output.prop("forceNewRange")).toBe(true);
   });
 });

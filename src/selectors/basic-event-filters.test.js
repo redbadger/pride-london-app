@@ -1,7 +1,6 @@
 // @flow
 import {
   buildCategoryFilter,
-  buildDateFilter,
   buildDateRangeFilter,
   buildTimeFilter
 } from "./basic-event-filters";
@@ -25,33 +24,6 @@ const buildEvent = ({
       eventCategories: { "en-GB": categories }
     }
   }: any): Event);
-
-describe("buildDateFilter", () => {
-  const event = buildEvent({
-    startTime: "2018-08-02T12:00:00",
-    endTime: "2018-08-05T12:00:00"
-  });
-
-  it("returns true when event starts on the given date", () => {
-    const filter = buildDateFilter("2018-08-02");
-    expect(filter(event)).toBe(true);
-  });
-
-  it("returns true when event ends on the given date", () => {
-    const filter = buildDateFilter("2018-08-05");
-    expect(filter(event)).toBe(true);
-  });
-
-  it("returns true when event starts before and ends after the given date", () => {
-    const filter = buildDateFilter("2018-08-04");
-    expect(filter(event)).toBe(true);
-  });
-
-  it("returns false otherwise", () => {
-    const filter = buildDateFilter("2018-08-10");
-    expect(filter(event)).toBe(false);
-  });
-});
 
 describe("buildDateRangeFilter", () => {
   const event = buildEvent({

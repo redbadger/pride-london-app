@@ -2,6 +2,9 @@
 
 exports[`renders correctly no dates 1`] = `
 <Calendar
+  current={null}
+  markedDates={Object {}}
+  markingType="period"
   onDayPress={[Function]}
   theme={
     Object {
@@ -18,15 +21,18 @@ exports[`renders correctly no dates 1`] = `
 
 exports[`renders correctly only startDate 1`] = `
 <Calendar
+  current="2018-01-01"
   markedDates={
     Object {
       "2018-01-01": Object {
-        "selected": true,
-        "selectedColor": "rgb(51, 51, 51)",
+        "color": "rgb(51, 51, 51)",
+        "endingDay": true,
+        "startingDay": true,
+        "textColor": "rgb(255, 255, 255)",
       },
     }
   }
-  markingType="simple"
+  markingType="period"
   onDayPress={[Function]}
   theme={
     Object {
@@ -43,6 +49,7 @@ exports[`renders correctly only startDate 1`] = `
 
 exports[`renders correctly startDate after endDate 1`] = `
 <Calendar
+  current="2018-01-01"
   markedDates={
     Object {
       "2018-01-01": Object {
@@ -74,6 +81,7 @@ exports[`renders correctly startDate after endDate 1`] = `
 
 exports[`renders correctly startDate before endDate 1`] = `
 <Calendar
+  current="2018-01-01"
   markedDates={
     Object {
       "2018-01-01": Object {
@@ -105,15 +113,18 @@ exports[`renders correctly startDate before endDate 1`] = `
 
 exports[`renders correctly startDate equals endDate 1`] = `
 <Calendar
+  current="2018-01-01"
   markedDates={
     Object {
       "2018-01-01": Object {
-        "selected": true,
-        "selectedColor": "rgb(51, 51, 51)",
+        "color": "rgb(51, 51, 51)",
+        "endingDay": true,
+        "startingDay": true,
+        "textColor": "rgb(255, 255, 255)",
       },
     }
   }
-  markingType="simple"
+  markingType="period"
   onDayPress={[Function]}
   theme={
     Object {
