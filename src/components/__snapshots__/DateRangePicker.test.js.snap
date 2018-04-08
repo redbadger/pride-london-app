@@ -3,138 +3,110 @@
 exports[`renders correctly no dates 1`] = `
 <Calendar
   current={null}
-  markedDates={Object {}}
-  markingType="period"
-  onDayPress={[Function]}
-  theme={
+  dayComponent={[Function]}
+  hideExtraDays={true}
+  markedDates={
     Object {
-      "textDayFontFamily": "Roboto",
-      "textDayFontSize": 16,
-      "textDayHeaderFontFamily": "Roboto",
-      "textDayHeaderFontSize": 16,
-      "textMonthFontFamily": "Roboto",
-      "textMonthFontSize": 16,
+      "2018-04-08": Object {
+        "marked": true,
+      },
     }
   }
+  markingType="period"
+  onDayPress={[Function]}
 />
 `;
 
 exports[`renders correctly only startDate 1`] = `
 <Calendar
   current="2018-01-01"
+  dayComponent={[Function]}
+  hideExtraDays={true}
   markedDates={
     Object {
       "2018-01-01": Object {
-        "color": "rgb(51, 51, 51)",
         "endingDay": true,
+        "selected": true,
         "startingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+      },
+      "2018-04-08": Object {
+        "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
-  theme={
-    Object {
-      "textDayFontFamily": "Roboto",
-      "textDayFontSize": 16,
-      "textDayHeaderFontFamily": "Roboto",
-      "textDayHeaderFontSize": 16,
-      "textMonthFontFamily": "Roboto",
-      "textMonthFontSize": 16,
-    }
-  }
 />
 `;
 
 exports[`renders correctly startDate after endDate 1`] = `
 <Calendar
   current="2018-01-01"
+  dayComponent={[Function]}
+  hideExtraDays={true}
   markedDates={
     Object {
       "2018-01-01": Object {
-        "color": "rgb(51, 51, 51)",
+        "selected": true,
         "startingDay": true,
-        "textColor": "rgb(255, 255, 255)",
       },
       "2018-01-02": Object {
-        "color": "rgb(51, 51, 51)",
         "endingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+        "selected": true,
+      },
+      "2018-04-08": Object {
+        "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
-  theme={
-    Object {
-      "textDayFontFamily": "Roboto",
-      "textDayFontSize": 16,
-      "textDayHeaderFontFamily": "Roboto",
-      "textDayHeaderFontSize": 16,
-      "textMonthFontFamily": "Roboto",
-      "textMonthFontSize": 16,
-    }
-  }
 />
 `;
 
 exports[`renders correctly startDate before endDate 1`] = `
 <Calendar
   current="2018-01-01"
+  dayComponent={[Function]}
+  hideExtraDays={true}
   markedDates={
     Object {
       "2018-01-01": Object {
-        "color": "rgb(51, 51, 51)",
+        "selected": true,
         "startingDay": true,
-        "textColor": "rgb(255, 255, 255)",
       },
       "2018-01-02": Object {
-        "color": "rgb(51, 51, 51)",
         "endingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+        "selected": true,
+      },
+      "2018-04-08": Object {
+        "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
-  theme={
-    Object {
-      "textDayFontFamily": "Roboto",
-      "textDayFontSize": 16,
-      "textDayHeaderFontFamily": "Roboto",
-      "textDayHeaderFontSize": 16,
-      "textMonthFontFamily": "Roboto",
-      "textMonthFontSize": 16,
-    }
-  }
 />
 `;
 
 exports[`renders correctly startDate equals endDate 1`] = `
 <Calendar
   current="2018-01-01"
+  dayComponent={[Function]}
+  hideExtraDays={true}
   markedDates={
     Object {
       "2018-01-01": Object {
-        "color": "rgb(51, 51, 51)",
         "endingDay": true,
+        "selected": true,
         "startingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+      },
+      "2018-04-08": Object {
+        "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
-  theme={
-    Object {
-      "textDayFontFamily": "Roboto",
-      "textDayFontSize": 16,
-      "textDayHeaderFontFamily": "Roboto",
-      "textDayHeaderFontSize": 16,
-      "textMonthFontFamily": "Roboto",
-      "textMonthFontSize": 16,
-    }
-  }
 />
 `;

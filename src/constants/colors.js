@@ -30,6 +30,14 @@ export const eventPriceBgColor = "rgb(45, 47, 127)";
 export const sectionHeaderBgColor = "rgb(243, 243, 243)";
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
 
+// DATE FILTER MODAL
+
+export const dateRangePickerTextColor = "rgb(45, 47, 127)";
+export const dateRangePickerDotColor = "rgb(44, 218, 157)";
+export const dateRangePickerSelectedColor = "rgb(44, 218, 157)";
+export const dateRangePickerCTABgColor = "rgb(44, 218, 157)";
+export const dateRangePickerDisabledTextColor = "rgb(203, 203, 203)";
+
 // EVENT DETAILS
 export const eventDetailsBgColor = "#FFF";
 export const eventDetailsHeaderBgColor = "#F2F2F2";
