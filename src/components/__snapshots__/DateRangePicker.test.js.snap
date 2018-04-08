@@ -2,7 +2,7 @@
 
 exports[`renders correctly no dates 1`] = `
 <Calendar
-  current="Sun Apr 08 2018 14:29:37 GMT+0100 (BST)"
+  current={null}
   markedDates={Object {}}
   markingType="period"
   onDayPress={[Function]}
