@@ -19,5 +19,10 @@ export default {
     morning: "Morning",
     afternoon: "Afternoon",
     evening: "Evening"
+  },
+  tags: {
+    audience: "Age group",
+    price: "Price",
+    free: "Show only free events"
   }
 };

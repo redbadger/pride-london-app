@@ -23,7 +23,8 @@ export type BuildStateArguments = {
   date: ?DateOrDateRange,
   time: Set<Time>,
   categories?: Set<string>,
-  price?: boolean
+  price?: Set<string>,
+  audience?: Set<string>
 };
 
 const buildState = (
@@ -41,13 +42,15 @@ const buildState = (
       date: selectedFilers.date,
       time: selectedFilers.time,
       categories: selectedFilers.categories || new Set(),
-      price: selectedFilers.price || false
+      price: selectedFilers.price || new Set(),
+      audience: selectedFilers.audience || new Set()
     },
     stagedFilters: {
       date: stagedFilters.date,
       time: stagedFilters.time,
       categories: stagedFilters.categories || new Set(),
-      price: stagedFilters.price || false
+      price: stagedFilters.price || new Set(),
+      audience: selectedFilers.audience || new Set()
     }
   }
 });
@@ -338,12 +341,12 @@ describe("buildEventFilter", () => {
       {
         date: null,
         time: new Set(),
-        price: false
+        price: new Set()
       },
       {
         date: null,
         time: new Set(),
-        price: false
+        price: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -358,12 +361,12 @@ describe("buildEventFilter", () => {
       {
         date: null,
         time: new Set(),
-        price: true
+        price: new Set(["free"])
       },
       {
         date: null,
         time: new Set(),
-        price: true
+        price: new Set(["free"])
       }
     );
     const filter = buildEventFilter(state);
@@ -377,12 +380,12 @@ describe("buildEventFilter", () => {
       {
         date: null,
         time: new Set(),
-        price: true
+        price: new Set(["free"])
       },
       {
         date: null,
         time: new Set(),
-        price: true
+        price: new Set(["free"])
       }
     );
     const filter = buildEventFilter(state);

@@ -7,7 +7,8 @@ export type FilterCollection = {
   date: ?DateOrDateRange,
   time: Set<Time>,
   categories: Set<string>,
-  price: boolean
+  price: Set<string>,
+  audience: Set<string>
 };
 
 export type State = {
@@ -20,13 +21,15 @@ const defaultState = {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
     time: new Set(),
-    price: false
+    price: new Set(),
+    audience: new Set()
   },
   stagedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
     time: new Set(),
-    price: false
+    price: new Set(),
+    audience: new Set()
   }
 };
 

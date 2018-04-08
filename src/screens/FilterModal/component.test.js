@@ -8,7 +8,7 @@ describe("FilterModal", () => {
       addListener: () => {}
     };
     const eventFilters = {
-      price: false
+      price: new Set()
     };
     const output = shallow(
       <FilterModal
@@ -29,7 +29,7 @@ describe("FilterModal", () => {
       addListener: jest.fn(() => ({ remove: removeListener }))
     };
     const eventFilters = {
-      price: false
+      price: new Set()
     };
     const onCancel = () => {};
 

@@ -47,12 +47,10 @@ export const buildEventFilter = (
     timeArray.length > 0 && timeArray.length < 3
       ? buildTimesFilter(timeArray)
       : () => true;
-  const priceFilter: (event: Event) => boolean = price
+  const priceFilter: (event: Event) => boolean = price.has("free")
     ? buildPriceFilter()
     : () => true;
 
-  // console.log(buildTimesFilter(timeArray))
-  // console.log(buildPriceFilter())
   return (event: Event) =>
     dateFilter(event) && timeFilter(event) && priceFilter(event);
 };

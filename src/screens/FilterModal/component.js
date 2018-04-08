@@ -1,5 +1,5 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
@@ -17,9 +17,11 @@ import {
   filterModalShadow,
   filterModalTitleColor
 } from "../../constants/colors";
+import tags from "../../data/tags";
+import text from "../../constants/text";
 import type { FilterCollection } from "../../reducers/event-filters";
 
-export type TagFilter = { price: boolean };
+export type TagFilter = { [string]: Set<string> };
 
 const CancelButton = ({ onPress }: { onPress: () => void }) => (
   <Touchable onPress={onPress}>
@@ -62,19 +64,47 @@ class FilterModal extends PureComponent<Props> {
     remove: () => void
   };
 
+  toggleTagFilter = (selectedValues: Set<string>, sectionValue: string) => {
+    const values: Set<string> = new Set([...selectedValues]);
+    if (!values.delete(sectionValue)) {
+      values.add(sectionValue);
+    }
+    return values;
+  };
+
   render() {
     const { applyButtonText, onApply, onChange, eventFilters } = this.props;
     return (
       <SafeAreaView style={styles.flex} forceInset={{ bottom: "always" }}>
         <ScrollView style={styles.flex}>
-          <SectionHeader title="Price" hasShadow={false} />
-          <ContentPadding>
-            <CheckBox
-              onChange={() => onChange({ price: !eventFilters.price })}
-              checked={eventFilters.price}
-              label="Show only free events"
-            />
-          </ContentPadding>
+          {Object.keys(tags).map(
+            sectionName =>
+              eventFilters[sectionName] && (
+                <Fragment key={sectionName}>
+                  <SectionHeader
+                    title={text.tags[sectionName]}
+                    hasShadow={false}
+                  />
+                  <ContentPadding>
+                    {tags[sectionName].map(sectionValue => (
+                      <CheckBox
+                        key={sectionValue}
+                        onChange={() => {
+                          onChange({
+                            [sectionName]: this.toggleTagFilter(
+                              eventFilters[sectionName],
+                              sectionValue
+                            )
+                          });
+                        }}
+                        checked={eventFilters[sectionName].has(sectionValue)}
+                        label={text.tags[sectionValue] || sectionValue}
+                      />
+                    ))}
+                  </ContentPadding>
+                </Fragment>
+              )
+          )}
         </ScrollView>
         <View style={styles.footer}>
           <ContentPadding>

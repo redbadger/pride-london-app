@@ -22,20 +22,25 @@ exports[`FilterModal renders correctly 1`] = `
       }
     }
   >
-    <SectionHeader
-      hasShadow={false}
-      title="Price"
-    />
-    <ContentPadding
-      style={Object {}}
+    <React.Fragment
+      key="price"
     >
-      <CheckBox
-        checked={false}
-        label="Show only free events"
-        onChange={[Function]}
-        style={Object {}}
+      <SectionHeader
+        hasShadow={false}
+        title="Price"
       />
-    </ContentPadding>
+      <ContentPadding
+        style={Object {}}
+      >
+        <CheckBox
+          checked={false}
+          key="free"
+          label="Show only free events"
+          onChange={[Function]}
+          style={Object {}}
+        />
+      </ContentPadding>
+    </React.Fragment>
   </ScrollView>
   <View
     style={

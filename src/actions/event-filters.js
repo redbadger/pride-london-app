@@ -9,7 +9,7 @@ type EventFiltersActionType =
 type EventFiltersPayload = {
   date?: ?DateOrDateRange,
   time?: Set<Time>,
-  price?: boolean
+  price?: Set<string>
 };
 
 export type EventFiltersAction = StandardAction<
