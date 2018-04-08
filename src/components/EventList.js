@@ -8,6 +8,7 @@ import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import Touchable from "./Touchable";
 import SectionHeader from "./SectionHeader";
+import { selectEventIsFree } from "../selectors/event";
 import type { Event, EventDays, LocalizedFieldRef } from "../data/event";
 import { bgColor, eventCardShadow } from "../constants/colors";
 
@@ -39,7 +40,7 @@ const renderItem = (styles, locale, onPress, getAssetUrl) => ({
         startTime={event.fields.startTime[locale]}
         endTime={event.fields.endTime[locale]}
         imageUrl={getAssetUrl(event.fields.eventsListPicture)}
-        isFree={event.fields.isFree[locale]}
+        isFree={selectEventIsFree(event)}
       />
     </Touchable>
   </ContentPadding>

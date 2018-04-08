@@ -3,6 +3,7 @@ import areRangesOverlapping from "date-fns/are_ranges_overlapping";
 import endOfDay from "date-fns/end_of_day";
 import getHours from "date-fns/get_hours";
 import startOfDay from "date-fns/start_of_day";
+import { selectEventIsFree } from "./event";
 import type { Event } from "../data/event";
 import type { DateRange, Time } from "../data/date-time";
 
@@ -47,5 +48,4 @@ export const buildCategoryFilter = (categories: Set<string>) => {
 };
 
 export const buildPriceFilter = () => (event: Event) =>
-  event.fields.eventPriceLow[locale] === 0 &&
-  event.fields.eventPriceHigh[locale] === 0;
+  selectEventIsFree(event);
