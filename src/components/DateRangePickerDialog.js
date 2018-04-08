@@ -5,15 +5,15 @@ import Dialog from "./Dialog";
 import Text from "./Text";
 import Touchable from "./Touchable";
 import text from "../constants/text";
-import type { DateOrDateRange } from "../data/date-time";
+import type { DateRange } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
 
 type Props = {
   applyButtonText: string,
-  dateRange: ?DateOrDateRange,
+  dateRange: ?DateRange,
   onApply: () => void,
   onCancel: () => void,
-  onChange: (?DateOrDateRange) => void,
+  onChange: (?DateRange) => void,
   visible: boolean
 };
 

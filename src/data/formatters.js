@@ -1,18 +1,18 @@
 // @flow
 
 import formatDate from "date-fns/format";
-import type { DateOrDateRange } from "./date-time";
+import type { DateRange } from "./date-time";
 
 export const formatShortDate = (date: string | Date) =>
   formatDate(date, "D MMM");
 
 export const formatDateRange = (
-  dateRange: DateOrDateRange,
+  dateRange: DateRange,
   { dateSuffix }: { dateSuffix: string } = { dateSuffix: "" }
 ) =>
-  typeof dateRange === "object"
+  dateRange.startDate !== dateRange.endDate
     ? [
         formatDate(dateRange.startDate, "D MMM"),
         formatDate(dateRange.endDate, "D MMM")
       ].join(" - ")
-    : formatShortDate(dateRange) + dateSuffix;
+    : formatShortDate(dateRange.startDate) + dateSuffix;

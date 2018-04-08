@@ -1,10 +1,10 @@
 // @flow
 import type { Reducer } from "redux";
-import type { DateOrDateRange, Time } from "../data/date-time";
+import type { DateRange, Time } from "../data/date-time";
 import type { EventFiltersAction } from "../actions/event-filters";
 
 type FilterCollection = {
-  date: ?DateOrDateRange,
+  date: ?DateRange,
   time: Set<Time>,
   categories: Set<string>
 };

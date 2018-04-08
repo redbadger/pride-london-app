@@ -10,12 +10,18 @@ describe("formatShortDate", () => {
 
 describe("formatDateRange", () => {
   it("formats date correctly", () => {
-    const result = formatDateRange("2018-01-01");
+    const result = formatDateRange({
+      startDate: "2018-01-01",
+      endDate: "2018-01-01"
+    });
     expect(result).toBe("1 Jan");
   });
 
   it("formats date with suffix correctly", () => {
-    const result = formatDateRange("2018-01-01", { dateSuffix: "@@@" });
+    const result = formatDateRange(
+      { startDate: "2018-01-01", endDate: "2018-01-01" },
+      { dateSuffix: "@@@" }
+    );
     expect(result).toBe("1 Jan@@@");
   });
 

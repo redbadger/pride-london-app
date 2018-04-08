@@ -6,7 +6,7 @@ import {
   commitEventFilters,
   clearStagedEventFilters
 } from "../actions/event-filters";
-import type { DateOrDateRange } from "../data/date-time";
+import type { DateRange } from "../data/date-time";
 import { selectFilteredEvents } from "../selectors/events";
 import { selectDateFilter } from "../selectors/event-filters";
 import Component from "./DateRangePickerDialog";
@@ -20,8 +20,8 @@ type OwnProps = {
 
 type Props = {
   applyButtonText: string,
-  dateRange: ?DateOrDateRange,
-  onChange: (?DateOrDateRange) => void
+  dateRange: ?DateRange,
+  onChange: (?DateRange) => void
 } & OwnProps;
 
 const mapStateToProps = state => ({

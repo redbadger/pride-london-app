@@ -1,5 +1,5 @@
 // @flow
-import type { DateOrDateRange, Time } from "../data/date-time";
+import type { DateRange, Time } from "../data/date-time";
 import type { StandardAction } from "./";
 
 type EventFiltersActionType =
@@ -7,7 +7,7 @@ type EventFiltersActionType =
   | "COMMIT_EVENT_FILTERS"
   | "CLEAR_STAGED_EVENT_FILTERS";
 type EventFiltersPayload = {
-  date?: ?DateOrDateRange,
+  date?: ?DateRange,
   time?: Set<Time>
 };
 

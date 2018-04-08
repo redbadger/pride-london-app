@@ -3,13 +3,13 @@ import React from "react";
 import { shallow } from "enzyme";
 import DateRangePickerDialog from "./DateRangePickerDialog";
 import Dialog from "./Dialog";
-import type { DateOrDateRange } from "../data/date-time";
+import type { DateRange } from "../data/date-time";
 
 const render = props =>
   shallow(
     <DateRangePickerDialog
       applyButtonText="Apply"
-      dateRange={(null: ?DateOrDateRange)}
+      dateRange={(null: ?DateRange)}
       onApply={() => {}}
       onCancel={() => {}}
       onChange={() => {}}
@@ -26,7 +26,7 @@ describe("renders correctly", () => {
 
   it("with date selection", () => {
     const output = render({
-      dateRange: "2018-02-02"
+      dateRange: { startDate: "2018-02-02", endDate: "2018-02-02" }
     });
     expect(output).toMatchSnapshot();
   });

@@ -39,7 +39,12 @@ exports[`renders correctly with date selection 1`] = `
   visible={true}
 >
   <DateRangePicker
-    dateRange="2018-02-02"
+    dateRange={
+      Object {
+        "endDate": "2018-02-02",
+        "startDate": "2018-02-02",
+      }
+    }
     onChange={[Function]}
   />
 </Dialog>

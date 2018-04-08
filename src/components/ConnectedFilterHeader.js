@@ -1,14 +1,14 @@
 // @flow
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
-import type { DateOrDateRange, Time } from "../data/date-time";
+import type { DateRange, Time } from "../data/date-time";
 import { selectDateFilter, selectTimeFilter } from "../selectors/event-filters";
 import Component from "./FilterHeader";
 
 type OwnProps = {};
 
 type Props = {
-  dateFilter: ?DateOrDateRange,
+  dateFilter: ?DateRange,
   timeFilter: Set<Time>
 } & OwnProps;
 

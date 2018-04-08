@@ -5,7 +5,7 @@ import formatDate from "date-fns/format";
 import addDays from "date-fns/add_days";
 import isBefore from "date-fns/is_before";
 import { cardBgColor, eventListHeaderColor } from "../constants/colors";
-import type { DateRange, DateOrDateRange } from "../data/date-time";
+import type { DateRange } from "../data/date-time";
 
 type CalendarDay = {
   year: number,
@@ -15,15 +15,10 @@ type CalendarDay = {
   dateString: string
 };
 
-const getSortedDateRange = (dates: DateRange) => {
-  if (dates.startDate === dates.endDate) {
-    return dates.startDate;
-  }
-
-  return isBefore(dates.endDate, dates.startDate)
+const getSortedDateRange = (dates: DateRange) =>
+  isBefore(dates.endDate, dates.startDate)
     ? { startDate: dates.endDate, endDate: dates.startDate }
     : dates;
-};
 
 const getMarkedDate = (date: string) => ({
   [date]: {
@@ -65,33 +60,36 @@ const getMarkedDateRange = (dateRange: DateRange) => {
   return markedDates;
 };
 
-const getMarkedDates = (dateRange: ?DateOrDateRange) => {
+const getMarkedDates = (dateRange: ?DateRange) => {
   if (!dateRange) {
     return {};
   }
 
-  if (typeof dateRange === "string") {
-    return getMarkedDate(dateRange);
+  if (dateRange.startDate === dateRange.endDate) {
+    return getMarkedDate(dateRange.startDate);
   }
 
   return getMarkedDateRange(dateRange);
 };
 
 type Props = {
-  onChange: DateOrDateRange => void,
-  dateRange?: ?DateOrDateRange
+  onChange: DateRange => void,
+  dateRange?: ?DateRange
 };
 
 class DateRangePicker extends React.PureComponent<Props> {
   onDaySelected = (day: CalendarDay) => {
     const { dateRange, onChange } = this.props;
 
-    if (!dateRange || typeof dateRange !== "string") {
-      return onChange(day.dateString);
+    if (!dateRange || dateRange.startDate !== dateRange.endDate) {
+      return onChange({ startDate: day.dateString, endDate: day.dateString });
     }
 
     return onChange(
-      getSortedDateRange({ startDate: dateRange, endDate: day.dateString })
+      getSortedDateRange({
+        startDate: dateRange.startDate,
+        endDate: day.dateString
+      })
     );
   };
 
