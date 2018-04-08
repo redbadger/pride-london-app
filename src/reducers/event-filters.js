@@ -3,10 +3,11 @@ import type { Reducer } from "redux";
 import type { DateOrDateRange, Time } from "../data/date-time";
 import type { EventFiltersAction } from "../actions/event-filters";
 
-type FilterCollection = {
+export type FilterCollection = {
   date: ?DateOrDateRange,
   time: Set<Time>,
-  categories: Set<string>
+  categories: Set<string>,
+  price: boolean
 };
 
 export type State = {
@@ -18,12 +19,14 @@ const defaultState = {
   selectedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
-    time: new Set()
+    time: new Set(),
+    price: false
   },
   stagedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
-    time: new Set()
+    time: new Set(),
+    price: false
   }
 };
 

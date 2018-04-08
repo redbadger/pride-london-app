@@ -30,7 +30,7 @@ exports[`FilterModal renders correctly 1`] = `
       style={Object {}}
     >
       <CheckBox
-        checked={true}
+        checked={false}
         label="Show only free events"
         onChange={[Function]}
         style={Object {}}

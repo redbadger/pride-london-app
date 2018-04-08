@@ -45,3 +45,7 @@ export const buildCategoryFilter = (categories: Set<string>) => {
   return (event: Event) =>
     event.fields.eventCategories[locale].some(value => categories.has(value));
 };
+
+export const buildPriceFilter = () => (event: Event) =>
+  event.fields.eventPriceLow[locale] === 0 &&
+  event.fields.eventPriceHigh[locale] === 0;

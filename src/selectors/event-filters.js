@@ -2,7 +2,8 @@
 import {
   buildDateFilter,
   buildDateRangeFilter,
-  buildTimeFilter
+  buildTimeFilter,
+  buildPriceFilter
 } from "./basic-event-filters";
 import type { Event } from "../data/event";
 import type { DateOrDateRange, Time } from "../data/date-time";
@@ -34,7 +35,10 @@ export const buildEventFilter = (
   state: State,
   selectStagedFilters?: boolean = false
 ) => {
-  const { date, time } = getEventFiltersState(state, selectStagedFilters);
+  const { date, time, price } = getEventFiltersState(
+    state,
+    selectStagedFilters
+  );
   const timeArray = Array.from(time);
   const dateFilter: (event: Event) => boolean = date
     ? buildDateOrDateRangeFilter(date)
@@ -43,6 +47,12 @@ export const buildEventFilter = (
     timeArray.length > 0 && timeArray.length < 3
       ? buildTimesFilter(timeArray)
       : () => true;
+  const priceFilter: (event: Event) => boolean = price
+    ? buildPriceFilter()
+    : () => true;
 
-  return (event: Event) => dateFilter(event) && timeFilter(event);
+  // console.log(buildTimesFilter(timeArray))
+  // console.log(buildPriceFilter())
+  return (event: Event) =>
+    dateFilter(event) && timeFilter(event) && priceFilter(event);
 };

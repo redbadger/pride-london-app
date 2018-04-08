@@ -8,7 +8,8 @@ type EventFiltersActionType =
   | "CLEAR_STAGED_EVENT_FILTERS";
 type EventFiltersPayload = {
   date?: ?DateOrDateRange,
-  time?: Set<Time>
+  time?: Set<Time>,
+  price?: boolean
 };
 
 export type EventFiltersAction = StandardAction<

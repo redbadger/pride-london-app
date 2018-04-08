@@ -7,6 +7,9 @@ describe("FilterModal", () => {
     const navigation = {
       addListener: () => {}
     };
+    const eventFilters = {
+      price: false
+    };
     const output = shallow(
       <FilterModal
         navigation={navigation}
@@ -14,6 +17,7 @@ describe("FilterModal", () => {
         onChange={() => {}}
         onApply={() => {}}
         onCancel={() => {}}
+        eventFilters={eventFilters}
       />
     );
     expect(output).toMatchSnapshot();
@@ -24,6 +28,9 @@ describe("FilterModal", () => {
     const navigation = {
       addListener: jest.fn(() => ({ remove: removeListener }))
     };
+    const eventFilters = {
+      price: false
+    };
     const onCancel = () => {};
 
     const output = shallow(
@@ -33,6 +40,7 @@ describe("FilterModal", () => {
         onChange={() => {}}
         onApply={() => {}}
         onCancel={onCancel}
+        eventFilters={eventFilters}
       />
     );
 

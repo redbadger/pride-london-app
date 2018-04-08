@@ -2,7 +2,8 @@
 import {
   buildDateFilter,
   buildDateRangeFilter,
-  buildTimeFilter
+  buildTimeFilter,
+  buildPriceFilter
 } from "./basic-event-filters";
 import {
   selectDateFilter,
@@ -16,11 +17,13 @@ jest.mock("./basic-event-filters");
 const untypedBuildDateFilter: any = buildDateFilter;
 const untypedBuildDateRangeFilter: any = buildDateRangeFilter;
 const untypedBuildTimeFilter: any = buildTimeFilter;
+const untypedBuildPriceFilter: any = buildPriceFilter;
 
 export type BuildStateArguments = {
   date: ?DateOrDateRange,
   time: Set<Time>,
-  categories?: Set<string>
+  categories?: Set<string>,
+  price?: boolean
 };
 
 const buildState = (
@@ -37,12 +40,14 @@ const buildState = (
     selectedFilters: {
       date: selectedFilers.date,
       time: selectedFilers.time,
-      categories: selectedFilers.categories || new Set()
+      categories: selectedFilers.categories || new Set(),
+      price: selectedFilers.price || false
     },
     stagedFilters: {
       date: stagedFilters.date,
       time: stagedFilters.time,
-      categories: stagedFilters.categories || new Set()
+      categories: stagedFilters.categories || new Set(),
+      price: stagedFilters.price || false
     }
   }
 });
@@ -50,19 +55,25 @@ const buildState = (
 export type BuildEventArguments = {
   startTime: string,
   endTime: string,
-  categories?: Array<string>
+  categories?: Array<string>,
+  eventPriceLow?: number,
+  eventPriceHigh?: number
 };
 
 const buildEvent = ({
   startTime,
   endTime,
-  categories = []
+  categories = [],
+  eventPriceLow = 0,
+  eventPriceHigh = 10
 }: BuildEventArguments) =>
   (({
     fields: {
       startTime: { "en-GB": startTime },
       endTime: { "en-GB": endTime },
-      categories: { "en-GB": categories }
+      categories: { "en-GB": categories },
+      eventPriceLow: { "en-GB": eventPriceLow },
+      eventPriceHigh: { "en-GB": eventPriceHigh }
     }
   }: any): Event);
 
@@ -321,10 +332,67 @@ describe("buildEventFilter", () => {
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(false);
   });
+
+  it("builds truthy price filter when price is false", () => {
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        price: false
+      },
+      {
+        date: null,
+        time: new Set(),
+        price: false
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+    expect(untypedBuildPriceFilter).not.toHaveBeenCalled();
+  });
+
+  it("builds filter, which returns false when price filter returns false", () => {
+    untypedBuildPriceFilter.mockReturnValue(() => false);
+
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        price: true
+      },
+      {
+        date: null,
+        time: new Set(),
+        price: true
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(false);
+  });
+
+  it("builds filter, which returns true when price filter returns true", () => {
+    untypedBuildPriceFilter.mockReturnValue(() => true);
+
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        price: true
+      },
+      {
+        date: null,
+        time: new Set(),
+        price: true
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+  });
 });
 
 afterEach(() => {
   untypedBuildDateFilter.mockReset();
   untypedBuildDateRangeFilter.mockReset();
   untypedBuildTimeFilter.mockReset();
+  untypedBuildPriceFilter.mockReset();
 });

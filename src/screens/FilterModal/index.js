@@ -10,6 +10,8 @@ import {
 import { selectFilteredEvents } from "../../selectors/events";
 import Component from "./component";
 import text from "../../constants/text";
+import type { FilterCollection } from "../../reducers/event-filters";
+import type { TagFilter } from "./component";
 
 type OwnProps = {
   navigation: NavigationScreenProp<{ params: { title: string } }>
@@ -17,7 +19,8 @@ type OwnProps = {
 
 type Props = {
   applyButtonText: string,
-  onChange: () => void,
+  eventFilters: FilterCollection,
+  onChange: (tagFilter: TagFilter) => void,
   onApply: () => void,
   onCancel: () => void
 } & OwnProps;
@@ -25,11 +28,12 @@ type Props = {
 const mapStateToProps = state => ({
   applyButtonText: text.filterPickerApply(
     selectFilteredEvents(state, true).length
-  )
+  ),
+  eventFilters: state.eventFilters.stagedFilters
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChange: () => dispatch(stageEventFilters({})),
+  onChange: tagFilter => dispatch(stageEventFilters(tagFilter)),
   onApply: () => dispatch(commitEventFilters()),
   onCancel: () => dispatch(clearStagedEventFilters())
 });

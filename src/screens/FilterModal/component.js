@@ -17,6 +17,9 @@ import {
   filterModalShadow,
   filterModalTitleColor
 } from "../../constants/colors";
+import type { FilterCollection } from "../../reducers/event-filters";
+
+export type TagFilter = { price: boolean };
 
 const CancelButton = ({ onPress }: { onPress: () => void }) => (
   <Touchable onPress={onPress}>
@@ -27,7 +30,8 @@ const CancelButton = ({ onPress }: { onPress: () => void }) => (
 type Props = {
   navigation: NavigationScreenProp<{}>,
   applyButtonText: string,
-  onChange: () => void,
+  eventFilters: FilterCollection,
+  onChange: TagFilter => void,
   onApply: () => void,
   onCancel: () => void
 };
@@ -59,22 +63,28 @@ class FilterModal extends PureComponent<Props> {
   };
 
   render() {
-    const { applyButtonText, onApply, onChange } = this.props;
+    const { applyButtonText, onApply, onChange, eventFilters } = this.props;
     return (
       <SafeAreaView style={styles.flex} forceInset={{ bottom: "always" }}>
         <ScrollView style={styles.flex}>
           <SectionHeader title="Price" hasShadow={false} />
           <ContentPadding>
             <CheckBox
-              onChange={onChange}
-              checked
+              onChange={() => onChange({ price: !eventFilters.price })}
+              checked={eventFilters.price}
               label="Show only free events"
             />
           </ContentPadding>
         </ScrollView>
         <View style={styles.footer}>
           <ContentPadding>
-            <Button text={applyButtonText} onPress={onApply} />
+            <Button
+              text={applyButtonText}
+              onPress={() => {
+                onApply();
+                this.props.navigation.goBack();
+              }}
+            />
           </ContentPadding>
         </View>
       </SafeAreaView>

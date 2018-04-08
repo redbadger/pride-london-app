@@ -3,26 +3,33 @@ import {
   buildCategoryFilter,
   buildDateFilter,
   buildDateRangeFilter,
-  buildTimeFilter
+  buildTimeFilter,
+  buildPriceFilter
 } from "./basic-event-filters";
 import type { Event } from "../data/event";
 
 export type BuildEventArguments = {
   startTime?: string,
   endTime?: string,
-  categories?: Array<string>
+  categories?: Array<string>,
+  eventPriceLow?: number,
+  eventPriceHigh?: number
 };
 
 const buildEvent = ({
   startTime = "2018-08-02T12:00:00",
   endTime = "2018-08-05T12:00:00",
-  categories = []
+  categories = [],
+  eventPriceLow = 0,
+  eventPriceHigh = 12
 }: BuildEventArguments) =>
   (({
     fields: {
       startTime: { "en-GB": startTime },
       endTime: { "en-GB": endTime },
-      eventCategories: { "en-GB": categories }
+      eventCategories: { "en-GB": categories },
+      eventPriceLow: { "en-GB": eventPriceLow },
+      eventPriceHigh: { "en-GB": eventPriceHigh }
     }
   }: any): Event);
 
@@ -153,5 +160,25 @@ describe("buildCategoryFilter", () => {
       expect(filter(eventWithOneCategory)).toBe(true);
       expect(filter(eventWithMulitpleCategories)).toBe(true);
     });
+  });
+});
+
+describe("buildPriceFilter", () => {
+  it("filters events that are not free", () => {
+    const event = buildEvent({
+      eventPriceLow: 0,
+      eventPriceHigh: 12
+    });
+    const filter = buildPriceFilter();
+    expect(filter(event)).toBe(false);
+  });
+
+  it("does not filter events that are free", () => {
+    const event = buildEvent({
+      eventPriceLow: 0,
+      eventPriceHigh: 0
+    });
+    const filter = buildPriceFilter();
+    expect(filter(event)).toBe(true);
   });
 });

@@ -5,11 +5,13 @@ Object {
   "selectedFilters": Object {
     "categories": Set {},
     "date": null,
+    "price": false,
     "time": Set {},
   },
   "stagedFilters": Object {
     "categories": Set {},
     "date": null,
+    "price": false,
     "time": Set {},
   },
 }
