@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { DateRange, Time } from "../data/date-time";
 import { selectDateFilter, selectTimeFilter } from "../selectors/event-filters";
-import type { Props as ComponentProps } from "./FilterHeader";
 import Component from "./FilterHeader";
 
 type OwnProps = {};
 
 type Props = {
   dateFilter: ?DateRange,
-  timeFilter: Set<Time>
+  timeFilter: Set<Time>,
+  selectedCategories: Set<string>
 } & OwnProps;
 
 const mapStateToProps = state => ({
