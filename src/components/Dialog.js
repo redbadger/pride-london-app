@@ -79,10 +79,10 @@ Dialog.defaultProps = {
 
 const styles = StyleSheet.create({
   backdrop: {
-    ...StyleSheet.absoluteFillObject
+    flex: 1
   },
   container: {
-    ...StyleSheet.absoluteFillObject,
+    flex: 1,
     justifyContent: "center",
     padding: 16,
     backgroundColor: dialogBackdropColor
