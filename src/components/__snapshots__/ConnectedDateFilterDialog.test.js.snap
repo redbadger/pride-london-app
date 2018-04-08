@@ -40,6 +40,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
 >
   <DateRangePicker
     dateRange={null}
+    forceNewRange={false}
     onChange={[Function]}
   />
 </Dialog>
@@ -49,6 +50,7 @@ exports[`ConnectedDateFilterDialog renders connector 1`] = `
 <DateRangePickerDialog
   applyButtonText="Show 0 events"
   dateRange={null}
+  forceNewRange={false}
   onApply={[Function]}
   onCancel={[Function]}
   onChange={[Function]}

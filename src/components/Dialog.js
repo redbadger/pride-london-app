@@ -1,7 +1,12 @@
 // @flow
 import React from "react";
 import type { Node } from "react";
-import { Modal, StyleSheet, View } from "react-native";
+import {
+  Modal,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View
+} from "react-native";
 import Text from "./Text";
 import Touchable from "./Touchable";
 import {
@@ -40,25 +45,29 @@ const Dialog = ({
     transparent
     visible={visible}
   >
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <View style={styles.header}>
-          <View style={[styles.headerSide, styles.headerSideLeft]}>
-            {headerLeft}
+    <TouchableWithoutFeedback style={styles.backdrop} onPress={onCancel}>
+      <View style={styles.container}>
+        <TouchableWithoutFeedback>
+          <View style={styles.content}>
+            <View style={styles.header}>
+              <View style={[styles.headerSide, styles.headerSideLeft]}>
+                {headerLeft}
+              </View>
+              <Text type="h3" style={styles.headerTitle}>
+                {title}
+              </Text>
+              <View style={[styles.headerSide, styles.headerSideRight]}>
+                {headerRight}
+              </View>
+            </View>
+            {children}
           </View>
-          <Text type="h3" style={styles.headerTitle}>
-            {title}
-          </Text>
-          <View style={[styles.headerSide, styles.headerSideRight]}>
-            {headerRight}
-          </View>
-        </View>
-        {children}
+        </TouchableWithoutFeedback>
+        <Touchable onPress={onApply} style={styles.applyButton}>
+          <Text style={styles.applyButtonText}>{applyButtonText}</Text>
+        </Touchable>
       </View>
-      <Touchable onPress={onApply} style={styles.applyButton}>
-        <Text style={styles.applyButtonText}>{applyButtonText}</Text>
-      </Touchable>
-    </View>
+    </TouchableWithoutFeedback>
   </Modal>
 );
 
@@ -69,8 +78,11 @@ Dialog.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+  backdrop: {
+    flex: 1
+  },
   container: {
-    ...StyleSheet.absoluteFillObject,
+    flex: 1,
     justifyContent: "center",
     padding: 16,
     backgroundColor: dialogBackdropColor

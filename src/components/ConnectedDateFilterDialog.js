@@ -6,9 +6,12 @@ import {
   commitEventFilters,
   clearStagedEventFilters
 } from "../actions/event-filters";
-import type { DateOrDateRange } from "../data/date-time";
+import type { DateRange } from "../data/date-time";
 import { selectFilteredEvents } from "../selectors/events";
-import { selectDateFilter } from "../selectors/event-filters";
+import {
+  selectDateFilter,
+  selectIsStagingFilters
+} from "../selectors/event-filters";
 import Component from "./DateRangePickerDialog";
 import text from "../constants/text";
 
@@ -20,15 +23,17 @@ type OwnProps = {
 
 type Props = {
   applyButtonText: string,
-  dateRange: ?DateOrDateRange,
-  onChange: (?DateOrDateRange) => void
+  dateRange: ?DateRange,
+  onChange: (?DateRange) => void,
+  forceNewRange: boolean
 } & OwnProps;
 
 const mapStateToProps = state => ({
   applyButtonText: text.filterPickerApply(
     selectFilteredEvents(state, true).length
   ),
-  dateRange: selectDateFilter(state, true)
+  dateRange: selectDateFilter(state, true),
+  forceNewRange: !selectIsStagingFilters(state)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
