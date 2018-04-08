@@ -11,6 +11,13 @@ export const dialogApplyButtonBgColor = "rgb(51, 51, 51)";
 export const dialogApplyButtonTextColor = "#FFFFFF";
 export const dialogHeaderDividerColor = "#F2F2F2";
 
+// TAB BAR
+
+export const tabBarBgColor = "rgb(243, 243, 243)";
+export const tabBarLabelColor = "rgb(88, 88, 88)";
+export const tabBarActiveLabelColor = "rgb(45, 47, 127)";
+export const tabBarShadowColor = "rgba(0, 0, 0, 0.2)";
+
 // FILTER HEADER
 
 export const filterBgColor = "rgb(45, 47, 127)";
@@ -31,6 +38,7 @@ export const sectionHeaderBgColor = "rgb(243, 243, 243)";
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
 
 // EVENT DETAILS
+
 export const eventDetailsBgColor = "#FFF";
 export const eventDetailsHeaderBgColor = "#F2F2F2";
 export const eventCategoryLabelBgColor = "#D8D8D8";
