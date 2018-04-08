@@ -18,6 +18,9 @@ export const selectTimeFilter = (
   selectStagedFilters?: boolean = false
 ) => getEventFiltersState(state, selectStagedFilters).time;
 
+export const selectIsStagingFilters = (state: State): boolean =>
+  state.eventFilters.stagedFilters !== state.eventFilters.selectedFilters;
+
 const buildTimesFilter = (times: Time[]) => {
   const filters = times.map(time => buildTimeFilter(time));
   return (event: Event) => filters.some(filter => filter(event));

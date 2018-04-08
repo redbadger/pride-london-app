@@ -6,7 +6,9 @@ import DateRangePicker from "./DateRangePicker";
 
 describe("renders correctly", () => {
   it("no dates", () => {
-    const output = shallow(<DateRangePicker onChange={() => {}} />);
+    const output = shallow(
+      <DateRangePicker onChange={() => {}} forceNewRange={false} />
+    );
     expect(output).toMatchSnapshot();
   });
 
@@ -15,6 +17,7 @@ describe("renders correctly", () => {
       <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
+        forceNewRange={false}
       />
     );
     expect(output).toMatchSnapshot();
@@ -25,6 +28,7 @@ describe("renders correctly", () => {
       <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-02" }}
+        forceNewRange={false}
       />
     );
     expect(output).toMatchSnapshot();
@@ -35,6 +39,7 @@ describe("renders correctly", () => {
       <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-02", endDate: "2018-01-01" }}
+        forceNewRange={false}
       />
     );
     expect(output).toMatchSnapshot();
@@ -45,6 +50,7 @@ describe("renders correctly", () => {
       <DateRangePicker
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
+        forceNewRange={false}
       />
     );
     expect(output).toMatchSnapshot();
@@ -54,7 +60,11 @@ describe("renders correctly", () => {
 describe("onChange", () => {
   const render = (onChange, dateRange) => {
     const output = shallow(
-      <DateRangePicker onChange={onChange} dateRange={dateRange} />
+      <DateRangePicker
+        onChange={onChange}
+        dateRange={dateRange}
+        forceNewRange={false}
+      />
     );
     return output.find(Calendar).prop("onDayPress");
   };

@@ -64,6 +64,8 @@ describe("Event filters reducer", () => {
       startDate: "2018-03-12",
       endDate: "2018-03-12"
     });
+    // this is used by selectIsStagingFilters
+    expect(state.stagedFilters).toBe(state.selectedFilters);
   });
 
   it("updates state with filters from payload for CLEAR_STAGED_EVENT_FILTERS action", () => {
@@ -91,5 +93,7 @@ describe("Event filters reducer", () => {
       startDate: "2018-03-12",
       endDate: "2018-03-12"
     });
+    // this is used by selectIsStagingFilters
+    expect(state.stagedFilters).toBe(state.selectedFilters);
   });
 });

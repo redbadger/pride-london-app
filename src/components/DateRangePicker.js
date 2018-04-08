@@ -74,14 +74,23 @@ const getMarkedDates = (dateRange: ?DateRange) => {
 
 type Props = {
   onChange: DateRange => void,
-  dateRange?: ?DateRange
+  dateRange?: ?DateRange,
+  forceNewRange: boolean
 };
 
 class DateRangePicker extends React.PureComponent<Props> {
-  onDaySelected = (day: CalendarDay) => {
-    const { dateRange, onChange } = this.props;
+  defaultProps: {
+    forceNewRange: false
+  };
 
-    if (!dateRange || dateRange.startDate !== dateRange.endDate) {
+  onDaySelected = (day: CalendarDay) => {
+    const { dateRange, onChange, forceNewRange } = this.props;
+
+    if (
+      !dateRange ||
+      forceNewRange ||
+      dateRange.startDate !== dateRange.endDate
+    ) {
       return onChange({ startDate: day.dateString, endDate: day.dateString });
     }
 

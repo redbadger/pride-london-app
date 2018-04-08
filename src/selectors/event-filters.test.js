@@ -3,24 +3,19 @@ import { buildDateRangeFilter, buildTimeFilter } from "./basic-event-filters";
 import {
   selectDateFilter,
   selectTimeFilter,
-  buildEventFilter
+  buildEventFilter,
+  selectIsStagingFilters
 } from "./event-filters";
-import type { DateRange, Time } from "../data/date-time";
+import type { FilterCollection } from "../data/event-filters";
 import type { Event } from "../data/event";
 
 jest.mock("./basic-event-filters");
 const untypedBuildDateRangeFilter: any = buildDateRangeFilter;
 const untypedBuildTimeFilter: any = buildTimeFilter;
 
-export type BuildStateArguments = {
-  date: ?DateRange,
-  time: Set<Time>,
-  categories?: Set<string>
-};
-
 const buildState = (
-  selectedFilers: BuildStateArguments,
-  stagedFilters: BuildStateArguments
+  selectedFilters: FilterCollection,
+  stagedFilters: FilterCollection
 ) => ({
   events: {
     entries: [],
@@ -29,16 +24,8 @@ const buildState = (
     refreshing: false
   },
   eventFilters: {
-    selectedFilters: {
-      date: selectedFilers.date,
-      time: selectedFilers.time,
-      categories: selectedFilers.categories || new Set()
-    },
-    stagedFilters: {
-      date: stagedFilters.date,
-      time: stagedFilters.time,
-      categories: stagedFilters.categories || new Set()
-    }
+    selectedFilters,
+    stagedFilters
   }
 });
 
@@ -65,10 +52,12 @@ describe("selectDateFilter", () => {
   it("returns the date part of the eventFilters", () => {
     const state = buildState(
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time: new Set(["morning"])
       },
       {
+        categories: new Set(),
         date: { startDate: "2018-01-02", endDate: "2018-01-02" },
         time: new Set(["morning"])
       }
@@ -81,10 +70,12 @@ describe("selectDateFilter", () => {
   it("returns the date part of the staged eventFilters", () => {
     const state = buildState(
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time: new Set(["morning"])
       },
       {
+        categories: new Set(),
         date: { startDate: "2018-01-02", endDate: "2018-01-02" },
         time: new Set(["morning"])
       }
@@ -100,10 +91,12 @@ describe("selectTimeFilter", () => {
     const time = new Set(["morning"]);
     const state = buildState(
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time
       },
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time: new Set(["afternoon"])
       }
@@ -117,10 +110,12 @@ describe("selectTimeFilter", () => {
     const time = new Set(["afternoon"]);
     const state = buildState(
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time: new Set(["morning"])
       },
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time
       }
@@ -128,6 +123,38 @@ describe("selectTimeFilter", () => {
 
     const actual = selectTimeFilter(state, true);
     expect(actual).toBe(time);
+  });
+});
+
+describe("selectIsStagingFilters", () => {
+  it("return falsee if staging filters are the same instance as selected filters", () => {
+    const filters = {
+      categories: new Set(),
+      date: { startDate: "2018-01-01", endDate: "2018-01-01" },
+      time: new Set(["morning"])
+    };
+    const state = buildState(filters, filters);
+
+    const actual = selectIsStagingFilters(state);
+    expect(actual).toBe(false);
+  });
+
+  it("return true otherwise", () => {
+    const state = buildState(
+      {
+        categories: new Set(),
+        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
+        time: new Set(["morning"])
+      },
+      {
+        categories: new Set(),
+        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
+        time: new Set(["morning"])
+      }
+    );
+
+    const actual = selectIsStagingFilters(state);
+    expect(actual).toBe(true);
   });
 });
 
@@ -142,10 +169,12 @@ describe("buildEventFilter", () => {
 
     const state = buildState(
       {
+        categories: new Set(),
         date: null,
         time: new Set(["morning", "afternoon", "evening"])
       },
       {
+        categories: new Set(),
         date: null,
         time: new Set(["morning", "afternoon", "evening"])
       }
@@ -161,10 +190,12 @@ describe("buildEventFilter", () => {
 
     const state = buildState(
       {
+        categories: new Set(),
         date: { startDate: "2018-01-02", endDate: "2018-01-02" },
         time: new Set(["morning", "afternoon", "evening"])
       },
       {
+        categories: new Set(),
         date: { startDate: "2018-01-02", endDate: "2018-01-02" },
         time: new Set(["morning", "afternoon", "evening"])
       }
@@ -182,10 +213,12 @@ describe("buildEventFilter", () => {
 
     const state = buildState(
       {
+        categories: new Set(),
         date: { startDate: "2018-01-02", endDate: "2018-01-02" },
         time: new Set(["morning", "afternoon", "evening"])
       },
       {
+        categories: new Set(),
         date: { startDate: "2018-01-03", endDate: "2018-01-03" },
         time: new Set(["morning", "afternoon", "evening"])
       }
@@ -203,6 +236,7 @@ describe("buildEventFilter", () => {
 
     const state = buildState(
       {
+        categories: new Set(),
         date: {
           startDate: "2018-08-02",
           endDate: "2018-08-03"
@@ -210,6 +244,7 @@ describe("buildEventFilter", () => {
         time: new Set(["morning", "afternoon", "evening"])
       },
       {
+        categories: new Set(),
         date: {
           startDate: "2018-08-02",
           endDate: "2018-08-03"
@@ -227,10 +262,12 @@ describe("buildEventFilter", () => {
   it("builds always truthy time filter when time array is empty", () => {
     const state = buildState(
       {
+        categories: new Set(),
         date: null,
         time: new Set()
       },
       {
+        categories: new Set(),
         date: null,
         time: new Set()
       }
@@ -243,10 +280,12 @@ describe("buildEventFilter", () => {
   it("builds always truthy time filter when time array contains all possible values", () => {
     const state = buildState(
       {
+        categories: new Set(),
         date: null,
         time: new Set(["morning", "afternoon", "evening"])
       },
       {
+        categories: new Set(),
         date: null,
         time: new Set(["morning", "afternoon", "evening"])
       }
@@ -263,10 +302,12 @@ describe("buildEventFilter", () => {
 
     const state = buildState(
       {
+        categories: new Set(),
         date: null,
         time: new Set(["morning", "evening"])
       },
       {
+        categories: new Set(),
         date: null,
         time: new Set(["morning", "evening"])
       }
@@ -283,10 +324,12 @@ describe("buildEventFilter", () => {
 
     const state = buildState(
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time: new Set(["morning"])
       },
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time: new Set(["morning"])
       }
@@ -301,10 +344,12 @@ describe("buildEventFilter", () => {
 
     const state = buildState(
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time: new Set(["morning", "afternoon", "evening"])
       },
       {
+        categories: new Set(),
         date: { startDate: "2018-01-01", endDate: "2018-01-01" },
         time: new Set(["morning", "afternoon", "evening"])
       }

@@ -45,6 +45,7 @@ exports[`renders correctly with date selection 1`] = `
         "startDate": "2018-02-02",
       }
     }
+    forceNewRange={false}
     onChange={[Function]}
   />
 </Dialog>
@@ -90,6 +91,7 @@ exports[`renders correctly without date selection 1`] = `
 >
   <DateRangePicker
     dateRange={null}
+    forceNewRange={false}
     onChange={[Function]}
   />
 </Dialog>

@@ -14,7 +14,8 @@ type Props = {
   onApply: () => void,
   onCancel: () => void,
   onChange: (?DateRange) => void,
-  visible: boolean
+  visible: boolean,
+  forceNewRange: boolean
 };
 
 class DateRangePickerDialog extends React.PureComponent<Props> {
@@ -23,7 +24,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
   };
 
   render() {
-    const { dateRange } = this.props;
+    const { dateRange, forceNewRange } = this.props;
     const title = dateRange
       ? formatDateRange(dateRange, { dateSuffix: " -" })
       : text.filterDayPickerTitle;
@@ -41,7 +42,11 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
         title={title}
         visible={this.props.visible}
       >
-        <DateRangePicker onChange={this.props.onChange} dateRange={dateRange} />
+        <DateRangePicker
+          onChange={this.props.onChange}
+          dateRange={dateRange}
+          forceNewRange={forceNewRange}
+        />
       </Dialog>
     );
   }
