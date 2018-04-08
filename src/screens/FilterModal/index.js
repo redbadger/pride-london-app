@@ -1,82 +1,43 @@
 // @flow
-import React, { PureComponent } from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
-import Button from "../../components/Button";
-import Touchable from "../../components/Touchable";
-import ContentPadding, {
-  calculateHorizontalPadding
-} from "../../components/ContentPadding";
-import SectionHeader from "../../components/SectionHeader";
-import CheckBox from "../../components/CheckBox";
+import { connect } from "react-redux";
+import type { Connector } from "react-redux";
+import type { NavigationScreenProp } from "react-navigation";
 import {
-  interestButtonTextColor,
-  filterBgColor,
-  bgColor,
-  filterModalShadow
-} from "../../constants/colors";
+  stageEventFilters,
+  commitEventFilters,
+  clearStagedEventFilters
+} from "../../actions/event-filters";
+import { selectFilteredEvents } from "../../selectors/events";
+import Component from "./component";
+import text from "../../constants/text";
 
-const CancelButton = ({ onPress }: { onPress: () => void }) => (
-  <Touchable onPress={onPress}>
-    <Text style={{ color: interestButtonTextColor }}>Cancel</Text>
-  </Touchable>
-);
+type OwnProps = {
+  navigation: NavigationScreenProp<{ params: { title: string } }>
+};
 
-class FilterModal extends PureComponent<{}> {
-  static navigationOptions = {
-    title: "Filter Events",
-    headerLeft: CancelButton,
-    headerStyle: {
-      backgroundColor: filterBgColor,
-      paddingHorizontal: calculateHorizontalPadding()
-    },
-    headerTitleStyle: { color: "white" }
-  };
+type Props = {
+  applyButtonText: string,
+  onChange: () => void,
+  onApply: () => void,
+  onCancel: () => void
+} & OwnProps;
 
-  render() {
-    return (
-      <SafeAreaView style={styles.flex} forceInset={{ bottom: "always" }}>
-        <ScrollView style={styles.flex}>
-          <SectionHeader title="Price" hasShadow={false} />
-          <ContentPadding>
-            <CheckBox
-              onChange={() => {}}
-              checked
-              label="Show only free events"
-            />
-          </ContentPadding>
-        </ScrollView>
-        <View style={styles.footer}>
-          <ContentPadding>
-            <Button text="Show 23 events" />
-          </ContentPadding>
-        </View>
-      </SafeAreaView>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-    backgroundColor: bgColor
-  },
-  footer: {
-    height: 60,
-    paddingVertical: 8,
-    backgroundColor: bgColor,
-
-    // ios shadow
-    shadowColor: filterModalShadow,
-    shadowOffset: { width: 0, height: -10 },
-    shadowOpacity: 0.6,
-    shadowRadius: 5,
-
-    // android shadow
-    borderWidth: 0,
-    elevation: 3,
-    marginTop: 6
-  }
+const mapStateToProps = state => ({
+  applyButtonText: text.filterPickerApply(
+    selectFilteredEvents(state, true).length
+  )
 });
 
-export default FilterModal;
+const mapDispatchToProps = dispatch => ({
+  onChange: () => dispatch(stageEventFilters({})),
+  onApply: () => dispatch(commitEventFilters()),
+  onCancel: () => dispatch(clearStagedEventFilters())
+});
+
+const connector: Connector<OwnProps, Props> = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+// $FlowFixMe
+export default connector(Component);

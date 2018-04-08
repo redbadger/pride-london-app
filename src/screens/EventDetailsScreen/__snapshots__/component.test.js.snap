@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <ScrollView
   style={
     Object {
-      "backgroundColor": "#FFF",
+      "backgroundColor": "rgb(255, 255, 255)",
       "flex": 1,
     }
   }
@@ -16,7 +16,7 @@ exports[`renders correctly 1`] = `
   <ContentPadding
     style={
       Object {
-        "backgroundColor": "#FFF",
+        "backgroundColor": "rgb(255, 255, 255)",
         "flex": 1,
         "paddingVertical": 15,
       }
@@ -194,7 +194,7 @@ exports[`renders correctly 1`] = `
   <ContentPadding
     style={
       Object {
-        "backgroundColor": "#FFF",
+        "backgroundColor": "rgb(255, 255, 255)",
         "flex": 1,
         "paddingVertical": 15,
       }
@@ -237,7 +237,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
     <View
       style={
         Object {
-          "backgroundColor": "#FFF",
+          "backgroundColor": "rgb(255, 255, 255)",
           "flex": 1,
           "paddingVertical": 15,
         }
@@ -340,6 +340,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         }
       >
         <Button
+          onPress={[Function]}
           text="Buy Tickets"
           type="primary"
           url="https://prideinlondon.org/pride-in-the-park/"

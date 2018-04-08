@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterModal renders correctly 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "bottom": "always",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "rgb(255, 255, 255)",
+      "flex": 1,
+    }
+  }
+>
+  <ScrollView
+    style={
+      Object {
+        "backgroundColor": "rgb(255, 255, 255)",
+        "flex": 1,
+      }
+    }
+  >
+    <SectionHeader
+      hasShadow={false}
+      title="Price"
+    />
+    <ContentPadding
+      style={Object {}}
+    >
+      <CheckBox
+        checked={true}
+        label="Show only free events"
+        onChange={[Function]}
+        style={Object {}}
+      />
+    </ContentPadding>
+  </ScrollView>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgb(255, 255, 255)",
+        "borderWidth": 0,
+        "elevation": 3,
+        "height": 60,
+        "marginTop": 6,
+        "paddingVertical": 8,
+        "shadowColor": "rgba(0, 0, 0, 0.14)",
+        "shadowOffset": Object {
+          "height": -10,
+          "width": 0,
+        },
+        "shadowOpacity": 0.6,
+        "shadowRadius": 5,
+      }
+    }
+  >
+    <ContentPadding
+      style={Object {}}
+    >
+      <Button
+        onPress={[Function]}
+        text="Show 26 events"
+        type="primary"
+        url=""
+      />
+    </ContentPadding>
+  </View>
+</withOrientation>
+`;

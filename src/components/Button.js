@@ -15,17 +15,25 @@ type ButtonType = "primary";
 type Props = {
   text: string,
   url?: string,
-  type?: ButtonType
+  type?: ButtonType,
+  onPress?: () => void
 };
 
-const onPress = url => {
+const handlePress = (onPress, url) => {
+  if (onPress) {
+    onPress();
+  }
+
   if (url && url.length > 0) {
     Linking.openURL(url);
   }
 };
 
-const Button = ({ text, url, type = "primary" }: Props) => (
-  <Touchable style={[styles.button, styles[type]]} onPress={() => onPress(url)}>
+const Button = ({ text, url, onPress, type = "primary" }: Props) => (
+  <Touchable
+    style={[styles.button, styles[type]]}
+    onPress={() => handlePress(onPress, url)}
+  >
     <Text type="h2" style={[styles.text, styles[`${type}Text`]]}>
       {text}
     </Text>
@@ -33,7 +41,8 @@ const Button = ({ text, url, type = "primary" }: Props) => (
 );
 Button.defaultProps = {
   url: "",
-  type: "primary"
+  type: "primary",
+  onPress: () => {}
 };
 
 const styles = StyleSheet.create({
