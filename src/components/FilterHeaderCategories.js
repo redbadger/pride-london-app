@@ -1,12 +1,6 @@
 // @flow
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableHighlight,
-  Image,
-  Dimensions
-} from "react-native";
+import { View, StyleSheet, TouchableHighlight, Image } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import {
   interestButtonBgColor,
