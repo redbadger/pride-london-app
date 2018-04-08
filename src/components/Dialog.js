@@ -64,18 +64,10 @@ const Dialog = ({
             {children}
           </View>
         </TouchableWithoutFeedback>
-        <TouchableOpacity
-          accessibilityTraits={["button"]}
-          accessibilityComponentType="button"
-          onPress={onApply}
-          style={styles.applyButton}
-        >
+        <Touchable onPress={onApply} style={styles.applyButton}>
           <Text style={styles.applyButtonText}>{applyButtonText}</Text>
-        </TouchableOpacity>
+        </Touchable>
       </View>
-      <Touchable onPress={onApply} style={styles.applyButton}>
-        <Text style={styles.applyButtonText}>{applyButtonText}</Text>
-      </Touchable>
     </TouchableWithoutFeedback>
   </Modal>
 );
