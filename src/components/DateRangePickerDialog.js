@@ -26,7 +26,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
   render() {
     const { dateRange, forceNewRange } = this.props;
     const title = dateRange
-      ? formatDateRange(dateRange, { dateSuffix: " -" })
+      ? formatDateRange(dateRange)
       : text.filterDayPickerTitle;
 
     return (
