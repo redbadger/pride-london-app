@@ -2,6 +2,7 @@
 
 exports[`renders correctly no dates 1`] = `
 <Calendar
+  current="Sun Apr 08 2018 14:21:38 GMT+0100 (BST)"
   markedDates={Object {}}
   markingType="period"
   onDayPress={[Function]}
@@ -20,6 +21,7 @@ exports[`renders correctly no dates 1`] = `
 
 exports[`renders correctly only startDate 1`] = `
 <Calendar
+  current="2018-01-01"
   markedDates={
     Object {
       "2018-01-01": Object {
@@ -47,6 +49,7 @@ exports[`renders correctly only startDate 1`] = `
 
 exports[`renders correctly startDate after endDate 1`] = `
 <Calendar
+  current="2018-01-01"
   markedDates={
     Object {
       "2018-01-01": Object {
@@ -78,6 +81,7 @@ exports[`renders correctly startDate after endDate 1`] = `
 
 exports[`renders correctly startDate before endDate 1`] = `
 <Calendar
+  current="2018-01-01"
   markedDates={
     Object {
       "2018-01-01": Object {
@@ -109,6 +113,7 @@ exports[`renders correctly startDate before endDate 1`] = `
 
 exports[`renders correctly startDate equals endDate 1`] = `
 <Calendar
+  current="2018-01-01"
   markedDates={
     Object {
       "2018-01-01": Object {

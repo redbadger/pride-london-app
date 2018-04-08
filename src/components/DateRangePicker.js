@@ -103,13 +103,13 @@ class DateRangePicker extends React.PureComponent<Props> {
   };
 
   render() {
-    const dateRange =
-      this.props.dateRange && typeof this.props.dateRange === "object"
-        ? getSortedDateRange(this.props.dateRange)
-        : this.props.dateRange;
+    const dateRange = this.props.dateRange
+      ? getSortedDateRange(this.props.dateRange)
+      : this.props.dateRange;
 
     return (
       <Calendar
+        current={dateRange ? dateRange.startDate : Date()} // Date() is the default
         markedDates={getMarkedDates(dateRange)}
         markingType="period"
         onDayPress={this.onDaySelected}
