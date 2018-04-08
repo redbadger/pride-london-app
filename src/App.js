@@ -1,7 +1,8 @@
 // @flow
-import { Image, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import React from "react";
 import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
+import LinearGradient from "react-native-linear-gradient";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
 import iconEventsActive from "../assets/images/eventsActive.png";
@@ -13,9 +14,11 @@ import iconSavedDefault from "../assets/images/savedDefault.png";
 import iconSupportUsActive from "../assets/images/supportUsActive.png";
 import iconSupportUsDefault from "../assets/images/supportUsDefault.png";
 import {
+  transparent,
   tabBarBgColor,
   tabBarLabelColor,
-  tabBarActiveLabelColor
+  tabBarActiveLabelColor,
+  tabBarShadowColor
 } from "./constants/colors";
 import {
   EVENT_LIST,
@@ -114,6 +117,38 @@ const SupportUsStack = StackNavigator(
   }
 );
 
+const TabBarBottomWithShadow = props => (
+  <View>
+    <LinearGradient
+      colors={[transparent, tabBarShadowColor]}
+      style={styles.shadow}
+    />
+    <TabBarBottom {...props} />
+  </View>
+);
+
+const styles = StyleSheet.create({
+  shadow: {
+    width: "100%",
+    height: 7,
+    position: "absolute",
+    left: 0,
+    top: -7
+  },
+  label: {
+    fontFamily: "Poppins-Bold",
+    fontSize: 12,
+    lineHeight: 16,
+    includeFontPadding: false
+  },
+  tab: {
+    marginTop: 4
+  },
+  tabBar: {
+    backgroundColor: tabBarBgColor
+  }
+});
+
 export default TabNavigator(
   {
     [HOME]: { screen: HomeStack },
@@ -123,23 +158,14 @@ export default TabNavigator(
     [SUPPORT_US]: { screen: SupportUsStack }
   },
   {
-    tabBarComponent: TabBarBottom,
+    tabBarComponent: TabBarBottomWithShadow,
     tabBarPosition: "bottom",
     tabBarOptions: {
       activeTintColor: tabBarActiveLabelColor,
       inactiveTintColor: tabBarLabelColor,
-      labelStyle: {
-        fontFamily: "Poppins-Bold",
-        fontSize: 12,
-        lineHeight: 16,
-        includeFontPadding: false
-      },
-      tabStyle: {
-        marginTop: 4
-      },
-      style: {
-        backgroundColor: tabBarBgColor
-      }
+      labelStyle: styles.label,
+      tabStyle: styles.tab,
+      style: styles.tabBar
     },
     initialRouteName: HOME
   }

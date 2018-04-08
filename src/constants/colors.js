@@ -2,6 +2,7 @@ export const bgColor = "rgb(255, 255, 255)";
 export const cardBgColor = "rgb(255, 255, 255)";
 export const imageBgColor = "#C1C1C1";
 export const headerBgColor = "#A5A5A5";
+export const transparent = "transparent";
 
 export const textColor = "#272727";
 
@@ -16,7 +17,7 @@ export const dialogHeaderDividerColor = "#F2F2F2";
 export const tabBarBgColor = "rgb(243, 243, 243)";
 export const tabBarLabelColor = "rgb(88, 88, 88)";
 export const tabBarActiveLabelColor = "rgb(45, 47, 127)";
-export const tabBarShadowColor = "rgba(0, 0, 0, 0.2)";
+export const tabBarShadowColor = "rgba(0, 0, 0, 0.1)";
 
 // FILTER HEADER
 
