@@ -10,20 +10,21 @@ import CategoryLabel from "./CategoryLabel";
 import EventMap from "./EventMap";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
+import ContentPadding from "../../components/ContentPadding";
 import {
   eventDetailsBgColor,
   eventDetailsHeaderBgColor
 } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { Event, Asset } from "../../data/event";
+import type { Event, LocalizedFieldRef } from "../../data/event";
 
 const locale = "en-GB";
 
 type Props = {
-  navigation: NavigationScreenProp<{ params: { eventId: String } }>,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
   event: Event,
-  getAssetById: string => Asset
+  getAssetUrl: LocalizedFieldRef => string
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
@@ -47,7 +48,7 @@ const renderEventOverview = event => {
   )}`;
 
   return (
-    <View style={styles.content}>
+    <ContentPadding style={styles.content}>
       <Text type="h1">{event.fields.name[locale]}</Text>
       <View style={styles.categoryLabelContainer}>
         {event.fields.eventCategories[locale].map(categoryName => (
@@ -100,12 +101,12 @@ const renderEventOverview = event => {
             />
           </View>
         )}
-    </View>
+    </ContentPadding>
   );
 };
 
 const renderEventDescription = event => (
-  <View style={styles.content}>
+  <ContentPadding style={styles.content}>
     <Text markdown>{event.fields.eventDescription[locale]}</Text>
     <View style={styles.mapWrapper}>
       <EventMap
@@ -114,7 +115,7 @@ const renderEventDescription = event => (
         locationName={event.fields.locationName[locale]}
       />
     </View>
-  </View>
+  </ContentPadding>
 );
 
 const renderEventDetails = event =>
@@ -122,7 +123,7 @@ const renderEventDetails = event =>
     event.fields.email ||
     event.fields.phone ||
     event.fields.ticketingUrl) && (
-    <View>
+    <ContentPadding>
       <View style={styles.sectionDivider} />
       <View style={styles.content}>
         {event.fields.accessibilityDetails && (
@@ -165,7 +166,7 @@ const renderEventDetails = event =>
           </View>
         )}
       </View>
-    </View>
+    </ContentPadding>
   );
 
 class EventDetailsScreen extends PureComponent<Props> {
@@ -175,17 +176,14 @@ class EventDetailsScreen extends PureComponent<Props> {
   static defaultProps = {};
 
   render() {
-    const { event, getAssetById } = this.props;
-    const headerImage = getAssetById(
-      event.fields.individualEventPicture[locale].sys.id
-    );
+    const { event, getAssetUrl } = this.props;
     return (
       <ScrollView style={styles.container}>
         <Header
           onBackButtonPress={() => {
             this.props.navigation.goBack(null);
           }}
-          imageUrl={`https:${headerImage.fields.file[locale].url}`}
+          imageUrl={getAssetUrl(event.fields.individualEventPicture)}
         />
         {renderEventOverview(event)}
         <View style={styles.sectionDivider} />
@@ -203,7 +201,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 15,
+    paddingVertical: 15,
     backgroundColor: eventDetailsBgColor
   },
   categoryLabelContainer: {

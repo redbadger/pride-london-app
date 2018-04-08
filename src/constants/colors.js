@@ -36,3 +36,8 @@ export const eventDetailsHeaderBgColor = "#F2F2F2";
 export const eventCategoryLabelBgColor = "#D8D8D8";
 export const eventDetailsBuyButtonColor = "#D8D8D8";
 export const eventDetailsBuyButtonTextColor = "#FFFFFF";
+
+// HOMEPAGE
+
+export const titleTextColor = "rgb(45, 47, 127)";
+export const eventTileTextColor = "rgb(45, 47, 127)";

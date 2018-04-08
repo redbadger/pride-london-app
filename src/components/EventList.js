@@ -1,12 +1,14 @@
 // @flow
 import React from "react";
-import { StyleSheet, SectionList, TouchableOpacity, View } from "react-native";
+import { StyleSheet, SectionList, View } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
 import formatDate from "date-fns/format";
 
+import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import Text from "./Text";
-import type { Event, EventDays, Asset } from "../data/event";
+import Touchable from "./Touchable";
+import type { Event, EventDays, LocalizedFieldRef } from "../data/event";
 import {
   bgColor,
   eventCardTextColor,
@@ -18,49 +20,46 @@ import {
 type Props = {
   locale: string,
   events: EventDays,
-  refreshing: boolean,
-  onRefresh: () => void,
+  refreshing?: boolean,
+  onRefresh?: () => void,
   onPress: (eventName: string) => void,
-  getAssetById: string => Asset
+  getAssetUrl: LocalizedFieldRef => string
 };
 
 const separator = style => () => <View style={style} />;
 
 type ItemProps = { item: Event };
-const renderItem = (styles, locale, onPress, getAssetById) => ({
+const renderItem = (styles, locale, onPress, getAssetUrl) => ({
   item: event
 }: ItemProps) => (
-  <TouchableOpacity
-    style={styles.eventListItem}
-    accessibilityTraits={["button"]}
-    accessibilityComponentType="button"
-    delayPressIn={50}
-    onPress={() => onPress(event.sys.id)}
-  >
-    <EventCard
-      name={event.fields.name[locale]}
-      locationName={event.fields.locationName[locale]}
-      eventPriceLow={event.fields.eventPriceLow[locale]}
-      eventPriceHigh={event.fields.eventPriceHigh[locale]}
-      startTime={event.fields.startTime[locale]}
-      endTime={event.fields.endTime[locale]}
-      imageUrl={`https:${
-        getAssetById(event.fields.eventsListPicture[locale].sys.id).fields.file[
-          locale
-        ].url
-      }`}
-      isFree={event.fields.isFree[locale]}
-    />
-  </TouchableOpacity>
+  <ContentPadding>
+    <Touchable
+      style={styles.eventListItem}
+      onPress={() => onPress(event.sys.id)}
+    >
+      <EventCard
+        name={event.fields.name[locale]}
+        locationName={event.fields.locationName[locale]}
+        eventPriceLow={event.fields.eventPriceLow[locale]}
+        eventPriceHigh={event.fields.eventPriceHigh[locale]}
+        startTime={event.fields.startTime[locale]}
+        endTime={event.fields.endTime[locale]}
+        imageUrl={getAssetUrl(event.fields.eventsListPicture)}
+        isFree={event.fields.isFree[locale]}
+      />
+    </Touchable>
+  </ContentPadding>
 );
 
 type Section = SectionBase<Event> & { title: string };
 
 type SectionProps = { section: Section };
 const renderSectionHeader = styles => ({ section }: SectionProps) => (
-  <Text type="h2" style={styles.sectionHeader}>
-    {section.title}
-  </Text>
+  <ContentPadding style={styles.sectionHeader}>
+    <Text type="h2" style={styles.sectionHeaderText}>
+      {section.title}
+    </Text>
+  </ContentPadding>
 );
 
 const eventSections = (events: EventDays, locale: string): Section[] =>
@@ -75,14 +74,14 @@ const EventList = ({
   refreshing,
   onRefresh,
   onPress,
-  getAssetById
+  getAssetUrl
 }: Props) => (
   <SectionList
     stickySectionHeadersEnabled
     sections={eventSections(events, locale)}
     renderSectionHeader={renderSectionHeader(styles)}
     renderSectionFooter={separator(styles.sectionFooter)}
-    renderItem={renderItem(styles, locale, onPress, getAssetById)}
+    renderItem={renderItem(styles, locale, onPress, getAssetUrl)}
     keyExtractor={event => event.sys.id}
     contentContainerStyle={styles.container}
     ItemSeparatorComponent={separator(styles.itemSeparator)}
@@ -91,6 +90,11 @@ const EventList = ({
     onRefresh={onRefresh}
   />
 );
+
+EventList.defaultProps = {
+  refreshing: false,
+  onRefresh: undefined
+};
 
 const styles = StyleSheet.create({
   itemSeparator: {
@@ -104,7 +108,6 @@ const styles = StyleSheet.create({
     backgroundColor: bgColor
   },
   eventListItem: {
-    marginHorizontal: 16,
     borderRadius: 5,
     // The below properties are required for ioS shadow
     shadowColor: eventCardShadow,
@@ -118,9 +121,7 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     height: 40,
-    color: eventCardTextColor,
-    paddingVertical: 8,
-    paddingHorizontal: 15,
+    justifyContent: "center",
     backgroundColor: sectionHeaderBgColor,
 
     // The below properties are required for ioS shadow
@@ -132,6 +133,9 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 3,
     marginBottom: 6
+  },
+  sectionHeaderText: {
+    color: eventCardTextColor
   },
   sectionFooter: {
     height: 6

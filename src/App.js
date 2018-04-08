@@ -1,10 +1,17 @@
 // @flow
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
-import { EVENT_LIST, EVENT_DETAILS } from "./constants/routes";
+import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
+import HomeScreen from "./screens/HomeScreen";
+import {
+  EVENT_LIST,
+  EVENT_DETAILS,
+  FEATURED_EVENT_LIST,
+  HOME
+} from "./constants/routes";
 
 const EventsStack = StackNavigator(
   {
@@ -16,6 +23,20 @@ const EventsStack = StackNavigator(
   }
 );
 
+const HomeStack = StackNavigator(
+  {
+    [HOME]: { screen: HomeScreen, tabBarLabel: "Home" },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen, tabBarLabel: "Home" },
+    [FEATURED_EVENT_LIST]: {
+      screen: FeaturedEventListScreen,
+      tabBarLabel: "Home"
+    }
+  },
+  {
+    initialRouteName: HOME
+  }
+);
+
 EventsStack.navigationOptions = {
   tabBarTestIDProps: {
     testID: "events-tab-button",
@@ -23,13 +44,7 @@ EventsStack.navigationOptions = {
   }
 };
 
-const HomeScreen = () => (
-  <View testID="home-screen">
-    <Text>Home</Text>
-  </View>
-);
-
-HomeScreen.navigationOptions = {
+HomeStack.navigationOptions = {
   tabBarTestIDProps: {
     testID: "home-tab-button",
     accessibilityLabel: "home-tab-button"
@@ -38,7 +53,7 @@ HomeScreen.navigationOptions = {
 
 export default TabNavigator(
   {
-    Home: { screen: HomeScreen },
+    Home: { screen: HomeStack },
     Events: { screen: EventsStack },
     Parade: { screen: () => <View /> },
     Saved: { screen: () => <View /> },
@@ -47,6 +62,6 @@ export default TabNavigator(
   {
     tabBarComponent: TabBarBottom,
     tabBarPosition: "bottom",
-    initialRouteName: "Events"
+    initialRouteName: "Home"
   }
 );

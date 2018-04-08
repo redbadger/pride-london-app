@@ -9,6 +9,7 @@ import {
   View
 } from "react-native";
 import Text from "./Text";
+import Touchable from "./Touchable";
 import {
   dialogBackdropColor,
   dialogBgColor,
@@ -72,6 +73,9 @@ const Dialog = ({
           <Text style={styles.applyButtonText}>{applyButtonText}</Text>
         </TouchableOpacity>
       </View>
+      <Touchable onPress={onApply} style={styles.applyButton}>
+        <Text style={styles.applyButtonText}>{applyButtonText}</Text>
+      </Touchable>
     </TouchableWithoutFeedback>
   </Modal>
 );

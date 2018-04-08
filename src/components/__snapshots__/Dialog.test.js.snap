@@ -131,6 +131,38 @@ exports[`renders correctly 1`] = `
         </Text>
       </TouchableOpacity>
     </View>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgb(51, 51, 51)",
+          "borderRadius": 4,
+          "height": 48,
+          "justifyContent": "center",
+          "marginTop": 8,
+        }
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "#FFFFFF",
+          }
+        }
+        type="text"
+      >
+        Bye
+      </Text>
+    </Touchable>
   </TouchableWithoutFeedback>
 </Component>
 `;

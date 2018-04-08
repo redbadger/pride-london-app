@@ -1,8 +1,9 @@
 // @flow
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import showLocation from "./openMapLink";
+import Touchable from "../../components/Touchable";
 
 type Props = {
   lat: number,
@@ -11,7 +12,7 @@ type Props = {
 };
 
 const EventMap = ({ lat, lon, locationName }: Props) => (
-  <TouchableOpacity
+  <Touchable
     style={styles.mapWrapper}
     onPress={() => showLocation(lat, lon, locationName)}
   >
@@ -34,7 +35,7 @@ const EventMap = ({ lat, lon, locationName }: Props) => (
         }}
       />
     </MapView>
-  </TouchableOpacity>
+  </Touchable>
 );
 
 const styles = StyleSheet.create({

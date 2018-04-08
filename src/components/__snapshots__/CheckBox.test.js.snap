@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<TouchableOpacity
+<Touchable
   accessibilityComponentType="radiobutton_unchecked"
   accessibilityTraits={
     Array [
       "button",
     ]
   }
-  activeOpacity={0.2}
+  delayPressIn={50}
   onPress={[Function]}
   style={
     Array [
@@ -28,11 +28,11 @@ exports[`renders correctly 1`] = `
   >
     Bananas
   </Text>
-</TouchableOpacity>
+</Touchable>
 `;
 
 exports[`renders correctly when checked 1`] = `
-<TouchableOpacity
+<Touchable
   accessibilityComponentType="radiobutton_checked"
   accessibilityTraits={
     Array [
@@ -40,7 +40,7 @@ exports[`renders correctly when checked 1`] = `
       "selected",
     ]
   }
-  activeOpacity={0.2}
+  delayPressIn={50}
   onPress={[Function]}
   style={
     Array [
@@ -61,11 +61,7 @@ exports[`renders correctly when checked 1`] = `
     Bananas
   </Text>
   <Image
-    source={
-      Object {
-        "testUri": "../../../src/components/check-box-checked.png",
-      }
-    }
+    source={1}
   />
-</TouchableOpacity>
+</Touchable>
 `;

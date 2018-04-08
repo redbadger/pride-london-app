@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectedDateFilterDialog renders component 1`] = `
+<Dialog
+  applyButtonText="Show 0 events"
+  headerRight={
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      accessible={undefined}
+      delayLongPress={undefined}
+      delayPressIn={50}
+      delayPressOut={undefined}
+      disabled={undefined}
+      hitSlop={undefined}
+      onLongPress={undefined}
+      onPress={[Function]}
+      onPressIn={undefined}
+      onPressOut={undefined}
+      pressRetentionOffset={undefined}
+      style={undefined}
+    >
+      <Text
+        markdown={false}
+        style={Object {}}
+        type="text"
+      >
+        Clear
+      </Text>
+    </Touchable>
+  }
+  onApply={[Function]}
+  onCancel={[Function]}
+  title="Select dates"
+  visible={true}
+>
+  <DateRangePicker
+    dateRange={null}
+    onChange={[Function]}
+  />
+</Dialog>
+`;
+
+exports[`ConnectedDateFilterDialog renders connector 1`] = `
+<DateRangePickerDialog
+  applyButtonText="Show 0 events"
+  dateRange={null}
+  onApply={[Function]}
+  onCancel={[Function]}
+  onChange={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+  visible={true}
+/>
+`;

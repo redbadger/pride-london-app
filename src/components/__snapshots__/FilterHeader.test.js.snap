@@ -18,114 +18,117 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     barStyle="light-content"
     showHideTransition="fade"
   />
-  <View
-    style={
-      Object {
-        "paddingBottom": 12,
-        "paddingTop": 16,
-      }
-    }
-    testID="filter-header"
+  <ContentPadding
+    style={Object {}}
   >
     <View
       style={
         Object {
-          "alignItems": "center",
-          "flexDirection": "row",
+          "paddingBottom": 12,
+          "paddingTop": 16,
         }
       }
+      testID="filter-header"
     >
-      <View
-        style={
-          Object {
-            "backgroundColor": "rgb(32, 33, 90)",
-            "borderRadius": 4,
-            "flex": 1,
-            "height": 44,
-            "justifyContent": "center",
-            "marginLeft": 8,
-            "paddingHorizontal": 12,
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "rgb(44, 218, 157)",
-            }
-          }
-          type="h2"
-        >
-          I'm interested in...
-        </Text>
-      </View>
       <View
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "rgb(32, 33, 90)",
-            "borderRadius": 25,
-            "height": 52,
-            "justifyContent": "flex-end",
-            "marginHorizontal": 12,
-            "width": 52,
+            "flexDirection": "row",
           }
         }
       >
-        <Text
-          markdown={false}
+        <View
           style={
             Object {
-              "color": "rgb(44, 218, 157)",
-              "fontFamily": "Poppins-Bold",
-              "fontSize": 14,
-              "paddingBottom": 6,
+              "backgroundColor": "rgb(32, 33, 90)",
+              "borderRadius": 4,
+              "flex": 1,
+              "height": 44,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
             }
           }
-          type="text"
         >
-          Map
-        </Text>
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+              }
+            }
+            type="h2"
+          >
+            I'm interested in...
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgb(32, 33, 90)",
+              "borderRadius": 25,
+              "height": 52,
+              "justifyContent": "flex-end",
+              "marginLeft": 12,
+              "width": 52,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+                "fontFamily": "Poppins-Bold",
+                "fontSize": 14,
+                "paddingBottom": 6,
+              }
+            }
+            type="text"
+          >
+            Map
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "marginTop": 8,
+          }
+        }
+      >
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Any day"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Any time"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Filters"
+        />
       </View>
     </View>
-    <View
-      style={
-        Object {
-          "flexDirection": "row",
-          "marginTop": 8,
-        }
-      }
-    >
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Any day"
-      />
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Any time"
-      />
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Filters"
-      />
-    </View>
-  </View>
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}
@@ -157,114 +160,117 @@ exports[`renders correctly with any date and any time 1`] = `
     barStyle="light-content"
     showHideTransition="fade"
   />
-  <View
-    style={
-      Object {
-        "paddingBottom": 12,
-        "paddingTop": 16,
-      }
-    }
-    testID="filter-header"
+  <ContentPadding
+    style={Object {}}
   >
     <View
       style={
         Object {
-          "alignItems": "center",
-          "flexDirection": "row",
+          "paddingBottom": 12,
+          "paddingTop": 16,
         }
       }
+      testID="filter-header"
     >
-      <View
-        style={
-          Object {
-            "backgroundColor": "rgb(32, 33, 90)",
-            "borderRadius": 4,
-            "flex": 1,
-            "height": 44,
-            "justifyContent": "center",
-            "marginLeft": 8,
-            "paddingHorizontal": 12,
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "rgb(44, 218, 157)",
-            }
-          }
-          type="h2"
-        >
-          I'm interested in...
-        </Text>
-      </View>
       <View
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "rgb(32, 33, 90)",
-            "borderRadius": 25,
-            "height": 52,
-            "justifyContent": "flex-end",
-            "marginHorizontal": 12,
-            "width": 52,
+            "flexDirection": "row",
           }
         }
       >
-        <Text
-          markdown={false}
+        <View
           style={
             Object {
-              "color": "rgb(44, 218, 157)",
-              "fontFamily": "Poppins-Bold",
-              "fontSize": 14,
-              "paddingBottom": 6,
+              "backgroundColor": "rgb(32, 33, 90)",
+              "borderRadius": 4,
+              "flex": 1,
+              "height": 44,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
             }
           }
-          type="text"
         >
-          Map
-        </Text>
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+              }
+            }
+            type="h2"
+          >
+            I'm interested in...
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgb(32, 33, 90)",
+              "borderRadius": 25,
+              "height": 52,
+              "justifyContent": "flex-end",
+              "marginLeft": 12,
+              "width": 52,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+                "fontFamily": "Poppins-Bold",
+                "fontSize": 14,
+                "paddingBottom": 6,
+              }
+            }
+            type="text"
+          >
+            Map
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "marginTop": 8,
+          }
+        }
+      >
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Any day"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Any time"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Filters"
+        />
       </View>
     </View>
-    <View
-      style={
-        Object {
-          "flexDirection": "row",
-          "marginTop": 8,
-        }
-      }
-    >
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Any day"
-      />
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Any time"
-      />
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Filters"
-      />
-    </View>
-  </View>
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}
@@ -296,114 +302,117 @@ exports[`renders correctly with date range and two times 1`] = `
     barStyle="light-content"
     showHideTransition="fade"
   />
-  <View
-    style={
-      Object {
-        "paddingBottom": 12,
-        "paddingTop": 16,
-      }
-    }
-    testID="filter-header"
+  <ContentPadding
+    style={Object {}}
   >
     <View
       style={
         Object {
-          "alignItems": "center",
-          "flexDirection": "row",
+          "paddingBottom": 12,
+          "paddingTop": 16,
         }
       }
+      testID="filter-header"
     >
-      <View
-        style={
-          Object {
-            "backgroundColor": "rgb(32, 33, 90)",
-            "borderRadius": 4,
-            "flex": 1,
-            "height": 44,
-            "justifyContent": "center",
-            "marginLeft": 8,
-            "paddingHorizontal": 12,
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "rgb(44, 218, 157)",
-            }
-          }
-          type="h2"
-        >
-          I'm interested in...
-        </Text>
-      </View>
       <View
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "rgb(32, 33, 90)",
-            "borderRadius": 25,
-            "height": 52,
-            "justifyContent": "flex-end",
-            "marginHorizontal": 12,
-            "width": 52,
+            "flexDirection": "row",
           }
         }
       >
-        <Text
-          markdown={false}
+        <View
           style={
             Object {
-              "color": "rgb(44, 218, 157)",
-              "fontFamily": "Poppins-Bold",
-              "fontSize": 14,
-              "paddingBottom": 6,
+              "backgroundColor": "rgb(32, 33, 90)",
+              "borderRadius": 4,
+              "flex": 1,
+              "height": 44,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
             }
           }
-          type="text"
         >
-          Map
-        </Text>
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+              }
+            }
+            type="h2"
+          >
+            I'm interested in...
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgb(32, 33, 90)",
+              "borderRadius": 25,
+              "height": 52,
+              "justifyContent": "flex-end",
+              "marginLeft": 12,
+              "width": 52,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+                "fontFamily": "Poppins-Bold",
+                "fontSize": 14,
+                "paddingBottom": 6,
+              }
+            }
+            type="text"
+          >
+            Map
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "marginTop": 8,
+          }
+        }
+      >
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="2 Feb - 3 Feb"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Morning, Afternoon"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Filters"
+        />
       </View>
     </View>
-    <View
-      style={
-        Object {
-          "flexDirection": "row",
-          "marginTop": 8,
-        }
-      }
-    >
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="2 Feb - 3 Feb"
-      />
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Morning, Afternoon"
-      />
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Filters"
-      />
-    </View>
-  </View>
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}
@@ -435,114 +444,117 @@ exports[`renders correctly with single date and single time 1`] = `
     barStyle="light-content"
     showHideTransition="fade"
   />
-  <View
-    style={
-      Object {
-        "paddingBottom": 12,
-        "paddingTop": 16,
-      }
-    }
-    testID="filter-header"
+  <ContentPadding
+    style={Object {}}
   >
     <View
       style={
         Object {
-          "alignItems": "center",
-          "flexDirection": "row",
+          "paddingBottom": 12,
+          "paddingTop": 16,
         }
       }
+      testID="filter-header"
     >
-      <View
-        style={
-          Object {
-            "backgroundColor": "rgb(32, 33, 90)",
-            "borderRadius": 4,
-            "flex": 1,
-            "height": 44,
-            "justifyContent": "center",
-            "marginLeft": 8,
-            "paddingHorizontal": 12,
-          }
-        }
-      >
-        <Text
-          markdown={false}
-          style={
-            Object {
-              "color": "rgb(44, 218, 157)",
-            }
-          }
-          type="h2"
-        >
-          I'm interested in...
-        </Text>
-      </View>
       <View
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "rgb(32, 33, 90)",
-            "borderRadius": 25,
-            "height": 52,
-            "justifyContent": "flex-end",
-            "marginHorizontal": 12,
-            "width": 52,
+            "flexDirection": "row",
           }
         }
       >
-        <Text
-          markdown={false}
+        <View
           style={
             Object {
-              "color": "rgb(44, 218, 157)",
-              "fontFamily": "Poppins-Bold",
-              "fontSize": 14,
-              "paddingBottom": 6,
+              "backgroundColor": "rgb(32, 33, 90)",
+              "borderRadius": 4,
+              "flex": 1,
+              "height": 44,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
             }
           }
-          type="text"
         >
-          Map
-        </Text>
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+              }
+            }
+            type="h2"
+          >
+            I'm interested in...
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgb(32, 33, 90)",
+              "borderRadius": 25,
+              "height": 52,
+              "justifyContent": "flex-end",
+              "marginLeft": 12,
+              "width": 52,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+                "fontFamily": "Poppins-Bold",
+                "fontSize": 14,
+                "paddingBottom": 6,
+              }
+            }
+            type="text"
+          >
+            Map
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "marginTop": 8,
+          }
+        }
+      >
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="2 Feb"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Afternoon"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Filters"
+        />
       </View>
     </View>
-    <View
-      style={
-        Object {
-          "flexDirection": "row",
-          "marginTop": 8,
-        }
-      }
-    >
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="2 Feb"
-      />
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Afternoon"
-      />
-      <FilterHeaderButton
-        onPress={[Function]}
-        style={
-          Object {
-            "marginLeft": 8,
-          }
-        }
-        text="Filters"
-      />
-    </View>
-  </View>
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}

@@ -3,11 +3,11 @@ import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
-import type { Event, FeaturedEvents, EventDays } from "../data/event";
+import type { Asset, Event, FeaturedEvents, EventDays } from "../data/event";
 
 const locale = "en-GB";
 
-const groupByStartTime = (events: Event[]): EventDays => {
+export const groupEventsByStartTime = (events: Event[]): EventDays => {
   const sections = events
     .sort(
       (a: Event, b: Event) =>
@@ -54,14 +54,26 @@ export const selectEventsRefreshing = (state: State) =>
   getEventsState(state).refreshing;
 export const selectAssets = (state: State) => getEventsState(state).assets;
 
-export const selectEventById = (state: State, id: String) =>
+export const selectEventById = (state: State, id: string) =>
   selectEvents(state).find(event => event.sys.id === id);
 
-export const selectAssetById = (state: State, id: String) =>
-  selectAssets(state).find(asset => asset.sys.id === id);
+export const selectAssetById = (state: State, id: string): Asset =>
+  (selectAssets(state).find(asset => asset.sys.id === id): any);
 
-export const selectFilteredEvents = (state: State) =>
-  selectEvents(state).filter(buildEventFilter(state));
+export const selectFilteredEvents = (
+  state: State,
+  selectStagedFilters?: boolean = false
+) => selectEvents(state).filter(buildEventFilter(state, selectStagedFilters));
 
-export const selectFilteredEventsGroupedByDay = (state: State): EventDays =>
-  groupByStartTime(selectFilteredEvents(state));
+export const selectFeaturedEventsByTitle = (state: State, title: string) => {
+  const featured = selectFeaturedEvents(state).find(
+    entry => entry.fields.title[locale] === title
+  );
+  if (featured == null) {
+    return [];
+  }
+
+  return ((featured.fields.events[locale].map(e =>
+    selectEventById(state, e.sys.id)
+  ): any): Event[]);
+};
