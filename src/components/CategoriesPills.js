@@ -6,6 +6,8 @@ import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes
 import Text from "./Text";
 import text from "../constants/text";
 import eventCategories from "../constants/event-categories";
+import locale from "../data/locale";
+
 import {
   blackColor,
   whiteColor,
@@ -13,8 +15,6 @@ import {
   darkBlueGreyTwoColor,
   eucalyptusGreenColor
 } from "../constants/colors";
-
-const locale = "en-GB";
 
 const categoryStyleColors = (category: string) => {
   const categoryData = eventCategories[locale][category];

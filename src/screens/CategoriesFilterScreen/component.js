@@ -13,8 +13,7 @@ import text from "../../constants/text";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "./Header";
 import List from "./List";
-
-const locale = "en-GB";
+import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,

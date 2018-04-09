@@ -7,7 +7,7 @@ import EventList from "../../components/EventList";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 
-const locale = "en-GB";
+import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { title: string } }>,

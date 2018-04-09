@@ -201,3 +201,49 @@ describe("loadCmsData", () => {
     expect(loadedData).toEqual(mockData);
   });
 });
+
+describe("correctDates", () => {
+  it("switches dates if end date is before start date", async () => {
+    const cmsData = {
+      entries: [
+        {
+          sys: { id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T22:3001:00" },
+            endTime: { "en-GB": "2018-07-07T10:3001:00" }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      deletedEntries: [],
+      deletedAssets: [],
+      nextSyncToken: "abc"
+    };
+    const mockLoadCmsData = async () => ({
+      entries: [],
+      assets: [],
+      syncToken: "123"
+    });
+    const mockAsyncStorage = { setItem: jest.fn() };
+    const expectedCmsData = {
+      entries: [
+        {
+          sys: { id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T10:3001:00" },
+            endTime: { "en-GB": "2018-07-07T22:3001:00" }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      syncToken: "abc"
+    };
+
+    const savedCmsData = await saveCmsData(
+      cmsData,
+      mockLoadCmsData,
+      mockAsyncStorage
+    );
+    expect(savedCmsData).toEqual(expectedCmsData);
+  });
+});

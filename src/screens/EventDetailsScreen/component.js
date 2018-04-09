@@ -19,7 +19,7 @@ import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event, LocalizedFieldRef } from "../../data/event";
 
-const locale = "en-GB";
+import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
