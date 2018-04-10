@@ -23,6 +23,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#2acfff",
+        "contrast": true,
         "label": "Community",
       }
     }
@@ -45,6 +46,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#7de2d1",
+        "contrast": true,
         "label": "Film and Screenings",
       }
     }
@@ -67,6 +69,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#00a3bd",
+        "contrast": true,
         "label": "Social and Networking",
       }
     }
@@ -101,6 +104,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#c3d30e",
+        "contrast": true,
         "label": "Sports and Activities",
       }
     }
@@ -112,6 +116,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#ff88f1",
+        "contrast": true,
         "label": "Health",
       }
     }

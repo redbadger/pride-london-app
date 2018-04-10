@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event } from "../../data/event";
@@ -11,6 +11,7 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 import ContentPadding from "../../components/ContentPadding";
+import Touchable from "../../components/Touchable";
 import Header from "./Header";
 import List from "./List";
 import locale from "../../data/locale";
@@ -77,7 +78,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         </View>
         <ContentPadding>
           <View>
-            <TouchableOpacity
+            <Touchable
               style={styles.showEventsButton}
               onPress={this.handleApplyFilters}
               disabled={!events.length}
@@ -85,7 +86,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
               <Text type="h2" style={styles.showEventsText}>
                 {text.showEvents(events.length)}
               </Text>
-            </TouchableOpacity>
+            </Touchable>
           </View>
         </ContentPadding>
       </SafeAreaView>

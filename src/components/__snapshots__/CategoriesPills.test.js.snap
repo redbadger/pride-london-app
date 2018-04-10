@@ -5,23 +5,24 @@ exports[`CategoriesPills Component renders correctly 1`] = `
   style={
     Array [
       Object {
+        "alignItems": "center",
         "backgroundColor": "#20215a",
         "borderRadius": 4,
         "flex": 1,
         "flexDirection": "row",
-        "height": 40,
+        "height": 44,
       },
       Object {},
     ]
   }
 >
   <Text
+    allowFontScaling={true}
     markdown={false}
     style={
       Object {
         "color": "#2cda9d",
         "paddingLeft": 8,
-        "paddingTop": 11,
       }
     }
     type="h3"

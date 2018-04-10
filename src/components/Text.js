@@ -19,10 +19,11 @@ type Props = {
   children: Node,
   type?: TextType,
   markdown?: boolean,
-  style?: StyleObj
+  style?: StyleObj,
+  allowFontScaling?: boolean
 };
 
-const Text = ({ children, type, markdown, style }: Props) =>
+const Text = ({ children, type, markdown, style, allowFontScaling }: Props) =>
   markdown ? (
     <Markdown
       style={style}
@@ -31,12 +32,18 @@ const Text = ({ children, type, markdown, style }: Props) =>
       {children}
     </Markdown>
   ) : (
-    <RnText style={[type && styles[type], style]}>{children}</RnText>
+    <RnText
+      style={[type && styles[type], style]}
+      allowFontScaling={allowFontScaling}
+    >
+      {children}
+    </RnText>
   );
 Text.defaultProps = {
   type: "text",
   markdown: false,
-  style: {}
+  style: {},
+  allowFontScaling: true
 };
 
 const textStyles = {

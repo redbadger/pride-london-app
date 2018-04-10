@@ -1,10 +1,11 @@
 // @flow
 import React from "react";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Text from "../../components/Text";
 import text from "../../constants/text";
 import { whiteColor } from "../../constants/colors";
 import CategoriesPills from "../../components/CategoriesPills";
+import Touchable from "../../components/Touchable";
 
 type Props = {
   onClose?: Function,
@@ -18,11 +19,11 @@ type ActionButtonProps = {
 };
 
 const ActionButton = ({ label, onPress }: ActionButtonProps) => (
-  <TouchableOpacity style={styles.actionButton} onPress={onPress}>
+  <Touchable onPress={onPress}>
     <Text type="h4" style={styles.actionButtonText}>
       {label}
     </Text>
-  </TouchableOpacity>
+  </Touchable>
 );
 
 ActionButton.defaultProps = {
@@ -58,15 +59,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: 10
   },
-  actionButton: {
-    width: 60
-  },
   actionButtonText: {
     color: whiteColor
   },
   categoriesPills: {
     width: "100%",
-    height: 40,
+    minHeight: 44,
     marginBottom: 16
   },
   filterTitle: {

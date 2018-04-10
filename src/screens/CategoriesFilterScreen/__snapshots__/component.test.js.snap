@@ -48,8 +48,14 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     style={Object {}}
   >
     <View>
-      <TouchableOpacity
-        activeOpacity={0.2}
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "button",
+          ]
+        }
+        delayPressIn={50}
         disabled={false}
         onPress={[Function]}
         style={
@@ -65,6 +71,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
         }
       >
         <Text
+          allowFontScaling={true}
           markdown={false}
           style={
             Object {
@@ -76,7 +83,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
         >
           Show 1 event
         </Text>
-      </TouchableOpacity>
+      </Touchable>
     </View>
   </ContentPadding>
 </withOrientation>

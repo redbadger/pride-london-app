@@ -4,12 +4,23 @@ import { StyleSheet, TouchableNativeFeedback, View } from "react-native";
 import type { TouchableProps } from "./TouchableTypes";
 import { TouchableDefaultProps } from "./TouchableTypes";
 
-const Touchable = ({ children, style, ...props }: TouchableProps) => (
+const Touchable = ({
+  children,
+  style,
+  onPress,
+  disabled,
+  ...props
+}: TouchableProps) => (
   <TouchableNativeFeedback
+    accessibilityTraits={["button"]}
+    accessibilityComponentType="button"
     background={TouchableNativeFeedback.SelectableBackground()}
-    {...props}
+    onPress={onPress}
+    disabled={disabled}
   >
-    <View style={[styles.defaults, style]}>{children}</View>
+    <View style={[styles.defaults, style]} {...props}>
+      {children}
+    </View>
   </TouchableNativeFeedback>
 );
 

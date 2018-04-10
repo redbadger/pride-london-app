@@ -1,7 +1,8 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, TouchableHighlight, Image } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import Touchable from "./Touchable";
 import {
   interestButtonBgColor,
   interestButtonTextColor,
@@ -27,14 +28,9 @@ const CategoriesFilterButton = ({
   style,
   onPress
 }: CategoriesFilterButtonProps) => (
-  <TouchableHighlight
-    accessibilityTraits={["button"]}
-    accessibilityComponentType="button"
-    style={[styles.categoriesFilterButton, style]}
-    onPress={onPress}
-  >
+  <Touchable style={[styles.categoriesFilterButton, style]} onPress={onPress}>
     <Image source={chevronRightImg} />
-  </TouchableHighlight>
+  </Touchable>
 );
 
 CategoriesFilterButton.defaultProps = {
@@ -44,7 +40,7 @@ CategoriesFilterButton.defaultProps = {
 const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
   selectedCategories.size === 0 ? (
     <View style={styles.contentInterest}>
-      <Text type="h1" style={styles.filterTitle}>
+      <Text type="h1" style={styles.filterTitle} allowFontScaling={false}>
         {text.filterTitle}
       </Text>
       <View style={styles.interestButton}>
@@ -60,32 +56,28 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
         style={styles.categoryPills}
         selectedCategories={selectedCategories}
       />
-      <CategoriesFilterButton
-        style={styles.categoriesFilterOverButton}
-        onPress={onFilterPress}
-      />
+      <CategoriesFilterButton onPress={onFilterPress} />
     </View>
   );
 
 const styles = StyleSheet.create({
   contentInterest: {
-    alignItems: "center",
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   filterTitle: {
     color: filterShowMeTextColor,
-    paddingTop: 5,
+    paddingTop: 8,
     marginRight: 8
   },
   categoryPillsContainer: {
     flexDirection: "row"
   },
   categoriesFilterButton: {
-    width: 38,
-    height: 40,
     backgroundColor: categoriesFilterButtonBgColor,
-    justifyContent: "center",
     alignItems: "center",
+    width: 44,
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   },
@@ -93,16 +85,16 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0
   },
-  categoriesFilterOverButton: {},
   interestButton: {
-    width: 145,
-    height: 40,
-    backgroundColor: interestButtonBgColor,
-    borderRadius: 4,
-    justifyContent: "space-between",
+    flex: 1,
     flexDirection: "row",
+    alignSelf: "stretch",
+    justifyContent: "space-between",
     alignItems: "center",
-    paddingLeft: 8
+    minWidth: 130,
+    paddingLeft: 8,
+    backgroundColor: interestButtonBgColor,
+    borderRadius: 4
   },
   interestButtonText: {
     color: interestButtonTextColor

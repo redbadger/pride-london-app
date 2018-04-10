@@ -14,7 +14,8 @@ const categories: EventCategoryMap = {
     },
     Community: {
       label: "Community",
-      color: colors.brightLightBlueColor
+      color: colors.brightLightBlueColor,
+      contrast: true
     },
     "Talks and Debates": {
       label: "Talks and Debates",
@@ -22,7 +23,8 @@ const categories: EventCategoryMap = {
     },
     "Film and Screenings": {
       label: "Film and Screenings",
-      color: colors.lightTealColor
+      color: colors.lightTealColor,
+      contrast: true
     },
     "Plays and Theatre": {
       label: "Plays and Theatre",
@@ -30,7 +32,8 @@ const categories: EventCategoryMap = {
     },
     "Social and Networking": {
       label: "Social and Networking",
-      color: colors.turquoiseBlueColor
+      color: colors.turquoiseBlueColor,
+      contrast: true
     },
     Nightlife: {
       label: "Nightlife",
@@ -43,11 +46,13 @@ const categories: EventCategoryMap = {
     },
     "Sports and Activities": {
       label: "Sports and Activities",
-      color: colors.vomitYellowColor
+      color: colors.vomitYellowColor,
+      contrast: true
     },
     Health: {
       label: "Health",
-      color: colors.bubblegumPinkColor
+      color: colors.bubblegumPinkColor,
+      contrast: true
     },
     Music: {
       label: "Music",

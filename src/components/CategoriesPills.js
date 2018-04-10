@@ -97,27 +97,28 @@ const styles = StyleSheet.create({
   selectedCategoriesPills: {
     backgroundColor: darkBlueGreyTwoColor,
     flex: 1,
-    height: 40,
+    alignItems: "center",
+    height: 44,
     borderRadius: 4,
     flexDirection: "row"
   },
   zeroSelected: {
     color: eucalyptusGreenColor,
-    paddingTop: 11,
     paddingLeft: 8
   },
   categoryPill: {
     color: whiteColor,
     backgroundColor: coralColor,
-    paddingTop: 3,
-    marginLeft: 8,
+    paddingTop: 4,
+    marginLeft: 6,
     paddingLeft: 5,
     paddingRight: 5,
     marginRight: 2
   },
   scrollView: {
     width: "100%",
-    height: 40,
+    height: "100%",
+    minHeight: 44,
     paddingTop: 8,
     paddingBottom: 8
   },
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     left: 0,
     top: 0,
     width: 15,
-    height: 40,
+    height: 44,
     zIndex: 10,
     borderRadius: 4
   },
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     width: 15,
-    height: 40,
+    height: 44,
     zIndex: 10,
     borderRadius: 4
   }

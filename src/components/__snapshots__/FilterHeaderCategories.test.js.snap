@@ -6,16 +6,18 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
     Object {
       "alignItems": "center",
       "flexDirection": "row",
+      "justifyContent": "space-between",
     }
   }
 >
   <Text
+    allowFontScaling={false}
     markdown={false}
     style={
       Object {
         "color": "#ffffff",
         "marginRight": 8,
-        "paddingTop": 5,
+        "paddingTop": 8,
       }
     }
     type="h1"
@@ -26,17 +28,19 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
     style={
       Object {
         "alignItems": "center",
+        "alignSelf": "stretch",
         "backgroundColor": "rgb(32, 33, 90)",
         "borderRadius": 4,
+        "flex": 1,
         "flexDirection": "row",
-        "height": 40,
         "justifyContent": "space-between",
+        "minWidth": 130,
         "paddingLeft": 8,
-        "width": 145,
       }
     }
   >
     <Text
+      allowFontScaling={true}
       markdown={false}
       style={
         Object {

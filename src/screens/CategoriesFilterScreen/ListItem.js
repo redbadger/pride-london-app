@@ -1,14 +1,8 @@
 // @flow
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Animated,
-  Dimensions,
-  Image
-} from "react-native";
+import { StyleSheet, View, Animated, Dimensions, Image } from "react-native";
 import Text from "../../components/Text";
+import Touchable from "../../components/Touchable";
 import { whiteColor, blackColor } from "../../constants/colors";
 import whiteCheck from "../../../assets/images/whiteCheck.png";
 import blackCheck from "../../../assets/images/blackCheck.png";
@@ -20,7 +14,10 @@ type ListItemProps = {
   selected: boolean
 };
 
-class ListItem extends Component<ListItemProps, { textWidth: number }> {
+class ListItem extends Component<
+  ListItemProps,
+  { textWidth: number, textHeight: number }
+> {
   static defaultProps = {
     onPress: () => {}
   };
@@ -28,7 +25,8 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
   constructor(props: ListItemProps) {
     super(props);
 
-    // No initial animation
+    // Only animate when selecting new categories
+    // do not animate the pre-selected ones
     Animated.timing(this.decorationWidth, {
       toValue: Number(props.selected),
       duration: 0,
@@ -36,7 +34,8 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
     }).start();
 
     this.state = {
-      textWidth: 16 - Dimensions.get("window").width
+      textWidth: 16 - Dimensions.get("window").width,
+      textHeight: 48
     };
   }
 
@@ -51,19 +50,22 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
   decorationWidth = new Animated.Value(0);
 
   // Measuring text width on initial render
-  handleOnLayout = (event: { nativeEvent: { layout: { width: number } } }) =>
-    this.setState({ textWidth: event.nativeEvent.layout.width });
+  handleOnLayout = (event: {
+    nativeEvent: { layout: { width: number, height: number } }
+  }) =>
+    this.setState({
+      textWidth: event.nativeEvent.layout.width,
+      textHeight: event.nativeEvent.layout.height
+    });
 
   render() {
     const { category, onPress, selected } = this.props;
-    const { textWidth } = this.state;
+    const { textWidth, textHeight } = this.state;
     const textColor = selected && category.contrast ? blackColor : whiteColor;
 
     return (
-      <TouchableOpacity
+      <Touchable
         style={styles.itemContainer}
-        accessibilityTraits={["button"]}
-        accessibilityComponentType="button"
         onPress={() => onPress(category.label)}
       >
         <Animated.View
@@ -71,6 +73,7 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
             styles.itemDecoration,
             {
               backgroundColor: category.color,
+              height: textHeight + 8,
               transform: [
                 {
                   translateX: this.decorationWidth.interpolate(
@@ -78,8 +81,8 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
                     {
                       inputRange: [0, 1],
                       outputRange: [
-                        16 - Dimensions.get("window").width,
-                        12 - Dimensions.get("window").width + textWidth
+                        -Dimensions.get("window").width,
+                        -Dimensions.get("window").width + textWidth
                       ]
                     }
                   )
@@ -101,7 +104,7 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
             {category.label}
           </Text>
         </View>
-      </TouchableOpacity>
+      </Touchable>
     );
   }
 }
@@ -109,24 +112,21 @@ class ListItem extends Component<ListItemProps, { textWidth: number }> {
 const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
-    flexDirection: "row",
+    alignItems: "flex-start",
     position: "relative",
-    marginBottom: 8,
     paddingTop: 8,
-    height: 48
+    paddingBottom: 8,
+    minHeight: 48
   },
   itemDecoration: {
     position: "absolute",
-    height: 48,
-    width: Dimensions.get("window").width
+    width: Dimensions.get("window").width + 16
   },
   check: {
     position: "absolute",
-    marginTop: 16,
     marginLeft: 6
   },
   itemText: {
-    height: 48,
     paddingLeft: 32,
     paddingTop: 10,
     color: whiteColor,

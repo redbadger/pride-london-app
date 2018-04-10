@@ -5,7 +5,12 @@ import type { TouchableProps } from "./TouchableTypes";
 import { TouchableDefaultProps } from "./TouchableTypes";
 
 const Touchable = ({ children, style, ...props }: TouchableProps) => (
-  <TouchableOpacity style={[styles.defaults, style]} {...props}>
+  <TouchableOpacity
+    accessibilityTraits={["button"]}
+    accessibilityComponentType="button"
+    style={[styles.defaults, style]}
+    {...props}
+  >
     {children}
   </TouchableOpacity>
 );
