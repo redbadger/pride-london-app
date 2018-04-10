@@ -30,6 +30,9 @@ export default {
     morning: "Morning",
     afternoon: "Afternoon",
     evening: "Evening",
-    venueDetails: "Venue options"
+    venueDetails: "Venue options",
+    "Gender neutral toilets": "Gender-neutral toilets",
+    Indoors: "Indoor",
+    Outdoors: "Outdoor"
   }
 };
