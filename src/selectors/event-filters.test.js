@@ -3,7 +3,8 @@ import {
   buildDateFilter,
   buildDateRangeFilter,
   buildTimeFilter,
-  buildPriceFilter
+  buildPriceFilter,
+  buildStringSetFilter
 } from "./basic-event-filters";
 import {
   selectDateFilter,
@@ -18,6 +19,7 @@ const untypedBuildDateFilter: any = buildDateFilter;
 const untypedBuildDateRangeFilter: any = buildDateRangeFilter;
 const untypedBuildTimeFilter: any = buildTimeFilter;
 const untypedBuildPriceFilter: any = buildPriceFilter;
+const untypedBuildStringSetFilter: any = buildStringSetFilter;
 
 export type BuildStateArguments = {
   date: ?DateOrDateRange,
@@ -391,6 +393,68 @@ describe("buildEventFilter", () => {
     const filter = buildEventFilter(state);
     expect(filter(event)).toBe(true);
   });
+
+  it("builds truthy audience filter when no audience selected", () => {
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        price: new Set(),
+        audience: new Set()
+      },
+      {
+        date: null,
+        time: new Set(),
+        price: new Set(),
+        audience: new Set()
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+    expect(untypedBuildPriceFilter).not.toHaveBeenCalled();
+  });
+
+  it("builds filter, which returns false when audience filter returns false", () => {
+    untypedBuildStringSetFilter.mockReturnValue(() => false);
+
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        price: new Set(),
+        audience: new Set("18+")
+      },
+      {
+        date: null,
+        time: new Set(),
+        price: new Set(),
+        audience: new Set("18+")
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(false);
+  });
+
+  it("builds filter, which returns true when audience filter returns true", () => {
+    untypedBuildStringSetFilter.mockReturnValue(() => true);
+
+    const state = buildState(
+      {
+        date: null,
+        time: new Set(),
+        price: new Set(),
+        audience: new Set("18+")
+      },
+      {
+        date: null,
+        time: new Set(),
+        price: new Set(),
+        audience: new Set("18+")
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+  });
 });
 
 afterEach(() => {
@@ -398,4 +462,5 @@ afterEach(() => {
   untypedBuildDateRangeFilter.mockReset();
   untypedBuildTimeFilter.mockReset();
   untypedBuildPriceFilter.mockReset();
+  untypedBuildStringSetFilter.mockReset();
 });

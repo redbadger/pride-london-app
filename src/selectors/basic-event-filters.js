@@ -49,3 +49,14 @@ export const buildCategoryFilter = (categories: Set<string>) => {
 
 export const buildPriceFilter = () => (event: Event) =>
   selectEventIsFree(event);
+
+export const buildStringSetFilter = (fieldName: string, set: Set<string>) => {
+  if (set.size === 0) {
+    /* eslint-disable no-unused-vars */
+    return (_: any) => true;
+  }
+  return (event: Event) =>
+    event.fields[fieldName]
+      ? event.fields[fieldName][locale].some(value => set.has(value))
+      : false;
+};
