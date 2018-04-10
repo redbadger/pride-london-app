@@ -74,6 +74,8 @@ class FilterModal extends PureComponent<Props> {
 
   render() {
     const { applyButtonText, onApply, onChange, eventFilters } = this.props;
+    console.log(tags);
+    console.log(eventFilters);
     return (
       <SafeAreaView style={styles.flex} forceInset={{ bottom: "always" }}>
         <ScrollView style={styles.flex}>

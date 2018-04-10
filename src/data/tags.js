@@ -1,4 +1,5 @@
 export default {
   price: ["free"],
-  audience: ["18+", "16+", "Youth", "Families"]
+  audience: ["Families", "Youth", "16+", "18+"],
+  timeOfDay: ["morning", "afternoon", "evening"]
 };

@@ -7,14 +7,14 @@ Object {
     "categories": Set {},
     "date": null,
     "price": Set {},
-    "time": Set {},
+    "timeOfDay": Set {},
   },
   "stagedFilters": Object {
     "audience": Set {},
     "categories": Set {},
     "date": null,
     "price": Set {},
-    "time": Set {},
+    "timeOfDay": Set {},
   },
 }
 `;

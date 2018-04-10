@@ -23,7 +23,7 @@ const untypedBuildStringSetFilter: any = buildStringSetFilter;
 
 export type BuildStateArguments = {
   date: ?DateOrDateRange,
-  time: Set<Time>,
+  timeOfDay: Set<Time>,
   categories?: Set<string>,
   price?: Set<string>,
   audience?: Set<string>
@@ -42,14 +42,14 @@ const buildState = (
   eventFilters: {
     selectedFilters: {
       date: selectedFilers.date,
-      time: selectedFilers.time,
+      timeOfDay: selectedFilers.timeOfDay,
       categories: selectedFilers.categories || new Set(),
       price: selectedFilers.price || new Set(),
       audience: selectedFilers.audience || new Set()
     },
     stagedFilters: {
       date: stagedFilters.date,
-      time: stagedFilters.time,
+      timeOfDay: stagedFilters.timeOfDay,
       categories: stagedFilters.categories || new Set(),
       price: stagedFilters.price || new Set(),
       audience: selectedFilers.audience || new Set()
@@ -87,11 +87,11 @@ describe("selectDateFilter", () => {
     const state = buildState(
       {
         date: "2018-01-01",
-        time: new Set(["morning"])
+        timeOfDay: new Set(["morning"])
       },
       {
         date: "2018-01-02",
-        time: new Set(["morning"])
+        timeOfDay: new Set(["morning"])
       }
     );
 
@@ -103,11 +103,11 @@ describe("selectDateFilter", () => {
     const state = buildState(
       {
         date: "2018-01-01",
-        time: new Set(["morning"])
+        timeOfDay: new Set(["morning"])
       },
       {
         date: "2018-01-02",
-        time: new Set(["morning"])
+        timeOfDay: new Set(["morning"])
       }
     );
 
@@ -118,37 +118,37 @@ describe("selectDateFilter", () => {
 
 describe("selectTimeFilter", () => {
   it("returns the time part of the eventFilters", () => {
-    const time = new Set(["morning"]);
+    const timeOfDay = new Set(["morning"]);
     const state = buildState(
       {
         date: "2018-01-01",
-        time
+        timeOfDay
       },
       {
         date: "2018-01-01",
-        time: new Set(["afternoon"])
+        timeOfDay: new Set(["afternoon"])
       }
     );
 
     const actual = selectTimeFilter(state);
-    expect(actual).toBe(time);
+    expect(actual).toBe(timeOfDay);
   });
 
   it("returns the time part of the staged eventFilters", () => {
-    const time = new Set(["afternoon"]);
+    const timeOfDay = new Set(["afternoon"]);
     const state = buildState(
       {
         date: "2018-01-01",
-        time: new Set(["morning"])
+        timeOfDay: new Set(["morning"])
       },
       {
         date: "2018-01-01",
-        time
+        timeOfDay
       }
     );
 
     const actual = selectTimeFilter(state, true);
-    expect(actual).toBe(time);
+    expect(actual).toBe(timeOfDay);
   });
 });
 
@@ -164,11 +164,11 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       },
       {
         date: null,
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       }
     );
     const filter = buildEventFilter(state);
@@ -184,11 +184,11 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: "2018-08-02",
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       },
       {
         date: "2018-08-02",
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       }
     );
     const filter = buildEventFilter(state);
@@ -206,11 +206,11 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: "2018-08-02",
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       },
       {
         date: "2018-08-03",
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       }
     );
     const filter = buildEventFilter(state, true);
@@ -231,14 +231,14 @@ describe("buildEventFilter", () => {
           startDate: "2018-08-02",
           endDate: "2018-08-03"
         },
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       },
       {
         date: {
           startDate: "2018-08-02",
           endDate: "2018-08-03"
         },
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       }
     );
     const filter = buildEventFilter(state);
@@ -253,11 +253,11 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set()
+        timeOfDay: new Set()
       },
       {
         date: null,
-        time: new Set()
+        timeOfDay: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -269,11 +269,11 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       },
       {
         date: null,
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       }
     );
     const filter = buildEventFilter(state);
@@ -289,11 +289,11 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(["morning", "evening"])
+        timeOfDay: new Set(["morning", "evening"])
       },
       {
         date: null,
-        time: new Set(["morning", "evening"])
+        timeOfDay: new Set(["morning", "evening"])
       }
     );
     const filter = buildEventFilter(state);
@@ -309,11 +309,11 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: "2018-02-01",
-        time: new Set(["morning"])
+        timeOfDay: new Set(["morning"])
       },
       {
         date: "2018-02-01",
-        time: new Set(["morning"])
+        timeOfDay: new Set(["morning"])
       }
     );
     const filter = buildEventFilter(state);
@@ -327,11 +327,11 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: "2018-02-01",
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       },
       {
         date: "2018-02-01",
-        time: new Set(["morning", "afternoon", "evening"])
+        timeOfDay: new Set(["morning", "afternoon", "evening"])
       }
     );
     const filter = buildEventFilter(state);
@@ -342,12 +342,12 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set()
       },
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set()
       }
     );
@@ -362,12 +362,12 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(["free"])
       },
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(["free"])
       }
     );
@@ -381,12 +381,12 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(["free"])
       },
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(["free"])
       }
     );
@@ -398,13 +398,13 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set()
       },
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set()
       }
@@ -420,13 +420,13 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set("18+")
       },
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set("18+")
       }
@@ -441,13 +441,13 @@ describe("buildEventFilter", () => {
     const state = buildState(
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set("18+")
       },
       {
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set("18+")
       }

@@ -5,7 +5,7 @@ import type { EventFiltersAction } from "../actions/event-filters";
 
 export type FilterCollection = {
   date: ?DateOrDateRange,
-  time: Set<Time>,
+  timeOfDay: Set<Time>,
   categories: Set<string>,
   price: Set<string>,
   audience: Set<string>
@@ -20,14 +20,14 @@ const defaultState = {
   selectedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
-    time: new Set(),
+    timeOfDay: new Set(),
     price: new Set(),
     audience: new Set()
   },
   stagedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
-    time: new Set(),
+    timeOfDay: new Set(),
     price: new Set(),
     audience: new Set()
   }

@@ -15,14 +15,14 @@ const initialState = {
     selectedFilters: {
       categories: new Set(),
       date: null,
-      time: new Set(),
+      timeOfDay: new Set(),
       price: new Set(),
       audience: new Set()
     },
     stagedFilters: {
       categories: new Set(),
       date: null,
-      time: new Set(),
+      timeOfDay: new Set(),
       price: new Set(),
       audience: new Set()
     }

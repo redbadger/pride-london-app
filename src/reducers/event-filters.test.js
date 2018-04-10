@@ -14,14 +14,14 @@ describe("Event filters reducer", () => {
       selectedFilters: {
         categories: new Set(),
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set()
       }
@@ -37,7 +37,9 @@ describe("Event filters reducer", () => {
       initialState.stagedFilters.categories
     );
     expect(state.stagedFilters.date).toBe("2018-03-12");
-    expect(state.stagedFilters.time).toBe(initialState.stagedFilters.time);
+    expect(state.stagedFilters.timeOfDay).toBe(
+      initialState.stagedFilters.timeOfDay
+    );
   });
 
   it("updates state with filters from payload for COMMIT_EVENT_FILTERS action", () => {
@@ -45,14 +47,14 @@ describe("Event filters reducer", () => {
       selectedFilters: {
         categories: new Set(),
         date: null,
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: "2018-03-12",
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set()
       }
@@ -70,14 +72,14 @@ describe("Event filters reducer", () => {
       selectedFilters: {
         categories: new Set(),
         date: "2018-03-12",
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: "2018-03-20",
-        time: new Set(),
+        timeOfDay: new Set(),
         price: new Set(),
         audience: new Set()
       }

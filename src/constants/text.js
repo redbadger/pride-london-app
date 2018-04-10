@@ -4,7 +4,9 @@ export default {
   filterByInterest: "I'm interested in...",
   filters: "Filters",
   filterPickerApply: (numberOfEvents: number) =>
-    `Show ${numberOfEvents} events`,
+    numberOfEvents === 1
+      ? `Show ${numberOfEvents} event`
+      : `Show ${numberOfEvents} events`,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
   eventDetailsPrice: "From: £",
@@ -23,6 +25,10 @@ export default {
   tags: {
     audience: "Age group",
     price: "Price",
-    free: "Show only free events"
+    free: "Show only free events",
+    timeOfDay: "Time of day",
+    morning: "Morning",
+    afternoon: "Afternoon",
+    evening: "Evening"
   }
 };

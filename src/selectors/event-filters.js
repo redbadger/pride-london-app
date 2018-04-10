@@ -22,7 +22,7 @@ export const selectDateFilter = (
 export const selectTimeFilter = (
   state: State,
   selectStagedFilters?: boolean = false
-) => getEventFiltersState(state, selectStagedFilters).time;
+) => getEventFiltersState(state, selectStagedFilters).timeOfDay;
 
 const buildDateOrDateRangeFilter = (date: DateOrDateRange) =>
   typeof date === "string" ? buildDateFilter(date) : buildDateRangeFilter(date);
@@ -36,11 +36,11 @@ export const buildEventFilter = (
   state: State,
   selectStagedFilters?: boolean = false
 ) => {
-  const { date, time, price, audience } = getEventFiltersState(
+  const { date, timeOfDay, price, audience } = getEventFiltersState(
     state,
     selectStagedFilters
   );
-  const timeArray = Array.from(time);
+  const timeArray = Array.from(timeOfDay);
   const dateFilter: (event: Event) => boolean = date
     ? buildDateOrDateRangeFilter(date)
     : () => true;
