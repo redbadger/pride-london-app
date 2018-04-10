@@ -26,7 +26,8 @@ export type BuildStateArguments = {
   timeOfDay: Set<Time>,
   categories?: Set<string>,
   price?: Set<string>,
-  audience?: Set<string>
+  audience?: Set<string>,
+  venueDetails?: Set<string>
 };
 
 const buildState = (
@@ -45,14 +46,16 @@ const buildState = (
       timeOfDay: selectedFilers.timeOfDay,
       categories: selectedFilers.categories || new Set(),
       price: selectedFilers.price || new Set(),
-      audience: selectedFilers.audience || new Set()
+      audience: selectedFilers.audience || new Set(),
+      venueDetails: selectedFilers.venueDetails || new Set()
     },
     stagedFilters: {
       date: stagedFilters.date,
       timeOfDay: stagedFilters.timeOfDay,
       categories: stagedFilters.categories || new Set(),
       price: stagedFilters.price || new Set(),
-      audience: selectedFilers.audience || new Set()
+      audience: selectedFilers.audience || new Set(),
+      venueDetails: selectedFilers.venueDetails || new Set()
     }
   }
 });
@@ -450,6 +453,74 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set("18+")
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+  });
+
+  it("builds truthy venue details filter when no venue details selected", () => {
+    const state = buildState(
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set()
+      },
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set()
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+    expect(untypedBuildPriceFilter).not.toHaveBeenCalled();
+  });
+
+  it("builds filter, which returns false when venue details filter returns false", () => {
+    untypedBuildStringSetFilter.mockReturnValue(() => false);
+
+    const state = buildState(
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set("Indoors")
+      },
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set("Indoors")
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(false);
+  });
+
+  it("builds filter, which returns true when venue details filter returns true", () => {
+    untypedBuildStringSetFilter.mockReturnValue(() => true);
+
+    const state = buildState(
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set("Indoors")
+      },
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set("Indoors")
       }
     );
     const filter = buildEventFilter(state);

@@ -16,14 +16,16 @@ describe("Event filters reducer", () => {
         date: null,
         timeOfDay: new Set(),
         price: new Set(),
-        audience: new Set()
+        audience: new Set(),
+        venueDetails: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: null,
         timeOfDay: new Set(),
         price: new Set(),
-        audience: new Set()
+        audience: new Set(),
+        venueDetails: new Set()
       }
     };
     const state = reducer(initialState, {
@@ -49,14 +51,16 @@ describe("Event filters reducer", () => {
         date: null,
         timeOfDay: new Set(),
         price: new Set(),
-        audience: new Set()
+        audience: new Set(),
+        venueDetails: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: "2018-03-12",
         timeOfDay: new Set(),
         price: new Set(),
-        audience: new Set()
+        audience: new Set(),
+        venueDetails: new Set()
       }
     };
     const state = reducer(initialState, {
@@ -74,14 +78,16 @@ describe("Event filters reducer", () => {
         date: "2018-03-12",
         timeOfDay: new Set(),
         price: new Set(),
-        audience: new Set()
+        audience: new Set(),
+        venueDetails: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: "2018-03-20",
         timeOfDay: new Set(),
         price: new Set(),
-        audience: new Set()
+        audience: new Set(),
+        venueDetails: new Set()
       }
     };
     const state = reducer(initialState, {

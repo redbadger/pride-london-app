@@ -8,7 +8,8 @@ export type FilterCollection = {
   timeOfDay: Set<Time>,
   categories: Set<string>,
   price: Set<string>,
-  audience: Set<string>
+  audience: Set<string>,
+  venueDetails: Set<string>
 };
 
 export type State = {
@@ -22,14 +23,16 @@ const defaultState = {
     date: null,
     timeOfDay: new Set(),
     price: new Set(),
-    audience: new Set()
+    audience: new Set(),
+    venueDetails: new Set()
   },
   stagedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
     timeOfDay: new Set(),
     price: new Set(),
-    audience: new Set()
+    audience: new Set(),
+    venueDetails: new Set()
   }
 };
 

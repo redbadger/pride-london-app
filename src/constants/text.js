@@ -29,6 +29,7 @@ export default {
     timeOfDay: "Time of day",
     morning: "Morning",
     afternoon: "Afternoon",
-    evening: "Evening"
+    evening: "Evening",
+    venueDetails: "Venue options"
   }
 };

@@ -17,14 +17,16 @@ const initialState = {
       date: null,
       timeOfDay: new Set(),
       price: new Set(),
-      audience: new Set()
+      audience: new Set(),
+      venueDetails: new Set()
     },
     stagedFilters: {
       categories: new Set(),
       date: null,
       timeOfDay: new Set(),
       price: new Set(),
-      audience: new Set()
+      audience: new Set(),
+      venueDetails: new Set()
     }
   }
 };
