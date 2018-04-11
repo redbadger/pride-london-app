@@ -6,7 +6,7 @@ import startOfDay from "date-fns/start_of_day";
 import type { Event } from "../data/event";
 import type { DateRange, Time } from "../data/date-time";
 
-const locale = "en-GB";
+import locale from "../data/locale";
 
 export const buildDateRangeFilter = (date: DateRange) => (event: Event) =>
   areRangesOverlapping(
