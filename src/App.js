@@ -1,6 +1,6 @@
 // @flow
-import { Image, StyleSheet, View } from "react-native";
 import React from "react";
+import { Image, StyleSheet, View } from "react-native";
 import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
 import iconHomeActive from "../assets/images/homeActive.png";
@@ -17,8 +17,10 @@ import {
   transparent,
   tabBarBgColor,
   tabBarLabelColor,
+  tabBarIconActiveBorderColor,
   tabBarActiveLabelColor,
-  tabBarShadowColor
+  tabBarShadowColor,
+  tabBarBorderColor
 } from "./constants/colors";
 import {
   EVENT_LIST,
@@ -40,7 +42,9 @@ const tabIcon = (defaultIcon: number, activeIcon: number) => ({
 }: {
   focused: boolean
 }) => (
-  <Image source={focused ? activeIcon : defaultIcon} width={28} height={28} />
+  <View style={[styles.icon, focused && styles.iconActive]}>
+    <Image source={focused ? activeIcon : defaultIcon} width={28} height={28} />
+  </View>
 );
 
 const HomeStack = StackNavigator(
@@ -118,7 +122,7 @@ const SupportUsStack = StackNavigator(
 );
 
 const TabBarBottomWithShadow = props => (
-  <View>
+  <View style={styles.tabBarWrapper}>
     <LinearGradient
       colors={[transparent, tabBarShadowColor]}
       style={styles.shadow}
@@ -135,17 +139,33 @@ const styles = StyleSheet.create({
     left: 0,
     top: -7
   },
+  icon: {
+    alignItems: "center",
+    borderColor: transparent,
+    borderTopWidth: 3,
+    paddingTop: 1,
+    width: "100%"
+  },
+  iconActive: {
+    borderColor: tabBarIconActiveBorderColor
+  },
   label: {
     fontFamily: "Poppins-Bold",
     fontSize: 12,
     lineHeight: 16,
     includeFontPadding: false
   },
-  tab: {
-    marginTop: 4
-  },
   tabBar: {
-    backgroundColor: tabBarBgColor
+    backgroundColor: transparent,
+    borderTopWidth: 0,
+    height: 52,
+    maxWidth: 440,
+    alignSelf: "center"
+  },
+  tabBarWrapper: {
+    backgroundColor: tabBarBgColor,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: tabBarBorderColor
   }
 });
 
@@ -161,10 +181,10 @@ export default TabNavigator(
     tabBarComponent: TabBarBottomWithShadow,
     tabBarPosition: "bottom",
     tabBarOptions: {
+      adaptive: false,
       activeTintColor: tabBarActiveLabelColor,
       inactiveTintColor: tabBarLabelColor,
       labelStyle: styles.label,
-      tabStyle: styles.tab,
       style: styles.tabBar
     },
     initialRouteName: HOME
