@@ -158,11 +158,6 @@ jobs:
       - run:
           name: Set Ruby Version
           command:  echo "ruby-2.4" > ~/.ruby-version
-      - run:
-          name: Install CocoaPods
-          command: |
-              curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-              pod install
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - run: yarn
@@ -171,6 +166,7 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
+      - run: pod install
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
@@ -199,11 +195,6 @@ jobs:
       - run:
           name: Set Ruby Version
           command:  echo "ruby-2.4" > ~/.ruby-version
-      - run:
-          name: Install CocoaPods
-          command: |
-              curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-              pod install
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - run: yarn
@@ -212,6 +203,7 @@ jobs:
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
       - run: bundle install
+      - run: pod install
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |

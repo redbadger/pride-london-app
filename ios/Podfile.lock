@@ -22,17 +22,18 @@ PODS:
     - GoogleMaps
   - Google-Maps-iOS-Utils/QuadTree (2.1.0):
     - GoogleMaps
-  - GoogleMaps (2.1.1):
-    - GoogleMaps/Maps (= 2.1.1)
-  - GoogleMaps/Base (2.1.1)
-  - GoogleMaps/Maps (2.1.1):
+  - GoogleMaps (2.5.0):
+    - GoogleMaps/Maps (= 2.5.0)
+  - GoogleMaps/Base (2.5.0)
+  - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
   - React (0.54.2):
     - React/Core (= 0.54.2)
-  - react-native-google-maps (0.17.0):
-    - GoogleMaps (= 2.1.1)
+  - react-native-google-maps (0.21.0):
+    - Google-Maps-iOS-Utils (= 2.1.0)
+    - GoogleMaps (= 2.5.0)
     - React
-  - react-native-maps (0.17.0):
+  - react-native-maps (0.21.0):
     - React
   - React/Core (0.54.2):
     - yoga (= 0.54.2.React)
@@ -104,21 +105,27 @@ DEPENDENCIES:
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - boost-for-react-native
+    - Google-Maps-iOS-Utils
+    - GoogleMaps
+
 EXTERNAL SOURCES:
   DoubleConversion:
-    :podspec: ../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec
+    :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   Folly:
-    :podspec: ../node_modules/react-native/third-party-podspecs/Folly.podspec
+    :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
-    :podspec: ../node_modules/react-native/third-party-podspecs/glog.podspec
+    :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
-    :path: ../node_modules/react-native
+    :path: "../node_modules/react-native"
   react-native-google-maps:
-    :path: ../node_modules/react-native-maps
+    :path: "../node_modules/react-native-maps"
   react-native-maps:
-    :path: ../node_modules/react-native-maps
+    :path: "../node_modules/react-native-maps"
   yoga:
-    :path: ../node_modules/react-native/ReactCommon/yoga/yoga.podspec
+    :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
@@ -126,12 +133,12 @@ SPEC CHECKSUMS:
   Folly: 211775e49d8da0ca658aebc8eab89d642935755c
   glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
-  GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
+  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   React: c237e42de9c70e5cac6eeb52b4cfd3a0910c1f00
-  react-native-google-maps: 7a280302cdf0bcddc7efa6ec55423b17dcbeb1fe
+  react-native-google-maps: 2cfe3b01f8422c7dae51d8764139fd70f888cfce
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: 16f370d2589c0016bca7a057821aef40cc537ab1
+PODFILE CHECKSUM: a50bddd74bc6def6626c3d9bd9d8ae73d0b8ee6c
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

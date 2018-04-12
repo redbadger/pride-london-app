@@ -1,6 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
+plugin 'cocoapods-fix-react-native'
+
 target 'PrideLondonApp' do
   rn_path = '../node_modules/react-native'
   rn_maps_path = '../node_modules/react-native-maps'
@@ -33,17 +35,4 @@ target 'PrideLondonApp' do
   pod 'react-native-google-maps', path: rn_maps_path  # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'GoogleMaps'  # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'Google-Maps-iOS-Utils' # Remove this line if you don't want to support GoogleMaps on iOS
-end
-  
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    if target.name == 'react-native-google-maps'
-      target.build_configurations.each do |config|
-        config.build_settings['CLANG_ENABLE_MODULES'] = 'No'
-      end
-    end
-    if target.name == "React"
-      target.remove_from_project
-    end
-  end
 end

@@ -746,7 +746,6 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				1696416D204301860058AF96 /* ShellScript */,
-				8B362E7AA67007276AA1D28E /* [CP] Embed Pods Frameworks */,
 				8CD5E41419CB6DE9EFD73B16 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1224,21 +1223,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n    apiKey=$(sed -n '1p' < ./PrideLondonApp/fabric.properties)\n    apiSecret=$(sed -n '2p' < ./PrideLondonApp/fabric.properties)\n    /usr/libexec/PlistBuddy -c \"Set :Fabric:APIKey string $apiKey\" ./Info.plist\n    ./Fabric.framework/run $apiKey $apiSecret\nfi\n";
 		};
-		8B362E7AA67007276AA1D28E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PrideLondonApp/Pods-PrideLondonApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8CD5E41419CB6DE9EFD73B16 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1246,7 +1230,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PrideLondonApp/Pods-PrideLondonApp-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
