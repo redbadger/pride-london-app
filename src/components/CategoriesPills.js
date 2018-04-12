@@ -65,7 +65,7 @@ class CategoriesPills extends React.PureComponent<Props> {
         ) : (
           <View style={styles.scrollView}>
             <LinearGradient
-              style={styles.scrollShadowLeft}
+              style={[styles.scrollShadow, styles.scrollShadowLeft]}
               end={{ x: 0, y: 0.5 }}
               start={{ x: 1.0, y: 0.5 }}
               colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
@@ -83,7 +83,7 @@ class CategoriesPills extends React.PureComponent<Props> {
               ))}
             </ScrollView>
             <LinearGradient
-              style={styles.scrollShadowRight}
+              style={[styles.scrollShadow, styles.scrollShadowRight]}
               end={{ x: 1.0, y: 0.5 }}
               start={{ x: 0, y: 0.5 }}
               colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
@@ -125,23 +125,19 @@ const styles = StyleSheet.create({
   scrollView: {
     width: "100%"
   },
-  scrollShadowLeft: {
+  scrollShadow: {
     position: "absolute",
-    left: 0,
     top: 0,
     width: 15,
     height: 44 * PixelRatio.getFontScale(),
     zIndex: 10,
     borderRadius: 4
   },
+  scrollShadowLeft: {
+    left: 0
+  },
   scrollShadowRight: {
-    position: "absolute",
-    right: 0,
-    top: 0,
-    width: 15,
-    height: 44 * PixelRatio.getFontScale(),
-    zIndex: 10,
-    borderRadius: 4
+    right: 0
   }
 });
 
