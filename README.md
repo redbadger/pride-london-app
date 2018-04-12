@@ -30,6 +30,7 @@
 * [Watchman](https://facebook.github.io/watchman/docs/install.html)
 * [Install Yarn](https://yarnpkg.com/en/docs/install)
 * `$ yarn global add react-native-cli`
+* `$ brew install cocoapods`
 
 More information on getting started can be found here: https://facebook.github.io/react-native/docs/getting-started.html under the `Building prodjects with React Native` tab.
 
@@ -47,6 +48,7 @@ And install dependencies
 
 * Install Xcode from the App Store and accept the license agreement.
 * Run Xcode once so that it can install additional components it will need.
+* Run `pod install` from ios folder.
 
 To develop on a real device locally you will need to install the development provisioning profile from fastlane.
 
