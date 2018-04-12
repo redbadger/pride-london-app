@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { TabNavigator, TabBarBottom, StackNavigator } from "react-navigation";
-import LinearGradient from "react-native-linear-gradient";
+import { Image, View } from "react-native";
+import { TabNavigator, StackNavigator } from "react-navigation";
+import type { TabScene } from "react-navigation";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
 import iconEventsActive from "../assets/images/eventsActive.png";
@@ -14,15 +14,6 @@ import iconSavedDefault from "../assets/images/savedDefault.png";
 import iconSupportUsActive from "../assets/images/supportUsActive.png";
 import iconSupportUsDefault from "../assets/images/supportUsDefault.png";
 import {
-  transparent,
-  tabBarBgColor,
-  tabBarLabelColor,
-  tabBarIconActiveBorderColor,
-  tabBarActiveLabelColor,
-  tabBarShadowColor,
-  tabBarBorderColor
-} from "./constants/colors";
-import {
   EVENT_LIST,
   EVENT_DETAILS,
   FEATURED_EVENT_LIST,
@@ -32,6 +23,7 @@ import {
   SUPPORT_US
 } from "./constants/routes";
 import text from "./constants/text";
+import NavigationTabBar from "./components/NavigationTabBar";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
@@ -39,12 +31,8 @@ import HomeScreen from "./screens/HomeScreen";
 
 const tabIcon = (defaultIcon: number, activeIcon: number) => ({
   focused
-}: {
-  focused: boolean
-}) => (
-  <View style={[styles.icon, focused && styles.iconActive]}>
-    <Image source={focused ? activeIcon : defaultIcon} width={28} height={28} />
-  </View>
+}: TabScene) => (
+  <Image source={focused ? activeIcon : defaultIcon} width={28} height={28} />
 );
 
 const HomeStack = StackNavigator(
@@ -121,54 +109,6 @@ const SupportUsStack = StackNavigator(
   }
 );
 
-const TabBarBottomWithShadow = props => (
-  <View style={styles.tabBarWrapper}>
-    <LinearGradient
-      colors={[transparent, tabBarShadowColor]}
-      style={styles.shadow}
-    />
-    <TabBarBottom {...props} />
-  </View>
-);
-
-const styles = StyleSheet.create({
-  shadow: {
-    width: "100%",
-    height: 7,
-    position: "absolute",
-    left: 0,
-    top: -7
-  },
-  icon: {
-    alignItems: "center",
-    borderColor: transparent,
-    borderTopWidth: 3,
-    paddingTop: 1,
-    width: "100%"
-  },
-  iconActive: {
-    borderColor: tabBarIconActiveBorderColor
-  },
-  label: {
-    fontFamily: "Poppins-Bold",
-    fontSize: 12,
-    lineHeight: 16,
-    includeFontPadding: false
-  },
-  tabBar: {
-    backgroundColor: transparent,
-    borderTopWidth: 0,
-    height: 52,
-    maxWidth: 440,
-    alignSelf: "center"
-  },
-  tabBarWrapper: {
-    backgroundColor: tabBarBgColor,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: tabBarBorderColor
-  }
-});
-
 export default TabNavigator(
   {
     [HOME]: { screen: HomeStack },
@@ -178,15 +118,8 @@ export default TabNavigator(
     [SUPPORT_US]: { screen: SupportUsStack }
   },
   {
-    tabBarComponent: TabBarBottomWithShadow,
+    tabBarComponent: NavigationTabBar,
     tabBarPosition: "bottom",
-    tabBarOptions: {
-      adaptive: false,
-      activeTintColor: tabBarActiveLabelColor,
-      inactiveTintColor: tabBarLabelColor,
-      labelStyle: styles.label,
-      style: styles.tabBar
-    },
     initialRouteName: HOME
   }
 );

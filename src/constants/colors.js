@@ -16,7 +16,7 @@ export const dialogHeaderDividerColor = "#F2F2F2";
 
 export const tabBarBgColor = "rgb(243, 243, 243)";
 export const tabBarLabelColor = "rgb(88, 88, 88)";
-export const tabBarIconActiveBorderColor = "rgb(44, 218, 157)";
+export const tabBarActiveLineColor = "rgb(44, 218, 157)";
 export const tabBarActiveLabelColor = "rgb(45, 47, 127)";
 export const tabBarShadowColor = "rgba(0, 0, 0, 0.1)";
 export const tabBarBorderColor = "rgba(0, 0, 0, 0.25)";
