@@ -2,3 +2,9 @@ version: "2"
 exclude_patterns:
   - "**/*.test.js"
   - "**/flow-typed"
+duplication:
+  enabled: true
+    config:
+      languages:
+        javascript:
+          mass_threshold: 72
