@@ -39,4 +39,20 @@ describe("CategoriesPills Component", () => {
 
     expect(pillCustomStyles.backgroundColor).toEqual(expectedColor);
   });
+
+  describe("#scrollToLastPill", () => {
+    it("scrolls to the end, if there is a scroll view", () => {
+      const component = new CategoriesPills();
+      const spy = jest.fn();
+      component.scrollView = { scrollToEnd: spy };
+      component.scrollToLastPill();
+      expect(spy).toBeCalledWith({ animated: false });
+    });
+
+    it("does not scroll to the end, if there is no scroll view", () => {
+      const component = new CategoriesPills();
+      component.scrollView = undefined;
+      expect(component.scrollToLastPill()).toBeUndefined();
+    });
+  });
 });
