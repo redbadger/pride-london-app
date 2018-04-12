@@ -80,3 +80,73 @@ exports[`ListItem Component renders correctly 1`] = `
   </View>
 </Touchable>
 `;
+
+exports[`ListItem Component renders correctly without selected 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "flex": 1,
+      "minHeight": 48,
+      "paddingBottom": 8,
+      "paddingTop": 8,
+      "position": "relative",
+    }
+  }
+>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "position": "absolute",
+          "width": 766,
+        },
+        Object {
+          "backgroundColor": "#ffffff",
+          "height": 56,
+          "transform": Array [
+            Object {
+              "translateX": -750,
+            },
+          ],
+        },
+      ]
+    }
+  />
+  <View
+    onLayout={[Function]}
+  >
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Poppins-Bold",
+            "fontSize": 24,
+            "letterSpacing": 0,
+            "paddingLeft": 32,
+            "paddingTop": 10,
+            "textAlign": "left",
+          },
+          Object {
+            "color": "#ffffff",
+          },
+        ]
+      }
+      type="text"
+    >
+      Music
+    </Text>
+  </View>
+</Touchable>
+`;
