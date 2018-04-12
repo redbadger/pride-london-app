@@ -2,9 +2,7 @@ version: "2"
 exclude_patterns:
   - "**/*.test.js"
   - "**/flow-typed"
-duplication:
-  enabled: true
+checks:
+  similar-code:
     config:
-      languages:
-        javascript:
-          mass_threshold: 72
+      threshold: 72
