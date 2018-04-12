@@ -16,27 +16,20 @@ import Header from "./Header";
 import List from "./List";
 import locale from "../../data/locale";
 
-type Props = {
+export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
   stagedCategories: Set<string>,
-  toggleCategoryFilter: Function,
-  onApplyFilters: Function,
-  onClearAll: Function,
-  onClose: Function
+  toggleCategoryFilter: (Set<string>, string) => void,
+  onApplyFilters: () => void,
+  onClearAll: () => void,
+  onClose: () => void
 };
 
 class CategoriesFilterScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null,
     tabBarVisible: false
-  };
-
-  static defaultProps = {
-    toggleCategoryFilter: () => {},
-    onApplyFilters: () => {},
-    onClearAll: () => {},
-    onClose: () => {}
   };
 
   handleClose = () => {

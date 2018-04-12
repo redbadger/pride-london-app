@@ -5,17 +5,14 @@ import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeader from "./FilterHeader";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
-import type { DateRange, Time } from "../data/date-time";
+import type { Props as ComponentProps } from "./FilterHeader";
 
 const render = (
-  props: {
-    dateFilter: ?DateRange,
-    timeFilter: Set<Time>,
-    selectedCategories?: Set<string>
-  } = {
+  props: ComponentProps = {
     dateFilter: null,
     timeFilter: new Set(["morning"]),
-    selectedCategories: new Set()
+    selectedCategories: new Set(),
+    onFilterCategoriesPress: () => {}
   }
 ) => shallow(<FilterHeader {...props} />);
 
@@ -24,7 +21,8 @@ describe("renders correctly", () => {
     const output = render({
       dateFilter: null,
       timeFilter: new Set(["morning", "afternoon", "evening"]),
-      selectedCategories: new Set()
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -33,7 +31,8 @@ describe("renders correctly", () => {
     const output = render({
       dateFilter: null,
       timeFilter: new Set(),
-      selectedCategories: new Set()
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -42,7 +41,8 @@ describe("renders correctly", () => {
     const output = render({
       dateFilter: { startDate: "2018-02-02", endDate: "2018-02-02" },
       timeFilter: new Set(["afternoon"]),
-      selectedCategories: new Set()
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -54,7 +54,8 @@ describe("renders correctly", () => {
         endDate: "2018-02-03"
       },
       timeFilter: new Set(["morning", "afternoon"]),
-      selectedCategories: new Set()
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {}
     });
     expect(output).toMatchSnapshot();
   });

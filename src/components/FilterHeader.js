@@ -25,10 +25,6 @@ type State = {
 };
 
 class FilterHeader extends React.PureComponent<Props, State> {
-  static defaultProps = {
-    onFilterCategoriesPress: () => {}
-  };
-
   state = {
     datesPickerVisible: false,
     timesPickerVisible: false

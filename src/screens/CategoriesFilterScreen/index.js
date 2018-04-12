@@ -7,19 +7,16 @@ import {
   commitEventFilters,
   clearStagedEventFilters
 } from "../../actions/event-filters";
-import type { Event } from "../../data/event";
 import type { State } from "../../reducers";
 import { selectFilteredEvents } from "../../selectors/events";
 import Component from "./component";
+import type { Props as ComponentProps } from "./component";
 
 type OwnProps = {
   navigation: NavigationScreenProp<*>
 };
 
-type Props = {
-  events: Event[],
-  stagedCategories: Set<string>
-} & OwnProps;
+type Props = ComponentProps & OwnProps;
 
 const mapStateToProps: MapStateToProps<State, OwnProps, *> = state => ({
   events: selectFilteredEvents(state, true),
