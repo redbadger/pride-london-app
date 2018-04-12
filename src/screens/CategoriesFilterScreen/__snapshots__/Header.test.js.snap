@@ -34,8 +34,8 @@ exports[`Header Component renders correctly 1`] = `
   <View
     style={
       Object {
+        "height": 88,
         "marginBottom": 16,
-        "minHeight": 44,
         "width": "100%",
       }
     }

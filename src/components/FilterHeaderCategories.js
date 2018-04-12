@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, PixelRatio } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Touchable from "./Touchable";
 import {
@@ -40,9 +40,11 @@ CategoriesFilterButton.defaultProps = {
 const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
   selectedCategories.size === 0 ? (
     <View style={styles.contentInterest}>
-      <Text type="h1" style={styles.filterTitle} allowFontScaling={false}>
-        {text.filterTitle}
-      </Text>
+      {PixelRatio.getFontScale() < 1.5 && (
+        <Text type="h1" style={styles.filterTitle} allowFontScaling={false}>
+          {text.filterTitle}
+        </Text>
+      )}
       <View style={styles.interestButton}>
         <Text type="h2" style={styles.interestButtonText}>
           {text.filterByInterest}
@@ -78,6 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: categoriesFilterButtonBgColor,
     alignItems: "center",
     width: 44,
+    height: 44 * PixelRatio.getFontScale(),
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   },

@@ -10,20 +10,6 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
     }
   }
 >
-  <Text
-    allowFontScaling={false}
-    markdown={false}
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginRight": 8,
-        "paddingTop": 8,
-      }
-    }
-    type="h1"
-  >
-    Show me
-  </Text>
   <View
     style={
       Object {

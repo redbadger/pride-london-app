@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, PixelRatio } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
@@ -11,18 +11,18 @@ import locale from "../data/locale";
 import {
   blackColor,
   whiteColor,
-  coralColor,
   darkBlueGreyTwoColor,
   eucalyptusGreenColor
 } from "../constants/colors";
 
-const categoryStyleColors = (category: string) => {
+const categoryStyleColor = (category: string) => {
   const categoryData = eventCategories[locale][category];
+  return { color: categoryData.contrast ? blackColor : whiteColor };
+};
 
-  return {
-    backgroundColor: categoryData.color,
-    color: categoryData.contrast ? blackColor : whiteColor
-  };
+const categoryStyleBackgroundColor = (category: string) => {
+  const categoryData = eventCategories[locale][category];
+  return { backgroundColor: categoryData.color };
 };
 
 type Props = {
@@ -31,9 +31,11 @@ type Props = {
 };
 
 const CategoryPill = ({ name }: { name: string }) => (
-  <Text type="h3" style={[styles.categoryPill, categoryStyleColors(name)]}>
-    {name}
-  </Text>
+  <View style={[styles.categoryPill, categoryStyleBackgroundColor(name)]}>
+    <Text type="h3" style={[styles.categoryPillText, categoryStyleColor(name)]}>
+      {name}
+    </Text>
+  </View>
 );
 
 class CategoriesPills extends React.PureComponent<Props> {
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: darkBlueGreyTwoColor,
     flex: 1,
     alignItems: "center",
-    height: 44,
+    height: 44 * PixelRatio.getFontScale(),
     borderRadius: 4,
     flexDirection: "row"
   },
@@ -107,27 +109,28 @@ const styles = StyleSheet.create({
     paddingLeft: 8
   },
   categoryPill: {
-    color: whiteColor,
-    backgroundColor: coralColor,
-    paddingTop: 4,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 8,
+    marginBottom: 8,
     marginLeft: 6,
     paddingLeft: 5,
     paddingRight: 5,
     marginRight: 2
   },
+  categoryPillText: {
+    color: whiteColor
+  },
   scrollView: {
-    width: "100%",
-    height: "100%",
-    minHeight: 44,
-    paddingTop: 8,
-    paddingBottom: 8
+    width: "100%"
   },
   scrollShadowLeft: {
     position: "absolute",
     left: 0,
     top: 0,
     width: 15,
-    height: 44,
+    height: 44 * PixelRatio.getFontScale(),
     zIndex: 10,
     borderRadius: 4
   },
@@ -136,7 +139,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     width: 15,
-    height: 44,
+    height: 44 * PixelRatio.getFontScale(),
     zIndex: 10,
     borderRadius: 4
   }
