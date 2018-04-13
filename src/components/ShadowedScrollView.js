@@ -3,6 +3,7 @@ import React from "react";
 import { StyleSheet, ScrollView, View, Animated } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import { blackZeroColor, blackThirtyColor } from "../constants/colors";
 
 type Props = {
   children: Array<Object>,
@@ -102,7 +103,7 @@ class ShadowedScrollView extends React.PureComponent<Props> {
       <View style={style}>
         <Animated.View style={[styles.topShadow, topShadowOpacityStyle]}>
           <LinearGradient
-            colors={["rgba(0, 0, 0, 0.3)", "rgba(0, 0, 0, 0)"]}
+            colors={[blackThirtyColor, blackZeroColor]}
             style={styles.gradient}
           />
         </Animated.View>
@@ -115,7 +116,7 @@ class ShadowedScrollView extends React.PureComponent<Props> {
         </ScrollView>
         <Animated.View style={[styles.bottomShadow, bottomShadowOpacityStyle]}>
           <LinearGradient
-            colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
+            colors={[blackZeroColor, blackThirtyColor]}
             style={styles.gradient}
           />
         </Animated.View>

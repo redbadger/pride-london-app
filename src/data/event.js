@@ -81,7 +81,7 @@ export type EventDays = Event[][];
 export type EventCategory = {
   label: string,
   color: string,
-  contrast?: boolean
+  contrast: boolean
 };
 
 export type EventCategoryMap = { [string]: { [string]: EventCategory } };

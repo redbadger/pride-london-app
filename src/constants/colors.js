@@ -36,6 +36,9 @@ export const dialogApplyButtonBgColor = "rgb(51, 51, 51)";
 export const dialogApplyButtonTextColor = whiteColor;
 export const dialogHeaderDividerColor = "#F2F2F2";
 
+export const blackZeroColor = "rgba(0, 0, 0, 0)";
+export const blackThirtyColor = "rgba(0, 0, 0, 0.3)";
+
 // FILTER HEADER
 
 export const filterShowMeTextColor = whiteColor;

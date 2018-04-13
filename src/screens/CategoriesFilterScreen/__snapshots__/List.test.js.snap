@@ -12,6 +12,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#ff5b44",
+        "contrast": false,
         "label": "Cabaret and Variety",
       }
     }
@@ -35,6 +36,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#2c77e5",
+        "contrast": false,
         "label": "Talks and Debates",
       }
     }
@@ -58,6 +60,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#fc4984",
+        "contrast": false,
         "label": "Plays and Theatre",
       }
     }
@@ -93,6 +96,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#bc01ff",
+        "contrast": false,
         "label": "Exhibition and Tours",
       }
     }
@@ -128,6 +132,7 @@ exports[`List Component renders correctly 1`] = `
     category={
       Object {
         "color": "#5770d1",
+        "contrast": false,
         "label": "Music",
       }
     }

@@ -12,7 +12,9 @@ import {
   blackColor,
   whiteColor,
   darkBlueGreyTwoColor,
-  eucalyptusGreenColor
+  eucalyptusGreenColor,
+  blackZeroColor,
+  blackThirtyColor
 } from "../constants/colors";
 
 const categoryStyleColor = (category: string) => {
@@ -68,7 +70,7 @@ class CategoriesPills extends React.PureComponent<Props> {
               style={[styles.scrollShadow, styles.scrollShadowLeft]}
               end={{ x: 0, y: 0.5 }}
               start={{ x: 1.0, y: 0.5 }}
-              colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
+              colors={[blackZeroColor, blackThirtyColor]}
             />
             <ScrollView
               ref={(ref: ?Object) => {
@@ -86,7 +88,7 @@ class CategoriesPills extends React.PureComponent<Props> {
               style={[styles.scrollShadow, styles.scrollShadowRight]}
               end={{ x: 1.0, y: 0.5 }}
               start={{ x: 0, y: 0.5 }}
-              colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
+              colors={[blackZeroColor, blackThirtyColor]}
             />
           </View>
         )}

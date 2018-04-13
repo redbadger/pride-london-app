@@ -69,7 +69,7 @@ exports[`ListItem Component renders correctly 1`] = `
             "textAlign": "left",
           },
           Object {
-            "color": "#ffffff",
+            "color": "#111111",
           },
         ]
       }

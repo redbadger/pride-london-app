@@ -10,7 +10,8 @@ const categories: EventCategoryMap = {
   "en-GB": {
     "Cabaret and Variety": {
       label: "Cabaret and Variety",
-      color: colors.coralColor
+      color: colors.coralColor,
+      contrast: false
     },
     Community: {
       label: "Community",
@@ -19,7 +20,8 @@ const categories: EventCategoryMap = {
     },
     "Talks and Debates": {
       label: "Talks and Debates",
-      color: colors.darkSkyBlueColor
+      color: colors.darkSkyBlueColor,
+      contrast: false
     },
     "Film and Screenings": {
       label: "Film and Screenings",
@@ -28,7 +30,8 @@ const categories: EventCategoryMap = {
     },
     "Plays and Theatre": {
       label: "Plays and Theatre",
-      color: colors.warmPinkColor
+      color: colors.warmPinkColor,
+      contrast: false
     },
     "Social and Networking": {
       label: "Social and Networking",
@@ -42,7 +45,8 @@ const categories: EventCategoryMap = {
     },
     "Exhibition and Tours": {
       label: "Exhibition and Tours",
-      color: colors.brightPurpleColor
+      color: colors.brightPurpleColor,
+      contrast: false
     },
     "Sports and Activities": {
       label: "Sports and Activities",
@@ -56,7 +60,8 @@ const categories: EventCategoryMap = {
     },
     Music: {
       label: "Music",
-      color: colors.cornflowerBlueColor
+      color: colors.cornflowerBlueColor,
+      contrast: false
     }
   }
 };
