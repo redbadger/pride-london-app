@@ -11,12 +11,6 @@ exports[`renders correctly 1`] = `
   background="mock background"
 >
   <View
-    accessibilityComponentType="button"
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
     style={
       Array [
         Object {

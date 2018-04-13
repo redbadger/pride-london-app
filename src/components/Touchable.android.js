@@ -12,15 +12,12 @@ const Touchable = ({
   ...props
 }: TouchableProps) => (
   <TouchableNativeFeedback
-    accessibilityTraits={["button"]}
-    accessibilityComponentType="button"
     background={TouchableNativeFeedback.SelectableBackground()}
     onPress={onPress}
     disabled={disabled}
+    {...props}
   >
-    <View style={[styles.defaults, style]} {...props}>
-      {children}
-    </View>
+    <View style={[styles.defaults, style]}>{children}</View>
   </TouchableNativeFeedback>
 );
 
