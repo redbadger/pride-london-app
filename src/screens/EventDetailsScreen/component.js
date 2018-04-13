@@ -1,15 +1,15 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import Header from "./Header";
+import IconButton from "./IconButton";
 import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
 import EventMap from "./EventMap";
 import Text from "../../components/Text";
-import Touchable from "../../components/Touchable";
 import Button from "../../components/Button";
 import ContentPadding from "../../components/ContentPadding";
 import ImageWithAspect from "../../components/ImageWithAspect";
@@ -21,9 +21,7 @@ import {
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event, LocalizedFieldRef } from "../../data/event";
-
 import locale from "../../data/locale";
-
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 import heartWhite from "../../../assets/images/heart-white.png";
 
@@ -176,12 +174,6 @@ const renderEventDetails = event =>
     </ContentPadding>
   );
 
-const renderIconButton = (onPress, icon) => (
-  <Touchable onPress={onPress}>
-    <Image style={styles.touchableIcon} source={icon} />
-  </Touchable>
-);
-
 class EventDetailsScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
@@ -194,13 +186,15 @@ class EventDetailsScreen extends PureComponent<Props> {
       <View style={styles.container}>
         <Header>
           <ContentPadding style={styles.headerContent}>
-            {renderIconButton(() => {
-              this.props.navigation.goBack(null);
-            }, chevronLeftWhite)}
-            {renderIconButton(() => {}, heartWhite)}
+            <IconButton
+              onPress={() => {
+                this.props.navigation.goBack(null);
+              }}
+              source={chevronLeftWhite}
+            />
+            <IconButton onPress={() => {}} source={heartWhite} />
           </ContentPadding>
         </Header>
-
         <ScrollView>
           <ImageWithAspect
             ratio={5 / 3}
@@ -256,10 +250,6 @@ const styles = StyleSheet.create({
   },
   buyButton: {
     marginTop: 16
-  },
-  touchableIcon: {
-    width: 48,
-    height: 48
   }
 });
 
