@@ -1,19 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
-  style={
-    Object {
-      "backgroundColor": "#20215a",
-    }
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
   }
+  delayPressIn={50}
+  onPress={[Function]}
 >
-  <withOrientation>
-    <StatusBar
-      animated={true}
-      barStyle="light-content"
-      showHideTransition="fade"
-    />
-  </withOrientation>
-</View>
+  <Image
+    source={
+      Object {
+        "uri": "/super-awesome-image.jpg",
+      }
+    }
+    style={
+      Object {
+        "height": 48,
+        "width": 48,
+      }
+    }
+  />
+</Touchable>
 `;
