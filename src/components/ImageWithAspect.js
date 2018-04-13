@@ -3,18 +3,22 @@ import React, { Component } from "react";
 import { Image, View } from "react-native";
 
 type Props = {
-  ratio: Number,
-  source: Image.Props.source
+  ratio: number,
+  source: Image.propTypes.source
 };
 
-class ImageWithAspect extends Component<Props> {
+type State = {
+  height: number
+};
+
+class ImageWithAspect extends Component<Props, State> {
   constructor() {
     super();
     this.state = {
       height: 0
     };
   }
-  handleLayout = event => {
+  handleLayout = (event: { nativeEvent: { layout: { width: number } } }) => {
     this.setState({
       height: event.nativeEvent.layout.width / this.props.ratio
     });
