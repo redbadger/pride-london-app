@@ -30,7 +30,7 @@ exports[`renders correctly 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "#FFFFFF",
+              "backgroundColor": "#ffffff",
               "borderRadius": 4,
               "paddingBottom": 8,
             }
@@ -40,7 +40,7 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "alignItems": "center",
-                "borderBottomColor": "#F2F2F2",
+                "borderBottomColor": "#f3f3f3",
                 "borderBottomWidth": 1,
                 "flexDirection": "row",
                 "height": 40,
@@ -114,7 +114,7 @@ exports[`renders correctly 1`] = `
           markdown={false}
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#ffffff",
             }
           }
           type="text"
