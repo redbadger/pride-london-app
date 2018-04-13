@@ -1,244 +1,247 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<ScrollView
+<View
   style={
     Object {
-      "backgroundColor": "#FFF",
+      "backgroundColor": "#20215a",
       "flex": 1,
     }
   }
 >
-  <Header
-    imageUrl="https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg"
-    onBackButtonPress={[Function]}
-  />
-  <ContentPadding
-    style={
-      Object {
-        "backgroundColor": "#FFF",
-        "flex": 1,
-        "paddingVertical": 15,
-      }
-    }
-  >
-    <Text
-      markdown={false}
-      style={Object {}}
-      type="h1"
-    >
-      Pride in the Park
-    </Text>
-    <View
+  <Header>
+    <ContentPadding
       style={
         Object {
           "flexDirection": "row",
-          "flexWrap": "wrap",
-          "marginBottom": 20,
-          "marginTop": 16,
+          "justifyContent": "space-between",
         }
       }
     >
-      <CategoryLabel
-        categoryName="Community"
-        key="Community"
-      />
-      <CategoryLabel
-        categoryName="Social and Networking"
-        key="Social and Networking"
-      />
-      <CategoryLabel
-        categoryName="Sports and Activities"
-        key="Sports and Activities"
-      />
-      <CategoryLabel
-        categoryName="Music"
-        key="Music"
-      />
-    </View>
-    <View
-      style={
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "button",
+          ]
+        }
+        delayPressIn={50}
+        onPress={[Function]}
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        />
+      </Touchable>
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "button",
+          ]
+        }
+        delayPressIn={50}
+        onPress={[Function]}
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 48,
+              "width": 48,
+            }
+          }
+        />
+      </Touchable>
+    </ContentPadding>
+  </Header>
+  <ScrollView>
+    <ImageWithAspect
+      ratio={1.6666666666666667}
+      source={
         Object {
-          "marginBottom": 20,
-        }
-      }
-    >
-      <IconItem
-        content={
-          <Text
-            markdown={false}
-            style={Object {}}
-            type="small"
-          >
-            11:00 - 18:00
-          </Text>
-        }
-        icon={
-          <Text
-            markdown={false}
-            style={Object {}}
-            type="small"
-          >
-            icn
-          </Text>
-        }
-        title="09 July 2017 - 15 July 2018"
-        titleType="h3"
-      />
-    </View>
-    <View
-      style={
-        Object {
-          "marginBottom": 20,
-        }
-      }
-    >
-      <IconItem
-        content={null}
-        icon={
-          <Text
-            markdown={false}
-            style={Object {}}
-            type="small"
-          >
-            icn
-          </Text>
-        }
-        title="Vauxhall Pleasure Gardens"
-        titleType="h3"
-      />
-    </View>
-    <View
-      style={
-        Object {
-          "marginBottom": 20,
-        }
-      }
-    >
-      <IconItem
-        content={null}
-        icon={
-          <Text
-            markdown={false}
-            style={Object {}}
-            type="small"
-          >
-            icn
-          </Text>
-        }
-        title="From: £19.95"
-        titleType="h3"
-      />
-    </View>
-    <View
-      style={
-        Object {
-          "marginBottom": 20,
-        }
-      }
-    >
-      <IconItem
-        content={null}
-        icon={
-          <Text
-            markdown={false}
-            style={Object {}}
-            type="small"
-          >
-            icn
-          </Text>
-        }
-        title="Gender neutral toilets"
-        titleType="h3"
-      />
-    </View>
-    <View
-      style={
-        Object {
-          "marginBottom": 20,
-        }
-      }
-    >
-      <IconItem
-        content={
-          <Text
-            markdown={false}
-            style={Object {}}
-            type="small"
-          >
-            Accessible Toilets, Hearing loop installed
-          </Text>
-        }
-        icon={
-          <Text
-            markdown={false}
-            style={Object {}}
-            type="small"
-          >
-            icn
-          </Text>
-        }
-        title="Accessibility"
-        titleType="h3"
-      />
-    </View>
-  </ContentPadding>
-  <View
-    style={
-      Object {
-        "backgroundColor": "#F2F2F2",
-        "height": 4,
-      }
-    }
-  />
-  <ContentPadding
-    style={
-      Object {
-        "backgroundColor": "#FFF",
-        "flex": 1,
-        "paddingVertical": 15,
-      }
-    }
-  >
-    <Text
-      markdown={true}
-      style={Object {}}
-      type="text"
-    >
-      Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
-
-Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.
-    </Text>
-    <View
-      style={
-        Object {
-          "marginTop": 8,
-        }
-      }
-    >
-      <EventMap
-        lat={51.4875152}
-        locationName="Vauxhall Pleasure Gardens"
-        lon={-0.12092150000000856}
-      />
-    </View>
-  </ContentPadding>
-  <ContentPadding
-    style={Object {}}
-  >
-    <View
-      style={
-        Object {
-          "backgroundColor": "#F2F2F2",
-          "height": 4,
+          "uri": "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
         }
       }
     />
-    <View
+    <ContentPadding
       style={
         Object {
-          "backgroundColor": "#FFF",
-          "flex": 1,
+          "backgroundColor": "#ffffff",
+          "paddingVertical": 15,
+        }
+      }
+    >
+      <Text
+        markdown={false}
+        style={Object {}}
+        type="h1"
+      >
+        Pride in the Park
+      </Text>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "marginBottom": 20,
+            "marginTop": 16,
+          }
+        }
+      >
+        <CategoryLabel
+          categoryName="Community"
+          key="Community"
+        />
+        <CategoryLabel
+          categoryName="Social and Networking"
+          key="Social and Networking"
+        />
+        <CategoryLabel
+          categoryName="Sports and Activities"
+          key="Sports and Activities"
+        />
+        <CategoryLabel
+          categoryName="Music"
+          key="Music"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <IconItem
+          content={
+            <Text
+              markdown={false}
+              style={Object {}}
+              type="small"
+            >
+              11:00 - 18:00
+            </Text>
+          }
+          icon={
+            <Text
+              markdown={false}
+              style={Object {}}
+              type="small"
+            >
+              icn
+            </Text>
+          }
+          title="09 July 2017 - 15 July 2018"
+          titleType="h3"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <IconItem
+          content={null}
+          icon={
+            <Text
+              markdown={false}
+              style={Object {}}
+              type="small"
+            >
+              icn
+            </Text>
+          }
+          title="Vauxhall Pleasure Gardens"
+          titleType="h3"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <IconItem
+          content={null}
+          icon={
+            <Text
+              markdown={false}
+              style={Object {}}
+              type="small"
+            >
+              icn
+            </Text>
+          }
+          title="From: £19.95"
+          titleType="h3"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <IconItem
+          content={null}
+          icon={
+            <Text
+              markdown={false}
+              style={Object {}}
+              type="small"
+            >
+              icn
+            </Text>
+          }
+          title="Gender neutral toilets"
+          titleType="h3"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <IconItem
+          content={
+            <Text
+              markdown={false}
+              style={Object {}}
+              type="small"
+            >
+              Accessible Toilets, Hearing loop installed
+            </Text>
+          }
+          icon={
+            <Text
+              markdown={false}
+              style={Object {}}
+              type="small"
+            >
+              icn
+            </Text>
+          }
+          title="Accessibility"
+          titleType="h3"
+        />
+      </View>
+    </ContentPadding>
+    <ContentPadding
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
           "paddingVertical": 15,
         }
       }
@@ -246,47 +249,144 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       <View
         style={
           Object {
-            "marginBottom": 20,
+            "backgroundColor": "#d8d8d8",
+            "height": 1,
+            "marginVertical": 16,
+          }
+        }
+      />
+      <Text
+        markdown={true}
+        style={Object {}}
+        type="text"
+      >
+        Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+
+Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.
+      </Text>
+      <View
+        style={
+          Object {
+            "marginTop": 8,
           }
         }
       >
-        <Text
-          markdown={false}
-          style={Object {}}
-          type="h2"
-        >
-          Accessibility Details
-        </Text>
+        <EventMap
+          lat={51.4875152}
+          locationName="Vauxhall Pleasure Gardens"
+          lon={-0.12092150000000856}
+        />
+      </View>
+    </ContentPadding>
+    <ContentPadding
+      style={Object {}}
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#d8d8d8",
+            "height": 1,
+            "marginVertical": 16,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "paddingVertical": 15,
+          }
+        }
+      >
         <View
           style={
             Object {
-              "marginTop": 8,
+              "marginBottom": 20,
             }
           }
         >
           <Text
             markdown={false}
             style={Object {}}
-            type="text"
+            type="h2"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
+            Accessibility Details
           </Text>
+          <View
+            style={
+              Object {
+                "marginTop": 8,
+              }
+            }
+          >
+            <Text
+              markdown={false}
+              style={Object {}}
+              type="text"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
+            </Text>
+          </View>
         </View>
-      </View>
-      <View
-        style={
-          Object {
-            "marginBottom": 20,
+        <View
+          style={
+            Object {
+              "marginBottom": 20,
+            }
           }
-        }
-      >
-        <Text
-          markdown={false}
-          style={Object {}}
-          type="h2"
         >
-          Contact
-        </Text>
+          <Text
+            markdown={false}
+            style={Object {}}
+            type="h2"
+          >
+            Contact
+          </Text>
+          <View
+            style={
+              Object {
+                "marginTop": 16,
+              }
+            }
+          >
+            <IconItem
+              content={null}
+              icon={
+                <Text
+                  markdown={false}
+                  style={Object {}}
+                  type="small"
+                >
+                  icn
+                </Text>
+              }
+              title="john.smith@eventname.com"
+              titleType="text"
+            />
+          </View>
+          <View
+            style={
+              Object {
+                "marginTop": 16,
+              }
+            }
+          >
+            <IconItem
+              content={null}
+              icon={
+                <Text
+                  markdown={false}
+                  style={Object {}}
+                  type="small"
+                >
+                  icn
+                </Text>
+              }
+              title="07891234567"
+              titleType="text"
+            />
+          </View>
+        </View>
         <View
           style={
             Object {
@@ -294,57 +394,13 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             }
           }
         >
-          <IconItem
-            content={null}
-            icon={
-              <Text
-                markdown={false}
-                style={Object {}}
-                type="small"
-              >
-                icn
-              </Text>
-            }
-            title="john.smith@eventname.com"
-            titleType="text"
-          />
-        </View>
-        <View
-          style={
-            Object {
-              "marginTop": 16,
-            }
-          }
-        >
-          <IconItem
-            content={null}
-            icon={
-              <Text
-                markdown={false}
-                style={Object {}}
-                type="small"
-              >
-                icn
-              </Text>
-            }
-            title="07891234567"
-            titleType="text"
+          <Button
+            text="Buy Tickets"
+            url="https://prideinlondon.org/pride-in-the-park/"
           />
         </View>
       </View>
-      <View
-        style={
-          Object {
-            "marginTop": 16,
-          }
-        }
-      >
-        <Button
-          text="Buy Tickets"
-          url="https://prideinlondon.org/pride-in-the-park/"
-        />
-      </View>
-    </View>
-  </ContentPadding>
-</ScrollView>
+    </ContentPadding>
+  </ScrollView>
+</View>
 `;

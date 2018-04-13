@@ -1,36 +1,26 @@
 // @flow
 import React from "react";
-import { Text, StyleSheet, StatusBar, ImageBackground } from "react-native";
+import type { Node } from "react";
+import { StyleSheet, StatusBar, View } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import Touchable from "../../components/Touchable";
+import { darkBlueGreyTwoColor } from "../../constants/colors";
 
 type Props = {
-  onBackButtonPress: () => void,
-  imageUrl: string
+  children: Node
 };
 
-const Header = ({ onBackButtonPress, imageUrl }: Props) => (
-  <ImageBackground
-    style={styles.header}
-    source={{ uri: imageUrl }}
-    resizeMode="cover"
-  >
+const Header = ({ children }: Props) => (
+  <View style={styles.header}>
     <SafeAreaView>
-      <StatusBar barStyle="default" animated />
-      <Touchable onPress={onBackButtonPress} style={styles.backButton}>
-        <Text>Back</Text>
-      </Touchable>
+      <StatusBar barStyle="light-content" animated />
+      {children}
     </SafeAreaView>
-  </ImageBackground>
+  </View>
 );
 
 const styles = StyleSheet.create({
   header: {
-    flex: 1,
-    height: 180
-  },
-  backButton: {
-    padding: 8
+    backgroundColor: darkBlueGreyTwoColor
   }
 });
 

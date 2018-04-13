@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { Image, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
@@ -9,17 +9,23 @@ import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
 import EventMap from "./EventMap";
 import Text from "../../components/Text";
+import Touchable from "../../components/Touchable";
 import Button from "../../components/Button";
 import ContentPadding from "../../components/ContentPadding";
+import ImageWithAspect from "../../components/ImageWithAspect";
 import {
-  eventDetailsBgColor,
-  eventDetailsHeaderBgColor
+  darkBlueGreyTwoColor,
+  lightishGreyColor,
+  whiteColor
 } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event, LocalizedFieldRef } from "../../data/event";
 
 import locale from "../../data/locale";
+
+import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
+import heartWhite from "../../../assets/images/heart-white.png";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
@@ -107,6 +113,7 @@ const renderEventOverview = event => {
 
 const renderEventDescription = event => (
   <ContentPadding style={styles.content}>
+    <View style={styles.sectionDivider} />
     <Text markdown>{event.fields.eventDescription[locale]}</Text>
     <View style={styles.mapWrapper}>
       <EventMap
@@ -169,6 +176,12 @@ const renderEventDetails = event =>
     </ContentPadding>
   );
 
+const renderIconButton = (onPress, icon) => (
+  <Touchable onPress={onPress}>
+    <Image style={styles.touchableIcon} source={icon} />
+  </Touchable>
+);
+
 class EventDetailsScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
@@ -178,18 +191,26 @@ class EventDetailsScreen extends PureComponent<Props> {
   render() {
     const { event, getAssetUrl } = this.props;
     return (
-      <ScrollView style={styles.container}>
-        <Header
-          onBackButtonPress={() => {
-            this.props.navigation.goBack(null);
-          }}
-          imageUrl={getAssetUrl(event.fields.individualEventPicture)}
-        />
-        {renderEventOverview(event)}
-        <View style={styles.sectionDivider} />
-        {renderEventDescription(event)}
-        {renderEventDetails(event)}
-      </ScrollView>
+      <View style={styles.container}>
+        <Header>
+          <ContentPadding style={styles.headerContent}>
+            {renderIconButton(() => {
+              this.props.navigation.goBack(null);
+            }, chevronLeftWhite)}
+            {renderIconButton(() => {}, heartWhite)}
+          </ContentPadding>
+        </Header>
+
+        <ScrollView>
+          <ImageWithAspect
+            ratio={5 / 3}
+            source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
+          />
+          {renderEventOverview(event)}
+          {renderEventDescription(event)}
+          {renderEventDetails(event)}
+        </ScrollView>
+      </View>
     );
   }
 }
@@ -197,12 +218,15 @@ class EventDetailsScreen extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: eventDetailsBgColor
+    backgroundColor: darkBlueGreyTwoColor
+  },
+  headerContent: {
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   content: {
-    flex: 1,
     paddingVertical: 15,
-    backgroundColor: eventDetailsBgColor
+    backgroundColor: whiteColor
   },
   categoryLabelContainer: {
     marginTop: 16,
@@ -214,8 +238,9 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   sectionDivider: {
-    height: 4,
-    backgroundColor: eventDetailsHeaderBgColor
+    backgroundColor: lightishGreyColor,
+    height: 1,
+    marginVertical: 16
   },
   mapWrapper: {
     marginTop: 8
@@ -231,6 +256,10 @@ const styles = StyleSheet.create({
   },
   buyButton: {
     marginTop: 16
+  },
+  touchableIcon: {
+    width: 48,
+    height: 48
   }
 });
 

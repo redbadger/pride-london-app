@@ -1,49 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<ImageBackground
-  resizeMode="cover"
-  source={
-    Object {
-      "uri": "https://image.jpg",
-    }
-  }
+<View
   style={
     Object {
-      "flex": 1,
-      "height": 180,
+      "backgroundColor": "#20215a",
     }
   }
 >
   <withOrientation>
     <StatusBar
       animated={true}
-      barStyle="default"
+      barStyle="light-content"
       showHideTransition="fade"
     />
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      delayPressIn={50}
-      onPress={[Function]}
-      style={
-        Object {
-          "padding": 8,
-        }
-      }
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
-        Back
-      </Text>
-    </Touchable>
+      Lorem Ipsum
+    </Text>
   </withOrientation>
-</ImageBackground>
+</View>
 `;
