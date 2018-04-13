@@ -2,13 +2,11 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import formatDate from "date-fns/format";
-import isSameDay from "date-fns/is_same_day";
 import Header from "./Header";
 import IconButton from "./IconButton";
 import IconItem from "./IconItem";
-import CategoryLabel from "./CategoryLabel";
 import EventMap from "./EventMap";
+import EventOverview from "./EventOverview";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
 import ContentPadding from "../../components/ContentPadding";
@@ -19,7 +17,6 @@ import {
   whiteColor
 } from "../../constants/colors";
 import text from "../../constants/text";
-import strings from "../../constants/strings";
 import type { Event, LocalizedFieldRef } from "../../data/event";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
@@ -29,84 +26,6 @@ type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
   event: Event,
   getAssetUrl: LocalizedFieldRef => string
-};
-
-const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-
-const renderEventOverview = event => {
-  const startTime = removeTimezoneFromDateString(
-    event.fields.startTime[locale]
-  );
-  const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
-  const dateFormat = "DD MMMM YYYY";
-  const timeFormat = "HH:mm";
-  const dateDisplay = isSameDay(startTime, endTime)
-    ? formatDate(startTime, dateFormat)
-    : `${formatDate(startTime, dateFormat)} - ${formatDate(
-        endTime,
-        dateFormat
-      )}`;
-  const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
-    endTime,
-    timeFormat
-  )}`;
-
-  return (
-    <ContentPadding style={styles.content}>
-      <Text type="h1">{event.fields.name[locale]}</Text>
-      <View style={styles.categoryLabelContainer}>
-        {event.fields.eventCategories[locale].map(categoryName => (
-          <CategoryLabel key={categoryName} categoryName={categoryName} />
-        ))}
-      </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Text type="small">icn</Text>}
-          title={dateDisplay}
-          content={<Text type="small">{timeDisplay}</Text>}
-        />
-      </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Text type="small">icn</Text>}
-          title={event.fields.locationName[locale]}
-        />
-      </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Text type="small">icn</Text>}
-          title={`${text.eventDetailsPrice}${
-            event.fields.eventPriceLow[locale]
-          }`}
-        />
-      </View>
-      {event.fields.venueDetails &&
-        event.fields.venueDetails[locale].includes(
-          strings.venueDetailsGenderNeutralToilets
-        ) && (
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="small">icn</Text>}
-              title={text.eventDetailsGenderNeutralToilets}
-            />
-          </View>
-        )}
-      {event.fields.accessibilityOptions &&
-        event.fields.accessibilityOptions[locale].length > 0 && (
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="small">icn</Text>}
-              title={text.eventDetailsAccessibility}
-              content={
-                <Text type="small">
-                  {event.fields.accessibilityOptions[locale].join(", ")}
-                </Text>
-              }
-            />
-          </View>
-        )}
-    </ContentPadding>
-  );
 };
 
 const renderEventDescription = event => (
@@ -200,7 +119,7 @@ class EventDetailsScreen extends PureComponent<Props> {
             ratio={5 / 3}
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
-          {renderEventOverview(event)}
+          <EventOverview event={event} />
           {renderEventDescription(event)}
           {renderEventDetails(event)}
         </ScrollView>
@@ -221,15 +140,6 @@ const styles = StyleSheet.create({
   content: {
     paddingVertical: 15,
     backgroundColor: whiteColor
-  },
-  categoryLabelContainer: {
-    marginTop: 16,
-    marginBottom: 20,
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  iconItemWrapper: {
-    marginBottom: 20
   },
   sectionDivider: {
     backgroundColor: lightishGreyColor,
