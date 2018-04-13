@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   },
   zeroSelected: {
     color: eucalyptusGreenColor,
+    paddingTop: 4,
     paddingLeft: 8
   },
   categoryPill: {
@@ -122,7 +123,8 @@ const styles = StyleSheet.create({
     marginRight: 2
   },
   categoryPillText: {
-    color: whiteColor
+    color: whiteColor,
+    paddingTop: 4
   },
   scrollView: {
     width: "100%"

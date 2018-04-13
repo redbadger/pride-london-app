@@ -23,6 +23,7 @@ exports[`CategoriesPills Component renders correctly 1`] = `
       Object {
         "color": "#2cda9d",
         "paddingLeft": 8,
+        "paddingTop": 4,
       }
     }
     type="h3"

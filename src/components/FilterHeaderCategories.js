@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
   },
   categoryPills: {
     borderTopRightRadius: 0,
-    borderBottomRightRadius: 0
+    borderBottomRightRadius: 0,
+    minHeight: 44
   },
   interestButton: {
     flex: 1,
