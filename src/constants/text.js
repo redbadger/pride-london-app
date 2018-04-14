@@ -12,6 +12,8 @@ export default {
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
   eventDetailsPrice: "From: £",
+  isFreePrice: "Free",
+  eventFromPrice: "From",
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",
   eventDetailsContact: "Contact",

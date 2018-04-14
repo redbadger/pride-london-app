@@ -8,6 +8,7 @@ import {
   eventPriceColor
 } from "../constants/colors";
 import Text from "./Text";
+import { formattedEventPrice } from "../data/formatters";
 
 type Props = {
   name: string,
@@ -20,17 +21,6 @@ type Props = {
   isFree: boolean
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-const getEventPrice = (isFree, eventPriceLow, eventPriceHigh) => {
-  let displayPrice;
-  if (isFree) {
-    displayPrice = "Free";
-  } else if (eventPriceLow === eventPriceHigh) {
-    displayPrice = `£${eventPriceLow}`;
-  } else {
-    displayPrice = `From £${eventPriceLow}`;
-  }
-  return displayPrice;
-};
 
 const EventCard = ({
   name,
@@ -59,7 +49,7 @@ const EventCard = ({
       >
         <View style={styles.eventPriceContainer}>
           <Text type="price" style={styles.eventPrice}>
-            {getEventPrice(isFree, eventPriceLow, eventPriceHigh)}
+            {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
           </Text>
         </View>
       </ImageBackground>
