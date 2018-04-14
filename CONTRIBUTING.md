@@ -35,6 +35,16 @@ formatting on save.
 Basic static analysis is done by [ESLint](https://eslint.org/), most editor
 support error highlighting, which is also highly recommended.
 
+### Accessibility
+
+Follow these tips to make new features accessible:
+
+* Use our `Touchable` component for all touchable components (e.g. buttons). It applies the button trait and a minimum size of 44x44 by default.
+* Use the correct [`accessibilityTraits`](http://facebook.github.io/react-native/docs/accessibility.html#accessibilitytraits-ios) and [`accessibilityComponentType`](http://facebook.github.io/react-native/docs/accessibility.html#accessibilitycomponenttype-android).
+* Make sure all touchable components have a hit area of at least 44x44.
+* If a button only contains an image, make sure to add an `accessibilityLabel`.
+* Try not to use fixed width/height for anything containing text. It will break when users scale the font size on their device. If it's difficult to do just using minWidth/minHweight, use `height: 44 * PixelRatio.getFontScale()` instead.
+
 ### Unit tests and test coverage
 
 Pride app uses [Jest](https://facebook.github.io/jest/) as a test runner. Run
@@ -64,3 +74,8 @@ Test coverage is calculated by Code Climate and reported on pull requests.
 We don't have any specific target (because it's an easy metric to game and
 the coverage itself is not the point, only an indicator), but test coverage
 should not drop with changes.
+
+## Reporting bugs
+
+If you find a bug, please report it by creating an issue [on the issues page](https://github.com/redbadger/pride-london-app/issues) of the repo.
+Give your issue a descriptive `Title` that helps identify the nature of the problem at first glance.

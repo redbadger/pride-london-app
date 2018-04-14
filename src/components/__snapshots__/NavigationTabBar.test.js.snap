@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "bottom": "always",
+      "top": "never",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "rgb(243, 243, 243)",
+      "borderTopColor": "rgba(0, 0, 0, 0.25)",
+      "borderTopWidth": 0.5,
+      "paddingHorizontal": 8,
+    }
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "alignSelf": "center",
+        "flexDirection": "row",
+        "height": 52,
+        "maxWidth": 440,
+        "width": "100%",
+      }
+    }
+    testID="tab-bar"
+  >
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      key="1"
+      onLayout={[Function]}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "column",
+          "marginHorizontal": 4,
+          "minWidth": 48,
+          "paddingBottom": 2,
+          "paddingTop": 4,
+        }
+      }
+      testID="tab-0"
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "width": "100%",
+          }
+        }
+      >
+        <AnimatedComponent
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "position": "absolute",
+                "top": 0,
+              },
+              Object {
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            0
+          </Text>
+        </AnimatedComponent>
+        <AnimatedComponent
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "position": "absolute",
+                "top": 0,
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            0
+          </Text>
+        </AnimatedComponent>
+      </View>
+      <AnimatedComponent
+        allowFontScaling={true}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "fontFamily": "Poppins-Bold",
+              "fontSize": 12,
+              "includeFontPadding": false,
+              "lineHeight": 16,
+            },
+            Object {
+              "color": "rgba(45, 47, 127, 1)",
+            },
+          ]
+        }
+      >
+        Tab 0
+      </AnimatedComponent>
+    </Touchable>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      key="2"
+      onLayout={[Function]}
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "column",
+          "marginHorizontal": 4,
+          "minWidth": 48,
+          "paddingBottom": 2,
+          "paddingTop": 4,
+        }
+      }
+      testID="tab-1"
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "width": "100%",
+          }
+        }
+      >
+        <AnimatedComponent
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "position": "absolute",
+                "top": 0,
+              },
+              Object {
+                "opacity": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            1
+          </Text>
+        </AnimatedComponent>
+        <AnimatedComponent
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "position": "absolute",
+                "top": 0,
+              },
+              Object {
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            1
+          </Text>
+        </AnimatedComponent>
+      </View>
+      <AnimatedComponent
+        allowFontScaling={true}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "fontFamily": "Poppins-Bold",
+              "fontSize": 12,
+              "includeFontPadding": false,
+              "lineHeight": 16,
+            },
+            Object {
+              "color": "rgba(88, 88, 88, 1)",
+            },
+          ]
+        }
+      >
+        Tab 1
+      </AnimatedComponent>
+    </Touchable>
+    <AnimatedComponent
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+            "height": 3,
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          },
+          Object {
+            "transform": Array [
+              Object {
+                "translateX": -0.5,
+              },
+              Object {
+                "scaleX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</withOrientation>
+`;

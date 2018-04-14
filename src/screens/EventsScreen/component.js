@@ -7,8 +7,7 @@ import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
-
-const locale = "en-GB";
+import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -20,10 +19,6 @@ type Props = {
 };
 
 class EventsScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
-  };
-
   render() {
     return (
       <View style={styles.container}>

@@ -2,3 +2,7 @@ version: "2"
 exclude_patterns:
   - "**/*.test.js"
   - "**/flow-typed"
+checks:
+  method-lines:
+    config:
+      threshold: 50

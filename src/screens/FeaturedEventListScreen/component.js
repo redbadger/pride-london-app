@@ -7,7 +7,7 @@ import EventList from "../../components/EventList";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 
-const locale = "en-GB";
+import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { title: string } }>,
@@ -16,18 +16,6 @@ type Props = {
 };
 
 class EventsScreen extends PureComponent<Props> {
-  static navigationOptions = ({
-    navigation
-  }: {
-    navigation: NavigationScreenProp<{ params: { title: string } }>
-  }) => {
-    const { params } = navigation.state;
-
-    return {
-      title: params.title
-    };
-  };
-
   render() {
     return (
       <View style={styles.container}>

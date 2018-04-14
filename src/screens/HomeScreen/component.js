@@ -13,7 +13,7 @@ import {
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 
-const locale = "en-GB";
+import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -24,10 +24,6 @@ type Props = {
 };
 
 class HomeScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
-  };
-
   eventDetails = (eventId: string) => {
     this.props.navigation.navigate(EVENT_DETAILS, { eventId });
   };
