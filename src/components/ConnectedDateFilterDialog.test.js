@@ -19,7 +19,8 @@ const initialState = {
       price: new Set(),
       audience: new Set(),
       venueDetails: new Set(),
-      accessibilityOptions: new Set()
+      accessibilityOptions: new Set(),
+      area: new Set()
     },
     stagedFilters: {
       categories: new Set(),
@@ -28,7 +29,8 @@ const initialState = {
       price: new Set(),
       audience: new Set(),
       venueDetails: new Set(),
-      accessibilityOptions: new Set()
+      accessibilityOptions: new Set(),
+      area: new Set()
     }
   }
 };
@@ -40,7 +42,8 @@ const singleDateFilters = {
   price: new Set(),
   audience: new Set(),
   venueDetails: new Set(),
-  accessibilityOptions: new Set()
+  accessibilityOptions: new Set(),
+  area: new Set()
 };
 
 const singleDateFilterState = {

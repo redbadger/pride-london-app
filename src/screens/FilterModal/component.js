@@ -19,7 +19,7 @@ import {
 } from "../../constants/colors";
 import tags from "../../data/tags";
 import text from "../../constants/text";
-import type { FilterCollection } from "../../data/event-filters";
+import type { FilterCollection, Area } from "../../data/event-filters";
 
 export type TagFilter = { [string]: Set<string> };
 
@@ -64,7 +64,10 @@ class FilterModal extends PureComponent<Props> {
     remove: () => void
   };
 
-  toggleTagFilter = (selectedValues: Set<string>, sectionValue: string) => {
+  toggleTagFilter = (
+    selectedValues: Set<string> | Set<Area>,
+    sectionValue: string
+  ) => {
     const values: Set<string> = new Set([...selectedValues]);
     if (!values.delete(sectionValue)) {
       values.add(sectionValue);
@@ -98,6 +101,7 @@ class FilterModal extends PureComponent<Props> {
                           });
                         }}
                         checked={eventFilters[sectionName].has(sectionValue)}
+                        // $FlowFixMe
                         label={text.tags[sectionValue] || sectionValue}
                       />
                     ))}

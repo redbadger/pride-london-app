@@ -36,6 +36,7 @@ export default {
     Indoors: "Indoor",
     Outdoors: "Outdoor",
     "Accessible Toilets": "Accessible toilets",
-    "Wheelchair accessibile": "Wheelchair access"
+    "Wheelchair accessibile": "Wheelchair access",
+    area: "Area of London"
   }
 };

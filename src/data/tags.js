@@ -1,4 +1,12 @@
-export default {
+// @flow
+import type { Area } from "./event-filters";
+
+type Tags = {
+  area: Area[]
+};
+
+const tags: Tags = {
+  area: ["Central", "East", "North", "South", "West"],
   price: ["free"],
   audience: ["Families", "Youth", "16+", "18+"],
   timeOfDay: ["morning", "afternoon", "evening"],
@@ -14,3 +22,5 @@ export default {
     "Accessible parking spaces at venue"
   ]
 };
+
+export default tags;

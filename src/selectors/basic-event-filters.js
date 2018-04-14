@@ -4,8 +4,10 @@ import endOfDay from "date-fns/end_of_day";
 import getHours from "date-fns/get_hours";
 import startOfDay from "date-fns/start_of_day";
 import { selectEventIsFree } from "./event";
+import areaBoundaries from "../data/areas";
 import type { Event } from "../data/event";
 import type { DateRange, Time } from "../data/date-time";
+import type { Area } from "../data/event-filters";
 
 import locale from "../data/locale";
 
@@ -51,4 +53,34 @@ export const buildStringSetFilter = (fieldName: string, set: Set<string>) => {
     event.fields[fieldName]
       ? event.fields[fieldName][locale].some(value => set.has(value))
       : false;
+};
+
+export const buildAreaFilter = (area: Area) => {
+  switch (area) {
+    case "North":
+      return (event: Event) =>
+        event.fields.location[locale].lat >= areaBoundaries.northLatBoundary;
+    case "East":
+      return (event: Event) =>
+        event.fields.location[locale].lon >= areaBoundaries.eastLonBoundary;
+    case "South":
+      return (event: Event) =>
+        event.fields.location[locale].lat <= areaBoundaries.southLatBoundary;
+    case "West":
+      return (event: Event) =>
+        event.fields.location[locale].lon <= areaBoundaries.westLonBoundary;
+    case "Central":
+      return (event: Event) => {
+        const { lat, lon } = event.fields.location[locale];
+        return (
+          lat < areaBoundaries.northLatBoundary &&
+          lon < areaBoundaries.eastLonBoundary &&
+          lat > areaBoundaries.southLatBoundary &&
+          lon > areaBoundaries.westLonBoundary
+        );
+      };
+    default:
+      /* eslint-disable no-unused-vars */
+      return (_: any) => true;
+  }
 };

@@ -11,7 +11,8 @@ const defaultState = {
     price: new Set(),
     audience: new Set(),
     venueDetails: new Set(),
-    accessibilityOptions: new Set()
+    accessibilityOptions: new Set(),
+    area: new Set()
   },
   stagedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
@@ -20,7 +21,8 @@ const defaultState = {
     price: new Set(),
     audience: new Set(),
     venueDetails: new Set(),
-    accessibilityOptions: new Set()
+    accessibilityOptions: new Set(),
+    area: new Set()
   }
 };
 

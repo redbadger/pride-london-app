@@ -1,6 +1,8 @@
 // @flow
 import type { DateRange, Time } from "../data/date-time";
 
+export type Area = "Central" | "East" | "North" | "South" | "West";
+
 export type FilterCollection = {
   date: ?DateRange,
   timeOfDay: Set<Time>,
@@ -8,7 +10,8 @@ export type FilterCollection = {
   price: Set<string>,
   audience: Set<string>,
   venueDetails: Set<string>,
-  accessibilityOptions: Set<string>
+  accessibilityOptions: Set<string>,
+  area: Set<Area>
 };
 
 export type State = {

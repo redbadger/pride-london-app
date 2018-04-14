@@ -4,7 +4,8 @@ import {
   buildDateRangeFilter,
   buildTimeFilter,
   buildPriceFilter,
-  buildStringSetFilter
+  buildStringSetFilter,
+  buildAreaFilter
 } from "./basic-event-filters";
 import type { Event } from "../data/event";
 
@@ -13,7 +14,11 @@ export type BuildEventArguments = {
   endTime?: string,
   eventCategories?: Array<string>,
   eventPriceLow?: number,
-  eventPriceHigh?: number
+  eventPriceHigh?: number,
+  location?: {
+    lat: number,
+    lon: number
+  }
 };
 
 const buildEvent = ({
@@ -21,7 +26,11 @@ const buildEvent = ({
   endTime = "2018-08-05T12:00:00",
   eventCategories = [],
   eventPriceLow = 0,
-  eventPriceHigh = 12
+  eventPriceHigh = 12,
+  location = {
+    lon: -0.15343029999996816,
+    lat: 51.5352875
+  }
 }: BuildEventArguments) =>
   (({
     fields: {
@@ -29,7 +38,8 @@ const buildEvent = ({
       endTime: { "en-GB": endTime },
       eventCategories: { "en-GB": eventCategories },
       eventPriceLow: { "en-GB": eventPriceLow },
-      eventPriceHigh: { "en-GB": eventPriceHigh }
+      eventPriceHigh: { "en-GB": eventPriceHigh },
+      location: { "en-GB": location }
     }
   }: any): Event);
 
@@ -204,5 +214,62 @@ describe("buildStringSetFilter", () => {
       expect(filter(eventWithOneValue)).toBe(true);
       expect(filter(eventWithMulitpleValues)).toBe(true);
     });
+  });
+});
+
+describe("buildAreaFilter", () => {
+  it("checks for North", () => {
+    const event = buildEvent({
+      location: {
+        lon: -0.15343029999996816,
+        lat: 51.5352875
+      }
+    });
+    expect(buildAreaFilter("North")(event)).toBe(true);
+    expect(buildAreaFilter("South")(event)).toBe(false);
+  });
+
+  it("checks for South", () => {
+    const event = buildEvent({
+      location: {
+        lon: -0.14505099999996673,
+        lat: 51.478269
+      }
+    });
+    expect(buildAreaFilter("South")(event)).toBe(true);
+    expect(buildAreaFilter("North")(event)).toBe(false);
+  });
+
+  it("checks for East", () => {
+    const event = buildEvent({
+      location: {
+        lon: -0.032449100000008,
+        lat: 51.5126187
+      }
+    });
+    expect(buildAreaFilter("East")(event)).toBe(true);
+    expect(buildAreaFilter("West")(event)).toBe(false);
+  });
+
+  it("checks for West", () => {
+    const event = buildEvent({
+      location: {
+        lon: -0.21075725555419922,
+        lat: 51.49629375642361
+      }
+    });
+    expect(buildAreaFilter("West")(event)).toBe(true);
+    expect(buildAreaFilter("East")(event)).toBe(false);
+  });
+
+  it("checks for Central", () => {
+    const event = buildEvent({
+      location: {
+        lon: -0.12488365173339844,
+        lat: 51.49949975595735
+      }
+    });
+    expect(buildAreaFilter("Central")(event)).toBe(true);
+    expect(buildAreaFilter("North")(event)).toBe(false);
   });
 });

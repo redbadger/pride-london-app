@@ -3,11 +3,13 @@ import {
   buildDateRangeFilter,
   buildTimeFilter,
   buildPriceFilter,
-  buildStringSetFilter
+  buildStringSetFilter,
+  buildAreaFilter
 } from "./basic-event-filters";
 import type { Event } from "../data/event";
 import type { Time } from "../data/date-time";
 import type { State } from "../reducers";
+import type { Area } from "../data/event-filters";
 
 const getEventFiltersState = (state: State, selectStagedFilters: boolean) =>
   selectStagedFilters
@@ -31,6 +33,11 @@ const buildTimesFilter = (times: Time[]) => {
   return (event: Event) => filters.some(filter => filter(event));
 };
 
+const buildAreasFilter = (areas: Area[]) => {
+  const filters = areas.map(area => buildAreaFilter(area));
+  return (event: Event) => filters.some(filter => filter(event));
+};
+
 export const buildEventFilter = (
   state: State,
   selectStagedFilters?: boolean = false
@@ -41,9 +48,11 @@ export const buildEventFilter = (
     price,
     audience,
     venueDetails,
-    accessibilityOptions
+    accessibilityOptions,
+    area
   } = getEventFiltersState(state, selectStagedFilters);
   const timeArray = Array.from(timeOfDay);
+  const areaArray = Array.from(area);
   const dateFilter: (event: Event) => boolean = date
     ? buildDateRangeFilter(date)
     : () => true;
@@ -64,6 +73,8 @@ export const buildEventFilter = (
     accessibilityOptions.size > 0
       ? buildStringSetFilter("accessibilityOptions", accessibilityOptions)
       : () => true;
+  const areaFilter: (event: Event) => boolean =
+    areaArray.length > 0 ? buildAreasFilter(areaArray) : () => true;
 
   return (event: Event) =>
     dateFilter(event) &&
@@ -71,5 +82,6 @@ export const buildEventFilter = (
     priceFilter(event) &&
     audienceFilter(event) &&
     venueDetailsFilter(event) &&
-    accessibilityOptionsFilter(event);
+    accessibilityOptionsFilter(event) &&
+    areaFilter(event);
 };
