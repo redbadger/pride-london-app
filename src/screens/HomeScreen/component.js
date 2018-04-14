@@ -9,7 +9,8 @@ import Touchable from "../../components/Touchable";
 import {
   cardBgColor,
   imageBgColor,
-  titleTextColor
+  titleTextColor,
+  eucalyptusGreenColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 
@@ -54,9 +55,13 @@ class HomeScreen extends PureComponent<Props> {
             <Text type="h2" style={{ color: titleTextColor }}>
               {this.props.featuredEventsTitle}
             </Text>
-            <Touchable onPress={this.eventList} testID="view-all">
-              <Text style={{ color: titleTextColor }}>View all</Text>
-            </Touchable>
+            <View style={styles.viewAllContainer}>
+              <Touchable onPress={this.eventList} testID="view-all">
+                <Text type="h4" style={{ color: titleTextColor }}>
+                  View all
+                </Text>
+              </Touchable>
+            </View>
           </View>
           <View style={styles.container}>
             {events.map(event => (
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: cardBgColor
   },
   header: {
-    height: 200,
+    height: 292,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: imageBgColor
@@ -99,6 +104,13 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     justifyContent: "space-between",
     alignItems: "center"
+  },
+  viewAllContainer: {
+    width: 56,
+    height: 24,
+    justifyContent: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: eucalyptusGreenColor
   },
   container: {
     flex: 1,
