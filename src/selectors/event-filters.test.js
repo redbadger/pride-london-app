@@ -70,7 +70,8 @@ describe("selectDateFilter", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -78,7 +79,8 @@ describe("selectDateFilter", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
 
@@ -94,7 +96,8 @@ describe("selectDateFilter", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -102,7 +105,8 @@ describe("selectDateFilter", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
 
@@ -121,7 +125,8 @@ describe("selectTimeFilter", () => {
         timeOfDay,
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -129,7 +134,8 @@ describe("selectTimeFilter", () => {
         timeOfDay: new Set(["afternoon"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
 
@@ -146,7 +152,8 @@ describe("selectTimeFilter", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -154,7 +161,8 @@ describe("selectTimeFilter", () => {
         timeOfDay,
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
 
@@ -171,7 +179,8 @@ describe("selectIsStagingFilters", () => {
       timeOfDay: new Set(["morning"]),
       price: new Set(),
       audience: new Set(),
-      venueDetails: new Set()
+      venueDetails: new Set(),
+      accessibilityOptions: new Set()
     };
     const state = buildState(filters, filters);
 
@@ -187,7 +196,8 @@ describe("selectIsStagingFilters", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -195,7 +205,8 @@ describe("selectIsStagingFilters", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
 
@@ -220,7 +231,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -228,7 +240,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -247,7 +260,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -255,7 +269,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -276,7 +291,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -284,7 +300,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state, true);
@@ -308,7 +325,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -319,7 +337,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -337,7 +356,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -345,7 +365,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -361,7 +382,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -369,7 +391,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -389,7 +412,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -397,7 +421,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -417,7 +442,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -425,7 +451,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -443,7 +470,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         categories: new Set(),
@@ -451,7 +479,8 @@ describe("buildEventFilter", () => {
         timeOfDay: new Set(["morning", "afternoon", "evening"]),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -466,6 +495,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       },
       {
@@ -474,6 +504,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       }
     );
@@ -492,6 +523,7 @@ describe("buildEventFilter", () => {
         price: new Set(["free"]),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       },
       {
@@ -500,6 +532,7 @@ describe("buildEventFilter", () => {
         price: new Set(["free"]),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       }
     );
@@ -517,6 +550,7 @@ describe("buildEventFilter", () => {
         price: new Set(["free"]),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       },
       {
@@ -525,6 +559,7 @@ describe("buildEventFilter", () => {
         price: new Set(["free"]),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       }
     );
@@ -540,6 +575,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       },
       {
@@ -548,6 +584,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       }
     );
@@ -566,6 +603,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set("18+"),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       },
       {
@@ -574,6 +612,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set("18+"),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       }
     );
@@ -591,6 +630,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set("18+"),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       },
       {
@@ -599,6 +639,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set("18+"),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       }
     );
@@ -614,6 +655,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       },
       {
@@ -622,6 +664,7 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
       }
     );
@@ -640,7 +683,8 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set("Indoors"),
-        categories: new Set()
+        categories: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         date: null,
@@ -648,7 +692,8 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set("Indoors"),
-        categories: new Set()
+        categories: new Set(),
+        accessibilityOptions: new Set()
       }
     );
     const filter = buildEventFilter(state);
@@ -665,7 +710,8 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set("Indoors"),
-        categories: new Set()
+        categories: new Set(),
+        accessibilityOptions: new Set()
       },
       {
         date: null,
@@ -673,7 +719,88 @@ describe("buildEventFilter", () => {
         price: new Set(),
         audience: new Set(),
         venueDetails: new Set("Indoors"),
+        categories: new Set(),
+        accessibilityOptions: new Set()
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+  });
+
+  it("builds truthy accessibility options filter when no accessibility options selected", () => {
+    const state = buildState(
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
         categories: new Set()
+      },
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        categories: new Set()
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(true);
+    expect(untypedBuildPriceFilter).not.toHaveBeenCalled();
+  });
+
+  it("builds filter, which returns false when accessibility options filter returns false", () => {
+    untypedBuildStringSetFilter.mockReturnValue(() => false);
+
+    const state = buildState(
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        categories: new Set(),
+        accessibilityOptions: new Set("Step free access")
+      },
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        categories: new Set(),
+        accessibilityOptions: new Set("Step free access")
+      }
+    );
+    const filter = buildEventFilter(state);
+    expect(filter(event)).toBe(false);
+  });
+
+  it("builds filter, which returns true when venue details filter returns true", () => {
+    untypedBuildStringSetFilter.mockReturnValue(() => true);
+
+    const state = buildState(
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        categories: new Set(),
+        accessibilityOptions: new Set("Step free access")
+      },
+      {
+        date: null,
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        categories: new Set(),
+        accessibilityOptions: new Set("Step free access")
       }
     );
     const filter = buildEventFilter(state);

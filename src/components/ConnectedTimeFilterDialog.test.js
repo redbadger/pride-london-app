@@ -18,7 +18,8 @@ const initialState = {
       timeOfDay: new Set(),
       price: new Set(),
       audience: new Set(),
-      venueDetails: new Set()
+      venueDetails: new Set(),
+      accessibilityOptions: new Set()
     },
     stagedFilters: {
       categories: new Set(),
@@ -26,7 +27,8 @@ const initialState = {
       timeOfDay: new Set(),
       price: new Set(),
       audience: new Set(),
-      venueDetails: new Set()
+      venueDetails: new Set(),
+      accessibilityOptions: new Set()
     }
   }
 };

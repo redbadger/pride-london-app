@@ -7,7 +7,8 @@ export type FilterCollection = {
   categories: Set<string>,
   price: Set<string>,
   audience: Set<string>,
-  venueDetails: Set<string>
+  venueDetails: Set<string>,
+  accessibilityOptions: Set<string>
 };
 
 export type State = {

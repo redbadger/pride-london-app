@@ -10,7 +10,8 @@ const defaultState = {
     timeOfDay: new Set(),
     price: new Set(),
     audience: new Set(),
-    venueDetails: new Set()
+    venueDetails: new Set(),
+    accessibilityOptions: new Set()
   },
   stagedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
@@ -18,7 +19,8 @@ const defaultState = {
     timeOfDay: new Set(),
     price: new Set(),
     audience: new Set(),
-    venueDetails: new Set()
+    venueDetails: new Set(),
+    accessibilityOptions: new Set()
   }
 };
 

@@ -40,7 +40,8 @@ export const buildEventFilter = (
     timeOfDay,
     price,
     audience,
-    venueDetails
+    venueDetails,
+    accessibilityOptions
   } = getEventFiltersState(state, selectStagedFilters);
   const timeArray = Array.from(timeOfDay);
   const dateFilter: (event: Event) => boolean = date
@@ -59,11 +60,16 @@ export const buildEventFilter = (
     venueDetails.size > 0
       ? buildStringSetFilter("venueDetails", venueDetails)
       : () => true;
+  const accessibilityOptionsFilter: (event: Event) => boolean =
+    accessibilityOptions.size > 0
+      ? buildStringSetFilter("accessibilityOptions", accessibilityOptions)
+      : () => true;
 
   return (event: Event) =>
     dateFilter(event) &&
     timeFilter(event) &&
     priceFilter(event) &&
     audienceFilter(event) &&
-    venueDetailsFilter(event);
+    venueDetailsFilter(event) &&
+    accessibilityOptionsFilter(event);
 };

@@ -17,7 +17,8 @@ describe("Event filters reducer", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       stagedFilters: {
         categories: new Set(),
@@ -25,7 +26,8 @@ describe("Event filters reducer", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     };
     const state = reducer(initialState, {
@@ -55,7 +57,8 @@ describe("Event filters reducer", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       stagedFilters: {
         categories: new Set(),
@@ -63,7 +66,8 @@ describe("Event filters reducer", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     };
     const state = reducer(initialState, {
@@ -90,7 +94,8 @@ describe("Event filters reducer", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       },
       stagedFilters: {
         categories: new Set(),
@@ -98,7 +103,8 @@ describe("Event filters reducer", () => {
         timeOfDay: new Set(),
         price: new Set(),
         audience: new Set(),
-        venueDetails: new Set()
+        venueDetails: new Set(),
+        accessibilityOptions: new Set()
       }
     };
     const state = reducer(initialState, {

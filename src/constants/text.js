@@ -31,8 +31,11 @@ export default {
     afternoon: "Afternoon",
     evening: "Evening",
     venueDetails: "Venue options",
+    accessibilityOptions: "Accessibility",
     "Gender neutral toilets": "Gender-neutral toilets",
     Indoors: "Indoor",
-    Outdoors: "Outdoor"
+    Outdoors: "Outdoor",
+    "Accessible Toilets": "Accessible toilets",
+    "Wheelchair accessibile": "Wheelchair access"
   }
 };
