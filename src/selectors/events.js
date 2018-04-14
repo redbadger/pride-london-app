@@ -92,7 +92,7 @@ const getEventsState = (state: State) => state.events;
 const addPerformances = (state: State) => event => {
   const oldEvent = ((event: any): Event);
   const newEvent: Event = { ...oldEvent };
-  if (oldEvent.fields.performances) {
+  if (oldEvent.fields && oldEvent.fields.performances) {
     const performances = (oldEvent.fields.performances[locale].map(
       performance => selectPerformanceById(state, performance.sys.id)
     ): any[]);
