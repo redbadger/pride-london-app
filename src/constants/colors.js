@@ -28,6 +28,7 @@ export const bgColor = "#ffffff";
 export const cardBgColor = "#ffffff";
 export const imageBgColor = "#C1C1C1";
 export const headerBgColor = "#A5A5A5";
+export const transparent = "transparent";
 
 export const textColor = "#272727";
 
@@ -36,6 +37,15 @@ export const dialogBgColor = whiteColor;
 export const dialogApplyButtonBgColor = "rgb(51, 51, 51)";
 export const dialogApplyButtonTextColor = whiteColor;
 export const dialogHeaderDividerColor = lightGreyColor;
+
+// TAB BAR
+
+export const tabBarBgColor = "rgb(243, 243, 243)";
+export const tabBarLabelColor = "rgb(88, 88, 88)";
+export const tabBarActiveLineColor = "rgb(44, 218, 157)";
+export const tabBarActiveLabelColor = "rgb(45, 47, 127)";
+export const tabBarShadowColor = "rgba(0, 0, 0, 0.1)";
+export const tabBarBorderColor = "rgba(0, 0, 0, 0.25)";
 
 // FILTER HEADER
 
@@ -57,6 +67,7 @@ export const sectionHeaderBgColor = lightGreyColor;
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
 
 // EVENT DETAILS
+
 export const eventDetailsBgColor = whiteColor;
 export const eventDetailsHeaderBgColor = lightGreyColor;
 export const eventCategoryLabelBgColor = lightishGreyColor;
