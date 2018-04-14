@@ -106,12 +106,17 @@ class EventDetailsScreen extends PureComponent<Props> {
         <Header>
           <ContentPadding style={styles.headerContent}>
             <IconButton
+              accessibilityLabel="Back"
               onPress={() => {
                 this.props.navigation.goBack(null);
               }}
               source={chevronLeftWhite}
             />
-            <IconButton onPress={() => {}} source={heartWhite} />
+            <IconButton
+              accessibilityLabel="Favourite"
+              onPress={() => {}}
+              source={heartWhite}
+            />
           </ContentPadding>
         </Header>
         <ScrollView>

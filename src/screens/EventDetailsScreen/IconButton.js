@@ -4,12 +4,13 @@ import { Image, StyleSheet } from "react-native";
 import Touchable from "../../components/Touchable";
 
 type Props = {
+  accessibilityLabel: string,
   onPress: Function,
   source: Image.propTypes.source
 };
 
-const IconButton = ({ onPress, source }: Props) => (
-  <Touchable onPress={onPress}>
+const IconButton = ({ accessibilityLabel, onPress, source }: Props) => (
+  <Touchable accessibilityLabel={accessibilityLabel} onPress={onPress}>
     <Image style={styles.touchableIcon} source={source} />
   </Touchable>
 );

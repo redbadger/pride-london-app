@@ -19,10 +19,12 @@ exports[`renders correctly 1`] = `
       }
     >
       <IconButton
+        accessibilityLabel="Back"
         onPress={[Function]}
         source={1}
       />
       <IconButton
+        accessibilityLabel="Favourite"
         onPress={[Function]}
         source={1}
       />
