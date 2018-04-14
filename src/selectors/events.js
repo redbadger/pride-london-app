@@ -89,15 +89,33 @@ export const groupPerformancesByPeriod = (
 
 const getEventsState = (state: State) => state.events;
 
+const addPerformances = (state: State) => event => {
+  const oldEvent = ((event: any): Event);
+  const newEvent: Event = { ...oldEvent };
+  if (oldEvent.fields.performances) {
+    const performances = (oldEvent.fields.performances[locale].map(
+      performance => selectPerformanceById(state, performance.sys.id)
+    ): any[]);
+    newEvent.fields.performances[locale] = performances;
+  }
+  return newEvent;
+};
+
 // Type hack to force array filter to one type https://github.com/facebook/flow/issues/1915
 export const selectEvents = (state: State): Event[] =>
-  ((getEventsState(state).entries.filter(
-    entry => entry.sys.contentType.sys.id === "event"
-  ): any[]): Event[]);
+  ((getEventsState(state)
+    .entries.filter(entry => entry.sys.contentType.sys.id === "event")
+    .map(addPerformances(state)): any[]): Event[]);
+
 export const selectFeaturedEvents = (state: State) =>
   ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "featuredEvents"
   ): any[]): FeaturedEvents[]);
+
+export const selectPerformances = (state: State) =>
+  ((getEventsState(state).entries.filter(
+    entry => entry.sys.contentType.sys.id === "performance"
+  ): any[]): Performance[]);
 
 export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;
@@ -107,6 +125,9 @@ export const selectAssets = (state: State) => getEventsState(state).assets;
 
 export const selectEventById = (state: State, id: string) =>
   selectEvents(state).find(event => event.sys.id === id);
+
+export const selectPerformanceById = (state: State, id: string) =>
+  selectPerformances(state).find(performance => performance.sys.id === id);
 
 export const selectAssetById = (state: State, id: string): Asset =>
   (selectAssets(state).find(asset => asset.sys.id === id): any);
