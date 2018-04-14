@@ -1,5 +1,6 @@
 import {
   groupEventsByStartTime,
+  groupPerformancesByPeriod,
   selectEvents,
   selectFeaturedEvents,
   selectEventsLoading,
@@ -223,6 +224,211 @@ describe("groupEventsByStartTime", () => {
       ]
     ];
     const actual = groupEventsByStartTime(events);
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("groupPerformancesByPeriod", () => {
+  it("returns empty array when no performances exist", () => {
+    const expected = [];
+    const actual = groupPerformancesByPeriod([]);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("separates two individual performances by period and sorts", () => {
+    const performances = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      }
+    ];
+
+    const expected = [
+      [
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        }
+      ],
+      [
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        }
+      ]
+    ];
+    const actual = groupPerformancesByPeriod(performances);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("leaves two performances in the same period together", () => {
+    const performances = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      }
+    ];
+
+    const expected = [
+      [
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        }
+      ]
+    ];
+    const actual = groupPerformancesByPeriod(performances);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("makes two groups", () => {
+    const performances = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T02:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T17:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      }
+    ];
+
+    const expected = [
+      [
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T02:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        }
+      ],
+      [
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T17:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        }
+      ]
+    ];
+    const actual = groupPerformancesByPeriod(performances);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("makes multiple groups", () => {
+    const performances = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T23:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T17:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T11:30:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T02:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      }
+    ];
+
+    const expected = [
+      [
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T02:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T11:30:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        }
+      ],
+      [
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        }
+      ],
+      [
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T17:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-01T23:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        }
+      ]
+    ];
+    const actual = groupPerformancesByPeriod(performances);
 
     expect(actual).toEqual(expected);
   });

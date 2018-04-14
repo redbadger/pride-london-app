@@ -95,3 +95,5 @@ export type Asset = {
 };
 
 export type EventDays = Event[][];
+
+export type PerformancePeriods = Performance[][];

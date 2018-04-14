@@ -1,9 +1,17 @@
 // @flow
 import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
+import getHours from "date-fns/get_hours";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
-import type { Asset, Event, FeaturedEvents, EventDays } from "../data/event";
+import type {
+  Asset,
+  Event,
+  FeaturedEvents,
+  EventDays,
+  Performance,
+  PerformancePeriods
+} from "../data/event";
 
 import locale from "../data/locale";
 
@@ -34,6 +42,48 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
   return sections.buffer.length > 0
     ? [...sections.days, sections.buffer]
     : sections.days;
+};
+
+const getTimePeriod = (date: Date) => {
+  const splits = [12, 17];
+  const hours = getHours(date);
+  if (hours >= splits[1]) {
+    return 2;
+  } else if (hours >= splits[0]) {
+    return 1;
+  }
+  return 0;
+};
+
+export const groupPerformancesByPeriod = (
+  performances: Performance[]
+): PerformancePeriods => {
+  const sections = performances
+    .sort(
+      (a: Performance, b: Performance) =>
+        parseDate(a.fields.startTime[locale]) -
+        parseDate(b.fields.startTime[locale])
+    )
+    .reduce(
+      ({ periods, buffer }, performance) => {
+        if (buffer.length < 1) return { periods, buffer: [performance] };
+
+        const previous: Performance = buffer[buffer.length - 1];
+
+        if (
+          getTimePeriod(parseDate(previous.fields.startTime[locale])) !==
+          getTimePeriod(parseDate(performance.fields.startTime[locale]))
+        )
+          return { periods: [...periods, buffer], buffer: [performance] };
+
+        return { periods, buffer: [...buffer, performance] };
+      },
+      { periods: [], buffer: [] }
+    );
+
+  return sections.buffer.length > 0
+    ? [...sections.periods, sections.buffer]
+    : sections.periods;
 };
 
 const getEventsState = (state: State) => state.events;
