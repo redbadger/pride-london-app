@@ -15,7 +15,7 @@ export const formatDateRange = (dateRange: DateRange) =>
 
 export const formatPrice = (price: number) => {
   if (price === Math.trunc(price)) {
-    return price;
+    return String(price);
   }
   return price.toFixed(2);
 };
