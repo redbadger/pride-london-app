@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { Image, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import Header from "./Header";
 import IconButton from "./IconButton";
@@ -10,7 +10,6 @@ import EventOverview from "./EventOverview";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
 import ContentPadding from "../../components/ContentPadding";
-import ImageWithAspect from "../../components/ImageWithAspect";
 import {
   darkBlueGreyTwoColor,
   lightishGreyColor,
@@ -120,8 +119,8 @@ class EventDetailsScreen extends PureComponent<Props> {
           </ContentPadding>
         </Header>
         <ScrollView>
-          <ImageWithAspect
-            ratio={5 / 3}
+          <Image
+            style={{ aspectRatio: 5 / 3 }}
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
           <EventOverview event={event} />
