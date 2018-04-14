@@ -2,6 +2,7 @@
 
 import formatDate from "date-fns/format";
 import type { DateRange } from "./date-time";
+import text from "../constants/text";
 
 /* eslint-disable import/prefer-default-export */
 export const formatDateRange = (dateRange: DateRange) =>
@@ -12,21 +13,25 @@ export const formatDateRange = (dateRange: DateRange) =>
       ].join(" - ")
     : formatDate(dateRange.startDate, "D MMM");
 
-export const formatPrice = price => {
+export const formatPrice = (price: number) => {
   if (price === Math.trunc(price)) {
     return price;
   }
   return price.toFixed(2);
 };
 
-export const formattedEventPrice = (isFree, eventPriceLow, eventPriceHigh) => {
+export const formattedEventPrice = (
+  isFree: boolean,
+  eventPriceLow: number,
+  eventPriceHigh: number
+) => {
   let displayPrice;
   if (isFree) {
-    displayPrice = "Free";
+    displayPrice = `${text.isFreePrice}`;
   } else if (eventPriceLow === eventPriceHigh) {
     displayPrice = `£${formatPrice(eventPriceLow)}`;
   } else {
-    displayPrice = `From £${formatPrice(eventPriceLow)}`;
+    displayPrice = `${text.eventFromPrice} £${formatPrice(eventPriceLow)}`;
   }
   return displayPrice;
 };
