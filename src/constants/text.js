@@ -1,6 +1,10 @@
 // @flow
 export default {
+  tabHome: "Home",
   tabEvents: "Events",
+  tabParade: "Parade",
+  tabSaved: "Saved",
+  tabSupportUs: "Support us",
   filterByInterest: "I'm interested in...",
   filters: "Filters",
   filterPickerApply: (numberOfEvents: number) =>
@@ -8,6 +12,8 @@ export default {
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
   eventDetailsPrice: "From: £",
+  isFreePrice: "Free",
+  eventFromPrice: "From",
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",
   eventDetailsContact: "Contact",

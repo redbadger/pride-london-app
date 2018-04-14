@@ -25,11 +25,6 @@ describe("FeaturedEventListScreen Component", () => {
     expect(output).toMatchSnapshot();
   });
 
-  it("renders navigation header correctly", () => {
-    const params = Component.navigationOptions({ navigation });
-    expect(params.title).toEqual("Events");
-  });
-
   it("navigates to event details on event item press", () => {
     const output = shallow(
       <Component navigation={navigation} events={[]} getAssetUrl={() => ""} />

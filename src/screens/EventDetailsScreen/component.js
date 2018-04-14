@@ -101,9 +101,6 @@ const renderEventDetails = event =>
   );
 
 class EventDetailsScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
-  };
   static defaultProps = {};
 
   render() {

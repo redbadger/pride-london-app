@@ -7,6 +7,7 @@ import Touchable from "./Touchable";
 import text from "../constants/text";
 import type { DateRange } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
+import { dialogTitleColor } from "../constants/colors";
 
 type Props = {
   applyButtonText: string,
@@ -41,7 +42,9 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
         applyButtonText={this.props.applyButtonText}
         headerRight={
           <Touchable onPress={this.clear}>
-            <Text>Clear</Text>
+            <Text type="small" style={{ color: dialogTitleColor }}>
+              Clear
+            </Text>
           </Touchable>
         }
         onApply={this.props.onApply}

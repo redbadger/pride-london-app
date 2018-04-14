@@ -2,6 +2,9 @@
 ; We fork some components by platform
 .*/node_modules/.*/*[.]android.js
 
+# Ignore broken react-native-linear-gradient prop annotations
+.*/node_modules/react-native-linear-gradient/*
+
 ; Ignore "BUCK" generated dirs
 <PROJECT_ROOT>/\.buckd/
 

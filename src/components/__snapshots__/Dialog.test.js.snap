@@ -30,7 +30,7 @@ exports[`renders correctly 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "#FFFFFF",
               "borderRadius": 4,
               "paddingBottom": 8,
             }
@@ -40,7 +40,7 @@ exports[`renders correctly 1`] = `
             style={
               Object {
                 "alignItems": "center",
-                "borderBottomColor": "#f3f3f3",
+                "borderBottomColor": "#F2F2F2",
                 "borderBottomWidth": 1,
                 "flexDirection": "row",
                 "height": 40,
@@ -66,7 +66,9 @@ exports[`renders correctly 1`] = `
               markdown={false}
               style={
                 Object {
-                  "color": "#272727",
+                  "alignSelf": "flex-end",
+                  "color": "rgb(45, 47, 127)",
+                  "marginBottom": 6,
                 }
               }
               type="h3"
@@ -102,7 +104,7 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "rgb(51, 51, 51)",
+            "backgroundColor": "rgb(44, 218, 157)",
             "borderRadius": 4,
             "height": 48,
             "justifyContent": "center",
@@ -114,10 +116,11 @@ exports[`renders correctly 1`] = `
           markdown={false}
           style={
             Object {
-              "color": "#ffffff",
+              "color": "rgb(45, 47, 127)",
+              "lineHeight": 48,
             }
           }
-          type="text"
+          type="h2"
         >
           Bye
         </Text>
