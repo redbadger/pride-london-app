@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, View, StyleSheet, ScrollView } from "react-native";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import Header from "./Header";
 import IconButton from "./IconButton";
@@ -9,6 +9,7 @@ import EventMap from "./EventMap";
 import EventOverview from "./EventOverview";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
+import PerformanceList from "../../components/PerformanceList";
 import ContentPadding from "../../components/ContentPadding";
 import {
   darkBlueGreyTwoColor,
@@ -18,6 +19,7 @@ import {
 import text from "../../constants/text";
 import type { Event, LocalizedFieldRef } from "../../data/event";
 import locale from "../../data/locale";
+import { groupPerformancesByPeriod } from "../../selectors/events";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 import heartWhite from "../../../assets/images/heart-white.png";
 
@@ -30,6 +32,12 @@ type Props = {
 const renderEventDescription = event => (
   <ContentPadding style={styles.content}>
     <View style={styles.sectionDivider} />
+    <PerformanceList
+      performances={groupPerformancesByPeriod(
+        event.fields.performances && event.fields.performances[locale]
+      )}
+      locale={locale}
+    />
     <Text markdown>{event.fields.eventDescription[locale]}</Text>
     <View style={styles.mapWrapper}>
       <EventMap

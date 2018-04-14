@@ -178,6 +178,10 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         }
       />
+      <PerformanceList
+        locale="en-GB"
+        performances={Array []}
+      />
       <Text
         markdown={true}
         style={Object {}}

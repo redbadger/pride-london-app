@@ -44,20 +44,21 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     : sections.days;
 };
 
-const getTimePeriod = (date: Date) => {
+export const getTimePeriod = (date: Date) => {
   const splits = [12, 17];
   const hours = getHours(date);
   if (hours >= splits[1]) {
-    return 2;
+    return "Evening";
   } else if (hours >= splits[0]) {
-    return 1;
+    return "Afternoon";
   }
-  return 0;
+  return "Morning";
 };
 
 export const groupPerformancesByPeriod = (
   performances: Performance[]
 ): PerformancePeriods => {
+  if (performances == null) return [];
   const sections = performances
     .sort(
       (a: Performance, b: Performance) =>
