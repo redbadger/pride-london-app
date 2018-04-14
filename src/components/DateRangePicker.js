@@ -4,43 +4,33 @@ import { Calendar } from "react-native-calendars";
 import formatDate from "date-fns/format";
 import addDays from "date-fns/add_days";
 import isBefore from "date-fns/is_before";
-import { cardBgColor, eventListHeaderColor } from "../constants/colors";
 import type { DateRange } from "../data/date-time";
 
-type CalendarDay = {
-  year: number,
-  month: number,
-  day: number,
-  timestamp: number,
-  dateString: string
-};
+import Day from "./DateRangePickerDay";
+import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
+
+import { dateRangePickerTextColor } from "../constants/colors";
 
 const getSortedDateRange = (dates: DateRange) =>
   isBefore(dates.endDate, dates.startDate)
     ? { startDate: dates.endDate, endDate: dates.startDate }
     : dates;
 
-const getMarkedDate = (date: string) => ({
+const getMarkedDate = (date: string): DayMarkings => ({
   [date]: {
+    selected: true,
     startingDay: true,
-    endingDay: true,
-    color: eventListHeaderColor,
-    textColor: cardBgColor
+    endingDay: true
   }
 });
 
-const getMarkedDateRange = (dateRange: DateRange) => {
+const getMarkedDateRange = (dateRange: DateRange): DayMarkings => {
   const { startDate, endDate } = dateRange;
-  const template = {
-    color: eventListHeaderColor,
-    textColor: cardBgColor
-  };
-
   const markedDates = {};
 
   // Start
   markedDates[startDate] = {
-    ...template,
+    selected: true,
     startingDay: true
   };
 
@@ -48,33 +38,46 @@ const getMarkedDateRange = (dateRange: DateRange) => {
   let inBetweenDate = startDate;
   do {
     inBetweenDate = formatDate(addDays(inBetweenDate, 1), "YYYY-MM-DD");
-    markedDates[inBetweenDate] = { ...template };
+    markedDates[inBetweenDate] = { selected: true };
   } while (inBetweenDate !== endDate);
 
   // End
   markedDates[endDate] = {
-    ...template,
+    selected: true,
     endingDay: true
   };
 
   return markedDates;
 };
 
-const getMarkedDates = (dateRange: ?DateRange) => {
+const addDateMark = (markings: DayMarkings, today: string): DayMarkings => {
+  const todayMark = markings[today] || {};
+
+  return {
+    ...markings,
+    [today]: {
+      ...todayMark,
+      marked: true
+    }
+  };
+};
+
+const getMarkedDates = (dateRange: ?DateRange, today: string): DayMarkings => {
   if (!dateRange) {
-    return {};
+    return addDateMark({}, today);
   }
 
   if (dateRange.startDate === dateRange.endDate) {
-    return getMarkedDate(dateRange.startDate);
+    return addDateMark(getMarkedDate(dateRange.startDate), today);
   }
 
-  return getMarkedDateRange(dateRange);
+  return addDateMark(getMarkedDateRange(dateRange), today);
 };
 
 type Props = {
   onChange: DateRange => void,
   dateRange?: ?DateRange,
+  today?: Date,
   forceNewRange: boolean
 };
 
@@ -99,6 +102,7 @@ class DateRangePicker extends React.PureComponent<Props> {
   };
 
   render() {
+    const today = this.props.today || new Date();
     const dateRange = this.props.dateRange
       ? getSortedDateRange(this.props.dateRange)
       : this.props.dateRange;
@@ -106,20 +110,53 @@ class DateRangePicker extends React.PureComponent<Props> {
     return (
       <Calendar
         current={dateRange ? dateRange.startDate : null}
-        markedDates={getMarkedDates(dateRange)}
+        markedDates={getMarkedDates(dateRange, formatDate(today, "YYYY-MM-DD"))}
         markingType="period"
         onDayPress={this.onDaySelected}
-        theme={{
-          textDayFontFamily: "Roboto",
-          textMonthFontFamily: "Roboto",
-          textDayHeaderFontFamily: "Roboto",
-          textDayFontSize: 16,
-          textMonthFontSize: 16,
-          textDayHeaderFontSize: 16
-        }}
+        dayComponent={Day}
+        hideExtraDays
+        theme={calendarTheme}
       />
     );
   }
 }
+
+const calendarTheme = {
+  "stylesheet.calendar.main": {
+    week: {
+      marginLeft: 10,
+      marginRight: 10,
+      marginTop: 7,
+      marginBottom: 7,
+      flexDirection: "row",
+      justifyContent: "space-around"
+    }
+  },
+  "stylesheet.calendar.header": {
+    monthText: {
+      fontFamily: "Poppins-SemiBold",
+      fontSize: 16,
+      margin: 10
+    },
+    week: {
+      marginTop: 7,
+      marginHorizontal: 10,
+      flexDirection: "row",
+      justifyContent: "space-around"
+    },
+    arrowImage: {
+      tintColor: dateRangePickerTextColor
+    },
+    dayHeader: {
+      marginTop: 2,
+      marginBottom: 7,
+      width: 32,
+      textAlign: "center",
+      fontSize: 14,
+      fontFamily: "Roboto",
+      color: dateRangePickerTextColor
+    }
+  }
+};
 
 export default DateRangePicker;
