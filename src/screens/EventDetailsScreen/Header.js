@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Header = ({ children }: Props) => (
-  <View style={styles.header}>
+  <View accessibilityTraits={["header"]} style={styles.header}>
     <SafeAreaView>
       <StatusBar barStyle="light-content" animated />
       {children}

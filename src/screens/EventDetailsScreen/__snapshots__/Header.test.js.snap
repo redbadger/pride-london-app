@@ -2,6 +2,11 @@
 
 exports[`renders correctly 1`] = `
 <View
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
+  }
   style={
     Object {
       "backgroundColor": "#20215a",
