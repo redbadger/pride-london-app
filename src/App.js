@@ -1,8 +1,9 @@
 // @flow
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { TabNavigator, StackNavigator } from "react-navigation";
 import type { TabScene } from "react-navigation";
+import LinearGradient from "react-native-linear-gradient";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
 import iconEventsActive from "../assets/images/eventsActive.png";
@@ -13,6 +14,7 @@ import iconSavedActive from "../assets/images/savedActive.png";
 import iconSavedDefault from "../assets/images/savedDefault.png";
 import iconSupportUsActive from "../assets/images/supportUsActive.png";
 import iconSupportUsDefault from "../assets/images/supportUsDefault.png";
+import { transparent, tabBarShadowColor } from "./constants/colors";
 import {
   EVENT_LIST,
   EVENT_DETAILS,
@@ -24,22 +26,46 @@ import {
 } from "./constants/routes";
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
+import type { ImageRef } from "./data/image-ref";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 
-const tabIcon = (defaultIcon: number, activeIcon: number) => ({
+const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
   focused
 }: TabScene) => (
   <Image source={focused ? activeIcon : defaultIcon} width={28} height={28} />
 );
 
+const withShadow = Component => props => (
+  <View style={styles.shadowContainer}>
+    <Component {...props} />
+    <LinearGradient
+      colors={[transparent, tabBarShadowColor]}
+      style={styles.shadow}
+    />
+  </View>
+);
+
+const styles = StyleSheet.create({
+  shadowContainer: {
+    flex: 1
+  },
+  shadow: {
+    width: "100%",
+    height: 7,
+    position: "absolute",
+    left: 0,
+    bottom: 0
+  }
+});
+
 const HomeStack = StackNavigator(
   {
-    [HOME]: { screen: HomeScreen },
-    [EVENT_DETAILS]: { screen: EventDetailsScreen },
-    [FEATURED_EVENT_LIST]: { screen: FeaturedEventListScreen }
+    [HOME]: { screen: withShadow(HomeScreen) },
+    [EVENT_DETAILS]: { screen: withShadow(EventDetailsScreen) },
+    [FEATURED_EVENT_LIST]: { screen: withShadow(FeaturedEventListScreen) }
   },
   {
     initialRouteName: HOME,
@@ -49,14 +75,15 @@ const HomeStack = StackNavigator(
       tabBarTestIDProps: {
         testID: "home-tab-button"
       }
-    }
+    },
+    headerMode: "none"
   }
 );
 
 const EventsStack = StackNavigator(
   {
-    [EVENT_LIST]: { screen: EventsScreen },
-    [EVENT_DETAILS]: { screen: EventDetailsScreen }
+    [EVENT_LIST]: { screen: withShadow(EventsScreen) },
+    [EVENT_DETAILS]: { screen: withShadow(EventDetailsScreen) }
   },
   {
     initialRouteName: EVENT_LIST,
@@ -66,46 +93,50 @@ const EventsStack = StackNavigator(
       tabBarTestIDProps: {
         testID: "events-tab-button"
       }
-    }
+    },
+    headerMode: "none"
   }
 );
 
 const ParadeStack = StackNavigator(
   {
-    [PARADE]: { screen: () => <View /> }
+    [PARADE]: { screen: withShadow(() => <View />) }
   },
   {
     initialRouteName: PARADE,
     navigationOptions: {
       tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
       tabBarLabel: text.tabParade
-    }
+    },
+    headerMode: "none"
   }
 );
 
 const SavedStack = StackNavigator(
   {
-    [SAVED]: { screen: () => <View /> }
+    [SAVED]: { screen: withShadow(() => <View />) }
   },
   {
     initialRouteName: SAVED,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
       tabBarLabel: text.tabSaved
-    }
+    },
+    headerMode: "none"
   }
 );
 
 const SupportUsStack = StackNavigator(
   {
-    [SUPPORT_US]: { screen: () => <View /> }
+    [SUPPORT_US]: { screen: withShadow(() => <View />) }
   },
   {
     initialRouteName: SUPPORT_US,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
       tabBarLabel: text.tabSupportUs
-    }
+    },
+    headerMode: "none"
   }
 );
 
@@ -120,6 +151,8 @@ export default TabNavigator(
   {
     tabBarComponent: NavigationTabBar,
     tabBarPosition: "bottom",
+    swipeEnabled: false,
+    animationEnabled: false,
     initialRouteName: HOME
   }
 );

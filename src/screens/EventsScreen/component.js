@@ -19,10 +19,6 @@ type Props = {
 };
 
 class EventsScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
-  };
-
   render() {
     return (
       <View style={styles.container}>

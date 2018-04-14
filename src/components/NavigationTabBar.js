@@ -4,14 +4,11 @@ import { Animated, StyleSheet, View } from "react-native";
 import { NavigationActions } from "react-navigation";
 import type { TabScene, _TabBarBottomProps } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
-import LinearGradient from "react-native-linear-gradient";
 import {
-  transparent,
   tabBarBgColor,
   tabBarLabelColor,
   tabBarActiveLineColor,
   tabBarActiveLabelColor,
-  tabBarShadowColor,
   tabBarBorderColor
 } from "../constants/colors";
 import Touchable from "./Touchable";
@@ -163,10 +160,6 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
         style={styles.tabBarWrapper}
         forceInset={{ bottom: "always", top: "never" }}
       >
-        <LinearGradient
-          colors={[transparent, tabBarShadowColor]}
-          style={styles.shadow}
-        />
         <View
           testID="tab-bar"
           onLayout={event => {
@@ -219,14 +212,8 @@ const styles = StyleSheet.create({
   tabBarWrapper: {
     backgroundColor: tabBarBgColor,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: tabBarBorderColor
-  },
-  shadow: {
-    width: "100%",
-    height: 7,
-    position: "absolute",
-    left: 0,
-    top: -7
+    borderTopColor: tabBarBorderColor,
+    paddingHorizontal: 8
   },
   activeTabLine: {
     backgroundColor: tabBarActiveLineColor,
@@ -241,13 +228,14 @@ const styles = StyleSheet.create({
     height: 52,
     width: "100%",
     maxWidth: 440,
-    alignSelf: "center",
-    justifyContent: "space-around"
+    alignSelf: "center"
   },
   tab: {
     alignItems: "center",
     flexDirection: "column",
     minWidth: 48,
+    flex: 1,
+    marginHorizontal: 4,
     paddingTop: 4,
     paddingBottom: 2
   },

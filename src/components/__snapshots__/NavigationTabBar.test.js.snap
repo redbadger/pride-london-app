@@ -13,26 +13,10 @@ exports[`renders correctly 1`] = `
       "backgroundColor": "rgb(243, 243, 243)",
       "borderTopColor": "rgba(0, 0, 0, 0.25)",
       "borderTopWidth": 0.5,
+      "paddingHorizontal": 8,
     }
   }
 >
-  <LinearGradient
-    colors={
-      Array [
-        "transparent",
-        "rgba(0, 0, 0, 0.1)",
-      ]
-    }
-    style={
-      Object {
-        "height": 7,
-        "left": 0,
-        "position": "absolute",
-        "top": -7,
-        "width": "100%",
-      }
-    }
-  />
   <View
     onLayout={[Function]}
     style={
@@ -40,7 +24,6 @@ exports[`renders correctly 1`] = `
         "alignSelf": "center",
         "flexDirection": "row",
         "height": 52,
-        "justifyContent": "space-around",
         "maxWidth": 440,
         "width": "100%",
       }
@@ -61,7 +44,9 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
+          "flex": 1,
           "flexDirection": "column",
+          "marginHorizontal": 4,
           "minWidth": 48,
           "paddingBottom": 2,
           "paddingTop": 4,
@@ -158,7 +143,9 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
+          "flex": 1,
           "flexDirection": "column",
+          "marginHorizontal": 4,
           "minWidth": 48,
           "paddingBottom": 2,
           "paddingTop": 4,
