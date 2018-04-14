@@ -41,7 +41,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "rgb(32, 33, 90)",
+              "backgroundColor": "#20215a",
               "borderRadius": 4,
               "flex": 1,
               "height": 44,
@@ -66,7 +66,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
+              "backgroundColor": "#20215a",
               "borderRadius": 25,
               "height": 52,
               "justifyContent": "flex-end",
@@ -183,7 +183,7 @@ exports[`renders correctly with any date and any time 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "rgb(32, 33, 90)",
+              "backgroundColor": "#20215a",
               "borderRadius": 4,
               "flex": 1,
               "height": 44,
@@ -208,7 +208,7 @@ exports[`renders correctly with any date and any time 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
+              "backgroundColor": "#20215a",
               "borderRadius": 25,
               "height": 52,
               "justifyContent": "flex-end",
@@ -325,7 +325,7 @@ exports[`renders correctly with date range and two times 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "rgb(32, 33, 90)",
+              "backgroundColor": "#20215a",
               "borderRadius": 4,
               "flex": 1,
               "height": 44,
@@ -350,7 +350,7 @@ exports[`renders correctly with date range and two times 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
+              "backgroundColor": "#20215a",
               "borderRadius": 25,
               "height": 52,
               "justifyContent": "flex-end",
@@ -467,7 +467,7 @@ exports[`renders correctly with single date and single time 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "rgb(32, 33, 90)",
+              "backgroundColor": "#20215a",
               "borderRadius": 4,
               "flex": 1,
               "height": 44,
@@ -492,7 +492,7 @@ exports[`renders correctly with single date and single time 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "rgb(32, 33, 90)",
+              "backgroundColor": "#20215a",
               "borderRadius": 25,
               "height": 52,
               "justifyContent": "flex-end",
