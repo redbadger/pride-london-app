@@ -1,6 +1,10 @@
 // @flow
 export default {
+  tabHome: "Home",
   tabEvents: "Events",
+  tabParade: "Parade",
+  tabSaved: "Saved",
+  tabSupportUs: "Support us",
   filterByInterest: "I'm interested in...",
   filters: "Filters",
   filterPickerApply: (numberOfEvents: number) =>

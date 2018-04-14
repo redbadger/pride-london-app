@@ -13,7 +13,7 @@ exports[`renders correctly 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#D8D8D8",
+      "backgroundColor": "#d8d8d8",
       "borderRadius": 4,
       "justifyContent": "center",
     }
@@ -23,7 +23,7 @@ exports[`renders correctly 1`] = `
     markdown={false}
     style={
       Object {
-        "color": "#FFFFFF",
+        "color": "#ffffff",
       }
     }
     type="text"

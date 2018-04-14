@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityLabel="Super Awesome"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+>
+  <Image
+    source={
+      Object {
+        "uri": "/super-awesome-image.jpg",
+      }
+    }
+    style={
+      Object {
+        "height": 48,
+        "width": 48,
+      }
+    }
+  />
+</Touchable>
+`;

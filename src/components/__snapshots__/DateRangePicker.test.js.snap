@@ -28,7 +28,7 @@ exports[`renders correctly only startDate 1`] = `
         "color": "rgb(51, 51, 51)",
         "endingDay": true,
         "startingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+        "textColor": "#ffffff",
       },
     }
   }
@@ -55,12 +55,12 @@ exports[`renders correctly startDate after endDate 1`] = `
       "2018-01-01": Object {
         "color": "rgb(51, 51, 51)",
         "startingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+        "textColor": "#ffffff",
       },
       "2018-01-02": Object {
         "color": "rgb(51, 51, 51)",
         "endingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+        "textColor": "#ffffff",
       },
     }
   }
@@ -87,12 +87,12 @@ exports[`renders correctly startDate before endDate 1`] = `
       "2018-01-01": Object {
         "color": "rgb(51, 51, 51)",
         "startingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+        "textColor": "#ffffff",
       },
       "2018-01-02": Object {
         "color": "rgb(51, 51, 51)",
         "endingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+        "textColor": "#ffffff",
       },
     }
   }
@@ -120,7 +120,7 @@ exports[`renders correctly startDate equals endDate 1`] = `
         "color": "rgb(51, 51, 51)",
         "endingDay": true,
         "startingDay": true,
-        "textColor": "rgb(255, 255, 255)",
+        "textColor": "#ffffff",
       },
     }
   }
