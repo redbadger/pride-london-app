@@ -10,7 +10,9 @@ import {
   cardBgColor,
   imageBgColor,
   titleTextColor,
-  eucalyptusGreenColor
+  eucalyptusGreenColor,
+  eventCardShadow,
+  bgColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 
@@ -119,9 +121,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 12
   },
   tile: {
-    width: "50%",
-    paddingHorizontal: 4,
-    marginBottom: 8
+    marginHorizontal: 4,
+    marginBottom: 12,
+    borderRadius: 3,
+    // The below properties are required for ioS shadow
+    shadowColor: eventCardShadow,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    // The below properties are required for android shadow
+    borderWidth: 0,
+    elevation: 3,
+    backgroundColor: bgColor
   }
 });
 
