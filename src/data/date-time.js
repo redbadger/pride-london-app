@@ -5,6 +5,4 @@ export type DateRange = {
   endDate: string
 };
 
-export type DateOrDateRange = string | DateRange;
-
 export type Time = "morning" | "afternoon" | "evening";

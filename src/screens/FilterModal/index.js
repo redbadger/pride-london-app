@@ -10,7 +10,7 @@ import {
 import { selectFilteredEvents } from "../../selectors/events";
 import Component from "./component";
 import text from "../../constants/text";
-import type { FilterCollection } from "../../reducers/event-filters";
+import type { FilterCollection } from "../../data/event-filters";
 import type { TagFilter } from "./component";
 
 type OwnProps = {

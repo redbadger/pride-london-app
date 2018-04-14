@@ -13,11 +13,11 @@ import {
   filterBgColor
 } from "../constants/colors";
 import text from "../constants/text";
-import type { DateOrDateRange, Time } from "../data/date-time";
+import type { DateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
 
 type Props = {
-  dateFilter: ?DateOrDateRange,
+  dateFilter: ?DateRange,
   timeFilter: Set<Time>,
   onFilterButtonPress: () => void
 };

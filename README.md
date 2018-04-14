@@ -4,7 +4,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/maintainability)](https://codeclimate.com/github/redbadger/pride-london-app/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/test_coverage)](https://codeclimate.com/github/redbadger/pride-london-app/test_coverage)
 
-
 <!-- Generateed with markdown-toc (https://github.com/jonschlinkert/markdown-toc) -->
 
 <!-- toc -->
@@ -48,6 +47,26 @@ And install dependencies
 
 * Install Xcode from the App Store and accept the license agreement.
 * Run Xcode once so that it can install additional components it will need.
+
+To develop on a real device locally you will need to install the development provisioning profile from fastlane.
+
+Install fastlane using
+
+```
+[sudo] gem install fastlane -NV
+```
+
+or alternatively using `brew cask install fastlane`
+
+You can then run the following command from the ios folder:
+
+```
+fastlane match development --readonly
+```
+
+You will need access to the private `match-ios-certificates` repo and will be prompted for the passphrase. Ask on the channel to get this sent to you in a secure way ;) On success you should be presented with the installed certificates and provisioning profile for org.prideinlondon.festival.
+
+Next, open Xcode and the PrideLondonApp.xcodeproj. Plug in your device via USB, and select it in the device dropdown in the top left of Xcode. Then hit the build (Play) button.
 
 #### Android
 
@@ -171,5 +190,5 @@ To find out more about ADRs have a read of this article: http://thinkrelevance.c
 
 * [CI Pipeline](https://circleci.com/gh/redbadger/workflows/pride-london-app): View and debug builds
 
-* We would like to thank [BrowserStack](https://www.browserstack.com) for allowing us to use their resources to test the Pride in London App for free! 
-[![BrowserStack Logo](images/browserstack-logo-600x315.png)](https://www.browserstack.com)
+* We would like to thank [BrowserStack](https://www.browserstack.com) for allowing us to use their resources to test the Pride in London App for free!
+  [![BrowserStack Logo](images/browserstack-logo-600x315.png)](https://www.browserstack.com)

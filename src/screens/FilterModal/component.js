@@ -19,7 +19,7 @@ import {
 } from "../../constants/colors";
 import tags from "../../data/tags";
 import text from "../../constants/text";
-import type { FilterCollection } from "../../reducers/event-filters";
+import type { FilterCollection } from "../../data/event-filters";
 
 export type TagFilter = { [string]: Set<string> };
 

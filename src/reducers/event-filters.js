@@ -1,21 +1,7 @@
 // @flow
 import type { Reducer } from "redux";
-import type { DateOrDateRange, Time } from "../data/date-time";
 import type { EventFiltersAction } from "../actions/event-filters";
-
-export type FilterCollection = {
-  date: ?DateOrDateRange,
-  timeOfDay: Set<Time>,
-  categories: Set<string>,
-  price: Set<string>,
-  audience: Set<string>,
-  venueDetails: Set<string>
-};
-
-export type State = {
-  selectedFilters: FilterCollection,
-  stagedFilters: FilterCollection
-};
+import type { State } from "../data/event-filters";
 
 const defaultState = {
   selectedFilters: {
