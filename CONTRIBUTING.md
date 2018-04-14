@@ -35,6 +35,16 @@ formatting on save.
 Basic static analysis is done by [ESLint](https://eslint.org/), most editor
 support error highlighting, which is also highly recommended.
 
+### Accessibility
+
+Follow these tips to make new features accessible:
+
+* Use our `Touchable` component for all touchable components (e.g. buttons). It applies the button trait and a minimum size of 44x44 by default.
+* Use the correct [`accessibilityTraits`](http://facebook.github.io/react-native/docs/accessibility.html#accessibilitytraits-ios) and [`accessibilityComponentType`](http://facebook.github.io/react-native/docs/accessibility.html#accessibilitycomponenttype-android).
+* Make sure all touchable components have a hit area of at least 44x44.
+* If a button only contains an image, make sure to add an `accessibilityLabel`.
+* Try not to use fixed width/height for anything containing text. It will break when users scale the font size on their device. If it's difficult to do just using minWidth/minHweight, use `height: 44 * PixelRatio.getFontScale()` instead.
+
 ### Unit tests and test coverage
 
 Pride app uses [Jest](https://facebook.github.io/jest/) as a test runner. Run
