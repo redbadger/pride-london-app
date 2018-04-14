@@ -53,8 +53,8 @@ const PerformanceList = ({ performances, locale }: Props) => (
       <PerformanceItem
         style={styles.item}
         key={index}
-        startTime={item.startTime}
-        title={item.title}
+        startTime={item.fields.startTime[locale]}
+        title={item.fields.title[locale]}
       >
         {item}
       </PerformanceItem>
