@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="button"
+  accessibilityLabel="Super Awesome"
   accessibilityTraits={
     Array [
       "button",
@@ -10,25 +11,19 @@ exports[`renders correctly 1`] = `
   }
   delayPressIn={50}
   onPress={[Function]}
-  style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#d8d8d8",
-      "borderRadius": 4,
-      "justifyContent": "center",
-    }
-  }
 >
-  <Text
-    markdown={false}
-    style={
+  <Image
+    source={
       Object {
-        "color": "#ffffff",
+        "uri": "/super-awesome-image.jpg",
       }
     }
-    type="text"
-  >
-    a button
-  </Text>
+    style={
+      Object {
+        "height": 48,
+        "width": 48,
+      }
+    }
+  />
 </Touchable>
 `;
