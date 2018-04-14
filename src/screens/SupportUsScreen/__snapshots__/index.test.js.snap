@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Header>
+    <ContentPadding
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 48,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "#ffffff",
+          }
+        }
+        type="h2"
+      >
+        Support us
+      </Text>
+    </ContentPadding>
+  </Header>
+  <ScrollView>
+    <View
+      style={
+        Object {
+          "alignSelf": "center",
+          "maxWidth": 440,
+          "width": "100%",
+        }
+      }
+    >
+      <SupportUsSectionHeader
+        image={1}
+        title="As an individual"
+      />
+      <ContentPadding
+        style={
+          Object {
+            "marginBottom": 16,
+          }
+        }
+      >
+        <SupportUsButton
+          color="#20215a"
+          description="Every donation keep us marching"
+          navigation={null}
+          style={
+            Object {
+              "marginTop": 12,
+            }
+          }
+          title="Donate"
+          url="DONATE"
+        />
+        <SupportUsButton
+          color="#fc4984"
+          description="Passionate about equality? Join us."
+          isExternalLink={true}
+          navigation={null}
+          style={
+            Object {
+              "marginTop": 12,
+            }
+          }
+          title="Volunteer"
+          url="https://example.com"
+        />
+        <SupportUsButton
+          color="#c3d30e"
+          contrast={true}
+          description="Visit our online shop on The Gay UK"
+          isExternalLink={true}
+          navigation={null}
+          style={
+            Object {
+              "marginTop": 12,
+            }
+          }
+          title="Buy merchandise"
+          url="https://example.com"
+        />
+      </ContentPadding>
+      <SupportUsSectionHeader
+        image={1}
+        title="As a business"
+      />
+      <ContentPadding
+        style={
+          Object {
+            "marginBottom": 16,
+          }
+        }
+      >
+        <SupportUsButton
+          color="#00a3bd"
+          description="Support the community"
+          navigation={null}
+          style={
+            Object {
+              "marginTop": 12,
+            }
+          }
+          title="Partner with us"
+          url="SPONSOR"
+        />
+      </ContentPadding>
+    </View>
+  </ScrollView>
+</View>
+`;

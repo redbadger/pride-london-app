@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<withOrientation
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
+  }
+  style={
+    Object {
+      "backgroundColor": "#20215a",
+    }
+  }
+>
+  <StatusBar
+    animated={true}
+    barStyle="light-content"
+    showHideTransition="fade"
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Lorem Ipsum
+  </Text>
+</withOrientation>
+`;

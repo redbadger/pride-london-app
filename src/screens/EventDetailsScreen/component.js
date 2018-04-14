@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { Image, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import Header from "./Header";
+import Header from "../../components/Header";
 import IconButton from "./IconButton";
 import IconItem from "./IconItem";
 import EventMap from "./EventMap";

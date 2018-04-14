@@ -46,4 +46,20 @@ describe("ContentPadding", () => {
 
     dimensionsMock.mockRestore();
   });
+
+  it("adds no padding on landscape (very large width)", () => {
+    const dimensionsMock = jest
+      .spyOn(Dimensions, "get")
+      .mockImplementation(() => ({ width: 441 }));
+
+    const output = shallow(
+      <ContentPadding>
+        <Text>Something</Text>
+      </ContentPadding>
+    );
+
+    expect(output.props().style[0].paddingHorizontal).toBeUndefined();
+
+    dimensionsMock.mockRestore();
+  });
 });
