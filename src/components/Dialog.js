@@ -15,7 +15,7 @@ import {
   dialogApplyButtonBgColor,
   dialogApplyButtonTextColor,
   dialogHeaderDividerColor,
-  textColor
+  dialogTitleColor
 } from "../constants/colors";
 
 type Props = {
@@ -64,7 +64,9 @@ const Dialog = ({
           </View>
         </TouchableWithoutFeedback>
         <Touchable onPress={onApply} style={styles.applyButton}>
-          <Text style={styles.applyButtonText}>{applyButtonText}</Text>
+          <Text type="h2" style={styles.applyButtonText}>
+            {applyButtonText}
+          </Text>
         </Touchable>
       </View>
     </TouchableWithoutFeedback>
@@ -112,7 +114,9 @@ const styles = StyleSheet.create({
     alignItems: "flex-end"
   },
   headerTitle: {
-    color: textColor
+    color: dialogTitleColor,
+    alignSelf: "flex-end",
+    marginBottom: 6
   },
   applyButton: {
     backgroundColor: dialogApplyButtonBgColor,
@@ -123,7 +127,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   applyButtonText: {
-    color: dialogApplyButtonTextColor
+    color: dialogApplyButtonTextColor,
+    lineHeight: 48
   }
 });
 

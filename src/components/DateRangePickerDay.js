@@ -36,6 +36,40 @@ type DayProps = {
   onLongPress: Function
 };
 
+const textStyle = (marking: DayMarking, state: ?"disabled") => [
+  styles.text,
+  marking.selected ? styles.selectedText : {},
+  state === "disabled" ? styles.disabledText : {}
+];
+
+const leftFillerStyle = (marking: DayMarking) => [
+  styles.filler,
+  marking.selected && !marking.startingDay
+    ? { backgroundColor: dateRangePickerSelectedColor }
+    : { backgroundColor: "transparent" }
+];
+
+const rightFillerStyle = (marking: DayMarking) => [
+  styles.filler,
+  marking.selected && !marking.endingDay
+    ? { backgroundColor: dateRangePickerSelectedColor }
+    : { backgroundColor: "transparent" }
+];
+
+const dayStyle = (marking: DayMarking) => [
+  styles.day,
+  marking.selected
+    ? { backgroundColor: dateRangePickerSelectedColor }
+    : { backgroundColor: "transparent" }
+];
+
+const dotStyle = (marking: DayMarking) => [
+  styles.dot,
+  marking.selected
+    ? { backgroundColor: dateRangePickerTextColor }
+    : { backgroundColor: dateRangePickerSelectedColor }
+];
+
 export default class Day extends React.PureComponent<DayProps> {
   onPress = () => {
     if (this.props.state !== "disabled") this.props.onPress(this.props.date);
@@ -49,40 +83,6 @@ export default class Day extends React.PureComponent<DayProps> {
   render() {
     const { state, marking, date } = this.props;
 
-    const textStyles = [
-      styles.text,
-      marking.selected ? styles.selectedText : {},
-      state === "disabled" ? styles.disabledText : {}
-    ];
-
-    const leftFillerStyle = [
-      styles.filler,
-      marking.selected && !marking.startingDay
-        ? { backgroundColor: dateRangePickerSelectedColor }
-        : { backgroundColor: "transparent" }
-    ];
-
-    const rightFillerStyle = [
-      styles.filler,
-      marking.selected && !marking.endingDay
-        ? { backgroundColor: dateRangePickerSelectedColor }
-        : { backgroundColor: "transparent" }
-    ];
-
-    const dayStyle = [
-      styles.day,
-      marking.selected
-        ? { backgroundColor: dateRangePickerSelectedColor }
-        : { backgroundColor: "transparent" }
-    ];
-
-    const dotStyle = [
-      styles.dot,
-      marking.selected
-        ? { backgroundColor: dateRangePickerTextColor }
-        : { backgroundColor: dateRangePickerSelectedColor }
-    ];
-
     return (
       <TouchableWithoutFeedback
         onPress={this.onPress}
@@ -91,18 +91,18 @@ export default class Day extends React.PureComponent<DayProps> {
         <View style={styles.container}>
           {marking.selected && (
             <View style={styles.overlay}>
-              <View style={leftFillerStyle} />
-              <View style={rightFillerStyle} />
+              <View style={leftFillerStyle(marking)} />
+              <View style={rightFillerStyle(marking)} />
             </View>
           )}
-          <View style={dayStyle}>
-            <Text type="small" style={textStyles}>
+          <View style={dayStyle(marking)}>
+            <Text type="small" style={textStyle(marking, state)}>
               {date.day}
             </Text>
           </View>
           {marking.marked && (
             <View style={styles.overlay}>
-              <View style={dotStyle} />
+              <View style={dotStyle(marking)} />
             </View>
           )}
         </View>

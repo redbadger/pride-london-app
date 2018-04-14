@@ -9,6 +9,8 @@ import type { DateRange } from "../data/date-time";
 import Day from "./DateRangePickerDay";
 import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
 
+import { dateRangePickerTextColor } from "../constants/colors";
+
 const getSortedDateRange = (dates: DateRange) =>
   isBefore(dates.endDate, dates.startDate)
     ? { startDate: dates.endDate, endDate: dates.startDate }
@@ -75,15 +77,11 @@ const getMarkedDates = (dateRange: ?DateRange, today: string): DayMarkings => {
 type Props = {
   onChange: DateRange => void,
   dateRange?: ?DateRange,
-  today: Date,
+  today?: Date,
   forceNewRange: boolean
 };
 
 class DateRangePicker extends React.PureComponent<Props> {
-  static defaultProps = {
-    today: new Date()
-  };
-
   onDaySelected = (day: CalendarDay) => {
     const { dateRange, onChange, forceNewRange } = this.props;
 
@@ -104,6 +102,7 @@ class DateRangePicker extends React.PureComponent<Props> {
   };
 
   render() {
+    const today = this.props.today || new Date();
     const dateRange = this.props.dateRange
       ? getSortedDateRange(this.props.dateRange)
       : this.props.dateRange;
@@ -111,17 +110,53 @@ class DateRangePicker extends React.PureComponent<Props> {
     return (
       <Calendar
         current={dateRange ? dateRange.startDate : null}
-        markedDates={getMarkedDates(
-          dateRange,
-          formatDate(this.props.today, "YYYY-MM-DD")
-        )}
+        markedDates={getMarkedDates(dateRange, formatDate(today, "YYYY-MM-DD"))}
         markingType="period"
         onDayPress={this.onDaySelected}
         dayComponent={Day}
-        hideExtraDays={true}
+        hideExtraDays
+        theme={calendarTheme}
       />
     );
   }
 }
+
+const calendarTheme = {
+  "stylesheet.calendar.main": {
+    week: {
+      marginLeft: 10,
+      marginRight: 10,
+      marginTop: 7,
+      marginBottom: 7,
+      flexDirection: "row",
+      justifyContent: "space-around"
+    }
+  },
+  "stylesheet.calendar.header": {
+    monthText: {
+      fontFamily: "Poppins-SemiBold",
+      fontSize: 16,
+      margin: 10
+    },
+    week: {
+      marginTop: 7,
+      marginHorizontal: 10,
+      flexDirection: "row",
+      justifyContent: "space-around"
+    },
+    arrowImage: {
+      tintColor: dateRangePickerTextColor
+    },
+    dayHeader: {
+      marginTop: 2,
+      marginBottom: 7,
+      width: 32,
+      textAlign: "center",
+      fontSize: 14,
+      fontFamily: "Roboto",
+      color: dateRangePickerTextColor
+    }
+  }
+};
 
 export default DateRangePicker;

@@ -7,13 +7,52 @@ exports[`renders correctly no dates 1`] = `
   hideExtraDays={true}
   markedDates={
     Object {
-      "2018-04-08": Object {
+      "2018-04-14": Object {
         "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "arrowImage": Object {
+          "tintColor": "rgb(45, 47, 127)",
+        },
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 16,
+          "margin": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginHorizontal": 10,
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginLeft": 10,
+          "marginRight": 10,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
 />
 `;
 
@@ -29,13 +68,52 @@ exports[`renders correctly only startDate 1`] = `
         "selected": true,
         "startingDay": true,
       },
-      "2018-04-08": Object {
+      "2018-04-14": Object {
         "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "arrowImage": Object {
+          "tintColor": "rgb(45, 47, 127)",
+        },
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 16,
+          "margin": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginHorizontal": 10,
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginLeft": 10,
+          "marginRight": 10,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
 />
 `;
 
@@ -54,13 +132,52 @@ exports[`renders correctly startDate after endDate 1`] = `
         "endingDay": true,
         "selected": true,
       },
-      "2018-04-08": Object {
+      "2018-04-14": Object {
         "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "arrowImage": Object {
+          "tintColor": "rgb(45, 47, 127)",
+        },
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 16,
+          "margin": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginHorizontal": 10,
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginLeft": 10,
+          "marginRight": 10,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
 />
 `;
 
@@ -79,13 +196,52 @@ exports[`renders correctly startDate before endDate 1`] = `
         "endingDay": true,
         "selected": true,
       },
-      "2018-04-08": Object {
+      "2018-04-14": Object {
         "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "arrowImage": Object {
+          "tintColor": "rgb(45, 47, 127)",
+        },
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 16,
+          "margin": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginHorizontal": 10,
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginLeft": 10,
+          "marginRight": 10,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
 />
 `;
 
@@ -101,12 +257,51 @@ exports[`renders correctly startDate equals endDate 1`] = `
         "selected": true,
         "startingDay": true,
       },
-      "2018-04-08": Object {
+      "2018-04-14": Object {
         "marked": true,
       },
     }
   }
   markingType="period"
   onDayPress={[Function]}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "arrowImage": Object {
+          "tintColor": "rgb(45, 47, 127)",
+        },
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 16,
+          "margin": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginHorizontal": 10,
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginLeft": 10,
+          "marginRight": 10,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
 />
 `;

@@ -7,8 +7,9 @@ export const textColor = "#272727";
 
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 export const dialogBgColor = "#FFFFFF";
-export const dialogApplyButtonBgColor = "rgb(51, 51, 51)";
-export const dialogApplyButtonTextColor = "#FFFFFF";
+export const dialogTitleColor = "rgb(45, 47, 127)";
+export const dialogApplyButtonBgColor = "rgb(44, 218, 157)";
+export const dialogApplyButtonTextColor = "rgb(45, 47, 127)";
 export const dialogHeaderDividerColor = "#F2F2F2";
 
 // FILTER HEADER

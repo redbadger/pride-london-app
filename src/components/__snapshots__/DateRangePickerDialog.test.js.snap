@@ -26,8 +26,12 @@ exports[`renders correctly with date selection 1`] = `
     >
       <Text
         markdown={false}
-        style={Object {}}
-        type="text"
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
+        }
+        type="small"
       >
         Clear
       </Text>
@@ -47,7 +51,6 @@ exports[`renders correctly with date selection 1`] = `
     }
     forceNewRange={false}
     onChange={[Function]}
-    today={2018-04-08T17:33:40.375Z}
   />
 </Dialog>
 `;
@@ -78,8 +81,12 @@ exports[`renders correctly with range selection 1`] = `
     >
       <Text
         markdown={false}
-        style={Object {}}
-        type="text"
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
+        }
+        type="small"
       >
         Clear
       </Text>
@@ -99,7 +106,6 @@ exports[`renders correctly with range selection 1`] = `
     }
     forceNewRange={false}
     onChange={[Function]}
-    today={2018-04-08T17:33:40.375Z}
   />
 </Dialog>
 `;
@@ -130,8 +136,12 @@ exports[`renders correctly without date selection 1`] = `
     >
       <Text
         markdown={false}
-        style={Object {}}
-        type="text"
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
+        }
+        type="small"
       >
         Clear
       </Text>
@@ -146,7 +156,6 @@ exports[`renders correctly without date selection 1`] = `
     dateRange={null}
     forceNewRange={false}
     onChange={[Function]}
-    today={2018-04-08T17:33:40.375Z}
   />
 </Dialog>
 `;
