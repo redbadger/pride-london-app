@@ -5,8 +5,8 @@ exports[`renders correctly 1`] = `
   markdown={false}
   style={
     Object {
-      "backgroundColor": "#D8D8D8",
-      "color": "#FFF",
+      "backgroundColor": "#d8d8d8",
+      "color": "#ffffff",
       "marginBottom": 8,
       "marginRight": 8,
       "paddingHorizontal": 8,
