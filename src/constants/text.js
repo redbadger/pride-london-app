@@ -38,5 +38,7 @@ export default {
     "Accessible Toilets": "Accessible toilets",
     "Wheelchair accessibile": "Wheelchair access",
     area: "Area of London"
-  }
+  },
+  cancel: "Cancel",
+  clearAll: "Clear all"
 };

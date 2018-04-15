@@ -25,7 +25,13 @@ export type TagFilter = { [string]: Set<string> };
 
 const CancelButton = ({ onPress }: { onPress: () => void }) => (
   <Touchable onPress={onPress}>
-    <Text style={{ color: interestButtonTextColor }}>Cancel</Text>
+    <Text style={{ color: interestButtonTextColor }}>{text.cancel}</Text>
+  </Touchable>
+);
+
+const ClearButton = ({ onPress }: { onPress: () => void }) => (
+  <Touchable onPress={onPress}>
+    <Text style={{ color: interestButtonTextColor }}>{text.clearAll}</Text>
   </Touchable>
 );
 
@@ -39,21 +45,28 @@ type Props = {
 };
 
 class FilterModal extends PureComponent<Props> {
-  static navigationOptions = {
+  static navigationOptions = ({
+    navigation: { state: { params } }
+  }: {
+    navigation: { state: { params: { handleClear: () => void } } }
+  }) => ({
     title: "Filter Events",
     headerLeft: CancelButton,
+    headerRight: <ClearButton onPress={() => params && params.handleClear()} />,
     headerStyle: {
       backgroundColor: filterBgColor,
       paddingHorizontal: calculateHorizontalPadding()
     },
     headerTitleStyle: { color: filterModalTitleColor, fontWeight: "bold" }
-  };
+  });
 
   componentDidMount() {
-    this.didBlurSubscription = this.props.navigation.addListener(
-      "willBlur",
-      this.props.onCancel
-    );
+    const { navigation, onCancel } = this.props;
+    this.didBlurSubscription = navigation.addListener("willBlur", onCancel);
+
+    navigation.setParams({
+      handleClear: this.clearTagFilters
+    });
   }
 
   componentWillUnmount() {
@@ -75,8 +88,19 @@ class FilterModal extends PureComponent<Props> {
     return values;
   };
 
+  clearTagFilters = () =>
+    this.props.onChange(
+      Object.keys(tags).reduce((acc, key) => ({ ...acc, [key]: new Set() }), {})
+    );
+
   render() {
-    const { applyButtonText, onApply, onChange, eventFilters } = this.props;
+    const {
+      applyButtonText,
+      onApply,
+      onChange,
+      eventFilters,
+      navigation
+    } = this.props;
     return (
       <SafeAreaView style={styles.flex} forceInset={{ bottom: "always" }}>
         <ScrollView style={styles.flex}>
@@ -116,7 +140,7 @@ class FilterModal extends PureComponent<Props> {
               text={applyButtonText}
               onPress={() => {
                 onApply();
-                this.props.navigation.goBack();
+                navigation.goBack();
               }}
             />
           </ContentPadding>
