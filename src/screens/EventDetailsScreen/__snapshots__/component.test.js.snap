@@ -277,7 +277,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             }
           >
             <IconItem
-              content={null}
               icon={
                 <Text
                   allowFontScaling={true}
@@ -288,10 +287,21 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                   icn
                 </Text>
               }
-              textStyle={Object {}}
-              title="john.smith@eventname.com"
-              titleType="text"
-            />
+              style={Object {}}
+            >
+              <Text
+                allowFontScaling={true}
+                markdown={false}
+                style={
+                  Object {
+                    "color": "#2d2f7f",
+                  }
+                }
+                type="h4"
+              >
+                john.smith@eventname.com
+              </Text>
+            </IconItem>
           </View>
           <View
             style={
@@ -301,7 +311,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             }
           >
             <IconItem
-              content={null}
               icon={
                 <Text
                   allowFontScaling={true}
@@ -312,10 +321,21 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                   icn
                 </Text>
               }
-              textStyle={Object {}}
-              title="07891234567"
-              titleType="text"
-            />
+              style={Object {}}
+            >
+              <Text
+                allowFontScaling={true}
+                markdown={false}
+                style={
+                  Object {
+                    "color": "#2d2f7f",
+                  }
+                }
+                type="h4"
+              >
+                07891234567
+              </Text>
+            </IconItem>
           </View>
         </View>
         <View

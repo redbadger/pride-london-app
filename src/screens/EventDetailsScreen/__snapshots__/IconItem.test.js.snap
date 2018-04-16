@@ -3,10 +3,13 @@
 exports[`renders correctly 1`] = `
 <View
   style={
-    Object {
-      "flex": 1,
-      "flexDirection": "row",
-    }
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      },
+      Object {},
+    ]
   }
 >
   <View
@@ -34,16 +37,9 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
+      accessible={true}
       allowFontScaling={true}
-      markdown={false}
-      style={
-        Array [
-          Object {
-            "color": "#2d2f7f",
-          },
-          Object {},
-        ]
-      }
+      ellipsizeMode="tail"
       type="h4"
     >
       some thing

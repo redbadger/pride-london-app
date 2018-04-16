@@ -7,7 +7,7 @@ import IconItem from "./IconItem";
 import CategoryLabel from "./CategoryLabel";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
-import { whiteColor } from "../../constants/colors";
+import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event } from "../../data/event";
@@ -46,51 +46,48 @@ const EventOverview = ({ event }: Props) => {
           <CategoryLabel key={categoryName} categoryName={categoryName} />
         ))}
       </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Image source={dateIcon} />}
-          title={dateDisplay}
-          content={<Text type="small">{timeDisplay}</Text>}
-        />
-      </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Text type="small">icn</Text>}
-          title={event.fields.locationName[locale]}
-        />
-      </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Text type="small">icn</Text>}
-          title={`${text.eventDetailsPrice}${
-            event.fields.eventPriceLow[locale]
-          }`}
-        />
-      </View>
+      <IconItem icon={<Image source={dateIcon} />} style={styles.iconItem}>
+        <Text type="h4" style={styles.detailTitle}>
+          {dateDisplay}
+        </Text>
+        <Text type="small">{timeDisplay}</Text>
+      </IconItem>
+      <IconItem icon={<Text type="small">icn</Text>} style={styles.iconItem}>
+        <Text type="h4" style={styles.detailTitle}>
+          {event.fields.locationName[locale]}
+        </Text>
+      </IconItem>
+      <IconItem icon={<Text type="small">icn</Text>} style={styles.iconItem}>
+        <Text type="h4" style={styles.detailTitle}>
+          {`${text.eventDetailsPrice}${event.fields.eventPriceLow[locale]}`}
+        </Text>
+      </IconItem>
       {event.fields.venueDetails &&
         event.fields.venueDetails[locale].includes(
           strings.venueDetailsGenderNeutralToilets
         ) && (
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="small">icn</Text>}
-              title={text.eventDetailsGenderNeutralToilets}
-            />
-          </View>
+          <IconItem
+            icon={<Text type="small">icn</Text>}
+            style={styles.iconItem}
+          >
+            <Text type="h4" styles={styles.detailTitle}>
+              {text.eventDetailsGenderNeutralToilets}
+            </Text>
+          </IconItem>
         )}
       {event.fields.accessibilityOptions &&
         event.fields.accessibilityOptions[locale].length > 0 && (
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="small">icn</Text>}
-              title={text.eventDetailsAccessibility}
-              content={
-                <Text type="small">
-                  {event.fields.accessibilityOptions[locale].join(", ")}
-                </Text>
-              }
-            />
-          </View>
+          <IconItem
+            icon={<Text type="small">icn</Text>}
+            style={styles.iconItem}
+          >
+            <Text type="h4" styles={styles.detailTitle}>
+              {text.eventDetailsAccessibility}
+            </Text>
+            <Text type="small">
+              {event.fields.accessibilityOptions[locale].join(", ")}
+            </Text>
+          </IconItem>
         )}
     </ContentPadding>
   );
@@ -107,8 +104,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap"
   },
-  iconItemWrapper: {
+  iconItem: {
     marginBottom: 20
+  },
+  detailTitle: {
+    color: lightNavyBlueColor
   }
 });
 
