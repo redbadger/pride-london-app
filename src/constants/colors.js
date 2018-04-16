@@ -21,6 +21,7 @@ export const whiteColor = "#ffffff";
 export const velvetColor = "#660c63";
 export const blackColor = "#111111";
 export const coralColor = "#ff5b44";
+export const shadowColor = "rgba(0, 0, 0, 0.1)";
 
 // CUSTOM
 
