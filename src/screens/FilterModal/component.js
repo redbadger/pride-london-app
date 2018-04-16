@@ -1,39 +1,19 @@
 // @flow
 import React, { PureComponent, Fragment } from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
 import Button from "../../components/Button";
-import Touchable from "../../components/Touchable";
-import ContentPadding, {
-  calculateHorizontalPadding
-} from "../../components/ContentPadding";
+import ContentPadding from "../../components/ContentPadding";
 import SectionHeader from "../../components/SectionHeader";
 import CheckBox from "../../components/CheckBox";
-import {
-  interestButtonTextColor,
-  filterBgColor,
-  bgColor,
-  filterModalShadow,
-  filterModalTitleColor
-} from "../../constants/colors";
+import { bgColor, filterModalShadow } from "../../constants/colors";
 import tags from "../../data/tags";
 import text from "../../constants/text";
 import type { FilterCollection, Area } from "../../data/event-filters";
+import Header from "./Header";
 
 export type TagFilter = { [string]: Set<string> };
-
-const CancelButton = ({ onPress }: { onPress: () => void }) => (
-  <Touchable onPress={onPress}>
-    <Text style={{ color: interestButtonTextColor }}>{text.cancel}</Text>
-  </Touchable>
-);
-
-const ClearButton = ({ onPress }: { onPress: () => void }) => (
-  <Touchable onPress={onPress}>
-    <Text style={{ color: interestButtonTextColor }}>{text.clearAll}</Text>
-  </Touchable>
-);
 
 type Props = {
   navigation: NavigationScreenProp<{}>,
@@ -46,18 +26,18 @@ type Props = {
 
 class FilterModal extends PureComponent<Props> {
   static navigationOptions = ({
-    navigation: { state: { params } }
+    navigation
   }: {
-    navigation: { state: { params: { handleClear: () => void } } }
+    navigation: NavigationScreenProp
   }) => ({
-    title: "Filter Events",
-    headerLeft: CancelButton,
-    headerRight: <ClearButton onPress={() => params && params.handleClear()} />,
-    headerStyle: {
-      backgroundColor: filterBgColor,
-      paddingHorizontal: calculateHorizontalPadding()
-    },
-    headerTitleStyle: { color: filterModalTitleColor, fontWeight: "bold" }
+    header: (
+      <Header
+        onClearPress={() =>
+          navigation.state.params && navigation.state.params.handleClear()
+        }
+        onCancelPress={() => navigation.goBack()}
+      />
+    )
   });
 
   componentDidMount() {

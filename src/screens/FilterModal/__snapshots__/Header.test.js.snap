@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "top": "always",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#2d2f7f",
+      "height": 50,
+    }
+  }
+>
+  <ContentPadding
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <ActionButton
+      label="Cancel"
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "flex": 1,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={
+          Object {
+            "color": "#ffffff",
+          }
+        }
+        type="h2"
+      >
+        Filter Events
+      </Text>
+    </View>
+    <ActionButton
+      label="Clear all"
+      onPress={[Function]}
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flex": 1,
+        }
+      }
+    />
+  </ContentPadding>
+</withOrientation>
+`;

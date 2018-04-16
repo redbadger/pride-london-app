@@ -58,5 +58,6 @@ export default {
   cancel: "Cancel",
   zeroSelected: "0 selected",
   showEvents,
-  clearAll: "Clear all"
+  clearAll: "Clear all",
+  filterEvents: "Filter Events"
 };

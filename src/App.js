@@ -174,7 +174,9 @@ const RootStack = StackNavigator(
   },
   {
     mode: "modal",
-    headerMode: "none"
+    navigationOptions: {
+      header: null
+    }
   }
 );
 
