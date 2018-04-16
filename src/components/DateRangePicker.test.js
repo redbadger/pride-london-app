@@ -10,7 +10,7 @@ describe("renders correctly", () => {
       <DateRangePicker
         onChange={() => {}}
         forceNewRange={false}
-        today="2018-04-14"
+        today={new Date("2018-04-14")}
       />
     );
     expect(output).toMatchSnapshot();
@@ -22,7 +22,7 @@ describe("renders correctly", () => {
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
         forceNewRange={false}
-        today="2018-04-14"
+        today={new Date("2018-04-14")}
       />
     );
     expect(output).toMatchSnapshot();
@@ -34,7 +34,7 @@ describe("renders correctly", () => {
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-02" }}
         forceNewRange={false}
-        today="2018-04-14"
+        today={new Date("2018-04-14")}
       />
     );
     expect(output).toMatchSnapshot();
@@ -46,7 +46,7 @@ describe("renders correctly", () => {
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-02", endDate: "2018-01-01" }}
         forceNewRange={false}
-        today="2018-04-14"
+        today={new Date("2018-04-14")}
       />
     );
     expect(output).toMatchSnapshot();
@@ -58,7 +58,7 @@ describe("renders correctly", () => {
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
         forceNewRange={false}
-        today="2018-04-14"
+        today={new Date("2018-04-14")}
       />
     );
     expect(output).toMatchSnapshot();
