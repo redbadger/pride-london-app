@@ -302,7 +302,12 @@ describe("selectFeaturedEvents", () => {
   it("selects property", () => {
     const state = {
       events: {
-        entries: [{ sys: { contentType: { sys: { id: "featuredEvents" } } } }]
+        entries: [
+          {
+            fields: { events: { "en-GB": [] } },
+            sys: { contentType: { sys: { id: "featuredEvents" } } }
+          }
+        ]
       }
     };
 
