@@ -7,7 +7,11 @@ import DateRangePicker from "./DateRangePicker";
 describe("renders correctly", () => {
   it("no dates", () => {
     const output = shallow(
-      <DateRangePicker onChange={() => {}} forceNewRange={false} />
+      <DateRangePicker
+        onChange={() => {}}
+        forceNewRange={false}
+        today="2018-04-14"
+      />
     );
     expect(output).toMatchSnapshot();
   });
@@ -18,6 +22,7 @@ describe("renders correctly", () => {
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
         forceNewRange={false}
+        today="2018-04-14"
       />
     );
     expect(output).toMatchSnapshot();
@@ -29,6 +34,7 @@ describe("renders correctly", () => {
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-02" }}
         forceNewRange={false}
+        today="2018-04-14"
       />
     );
     expect(output).toMatchSnapshot();
@@ -40,6 +46,7 @@ describe("renders correctly", () => {
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-02", endDate: "2018-01-01" }}
         forceNewRange={false}
+        today="2018-04-14"
       />
     );
     expect(output).toMatchSnapshot();
@@ -51,6 +58,7 @@ describe("renders correctly", () => {
         onChange={() => {}}
         dateRange={{ startDate: "2018-01-01", endDate: "2018-01-01" }}
         forceNewRange={false}
+        today="2018-04-14"
       />
     );
     expect(output).toMatchSnapshot();
