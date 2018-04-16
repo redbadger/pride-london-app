@@ -26,6 +26,7 @@ exports[`FilterModal renders correctly 1`] = `
       key="price"
     >
       <SectionHeader
+        badgeText=""
         hasShadow={false}
         title="Price"
       />

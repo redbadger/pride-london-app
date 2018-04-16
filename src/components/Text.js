@@ -5,7 +5,15 @@ import Markdown from "react-native-easy-markdown";
 import type { Node } from "react";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
-export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
+export type TextType =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "text"
+  | "small"
+  | "xSmall"
+  | "price";
 
 type Props = {
   children: Node,
@@ -71,6 +79,12 @@ const textStyles = {
     fontFamily: "Roboto",
     fontSize: 14,
     lineHeight: 20
+  },
+  xSmall: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 12,
+    lineHeight: 16,
+    includeFontPadding: false
   },
   price: {
     fontFamily: "Roboto-Bold",

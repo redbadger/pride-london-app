@@ -1,17 +1,19 @@
 // @flow
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import ContentPadding from "./ContentPadding";
 import Text from "./Text";
 import {
   sectionHeaderShadow,
   sectionHeaderBgColor,
-  sectionHeaderTextColor
+  sectionHeaderTextColor,
+  eucalyptusGreenColor,
+  lightNavyBlueColor
 } from "../constants/colors";
 
-type Props = { title: string, hasShadow?: boolean };
+type Props = { title: string, hasShadow?: boolean, badgeText?: string };
 
-const SectionHeader = ({ title, hasShadow }: Props) => {
+const SectionHeader = ({ title, hasShadow, badgeText }: Props) => {
   const containerStyles = hasShadow
     ? [styles.sectionHeader, styles.shadow]
     : styles.sectionHeader;
@@ -20,18 +22,28 @@ const SectionHeader = ({ title, hasShadow }: Props) => {
       <Text type="h2" style={styles.sectionHeaderText}>
         {title}
       </Text>
+      {badgeText &&
+        badgeText.length > 0 && (
+          <View style={styles.pingContainer}>
+            <Text type="xSmall" style={styles.badgeText}>
+              {badgeText}
+            </Text>
+          </View>
+        )}
     </ContentPadding>
   );
 };
 SectionHeader.defaultProps = {
-  hasShadow: true
+  hasShadow: true,
+  badgeText: ""
 };
 
 const styles = StyleSheet.create({
   sectionHeader: {
     height: 40,
-    justifyContent: "center",
-    backgroundColor: sectionHeaderBgColor
+    alignItems: "center",
+    backgroundColor: sectionHeaderBgColor,
+    flexDirection: "row"
   },
   shadow: {
     marginBottom: 6,
@@ -46,7 +58,17 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     color: sectionHeaderTextColor
-  }
+  },
+  pingContainer: {
+    backgroundColor: eucalyptusGreenColor,
+    width: 20,
+    height: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    marginLeft: 6
+  },
+  badgeText: { color: lightNavyBlueColor }
 });
 
 export default SectionHeader;
