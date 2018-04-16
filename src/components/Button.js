@@ -13,7 +13,7 @@ type Props = {
   url?: string
 };
 
-const onPress = url => {
+export const onPress = (url: ?string) => {
   if (url && url.length > 0) {
     Linking.openURL(url);
   }

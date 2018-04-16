@@ -179,7 +179,7 @@ Follow the [contribution guidelines](./CONTRIBUTING.md) to have a smooth experie
 
 We will keep a collection of records for "architecturally significant" decisions: those that affect the structure, non-functional characteristics, dependencies, interfaces, or construction techniques.
 
-When making such changes please include a new ADR in your PR for future prosperity.
+When making such changes please include a new ADR in your PR.
 
 * Install `adr-tools`: https://github.com/npryce/adr-tools
 * To create a new record: `adr new Implement as Unix shell scripts`

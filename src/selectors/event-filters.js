@@ -1,5 +1,9 @@
 // @flow
-import { buildDateRangeFilter, buildTimeFilter } from "./basic-event-filters";
+import {
+  buildDateRangeFilter,
+  buildTimeFilter,
+  buildCategoryFilter
+} from "./basic-event-filters";
 import type { Event } from "../data/event";
 import type { Time } from "../data/date-time";
 import type { State } from "../reducers";
@@ -30,7 +34,10 @@ export const buildEventFilter = (
   state: State,
   selectStagedFilters?: boolean = false
 ) => {
-  const { date, time } = getEventFiltersState(state, selectStagedFilters);
+  const { date, time, categories } = getEventFiltersState(
+    state,
+    selectStagedFilters
+  );
   const timeArray = Array.from(time);
   const dateFilter: (event: Event) => boolean = date
     ? buildDateRangeFilter(date)
@@ -39,6 +46,9 @@ export const buildEventFilter = (
     timeArray.length > 0 && timeArray.length < 3
       ? buildTimesFilter(timeArray)
       : () => true;
+  const categoryFilter: (event: Event) => boolean =
+    categories.size > 0 ? buildCategoryFilter(categories) : () => true;
 
-  return (event: Event) => dateFilter(event) && timeFilter(event);
+  return (event: Event) =>
+    dateFilter(event) && timeFilter(event) && categoryFilter(event);
 };

@@ -1,16 +1,28 @@
 // @flow
+const showEvents = (numberOfEvents: number) => {
+  if (numberOfEvents <= 0) {
+    return "No events";
+  }
+
+  if (numberOfEvents === 1) {
+    return "Show 1 event";
+  }
+
+  return `Show ${numberOfEvents} events`;
+};
+
 export default {
   tabHome: "Home",
   tabEvents: "Events",
   tabParade: "Parade",
   tabSaved: "Saved",
   tabSupportUs: "Support us",
-  filterByInterest: "I'm interested in...",
+  filterByInterest: "All events",
   filters: "Filters",
-  filterPickerApply: (numberOfEvents: number) =>
-    `Show ${numberOfEvents} events`,
+  filterPickerApply: showEvents,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
+  filterTitle: "Show me",
   eventDetailsPrice: "From: £",
   isFreePrice: "Free",
   eventFromPrice: "From",
@@ -25,5 +37,9 @@ export default {
     morning: "Morning",
     afternoon: "Afternoon",
     evening: "Evening"
-  }
+  },
+  cancel: "Cancel",
+  zeroSelected: "0 selected",
+  showEvents,
+  clearAll: "Clear all"
 };

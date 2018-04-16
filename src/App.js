@@ -1,9 +1,15 @@
 // @flow
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
 import { TabNavigator, StackNavigator } from "react-navigation";
+import { Image, StyleSheet, View } from "react-native";
 import type { TabScene } from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
+
+import EventsScreen from "./screens/EventsScreen";
+import EventDetailsScreen from "./screens/EventDetailsScreen";
+import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
+import HomeScreen from "./screens/HomeScreen";
+import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
 import iconEventsActive from "../assets/images/eventsActive.png";
@@ -20,6 +26,7 @@ import {
   EVENT_DETAILS,
   FEATURED_EVENT_LIST,
   HOME,
+  EVENT_CATEGORIES_FILTER,
   PARADE,
   SAVED,
   SUPPORT_US
@@ -27,10 +34,6 @@ import {
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
 import type { ImageRef } from "./data/image-ref";
-import EventsScreen from "./screens/EventsScreen";
-import EventDetailsScreen from "./screens/EventDetailsScreen";
-import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
-import HomeScreen from "./screens/HomeScreen";
 
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
   focused
@@ -83,7 +86,8 @@ const HomeStack = StackNavigator(
 const EventsStack = StackNavigator(
   {
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
-    [EVENT_DETAILS]: { screen: withShadow(EventDetailsScreen) }
+    [EVENT_DETAILS]: { screen: withShadow(EventDetailsScreen) },
+    [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen }
   },
   {
     initialRouteName: EVENT_LIST,

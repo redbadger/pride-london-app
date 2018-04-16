@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoriesFilterScreen Component renders correctly 1`] = `
+<withOrientation
+  style={
+    Object {
+      "backgroundColor": "#2d2f7f",
+      "flex": 1,
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <ContentPadding
+    style={
+      Object {
+        "borderWidth": 0,
+      }
+    }
+  >
+    <Header
+      onClearAll={[Function]}
+      onClose={[Function]}
+      selectedCategories={
+        Set {
+          "Music",
+        }
+      }
+    />
+  </ContentPadding>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <List
+      locale="en-GB"
+      onPress={[Function]}
+      stagedCategories={
+        Set {
+          "Music",
+        }
+      }
+    />
+  </View>
+  <ContentPadding
+    style={Object {}}
+  >
+    <View>
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "button",
+          ]
+        }
+        delayPressIn={50}
+        disabled={false}
+        onPress={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#2cda9d",
+            "borderRadius": 4,
+            "marginBottom": 16,
+            "marginTop": 16,
+            "paddingBottom": 11,
+            "paddingTop": 13,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={
+            Object {
+              "color": "#2d2f7f",
+              "textAlign": "center",
+            }
+          }
+          type="h2"
+        >
+          Show 1 event
+        </Text>
+      </Touchable>
+    </View>
+  </ContentPadding>
+</withOrientation>
+`;
