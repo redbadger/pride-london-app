@@ -107,6 +107,7 @@ class FilterModal extends PureComponent<Props> {
                         checked={eventFilters[sectionName].has(sectionValue)}
                         // $FlowFixMe
                         label={text.tags[sectionValue] || sectionValue}
+                        style={styles.checkbox}
                       />
                     ))}
                   </ContentPadding>
@@ -150,7 +151,8 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 3,
     marginTop: 6
-  }
+  },
+  checkbox: { marginVertical: 4 }
 });
 
 export default FilterModal;

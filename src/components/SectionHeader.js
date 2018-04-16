@@ -31,11 +31,10 @@ const styles = StyleSheet.create({
   sectionHeader: {
     height: 40,
     justifyContent: "center",
-    backgroundColor: sectionHeaderBgColor,
-
-    marginBottom: 6
+    backgroundColor: sectionHeaderBgColor
   },
   shadow: {
+    marginBottom: 6,
     // The below properties are required for ioS shadow
     shadowColor: sectionHeaderShadow,
     shadowOffset: { width: 0, height: 1 },

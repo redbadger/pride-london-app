@@ -37,7 +37,11 @@ exports[`FilterModal renders correctly 1`] = `
           key="free"
           label="Show only free events"
           onChange={[Function]}
-          style={Object {}}
+          style={
+            Object {
+              "marginVertical": 4,
+            }
+          }
         />
       </ContentPadding>
     </React.Fragment>

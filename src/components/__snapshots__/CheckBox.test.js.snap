@@ -29,6 +29,9 @@ exports[`renders correctly 1`] = `
   >
     Bananas
   </Text>
+  <Image
+    source={1}
+  />
 </Touchable>
 `;
 

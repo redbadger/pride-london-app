@@ -5,6 +5,7 @@ import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes
 import Text from "./Text";
 import Touchable from "./Touchable";
 
+import checkboxUrl from "./check-box.png";
 import checkBoxCheckedUrl from "./check-box-checked.png";
 
 type Props = {
@@ -24,7 +25,7 @@ const CheckBox = ({ checked, label, onChange, style }: Props) => (
     style={[styles.container, style]}
   >
     <Text>{label}</Text>
-    {checked && <Image source={checkBoxCheckedUrl} />}
+    <Image source={checked ? checkBoxCheckedUrl : checkboxUrl} />
   </Touchable>
 );
 
