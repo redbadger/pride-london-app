@@ -4,13 +4,13 @@ import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import R from "ramda";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
-import type { Asset, Event, FeaturedEvents, EventDays } from "../data/event";
+import type { Asset, Event, EventDays, FeaturedEvents } from "../data/event";
 
 import locale from "../data/locale";
 
-const getId = element => element.sys.id;
+const getFieldsEventsLocale = R.lensPath(["fields", "events", locale]);
 
-export const uniqueEvents = R.uniqBy(getId);
+export const uniqueEvents = R.uniqBy(element => element.sys.id);
 
 export const groupEventsByStartTime = (events: Event[]): EventDays => {
   const sections = events
@@ -48,10 +48,17 @@ export const selectEvents = (state: State): Event[] =>
   ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
   ): any[]): Event[]);
-export const selectFeaturedEvents = (state: State) =>
+
+export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
   ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "featuredEvents"
-  ): any[]): FeaturedEvents[]);
+  ): any[]): FeaturedEvents[]).map((entry: FeaturedEvents) =>
+    R.set(
+      getFieldsEventsLocale,
+      uniqueEvents(entry.fields.events[locale]),
+      entry
+    )
+  );
 
 export const selectEventsLoading = (state: State) =>
   getEventsState(state).loading;

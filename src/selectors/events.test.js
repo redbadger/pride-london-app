@@ -310,6 +310,44 @@ describe("selectFeaturedEvents", () => {
 
     expect(selected).toEqual(state.events.entries);
   });
+
+  it("deduplicates events", () => {
+    const state = {
+      events: {
+        entries: [
+          {
+            fields: {
+              events: {
+                "en-GB": [
+                  {
+                    sys: {
+                      type: "Link",
+                      linkType: "Entry",
+                      id: "3O3SZPgYl2MUEWu2MoK2oi"
+                    }
+                  },
+                  {
+                    sys: {
+                      type: "Link",
+                      linkType: "Entry",
+                      id: "3O3SZPgYl2MUEWu2MoK2oi"
+                    }
+                  }
+                ]
+              }
+            },
+            sys: { contentType: { sys: { id: "featuredEvents" } } }
+          }
+        ]
+      }
+    };
+
+    const selected = selectFeaturedEvents(state);
+
+    expect(selected[0].fields.events["en-GB"]).toEqual([
+      { sys: { type: "Link", linkType: "Entry", id: "3O3SZPgYl2MUEWu2MoK2oi" } }
+    ]);
+  });
 });
 
 describe("selectEventsLoading", () => {
