@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { Image, View, StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import IconItem from "./IconItem";
@@ -12,6 +12,7 @@ import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event } from "../../data/event";
 import locale from "../../data/locale";
+import dateIcon from "../../../assets/images/date.png";
 
 type Props = {
   event: Event
@@ -24,8 +25,9 @@ const EventOverview = ({ event }: Props) => {
     event.fields.startTime[locale]
   );
   const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
-  const dateFormat = "DD MMMM YYYY";
-  const timeFormat = "HH:mm";
+  // const dateFormat = "DD MMMM YYYY";
+  const dateFormat = "ddd, DD MMM YYYY";
+  const timeFormat = "h:mmA";
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)
     : `${formatDate(startTime, dateFormat)} - ${formatDate(
@@ -47,7 +49,8 @@ const EventOverview = ({ event }: Props) => {
       </View>
       <View style={styles.iconItemWrapper}>
         <IconItem
-          icon={<Text type="small">icn</Text>}
+          // icon={<Text type="small">icn</Text>}
+          icon={<Image source={dateIcon} />}
           title={dateDisplay}
           content={<Text type="small">{timeDisplay}</Text>}
         />
