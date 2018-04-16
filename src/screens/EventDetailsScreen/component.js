@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, View, StyleSheet, ScrollView } from "react-native";
+import { Image, Linking, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import Header from "./Header";
 import IconButton from "./IconButton";
@@ -8,10 +8,10 @@ import IconItem from "./IconItem";
 import EventMap from "./EventMap";
 import EventOverview from "./EventOverview";
 import Text from "../../components/Text";
-import Button from "../../components/Button";
+import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import {
-  darkBlueGreyTwoColor,
+  shadowColor,
   lightishGreyColor,
   whiteColor
 } from "../../constants/colors";
@@ -80,16 +80,21 @@ const renderEventDetails = event =>
             )}
           </View>
         )}
-        {event.fields.ticketingUrl && (
-          <View style={styles.buyButton}>
-            <Button
-              text={text.eventDetailsBuyButton}
-              url={event.fields.ticketingUrl[locale]}
-            />
-          </View>
-        )}
       </View>
     </ContentPadding>
+  );
+
+const renderBuyTickets = event =>
+  event.fields.ticketingUrl && (
+    <View style={styles.buyButton}>
+      <ContentPadding>
+        <ButtonPrimary
+          onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
+        >
+          {text.eventDetailsBuyButton}
+        </ButtonPrimary>
+      </ContentPadding>
+    </View>
   );
 
 class EventDetailsScreen extends PureComponent<Props> {
@@ -124,6 +129,7 @@ class EventDetailsScreen extends PureComponent<Props> {
           {renderEventDescription(event)}
           {renderEventDetails(event)}
         </ScrollView>
+        {renderBuyTickets(event)}
       </View>
     );
   }
@@ -132,15 +138,14 @@ class EventDetailsScreen extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: darkBlueGreyTwoColor
+    backgroundColor: whiteColor
   },
   headerContent: {
     flexDirection: "row",
     justifyContent: "space-between"
   },
   content: {
-    paddingVertical: 15,
-    backgroundColor: whiteColor
+    paddingVertical: 15
   },
   sectionDivider: {
     backgroundColor: lightishGreyColor,
@@ -160,7 +165,12 @@ const styles = StyleSheet.create({
     marginTop: 16
   },
   buyButton: {
-    marginTop: 16
+    backgroundColor: whiteColor,
+    paddingVertical: 12,
+    shadowColor,
+    shadowOffset: { width: 0, height: -8 },
+    shadowOpacity: 1,
+    shadowRadius: 8
   }
 });
 

@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#20215a",
+      "backgroundColor": "#ffffff",
       "flex": 1,
     }
   }
@@ -164,7 +164,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
     <ContentPadding
       style={
         Object {
-          "backgroundColor": "#ffffff",
           "paddingVertical": 15,
         }
       }
@@ -217,7 +216,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       <View
         style={
           Object {
-            "backgroundColor": "#ffffff",
             "paddingVertical": 15,
           }
         }
@@ -316,20 +314,34 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             />
           </View>
         </View>
-        <View
-          style={
-            Object {
-              "marginTop": 16,
-            }
-          }
-        >
-          <Button
-            text="Buy Tickets"
-            url="https://prideinlondon.org/pride-in-the-park/"
-          />
-        </View>
       </View>
     </ContentPadding>
   </ScrollView>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
+        "shadowColor": "rgba(0, 0, 0, 0.1)",
+        "shadowOffset": Object {
+          "height": -8,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 8,
+      }
+    }
+  >
+    <ContentPadding
+      style={Object {}}
+    >
+      <Button
+        disabled={false}
+        onPress={[Function]}
+      >
+        Buy tickets
+      </Button>
+    </ContentPadding>
+  </View>
 </View>
 `;
