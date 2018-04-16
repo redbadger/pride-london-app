@@ -7,7 +7,8 @@ import {
   selectEventById,
   selectAssetById,
   selectFilteredEvents,
-  selectFeaturedEventsByTitle
+  selectFeaturedEventsByTitle,
+  uniqueEvents
 } from "./events";
 import { buildEventFilter } from "./event-filters";
 
@@ -17,6 +18,61 @@ jest.mock("./event-filters", () => ({
 
 beforeEach(() => {
   buildEventFilter.mockReturnValue(() => true);
+});
+
+describe("uniqueEvents", () => {
+  it("returns empty array when no events exist", () => {
+    const expected = [];
+    const actual = uniqueEvents([]);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("removes events with the same sys.id", () => {
+    const expected = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "abc", contentType: { sys: { id: "event" } } }
+      }
+    ];
+    const actual = uniqueEvents([
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "abc", contentType: { sys: { id: "event" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "abc", contentType: { sys: { id: "event" } } }
+      }
+    ]);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("keeps events with the different sys.id", () => {
+    const expected = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "abc", contentType: { sys: { id: "event" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "def", contentType: { sys: { id: "event" } } }
+      }
+    ];
+    const actual = uniqueEvents([
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "abc", contentType: { sys: { id: "event" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "def", contentType: { sys: { id: "event" } } }
+      }
+    ]);
+
+    expect(actual).toEqual(expected);
+  });
 });
 
 describe("groupEventsByStartTime", () => {

@@ -1,11 +1,16 @@
 // @flow
 import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
+import R from "ramda";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
 import type { Asset, Event, FeaturedEvents, EventDays } from "../data/event";
 
 import locale from "../data/locale";
+
+const getId = element => element.sys.id;
+
+export const uniqueEvents = R.uniqBy(getId);
 
 export const groupEventsByStartTime = (events: Event[]): EventDays => {
   const sections = events
