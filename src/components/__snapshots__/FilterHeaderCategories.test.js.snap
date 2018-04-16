@@ -35,7 +35,7 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
       }
       type="h2"
     >
-      All events
+      I'm interested in...
     </Text>
     <CategoriesFilterButton
       onPress={[Function]}

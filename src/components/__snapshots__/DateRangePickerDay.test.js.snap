@@ -71,6 +71,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Array [
@@ -165,6 +166,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Array [
@@ -219,6 +221,7 @@ exports[`DarteRangePickerDay renders a disabled day 1`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Array [
@@ -272,6 +275,7 @@ exports[`DarteRangePickerDay renders a marked day 1`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Array [
@@ -392,6 +396,7 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Array [
@@ -515,6 +520,7 @@ exports[`DarteRangePickerDay renders a middle of a range 1`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Array [
@@ -609,6 +615,7 @@ exports[`DarteRangePickerDay renders with a single selected day 1`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Array [
@@ -663,6 +670,7 @@ exports[`DarteRangePickerDay renders without date selection 1`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Array [

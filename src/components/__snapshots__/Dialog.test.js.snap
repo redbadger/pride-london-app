@@ -118,12 +118,8 @@ exports[`renders correctly 1`] = `
           markdown={false}
           style={
             Object {
-<<<<<<< HEAD
-              "color": "#ffffff",
-=======
               "color": "rgb(45, 47, 127)",
               "lineHeight": 48,
->>>>>>> master
             }
           }
           type="h2"
