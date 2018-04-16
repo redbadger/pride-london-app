@@ -5,15 +5,7 @@ import Markdown from "react-native-easy-markdown";
 import type { Node } from "react";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
-export type TextType =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "text"
-  | "small"
-  | "price"
-  | "tabBarItem";
+export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
 type Props = {
   children: Node,
@@ -84,12 +76,6 @@ const textStyles = {
     fontFamily: "Roboto-Bold",
     fontSize: 14,
     lineHeight: 20
-  },
-  tabBarItem: {
-    fontFamily: "Poppins-Bold",
-    fontSize: 12,
-    lineHeight: 16,
-    includeFontPadding: false
   }
 };
 

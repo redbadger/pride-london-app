@@ -1,0 +1,684 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
+<TouchableWithoutFeedback
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </View>
+  </View>
+</TouchableWithoutFeedback>
+`;
+
+exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
+<TouchableWithoutFeedback
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </View>
+  </View>
+</TouchableWithoutFeedback>
+`;
+
+exports[`DarteRangePickerDay renders a disabled day 1`] = `
+<TouchableWithoutFeedback
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {},
+            Object {
+              "color": "rgb(203, 203, 203)",
+            },
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </View>
+  </View>
+</TouchableWithoutFeedback>
+`;
+
+exports[`DarteRangePickerDay renders a marked day 1`] = `
+<TouchableWithoutFeedback
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {},
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 2,
+              "height": 4,
+              "marginBottom": 5,
+              "width": 4,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</TouchableWithoutFeedback>
+`;
+
+exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
+<TouchableWithoutFeedback
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 2,
+              "height": 4,
+              "marginBottom": 5,
+              "width": 4,
+            },
+            Object {
+              "backgroundColor": "rgb(45, 47, 127)",
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</TouchableWithoutFeedback>
+`;
+
+exports[`DarteRangePickerDay renders a middle of a range 1`] = `
+<TouchableWithoutFeedback
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </View>
+  </View>
+</TouchableWithoutFeedback>
+`;
+
+exports[`DarteRangePickerDay renders with a single selected day 1`] = `
+<TouchableWithoutFeedback
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </View>
+  </View>
+</TouchableWithoutFeedback>
+`;
+
+exports[`DarteRangePickerDay renders without date selection 1`] = `
+<TouchableWithoutFeedback
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <Text
+        markdown={false}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {},
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </View>
+  </View>
+</TouchableWithoutFeedback>
+`;

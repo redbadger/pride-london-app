@@ -41,7 +41,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
         markdown={false}
         style={
           Object {
-            "color": "rgb(255, 255, 255)",
+            "color": "#ffffff",
           }
         }
         type="price"
@@ -151,7 +151,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
         markdown={false}
         style={
           Object {
-            "color": "rgb(255, 255, 255)",
+            "color": "#ffffff",
           }
         }
         type="price"
@@ -261,7 +261,7 @@ exports[`renders correctly when isFree is true 1`] = `
         markdown={false}
         style={
           Object {
-            "color": "rgb(255, 255, 255)",
+            "color": "#ffffff",
           }
         }
         type="price"

@@ -12,14 +12,20 @@ const showEvents = (numberOfEvents: number) => {
 };
 
 export default {
+  tabHome: "Home",
   tabEvents: "Events",
-  filterByInterest: "All events",
+  tabParade: "Parade",
+  tabSaved: "Saved",
+  tabSupportUs: "Support us",
+  filterByInterest: "I'm interested in...",
   filters: "Filters",
   filterPickerApply: showEvents,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
   filterTitle: "Show me",
   eventDetailsPrice: "From: £",
+  isFreePrice: "Free",
+  eventFromPrice: "From",
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",
   eventDetailsContact: "Contact",

@@ -27,8 +27,12 @@ exports[`renders correctly with date selection 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
-        style={Object {}}
-        type="text"
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
+        }
+        type="small"
       >
         Clear
       </Text>
@@ -79,8 +83,12 @@ exports[`renders correctly with range selection 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
-        style={Object {}}
-        type="text"
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
+        }
+        type="small"
       >
         Clear
       </Text>
@@ -131,8 +139,12 @@ exports[`renders correctly without date selection 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
-        style={Object {}}
-        type="text"
+        style={
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
+        }
+        type="small"
       >
         Clear
       </Text>

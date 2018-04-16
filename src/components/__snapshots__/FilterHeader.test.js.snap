@@ -30,10 +30,74 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
       }
       testID="filter-header"
     >
+<<<<<<< HEAD
       <FilterHeaderCategories
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
+=======
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#20215a",
+              "borderRadius": 4,
+              "flex": 1,
+              "height": 44,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+              }
+            }
+            type="h2"
+          >
+            I'm interested in...
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#20215a",
+              "borderRadius": 25,
+              "height": 52,
+              "justifyContent": "flex-end",
+              "marginLeft": 12,
+              "width": 52,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+                "fontFamily": "Poppins-Bold",
+                "fontSize": 14,
+                "paddingBottom": 6,
+              }
+            }
+            type="text"
+          >
+            Map
+          </Text>
+        </View>
+      </View>
+>>>>>>> master
       <View
         style={
           Object {
@@ -115,10 +179,74 @@ exports[`renders correctly with any date and any time 1`] = `
       }
       testID="filter-header"
     >
+<<<<<<< HEAD
       <FilterHeaderCategories
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
+=======
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#20215a",
+              "borderRadius": 4,
+              "flex": 1,
+              "height": 44,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+              }
+            }
+            type="h2"
+          >
+            I'm interested in...
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#20215a",
+              "borderRadius": 25,
+              "height": 52,
+              "justifyContent": "flex-end",
+              "marginLeft": 12,
+              "width": 52,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+                "fontFamily": "Poppins-Bold",
+                "fontSize": 14,
+                "paddingBottom": 6,
+              }
+            }
+            type="text"
+          >
+            Map
+          </Text>
+        </View>
+      </View>
+>>>>>>> master
       <View
         style={
           Object {
@@ -200,10 +328,74 @@ exports[`renders correctly with date range and two times 1`] = `
       }
       testID="filter-header"
     >
+<<<<<<< HEAD
       <FilterHeaderCategories
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
+=======
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#20215a",
+              "borderRadius": 4,
+              "flex": 1,
+              "height": 44,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+              }
+            }
+            type="h2"
+          >
+            I'm interested in...
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#20215a",
+              "borderRadius": 25,
+              "height": 52,
+              "justifyContent": "flex-end",
+              "marginLeft": 12,
+              "width": 52,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+                "fontFamily": "Poppins-Bold",
+                "fontSize": 14,
+                "paddingBottom": 6,
+              }
+            }
+            type="text"
+          >
+            Map
+          </Text>
+        </View>
+      </View>
+>>>>>>> master
       <View
         style={
           Object {
@@ -285,10 +477,74 @@ exports[`renders correctly with single date and single time 1`] = `
       }
       testID="filter-header"
     >
+<<<<<<< HEAD
       <FilterHeaderCategories
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
+=======
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#20215a",
+              "borderRadius": 4,
+              "flex": 1,
+              "height": 44,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+              }
+            }
+            type="h2"
+          >
+            I'm interested in...
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#20215a",
+              "borderRadius": 25,
+              "height": 52,
+              "justifyContent": "flex-end",
+              "marginLeft": 12,
+              "width": 52,
+            }
+          }
+        >
+          <Text
+            markdown={false}
+            style={
+              Object {
+                "color": "rgb(44, 218, 157)",
+                "fontFamily": "Poppins-Bold",
+                "fontSize": 14,
+                "paddingBottom": 6,
+              }
+            }
+            type="text"
+          >
+            Map
+          </Text>
+        </View>
+      </View>
+>>>>>>> master
       <View
         style={
           Object {

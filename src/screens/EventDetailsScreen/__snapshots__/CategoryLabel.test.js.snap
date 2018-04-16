@@ -6,7 +6,11 @@ exports[`renders correctly 1`] = `
   markdown={false}
   style={
     Object {
+<<<<<<< HEAD
       "backgroundColor": "#D8D8D8",
+=======
+      "backgroundColor": "#d8d8d8",
+>>>>>>> master
       "color": "#ffffff",
       "marginBottom": 8,
       "marginRight": 8,
