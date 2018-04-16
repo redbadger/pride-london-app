@@ -81,6 +81,7 @@ it("jumps pops child states when pressing already active tab", () => {
     .onPress();
   expect(navigationDispatch).toHaveBeenCalledWith({
     immediate: undefined,
+    key: "1",
     type: "Navigation/POP_TO_TOP"
   });
 });
