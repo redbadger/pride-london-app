@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -34,6 +35,7 @@
 		73D60805F3864ED4B9E77F66 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C51B586C8CE436B8562B9F1 /* Poppins-Bold.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8672F5725E9B47EDA28DD112 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150F0056697F44E1A80D4DAF /* Roboto-Italic.ttf */; };
+		95A7B0F285774B6D8D5C7289 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE541190481E4DABADC5083F /* libBVLinearGradient.a */; };
 		9EA300765B924E11BB5DC9B0 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BA3D3CC2564F6D8C0B3766 /* Roboto-BoldItalic.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B91D02D4207A4BF79A449F93 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3E9F6E137EF4895832E3D99 /* Poppins-MediumItalic.ttf */; };
@@ -46,7 +48,6 @@
 		EEF84AE0632D437BB1763EA4 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 653D79F0DBE4465EB8939DCB /* libAirMaps.a */; };
 		F6B8F1C26F4A40CFB00E1EB5 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78508C36FC5F4F7C8214447C /* Roboto-Medium.ttf */; };
 		F8104A261A66438F8FD11CDC /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EE179CD91BE4527B8A8A205 /* Poppins-SemiBold.ttf */; };
-		95A7B0F285774B6D8D5C7289 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE541190481E4DABADC5083F /* libBVLinearGradient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -404,8 +405,7 @@
 		F3E9F6E137EF4895832E3D99 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		F7F30F2CFAEF426BA05F1A4F /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		F8C91E1E19B24BFD87EAF972 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
-		188FFE770C27432B86068200 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		FE541190481E4DABADC5083F /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		FE541190481E4DABADC5083F /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -617,7 +617,6 @@
 				686F40911AD148C6A00AD018 /* ReactNativeConfig.xcodeproj */,
 				942CC624E7ED4161939675A2 /* AirMaps.xcodeproj */,
 				F8C91E1E19B24BFD87EAF972 /* SplashScreen.xcodeproj */,
-				188FFE770C27432B86068200 /* BVLinearGradient.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -673,6 +672,7 @@
 				6D3680107BE344DF99D16CDA /* libReactNativeConfig.a */,
 				653D79F0DBE4465EB8939DCB /* libAirMaps.a */,
 				F7F30F2CFAEF426BA05F1A4F /* libSplashScreen.a */,
+				FE541190481E4DABADC5083F /* libBVLinearGradient.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";

@@ -17,7 +17,7 @@ export default {
   tabParade: "Parade",
   tabSaved: "Saved",
   tabSupportUs: "Support us",
-  filterByInterest: "I'm interested in...",
+  filterByInterest: "All events",
   filters: "Filters",
   filterPickerApply: showEvents,
   filterDayPickerTitle: "Select dates",
