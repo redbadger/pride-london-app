@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ContentPadding
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "paddingVertical": 15,
+    }
+  }
+>
+  <Text
+    allowFontScaling={true}
+    markdown={false}
+    style={Object {}}
+    type="h1"
+  >
+    Pride in the Park
+  </Text>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "marginBottom": 20,
+        "marginTop": 16,
+      }
+    }
+  >
+    <CategoryLabel
+      categoryName="Community"
+      key="Community"
+    />
+    <CategoryLabel
+      categoryName="Social and Networking"
+      key="Social and Networking"
+    />
+    <CategoryLabel
+      categoryName="Sports and Activities"
+      key="Sports and Activities"
+    />
+    <CategoryLabel
+      categoryName="Music"
+      key="Music"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "marginBottom": 20,
+      }
+    }
+  >
+    <IconItem
+      content={
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={Object {}}
+          type="small"
+        >
+          11:00 - 18:00
+        </Text>
+      }
+      icon={
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={Object {}}
+          type="small"
+        >
+          icn
+        </Text>
+      }
+      title="09 July 2017 - 15 July 2018"
+      titleType="h3"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "marginBottom": 20,
+      }
+    }
+  >
+    <IconItem
+      content={null}
+      icon={
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={Object {}}
+          type="small"
+        >
+          icn
+        </Text>
+      }
+      title="Vauxhall Pleasure Gardens"
+      titleType="h3"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "marginBottom": 20,
+      }
+    }
+  >
+    <IconItem
+      content={null}
+      icon={
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={Object {}}
+          type="small"
+        >
+          icn
+        </Text>
+      }
+      title="From: £19.95"
+      titleType="h3"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "marginBottom": 20,
+      }
+    }
+  >
+    <IconItem
+      content={null}
+      icon={
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={Object {}}
+          type="small"
+        >
+          icn
+        </Text>
+      }
+      title="Gender neutral toilets"
+      titleType="h3"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "marginBottom": 20,
+      }
+    }
+  >
+    <IconItem
+      content={
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={Object {}}
+          type="small"
+        >
+          Accessible Toilets, Hearing loop installed
+        </Text>
+      }
+      icon={
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={Object {}}
+          type="small"
+        >
+          icn
+        </Text>
+      }
+      title="Accessibility"
+      titleType="h3"
+    />
+  </View>
+</ContentPadding>
+`;

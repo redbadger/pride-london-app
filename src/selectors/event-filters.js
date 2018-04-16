@@ -4,7 +4,8 @@ import {
   buildTimeFilter,
   buildPriceFilter,
   buildStringSetFilter,
-  buildAreaFilter
+  buildAreaFilter,
+  buildCategoryFilter
 } from "./basic-event-filters";
 import type { Event } from "../data/event";
 import type { Time } from "../data/date-time";
@@ -49,7 +50,8 @@ export const buildEventFilter = (
     audience,
     venueDetails,
     accessibilityOptions,
-    area
+    area,
+    categories
   } = getEventFiltersState(state, selectStagedFilters);
   const timeArray = Array.from(timeOfDay);
   const areaArray = Array.from(area);
@@ -75,6 +77,8 @@ export const buildEventFilter = (
       : () => true;
   const areaFilter: (event: Event) => boolean =
     areaArray.length > 0 ? buildAreasFilter(areaArray) : () => true;
+  const categoryFilter: (event: Event) => boolean =
+    categories.size > 0 ? buildCategoryFilter(categories) : () => true;
 
   return (event: Event) =>
     dateFilter(event) &&
@@ -83,5 +87,6 @@ export const buildEventFilter = (
     audienceFilter(event) &&
     venueDetailsFilter(event) &&
     accessibilityOptionsFilter(event) &&
-    areaFilter(event);
+    areaFilter(event) &&
+    categoryFilter(event);
 };

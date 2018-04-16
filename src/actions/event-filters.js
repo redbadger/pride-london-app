@@ -9,7 +9,8 @@ type EventFiltersActionType =
 type EventFiltersPayload = {
   date?: ?DateRange,
   time?: Set<Time>,
-  price?: Set<string>
+  price?: Set<string>,
+  categories?: Set<string>
 };
 
 export type EventFiltersAction = StandardAction<

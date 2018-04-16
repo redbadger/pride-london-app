@@ -8,10 +8,11 @@
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "run-android":
       "node node_modules/react-native/local-cli/cli.js run-android --appId com.pridelondonapp.dev --variant devDebug",
-    "test": "jest src",
+    "test": "jest src --maxWorkers=2",
     "test:e2e": "yarn test:e2e:build && yarn test:e2e:run",
     "test:e2e:dev": "detox test --reuse",
-    "test:e2e:run": "detox test -c ios.sim.debug",
+    "test:e2e:run":
+      "detox test -c ios.sim.debug --loglevel verbose --debug-synchronization",
     "test:e2e:build": "detox build",
     "precommit": "lint-staged",
     "lint": "eslint src",
@@ -28,12 +29,13 @@
     "react-native-calendars": "^1.17.4",
     "react-native-config": "^0.11.5",
     "react-native-easy-markdown": "^1.1.9",
+    "react-native-linear-gradient": "^2.4.0",
     "react-native-map-link": "^1.0.6",
     "react-native-maps": "0.16.4",
     "react-native-safe-area-view":
       "robbiemccorkell/react-native-safe-area-view",
     "react-native-splash-screen": "^3.0.6",
-    "react-navigation": "^1.0.3",
+    "react-navigation": "^1.5.11",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",

@@ -78,3 +78,11 @@ export type Asset = {
 };
 
 export type EventDays = Event[][];
+
+export type EventCategory = {
+  label: string,
+  color: string,
+  contrast: boolean
+};
+
+export type EventCategoryMap = { [string]: { [string]: EventCategory } };

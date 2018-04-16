@@ -4,9 +4,17 @@ import { StyleSheet, TouchableNativeFeedback, View } from "react-native";
 import type { TouchableProps } from "./TouchableTypes";
 import { TouchableDefaultProps } from "./TouchableTypes";
 
-const Touchable = ({ children, style, ...props }: TouchableProps) => (
+const Touchable = ({
+  children,
+  style,
+  onPress,
+  disabled,
+  ...props
+}: TouchableProps) => (
   <TouchableNativeFeedback
     background={TouchableNativeFeedback.SelectableBackground()}
+    onPress={onPress}
+    disabled={disabled}
     {...props}
   >
     <View style={[styles.defaults, style]}>{children}</View>

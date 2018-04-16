@@ -19,7 +19,7 @@ type Props = {
   onPress?: () => void
 };
 
-const handlePress = (onPress, url) => {
+export const handlePress = (onPress: ?() => void, url: ?string) => {
   if (onPress) {
     onPress();
   }

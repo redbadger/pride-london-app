@@ -33,10 +33,11 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
+      allowFontScaling={true}
       markdown={false}
       style={
         Object {
-          "color": "rgb(45, 47, 127)",
+          "color": "#2d2f7f",
         }
       }
       type="small"
@@ -44,12 +45,13 @@ exports[`renders correctly 1`] = `
       Fri, 17 March
     </Text>
     <Text
+      allowFontScaling={true}
       ellipsizeMode="tail"
       markdown={false}
       numberOfLines={2}
       style={
         Object {
-          "color": "rgb(45, 47, 127)",
+          "color": "#2d2f7f",
         }
       }
       type="h4"

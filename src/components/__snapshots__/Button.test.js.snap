@@ -14,25 +14,26 @@ exports[`renders correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#D8D8D8",
+        "backgroundColor": "#d8d8d8",
         "borderRadius": 4,
         "justifyContent": "center",
       },
       Object {
-        "backgroundColor": "rgb(44, 218, 157)",
+        "backgroundColor": "#2cda9d",
       },
     ]
   }
 >
   <Text
+    allowFontScaling={true}
     markdown={false}
     style={
       Array [
         Object {
-          "color": "rgb(255, 255, 255)",
+          "color": "#ffffff",
         },
         Object {
-          "color": "rgb(45, 47, 127)",
+          "color": "#2d2f7f",
         },
       ]
     }

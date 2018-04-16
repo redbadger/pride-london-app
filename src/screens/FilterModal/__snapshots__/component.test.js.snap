@@ -9,7 +9,7 @@ exports[`FilterModal renders correctly 1`] = `
   }
   style={
     Object {
-      "backgroundColor": "rgb(255, 255, 255)",
+      "backgroundColor": "#ffffff",
       "flex": 1,
     }
   }
@@ -17,7 +17,7 @@ exports[`FilterModal renders correctly 1`] = `
   <ScrollView
     style={
       Object {
-        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundColor": "#ffffff",
         "flex": 1,
       }
     }
@@ -45,7 +45,7 @@ exports[`FilterModal renders correctly 1`] = `
   <View
     style={
       Object {
-        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundColor": "#ffffff",
         "borderWidth": 0,
         "elevation": 3,
         "height": 60,

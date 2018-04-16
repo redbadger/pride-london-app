@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
-import { shallow } from "enzyme";
 import { Linking } from "react-native";
-import Button from "./Button";
+import { shallow } from "enzyme";
+import Button, { handlePress } from "./Button";
 
 let openURLSpy;
 beforeEach(() => {
@@ -20,20 +20,16 @@ it("renders correctly", () => {
   expect(output).toMatchSnapshot();
 });
 
-it("calls press handler on press", () => {
-  const onPress = jest.fn();
-  const output = shallow(<Button text="a button" onPress={onPress} />);
+describe("#handlePress", () => {
+  it("does nothing, if there is no url provided", () => {
+    jest.mock("Linking", () => ({ openURL: jest.fn() }));
+    handlePress();
+    expect(Linking.openURL).not.toBeCalled();
+  });
 
-  output.simulate("press");
-
-  expect(onPress).toHaveBeenCalled();
-});
-
-it("opens url when provided", () => {
-  const url = "some-url";
-  const output = shallow(<Button text="a button" url={url} />);
-
-  output.simulate("press");
-
-  expect(openURLSpy).toHaveBeenCalledWith(url);
+  it("opens the url, if there is one", () => {
+    jest.mock("Linking", () => ({ openURL: jest.fn() }));
+    handlePress(() => {}, "url");
+    expect(Linking.openURL).toBeCalledWith("url");
+  });
 });

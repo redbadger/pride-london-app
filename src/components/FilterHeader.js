@@ -5,21 +5,19 @@ import SafeAreaView from "react-native-safe-area-view";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
-import Text from "./Text";
 import ContentPadding from "./ContentPadding";
-import {
-  interestButtonBgColor,
-  interestButtonTextColor,
-  filterBgColor
-} from "../constants/colors";
+import FilterHeaderCategories from "./FilterHeaderCategories";
+import { filterBgColor } from "../constants/colors";
 import text from "../constants/text";
 import type { DateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
 
-type Props = {
+export type Props = {
+  onFilterCategoriesPress: Function,
   dateFilter: ?DateRange,
   timeFilter: Set<Time>,
-  onFilterButtonPress: () => void
+  onFilterButtonPress: () => void,
+  selectedCategories: Set<string>
 };
 
 type State = {
@@ -50,7 +48,13 @@ class FilterHeader extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { dateFilter, timeFilter, onFilterButtonPress } = this.props;
+    const {
+      dateFilter,
+      timeFilter,
+      onFilterCategoriesPress,
+      selectedCategories,
+      onFilterButtonPress
+    } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
       : text.anyDay;
@@ -65,13 +69,10 @@ class FilterHeader extends React.PureComponent<Props, State> {
         <StatusBar barStyle="light-content" animated />
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
-            <View style={styles.contentInterest}>
-              <View style={styles.interestButton}>
-                <Text type="h2" style={styles.interestButtonText}>
-                  {text.filterByInterest}
-                </Text>
-              </View>
-            </View>
+            <FilterHeaderCategories
+              onFilterPress={onFilterCategoriesPress}
+              selectedCategories={selectedCategories}
+            />
             <View style={styles.contentFilters}>
               <FilterHeaderButton
                 text={formattedDateFilter}
@@ -113,21 +114,6 @@ const styles = StyleSheet.create({
   content: {
     paddingTop: 16,
     paddingBottom: 12
-  },
-  contentInterest: {
-    alignItems: "center",
-    flexDirection: "row"
-  },
-  interestButton: {
-    flex: 1,
-    height: 44,
-    backgroundColor: interestButtonBgColor,
-    paddingHorizontal: 12,
-    borderRadius: 4,
-    justifyContent: "center"
-  },
-  interestButtonText: {
-    color: interestButtonTextColor
   },
   contentFilters: {
     flexDirection: "row",

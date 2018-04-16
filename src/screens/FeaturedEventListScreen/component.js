@@ -16,18 +16,6 @@ type Props = {
 };
 
 class EventsScreen extends PureComponent<Props> {
-  static navigationOptions = ({
-    navigation
-  }: {
-    navigation: NavigationScreenProp<{ params: { title: string } }>
-  }) => {
-    const { params } = navigation.state;
-
-    return {
-      title: params.title
-    };
-  };
-
   render() {
     return (
       <View style={styles.container}>
