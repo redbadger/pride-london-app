@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={Object {}}
+>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "height": 15,
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        },
+        Object {
+          "opacity": 0,
+        },
+      ]
+    }
+  >
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0.3)",
+          "rgba(0, 0, 0, 0)",
+        ]
+      }
+      style={
+        Object {
+          "height": 15,
+          "width": "100%",
+        }
+      }
+    />
+  </AnimatedComponent>
+  <ScrollView
+    onLayout={[Function]}
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+  >
+    <View
+      onLayout={[Function]}
+    />
+  </ScrollView>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "height": 15,
+          "left": 0,
+          "position": "absolute",
+          "width": "100%",
+        },
+        Object {
+          "opacity": 1,
+        },
+      ]
+    }
+  >
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0.3)",
+        ]
+      }
+      style={
+        Object {
+          "height": 15,
+          "width": "100%",
+        }
+      }
+    />
+  </AnimatedComponent>
+</View>
+`;

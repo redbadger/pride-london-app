@@ -179,6 +179,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         }
       />
       <Text
+        allowFontScaling={true}
         markdown={true}
         style={Object {}}
         type="text"
@@ -229,6 +230,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         >
           <Text
+            allowFontScaling={true}
             markdown={false}
             style={Object {}}
             type="h2"
@@ -243,6 +245,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             }
           >
             <Text
+              allowFontScaling={true}
               markdown={false}
               style={Object {}}
               type="text"
@@ -259,6 +262,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         >
           <Text
+            allowFontScaling={true}
             markdown={false}
             style={Object {}}
             type="h2"
@@ -276,6 +280,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
               content={null}
               icon={
                 <Text
+                  allowFontScaling={true}
                   markdown={false}
                   style={Object {}}
                   type="small"
@@ -298,6 +303,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
               content={null}
               icon={
                 <Text
+                  allowFontScaling={true}
                   markdown={false}
                   style={Object {}}
                   type="small"

@@ -33,7 +33,9 @@ export const transparent = "transparent";
 export const textColor = "#272727";
 
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
-export const dialogBgColor = "#FFFFFF";
+export const blackZeroColor = "rgba(0, 0, 0, 0)";
+export const blackThirtyColor = "rgba(0, 0, 0, 0.3)";
+export const dialogBgColor = whiteColor;
 export const dialogTitleColor = "rgb(45, 47, 127)";
 export const dialogApplyButtonBgColor = "rgb(44, 218, 157)";
 export const dialogApplyButtonTextColor = "rgb(45, 47, 127)";
@@ -50,9 +52,11 @@ export const tabBarBorderColor = "rgba(0, 0, 0, 0.25)";
 
 // FILTER HEADER
 
+export const filterShowMeTextColor = whiteColor;
+export const categoriesFilterButtonBgColor = "rgb(25, 26, 71)";
 export const filterBgColor = "rgb(45, 47, 127)";
-export const interestButtonBgColor = "#20215a";
-export const interestButtonTextColor = "rgb(44, 218, 157)";
+export const interestButtonBgColor = "rgb(32, 33, 90)";
+export const interestButtonTextColor = whiteColor;
 export const filterButtonBorderColor = "rgb(44, 218, 157)";
 export const filterButtonTextColor = "rgb(44, 218, 157)";
 

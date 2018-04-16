@@ -24,6 +24,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    allowFontScaling={true}
     markdown={false}
     style={
       Object {
