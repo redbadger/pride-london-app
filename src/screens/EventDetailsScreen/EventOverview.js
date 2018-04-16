@@ -20,6 +20,7 @@ import dateIcon from "../../../assets/images/date.png";
 import genderNeutralIcon from "../../../assets/images/genderNeutral.png";
 import accessibilityIcon from "../../../assets/images/accessibility.png";
 import ticketsIcon from "../../../assets/images/tickets.png";
+import locationIcon from "../../../assets/images/location.png";
 
 type Props = {
   event: Event
