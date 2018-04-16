@@ -27,21 +27,45 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <CategoryLabel
-      categoryName="Community"
+    <CategoryPill
       key="Community"
+      name="Community"
+      style={
+        Object {
+          "marginBottom": 8,
+          "marginRight": 8,
+        }
+      }
     />
-    <CategoryLabel
-      categoryName="Social and Networking"
+    <CategoryPill
       key="Social and Networking"
+      name="Social and Networking"
+      style={
+        Object {
+          "marginBottom": 8,
+          "marginRight": 8,
+        }
+      }
     />
-    <CategoryLabel
-      categoryName="Sports and Activities"
+    <CategoryPill
       key="Sports and Activities"
+      name="Sports and Activities"
+      style={
+        Object {
+          "marginBottom": 8,
+          "marginRight": 8,
+        }
+      }
     />
-    <CategoryLabel
-      categoryName="Music"
+    <CategoryPill
       key="Music"
+      name="Music"
+      style={
+        Object {
+          "marginBottom": 8,
+          "marginRight": 8,
+        }
+      }
     />
   </View>
   <IconItem
