@@ -59,21 +59,17 @@ exports[`renders correctly 1`] = `
           style={Object {}}
           type="small"
         >
-          11:00 - 18:00
+          11:00AM - 6:00PM
         </Text>
       }
       icon={
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          icn
-        </Text>
+        <Image
+          source={1}
+        />
       }
-      title="09 July 2017 - 15 July 2018"
-      titleType="h3"
+      textStyle={Object {}}
+      title="Sun, 09 Jul 2017 - Sun, 15 Jul 2018"
+      titleType="h4"
     />
   </View>
   <View
@@ -95,8 +91,9 @@ exports[`renders correctly 1`] = `
           icn
         </Text>
       }
+      textStyle={Object {}}
       title="Vauxhall Pleasure Gardens"
-      titleType="h3"
+      titleType="h4"
     />
   </View>
   <View
@@ -118,8 +115,9 @@ exports[`renders correctly 1`] = `
           icn
         </Text>
       }
+      textStyle={Object {}}
       title="From: £19.95"
-      titleType="h3"
+      titleType="h4"
     />
   </View>
   <View
@@ -141,8 +139,9 @@ exports[`renders correctly 1`] = `
           icn
         </Text>
       }
+      textStyle={Object {}}
       title="Gender neutral toilets"
-      titleType="h3"
+      titleType="h4"
     />
   </View>
   <View
@@ -173,8 +172,9 @@ exports[`renders correctly 1`] = `
           icn
         </Text>
       }
+      textStyle={Object {}}
       title="Accessibility"
-      titleType="h3"
+      titleType="h4"
     />
   </View>
 </ContentPadding>

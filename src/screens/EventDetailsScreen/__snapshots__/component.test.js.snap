@@ -288,6 +288,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                   icn
                 </Text>
               }
+              textStyle={Object {}}
               title="john.smith@eventname.com"
               titleType="text"
             />
@@ -311,6 +312,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                   icn
                 </Text>
               }
+              textStyle={Object {}}
               title="07891234567"
               titleType="text"
             />

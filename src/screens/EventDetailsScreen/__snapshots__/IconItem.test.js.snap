@@ -13,7 +13,7 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "height": 20,
-        "paddingRight": 20,
+        "marginRight": 18,
         "width": 40,
       }
     }
@@ -36,8 +36,15 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
-      style={Object {}}
-      type="h3"
+      style={
+        Array [
+          Object {
+            "color": "#2d2f7f",
+          },
+          Object {},
+        ]
+      }
+      type="h4"
     >
       some thing
     </Text>

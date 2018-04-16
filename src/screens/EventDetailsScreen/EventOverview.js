@@ -25,7 +25,6 @@ const EventOverview = ({ event }: Props) => {
     event.fields.startTime[locale]
   );
   const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
-  // const dateFormat = "DD MMMM YYYY";
   const dateFormat = "ddd, DD MMM YYYY";
   const timeFormat = "h:mmA";
   const dateDisplay = isSameDay(startTime, endTime)
@@ -49,7 +48,6 @@ const EventOverview = ({ event }: Props) => {
       </View>
       <View style={styles.iconItemWrapper}>
         <IconItem
-          // icon={<Text type="small">icn</Text>}
           icon={<Image source={dateIcon} />}
           title={dateDisplay}
           content={<Text type="small">{timeDisplay}</Text>}
