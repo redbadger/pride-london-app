@@ -162,6 +162,6 @@ export default TabNavigator(
     tabBarPosition: "bottom",
     swipeEnabled: false,
     animationEnabled: false,
-    initialRouteName: SUPPORT_US
+    initialRouteName: HOME
   }
 );
