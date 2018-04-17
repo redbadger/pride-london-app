@@ -6,6 +6,7 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import chevronRightCircleWhite from "../../../assets/images/chevronRightCircleWhite.png";
 import externalLinkBlue from "../../../assets/images/externalLinkBlue.png";
 import externalLinkWhite from "../../../assets/images/externalLinkWhite.png";
+import ContentPadding from "../../components/ContentPadding";
 import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import {
@@ -64,18 +65,29 @@ class SupportUsButton extends React.PureComponent<Props> {
       >
         {bgLeft && <Image source={bgLeft} style={styles.bgLeft} />}
         {bgRight && <Image source={bgRight} style={styles.bgRight} />}
-        <View style={styles.titleContainer}>
-          <Text type="h1" style={contrast ? styles.textContrast : styles.text}>
-            {title}
+        <ContentPadding
+          padding={{
+            small: { horizontal: 18, vertical: 0 },
+            medium: { horizontal: 20, vertical: 0 },
+            large: { horizontal: 29, vertical: 0 }
+          }}
+        >
+          <View style={styles.titleContainer}>
+            <Text
+              type="h1"
+              style={contrast ? styles.textContrast : styles.text}
+            >
+              {title}
+            </Text>
+            <Image
+              source={pickLinkIcon(!!isExternalLink, !!contrast)}
+              style={styles.titleIcon}
+            />
+          </View>
+          <Text type="h3" style={contrast ? styles.textContrast : styles.text}>
+            {description}
           </Text>
-          <Image
-            source={pickLinkIcon(!!isExternalLink, !!contrast)}
-            style={styles.titleIcon}
-          />
-        </View>
-        <Text type="h3" style={contrast ? styles.textContrast : styles.text}>
-          {description}
-        </Text>
+        </ContentPadding>
       </Touchable>
     );
   }
@@ -86,7 +98,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 100 * PixelRatio.getFontScale(),
     borderRadius: 5,
-    paddingHorizontal: 28,
 
     // The below properties are required for iOS shadow
     shadowColor: supportUsButtonShadow,
