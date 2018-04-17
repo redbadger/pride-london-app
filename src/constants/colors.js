@@ -31,6 +31,7 @@ export const headerBgColor = "#A5A5A5";
 export const transparent = "transparent";
 
 export const textColor = "#272727";
+export const darkGreyColor = "#171717";
 
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 export const blackZeroColor = "rgba(0, 0, 0, 0)";

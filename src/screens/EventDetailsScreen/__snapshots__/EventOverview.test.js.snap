@@ -72,6 +72,11 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
+        style={
+          Object {
+            "marginTop": 2,
+          }
+        }
       />
     }
     style={
@@ -95,7 +100,11 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#171717",
+        }
+      }
       type="small"
     >
       11:00AM - 6:00PM
@@ -133,14 +142,9 @@ exports[`renders correctly 1`] = `
   </IconItem>
   <IconItem
     icon={
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        style={Object {}}
-        type="small"
-      >
-        icn
-      </Text>
+      <Image
+        source={1}
+      />
     }
     style={
       Object {
@@ -163,14 +167,9 @@ exports[`renders correctly 1`] = `
   </IconItem>
   <IconItem
     icon={
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        style={Object {}}
-        type="small"
-      >
-        icn
-      </Text>
+      <Image
+        source={1}
+      />
     }
     style={
       Object {
@@ -181,8 +180,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
-      style={Object {}}
-      styles={
+      style={
         Object {
           "color": "#2d2f7f",
         }
@@ -194,14 +192,14 @@ exports[`renders correctly 1`] = `
   </IconItem>
   <IconItem
     icon={
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        style={Object {}}
-        type="small"
-      >
-        icn
-      </Text>
+      <Image
+        source={1}
+        style={
+          Object {
+            "marginTop": 2,
+          }
+        }
+      />
     }
     style={
       Object {
@@ -212,8 +210,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
-      style={Object {}}
-      styles={
+      style={
         Object {
           "color": "#2d2f7f",
         }
@@ -225,7 +222,11 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
-      style={Object {}}
+      style={
+        Object {
+          "color": "#171717",
+        }
+      }
       type="small"
     >
       Accessible Toilets, Hearing loop installed
