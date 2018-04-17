@@ -9,6 +9,43 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
     }
   }
 >
+  <Header>
+    <ContentPadding
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <IconButton
+        accessibilityLabel="Back"
+        onPress={[Function]}
+        source={1}
+      />
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={
+          Object {
+            "color": "#ffffff",
+          }
+        }
+        type="h2"
+      >
+        Featured events
+      </Text>
+      <View
+        style={
+          Object {
+            "height": 48,
+            "width": 48,
+          }
+        }
+      />
+    </ContentPadding>
+  </Header>
   <EventList
     events={Array []}
     getAssetUrl={[Function]}
