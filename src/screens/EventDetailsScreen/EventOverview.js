@@ -7,18 +7,35 @@ import IconItem from "./IconItem";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
-import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
+import {
+  whiteColor,
+  lightNavyBlueColor,
+  blackColor
+} from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event } from "../../data/event";
 import locale from "../../data/locale";
 import dateIcon from "../../../assets/images/date.png";
+import genderNeutralIcon from "../../../assets/images/genderNeutral.png";
+import accessibilityIcon from "../../../assets/images/accessibility.png";
+import ticketsIcon from "../../../assets/images/tickets.png";
 
 type Props = {
   event: Event
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
+export const displayPrice = (
+  isFree: boolean,
+  eventPriceLow: number,
+  eventPriceHigh?: number
+) => {
+  if (isFree) return text.isFreePrice;
+  if (eventPriceHigh && eventPriceHigh > eventPriceLow)
+    return `£${eventPriceLow} - £${eventPriceHigh}`;
+  return `£${eventPriceLow}`;
+};
 
 const EventOverview = ({ event }: Props) => {
   const startTime = removeTimezoneFromDateString(
@@ -50,20 +67,29 @@ const EventOverview = ({ event }: Props) => {
           />
         ))}
       </View>
-      <IconItem icon={<Image source={dateIcon} />} style={styles.iconItem}>
+      <IconItem
+        icon={<Image style={styles.icon} source={dateIcon} />}
+        style={styles.iconItem}
+      >
         <Text type="h4" style={styles.detailTitle}>
           {dateDisplay}
         </Text>
-        <Text type="small">{timeDisplay}</Text>
+        <Text type="small" style={styles.text}>
+          {timeDisplay}
+        </Text>
       </IconItem>
       <IconItem icon={<Text type="small">icn</Text>} style={styles.iconItem}>
         <Text type="h4" style={styles.detailTitle}>
           {event.fields.locationName[locale]}
         </Text>
       </IconItem>
-      <IconItem icon={<Text type="small">icn</Text>} style={styles.iconItem}>
+      <IconItem icon={<Image source={ticketsIcon} />} style={styles.iconItem}>
         <Text type="h4" style={styles.detailTitle}>
-          {`${text.eventDetailsPrice}${event.fields.eventPriceLow[locale]}`}
+          {displayPrice(
+            event.fields.isFree[locale],
+            event.fields.eventPriceLow[locale],
+            event.fields.eventPriceHigh[locale]
+          )}
         </Text>
       </IconItem>
       {event.fields.venueDetails &&
@@ -71,10 +97,10 @@ const EventOverview = ({ event }: Props) => {
           strings.venueDetailsGenderNeutralToilets
         ) && (
           <IconItem
-            icon={<Text type="small">icn</Text>}
+            icon={<Image source={genderNeutralIcon} />}
             style={styles.iconItem}
           >
-            <Text type="h4" styles={styles.detailTitle}>
+            <Text type="h4" style={styles.detailTitle}>
               {text.eventDetailsGenderNeutralToilets}
             </Text>
           </IconItem>
@@ -82,13 +108,13 @@ const EventOverview = ({ event }: Props) => {
       {event.fields.accessibilityOptions &&
         event.fields.accessibilityOptions[locale].length > 0 && (
           <IconItem
-            icon={<Text type="small">icn</Text>}
+            icon={<Image style={styles.icon} source={accessibilityIcon} />}
             style={styles.iconItem}
           >
-            <Text type="h4" styles={styles.detailTitle}>
+            <Text type="h4" style={styles.detailTitle}>
               {text.eventDetailsAccessibility}
             </Text>
-            <Text type="small">
+            <Text type="small" style={styles.text}>
               {event.fields.accessibilityOptions[locale].join(", ")}
             </Text>
           </IconItem>
@@ -115,8 +141,14 @@ const styles = StyleSheet.create({
   iconItem: {
     marginBottom: 20
   },
+  icon: {
+    marginTop: 2
+  },
   detailTitle: {
     color: lightNavyBlueColor
+  },
+  text: {
+    color: blackColor
   }
 });
 
