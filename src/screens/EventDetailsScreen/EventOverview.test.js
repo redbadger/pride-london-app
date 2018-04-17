@@ -9,6 +9,10 @@ it("renders correctly", () => {
     fields: {
       name: { "en-GB": "Pride in the Park" },
       location: { "en-GB": { lon: -0.12092150000000856, lat: 51.4875152 } },
+      addressLine1: { "en-GB": "Vauxhall Pleasure Gardens" },
+      addressLine2: { "en-GB": "Vauxhall Pleasure Gardens" },
+      city: { "en-GB": "London" },
+      postcode: { "en-GB": "EC1M 3HA" },
       locationName: { "en-GB": "Vauxhall Pleasure Gardens" },
       startTime: { "en-GB": "2017-07-09T11:00+01:00" },
       endTime: { "en-GB": "2018-07-15T18:00+01:00" },
