@@ -89,7 +89,10 @@ const EventOverview = ({ event }: Props) => {
         </Text>
       </IconItem>
 
-      <IconItem icon={<Image source={locationIcon} />} style={styles.iconItem}>
+      <IconItem
+        icon={<Image source={locationIcon} style={styles.icon} />}
+        style={styles.iconItem}
+      >
         <Touchable onPress={() => showLocation(...eventLocation)}>
           <View style={styles.detailTitleLink}>
             <Text type="h4" style={styles.detailTitle}>

@@ -114,6 +114,11 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
+        style={
+          Object {
+            "marginTop": 2,
+          }
+        }
       />
     }
     style={
