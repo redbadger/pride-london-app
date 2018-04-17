@@ -169,9 +169,9 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor,
     paddingVertical: 12,
     shadowColor,
-    shadowOffset: { width: 0, height: -8 },
+    shadowOffset: { width: 0, height: -6 },
     shadowOpacity: 1,
-    shadowRadius: 8
+    shadowRadius: 15
   },
   detailTitle: {
     color: lightNavyBlueColor

@@ -346,11 +346,11 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         "paddingVertical": 12,
         "shadowColor": "rgba(0, 0, 0, 0.1)",
         "shadowOffset": Object {
-          "height": -8,
+          "height": -6,
           "width": 0,
         },
         "shadowOpacity": 1,
-        "shadowRadius": 8,
+        "shadowRadius": 15,
       }
     }
   >
