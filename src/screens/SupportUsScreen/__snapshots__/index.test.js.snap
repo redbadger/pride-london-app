@@ -4,12 +4,14 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
+      "backgroundColor": "#ffffff",
       "flex": 1,
     }
   }
 >
   <Header>
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
           "alignItems": "center",
@@ -20,6 +22,7 @@ exports[`renders correctly 1`] = `
       }
     >
       <Text
+        allowFontScaling={true}
         markdown={false}
         style={
           Object {
@@ -47,6 +50,7 @@ exports[`renders correctly 1`] = `
         title="As an individual"
       />
       <ContentPadding
+        padding={Object {}}
         style={
           Object {
             "marginBottom": 16,
@@ -98,6 +102,7 @@ exports[`renders correctly 1`] = `
         title="As a business"
       />
       <ContentPadding
+        padding={Object {}}
         style={
           Object {
             "marginBottom": 16,

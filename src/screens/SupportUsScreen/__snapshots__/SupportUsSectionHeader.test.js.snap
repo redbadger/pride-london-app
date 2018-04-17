@@ -12,20 +12,41 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Text
-    markdown={false}
-    style={
+  <ContentPadding
+    padding={
       Object {
-        "backgroundColor": "#ffffff",
-        "color": "#2d2f7f",
-        "lineHeight": 40,
-        "margin": 16,
-        "paddingHorizontal": 8,
+        "large": Object {
+          "horizontal": 16,
+          "vertical": 16,
+        },
+        "medium": Object {
+          "horizontal": 16,
+          "vertical": 16,
+        },
+        "small": Object {
+          "horizontal": 8,
+          "vertical": 8,
+        },
       }
     }
-    type="h1"
+    style={Object {}}
   >
-    Fruit
-  </Text>
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "color": "#2d2f7f",
+          "lineHeight": 36,
+          "paddingHorizontal": 8,
+          "paddingTop": 4,
+        }
+      }
+      type="h1"
+    >
+      Fruit
+    </Text>
+  </ContentPadding>
 </ImageBackground>
 `;

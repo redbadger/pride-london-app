@@ -58,7 +58,28 @@ describe("ContentPadding", () => {
       </ContentPadding>
     );
 
-    expect(output.props().style[0].paddingHorizontal).toBeUndefined();
+    expect(output.props().style[0].paddingHorizontal).toBe(0);
+
+    dimensionsMock.mockRestore();
+  });
+
+  it("uses other padding when explicitly specified", () => {
+    const dimensionsMock = jest
+      .spyOn(Dimensions, "get")
+      .mockImplementation(() => ({ width: 441 }));
+
+    const output = shallow(
+      <ContentPadding
+        padding={{
+          large: { horizontal: 19, vertical: 21 }
+        }}
+      >
+        <Text>Something</Text>
+      </ContentPadding>
+    );
+
+    expect(output.props().style[0].paddingHorizontal).toBe(19);
+    expect(output.props().style[0].paddingVertical).toBe(21);
 
     dimensionsMock.mockRestore();
   });

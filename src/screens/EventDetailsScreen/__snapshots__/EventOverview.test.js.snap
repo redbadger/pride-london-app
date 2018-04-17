@@ -2,6 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <ContentPadding
+  padding={Object {}}
   style={
     Object {
       "backgroundColor": "#ffffff",

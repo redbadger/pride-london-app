@@ -4,7 +4,10 @@ exports[`ContentPadding renders correctly 1`] = `
 <View
   style={
     Array [
-      Object {},
+      Object {
+        "paddingHorizontal": 0,
+        "paddingVertical": 0,
+      },
       Object {},
     ]
   }

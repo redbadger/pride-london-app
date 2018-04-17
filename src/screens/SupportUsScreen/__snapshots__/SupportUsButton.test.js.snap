@@ -42,6 +42,7 @@ exports[`picks different icon for external links 1`] = `
     }
   >
     <Text
+      allowFontScaling={true}
       markdown={false}
       style={
         Object {
@@ -68,6 +69,7 @@ exports[`picks different icon for external links 1`] = `
     />
   </View>
   <Text
+    allowFontScaling={true}
     markdown={false}
     style={
       Object {
@@ -123,6 +125,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
     }
   >
     <Text
+      allowFontScaling={true}
       markdown={false}
       style={
         Object {
@@ -149,6 +152,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
     />
   </View>
   <Text
+    allowFontScaling={true}
     markdown={false}
     style={
       Object {
@@ -204,6 +208,7 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
+      allowFontScaling={true}
       markdown={false}
       style={
         Object {
@@ -230,6 +235,7 @@ exports[`renders correctly 1`] = `
     />
   </View>
   <Text
+    allowFontScaling={true}
     markdown={false}
     style={
       Object {

@@ -19,6 +19,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     showHideTransition="fade"
   />
   <ContentPadding
+    padding={Object {}}
     style={Object {}}
   >
     <View

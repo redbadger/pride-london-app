@@ -11,6 +11,7 @@ exports[`renders correctly 1`] = `
 >
   <Header>
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
           "flexDirection": "row",
@@ -162,6 +163,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       }
     />
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
           "backgroundColor": "#ffffff",
@@ -203,6 +205,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       </View>
     </ContentPadding>
     <ContentPadding
+      padding={Object {}}
       style={Object {}}
     >
       <View

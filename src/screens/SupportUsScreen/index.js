@@ -88,7 +88,8 @@ const EventDetailsScreen = ({ navigation }: Props) => (
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: whiteColor
   },
   scrollContainer: {
     width: "100%",
