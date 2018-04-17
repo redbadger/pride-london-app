@@ -13,7 +13,8 @@ import ContentPadding from "../../components/ContentPadding";
 import {
   shadowColor,
   lightishGreyColor,
-  whiteColor
+  whiteColor,
+  lightNavyBlueColor
 } from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event, LocalizedFieldRef } from "../../data/event";
@@ -62,20 +63,20 @@ const renderEventDetails = event =>
             <Text type="h2">{text.eventDetailsContact}</Text>
             {event.fields.email && (
               <View style={styles.contactItem}>
-                <IconItem
-                  icon={<Text type="small">icn</Text>}
-                  title={event.fields.email[locale]}
-                  titleType="text"
-                />
+                <IconItem icon={<Text type="small">icn</Text>}>
+                  <Text type="h4" style={styles.detailTitle}>
+                    {event.fields.email[locale]}
+                  </Text>
+                </IconItem>
               </View>
             )}
             {event.fields.phone && (
               <View style={styles.contactItem}>
-                <IconItem
-                  icon={<Text type="small">icn</Text>}
-                  title={event.fields.phone[locale]}
-                  titleType="text"
-                />
+                <IconItem icon={<Text type="small">icn</Text>}>
+                  <Text type="h4" style={styles.detailTitle}>
+                    {event.fields.phone[locale]}
+                  </Text>
+                </IconItem>
               </View>
             )}
           </View>
@@ -171,6 +172,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: -8 },
     shadowOpacity: 1,
     shadowRadius: 8
+  },
+  detailTitle: {
+    color: lightNavyBlueColor
   }
 });
 

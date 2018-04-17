@@ -44,138 +44,168 @@ exports[`renders correctly 1`] = `
       key="Music"
     />
   </View>
-  <View
+  <IconItem
+    icon={
+      <Image
+        source={1}
+      />
+    }
     style={
       Object {
         "marginBottom": 20,
       }
     }
   >
-    <IconItem
-      content={
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          11:00 - 18:00
-        </Text>
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={
+        Object {
+          "color": "#2d2f7f",
+        }
       }
-      icon={
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          icn
-        </Text>
-      }
-      title="09 July 2017 - 15 July 2018"
-      titleType="h3"
-    />
-  </View>
-  <View
+      type="h4"
+    >
+      Sun, 09 Jul 2017 - Sun, 15 Jul 2018
+    </Text>
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={Object {}}
+      type="small"
+    >
+      11:00AM - 6:00PM
+    </Text>
+  </IconItem>
+  <IconItem
+    icon={
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={Object {}}
+        type="small"
+      >
+        icn
+      </Text>
+    }
     style={
       Object {
         "marginBottom": 20,
       }
     }
   >
-    <IconItem
-      content={null}
-      icon={
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          icn
-        </Text>
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={
+        Object {
+          "color": "#2d2f7f",
+        }
       }
-      title="Vauxhall Pleasure Gardens"
-      titleType="h3"
-    />
-  </View>
-  <View
+      type="h4"
+    >
+      Vauxhall Pleasure Gardens
+    </Text>
+  </IconItem>
+  <IconItem
+    icon={
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={Object {}}
+        type="small"
+      >
+        icn
+      </Text>
+    }
     style={
       Object {
         "marginBottom": 20,
       }
     }
   >
-    <IconItem
-      content={null}
-      icon={
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          icn
-        </Text>
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={
+        Object {
+          "color": "#2d2f7f",
+        }
       }
-      title="From: £19.95"
-      titleType="h3"
-    />
-  </View>
-  <View
+      type="h4"
+    >
+      From: £19.95
+    </Text>
+  </IconItem>
+  <IconItem
+    icon={
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={Object {}}
+        type="small"
+      >
+        icn
+      </Text>
+    }
     style={
       Object {
         "marginBottom": 20,
       }
     }
   >
-    <IconItem
-      content={null}
-      icon={
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          icn
-        </Text>
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={Object {}}
+      styles={
+        Object {
+          "color": "#2d2f7f",
+        }
       }
-      title="Gender neutral toilets"
-      titleType="h3"
-    />
-  </View>
-  <View
+      type="h4"
+    >
+      Gender neutral toilets
+    </Text>
+  </IconItem>
+  <IconItem
+    icon={
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={Object {}}
+        type="small"
+      >
+        icn
+      </Text>
+    }
     style={
       Object {
         "marginBottom": 20,
       }
     }
   >
-    <IconItem
-      content={
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          Accessible Toilets, Hearing loop installed
-        </Text>
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={Object {}}
+      styles={
+        Object {
+          "color": "#2d2f7f",
+        }
       }
-      icon={
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          style={Object {}}
-          type="small"
-        >
-          icn
-        </Text>
-      }
-      title="Accessibility"
-      titleType="h3"
-    />
-  </View>
+      type="h4"
+    >
+      Accessibility
+    </Text>
+    <Text
+      allowFontScaling={true}
+      markdown={false}
+      style={Object {}}
+      type="small"
+    >
+      Accessible Toilets, Hearing loop installed
+    </Text>
+  </IconItem>
 </ContentPadding>
 `;
