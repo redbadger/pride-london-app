@@ -26,6 +26,16 @@ type Props = {
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
+export const displayPrice = (
+  isFree: boolean,
+  eventPriceLow: number,
+  eventPriceHigh?: number
+) => {
+  if (isFree) return text.isFreePrice;
+  if (eventPriceHigh && eventPriceHigh > eventPriceLow)
+    return `£${eventPriceLow} - £${eventPriceHigh}`;
+  return `£${eventPriceLow}`;
+};
 
 const EventOverview = ({ event }: Props) => {
   const startTime = removeTimezoneFromDateString(
@@ -75,7 +85,11 @@ const EventOverview = ({ event }: Props) => {
       </IconItem>
       <IconItem icon={<Image source={ticketsIcon} />} style={styles.iconItem}>
         <Text type="h4" style={styles.detailTitle}>
-          {`${text.eventDetailsPrice}${event.fields.eventPriceLow[locale]}`}
+          {displayPrice(
+            event.fields.isFree[locale],
+            event.fields.eventPriceLow[locale],
+            event.fields.eventPriceHigh[locale]
+          )}
         </Text>
       </IconItem>
       {event.fields.venueDetails &&

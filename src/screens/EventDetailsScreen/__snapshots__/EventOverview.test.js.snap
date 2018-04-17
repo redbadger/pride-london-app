@@ -162,7 +162,7 @@ exports[`renders correctly 1`] = `
       }
       type="h4"
     >
-      From: £19.95
+      £19.95 - £30
     </Text>
   </IconItem>
   <IconItem
