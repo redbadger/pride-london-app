@@ -13,11 +13,14 @@ import {
   whiteColor,
   supportUsButtonShadow
 } from "../../constants/colors";
+import type { ImageRef } from "../../data/image-ref";
 
 type Props = {
   color: string,
   title: string,
   description: string,
+  bgLeft?: ImageRef,
+  bgRight?: ImageRef,
   navigation: NavigationScreenProp<NavigationState>,
   url: string,
   isExternalLink?: boolean,
@@ -47,6 +50,8 @@ class SupportUsButton extends React.PureComponent<Props> {
       color,
       title,
       description,
+      bgLeft,
+      bgRight,
       isExternalLink,
       contrast,
       style
@@ -57,6 +62,8 @@ class SupportUsButton extends React.PureComponent<Props> {
         onPress={this.onPress}
         style={[styles.button, { backgroundColor: color }, style]}
       >
+        {bgLeft && <Image source={bgLeft} style={styles.bgLeft} />}
+        {bgRight && <Image source={bgRight} style={styles.bgRight} />}
         <View style={styles.titleContainer}>
           <Text type="h1" style={contrast ? styles.textContrast : styles.text}>
             {title}
@@ -90,6 +97,18 @@ const styles = StyleSheet.create({
     // The below properties are required for Android shadow
     borderWidth: 0,
     elevation: 3
+  },
+  bgLeft: {
+    borderRadius: 5,
+    position: "absolute",
+    bottom: 0,
+    left: 0
+  },
+  bgRight: {
+    borderRadius: 5,
+    position: "absolute",
+    top: 0,
+    right: 0
   },
   titleContainer: {
     flexDirection: "row"

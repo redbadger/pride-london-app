@@ -4,11 +4,16 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import supportUsAsIndividual from "../../../assets/images/supportUsAsIndividual.jpg";
 import supportUsAsBusiness from "../../../assets/images/supportUsAsBusiness.jpg";
+import supportUsDonateBgLeft from "../../../assets/images/supportUsDonateBgLeft.png";
+import supportUsDonateBgRight from "../../../assets/images/supportUsDonateBgRight.png";
+import supportUsVolunteerBgRight from "../../../assets/images/supportUsVolunteerBgRight.png";
+import supportUsShopBgRight from "../../../assets/images/supportUsShopBgRight.png";
+import supportUsSponsorBgRight from "../../../assets/images/supportUsSponsorBgRight.png";
 import Header from "../../components/Header";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
 import {
-  darkBlueGreyTwoColor,
+  lightNavyBlueColor,
   warmPinkColor,
   vomitYellowColor,
   turquoiseBlueColor,
@@ -40,9 +45,11 @@ const EventDetailsScreen = ({ navigation }: Props) => (
         />
         <ContentPadding style={styles.sectionSpacing}>
           <SupportUsButton
-            color={darkBlueGreyTwoColor}
+            color={lightNavyBlueColor}
             title={text.supportUsDonate}
             description={text.supportUsDonateDescription}
+            bgLeft={supportUsDonateBgLeft}
+            bgRight={supportUsDonateBgRight}
             navigation={navigation}
             url={DONATE}
             style={styles.buttonSpacing}
@@ -51,6 +58,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             color={warmPinkColor}
             title={text.supportUsVolunteer}
             description={text.supportUsVolunteerDescription}
+            bgRight={supportUsVolunteerBgRight}
             navigation={navigation}
             url="https://example.com"
             isExternalLink
@@ -60,6 +68,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             color={vomitYellowColor}
             title={text.supportUsShop}
             description={text.supportUsShopDescription}
+            bgRight={supportUsShopBgRight}
             navigation={navigation}
             url="https://example.com"
             isExternalLink
@@ -76,6 +85,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             color={turquoiseBlueColor}
             title={text.supportUsSponsor}
             description={text.supportUsSponsorDescription}
+            bgRight={supportUsSponsorBgRight}
             navigation={navigation}
             url={SPONSOR}
             style={styles.buttonSpacing}
