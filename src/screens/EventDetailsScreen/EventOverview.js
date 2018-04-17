@@ -10,7 +10,7 @@ import ContentPadding from "../../components/ContentPadding";
 import {
   whiteColor,
   lightNavyBlueColor,
-  darkGreyColor
+  blackColor
 } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     color: lightNavyBlueColor
   },
   text: {
-    color: darkGreyColor
+    color: blackColor
   }
 });
 

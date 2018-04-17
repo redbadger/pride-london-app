@@ -102,7 +102,7 @@ exports[`renders correctly 1`] = `
       markdown={false}
       style={
         Object {
-          "color": "#171717",
+          "color": "#111111",
         }
       }
       type="small"
@@ -224,7 +224,7 @@ exports[`renders correctly 1`] = `
       markdown={false}
       style={
         Object {
-          "color": "#171717",
+          "color": "#111111",
         }
       }
       type="small"
