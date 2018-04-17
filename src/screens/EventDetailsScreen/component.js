@@ -2,7 +2,6 @@
 import React, { PureComponent } from "react";
 import { Image, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import IconButton from "./IconButton";
 import IconItem from "./IconItem";
 import EventMap from "./EventMap";
 import EventOverview from "./EventOverview";
@@ -10,6 +9,7 @@ import Text from "../../components/Text";
 import Button from "../../components/Button";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
+import IconButton from "../../components/IconButton";
 import {
   darkBlueGreyTwoColor,
   lightishGreyColor,
