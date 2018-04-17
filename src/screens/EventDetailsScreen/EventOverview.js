@@ -4,7 +4,7 @@ import { Image, View, StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import IconItem from "./IconItem";
-import CategoryLabel from "./CategoryLabel";
+import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
@@ -41,9 +41,13 @@ const EventOverview = ({ event }: Props) => {
   return (
     <ContentPadding style={styles.content}>
       <Text type="h1">{event.fields.name[locale]}</Text>
-      <View style={styles.categoryLabelContainer}>
+      <View style={styles.categoryPillContainer}>
         {event.fields.eventCategories[locale].map(categoryName => (
-          <CategoryLabel key={categoryName} categoryName={categoryName} />
+          <CategoryPill
+            key={categoryName}
+            name={categoryName}
+            style={styles.categoryPill}
+          />
         ))}
       </View>
       <IconItem icon={<Image source={dateIcon} />} style={styles.iconItem}>
@@ -98,11 +102,15 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     backgroundColor: whiteColor
   },
-  categoryLabelContainer: {
+  categoryPillContainer: {
     marginTop: 16,
     marginBottom: 20,
     flexDirection: "row",
     flexWrap: "wrap"
+  },
+  categoryPill: {
+    marginBottom: 8,
+    marginRight: 8
   },
   iconItem: {
     marginBottom: 20

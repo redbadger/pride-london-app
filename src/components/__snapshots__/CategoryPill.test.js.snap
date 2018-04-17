@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryPill Component renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "paddingLeft": 5,
+        "paddingRight": 5,
+      },
+      Object {
+        "backgroundColor": "#5770d1",
+      },
+      Object {},
+    ]
+  }
+>
+  <Text
+    allowFontScaling={true}
+    markdown={false}
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+          "paddingTop": 3,
+        },
+        Object {
+          "color": "#ffffff",
+        },
+      ]
+    }
+    type="h3"
+  >
+    Music
+  </Text>
+</View>
+`;
