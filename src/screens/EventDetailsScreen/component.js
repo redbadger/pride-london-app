@@ -3,8 +3,8 @@ import React, { PureComponent } from "react";
 import { Image, Linking, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import IconItem from "./IconItem";
-import EventMap from "./EventMap";
 import EventOverview from "./EventOverview";
+import EventDescription from "./EventDescription";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
@@ -14,7 +14,8 @@ import Shadow from "../../components/Shadow";
 import {
   lightishGreyColor,
   whiteColor,
-  lightNavyBlueColor
+  lightNavyBlueColor,
+  darkBlueGreyTwoColor
 } from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event, LocalizedFieldRef } from "../../data/event";
@@ -27,20 +28,6 @@ type Props = {
   event: Event,
   getAssetUrl: LocalizedFieldRef => string
 };
-
-const renderEventDescription = event => (
-  <ContentPadding style={styles.content}>
-    <View style={styles.sectionDivider} />
-    <Text markdown>{event.fields.eventDescription[locale]}</Text>
-    <View style={styles.mapWrapper}>
-      <EventMap
-        lat={event.fields.location[locale].lat}
-        lon={event.fields.location[locale].lon}
-        locationName={event.fields.locationName[locale]}
-      />
-    </View>
-  </ContentPadding>
-);
 
 const renderEventDetails = event =>
   (event.fields.accessibilityDetails ||
@@ -134,7 +121,10 @@ class EventDetailsScreen extends PureComponent<Props> {
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
           <EventOverview event={event} />
-          {renderEventDescription(event)}
+          <ContentPadding>
+            <View style={styles.sectionDivider} />
+            <EventDescription event={event} />
+          </ContentPadding>
           {renderEventDetails(event)}
         </ScrollView>
         {renderBuyTickets(event)}
@@ -150,7 +140,8 @@ const styles = StyleSheet.create({
   },
   headerContent: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    backgroundColor: darkBlueGreyTwoColor
   },
   content: {
     paddingVertical: 15
@@ -159,9 +150,6 @@ const styles = StyleSheet.create({
     backgroundColor: lightishGreyColor,
     height: 1,
     marginVertical: 16
-  },
-  mapWrapper: {
-    marginTop: 8
   },
   detailsSection: {
     marginBottom: 20
