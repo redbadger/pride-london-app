@@ -12,6 +12,7 @@ exports[`renders correctly 1`] = `
   <Text
     allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={Object {}}
     type="h1"
   >
@@ -88,6 +89,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -100,6 +102,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",
@@ -150,6 +153,7 @@ exports[`renders correctly 1`] = `
         <Text
           allowFontScaling={true}
           markdown={false}
+          onLayout={[Function]}
           style={
             Object {
               "color": "#2d2f7f",
@@ -163,6 +167,7 @@ exports[`renders correctly 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={Object {}}
         type="small"
       >
@@ -171,6 +176,7 @@ exports[`renders correctly 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={Object {}}
         type="small"
       >
@@ -179,6 +185,7 @@ exports[`renders correctly 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={Object {}}
         type="small"
       >
@@ -187,6 +194,7 @@ exports[`renders correctly 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={Object {}}
         type="small"
       >
@@ -209,6 +217,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -234,6 +243,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -264,6 +274,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -276,6 +287,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",

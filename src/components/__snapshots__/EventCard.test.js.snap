@@ -39,6 +39,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "#ffffff",
@@ -61,6 +62,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "rgb(45, 47, 127)",
@@ -80,6 +82,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -94,6 +97,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "rgb(45, 47, 127)",
@@ -149,6 +153,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "#ffffff",
@@ -171,6 +176,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "rgb(45, 47, 127)",
@@ -190,6 +196,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -204,6 +211,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "rgb(45, 47, 127)",
@@ -259,6 +267,7 @@ exports[`renders correctly when isFree is true 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "#ffffff",
@@ -281,6 +290,7 @@ exports[`renders correctly when isFree is true 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "rgb(45, 47, 127)",
@@ -300,6 +310,7 @@ exports[`renders correctly when isFree is true 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -314,6 +325,7 @@ exports[`renders correctly when isFree is true 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "rgb(45, 47, 127)",

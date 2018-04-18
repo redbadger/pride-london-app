@@ -65,6 +65,7 @@ exports[`renders correctly 1`] = `
             <Text
               allowFontScaling={true}
               markdown={false}
+              onLayout={[Function]}
               style={
                 Object {
                   "alignSelf": "flex-end",
@@ -116,6 +117,7 @@ exports[`renders correctly 1`] = `
         <Text
           allowFontScaling={true}
           markdown={false}
+          onLayout={[Function]}
           style={
             Object {
               "color": "rgb(45, 47, 127)",

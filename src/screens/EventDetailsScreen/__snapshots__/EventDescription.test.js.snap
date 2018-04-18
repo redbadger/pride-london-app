@@ -4,20 +4,125 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
-      "paddingVertical": 15,
+      "paddingVertical": 8,
     }
   }
 >
   <Text
     allowFontScaling={true}
-    markdown={true}
-    style={Object {}}
-    type="text"
+    markdown={false}
+    onLayout={[Function]}
+    style={
+      Object {
+        "color": "#2d2f7f",
+        "marginBottom": 8,
+      }
+    }
+    type="h2"
   >
-    Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+    About
+  </Text>
+  <View>
+    <AnimatedComponent
+      scrollEnabled={false}
+      style={
+        Array [
+          Object {
+            "height": 100,
+          },
+          Object {},
+        ]
+      }
+    >
+      <Text
+        allowFontScaling={true}
+        markdown={true}
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {},
+          ]
+        }
+        type="text"
+      >
+        Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
 
 Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.
-  </Text>
+      </Text>
+    </AnimatedComponent>
+    <AnimatedComponent
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "height": 60,
+            "position": "absolute",
+            "width": "100%",
+          },
+          Object {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <LinearGradient
+        colors={
+          Array [
+            "rgba(255, 255, 255, 0)",
+            "#ffffff",
+          ]
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "height": 60,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
+    </AnimatedComponent>
+  </View>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    onPress={[Function]}
+    style={
+      Object {
+        "alignSelf": "flex-end",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignSelf": "flex-start",
+          "borderBottomColor": "#2cda9d",
+          "borderBottomWidth": 1,
+          "marginBottom": 2,
+        }
+      }
+    >
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        onLayout={[Function]}
+        style={
+          Object {
+            "color": "#2d2f7f",
+          }
+        }
+        type="h4"
+      >
+        Read more
+      </Text>
+    </View>
+  </Touchable>
   <View
     style={
       Object {

@@ -13,14 +13,23 @@ type Props = {
   type?: TextType,
   markdown?: boolean,
   style?: StyleObj,
-  allowFontScaling?: boolean
+  allowFontScaling?: boolean,
+  onLayout?: Function
 };
 
-const Text = ({ children, type, markdown, style, allowFontScaling }: Props) =>
+const Text = ({
+  children,
+  type,
+  markdown,
+  style,
+  allowFontScaling,
+  onLayout
+}: Props) =>
   markdown ? (
     <Markdown
       style={style}
       markdownStyles={{ ...textStyles, ...markdownStyles }}
+      onLayout={onLayout}
     >
       {children}
     </Markdown>
@@ -28,6 +37,7 @@ const Text = ({ children, type, markdown, style, allowFontScaling }: Props) =>
     <RnText
       style={[type && styles[type], style]}
       allowFontScaling={allowFontScaling}
+      onLayout={onLayout}
     >
       {children}
     </RnText>
@@ -36,7 +46,8 @@ Text.defaultProps = {
   type: "text",
   markdown: false,
   style: {},
-  allowFontScaling: true
+  allowFontScaling: true,
+  onLayout: () => {}
 };
 
 const textStyles = {
