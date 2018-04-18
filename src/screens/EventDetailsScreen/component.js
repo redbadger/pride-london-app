@@ -10,8 +10,8 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import IconButton from "../../components/IconButton";
+import Shadow from "../../components/Shadow";
 import {
-  shadowColor,
   lightishGreyColor,
   whiteColor,
   lightNavyBlueColor
@@ -87,15 +87,17 @@ const renderEventDetails = event =>
 
 const renderBuyTickets = event =>
   event.fields.ticketingUrl && (
-    <View style={styles.buyButton}>
-      <ContentPadding>
-        <ButtonPrimary
-          onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
-        >
-          {text.eventDetailsBuyButton}
-        </ButtonPrimary>
-      </ContentPadding>
-    </View>
+    <Shadow>
+      <View style={styles.buyButton}>
+        <ContentPadding>
+          <ButtonPrimary
+            onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
+          >
+            {text.eventDetailsBuyButton}
+          </ButtonPrimary>
+        </ContentPadding>
+      </View>
+    </Shadow>
   );
 
 class EventDetailsScreen extends PureComponent<Props> {
@@ -172,11 +174,7 @@ const styles = StyleSheet.create({
   },
   buyButton: {
     backgroundColor: whiteColor,
-    paddingVertical: 12,
-    shadowColor,
-    shadowOffset: { width: 0, height: -6 },
-    shadowOpacity: 1,
-    shadowRadius: 15
+    paddingVertical: 12
   },
   detailTitle: {
     color: lightNavyBlueColor
