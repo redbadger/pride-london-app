@@ -17,19 +17,21 @@ const SectionHeader = ({ title, hasShadow, badgeText }: Props) => {
   const containerStyles = hasShadow
     ? [styles.sectionHeader, styles.shadow]
     : styles.sectionHeader;
+  const showBadge = badgeText && badgeText.length > 0;
   return (
     <ContentPadding style={containerStyles}>
       <Text type="h2" style={styles.sectionHeaderText}>
         {title}
       </Text>
-      {badgeText &&
-        badgeText.length > 0 && (
-          <View style={styles.pingContainer}>
-            <Text type="xSmall" style={styles.badgeText}>
-              {badgeText}
-            </Text>
-          </View>
-        )}
+      {showBadge ? (
+        <View style={styles.pingContainer}>
+          <Text type="xSmall" style={styles.badgeText}>
+            {badgeText}
+          </Text>
+        </View>
+      ) : (
+        <View />
+      )}
     </ContentPadding>
   );
 };
