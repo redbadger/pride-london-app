@@ -120,8 +120,8 @@ class EventDetailsScreen extends PureComponent<Props> {
             style={{ aspectRatio: 5 / 3 }}
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
-          <EventOverview event={event} />
           <ContentPadding>
+            <EventOverview event={event} />
             <View style={styles.sectionDivider} />
             <EventDescription event={event} />
           </ContentPadding>

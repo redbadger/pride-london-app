@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<ContentPadding
+<View
   style={
     Object {
-      "backgroundColor": "#ffffff",
-      "paddingVertical": 15,
+      "paddingBottom": 10,
+      "paddingTop": 15,
     }
   }
 >
@@ -265,11 +265,7 @@ exports[`renders correctly 1`] = `
         }
       />
     }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    style={Object {}}
   >
     <Text
       allowFontScaling={true}
@@ -298,5 +294,5 @@ exports[`renders correctly 1`] = `
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</ContentPadding>
+</View>
 `;
