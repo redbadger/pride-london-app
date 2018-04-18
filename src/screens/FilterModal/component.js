@@ -24,6 +24,12 @@ type Props = {
   onCancel: () => void
 };
 
+const getSelectedFilterCount = eventFilters =>
+  Object.keys(tags).reduce(
+    (acc, tagName) => acc + eventFilters[tagName].size,
+    0
+  );
+
 class FilterModal extends PureComponent<Props> {
   static navigationOptions = ({
     navigation
@@ -36,6 +42,7 @@ class FilterModal extends PureComponent<Props> {
           navigation.state.params && navigation.state.params.handleClear()
         }
         onCancelPress={() => navigation.goBack()}
+        showClear={navigation.state.params && navigation.state.params.showClear}
       />
     )
   });
@@ -47,6 +54,18 @@ class FilterModal extends PureComponent<Props> {
     navigation.setParams({
       handleClear: this.clearTagFilters
     });
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    const prevSelectedCount = getSelectedFilterCount(prevProps.eventFilters);
+    const selectedCount = getSelectedFilterCount(this.props.eventFilters);
+
+    const shouldUpdateNav =
+      (prevSelectedCount === 0 && selectedCount !== 0) ||
+      (selectedCount === 0 && prevSelectedCount !== 0);
+    if (shouldUpdateNav) {
+      this.props.navigation.setParams({ showClear: selectedCount > 0 });
+    }
   }
 
   componentWillUnmount() {
