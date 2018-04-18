@@ -346,6 +346,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         >
           <Button
+            disabled={false}
             onPress={[Function]}
             text="Buy Tickets"
             type="primary"

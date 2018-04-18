@@ -5,6 +5,7 @@ exports[`FilterModal renders correctly 1`] = `
   forceInset={
     Object {
       "bottom": "always",
+      "top": "never",
     }
   }
   style={
@@ -14,6 +15,11 @@ exports[`FilterModal renders correctly 1`] = `
     }
   }
 >
+  <Header
+    onCancelPress={[Function]}
+    onClearPress={[Function]}
+    showClear={false}
+  />
   <ScrollView
     style={
       Object {
@@ -70,6 +76,7 @@ exports[`FilterModal renders correctly 1`] = `
       style={Object {}}
     >
       <Button
+        disabled={false}
         onPress={[Function]}
         text="Show 26 events"
         type="primary"

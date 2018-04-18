@@ -8,7 +8,8 @@ import {
   eventDetailsBuyButtonTextColor,
   buttonPrimaryBackground,
   buttonPrimaryTextColor,
-  greyishBrownColor
+  greyishBrownColor,
+  disabledButtonBgColor
 } from "../constants/colors";
 
 type ButtonType = "primary";
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     color: eventDetailsBuyButtonTextColor
   },
   disabledButton: {
-    backgroundColor: "#cecece"
+    backgroundColor: disabledButtonBgColor
   },
   disabledText: {
     color: greyishBrownColor

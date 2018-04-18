@@ -27,49 +27,15 @@ type Props = {
 
 const getSelectedFilterCount = eventFilters =>
   Object.keys(tags).reduce(
-    (acc, tagName) => acc + eventFilters[tagName].size,
+    (acc, tagName) =>
+      acc + (eventFilters[tagName] ? eventFilters[tagName].size : 0),
     0
   );
 
 class FilterModal extends PureComponent<Props> {
-  static navigationOptions = ({
-    navigation
-  }: {
-    navigation: NavigationScreenProp
-  }) => ({
-    header: (
-      <Header
-        onClearPress={() =>
-          navigation.state.params && navigation.state.params.handleClear()
-        }
-        onCancelPress={() => navigation.goBack()}
-        showClear={navigation.state.params && navigation.state.params.showClear}
-      />
-    )
-  });
-
   componentDidMount() {
-    const { navigation, onCancel, eventFilters } = this.props;
+    const { navigation, onCancel } = this.props;
     this.didBlurSubscription = navigation.addListener("willBlur", onCancel);
-
-    const selectedCount = getSelectedFilterCount(eventFilters);
-
-    navigation.setParams({
-      handleClear: this.clearTagFilters,
-      showClear: selectedCount > 0
-    });
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const prevSelectedCount = getSelectedFilterCount(prevProps.eventFilters);
-    const selectedCount = getSelectedFilterCount(this.props.eventFilters);
-
-    const shouldUpdateNav =
-      (prevSelectedCount === 0 && selectedCount !== 0) ||
-      (selectedCount === 0 && prevSelectedCount !== 0);
-    if (shouldUpdateNav) {
-      this.props.navigation.setParams({ showClear: selectedCount > 0 });
-    }
   }
 
   componentWillUnmount() {
@@ -105,8 +71,17 @@ class FilterModal extends PureComponent<Props> {
       navigation,
       numEventsSelected
     } = this.props;
+    const selectedCount = getSelectedFilterCount(this.props.eventFilters);
     return (
-      <SafeAreaView style={styles.flex} forceInset={{ bottom: "always" }}>
+      <SafeAreaView
+        style={styles.flex}
+        forceInset={{ bottom: "always", top: "never" }}
+      >
+        <Header
+          onClearPress={this.clearTagFilters}
+          onCancelPress={() => navigation.goBack()}
+          showClear={selectedCount > 0}
+        />
         <ScrollView style={styles.flex}>
           {Object.keys(tags).map(
             sectionName =>

@@ -43,6 +43,7 @@ export const dialogHeaderDividerColor = "#F2F2F2";
 export const buttonPrimaryBackground = eucalyptusGreenColor;
 export const buttonPrimaryTextColor = lightNavyBlueColor;
 export const filterModalShadow = "rgba(0, 0, 0, 0.14)";
+export const disabledButtonBgColor = "#cecece";
 
 // TAB BAR
 

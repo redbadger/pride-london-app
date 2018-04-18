@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`applies styles to clear button when showClear=true 1`] = `
 <withOrientation
   forceInset={
     Object {
@@ -17,25 +17,22 @@ exports[`renders correctly 1`] = `
   <ContentPadding
     style={
       Object {
+        "alignItems": "center",
         "flex": 1,
         "flexDirection": "row",
+        "justifyContent": "space-between",
       }
     }
   >
     <ActionButton
       label="Cancel"
       onPress={[Function]}
-      style={
-        Object {
-          "alignItems": "flex-start",
-          "flex": 1,
-        }
-      }
+      style={Object {}}
     />
     <View
       style={
         Object {
-          "justifyContent": "center",
+          "paddingTop": 4,
         }
       }
     >
@@ -53,12 +50,75 @@ exports[`renders correctly 1`] = `
       </Text>
     </View>
     <ActionButton
+      key="1"
       label="Clear all"
       onPress={[Function]}
       style={
         Object {
-          "alignItems": "flex-end",
-          "flex": 1,
+          "opacity": 1,
+        }
+      }
+    />
+  </ContentPadding>
+</withOrientation>
+`;
+
+exports[`renders correctly 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "top": "always",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#2d2f7f",
+      "height": 50,
+    }
+  }
+>
+  <ContentPadding
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <ActionButton
+      label="Cancel"
+      onPress={[Function]}
+      style={Object {}}
+    />
+    <View
+      style={
+        Object {
+          "paddingTop": 4,
+        }
+      }
+    >
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={
+          Object {
+            "color": "#ffffff",
+          }
+        }
+        type="h2"
+      >
+        Filter Events
+      </Text>
+    </View>
+    <ActionButton
+      key="0"
+      label="Clear all"
+      onPress={[Function]}
+      style={
+        Object {
+          "opacity": 0,
         }
       }
     />

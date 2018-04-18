@@ -8,3 +8,10 @@ it("renders correctly", () => {
   );
   expect(output).toMatchSnapshot();
 });
+
+it("applies styles to clear button when showClear=true", () => {
+  const output = shallow(
+    <Header onClearPress={() => {}} onCancelPress={() => {}} showClear />
+  );
+  expect(output).toMatchSnapshot();
+});

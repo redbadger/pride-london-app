@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`applies styles and props when disabled=true 1`] = `
 <Touchable
   accessibilityComponentType="button"
   accessibilityTraits={
@@ -9,6 +9,7 @@ exports[`renders correctly 1`] = `
     ]
   }
   delayPressIn={50}
+  disabled={true}
   onPress={[Function]}
   style={
     Array [
@@ -20,6 +21,9 @@ exports[`renders correctly 1`] = `
       },
       Object {
         "backgroundColor": "#2cda9d",
+      },
+      Object {
+        "backgroundColor": "#cecece",
       },
     ]
   }
@@ -35,6 +39,56 @@ exports[`renders correctly 1`] = `
         Object {
           "color": "#2d2f7f",
         },
+        Object {
+          "color": "#585858",
+        },
+      ]
+    }
+    type="h2"
+  >
+    a button
+  </Text>
+</Touchable>
+`;
+
+exports[`renders correctly 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  disabled={false}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#d8d8d8",
+        "borderRadius": 4,
+        "justifyContent": "center",
+      },
+      Object {
+        "backgroundColor": "#2cda9d",
+      },
+      Object {},
+    ]
+  }
+>
+  <Text
+    allowFontScaling={true}
+    markdown={false}
+    style={
+      Array [
+        Object {
+          "color": "#ffffff",
+        },
+        Object {
+          "color": "#2d2f7f",
+        },
+        Object {},
       ]
     }
     type="h2"

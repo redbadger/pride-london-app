@@ -20,6 +20,11 @@ it("renders correctly", () => {
   expect(output).toMatchSnapshot();
 });
 
+it("applies styles and props when disabled=true", () => {
+  const output = shallow(<Button text="a button" disabled />);
+  expect(output).toMatchSnapshot();
+});
+
 describe("#handlePress", () => {
   it("does nothing, if there is no url provided", () => {
     jest.mock("Linking", () => ({ openURL: jest.fn() }));
