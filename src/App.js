@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
 const HomeStack = StackNavigator(
   {
     [HOME]: { screen: withShadow(HomeScreen) },
-    [EVENT_DETAILS]: { screen: withShadow(EventDetailsScreen) },
-    [FEATURED_EVENT_LIST]: { screen: withShadow(FeaturedEventListScreen) }
+    [EVENT_DETAILS]: { screen: EventDetailsScreen },
+    [FEATURED_EVENT_LIST]: { screen: FeaturedEventListScreen }
   },
   {
     initialRouteName: HOME,
@@ -86,7 +86,7 @@ const HomeStack = StackNavigator(
 const EventsStack = StackNavigator(
   {
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
-    [EVENT_DETAILS]: { screen: withShadow(EventDetailsScreen) },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen },
     [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen }
   },
   {
