@@ -37,8 +37,6 @@ import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
 import type { ImageRef } from "./data/image-ref";
 
-console.disableYellowBox = true;
-
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
   focused
 }: TabScene) => (

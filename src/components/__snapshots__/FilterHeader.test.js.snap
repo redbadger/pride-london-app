@@ -34,50 +34,46 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-            "marginTop": 8,
-          }
-        }
-      >
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Any day"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Any time"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Filters"
-        />
-      </View>
     </View>
   </ContentPadding>
+  <ContentPadding
+    style={
+      Object {
+        "backgroundColor": "#20215a",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Select dates"
+    />
+    <View
+      style={
+        Object {
+          "borderColor": "#2cda9d",
+          "borderLeftWidth": 0.5,
+        }
+      }
+    />
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Add filters"
+    />
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
-    onApply={[Function]}
-    onCancel={[Function]}
-    visible={false}
-  />
-  <Connect(MultiSelectDialog)
     onApply={[Function]}
     onCancel={[Function]}
     visible={false}
@@ -119,50 +115,46 @@ exports[`renders correctly with any date and any time 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-            "marginTop": 8,
-          }
-        }
-      >
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Any day"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Any time"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Filters"
-        />
-      </View>
     </View>
   </ContentPadding>
+  <ContentPadding
+    style={
+      Object {
+        "backgroundColor": "#20215a",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Select dates"
+    />
+    <View
+      style={
+        Object {
+          "borderColor": "#2cda9d",
+          "borderLeftWidth": 0.5,
+        }
+      }
+    />
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Add filters"
+    />
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
-    onApply={[Function]}
-    onCancel={[Function]}
-    visible={false}
-  />
-  <Connect(MultiSelectDialog)
     onApply={[Function]}
     onCancel={[Function]}
     visible={false}
@@ -204,50 +196,46 @@ exports[`renders correctly with date range and two times 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-            "marginTop": 8,
-          }
-        }
-      >
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="2 Feb - 3 Feb"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Morning, Afternoon"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Filters"
-        />
-      </View>
     </View>
   </ContentPadding>
+  <ContentPadding
+    style={
+      Object {
+        "backgroundColor": "#20215a",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="2 Feb - 3 Feb"
+    />
+    <View
+      style={
+        Object {
+          "borderColor": "#2cda9d",
+          "borderLeftWidth": 0.5,
+        }
+      }
+    />
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Add filters"
+    />
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
-    onApply={[Function]}
-    onCancel={[Function]}
-    visible={false}
-  />
-  <Connect(MultiSelectDialog)
     onApply={[Function]}
     onCancel={[Function]}
     visible={false}
@@ -289,50 +277,46 @@ exports[`renders correctly with single date and single time 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-            "marginTop": 8,
-          }
-        }
-      >
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="2 Feb"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Afternoon"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Filters"
-        />
-      </View>
     </View>
   </ContentPadding>
+  <ContentPadding
+    style={
+      Object {
+        "backgroundColor": "#20215a",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="2 Feb"
+    />
+    <View
+      style={
+        Object {
+          "borderColor": "#2cda9d",
+          "borderLeftWidth": 0.5,
+        }
+      }
+    />
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Add filters"
+    />
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
-    onApply={[Function]}
-    onCancel={[Function]}
-    visible={false}
-  />
-  <Connect(MultiSelectDialog)
     onApply={[Function]}
     onCancel={[Function]}
     visible={false}

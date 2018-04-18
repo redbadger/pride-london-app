@@ -6,7 +6,11 @@ import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import ContentPadding from "./ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
-import { filterBgColor, filterButtonsBgColor } from "../constants/colors";
+import {
+  filterBgColor,
+  filterButtonsBgColor,
+  eucalyptusGreenColor
+} from "../constants/colors";
 import text from "../constants/text";
 import type { DateRange } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
@@ -61,10 +65,13 @@ class FilterHeader extends React.PureComponent<Props, State> {
           <FilterHeaderButton
             text={formattedDateFilter}
             onPress={this.showDatePicker}
+            style={styles.filterButton}
           />
+          <View style={styles.dividerLine} />
           <FilterHeaderButton
             text={text.addFilters}
             onPress={onFilterButtonPress}
+            style={styles.filterButton}
           />
         </ContentPadding>
         <DateFilterDialog
@@ -89,7 +96,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: filterButtonsBgColor,
-    marginTop: 8
+    // marginTop: 8,
+    height: 48
+  },
+  filterButton: {
+    flex: 1
+  },
+  dividerLine: {
+    borderLeftWidth: StyleSheet.hairlineWidth,
+    borderColor: eucalyptusGreenColor
   }
 });
 

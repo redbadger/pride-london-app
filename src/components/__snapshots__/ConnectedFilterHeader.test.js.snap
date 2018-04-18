@@ -31,49 +31,45 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       testID="filter-header"
     >
       <FilterHeaderCategories />
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-            "marginTop": 8,
-          }
-        }
-      >
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Any day"
-        />
-        <FilterHeaderButton
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Any time"
-        />
-        <FilterHeaderButton
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Filters"
-        />
-      </View>
     </View>
   </ContentPadding>
+  <ContentPadding
+    style={
+      Object {
+        "backgroundColor": "#20215a",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <FilterHeaderButton
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Select dates"
+    />
+    <View
+      style={
+        Object {
+          "borderColor": "#2cda9d",
+          "borderLeftWidth": 0.5,
+        }
+      }
+    />
+    <FilterHeaderButton
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Add filters"
+    />
+  </ContentPadding>
   <Connect(DateRangePickerDialog)
-    onApply={[Function]}
-    onCancel={[Function]}
-    visible={false}
-  />
-  <Connect(MultiSelectDialog)
     onApply={[Function]}
     onCancel={[Function]}
     visible={false}
@@ -115,6 +111,5 @@ exports[`ConnectedFilterHeader renders connector 1`] = `
       "unsubscribe": [Function],
     }
   }
-  timeFilter={Set {}}
 />
 `;
