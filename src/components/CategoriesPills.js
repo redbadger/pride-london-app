@@ -3,42 +3,21 @@ import React from "react";
 import { View, StyleSheet, ScrollView, PixelRatio } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import CategoryPill from "./CategoryPill";
 import Text from "./Text";
 import text from "../constants/text";
-import eventCategories from "../constants/event-categories";
-import locale from "../data/locale";
 
 import {
-  blackColor,
-  whiteColor,
   darkBlueGreyTwoColor,
   eucalyptusGreenColor,
   blackZeroColor,
   blackThirtyColor
 } from "../constants/colors";
 
-const categoryStyleColor = (category: string) => {
-  const categoryData = eventCategories[locale][category];
-  return { color: categoryData.contrast ? blackColor : whiteColor };
-};
-
-const categoryStyleBackgroundColor = (category: string) => {
-  const categoryData = eventCategories[locale][category];
-  return { backgroundColor: categoryData.color };
-};
-
 type Props = {
   selectedCategories: Set<string>,
   style?: StyleObj
 };
-
-const CategoryPill = ({ name }: { name: string }) => (
-  <View style={[styles.categoryPill, categoryStyleBackgroundColor(name)]}>
-    <Text type="h3" style={[styles.categoryPillText, categoryStyleColor(name)]}>
-      {name}
-    </Text>
-  </View>
-);
 
 class CategoriesPills extends React.PureComponent<Props> {
   static defaultProps = {
@@ -81,7 +60,11 @@ class CategoriesPills extends React.PureComponent<Props> {
               onContentSizeChange={this.scrollToLastPill}
             >
               {Array.from(selectedCategories).map(name => (
-                <CategoryPill key={name} name={name} />
+                <CategoryPill
+                  key={name}
+                  name={name}
+                  style={styles.categoryPill}
+                />
               ))}
             </ScrollView>
             <LinearGradient
@@ -106,11 +89,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     flexDirection: "row"
   },
-  zeroSelected: {
-    color: eucalyptusGreenColor,
-    paddingTop: 4,
-    paddingLeft: 8
-  },
   categoryPill: {
     flex: 1,
     justifyContent: "center",
@@ -118,13 +96,12 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 8,
     marginLeft: 6,
-    paddingLeft: 5,
-    paddingRight: 5,
     marginRight: 2
   },
-  categoryPillText: {
-    color: whiteColor,
-    paddingTop: 4
+  zeroSelected: {
+    color: eucalyptusGreenColor,
+    paddingTop: 4,
+    paddingLeft: 8
   },
   scrollView: {
     width: "100%"
