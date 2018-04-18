@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     minWidth: 48,
-    flex: 1,
+    flexGrow: 1,
     marginHorizontal: 4,
     paddingTop: 4,
     paddingBottom: 2
