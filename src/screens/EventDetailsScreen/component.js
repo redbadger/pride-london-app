@@ -2,14 +2,14 @@
 import React, { PureComponent } from "react";
 import { Image, Linking, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import Header from "./Header";
-import IconButton from "./IconButton";
 import IconItem from "./IconItem";
 import EventMap from "./EventMap";
 import EventOverview from "./EventOverview";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
+import Header from "../../components/Header";
+import IconButton from "../../components/IconButton";
 import {
   shadowColor,
   lightishGreyColor,
@@ -100,6 +100,11 @@ const renderBuyTickets = event =>
 
 class EventDetailsScreen extends PureComponent<Props> {
   static defaultProps = {};
+
+  static navigationOptions = {
+    header: null,
+    tabBarVisible: false
+  };
 
   render() {
     const { event, getAssetUrl } = this.props;

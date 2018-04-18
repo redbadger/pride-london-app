@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Image, StyleSheet } from "react-native";
-import Touchable from "../../components/Touchable";
+import Touchable from "./Touchable";
 
 type Props = {
   accessibilityLabel: string,
