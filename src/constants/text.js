@@ -18,7 +18,7 @@ export default {
   tabSaved: "Saved",
   tabSupportUs: "Support us",
   filterByInterest: "All events",
-  filters: "Filters",
+  addFilters: "Add filters",
   filterPickerApply: showEvents,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
@@ -31,8 +31,7 @@ export default {
   eventDetailsContact: "Contact",
   eventDetailsBuyButton: "Buy Tickets",
   eventDetailsGenderNeutralToilets: "Gender neutral toilets",
-  anyDay: "Any day",
-  anyTime: "Any time",
+  selectDates: "Select dates",
   time: {
     morning: "Morning",
     afternoon: "Afternoon",

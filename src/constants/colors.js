@@ -63,6 +63,7 @@ export const interestButtonTextColor = whiteColor;
 export const filterButtonBorderColor = "rgb(44, 218, 157)";
 export const filterButtonTextColor = "rgb(44, 218, 157)";
 export const filterModalTitleColor = whiteColor;
+export const filterButtonsBgColor = darkBlueGreyTwoColor;
 // EVENT LIST
 
 export const eventListHeaderBgColor = lightishGreyColor;

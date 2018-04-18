@@ -4,7 +4,6 @@ import { shallow } from "enzyme";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeader from "./FilterHeader";
 import FilterHeaderButton from "./FilterHeaderButton";
-import TimeFilterDialog from "./ConnectedTimeFilterDialog";
 import type { Props as ComponentProps } from "./FilterHeader";
 
 const render = (
@@ -82,22 +81,4 @@ it("closes date picker when users presses applies changes", () => {
   datePicker.simulate("apply");
 
   expect(output.state("datesPickerVisible")).toBe(false);
-});
-
-it("opens time picker when users presses time filter button", () => {
-  const output = render();
-  const filterTimeButton = output.find(FilterHeaderButton).at(1);
-  filterTimeButton.simulate("press");
-
-  expect(output.state("timesPickerVisible")).toBe(true);
-});
-
-it("closes time picker when users presses applies changes", () => {
-  const output = render();
-  output.setState({ timesPickerVisible: true });
-
-  const timePicker = output.find(TimeFilterDialog);
-  timePicker.simulate("apply");
-
-  expect(output.state("timesPickerVisible")).toBe(false);
 });
