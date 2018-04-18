@@ -112,14 +112,14 @@ exports[`renders correctly 1`] = `
   </IconItem>
   <IconItem
     icon={
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        style={Object {}}
-        type="small"
-      >
-        icn
-      </Text>
+      <Image
+        source={1}
+        style={
+          Object {
+            "marginTop": 2,
+          }
+        }
+      />
     }
     style={
       Object {
@@ -127,18 +127,72 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <Text
-      allowFontScaling={true}
-      markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
       }
-      type="h4"
+      delayPressIn={50}
+      onPress={[Function]}
     >
-      Vauxhall Pleasure Gardens
-    </Text>
+      <View
+        style={
+          Object {
+            "alignSelf": "flex-start",
+            "borderBottomColor": "#2cda9d",
+            "borderBottomWidth": 1,
+            "marginBottom": 2,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={true}
+          markdown={false}
+          style={
+            Object {
+              "color": "#2d2f7f",
+            }
+          }
+          type="h4"
+        >
+          Vauxhall Pleasure Gardens
+        </Text>
+      </View>
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={Object {}}
+        type="small"
+      >
+        Vauxhall Pleasure Gardens
+      </Text>
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={Object {}}
+        type="small"
+      >
+        Vauxhall Pleasure Gardens
+      </Text>
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={Object {}}
+        type="small"
+      >
+        London
+      </Text>
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        style={Object {}}
+        type="small"
+      >
+        EC1M 3HA
+      </Text>
+    </Touchable>
   </IconItem>
   <IconItem
     icon={
