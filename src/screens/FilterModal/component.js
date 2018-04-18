@@ -19,6 +19,7 @@ type Props = {
   navigation: NavigationScreenProp<{}>,
   applyButtonText: string,
   eventFilters: FilterCollection,
+  numEventsSelected: number,
   onChange: TagFilter => void,
   onApply: () => void,
   onCancel: () => void
@@ -48,11 +49,14 @@ class FilterModal extends PureComponent<Props> {
   });
 
   componentDidMount() {
-    const { navigation, onCancel } = this.props;
+    const { navigation, onCancel, eventFilters } = this.props;
     this.didBlurSubscription = navigation.addListener("willBlur", onCancel);
 
+    const selectedCount = getSelectedFilterCount(eventFilters);
+
     navigation.setParams({
-      handleClear: this.clearTagFilters
+      handleClear: this.clearTagFilters,
+      showClear: selectedCount > 0
     });
   }
 
@@ -98,7 +102,8 @@ class FilterModal extends PureComponent<Props> {
       onApply,
       onChange,
       eventFilters,
-      navigation
+      navigation,
+      numEventsSelected
     } = this.props;
     return (
       <SafeAreaView style={styles.flex} forceInset={{ bottom: "always" }}>
@@ -147,6 +152,7 @@ class FilterModal extends PureComponent<Props> {
                 onApply();
                 navigation.goBack();
               }}
+              disabled={numEventsSelected === 0}
             />
           </ContentPadding>
         </View>

@@ -7,7 +7,8 @@ import {
   eventDetailsBuyButtonColor,
   eventDetailsBuyButtonTextColor,
   buttonPrimaryBackground,
-  buttonPrimaryTextColor
+  buttonPrimaryTextColor,
+  greyishBrownColor
 } from "../constants/colors";
 
 type ButtonType = "primary";
@@ -16,7 +17,8 @@ type Props = {
   text: string,
   url?: string,
   type?: ButtonType,
-  onPress?: () => void
+  onPress?: () => void,
+  disabled?: boolean
 };
 
 export const handlePress = (onPress: ?() => void, url: ?string) => {
@@ -29,12 +31,20 @@ export const handlePress = (onPress: ?() => void, url: ?string) => {
   }
 };
 
-const Button = ({ text, url, onPress, type = "primary" }: Props) => (
+const Button = ({ text, url, onPress, type = "primary", disabled }: Props) => (
   <Touchable
-    style={[styles.button, styles[type]]}
+    style={[styles.button, styles[type], disabled ? styles.disabledButton : {}]}
     onPress={() => handlePress(onPress, url)}
+    disabled={disabled}
   >
-    <Text type="h2" style={[styles.text, styles[`${type}Text`]]}>
+    <Text
+      type="h2"
+      style={[
+        styles.text,
+        styles[`${type}Text`],
+        disabled ? styles.disabledText : {}
+      ]}
+    >
       {text}
     </Text>
   </Touchable>
@@ -42,7 +52,8 @@ const Button = ({ text, url, onPress, type = "primary" }: Props) => (
 Button.defaultProps = {
   url: "",
   type: "primary",
-  onPress: () => {}
+  onPress: () => {},
+  disabled: false
 };
 
 const styles = StyleSheet.create({
@@ -62,6 +73,12 @@ const styles = StyleSheet.create({
   },
   text: {
     color: eventDetailsBuyButtonTextColor
+  },
+  disabledButton: {
+    backgroundColor: "#cecece"
+  },
+  disabledText: {
+    color: greyishBrownColor
   }
 });
 

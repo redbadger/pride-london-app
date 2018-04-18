@@ -20,17 +20,20 @@ type OwnProps = {
 type Props = {
   applyButtonText: string,
   eventFilters: FilterCollection,
+  numEventsSelected: number,
   onChange: (tagFilter: TagFilter) => void,
   onApply: () => void,
   onCancel: () => void
 } & OwnProps;
 
-const mapStateToProps = state => ({
-  applyButtonText: text.filterPickerApply(
-    selectFilteredEvents(state, true).length
-  ),
-  eventFilters: state.eventFilters.stagedFilters
-});
+const mapStateToProps = state => {
+  const events = selectFilteredEvents(state, true);
+  return {
+    applyButtonText: text.filterPickerApply(events.length),
+    numEventsSelected: events.length,
+    eventFilters: state.eventFilters.stagedFilters
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   onChange: tagFilter => dispatch(stageEventFilters(tagFilter)),

@@ -15,25 +15,22 @@ type Props = {
 };
 
 const Header = ({ onClearPress, onCancelPress, showClear }: Props) => (
-  console.log(showClear ? 1 : 0),
-  (
-    <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
-      <ContentPadding style={styles.content}>
-        <ActionButton label={text.cancel} onPress={onCancelPress} />
-        <View style={styles.titleWrapper}>
-          <Text type="h2" style={styles.titleText}>
-            {text.filterEvents}
-          </Text>
-        </View>
-        <ActionButton
-          key={showClear ? 1 : 0}
-          label={text.clearAll}
-          onPress={onClearPress}
-          style={showClear ? styles.show : styles.hide}
-        />
-      </ContentPadding>
-    </SafeAreaView>
-  )
+  <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
+    <ContentPadding style={styles.content}>
+      <ActionButton label={text.cancel} onPress={onCancelPress} />
+      <View style={styles.titleWrapper}>
+        <Text type="h2" style={styles.titleText}>
+          {text.filterEvents}
+        </Text>
+      </View>
+      <ActionButton
+        key={showClear ? 1 : 0}
+        label={text.clearAll}
+        onPress={onClearPress}
+        style={showClear ? styles.show : styles.hide}
+      />
+    </ContentPadding>
+  </SafeAreaView>
 );
 
 const styles = StyleSheet.create({
