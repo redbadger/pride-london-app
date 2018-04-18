@@ -26,6 +26,7 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
       />
       <Text
         allowFontScaling={true}
+        blue={false}
         markdown={false}
         onLayout={[Function]}
         style={

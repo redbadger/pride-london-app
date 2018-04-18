@@ -38,6 +38,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     >
       <Text
         allowFontScaling={true}
+        blue={false}
         markdown={false}
         onLayout={[Function]}
         style={
@@ -61,6 +62,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
   >
     <Text
       allowFontScaling={true}
+      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={
@@ -81,6 +83,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     >
       <Text
         allowFontScaling={true}
+        blue={false}
         markdown={false}
         onLayout={[Function]}
         style={
@@ -96,6 +99,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     </View>
     <Text
       allowFontScaling={true}
+      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={
@@ -152,6 +156,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     >
       <Text
         allowFontScaling={true}
+        blue={false}
         markdown={false}
         onLayout={[Function]}
         style={
@@ -175,6 +180,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
   >
     <Text
       allowFontScaling={true}
+      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={
@@ -195,6 +201,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     >
       <Text
         allowFontScaling={true}
+        blue={false}
         markdown={false}
         onLayout={[Function]}
         style={
@@ -210,6 +217,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     </View>
     <Text
       allowFontScaling={true}
+      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={
@@ -266,6 +274,7 @@ exports[`renders correctly when isFree is true 1`] = `
     >
       <Text
         allowFontScaling={true}
+        blue={false}
         markdown={false}
         onLayout={[Function]}
         style={
@@ -289,6 +298,7 @@ exports[`renders correctly when isFree is true 1`] = `
   >
     <Text
       allowFontScaling={true}
+      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={
@@ -309,6 +319,7 @@ exports[`renders correctly when isFree is true 1`] = `
     >
       <Text
         allowFontScaling={true}
+        blue={false}
         markdown={false}
         onLayout={[Function]}
         style={
@@ -324,6 +335,7 @@ exports[`renders correctly when isFree is true 1`] = `
     </View>
     <Text
       allowFontScaling={true}
+      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={

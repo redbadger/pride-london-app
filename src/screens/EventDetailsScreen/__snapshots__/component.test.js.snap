@@ -321,6 +321,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         >
           <Text
             allowFontScaling={true}
+            blue={false}
             markdown={false}
             onLayout={[Function]}
             style={Object {}}
@@ -337,6 +338,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           >
             <Text
               allowFontScaling={true}
+              blue={false}
               markdown={false}
               onLayout={[Function]}
               style={Object {}}
@@ -355,6 +357,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         >
           <Text
             allowFontScaling={true}
+            blue={false}
             markdown={false}
             onLayout={[Function]}
             style={Object {}}
@@ -373,6 +376,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
               icon={
                 <Text
                   allowFontScaling={true}
+                  blue={false}
                   markdown={false}
                   onLayout={[Function]}
                   style={Object {}}
@@ -385,6 +389,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             >
               <Text
                 allowFontScaling={true}
+                blue={false}
                 markdown={false}
                 onLayout={[Function]}
                 style={
@@ -409,6 +414,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
               icon={
                 <Text
                   allowFontScaling={true}
+                  blue={false}
                   markdown={false}
                   onLayout={[Function]}
                   style={Object {}}
@@ -421,6 +427,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             >
               <Text
                 allowFontScaling={true}
+                blue={false}
                 markdown={false}
                 onLayout={[Function]}
                 style={

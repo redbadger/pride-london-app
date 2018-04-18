@@ -14,6 +14,7 @@ exports[`renders correctly 1`] = `
         "lineHeight": 24,
       },
       Object {},
+      false,
     ]
   }
 >
@@ -26,6 +27,9 @@ exports[`renders markdown component based on flag 1`] = `
   debug={false}
   markdownStyles={
     Object {
+      "blue": Object {
+        "color": "#2d2f7f",
+      },
       "h1": Object {
         "fontFamily": "Poppins-Bold",
         "fontSize": 24,

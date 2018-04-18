@@ -4,13 +4,14 @@ import { Text as RnText, StyleSheet } from "react-native";
 import Markdown from "react-native-easy-markdown";
 import type { Node } from "react";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
-import { blackColor } from "../constants/colors";
+import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
 type Props = {
   children: Node,
   type?: TextType,
+  blue?: boolean,
   markdown?: boolean,
   style?: StyleObj,
   allowFontScaling?: boolean,
@@ -23,7 +24,8 @@ const Text = ({
   markdown,
   style,
   allowFontScaling,
-  onLayout
+  onLayout,
+  blue
 }: Props) =>
   markdown ? (
     <Markdown
@@ -35,7 +37,7 @@ const Text = ({
     </Markdown>
   ) : (
     <RnText
-      style={[type && styles[type], style]}
+      style={[type && styles[type], style, blue && styles.blue]}
       allowFontScaling={allowFontScaling}
       onLayout={onLayout}
     >
@@ -44,6 +46,7 @@ const Text = ({
   );
 Text.defaultProps = {
   type: "text",
+  blue: false,
   markdown: false,
   style: {},
   allowFontScaling: true,
@@ -88,6 +91,9 @@ const textStyles = {
     fontFamily: "Roboto-Bold",
     fontSize: 14,
     lineHeight: 20
+  },
+  blue: {
+    color: lightNavyBlueColor
   }
 };
 
