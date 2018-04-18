@@ -17,6 +17,7 @@ export default {
   tabParade: "Parade",
   tabSaved: "Saved",
   tabSupportUs: "Support us",
+  featuredEventListTitle: "Featured events",
   filterByInterest: "All events",
   filters: "Filters",
   filterPickerApply: showEvents,
