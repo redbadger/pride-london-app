@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    marginLeft: 6
+    marginLeft: 6,
+    paddingTop: 2
   },
   badgeText: { color: lightNavyBlueColor }
 });
