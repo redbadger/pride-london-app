@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { Image, Linking, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import IconItem from "./IconItem";
+import ContactDetails from "./ContactDetails";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import Text from "../../components/Text";
@@ -14,7 +14,6 @@ import Shadow from "../../components/Shadow";
 import {
   lightishGreyColor,
   whiteColor,
-  lightNavyBlueColor,
   darkBlueGreyTwoColor
 } from "../../constants/colors";
 import text from "../../constants/text";
@@ -39,33 +38,21 @@ const renderEventDetails = event =>
       <View style={styles.content}>
         {event.fields.accessibilityDetails && (
           <View style={styles.detailsSection}>
-            <Text type="h2">{text.eventDetailsAccessibilityDetails}</Text>
+            <Text type="h2" blue>
+              {text.eventDetailsAccessibilityDetails}
+            </Text>
             <View style={styles.accessibilityDetailsItem}>
               <Text>{event.fields.accessibilityDetails[locale]}</Text>
             </View>
           </View>
         )}
+        <View style={styles.sectionDivider} />
         {(event.fields.email || event.fields.phone) && (
           <View style={styles.detailsSection}>
-            <Text type="h2">{text.eventDetailsContact}</Text>
-            {event.fields.email && (
-              <View style={styles.contactItem}>
-                <IconItem icon={<Text type="small">icn</Text>}>
-                  <Text type="h4" style={styles.detailTitle}>
-                    {event.fields.email[locale]}
-                  </Text>
-                </IconItem>
-              </View>
-            )}
-            {event.fields.phone && (
-              <View style={styles.contactItem}>
-                <IconItem icon={<Text type="small">icn</Text>}>
-                  <Text type="h4" style={styles.detailTitle}>
-                    {event.fields.phone[locale]}
-                  </Text>
-                </IconItem>
-              </View>
-            )}
+            <ContactDetails
+              email={event.fields.email[locale]}
+              phone={event.fields.phone[locale]}
+            />
           </View>
         )}
       </View>
@@ -157,15 +144,9 @@ const styles = StyleSheet.create({
   accessibilityDetailsItem: {
     marginTop: 8
   },
-  contactItem: {
-    marginTop: 16
-  },
   buyButton: {
     backgroundColor: whiteColor,
     paddingVertical: 12
-  },
-  detailTitle: {
-    color: lightNavyBlueColor
   }
 });
 

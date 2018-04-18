@@ -8,7 +8,6 @@ import Touchable from "../../components/Touchable";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import {
-  lightNavyBlueColor,
   blackColor,
   eucalyptusGreenColor
 } from "../../constants/colors";
@@ -79,7 +78,7 @@ const EventOverview = ({ event }: Props) => {
         icon={<Image style={styles.icon} source={dateIcon} />}
         style={styles.iconItem}
       >
-        <Text type="h4" style={styles.detailTitle}>
+        <Text type="h4" blue>
           {dateDisplay}
         </Text>
         <Text type="small" style={styles.text}>
@@ -93,7 +92,7 @@ const EventOverview = ({ event }: Props) => {
       >
         <Touchable onPress={() => showLocation(...eventLocation)}>
           <View style={styles.detailTitleLink}>
-            <Text type="h4" style={styles.detailTitle}>
+            <Text type="h4" blue>
               {event.fields.locationName[locale]}
             </Text>
           </View>
@@ -112,7 +111,7 @@ const EventOverview = ({ event }: Props) => {
         </Touchable>
       </IconItem>
       <IconItem icon={<Image source={ticketsIcon} />} style={styles.iconItem}>
-        <Text type="h4" style={styles.detailTitle}>
+        <Text type="h4" blue>
           {displayPrice(
             event.fields.isFree[locale],
             event.fields.eventPriceLow[locale],
@@ -128,7 +127,7 @@ const EventOverview = ({ event }: Props) => {
             icon={<Image source={genderNeutralIcon} />}
             style={styles.iconItem}
           >
-            <Text type="h4" style={styles.detailTitle}>
+            <Text type="h4" blue>
               {text.eventDetailsGenderNeutralToilets}
             </Text>
           </IconItem>
@@ -138,7 +137,7 @@ const EventOverview = ({ event }: Props) => {
           <IconItem
             icon={<Image style={styles.icon} source={accessibilityIcon} />}
           >
-            <Text type="h4" style={styles.detailTitle}>
+            <Text type="h4" blue>
               {text.eventDetailsAccessibility}
             </Text>
             <Text type="small" style={styles.text}>
@@ -170,9 +169,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginTop: 2
-  },
-  detailTitle: {
-    color: lightNavyBlueColor
   },
   text: {
     color: blackColor

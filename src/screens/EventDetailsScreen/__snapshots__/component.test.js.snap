@@ -321,7 +321,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         >
           <Text
             allowFontScaling={true}
-            blue={false}
+            blue={true}
             markdown={false}
             onLayout={[Function]}
             style={Object {}}
@@ -351,96 +351,23 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         <View
           style={
             Object {
+              "backgroundColor": "#d8d8d8",
+              "height": 1,
+              "marginVertical": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
               "marginBottom": 20,
             }
           }
         >
-          <Text
-            allowFontScaling={true}
-            blue={false}
-            markdown={false}
-            onLayout={[Function]}
-            style={Object {}}
-            type="h2"
-          >
-            Contact
-          </Text>
-          <View
-            style={
-              Object {
-                "marginTop": 16,
-              }
-            }
-          >
-            <IconItem
-              icon={
-                <Text
-                  allowFontScaling={true}
-                  blue={false}
-                  markdown={false}
-                  onLayout={[Function]}
-                  style={Object {}}
-                  type="small"
-                >
-                  icn
-                </Text>
-              }
-              style={Object {}}
-            >
-              <Text
-                allowFontScaling={true}
-                blue={false}
-                markdown={false}
-                onLayout={[Function]}
-                style={
-                  Object {
-                    "color": "#2d2f7f",
-                  }
-                }
-                type="h4"
-              >
-                john.smith@eventname.com
-              </Text>
-            </IconItem>
-          </View>
-          <View
-            style={
-              Object {
-                "marginTop": 16,
-              }
-            }
-          >
-            <IconItem
-              icon={
-                <Text
-                  allowFontScaling={true}
-                  blue={false}
-                  markdown={false}
-                  onLayout={[Function]}
-                  style={Object {}}
-                  type="small"
-                >
-                  icn
-                </Text>
-              }
-              style={Object {}}
-            >
-              <Text
-                allowFontScaling={true}
-                blue={false}
-                markdown={false}
-                onLayout={[Function]}
-                style={
-                  Object {
-                    "color": "#2d2f7f",
-                  }
-                }
-                type="h4"
-              >
-                07891234567
-              </Text>
-            </IconItem>
-          </View>
+          <ContactDetails
+            email="john.smith@eventname.com"
+            phone="07891234567"
+          />
         </View>
       </View>
     </ContentPadding>

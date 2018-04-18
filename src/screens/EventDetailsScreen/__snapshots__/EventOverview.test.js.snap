@@ -89,14 +89,10 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      blue={false}
+      blue={true}
       markdown={false}
       onLayout={[Function]}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      style={Object {}}
       type="h4"
     >
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
@@ -155,14 +151,10 @@ exports[`renders correctly 1`] = `
       >
         <Text
           allowFontScaling={true}
-          blue={false}
+          blue={true}
           markdown={false}
           onLayout={[Function]}
-          style={
-            Object {
-              "color": "#2d2f7f",
-            }
-          }
+          style={Object {}}
           type="h4"
         >
           Vauxhall Pleasure Gardens
@@ -224,14 +216,10 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      blue={false}
+      blue={true}
       markdown={false}
       onLayout={[Function]}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      style={Object {}}
       type="h4"
     >
       £19.95 - £30
@@ -251,14 +239,10 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      blue={false}
+      blue={true}
       markdown={false}
       onLayout={[Function]}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      style={Object {}}
       type="h4"
     >
       Gender neutral toilets
@@ -279,14 +263,10 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      blue={false}
+      blue={true}
       markdown={false}
       onLayout={[Function]}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      style={Object {}}
       type="h4"
     >
       Accessibility
