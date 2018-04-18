@@ -16,21 +16,13 @@ type Props = {
 const Header = ({ onClearPress, onCancelPress }: Props) => (
   <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
     <ContentPadding style={styles.content}>
-      <ActionButton
-        label={text.cancel}
-        onPress={onCancelPress}
-        style={styles.cancelButton}
-      />
+      <ActionButton label={text.cancel} onPress={onCancelPress} />
       <View style={styles.titleWrapper}>
         <Text type="h2" style={styles.titleText}>
           {text.filterEvents}
         </Text>
       </View>
-      <ActionButton
-        label={text.clearAll}
-        onPress={onClearPress}
-        style={styles.clearButton}
-      />
+      <ActionButton label={text.clearAll} onPress={onClearPress} />
     </ContentPadding>
   </SafeAreaView>
 );
@@ -42,11 +34,11 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
-  cancelButton: { flex: 1, alignItems: "flex-start" },
-  clearButton: { flex: 1, alignItems: "flex-end" },
-  titleWrapper: { justifyContent: "center" },
+  titleWrapper: { paddingTop: 4 },
   titleText: { color: whiteColor }
 });
 

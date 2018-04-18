@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: filterButtonsBgColor,
-    // marginTop: 8,
     height: 48
   },
   filterButton: {
