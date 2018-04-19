@@ -26,7 +26,7 @@ exports[`renders correctly with date selection 1`] = `
     >
       <Text
         allowFontScaling={true}
-        blue={false}
+        color={undefined}
         markdown={false}
         onLayout={[Function]}
         style={
@@ -84,7 +84,7 @@ exports[`renders correctly with range selection 1`] = `
     >
       <Text
         allowFontScaling={true}
-        blue={false}
+        color={undefined}
         markdown={false}
         onLayout={[Function]}
         style={
@@ -142,7 +142,7 @@ exports[`renders correctly without date selection 1`] = `
     >
       <Text
         allowFontScaling={true}
-        blue={false}
+        color={undefined}
         markdown={false}
         onLayout={[Function]}
         style={

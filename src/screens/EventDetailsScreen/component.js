@@ -38,7 +38,7 @@ const renderEventDetails = event =>
       <View style={styles.content}>
         {event.fields.accessibilityDetails && (
           <View style={styles.detailsSection}>
-            <Text type="h2" blue>
+            <Text type="h2" color="blue">
               {text.eventDetailsAccessibilityDetails}
             </Text>
             <View style={styles.accessibilityDetailsItem}>

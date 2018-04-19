@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View>
+  <Text
+    allowFontScaling={true}
+    color="blue"
+    markdown={false}
+    onLayout={[Function]}
+    style={Object {}}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <View
+    style={
+      Object {
+        "marginTop": 16,
+      }
+    }
+  >
+    <IconItem
+      icon={
+        <Image
+          source={1}
+        />
+      }
+      style={Object {}}
+    >
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "button",
+          ]
+        }
+        delayPressIn={50}
+        onPress={[Function]}
+      >
+        <TextLink
+          type="h4"
+        >
+          milo@red-badger.com
+        </TextLink>
+      </Touchable>
+    </IconItem>
+  </View>
+  <View
+    style={
+      Object {
+        "marginTop": 16,
+      }
+    }
+  >
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      onPress={[Function]}
+    >
+      <IconItem
+        icon={
+          <Image
+            source={1}
+          />
+        }
+        style={Object {}}
+      >
+        <TextLink
+          type="h4"
+        >
+          1-800-555-WOOF
+        </TextLink>
+      </IconItem>
+    </Touchable>
+  </View>
+</View>
+`;

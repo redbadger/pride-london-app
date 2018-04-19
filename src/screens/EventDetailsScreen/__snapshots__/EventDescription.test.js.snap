@@ -10,7 +10,6 @@ exports[`renders correctly 1`] = `
 >
   <Text
     allowFontScaling={true}
-    blue={false}
     markdown={false}
     onLayout={[Function]}
     style={
@@ -37,7 +36,6 @@ exports[`renders correctly 1`] = `
     >
       <Text
         allowFontScaling={true}
-        blue={false}
         markdown={true}
         onLayout={[Function]}
         style={
@@ -112,7 +110,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
     >
       <Text
         allowFontScaling={true}
-        blue={false}
         markdown={false}
         onLayout={[Function]}
         style={

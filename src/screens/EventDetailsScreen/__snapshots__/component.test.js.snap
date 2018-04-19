@@ -321,7 +321,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         >
           <Text
             allowFontScaling={true}
-            blue={true}
+            color="blue"
             markdown={false}
             onLayout={[Function]}
             style={Object {}}
@@ -338,7 +338,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           >
             <Text
               allowFontScaling={true}
-              blue={false}
               markdown={false}
               onLayout={[Function]}
               style={Object {}}

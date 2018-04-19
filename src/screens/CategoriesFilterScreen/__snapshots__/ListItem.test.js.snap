@@ -56,7 +56,6 @@ exports[`ListItem Component renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={
@@ -128,7 +127,6 @@ exports[`ListItem Component renders correctly without selected 1`] = `
   >
     <Text
       allowFontScaling={true}
-      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={

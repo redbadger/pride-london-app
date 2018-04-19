@@ -11,7 +11,7 @@ export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 type Props = {
   children: Node,
   type?: TextType,
-  blue?: boolean,
+  color?: "blue",
   markdown?: boolean,
   style?: StyleObj,
   allowFontScaling?: boolean,
@@ -21,11 +21,11 @@ type Props = {
 const Text = ({
   children,
   type,
+  color,
   markdown,
   style,
   allowFontScaling,
-  onLayout,
-  blue
+  onLayout
 }: Props) =>
   markdown ? (
     <Markdown
@@ -37,7 +37,7 @@ const Text = ({
     </Markdown>
   ) : (
     <RnText
-      style={[type && styles[type], style, blue && styles.blue]}
+      style={[type && styles[type], color && styles[color], style]}
       allowFontScaling={allowFontScaling}
       onLayout={onLayout}
     >
@@ -46,7 +46,7 @@ const Text = ({
   );
 Text.defaultProps = {
   type: "text",
-  blue: false,
+  color: undefined,
   markdown: false,
   style: {},
   allowFontScaling: true,

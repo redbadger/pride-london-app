@@ -34,7 +34,6 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      blue={false}
       markdown={false}
       onLayout={[Function]}
       style={
@@ -48,7 +47,6 @@ exports[`renders correctly 1`] = `
     </Text>
     <Text
       allowFontScaling={true}
-      blue={false}
       ellipsizeMode="tail"
       markdown={false}
       numberOfLines={2}

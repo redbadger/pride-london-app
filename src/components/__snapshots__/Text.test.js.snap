@@ -13,8 +13,8 @@ exports[`renders correctly 1`] = `
         "fontSize": 16,
         "lineHeight": 24,
       },
+      undefined,
       Object {},
-      false,
     ]
   }
 >

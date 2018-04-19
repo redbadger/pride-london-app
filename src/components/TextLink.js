@@ -12,7 +12,7 @@ type Props = {
 
 const TextLink = ({ children, type }: Props) => (
   <View style={styles.detailTitleLink}>
-    <Text type={type} blue>
+    <Text type={type} color="blue">
       {children}
     </Text>
   </View>
