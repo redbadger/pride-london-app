@@ -88,21 +88,32 @@ it("renders correctly", () => {
   expect(output).toMatchSnapshot();
 });
 
+it("renders correctly with missing details", () => {
+  const getAssetUrl = () =>
+    "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
+  const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
+    goBack: () => {}
+  }: any);
+  const output = shallow(
+    <Component
+      navigation={navigation}
+      event={{
+        ...event,
+        fields: {
+          ...event.fields,
+          ticketingUrl: undefined,
+          accessibilityDetails: undefined
+        }
+      }}
+      getAssetUrl={getAssetUrl}
+    />
+  );
+  expect(output).toMatchSnapshot();
+});
+
 describe("AccessibilityDetails", () => {
   it("renders correctly", () => {
     const output = shallow(<AccessibilityDetails event={event} />);
-    expect(output).toMatchSnapshot();
-  });
-
-  it("renders correctly with missing details", () => {
-    const output = shallow(
-      <AccessibilityDetails
-        event={{
-          ...event,
-          fields: { ...event.fields, accessibilityDetails: undefined }
-        }}
-      />
-    );
     expect(output).toMatchSnapshot();
   });
 });
@@ -110,18 +121,6 @@ describe("AccessibilityDetails", () => {
 describe("BuyTickets", () => {
   it("renders correctly", () => {
     const output = shallow(<BuyTickets event={event} />);
-    expect(output).toMatchSnapshot();
-  });
-
-  it("renders correctly with missing details", () => {
-    const output = shallow(
-      <BuyTickets
-        event={{
-          ...event,
-          fields: { ...event.fields, ticketingUrl: undefined }
-        }}
-      />
-    );
     expect(output).toMatchSnapshot();
   });
 });

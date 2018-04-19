@@ -28,30 +28,28 @@ type Props = {
   getAssetUrl: LocalizedFieldRef => string
 };
 
-export const AccessibilityDetails = ({ event }: { event: Event }) =>
-  event.fields.accessibilityDetails && (
-    <View>
-      <Text type="h2" color="blue" style={styles.title}>
-        {text.eventDetailsAccessibilityDetails}
-      </Text>
-      <View style={styles.accessibilityDetailsItem}>
-        <Text>{event.fields.accessibilityDetails[locale]}</Text>
-      </View>
+export const AccessibilityDetails = ({ event }: { event: Event }) => (
+  <View>
+    <Text type="h2" color="blue" style={styles.title}>
+      {text.eventDetailsAccessibilityDetails}
+    </Text>
+    <View style={styles.accessibilityDetailsItem}>
+      <Text>{event.fields.accessibilityDetails[locale]}</Text>
     </View>
-  );
+  </View>
+);
 
-export const BuyTickets = ({ event }: { event: Event }) =>
-  event.fields.ticketingUrl && (
-    <Shadow>
-      <ContentPadding style={styles.buyButton}>
-        <ButtonPrimary
-          onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
-        >
-          {text.eventDetailsBuyButton}
-        </ButtonPrimary>
-      </ContentPadding>
-    </Shadow>
-  );
+export const BuyTickets = ({ event }: { event: Event }) => (
+  <Shadow>
+    <ContentPadding style={styles.buyButton}>
+      <ButtonPrimary
+        onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
+      >
+        {text.eventDetailsBuyButton}
+      </ButtonPrimary>
+    </ContentPadding>
+  </Shadow>
+);
 
 class EventDetailsScreen extends PureComponent<Props> {
   static defaultProps = {};
@@ -86,22 +84,25 @@ class EventDetailsScreen extends PureComponent<Props> {
             style={{ aspectRatio: 5 / 3 }}
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
-          <ContentPadding>
+          <ContentPadding style={styles.content}>
             <EventOverview event={event} />
             <View style={styles.sectionDivider} />
             <EventDescription event={event} />
-            <View style={styles.sectionDivider} />
-            <AccessibilityDetails event={event} />
-            <View style={styles.sectionDivider} />
-            {(event.fields.email || event.fields.phone) && (
+            {event.fields.accessibilityDetails && [
+              <View style={styles.sectionDivider} key="a1" />,
+              <AccessibilityDetails event={event} key="a2" />
+            ]}
+            {(event.fields.email || event.fields.phone) && [
+              <View style={styles.sectionDivider} key="b1" />,
               <ContactDetails
                 email={event.fields.email[locale]}
                 phone={event.fields.phone[locale]}
+                key="b2"
               />
-            )}
+            ]}
           </ContentPadding>
         </ScrollView>
-        <BuyTickets event={event} />
+        {event.fields.ticketingUrl && <BuyTickets event={event} />}
       </View>
     );
   }
@@ -111,6 +112,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: whiteColor
+  },
+  content: {
+    marginBottom: 24
   },
   headerContent: {
     flexDirection: "row",
