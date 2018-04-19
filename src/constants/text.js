@@ -32,6 +32,9 @@ export default {
   eventDetailsContact: "Contact",
   eventDetailsBuyButton: "Buy tickets",
   eventDetailsGenderNeutralToilets: "Gender neutral toilets",
+  eventDetailsAbout: "About",
+  eventDetailsReadMore: "Read more",
+  eventDetailsReadLess: "Read less",
   anyDay: "Any day",
   anyTime: "Any time",
   time: {

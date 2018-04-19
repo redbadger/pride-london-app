@@ -1,17 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<ContentPadding
+<View
   style={
     Object {
-      "backgroundColor": "#ffffff",
-      "paddingVertical": 15,
+      "paddingBottom": 10,
+      "paddingTop": 15,
     }
   }
 >
   <Text
     allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={Object {}}
     type="h1"
   >
@@ -88,6 +89,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -100,6 +102,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",
@@ -150,6 +153,7 @@ exports[`renders correctly 1`] = `
         <Text
           allowFontScaling={true}
           markdown={false}
+          onLayout={[Function]}
           style={
             Object {
               "color": "#2d2f7f",
@@ -163,6 +167,7 @@ exports[`renders correctly 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={Object {}}
         type="small"
       >
@@ -171,6 +176,7 @@ exports[`renders correctly 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={Object {}}
         type="small"
       >
@@ -179,6 +185,7 @@ exports[`renders correctly 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={Object {}}
         type="small"
       >
@@ -187,6 +194,7 @@ exports[`renders correctly 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        onLayout={[Function]}
         style={Object {}}
         type="small"
       >
@@ -209,6 +217,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -234,6 +243,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -255,15 +265,12 @@ exports[`renders correctly 1`] = `
         }
       />
     }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    style={Object {}}
   >
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -276,6 +283,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",
@@ -286,5 +294,5 @@ exports[`renders correctly 1`] = `
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</ContentPadding>
+</View>
 `;

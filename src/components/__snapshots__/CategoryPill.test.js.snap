@@ -18,6 +18,7 @@ exports[`CategoryPill Component renders correctly 1`] = `
   <Text
     allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={
       Array [
         Object {

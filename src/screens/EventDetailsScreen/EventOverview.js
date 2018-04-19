@@ -7,9 +7,7 @@ import IconItem from "./IconItem";
 import Touchable from "../../components/Touchable";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
-import ContentPadding from "../../components/ContentPadding";
 import {
-  whiteColor,
   lightNavyBlueColor,
   blackColor,
   eucalyptusGreenColor
@@ -66,7 +64,7 @@ const EventOverview = ({ event }: Props) => {
   ];
 
   return (
-    <ContentPadding style={styles.content}>
+    <View style={styles.content}>
       <Text type="h1">{event.fields.name[locale]}</Text>
       <View style={styles.categoryPillContainer}>
         {event.fields.eventCategories[locale].map(categoryName => (
@@ -139,7 +137,6 @@ const EventOverview = ({ event }: Props) => {
         event.fields.accessibilityOptions[locale].length > 0 && (
           <IconItem
             icon={<Image style={styles.icon} source={accessibilityIcon} />}
-            style={styles.iconItem}
           >
             <Text type="h4" style={styles.detailTitle}>
               {text.eventDetailsAccessibility}
@@ -149,14 +146,14 @@ const EventOverview = ({ event }: Props) => {
             </Text>
           </IconItem>
         )}
-    </ContentPadding>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   content: {
-    paddingVertical: 15,
-    backgroundColor: whiteColor
+    paddingTop: 15,
+    paddingBottom: 10
   },
   categoryPillContainer: {
     marginTop: 16,
