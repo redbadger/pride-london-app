@@ -126,6 +126,7 @@ describe("FilterModal", () => {
         onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
+        numTagFiltersSelected={eventFilters.price.size}
         numEventsSelected={1}
       />
     );
@@ -150,6 +151,7 @@ describe("FilterModal", () => {
         onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
+        numTagFiltersSelected={eventFilters.price.size}
         numEventsSelected={1}
       />
     );

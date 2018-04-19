@@ -8,6 +8,7 @@ import {
   clearStagedEventFilters
 } from "../../actions/event-filters";
 import { selectFilteredEvents } from "../../selectors/events";
+import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
 import Component from "./component";
 import text from "../../constants/text";
 import type { FilterCollection } from "../../data/event-filters";
@@ -21,6 +22,7 @@ type Props = {
   applyButtonText: string,
   eventFilters: FilterCollection,
   numEventsSelected: number,
+  numTagFiltersSelected: number,
   onChange: (tagFilter: TagFilter) => void,
   onApply: () => void,
   onCancel: () => void
@@ -31,6 +33,7 @@ const mapStateToProps = state => {
   return {
     applyButtonText: text.filterPickerApply(events.length),
     numEventsSelected: events.length,
+    numTagFiltersSelected: selectTagFilterSelectedCount(state, true),
     eventFilters: state.eventFilters.stagedFilters
   };
 };

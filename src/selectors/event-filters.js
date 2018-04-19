@@ -7,6 +7,7 @@ import {
   buildAreaFilter,
   buildCategoryFilter
 } from "./basic-event-filters";
+import tags from "../data/tags";
 import type { Event } from "../data/event";
 import type { Time } from "../data/date-time";
 import type { State } from "../reducers";
@@ -25,6 +26,18 @@ export const selectTimeFilter = (
   state: State,
   selectStagedFilters?: boolean = false
 ) => getEventFiltersState(state, selectStagedFilters).timeOfDay;
+
+export const selectTagFilterSelectedCount = (
+  state: State,
+  selectStagedFilters?: boolean = false
+) => {
+  const eventFilters = getEventFiltersState(state, selectStagedFilters);
+  return Object.keys(tags).reduce(
+    (acc, tagName) =>
+      acc + (eventFilters[tagName] ? eventFilters[tagName].size : 0),
+    0
+  );
+};
 
 export const selectIsStagingFilters = (state: State): boolean =>
   state.eventFilters.stagedFilters !== state.eventFilters.selectedFilters;

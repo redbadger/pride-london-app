@@ -11,7 +11,8 @@ import {
   selectDateFilter,
   selectTimeFilter,
   buildEventFilter,
-  selectIsStagingFilters
+  selectIsStagingFilters,
+  selectTagFilterSelectedCount
 } from "./event-filters";
 import type { FilterCollection } from "../data/event-filters";
 import type { Event } from "../data/event";
@@ -227,6 +228,25 @@ describe("selectIsStagingFilters", () => {
 
     const actual = selectIsStagingFilters(state);
     expect(actual).toBe(true);
+  });
+});
+
+describe("selectTagFilterSelectedCount", () => {
+  it("returns number of selected tag filters", () => {
+    const filters = {
+      categories: new Set(),
+      date: { startDate: "2018-01-01", endDate: "2018-01-01" },
+      timeOfDay: new Set(["morning"]),
+      price: new Set(["free"]),
+      audience: new Set(),
+      venueDetails: new Set(),
+      accessibilityOptions: new Set(),
+      area: new Set()
+    };
+    const state = buildState(filters, filters);
+
+    const count = selectTagFilterSelectedCount(state);
+    expect(count).toBe(2);
   });
 });
 

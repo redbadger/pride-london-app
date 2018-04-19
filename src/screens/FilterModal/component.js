@@ -20,17 +20,11 @@ type Props = {
   applyButtonText: string,
   eventFilters: FilterCollection,
   numEventsSelected: number,
+  numTagFiltersSelected: number,
   onChange: TagFilter => void,
   onApply: () => void,
   onCancel: () => void
 };
-
-const getSelectedFilterCount = eventFilters =>
-  Object.keys(tags).reduce(
-    (acc, tagName) =>
-      acc + (eventFilters[tagName] ? eventFilters[tagName].size : 0),
-    0
-  );
 
 class FilterModal extends PureComponent<Props> {
   componentDidMount() {
@@ -69,9 +63,9 @@ class FilterModal extends PureComponent<Props> {
       onChange,
       eventFilters,
       navigation,
-      numEventsSelected
+      numEventsSelected,
+      numTagFiltersSelected
     } = this.props;
-    const selectedCount = getSelectedFilterCount(this.props.eventFilters);
     return (
       <SafeAreaView
         style={styles.flex}
@@ -80,7 +74,7 @@ class FilterModal extends PureComponent<Props> {
         <Header
           onClearPress={this.clearTagFilters}
           onCancelPress={() => navigation.goBack()}
-          showClear={selectedCount > 0}
+          showClear={numTagFiltersSelected > 0}
         />
         <ScrollView style={styles.flex}>
           {Object.keys(tags).map(
