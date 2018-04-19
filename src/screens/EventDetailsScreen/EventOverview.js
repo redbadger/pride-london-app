@@ -60,8 +60,10 @@ const EventOverview = ({ event }: Props) => {
   ];
 
   return (
-    <View style={styles.content}>
-      <Text type="h1">{event.fields.name[locale]}</Text>
+    <View>
+      <Text type="h1" style={styles.title}>
+        {event.fields.name[locale]}
+      </Text>
       <View style={styles.categoryPillContainer}>
         {event.fields.eventCategories[locale].map(categoryName => (
           <CategoryPill
@@ -107,7 +109,10 @@ const EventOverview = ({ event }: Props) => {
           )}
         </Touchable>
       </IconItem>
-      <IconItem icon={<Image source={ticketsIcon} />} style={styles.iconItem}>
+      <IconItem
+        icon={<Image source={ticketsIcon} style={styles.ticketIcon} />}
+        style={styles.iconItem}
+      >
         <Text type="h4" color="blue">
           {displayPrice(
             event.fields.isFree[locale],
@@ -121,7 +126,9 @@ const EventOverview = ({ event }: Props) => {
           strings.venueDetailsGenderNeutralToilets
         ) && (
           <IconItem
-            icon={<Image source={genderNeutralIcon} />}
+            icon={
+              <Image source={genderNeutralIcon} style={styles.genderIcon} />
+            }
             style={styles.iconItem}
           >
             <Text type="h4" color="blue">
@@ -132,7 +139,12 @@ const EventOverview = ({ event }: Props) => {
       {event.fields.accessibilityOptions &&
         event.fields.accessibilityOptions[locale].length > 0 && (
           <IconItem
-            icon={<Image style={styles.icon} source={accessibilityIcon} />}
+            icon={
+              <Image
+                style={styles.accessibilityIcon}
+                source={accessibilityIcon}
+              />
+            }
           >
             <Text type="h4" color="blue">
               {text.eventDetailsAccessibility}
@@ -147,13 +159,12 @@ const EventOverview = ({ event }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  content: {
-    paddingTop: 15,
-    paddingBottom: 10
+  title: {
+    marginTop: 24
   },
   categoryPillContainer: {
     marginTop: 16,
-    marginBottom: 20,
+    marginBottom: 16,
     flexDirection: "row",
     flexWrap: "wrap"
   },
@@ -166,6 +177,15 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginTop: 2
+  },
+  ticketIcon: {
+    marginTop: -3
+  },
+  genderIcon: {
+    marginTop: -2
+  },
+  accessibilityIcon: {
+    marginTop: 3
   },
   text: {
     color: blackColor

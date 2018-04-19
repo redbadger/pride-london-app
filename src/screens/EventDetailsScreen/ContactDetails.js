@@ -8,7 +8,6 @@ import emailIcon from "../../../assets/images/email.png";
 import callIcon from "../../../assets/images/call.png";
 import text from "../../constants/text";
 import TextLink from "../../components/TextLink";
-import Touchable from "../../components/Touchable";
 
 type Props = {
   email: string,
@@ -17,13 +16,13 @@ type Props = {
 
 const ContactDetails = ({ email, phone }: Props) => (
   <View>
-    <Text type="h2" color="blue">
+    <Text type="h2" color="blue" style={styles.title}>
       {text.eventDetailsContact}
     </Text>
     {email && (
       <View style={styles.contactItem}>
-        <IconItem icon={<Image source={emailIcon} />}>
-          <Touchable
+        <IconItem icon={<Image source={emailIcon} style={styles.mailIcon} />}>
+          <TextLink
             onPress={() =>
               sendEmail(
                 [email],
@@ -34,26 +33,35 @@ const ContactDetails = ({ email, phone }: Props) => (
               )
             }
           >
-            <TextLink>{email}</TextLink>
-          </Touchable>
+            {email}
+          </TextLink>
         </IconItem>
       </View>
     )}
     {phone && (
       <View style={styles.contactItem}>
-        <Touchable onPress={() => phonecall(phone, false)}>
-          <IconItem icon={<Image source={callIcon} />}>
-            <TextLink>{phone}</TextLink>
-          </IconItem>
-        </Touchable>
+        <IconItem icon={<Image source={callIcon} style={styles.phoneIcon} />}>
+          <TextLink onPress={() => phonecall(phone, false)}>{phone}</TextLink>
+        </IconItem>
       </View>
     )}
   </View>
 );
 
 const styles = StyleSheet.create({
+  title: {
+    marginTop: 8,
+    marginBottom: 4
+  },
+  mailIcon: {
+    marginTop: 7
+  },
+  phoneIcon: {
+    marginTop: -3,
+    marginLeft: 2
+  },
   contactItem: {
-    marginTop: 16
+    marginBottom: 8
   }
 });
 

@@ -3,7 +3,7 @@ import React from "react";
 import { phonecall, email } from "react-native-communications";
 import { shallow } from "enzyme";
 import ContactDetails from "./ContactDetails";
-import Touchable from "../../components/Touchable";
+import TextLink from "../../components/TextLink";
 import text from "../../constants/text";
 
 jest.mock("react-native-communications", () => ({
@@ -29,7 +29,7 @@ it("calls the phone number on tap", () => {
   );
 
   output
-    .find(Touchable)
+    .find(TextLink)
     .last()
     .simulate("press");
   expect(phonecall).toBeCalledWith("1-800-555-WOOF", false);
@@ -41,7 +41,7 @@ it("opens the configured email app on tap", () => {
   );
 
   output
-    .find(Touchable)
+    .find(TextLink)
     .first()
     .simulate("press");
   expect(email).toBeCalledWith(

@@ -7,7 +7,12 @@ exports[`renders correctly 1`] = `
     color="blue"
     markdown={false}
     onLayout={[Function]}
-    style={Object {}}
+    style={
+      Object {
+        "marginBottom": 4,
+        "marginTop": 8,
+      }
+    }
     type="h2"
   >
     Contact
@@ -15,7 +20,7 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
-        "marginTop": 16,
+        "marginBottom": 8,
       }
     }
   >
@@ -23,60 +28,53 @@ exports[`renders correctly 1`] = `
       icon={
         <Image
           source={1}
+          style={
+            Object {
+              "marginTop": 7,
+            }
+          }
         />
       }
       style={Object {}}
     >
-      <Touchable
-        accessibilityComponentType="button"
-        accessibilityTraits={
-          Array [
-            "button",
-          ]
-        }
-        delayPressIn={50}
+      <TextLink
         onPress={[Function]}
+        style={Object {}}
+        type="h4"
       >
-        <TextLink
-          type="h4"
-        >
-          milo@red-badger.com
-        </TextLink>
-      </Touchable>
+        milo@red-badger.com
+      </TextLink>
     </IconItem>
   </View>
   <View
     style={
       Object {
-        "marginTop": 16,
+        "marginBottom": 8,
       }
     }
   >
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
+    <IconItem
+      icon={
+        <Image
+          source={1}
+          style={
+            Object {
+              "marginLeft": 2,
+              "marginTop": -3,
+            }
+          }
+        />
       }
-      delayPressIn={50}
-      onPress={[Function]}
+      style={Object {}}
     >
-      <IconItem
-        icon={
-          <Image
-            source={1}
-          />
-        }
+      <TextLink
+        onPress={[Function]}
         style={Object {}}
+        type="h4"
       >
-        <TextLink
-          type="h4"
-        >
-          1-800-555-WOOF
-        </TextLink>
-      </IconItem>
-    </Touchable>
+        1-800-555-WOOF
+      </TextLink>
+    </IconItem>
   </View>
 </View>
 `;

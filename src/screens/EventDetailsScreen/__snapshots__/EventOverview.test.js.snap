@@ -1,19 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
-  style={
-    Object {
-      "paddingBottom": 10,
-      "paddingTop": 15,
-    }
-  }
->
+<View>
   <Text
     allowFontScaling={true}
     markdown={false}
     onLayout={[Function]}
-    style={Object {}}
+    style={
+      Object {
+        "marginTop": 24,
+      }
+    }
     type="h1"
   >
     Pride in the Park
@@ -23,7 +20,7 @@ exports[`renders correctly 1`] = `
       Object {
         "flexDirection": "row",
         "flexWrap": "wrap",
-        "marginBottom": 20,
+        "marginBottom": 16,
         "marginTop": 16,
       }
     }
@@ -200,6 +197,11 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
+        style={
+          Object {
+            "marginTop": -3,
+          }
+        }
       />
     }
     style={
@@ -223,6 +225,11 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
+        style={
+          Object {
+            "marginTop": -2,
+          }
+        }
       />
     }
     style={
@@ -248,7 +255,7 @@ exports[`renders correctly 1`] = `
         source={1}
         style={
           Object {
-            "marginTop": 2,
+            "marginTop": 3,
           }
         }
       />

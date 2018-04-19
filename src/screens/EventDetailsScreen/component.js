@@ -28,49 +28,28 @@ type Props = {
   getAssetUrl: LocalizedFieldRef => string
 };
 
-const renderEventDetails = event =>
-  (event.fields.accessibilityDetails ||
-    event.fields.email ||
-    event.fields.phone ||
-    event.fields.ticketingUrl) && (
-    <ContentPadding>
-      <View style={styles.sectionDivider} />
-      <View style={styles.content}>
-        {event.fields.accessibilityDetails && (
-          <View style={styles.detailsSection}>
-            <Text type="h2" color="blue">
-              {text.eventDetailsAccessibilityDetails}
-            </Text>
-            <View style={styles.accessibilityDetailsItem}>
-              <Text>{event.fields.accessibilityDetails[locale]}</Text>
-            </View>
-          </View>
-        )}
-        <View style={styles.sectionDivider} />
-        {(event.fields.email || event.fields.phone) && (
-          <View style={styles.detailsSection}>
-            <ContactDetails
-              email={event.fields.email[locale]}
-              phone={event.fields.phone[locale]}
-            />
-          </View>
-        )}
+export const AccessibilityDetails = ({ event }: { event: Event }) =>
+  event.fields.accessibilityDetails && (
+    <View>
+      <Text type="h2" color="blue" style={styles.title}>
+        {text.eventDetailsAccessibilityDetails}
+      </Text>
+      <View style={styles.accessibilityDetailsItem}>
+        <Text>{event.fields.accessibilityDetails[locale]}</Text>
       </View>
-    </ContentPadding>
+    </View>
   );
 
-const renderBuyTickets = event =>
+export const BuyTickets = ({ event }: { event: Event }) =>
   event.fields.ticketingUrl && (
     <Shadow>
-      <View style={styles.buyButton}>
-        <ContentPadding>
-          <ButtonPrimary
-            onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
-          >
-            {text.eventDetailsBuyButton}
-          </ButtonPrimary>
-        </ContentPadding>
-      </View>
+      <ContentPadding style={styles.buyButton}>
+        <ButtonPrimary
+          onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
+        >
+          {text.eventDetailsBuyButton}
+        </ButtonPrimary>
+      </ContentPadding>
     </Shadow>
   );
 
@@ -111,10 +90,18 @@ class EventDetailsScreen extends PureComponent<Props> {
             <EventOverview event={event} />
             <View style={styles.sectionDivider} />
             <EventDescription event={event} />
+            <View style={styles.sectionDivider} />
+            <AccessibilityDetails event={event} />
+            <View style={styles.sectionDivider} />
+            {(event.fields.email || event.fields.phone) && (
+              <ContactDetails
+                email={event.fields.email[locale]}
+                phone={event.fields.phone[locale]}
+              />
+            )}
           </ContentPadding>
-          {renderEventDetails(event)}
         </ScrollView>
-        {renderBuyTickets(event)}
+        <BuyTickets event={event} />
       </View>
     );
   }
@@ -130,16 +117,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: darkBlueGreyTwoColor
   },
-  content: {
-    paddingVertical: 15
-  },
   sectionDivider: {
     backgroundColor: lightishGreyColor,
     height: 1,
     marginVertical: 16
   },
-  detailsSection: {
-    marginBottom: 20
+  title: {
+    marginTop: 8,
+    marginBottom: 4
   },
   accessibilityDetailsItem: {
     marginTop: 8
