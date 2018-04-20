@@ -10,10 +10,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
-    style={Object {}}
     type="h1"
   >
     Pride in the Park
@@ -87,9 +84,7 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -100,9 +95,7 @@ exports[`renders correctly 1`] = `
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
     </Text>
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",
@@ -151,9 +144,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
-          allowFontScaling={true}
           markdown={false}
-          onLayout={[Function]}
           style={
             Object {
               "color": "#2d2f7f",
@@ -165,37 +156,25 @@ exports[`renders correctly 1`] = `
         </Text>
       </View>
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
         type="small"
       >
         London
       </Text>
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
         type="small"
       >
         EC1M 3HA
@@ -215,9 +194,7 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -241,9 +218,7 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -268,9 +243,7 @@ exports[`renders correctly 1`] = `
     style={Object {}}
   >
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -281,9 +254,7 @@ exports[`renders correctly 1`] = `
       Accessibility
     </Text>
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",

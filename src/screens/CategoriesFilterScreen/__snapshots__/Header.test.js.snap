@@ -18,9 +18,7 @@ exports[`Header Component renders correctly 1`] = `
     />
   </View>
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "color": "#ffffff",

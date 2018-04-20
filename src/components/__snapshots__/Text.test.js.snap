@@ -5,7 +5,6 @@ exports[`renders correctly 1`] = `
   accessible={true}
   allowFontScaling={true}
   ellipsizeMode="tail"
-  onLayout={[Function]}
   style={
     Array [
       Object {
@@ -13,7 +12,7 @@ exports[`renders correctly 1`] = `
         "fontSize": 16,
         "lineHeight": 24,
       },
-      Object {},
+      undefined,
     ]
   }
 >
@@ -23,7 +22,6 @@ exports[`renders correctly 1`] = `
 
 exports[`renders markdown component based on flag 1`] = `
 <Markdown
-  allowFontScaling={true}
   debug={false}
   markdownStyles={
     Object {
@@ -68,9 +66,7 @@ exports[`renders markdown component based on flag 1`] = `
       },
     }
   }
-  onLayout={[Function]}
   parseInline={false}
-  style={Object {}}
   useDefaultStyles={true}
 >
   **Some markdown**

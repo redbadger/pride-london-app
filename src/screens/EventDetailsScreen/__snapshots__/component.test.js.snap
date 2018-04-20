@@ -320,10 +320,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         >
           <Text
-            allowFontScaling={true}
             markdown={false}
-            onLayout={[Function]}
-            style={Object {}}
             type="h2"
           >
             Accessibility Details
@@ -336,10 +333,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             }
           >
             <Text
-              allowFontScaling={true}
               markdown={false}
-              onLayout={[Function]}
-              style={Object {}}
               type="text"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
@@ -354,10 +348,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         >
           <Text
-            allowFontScaling={true}
             markdown={false}
-            onLayout={[Function]}
-            style={Object {}}
             type="h2"
           >
             Contact
@@ -372,11 +363,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             <IconItem
               icon={
                 <Text
-                  allowFontScaling={true}
                   markdown={false}
-                  numberOfLines={undefined}
-                  onLayout={[Function]}
-                  style={Object {}}
                   type="small"
                 >
                   icn
@@ -385,9 +372,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
               style={Object {}}
             >
               <Text
-                allowFontScaling={true}
                 markdown={false}
-                onLayout={[Function]}
                 style={
                   Object {
                     "color": "#2d2f7f",
@@ -409,11 +394,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             <IconItem
               icon={
                 <Text
-                  allowFontScaling={true}
                   markdown={false}
-                  numberOfLines={undefined}
-                  onLayout={[Function]}
-                  style={Object {}}
                   type="small"
                 >
                   icn
@@ -422,9 +403,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
               style={Object {}}
             >
               <Text
-                allowFontScaling={true}
                 markdown={false}
-                onLayout={[Function]}
                 style={
                   Object {
                     "color": "#2d2f7f",

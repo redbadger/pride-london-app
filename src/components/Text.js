@@ -2,20 +2,17 @@
 import React from "react";
 import { Text as RnText, StyleSheet } from "react-native";
 import Markdown from "react-native-easy-markdown";
-import type { Node } from "react";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+
+import type { TextProps } from "react-native/Libraries/Text/TextProps";
+
 import { blackColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
 type Props = {
-  children: Node,
   type?: TextType,
   markdown?: boolean,
-  style?: StyleObj,
-  allowFontScaling?: boolean,
-  onLayout?: Function,
-  numberOfLines?: number
+  ...TextProps
 };
 
 const Text = ({ type, markdown, style, ...otherProps }: Props) =>
@@ -30,11 +27,7 @@ const Text = ({ type, markdown, style, ...otherProps }: Props) =>
   );
 Text.defaultProps = {
   type: "text",
-  markdown: false,
-  style: {},
-  allowFontScaling: true,
-  onLayout: () => {},
-  numberOfLines: undefined
+  markdown: false
 };
 
 const textStyles = {
