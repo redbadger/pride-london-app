@@ -51,7 +51,7 @@ Text.defaultProps = {
   style: {},
   allowFontScaling: true,
   onLayout: () => {},
-  numberOfLines: 2
+  numberOfLines: undefined
 };
 
 const textStyles = {
