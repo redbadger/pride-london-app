@@ -10,14 +10,8 @@ android-secrets: &android-secrets
   run: 
     command: |
       git clone git@github.com:redbadger/pride-android-secrets.git
-      mkdir -p .gradle 
-      echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
-android-secrets: &android-secrets-prod
-  run: 
-    command: |
-      git clone git@github.com:redbadger/pride-android-secrets.git
-      mkdir -p .gradle 
-      echo -e "keystore=$ANDROID_PROD_KEYSTORE_PATH\nkeystore.alias=$ANDROID_PROD_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_PROD_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_PROD_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
+      mkdir -p .gradle
+      echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
 fabric-secrets: &fabric-secrets
   run:
     command: |
@@ -120,7 +114,7 @@ jobs:
                 fabric_api_token:$FABRIC_API_KEY \
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
-                commit_sha:$CIRCLE_SHA1 
+                commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: ~/project/android/app/build/outputs
 
@@ -130,6 +124,7 @@ jobs:
       - image: circleci/android:api-27-node8-alpha
     environment:
       TERM: dumb
+      APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
     steps:
       - checkout:
           path: ~/project
@@ -153,6 +148,19 @@ jobs:
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
                 commit_sha:$CIRCLE_SHA1
+      - run:
+            name: Resign APK with upload key
+            command: |
+                ./scripts/apk-resigner.sh \ 
+                $APK_PATH \
+                $ANDROID_PROD_KEYSTORE_PATH \
+                $ANDROID_PROD_KEYSTORE_ALIAS \
+                $ANDROID_PROD_KEYSTORE_PASSWORD
+      - run:
+            name: Upload resigned APK to Play Store
+            command: |
+                bundle exec fastlane upload_play_store \
+                
       - store_artifacts:
           path: ~/project/android/app/build/outputs
 
