@@ -60,7 +60,7 @@ exports[`renders correctly 1`] = `
           style={
             Object {
               "marginLeft": 2,
-              "marginTop": -3,
+              "marginTop": 6,
             }
           }
         />

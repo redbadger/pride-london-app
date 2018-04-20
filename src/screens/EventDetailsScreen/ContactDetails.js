@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     marginTop: 7
   },
   phoneIcon: {
-    marginTop: -3,
+    marginTop: 6,
     marginLeft: 2
   },
   contactItem: {
