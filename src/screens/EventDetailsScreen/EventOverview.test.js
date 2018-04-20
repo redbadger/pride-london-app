@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import EventOverview, { displayPrice } from "./EventOverview";
+import EventOverview from "./EventOverview";
 import type { Event } from "../../data/event";
 
 it("renders correctly", () => {
@@ -77,19 +77,4 @@ it("renders correctly", () => {
 
   const output = shallow(<EventOverview event={event} />);
   expect(output).toMatchSnapshot();
-});
-
-describe("displayPrice", () => {
-  it("returns free for free events", () => {
-    expect(displayPrice(true, 1, 2)).toEqual("Free");
-  });
-
-  it("returns the range of prices when a higher price is also given", () => {
-    expect(displayPrice(false, 1, 2)).toEqual("£1 - £2");
-  });
-
-  it("returns the low price if there is no higher price", () => {
-    expect(displayPrice(false, 1, 1)).toEqual("£1");
-    expect(displayPrice(false, 1)).toEqual("£1");
-  });
 });

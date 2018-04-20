@@ -28,6 +28,7 @@
     "react": "16.2.0",
     "react-native": "0.54.2",
     "react-native-calendars": "^1.17.4",
+    "react-native-communications": "^2.2.1",
     "react-native-config": "^0.11.5",
     "react-native-easy-markdown": "^1.1.9",
     "react-native-linear-gradient": "^2.4.0",
