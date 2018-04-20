@@ -18,30 +18,17 @@ type Props = {
   numberOfLines?: number
 };
 
-const Text = ({
-  children,
-  type,
-  markdown,
-  style,
-  allowFontScaling,
-  onLayout,
-  numberOfLines
-}: Props) =>
+const Text = ({ children, type, markdown, style, ...otherProps }: Props) =>
   markdown ? (
     <Markdown
       style={style}
       markdownStyles={{ ...textStyles, ...markdownStyles }}
-      onLayout={onLayout}
+      {...otherProps}
     >
       {children}
     </Markdown>
   ) : (
-    <RnText
-      style={[type && styles[type], style]}
-      allowFontScaling={allowFontScaling}
-      onLayout={onLayout}
-      numberOfLines={numberOfLines}
-    >
+    <RnText style={[type && styles[type], style]} {...otherProps}>
       {children}
     </RnText>
   );
