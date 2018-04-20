@@ -3,6 +3,7 @@ import React from "react";
 import { Image, View, StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
+import { formattedEventPriceRange } from "../../data/formatters";
 import IconItem from "./IconItem";
 import Touchable from "../../components/Touchable";
 import CategoryPill from "../../components/CategoryPill";
@@ -24,16 +25,6 @@ type Props = {
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-export const displayPrice = (
-  isFree: boolean,
-  eventPriceLow: number,
-  eventPriceHigh?: number
-) => {
-  if (isFree) return text.isFreePrice;
-  if (eventPriceHigh && eventPriceHigh > eventPriceLow)
-    return `£${eventPriceLow} - £${eventPriceHigh}`;
-  return `£${eventPriceLow}`;
-};
 
 const EventOverview = ({ event }: Props) => {
   const startTime = removeTimezoneFromDateString(
@@ -114,7 +105,7 @@ const EventOverview = ({ event }: Props) => {
         style={styles.iconItem}
       >
         <Text type="h4" color="lightNavyBlueColor">
-          {displayPrice(
+          {formattedEventPriceRange(
             event.fields.isFree[locale],
             event.fields.eventPriceLow[locale],
             event.fields.eventPriceHigh[locale]

@@ -2,7 +2,8 @@
 import {
   formatDateRange,
   formatPrice,
-  formattedEventPrice
+  formattedEventPrice,
+  formattedEventPriceRange
 } from "./formatters";
 
 describe("formatDateRange", () => {
@@ -46,5 +47,26 @@ describe("formattedEventPrice", () => {
   it("returns From eventPriceLow when there is a range of prices", () => {
     const result = formattedEventPrice(false, 12, 15.5);
     expect(result).toBe("From £12");
+  });
+});
+
+describe("formattedEventPriceRange", () => {
+  it("returns free for free events", () => {
+    expect(formattedEventPriceRange(true, 1, 2)).toEqual("Free");
+  });
+
+  it("returns the range of prices when a higher price is also given", () => {
+    expect(formattedEventPriceRange(false, 1, 2)).toEqual("£1 - £2");
+  });
+
+  it("formats the prices with 2 decimals", () => {
+    expect(formattedEventPriceRange(false, 1.12, 2.12)).toEqual(
+      "£1.12 - £2.12"
+    );
+  });
+
+  it("returns the low price if there is no higher price", () => {
+    expect(formattedEventPriceRange(false, 1, 1)).toEqual("£1");
+    expect(formattedEventPriceRange(false, 1)).toEqual("£1");
   });
 });
