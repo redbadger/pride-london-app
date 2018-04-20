@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent } from "react";
 import { View, StyleSheet, Animated } from "react-native";
+import type { LayoutEvent } from "react-native/Libraries/Types/CoreEventTypes";
 import LinearGradient from "react-native-linear-gradient";
 import {
   lightNavyBlueColor,
@@ -49,9 +50,8 @@ class EventDescription extends PureComponent<
     }).start();
   };
 
-  measureTextHeight = (event: {
-    nativeEvent: { layout: { height: number } }
-  }) => this.setState({ textHeight: event.nativeEvent.layout.height });
+  measureTextHeight = (event: LayoutEvent) =>
+    this.setState({ textHeight: event.nativeEvent.layout.height });
 
   render() {
     const { event } = this.props;
