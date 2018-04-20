@@ -35,6 +35,8 @@ export default {
   eventDetailsAbout: "About",
   eventDetailsReadMore: "Read more",
   eventDetailsReadLess: "Read less",
+  eventDetailsContactEmailSubject: "Pride In London event enquiry",
+  eventeventDetailsContactEmailBody: "Dear event organiser,",
   anyDay: "Any day",
   anyTime: "Any time",
   time: {

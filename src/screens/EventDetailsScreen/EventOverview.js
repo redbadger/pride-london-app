@@ -3,15 +3,12 @@ import React from "react";
 import { Image, View, StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
+import { formattedEventPriceRange } from "../../data/formatters";
 import IconItem from "./IconItem";
 import Touchable from "../../components/Touchable";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
-import {
-  lightNavyBlueColor,
-  blackColor,
-  eucalyptusGreenColor
-} from "../../constants/colors";
+import { blackColor, eucalyptusGreenColor } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event } from "../../data/event";
@@ -28,16 +25,6 @@ type Props = {
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-export const displayPrice = (
-  isFree: boolean,
-  eventPriceLow: number,
-  eventPriceHigh?: number
-) => {
-  if (isFree) return text.isFreePrice;
-  if (eventPriceHigh && eventPriceHigh > eventPriceLow)
-    return `£${eventPriceLow} - £${eventPriceHigh}`;
-  return `£${eventPriceLow}`;
-};
 
 const EventOverview = ({ event }: Props) => {
   const startTime = removeTimezoneFromDateString(
@@ -64,8 +51,10 @@ const EventOverview = ({ event }: Props) => {
   ];
 
   return (
-    <View style={styles.content}>
-      <Text type="h1">{event.fields.name[locale]}</Text>
+    <View>
+      <Text type="h1" style={styles.title}>
+        {event.fields.name[locale]}
+      </Text>
       <View style={styles.categoryPillContainer}>
         {event.fields.eventCategories[locale].map(categoryName => (
           <CategoryPill
@@ -79,7 +68,7 @@ const EventOverview = ({ event }: Props) => {
         icon={<Image style={styles.icon} source={dateIcon} />}
         style={styles.iconItem}
       >
-        <Text type="h4" style={styles.detailTitle}>
+        <Text type="h4" color="lightNavyBlueColor">
           {dateDisplay}
         </Text>
         <Text type="small" style={styles.text}>
@@ -93,7 +82,7 @@ const EventOverview = ({ event }: Props) => {
       >
         <Touchable onPress={() => showLocation(...eventLocation)}>
           <View style={styles.detailTitleLink}>
-            <Text type="h4" style={styles.detailTitle}>
+            <Text type="h4" color="lightNavyBlueColor">
               {event.fields.locationName[locale]}
             </Text>
           </View>
@@ -111,9 +100,12 @@ const EventOverview = ({ event }: Props) => {
           )}
         </Touchable>
       </IconItem>
-      <IconItem icon={<Image source={ticketsIcon} />} style={styles.iconItem}>
-        <Text type="h4" style={styles.detailTitle}>
-          {displayPrice(
+      <IconItem
+        icon={<Image source={ticketsIcon} style={styles.ticketIcon} />}
+        style={styles.iconItem}
+      >
+        <Text type="h4" color="lightNavyBlueColor">
+          {formattedEventPriceRange(
             event.fields.isFree[locale],
             event.fields.eventPriceLow[locale],
             event.fields.eventPriceHigh[locale]
@@ -125,10 +117,12 @@ const EventOverview = ({ event }: Props) => {
           strings.venueDetailsGenderNeutralToilets
         ) && (
           <IconItem
-            icon={<Image source={genderNeutralIcon} />}
+            icon={
+              <Image source={genderNeutralIcon} style={styles.genderIcon} />
+            }
             style={styles.iconItem}
           >
-            <Text type="h4" style={styles.detailTitle}>
+            <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsGenderNeutralToilets}
             </Text>
           </IconItem>
@@ -136,9 +130,14 @@ const EventOverview = ({ event }: Props) => {
       {event.fields.accessibilityOptions &&
         event.fields.accessibilityOptions[locale].length > 0 && (
           <IconItem
-            icon={<Image style={styles.icon} source={accessibilityIcon} />}
+            icon={
+              <Image
+                style={styles.accessibilityIcon}
+                source={accessibilityIcon}
+              />
+            }
           >
-            <Text type="h4" style={styles.detailTitle}>
+            <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsAccessibility}
             </Text>
             <Text type="small" style={styles.text}>
@@ -151,13 +150,12 @@ const EventOverview = ({ event }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  content: {
-    paddingTop: 15,
-    paddingBottom: 10
+  title: {
+    marginTop: 24
   },
   categoryPillContainer: {
     marginTop: 16,
-    marginBottom: 20,
+    marginBottom: 16,
     flexDirection: "row",
     flexWrap: "wrap"
   },
@@ -171,8 +169,14 @@ const styles = StyleSheet.create({
   icon: {
     marginTop: 2
   },
-  detailTitle: {
-    color: lightNavyBlueColor
+  ticketIcon: {
+    marginTop: -3
+  },
+  genderIcon: {
+    marginTop: -2
+  },
+  accessibilityIcon: {
+    marginTop: 3
   },
   text: {
     color: blackColor

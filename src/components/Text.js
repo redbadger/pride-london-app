@@ -7,10 +7,12 @@ import type { TextProps } from "react-native/Libraries/Text/TextProps";
 
 import { blackColor } from "../constants/colors";
 
+
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
 type Props = {
   type?: TextType,
+  color?: "lightNavyBlueColor",
   markdown?: boolean,
   ...TextProps
 };
@@ -23,12 +25,12 @@ const Text = ({ type, markdown, style, ...otherProps }: Props) =>
       {...otherProps}
     />
   ) : (
+
     <RnText style={[type && styles[type], style]} {...otherProps} />
   );
 Text.defaultProps = {
   type: "text",
   markdown: false
-};
 
 const textStyles = {
   h1: {
@@ -68,6 +70,9 @@ const textStyles = {
     fontFamily: "Roboto-Bold",
     fontSize: 14,
     lineHeight: 20
+  },
+  lightNavyBlueColor: {
+    color: lightNavyBlueColor
   }
 };
 

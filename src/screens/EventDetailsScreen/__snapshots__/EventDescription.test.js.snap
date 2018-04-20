@@ -1,19 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
-  style={
-    Object {
-      "paddingVertical": 8,
-    }
-  }
->
+<View>
   <Text
     markdown={false}
     style={
       Object {
-        "color": "#2d2f7f",
-        "marginBottom": 8,
+        "marginBottom": 4,
+        "marginTop": 8,
       }
     }
     type="h2"
@@ -24,22 +18,15 @@ exports[`renders correctly 1`] = `
     <AnimatedComponent
       scrollEnabled={false}
       style={
-        Array [
-          Object {
-            "height": 100,
-          },
-          Object {},
-        ]
+        Object {
+          "height": 100,
+        }
       }
     >
       <Text
         markdown={true}
         onLayout={[Function]}
-        style={
-          Array [
-            Object {},
-          ]
-        }
+        style={Object {}}
         type="text"
       >
         Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
@@ -80,20 +67,14 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       />
     </AnimatedComponent>
   </View>
-  <Touchable
-    accessibilityComponentType="button"
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
-    delayPressIn={50}
+  <TextLink
     onPress={[Function]}
     style={
       Object {
         "alignSelf": "flex-end",
       }
     }
+    type="h4"
   >
     <View
       style={
@@ -118,6 +99,9 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       </Text>
     </View>
   </Touchable>
+    Read more
+  </TextLink>
+
   <View
     style={
       Object {
