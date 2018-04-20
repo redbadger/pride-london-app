@@ -2,7 +2,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import showLocation from "./openMapLink";
+import openMapLink from "./openMapLink";
 import Touchable from "../../components/Touchable";
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 const EventMap = ({ lat, lon, locationName }: Props) => (
   <Touchable
     style={styles.mapWrapper}
-    onPress={() => showLocation(lat, lon, locationName)}
+    onPress={() => openMapLink(lat, lon, locationName)}
   >
     <MapView
       style={styles.map}

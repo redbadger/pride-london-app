@@ -35,3 +35,14 @@ export const formattedEventPrice = (
   }
   return displayPrice;
 };
+
+export const formattedEventPriceRange = (
+  isFree: boolean,
+  eventPriceLow: number,
+  eventPriceHigh?: number
+) => {
+  if (isFree) return text.isFreePrice;
+  if (eventPriceHigh && eventPriceHigh > eventPriceLow)
+    return `£${formatPrice(eventPriceLow)} - £${formatPrice(eventPriceHigh)}`;
+  return `£${formatPrice(eventPriceLow)}`;
+};
