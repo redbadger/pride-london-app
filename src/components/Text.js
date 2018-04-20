@@ -18,19 +18,15 @@ type Props = {
   numberOfLines?: number
 };
 
-const Text = ({ children, type, markdown, style, ...otherProps }: Props) =>
+const Text = ({ type, markdown, style, ...otherProps }: Props) =>
   markdown ? (
     <Markdown
       style={style}
       markdownStyles={{ ...textStyles, ...markdownStyles }}
       {...otherProps}
-    >
-      {children}
-    </Markdown>
+    />
   ) : (
-    <RnText style={[type && styles[type], style]} {...otherProps}>
-      {children}
-    </RnText>
+    <RnText style={[type && styles[type], style]} {...otherProps} />
   );
 Text.defaultProps = {
   type: "text",
