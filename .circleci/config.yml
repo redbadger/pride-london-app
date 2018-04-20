@@ -241,7 +241,7 @@ jobs:
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
     shell: /bin/bash --login -o pipefail
-    dependencies:
+    machine:
       pre:
         - xcrun instruments -w "iPhone 7 (10.2) [" || true
     steps:
