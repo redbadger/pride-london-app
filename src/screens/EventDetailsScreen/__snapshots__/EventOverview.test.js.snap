@@ -4,6 +4,11 @@ exports[`renders correctly 1`] = `
 <View>
   <Text
     markdown={false}
+    style={
+      Object {
+        "marginTop": 24,
+      }
+    }
     type="h1"
   >
     Pride in the Park
@@ -77,12 +82,8 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
+      color="lightNavyBlueColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
       type="h4"
     >
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
@@ -137,12 +138,8 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
+          color="lightNavyBlueColor"
           markdown={false}
-          style={
-            Object {
-              "color": "#2d2f7f",
-            }
-          }
           type="h4"
         >
           Vauxhall Pleasure Gardens
@@ -192,12 +189,8 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
+      color="lightNavyBlueColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
       type="h4"
     >
       £19.95 - £30
@@ -221,12 +214,8 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
+      color="lightNavyBlueColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
       type="h4"
     >
       Gender neutral toilets
@@ -246,12 +235,8 @@ exports[`renders correctly 1`] = `
     style={Object {}}
   >
     <Text
+      color="lightNavyBlueColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
       type="h4"
     >
       Accessibility

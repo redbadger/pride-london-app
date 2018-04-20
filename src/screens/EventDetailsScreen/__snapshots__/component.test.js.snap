@@ -3,10 +3,8 @@
 exports[`AccessibilityDetails renders correctly 1`] = `
 <View>
   <Text
-    allowFontScaling={true}
     color="lightNavyBlueColor"
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "marginBottom": 4,
@@ -25,10 +23,7 @@ exports[`AccessibilityDetails renders correctly 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
-      style={Object {}}
       type="text"
     >
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
@@ -491,112 +486,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
             "marginVertical": 16,
           }
         }
-      >
-        <View
-          style={
-            Object {
-              "marginBottom": 20,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            type="h2"
-          >
-            Accessibility Details
-          </Text>
-          <View
-            style={
-              Object {
-                "marginTop": 8,
-              }
-            }
-          >
-            <Text
-              markdown={false}
-              type="text"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "marginBottom": 20,
-            }
-          }
-        >
-          <Text
-            markdown={false}
-            type="h2"
-          >
-            Contact
-          </Text>
-          <View
-            style={
-              Object {
-                "marginTop": 16,
-              }
-            }
-          >
-            <IconItem
-              icon={
-                <Text
-                  markdown={false}
-                  type="small"
-                >
-                  icn
-                </Text>
-              }
-              style={Object {}}
-            >
-              <Text
-                markdown={false}
-                style={
-                  Object {
-                    "color": "#2d2f7f",
-                  }
-                }
-                type="h4"
-              >
-                john.smith@eventname.com
-              </Text>
-            </IconItem>
-          </View>
-          <View
-            style={
-              Object {
-                "marginTop": 16,
-              }
-            }
-          >
-            <IconItem
-              icon={
-                <Text
-                  markdown={false}
-                  type="small"
-                >
-                  icn
-                </Text>
-              }
-              style={Object {}}
-            >
-              <Text
-                markdown={false}
-                style={
-                  Object {
-                    "color": "#2d2f7f",
-                  }
-                }
-                type="h4"
-              >
-                07891234567
-              </Text>
-            </IconItem>
-          </View>
-        </View>
-      </View>
       />
       <ContactDetails
         email="john.smith@eventname.com"

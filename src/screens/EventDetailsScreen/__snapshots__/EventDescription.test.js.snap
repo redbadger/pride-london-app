@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <View>
   <Text
+    color="lightNavyBlueColor"
     markdown={false}
     style={
       Object {
@@ -26,7 +27,6 @@ exports[`renders correctly 1`] = `
       <Text
         markdown={true}
         onLayout={[Function]}
-        style={Object {}}
         type="text"
       >
         Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
@@ -76,32 +76,8 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
     }
     type="h4"
   >
-    <View
-      style={
-        Object {
-          "alignSelf": "flex-start",
-          "borderBottomColor": "#2cda9d",
-          "borderBottomWidth": 1,
-          "marginBottom": 2,
-        }
-      }
-    >
-      <Text
-        markdown={false}
-        style={
-          Object {
-            "color": "#2d2f7f",
-          }
-        }
-        type="h4"
-      >
-        Read more
-      </Text>
-    </View>
-  </Touchable>
     Read more
   </TextLink>
-
   <View
     style={
       Object {

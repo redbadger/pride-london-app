@@ -5,8 +5,7 @@ import Markdown from "react-native-easy-markdown";
 
 import type { TextProps } from "react-native/Libraries/Text/TextProps";
 
-import { blackColor } from "../constants/colors";
-
+import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
@@ -17,7 +16,7 @@ type Props = {
   ...TextProps
 };
 
-const Text = ({ type, markdown, style, ...otherProps }: Props) =>
+const Text = ({ type, markdown, style, color, ...otherProps }: Props) =>
   markdown ? (
     <Markdown
       style={style}
@@ -25,12 +24,16 @@ const Text = ({ type, markdown, style, ...otherProps }: Props) =>
       {...otherProps}
     />
   ) : (
-
-    <RnText style={[type && styles[type], style]} {...otherProps} />
+    <RnText
+      style={[type && styles[type], color && styles[color], style]}
+      {...otherProps}
+    />
   );
 Text.defaultProps = {
   type: "text",
-  markdown: false
+  markdown: false,
+  color: undefined
+};
 
 const textStyles = {
   h1: {
