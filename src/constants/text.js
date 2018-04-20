@@ -39,7 +39,7 @@ export default {
   supportUsAsIndividual: "As an individual",
   supportUsAsBusiness: "As a business",
   supportUsDonate: "Donate",
-  supportUsDonateDescription: "Every donation keep us marching",
+  supportUsDonateDescription: "Every donation keeps us marching",
   supportUsShop: "Buy merchandise",
   supportUsShopDescription: "Visit our online shop on The Gay UK",
   supportUsSponsor: "Partner with us",
