@@ -9,12 +9,13 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Header>
+  <Header
+    backgroundColor="#20215a"
+  >
     <ContentPadding
       padding={Object {}}
       style={
         Object {
-          "backgroundColor": "#20215a",
           "flexDirection": "row",
           "justifyContent": "space-between",
         }

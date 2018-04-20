@@ -30,7 +30,7 @@ type Props = {
 
 const EventDetailsScreen = ({ navigation }: Props) => (
   <View style={styles.container}>
-    <Header>
+    <Header backgroundColor={lightNavyBlueColor}>
       <ContentPadding style={styles.headerContent}>
         <Text type="h2" style={styles.headerTitle}>
           {text.supportUsTitle}

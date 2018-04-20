@@ -6,7 +6,7 @@ import Header from "./Header";
 
 it("renders correctly", () => {
   const output = shallow(
-    <Header>
+    <Header backgroundColor="red">
       <Text>Lorem Ipsum</Text>
     </Header>
   );

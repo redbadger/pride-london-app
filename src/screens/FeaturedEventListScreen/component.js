@@ -8,7 +8,11 @@ import EventList from "../../components/EventList";
 import Header from "../../components/Header";
 import IconButton from "../../components/IconButton";
 import Text from "../../components/Text";
-import { bgColor, whiteColor } from "../../constants/colors";
+import {
+  bgColor,
+  whiteColor,
+  lightNavyBlueColor
+} from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
@@ -30,7 +34,7 @@ class EventsScreen extends PureComponent<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Header>
+        <Header backgroundColor={lightNavyBlueColor}>
           <ContentPadding style={styles.headerContent}>
             <IconButton
               accessibilityLabel="Back"

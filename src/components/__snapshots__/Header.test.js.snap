@@ -9,12 +9,13 @@ exports[`renders correctly 1`] = `
   }
   style={
     Object {
-      "backgroundColor": "#20215a",
+      "backgroundColor": "red",
     }
   }
 >
   <StatusBar
     animated={true}
+    backgroundColor="red"
     barStyle="light-content"
     showHideTransition="fade"
   />
