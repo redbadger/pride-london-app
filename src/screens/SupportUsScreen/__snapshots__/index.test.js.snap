@@ -59,8 +59,8 @@ exports[`renders correctly 1`] = `
         }
       >
         <SupportUsButton
-          bgLeft={1}
-          bgRight={1}
+          bgBottomLeft={1}
+          bgTopRight={1}
           color="#2d2f7f"
           description="Every donation keep us marching"
           navigation={null}
@@ -73,7 +73,7 @@ exports[`renders correctly 1`] = `
           url="DONATE"
         />
         <SupportUsButton
-          bgRight={1}
+          bgTopRight={1}
           color="#fc4984"
           description="Passionate about equality? Join us."
           isExternalLink={true}
@@ -87,7 +87,7 @@ exports[`renders correctly 1`] = `
           url="https://example.com"
         />
         <SupportUsButton
-          bgRight={1}
+          bgBottomRight={1}
           color="#c3d30e"
           contrast={true}
           description="Visit our online shop on The Gay UK"
@@ -115,7 +115,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <SupportUsButton
-          bgRight={1}
+          bgTopRight={1}
           color="#00a3bd"
           description="Support the community"
           navigation={null}

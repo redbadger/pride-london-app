@@ -4,11 +4,11 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import supportUsAsIndividual from "../../../assets/images/supportUsAsIndividual.jpg";
 import supportUsAsBusiness from "../../../assets/images/supportUsAsBusiness.jpg";
-import supportUsDonateBgLeft from "../../../assets/images/supportUsDonateBgLeft.png";
-import supportUsDonateBgRight from "../../../assets/images/supportUsDonateBgRight.png";
-import supportUsVolunteerBgRight from "../../../assets/images/supportUsVolunteerBgRight.png";
-import supportUsShopBgRight from "../../../assets/images/supportUsShopBgRight.png";
-import supportUsSponsorBgRight from "../../../assets/images/supportUsSponsorBgRight.png";
+import supportUsDonateBgBottomLeft from "../../../assets/images/supportUsDonateBgBottomLeft.png";
+import supportUsDonateBgTopRight from "../../../assets/images/supportUsDonateBgTopRight.png";
+import supportUsVolunteerBgTopRight from "../../../assets/images/supportUsVolunteerBgTopRight.png";
+import supportUsShopBgBottomRight from "../../../assets/images/supportUsShopBgBottomRight.png";
+import supportUsSponsorBgTopRight from "../../../assets/images/supportUsSponsorBgTopRight.png";
 import Header from "../../components/Header";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
@@ -48,8 +48,8 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             color={lightNavyBlueColor}
             title={text.supportUsDonate}
             description={text.supportUsDonateDescription}
-            bgLeft={supportUsDonateBgLeft}
-            bgRight={supportUsDonateBgRight}
+            bgBottomLeft={supportUsDonateBgBottomLeft}
+            bgTopRight={supportUsDonateBgTopRight}
             navigation={navigation}
             url={DONATE}
             style={styles.buttonSpacing}
@@ -58,7 +58,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             color={warmPinkColor}
             title={text.supportUsVolunteer}
             description={text.supportUsVolunteerDescription}
-            bgRight={supportUsVolunteerBgRight}
+            bgTopRight={supportUsVolunteerBgTopRight}
             navigation={navigation}
             url="https://example.com"
             isExternalLink
@@ -68,7 +68,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             color={vomitYellowColor}
             title={text.supportUsShop}
             description={text.supportUsShopDescription}
-            bgRight={supportUsShopBgRight}
+            bgBottomRight={supportUsShopBgBottomRight}
             navigation={navigation}
             url="https://example.com"
             isExternalLink
@@ -85,7 +85,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             color={turquoiseBlueColor}
             title={text.supportUsSponsor}
             description={text.supportUsSponsorDescription}
-            bgRight={supportUsSponsorBgRight}
+            bgTopRight={supportUsSponsorBgTopRight}
             navigation={navigation}
             url={SPONSOR}
             style={styles.buttonSpacing}

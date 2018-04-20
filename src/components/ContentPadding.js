@@ -1,10 +1,10 @@
 // @flow
 import React from "react";
-import { View, Dimensions } from "react-native";
 import type { Node } from "react";
+import { View } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
-
-type ScreenSize = "small" | "medium" | "large";
+import ScreenSizeProvider from "./ScreenSizeProvider";
+import type { ScreenSize } from "./ScreenSizeProvider";
 
 type Padding = {
   horizontal: number,
@@ -17,33 +17,27 @@ type Props = {
   style?: StyleObj
 };
 
-const getScreenSize = (): ScreenSize => {
-  const { width } = Dimensions.get("window");
-  if (width >= 440) {
-    return "large";
-  } else if (width >= 360) {
-    return "medium";
-  }
-
-  return "small";
-};
-
 const defaultPadding = {
   small: { horizontal: 8, vertical: 0 },
   medium: { horizontal: 16, vertical: 0 },
   large: { horizontal: 0, vertical: 0 }
 };
 
-const ContentPadding = ({ children, padding, style }: Props) => {
-  const size = getScreenSize();
+const getPaddingStyle = (padding, size: ScreenSize) => {
   const selectedPadding = (padding || {})[size] || defaultPadding[size];
-  const defaultStyle = {
+  return {
     paddingHorizontal: selectedPadding.horizontal,
     paddingVertical: selectedPadding.vertical
   };
-
-  return <View style={[defaultStyle, style]}>{children}</View>;
 };
+
+const ContentPadding = ({ children, padding, style }: Props) => (
+  <ScreenSizeProvider>
+    {size => (
+      <View style={[getPaddingStyle(padding, size), style]}>{children}</View>
+    )}
+  </ScreenSizeProvider>
+);
 
 ContentPadding.defaultProps = {
   padding: {},

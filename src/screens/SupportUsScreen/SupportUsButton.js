@@ -20,8 +20,9 @@ type Props = {
   color: string,
   title: string,
   description: string,
-  bgLeft?: ImageRef,
-  bgRight?: ImageRef,
+  bgBottomLeft?: ImageRef,
+  bgTopRight?: ImageRef,
+  bgBottomRight?: ImageRef,
   navigation: NavigationScreenProp<NavigationState>,
   url: string,
   isExternalLink?: boolean,
@@ -51,8 +52,9 @@ class SupportUsButton extends React.PureComponent<Props> {
       color,
       title,
       description,
-      bgLeft,
-      bgRight,
+      bgBottomLeft,
+      bgTopRight,
+      bgBottomRight,
       isExternalLink,
       contrast,
       style
@@ -60,11 +62,17 @@ class SupportUsButton extends React.PureComponent<Props> {
 
     return (
       <Touchable
+        accessibilityTraits={[isExternalLink ? "link" : "button"]}
         onPress={this.onPress}
         style={[styles.button, { backgroundColor: color }, style]}
       >
-        {bgLeft && <Image source={bgLeft} style={styles.bgLeft} />}
-        {bgRight && <Image source={bgRight} style={styles.bgRight} />}
+        {bgBottomLeft && (
+          <Image source={bgBottomLeft} style={styles.bgBottomLeft} />
+        )}
+        {bgTopRight && <Image source={bgTopRight} style={styles.bgTopRight} />}
+        {bgBottomRight && (
+          <Image source={bgBottomRight} style={styles.bgBottomRight} />
+        )}
         <ContentPadding
           padding={{
             small: { horizontal: 18, vertical: 0 },
@@ -97,7 +105,9 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: "center",
     height: 100 * PixelRatio.getFontScale(),
+    minHeight: 100,
     borderRadius: 5,
+    overflow: "hidden",
 
     // The below properties are required for iOS shadow
     shadowColor: supportUsButtonShadow,
@@ -109,16 +119,19 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 3
   },
-  bgLeft: {
-    borderRadius: 5,
+  bgBottomLeft: {
     position: "absolute",
     bottom: 0,
     left: 0
   },
-  bgRight: {
-    borderRadius: 5,
+  bgTopRight: {
     position: "absolute",
     top: 0,
+    right: 0
+  },
+  bgBottomRight: {
+    position: "absolute",
+    bottom: 0,
     right: 0
   },
   titleContainer: {
