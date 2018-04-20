@@ -28,10 +28,10 @@ fastlane android test
 
 Runs all the tests
 
-### android build
+### android build_beta
 
 ```
-fastlane android build
+fastlane android build_beta
 ```
 
 Build application
@@ -60,13 +60,37 @@ fastlane android beta
 
 Build and deploy to Beta lane
 
+### android deploy_play_store_beta
+
+```
+fastlane android deploy_play_store_beta
+```
+
+Build & Deploy to Play Store Beta channel
+
 ### android deploy_hockey
 
 ```
 fastlane android deploy_hockey
 ```
 
-Deploy to HockeyApp
+Upload to HockeyApp
+
+### android deploy_fabric
+
+```
+fastlane android deploy_fabric
+```
+
+Upload to Beta by Fabric
+
+### android deploy_store
+
+```
+fastlane android deploy_store
+```
+
+Upload to Play Store
 
 ---
 
