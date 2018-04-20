@@ -27,6 +27,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        numberOfLines={undefined}
         onLayout={[Function]}
         style={
           Object {

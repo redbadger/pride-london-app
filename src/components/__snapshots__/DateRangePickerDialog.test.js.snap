@@ -27,6 +27,7 @@ exports[`renders correctly with date selection 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        numberOfLines={undefined}
         onLayout={[Function]}
         style={
           Object {
@@ -84,6 +85,7 @@ exports[`renders correctly with range selection 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        numberOfLines={undefined}
         onLayout={[Function]}
         style={
           Object {
@@ -141,6 +143,7 @@ exports[`renders correctly without date selection 1`] = `
       <Text
         allowFontScaling={true}
         markdown={false}
+        numberOfLines={undefined}
         onLayout={[Function]}
         style={
           Object {

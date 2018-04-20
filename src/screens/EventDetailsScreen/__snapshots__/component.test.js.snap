@@ -374,6 +374,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                 <Text
                   allowFontScaling={true}
                   markdown={false}
+                  numberOfLines={undefined}
                   onLayout={[Function]}
                   style={Object {}}
                   type="small"
@@ -410,6 +411,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                 <Text
                   allowFontScaling={true}
                   markdown={false}
+                  numberOfLines={undefined}
                   onLayout={[Function]}
                   style={Object {}}
                   type="small"
