@@ -4,13 +4,13 @@ import { Image, View, StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import IconItem from "./IconItem";
+import Touchable from "../../components/Touchable";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
-import ContentPadding from "../../components/ContentPadding";
 import {
-  whiteColor,
   lightNavyBlueColor,
-  blackColor
+  blackColor,
+  eucalyptusGreenColor
 } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
@@ -20,6 +20,8 @@ import dateIcon from "../../../assets/images/date.png";
 import genderNeutralIcon from "../../../assets/images/genderNeutral.png";
 import accessibilityIcon from "../../../assets/images/accessibility.png";
 import ticketsIcon from "../../../assets/images/tickets.png";
+import locationIcon from "../../../assets/images/location.png";
+import showLocation from "./openMapLink";
 
 type Props = {
   event: Event
@@ -55,8 +57,14 @@ const EventOverview = ({ event }: Props) => {
     timeFormat
   )}`;
 
+  const eventLocation = [
+    event.fields.location[locale].lat,
+    event.fields.location[locale].lon,
+    event.fields.locationName[locale]
+  ];
+
   return (
-    <ContentPadding style={styles.content}>
+    <View style={styles.content}>
       <Text type="h1">{event.fields.name[locale]}</Text>
       <View style={styles.categoryPillContainer}>
         {event.fields.eventCategories[locale].map(categoryName => (
@@ -78,10 +86,30 @@ const EventOverview = ({ event }: Props) => {
           {timeDisplay}
         </Text>
       </IconItem>
-      <IconItem icon={<Text type="small">icn</Text>} style={styles.iconItem}>
-        <Text type="h4" style={styles.detailTitle}>
-          {event.fields.locationName[locale]}
-        </Text>
+
+      <IconItem
+        icon={<Image source={locationIcon} style={styles.icon} />}
+        style={styles.iconItem}
+      >
+        <Touchable onPress={() => showLocation(...eventLocation)}>
+          <View style={styles.detailTitleLink}>
+            <Text type="h4" style={styles.detailTitle}>
+              {event.fields.locationName[locale]}
+            </Text>
+          </View>
+          {event.fields.addressLine1 && (
+            <Text type="small">{event.fields.addressLine1[locale]}</Text>
+          )}
+          {event.fields.addressLine2 && (
+            <Text type="small">{event.fields.addressLine2[locale]}</Text>
+          )}
+          {event.fields.city && (
+            <Text type="small">{event.fields.city[locale]}</Text>
+          )}
+          {event.fields.postcode && (
+            <Text type="small">{event.fields.postcode[locale]}</Text>
+          )}
+        </Touchable>
       </IconItem>
       <IconItem icon={<Image source={ticketsIcon} />} style={styles.iconItem}>
         <Text type="h4" style={styles.detailTitle}>
@@ -109,7 +137,6 @@ const EventOverview = ({ event }: Props) => {
         event.fields.accessibilityOptions[locale].length > 0 && (
           <IconItem
             icon={<Image style={styles.icon} source={accessibilityIcon} />}
-            style={styles.iconItem}
           >
             <Text type="h4" style={styles.detailTitle}>
               {text.eventDetailsAccessibility}
@@ -119,14 +146,14 @@ const EventOverview = ({ event }: Props) => {
             </Text>
           </IconItem>
         )}
-    </ContentPadding>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   content: {
-    paddingVertical: 15,
-    backgroundColor: whiteColor
+    paddingTop: 15,
+    paddingBottom: 10
   },
   categoryPillContainer: {
     marginTop: 16,
@@ -149,6 +176,12 @@ const styles = StyleSheet.create({
   },
   text: {
     color: blackColor
+  },
+  detailTitleLink: {
+    borderBottomColor: eucalyptusGreenColor,
+    borderBottomWidth: StyleSheet.hairlineWidth * 2,
+    alignSelf: "flex-start",
+    marginBottom: 2
   }
 });
 

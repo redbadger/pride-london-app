@@ -4,6 +4,7 @@ exports[`renders correctly 1`] = `
 <Text
   allowFontScaling={true}
   markdown={false}
+  onLayout={[Function]}
   style={
     Object {
       "backgroundColor": "#d8d8d8",

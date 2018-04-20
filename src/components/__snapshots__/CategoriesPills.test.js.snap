@@ -19,6 +19,7 @@ exports[`CategoriesPills Component renders correctly 1`] = `
   <Text
     allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={
       Object {
         "color": "#2cda9d",

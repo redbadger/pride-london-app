@@ -75,6 +75,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
         <Text
           allowFontScaling={true}
           markdown={false}
+          onLayout={[Function]}
           style={
             Object {
               "color": "#2d2f7f",

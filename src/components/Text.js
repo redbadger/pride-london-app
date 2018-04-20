@@ -4,6 +4,7 @@ import { Text as RnText, StyleSheet } from "react-native";
 import Markdown from "react-native-easy-markdown";
 import type { Node } from "react";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import { blackColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
@@ -12,14 +13,23 @@ type Props = {
   type?: TextType,
   markdown?: boolean,
   style?: StyleObj,
-  allowFontScaling?: boolean
+  allowFontScaling?: boolean,
+  onLayout?: Function
 };
 
-const Text = ({ children, type, markdown, style, allowFontScaling }: Props) =>
+const Text = ({
+  children,
+  type,
+  markdown,
+  style,
+  allowFontScaling,
+  onLayout
+}: Props) =>
   markdown ? (
     <Markdown
       style={style}
       markdownStyles={{ ...textStyles, ...markdownStyles }}
+      onLayout={onLayout}
     >
       {children}
     </Markdown>
@@ -27,6 +37,7 @@ const Text = ({ children, type, markdown, style, allowFontScaling }: Props) =>
     <RnText
       style={[type && styles[type], style]}
       allowFontScaling={allowFontScaling}
+      onLayout={onLayout}
     >
       {children}
     </RnText>
@@ -35,7 +46,8 @@ Text.defaultProps = {
   type: "text",
   markdown: false,
   style: {},
-  allowFontScaling: true
+  allowFontScaling: true,
+  onLayout: () => {}
 };
 
 const textStyles = {
@@ -84,6 +96,9 @@ const markdownStyles = {
   // but doesn't exist in the markdown spec so should be rendered bold
   u: {
     fontWeight: "bold"
+  },
+  text: {
+    color: blackColor
   }
 };
 
