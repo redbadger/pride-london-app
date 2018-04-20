@@ -3,20 +3,17 @@ import { format } from "date-fns";
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import Text from "../components/Text";
-import {
-  imageBgColor,
-  eventTileTextColor,
-  coralColor,
-  whiteColor
-} from "../constants/colors";
+import CategoryPill from "./CategoryPill";
+import { imageBgColor, eventTileTextColor } from "../constants/colors";
 
 type Props = {
+  eventCategory: Array,
   name: string,
   date: string,
   imageUrl: string
 };
 
-const EventTile = ({ name, date, imageUrl }: Props) => (
+const EventTile = ({ eventCategory, name, date, imageUrl }: Props) => (
   <View style={styles.eventTile}>
     <ImageBackground
       style={styles.imageContainer}
@@ -24,9 +21,15 @@ const EventTile = ({ name, date, imageUrl }: Props) => (
       resizeMode="cover"
     >
       <View style={styles.featureTagContainer}>
-        <Text type="h3" style={{ color: whiteColor }}>
-          Cabaret & Variety
-        </Text>
+        {eventCategory
+          .slice(0, 1)
+          .map(categoryName => (
+            <CategoryPill
+              key={categoryName}
+              name={categoryName}
+              style={styles.categoryPill}
+            />
+          ))}
       </View>
     </ImageBackground>
     <View style={styles.details}>
@@ -35,9 +38,9 @@ const EventTile = ({ name, date, imageUrl }: Props) => (
       </Text>
       <Text
         type="h3"
+        numberOfLines={2}
         style={{ color: eventTileTextColor }}
         ellipsizeMode="tail"
-        numberOfLines={2}
       >
         {name}
       </Text>
@@ -58,10 +61,12 @@ const styles = StyleSheet.create({
     backgroundColor: imageBgColor
   },
   featureTagContainer: {
+    flexWrap: "wrap"
+  },
+  categoryPill: {
     height: 24,
-    backgroundColor: coralColor,
-    justifyContent: "center",
-    position: "absolute",
+    flexWrap: "wrap",
+    flexDirection: "row",
     paddingHorizontal: 5,
     marginTop: 96,
     marginLeft: 12
