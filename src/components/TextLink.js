@@ -17,7 +17,7 @@ type Props = {
 const TextLink = ({ children, onPress, style, type }: Props) => (
   <Touchable onPress={onPress} style={style}>
     <View style={styles.detailTitleLink}>
-      <Text type={type} color="blue">
+      <Text type={type} color="lightNavyBlueColor">
         {children}
       </Text>
     </View>

@@ -66,7 +66,7 @@ class EventDescription extends PureComponent<
 
     return (
       <View>
-        <Text type="h2" color="blue" style={styles.title}>
+        <Text type="h2" color="lightNavyBlueColor" style={styles.title}>
           {text.eventDetailsAbout}
         </Text>
         <View>

@@ -11,7 +11,7 @@ export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 type Props = {
   children: Node,
   type?: TextType,
-  color?: "blue",
+  color?: "lightNavyBlueColor",
   markdown?: boolean,
   style?: StyleObj,
   allowFontScaling?: boolean,
@@ -92,7 +92,7 @@ const textStyles = {
     fontSize: 14,
     lineHeight: 20
   },
-  blue: {
+  lightNavyBlueColor: {
     color: lightNavyBlueColor
   }
 };

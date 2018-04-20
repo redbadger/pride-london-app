@@ -85,7 +85,7 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      color="blue"
+      color="lightNavyBlueColor"
       markdown={false}
       onLayout={[Function]}
       style={Object {}}
@@ -146,7 +146,7 @@ exports[`renders correctly 1`] = `
       >
         <Text
           allowFontScaling={true}
-          color="blue"
+          color="lightNavyBlueColor"
           markdown={false}
           onLayout={[Function]}
           style={Object {}}
@@ -212,7 +212,7 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      color="blue"
+      color="lightNavyBlueColor"
       markdown={false}
       onLayout={[Function]}
       style={Object {}}
@@ -240,7 +240,7 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      color="blue"
+      color="lightNavyBlueColor"
       markdown={false}
       onLayout={[Function]}
       style={Object {}}
@@ -264,7 +264,7 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
-      color="blue"
+      color="lightNavyBlueColor"
       markdown={false}
       onLayout={[Function]}
       style={Object {}}

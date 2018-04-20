@@ -77,7 +77,7 @@ const EventOverview = ({ event }: Props) => {
         icon={<Image style={styles.icon} source={dateIcon} />}
         style={styles.iconItem}
       >
-        <Text type="h4" color="blue">
+        <Text type="h4" color="lightNavyBlueColor">
           {dateDisplay}
         </Text>
         <Text type="small" style={styles.text}>
@@ -91,7 +91,7 @@ const EventOverview = ({ event }: Props) => {
       >
         <Touchable onPress={() => showLocation(...eventLocation)}>
           <View style={styles.detailTitleLink}>
-            <Text type="h4" color="blue">
+            <Text type="h4" color="lightNavyBlueColor">
               {event.fields.locationName[locale]}
             </Text>
           </View>
@@ -113,7 +113,7 @@ const EventOverview = ({ event }: Props) => {
         icon={<Image source={ticketsIcon} style={styles.ticketIcon} />}
         style={styles.iconItem}
       >
-        <Text type="h4" color="blue">
+        <Text type="h4" color="lightNavyBlueColor">
           {displayPrice(
             event.fields.isFree[locale],
             event.fields.eventPriceLow[locale],
@@ -131,7 +131,7 @@ const EventOverview = ({ event }: Props) => {
             }
             style={styles.iconItem}
           >
-            <Text type="h4" color="blue">
+            <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsGenderNeutralToilets}
             </Text>
           </IconItem>
@@ -146,7 +146,7 @@ const EventOverview = ({ event }: Props) => {
               />
             }
           >
-            <Text type="h4" color="blue">
+            <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsAccessibility}
             </Text>
             <Text type="small" style={styles.text}>

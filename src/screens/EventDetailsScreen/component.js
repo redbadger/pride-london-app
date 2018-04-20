@@ -30,7 +30,7 @@ type Props = {
 
 export const AccessibilityDetails = ({ event }: { event: Event }) => (
   <View>
-    <Text type="h2" color="blue" style={styles.title}>
+    <Text type="h2" color="lightNavyBlueColor" style={styles.title}>
       {text.eventDetailsAccessibilityDetails}
     </Text>
     <View style={styles.accessibilityDetailsItem}>

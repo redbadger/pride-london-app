@@ -32,7 +32,7 @@ it("passes custom styles down to component", () => {
 
 it("renders text in blue when color is set", () => {
   const style = { color: lightNavyBlueColor };
-  const output = shallow(<Text color="blue">Some text</Text>);
+  const output = shallow(<Text color="lightNavyBlueColor">Some text</Text>);
 
   expect(output.props().style).toContainEqual(style);
 });
