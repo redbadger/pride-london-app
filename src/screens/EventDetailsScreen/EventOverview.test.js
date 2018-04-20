@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import EventOverview from "./EventOverview";
+import EventOverview, { displayPrice } from "./EventOverview";
 import type { Event } from "../../data/event";
 
 it("renders correctly", () => {
@@ -9,6 +9,10 @@ it("renders correctly", () => {
     fields: {
       name: { "en-GB": "Pride in the Park" },
       location: { "en-GB": { lon: -0.12092150000000856, lat: 51.4875152 } },
+      addressLine1: { "en-GB": "Vauxhall Pleasure Gardens" },
+      addressLine2: { "en-GB": "Vauxhall Pleasure Gardens" },
+      city: { "en-GB": "London" },
+      postcode: { "en-GB": "EC1M 3HA" },
       locationName: { "en-GB": "Vauxhall Pleasure Gardens" },
       startTime: { "en-GB": "2017-07-09T11:00+01:00" },
       endTime: { "en-GB": "2018-07-15T18:00+01:00" },
@@ -73,4 +77,19 @@ it("renders correctly", () => {
 
   const output = shallow(<EventOverview event={event} />);
   expect(output).toMatchSnapshot();
+});
+
+describe("displayPrice", () => {
+  it("returns free for free events", () => {
+    expect(displayPrice(true, 1, 2)).toEqual("Free");
+  });
+
+  it("returns the range of prices when a higher price is also given", () => {
+    expect(displayPrice(false, 1, 2)).toEqual("£1 - £2");
+  });
+
+  it("returns the low price if there is no higher price", () => {
+    expect(displayPrice(false, 1, 1)).toEqual("£1");
+    expect(displayPrice(false, 1)).toEqual("£1");
+  });
 });

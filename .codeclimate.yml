@@ -3,6 +3,9 @@ exclude_patterns:
   - "**/*.test.js"
   - "**/flow-typed"
 checks:
+  similar-code:
+    config:
+      threshold: 72
   method-lines:
     config:
       threshold: 50

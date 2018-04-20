@@ -24,7 +24,9 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={
       Object {
         "color": "rgb(44, 218, 157)",

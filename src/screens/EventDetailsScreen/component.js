@@ -1,19 +1,21 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, View, StyleSheet, ScrollView } from "react-native";
+import { Image, Linking, View, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import Header from "./Header";
-import IconButton from "./IconButton";
 import IconItem from "./IconItem";
-import EventMap from "./EventMap";
 import EventOverview from "./EventOverview";
+import EventDescription from "./EventDescription";
 import Text from "../../components/Text";
-import Button from "../../components/Button";
+import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
+import Header from "../../components/Header";
+import IconButton from "../../components/IconButton";
+import Shadow from "../../components/Shadow";
 import {
-  darkBlueGreyTwoColor,
   lightishGreyColor,
-  whiteColor
+  whiteColor,
+  lightNavyBlueColor,
+  darkBlueGreyTwoColor
 } from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event, LocalizedFieldRef } from "../../data/event";
@@ -26,20 +28,6 @@ type Props = {
   event: Event,
   getAssetUrl: LocalizedFieldRef => string
 };
-
-const renderEventDescription = event => (
-  <ContentPadding style={styles.content}>
-    <View style={styles.sectionDivider} />
-    <Text markdown>{event.fields.eventDescription[locale]}</Text>
-    <View style={styles.mapWrapper}>
-      <EventMap
-        lat={event.fields.location[locale].lat}
-        lon={event.fields.location[locale].lon}
-        locationName={event.fields.locationName[locale]}
-      />
-    </View>
-  </ContentPadding>
-);
 
 const renderEventDetails = event =>
   (event.fields.accessibilityDetails ||
@@ -62,38 +50,50 @@ const renderEventDetails = event =>
             <Text type="h2">{text.eventDetailsContact}</Text>
             {event.fields.email && (
               <View style={styles.contactItem}>
-                <IconItem
-                  icon={<Text type="small">icn</Text>}
-                  title={event.fields.email[locale]}
-                  titleType="text"
-                />
+                <IconItem icon={<Text type="small">icn</Text>}>
+                  <Text type="h4" style={styles.detailTitle}>
+                    {event.fields.email[locale]}
+                  </Text>
+                </IconItem>
               </View>
             )}
             {event.fields.phone && (
               <View style={styles.contactItem}>
-                <IconItem
-                  icon={<Text type="small">icn</Text>}
-                  title={event.fields.phone[locale]}
-                  titleType="text"
-                />
+                <IconItem icon={<Text type="small">icn</Text>}>
+                  <Text type="h4" style={styles.detailTitle}>
+                    {event.fields.phone[locale]}
+                  </Text>
+                </IconItem>
               </View>
             )}
-          </View>
-        )}
-        {event.fields.ticketingUrl && (
-          <View style={styles.buyButton}>
-            <Button
-              text={text.eventDetailsBuyButton}
-              url={event.fields.ticketingUrl[locale]}
-            />
           </View>
         )}
       </View>
     </ContentPadding>
   );
 
+const renderBuyTickets = event =>
+  event.fields.ticketingUrl && (
+    <Shadow>
+      <View style={styles.buyButton}>
+        <ContentPadding>
+          <ButtonPrimary
+            onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
+          >
+            {text.eventDetailsBuyButton}
+          </ButtonPrimary>
+        </ContentPadding>
+      </View>
+    </Shadow>
+  );
+
 class EventDetailsScreen extends PureComponent<Props> {
   static defaultProps = {};
+
+  static navigationOptions = {
+    header: null,
+    tabBarVisible: false
+  };
 
   render() {
     const { event, getAssetUrl } = this.props;
@@ -120,10 +120,14 @@ class EventDetailsScreen extends PureComponent<Props> {
             style={{ aspectRatio: 5 / 3 }}
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
-          <EventOverview event={event} />
-          {renderEventDescription(event)}
+          <ContentPadding>
+            <EventOverview event={event} />
+            <View style={styles.sectionDivider} />
+            <EventDescription event={event} />
+          </ContentPadding>
           {renderEventDetails(event)}
         </ScrollView>
+        {renderBuyTickets(event)}
       </View>
     );
   }
@@ -132,23 +136,20 @@ class EventDetailsScreen extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: darkBlueGreyTwoColor
+    backgroundColor: whiteColor
   },
   headerContent: {
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    backgroundColor: darkBlueGreyTwoColor
   },
   content: {
-    paddingVertical: 15,
-    backgroundColor: whiteColor
+    paddingVertical: 15
   },
   sectionDivider: {
     backgroundColor: lightishGreyColor,
     height: 1,
     marginVertical: 16
-  },
-  mapWrapper: {
-    marginTop: 8
   },
   detailsSection: {
     marginBottom: 20
@@ -160,7 +161,11 @@ const styles = StyleSheet.create({
     marginTop: 16
   },
   buyButton: {
-    marginTop: 16
+    backgroundColor: whiteColor,
+    paddingVertical: 12
+  },
+  detailTitle: {
+    color: lightNavyBlueColor
   }
 });
 
