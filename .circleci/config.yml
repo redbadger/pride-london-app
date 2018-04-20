@@ -151,7 +151,7 @@ jobs:
       - run:
             name: Resign APK with upload key
             command: |
-                ./scripts/apk-resigner.sh \ 
+                ../scripts/apk-resigner.sh \ 
                 $APK_PATH \
                 $ANDROID_PROD_KEYSTORE_PATH \
                 $ANDROID_PROD_KEYSTORE_ALIAS \
