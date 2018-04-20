@@ -12,7 +12,16 @@ android-secrets: &android-secrets
       git clone git@github.com:redbadger/pride-android-secrets.git
       mkdir -p .gradle 
       echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
-      echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties  
+android-secrets: &android-secrets-prod
+  run: 
+    command: |
+      git clone git@github.com:redbadger/pride-android-secrets.git
+      mkdir -p .gradle 
+      echo -e "keystore=$ANDROID_PROD_KEYSTORE_PATH\nkeystore.alias=$ANDROID_PROD_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_PROD_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_PROD_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
+fabric-secrets: &fabric-secrets
+  run:
+    command: |
+      echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
 ruby-dependencies: &ruby-dependencies
   run:
     name: Download Ruby Dependencies
@@ -95,6 +104,7 @@ jobs:
       - attach_workspace:
           at: ~/project
       - <<: *android-secrets
+      - <<: *fabric-secrets
       - <<: *restore-gradle-cache
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
@@ -126,6 +136,7 @@ jobs:
       - attach_workspace:
           at: ~/project
       - <<: *android-secrets
+      - <<: *fabric-secrets
       - <<: *restore-gradle-cache
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
