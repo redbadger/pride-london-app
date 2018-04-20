@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 40,
     height: 20,
-    marginRight: 18
+    marginRight: 12
   },
   item: {
     flex: 1

@@ -16,7 +16,7 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "height": 20,
-        "marginRight": 18,
+        "marginRight": 12,
         "width": 40,
       }
     }

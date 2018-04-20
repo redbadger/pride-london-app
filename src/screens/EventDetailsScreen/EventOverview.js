@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     marginTop: 24
   },
   categoryPillContainer: {
-    marginTop: 16,
+    marginTop: 8,
     marginBottom: 16,
     flexDirection: "row",
     flexWrap: "wrap"

@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, Linking, View, StyleSheet, ScrollView } from "react-native";
+import { Image, Linking, View, StyleSheet } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import ContactDetails from "./ContactDetails";
 import EventOverview from "./EventOverview";
@@ -10,7 +10,7 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import IconButton from "../../components/IconButton";
-import Shadow from "../../components/Shadow";
+import ShadowedScrollView from "../../components/ShadowedScrollView";
 import {
   lightishGreyColor,
   whiteColor,
@@ -40,15 +40,13 @@ export const AccessibilityDetails = ({ event }: { event: Event }) => (
 );
 
 export const BuyTickets = ({ event }: { event: Event }) => (
-  <Shadow>
-    <ContentPadding style={styles.buyButton}>
-      <ButtonPrimary
-        onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
-      >
-        {text.eventDetailsBuyButton}
-      </ButtonPrimary>
-    </ContentPadding>
-  </Shadow>
+  <ContentPadding style={styles.buyButton}>
+    <ButtonPrimary
+      onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
+    >
+      {text.eventDetailsBuyButton}
+    </ButtonPrimary>
+  </ContentPadding>
 );
 
 class EventDetailsScreen extends PureComponent<Props> {
@@ -79,7 +77,7 @@ class EventDetailsScreen extends PureComponent<Props> {
             />
           </ContentPadding>
         </Header>
-        <ScrollView>
+        <ShadowedScrollView topShadow={false}>
           <Image
             style={{ aspectRatio: 5 / 3 }}
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
@@ -101,7 +99,7 @@ class EventDetailsScreen extends PureComponent<Props> {
               />
             ]}
           </ContentPadding>
-        </ScrollView>
+        </ShadowedScrollView>
         {event.fields.ticketingUrl && <BuyTickets event={event} />}
       </View>
     );

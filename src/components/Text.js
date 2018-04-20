@@ -2,9 +2,10 @@
 import React from "react";
 import { Text as RnText, StyleSheet } from "react-native";
 import Markdown from "react-native-easy-markdown";
-
 import type { TextProps } from "react-native/Libraries/Text/TextProps";
-
+import { mergeDeepRight } from "ramda";
+import type { Node } from "react";
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
@@ -16,13 +17,24 @@ type Props = {
   ...TextProps
 };
 
-const Text = ({ type, markdown, style, color, ...otherProps }: Props) =>
+const Text = ({
+  children,
+  onLayout,
+  type,
+  markdown,
+  style,
+  color,
+  ...otherProps
+}: Props) =>
   markdown ? (
     <Markdown
       style={style}
-      markdownStyles={{ ...textStyles, ...markdownStyles }}
+      markdownStyles={mergeDeepRight(textStyles, markdownStyles)}
+      onLayout={onLayout}
       {...otherProps}
-    />
+    >
+      {String(children).trim()}
+    </Markdown>
   ) : (
     <RnText
       style={[type && styles[type], color && styles[color], style]}

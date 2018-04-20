@@ -19,7 +19,7 @@ exports[`renders correctly 1`] = `
         "flexDirection": "row",
         "flexWrap": "wrap",
         "marginBottom": 16,
-        "marginTop": 16,
+        "marginTop": 8,
       }
     }
   >

@@ -33,24 +33,22 @@ exports[`AccessibilityDetails renders correctly 1`] = `
 `;
 
 exports[`BuyTickets renders correctly 1`] = `
-<Shadow>
-  <ContentPadding
-    padding={Object {}}
-    style={
-      Object {
-        "backgroundColor": "#ffffff",
-        "paddingVertical": 12,
-      }
+<ContentPadding
+  padding={Object {}}
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "paddingVertical": 12,
     }
+  }
+>
+  <Button
+    disabled={false}
+    onPress={[Function]}
   >
-    <Button
-      disabled={false}
-      onPress={[Function]}
-    >
-      Buy tickets
-    </Button>
-  </ContentPadding>
-</Shadow>
+    Get tickets
+  </Button>
+</ContentPadding>
 `;
 
 exports[`renders correctly 1`] = `
@@ -86,7 +84,11 @@ exports[`renders correctly 1`] = `
       />
     </ContentPadding>
   </Header>
-  <ScrollView>
+  <ShadowedScrollView
+    bottomShadow={true}
+    style={Object {}}
+    topShadow={false}
+  >
     <Image
       source={
         Object {
@@ -497,7 +499,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         phone="07891234567"
       />
     </ContentPadding>
-  </ScrollView>
+  </ShadowedScrollView>
   <BuyTickets
     event={
       Object {
@@ -652,7 +654,11 @@ exports[`renders correctly with missing details 1`] = `
       />
     </ContentPadding>
   </Header>
-  <ScrollView>
+  <ShadowedScrollView
+    bottomShadow={true}
+    style={Object {}}
+    topShadow={false}
+  >
     <Image
       source={
         Object {
@@ -926,6 +932,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         phone="07891234567"
       />
     </ContentPadding>
-  </ScrollView>
+  </ShadowedScrollView>
 </View>
 `;

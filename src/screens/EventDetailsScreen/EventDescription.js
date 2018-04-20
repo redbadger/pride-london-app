@@ -14,6 +14,7 @@ import EventMap from "./EventMap";
 type Props = { event: Event };
 
 const collapsedHeight = 100;
+const collapsibleHeight = 140;
 
 class EventDescription extends PureComponent<
   Props,
@@ -51,10 +52,11 @@ class EventDescription extends PureComponent<
   render() {
     const { event } = this.props;
     const { textHeight, collapsed } = this.state;
+    const collapsible = textHeight > collapsibleHeight;
     const textContainerHeightStyle = {
       height: this.textContainerHeight.interpolate({
         inputRange: [0, 1],
-        outputRange: [textHeight, collapsedHeight]
+        outputRange: [textHeight, collapsible ? collapsedHeight : textHeight]
       })
     };
     const gradientOpacityStyle = {
@@ -78,16 +80,23 @@ class EventDescription extends PureComponent<
               {event.fields.eventDescription[locale]}
             </Text>
           </Animated.ScrollView>
-          <Animated.View style={[styles.gradient, gradientOpacityStyle]}>
-            <LinearGradient
-              colors={[whiteZeroColor, whiteColor]}
-              style={styles.gradient}
-            />
-          </Animated.View>
+          {collapsible && (
+            <Animated.View style={[styles.gradient, gradientOpacityStyle]}>
+              <LinearGradient
+                colors={[whiteZeroColor, whiteColor]}
+                style={styles.gradient}
+              />
+            </Animated.View>
+          )}
         </View>
-        <TextLink onPress={this.toggleCollapsed} style={styles.toggleContainer}>
-          {collapsed ? text.eventDetailsReadMore : text.eventDetailsReadLess}
-        </TextLink>
+        {collapsible && (
+          <TextLink
+            onPress={this.toggleCollapsed}
+            style={styles.toggleContainer}
+          >
+            {collapsed ? text.eventDetailsReadMore : text.eventDetailsReadLess}
+          </TextLink>
+        )}
         <View style={styles.mapWrapper}>
           <EventMap
             lat={event.fields.location[locale].lat}
@@ -107,7 +116,7 @@ const styles = StyleSheet.create({
   },
   gradient: {
     width: "100%",
-    height: 60,
+    height: 30,
     position: "absolute",
     bottom: 0
   },

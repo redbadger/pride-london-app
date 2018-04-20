@@ -16,9 +16,7 @@ exports[`renders correctly 1`] = `
       undefined,
     ]
   }
->
-  Some text
-</Text>
+/>
 `;
 
 exports[`renders markdown component based on flag 1`] = `
@@ -64,6 +62,9 @@ exports[`renders markdown component based on flag 1`] = `
       },
       "text": Object {
         "color": "#111111",
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "lineHeight": 24,
       },
       "u": Object {
         "fontWeight": "bold",
