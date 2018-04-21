@@ -5,8 +5,8 @@ import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes
 import Text from "./Text";
 import Touchable from "./Touchable";
 
-import checkboxUrl from "./check-box.png";
-import checkBoxCheckedUrl from "./check-box-checked.png";
+import checkboxUrl from "../../assets/images/checkBox.png";
+import checkBoxCheckedUrl from "../../assets/images/checkBoxChecked.png";
 
 type Props = {
   checked: boolean,
