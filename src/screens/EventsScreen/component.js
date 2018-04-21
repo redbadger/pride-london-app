@@ -8,7 +8,6 @@ import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS, EVENT_CATEGORIES_FILTER } from "../../constants/routes";
 import locale from "../../data/locale";
-import text from "../../constants/text";
 
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
