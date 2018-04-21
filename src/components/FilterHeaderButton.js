@@ -4,7 +4,7 @@ import { StyleSheet, View } from "react-native";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
 import Touchable from "./Touchable";
-import { filterButtonTextColor } from "../constants/colors";
+import { filterButtonTextColor, whiteColor } from "../constants/colors";
 import NumberBadge from "./NumberBadge";
 
 type Props = {
@@ -12,7 +12,8 @@ type Props = {
   onPress: Function,
   onRef?: Function,
   style?: StyleObj,
-  badgeValue?: ?number
+  badgeValue?: ?number,
+  active: boolean
 };
 
 const FilterHeaderButton = ({
@@ -20,10 +21,18 @@ const FilterHeaderButton = ({
   onPress,
   onRef,
   style,
-  badgeValue
+  badgeValue,
+  active
 }: Props) => (
   <Touchable style={[styles.button, style]} onPress={onPress} ref={onRef}>
-    <Text style={styles.buttonText}>{text}</Text>
+    <Text
+      style={[
+        styles.buttonText,
+        active ? styles.activeColor : styles.inactiveColor
+      ]}
+    >
+      {text}
+    </Text>
     {badgeValue != null && (
       <View style={styles.badgeContainer}>
         <NumberBadge value={badgeValue} />
@@ -46,8 +55,13 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   buttonText: {
-    color: filterButtonTextColor,
     fontFamily: "Roboto-Medium"
+  },
+  activeColor: {
+    color: filterButtonTextColor
+  },
+  inactiveColor: {
+    color: whiteColor
   },
   badgeContainer: {
     marginLeft: 6

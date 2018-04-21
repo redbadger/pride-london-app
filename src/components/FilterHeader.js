@@ -9,7 +9,7 @@ import FilterHeaderCategories from "./FilterHeaderCategories";
 import {
   filterBgColor,
   filterButtonsBgColor,
-  eucalyptusGreenColor,
+  whiteColor,
   lightNavyBlueColor
 } from "../constants/colors";
 import text from "../constants/text";
@@ -70,12 +70,14 @@ class FilterHeader extends React.PureComponent<Props, State> {
         </ContentPadding>
         <ContentPadding style={styles.contentFilters}>
           <FilterHeaderButton
+            active={!!dateFilter}
             text={formattedDateFilter}
             onPress={this.showDatePicker}
             style={styles.filterButton}
           />
           <View style={styles.dividerLine} />
           <FilterHeaderButton
+            active={numTagFiltersSelected > 0}
             text={numTagFiltersSelected > 0 ? text.filters : text.addFilters}
             onPress={onFilterButtonPress}
             style={styles.filterButton}
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
   },
   dividerLine: {
     borderLeftWidth: StyleSheet.hairlineWidth,
-    borderColor: eucalyptusGreenColor
+    borderColor: whiteColor
   }
 });
 

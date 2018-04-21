@@ -23,7 +23,9 @@ const SectionHeader = ({ title, hasShadow, badgeValue }: Props) => {
         {title}
       </Text>
       {showBadge ? (
-        <NumberBadge value={((badgeValue: any): number)} />
+        <View style={styles.badgeWrapper}>
+          <NumberBadge value={((badgeValue: any): number)} />
+        </View>
       ) : (
         <View />
       )}
@@ -55,6 +57,9 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     color: sectionHeaderTextColor
+  },
+  badgeWrapper: {
+    marginLeft: 6
   }
 });
 

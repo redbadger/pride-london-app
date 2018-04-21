@@ -22,10 +22,12 @@ const styles = StyleSheet.create({
     height: 20,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 10,
-    marginLeft: 6
+    borderRadius: 10
   },
-  value: { color: lightNavyBlueColor }
+  value: {
+    color: lightNavyBlueColor,
+    fontWeight: "bold"
+  }
 });
 
 export default NumberBadge;

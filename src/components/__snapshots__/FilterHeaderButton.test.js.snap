@@ -29,10 +29,14 @@ exports[`renders badge value when provided 1`] = `
     markdown={false}
     onLayout={[Function]}
     style={
-      Object {
-        "color": "rgb(44, 218, 157)",
-        "fontFamily": "Roboto-Medium",
-      }
+      Array [
+        Object {
+          "fontFamily": "Roboto-Medium",
+        },
+        Object {
+          "color": "rgb(44, 218, 157)",
+        },
+      ]
     }
     type="text"
   >
@@ -49,6 +53,51 @@ exports[`renders badge value when provided 1`] = `
       value={2}
     />
   </View>
+</Touchable>
+`;
+
+exports[`renders correct styles when inactive 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingHorizontal": 8,
+      },
+      Object {
+        "marginTop": 16,
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={true}
+    markdown={false}
+    onLayout={[Function]}
+    style={
+      Array [
+        Object {
+          "fontFamily": "Roboto-Medium",
+        },
+        Object {
+          "color": "#ffffff",
+        },
+      ]
+    }
+    type="text"
+  >
+    1-2-3 filtered
+  </Text>
 </Touchable>
 `;
 
@@ -81,10 +130,14 @@ exports[`renders correctly 1`] = `
     markdown={false}
     onLayout={[Function]}
     style={
-      Object {
-        "color": "rgb(44, 218, 157)",
-        "fontFamily": "Roboto-Medium",
-      }
+      Array [
+        Object {
+          "fontFamily": "Roboto-Medium",
+        },
+        Object {
+          "color": "rgb(44, 218, 157)",
+        },
+      ]
     }
     type="text"
   >

@@ -7,6 +7,7 @@ it("renders correctly", () => {
   const style = { marginTop: 16 };
   const output = shallow(
     <FilterHeaderButton
+      active
       text="1-2-3 filtered"
       style={style}
       onPress={() => {}}
@@ -19,10 +20,24 @@ it("renders badge value when provided", () => {
   const style = { marginTop: 16 };
   const output = shallow(
     <FilterHeaderButton
+      active
       text="1-2-3 filtered"
       style={style}
       onPress={() => {}}
       badgeValue={2}
+    />
+  );
+  expect(output).toMatchSnapshot();
+});
+
+it("renders correct styles when inactive", () => {
+  const style = { marginTop: 16 };
+  const output = shallow(
+    <FilterHeaderButton
+      active={false}
+      text="1-2-3 filtered"
+      style={style}
+      onPress={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
