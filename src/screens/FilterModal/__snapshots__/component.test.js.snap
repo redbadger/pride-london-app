@@ -44,8 +44,7 @@ exports[`FilterModal renders correctly 1`] = `
     style={
       Object {
         "backgroundColor": "#ffffff",
-        "height": 60,
-        "paddingVertical": 8,
+        "paddingVertical": 12,
       }
     }
   >

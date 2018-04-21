@@ -19,6 +19,7 @@ exports[`can be disabled 1`] = `
         "backgroundColor": "#2cda9d",
         "borderRadius": 4,
         "justifyContent": "center",
+        "minHeight": 48,
       },
       Object {
         "backgroundColor": "#cecece",
@@ -63,6 +64,7 @@ exports[`renders correctly 1`] = `
         "backgroundColor": "#2cda9d",
         "borderRadius": 4,
         "justifyContent": "center",
+        "minHeight": 48,
       },
       Object {},
     ]

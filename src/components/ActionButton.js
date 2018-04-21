@@ -13,12 +13,7 @@ type Props = {
 };
 
 const ActionButton = ({ label, onPress, style }: Props) => (
-  <Touchable
-    onPress={onPress}
-    style={style}
-    accessibilityTraits={["button"]}
-    accessibilityComponentType="button"
-  >
+  <Touchable onPress={onPress} style={style}>
     <Text type="h4" style={styles.text}>
       {label}
     </Text>
