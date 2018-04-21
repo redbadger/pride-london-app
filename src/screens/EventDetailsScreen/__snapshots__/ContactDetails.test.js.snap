@@ -3,10 +3,8 @@
 exports[`renders correctly 1`] = `
 <View>
   <Text
-    allowFontScaling={true}
     color="lightNavyBlueColor"
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "marginBottom": 4,

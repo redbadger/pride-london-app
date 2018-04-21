@@ -49,6 +49,6 @@ it("opens the configured email app on tap", () => {
     null,
     null,
     text.eventDetailsContactEmailSubject,
-    text.eventeventDetailsContactEmailBody
+    text.eventDetailsContactEmailBody
   );
 });

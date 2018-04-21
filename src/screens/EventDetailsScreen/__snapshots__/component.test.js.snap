@@ -3,10 +3,8 @@
 exports[`AccessibilityDetails renders correctly 1`] = `
 <View>
   <Text
-    allowFontScaling={true}
     color="lightNavyBlueColor"
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "marginBottom": 4,
@@ -25,10 +23,7 @@ exports[`AccessibilityDetails renders correctly 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
-      style={Object {}}
       type="text"
     >
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
@@ -40,6 +35,7 @@ exports[`AccessibilityDetails renders correctly 1`] = `
 exports[`BuyTickets renders correctly 1`] = `
 <Shadow>
   <ContentPadding
+    padding={Object {}}
     style={
       Object {
         "backgroundColor": "#ffffff",
@@ -66,11 +62,13 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Header>
+  <Header
+    backgroundColor="#20215a"
+  >
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
-          "backgroundColor": "#20215a",
           "flexDirection": "row",
           "justifyContent": "space-between",
         }
@@ -102,6 +100,7 @@ exports[`renders correctly 1`] = `
       }
     />
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
           "marginBottom": 24,
@@ -629,11 +628,13 @@ exports[`renders correctly with missing details 1`] = `
     }
   }
 >
-  <Header>
+  <Header
+    backgroundColor="#20215a"
+  >
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
-          "backgroundColor": "#20215a",
           "flexDirection": "row",
           "justifyContent": "space-between",
         }
@@ -665,6 +666,7 @@ exports[`renders correctly with missing details 1`] = `
       }
     />
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
           "marginBottom": 24,

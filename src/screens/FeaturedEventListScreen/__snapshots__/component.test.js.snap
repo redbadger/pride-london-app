@@ -9,8 +9,11 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
     }
   }
 >
-  <Header>
+  <Header
+    backgroundColor="#2d2f7f"
+  >
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
           "alignItems": "center",
@@ -25,9 +28,7 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
         source={1}
       />
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
         style={
           Object {
             "color": "#ffffff",
