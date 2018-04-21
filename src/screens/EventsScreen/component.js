@@ -6,23 +6,35 @@ import type { EventDays, LocalizedFieldRef } from "../../data/event";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";
-import { EVENT_DETAILS } from "../../constants/routes";
+import { EVENT_DETAILS, EVENT_CATEGORIES_FILTER } from "../../constants/routes";
 import locale from "../../data/locale";
 
-type Props = {
+export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>,
-  getAssetUrl: LocalizedFieldRef => string
+  getAssetUrl: LocalizedFieldRef => string,
+  selectedCategories: Set<string>
 };
 
 class EventsScreen extends PureComponent<Props> {
+  static navigationOptions = {
+    header: null
+  };
+
+  handleFilterCategoriesPress = () => {
+    this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <FilterHeader />
+        <FilterHeader
+          onFilterCategoriesPress={this.handleFilterCategoriesPress}
+          selectedCategories={this.props.selectedCategories}
+        />
         {this.props.loading ? (
           <Text>Loading...</Text>
         ) : (

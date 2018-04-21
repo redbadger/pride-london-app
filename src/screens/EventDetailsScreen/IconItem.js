@@ -2,28 +2,22 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { Node } from "react";
-import Text from "../../components/Text";
-import type { TextType } from "../../components/Text";
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type IconItemProps = {|
   icon: Node,
-  title: string,
-  content?: Node,
-  titleType?: TextType
+  children: Node,
+  style?: StyleObj
 |};
 
-const IconItem = ({ icon, title, titleType, content }: IconItemProps) => (
-  <View style={styles.iconItem}>
+const IconItem = ({ icon, children, style }: IconItemProps) => (
+  <View style={[styles.iconItem, style]}>
     <View style={styles.icon}>{icon}</View>
-    <View style={styles.item}>
-      <Text type={titleType}>{title}</Text>
-      {content}
-    </View>
+    <View style={styles.item}>{children}</View>
   </View>
 );
 IconItem.defaultProps = {
-  content: null,
-  titleType: "h3"
+  style: {}
 };
 
 const styles = StyleSheet.create({
@@ -34,7 +28,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 40,
     height: 20,
-    paddingRight: 20
+    marginRight: 18
   },
   item: {
     flex: 1

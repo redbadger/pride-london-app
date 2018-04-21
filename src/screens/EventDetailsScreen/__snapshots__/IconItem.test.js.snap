@@ -3,17 +3,20 @@
 exports[`renders correctly 1`] = `
 <View
   style={
-    Object {
-      "flex": 1,
-      "flexDirection": "row",
-    }
+    Array [
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+      },
+      Object {},
+    ]
   }
 >
   <View
     style={
       Object {
         "height": 20,
-        "paddingRight": 20,
+        "marginRight": 18,
         "width": 40,
       }
     }
@@ -34,9 +37,10 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
-      markdown={false}
-      style={Object {}}
-      type="h3"
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      type="h4"
     >
       some thing
     </Text>

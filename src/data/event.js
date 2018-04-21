@@ -8,6 +8,10 @@ export type Event = {
     startTime: { [string]: string },
     endTime: { [string]: string },
     location: { [string]: { lat: number, lon: number } },
+    addressLine1?: { [string]: string },
+    addressLine2?: { [string]: string },
+    city?: { [string]: string },
+    postcode?: { [string]: string },
     locationName: { [string]: string },
     eventPriceLow: { [string]: number },
     eventPriceHigh: { [string]: number },
@@ -95,5 +99,13 @@ export type Asset = {
 };
 
 export type EventDays = Event[][];
+
+export type EventCategory = {
+  label: string,
+  color: string,
+  contrast: boolean
+};
+
+export type EventCategoryMap = { [string]: { [string]: EventCategory } };
 
 export type PerformancePeriods = Performance[][];

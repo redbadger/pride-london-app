@@ -2,6 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Text from "./Text";
+import { lightNavyBlueColor } from "../constants/colors";
 
 it("renders correctly", () => {
   const output = shallow(<Text>Some text</Text>);
@@ -26,5 +27,12 @@ it("passes custom styles down to component", () => {
   const style = { fontSize: 300 };
   const output = shallow(<Text style={style}>Some text</Text>);
 
-  expect(output.props().style[output.props().style.length - 1]).toBe(style);
+  expect(output.props().style).toContainEqual(style);
+});
+
+it("renders text in blue when color is set", () => {
+  const style = { color: lightNavyBlueColor };
+  const output = shallow(<Text color="lightNavyBlueColor">Some text</Text>);
+
+  expect(output.props().style).toContainEqual(style);
 });

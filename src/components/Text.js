@@ -4,31 +4,53 @@ import { Text as RnText, StyleSheet } from "react-native";
 import Markdown from "react-native-easy-markdown";
 import type { Node } from "react";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
 type Props = {
   children: Node,
   type?: TextType,
+  color?: "lightNavyBlueColor",
   markdown?: boolean,
-  style?: StyleObj
+  style?: StyleObj,
+  allowFontScaling?: boolean,
+  onLayout?: Function
 };
 
-const Text = ({ children, type, markdown, style }: Props) =>
+const Text = ({
+  children,
+  type,
+  color,
+  markdown,
+  style,
+  allowFontScaling,
+  onLayout
+}: Props) =>
   markdown ? (
     <Markdown
       style={style}
       markdownStyles={{ ...textStyles, ...markdownStyles }}
+      onLayout={onLayout}
     >
       {children}
     </Markdown>
   ) : (
-    <RnText style={[type && styles[type], style]}>{children}</RnText>
+    <RnText
+      style={[type && styles[type], color && styles[color], style]}
+      allowFontScaling={allowFontScaling}
+      onLayout={onLayout}
+    >
+      {children}
+    </RnText>
   );
 Text.defaultProps = {
   type: "text",
+  color: undefined,
   markdown: false,
-  style: {}
+  style: {},
+  allowFontScaling: true,
+  onLayout: () => {}
 };
 
 const textStyles = {
@@ -69,6 +91,9 @@ const textStyles = {
     fontFamily: "Roboto-Bold",
     fontSize: 14,
     lineHeight: 20
+  },
+  lightNavyBlueColor: {
+    color: lightNavyBlueColor
   }
 };
 
@@ -77,6 +102,9 @@ const markdownStyles = {
   // but doesn't exist in the markdown spec so should be rendered bold
   u: {
     fontWeight: "bold"
+  },
+  text: {
+    color: blackColor
   }
 };
 

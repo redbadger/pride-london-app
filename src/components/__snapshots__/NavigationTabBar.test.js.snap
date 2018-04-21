@@ -44,8 +44,8 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "flex": 1,
           "flexDirection": "column",
+          "flexGrow": 1,
           "marginHorizontal": 4,
           "minWidth": 48,
           "paddingBottom": 2,
@@ -143,8 +143,8 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "flex": 1,
           "flexDirection": "column",
+          "flexGrow": 1,
           "marginHorizontal": 4,
           "minWidth": 48,
           "paddingBottom": 2,

@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectedFilterHeader renders component 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "top": "always",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "rgb(45, 47, 127)",
+    }
+  }
+>
+  <StatusBar
+    animated={true}
+    barStyle="light-content"
+    showHideTransition="fade"
+  />
+  <ContentPadding
+    style={Object {}}
+  >
+    <View
+      style={
+        Object {
+          "paddingBottom": 12,
+          "paddingTop": 16,
+        }
+      }
+      testID="filter-header"
+    >
+      <FilterHeaderCategories />
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "marginTop": 8,
+          }
+        }
+      >
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Any day"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Any time"
+        />
+        <FilterHeaderButton
+          onPress={[Function]}
+          style={
+            Object {
+              "marginRight": 8,
+            }
+          }
+          text="Filters"
+        />
+      </View>
+    </View>
+  </ContentPadding>
+  <Connect(DateRangePickerDialog)
+    onApply={[Function]}
+    onCancel={[Function]}
+    visible={false}
+  />
+  <Connect(MultiSelectDialog)
+    onApply={[Function]}
+    onCancel={[Function]}
+    visible={false}
+  />
+</withOrientation>
+`;
+
+exports[`ConnectedFilterHeader renders connector 1`] = `
+<FilterHeader
+  dateFilter={null}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+  timeFilter={Set {}}
+/>
+`;

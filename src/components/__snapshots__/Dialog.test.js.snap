@@ -30,7 +30,7 @@ exports[`renders correctly 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "#FFFFFF",
+              "backgroundColor": "#ffffff",
               "borderRadius": 4,
               "paddingBottom": 8,
             }
@@ -63,7 +63,9 @@ exports[`renders correctly 1`] = `
               }
             />
             <Text
+              allowFontScaling={true}
               markdown={false}
+              onLayout={[Function]}
               style={
                 Object {
                   "alignSelf": "flex-end",
@@ -113,7 +115,9 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
+          allowFontScaling={true}
           markdown={false}
+          onLayout={[Function]}
           style={
             Object {
               "color": "rgb(45, 47, 127)",

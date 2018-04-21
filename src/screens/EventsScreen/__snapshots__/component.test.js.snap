@@ -9,7 +9,10 @@ exports[`EventsScreen Component renders correctly 1`] = `
     }
   }
 >
-  <Connect(FilterHeader) />
+  <Connect(FilterHeader)
+    onFilterCategoriesPress={[Function]}
+    selectedCategories={Set {}}
+  />
   <EventList
     events={Array []}
     getAssetUrl={[Function]}

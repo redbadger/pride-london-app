@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can be disabled 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  disabled={true}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2cda9d",
+      "borderRadius": 4,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    allowFontScaling={true}
+    markdown={false}
+    onLayout={[Function]}
+    style={
+      Object {
+        "color": "#2d2f7f",
+      }
+    }
+    type="h2"
+  >
+    Test
+  </Text>
+</Touchable>
+`;
+
+exports[`renders correctly 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  disabled={false}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2cda9d",
+      "borderRadius": 4,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    allowFontScaling={true}
+    markdown={false}
+    onLayout={[Function]}
+    style={
+      Object {
+        "color": "#2d2f7f",
+      }
+    }
+    type="h2"
+  >
+    Test
+  </Text>
+</Touchable>
+`;

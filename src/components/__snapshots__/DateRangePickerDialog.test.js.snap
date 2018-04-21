@@ -25,7 +25,10 @@ exports[`renders correctly with date selection 1`] = `
       style={undefined}
     >
       <Text
+        allowFontScaling={true}
+        color={undefined}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -80,7 +83,10 @@ exports[`renders correctly with range selection 1`] = `
       style={undefined}
     >
       <Text
+        allowFontScaling={true}
+        color={undefined}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -135,7 +141,10 @@ exports[`renders correctly without date selection 1`] = `
       style={undefined}
     >
       <Text
+        allowFontScaling={true}
+        color={undefined}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "rgb(45, 47, 127)",

@@ -22,7 +22,9 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={Object {}}
     type="text"
   >
@@ -54,7 +56,9 @@ exports[`renders correctly when checked 1`] = `
   }
 >
   <Text
+    allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={Object {}}
     type="text"
   >

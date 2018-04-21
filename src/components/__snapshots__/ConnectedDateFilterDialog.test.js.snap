@@ -2,7 +2,7 @@
 
 exports[`ConnectedDateFilterDialog renders component 1`] = `
 <Dialog
-  applyButtonText="Show 0 events"
+  applyButtonText="No events"
   headerRight={
     <Touchable
       accessibilityComponentType="button"
@@ -25,7 +25,10 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       style={undefined}
     >
       <Text
+        allowFontScaling={true}
+        color={undefined}
         markdown={false}
+        onLayout={[Function]}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -52,7 +55,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
 
 exports[`ConnectedDateFilterDialog renders connector 1`] = `
 <DateRangePickerDialog
-  applyButtonText="Show 0 events"
+  applyButtonText="No events"
   dateRange={null}
   forceNewRange={false}
   onApply={[Function]}
