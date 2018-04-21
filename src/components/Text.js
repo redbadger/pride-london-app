@@ -2,55 +2,37 @@
 import React from "react";
 import { Text as RnText, StyleSheet } from "react-native";
 import Markdown from "react-native-easy-markdown";
-import type { Node } from "react";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+
+import type { TextProps } from "react-native/Libraries/Text/TextProps";
+
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
 type Props = {
-  children: Node,
   type?: TextType,
   color?: "lightNavyBlueColor",
   markdown?: boolean,
-  style?: StyleObj,
-  allowFontScaling?: boolean,
-  onLayout?: Function
+  ...TextProps
 };
 
-const Text = ({
-  children,
-  type,
-  color,
-  markdown,
-  style,
-  allowFontScaling,
-  onLayout
-}: Props) =>
+const Text = ({ type, markdown, style, color, ...otherProps }: Props) =>
   markdown ? (
     <Markdown
       style={style}
       markdownStyles={{ ...textStyles, ...markdownStyles }}
-      onLayout={onLayout}
-    >
-      {children}
-    </Markdown>
+      {...otherProps}
+    />
   ) : (
     <RnText
       style={[type && styles[type], color && styles[color], style]}
-      allowFontScaling={allowFontScaling}
-      onLayout={onLayout}
-    >
-      {children}
-    </RnText>
+      {...otherProps}
+    />
   );
 Text.defaultProps = {
   type: "text",
-  color: undefined,
   markdown: false,
-  style: {},
-  allowFontScaling: true,
-  onLayout: () => {}
+  color: undefined
 };
 
 const textStyles = {
