@@ -4,8 +4,11 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
+      "flex": 1,
       "flexDirection": "column",
+      "height": 200,
       "overflow": "hidden",
+      "width": 167,
     }
   }
 >
@@ -19,15 +22,34 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "backgroundColor": "#C1C1C1",
-        "borderRadius": 4,
         "height": 120,
+        "width": 167,
       }
     }
-  />
+  >
+    <View
+      style={
+        Object {
+          "bottom": 0,
+          "flexWrap": "wrap",
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <CategoryPill
+        key="music"
+        name="music"
+        numberOfLines={2}
+        style={Object {}}
+      />
+    </View>
+  </ImageBackground>
   <View
     style={
       Object {
-        "minHeight": 80,
+        "minHeight": 60,
+        "paddingHorizontal": 8,
         "paddingTop": 8,
       }
     }
@@ -52,7 +74,7 @@ exports[`renders correctly 1`] = `
           "color": "rgb(45, 47, 127)",
         }
       }
-      type="h4"
+      type="h3"
     >
       Hello Pride
     </Text>

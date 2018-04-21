@@ -25,6 +25,9 @@ const generateEvents = (count = 2): Event[] =>
           },
           startTime: {
             "en-GB": "2018-07-10T00:00"
+          },
+          eventCategories: {
+            "en-GB": ["Cabaret & Variety", "Music"]
           }
         }
       }: any)
