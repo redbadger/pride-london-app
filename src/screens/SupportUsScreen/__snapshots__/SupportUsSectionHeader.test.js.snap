@@ -32,9 +32,7 @@ exports[`renders correctly 1`] = `
     style={Object {}}
   >
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "backgroundColor": "#ffffff",

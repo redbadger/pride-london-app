@@ -3,9 +3,7 @@
 exports[`renders correctly 1`] = `
 <View>
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "marginTop": 24,
@@ -84,19 +82,14 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
       color="lightNavyBlueColor"
       markdown={false}
-      onLayout={[Function]}
-      style={Object {}}
       type="h4"
     >
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
     </Text>
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",
@@ -145,48 +138,33 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
-          allowFontScaling={true}
           color="lightNavyBlueColor"
           markdown={false}
-          onLayout={[Function]}
-          style={Object {}}
           type="h4"
         >
           Vauxhall Pleasure Gardens
         </Text>
       </View>
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
         type="small"
       >
         London
       </Text>
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
         type="small"
       >
         EC1M 3HA
@@ -211,11 +189,8 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
       color="lightNavyBlueColor"
       markdown={false}
-      onLayout={[Function]}
-      style={Object {}}
       type="h4"
     >
       £19.95 - £30
@@ -239,11 +214,8 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
-      allowFontScaling={true}
       color="lightNavyBlueColor"
       markdown={false}
-      onLayout={[Function]}
-      style={Object {}}
       type="h4"
     >
       Gender neutral toilets
@@ -263,19 +235,14 @@ exports[`renders correctly 1`] = `
     style={Object {}}
   >
     <Text
-      allowFontScaling={true}
       color="lightNavyBlueColor"
       markdown={false}
-      onLayout={[Function]}
-      style={Object {}}
       type="h4"
     >
       Accessibility
     </Text>
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",

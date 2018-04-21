@@ -28,9 +28,7 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
         source={1}
       />
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
         style={
           Object {
             "color": "#ffffff",
