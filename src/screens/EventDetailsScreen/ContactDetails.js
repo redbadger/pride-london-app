@@ -29,7 +29,7 @@ const ContactDetails = ({ email, phone }: Props) => (
                 null,
                 null,
                 text.eventDetailsContactEmailSubject,
-                text.eventeventDetailsContactEmailBody
+                text.eventDetailsContactEmailBody
               )
             }
           >

@@ -4,7 +4,6 @@ import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import getHours from "date-fns/get_hours";
 import R from "ramda";
 
-import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
 import type {
   Asset,
@@ -14,6 +13,7 @@ import type {
   Performance,
   PerformancePeriods
 } from "../data/event";
+import { buildEventFilter } from "./event-filters";
 
 import locale from "../data/locale";
 
