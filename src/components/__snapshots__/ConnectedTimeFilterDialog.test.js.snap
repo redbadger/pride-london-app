@@ -2,6 +2,7 @@
 
 exports[`ConnectedTimeFilterDialog renders component 1`] = `
 <Dialog
+  applyButtonLabel="No events"
   applyButtonText="No events"
   onApply={[Function]}
   onCancel={[Function]}

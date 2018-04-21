@@ -57,7 +57,12 @@ type Section = SectionBase<Event> & { title: string };
 type SectionProps = { section: Section };
 const renderSectionHeader = styles => ({ section }: SectionProps) => (
   <ContentPadding style={styles.sectionHeader}>
-    <Text type="h2" style={styles.sectionHeaderText}>
+    <Text
+      type="h2"
+      style={styles.sectionHeaderText}
+      accessible
+      accessibilityTraits={["header"]}
+    >
       {section.title}
     </Text>
   </ContentPadding>

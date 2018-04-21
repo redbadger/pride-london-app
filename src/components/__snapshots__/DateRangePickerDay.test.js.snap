@@ -2,6 +2,13 @@
 
 exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
 <TouchableWithoutFeedback
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -96,6 +103,13 @@ exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
 
 exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
 <TouchableWithoutFeedback
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -190,6 +204,12 @@ exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
 
 exports[`DarteRangePickerDay renders a disabled day 1`] = `
 <TouchableWithoutFeedback
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -243,6 +263,12 @@ exports[`DarteRangePickerDay renders a disabled day 1`] = `
 
 exports[`DarteRangePickerDay renders a marked day 1`] = `
 <TouchableWithoutFeedback
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -323,6 +349,13 @@ exports[`DarteRangePickerDay renders a marked day 1`] = `
 
 exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
 <TouchableWithoutFeedback
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -446,6 +479,13 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
 
 exports[`DarteRangePickerDay renders a middle of a range 1`] = `
 <TouchableWithoutFeedback
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -540,6 +580,13 @@ exports[`DarteRangePickerDay renders a middle of a range 1`] = `
 
 exports[`DarteRangePickerDay renders with a single selected day 1`] = `
 <TouchableWithoutFeedback
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -634,6 +681,12 @@ exports[`DarteRangePickerDay renders with a single selected day 1`] = `
 
 exports[`DarteRangePickerDay renders without date selection 1`] = `
 <TouchableWithoutFeedback
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
   onLongPress={[Function]}
   onPress={[Function]}
 >

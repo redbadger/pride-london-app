@@ -78,16 +78,19 @@ class FilterHeader extends React.PureComponent<Props, State> {
             <View style={styles.contentFilters}>
               <FilterHeaderButton
                 text={formattedDateFilter}
+                label={`filter by date: ${formattedDateFilter}`}
                 onPress={this.showDatePicker}
                 style={styles.filterButton}
               />
               <FilterHeaderButton
                 text={formattedTimeFilter}
+                label={formattedTimeFilter}
                 onPress={this.showTimePicker}
                 style={styles.filterButton}
               />
               <FilterHeaderButton
                 text={text.filters}
+                label={text.filters}
                 onPress={() => {}}
                 style={styles.filterButton}
               />

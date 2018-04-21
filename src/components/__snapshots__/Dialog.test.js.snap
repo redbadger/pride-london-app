@@ -9,6 +9,7 @@ exports[`renders correctly 1`] = `
   visible={true}
 >
   <TouchableWithoutFeedback
+    accessible={false}
     onPress={[Function]}
     style={
       Object {
@@ -26,7 +27,9 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback
+        accessible={false}
+      >
         <View
           style={
             Object {
@@ -62,19 +65,21 @@ exports[`renders correctly 1`] = `
                 ]
               }
             />
-            <Text
-              markdown={false}
+            <View
               style={
-                Object {
-                  "alignSelf": "flex-end",
-                  "color": "rgb(45, 47, 127)",
-                  "marginBottom": 6,
-                }
+                Array [
+                  Object {
+                    "flexGrow": 1,
+                    "width": 0,
+                  },
+                  Object {
+                    "alignItems": "center",
+                  },
+                ]
               }
-              type="h3"
             >
               Hello World
-            </Text>
+            </View>
             <View
               style={
                 Array [
@@ -94,9 +99,11 @@ exports[`renders correctly 1`] = `
       </TouchableWithoutFeedback>
       <Touchable
         accessibilityComponentType="button"
+        accessibilityLabel="Good bye"
         accessibilityTraits={
           Array [
             "button",
+            "header",
           ]
         }
         delayPressIn={50}

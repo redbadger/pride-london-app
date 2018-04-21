@@ -23,6 +23,7 @@ type OwnProps = {
 
 type Props = {
   applyButtonText: string,
+  applyButtonLabel: string,
   dateRange: ?DateRange,
   onChange: (?DateRange) => void,
   forceNewRange: boolean
@@ -30,6 +31,9 @@ type Props = {
 
 const mapStateToProps = state => ({
   applyButtonText: text.filterPickerApply(
+    selectFilteredEvents(state, true).length
+  ),
+  applyButtonLabel: text.filterPickerApplyLabel(
     selectFilteredEvents(state, true).length
   ),
   dateRange: selectDateFilter(state, true),
