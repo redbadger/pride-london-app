@@ -1,8 +1,9 @@
 // @flow
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet, SectionList, View } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
 import formatDate from "date-fns/format";
+import { concat, equals } from "ramda";
 
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
@@ -68,33 +69,56 @@ const eventSections = (events: EventDays, locale: string): Section[] =>
     title: formatDate(it[0].fields.startTime[locale], "dddd D MMMM")
   }));
 
-const EventList = ({
-  events,
-  locale,
-  refreshing,
-  onRefresh,
-  onPress,
-  getAssetUrl
-}: Props) => (
-  <SectionList
-    stickySectionHeadersEnabled
-    sections={eventSections(events, locale)}
-    renderSectionHeader={renderSectionHeader(styles)}
-    renderSectionFooter={separator(styles.sectionFooter)}
-    renderItem={renderItem(styles, locale, onPress, getAssetUrl)}
-    keyExtractor={event => event.sys.id}
-    contentContainerStyle={styles.container}
-    ItemSeparatorComponent={separator(styles.itemSeparator)}
-    SectionSeparatorComponent={separator(styles.sectionSeparator)}
-    refreshing={refreshing}
-    onRefresh={onRefresh}
-  />
-);
+const eventIds = (events: EventDays): string[] =>
+  events.map(day => day.map(e => e.sys.id)).reduce(concat, []);
 
-EventList.defaultProps = {
-  refreshing: false,
-  onRefresh: undefined
-};
+class EventList extends Component<Props> {
+  static defaultProps = {
+    refreshing: false,
+    onRefresh: undefined
+  };
+
+  shouldComponentUpdate(nextProps: Props) {
+    const { locale, refreshing } = this.props;
+    const { locale: nextLocale, refreshing: nextRefreshing } = nextProps;
+
+    const ids = eventIds(this.props.events);
+    const nextIds = eventIds(nextProps.events);
+
+    return (
+      !equals(ids, nextIds) ||
+      locale !== nextLocale ||
+      refreshing !== nextRefreshing
+    );
+  }
+
+  render() {
+    const {
+      events,
+      locale,
+      refreshing,
+      onRefresh,
+      onPress,
+      getAssetUrl
+    } = this.props;
+
+    return (
+      <SectionList
+        stickySectionHeadersEnabled
+        sections={eventSections(events, locale)}
+        renderSectionHeader={renderSectionHeader(styles)}
+        renderSectionFooter={separator(styles.sectionFooter)}
+        renderItem={renderItem(styles, locale, onPress, getAssetUrl)}
+        keyExtractor={event => event.sys.id}
+        contentContainerStyle={styles.container}
+        ItemSeparatorComponent={separator(styles.itemSeparator)}
+        SectionSeparatorComponent={separator(styles.sectionSeparator)}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   itemSeparator: {
