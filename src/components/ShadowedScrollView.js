@@ -1,12 +1,12 @@
 // @flow
-import React from "react";
+import * as React from "react";
 import { StyleSheet, ScrollView, View, Animated } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import { blackZeroColor, blackThirtyColor } from "../constants/colors";
 
 type Props = {
-  children: Array<Object>,
+  children: React.Node,
   style: StyleObj,
   shadowOpacity?: number
 };

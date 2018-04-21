@@ -29,16 +29,14 @@ exports[`FilterModal renders correctly 1`] = `
       }
     }
   >
-    <React.Fragment
-      key="price"
-    >
-      <SectionHeader
-        badgeValue={null}
-        hasShadow={false}
-        title="Price"
-      />
-      <ScreenSizeProvider />
-    </React.Fragment>
+    <FilterList
+      eventFilters={
+        Object {
+          "price": Set {},
+        }
+      }
+      handleCheckboxChange={[Function]}
+    />
   </ShadowedScrollView>
   <View
     style={

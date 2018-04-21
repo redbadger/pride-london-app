@@ -1,19 +1,14 @@
 // @flow
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import Button from "../../components/ButtonPrimary";
-import ContentPadding, {
-  getContentPadding
-} from "../../components/ContentPadding";
-import SectionHeader from "../../components/SectionHeader";
-import CheckBox from "../../components/CheckBox";
-import ScreenSizeProvider from "../../components/ScreenSizeProvider";
+import ContentPadding from "../../components/ContentPadding";
+import FilterList from "./FilterList";
 import { bgColor } from "../../constants/colors";
 import tags from "../../data/tags";
-import text from "../../constants/text";
 import type { FilterCollection, Area } from "../../data/event-filters";
 import Header from "./Header";
 
@@ -69,10 +64,14 @@ class FilterModal extends PureComponent<Props> {
     });
   };
 
+  handleApplyButtonPress = () => {
+    this.props.onApply();
+    this.props.navigation.goBack();
+  };
+
   render() {
     const {
       applyButtonText,
-      onApply,
       eventFilters,
       navigation,
       numEventsSelected,
@@ -89,46 +88,15 @@ class FilterModal extends PureComponent<Props> {
           showClear={numTagFiltersSelected > 0}
         />
         <ShadowedScrollView style={styles.flex} shadowOpacity={0.4}>
-          {Object.keys(tags).map(
-            sectionName =>
-              eventFilters[sectionName] && (
-                <Fragment key={sectionName}>
-                  <SectionHeader
-                    title={text.tags[sectionName]}
-                    hasShadow={false}
-                    badgeValue={
-                      eventFilters[sectionName].size > 0
-                        ? eventFilters[sectionName].size
-                        : null
-                    }
-                  />
-                  <ScreenSizeProvider>
-                    {size =>
-                      tags[sectionName].map(sectionValue => (
-                        <CheckBox
-                          key={sectionValue}
-                          onChange={() =>
-                            this.handleCheckboxChange(sectionName, sectionValue)
-                          }
-                          checked={eventFilters[sectionName].has(sectionValue)}
-                          // $FlowFixMe
-                          label={text.tags[sectionValue] || sectionValue}
-                          style={[getContentPadding(size), styles.checkbox]}
-                        />
-                      ))
-                    }
-                  </ScreenSizeProvider>
-                </Fragment>
-              )
-          )}
+          <FilterList
+            eventFilters={eventFilters}
+            handleCheckboxChange={this.handleCheckboxChange}
+          />
         </ShadowedScrollView>
         <View style={styles.footer}>
           <ContentPadding>
             <Button
-              onPress={() => {
-                onApply();
-                navigation.goBack();
-              }}
+              onPress={this.handleApplyButtonPress}
               disabled={numEventsSelected === 0}
             >
               {applyButtonText}
@@ -148,8 +116,7 @@ const styles = StyleSheet.create({
   footer: {
     paddingVertical: 12,
     backgroundColor: bgColor
-  },
-  checkbox: { paddingVertical: 16 }
+  }
 });
 
 export default FilterModal;
