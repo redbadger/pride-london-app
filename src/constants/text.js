@@ -49,6 +49,10 @@ export default {
   supportUsVolunteer: "Volunteer",
   supportUsVolunteerDescription: "Passionate about equality? Join us.",
   sponsorTitle: "Partner with us",
+  sponsorLevelHeading: "partners",
+  sponsorMainHeading: "Our main 2018 partners",
+  sponsorSubHeading:
+    " A huge thank you to our main partners for their continued support.",
   anyDay: "Any day",
   anyTime: "Any time",
   time: {

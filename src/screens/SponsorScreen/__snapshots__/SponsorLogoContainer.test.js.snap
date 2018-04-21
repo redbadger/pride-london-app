@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={1}
+    />
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      style={
+        Object {
+          "marginLeft": 5,
+          "paddingTop": 3,
+        }
+      }
+      type="h3"
+    >
+      Gold
+       
+      partners
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "marginBottom": 20,
+        "marginTop": 12,
+      }
+    }
+  >
+    <View
+      key="1"
+      style={
+        Array [
+          Object {
+            "marginBottom": 8,
+            "width": "50%",
+          },
+          false,
+        ]
+      }
+    >
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "link",
+          ]
+        }
+        delayPressIn={50}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(243, 243, 243, 0.5)",
+            "height": 100,
+          }
+        }
+        testID="sponsor-tile-1"
+      >
+        <SponsorLogo
+          sponsorLevel="Gold"
+          sponsorLogoUrl="http://example.com/image.png"
+          sponsorName="some other"
+        />
+      </Touchable>
+    </View>
+    <View
+      key="2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 8,
+            "width": "50%",
+          },
+          Object {
+            "paddingLeft": 8,
+          },
+        ]
+      }
+    >
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "link",
+          ]
+        }
+        delayPressIn={50}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(243, 243, 243, 0.5)",
+            "height": 100,
+          }
+        }
+        testID="sponsor-tile-2"
+      >
+        <SponsorLogo
+          sponsorLevel="Gold"
+          sponsorLogoUrl="http://example.com/image.png"
+          sponsorName="some other"
+        />
+      </Touchable>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      source={1}
+    />
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      style={
+        Object {
+          "marginLeft": 5,
+          "paddingTop": 3,
+        }
+      }
+      type="h3"
+    >
+      Silver
+       
+      partners
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "marginBottom": 20,
+        "marginTop": 12,
+      }
+    }
+  >
+    <View
+      key="1"
+      style={
+        Array [
+          Object {
+            "marginBottom": 8,
+            "width": "33%",
+          },
+          false,
+        ]
+      }
+    >
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "link",
+          ]
+        }
+        delayPressIn={50}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(243, 243, 243, 0.5)",
+            "height": 100,
+          }
+        }
+        testID="sponsor-tile-1"
+      >
+        <SponsorLogo
+          sponsorLevel="Gold"
+          sponsorLogoUrl="http://example.com/image.png"
+          sponsorName="some other"
+        />
+      </Touchable>
+    </View>
+    <View
+      key="2"
+      style={
+        Array [
+          Object {
+            "marginBottom": 8,
+            "width": "33%",
+          },
+          Object {
+            "paddingLeft": 8,
+          },
+        ]
+      }
+    >
+      <Touchable
+        accessibilityComponentType="button"
+        accessibilityTraits={
+          Array [
+            "link",
+          ]
+        }
+        delayPressIn={50}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgba(243, 243, 243, 0.5)",
+            "height": 100,
+          }
+        }
+        testID="sponsor-tile-2"
+      >
+        <SponsorLogo
+          sponsorLevel="Gold"
+          sponsorLogoUrl="http://example.com/image.png"
+          sponsorName="some other"
+        />
+      </Touchable>
+    </View>
+  </View>
+</View>
+`;

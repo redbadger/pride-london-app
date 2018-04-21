@@ -1,13 +1,14 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
+import R from "ramda";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import IconButton from "../../components/IconButton";
 import Text from "../../components/Text";
-import Touchable from "../../components/Touchable";
+import SponsorLogoContainer from "./SponsorLogoContainer";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
@@ -18,7 +19,8 @@ import locale from "../../data/locale";
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   sponsors: Sponsor[],
-  getAssetUrl: LocalizedFieldRef => string
+  getAssetUrl: LocalizedFieldRef => string,
+  getAssetSize: LocalizedFieldRef => { width: number, height: number }
 };
 
 class SponsorScreen extends PureComponent<Props> {
@@ -27,7 +29,13 @@ class SponsorScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { navigation, sponsors, getAssetUrl } = this.props;
+    const { navigation, sponsors, getAssetUrl, getAssetSize } = this.props;
+
+    const groupSponsors = R.groupBy(
+      sponsor => sponsor.fields.sponsorLevel[locale],
+      sponsors
+    );
+
     return (
       <View style={styles.container}>
         <Header backgroundColor={lightNavyBlueColor}>
@@ -47,18 +55,38 @@ class SponsorScreen extends PureComponent<Props> {
           </ContentPadding>
         </Header>
         <ScrollView>
-          {sponsors.map(sponsor => (
-            <Touchable
-              key={sponsor.sys.id}
-              testID={`sponsor-${sponsor.sys.id}`}
-            >
-              <Image
-                style={styles.image}
-                source={{ uri: getAssetUrl(sponsor.fields.sponsorLogo) }}
-              />
-              <Text>{sponsor.fields.sponsorName[locale]}</Text>
-            </Touchable>
-          ))}
+          <ContentPadding>
+            <Text style={styles.sponsorMainHeading} type="h1">
+              {text.sponsorMainHeading}
+            </Text>
+            <Text style={styles.sponsorSubHeading}>
+              {text.sponsorSubHeading}
+            </Text>
+            <SponsorLogoContainer
+              sponsorLevel="Headline"
+              sponsors={groupSponsors.Headline}
+              getAssetUrl={getAssetUrl}
+              getAssetSize={getAssetSize}
+            />
+            <SponsorLogoContainer
+              sponsorLevel="Gold"
+              sponsors={groupSponsors.Gold}
+              getAssetUrl={getAssetUrl}
+              getAssetSize={getAssetSize}
+            />
+            <SponsorLogoContainer
+              sponsorLevel="Silver"
+              sponsors={groupSponsors.Silver}
+              getAssetUrl={getAssetUrl}
+              getAssetSize={getAssetSize}
+            />
+            <SponsorLogoContainer
+              sponsorLevel="Bronze"
+              sponsors={groupSponsors.Bronze}
+              getAssetUrl={getAssetUrl}
+              getAssetSize={getAssetSize}
+            />
+          </ContentPadding>
         </ScrollView>
       </View>
     );
@@ -82,9 +110,11 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48
   },
-  image: {
-    width: 100,
-    height: 100
+  sponsorMainHeading: {
+    marginTop: 24
+  },
+  sponsorSubHeading: {
+    marginBottom: 16
   }
 });
 

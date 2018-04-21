@@ -25,6 +25,7 @@ exports[`renders correctly 1`] = `
       }
     >
       <Text
+        color="blackColor"
         markdown={true}
         onLayout={[Function]}
         type="text"

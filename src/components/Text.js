@@ -11,7 +11,7 @@ export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
 type Props = {
   type?: TextType,
-  color?: "lightNavyBlueColor",
+  color?: "lightNavyBlueColor" | "blackColor",
   markdown?: boolean,
   ...TextProps
 };
@@ -32,7 +32,7 @@ const Text = ({ type, markdown, style, color, ...otherProps }: Props) =>
 Text.defaultProps = {
   type: "text",
   markdown: false,
-  color: undefined
+  color: "blackColor"
 };
 
 const textStyles = {
@@ -76,6 +76,9 @@ const textStyles = {
   },
   lightNavyBlueColor: {
     color: lightNavyBlueColor
+  },
+  blackColor: {
+    color: blackColor
   }
 };
 

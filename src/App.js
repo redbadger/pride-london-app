@@ -141,7 +141,7 @@ const SupportUsStack = StackNavigator(
     [SPONSOR]: { screen: SponsorScreen }
   },
   {
-    initialRouteName: SPONSOR,
+    initialRouteName: SUPPORT_US,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
       tabBarLabel: text.tabSupportUs

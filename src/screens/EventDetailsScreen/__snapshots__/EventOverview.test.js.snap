@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <View>
   <Text
+    color="blackColor"
     markdown={false}
     style={
       Object {
@@ -89,6 +90,7 @@ exports[`renders correctly 1`] = `
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
     </Text>
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -146,24 +148,28 @@ exports[`renders correctly 1`] = `
         </Text>
       </View>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         London
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
@@ -242,6 +248,7 @@ exports[`renders correctly 1`] = `
       Accessibility
     </Text>
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {

@@ -25,7 +25,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       style={undefined}
     >
       <Text
-        color={undefined}
+        color="blackColor"
         markdown={false}
         style={
           Object {

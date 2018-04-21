@@ -29,6 +29,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         testID="back"
       />
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -50,68 +51,101 @@ exports[`SponsorScreen Component renders correctly 1`] = `
     </ContentPadding>
   </Header>
   <ScrollView>
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      delayPressIn={50}
-      key="1"
-      testID="sponsor-1"
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
     >
-      <Image
-        source={
-          Object {
-            "uri": "http://example.com/image.png",
-          }
-        }
+      <Text
+        color="blackColor"
+        markdown={false}
         style={
           Object {
-            "height": 100,
-            "width": 100,
+            "marginTop": 24,
           }
         }
-      />
-      <Text
-        markdown={false}
-        type="text"
+        type="h1"
       >
-        some other
+        Our main 2018 partners
       </Text>
-    </Touchable>
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      delayPressIn={50}
-      key="2"
-      testID="sponsor-2"
-    >
-      <Image
-        source={
-          Object {
-            "uri": "http://example.com/image.png",
-          }
-        }
+      <Text
+        color="blackColor"
+        markdown={false}
         style={
           Object {
-            "height": 100,
-            "width": 100,
+            "marginBottom": 16,
           }
         }
-      />
-      <Text
-        markdown={false}
         type="text"
       >
-        some other
+         A huge thank you to our main partners for their continued support.
       </Text>
-    </Touchable>
+      <SponsorLogoContainer
+        getAssetUrl={[MockFunction]}
+        sponsorLevel="Headline"
+      />
+      <SponsorLogoContainer
+        getAssetUrl={[MockFunction]}
+        sponsorLevel="Gold"
+        sponsors={
+          Array [
+            Object {
+              "fields": Object {
+                "sponsorLevel": Object {
+                  "en-GB": "Gold",
+                },
+                "sponsorLogo": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "id": "asset1",
+                    },
+                  },
+                },
+                "sponsorName": Object {
+                  "en-GB": "some other",
+                },
+                "sponsorUrl": Object {
+                  "en-GB": "http://example.com",
+                },
+              },
+              "sys": Object {
+                "id": "1",
+              },
+            },
+            Object {
+              "fields": Object {
+                "sponsorLevel": Object {
+                  "en-GB": "Gold",
+                },
+                "sponsorLogo": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "id": "asset2",
+                    },
+                  },
+                },
+                "sponsorName": Object {
+                  "en-GB": "some other",
+                },
+                "sponsorUrl": Object {
+                  "en-GB": "http://example.com",
+                },
+              },
+              "sys": Object {
+                "id": "2",
+              },
+            },
+          ]
+        }
+      />
+      <SponsorLogoContainer
+        getAssetUrl={[MockFunction]}
+        sponsorLevel="Silver"
+      />
+      <SponsorLogoContainer
+        getAssetUrl={[MockFunction]}
+        sponsorLevel="Bronze"
+      />
+    </ContentPadding>
   </ScrollView>
 </View>
 `;

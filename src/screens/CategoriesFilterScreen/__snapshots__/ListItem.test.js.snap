@@ -55,6 +55,7 @@ exports[`ListItem Component renders correctly 1`] = `
     onLayout={[Function]}
   >
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Array [
@@ -124,6 +125,7 @@ exports[`ListItem Component renders correctly without selected 1`] = `
     onLayout={[Function]}
   >
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Array [
