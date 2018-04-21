@@ -109,6 +109,7 @@ export default class Day extends Component<DayProps> {
         onLongPress={this.onLongPress}
         accessibilityTraits={traits}
         accessibilityLabel={label}
+        accessibilityComponentType="button"
       >
         <View style={styles.container}>
           {marking.selected && (
