@@ -1,8 +1,18 @@
 // @flow
-import type { Area } from "./event-filters";
+import type {
+  Area,
+  Price,
+  Audience,
+  VenueDetail,
+  AccessibilityOption
+} from "./event-filters";
 
 type Tags = {
-  area: Area[]
+  area: Area[],
+  price: Price[],
+  audience: Audience[],
+  venueDetails: VenueDetail[],
+  accessibilityOptions: AccessibilityOption[]
 };
 
 const tags: Tags = {

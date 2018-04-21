@@ -6,12 +6,12 @@ import { getContentPadding } from "../../components/ContentPadding";
 import tags from "../../data/tags";
 import text from "../../constants/text";
 import type { ScreenSize } from "../../components/ScreenSizeProvider";
-import type { Area } from "../../data/event-filters";
+import type { TagFilterSet } from "../../data/event-filters";
 
 type Props = {
   sectionName: string,
   handleCheckboxChange: (sectionName: string, sectionValue: string) => void,
-  sectionFilters: Set<string> | Set<Area>,
+  sectionFilters: TagFilterSet,
   size: ScreenSize
 };
 

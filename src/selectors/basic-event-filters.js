@@ -7,7 +7,7 @@ import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
 import type { Event } from "../data/event";
 import type { DateRange, Time } from "../data/date-time";
-import type { Area } from "../data/event-filters";
+import type { Area, StringFilterSet } from "../data/event-filters";
 
 import locale from "../data/locale";
 
@@ -44,7 +44,10 @@ export const buildCategoryFilter = (categories: Set<string>) => {
 export const buildPriceFilter = () => (event: Event) =>
   selectEventIsFree(event);
 
-export const buildStringSetFilter = (fieldName: string, set: Set<string>) => {
+export const buildStringSetFilter = (
+  fieldName: string,
+  set: StringFilterSet
+) => {
   if (set.size === 0) {
     /* eslint-disable no-unused-vars */
     return (_: any) => true;
