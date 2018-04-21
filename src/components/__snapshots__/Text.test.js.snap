@@ -5,7 +5,6 @@ exports[`renders correctly 1`] = `
   accessible={true}
   allowFontScaling={true}
   ellipsizeMode="tail"
-  onLayout={[Function]}
   style={
     Array [
       Object {
@@ -13,7 +12,8 @@ exports[`renders correctly 1`] = `
         "fontSize": 16,
         "lineHeight": 24,
       },
-      Object {},
+      undefined,
+      undefined,
     ]
   }
 >
@@ -49,6 +49,9 @@ exports[`renders markdown component based on flag 1`] = `
         "fontSize": 16,
         "lineHeight": 24,
       },
+      "lightNavyBlueColor": Object {
+        "color": "#2d2f7f",
+      },
       "price": Object {
         "fontFamily": "Roboto-Bold",
         "fontSize": 14,
@@ -67,9 +70,7 @@ exports[`renders markdown component based on flag 1`] = `
       },
     }
   }
-  onLayout={[Function]}
   parseInline={false}
-  style={Object {}}
   useDefaultStyles={true}
 >
   **Some markdown**

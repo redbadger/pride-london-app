@@ -15,10 +15,12 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
 >
   <StatusBar
     animated={true}
+    backgroundColor="#2d2f7f"
     barStyle="light-content"
     showHideTransition="fade"
   />
   <ContentPadding
+    padding={Object {}}
     style={Object {}}
   >
     <View
@@ -100,10 +102,12 @@ exports[`renders correctly with any date and any time 1`] = `
 >
   <StatusBar
     animated={true}
+    backgroundColor="#2d2f7f"
     barStyle="light-content"
     showHideTransition="fade"
   />
   <ContentPadding
+    padding={Object {}}
     style={Object {}}
   >
     <View
@@ -185,10 +189,12 @@ exports[`renders correctly with date range and two times 1`] = `
 >
   <StatusBar
     animated={true}
+    backgroundColor="#2d2f7f"
     barStyle="light-content"
     showHideTransition="fade"
   />
   <ContentPadding
+    padding={Object {}}
     style={Object {}}
   >
     <View
@@ -270,10 +276,12 @@ exports[`renders correctly with single date and single time 1`] = `
 >
   <StatusBar
     animated={true}
+    backgroundColor="#2d2f7f"
     barStyle="light-content"
     showHideTransition="fade"
   />
   <ContentPadding
+    padding={Object {}}
     style={Object {}}
   >
     <View

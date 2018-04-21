@@ -93,3 +93,7 @@ export const eventDetailsBuyButtonTextColor = whiteColor;
 
 export const titleTextColor = "rgb(45, 47, 127)";
 export const eventTileTextColor = "rgb(45, 47, 127)";
+
+// SUPPORT US
+
+export const supportUsButtonShadow = "rgba(0, 0, 0, 0.2)";
