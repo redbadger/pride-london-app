@@ -82,9 +82,17 @@ exports[`renders correctly with badge text 1`] = `
   >
     Section Header
   </Text>
-  <NumberBadge
-    value={2}
-  />
+  <View
+    style={
+      Object {
+        "marginLeft": 6,
+      }
+    }
+  >
+    <NumberBadge
+      value={2}
+    />
+  </View>
 </ContentPadding>
 `;
 

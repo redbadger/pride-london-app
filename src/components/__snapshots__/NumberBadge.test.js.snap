@@ -9,7 +9,6 @@ exports[`renders correctly 1`] = `
       "borderRadius": 10,
       "height": 20,
       "justifyContent": "center",
-      "marginLeft": 6,
       "width": 20,
     }
   }
@@ -21,6 +20,7 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "color": "#2d2f7f",
+        "fontWeight": "bold",
       }
     }
     type="xSmall"

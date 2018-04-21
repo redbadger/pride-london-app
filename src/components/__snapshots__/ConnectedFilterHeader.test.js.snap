@@ -47,6 +47,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     }
   >
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -59,12 +60,13 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     <View
       style={
         Object {
-          "borderColor": "#2cda9d",
+          "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
         }
       }
     />
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       style={
         Object {

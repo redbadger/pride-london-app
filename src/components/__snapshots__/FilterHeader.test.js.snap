@@ -50,6 +50,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     }
   >
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -62,12 +63,13 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     <View
       style={
         Object {
-          "borderColor": "#2cda9d",
+          "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
         }
       }
     />
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -136,6 +138,7 @@ exports[`renders correctly with any date and any time 1`] = `
     }
   >
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -148,12 +151,13 @@ exports[`renders correctly with any date and any time 1`] = `
     <View
       style={
         Object {
-          "borderColor": "#2cda9d",
+          "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
         }
       }
     />
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -222,6 +226,7 @@ exports[`renders correctly with date range and two times 1`] = `
     }
   >
     <FilterHeaderButton
+      active={true}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -234,12 +239,13 @@ exports[`renders correctly with date range and two times 1`] = `
     <View
       style={
         Object {
-          "borderColor": "#2cda9d",
+          "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
         }
       }
     />
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -308,6 +314,7 @@ exports[`renders correctly with single date and single time 1`] = `
     }
   >
     <FilterHeaderButton
+      active={true}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -320,12 +327,13 @@ exports[`renders correctly with single date and single time 1`] = `
     <View
       style={
         Object {
-          "borderColor": "#2cda9d",
+          "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
         }
       }
     />
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -394,6 +402,7 @@ exports[`renders correctly with tag filters selected 1`] = `
     }
   >
     <FilterHeaderButton
+      active={false}
       badgeValue={null}
       onPress={[Function]}
       style={
@@ -406,12 +415,13 @@ exports[`renders correctly with tag filters selected 1`] = `
     <View
       style={
         Object {
-          "borderColor": "#2cda9d",
+          "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
         }
       }
     />
     <FilterHeaderButton
+      active={true}
       badgeValue={2}
       onPress={[Function]}
       style={
