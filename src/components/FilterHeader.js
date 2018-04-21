@@ -7,7 +7,7 @@ import FilterHeaderButton from "./FilterHeaderButton";
 import TimeFilterDialog from "./ConnectedTimeFilterDialog";
 import ContentPadding from "./ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
-import { filterBgColor } from "../constants/colors";
+import { filterBgColor, lightNavyBlueColor } from "../constants/colors";
 import text from "../constants/text";
 import type { DateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
@@ -64,7 +64,11 @@ class FilterHeader extends React.PureComponent<Props, State> {
 
     return (
       <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
-        <StatusBar barStyle="light-content" animated />
+        <StatusBar
+          barStyle="light-content"
+          animated
+          backgroundColor={lightNavyBlueColor}
+        />
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
             <FilterHeaderCategories

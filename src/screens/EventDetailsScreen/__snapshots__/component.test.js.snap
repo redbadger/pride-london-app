@@ -40,6 +40,7 @@ exports[`AccessibilityDetails renders correctly 1`] = `
 exports[`BuyTickets renders correctly 1`] = `
 <Shadow>
   <ContentPadding
+    padding={Object {}}
     style={
       Object {
         "backgroundColor": "#ffffff",
@@ -66,11 +67,13 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Header>
+  <Header
+    backgroundColor="#20215a"
+  >
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
-          "backgroundColor": "#20215a",
           "flexDirection": "row",
           "justifyContent": "space-between",
         }
@@ -102,6 +105,7 @@ exports[`renders correctly 1`] = `
       }
     />
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
           "marginBottom": 24,
@@ -629,11 +633,13 @@ exports[`renders correctly with missing details 1`] = `
     }
   }
 >
-  <Header>
+  <Header
+    backgroundColor="#20215a"
+  >
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
-          "backgroundColor": "#20215a",
           "flexDirection": "row",
           "justifyContent": "space-between",
         }
@@ -665,6 +671,7 @@ exports[`renders correctly with missing details 1`] = `
       }
     />
     <ContentPadding
+      padding={Object {}}
       style={
         Object {
           "marginBottom": 24,

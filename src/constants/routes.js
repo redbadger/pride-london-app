@@ -6,3 +6,5 @@ export const EVENT_CATEGORIES_FILTER = "EVENT_CATEGORIES_FILTER";
 export const PARADE = "PARADE";
 export const SAVED = "SAVED";
 export const SUPPORT_US = "SUPPORT_US";
+export const DONATE = "DONATE";
+export const SPONSOR = "SPONSOR";
