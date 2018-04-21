@@ -29,6 +29,7 @@ const EventMap = ({ lat, lon, locationName }: Props) => (
         scrollEnabled={false}
         zoomEnabled={false}
         loadingEnabled
+        cacheEnabled
       >
         <Marker
           coordinate={{
