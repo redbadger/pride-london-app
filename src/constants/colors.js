@@ -42,7 +42,6 @@ export const dialogTitleColor = "rgb(45, 47, 127)";
 export const dialogApplyButtonBgColor = "rgb(44, 218, 157)";
 export const dialogApplyButtonTextColor = "rgb(45, 47, 127)";
 export const dialogHeaderDividerColor = "#F2F2F2";
-export const filterModalShadow = "rgba(0, 0, 0, 0.14)";
 export const disabledButtonBgColor = "#cecece";
 
 // TAB BAR

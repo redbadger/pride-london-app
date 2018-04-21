@@ -7,7 +7,8 @@ import { blackZeroColor, blackThirtyColor } from "../constants/colors";
 
 type Props = {
   children: Array<Object>,
-  style: StyleObj
+  style: StyleObj,
+  shadowOpacity?: number
 };
 
 const shadowFadeDuration: number = 100;
@@ -17,7 +18,8 @@ const shadowHeight: number = 15;
 class ShadowedScrollView extends React.PureComponent<Props> {
   static defaultProps = {
     children: [],
-    style: {}
+    style: {},
+    shadowOpacity: 1
   };
 
   // eslint-disable-next-line react/sort-comp
@@ -83,7 +85,7 @@ class ShadowedScrollView extends React.PureComponent<Props> {
   };
 
   render() {
-    const { style, children } = this.props;
+    const { style, children, shadowOpacity } = this.props;
 
     const topShadowOpacityStyle = {
       opacity: this.topShadowOpacity.interpolate({
@@ -99,12 +101,14 @@ class ShadowedScrollView extends React.PureComponent<Props> {
       })
     };
 
+    const gradientStyles = [styles.gradient, { opacity: shadowOpacity }];
+
     return (
       <View style={style}>
         <Animated.View style={[styles.topShadow, topShadowOpacityStyle]}>
           <LinearGradient
             colors={[blackThirtyColor, blackZeroColor]}
-            style={styles.gradient}
+            style={gradientStyles}
           />
         </Animated.View>
         <ScrollView
@@ -117,7 +121,7 @@ class ShadowedScrollView extends React.PureComponent<Props> {
         <Animated.View style={[styles.bottomShadow, bottomShadowOpacityStyle]}>
           <LinearGradient
             colors={[blackZeroColor, blackThirtyColor]}
-            style={styles.gradient}
+            style={gradientStyles}
           />
         </Animated.View>
       </View>

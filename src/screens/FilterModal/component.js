@@ -1,8 +1,9 @@
 // @flow
 import React, { PureComponent, Fragment } from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
+import ShadowedScrollView from "../../components/ShadowedScrollView";
 import Button from "../../components/ButtonPrimary";
 import ContentPadding, {
   getContentPadding
@@ -10,7 +11,7 @@ import ContentPadding, {
 import SectionHeader from "../../components/SectionHeader";
 import CheckBox from "../../components/CheckBox";
 import ScreenSizeProvider from "../../components/ScreenSizeProvider";
-import { bgColor, filterModalShadow } from "../../constants/colors";
+import { bgColor } from "../../constants/colors";
 import tags from "../../data/tags";
 import text from "../../constants/text";
 import type { FilterCollection, Area } from "../../data/event-filters";
@@ -79,7 +80,7 @@ class FilterModal extends PureComponent<Props> {
           onCancelPress={() => navigation.goBack()}
           showClear={numTagFiltersSelected > 0}
         />
-        <ScrollView style={styles.flex}>
+        <ShadowedScrollView style={styles.flex} shadowOpacity={0.4}>
           {Object.keys(tags).map(
             sectionName =>
               eventFilters[sectionName] && (
@@ -117,7 +118,7 @@ class FilterModal extends PureComponent<Props> {
                 </Fragment>
               )
           )}
-        </ScrollView>
+        </ShadowedScrollView>
         <View style={styles.footer}>
           <ContentPadding>
             <Button
@@ -144,18 +145,7 @@ const styles = StyleSheet.create({
   footer: {
     height: 60,
     paddingVertical: 8,
-    backgroundColor: bgColor,
-
-    // ios shadow
-    shadowColor: filterModalShadow,
-    shadowOffset: { width: 0, height: -10 },
-    shadowOpacity: 0.6,
-    shadowRadius: 5,
-
-    // android shadow
-    borderWidth: 0,
-    elevation: 3,
-    marginTop: 6
+    backgroundColor: bgColor
   },
   checkbox: { paddingVertical: 16 }
 });

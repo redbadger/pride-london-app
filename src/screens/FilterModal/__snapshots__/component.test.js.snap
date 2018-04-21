@@ -20,7 +20,8 @@ exports[`FilterModal renders correctly 1`] = `
     onClearPress={[Function]}
     showClear={false}
   />
-  <ScrollView
+  <ShadowedScrollView
+    shadowOpacity={0.4}
     style={
       Object {
         "backgroundColor": "#ffffff",
@@ -38,23 +39,13 @@ exports[`FilterModal renders correctly 1`] = `
       />
       <ScreenSizeProvider />
     </React.Fragment>
-  </ScrollView>
+  </ShadowedScrollView>
   <View
     style={
       Object {
         "backgroundColor": "#ffffff",
-        "borderWidth": 0,
-        "elevation": 3,
         "height": 60,
-        "marginTop": 6,
         "paddingVertical": 8,
-        "shadowColor": "rgba(0, 0, 0, 0.14)",
-        "shadowOffset": Object {
-          "height": -10,
-          "width": 0,
-        },
-        "shadowOpacity": 0.6,
-        "shadowRadius": 5,
       }
     }
   >
