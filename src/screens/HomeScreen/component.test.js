@@ -95,6 +95,66 @@ describe("HomeScreen Component", () => {
       eventId: "1"
     });
   });
+
+  describe("#shouldComponentUpdate", () => {
+    const props = {
+      featuredEventsTitle: "Title",
+      featuredEvents: generateEvents(3),
+      loading: false
+    };
+
+    it("stops updates if loading state, title and events are the same", () => {
+      const output = render(props);
+      const nextProps = {
+        featuredEventsTitle: "Title",
+        featuredEvents: generateEvents(3),
+        loading: false
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(false);
+    });
+
+    it("updates when different events are displayed", () => {
+      const output = render(props);
+      const nextProps = {
+        featuredEventsTitle: "Title",
+        featuredEvents: generateEvents(5),
+        loading: false
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+
+    it("updates when different title is shown", () => {
+      const output = render(props);
+      const nextProps = {
+        featuredEventsTitle: "Other Title",
+        featuredEvents: generateEvents(3),
+        loading: false
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+
+    it("updates when loading events", () => {
+      const output = render(props);
+      const nextProps = {
+        featuredEventsTitle: "Title",
+        featuredEvents: generateEvents(3),
+        loading: true
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+  });
 });
 
 afterEach(() => {
