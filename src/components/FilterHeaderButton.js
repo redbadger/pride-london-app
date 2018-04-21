@@ -8,13 +8,19 @@ import { filterButtonTextColor } from "../constants/colors";
 
 type Props = {
   text: string,
+  label: string,
   onPress: Function,
   onRef?: Function,
   style?: StyleObj
 };
 
-const FilterHeaderButton = ({ text, onPress, onRef, style }: Props) => (
-  <Touchable style={[styles.button, style]} onPress={onPress} ref={onRef}>
+const FilterHeaderButton = ({ text, label, onPress, onRef, style }: Props) => (
+  <Touchable
+    style={[styles.button, style]}
+    onPress={onPress}
+    ref={onRef}
+    accessibilityLabel={label}
+  >
     <Text style={styles.buttonText}>{text}</Text>
   </Touchable>
 );

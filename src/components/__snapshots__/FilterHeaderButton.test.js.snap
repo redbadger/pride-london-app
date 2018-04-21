@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="button"
+  accessibilityLabel="One two three filtered"
   accessibilityTraits={
     Array [
       "button",
