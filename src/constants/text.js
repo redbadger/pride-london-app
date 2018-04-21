@@ -20,6 +20,7 @@ export default {
   featuredEventListTitle: "Featured events",
   filterByInterest: "All events",
   addFilters: "Add filters",
+  filters: "Filters",
   filterPickerApply: showEvents,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",

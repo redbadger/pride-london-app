@@ -84,10 +84,10 @@ class FilterModal extends PureComponent<Props> {
                   <SectionHeader
                     title={text.tags[sectionName]}
                     hasShadow={false}
-                    badgeText={
+                    badgeValue={
                       eventFilters[sectionName].size > 0
-                        ? `${eventFilters[sectionName].size}`
-                        : ""
+                        ? eventFilters[sectionName].size
+                        : null
                     }
                   />
                   <ContentPadding>

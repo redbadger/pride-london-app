@@ -32,7 +32,7 @@ exports[`FilterModal renders correctly 1`] = `
       key="price"
     >
       <SectionHeader
-        badgeText=""
+        badgeValue={null}
         hasShadow={false}
         title="Price"
       />

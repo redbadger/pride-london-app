@@ -16,7 +16,7 @@ it("renders correctly without shadow", () => {
 
 it("renders correctly with badge text", () => {
   const output = shallow(
-    <SectionHeader title="Section Header" badgeText={2} />
+    <SectionHeader title="Section Header" badgeValue={2} />
   );
   expect(output).toMatchSnapshot();
 });

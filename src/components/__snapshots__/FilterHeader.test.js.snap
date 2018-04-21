@@ -50,6 +50,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     }
   >
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -67,6 +68,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
       }
     />
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -134,6 +136,7 @@ exports[`renders correctly with any date and any time 1`] = `
     }
   >
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -151,6 +154,7 @@ exports[`renders correctly with any date and any time 1`] = `
       }
     />
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -218,6 +222,7 @@ exports[`renders correctly with date range and two times 1`] = `
     }
   >
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -235,6 +240,7 @@ exports[`renders correctly with date range and two times 1`] = `
       }
     />
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -302,6 +308,7 @@ exports[`renders correctly with single date and single time 1`] = `
     }
   >
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -319,6 +326,7 @@ exports[`renders correctly with single date and single time 1`] = `
       }
     />
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -326,6 +334,92 @@ exports[`renders correctly with single date and single time 1`] = `
         }
       }
       text="Add filters"
+    />
+  </ContentPadding>
+  <Connect(DateRangePickerDialog)
+    onApply={[Function]}
+    onCancel={[Function]}
+    visible={false}
+  />
+</withOrientation>
+`;
+
+exports[`renders correctly with tag filters selected 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "top": "always",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "rgb(45, 47, 127)",
+    }
+  }
+>
+  <StatusBar
+    animated={true}
+    backgroundColor="#2d2f7f"
+    barStyle="light-content"
+    showHideTransition="fade"
+  />
+  <ContentPadding
+    padding={Object {}}
+    style={Object {}}
+  >
+    <View
+      style={
+        Object {
+          "paddingBottom": 12,
+          "paddingTop": 16,
+        }
+      }
+      testID="filter-header"
+    >
+      <FilterHeaderCategories
+        onFilterPress={[Function]}
+        selectedCategories={Set {}}
+      />
+    </View>
+  </ContentPadding>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "backgroundColor": "#20215a",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <FilterHeaderButton
+      badgeValue={null}
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Select dates"
+    />
+    <View
+      style={
+        Object {
+          "borderColor": "#2cda9d",
+          "borderLeftWidth": 0.5,
+        }
+      }
+    />
+    <FilterHeaderButton
+      badgeValue={2}
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Filters"
     />
   </ContentPadding>
   <Connect(DateRangePickerDialog)

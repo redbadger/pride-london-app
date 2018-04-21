@@ -20,7 +20,8 @@ export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateRange,
   onFilterButtonPress: () => void,
-  selectedCategories: Set<string>
+  selectedCategories: Set<string>,
+  numTagFiltersSelected: number
 };
 
 type State = {
@@ -45,7 +46,8 @@ class FilterHeader extends React.PureComponent<Props, State> {
       dateFilter,
       onFilterCategoriesPress,
       selectedCategories,
-      onFilterButtonPress
+      onFilterButtonPress,
+      numTagFiltersSelected
     } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
@@ -74,9 +76,12 @@ class FilterHeader extends React.PureComponent<Props, State> {
           />
           <View style={styles.dividerLine} />
           <FilterHeaderButton
-            text={text.addFilters}
+            text={numTagFiltersSelected > 0 ? text.filters : text.addFilters}
             onPress={onFilterButtonPress}
             style={styles.filterButton}
+            badgeValue={
+              numTagFiltersSelected > 0 ? numTagFiltersSelected : null
+            }
           />
         </ContentPadding>
         <DateFilterDialog

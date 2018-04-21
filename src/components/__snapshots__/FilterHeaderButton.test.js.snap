@@ -1,5 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders badge value when provided 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingHorizontal": 8,
+      },
+      Object {
+        "marginTop": 16,
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={true}
+    markdown={false}
+    onLayout={[Function]}
+    style={
+      Object {
+        "color": "rgb(44, 218, 157)",
+        "fontFamily": "Roboto-Medium",
+      }
+    }
+    type="text"
+  >
+    1-2-3 filtered
+  </Text>
+  <View
+    style={
+      Object {
+        "marginLeft": 6,
+      }
+    }
+  >
+    <NumberBadge
+      value={2}
+    />
+  </View>
+</Touchable>
+`;
+
 exports[`renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="button"
@@ -14,6 +66,7 @@ exports[`renders correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "flexDirection": "row",
         "justifyContent": "center",
         "paddingHorizontal": 8,
       },

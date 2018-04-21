@@ -47,6 +47,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     }
   >
     <FilterHeaderButton
+      badgeValue={null}
       onPress={[Function]}
       style={
         Object {
@@ -64,6 +65,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       }
     />
     <FilterHeaderButton
+      badgeValue={null}
       style={
         Object {
           "flex": 1,
@@ -83,6 +85,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
 exports[`ConnectedFilterHeader renders connector 1`] = `
 <FilterHeader
   dateFilter={null}
+  numTagFiltersSelected={0}
   store={
     Object {
       "clearActions": [Function],

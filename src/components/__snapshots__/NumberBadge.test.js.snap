@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2cda9d",
+      "borderRadius": 10,
+      "height": 20,
+      "justifyContent": "center",
+      "marginLeft": 6,
+      "width": 20,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#2d2f7f",
+      }
+    }
+    type="xSmall"
+  >
+    1
+  </Text>
+</View>
+`;

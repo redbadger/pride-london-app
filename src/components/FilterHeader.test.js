@@ -9,10 +9,10 @@ import type { Props as ComponentProps } from "./FilterHeader";
 const render = (
   props: ComponentProps = {
     dateFilter: null,
-    timeFilter: new Set(["morning"]),
     selectedCategories: new Set(),
     onFilterCategoriesPress: () => {},
-    onFilterButtonPress: () => {}
+    onFilterButtonPress: () => {},
+    numTagFiltersSelected: 0
   }
 ) => shallow(<FilterHeader {...props} />);
 
@@ -20,10 +20,10 @@ describe("renders correctly", () => {
   it("with any date and any time", () => {
     const output = render({
       dateFilter: null,
-      timeFilter: new Set(["morning", "afternoon", "evening"]),
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
-      onFilterButtonPress: () => {}
+      onFilterButtonPress: () => {},
+      numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
   });
@@ -31,10 +31,10 @@ describe("renders correctly", () => {
   it("with any date and any time (empty time set)", () => {
     const output = render({
       dateFilter: null,
-      timeFilter: new Set(),
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
-      onFilterButtonPress: () => {}
+      onFilterButtonPress: () => {},
+      numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
   });
@@ -42,10 +42,10 @@ describe("renders correctly", () => {
   it("with single date and single time", () => {
     const output = render({
       dateFilter: { startDate: "2018-02-02", endDate: "2018-02-02" },
-      timeFilter: new Set(["afternoon"]),
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
-      onFilterButtonPress: () => {}
+      onFilterButtonPress: () => {},
+      numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
   });
@@ -56,10 +56,21 @@ describe("renders correctly", () => {
         startDate: "2018-02-02",
         endDate: "2018-02-03"
       },
-      timeFilter: new Set(["morning", "afternoon"]),
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
-      onFilterButtonPress: () => {}
+      onFilterButtonPress: () => {},
+      numTagFiltersSelected: 0
+    });
+    expect(output).toMatchSnapshot();
+  });
+
+  it("with tag filters selected", () => {
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {},
+      onFilterButtonPress: () => {},
+      numTagFiltersSelected: 2
     });
     expect(output).toMatchSnapshot();
   });
