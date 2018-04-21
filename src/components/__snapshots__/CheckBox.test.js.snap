@@ -23,6 +23,11 @@ exports[`renders correctly 1`] = `
 >
   <Text
     markdown={false}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
     type="text"
   >
     Bananas
@@ -57,6 +62,11 @@ exports[`renders correctly when checked 1`] = `
 >
   <Text
     markdown={false}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
     type="text"
   >
     Bananas

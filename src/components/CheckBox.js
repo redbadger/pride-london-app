@@ -24,7 +24,7 @@ const CheckBox = ({ checked, label, onChange, style }: Props) => (
     onPress={onChange}
     style={[styles.container, style]}
   >
-    <Text>{label}</Text>
+    <Text style={styles.text}>{label}</Text>
     <Image source={checked ? checkBoxCheckedUrl : checkboxUrl} />
   </Touchable>
 );
@@ -38,6 +38,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between"
+  },
+  text: {
+    // prevents text from pushing icon off screen
+    flex: 1
   }
 });
 
