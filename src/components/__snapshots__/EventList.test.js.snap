@@ -29,6 +29,24 @@ exports[`EventList renders correctly 1`] = `
         "data": Array [
           Object {
             "fields": Object {
+              "endTime": Object {
+                "en-GB": "2018-08-11T00:00",
+              },
+              "eventPriceHigh": Object {
+                "en-GB": "0",
+              },
+              "eventPriceLow": Object {
+                "en-GB": "0",
+              },
+              "imageUrl": Object {
+                "en-GB": "http://placekitten.com/200/300",
+              },
+              "isFree": Object {
+                "en-GB": true,
+              },
+              "locationName": Object {
+                "en-GB": "Somewhere",
+              },
               "name": Object {
                 "en-GB": "some event",
               },
@@ -49,6 +67,24 @@ exports[`EventList renders correctly 1`] = `
           },
           Object {
             "fields": Object {
+              "endTime": Object {
+                "en-GB": "2018-08-11T00:00",
+              },
+              "eventPriceHigh": Object {
+                "en-GB": "0",
+              },
+              "eventPriceLow": Object {
+                "en-GB": "0",
+              },
+              "imageUrl": Object {
+                "en-GB": "http://placekitten.com/200/300",
+              },
+              "isFree": Object {
+                "en-GB": true,
+              },
+              "locationName": Object {
+                "en-GB": "Somewhere",
+              },
               "name": Object {
                 "en-GB": "some other",
               },
@@ -74,6 +110,24 @@ exports[`EventList renders correctly 1`] = `
         "data": Array [
           Object {
             "fields": Object {
+              "endTime": Object {
+                "en-GB": "2018-08-11T00:00",
+              },
+              "eventPriceHigh": Object {
+                "en-GB": "0",
+              },
+              "eventPriceLow": Object {
+                "en-GB": "0",
+              },
+              "imageUrl": Object {
+                "en-GB": "http://placekitten.com/200/300",
+              },
+              "isFree": Object {
+                "en-GB": true,
+              },
+              "locationName": Object {
+                "en-GB": "Somewhere",
+              },
               "name": Object {
                 "en-GB": "some other",
               },
@@ -101,4 +155,53 @@ exports[`EventList renders correctly 1`] = `
   updateCellsBatchingPeriod={50}
   windowSize={21}
 />
+`;
+
+exports[`EventList renders items correctly 1`] = `<ScreenSizeProvider />`;
+
+exports[`EventList renders section headers correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f3f3f3",
+        "flexDirection": "row",
+        "height": 40,
+      },
+      Object {
+        "borderWidth": 0,
+        "elevation": 3,
+        "marginBottom": 6,
+        "shadowColor": "rgba(0, 0, 0, 0.14)",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 3,
+      },
+    ]
+  }
+>
+  <Text
+    accessibilityTraits={
+      Array [
+        "header",
+      ]
+    }
+    accessible={true}
+    markdown={false}
+    style={
+      Object {
+        "color": "rgb(45, 47, 127)",
+      }
+    }
+    type="h2"
+  >
+    Hello
+  </Text>
+  <View />
+</ContentPadding>
 `;

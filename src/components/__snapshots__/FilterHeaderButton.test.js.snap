@@ -3,6 +3,7 @@
 exports[`renders badge value when provided 1`] = `
 <Touchable
   accessibilityComponentType="button"
+  accessibilityLabel="1-2-3 filtered"
   accessibilityTraits={
     Array [
       "button",
@@ -57,6 +58,7 @@ exports[`renders badge value when provided 1`] = `
 exports[`renders correct styles when inactive 1`] = `
 <Touchable
   accessibilityComponentType="button"
+  accessibilityLabel="One two three filtered"
   accessibilityTraits={
     Array [
       "button",
@@ -100,6 +102,7 @@ exports[`renders correct styles when inactive 1`] = `
 exports[`renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="button"
+  accessibilityLabel="1-2-3 filtered"
   accessibilityTraits={
     Array [
       "button",

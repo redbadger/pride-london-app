@@ -72,6 +72,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
           <FilterHeaderButton
             active={!!dateFilter}
             text={formattedDateFilter}
+            label={`filter by date: ${formattedDateFilter}`}
             onPress={this.showDatePicker}
             style={styles.filterButton}
           />
@@ -79,6 +80,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
           <FilterHeaderButton
             active={numTagFiltersSelected > 0}
             text={numTagFiltersSelected > 0 ? text.filters : text.addFilters}
+            label={numTagFiltersSelected > 0 ? text.filters : text.addFilters}
             onPress={onFilterButtonPress}
             style={styles.filterButton}
             badgeValue={

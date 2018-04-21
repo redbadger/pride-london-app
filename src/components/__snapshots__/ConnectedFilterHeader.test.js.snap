@@ -49,6 +49,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     <FilterHeaderButton
       active={false}
       badgeValue={null}
+      label="filter by date: Select dates"
       onPress={[Function]}
       style={
         Object {
@@ -68,6 +69,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     <FilterHeaderButton
       active={false}
       badgeValue={null}
+      label="Add filters"
       style={
         Object {
           "flex": 1,

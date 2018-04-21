@@ -9,6 +9,7 @@ import NumberBadge from "./NumberBadge";
 
 type Props = {
   text: string,
+  label: string,
   onPress: Function,
   onRef?: Function,
   style?: StyleObj,
@@ -22,9 +23,15 @@ const FilterHeaderButton = ({
   onRef,
   style,
   badgeValue,
-  active
+  active,
+  label
 }: Props) => (
-  <Touchable style={[styles.button, style]} onPress={onPress} ref={onRef}>
+  <Touchable
+    style={[styles.button, style]}
+    onPress={onPress}
+    ref={onRef}
+    accessibilityLabel={label}
+  >
     <Text
       style={[
         styles.buttonText,

@@ -11,6 +11,18 @@ const showEvents = (numberOfEvents: number) => {
   return `Show ${numberOfEvents} events`;
 };
 
+const showEventsLabel = (numberOfEvents: number) => {
+  if (numberOfEvents <= 0) {
+    return "Show events (none selected)";
+  }
+
+  if (numberOfEvents === 1) {
+    return "Show 1 selected event";
+  }
+
+  return `Show ${numberOfEvents} selected events`;
+};
+
 export default {
   tabHome: "Home",
   tabEvents: "Events",
@@ -22,6 +34,7 @@ export default {
   addFilters: "Add filters",
   filters: "Filters",
   filterPickerApply: showEvents,
+  filterPickerApplyLabel: showEventsLabel,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
   filterTitle: "Show me",

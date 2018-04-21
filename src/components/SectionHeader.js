@@ -19,7 +19,12 @@ const SectionHeader = ({ title, hasShadow, badgeValue }: Props) => {
   const showBadge = badgeValue != null;
   return (
     <ContentPadding style={containerStyles}>
-      <Text type="h2" style={styles.sectionHeaderText}>
+      <Text
+        type="h2"
+        style={styles.sectionHeaderText}
+        accessible
+        accessibilityTraits={["header"]}
+      >
         {title}
       </Text>
       {showBadge ? (
