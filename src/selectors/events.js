@@ -4,7 +4,8 @@ import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import R from "ramda";
 import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
-import type { Asset, Event, EventDays, FeaturedEvents } from "../data/event";
+import type { Asset } from "../data/asset";
+import type { Event, EventDays, FeaturedEvents } from "../data/event";
 
 import locale from "../data/locale";
 

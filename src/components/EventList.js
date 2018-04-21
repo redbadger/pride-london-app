@@ -8,7 +8,8 @@ import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import Text from "./Text";
 import Touchable from "./Touchable";
-import type { Event, EventDays, LocalizedFieldRef } from "../data/event";
+import type { Event, EventDays } from "../data/event";
+import type { LocalizedFieldRef } from "../data/localized-field-ref";
 import {
   bgColor,
   eventCardTextColor,

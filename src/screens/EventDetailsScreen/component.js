@@ -17,7 +17,8 @@ import {
   darkBlueGreyTwoColor
 } from "../../constants/colors";
 import text from "../../constants/text";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type { Event } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 import heartWhite from "../../../assets/images/heart-white.png";

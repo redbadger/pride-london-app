@@ -3,7 +3,8 @@ import React, { PureComponent } from "react";
 import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type { Event } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventTile from "../../components/EventTile";
 import Touchable from "../../components/Touchable";
 import {

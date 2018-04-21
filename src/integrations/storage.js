@@ -40,12 +40,11 @@ const correctDates = (entry: Object) => {
   }
 
   const { startTime, endTime } = entry.fields;
+  if (startTime === undefined || endTime === undefined) {
+    return entry;
+  }
 
-  if (
-    startTime !== undefined &&
-    endTime !== undefined &&
-    isBefore(startTime[locale], endTime[locale])
-  ) {
+  if (isBefore(startTime[locale], endTime[locale])) {
     return entry;
   }
 

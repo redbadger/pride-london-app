@@ -2,7 +2,8 @@
 import { connect } from "react-redux";
 import type { Connector, MapStateToProps } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type { Event } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import getAssetUrl from "../../data/get-asset-url";
 import type { State } from "../../reducers";
 import { selectEventById, selectAssetById } from "../../selectors/events";

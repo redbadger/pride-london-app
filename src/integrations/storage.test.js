@@ -246,4 +246,34 @@ describe("correctDates", () => {
     );
     expect(savedCmsData).toEqual(expectedCmsData);
   });
+
+  it("does not change entry when startDate or endDate is undefined", async () => {
+    const cmsData = {
+      entries: [
+        {
+          sys: { id: "1" },
+          fields: {
+            name: { "en-GB": "I am not an event" }
+          }
+        }
+      ],
+      assets: [],
+      deletedEntries: [],
+      deletedAssets: [],
+      nextSyncToken: "abc"
+    };
+    const mockLoadCmsData = async () => ({
+      entries: [],
+      assets: [],
+      syncToken: "123"
+    });
+    const mockAsyncStorage = { setItem: jest.fn() };
+
+    const savedCmsData = await saveCmsData(
+      cmsData,
+      mockLoadCmsData,
+      mockAsyncStorage
+    );
+    expect(savedCmsData.entries[0]).toBe(cmsData.entries[0]);
+  });
 });
