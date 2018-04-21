@@ -58,7 +58,7 @@ const EventCard = ({
           {timeDisplay}
         </Text>
         <View style={styles.eventNameContainer}>
-          <Text type="h3" style={styles.eventName}>
+          <Text type="h3" style={styles.eventName} numberOfLines={2}>
             {name}
           </Text>
         </View>
