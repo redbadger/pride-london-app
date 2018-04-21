@@ -19,21 +19,27 @@ const categoryStyleBackgroundColor = (category: string) => {
 
 type Props = {
   name: string,
-  style?: StyleObj
+  style?: StyleObj,
+  numberOfLines?: number
 };
 
-const CategoryPill = ({ name, style }: Props) => (
+const CategoryPill = ({ name, style, numberOfLines }: Props) => (
   <View
     style={[styles.categoryPill, categoryStyleBackgroundColor(name), style]}
   >
-    <Text type="h3" style={[styles.categoryPillText, categoryStyleColor(name)]}>
+    <Text
+      type="h3"
+      numberOfLines={numberOfLines}
+      style={[styles.categoryPillText, categoryStyleColor(name)]}
+    >
       {name}
     </Text>
   </View>
 );
 
 CategoryPill.defaultProps = {
-  style: {}
+  style: {},
+  numberOfLines: undefined
 };
 
 const styles = StyleSheet.create({

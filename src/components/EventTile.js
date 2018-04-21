@@ -20,14 +20,14 @@ const EventTile = ({ eventCategory, name, date, imageUrl }: Props) => (
       source={{ uri: imageUrl }}
       resizeMode="cover"
     >
-      <View style={styles.featureTagContainer}>
+      <View style={styles.categoryPillContainer}>
         {eventCategory
           .slice(0, 1)
           .map(categoryName => (
             <CategoryPill
               key={categoryName}
               name={categoryName}
-              style={styles.categoryPill}
+              numberOfLines={2}
             />
           ))}
       </View>
@@ -51,7 +51,7 @@ const EventTile = ({ eventCategory, name, date, imageUrl }: Props) => (
 const styles = StyleSheet.create({
   eventTile: {
     width: 167,
-    // height: 200,
+    height: 200,
     flexDirection: "column",
     overflow: "hidden"
   },
@@ -60,19 +60,14 @@ const styles = StyleSheet.create({
     height: 120,
     backgroundColor: imageBgColor
   },
-  featureTagContainer: {
-    flexWrap: "wrap"
-  },
-  categoryPill: {
-    height: 24,
+  categoryPillContainer: {
     flexWrap: "wrap",
-    flexDirection: "row",
-    paddingHorizontal: 5,
+    width: 156,
     marginTop: 96,
-    marginLeft: 12
+    marginLeft: 11
   },
   details: {
-    minHeight: 80,
+    minHeight: 60,
     paddingTop: 8,
     paddingHorizontal: 8
   }
