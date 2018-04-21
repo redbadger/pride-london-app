@@ -27,9 +27,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "color": "rgb(45, 47, 127)",
@@ -70,9 +68,7 @@ exports[`renders correctly with badge text 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "color": "rgb(45, 47, 127)",
@@ -109,9 +105,7 @@ exports[`renders correctly without shadow 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "color": "rgb(45, 47, 127)",

@@ -79,9 +79,7 @@ exports[`renders correct styles when inactive 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Array [
         Object {
@@ -124,9 +122,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Array [
         Object {

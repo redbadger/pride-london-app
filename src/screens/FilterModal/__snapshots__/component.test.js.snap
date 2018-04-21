@@ -36,22 +36,7 @@ exports[`FilterModal renders correctly 1`] = `
         hasShadow={false}
         title="Price"
       />
-      <ContentPadding
-        padding={Object {}}
-        style={Object {}}
-      >
-        <CheckBox
-          checked={false}
-          key="free"
-          label="Show only free events"
-          onChange={[Function]}
-          style={
-            Object {
-              "marginVertical": 4,
-            }
-          }
-        />
-      </ContentPadding>
+      <ScreenSizeProvider />
     </React.Fragment>
   </ScrollView>
   <View

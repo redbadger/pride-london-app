@@ -13,9 +13,7 @@ exports[`renders correctly 1`] = `
   style={Object {}}
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "color": "#ffffff",
@@ -41,9 +39,7 @@ exports[`renders with optional props 1`] = `
   style={Object {}}
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Object {
         "color": "#ffffff",
