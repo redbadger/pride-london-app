@@ -19,7 +19,11 @@ const Header = ({ onClearPress, onCancelPress, showClear }: Props) => (
     <ContentPadding style={styles.content}>
       <ActionButton label={text.cancel} onPress={onCancelPress} />
       <View style={styles.titleWrapper}>
-        <Text type="h2" style={styles.titleText}>
+        <Text
+          type="h2"
+          style={styles.titleText}
+          accessibilityTraits={["header"]}
+        >
           {text.filterEvents}
         </Text>
       </View>

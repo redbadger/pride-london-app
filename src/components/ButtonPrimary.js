@@ -21,6 +21,7 @@ const Button = ({ children, disabled, onPress }: Props) => (
     style={[styles.button, disabled ? styles.disabledButton : {}]}
     onPress={onPress}
     disabled={disabled}
+    accessibilityTraits={disabled ? ["button", "disabled"] : ["button"]}
   >
     <Text type="h2" style={[styles.text, disabled ? styles.disabledText : {}]}>
       {children}

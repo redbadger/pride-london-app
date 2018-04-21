@@ -38,6 +38,11 @@ exports[`applies styles to clear button when showClear=true 1`] = `
       }
     >
       <Text
+        accessibilityTraits={
+          Array [
+            "header",
+          ]
+        }
         markdown={false}
         style={
           Object {
@@ -101,6 +106,11 @@ exports[`renders correctly 1`] = `
       }
     >
       <Text
+        accessibilityTraits={
+          Array [
+            "header",
+          ]
+        }
         markdown={false}
         style={
           Object {

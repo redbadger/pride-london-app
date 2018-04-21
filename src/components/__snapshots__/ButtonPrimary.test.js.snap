@@ -6,6 +6,7 @@ exports[`can be disabled 1`] = `
   accessibilityTraits={
     Array [
       "button",
+      "disabled",
     ]
   }
   delayPressIn={50}
