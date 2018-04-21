@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
     backgroundColor: eucalyptusGreenColor,
     borderRadius: 4,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    minHeight: 48
   },
   text: {
     color: lightNavyBlueColor

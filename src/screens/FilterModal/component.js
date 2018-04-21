@@ -143,8 +143,7 @@ const styles = StyleSheet.create({
     backgroundColor: bgColor
   },
   footer: {
-    height: 60,
-    paddingVertical: 8,
+    paddingVertical: 12,
     backgroundColor: bgColor
   },
   checkbox: { paddingVertical: 16 }
