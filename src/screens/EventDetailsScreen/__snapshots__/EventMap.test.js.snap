@@ -21,6 +21,7 @@ exports[`renders correctly 1`] = `
     delay={600}
   >
     <MapView
+      cacheEnabled={true}
       initialRegion={
         Object {
           "latitude": 100,

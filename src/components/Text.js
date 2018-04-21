@@ -24,6 +24,7 @@ const Text = ({
   markdown,
   style,
   color,
+  allowFontScaling,
   ...otherProps
 }: Props) =>
   markdown ? (
@@ -38,8 +39,12 @@ const Text = ({
   ) : (
     <RnText
       style={[type && styles[type], color && styles[color], style]}
+      onLayout={onLayout}
+      allowFontScaling={allowFontScaling}
       {...otherProps}
-    />
+    >
+      {children}
+    </RnText>
   );
 Text.defaultProps = {
   type: "text",
