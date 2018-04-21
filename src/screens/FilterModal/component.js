@@ -6,7 +6,7 @@ import type { NavigationScreenProp } from "react-navigation";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
-import FilterList from "./FilterList";
+import FilterSectionList from "./FilterSectionList";
 import { bgColor } from "../../constants/colors";
 import tags from "../../data/tags";
 import type { FilterCollection, Area } from "../../data/event-filters";
@@ -88,7 +88,7 @@ class FilterModal extends PureComponent<Props> {
           showClear={numTagFiltersSelected > 0}
         />
         <ShadowedScrollView style={styles.flex} shadowOpacity={0.4}>
-          <FilterList
+          <FilterSectionList
             eventFilters={eventFilters}
             handleCheckboxChange={this.handleCheckboxChange}
           />

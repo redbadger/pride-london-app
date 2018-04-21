@@ -29,7 +29,7 @@ exports[`FilterModal renders correctly 1`] = `
       }
     }
   >
-    <FilterList
+    <FilterSectionList
       eventFilters={
         Object {
           "price": Set {},

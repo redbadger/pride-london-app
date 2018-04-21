@@ -2,15 +2,22 @@
 
 exports[`FilterList renders correctly 1`] = `
 <React.Fragment>
-  <React.Fragment
-    key="price"
-  >
-    <SectionHeader
-      badgeValue={1}
-      hasShadow={false}
-      title="Price"
-    />
-    <ScreenSizeProvider />
-  </React.Fragment>
+  <CheckBox
+    checked={true}
+    key="free"
+    label="Show only free events"
+    onChange={[Function]}
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 8,
+          "paddingVertical": 0,
+        },
+        Object {
+          "paddingVertical": 16,
+        },
+      ]
+    }
+  />
 </React.Fragment>
 `;
