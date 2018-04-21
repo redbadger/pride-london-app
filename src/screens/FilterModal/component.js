@@ -3,7 +3,7 @@ import React, { PureComponent, Fragment } from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
-import Button from "../../components/Button";
+import Button from "../../components/ButtonPrimary";
 import ContentPadding, {
   getContentPadding
 } from "../../components/ContentPadding";
@@ -121,13 +121,14 @@ class FilterModal extends PureComponent<Props> {
         <View style={styles.footer}>
           <ContentPadding>
             <Button
-              text={applyButtonText}
               onPress={() => {
                 onApply();
                 navigation.goBack();
               }}
               disabled={numEventsSelected === 0}
-            />
+            >
+              {applyButtonText}
+            </Button>
           </ContentPadding>
         </View>
       </SafeAreaView>

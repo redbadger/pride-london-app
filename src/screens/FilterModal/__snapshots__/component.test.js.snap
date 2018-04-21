@@ -65,10 +65,9 @@ exports[`FilterModal renders correctly 1`] = `
       <Button
         disabled={false}
         onPress={[Function]}
-        text="Show 26 events"
-        type="primary"
-        url=""
-      />
+      >
+        Show 26 events
+      </Button>
     </ContentPadding>
   </View>
 </withOrientation>
