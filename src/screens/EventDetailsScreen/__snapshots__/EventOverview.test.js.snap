@@ -1,18 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<ContentPadding
-  style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "paddingVertical": 15,
-    }
-  }
->
+<View>
   <Text
     allowFontScaling={true}
     markdown={false}
-    style={Object {}}
+    onLayout={[Function]}
+    style={
+      Object {
+        "marginTop": 24,
+      }
+    }
     type="h1"
   >
     Pride in the Park
@@ -22,7 +20,7 @@ exports[`renders correctly 1`] = `
       Object {
         "flexDirection": "row",
         "flexWrap": "wrap",
-        "marginBottom": 20,
+        "marginBottom": 16,
         "marginTop": 16,
       }
     }
@@ -87,12 +85,10 @@ exports[`renders correctly 1`] = `
   >
     <Text
       allowFontScaling={true}
+      color="lightNavyBlueColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      onLayout={[Function]}
+      style={Object {}}
       type="h4"
     >
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
@@ -100,6 +96,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",
@@ -108,86 +105,6 @@ exports[`renders correctly 1`] = `
       type="small"
     >
       11:00AM - 6:00PM
-    </Text>
-  </IconItem>
-  <IconItem
-    icon={
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        style={Object {}}
-        type="small"
-      >
-        icn
-      </Text>
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
-  >
-    <Text
-      allowFontScaling={true}
-      markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
-      type="h4"
-    >
-      Vauxhall Pleasure Gardens
-    </Text>
-  </IconItem>
-  <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
-  >
-    <Text
-      allowFontScaling={true}
-      markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
-      type="h4"
-    >
-      £19.95 - £30
-    </Text>
-  </IconItem>
-  <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
-  >
-    <Text
-      allowFontScaling={true}
-      markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
-      type="h4"
-    >
-      Gender neutral toilets
     </Text>
   </IconItem>
   <IconItem
@@ -207,14 +124,150 @@ exports[`renders correctly 1`] = `
       }
     }
   >
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      onPress={[Function]}
+    >
+      <View
+        style={
+          Object {
+            "alignSelf": "flex-start",
+            "borderBottomColor": "#2cda9d",
+            "borderBottomWidth": 1,
+            "marginBottom": 2,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={true}
+          color="lightNavyBlueColor"
+          markdown={false}
+          onLayout={[Function]}
+          style={Object {}}
+          type="h4"
+        >
+          Vauxhall Pleasure Gardens
+        </Text>
+      </View>
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        onLayout={[Function]}
+        style={Object {}}
+        type="small"
+      >
+        Vauxhall Pleasure Gardens
+      </Text>
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        onLayout={[Function]}
+        style={Object {}}
+        type="small"
+      >
+        Vauxhall Pleasure Gardens
+      </Text>
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        onLayout={[Function]}
+        style={Object {}}
+        type="small"
+      >
+        London
+      </Text>
+      <Text
+        allowFontScaling={true}
+        markdown={false}
+        onLayout={[Function]}
+        style={Object {}}
+        type="small"
+      >
+        EC1M 3HA
+      </Text>
+    </Touchable>
+  </IconItem>
+  <IconItem
+    icon={
+      <Image
+        source={1}
+        style={
+          Object {
+            "marginTop": -3,
+          }
+        }
+      />
+    }
+    style={
+      Object {
+        "marginBottom": 20,
+      }
+    }
+  >
     <Text
       allowFontScaling={true}
+      color="lightNavyBlueColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#2d2f7f",
+      onLayout={[Function]}
+      style={Object {}}
+      type="h4"
+    >
+      £19.95 - £30
+    </Text>
+  </IconItem>
+  <IconItem
+    icon={
+      <Image
+        source={1}
+        style={
+          Object {
+            "marginTop": -2,
+          }
         }
+      />
+    }
+    style={
+      Object {
+        "marginBottom": 20,
       }
+    }
+  >
+    <Text
+      allowFontScaling={true}
+      color="lightNavyBlueColor"
+      markdown={false}
+      onLayout={[Function]}
+      style={Object {}}
+      type="h4"
+    >
+      Gender neutral toilets
+    </Text>
+  </IconItem>
+  <IconItem
+    icon={
+      <Image
+        source={1}
+        style={
+          Object {
+            "marginTop": 3,
+          }
+        }
+      />
+    }
+    style={Object {}}
+  >
+    <Text
+      allowFontScaling={true}
+      color="lightNavyBlueColor"
+      markdown={false}
+      onLayout={[Function]}
+      style={Object {}}
       type="h4"
     >
       Accessibility
@@ -222,6 +275,7 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
           "color": "#111111",
@@ -232,5 +286,5 @@ exports[`renders correctly 1`] = `
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</ContentPadding>
+</View>
 `;

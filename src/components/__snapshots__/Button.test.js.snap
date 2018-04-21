@@ -31,6 +31,7 @@ exports[`applies styles and props when disabled=true 1`] = `
   <Text
     allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={
       Array [
         Object {
@@ -80,6 +81,7 @@ exports[`renders correctly 1`] = `
   <Text
     allowFontScaling={true}
     markdown={false}
+    onLayout={[Function]}
     style={
       Array [
         Object {

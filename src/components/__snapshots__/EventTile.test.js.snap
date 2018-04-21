@@ -35,9 +35,10 @@ exports[`renders correctly 1`] = `
     <Text
       allowFontScaling={true}
       markdown={false}
+      onLayout={[Function]}
       style={
         Object {
-          "color": "#2d2f7f",
+          "color": "rgb(45, 47, 127)",
         }
       }
       type="small"
@@ -49,9 +50,10 @@ exports[`renders correctly 1`] = `
       ellipsizeMode="tail"
       markdown={false}
       numberOfLines={2}
+      onLayout={[Function]}
       style={
         Object {
-          "color": "#2d2f7f",
+          "color": "rgb(45, 47, 127)",
         }
       }
       type="h4"

@@ -37,6 +37,7 @@ exports[`FilterModal renders correctly 1`] = `
         title="Price"
       />
       <ContentPadding
+        padding={Object {}}
         style={Object {}}
       >
         <CheckBox
@@ -73,6 +74,7 @@ exports[`FilterModal renders correctly 1`] = `
     }
   >
     <ContentPadding
+      padding={Object {}}
       style={Object {}}
     >
       <Button

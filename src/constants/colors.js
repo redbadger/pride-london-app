@@ -21,6 +21,7 @@ export const whiteColor = "#ffffff";
 export const velvetColor = "#660c63";
 export const blackColor = "#111111";
 export const coralColor = "#ff5b44";
+export const shadowColor = "rgba(0, 0, 0, 0.1)";
 
 // CUSTOM
 
@@ -35,6 +36,7 @@ export const textColor = "#272727";
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 export const blackZeroColor = "rgba(0, 0, 0, 0)";
 export const blackThirtyColor = "rgba(0, 0, 0, 0.3)";
+export const whiteZeroColor = "rgba(255, 255, 255, 0)";
 export const dialogBgColor = whiteColor;
 export const dialogTitleColor = "rgb(45, 47, 127)";
 export const dialogApplyButtonBgColor = "rgb(44, 218, 157)";
@@ -51,7 +53,7 @@ export const tabBarBgColor = "rgb(243, 243, 243)";
 export const tabBarLabelColor = "rgb(88, 88, 88)";
 export const tabBarActiveLineColor = "rgb(44, 218, 157)";
 export const tabBarActiveLabelColor = "rgb(45, 47, 127)";
-export const tabBarShadowColor = "rgba(0, 0, 0, 0.1)";
+export const tabBarShadowColor = shadowColor;
 export const tabBarBorderColor = "rgba(0, 0, 0, 0.25)";
 
 // FILTER HEADER
@@ -95,4 +97,8 @@ export const eventDetailsBuyButtonTextColor = whiteColor;
 // HOMEPAGE
 
 export const titleTextColor = "rgb(45, 47, 127)";
-export const eventTileTextColor = lightNavyBlueColor;
+export const eventTileTextColor = "rgb(45, 47, 127)";
+
+// SUPPORT US
+
+export const supportUsButtonShadow = "rgba(0, 0, 0, 0.2)";

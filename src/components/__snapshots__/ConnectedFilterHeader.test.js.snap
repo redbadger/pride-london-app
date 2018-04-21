@@ -15,10 +15,12 @@ exports[`ConnectedFilterHeader renders component 1`] = `
 >
   <StatusBar
     animated={true}
+    backgroundColor="#2d2f7f"
     barStyle="light-content"
     showHideTransition="fade"
   />
   <ContentPadding
+    padding={Object {}}
     style={Object {}}
   >
     <View
@@ -34,6 +36,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     </View>
   </ContentPadding>
   <ContentPadding
+    padding={Object {}}
     style={
       Object {
         "backgroundColor": "#20215a",

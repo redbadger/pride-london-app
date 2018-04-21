@@ -11,6 +11,7 @@ import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FilterModal from "./screens/FilterModal";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
+import SupportUsScreen from "./screens/SupportUsScreen";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
 import iconEventsActive from "../assets/images/eventsActive.png";
@@ -31,7 +32,9 @@ import {
   PARADE,
   SAVED,
   SUPPORT_US,
-  FILTER_MODAL
+  FILTER_MODAL,
+  DONATE,
+  SPONSOR
 } from "./constants/routes";
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
@@ -69,8 +72,8 @@ const styles = StyleSheet.create({
 const HomeStack = StackNavigator(
   {
     [HOME]: { screen: withShadow(HomeScreen) },
-    [EVENT_DETAILS]: { screen: withShadow(EventDetailsScreen) },
-    [FEATURED_EVENT_LIST]: { screen: withShadow(FeaturedEventListScreen) }
+    [EVENT_DETAILS]: { screen: EventDetailsScreen },
+    [FEATURED_EVENT_LIST]: { screen: FeaturedEventListScreen }
   },
   {
     initialRouteName: HOME,
@@ -88,7 +91,7 @@ const HomeStack = StackNavigator(
 const EventsStack = StackNavigator(
   {
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
-    [EVENT_DETAILS]: { screen: withShadow(EventDetailsScreen) },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen },
     [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen }
   },
   {
@@ -134,7 +137,9 @@ const SavedStack = StackNavigator(
 
 const SupportUsStack = StackNavigator(
   {
-    [SUPPORT_US]: { screen: withShadow(() => <View />) }
+    [SUPPORT_US]: { screen: withShadow(SupportUsScreen) },
+    [DONATE]: { screen: withShadow(() => <View />) },
+    [SPONSOR]: { screen: withShadow(() => <View />) }
   },
   {
     initialRouteName: SUPPORT_US,
