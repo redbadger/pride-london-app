@@ -11,6 +11,7 @@ import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
 import SupportUsScreen from "./screens/SupportUsScreen";
+import SponsorScreen from "./screens/SponsorScreen";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
 import iconEventsActive from "../assets/images/eventsActive.png";
@@ -137,10 +138,10 @@ const SupportUsStack = StackNavigator(
   {
     [SUPPORT_US]: { screen: withShadow(SupportUsScreen) },
     [DONATE]: { screen: withShadow(() => <View />) },
-    [SPONSOR]: { screen: withShadow(() => <View />) }
+    [SPONSOR]: { screen: SponsorScreen }
   },
   {
-    initialRouteName: SUPPORT_US,
+    initialRouteName: SPONSOR,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
       tabBarLabel: text.tabSupportUs

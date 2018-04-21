@@ -56,7 +56,6 @@ class EventDetailsScreen extends PureComponent<Props> {
   static defaultProps = {};
 
   static navigationOptions = {
-    header: null,
     tabBarVisible: false
   };
 

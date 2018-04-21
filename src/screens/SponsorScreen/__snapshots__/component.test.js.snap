@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SponsorScreen Component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backgroundColor="#2d2f7f"
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <IconButton
+        accessibilityLabel="Back"
+        onPress={[Function]}
+        source={1}
+        testID="back"
+      />
+      <Text
+        markdown={false}
+        style={
+          Object {
+            "color": "#ffffff",
+          }
+        }
+        type="h2"
+      >
+        Partner with us
+      </Text>
+      <View
+        style={
+          Object {
+            "height": 48,
+            "width": 48,
+          }
+        }
+      />
+    </ContentPadding>
+  </Header>
+  <ScrollView>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      key="1"
+      testID="sponsor-1"
+    >
+      <Image
+        source={
+          Object {
+            "uri": "http://example.com/image.png",
+          }
+        }
+        style={
+          Object {
+            "height": 100,
+            "width": 100,
+          }
+        }
+      />
+      <Text
+        markdown={false}
+        type="text"
+      >
+        some other
+      </Text>
+    </Touchable>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      key="2"
+      testID="sponsor-2"
+    >
+      <Image
+        source={
+          Object {
+            "uri": "http://example.com/image.png",
+          }
+        }
+        style={
+          Object {
+            "height": 100,
+            "width": 100,
+          }
+        }
+      />
+      <Text
+        markdown={false}
+        type="text"
+      >
+        some other
+      </Text>
+    </Touchable>
+  </ScrollView>
+</View>
+`;

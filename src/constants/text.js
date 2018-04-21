@@ -48,6 +48,7 @@ export default {
   supportUsSponsorDescription: "Support the community",
   supportUsVolunteer: "Volunteer",
   supportUsVolunteerDescription: "Passionate about equality? Join us.",
+  sponsorTitle: "Partner with us",
   anyDay: "Any day",
   anyTime: "Any time",
   time: {
