@@ -30,6 +30,17 @@ type Props = {
   onCancel: () => void
 };
 
+const toggleTagFilter = (
+  selectedValues: Set<string> | Set<Area>,
+  sectionValue: string
+) => {
+  const values: Set<string> = new Set([...selectedValues]);
+  if (!values.delete(sectionValue)) {
+    values.add(sectionValue);
+  }
+  return values;
+};
+
 class FilterModal extends PureComponent<Props> {
   componentDidMount() {
     const { navigation, onCancel } = this.props;
@@ -44,27 +55,24 @@ class FilterModal extends PureComponent<Props> {
     remove: () => void
   };
 
-  toggleTagFilter = (
-    selectedValues: Set<string> | Set<Area>,
-    sectionValue: string
-  ) => {
-    const values: Set<string> = new Set([...selectedValues]);
-    if (!values.delete(sectionValue)) {
-      values.add(sectionValue);
-    }
-    return values;
-  };
-
   clearTagFilters = () =>
     this.props.onChange(
       Object.keys(tags).reduce((acc, key) => ({ ...acc, [key]: new Set() }), {})
     );
 
+  handleCheckboxChange = (sectionName: string, sectionValue: string) => {
+    this.props.onChange({
+      [sectionName]: toggleTagFilter(
+        this.props.eventFilters[sectionName],
+        sectionValue
+      )
+    });
+  };
+
   render() {
     const {
       applyButtonText,
       onApply,
-      onChange,
       eventFilters,
       navigation,
       numEventsSelected,
@@ -99,14 +107,9 @@ class FilterModal extends PureComponent<Props> {
                       tags[sectionName].map(sectionValue => (
                         <CheckBox
                           key={sectionValue}
-                          onChange={() => {
-                            onChange({
-                              [sectionName]: this.toggleTagFilter(
-                                eventFilters[sectionName],
-                                sectionValue
-                              )
-                            });
-                          }}
+                          onChange={() =>
+                            this.handleCheckboxChange(sectionName, sectionValue)
+                          }
                           checked={eventFilters[sectionName].has(sectionValue)}
                           // $FlowFixMe
                           label={text.tags[sectionValue] || sectionValue}
