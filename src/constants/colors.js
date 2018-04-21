@@ -42,8 +42,6 @@ export const dialogTitleColor = "rgb(45, 47, 127)";
 export const dialogApplyButtonBgColor = "rgb(44, 218, 157)";
 export const dialogApplyButtonTextColor = "rgb(45, 47, 127)";
 export const dialogHeaderDividerColor = "#F2F2F2";
-export const buttonPrimaryBackground = eucalyptusGreenColor;
-export const buttonPrimaryTextColor = lightNavyBlueColor;
 export const filterModalShadow = "rgba(0, 0, 0, 0.14)";
 export const disabledButtonBgColor = "#cecece";
 
@@ -65,7 +63,6 @@ export const interestButtonBgColor = "rgb(32, 33, 90)";
 export const interestButtonTextColor = whiteColor;
 export const filterButtonBorderColor = "rgb(44, 218, 157)";
 export const filterButtonTextColor = "rgb(44, 218, 157)";
-export const filterModalTitleColor = whiteColor;
 export const filterButtonsBgColor = darkBlueGreyTwoColor;
 // EVENT LIST
 
