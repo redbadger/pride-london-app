@@ -25,10 +25,8 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       style={undefined}
     >
       <Text
-        allowFontScaling={true}
         color={undefined}
         markdown={false}
-        onLayout={[Function]}
         style={
           Object {
             "color": "rgb(45, 47, 127)",

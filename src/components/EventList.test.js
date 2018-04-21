@@ -57,16 +57,82 @@ const events = [
   ]
 ];
 
-it("renders correctly", () => {
-  const output = shallow(
-    <EventList
-      events={events}
-      locale="en-GB"
-      refreshing={false}
-      onRefresh={() => {}}
-      onPress={() => {}}
-      getAssetById={() => {}}
-    />
-  );
-  expect(output).toMatchSnapshot();
+describe("EventList", () => {
+  const render = props =>
+    shallow(
+      <EventList
+        events={events}
+        locale="en-GB"
+        refreshing={false}
+        onRefresh={() => {}}
+        onPress={() => {}}
+        getAssetById={() => {}}
+        {...props}
+      />
+    );
+
+  it("renders correctly", () => {
+    const output = render();
+    expect(output).toMatchSnapshot();
+  });
+
+  describe("#shouldComponentUpdate", () => {
+    const props = {
+      locale: "en-GB",
+      refreshing: false,
+      events
+    };
+
+    it("stops update if locale, refresing and events stay the same", () => {
+      const nextProps = {
+        locale: "en-GB",
+        refreshing: false,
+        events: events.slice(0, 2) // force different instance
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(false);
+    });
+
+    it("allows update when locale changes", () => {
+      const nextProps = {
+        locale: "en-US",
+        refreshing: false,
+        events
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+
+    it("allows update when refreshing", () => {
+      const nextProps = {
+        locale: "en-GB",
+        refreshing: true,
+        events
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+
+    it("allows update when events changue", () => {
+      const nextProps = {
+        locale: "en-GB",
+        refreshing: false,
+        events: events.slice(0, 1)
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+  });
 });

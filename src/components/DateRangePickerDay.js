@@ -1,6 +1,7 @@
 // @flow
-import React from "react";
+import React, { Component } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import { equals } from "ramda";
 import Text from "./Text";
 
 import {
@@ -70,7 +71,22 @@ const dotStyle = (marking: DayMarking) => [
     : { backgroundColor: dateRangePickerSelectedColor }
 ];
 
-export default class Day extends React.PureComponent<DayProps> {
+export default class Day extends Component<DayProps> {
+  shouldComponentUpdate = (nextProps: DayProps): boolean => {
+    const { state, marking, date } = this.props;
+    const {
+      state: nextState,
+      marking: nextMarking,
+      date: nextDate
+    } = nextProps;
+
+    return (
+      state !== nextState ||
+      !equals(marking, nextMarking) ||
+      !equals(date, nextDate)
+    );
+  };
+
   onPress = () => {
     if (this.props.state !== "disabled") this.props.onPress(this.props.date);
   };

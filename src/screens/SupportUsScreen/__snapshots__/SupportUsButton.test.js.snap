@@ -62,9 +62,7 @@ exports[`picks different icon for external links 1`] = `
       }
     >
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
         style={
           Object {
             "color": "#ffffff",
@@ -90,9 +88,7 @@ exports[`picks different icon for external links 1`] = `
       />
     </View>
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#ffffff",
@@ -168,9 +164,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
       }
     >
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
         style={
           Object {
             "color": "#2d2f7f",
@@ -196,9 +190,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
       />
     </View>
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#2d2f7f",
@@ -274,9 +266,7 @@ exports[`renders correctly 1`] = `
       }
     >
       <Text
-        allowFontScaling={true}
         markdown={false}
-        onLayout={[Function]}
         style={
           Object {
             "color": "#ffffff",
@@ -302,9 +292,7 @@ exports[`renders correctly 1`] = `
       />
     </View>
     <Text
-      allowFontScaling={true}
       markdown={false}
-      onLayout={[Function]}
       style={
         Object {
           "color": "#ffffff",

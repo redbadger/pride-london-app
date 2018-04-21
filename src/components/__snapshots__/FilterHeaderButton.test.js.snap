@@ -25,9 +25,7 @@ exports[`renders badge value when provided 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
     markdown={false}
-    onLayout={[Function]}
     style={
       Array [
         Object {
