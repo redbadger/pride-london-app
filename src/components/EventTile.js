@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     width: 167,
     height: 200,
     flexDirection: "column",
-    overflow: "hidden"
+    overflow: "hidden",
+    flex: 1
   },
   imageContainer: {
     width: 167,
@@ -61,10 +62,10 @@ const styles = StyleSheet.create({
     backgroundColor: imageBgColor
   },
   categoryPillContainer: {
+    position: "absolute",
     flexWrap: "wrap",
-    width: 156,
-    marginTop: 96,
-    marginLeft: 11
+    bottom: 0,
+    right: 0
   },
   details: {
     minHeight: 60,
