@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`EventList renders correctly 1`] = `
 <SectionList
   ItemSeparatorComponent={[Function]}
   SectionSeparatorComponent={[Function]}
