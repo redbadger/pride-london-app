@@ -13,7 +13,7 @@ type State = {
   size: ScreenSize
 };
 
-const getScreenSize = (): ScreenSize => {
+export const getScreenSize = (): ScreenSize => {
   const { width } = Dimensions.get("window");
   if (width >= 440) {
     return "large";

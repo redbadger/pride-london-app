@@ -4,9 +4,12 @@ import { View, ScrollView, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
 import Button from "../../components/Button";
-import ContentPadding from "../../components/ContentPadding";
+import ContentPadding, {
+  getContentPadding
+} from "../../components/ContentPadding";
 import SectionHeader from "../../components/SectionHeader";
 import CheckBox from "../../components/CheckBox";
+import ScreenSizeProvider from "../../components/ScreenSizeProvider";
 import { bgColor, filterModalShadow } from "../../constants/colors";
 import tags from "../../data/tags";
 import text from "../../constants/text";
@@ -90,25 +93,27 @@ class FilterModal extends PureComponent<Props> {
                         : null
                     }
                   />
-                  <ContentPadding>
-                    {tags[sectionName].map(sectionValue => (
-                      <CheckBox
-                        key={sectionValue}
-                        onChange={() => {
-                          onChange({
-                            [sectionName]: this.toggleTagFilter(
-                              eventFilters[sectionName],
-                              sectionValue
-                            )
-                          });
-                        }}
-                        checked={eventFilters[sectionName].has(sectionValue)}
-                        // $FlowFixMe
-                        label={text.tags[sectionValue] || sectionValue}
-                        style={styles.checkbox}
-                      />
-                    ))}
-                  </ContentPadding>
+                  <ScreenSizeProvider>
+                    {size =>
+                      tags[sectionName].map(sectionValue => (
+                        <CheckBox
+                          key={sectionValue}
+                          onChange={() => {
+                            onChange({
+                              [sectionName]: this.toggleTagFilter(
+                                eventFilters[sectionName],
+                                sectionValue
+                              )
+                            });
+                          }}
+                          checked={eventFilters[sectionName].has(sectionValue)}
+                          // $FlowFixMe
+                          label={text.tags[sectionValue] || sectionValue}
+                          style={[getContentPadding(size), styles.checkbox]}
+                        />
+                      ))
+                    }
+                  </ScreenSizeProvider>
                 </Fragment>
               )
           )}
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginTop: 6
   },
-  checkbox: { marginVertical: 4 }
+  checkbox: { paddingVertical: 16 }
 });
 
 export default FilterModal;
