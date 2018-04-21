@@ -63,7 +63,7 @@ class EventDetailsScreen extends PureComponent<Props> {
     const { event, getAssetUrl } = this.props;
     return (
       <View style={styles.container}>
-        <Header>
+        <Header backgroundColor={darkBlueGreyTwoColor}>
           <ContentPadding style={styles.headerContent}>
             <IconButton
               accessibilityLabel="Back"
@@ -118,8 +118,7 @@ const styles = StyleSheet.create({
   },
   headerContent: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: darkBlueGreyTwoColor
+    justifyContent: "space-between"
   },
   sectionDivider: {
     backgroundColor: lightishGreyColor,

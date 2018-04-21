@@ -11,6 +11,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
   }
 >
   <ContentPadding
+    padding={Object {}}
     style={
       Object {
         "borderWidth": 0,
@@ -45,6 +46,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     />
   </View>
   <ContentPadding
+    padding={Object {}}
     style={Object {}}
   >
     <View>
