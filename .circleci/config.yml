@@ -189,7 +189,7 @@ jobs:
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
-          working_directory: /Users/distiller/project/
+          working_directory: /Users/distiller/project
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
@@ -231,7 +231,7 @@ jobs:
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
-          working_directory: /Users/distiller/project/
+          working_directory: /Users/distiller/project
       - run: bundle install
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
