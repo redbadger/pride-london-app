@@ -27,12 +27,15 @@ gems-key: &gems-key
   gems-{{ checksum "Gemfile.lock" }}
 brew-key: &brew-key
   brew-{{ checksum "BrewFile" }}
-restore-gradlecache: &restore-gradle-cache
+restore-gradle-cache: &restore-gradle-cache
   restore_cache:
     key: *gradle-key 
 restore-gems-cache: &restore-gems-cache
   restore_cache:
     key: *gems-key
+restore-brew-cache: &restore-brew-cache
+  restore_cache:
+    key: *brew-key
 save-gradle-cache: &save-gradle-cache
   save_cache:
     key: *gradle-key
@@ -49,9 +52,6 @@ save-brew-cache: &save-brew-cache
     key: *brew-key
     paths:
       - /usr/local/Homebrew
-restore-brew-cache: &restore-brew-cache
-  save_cache:
-    key: *brew-key
 
 version: 2
 jobs:
