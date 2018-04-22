@@ -11,7 +11,7 @@
     "test": "jest src --maxWorkers=2",
     "test:e2e": "yarn test:e2e:build && yarn test:e2e:run",
     "test:e2e:dev": "detox test --reuse",
-    "test:e2e:run": "detox test -c ios.sim.debug",
+    "test:e2e:run": "detox test -c ios.sim.debug --debug-synchronization",
     "test:e2e:build": "detox build",
     "precommit": "lint-staged",
     "lint": "eslint src",
