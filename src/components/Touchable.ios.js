@@ -4,15 +4,20 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import type { TouchableProps } from "./TouchableTypes";
 import { TouchableDefaultProps } from "./TouchableTypes";
 
-const Touchable = ({ children, style, ...props }: TouchableProps) => (
-  <TouchableOpacity
-    style={[styles.defaults, style]}
-    {...props}
-    accessibilityTraits={props.disabled ? ["button", "disabled"] : ["button"]}
-  >
-    {children}
-  </TouchableOpacity>
-);
+const Touchable = ({ children, style, ...props }: TouchableProps) => {
+  const accessibilityTraits =
+    props.accessibilityTraits ||
+    (props.disabled ? ["button", "disabled"] : ["button"]);
+  return (
+    <TouchableOpacity
+      style={[styles.defaults, style]}
+      {...props}
+      accessibilityTraits={accessibilityTraits}
+    >
+      {children}
+    </TouchableOpacity>
+  );
+};
 
 Touchable.defaultProps = {
   ...TouchableDefaultProps,
