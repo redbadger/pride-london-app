@@ -159,4 +159,84 @@ describe("FilterModal", () => {
     const header = output.find("Header");
     expect(header.props().showClear).toBe(false);
   });
+
+  it("dispatches new filter when checkbox checked", () => {
+    const navigation = {
+      addListener: () => {}
+    };
+    const eventFilters = {
+      price: new Set()
+    };
+    const onChangeSpy = jest.fn();
+    const output = shallow(
+      <FilterModal
+        navigation={navigation}
+        applyButtonText="Show 26 events"
+        onChange={onChangeSpy}
+        onApply={() => {}}
+        onCancel={() => {}}
+        eventFilters={eventFilters}
+        numTagFiltersSelected={eventFilters.price.size}
+        numEventsSelected={1}
+      />
+    );
+
+    output.instance().handleCheckboxChange("price", "free");
+
+    expect(onChangeSpy).toHaveBeenCalledWith({ price: new Set(["free"]) });
+  });
+
+  it("dispatches filter removed when checkbox unchecked", () => {
+    const navigation = {
+      addListener: () => {}
+    };
+    const eventFilters = {
+      price: new Set(["free"])
+    };
+    const onChangeSpy = jest.fn();
+    const output = shallow(
+      <FilterModal
+        navigation={navigation}
+        applyButtonText="Show 26 events"
+        onChange={onChangeSpy}
+        onApply={() => {}}
+        onCancel={() => {}}
+        eventFilters={eventFilters}
+        numTagFiltersSelected={eventFilters.price.size}
+        numEventsSelected={1}
+      />
+    );
+
+    output.instance().handleCheckboxChange("price", "free");
+
+    expect(onChangeSpy).toHaveBeenCalledWith({ price: new Set() });
+  });
+
+  it("calls on apply and goes back in navigation when apply button pressed", () => {
+    const navigation = {
+      addListener: () => {},
+      goBack: jest.fn()
+    };
+    const eventFilters = {
+      price: new Set(["free"])
+    };
+    const onApplySpy = jest.fn();
+    const output = shallow(
+      <FilterModal
+        navigation={navigation}
+        applyButtonText="Show 26 events"
+        onChange={() => {}}
+        onApply={onApplySpy}
+        onCancel={() => {}}
+        eventFilters={eventFilters}
+        numTagFiltersSelected={eventFilters.price.size}
+        numEventsSelected={1}
+      />
+    );
+
+    output.find("Button").simulate("Press");
+
+    expect(onApplySpy).toHaveBeenCalled();
+    expect(navigation.goBack).toHaveBeenCalled();
+  });
 });
