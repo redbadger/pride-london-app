@@ -184,7 +184,7 @@ jobs:
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
-          command: yarn install
+          command: cd ../ && yarn install && cd ./ios/
       - <<: *save-cache-osx
       - run:
           name: Generate .env
@@ -226,7 +226,7 @@ jobs:
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
-          command: yarn install
+          command: cd ../ && yarn install && cd ./ios/
       - <<: *save-cache-osx
       - run:
           name: Generate .env
@@ -280,7 +280,7 @@ jobs:
           key: dependencies-osx-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
-          command: yarn install
+          command: cd ../ && yarn install && cd ./ios/
       - save_cache:
           paths:
             - ../node_modules
