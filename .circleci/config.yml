@@ -8,12 +8,12 @@ save-cache: &save-cache
     key: dependencies-{{ checksum "yarn.lock" }}
 get-cache-osx: &get-cache-osx
   restore_cache:
-    key: dependencies-osx-{{ checksum "../yarn.lock" }}
+    key: *osx-npm-key
 save-cache-osx: &save-cache-osx
   save_cache:
     paths:
       - /Users/distiller/project/node_modules
-    key: dependencies-osx-{{ checksum "../yarn.lock" }}
+    key: *osx-npm-key
 android-secrets: &android-secrets
   run: 
     command: |
@@ -29,6 +29,8 @@ android-dependencies: &android-dependencies
   run:
     name: Download Android Dependencies
     command: ./gradlew androidDependencies
+osx-npm-key: &osx-npm-key
+  osx-dependencies-{{ checksum "../yarn.lock" }}
 gradle-key: &gradle-key
   jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
