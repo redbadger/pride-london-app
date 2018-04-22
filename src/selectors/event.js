@@ -1,7 +1,6 @@
 // @flow
 import type { Event } from "../data/event";
-
-const locale = "en-GB";
+import locale from "../data/locale";
 
 // eslint-disable-next-line import/prefer-default-export
 export const selectEventIsFree = (event: Event) =>
