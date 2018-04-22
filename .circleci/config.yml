@@ -274,13 +274,13 @@ jobs:
       - run:
           name: Install global npm dependencies
           command: |
-              yarn global add detox-cli
-              yarn global add react-native-cli
+              npm i -g detox-cli
+              npm i -g react-native-cli
       - restore_cache:
           key: osx-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
-          command: yarn install
+          command: npm install
       - save_cache:
           paths:
             - /Users/distiller/project/node_modules
