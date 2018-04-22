@@ -262,17 +262,17 @@ jobs:
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - run:
-          name: pre-start simulator
+          name: Pre-start simulator
           command: xcrun simctl boot "iPhone 7" || true
       - <<: *restore-brew-cache
       - run:
-          name: install HomeBrew dependencies
+          name: Install HomeBrew dependencies
           command: |
               brew tap homebrew/bundle
               brew bundle
       - <<: *save-brew-cache
       - run:
-          name: install global npm dependencies
+          name: Install global npm dependencies
           command: |
               yarn global add detox-cli
               yarn global add react-native-cli
