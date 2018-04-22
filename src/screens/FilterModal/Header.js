@@ -28,10 +28,11 @@ const Header = ({ onClearPress, onCancelPress, showClear }: Props) => (
         </Text>
       </View>
       <ActionButton
-        key={showClear ? 1 : 0}
         label={text.clearAll}
         onPress={onClearPress}
         style={showClear ? styles.show : styles.hide}
+        // forces component to re-render after change in style
+        key={showClear ? 1 : 0}
       />
     </ContentPadding>
   </SafeAreaView>
