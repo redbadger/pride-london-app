@@ -193,7 +193,7 @@ jobs:
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
-                bundle exec ios fastlane alpha \
+                bundle exec fastlane alpha \
                 submit:true \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
