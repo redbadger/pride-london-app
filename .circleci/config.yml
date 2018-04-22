@@ -232,7 +232,7 @@ jobs:
       # differ between the macOS image and the Docker containers above.
       - run:
           name: pre-start simulator
-          command: xcrun simctl boot "iPhone 7 (10.3.1) [" || true
+          command: xcrun simctl boot "iPhone 7" || true
       - run:
           command: |
               brew update
