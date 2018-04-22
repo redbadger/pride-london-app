@@ -12,7 +12,7 @@ get-cache-osx: &get-cache-osx
 save-cache-osx: &save-cache-osx
   save_cache:
     paths:
-      - node_modules
+      - /Users/distiller/project/node_modules
     key: dependencies-osx-{{ checksum "../yarn.lock" }}
 android-secrets: &android-secrets
   run: 
@@ -181,9 +181,6 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - run:
-          name: change to project root
-          command: cd /Users/distiller/project
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
@@ -192,9 +189,7 @@ jobs:
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
-      - run:
-          name: change to ios folder
-          command: cd /Users/distiller/project/ios
+          working_directory: /Users/distiller/project/
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
@@ -228,9 +223,6 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - run:
-          name: change to project root
-          command: cd /Users/distiller/project
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
@@ -239,9 +231,7 @@ jobs:
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
-      - run:
-          name: change to ios folder
-          command: cd /Users/distiller/project/ios
+          working_directory: /Users/distiller/project/
       - run: bundle install
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
