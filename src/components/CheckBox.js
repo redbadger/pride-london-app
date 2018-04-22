@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Image, StyleSheet } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
 
@@ -11,7 +11,7 @@ type Props = {
   checked: boolean,
   label: string,
   onChange: Function,
-  style?: StyleObj
+  style?: DangerouslyImpreciseStyleProp
 };
 
 const CheckBox = ({ checked, label, onChange, style }: Props) => (
