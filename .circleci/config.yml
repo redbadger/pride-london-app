@@ -279,14 +279,14 @@ jobs:
               yarn global add detox-cli
               yarn global add react-native-cli
       - restore_cache:
-          key: dependencies-osx-{{ checksum "yarn.lock" }}
+          key: osx-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
           command: yarn install
       - save_cache:
           paths:
-            - ../node_modules
-          key: dependencies-osx-{{ checksum "yarn.lock" }}
+            - /Users/distiller/project/node_modules
+          key: osx-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
