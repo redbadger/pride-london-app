@@ -25,6 +25,8 @@ gradle-key: &gradle-key
   jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
   gems-{{ checksum "Gemfile.lock" }}
+brew-key: &brew-key
+  brew-{{ checksum "BrewFile" }}
 restore-gradlecache: &restore-gradle-cache
   restore_cache:
     key: *gradle-key 
@@ -42,6 +44,14 @@ save-gems-cache: &save-gems-cache
     key: *gems-key
     paths:
       - vendor/bundle
+save-brew-cache: &save-brew-cache
+  save_cache:
+    key: *brew-key
+    paths:
+      - /usr/local/Homebrew
+restore-brew-cache: &restore-brew-cache
+  save_cache:
+    key: *brew-key
 
 version: 2
 jobs:
@@ -160,12 +170,18 @@ jobs:
           command:  echo "ruby-2.4" > ~/.ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
-      - run: yarn
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *get-cache
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - <<: *save-cache
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
-      - run: bundle install
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
@@ -196,7 +212,14 @@ jobs:
           command:  echo "ruby-2.4" > ~/.ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
-      - run: yarn
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *get-cache
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - <<: *save-cache
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
@@ -233,11 +256,16 @@ jobs:
       - run:
           name: pre-start simulator
           command: xcrun simctl boot "iPhone 7" || true
+      - <<: *restore-brew-cache
       - run:
+          name: install HomeBrew dependencies
           command: |
-              brew update
-              brew tap wix/brew
-              brew install --HEAD applesimutils
+              brew tap homebrew/bundle
+              brew bundle
+      - <<: *save-brew-cache
+      - run:
+          name: install global npm dependencies
+          command: |
               yarn global add detox-cli
               yarn global add react-native-cli
       - run: yarn
