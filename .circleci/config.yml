@@ -181,7 +181,9 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      working_directory: /Users/distiller/project
+      - run:
+          name: change to project root
+          command: cd /Users/distiller/project
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
@@ -190,7 +192,9 @@ jobs:
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
-      working_directory: /Users/distiller/project/ios
+      - run:
+          name: change to ios folder
+          command: cd /Users/distiller/project/ios
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
@@ -224,7 +228,9 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      working_directory: /Users/distiller/project
+      - run:
+          name: change to project root
+          command: cd /Users/distiller/project
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
@@ -233,7 +239,9 @@ jobs:
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
-      working_directory: /Users/distiller/project/ios
+      - run:
+          name: change to ios folder
+          command: cd /Users/distiller/project/ios
       - run: bundle install
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
