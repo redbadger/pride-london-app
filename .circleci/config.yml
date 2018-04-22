@@ -222,9 +222,6 @@ jobs:
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
     shell: /bin/bash --login -o pipefail
-    machine:
-      pre:
-        - xcrun instruments -w "iPhone 7 (10.2) [" || true
     steps:
       - checkout:
           path: /Users/distiller/project
@@ -233,6 +230,9 @@ jobs:
           command:  echo "ruby-2.4" > ~/.ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
+      - run:
+          name: pre-start simulator
+          command: xcrun instruments -w "iPhone 7 (10.2) [" || true
       - run:
           command: |
               brew update
