@@ -1,19 +1,19 @@
 get-cache: &get-cache
   restore_cache:
-    key: dependencies-{{ checksum "package.json" }}
+    key: dependencies-{{ checksum "yarn.lock" }}
 save-cache: &save-cache
   save_cache:
     paths:
       - node_modules
-    key: dependencies-{{ checksum "package.json" }}
+    key: dependencies-{{ checksum "yarn.lock" }}
 get-cache-osx: &get-cache-osx
   restore_cache:
-    key: dependencies-osx-{{ checksum "../package.json" }}
+    key: dependencies-osx-{{ checksum "../yarn.lock" }}
 save-cache-osx: &save-cache-osx
   save_cache:
     paths:
       - node_modules
-    key: dependencies-osx-{{ checksum "../package.json" }}
+    key: dependencies-osx-{{ checksum "../yarn.lock" }}
 android-secrets: &android-secrets
   run: 
     command: |
@@ -184,7 +184,7 @@ jobs:
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
-          command: cd ../ && yarn install && cd ./ios/
+          command: yarn install
       - <<: *save-cache-osx
       - run:
           name: Generate .env
@@ -226,7 +226,7 @@ jobs:
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
-          command: cd ../ && yarn install && cd ./ios/
+          command: yarn install
       - <<: *save-cache-osx
       - run:
           name: Generate .env
@@ -277,14 +277,14 @@ jobs:
               yarn global add detox-cli
               yarn global add react-native-cli
       - restore_cache:
-          key: dependencies-osx-{{ checksum "package.json" }}
+          key: dependencies-osx-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
-          command: cd ../ && yarn install && cd ./ios/
+          command: yarn install
       - save_cache:
           paths:
             - ../node_modules
-          key: dependencies-osx-{{ checksum "package.json" }}
+          key: dependencies-osx-{{ checksum "yarn.lock" }}
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
