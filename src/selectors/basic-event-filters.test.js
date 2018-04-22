@@ -7,12 +7,12 @@ import {
   buildStringSetFilter,
   buildAreaFilter
 } from "./basic-event-filters";
-import type { Event } from "../data/event";
+import type { Event, EventCategoryName } from "../data/event";
 
 export type BuildEventArguments = {
   startTime?: string,
   endTime?: string,
-  eventCategories?: Array<string>,
+  eventCategories?: Array<EventCategoryName>,
   eventPriceLow?: number,
   eventPriceHigh?: number,
   location?: {

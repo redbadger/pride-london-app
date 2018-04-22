@@ -5,7 +5,7 @@ import getHours from "date-fns/get_hours";
 import startOfDay from "date-fns/start_of_day";
 import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
-import type { Event } from "../data/event";
+import type { Event, EventCategoryName } from "../data/event";
 import type { DateRange, Time } from "../data/date-time";
 import type { Area, StringFilterSet } from "../data/event-filters";
 
@@ -32,13 +32,15 @@ export const buildTimeFilter = (time: Time) => {
   return (event: Event) => getHours(event.fields.endTime[locale]) >= 18;
 };
 
-export const buildCategoryFilter = (categories: Set<string>) => {
+export const buildCategoryFilter = (categories: Set<EventCategoryName>) => {
   if (categories.size === 0) {
     /* eslint-disable no-unused-vars */
     return (_: any) => true;
   }
   return (event: Event) =>
-    event.fields.eventCategories[locale].some(value => categories.has(value));
+    event.fields.eventCategories[locale].some(value =>
+      categories.has(((value: any): EventCategoryName))
+    );
 };
 
 export const buildPriceFilter = () => (event: Event) =>

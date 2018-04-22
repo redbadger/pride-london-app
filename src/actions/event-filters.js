@@ -1,5 +1,6 @@
 // @flow
 import type { DateRange, Time } from "../data/date-time";
+import type { EventCategoryName } from "../data/event";
 import type {
   Area,
   Price,
@@ -17,7 +18,7 @@ type EventFiltersPayload = {
   date?: ?DateRange,
   timeOfDay?: Set<Time>,
   price?: Set<Price>,
-  categories?: Set<string>,
+  categories?: Set<EventCategoryName>,
   audience?: Set<Audience>,
   venueDetails?: Set<VenueDetail>,
   accessibilityOptions?: Set<AccessibilityOption>,

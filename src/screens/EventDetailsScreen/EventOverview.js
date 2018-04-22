@@ -11,7 +11,7 @@ import Text from "../../components/Text";
 import { blackColor, eucalyptusGreenColor } from "../../constants/colors";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { Event } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event";
 import locale from "../../data/locale";
 import dateIcon from "../../../assets/images/date.png";
 import genderNeutralIcon from "../../../assets/images/genderNeutral.png";
@@ -59,7 +59,7 @@ const EventOverview = ({ event }: Props) => {
         {event.fields.eventCategories[locale].map(categoryName => (
           <CategoryPill
             key={categoryName}
-            name={categoryName}
+            name={((categoryName: any): EventCategoryName)}
             style={styles.categoryPill}
           />
         ))}

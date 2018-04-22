@@ -2,7 +2,7 @@
 import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
-import type { Event } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event";
 import Component from "./component";
 import Header from "./Header";
 import Touchable from "../../components/Touchable";
@@ -24,7 +24,7 @@ describe("CategoriesFilterScreen Component", () => {
       }
     ]: any);
 
-    const stagedCategories: Set<string> = new Set(["Music"]);
+    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
 
     const component = render({
       events,
@@ -48,7 +48,7 @@ describe("CategoriesFilterScreen Component", () => {
       }
     ]: any);
 
-    const stagedCategories: Set<string> = new Set(["Music"]);
+    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const closeSpy = jest.fn();
     const goBackSpy = jest.fn();
     const nav: NavigationScreenProp<NavigationState> = ({
@@ -82,7 +82,7 @@ describe("CategoriesFilterScreen Component", () => {
       }
     ]: any);
 
-    const stagedCategories: Set<string> = new Set(["Music"]);
+    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const clearAllSpy = jest.fn();
 
     const component = render({
@@ -111,7 +111,7 @@ describe("CategoriesFilterScreen Component", () => {
       }
     ]: any);
 
-    const stagedCategories: Set<string> = new Set(["Music"]);
+    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const applyFiltersSpy = jest.fn();
     const popSpy = jest.fn();
     const nav: NavigationScreenProp<NavigationState> = ({
@@ -145,7 +145,7 @@ describe("CategoriesFilterScreen Component", () => {
       }
     ]: any);
 
-    const stagedCategories: Set<string> = new Set(["Music"]);
+    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const toggleCategoryFilterSpy = jest.fn();
 
     const component = render({

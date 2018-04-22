@@ -13,14 +13,15 @@ import {
   lightNavyBlueColor
 } from "../constants/colors";
 import text from "../constants/text";
-import type { DateRange } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
+import type { DateRange } from "../data/date-time";
+import type { EventCategoryName } from "../data/event";
 
 export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateRange,
   onFilterButtonPress: () => void,
-  selectedCategories: Set<string>,
+  selectedCategories: Set<EventCategoryName>,
   numTagFiltersSelected: number
 };
 

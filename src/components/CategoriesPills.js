@@ -13,9 +13,10 @@ import {
   blackZeroColor,
   blackThirtyColor
 } from "../constants/colors";
+import type { EventCategoryName } from "../data/event";
 
 type Props = {
-  selectedCategories: Set<string>,
+  selectedCategories: Set<EventCategoryName>,
   style?: StyleObj
 };
 

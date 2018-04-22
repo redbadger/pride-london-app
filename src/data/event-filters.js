@@ -1,5 +1,6 @@
 // @flow
-import type { DateRange, Time } from "../data/date-time";
+import type { DateRange, Time } from "./date-time";
+import type { EventCategoryName } from "./event";
 
 export type Area = "Central" | "East" | "North" | "South" | "West";
 export type Price = "free";
@@ -18,7 +19,7 @@ export type AccessibilityOption =
 export type FilterCollection = {
   date: ?DateRange,
   timeOfDay: Set<Time>,
-  categories: Set<string>,
+  categories: Set<EventCategoryName>,
   price: Set<Price>,
   audience: Set<Audience>,
   venueDetails: Set<VenueDetail>,
@@ -35,7 +36,7 @@ export type TagFilterSet =
   | Set<Time>;
 
 export type StringFilterSet =
-  | Set<string>
+  | Set<EventCategoryName>
   | Set<Audience>
   | Set<VenueDetail>
   | Set<AccessibilityOption>;

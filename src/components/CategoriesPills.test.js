@@ -2,6 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import CategoriesPills from "./CategoriesPills";
+import type { EventCategoryName } from "../data/event";
 
 const render = props => shallow(<CategoriesPills {...props} />);
 
@@ -18,7 +19,10 @@ describe("CategoriesPills Component", () => {
   });
 
   it("renders categories pills", () => {
-    const selectedCategories: Set<string> = new Set(["Music", "Community"]);
+    const selectedCategories: Set<EventCategoryName> = new Set([
+      "Music",
+      "Community"
+    ]);
     const output = render({ selectedCategories });
     const categoriesPills = output.find("ScrollView").children();
 
