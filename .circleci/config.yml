@@ -278,6 +278,8 @@ jobs:
               npm i -g react-native-cli
       - restore_cache:
           key: osx-dependencies-{{ checksum "package.json" }}
+      - run: npm i -g n
+      - run: sudo n 9.3
       - run:
           name: Install dependencies
           command: npm install
