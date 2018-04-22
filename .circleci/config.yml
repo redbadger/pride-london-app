@@ -6,6 +6,14 @@ save-cache: &save-cache
     paths:
       - node_modules
     key: dependencies-{{ checksum "package.json" }}
+get-cache-osx: &get-cache-osx
+  restore_cache:
+    key: dependencies-osx-{{ checksum "../package.json" }}
+save-cache-osx: &save-cache-osx
+  save_cache:
+    paths:
+      - node_modules
+    key: dependencies-osx-{{ checksum "../package.json" }}
 android-secrets: &android-secrets
   run: 
     command: |
@@ -173,15 +181,11 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - restore_cache:
-          key: dependencies-{{ checksum "../package.json" }}
+      - <<: *get-cache-osx
       - run:
           name: Install dependencies
           command: yarn install
-      - save_cache:
-          paths:
-            - ../node_modules
-          key: dependencies-{{ checksum "../package.json" }}
+      - <<: *save-cache-osx
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
@@ -219,15 +223,11 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - restore_cache:
-          key: dependencies-{{ checksum "../package.json" }}
+      - <<: *get-cache-osx
       - run:
           name: Install dependencies
           command: yarn install
-      - save_cache:
-          paths:
-            - ../node_modules
-          key: dependencies-{{ checksum "../package.json" }}
+      - <<: *save-cache-osx
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
