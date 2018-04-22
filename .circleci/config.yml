@@ -181,6 +181,7 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
+      working_directory: /Users/distiller/project
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
@@ -189,11 +190,11 @@ jobs:
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
-          working_directory: /Users/distiller/project
+      working_directory: /Users/distiller/project/ios
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
-                bundle exec fastlane alpha \
+                bundle exec ios fastlane alpha \
                 submit:true \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
@@ -223,6 +224,7 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
+      working_directory: /Users/distiller/project
       - <<: *get-cache-osx
       - run:
           name: Install dependencies
@@ -231,7 +233,7 @@ jobs:
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
-          working_directory: /Users/distiller/project
+      working_directory: /Users/distiller/project/ios
       - run: bundle install
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
@@ -249,7 +251,7 @@ jobs:
   e2e-ios:
     macos:
       xcode: "9.2.0"
-    working_directory: /Users/distiller/project/
+    working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
     shell: /bin/bash --login -o pipefail
