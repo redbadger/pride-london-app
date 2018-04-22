@@ -276,11 +276,15 @@ jobs:
           command: |
               yarn global add detox-cli
               yarn global add react-native-cli
-      - <<: *get-cache
+      - restore_cache:
+          key: dependencies-osx-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
           command: yarn install
-      - <<: *save-cache
+      - save_cache:
+          paths:
+            - ../node_modules
+          key: dependencies-osx-{{ checksum "package.json" }}
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
