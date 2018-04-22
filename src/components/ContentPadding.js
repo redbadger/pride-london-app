@@ -25,7 +25,7 @@ const defaultPadding = {
   large: { horizontal: 0, vertical: 0 }
 };
 
-const getPaddingStyle = (size: ScreenSize, padding?: PaddingOption) => {
+const paddingStyle = (size: ScreenSize, padding?: PaddingOption) => {
   const selectedPadding = (padding || {})[size] || defaultPadding[size];
   return {
     paddingHorizontal: selectedPadding.horizontal,
@@ -36,7 +36,7 @@ const getPaddingStyle = (size: ScreenSize, padding?: PaddingOption) => {
 const ContentPadding = ({ children, padding, style }: Props) => (
   <ScreenSizeProvider>
     {size => (
-      <View style={[getPaddingStyle(size, padding), style]}>{children}</View>
+      <View style={[paddingStyle(size, padding), style]}>{children}</View>
     )}
   </ScreenSizeProvider>
 );
@@ -46,5 +46,5 @@ ContentPadding.defaultProps = {
   style: {}
 };
 
-export const getContentPadding = getPaddingStyle;
+export const getContentPadding = paddingStyle;
 export default ContentPadding;
