@@ -173,11 +173,15 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
+      - run: 
+          command: cd ../
       - <<: *get-cache
       - run:
           name: Install dependencies
           command: yarn install
       - <<: *save-cache
+      - run:
+          command: cd ./ios/
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
@@ -215,11 +219,15 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
+      - run: 
+          command: cd ../
       - <<: *get-cache
       - run:
           name: Install dependencies
           command: yarn install
       - <<: *save-cache
+      - run:
+          command: cd ./ios/
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
