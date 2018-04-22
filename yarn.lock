@@ -1833,6 +1833,10 @@ commander@^2.11.0, commander@^2.13.0:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.14.1.tgz#2235123e37af8ca3c65df45b026dbd357b01b9aa"
 
+commander@^2.15.1:
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
+
 commander@^2.9.0:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.0.tgz#ad2a23a1c3b036e392469b8012cec6b33b4c1322"
@@ -2199,12 +2203,12 @@ detox-server@^7.0.0:
     npmlog "^4.0.2"
     ws "^1.1.0"
 
-detox@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/detox/-/detox-7.1.0.tgz#74f4c750bab3e502b8c86b5217a0ef2de55aee94"
+detox@^7.3.3:
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/detox/-/detox-7.3.3.tgz#46c1a3d1501bbb9017782f6ef6c174b3531b67c3"
   dependencies:
     child-process-promise "^2.2.0"
-    commander "^2.9.0"
+    commander "^2.15.1"
     detox-server "^7.0.0"
     fs-extra "^4.0.2"
     get-port "^2.1.0"

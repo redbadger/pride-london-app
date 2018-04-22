@@ -48,7 +48,7 @@
     "babel-preset-react-native": "4.0.0",
     "commander": "^2.13.0",
     "contentful-management": "^4.1.4",
-    "detox": "^7.1.0",
+    "detox": "^7.3.3",
     "dotenv": "^5.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
