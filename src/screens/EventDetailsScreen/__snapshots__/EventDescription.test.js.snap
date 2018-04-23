@@ -8,7 +8,6 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "marginBottom": 4,
-        "marginTop": 8,
       }
     }
     type="h2"
@@ -20,11 +19,12 @@ exports[`renders correctly 1`] = `
       scrollEnabled={false}
       style={
         Object {
-          "height": 100,
+          "height": 0,
         }
       }
     >
       <Text
+        color="blackColor"
         markdown={true}
         onLayout={[Function]}
         type="text"
@@ -34,62 +34,6 @@ exports[`renders correctly 1`] = `
 Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.
       </Text>
     </AnimatedComponent>
-    <AnimatedComponent
-      style={
-        Array [
-          Object {
-            "bottom": 0,
-            "height": 60,
-            "position": "absolute",
-            "width": "100%",
-          },
-          Object {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <LinearGradient
-        colors={
-          Array [
-            "rgba(255, 255, 255, 0)",
-            "#ffffff",
-          ]
-        }
-        style={
-          Object {
-            "bottom": 0,
-            "height": 60,
-            "position": "absolute",
-            "width": "100%",
-          }
-        }
-      />
-    </AnimatedComponent>
-  </Component>
-  <TextLink
-    onPress={[Function]}
-    style={
-      Object {
-        "alignSelf": "flex-end",
-      }
-    }
-    type="h4"
-  >
-    Read more
-  </TextLink>
-  <Component
-    style={
-      Object {
-        "marginTop": 8,
-      }
-    }
-  >
-    <EventMap
-      lat={51.4875152}
-      locationName="Vauxhall Pleasure Gardens"
-      lon={-0.12092150000000856}
-    />
   </Component>
 </Component>
 `;

@@ -33,6 +33,7 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -44,6 +45,7 @@ exports[`renders correctly 1`] = `
       Fri, 17 March
     </Text>
     <Text
+      color="blackColor"
       ellipsizeMode="tail"
       markdown={false}
       numberOfLines={2}

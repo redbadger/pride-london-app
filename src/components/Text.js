@@ -6,11 +6,11 @@ import Markdown from "react-native-easy-markdown";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
-export type TextColor = "lightNavyBlueColor";
+export type TextColor = "lightNavyBlueColor" | "blackColor";
 
 type Props = {
   type: TextType,
-  color: ?TextColor,
+  color: TextColor,
   markdown: boolean,
   ...TextProps
 };
@@ -19,13 +19,13 @@ class Text extends React.PureComponent<Props> {
   static defaultProps = {
     type: "text",
     markdown: false,
-    color: undefined
+    color: "blackColor"
   };
 
   render() {
     const { markdown, style, ...otherProps } = this.props;
     const type: TextType = (this.props.type: any);
-    const color: ?TextColor = (this.props.color: any);
+    const color: TextColor = (this.props.color: any);
     return markdown ? (
       <Markdown
         style={style}
@@ -79,6 +79,9 @@ const textStyles = {
     fontFamily: "Roboto-Bold",
     fontSize: 14,
     lineHeight: 20
+  },
+  blackColor: {
+    color: blackColor
   },
   lightNavyBlueColor: {
     color: lightNavyBlueColor

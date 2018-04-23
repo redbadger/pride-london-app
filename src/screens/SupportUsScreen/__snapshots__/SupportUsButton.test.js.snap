@@ -62,6 +62,7 @@ exports[`picks different icon for external links 1`] = `
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -88,6 +89,7 @@ exports[`picks different icon for external links 1`] = `
       />
     </Component>
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -164,6 +166,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -190,6 +193,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
       />
     </Component>
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -266,6 +270,7 @@ exports[`renders correctly 1`] = `
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -292,6 +297,7 @@ exports[`renders correctly 1`] = `
       />
     </Component>
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {

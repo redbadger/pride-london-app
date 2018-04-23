@@ -3,20 +3,17 @@
 exports[`renders correctly 1`] = `
 <Component
   style={
-    Array [
-      Object {
-        "flex": 1,
-        "flexDirection": "row",
-      },
-      Object {},
-    ]
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+    }
   }
 >
   <Component
     style={
       Object {
-        "height": 20,
-        "marginRight": 18,
+        "height": 32,
+        "marginRight": 12,
         "width": 40,
       }
     }
@@ -33,6 +30,7 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "flex": 1,
+        "paddingTop": 2,
       }
     }
   >

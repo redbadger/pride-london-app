@@ -18,6 +18,7 @@ exports[`Header Component renders correctly 1`] = `
     />
   </Component>
   <Text
+    color="blackColor"
     markdown={false}
     style={
       Object {

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does not wrap null components 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "marginVertical": -8,
+      },
+      Object {
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      },
+    ]
+  }
+>
+  <Component
+    key=".0"
+    style={
+      Object {
+        "marginVertical": 8,
+      }
+    }
+  >
+    <Component />
+  </Component>
+  <Component
+    key=".2"
+    style={
+      Object {
+        "marginVertical": 8,
+      }
+    }
+  >
+    <Component />
+  </Component>
+</Component>
+`;
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "marginVertical": -8,
+      },
+      Object {
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      },
+    ]
+  }
+>
+  <Component
+    key=".0"
+    style={
+      Object {
+        "marginVertical": 8,
+      }
+    }
+  >
+    <Component />
+  </Component>
+  <Component
+    key=".1"
+    style={
+      Object {
+        "marginVertical": 8,
+      }
+    }
+  >
+    <Component />
+  </Component>
+  <Component
+    key=".2"
+    style={
+      Object {
+        "marginVertical": 8,
+      }
+    }
+  >
+    <Component />
+  </Component>
+</Component>
+`;

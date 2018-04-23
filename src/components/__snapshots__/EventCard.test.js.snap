@@ -37,6 +37,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -58,6 +59,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     }
   >
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -76,6 +78,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -89,6 +92,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       </Text>
     </Component>
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -143,6 +147,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -164,6 +169,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     }
   >
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -182,6 +188,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -195,6 +202,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       </Text>
     </Component>
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -249,6 +257,7 @@ exports[`renders correctly when isFree is true 1`] = `
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -270,6 +279,7 @@ exports[`renders correctly when isFree is true 1`] = `
     }
   >
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {
@@ -288,6 +298,7 @@ exports[`renders correctly when isFree is true 1`] = `
       }
     >
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -301,6 +312,7 @@ exports[`renders correctly when isFree is true 1`] = `
       </Text>
     </Component>
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {

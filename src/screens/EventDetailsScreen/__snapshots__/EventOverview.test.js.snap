@@ -1,84 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component>
-  <Text
-    markdown={false}
-    style={
-      Object {
-        "marginTop": 24,
-      }
-    }
-    type="h1"
-  >
-    Pride in the Park
-  </Text>
-  <Component
-    style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "wrap",
-        "marginBottom": 16,
-        "marginTop": 16,
-      }
-    }
-  >
-    <CategoryPill
-      key="Community"
-      name="Community"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Social and Networking"
-      name="Social and Networking"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Sports and Activities"
-      name="Sports and Activities"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Music"
-      name="Music"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-  </Component>
+<LayoutColumn
+  spacing={16}
+>
   <IconItem
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
       />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
     }
   >
     <Text
@@ -89,12 +19,8 @@ exports[`renders correctly 1`] = `
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
     </Text>
     <Text
+      color="blackColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#111111",
-        }
-      }
       type="small"
     >
       11:00AM - 6:00PM
@@ -104,89 +30,52 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
       />
     }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
   >
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      delayPressIn={50}
-      onPress={[Function]}
-    >
-      <Component
-        style={
-          Object {
-            "alignSelf": "flex-start",
-            "borderBottomColor": "#2cda9d",
-            "borderBottomWidth": 1,
-            "marginBottom": 2,
-          }
-        }
+    <Component>
+      <TextLink
+        onPress={[Function]}
       >
-        <Text
-          color="lightNavyBlueColor"
-          markdown={false}
-          type="h4"
-        >
-          Vauxhall Pleasure Gardens
-        </Text>
-      </Component>
+        Vauxhall Pleasure Gardens
+      </TextLink>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         London
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         EC1M 3HA
       </Text>
-    </Touchable>
+    </Component>
   </IconItem>
   <IconItem
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": -3,
-          }
-        }
       />
     }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    key="c"
   >
     <Text
       color="lightNavyBlueColor"
@@ -200,18 +89,9 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": -2,
-          }
-        }
       />
     }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    key="d"
   >
     <Text
       color="lightNavyBlueColor"
@@ -225,14 +105,9 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": 3,
-          }
-        }
       />
     }
-    style={Object {}}
+    key="e"
   >
     <Text
       color="lightNavyBlueColor"
@@ -242,16 +117,12 @@ exports[`renders correctly 1`] = `
       Accessibility
     </Text>
     <Text
+      color="blackColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#111111",
-        }
-      }
       type="small"
     >
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</Component>
+</LayoutColumn>
 `;
