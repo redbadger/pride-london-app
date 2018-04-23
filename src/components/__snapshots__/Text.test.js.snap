@@ -4,7 +4,6 @@ exports[`renders correctly 1`] = `
 <Text
   accessible={true}
   allowFontScaling={true}
-  color="blackColor"
   ellipsizeMode="tail"
   style={
     Array [
@@ -19,7 +18,6 @@ exports[`renders correctly 1`] = `
       undefined,
     ]
   }
-  type="text"
 >
   Some text
 </Text>
@@ -27,7 +25,6 @@ exports[`renders correctly 1`] = `
 
 exports[`renders markdown component based on flag 1`] = `
 <Markdown
-  color="blackColor"
   debug={false}
   markdownStyles={
     Object {
@@ -82,7 +79,6 @@ exports[`renders markdown component based on flag 1`] = `
     }
   }
   parseInline={false}
-  type="text"
   useDefaultStyles={true}
 >
   **Some markdown**

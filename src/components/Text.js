@@ -24,9 +24,7 @@ class Text extends React.PureComponent<Props> {
   };
 
   render() {
-    const { markdown, style, ...otherProps } = this.props;
-    const type: TextType = (this.props.type: any);
-    const color: TextColor = (this.props.color: any);
+    const { color, type, markdown, style, ...otherProps } = this.props;
     return markdown ? (
       <Markdown
         style={style}
