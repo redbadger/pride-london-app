@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import eventCategories from "../constants/event-categories";
 import locale from "../data/locale";
@@ -19,7 +19,7 @@ const categoryStyleBackgroundColor = (category: string) => {
 
 type Props = {
   name: string,
-  style?: DangerouslyImpreciseStyleProp
+  style?: ViewStyleProp
 };
 
 const CategoryPill = ({ name, style }: Props) => (

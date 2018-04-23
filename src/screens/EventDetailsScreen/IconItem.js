@@ -2,12 +2,12 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { Node } from "react";
-import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 
 type IconItemProps = {|
   icon: Node,
   children: Node,
-  style?: DangerouslyImpreciseStyleProp
+  style?: ViewStyleProp
 |};
 
 const IconItem = ({ icon, children, style }: IconItemProps) => (

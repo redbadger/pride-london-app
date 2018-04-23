@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { StyleSheet } from "react-native";
-import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
 import { filterButtonTextColor } from "../constants/colors";
@@ -11,7 +11,7 @@ type Props = {
   label: string,
   onPress: Function,
   onRef?: Function,
-  style?: DangerouslyImpreciseStyleProp
+  style?: ViewStyleProp
 };
 
 const FilterHeaderButton = ({ text, label, onPress, onRef, style }: Props) => (

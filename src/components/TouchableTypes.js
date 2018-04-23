@@ -5,11 +5,11 @@ import type {
   AccessibilityTrait
 } from "react-native/Libraries/Components/View/ViewAccessibility";
 import type { EdgeInsetsProp } from "react-native/Libraries/StyleSheet/EdgeInsetsPropType";
-import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 
 export type TouchableProps = {
   children: Node,
-  style?: DangerouslyImpreciseStyleProp,
+  style?: ViewStyleProp,
   accessible?: boolean,
   accessibilityComponentType?: AccessibilityComponentType,
   accessibilityTraits?: AccessibilityTrait[],

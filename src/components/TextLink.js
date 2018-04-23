@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import type { TextStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import { eucalyptusGreenColor } from "../constants/colors";
 import Touchable from "../components/Touchable";
@@ -10,7 +10,7 @@ import type { TextType } from "./Text";
 type Props = {
   children: string,
   onPress: Function,
-  style?: TextStyleProp,
+  style?: ViewStyleProp,
   type?: TextType
 };
 

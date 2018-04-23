@@ -2,7 +2,7 @@
 import React from "react";
 import type { Node } from "react";
 import { View } from "react-native";
-import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import ScreenSizeProvider from "./ScreenSizeProvider";
 import type { ScreenSize } from "./ScreenSizeProvider";
 
@@ -14,7 +14,7 @@ type Padding = {
 type Props = {
   children: Node,
   padding?: { [ScreenSize]: Padding },
-  style?: DangerouslyImpreciseStyleProp
+  style?: ViewStyleProp
 };
 
 const defaultPadding = {

@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, Image, PixelRatio } from "react-native";
-import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Touchable from "./Touchable";
 import {
   interestButtonBgColor,
@@ -20,7 +20,7 @@ type Props = {
 };
 
 type CategoriesFilterButtonProps = {
-  style?: DangerouslyImpreciseStyleProp,
+  style?: ViewStyleProp,
   onPress: Function
 };
 

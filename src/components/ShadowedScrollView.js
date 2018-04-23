@@ -2,12 +2,12 @@
 import React from "react";
 import { StyleSheet, ScrollView, View, Animated } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import { blackZeroColor, blackThirtyColor } from "../constants/colors";
 
 type Props = {
   children: Array<Object>,
-  style: DangerouslyImpreciseStyleProp
+  style: ViewStyleProp
 };
 
 const shadowFadeDuration: number = 100;

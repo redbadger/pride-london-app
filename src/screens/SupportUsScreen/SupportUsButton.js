@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Image, Linking, PixelRatio, StyleSheet, View } from "react-native";
-import type { DangerouslyImpreciseStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import chevronRightCircleWhite from "../../../assets/images/chevronRightCircleWhite.png";
 import externalLinkBlue from "../../../assets/images/externalLinkBlue.png";
@@ -27,7 +27,7 @@ type Props = {
   url: string,
   isExternalLink?: boolean,
   contrast?: boolean,
-  style?: DangerouslyImpreciseStyleProp
+  style?: ViewStyleProp
 };
 
 const pickLinkIcon = (isExternalLink: boolean, contrast: boolean) => {
