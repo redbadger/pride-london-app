@@ -2,6 +2,7 @@
 import React from "react";
 import { Image, View, StyleSheet } from "react-native";
 import { email as sendEmail, phonecall } from "react-native-communications";
+import LayoutColumn from "../../components/LayoutColumn";
 import Text from "../../components/Text";
 import IconItem from "./IconItem";
 import emailIcon from "../../../assets/images/email.png";
@@ -15,12 +16,12 @@ type Props = {
 };
 
 const ContactDetails = ({ email, phone }: Props) => (
-  <View>
-    <Text type="h2" color="lightNavyBlueColor" style={styles.title}>
+  <LayoutColumn spacing={4}>
+    <Text type="h2" color="lightNavyBlueColor">
       {text.eventDetailsContact}
     </Text>
-    {email && (
-      <View style={styles.contactItem}>
+    <LayoutColumn spacing={8}>
+      {email && (
         <IconItem icon={<Image source={emailIcon} style={styles.mailIcon} />}>
           <TextLink
             onPress={() =>
@@ -36,32 +37,23 @@ const ContactDetails = ({ email, phone }: Props) => (
             {email}
           </TextLink>
         </IconItem>
-      </View>
-    )}
-    {phone && (
-      <View style={styles.contactItem}>
+      )}
+      {phone && (
         <IconItem icon={<Image source={callIcon} style={styles.phoneIcon} />}>
           <TextLink onPress={() => phonecall(phone, false)}>{phone}</TextLink>
         </IconItem>
-      </View>
-    )}
-  </View>
+      )}
+    </LayoutColumn>
+  </LayoutColumn>
 );
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: 8,
-    marginBottom: 4
-  },
   mailIcon: {
     marginTop: 7
   },
   phoneIcon: {
     marginTop: 6,
     marginLeft: 2
-  },
-  contactItem: {
-    marginBottom: 8
   }
 });
 
