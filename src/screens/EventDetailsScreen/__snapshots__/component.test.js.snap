@@ -20,6 +20,59 @@ exports[`EventAccessibility renders correctly 1`] = `
 </LayoutColumn>
 `;
 
+exports[`EventCategories renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "marginBottom": -8,
+    }
+  }
+>
+  <CategoryPill
+    key="Community"
+    name="Community"
+    style={
+      Object {
+        "marginBottom": 8,
+        "marginRight": 8,
+      }
+    }
+  />
+  <CategoryPill
+    key="Social and Networking"
+    name="Social and Networking"
+    style={
+      Object {
+        "marginBottom": 8,
+        "marginRight": 8,
+      }
+    }
+  />
+  <CategoryPill
+    key="Sports and Activities"
+    name="Sports and Activities"
+    style={
+      Object {
+        "marginBottom": 8,
+        "marginRight": 8,
+      }
+    }
+  />
+  <CategoryPill
+    key="Music"
+    name="Music"
+    style={
+      Object {
+        "marginBottom": 8,
+        "marginRight": 8,
+      }
+    }
+  />
+</View>
+`;
+
 exports[`EventHeader renders correctly 1`] = `
 <Header
   backgroundColor="#20215a"

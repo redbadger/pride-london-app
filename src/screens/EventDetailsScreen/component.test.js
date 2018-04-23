@@ -4,6 +4,7 @@ import type { NavigationScreenProp } from "react-navigation";
 import { shallow } from "enzyme";
 import Component, {
   EventAccessibility,
+  EventCategories,
   EventHeader,
   EventTickets
 } from "./component";
@@ -118,6 +119,13 @@ it("renders correctly with missing details", () => {
 describe("EventHeader", () => {
   it("renders correctly", () => {
     const output = shallow(<EventHeader onBack={() => {}} />);
+    expect(output).toMatchSnapshot();
+  });
+});
+
+describe("EventCategories", () => {
+  it("renders correctly", () => {
+    const output = shallow(<EventCategories event={event} />);
     expect(output).toMatchSnapshot();
   });
 });
