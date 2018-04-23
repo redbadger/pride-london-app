@@ -2,7 +2,7 @@
 import React from "react";
 import { phonecall, email } from "react-native-communications";
 import { shallow } from "enzyme";
-import ContactDetails from "./ContactDetails";
+import EventContact from "./EventContact";
 import TextLink from "../../components/TextLink";
 import text from "../../constants/text";
 
@@ -18,14 +18,14 @@ beforeEach(() => {
 
 it("renders correctly", () => {
   const output = shallow(
-    <ContactDetails email="milo@red-badger.com" phone="1-800-555-WOOF" />
+    <EventContact email="milo@red-badger.com" phone="1-800-555-WOOF" />
   );
   expect(output).toMatchSnapshot();
 });
 
 it("calls the phone number on tap", () => {
   const output = shallow(
-    <ContactDetails email="milo@red-badger.com" phone="1-800-555-WOOF" />
+    <EventContact email="milo@red-badger.com" phone="1-800-555-WOOF" />
   );
 
   output
@@ -37,7 +37,7 @@ it("calls the phone number on tap", () => {
 
 it("opens the configured email app on tap", () => {
   const output = shallow(
-    <ContactDetails email="milo@red-badger.com" phone="1-800-555-WOOF" />
+    <EventContact email="milo@red-badger.com" phone="1-800-555-WOOF" />
   );
 
   output

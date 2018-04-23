@@ -15,7 +15,7 @@ type Props = {
   phone: string
 };
 
-const ContactDetails = ({ email, phone }: Props) => (
+const EventContact = ({ email, phone }: Props) => (
   <LayoutColumn spacing={4}>
     <Text type="h2" color="lightNavyBlueColor">
       {text.eventDetailsContact}
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ContactDetails;
+export default EventContact;
