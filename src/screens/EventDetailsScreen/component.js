@@ -6,6 +6,7 @@ import ContactDetails from "./ContactDetails";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
+import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
@@ -25,6 +26,18 @@ type Props = {
   event: Event,
   getAssetUrl: LocalizedFieldRef => string
 };
+
+export const EventCategories = ({ event }: { event: Event }) => (
+  <View style={styles.categories}>
+    {event.fields.eventCategories[locale].map(categoryName => (
+      <CategoryPill
+        key={categoryName}
+        name={categoryName}
+        style={styles.categoryPill}
+      />
+    ))}
+  </View>
+);
 
 export const AccessibilityDetails = ({ event }: { event: Event }) => (
   <View>
@@ -82,6 +95,7 @@ class EventDetailsScreen extends PureComponent<Props> {
           />
           <ContentPadding style={styles.content}>
             <Text type="h1">{event.fields.name[locale]}</Text>
+            <EventCategories event={event} />
             <EventOverview event={event} />
             <SectionDivider />
             <EventDescription event={event} />
@@ -119,6 +133,16 @@ const styles = StyleSheet.create({
   },
   content: {
     marginVertical: 24
+  },
+  categories: {
+    marginTop: 8,
+    marginBottom: 16,
+    flexDirection: "row",
+    flexWrap: "wrap"
+  },
+  categoryPill: {
+    marginBottom: 8,
+    marginRight: 8
   },
   headerContent: {
     flexDirection: "row",

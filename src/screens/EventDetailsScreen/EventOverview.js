@@ -6,7 +6,6 @@ import isSameDay from "date-fns/is_same_day";
 import { formattedEventPriceRange } from "../../data/formatters";
 import IconItem from "./IconItem";
 import Touchable from "../../components/Touchable";
-import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import { blackColor, eucalyptusGreenColor } from "../../constants/colors";
 import text from "../../constants/text";
@@ -52,15 +51,6 @@ const EventOverview = ({ event }: Props) => {
 
   return (
     <View>
-      <View style={styles.categoryPillContainer}>
-        {event.fields.eventCategories[locale].map(categoryName => (
-          <CategoryPill
-            key={categoryName}
-            name={categoryName}
-            style={styles.categoryPill}
-          />
-        ))}
-      </View>
       <IconItem
         icon={<Image style={styles.icon} source={dateIcon} />}
         style={styles.iconItem}
@@ -147,16 +137,6 @@ const EventOverview = ({ event }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  categoryPillContainer: {
-    marginTop: 8,
-    marginBottom: 16,
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  categoryPill: {
-    marginBottom: 8,
-    marginRight: 8
-  },
   iconItem: {
     marginBottom: 20
   },
