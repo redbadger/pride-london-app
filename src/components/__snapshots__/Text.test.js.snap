@@ -16,6 +16,7 @@ exports[`renders correctly 1`] = `
       undefined,
     ]
   }
+  type="text"
 >
   Some text
 </Text>
@@ -71,6 +72,7 @@ exports[`renders markdown component based on flag 1`] = `
     }
   }
   parseInline={false}
+  type="text"
   useDefaultStyles={true}
 >
   **Some markdown**

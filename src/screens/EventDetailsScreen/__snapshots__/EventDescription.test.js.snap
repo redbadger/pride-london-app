@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View>
+<Component>
   <Text
     color="lightNavyBlueColor"
     markdown={false}
@@ -15,7 +15,7 @@ exports[`renders correctly 1`] = `
   >
     About
   </Text>
-  <View>
+  <Component>
     <AnimatedComponent
       scrollEnabled={false}
       style={
@@ -66,7 +66,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         }
       />
     </AnimatedComponent>
-  </View>
+  </Component>
   <TextLink
     onPress={[Function]}
     style={
@@ -78,7 +78,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
   >
     Read more
   </TextLink>
-  <View
+  <Component
     style={
       Object {
         "marginTop": 8,
@@ -90,6 +90,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       locationName="Vauxhall Pleasure Gardens"
       lon={-0.12092150000000856}
     />
-  </View>
-</View>
+  </Component>
+</Component>
 `;

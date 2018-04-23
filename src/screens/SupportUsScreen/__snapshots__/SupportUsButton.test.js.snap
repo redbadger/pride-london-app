@@ -54,7 +54,7 @@ exports[`picks different icon for external links 1`] = `
     }
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "flexDirection": "row",
@@ -86,7 +86,7 @@ exports[`picks different icon for external links 1`] = `
           }
         }
       />
-    </View>
+    </Component>
     <Text
       markdown={false}
       style={
@@ -156,7 +156,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
     }
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "flexDirection": "row",
@@ -188,7 +188,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
           }
         }
       />
-    </View>
+    </Component>
     <Text
       markdown={false}
       style={
@@ -258,7 +258,7 @@ exports[`renders correctly 1`] = `
     }
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "flexDirection": "row",
@@ -290,7 +290,7 @@ exports[`renders correctly 1`] = `
           }
         }
       />
-    </View>
+    </Component>
     <Text
       markdown={false}
       style={

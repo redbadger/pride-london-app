@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
+exports[`dateRangePickerDay renders a beginning of a range 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
@@ -13,7 +13,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
   onLongPress={[Function]}
   onPress={[Function]}
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "center",
@@ -22,7 +22,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "flex-end",
@@ -35,7 +35,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
         }
       }
     >
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -48,7 +48,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
           ]
         }
       />
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -61,8 +61,8 @@ exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
           ]
         }
       />
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Array [
           Object {
@@ -97,12 +97,12 @@ exports[`DarteRangePickerDay renders a beginning of a range 1`] = `
       >
         12
       </Text>
-    </View>
-  </View>
+    </Component>
+  </Component>
 </TouchableWithoutFeedback>
 `;
 
-exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
+exports[`dateRangePickerDay renders a beginning of a range 2`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
@@ -115,7 +115,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
   onLongPress={[Function]}
   onPress={[Function]}
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "center",
@@ -124,7 +124,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "flex-end",
@@ -137,7 +137,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
         }
       }
     >
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -150,7 +150,7 @@ exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
           ]
         }
       />
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -163,8 +163,8 @@ exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
           ]
         }
       />
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Array [
           Object {
@@ -199,12 +199,12 @@ exports[`DarteRangePickerDay renders a beginning of a range 2`] = `
       >
         12
       </Text>
-    </View>
-  </View>
+    </Component>
+  </Component>
 </TouchableWithoutFeedback>
 `;
 
-exports[`DarteRangePickerDay renders a disabled day 1`] = `
+exports[`dateRangePickerDay renders a disabled day 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
@@ -216,7 +216,7 @@ exports[`DarteRangePickerDay renders a disabled day 1`] = `
   onLongPress={[Function]}
   onPress={[Function]}
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "center",
@@ -225,7 +225,7 @@ exports[`DarteRangePickerDay renders a disabled day 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Array [
           Object {
@@ -259,12 +259,12 @@ exports[`DarteRangePickerDay renders a disabled day 1`] = `
       >
         12
       </Text>
-    </View>
-  </View>
+    </Component>
+  </Component>
 </TouchableWithoutFeedback>
 `;
 
-exports[`DarteRangePickerDay renders a marked day 1`] = `
+exports[`dateRangePickerDay renders a marked day 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
@@ -276,7 +276,7 @@ exports[`DarteRangePickerDay renders a marked day 1`] = `
   onLongPress={[Function]}
   onPress={[Function]}
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "center",
@@ -285,7 +285,7 @@ exports[`DarteRangePickerDay renders a marked day 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Array [
           Object {
@@ -317,8 +317,8 @@ exports[`DarteRangePickerDay renders a marked day 1`] = `
       >
         12
       </Text>
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Object {
           "alignItems": "flex-end",
@@ -331,7 +331,7 @@ exports[`DarteRangePickerDay renders a marked day 1`] = `
         }
       }
     >
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -346,12 +346,12 @@ exports[`DarteRangePickerDay renders a marked day 1`] = `
           ]
         }
       />
-    </View>
-  </View>
+    </Component>
+  </Component>
 </TouchableWithoutFeedback>
 `;
 
-exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
+exports[`dateRangePickerDay renders a marked, selected day 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
@@ -364,7 +364,7 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
   onLongPress={[Function]}
   onPress={[Function]}
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "center",
@@ -373,7 +373,7 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "flex-end",
@@ -386,7 +386,7 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
         }
       }
     >
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -399,7 +399,7 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
           ]
         }
       />
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -412,8 +412,8 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
           ]
         }
       />
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Array [
           Object {
@@ -448,8 +448,8 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
       >
         12
       </Text>
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Object {
           "alignItems": "flex-end",
@@ -462,7 +462,7 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
         }
       }
     >
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -477,12 +477,12 @@ exports[`DarteRangePickerDay renders a marked, selected day 1`] = `
           ]
         }
       />
-    </View>
-  </View>
+    </Component>
+  </Component>
 </TouchableWithoutFeedback>
 `;
 
-exports[`DarteRangePickerDay renders a middle of a range 1`] = `
+exports[`dateRangePickerDay renders a middle of a range 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
@@ -495,7 +495,7 @@ exports[`DarteRangePickerDay renders a middle of a range 1`] = `
   onLongPress={[Function]}
   onPress={[Function]}
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "center",
@@ -504,7 +504,7 @@ exports[`DarteRangePickerDay renders a middle of a range 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "flex-end",
@@ -517,7 +517,7 @@ exports[`DarteRangePickerDay renders a middle of a range 1`] = `
         }
       }
     >
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -530,7 +530,7 @@ exports[`DarteRangePickerDay renders a middle of a range 1`] = `
           ]
         }
       />
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -543,8 +543,8 @@ exports[`DarteRangePickerDay renders a middle of a range 1`] = `
           ]
         }
       />
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Array [
           Object {
@@ -579,12 +579,12 @@ exports[`DarteRangePickerDay renders a middle of a range 1`] = `
       >
         12
       </Text>
-    </View>
-  </View>
+    </Component>
+  </Component>
 </TouchableWithoutFeedback>
 `;
 
-exports[`DarteRangePickerDay renders with a single selected day 1`] = `
+exports[`dateRangePickerDay renders with a single selected day 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
@@ -597,7 +597,7 @@ exports[`DarteRangePickerDay renders with a single selected day 1`] = `
   onLongPress={[Function]}
   onPress={[Function]}
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "center",
@@ -606,7 +606,7 @@ exports[`DarteRangePickerDay renders with a single selected day 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "flex-end",
@@ -619,7 +619,7 @@ exports[`DarteRangePickerDay renders with a single selected day 1`] = `
         }
       }
     >
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -632,7 +632,7 @@ exports[`DarteRangePickerDay renders with a single selected day 1`] = `
           ]
         }
       />
-      <View
+      <Component
         style={
           Array [
             Object {
@@ -645,8 +645,8 @@ exports[`DarteRangePickerDay renders with a single selected day 1`] = `
           ]
         }
       />
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Array [
           Object {
@@ -681,12 +681,12 @@ exports[`DarteRangePickerDay renders with a single selected day 1`] = `
       >
         12
       </Text>
-    </View>
-  </View>
+    </Component>
+  </Component>
 </TouchableWithoutFeedback>
 `;
 
-exports[`DarteRangePickerDay renders without date selection 1`] = `
+exports[`dateRangePickerDay renders without date selection 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
@@ -698,7 +698,7 @@ exports[`DarteRangePickerDay renders without date selection 1`] = `
   onLongPress={[Function]}
   onPress={[Function]}
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "center",
@@ -707,7 +707,7 @@ exports[`DarteRangePickerDay renders without date selection 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Array [
           Object {
@@ -739,7 +739,7 @@ exports[`DarteRangePickerDay renders without date selection 1`] = `
       >
         12
       </Text>
-    </View>
-  </View>
+    </Component>
+  </Component>
 </TouchableWithoutFeedback>
 `;

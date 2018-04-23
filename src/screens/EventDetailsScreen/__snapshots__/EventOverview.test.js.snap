@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View>
+<Component>
   <Text
     markdown={false}
     style={
@@ -13,7 +13,7 @@ exports[`renders correctly 1`] = `
   >
     Pride in the Park
   </Text>
-  <View
+  <Component
     style={
       Object {
         "flexDirection": "row",
@@ -63,7 +63,7 @@ exports[`renders correctly 1`] = `
         }
       }
     />
-  </View>
+  </Component>
   <IconItem
     icon={
       <Image
@@ -127,7 +127,7 @@ exports[`renders correctly 1`] = `
       delayPressIn={50}
       onPress={[Function]}
     >
-      <View
+      <Component
         style={
           Object {
             "alignSelf": "flex-start",
@@ -144,7 +144,7 @@ exports[`renders correctly 1`] = `
         >
           Vauxhall Pleasure Gardens
         </Text>
-      </View>
+      </Component>
       <Text
         markdown={false}
         type="small"
@@ -253,5 +253,5 @@ exports[`renders correctly 1`] = `
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</View>
+</Component>
 `;

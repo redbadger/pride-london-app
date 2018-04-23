@@ -28,7 +28,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       }
     />
   </ContentPadding>
-  <View
+  <Component
     style={
       Object {
         "flex": 1,
@@ -44,12 +44,12 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
         }
       }
     />
-  </View>
+  </Component>
   <ContentPadding
     padding={Object {}}
     style={Object {}}
   >
-    <View>
+    <Component>
       <Touchable
         accessibilityComponentType="button"
         accessibilityTraits={
@@ -85,7 +85,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
           Show 1 event
         </Text>
       </Touchable>
-    </View>
+    </Component>
   </ContentPadding>
 </withOrientation>
 `;

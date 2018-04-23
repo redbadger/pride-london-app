@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View>
+<Component>
   <Text
     color="lightNavyBlueColor"
     markdown={false}
@@ -15,7 +15,7 @@ exports[`renders correctly 1`] = `
   >
     Contact
   </Text>
-  <View
+  <Component
     style={
       Object {
         "marginBottom": 8,
@@ -43,8 +43,8 @@ exports[`renders correctly 1`] = `
         milo@red-badger.com
       </TextLink>
     </IconItem>
-  </View>
-  <View
+  </Component>
+  <Component
     style={
       Object {
         "marginBottom": 8,
@@ -73,6 +73,6 @@ exports[`renders correctly 1`] = `
         1-800-555-WOOF
       </TextLink>
     </IconItem>
-  </View>
-</View>
+  </Component>
+</Component>
 `;

@@ -23,7 +23,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "paddingBottom": 12,
@@ -33,7 +33,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       testID="filter-header"
     >
       <FilterHeaderCategories />
-      <View
+      <Component
         style={
           Object {
             "flexDirection": "row",
@@ -71,8 +71,8 @@ exports[`ConnectedFilterHeader renders component 1`] = `
           }
           text="Filters"
         />
-      </View>
-    </View>
+      </Component>
+    </Component>
   </ContentPadding>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
