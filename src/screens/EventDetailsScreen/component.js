@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { Image, Linking, View, StyleSheet } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import ContactDetails from "./ContactDetails";
+import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
@@ -12,6 +12,7 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import IconButton from "../../components/IconButton";
+import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "./SectionDivider";
 import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
@@ -40,14 +41,14 @@ export const EventCategories = ({ event }: { event: Event }) => (
 );
 
 export const AccessibilityDetails = ({ event }: { event: Event }) => (
-  <View>
-    <Text type="h2" color="lightNavyBlueColor" style={styles.h2}>
+  <LayoutColumn spacing={4}>
+    <Text type="h2" color="lightNavyBlueColor">
       {text.eventDetailsAccessibilityDetails}
     </Text>
     <View style={styles.accessibilityDetailsItem}>
       <Text>{event.fields.accessibilityDetails[locale]}</Text>
     </View>
-  </View>
+  </LayoutColumn>
 );
 
 export const EventTickets = ({ event }: { event: Event }) => (
@@ -94,30 +95,31 @@ class EventDetailsScreen extends PureComponent<Props> {
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
           <ContentPadding style={styles.content}>
-            <Text type="h1">{event.fields.name[locale]}</Text>
-            <EventCategories event={event} />
-            <EventOverview event={event} />
-            <SectionDivider />
-            <EventDescription event={event} />
-            <View style={styles.map}>
+            <Text type="h1" style={styles.h1}>
+              {event.fields.name[locale]}
+            </Text>
+            <LayoutColumn spacing={20}>
+              <EventCategories event={event} />
+              <EventOverview event={event} />
+              <SectionDivider />
+              <EventDescription event={event} />
               <EventMap
                 lat={event.fields.location[locale].lat}
                 lon={event.fields.location[locale].lon}
                 locationName={event.fields.locationName[locale]}
               />
-            </View>
-            {event.fields.accessibilityDetails && [
-              <SectionDivider key="a1" />,
-              <AccessibilityDetails event={event} key="a2" />
-            ]}
-            {(event.fields.email || event.fields.phone) && [
-              <SectionDivider key="b1" />,
-              <ContactDetails
-                email={event.fields.email[locale]}
-                phone={event.fields.phone[locale]}
-                key="b2"
-              />
-            ]}
+              {event.fields.accessibilityDetails && <SectionDivider />}
+              {event.fields.accessibilityDetails && (
+                <AccessibilityDetails event={event} />
+              )}
+              {(event.fields.email || event.fields.phone) && <SectionDivider />}
+              {(event.fields.email || event.fields.phone) && (
+                <EventContact
+                  email={event.fields.email[locale]}
+                  phone={event.fields.phone[locale]}
+                />
+              )}
+            </LayoutColumn>
           </ContentPadding>
         </ShadowedScrollView>
         {event.fields.ticketingUrl && <EventTickets event={event} />}
@@ -132,35 +134,27 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor
   },
   content: {
-    marginVertical: 24
-  },
-  categories: {
-    marginTop: 8,
-    marginBottom: 16,
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  categoryPill: {
-    marginBottom: 8,
-    marginRight: 8
+    marginVertical: 16
   },
   headerContent: {
     flexDirection: "row",
     justifyContent: "space-between"
   },
-  h2: {
-    marginTop: 8,
-    marginBottom: 4
+  h1: {
+    marginBottom: 8
   },
-  accessibilityDetailsItem: {
-    marginTop: 8
+  categories: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginBottom: -8
+  },
+  categoryPill: {
+    marginBottom: 8,
+    marginRight: 8
   },
   ticketButton: {
     backgroundColor: whiteColor,
     paddingVertical: 12
-  },
-  map: {
-    marginTop: 8
   }
 });
 
