@@ -7,6 +7,7 @@ it("renders correctly", () => {
   const output = shallow(
     <Dialog
       applyButtonText="Bye"
+      applyButtonLabel="Good bye"
       onApply={() => {}}
       title="Hello World"
       visible
