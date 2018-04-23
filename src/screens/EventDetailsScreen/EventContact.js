@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { Image } from "react-native";
 import { email as sendEmail, phonecall } from "react-native-communications";
 import LayoutColumn from "../../components/LayoutColumn";
 import Text from "../../components/Text";
@@ -11,8 +11,8 @@ import text from "../../constants/text";
 import TextLink from "./TextLink";
 
 type Props = {
-  email: string,
-  phone: string
+  email?: string,
+  phone?: string
 };
 
 const EventContact = ({ email, phone }: Props) => (
@@ -22,7 +22,7 @@ const EventContact = ({ email, phone }: Props) => (
     </Text>
     <LayoutColumn spacing={16}>
       {email && (
-        <IconItem icon={<Image source={emailIcon} style={styles.mailIcon} />}>
+        <IconItem icon={<Image source={emailIcon} />}>
           <TextLink
             onPress={() =>
               sendEmail(
@@ -39,7 +39,7 @@ const EventContact = ({ email, phone }: Props) => (
         </IconItem>
       )}
       {phone && (
-        <IconItem icon={<Image source={callIcon} style={styles.phoneIcon} />}>
+        <IconItem icon={<Image source={callIcon} />}>
           <TextLink onPress={() => phonecall(phone, false)}>{phone}</TextLink>
         </IconItem>
       )}
@@ -47,14 +47,9 @@ const EventContact = ({ email, phone }: Props) => (
   </LayoutColumn>
 );
 
-const styles = StyleSheet.create({
-  mailIcon: {
-    // marginTop: 7
-  },
-  phoneIcon: {
-    // marginTop: 6,
-    // marginLeft: 2
-  }
-});
+EventContact.defaultProps = {
+  email: undefined,
+  phone: undefined
+};
 
 export default EventContact;
