@@ -4,8 +4,6 @@ import { Text as RnText, StyleSheet } from "react-native";
 import Markdown from "react-native-easy-markdown";
 import type { TextProps } from "react-native/Libraries/Text/TextProps";
 import { mergeDeepRight } from "ramda";
-import type { Node } from "react";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
