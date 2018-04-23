@@ -8,7 +8,7 @@ import text from "../../constants/text";
 import type { Event } from "../../data/event";
 import locale from "../../data/locale";
 import Text from "../../components/Text";
-import TextLink from "../../components/TextLink";
+import TextLink from "./TextLink";
 
 type Props = { event: Event };
 
@@ -89,12 +89,13 @@ class EventDescription extends PureComponent<
           )}
         </View>
         {collapsible && (
-          <TextLink
-            onPress={this.toggleCollapsed}
-            style={styles.toggleContainer}
-          >
-            {collapsed ? text.eventDetailsReadMore : text.eventDetailsReadLess}
-          </TextLink>
+          <View style={styles.toggleContainer}>
+            <TextLink onPress={this.toggleCollapsed}>
+              {collapsed
+                ? text.eventDetailsReadMore
+                : text.eventDetailsReadLess}
+            </TextLink>
+          </View>
         )}
       </View>
     );

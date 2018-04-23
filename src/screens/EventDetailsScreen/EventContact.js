@@ -8,7 +8,7 @@ import IconItem from "./IconItem";
 import emailIcon from "../../../assets/images/email.png";
 import callIcon from "../../../assets/images/call.png";
 import text from "../../constants/text";
-import TextLink from "../../components/TextLink";
+import TextLink from "./TextLink";
 
 type Props = {
   email: string,
@@ -20,7 +20,7 @@ const EventContact = ({ email, phone }: Props) => (
     <Text type="h2" color="lightNavyBlueColor">
       {text.eventDetailsContact}
     </Text>
-    <LayoutColumn spacing={8}>
+    <LayoutColumn spacing={16}>
       {email && (
         <IconItem icon={<Image source={emailIcon} style={styles.mailIcon} />}>
           <TextLink
@@ -49,11 +49,11 @@ const EventContact = ({ email, phone }: Props) => (
 
 const styles = StyleSheet.create({
   mailIcon: {
-    marginTop: 7
+    // marginTop: 7
   },
   phoneIcon: {
-    marginTop: 6,
-    marginLeft: 2
+    // marginTop: 6,
+    // marginLeft: 2
   }
 });
 
