@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import { email as sendEmail, phonecall } from "react-native-communications";
 import LayoutColumn from "../../components/LayoutColumn";
 import Text from "../../components/Text";
