@@ -25,6 +25,8 @@ class Text extends React.PureComponent<Props> {
 
   render() {
     const { color, type, markdown, style, ...otherProps } = this.props;
+    const typedType: TextType = (type: any);
+    const typedColor: TextColor = (color: any);
     return markdown ? (
       <Markdown
         style={style}
@@ -33,7 +35,7 @@ class Text extends React.PureComponent<Props> {
       />
     ) : (
       <RnText
-        style={[styles[type], color && styles[color], style]}
+        style={[styles[typedType], styles[typedColor], style]}
         {...otherProps}
       />
     );
