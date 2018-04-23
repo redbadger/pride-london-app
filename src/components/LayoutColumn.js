@@ -7,9 +7,12 @@ type Props = { spacing: number, children: Node };
 
 const LayoutColumn = ({ spacing, children }: Props) => (
   <View style={[{ marginVertical: -0.5 * spacing }, styles.column]}>
-    {React.Children.map(children, child => (
-      <View style={{ marginVertical: 0.5 * spacing }}>{child}</View>
-    ))}
+    {React.Children.map(children, child => {
+      if (child === null) {
+        return child;
+      }
+      return <View style={{ marginVertical: 0.5 * spacing }}>{child}</View>;
+    })}
   </View>
 );
 
