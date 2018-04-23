@@ -9,6 +9,7 @@ const render = props =>
   shallow(
     <DateRangePickerDialog
       applyButtonText="Apply"
+      applyButtonLabel="Apply selection"
       dateRange={(null: ?DateRange)}
       onApply={() => {}}
       onCancel={() => {}}

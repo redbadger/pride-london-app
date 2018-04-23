@@ -41,7 +41,14 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
   selectedCategories.size === 0 ? (
     <View style={styles.contentInterest}>
       {PixelRatio.getFontScale() < 1.5 && (
-        <Text type="h1" style={styles.filterTitle} allowFontScaling={false}>
+        <Text
+          type="h1"
+          style={styles.filterTitle}
+          allowFontScaling={false}
+          accessible
+          accessibilityTraits={["header"]}
+          accessibilityLabel={text.tabEvents}
+        >
           {text.filterTitle}
         </Text>
       )}

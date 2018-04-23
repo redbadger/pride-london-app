@@ -8,6 +8,7 @@ it("renders correctly", () => {
   const output = shallow(
     <FilterHeaderButton
       text="1-2-3 filtered"
+      label="One two three filtered"
       style={style}
       onPress={() => {}}
     />

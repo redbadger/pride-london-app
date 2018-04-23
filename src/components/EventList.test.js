@@ -17,6 +17,24 @@ const events = [
         },
         startTime: {
           "en-GB": "2018-07-10T00:00"
+        },
+        endTime: {
+          "en-GB": "2018-08-11T00:00"
+        },
+        locationName: {
+          "en-GB": "Somewhere"
+        },
+        eventPriceLow: {
+          "en-GB": "0"
+        },
+        eventPriceHigh: {
+          "en-GB": "0"
+        },
+        imageUrl: {
+          "en-GB": "http://placekitten.com/200/300"
+        },
+        isFree: {
+          "en-GB": true
         }
       }
     },
@@ -33,6 +51,24 @@ const events = [
         },
         startTime: {
           "en-GB": "2018-07-10T00:00"
+        },
+        endTime: {
+          "en-GB": "2018-08-11T00:00"
+        },
+        locationName: {
+          "en-GB": "Somewhere"
+        },
+        eventPriceLow: {
+          "en-GB": "0"
+        },
+        eventPriceHigh: {
+          "en-GB": "0"
+        },
+        imageUrl: {
+          "en-GB": "http://placekitten.com/200/300"
+        },
+        isFree: {
+          "en-GB": true
         }
       }
     }
@@ -51,6 +87,24 @@ const events = [
         },
         startTime: {
           "en-GB": "2018-07-11T00:00"
+        },
+        endTime: {
+          "en-GB": "2018-08-11T00:00"
+        },
+        locationName: {
+          "en-GB": "Somewhere"
+        },
+        eventPriceLow: {
+          "en-GB": "0"
+        },
+        eventPriceHigh: {
+          "en-GB": "0"
+        },
+        imageUrl: {
+          "en-GB": "http://placekitten.com/200/300"
+        },
+        isFree: {
+          "en-GB": true
         }
       }
     }
@@ -67,12 +121,29 @@ describe("EventList", () => {
         onRefresh={() => {}}
         onPress={() => {}}
         getAssetById={() => {}}
+        getAssetUrl={() => {}}
         {...props}
       />
     );
 
   it("renders correctly", () => {
     const output = render();
+    expect(output).toMatchSnapshot();
+  });
+
+  it("renders section headers correctly", () => {
+    const renderSectionHeader = render().prop("renderSectionHeader");
+    const output = shallow(
+      renderSectionHeader({ section: { title: "Hello" } })
+    );
+
+    expect(output).toMatchSnapshot();
+  });
+
+  it("renders items correctly", () => {
+    const renderItem = render().prop("renderItem");
+    const output = shallow(renderItem({ item: events[0][0] }));
+
     expect(output).toMatchSnapshot();
   });
 
