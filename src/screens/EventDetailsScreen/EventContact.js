@@ -1,27 +1,28 @@
 // @flow
 import React from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { Image } from "react-native";
 import { email as sendEmail, phonecall } from "react-native-communications";
+import LayoutColumn from "../../components/LayoutColumn";
 import Text from "../../components/Text";
 import IconItem from "./IconItem";
 import emailIcon from "../../../assets/images/email.png";
 import callIcon from "../../../assets/images/call.png";
 import text from "../../constants/text";
-import TextLink from "../../components/TextLink";
+import TextLink from "./TextLink";
 
 type Props = {
-  email: string,
-  phone: string
+  email?: string,
+  phone?: string
 };
 
-const ContactDetails = ({ email, phone }: Props) => (
-  <View>
-    <Text type="h2" color="lightNavyBlueColor" style={styles.title}>
+const EventContact = ({ email, phone }: Props) => (
+  <LayoutColumn spacing={4}>
+    <Text type="h2" color="lightNavyBlueColor">
       {text.eventDetailsContact}
     </Text>
-    {email && (
-      <View style={styles.contactItem}>
-        <IconItem icon={<Image source={emailIcon} style={styles.mailIcon} />}>
+    <LayoutColumn spacing={16}>
+      {email && (
+        <IconItem icon={<Image source={emailIcon} />}>
           <TextLink
             onPress={() =>
               sendEmail(
@@ -36,33 +37,19 @@ const ContactDetails = ({ email, phone }: Props) => (
             {email}
           </TextLink>
         </IconItem>
-      </View>
-    )}
-    {phone && (
-      <View style={styles.contactItem}>
-        <IconItem icon={<Image source={callIcon} style={styles.phoneIcon} />}>
+      )}
+      {phone && (
+        <IconItem icon={<Image source={callIcon} />}>
           <TextLink onPress={() => phonecall(phone, false)}>{phone}</TextLink>
         </IconItem>
-      </View>
-    )}
-  </View>
+      )}
+    </LayoutColumn>
+  </LayoutColumn>
 );
 
-const styles = StyleSheet.create({
-  title: {
-    marginTop: 8,
-    marginBottom: 4
-  },
-  mailIcon: {
-    marginTop: 7
-  },
-  phoneIcon: {
-    marginTop: 6,
-    marginLeft: 2
-  },
-  contactItem: {
-    marginBottom: 8
-  }
-});
+EventContact.defaultProps = {
+  email: undefined,
+  phone: undefined
+};
 
-export default ContactDetails;
+export default EventContact;

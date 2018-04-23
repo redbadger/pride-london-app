@@ -17,33 +17,38 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <MapView
-    initialRegion={
-      Object {
-        "latitude": 100,
-        "latitudeDelta": 0.008,
-        "longitude": 200,
-        "longitudeDelta": 0.008,
-      }
-    }
-    loadingEnabled={true}
-    scrollEnabled={false}
-    style={
-      Object {
-        "height": 160,
-      }
-    }
-    zoomEnabled={false}
+  <Delayed
+    delay={600}
   >
-    <MapMarker
-      coordinate={
+    <MapView
+      cacheEnabled={true}
+      initialRegion={
         Object {
           "latitude": 100,
+          "latitudeDelta": 0.008,
           "longitude": 200,
+          "longitudeDelta": 0.008,
         }
       }
-      onPress={[Function]}
-    />
-  </MapView>
+      loadingEnabled={true}
+      scrollEnabled={false}
+      style={
+        Object {
+          "height": 160,
+        }
+      }
+      zoomEnabled={false}
+    >
+      <MapMarker
+        coordinate={
+          Object {
+            "latitude": 100,
+            "longitude": 200,
+          }
+        }
+        onPress={[Function]}
+      />
+    </MapView>
+  </Delayed>
 </Touchable>
 `;

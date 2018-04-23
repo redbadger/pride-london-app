@@ -43,7 +43,7 @@ export default {
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",
   eventDetailsContact: "Contact",
-  eventDetailsBuyButton: "Buy tickets",
+  eventDetailsBuyButton: "Get tickets",
   eventDetailsGenderNeutralToilets: "Gender neutral toilets",
   eventDetailsAbout: "About",
   eventDetailsReadMore: "Read more",

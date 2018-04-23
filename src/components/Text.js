@@ -2,37 +2,55 @@
 import React from "react";
 import { Text as RnText, StyleSheet } from "react-native";
 import Markdown from "react-native-easy-markdown";
-
 import type { TextProps } from "react-native/Libraries/Text/TextProps";
-
+import { mergeDeepRight } from "ramda";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
+export type ColorType = "lightNavyBlueColor" | "blackColor";
+
 type Props = {
   type?: TextType,
-  color?: "lightNavyBlueColor",
+  color?: ColorType,
   markdown?: boolean,
   ...TextProps
 };
 
-const Text = ({ type, markdown, style, color, ...otherProps }: Props) =>
+const Text = ({
+  children,
+  onLayout,
+  type,
+  markdown,
+  style,
+  color,
+  allowFontScaling,
+  ...otherProps
+}: Props) =>
   markdown ? (
     <Markdown
       style={style}
-      markdownStyles={{ ...textStyles, ...markdownStyles }}
+      markdownStyles={mergeDeepRight(textStyles, markdownStyles)}
+      onLayout={onLayout}
       {...otherProps}
-    />
+    >
+      {String(children).trim()}
+    </Markdown>
   ) : (
     <RnText
       style={[type && styles[type], color && styles[color], style]}
+      onLayout={onLayout}
+      allowFontScaling={allowFontScaling}
       {...otherProps}
-    />
+    >
+      {children}
+    </RnText>
   );
+
 Text.defaultProps = {
   type: "text",
   markdown: false,
-  color: undefined
+  color: "blackColor"
 };
 
 const textStyles = {
@@ -73,6 +91,9 @@ const textStyles = {
     fontFamily: "Roboto-Bold",
     fontSize: 14,
     lineHeight: 20
+  },
+  blackColor: {
+    color: blackColor
   },
   lightNavyBlueColor: {
     color: lightNavyBlueColor
