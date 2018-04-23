@@ -3,7 +3,7 @@ import React from "react";
 import type { Node } from "react";
 import { StyleSheet, View } from "react-native";
 
-type Props = { spacing: number, children: Array<Node> };
+type Props = { spacing: number, children: Node };
 
 const LayoutColumn = ({ spacing, children }: Props) => (
   <View style={[{ marginVertical: -0.5 * spacing }, styles.column]}>
