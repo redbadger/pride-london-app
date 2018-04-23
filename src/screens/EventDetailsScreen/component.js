@@ -12,11 +12,8 @@ import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import IconButton from "../../components/IconButton";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
-import {
-  lightishGreyColor,
-  whiteColor,
-  darkBlueGreyTwoColor
-} from "../../constants/colors";
+import SectionDivider from "./SectionDivider";
+import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event, LocalizedFieldRef } from "../../data/event";
 import locale from "../../data/locale";
@@ -85,7 +82,7 @@ class EventDetailsScreen extends PureComponent<Props> {
           />
           <ContentPadding style={styles.content}>
             <EventOverview event={event} />
-            <View style={styles.sectionDivider} />
+            <SectionDivider />
             <EventDescription event={event} />
             <View style={styles.map}>
               <EventMap
@@ -95,11 +92,11 @@ class EventDetailsScreen extends PureComponent<Props> {
               />
             </View>
             {event.fields.accessibilityDetails && [
-              <View style={styles.sectionDivider} key="a1" />,
+              <SectionDivider key="a1" />,
               <AccessibilityDetails event={event} key="a2" />
             ]}
             {(event.fields.email || event.fields.phone) && [
-              <View style={styles.sectionDivider} key="b1" />,
+              <SectionDivider key="b1" />,
               <ContactDetails
                 email={event.fields.email[locale]}
                 phone={event.fields.phone[locale]}
@@ -125,11 +122,6 @@ const styles = StyleSheet.create({
   headerContent: {
     flexDirection: "row",
     justifyContent: "space-between"
-  },
-  sectionDivider: {
-    backgroundColor: lightishGreyColor,
-    height: 1,
-    marginVertical: 16
   },
   title: {
     marginTop: 8,

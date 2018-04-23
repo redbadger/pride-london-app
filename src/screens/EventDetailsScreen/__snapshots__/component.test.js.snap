@@ -227,15 +227,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         }
       />
-      <View
-        style={
-          Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
-          }
-        }
-      />
+      <SectionDivider />
       <EventDescription
         event={
           Object {
@@ -367,15 +359,8 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           lon={-0.12092150000000856}
         />
       </View>
-      <View
+      <SectionDivider
         key="a1"
-        style={
-          Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
-          }
-        }
       />
       <AccessibilityDetails
         event={
@@ -496,15 +481,8 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         }
         key="a2"
       />
-      <View
+      <SectionDivider
         key="b1"
-        style={
-          Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
-          }
-        }
       />
       <ContactDetails
         email="john.smith@eventname.com"
@@ -806,15 +784,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           }
         }
       />
-      <View
-        style={
-          Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
-          }
-        }
-      />
+      <SectionDivider />
       <EventDescription
         event={
           Object {
@@ -942,15 +912,8 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           lon={-0.12092150000000856}
         />
       </View>
-      <View
+      <SectionDivider
         key="b1"
-        style={
-          Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
-          }
-        }
       />
       <ContactDetails
         email="john.smith@eventname.com"
