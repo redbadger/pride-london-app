@@ -2,7 +2,11 @@
 import React from "react";
 import type { NavigationScreenProp } from "react-navigation";
 import { shallow } from "enzyme";
-import Component, { AccessibilityDetails, EventTickets } from "./component";
+import Component, {
+  AccessibilityDetails,
+  EventHeader,
+  EventTickets
+} from "./component";
 import type { Event } from "../../data/event";
 
 const event: Event = ({
@@ -109,6 +113,13 @@ it("renders correctly with missing details", () => {
     />
   );
   expect(output).toMatchSnapshot();
+});
+
+describe("EventHeader", () => {
+  it("renders correctly", () => {
+    const output = shallow(<EventHeader onBack={() => {}} />);
+    expect(output).toMatchSnapshot();
+  });
 });
 
 describe("AccessibilityDetails", () => {

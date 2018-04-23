@@ -39,6 +39,33 @@ exports[`BuyTickets renders correctly 1`] = `
 </ContentPadding>
 `;
 
+exports[`EventHeader renders correctly 1`] = `
+<Header
+  backgroundColor="#20215a"
+>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <IconButton
+      accessibilityLabel="Back"
+      onPress={[Function]}
+      source={1}
+    />
+    <IconButton
+      accessibilityLabel="Favourite"
+      onPress={[Function]}
+      source={1}
+    />
+  </ContentPadding>
+</Header>
+`;
+
 exports[`renders correctly 1`] = `
 <View
   style={
@@ -48,30 +75,9 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Header
-    backgroundColor="#20215a"
-  >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        }
-      }
-    >
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={[Function]}
-        source={1}
-      />
-      <IconButton
-        accessibilityLabel="Favourite"
-        onPress={[Function]}
-        source={1}
-      />
-    </ContentPadding>
-  </Header>
+  <EventHeader
+    onBack={[Function]}
+  />
   <ShadowedScrollView
     bottomShadow={true}
     style={Object {}}
@@ -728,30 +734,9 @@ exports[`renders correctly with missing details 1`] = `
     }
   }
 >
-  <Header
-    backgroundColor="#20215a"
-  >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        }
-      }
-    >
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={[Function]}
-        source={1}
-      />
-      <IconButton
-        accessibilityLabel="Favourite"
-        onPress={[Function]}
-        source={1}
-      />
-    </ContentPadding>
-  </Header>
+  <EventHeader
+    onBack={[Function]}
+  />
   <ShadowedScrollView
     bottomShadow={true}
     style={Object {}}

@@ -28,6 +28,23 @@ type Props = {
   getAssetUrl: LocalizedFieldRef => string
 };
 
+export const EventHeader = ({ onBack }: { onBack: Function }) => (
+  <Header backgroundColor={darkBlueGreyTwoColor}>
+    <ContentPadding style={styles.headerContent}>
+      <IconButton
+        accessibilityLabel="Back"
+        onPress={onBack}
+        source={chevronLeftWhite}
+      />
+      <IconButton
+        accessibilityLabel="Favourite"
+        onPress={() => {}}
+        source={heartWhite}
+      />
+    </ContentPadding>
+  </Header>
+);
+
 export const EventCategories = ({ event }: { event: Event }) => (
   <View style={styles.categories}>
     {event.fields.eventCategories[locale].map(categoryName => (
@@ -71,22 +88,11 @@ class EventDetailsScreen extends PureComponent<Props> {
     const { event, getAssetUrl } = this.props;
     return (
       <View style={styles.container}>
-        <Header backgroundColor={darkBlueGreyTwoColor}>
-          <ContentPadding style={styles.headerContent}>
-            <IconButton
-              accessibilityLabel="Back"
-              onPress={() => {
-                this.props.navigation.goBack(null);
-              }}
-              source={chevronLeftWhite}
-            />
-            <IconButton
-              accessibilityLabel="Favourite"
-              onPress={() => {}}
-              source={heartWhite}
-            />
-          </ContentPadding>
-        </Header>
+        <EventHeader
+          onBack={() => {
+            this.props.navigation.goBack(null);
+          }}
+        />
         <ShadowedScrollView topShadow={false}>
           <Image
             style={{ aspectRatio: 5 / 3 }}
