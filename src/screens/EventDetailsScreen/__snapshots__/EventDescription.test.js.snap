@@ -35,18 +35,5 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       </Text>
     </AnimatedComponent>
   </View>
-  <View
-    style={
-      Object {
-        "marginTop": 8,
-      }
-    }
-  >
-    <EventMap
-      lat={51.4875152}
-      locationName="Vauxhall Pleasure Gardens"
-      lon={-0.12092150000000856}
-    />
-  </View>
 </View>
 `;

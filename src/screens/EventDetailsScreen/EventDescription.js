@@ -9,7 +9,6 @@ import type { Event } from "../../data/event";
 import locale from "../../data/locale";
 import Text from "../../components/Text";
 import TextLink from "../../components/TextLink";
-import EventMap from "./EventMap";
 
 type Props = { event: Event };
 
@@ -97,13 +96,6 @@ class EventDescription extends PureComponent<
             {collapsed ? text.eventDetailsReadMore : text.eventDetailsReadLess}
           </TextLink>
         )}
-        <View style={styles.mapWrapper}>
-          <EventMap
-            lat={event.fields.location[locale].lat}
-            lon={event.fields.location[locale].lon}
-            locationName={event.fields.locationName[locale]}
-          />
-        </View>
       </View>
     );
   }
@@ -122,9 +114,6 @@ const styles = StyleSheet.create({
   },
   toggleContainer: {
     alignSelf: "flex-end"
-  },
-  mapWrapper: {
-    marginTop: 8
   }
 });
 

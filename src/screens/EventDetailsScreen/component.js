@@ -5,6 +5,7 @@ import type { NavigationScreenProp } from "react-navigation";
 import ContactDetails from "./ContactDetails";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
+import EventMap from "./EventMap";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
@@ -86,6 +87,13 @@ class EventDetailsScreen extends PureComponent<Props> {
             <EventOverview event={event} />
             <View style={styles.sectionDivider} />
             <EventDescription event={event} />
+            <View style={styles.map}>
+              <EventMap
+                lat={event.fields.location[locale].lat}
+                lon={event.fields.location[locale].lon}
+                locationName={event.fields.locationName[locale]}
+              />
+            </View>
             {event.fields.accessibilityDetails && [
               <View style={styles.sectionDivider} key="a1" />,
               <AccessibilityDetails event={event} key="a2" />
@@ -133,6 +141,9 @@ const styles = StyleSheet.create({
   buyButton: {
     backgroundColor: whiteColor,
     paddingVertical: 12
+  },
+  map: {
+    marginTop: 8
   }
 });
 
