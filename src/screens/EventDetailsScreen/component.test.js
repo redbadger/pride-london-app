@@ -3,7 +3,7 @@ import React from "react";
 import type { NavigationScreenProp } from "react-navigation";
 import { shallow } from "enzyme";
 import Component, {
-  AccessibilityDetails,
+  EventAccessibility,
   EventHeader,
   EventTickets
 } from "./component";
@@ -122,14 +122,14 @@ describe("EventHeader", () => {
   });
 });
 
-describe("AccessibilityDetails", () => {
+describe("EventAccessibility", () => {
   it("renders correctly", () => {
-    const output = shallow(<AccessibilityDetails event={event} />);
+    const output = shallow(<EventAccessibility event={event} />);
     expect(output).toMatchSnapshot();
   });
 });
 
-describe("BuyTickets", () => {
+describe("EventTickets", () => {
   it("renders correctly", () => {
     const output = shallow(<EventTickets event={event} />);
     expect(output).toMatchSnapshot();

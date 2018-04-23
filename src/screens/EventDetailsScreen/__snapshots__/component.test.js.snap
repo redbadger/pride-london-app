@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccessibilityDetails renders correctly 1`] = `
+exports[`EventAccessibility renders correctly 1`] = `
 <LayoutColumn
   spacing={4}
 >
@@ -18,25 +18,6 @@ exports[`AccessibilityDetails renders correctly 1`] = `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
   </Text>
 </LayoutColumn>
-`;
-
-exports[`BuyTickets renders correctly 1`] = `
-<ContentPadding
-  padding={Object {}}
-  style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "paddingVertical": 12,
-    }
-  }
->
-  <Button
-    disabled={false}
-    onPress={[Function]}
-  >
-    Get tickets
-  </Button>
-</ContentPadding>
 `;
 
 exports[`EventHeader renders correctly 1`] = `
@@ -64,6 +45,25 @@ exports[`EventHeader renders correctly 1`] = `
     />
   </ContentPadding>
 </Header>
+`;
+
+exports[`EventTickets renders correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "paddingVertical": 12,
+    }
+  }
+>
+  <Button
+    disabled={false}
+    onPress={[Function]}
+  >
+    Get tickets
+  </Button>
+</ContentPadding>
 `;
 
 exports[`renders correctly 1`] = `
@@ -478,7 +478,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           lon={-0.12092150000000856}
         />
         <SectionDivider />
-        <AccessibilityDetails
+        <EventAccessibility
           event={
             Object {
               "fields": Object {

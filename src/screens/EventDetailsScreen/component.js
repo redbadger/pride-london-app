@@ -57,7 +57,7 @@ export const EventCategories = ({ event }: { event: Event }) => (
   </View>
 );
 
-export const AccessibilityDetails = ({ event }: { event: Event }) => (
+export const EventAccessibility = ({ event }: { event: Event }) => (
   <LayoutColumn spacing={4}>
     <Text type="h2" color="lightNavyBlueColor">
       {text.eventDetailsAccessibilityDetails}
@@ -114,7 +114,7 @@ class EventDetailsScreen extends PureComponent<Props> {
               />
               {event.fields.accessibilityDetails && <SectionDivider />}
               {event.fields.accessibilityDetails && (
-                <AccessibilityDetails event={event} />
+                <EventAccessibility event={event} />
               )}
               {(event.fields.email || event.fields.phone) && <SectionDivider />}
               {(event.fields.email || event.fields.phone) && (
