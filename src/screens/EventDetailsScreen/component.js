@@ -119,8 +119,8 @@ class EventDetailsScreen extends PureComponent<Props> {
               {(event.fields.email || event.fields.phone) && <SectionDivider />}
               {(event.fields.email || event.fields.phone) && (
                 <EventContact
-                  email={event.fields.email[locale]}
-                  phone={event.fields.phone[locale]}
+                  email={event.fields.email && event.fields.email[locale]}
+                  phone={event.fields.phone && event.fields.phone[locale]}
                 />
               )}
             </LayoutColumn>
@@ -138,7 +138,8 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor
   },
   content: {
-    marginVertical: 16
+    marginTop: 16,
+    marginBottom: 32
   },
   headerContent: {
     flexDirection: "row",

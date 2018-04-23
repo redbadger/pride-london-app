@@ -1,22 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View>
+<LayoutColumn
+  spacing={16}
+>
   <IconItem
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
       />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
     }
   >
     <Text
@@ -27,12 +19,8 @@ exports[`renders correctly 1`] = `
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
     </Text>
     <Text
+      color="blackColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#111111",
-        }
-      }
       type="small"
     >
       11:00AM - 6:00PM
@@ -42,89 +30,52 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
       />
     }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
   >
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      delayPressIn={50}
-      onPress={[Function]}
-    >
-      <View
-        style={
-          Object {
-            "alignSelf": "flex-start",
-            "borderBottomColor": "#2cda9d",
-            "borderBottomWidth": 1,
-            "marginBottom": 2,
-          }
-        }
+    <View>
+      <TextLink
+        onPress={[Function]}
       >
-        <Text
-          color="lightNavyBlueColor"
-          markdown={false}
-          type="h4"
-        >
-          Vauxhall Pleasure Gardens
-        </Text>
-      </View>
+        Vauxhall Pleasure Gardens
+      </TextLink>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         Vauxhall Pleasure Gardens
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         London
       </Text>
       <Text
+        color="blackColor"
         markdown={false}
         type="small"
       >
         EC1M 3HA
       </Text>
-    </Touchable>
+    </View>
   </IconItem>
   <IconItem
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": -3,
-          }
-        }
       />
     }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    key="c"
   >
     <Text
       color="lightNavyBlueColor"
@@ -138,18 +89,9 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": -2,
-          }
-        }
       />
     }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    key="d"
   >
     <Text
       color="lightNavyBlueColor"
@@ -163,14 +105,9 @@ exports[`renders correctly 1`] = `
     icon={
       <Image
         source={1}
-        style={
-          Object {
-            "marginTop": 3,
-          }
-        }
       />
     }
-    style={Object {}}
+    key="e"
   >
     <Text
       color="lightNavyBlueColor"
@@ -180,16 +117,12 @@ exports[`renders correctly 1`] = `
       Accessibility
     </Text>
     <Text
+      color="blackColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#111111",
-        }
-      }
       type="small"
     >
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</View>
+</LayoutColumn>
 `;
