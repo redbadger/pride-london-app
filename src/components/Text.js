@@ -8,9 +8,11 @@ import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
 
+export type ColorType = "lightNavyBlueColor" | "blackColor";
+
 type Props = {
   type?: TextType,
-  color?: "lightNavyBlueColor",
+  color?: ColorType,
   markdown?: boolean,
   ...TextProps
 };
@@ -44,10 +46,11 @@ const Text = ({
       {children}
     </RnText>
   );
+
 Text.defaultProps = {
   type: "text",
   markdown: false,
-  color: undefined
+  color: "blackColor"
 };
 
 const textStyles = {
@@ -88,6 +91,9 @@ const textStyles = {
     fontFamily: "Roboto-Bold",
     fontSize: 14,
     lineHeight: 20
+  },
+  blackColor: {
+    color: blackColor
   },
   lightNavyBlueColor: {
     color: lightNavyBlueColor
