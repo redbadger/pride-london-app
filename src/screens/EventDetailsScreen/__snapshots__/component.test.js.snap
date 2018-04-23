@@ -105,10 +105,16 @@ exports[`renders correctly 1`] = `
       padding={Object {}}
       style={
         Object {
-          "marginBottom": 24,
+          "marginVertical": 24,
         }
       }
     >
+      <Text
+        markdown={false}
+        type="h1"
+      >
+        Pride in the Park
+      </Text>
       <EventOverview
         event={
           Object {
@@ -666,10 +672,16 @@ exports[`renders correctly with missing details 1`] = `
       padding={Object {}}
       style={
         Object {
-          "marginBottom": 24,
+          "marginVertical": 24,
         }
       }
     >
+      <Text
+        markdown={false}
+        type="h1"
+      >
+        Pride in the Park
+      </Text>
       <EventOverview
         event={
           Object {

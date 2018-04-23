@@ -28,7 +28,7 @@ type Props = {
 
 export const AccessibilityDetails = ({ event }: { event: Event }) => (
   <View>
-    <Text type="h2" color="lightNavyBlueColor" style={styles.title}>
+    <Text type="h2" color="lightNavyBlueColor" style={styles.h2}>
       {text.eventDetailsAccessibilityDetails}
     </Text>
     <View style={styles.accessibilityDetailsItem}>
@@ -81,6 +81,7 @@ class EventDetailsScreen extends PureComponent<Props> {
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
           <ContentPadding style={styles.content}>
+            <Text type="h1">{event.fields.name[locale]}</Text>
             <EventOverview event={event} />
             <SectionDivider />
             <EventDescription event={event} />
@@ -117,13 +118,13 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor
   },
   content: {
-    marginBottom: 24
+    marginVertical: 24
   },
   headerContent: {
     flexDirection: "row",
     justifyContent: "space-between"
   },
-  title: {
+  h2: {
     marginTop: 8,
     marginBottom: 4
   },

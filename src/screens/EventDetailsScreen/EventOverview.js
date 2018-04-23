@@ -52,9 +52,6 @@ const EventOverview = ({ event }: Props) => {
 
   return (
     <View>
-      <Text type="h1" style={styles.title}>
-        {event.fields.name[locale]}
-      </Text>
       <View style={styles.categoryPillContainer}>
         {event.fields.eventCategories[locale].map(categoryName => (
           <CategoryPill
@@ -150,9 +147,6 @@ const EventOverview = ({ event }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: 24
-  },
   categoryPillContainer: {
     marginTop: 8,
     marginBottom: 16,

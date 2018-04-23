@@ -2,17 +2,6 @@
 
 exports[`renders correctly 1`] = `
 <View>
-  <Text
-    markdown={false}
-    style={
-      Object {
-        "marginTop": 24,
-      }
-    }
-    type="h1"
-  >
-    Pride in the Park
-  </Text>
   <View
     style={
       Object {
