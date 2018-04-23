@@ -69,7 +69,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
             />
           </View>
         </ContentPadding>
-        <ContentPadding style={styles.contentFilters}>
+        <View style={styles.contentFilters}>
           <FilterHeaderButton
             active={!!dateFilter}
             text={formattedDateFilter}
@@ -88,7 +88,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
               numTagFiltersSelected > 0 ? numTagFiltersSelected : null
             }
           />
-        </ContentPadding>
+        </View>
         <DateFilterDialog
           onApply={this.hideDatePicker}
           onCancel={this.hideDatePicker}

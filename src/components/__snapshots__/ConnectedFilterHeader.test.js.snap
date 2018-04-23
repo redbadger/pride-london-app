@@ -35,8 +35,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       <FilterHeaderCategories />
     </View>
   </ContentPadding>
-  <ContentPadding
-    padding={Object {}}
+  <View
     style={
       Object {
         "backgroundColor": "#20215a",
@@ -77,7 +76,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       }
       text="Add filters"
     />
-  </ContentPadding>
+  </View>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}
