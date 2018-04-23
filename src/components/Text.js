@@ -1,39 +1,45 @@
 // @flow
 import React from "react";
 import { Text as RnText, StyleSheet } from "react-native";
-import Markdown from "react-native-easy-markdown";
-
 import type { TextProps } from "react-native/Libraries/Text/TextProps";
-
+import Markdown from "react-native-easy-markdown";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
+export type TextColor = "lightNavyBlueColor";
 
 type Props = {
-  type?: TextType,
-  color?: "lightNavyBlueColor",
-  markdown?: boolean,
+  type: TextType,
+  color: ?TextColor,
+  markdown: boolean,
   ...TextProps
 };
 
-const Text = ({ type, markdown, style, color, ...otherProps }: Props) =>
-  markdown ? (
-    <Markdown
-      style={style}
-      markdownStyles={{ ...textStyles, ...markdownStyles }}
-      {...otherProps}
-    />
-  ) : (
-    <RnText
-      style={[type && styles[type], color && styles[color], style]}
-      {...otherProps}
-    />
-  );
-Text.defaultProps = {
-  type: "text",
-  markdown: false,
-  color: undefined
-};
+class Text extends React.PureComponent<Props> {
+  static defaultProps = {
+    type: "text",
+    markdown: false,
+    color: undefined
+  };
+
+  render() {
+    const { markdown, style, ...otherProps } = this.props;
+    const type: TextType = (this.props.type: any);
+    const color: ?TextColor = (this.props.color: any);
+    return markdown ? (
+      <Markdown
+        style={style}
+        markdownStyles={{ ...textStyles, ...markdownStyles }}
+        {...otherProps}
+      />
+    ) : (
+      <RnText
+        style={[styles[type], color && styles[color], style]}
+        {...otherProps}
+      />
+    );
+  }
+}
 
 const textStyles = {
   h1: {
