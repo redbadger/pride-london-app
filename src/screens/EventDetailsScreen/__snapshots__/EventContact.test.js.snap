@@ -12,25 +12,17 @@ exports[`renders correctly 1`] = `
     Contact
   </Text>
   <LayoutColumn
-    spacing={8}
+    spacing={16}
   >
     <IconItem
       icon={
         <Image
           source={1}
-          style={
-            Object {
-              "marginTop": 7,
-            }
-          }
         />
       }
-      style={Object {}}
     >
       <TextLink
         onPress={[Function]}
-        style={Object {}}
-        type="h4"
       >
         milo@red-badger.com
       </TextLink>
@@ -39,20 +31,73 @@ exports[`renders correctly 1`] = `
       icon={
         <Image
           source={1}
-          style={
-            Object {
-              "marginLeft": 2,
-              "marginTop": 6,
-            }
-          }
         />
       }
-      style={Object {}}
     >
       <TextLink
         onPress={[Function]}
-        style={Object {}}
-        type="h4"
+      >
+        1-800-555-WOOF
+      </TextLink>
+    </IconItem>
+  </LayoutColumn>
+</LayoutColumn>
+`;
+
+exports[`renders correctly when only email is given 1`] = `
+<LayoutColumn
+  spacing={4}
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <LayoutColumn
+    spacing={16}
+  >
+    <IconItem
+      icon={
+        <Image
+          source={1}
+        />
+      }
+    >
+      <TextLink
+        onPress={[Function]}
+      >
+        milo@red-badger.com
+      </TextLink>
+    </IconItem>
+  </LayoutColumn>
+</LayoutColumn>
+`;
+
+exports[`renders correctly when only phone is given 1`] = `
+<LayoutColumn
+  spacing={4}
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <LayoutColumn
+    spacing={16}
+  >
+    <IconItem
+      icon={
+        <Image
+          source={1}
+        />
+      }
+    >
+      <TextLink
+        onPress={[Function]}
       >
         1-800-555-WOOF
       </TextLink>
