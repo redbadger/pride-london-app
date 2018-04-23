@@ -2,7 +2,7 @@
 import React from "react";
 import type { NavigationScreenProp } from "react-navigation";
 import { shallow } from "enzyme";
-import Component, { AccessibilityDetails, BuyTickets } from "./component";
+import Component, { AccessibilityDetails, EventTickets } from "./component";
 import type { Event } from "../../data/event";
 
 const event: Event = ({
@@ -120,7 +120,7 @@ describe("AccessibilityDetails", () => {
 
 describe("BuyTickets", () => {
   it("renders correctly", () => {
-    const output = shallow(<BuyTickets event={event} />);
+    const output = shallow(<EventTickets event={event} />);
     expect(output).toMatchSnapshot();
   });
 });

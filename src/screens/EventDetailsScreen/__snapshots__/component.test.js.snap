@@ -615,7 +615,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       />
     </ContentPadding>
   </ShadowedScrollView>
-  <BuyTickets
+  <EventTickets
     event={
       Object {
         "fields": Object {

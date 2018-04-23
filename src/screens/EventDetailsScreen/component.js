@@ -50,8 +50,8 @@ export const AccessibilityDetails = ({ event }: { event: Event }) => (
   </View>
 );
 
-export const BuyTickets = ({ event }: { event: Event }) => (
-  <ContentPadding style={styles.buyButton}>
+export const EventTickets = ({ event }: { event: Event }) => (
+  <ContentPadding style={styles.ticketButton}>
     <ButtonPrimary
       onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
     >
@@ -120,7 +120,7 @@ class EventDetailsScreen extends PureComponent<Props> {
             ]}
           </ContentPadding>
         </ShadowedScrollView>
-        {event.fields.ticketingUrl && <BuyTickets event={event} />}
+        {event.fields.ticketingUrl && <EventTickets event={event} />}
       </View>
     );
   }
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   accessibilityDetailsItem: {
     marginTop: 8
   },
-  buyButton: {
+  ticketButton: {
     backgroundColor: whiteColor,
     paddingVertical: 12
   },
