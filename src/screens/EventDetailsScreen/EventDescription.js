@@ -103,7 +103,6 @@ class EventDescription extends PureComponent<
 
 const styles = StyleSheet.create({
   title: {
-    marginTop: 8,
     marginBottom: 4
   },
   gradient: {
