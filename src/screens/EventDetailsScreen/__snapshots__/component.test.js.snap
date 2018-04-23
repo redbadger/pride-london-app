@@ -11,14 +11,12 @@ exports[`AccessibilityDetails renders correctly 1`] = `
   >
     Accessibility Details
   </Text>
-  <View>
-    <Text
-      markdown={false}
-      type="text"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
-    </Text>
-  </View>
+  <Text
+    markdown={false}
+    type="text"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
+  </Text>
 </LayoutColumn>
 `;
 

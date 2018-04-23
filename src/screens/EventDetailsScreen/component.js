@@ -45,9 +45,7 @@ export const AccessibilityDetails = ({ event }: { event: Event }) => (
     <Text type="h2" color="lightNavyBlueColor">
       {text.eventDetailsAccessibilityDetails}
     </Text>
-    <View style={styles.accessibilityDetailsItem}>
-      <Text>{event.fields.accessibilityDetails[locale]}</Text>
-    </View>
+    <Text>{event.fields.accessibilityDetails[locale]}</Text>
   </LayoutColumn>
 );
 
