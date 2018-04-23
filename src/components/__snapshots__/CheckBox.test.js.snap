@@ -22,6 +22,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    color="blackColor"
     markdown={false}
     type="text"
   >
@@ -53,6 +54,7 @@ exports[`renders correctly when checked 1`] = `
   }
 >
   <Text
+    color="blackColor"
     markdown={false}
     type="text"
   >

@@ -120,6 +120,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
+          color="blackColor"
           markdown={false}
           style={
             Object {
