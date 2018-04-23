@@ -9,7 +9,12 @@ exports[`renders correctly 1`] = `
     ]
   }
   delayPressIn={50}
-  style={Object {}}
+  onPress={[Function]}
+  style={
+    Object {
+      "minHeight": 26,
+    }
+  }
 >
   <View
     style={
@@ -24,7 +29,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="lightNavyBlueColor"
       markdown={false}
-      type="h2"
+      type="h4"
     >
       Some text
     </Text>

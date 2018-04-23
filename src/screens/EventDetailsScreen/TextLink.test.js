@@ -4,6 +4,6 @@ import { shallow } from "enzyme";
 import TextLink from "./TextLink";
 
 it("renders correctly", () => {
-  const output = shallow(<TextLink type="h2">Some text</TextLink>);
+  const output = shallow(<TextLink onPress={() => {}}>Some text</TextLink>);
   expect(output).toMatchSnapshot();
 });
