@@ -3,6 +3,7 @@ import React from "react";
 import { Text as RnText, StyleSheet } from "react-native";
 import type { TextProps } from "react-native/Libraries/Text/TextProps";
 import Markdown from "react-native-easy-markdown";
+import { mergeDeepRight } from "ramda";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
 export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
@@ -29,7 +30,7 @@ class Text extends React.PureComponent<Props> {
     return markdown ? (
       <Markdown
         style={style}
-        markdownStyles={{ ...textStyles, ...markdownStyles }}
+        markdownStyles={mergeDeepRight(textStyles, markdownStyles)}
         {...otherProps}
       />
     ) : (
