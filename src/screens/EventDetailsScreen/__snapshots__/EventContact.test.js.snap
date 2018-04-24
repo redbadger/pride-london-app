@@ -11,36 +11,24 @@ exports[`renders correctly 1`] = `
   >
     Contact
   </Text>
-  <LayoutColumn
-    spacing={16}
-  >
+  <IconList>
     <IconItem
-      icon={
-        <Image
-          source={1}
-        />
-      }
+      onPress={[Function]}
+      source={1}
     >
-      <TextLink
-        onPress={[Function]}
-      >
+      <TextLink>
         milo@red-badger.com
       </TextLink>
     </IconItem>
     <IconItem
-      icon={
-        <Image
-          source={1}
-        />
-      }
+      onPress={[Function]}
+      source={1}
     >
-      <TextLink
-        onPress={[Function]}
-      >
+      <TextLink>
         1-800-555-WOOF
       </TextLink>
     </IconItem>
-  </LayoutColumn>
+  </IconList>
 </LayoutColumn>
 `;
 
@@ -55,23 +43,16 @@ exports[`renders correctly when only email is given 1`] = `
   >
     Contact
   </Text>
-  <LayoutColumn
-    spacing={16}
-  >
+  <IconList>
     <IconItem
-      icon={
-        <Image
-          source={1}
-        />
-      }
+      onPress={[Function]}
+      source={1}
     >
-      <TextLink
-        onPress={[Function]}
-      >
+      <TextLink>
         milo@red-badger.com
       </TextLink>
     </IconItem>
-  </LayoutColumn>
+  </IconList>
 </LayoutColumn>
 `;
 
@@ -86,22 +67,15 @@ exports[`renders correctly when only phone is given 1`] = `
   >
     Contact
   </Text>
-  <LayoutColumn
-    spacing={16}
-  >
+  <IconList>
     <IconItem
-      icon={
-        <Image
-          source={1}
-        />
-      }
+      onPress={[Function]}
+      source={1}
     >
-      <TextLink
-        onPress={[Function]}
-      >
+      <TextLink>
         1-800-555-WOOF
       </TextLink>
     </IconItem>
-  </LayoutColumn>
+  </IconList>
 </LayoutColumn>
 `;
