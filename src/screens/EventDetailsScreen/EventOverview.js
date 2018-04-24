@@ -1,11 +1,10 @@
 // @flow
 import React from "react";
-import { Image, View } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import { formattedEventPriceRange } from "../../data/formatters";
 import IconItem from "./IconItem";
-import LayoutColumn from "../../components/LayoutColumn";
+import IconList from "./IconList";
 import Text from "../../components/Text";
 import TextLink from "./TextLink";
 import text from "../../constants/text";
@@ -50,35 +49,34 @@ const EventOverview = ({ event }: Props) => {
   ];
 
   return (
-    <LayoutColumn spacing={16}>
-      <IconItem icon={<Image source={dateIcon} />}>
+    <IconList>
+      <IconItem source={dateIcon}>
         <Text type="h4" color="lightNavyBlueColor">
           {dateDisplay}
         </Text>
         <Text type="small">{timeDisplay}</Text>
       </IconItem>
 
-      <IconItem icon={<Image source={locationIcon} />}>
-        <View>
-          <TextLink onPress={() => showLocation(...eventLocation)}>
-            {event.fields.locationName[locale]}
-          </TextLink>
-          {event.fields.addressLine1 && (
-            <Text type="small">{event.fields.addressLine1[locale]}</Text>
-          )}
-          {event.fields.addressLine2 && (
-            <Text type="small">{event.fields.addressLine2[locale]}</Text>
-          )}
-          {event.fields.city && (
-            <Text type="small">{event.fields.city[locale]}</Text>
-          )}
-          {event.fields.postcode && (
-            <Text type="small">{event.fields.postcode[locale]}</Text>
-          )}
-        </View>
+      <IconItem
+        onPress={() => showLocation(...eventLocation)}
+        source={locationIcon}
+      >
+        <TextLink>{event.fields.locationName[locale]}</TextLink>
+        {event.fields.addressLine1 && (
+          <Text type="small">{event.fields.addressLine1[locale]}</Text>
+        )}
+        {event.fields.addressLine2 && (
+          <Text type="small">{event.fields.addressLine2[locale]}</Text>
+        )}
+        {event.fields.city && (
+          <Text type="small">{event.fields.city[locale]}</Text>
+        )}
+        {event.fields.postcode && (
+          <Text type="small">{event.fields.postcode[locale]}</Text>
+        )}
       </IconItem>
 
-      <IconItem key="c" icon={<Image source={ticketsIcon} />}>
+      <IconItem source={ticketsIcon}>
         <Text type="h4" color="lightNavyBlueColor">
           {formattedEventPriceRange(
             event.fields.isFree[locale],
@@ -92,7 +90,7 @@ const EventOverview = ({ event }: Props) => {
         event.fields.venueDetails[locale].includes(
           strings.venueDetailsGenderNeutralToilets
         ) && (
-          <IconItem key="d" icon={<Image source={genderNeutralIcon} />}>
+          <IconItem source={genderNeutralIcon}>
             <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsGenderNeutralToilets}
             </Text>
@@ -101,7 +99,7 @@ const EventOverview = ({ event }: Props) => {
 
       {event.fields.accessibilityOptions &&
         event.fields.accessibilityOptions[locale].length > 0 && (
-          <IconItem key="e" icon={<Image source={accessibilityIcon} />}>
+          <IconItem source={accessibilityIcon}>
             <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsAccessibility}
             </Text>
@@ -110,7 +108,7 @@ const EventOverview = ({ event }: Props) => {
             </Text>
           </IconItem>
         )}
-    </LayoutColumn>
+    </IconList>
   );
 };
 

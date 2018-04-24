@@ -1,15 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<LayoutColumn
-  spacing={16}
->
+<IconList>
   <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
+    source={1}
   >
     <Text
       color="lightNavyBlueColor"
@@ -27,55 +21,43 @@ exports[`renders correctly 1`] = `
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
+    onPress={[Function]}
+    source={1}
   >
-    <View>
-      <TextLink
-        onPress={[Function]}
-      >
-        Vauxhall Pleasure Gardens
-      </TextLink>
-      <Text
-        color="blackColor"
-        markdown={false}
-        type="small"
-      >
-        Vauxhall Pleasure Gardens
-      </Text>
-      <Text
-        color="blackColor"
-        markdown={false}
-        type="small"
-      >
-        Vauxhall Pleasure Gardens
-      </Text>
-      <Text
-        color="blackColor"
-        markdown={false}
-        type="small"
-      >
-        London
-      </Text>
-      <Text
-        color="blackColor"
-        markdown={false}
-        type="small"
-      >
-        EC1M 3HA
-      </Text>
-    </View>
+    <TextLink>
+      Vauxhall Pleasure Gardens
+    </TextLink>
+    <Text
+      color="blackColor"
+      markdown={false}
+      type="small"
+    >
+      Vauxhall Pleasure Gardens
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      type="small"
+    >
+      Vauxhall Pleasure Gardens
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      type="small"
+    >
+      London
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      type="small"
+    >
+      EC1M 3HA
+    </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
-    key="c"
+    source={1}
   >
     <Text
       color="lightNavyBlueColor"
@@ -86,12 +68,7 @@ exports[`renders correctly 1`] = `
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
-    key="d"
+    source={1}
   >
     <Text
       color="lightNavyBlueColor"
@@ -102,12 +79,7 @@ exports[`renders correctly 1`] = `
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
-    key="e"
+    source={1}
   >
     <Text
       color="lightNavyBlueColor"
@@ -124,5 +96,5 @@ exports[`renders correctly 1`] = `
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</LayoutColumn>
+</IconList>
 `;
