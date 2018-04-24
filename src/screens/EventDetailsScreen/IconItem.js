@@ -1,14 +1,13 @@
 // @flow
 import React from "react";
 import { Image, View, StyleSheet } from "react-native";
-import type { ImageSourcePropType } from "react-native";
 import type { Node } from "react";
 import Touchable from "../../components/Touchable";
 
 type IconItemProps = {|
   children: Node,
   onPress?: Function,
-  source: ImageSourcePropType
+  source: Image.propTypes.source
 |};
 
 const IconItem = ({ children, onPress, source }: IconItemProps) => {

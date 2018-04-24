@@ -1,12 +1,11 @@
 // @flow
 import React from "react";
-import type { ChildrenArray, Element } from "react";
+import type { Node } from "react";
 import { View, StyleSheet } from "react-native";
 import LayoutColumn from "../../components/LayoutColumn";
-import IconItem from "./IconItem";
 
 type IconListProps = {|
-  children: ChildrenArray<Element<typeof IconItem>>
+  children: Node
 |};
 
 const IconList = ({ children }: IconListProps) => (
