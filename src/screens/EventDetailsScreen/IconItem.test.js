@@ -6,7 +6,16 @@ import IconItem from "./IconItem";
 
 it("renders correctly", () => {
   const output = shallow(
-    <IconItem icon={<Text>Some icon</Text>}>
+    <IconItem source={{ uri: "/super-awesome-image.jpg" }}>
+      <Text type="h4">some thing</Text>
+    </IconItem>
+  );
+  expect(output).toMatchSnapshot();
+});
+
+it("renders correctly when passed an onPress handler", () => {
+  const output = shallow(
+    <IconItem onPress={() => {}} source={{ uri: "/super-awesome-image.jpg" }}>
       <Text type="h4">some thing</Text>
     </IconItem>
   );
