@@ -23,6 +23,10 @@
 {
   #if DEBUG == 0
     [Fabric with:@[[Crashlytics class]]];
+    [Answers logCustomEventWithName:@"Test Custom Event"
+                      customAttributes:@{
+                          @"Custom String" : @"foo",
+                          @"Custom Number" : @42}];
   #endif
   NSURL *jsCodeLocation;
 
