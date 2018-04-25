@@ -17,7 +17,11 @@ import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "./SectionDivider";
 import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type {
+  Event,
+  LocalizedFieldRef,
+  EventCategoryName
+} from "../../data/event";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 import heartWhite from "../../../assets/images/heart-white.png";
@@ -50,7 +54,7 @@ export const EventCategories = ({ event }: { event: Event }) => (
     {event.fields.eventCategories[locale].map(categoryName => (
       <CategoryPill
         key={categoryName}
-        name={categoryName}
+        name={((categoryName: any): EventCategoryName)}
         style={styles.categoryPill}
       />
     ))}

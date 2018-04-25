@@ -12,21 +12,32 @@ exports[`can be disabled 1`] = `
   disabled={true}
   onPress={[Function]}
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#2cda9d",
-      "borderRadius": 4,
-      "justifyContent": "center",
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#2cda9d",
+        "borderRadius": 4,
+        "justifyContent": "center",
+        "minHeight": 48,
+      },
+      Object {
+        "backgroundColor": "#cecece",
+      },
+    ]
   }
 >
   <Text
     color="blackColor"
     markdown={false}
     style={
-      Object {
-        "color": "#2d2f7f",
-      }
+      Array [
+        Object {
+          "color": "#2d2f7f",
+        },
+        Object {
+          "color": "#585858",
+        },
+      ]
     }
     type="h2"
   >
@@ -47,21 +58,28 @@ exports[`renders correctly 1`] = `
   disabled={false}
   onPress={[Function]}
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#2cda9d",
-      "borderRadius": 4,
-      "justifyContent": "center",
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#2cda9d",
+        "borderRadius": 4,
+        "justifyContent": "center",
+        "minHeight": 48,
+      },
+      Object {},
+    ]
   }
 >
   <Text
     color="blackColor"
     markdown={false}
     style={
-      Object {
-        "color": "#2d2f7f",
-      }
+      Array [
+        Object {
+          "color": "#2d2f7f",
+        },
+        Object {},
+      ]
     }
     type="h2"
   >

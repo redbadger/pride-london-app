@@ -134,6 +134,7 @@ exports[`renders correctly 1`] = `
   />
   <ShadowedScrollView
     bottomShadow={true}
+    shadowOpacity={1}
     style={Object {}}
     topShadow={false}
   >
@@ -795,6 +796,7 @@ exports[`renders correctly with missing details 1`] = `
   />
   <ShadowedScrollView
     bottomShadow={true}
+    shadowOpacity={1}
     style={Object {}}
     topShadow={false}
   >
