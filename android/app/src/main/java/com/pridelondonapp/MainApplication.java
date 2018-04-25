@@ -3,6 +3,8 @@ package com.pridelondonapp;
 import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
 import com.facebook.react.ReactApplication;
 import com.BV.LinearGradient.LinearGradientPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -54,5 +56,10 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
     SoLoader.init(this, /* native exopackage */ false);
+
+    Answers.getInstance().logCustom(new CustomEvent("Test Custom Event")
+      .putCustomAttribute("Custom String", "foo")
+      .putCustomAttribute("Custom Number", 42));
+
   }
 }
