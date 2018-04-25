@@ -21,13 +21,15 @@ exports[`FilterModal renders correctly 1`] = `
     showClear={false}
   />
   <ShadowedScrollView
-    shadowOpacity={0.4}
+    bottomShadow={true}
+    shadowOpacity={0.6}
     style={
       Object {
         "backgroundColor": "#ffffff",
         "flex": 1,
       }
     }
+    topShadow={true}
   >
     <FilterSectionList
       eventFilters={

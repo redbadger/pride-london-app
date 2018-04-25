@@ -1,17 +1,16 @@
 // @flow
 import React from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, View } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import { formattedEventPriceRange } from "../../data/formatters";
 import IconItem from "./IconItem";
-import Touchable from "../../components/Touchable";
-import CategoryPill from "../../components/CategoryPill";
+import LayoutColumn from "../../components/LayoutColumn";
 import Text from "../../components/Text";
-import { blackColor, eucalyptusGreenColor } from "../../constants/colors";
+import TextLink from "./TextLink";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { Event, EventCategoryName } from "../../data/event";
+import type { Event } from "../../data/event";
 import locale from "../../data/locale";
 import dateIcon from "../../../assets/images/date.png";
 import genderNeutralIcon from "../../../assets/images/genderNeutral.png";
@@ -51,41 +50,19 @@ const EventOverview = ({ event }: Props) => {
   ];
 
   return (
-    <View>
-      <Text type="h1" style={styles.title}>
-        {event.fields.name[locale]}
-      </Text>
-      <View style={styles.categoryPillContainer}>
-        {event.fields.eventCategories[locale].map(categoryName => (
-          <CategoryPill
-            key={categoryName}
-            name={((categoryName: any): EventCategoryName)}
-            style={styles.categoryPill}
-          />
-        ))}
-      </View>
-      <IconItem
-        icon={<Image style={styles.icon} source={dateIcon} />}
-        style={styles.iconItem}
-      >
+    <LayoutColumn spacing={16}>
+      <IconItem icon={<Image source={dateIcon} />}>
         <Text type="h4" color="lightNavyBlueColor">
           {dateDisplay}
         </Text>
-        <Text type="small" style={styles.text}>
-          {timeDisplay}
-        </Text>
+        <Text type="small">{timeDisplay}</Text>
       </IconItem>
 
-      <IconItem
-        icon={<Image source={locationIcon} style={styles.icon} />}
-        style={styles.iconItem}
-      >
-        <Touchable onPress={() => showLocation(...eventLocation)}>
-          <View style={styles.detailTitleLink}>
-            <Text type="h4" color="lightNavyBlueColor">
-              {event.fields.locationName[locale]}
-            </Text>
-          </View>
+      <IconItem icon={<Image source={locationIcon} />}>
+        <View>
+          <TextLink onPress={() => showLocation(...eventLocation)}>
+            {event.fields.locationName[locale]}
+          </TextLink>
           {event.fields.addressLine1 && (
             <Text type="small">{event.fields.addressLine1[locale]}</Text>
           )}
@@ -98,12 +75,10 @@ const EventOverview = ({ event }: Props) => {
           {event.fields.postcode && (
             <Text type="small">{event.fields.postcode[locale]}</Text>
           )}
-        </Touchable>
+        </View>
       </IconItem>
-      <IconItem
-        icon={<Image source={ticketsIcon} style={styles.ticketIcon} />}
-        style={styles.iconItem}
-      >
+
+      <IconItem key="c" icon={<Image source={ticketsIcon} />}>
         <Text type="h4" color="lightNavyBlueColor">
           {formattedEventPriceRange(
             event.fields.isFree[locale],
@@ -112,81 +87,31 @@ const EventOverview = ({ event }: Props) => {
           )}
         </Text>
       </IconItem>
+
       {event.fields.venueDetails &&
         event.fields.venueDetails[locale].includes(
           strings.venueDetailsGenderNeutralToilets
         ) && (
-          <IconItem
-            icon={
-              <Image source={genderNeutralIcon} style={styles.genderIcon} />
-            }
-            style={styles.iconItem}
-          >
+          <IconItem key="d" icon={<Image source={genderNeutralIcon} />}>
             <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsGenderNeutralToilets}
             </Text>
           </IconItem>
         )}
+
       {event.fields.accessibilityOptions &&
         event.fields.accessibilityOptions[locale].length > 0 && (
-          <IconItem
-            icon={
-              <Image
-                style={styles.accessibilityIcon}
-                source={accessibilityIcon}
-              />
-            }
-          >
+          <IconItem key="e" icon={<Image source={accessibilityIcon} />}>
             <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsAccessibility}
             </Text>
-            <Text type="small" style={styles.text}>
+            <Text type="small">
               {event.fields.accessibilityOptions[locale].join(", ")}
             </Text>
           </IconItem>
         )}
-    </View>
+    </LayoutColumn>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    marginTop: 24
-  },
-  categoryPillContainer: {
-    marginTop: 16,
-    marginBottom: 16,
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  categoryPill: {
-    marginBottom: 8,
-    marginRight: 8
-  },
-  iconItem: {
-    marginBottom: 20
-  },
-  icon: {
-    marginTop: 2
-  },
-  ticketIcon: {
-    marginTop: -3
-  },
-  genderIcon: {
-    marginTop: -2
-  },
-  accessibilityIcon: {
-    marginTop: 3
-  },
-  text: {
-    color: blackColor
-  },
-  detailTitleLink: {
-    borderBottomColor: eucalyptusGreenColor,
-    borderBottomWidth: StyleSheet.hairlineWidth * 2,
-    alignSelf: "flex-start",
-    marginBottom: 2
-  }
-});
 
 export default EventOverview;

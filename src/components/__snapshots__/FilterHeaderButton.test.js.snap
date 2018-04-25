@@ -26,6 +26,7 @@ exports[`renders badge value when provided 1`] = `
   }
 >
   <Text
+    color="blackColor"
     markdown={false}
     style={
       Array [
@@ -81,6 +82,7 @@ exports[`renders correct styles when inactive 1`] = `
   }
 >
   <Text
+    color="blackColor"
     markdown={false}
     style={
       Array [
@@ -125,6 +127,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    color="blackColor"
     markdown={false}
     style={
       Array [

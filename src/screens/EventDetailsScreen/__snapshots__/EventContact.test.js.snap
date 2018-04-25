@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<LayoutColumn
+  spacing={4}
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <LayoutColumn
+    spacing={16}
+  >
+    <IconItem
+      icon={
+        <Image
+          source={1}
+        />
+      }
+    >
+      <TextLink
+        onPress={[Function]}
+      >
+        milo@red-badger.com
+      </TextLink>
+    </IconItem>
+    <IconItem
+      icon={
+        <Image
+          source={1}
+        />
+      }
+    >
+      <TextLink
+        onPress={[Function]}
+      >
+        1-800-555-WOOF
+      </TextLink>
+    </IconItem>
+  </LayoutColumn>
+</LayoutColumn>
+`;
+
+exports[`renders correctly when only email is given 1`] = `
+<LayoutColumn
+  spacing={4}
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <LayoutColumn
+    spacing={16}
+  >
+    <IconItem
+      icon={
+        <Image
+          source={1}
+        />
+      }
+    >
+      <TextLink
+        onPress={[Function]}
+      >
+        milo@red-badger.com
+      </TextLink>
+    </IconItem>
+  </LayoutColumn>
+</LayoutColumn>
+`;
+
+exports[`renders correctly when only phone is given 1`] = `
+<LayoutColumn
+  spacing={4}
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <LayoutColumn
+    spacing={16}
+  >
+    <IconItem
+      icon={
+        <Image
+          source={1}
+        />
+      }
+    >
+      <TextLink
+        onPress={[Function]}
+      >
+        1-800-555-WOOF
+      </TextLink>
+    </IconItem>
+  </LayoutColumn>
+</LayoutColumn>
+`;

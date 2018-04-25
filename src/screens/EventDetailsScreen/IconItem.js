@@ -2,23 +2,18 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { Node } from "react";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type IconItemProps = {|
   icon: Node,
-  children: Node,
-  style?: StyleObj
+  children: Node
 |};
 
-const IconItem = ({ icon, children, style }: IconItemProps) => (
-  <View style={[styles.iconItem, style]}>
+const IconItem = ({ icon, children }: IconItemProps) => (
+  <View style={styles.iconItem}>
     <View style={styles.icon}>{icon}</View>
     <View style={styles.item}>{children}</View>
   </View>
 );
-IconItem.defaultProps = {
-  style: {}
-};
 
 const styles = StyleSheet.create({
   iconItem: {
@@ -27,11 +22,12 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: 40,
-    height: 20,
-    marginRight: 18
+    height: 32,
+    marginRight: 12
   },
   item: {
-    flex: 1
+    flex: 1,
+    paddingTop: 2
   }
 });
 

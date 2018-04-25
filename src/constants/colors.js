@@ -35,6 +35,7 @@ export const textColor = "#272727";
 
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 export const blackZeroColor = "rgba(0, 0, 0, 0)";
+export const blackFifteenColor = "rgba(0, 0, 0, 0.1)";
 export const blackThirtyColor = "rgba(0, 0, 0, 0.3)";
 export const whiteZeroColor = "rgba(255, 255, 255, 0)";
 export const dialogBgColor = whiteColor;

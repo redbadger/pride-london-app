@@ -32,6 +32,7 @@ exports[`renders correctly 1`] = `
     style={Object {}}
   >
     <Text
+      color="blackColor"
       markdown={false}
       style={
         Object {

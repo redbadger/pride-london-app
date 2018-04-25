@@ -28,6 +28,7 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
         source={1}
       />
       <Text
+        color="blackColor"
         markdown={false}
         style={
           Object {

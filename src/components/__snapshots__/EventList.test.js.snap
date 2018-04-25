@@ -192,6 +192,7 @@ exports[`EventList renders section headers correctly 1`] = `
       ]
     }
     accessible={true}
+    color="blackColor"
     markdown={false}
     style={
       Object {

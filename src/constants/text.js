@@ -44,7 +44,7 @@ export default {
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",
   eventDetailsContact: "Contact",
-  eventDetailsBuyButton: "Buy tickets",
+  eventDetailsBuyButton: "Get tickets",
   eventDetailsGenderNeutralToilets: "Gender neutral toilets",
   selectDates: "Select dates",
   eventDetailsAbout: "About",

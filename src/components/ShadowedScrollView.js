@@ -3,20 +3,24 @@ import * as React from "react";
 import { StyleSheet, ScrollView, View, Animated } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
-import { blackZeroColor, blackThirtyColor } from "../constants/colors";
+import { blackZeroColor, blackFifteenColor } from "../constants/colors";
 
 type Props = {
+  topShadow?: boolean,
+  bottomShadow?: boolean,
   children: React.Node,
-  style: StyleObj,
-  shadowOpacity?: number
+  shadowOpacity?: number,
+  style: StyleObj
 };
 
 const shadowFadeDuration: number = 100;
 const maxScrollEventThrottle: number = 16;
-const shadowHeight: number = 15;
+const shadowHeight: number = 8;
 
 class ShadowedScrollView extends React.PureComponent<Props> {
   static defaultProps = {
+    topShadow: true,
+    bottomShadow: true,
     children: [],
     style: {},
     shadowOpacity: 1
@@ -85,29 +89,35 @@ class ShadowedScrollView extends React.PureComponent<Props> {
   };
 
   render() {
-    const { style, children, shadowOpacity } = this.props;
+    const {
+      style,
+      children,
+      topShadow,
+      bottomShadow,
+      shadowOpacity
+    } = this.props;
 
     const topShadowOpacityStyle = {
       opacity: this.topShadowOpacity.interpolate({
         inputRange: [0, 1],
-        outputRange: [0, 1]
+        outputRange: [0, topShadow ? 1 : 0]
       })
     };
 
     const bottomShadowOpacityStyle = {
       opacity: this.bottomShadowOpacity.interpolate({
         inputRange: [0, 1],
-        outputRange: [0, 1]
+        outputRange: [0, bottomShadow ? 1 : 0]
       })
     };
 
     const gradientStyles = [styles.gradient, { opacity: shadowOpacity }];
 
     return (
-      <View style={style}>
+      <View style={[styles.container, style]}>
         <Animated.View style={[styles.topShadow, topShadowOpacityStyle]}>
           <LinearGradient
-            colors={[blackThirtyColor, blackZeroColor]}
+            colors={[blackFifteenColor, blackZeroColor]}
             style={gradientStyles}
           />
         </Animated.View>
@@ -120,7 +130,7 @@ class ShadowedScrollView extends React.PureComponent<Props> {
         </ScrollView>
         <Animated.View style={[styles.bottomShadow, bottomShadowOpacityStyle]}>
           <LinearGradient
-            colors={[blackZeroColor, blackThirtyColor]}
+            colors={[blackZeroColor, blackFifteenColor]}
             style={gradientStyles}
           />
         </Animated.View>
@@ -130,6 +140,9 @@ class ShadowedScrollView extends React.PureComponent<Props> {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   topShadow: {
     width: "100%",
     height: shadowHeight,

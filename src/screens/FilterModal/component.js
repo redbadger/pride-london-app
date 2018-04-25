@@ -87,7 +87,7 @@ class FilterModal extends PureComponent<Props> {
           onCancelPress={() => navigation.goBack()}
           showClear={numTagFiltersSelected > 0}
         />
-        <ShadowedScrollView style={styles.flex} shadowOpacity={0.4}>
+        <ShadowedScrollView style={styles.flex} shadowOpacity={0.6}>
           <FilterSectionList
             eventFilters={eventFilters}
             handleCheckboxChange={this.handleCheckboxChange}

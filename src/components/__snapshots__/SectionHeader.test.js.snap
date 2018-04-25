@@ -33,6 +33,7 @@ exports[`renders correctly 1`] = `
       ]
     }
     accessible={true}
+    color="blackColor"
     markdown={false}
     style={
       Object {
@@ -80,6 +81,7 @@ exports[`renders correctly with badge text 1`] = `
       ]
     }
     accessible={true}
+    color="blackColor"
     markdown={false}
     style={
       Object {
@@ -123,6 +125,7 @@ exports[`renders correctly without shadow 1`] = `
       ]
     }
     accessible={true}
+    color="blackColor"
     markdown={false}
     style={
       Object {

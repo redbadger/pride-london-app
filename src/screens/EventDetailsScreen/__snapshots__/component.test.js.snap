@@ -1,56 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccessibilityDetails renders correctly 1`] = `
-<View>
+exports[`EventAccessibility renders correctly 1`] = `
+<LayoutColumn
+  spacing={4}
+>
   <Text
     color="lightNavyBlueColor"
     markdown={false}
-    style={
-      Object {
-        "marginBottom": 4,
-        "marginTop": 8,
-      }
-    }
     type="h2"
   >
     Accessibility Details
   </Text>
-  <View
+  <Text
+    color="blackColor"
+    markdown={false}
+    type="text"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
+  </Text>
+</LayoutColumn>
+`;
+
+exports[`EventCategories renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "marginBottom": -8,
+    }
+  }
+>
+  <CategoryPill
+    key="Community"
+    name="Community"
     style={
       Object {
-        "marginTop": 8,
+        "marginBottom": 8,
+        "marginRight": 8,
       }
     }
-  >
-    <Text
-      markdown={false}
-      type="text"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
-    </Text>
-  </View>
+  />
+  <CategoryPill
+    key="Social and Networking"
+    name="Social and Networking"
+    style={
+      Object {
+        "marginBottom": 8,
+        "marginRight": 8,
+      }
+    }
+  />
+  <CategoryPill
+    key="Sports and Activities"
+    name="Sports and Activities"
+    style={
+      Object {
+        "marginBottom": 8,
+        "marginRight": 8,
+      }
+    }
+  />
+  <CategoryPill
+    key="Music"
+    name="Music"
+    style={
+      Object {
+        "marginBottom": 8,
+        "marginRight": 8,
+      }
+    }
+  />
 </View>
 `;
 
-exports[`BuyTickets renders correctly 1`] = `
-<Shadow>
+exports[`EventHeader renders correctly 1`] = `
+<Header
+  backgroundColor="#20215a"
+>
   <ContentPadding
     padding={Object {}}
     style={
       Object {
-        "backgroundColor": "#ffffff",
-        "paddingVertical": 12,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
       }
     }
   >
-    <Button
-      disabled={false}
+    <IconButton
+      accessibilityLabel="Back"
       onPress={[Function]}
-    >
-      Buy tickets
-    </Button>
+      source={1}
+    />
+    <IconButton
+      accessibilityLabel="Favourite"
+      onPress={[Function]}
+      source={1}
+    />
   </ContentPadding>
-</Shadow>
+</Header>
+`;
+
+exports[`EventTickets renders correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "paddingVertical": 12,
+    }
+  }
+>
+  <Button
+    disabled={false}
+    onPress={[Function]}
+  >
+    Get tickets
+  </Button>
+</ContentPadding>
 `;
 
 exports[`renders correctly 1`] = `
@@ -62,31 +129,15 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Header
-    backgroundColor="#20215a"
+  <EventHeader
+    onBack={[Function]}
+  />
+  <ShadowedScrollView
+    bottomShadow={true}
+    shadowOpacity={1}
+    style={Object {}}
+    topShadow={false}
   >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        }
-      }
-    >
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={[Function]}
-        source={1}
-      />
-      <IconButton
-        accessibilityLabel="Favourite"
-        onPress={[Function]}
-        source={1}
-      />
-    </ContentPadding>
-  </Header>
-  <ScrollView>
     <Image
       source={
         Object {
@@ -103,402 +154,514 @@ exports[`renders correctly 1`] = `
       padding={Object {}}
       style={
         Object {
-          "marginBottom": 24,
+          "marginBottom": 32,
+          "marginTop": 16,
         }
       }
     >
-      <EventOverview
-        event={
-          Object {
-            "fields": Object {
-              "accessibilityDetails": Object {
-                "en-GB": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. ",
-              },
-              "accessibilityOptions": Object {
-                "en-GB": Array [
-                  "Accessible Toilets",
-                  "Hearing loop installed",
-                ],
-              },
-              "email": Object {
-                "en-GB": "john.smith@eventname.com",
-              },
-              "endTime": Object {
-                "en-GB": "2018-07-15T18:00+01:00",
-              },
-              "eventCategories": Object {
-                "en-GB": Array [
-                  "Community",
-                  "Social and Networking",
-                  "Sports and Activities",
-                  "Music",
-                ],
-              },
-              "eventDescription": Object {
-                "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
-
-Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": 30,
-              },
-              "eventPriceLow": Object {
-                "en-GB": 19.95,
-              },
-              "eventsListPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
-                      },
-                    },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
-                  },
-                },
-              },
-              "individualEventPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
-                      },
-                    },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
-                  },
-                },
-              },
-              "isFree": Object {
-                "en-GB": false,
-              },
-              "location": Object {
-                "en-GB": Object {
-                  "lat": 51.4875152,
-                  "lon": -0.12092150000000856,
-                },
-              },
-              "locationName": Object {
-                "en-GB": "Vauxhall Pleasure Gardens",
-              },
-              "name": Object {
-                "en-GB": "Pride in the Park",
-              },
-              "phone": Object {
-                "en-GB": "07891234567",
-              },
-              "recurrenceDates": Object {
-                "en-GB": Array [
-                  "13/1/18",
-                  "15/1/18",
-                ],
-              },
-              "startTime": Object {
-                "en-GB": "2017-07-09T11:00+01:00",
-              },
-              "ticketingUrl": Object {
-                "en-GB": "https://prideinlondon.org/pride-in-the-park/",
-              },
-              "timeOfDay": Object {
-                "en-GB": Array [
-                  "Afternoon",
-                ],
-              },
-              "venueDetails": Object {
-                "en-GB": Array [
-                  "Gender neutral toilets",
-                ],
-              },
-            },
-          }
-        }
-      />
-      <View
+      <Text
+        color="blackColor"
+        markdown={false}
         style={
           Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
+            "marginBottom": 8,
           }
         }
-      />
-      <EventDescription
-        event={
-          Object {
-            "fields": Object {
-              "accessibilityDetails": Object {
-                "en-GB": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. ",
-              },
-              "accessibilityOptions": Object {
-                "en-GB": Array [
-                  "Accessible Toilets",
-                  "Hearing loop installed",
-                ],
-              },
-              "email": Object {
-                "en-GB": "john.smith@eventname.com",
-              },
-              "endTime": Object {
-                "en-GB": "2018-07-15T18:00+01:00",
-              },
-              "eventCategories": Object {
-                "en-GB": Array [
-                  "Community",
-                  "Social and Networking",
-                  "Sports and Activities",
-                  "Music",
-                ],
-              },
-              "eventDescription": Object {
-                "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+        type="h1"
+      >
+        Pride in the Park
+      </Text>
+      <LayoutColumn
+        spacing={20}
+      >
+        <EventCategories
+          event={
+            Object {
+              "fields": Object {
+                "accessibilityDetails": Object {
+                  "en-GB": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. ",
+                },
+                "accessibilityOptions": Object {
+                  "en-GB": Array [
+                    "Accessible Toilets",
+                    "Hearing loop installed",
+                  ],
+                },
+                "email": Object {
+                  "en-GB": "john.smith@eventname.com",
+                },
+                "endTime": Object {
+                  "en-GB": "2018-07-15T18:00+01:00",
+                },
+                "eventCategories": Object {
+                  "en-GB": Array [
+                    "Community",
+                    "Social and Networking",
+                    "Sports and Activities",
+                    "Music",
+                  ],
+                },
+                "eventDescription": Object {
+                  "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
 
 Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": 30,
-              },
-              "eventPriceLow": Object {
-                "en-GB": 19.95,
-              },
-              "eventsListPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
+                },
+                "eventPriceHigh": Object {
+                  "en-GB": 30,
+                },
+                "eventPriceLow": Object {
+                  "en-GB": 19.95,
+                },
+                "eventsListPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
                       },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
                     },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
                   },
                 },
-              },
-              "individualEventPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
+                "individualEventPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
                       },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
                     },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
                   },
                 },
-              },
-              "isFree": Object {
-                "en-GB": false,
-              },
-              "location": Object {
-                "en-GB": Object {
-                  "lat": 51.4875152,
-                  "lon": -0.12092150000000856,
+                "isFree": Object {
+                  "en-GB": false,
+                },
+                "location": Object {
+                  "en-GB": Object {
+                    "lat": 51.4875152,
+                    "lon": -0.12092150000000856,
+                  },
+                },
+                "locationName": Object {
+                  "en-GB": "Vauxhall Pleasure Gardens",
+                },
+                "name": Object {
+                  "en-GB": "Pride in the Park",
+                },
+                "phone": Object {
+                  "en-GB": "07891234567",
+                },
+                "recurrenceDates": Object {
+                  "en-GB": Array [
+                    "13/1/18",
+                    "15/1/18",
+                  ],
+                },
+                "startTime": Object {
+                  "en-GB": "2017-07-09T11:00+01:00",
+                },
+                "ticketingUrl": Object {
+                  "en-GB": "https://prideinlondon.org/pride-in-the-park/",
+                },
+                "timeOfDay": Object {
+                  "en-GB": Array [
+                    "Afternoon",
+                  ],
+                },
+                "venueDetails": Object {
+                  "en-GB": Array [
+                    "Gender neutral toilets",
+                  ],
                 },
               },
-              "locationName": Object {
-                "en-GB": "Vauxhall Pleasure Gardens",
-              },
-              "name": Object {
-                "en-GB": "Pride in the Park",
-              },
-              "phone": Object {
-                "en-GB": "07891234567",
-              },
-              "recurrenceDates": Object {
-                "en-GB": Array [
-                  "13/1/18",
-                  "15/1/18",
-                ],
-              },
-              "startTime": Object {
-                "en-GB": "2017-07-09T11:00+01:00",
-              },
-              "ticketingUrl": Object {
-                "en-GB": "https://prideinlondon.org/pride-in-the-park/",
-              },
-              "timeOfDay": Object {
-                "en-GB": Array [
-                  "Afternoon",
-                ],
-              },
-              "venueDetails": Object {
-                "en-GB": Array [
-                  "Gender neutral toilets",
-                ],
-              },
-            },
+            }
           }
-        }
-      />
-      <View
-        key="a1"
-        style={
-          Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
-          }
-        }
-      />
-      <AccessibilityDetails
-        event={
-          Object {
-            "fields": Object {
-              "accessibilityDetails": Object {
-                "en-GB": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. ",
-              },
-              "accessibilityOptions": Object {
-                "en-GB": Array [
-                  "Accessible Toilets",
-                  "Hearing loop installed",
-                ],
-              },
-              "email": Object {
-                "en-GB": "john.smith@eventname.com",
-              },
-              "endTime": Object {
-                "en-GB": "2018-07-15T18:00+01:00",
-              },
-              "eventCategories": Object {
-                "en-GB": Array [
-                  "Community",
-                  "Social and Networking",
-                  "Sports and Activities",
-                  "Music",
-                ],
-              },
-              "eventDescription": Object {
-                "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+        />
+        <EventOverview
+          event={
+            Object {
+              "fields": Object {
+                "accessibilityDetails": Object {
+                  "en-GB": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. ",
+                },
+                "accessibilityOptions": Object {
+                  "en-GB": Array [
+                    "Accessible Toilets",
+                    "Hearing loop installed",
+                  ],
+                },
+                "email": Object {
+                  "en-GB": "john.smith@eventname.com",
+                },
+                "endTime": Object {
+                  "en-GB": "2018-07-15T18:00+01:00",
+                },
+                "eventCategories": Object {
+                  "en-GB": Array [
+                    "Community",
+                    "Social and Networking",
+                    "Sports and Activities",
+                    "Music",
+                  ],
+                },
+                "eventDescription": Object {
+                  "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
 
 Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": 30,
-              },
-              "eventPriceLow": Object {
-                "en-GB": 19.95,
-              },
-              "eventsListPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
+                },
+                "eventPriceHigh": Object {
+                  "en-GB": 30,
+                },
+                "eventPriceLow": Object {
+                  "en-GB": 19.95,
+                },
+                "eventsListPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
                       },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
                     },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
                   },
                 },
-              },
-              "individualEventPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
+                "individualEventPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
                       },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
                     },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
                   },
                 },
-              },
-              "isFree": Object {
-                "en-GB": false,
-              },
-              "location": Object {
-                "en-GB": Object {
-                  "lat": 51.4875152,
-                  "lon": -0.12092150000000856,
+                "isFree": Object {
+                  "en-GB": false,
+                },
+                "location": Object {
+                  "en-GB": Object {
+                    "lat": 51.4875152,
+                    "lon": -0.12092150000000856,
+                  },
+                },
+                "locationName": Object {
+                  "en-GB": "Vauxhall Pleasure Gardens",
+                },
+                "name": Object {
+                  "en-GB": "Pride in the Park",
+                },
+                "phone": Object {
+                  "en-GB": "07891234567",
+                },
+                "recurrenceDates": Object {
+                  "en-GB": Array [
+                    "13/1/18",
+                    "15/1/18",
+                  ],
+                },
+                "startTime": Object {
+                  "en-GB": "2017-07-09T11:00+01:00",
+                },
+                "ticketingUrl": Object {
+                  "en-GB": "https://prideinlondon.org/pride-in-the-park/",
+                },
+                "timeOfDay": Object {
+                  "en-GB": Array [
+                    "Afternoon",
+                  ],
+                },
+                "venueDetails": Object {
+                  "en-GB": Array [
+                    "Gender neutral toilets",
+                  ],
                 },
               },
-              "locationName": Object {
-                "en-GB": "Vauxhall Pleasure Gardens",
-              },
-              "name": Object {
-                "en-GB": "Pride in the Park",
-              },
-              "phone": Object {
-                "en-GB": "07891234567",
-              },
-              "recurrenceDates": Object {
-                "en-GB": Array [
-                  "13/1/18",
-                  "15/1/18",
-                ],
-              },
-              "startTime": Object {
-                "en-GB": "2017-07-09T11:00+01:00",
-              },
-              "ticketingUrl": Object {
-                "en-GB": "https://prideinlondon.org/pride-in-the-park/",
-              },
-              "timeOfDay": Object {
-                "en-GB": Array [
-                  "Afternoon",
-                ],
-              },
-              "venueDetails": Object {
-                "en-GB": Array [
-                  "Gender neutral toilets",
-                ],
-              },
-            },
+            }
           }
-        }
-        key="a2"
-      />
-      <View
-        key="b1"
-        style={
-          Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
+        />
+        <SectionDivider />
+        <EventDescription
+          event={
+            Object {
+              "fields": Object {
+                "accessibilityDetails": Object {
+                  "en-GB": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. ",
+                },
+                "accessibilityOptions": Object {
+                  "en-GB": Array [
+                    "Accessible Toilets",
+                    "Hearing loop installed",
+                  ],
+                },
+                "email": Object {
+                  "en-GB": "john.smith@eventname.com",
+                },
+                "endTime": Object {
+                  "en-GB": "2018-07-15T18:00+01:00",
+                },
+                "eventCategories": Object {
+                  "en-GB": Array [
+                    "Community",
+                    "Social and Networking",
+                    "Sports and Activities",
+                    "Music",
+                  ],
+                },
+                "eventDescription": Object {
+                  "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+
+Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
+                },
+                "eventPriceHigh": Object {
+                  "en-GB": 30,
+                },
+                "eventPriceLow": Object {
+                  "en-GB": 19.95,
+                },
+                "eventsListPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
+                      },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
+                    },
+                  },
+                },
+                "individualEventPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
+                      },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
+                    },
+                  },
+                },
+                "isFree": Object {
+                  "en-GB": false,
+                },
+                "location": Object {
+                  "en-GB": Object {
+                    "lat": 51.4875152,
+                    "lon": -0.12092150000000856,
+                  },
+                },
+                "locationName": Object {
+                  "en-GB": "Vauxhall Pleasure Gardens",
+                },
+                "name": Object {
+                  "en-GB": "Pride in the Park",
+                },
+                "phone": Object {
+                  "en-GB": "07891234567",
+                },
+                "recurrenceDates": Object {
+                  "en-GB": Array [
+                    "13/1/18",
+                    "15/1/18",
+                  ],
+                },
+                "startTime": Object {
+                  "en-GB": "2017-07-09T11:00+01:00",
+                },
+                "ticketingUrl": Object {
+                  "en-GB": "https://prideinlondon.org/pride-in-the-park/",
+                },
+                "timeOfDay": Object {
+                  "en-GB": Array [
+                    "Afternoon",
+                  ],
+                },
+                "venueDetails": Object {
+                  "en-GB": Array [
+                    "Gender neutral toilets",
+                  ],
+                },
+              },
+            }
           }
-        }
-      />
-      <ContactDetails
-        email="john.smith@eventname.com"
-        key="b2"
-        phone="07891234567"
-      />
+        />
+        <EventMap
+          lat={51.4875152}
+          locationName="Vauxhall Pleasure Gardens"
+          lon={-0.12092150000000856}
+        />
+        <SectionDivider />
+        <EventAccessibility
+          event={
+            Object {
+              "fields": Object {
+                "accessibilityDetails": Object {
+                  "en-GB": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. ",
+                },
+                "accessibilityOptions": Object {
+                  "en-GB": Array [
+                    "Accessible Toilets",
+                    "Hearing loop installed",
+                  ],
+                },
+                "email": Object {
+                  "en-GB": "john.smith@eventname.com",
+                },
+                "endTime": Object {
+                  "en-GB": "2018-07-15T18:00+01:00",
+                },
+                "eventCategories": Object {
+                  "en-GB": Array [
+                    "Community",
+                    "Social and Networking",
+                    "Sports and Activities",
+                    "Music",
+                  ],
+                },
+                "eventDescription": Object {
+                  "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+
+Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
+                },
+                "eventPriceHigh": Object {
+                  "en-GB": 30,
+                },
+                "eventPriceLow": Object {
+                  "en-GB": 19.95,
+                },
+                "eventsListPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
+                      },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
+                    },
+                  },
+                },
+                "individualEventPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
+                      },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
+                    },
+                  },
+                },
+                "isFree": Object {
+                  "en-GB": false,
+                },
+                "location": Object {
+                  "en-GB": Object {
+                    "lat": 51.4875152,
+                    "lon": -0.12092150000000856,
+                  },
+                },
+                "locationName": Object {
+                  "en-GB": "Vauxhall Pleasure Gardens",
+                },
+                "name": Object {
+                  "en-GB": "Pride in the Park",
+                },
+                "phone": Object {
+                  "en-GB": "07891234567",
+                },
+                "recurrenceDates": Object {
+                  "en-GB": Array [
+                    "13/1/18",
+                    "15/1/18",
+                  ],
+                },
+                "startTime": Object {
+                  "en-GB": "2017-07-09T11:00+01:00",
+                },
+                "ticketingUrl": Object {
+                  "en-GB": "https://prideinlondon.org/pride-in-the-park/",
+                },
+                "timeOfDay": Object {
+                  "en-GB": Array [
+                    "Afternoon",
+                  ],
+                },
+                "venueDetails": Object {
+                  "en-GB": Array [
+                    "Gender neutral toilets",
+                  ],
+                },
+              },
+            }
+          }
+        />
+        <SectionDivider />
+        <EventContact
+          email="john.smith@eventname.com"
+          phone="07891234567"
+        />
+      </LayoutColumn>
     </ContentPadding>
-  </ScrollView>
-  <BuyTickets
+  </ShadowedScrollView>
+  <EventTickets
     event={
       Object {
         "fields": Object {
@@ -628,31 +791,15 @@ exports[`renders correctly with missing details 1`] = `
     }
   }
 >
-  <Header
-    backgroundColor="#20215a"
+  <EventHeader
+    onBack={[Function]}
+  />
+  <ShadowedScrollView
+    bottomShadow={true}
+    shadowOpacity={1}
+    style={Object {}}
+    topShadow={false}
   >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        }
-      }
-    >
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={[Function]}
-        source={1}
-      />
-      <IconButton
-        accessibilityLabel="Favourite"
-        onPress={[Function]}
-        source={1}
-      />
-    </ContentPadding>
-  </Header>
-  <ScrollView>
     <Image
       source={
         Object {
@@ -669,263 +816,381 @@ exports[`renders correctly with missing details 1`] = `
       padding={Object {}}
       style={
         Object {
-          "marginBottom": 24,
+          "marginBottom": 32,
+          "marginTop": 16,
         }
       }
     >
-      <EventOverview
-        event={
-          Object {
-            "fields": Object {
-              "accessibilityDetails": undefined,
-              "accessibilityOptions": Object {
-                "en-GB": Array [
-                  "Accessible Toilets",
-                  "Hearing loop installed",
-                ],
-              },
-              "email": Object {
-                "en-GB": "john.smith@eventname.com",
-              },
-              "endTime": Object {
-                "en-GB": "2018-07-15T18:00+01:00",
-              },
-              "eventCategories": Object {
-                "en-GB": Array [
-                  "Community",
-                  "Social and Networking",
-                  "Sports and Activities",
-                  "Music",
-                ],
-              },
-              "eventDescription": Object {
-                "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
-
-Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": 30,
-              },
-              "eventPriceLow": Object {
-                "en-GB": 19.95,
-              },
-              "eventsListPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
-                      },
-                    },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
-                  },
-                },
-              },
-              "individualEventPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
-                      },
-                    },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
-                  },
-                },
-              },
-              "isFree": Object {
-                "en-GB": false,
-              },
-              "location": Object {
-                "en-GB": Object {
-                  "lat": 51.4875152,
-                  "lon": -0.12092150000000856,
-                },
-              },
-              "locationName": Object {
-                "en-GB": "Vauxhall Pleasure Gardens",
-              },
-              "name": Object {
-                "en-GB": "Pride in the Park",
-              },
-              "phone": Object {
-                "en-GB": "07891234567",
-              },
-              "recurrenceDates": Object {
-                "en-GB": Array [
-                  "13/1/18",
-                  "15/1/18",
-                ],
-              },
-              "startTime": Object {
-                "en-GB": "2017-07-09T11:00+01:00",
-              },
-              "ticketingUrl": undefined,
-              "timeOfDay": Object {
-                "en-GB": Array [
-                  "Afternoon",
-                ],
-              },
-              "venueDetails": Object {
-                "en-GB": Array [
-                  "Gender neutral toilets",
-                ],
-              },
-            },
-          }
-        }
-      />
-      <View
+      <Text
+        color="blackColor"
+        markdown={false}
         style={
           Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
+            "marginBottom": 8,
           }
         }
-      />
-      <EventDescription
-        event={
-          Object {
-            "fields": Object {
-              "accessibilityDetails": undefined,
-              "accessibilityOptions": Object {
-                "en-GB": Array [
-                  "Accessible Toilets",
-                  "Hearing loop installed",
-                ],
-              },
-              "email": Object {
-                "en-GB": "john.smith@eventname.com",
-              },
-              "endTime": Object {
-                "en-GB": "2018-07-15T18:00+01:00",
-              },
-              "eventCategories": Object {
-                "en-GB": Array [
-                  "Community",
-                  "Social and Networking",
-                  "Sports and Activities",
-                  "Music",
-                ],
-              },
-              "eventDescription": Object {
-                "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+        type="h1"
+      >
+        Pride in the Park
+      </Text>
+      <LayoutColumn
+        spacing={20}
+      >
+        <EventCategories
+          event={
+            Object {
+              "fields": Object {
+                "accessibilityDetails": undefined,
+                "accessibilityOptions": Object {
+                  "en-GB": Array [
+                    "Accessible Toilets",
+                    "Hearing loop installed",
+                  ],
+                },
+                "email": Object {
+                  "en-GB": "john.smith@eventname.com",
+                },
+                "endTime": Object {
+                  "en-GB": "2018-07-15T18:00+01:00",
+                },
+                "eventCategories": Object {
+                  "en-GB": Array [
+                    "Community",
+                    "Social and Networking",
+                    "Sports and Activities",
+                    "Music",
+                  ],
+                },
+                "eventDescription": Object {
+                  "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
 
 Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": 30,
-              },
-              "eventPriceLow": Object {
-                "en-GB": 19.95,
-              },
-              "eventsListPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
+                },
+                "eventPriceHigh": Object {
+                  "en-GB": 30,
+                },
+                "eventPriceLow": Object {
+                  "en-GB": 19.95,
+                },
+                "eventsListPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
                       },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
                     },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
                   },
                 },
-              },
-              "individualEventPicture": Object {
-                "en-GB": Object {
-                  "sys": Object {
-                    "createdAt": "2018-03-04T10:13:53.398Z",
-                    "id": "HNLFqItbkAmW8ssqQECIy",
-                    "revision": 1,
-                    "space": Object {
-                      "sys": Object {
-                        "id": "n2o4hgsv6wcx",
-                        "linkType": "Space",
-                        "type": "Link",
+                "individualEventPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
                       },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
                     },
-                    "type": "Asset",
-                    "updatedAt": "2018-03-04T10:13:53.398Z",
                   },
                 },
-              },
-              "isFree": Object {
-                "en-GB": false,
-              },
-              "location": Object {
-                "en-GB": Object {
-                  "lat": 51.4875152,
-                  "lon": -0.12092150000000856,
+                "isFree": Object {
+                  "en-GB": false,
+                },
+                "location": Object {
+                  "en-GB": Object {
+                    "lat": 51.4875152,
+                    "lon": -0.12092150000000856,
+                  },
+                },
+                "locationName": Object {
+                  "en-GB": "Vauxhall Pleasure Gardens",
+                },
+                "name": Object {
+                  "en-GB": "Pride in the Park",
+                },
+                "phone": Object {
+                  "en-GB": "07891234567",
+                },
+                "recurrenceDates": Object {
+                  "en-GB": Array [
+                    "13/1/18",
+                    "15/1/18",
+                  ],
+                },
+                "startTime": Object {
+                  "en-GB": "2017-07-09T11:00+01:00",
+                },
+                "ticketingUrl": undefined,
+                "timeOfDay": Object {
+                  "en-GB": Array [
+                    "Afternoon",
+                  ],
+                },
+                "venueDetails": Object {
+                  "en-GB": Array [
+                    "Gender neutral toilets",
+                  ],
                 },
               },
-              "locationName": Object {
-                "en-GB": "Vauxhall Pleasure Gardens",
-              },
-              "name": Object {
-                "en-GB": "Pride in the Park",
-              },
-              "phone": Object {
-                "en-GB": "07891234567",
-              },
-              "recurrenceDates": Object {
-                "en-GB": Array [
-                  "13/1/18",
-                  "15/1/18",
-                ],
-              },
-              "startTime": Object {
-                "en-GB": "2017-07-09T11:00+01:00",
-              },
-              "ticketingUrl": undefined,
-              "timeOfDay": Object {
-                "en-GB": Array [
-                  "Afternoon",
-                ],
-              },
-              "venueDetails": Object {
-                "en-GB": Array [
-                  "Gender neutral toilets",
-                ],
-              },
-            },
+            }
           }
-        }
-      />
-      <View
-        key="b1"
-        style={
-          Object {
-            "backgroundColor": "#d8d8d8",
-            "height": 1,
-            "marginVertical": 16,
+        />
+        <EventOverview
+          event={
+            Object {
+              "fields": Object {
+                "accessibilityDetails": undefined,
+                "accessibilityOptions": Object {
+                  "en-GB": Array [
+                    "Accessible Toilets",
+                    "Hearing loop installed",
+                  ],
+                },
+                "email": Object {
+                  "en-GB": "john.smith@eventname.com",
+                },
+                "endTime": Object {
+                  "en-GB": "2018-07-15T18:00+01:00",
+                },
+                "eventCategories": Object {
+                  "en-GB": Array [
+                    "Community",
+                    "Social and Networking",
+                    "Sports and Activities",
+                    "Music",
+                  ],
+                },
+                "eventDescription": Object {
+                  "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+
+Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
+                },
+                "eventPriceHigh": Object {
+                  "en-GB": 30,
+                },
+                "eventPriceLow": Object {
+                  "en-GB": 19.95,
+                },
+                "eventsListPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
+                      },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
+                    },
+                  },
+                },
+                "individualEventPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
+                      },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
+                    },
+                  },
+                },
+                "isFree": Object {
+                  "en-GB": false,
+                },
+                "location": Object {
+                  "en-GB": Object {
+                    "lat": 51.4875152,
+                    "lon": -0.12092150000000856,
+                  },
+                },
+                "locationName": Object {
+                  "en-GB": "Vauxhall Pleasure Gardens",
+                },
+                "name": Object {
+                  "en-GB": "Pride in the Park",
+                },
+                "phone": Object {
+                  "en-GB": "07891234567",
+                },
+                "recurrenceDates": Object {
+                  "en-GB": Array [
+                    "13/1/18",
+                    "15/1/18",
+                  ],
+                },
+                "startTime": Object {
+                  "en-GB": "2017-07-09T11:00+01:00",
+                },
+                "ticketingUrl": undefined,
+                "timeOfDay": Object {
+                  "en-GB": Array [
+                    "Afternoon",
+                  ],
+                },
+                "venueDetails": Object {
+                  "en-GB": Array [
+                    "Gender neutral toilets",
+                  ],
+                },
+              },
+            }
           }
-        }
-      />
-      <ContactDetails
-        email="john.smith@eventname.com"
-        key="b2"
-        phone="07891234567"
-      />
+        />
+        <SectionDivider />
+        <EventDescription
+          event={
+            Object {
+              "fields": Object {
+                "accessibilityDetails": undefined,
+                "accessibilityOptions": Object {
+                  "en-GB": Array [
+                    "Accessible Toilets",
+                    "Hearing loop installed",
+                  ],
+                },
+                "email": Object {
+                  "en-GB": "john.smith@eventname.com",
+                },
+                "endTime": Object {
+                  "en-GB": "2018-07-15T18:00+01:00",
+                },
+                "eventCategories": Object {
+                  "en-GB": Array [
+                    "Community",
+                    "Social and Networking",
+                    "Sports and Activities",
+                    "Music",
+                  ],
+                },
+                "eventDescription": Object {
+                  "en-GB": "Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+
+Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.",
+                },
+                "eventPriceHigh": Object {
+                  "en-GB": 30,
+                },
+                "eventPriceLow": Object {
+                  "en-GB": 19.95,
+                },
+                "eventsListPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
+                      },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
+                    },
+                  },
+                },
+                "individualEventPicture": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "createdAt": "2018-03-04T10:13:53.398Z",
+                      "id": "HNLFqItbkAmW8ssqQECIy",
+                      "revision": 1,
+                      "space": Object {
+                        "sys": Object {
+                          "id": "n2o4hgsv6wcx",
+                          "linkType": "Space",
+                          "type": "Link",
+                        },
+                      },
+                      "type": "Asset",
+                      "updatedAt": "2018-03-04T10:13:53.398Z",
+                    },
+                  },
+                },
+                "isFree": Object {
+                  "en-GB": false,
+                },
+                "location": Object {
+                  "en-GB": Object {
+                    "lat": 51.4875152,
+                    "lon": -0.12092150000000856,
+                  },
+                },
+                "locationName": Object {
+                  "en-GB": "Vauxhall Pleasure Gardens",
+                },
+                "name": Object {
+                  "en-GB": "Pride in the Park",
+                },
+                "phone": Object {
+                  "en-GB": "07891234567",
+                },
+                "recurrenceDates": Object {
+                  "en-GB": Array [
+                    "13/1/18",
+                    "15/1/18",
+                  ],
+                },
+                "startTime": Object {
+                  "en-GB": "2017-07-09T11:00+01:00",
+                },
+                "ticketingUrl": undefined,
+                "timeOfDay": Object {
+                  "en-GB": Array [
+                    "Afternoon",
+                  ],
+                },
+                "venueDetails": Object {
+                  "en-GB": Array [
+                    "Gender neutral toilets",
+                  ],
+                },
+              },
+            }
+          }
+        />
+        <EventMap
+          lat={51.4875152}
+          locationName="Vauxhall Pleasure Gardens"
+          lon={-0.12092150000000856}
+        />
+        <SectionDivider />
+        <EventContact
+          email="john.smith@eventname.com"
+          phone="07891234567"
+        />
+      </LayoutColumn>
     </ContentPadding>
-  </ScrollView>
+  </ShadowedScrollView>
 </View>
 `;

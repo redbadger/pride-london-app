@@ -43,6 +43,7 @@ exports[`applies styles to clear button when showClear=true 1`] = `
             "header",
           ]
         }
+        color="blackColor"
         markdown={false}
         style={
           Object {
@@ -111,6 +112,7 @@ exports[`renders correctly 1`] = `
             "header",
           ]
         }
+        color="blackColor"
         markdown={false}
         style={
           Object {
