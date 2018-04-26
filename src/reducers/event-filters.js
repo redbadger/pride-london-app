@@ -7,12 +7,22 @@ const defaultState = {
   selectedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
-    time: new Set()
+    timeOfDay: new Set(),
+    price: new Set(),
+    audience: new Set(),
+    venueDetails: new Set(),
+    accessibilityOptions: new Set(),
+    area: new Set()
   },
   stagedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
-    time: new Set()
+    timeOfDay: new Set(),
+    price: new Set(),
+    audience: new Set(),
+    venueDetails: new Set(),
+    accessibilityOptions: new Set(),
+    area: new Set()
   }
 };
 

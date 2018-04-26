@@ -15,6 +15,7 @@ exports[`Header Component renders correctly 1`] = `
     <ActionButton
       label="Cancel"
       onPress={[Function]}
+      style={Object {}}
     />
   </View>
   <Text
