@@ -6,31 +6,31 @@ exports[`renders correctly 1`] = `
     Object {
       "flex": 1,
       "flexDirection": "row",
+      "minHeight": 44,
     }
   }
 >
-  <View
+  <Image
+    source={
+      Object {
+        "uri": "/super-awesome-image.jpg",
+      }
+    }
     style={
       Object {
         "height": 32,
-        "marginRight": 12,
-        "width": 40,
+        "marginRight": 20,
+        "marginVertical": 6,
+        "width": 32,
       }
     }
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    >
-      Some icon
-    </Text>
-  </View>
+  />
   <View
     style={
       Object {
-        "flex": 1,
-        "paddingTop": 2,
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "paddingVertical": 6,
       }
     }
   >
@@ -43,5 +43,59 @@ exports[`renders correctly 1`] = `
       some thing
     </Text>
   </View>
+</View>
+`;
+
+exports[`renders correctly when passed an onPress handler 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "minHeight": 44,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "/super-awesome-image.jpg",
+      }
+    }
+    style={
+      Object {
+        "height": 32,
+        "marginRight": 20,
+        "marginVertical": 6,
+        "width": 32,
+      }
+    }
+  />
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    onPress={[Function]}
+    style={
+      Object {
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "paddingVertical": 6,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      type="h4"
+    >
+      some thing
+    </Text>
+  </Touchable>
 </View>
 `;
