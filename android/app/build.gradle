@@ -222,7 +222,7 @@ repositories {
 }
 
 dependencies {
-    compile project(':lottie-react-native')
+    implementation project(':lottie-react-native')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-linear-gradient')
     implementation(project(':react-native-maps')) {
