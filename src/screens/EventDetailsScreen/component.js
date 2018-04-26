@@ -6,6 +6,7 @@ import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
+import FavouriteButton from "./FavouriteButton";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -24,7 +25,6 @@ import type {
 } from "../../data/event";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
-import heartWhite from "../../../assets/images/heart-white.png";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
@@ -40,11 +40,7 @@ export const EventHeader = ({ onBack }: { onBack: Function }) => (
         onPress={onBack}
         source={chevronLeftWhite}
       />
-      <IconButton
-        accessibilityLabel="Favourite"
-        onPress={() => {}}
-        source={heartWhite}
-      />
+      <FavouriteButton />
     </ContentPadding>
   </Header>
 );
