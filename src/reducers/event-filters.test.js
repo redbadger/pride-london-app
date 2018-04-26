@@ -14,12 +14,22 @@ describe("Event filters reducer", () => {
       selectedFilters: {
         categories: new Set(),
         date: null,
-        time: new Set()
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        area: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: null,
-        time: new Set()
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        area: new Set()
       }
     };
     const state = reducer(initialState, {
@@ -36,7 +46,9 @@ describe("Event filters reducer", () => {
       startDate: "2018-03-12",
       endDate: "2018-03-12"
     });
-    expect(state.stagedFilters.time).toBe(initialState.stagedFilters.time);
+    expect(state.stagedFilters.timeOfDay).toBe(
+      initialState.stagedFilters.timeOfDay
+    );
   });
 
   it("updates state with filters from payload for COMMIT_EVENT_FILTERS action", () => {
@@ -44,12 +56,22 @@ describe("Event filters reducer", () => {
       selectedFilters: {
         categories: new Set(),
         date: null,
-        time: new Set()
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        area: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: { startDate: "2018-03-12", endDate: "2018-03-12" },
-        time: new Set()
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        area: new Set()
       }
     };
     const state = reducer(initialState, {
@@ -73,12 +95,22 @@ describe("Event filters reducer", () => {
       selectedFilters: {
         categories: new Set(),
         date: { startDate: "2018-03-12", endDate: "2018-03-12" },
-        time: new Set()
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        area: new Set()
       },
       stagedFilters: {
         categories: new Set(),
         date: { startDate: "2018-03-20", endDate: "2018-03-20" },
-        time: new Set()
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        area: new Set()
       }
     };
     const state = reducer(initialState, {

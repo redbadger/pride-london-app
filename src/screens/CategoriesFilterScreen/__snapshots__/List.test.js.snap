@@ -3,6 +3,7 @@
 exports[`List Component renders correctly 1`] = `
 <ShadowedScrollView
   bottomShadow={true}
+  shadowOpacity={1}
   style={
     Object {
       "backgroundColor": "rgb(45, 47, 127)",
