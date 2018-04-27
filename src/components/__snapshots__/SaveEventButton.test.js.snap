@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
 >
   <AnimatedComponent
     loop={false}
-    progress={0}
+    progress={null}
     source={
       Object {
         "assets": Array [],
@@ -1862,9 +1862,9 @@ exports[`renders correctly 1`] = `
                       "a": 0,
                       "ix": 3,
                       "k": Array [
-                        1,
-                        1,
-                        1,
+                        0.8,
+                        0.8,
+                        0.8,
                         1,
                       ],
                     },
@@ -1947,7 +1947,7 @@ exports[`renders correctly 1`] = `
           },
         ],
         "markers": Array [],
-        "nm": "Heart_Details",
+        "nm": "Heart_List",
         "op": 54,
         "v": "5.1.9",
         "w": 48,

@@ -6,7 +6,7 @@ import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
-import FavouriteButton from "./FavouriteButton";
+import SaveEventButton from "../../components/SaveEventButton";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -28,14 +28,14 @@ import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
 type EventHeaderProps = {|
   isSaved: boolean,
-  toggleFavourite: boolean => void,
+  toggleSaved: boolean => void,
   navigation: NavigationScreenProp<{ params: { eventId: string } }>
 |};
 
 export const EventHeader = ({
   isSaved,
   navigation,
-  toggleFavourite
+  toggleSaved
 }: EventHeaderProps) => (
   <Header backgroundColor={darkBlueGreyTwoColor}>
     <ContentPadding style={styles.headerContent}>
@@ -46,7 +46,7 @@ export const EventHeader = ({
         }}
         source={chevronLeftWhite}
       />
-      <FavouriteButton active={isSaved} onPress={toggleFavourite} />
+      <SaveEventButton active={isSaved} onPress={toggleSaved} />
     </ContentPadding>
   </Header>
 );
@@ -87,7 +87,7 @@ type Props = {
   getAssetUrl: LocalizedFieldRef => string,
   isSaved: boolean,
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
-  toggleFavourite: boolean => void
+  toggleSaved: boolean => void
 };
 
 class EventDetailsScreen extends PureComponent<Props> {
@@ -106,7 +106,7 @@ class EventDetailsScreen extends PureComponent<Props> {
       <View style={styles.container}>
         <EventHeader
           isSaved={this.props.isSaved}
-          toggleFavourite={this.props.toggleFavourite}
+          toggleSaved={this.props.toggleSaved}
           navigation={this.props.navigation}
         />
         <ShadowedScrollView topShadow={false}>

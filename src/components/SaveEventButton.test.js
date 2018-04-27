@@ -2,10 +2,10 @@
 import React from "react";
 import { Animated, Easing } from "react-native";
 import { shallow } from "enzyme";
-import FavouriteButton from "./FavouriteButton";
+import SaveEventButton from "./SaveEventButton";
 
 it("renders correctly", () => {
-  const output = shallow(<FavouriteButton active={false} onPress={() => {}} />);
+  const output = shallow(<SaveEventButton active={false} onPress={() => {}} />);
   expect(output).toMatchSnapshot();
 });
 
@@ -21,7 +21,7 @@ describe("update from inactive to active", () => {
 
     const onPress = () => {};
     const output = shallow(
-      <FavouriteButton active={false} onPress={onPress} />
+      <SaveEventButton active={false} onPress={onPress} />
     );
 
     output.setProps({ active: true, onPress });
@@ -45,7 +45,7 @@ describe("update from active to inactive", () => {
     }));
 
     const onPress = () => {};
-    const output = shallow(<FavouriteButton active onPress={onPress} />);
+    const output = shallow(<SaveEventButton active onPress={onPress} />);
 
     output.setProps({ active: false, onPress });
     expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
@@ -69,7 +69,7 @@ describe("update from inactive to inactive", () => {
 
     const onPress = () => {};
     const output = shallow(
-      <FavouriteButton active={false} onPress={onPress} />
+      <SaveEventButton active={false} onPress={onPress} />
     );
 
     output.setProps({ active: false, onPress });
@@ -93,7 +93,7 @@ describe("update from active to active", () => {
     }));
 
     const onPress = () => {};
-    const output = shallow(<FavouriteButton active onPress={onPress} />);
+    const output = shallow(<SaveEventButton active onPress={onPress} />);
 
     output.setProps({ active: true, onPress });
     expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {

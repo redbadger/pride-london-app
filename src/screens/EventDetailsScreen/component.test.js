@@ -90,7 +90,7 @@ it("renders correctly", () => {
       getAssetUrl={getAssetUrl}
       isSaved
       navigation={navigation}
-      toggleFavourite={() => {}}
+      toggleSaved={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
@@ -109,7 +109,7 @@ it("renders correctly with missing details", () => {
       }}
       getAssetUrl={getAssetUrl}
       navigation={navigation}
-      toggleFavourite={() => {}}
+      toggleSaved={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
@@ -118,7 +118,7 @@ it("renders correctly with missing details", () => {
 describe("EventHeader", () => {
   it("renders correctly", () => {
     const output = shallow(
-      <EventHeader isSaved navigation={navigation} toggleFavourite={() => {}} />
+      <EventHeader isSaved navigation={navigation} toggleSaved={() => {}} />
     );
     expect(output).toMatchSnapshot();
   });

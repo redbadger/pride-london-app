@@ -31,7 +31,7 @@ const mapStateToProps: MapStateToProps<State, OwnProps, *> = (
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  toggleFavourite: active => {
+  toggleSaved: active => {
     const id = ownProps.navigation.state.params.eventId;
     if (active) {
       return dispatch(addSavedEvent(id));
