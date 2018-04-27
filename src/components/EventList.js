@@ -34,6 +34,15 @@ const separator = style => () => <View style={style} />;
 
 type ItemProps = { item: Event };
 
+type RenderItemArgs = {
+  isSavedEvent: string => boolean,
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void,
+  locale: string,
+  onPress: (eventName: string) => void,
+  getAssetUrl: LocalizedFieldRef => string
+};
+
 export const renderItem = ({
   isSavedEvent,
   addSavedEvent,
@@ -41,7 +50,7 @@ export const renderItem = ({
   locale,
   onPress,
   getAssetUrl
-}) => ({ item }: ItemProps) => (
+}: RenderItemArgs) => ({ item }: ItemProps) => (
   <ContentPadding>
     <Touchable
       style={styles.eventListItem}
