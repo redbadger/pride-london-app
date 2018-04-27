@@ -15,12 +15,15 @@ exports[`EventsScreen Component renders correctly 1`] = `
     selectedCategories={Set {}}
   />
   <EventList
+    addSavedEvent={[Function]}
     events={Array []}
     getAssetUrl={[Function]}
     locale="en-GB"
     onPress={[Function]}
     onRefresh={[Function]}
     refreshing={false}
+    removeSavedEvent={[Function]}
+    savedEvents={Set {}}
   />
 </View>
 `;
