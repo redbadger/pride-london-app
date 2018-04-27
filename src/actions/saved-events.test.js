@@ -1,3 +1,4 @@
+// @flow
 import { addEvent, removeEvent } from "./saved-events";
 
 describe("addEvent", () => {
@@ -9,7 +10,7 @@ describe("addEvent", () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "ADD_SAVED_EVENT",
-      payload: id
+      id
     });
   });
 });
@@ -23,7 +24,7 @@ describe("removeEvent", () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "REMOVE_SAVED_EVENT",
-      payload: id
+      id
     });
   });
 });

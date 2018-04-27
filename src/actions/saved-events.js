@@ -1,14 +1,14 @@
 // @flow
 import type { Dispatch } from "redux";
-import type { StandardAction } from "./";
 
-type SaveEventActionType = "ADD_SAVED_EVENT" | "REMOVE_SAVED_EVENT";
+type AddSavedEventAction = { type: "ADD_SAVED_EVENT", id: string };
+type RemoveSavedEventAction = { type: "REMOVE_SAVED_EVENT", id: string };
 
-export type SaveEventAction = StandardAction<SaveEventActionType, string>;
+export type SaveEventAction = AddSavedEventAction | RemoveSavedEventAction;
 
 export const addEvent = (id: string) => (dispatch: Dispatch<SaveEventAction>) =>
-  dispatch({ type: "ADD_SAVED_EVENT", payload: id });
+  dispatch({ type: "ADD_SAVED_EVENT", id });
 
 export const removeEvent = (id: string) => (
   dispatch: Dispatch<SaveEventAction>
-) => dispatch({ type: "REMOVE_SAVED_EVENT", payload: id });
+) => dispatch({ type: "REMOVE_SAVED_EVENT", id });
