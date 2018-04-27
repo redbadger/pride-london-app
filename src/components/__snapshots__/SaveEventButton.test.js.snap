@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
 >
   <AnimatedComponent
     loop={false}
-    progress={null}
+    progress={0}
     source={
       Object {
         "assets": Array [],
