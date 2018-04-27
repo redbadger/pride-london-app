@@ -7,7 +7,7 @@ import heartAnimation from "../../../assets/animations/favourite-detail.json";
 
 type Props = {
   active: boolean,
-  onPress: Function
+  onPress: boolean => void
 };
 
 type State = {
