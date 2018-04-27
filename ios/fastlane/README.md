@@ -66,7 +66,15 @@ Upload to TestFlight and notify testers
 fastlane ios deploy_hockey
 ```
 
-Upload to HockeyApp and notify testers
+Upload to HockeyApp
+
+### ios deploy_fabric
+
+```
+fastlane ios deploy_fabric
+```
+
+Upload to Beta by Fabric
 
 ### ios devices
 

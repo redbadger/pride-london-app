@@ -13,9 +13,10 @@ import text from "../constants/text";
 import Text from "./Text";
 import CategoriesPills from "./CategoriesPills";
 import chevronRightImg from "../../assets/images/chevronRight.png";
+import type { EventCategoryName } from "../data/event";
 
 type Props = {
-  selectedCategories: Set<string>,
+  selectedCategories: Set<EventCategoryName>,
   onFilterPress: Function
 };
 

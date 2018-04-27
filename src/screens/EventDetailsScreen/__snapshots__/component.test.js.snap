@@ -92,11 +92,7 @@ exports[`EventHeader renders correctly 1`] = `
       onPress={[Function]}
       source={1}
     />
-    <IconButton
-      accessibilityLabel="Favourite"
-      onPress={[Function]}
-      source={1}
-    />
+    <FavouriteButton />
   </ContentPadding>
 </Header>
 `;
@@ -134,6 +130,7 @@ exports[`renders correctly 1`] = `
   />
   <ShadowedScrollView
     bottomShadow={true}
+    shadowOpacity={1}
     style={Object {}}
     topShadow={false}
   >
@@ -795,6 +792,7 @@ exports[`renders correctly with missing details 1`] = `
   />
   <ShadowedScrollView
     bottomShadow={true}
+    shadowOpacity={1}
     style={Object {}}
     topShadow={false}
   >

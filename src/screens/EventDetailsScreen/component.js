@@ -6,6 +6,7 @@ import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
+import FavouriteButton from "./FavouriteButton";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -17,10 +18,13 @@ import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "./SectionDivider";
 import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type {
+  Event,
+  LocalizedFieldRef,
+  EventCategoryName
+} from "../../data/event";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
-import heartWhite from "../../../assets/images/heart-white.png";
 
 type Props = {
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
@@ -36,11 +40,7 @@ export const EventHeader = ({ onBack }: { onBack: Function }) => (
         onPress={onBack}
         source={chevronLeftWhite}
       />
-      <IconButton
-        accessibilityLabel="Favourite"
-        onPress={() => {}}
-        source={heartWhite}
-      />
+      <FavouriteButton />
     </ContentPadding>
   </Header>
 );
@@ -50,7 +50,7 @@ export const EventCategories = ({ event }: { event: Event }) => (
     {event.fields.eventCategories[locale].map(categoryName => (
       <CategoryPill
         key={categoryName}
-        name={categoryName}
+        name={((categoryName: any): EventCategoryName)}
         style={styles.categoryPill}
       />
     ))}

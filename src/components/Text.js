@@ -6,12 +6,21 @@ import Markdown from "react-native-easy-markdown";
 import { mergeDeepRight } from "ramda";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
-export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
-export type TextColor = "lightNavyBlueColor" | "blackColor";
+export type TextType =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "text"
+  | "small"
+  | "xSmall"
+  | "price";
+
+export type ColorType = "lightNavyBlueColor" | "blackColor";
 
 type Props = {
   type: TextType,
-  color: TextColor,
+  color: ColorType,
   markdown: boolean,
   ...TextProps
 };
@@ -26,7 +35,7 @@ class Text extends React.PureComponent<Props> {
   render() {
     const { color, type, markdown, style, ...otherProps } = this.props;
     const typedType: TextType = (type: any);
-    const typedColor: TextColor = (color: any);
+    const typedColor: ColorType = (color: any);
     return markdown ? (
       <Markdown
         style={style}
@@ -75,6 +84,12 @@ const textStyles = {
     fontFamily: "Roboto",
     fontSize: 14,
     lineHeight: 20
+  },
+  xSmall: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 12,
+    lineHeight: 16,
+    includeFontPadding: false
   },
   price: {
     fontFamily: "Roboto-Bold",

@@ -97,12 +97,10 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       style={
         Object {
           "color": "rgb(45, 47, 127)",
-          "fontSize": 12,
-          "lineHeight": 16,
           "paddingTop": 4,
         }
       }
-      type="text"
+      type="small"
     >
       location
     </Text>
@@ -207,12 +205,10 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       style={
         Object {
           "color": "rgb(45, 47, 127)",
-          "fontSize": 12,
-          "lineHeight": 16,
           "paddingTop": 4,
         }
       }
-      type="text"
+      type="small"
     >
       location
     </Text>
@@ -317,12 +313,10 @@ exports[`renders correctly when isFree is true 1`] = `
       style={
         Object {
           "color": "rgb(45, 47, 127)",
-          "fontSize": 12,
-          "lineHeight": 16,
           "paddingTop": 4,
         }
       }
-      type="text"
+      type="small"
     >
       location
     </Text>

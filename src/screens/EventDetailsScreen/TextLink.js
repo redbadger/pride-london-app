@@ -2,32 +2,25 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import Text from "../../components/Text";
-import Touchable from "../../components/Touchable";
 import { eucalyptusGreenColor } from "../../constants/colors";
 
 type Props = {
-  children: string,
-  onPress: Function
+  children: string
 };
 
-const TextLink = ({ children, onPress }: Props) => (
-  <Touchable onPress={onPress} style={styles.touchable}>
-    <View style={styles.detailTitleLink}>
-      <Text type="h4" color="lightNavyBlueColor">
-        {children}
-      </Text>
-    </View>
-  </Touchable>
+// Note: No touch functionality here. Instead expect to be wrapped in a
+// touchable. This was due to the rouch target sizing, and the fact that
+// often you want to have this and other siblings to be touchable.
+const TextLink = ({ children }: Props) => (
+  <View style={styles.link}>
+    <Text type="h4" color="lightNavyBlueColor">
+      {children}
+    </Text>
+  </View>
 );
 
-// Note: Touchable expects children to be at least 44px high. This is
-// rarely the case for text hence why we overwrite it. This may need
-// to be addressed for accessibility.
 const styles = StyleSheet.create({
-  touchable: {
-    minHeight: 26
-  },
-  detailTitleLink: {
+  link: {
     borderBottomColor: eucalyptusGreenColor,
     borderBottomWidth: StyleSheet.hairlineWidth * 2,
     alignSelf: "flex-start",

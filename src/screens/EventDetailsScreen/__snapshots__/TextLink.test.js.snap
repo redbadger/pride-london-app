@@ -1,38 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Touchable
-  accessibilityComponentType="button"
-  accessibilityTraits={
-    Array [
-      "button",
-    ]
-  }
-  delayPressIn={50}
-  onPress={[Function]}
+<Component
   style={
     Object {
-      "minHeight": 26,
+      "alignSelf": "flex-start",
+      "borderBottomColor": "#2cda9d",
+      "borderBottomWidth": 1,
+      "marginBottom": 2,
     }
   }
 >
-  <Component
-    style={
-      Object {
-        "alignSelf": "flex-start",
-        "borderBottomColor": "#2cda9d",
-        "borderBottomWidth": 1,
-        "marginBottom": 2,
-      }
-    }
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    type="h4"
   >
-    <Text
-      color="lightNavyBlueColor"
-      markdown={false}
-      type="h4"
-    >
-      Some text
-    </Text>
-  </Component>
-</Touchable>
+    Some text
+  </Text>
+</Component>
 `;

@@ -6,19 +6,20 @@ import Text from "./Text";
 import eventCategories from "../constants/event-categories";
 import locale from "../data/locale";
 import { blackColor, whiteColor } from "../constants/colors";
+import type { EventCategoryName } from "../data/event";
 
-const categoryStyleColor = (category: string) => {
+const categoryStyleColor = (category: EventCategoryName) => {
   const categoryData = eventCategories[locale][category];
   return { color: categoryData.contrast ? blackColor : whiteColor };
 };
 
-const categoryStyleBackgroundColor = (category: string) => {
+const categoryStyleBackgroundColor = (category: EventCategoryName) => {
   const categoryData = eventCategories[locale][category];
   return { backgroundColor: categoryData.color };
 };
 
 type Props = {
-  name: string,
+  name: EventCategoryName,
   style?: ViewStyleProp
 };
 

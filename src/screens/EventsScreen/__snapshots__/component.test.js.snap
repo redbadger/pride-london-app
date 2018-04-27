@@ -10,6 +10,7 @@ exports[`EventsScreen Component renders correctly 1`] = `
   }
 >
   <Connect(FilterHeader)
+    onFilterButtonPress={[Function]}
     onFilterCategoriesPress={[Function]}
     selectedCategories={Set {}}
   />

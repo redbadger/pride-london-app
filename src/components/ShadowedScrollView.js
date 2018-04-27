@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import * as React from "react";
 import { StyleSheet, ScrollView, View, Animated } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
@@ -8,7 +8,8 @@ import { blackZeroColor, blackFifteenColor } from "../constants/colors";
 type Props = {
   topShadow?: boolean,
   bottomShadow?: boolean,
-  children: Array<Object>,
+  children: React.Node,
+  shadowOpacity?: number,
   style: ViewStyleProp
 };
 
@@ -21,7 +22,8 @@ class ShadowedScrollView extends React.PureComponent<Props> {
     topShadow: true,
     bottomShadow: true,
     children: [],
-    style: {}
+    style: {},
+    shadowOpacity: 1
   };
 
   // eslint-disable-next-line react/sort-comp
@@ -87,7 +89,13 @@ class ShadowedScrollView extends React.PureComponent<Props> {
   };
 
   render() {
-    const { style, children, topShadow, bottomShadow } = this.props;
+    const {
+      style,
+      children,
+      topShadow,
+      bottomShadow,
+      shadowOpacity
+    } = this.props;
 
     const topShadowOpacityStyle = {
       opacity: this.topShadowOpacity.interpolate({
@@ -103,12 +111,14 @@ class ShadowedScrollView extends React.PureComponent<Props> {
       })
     };
 
+    const gradientStyles = [styles.gradient, { opacity: shadowOpacity }];
+
     return (
       <View style={[styles.container, style]}>
         <Animated.View style={[styles.topShadow, topShadowOpacityStyle]}>
           <LinearGradient
             colors={[blackFifteenColor, blackZeroColor]}
-            style={styles.gradient}
+            style={gradientStyles}
           />
         </Animated.View>
         <ScrollView
@@ -121,7 +131,7 @@ class ShadowedScrollView extends React.PureComponent<Props> {
         <Animated.View style={[styles.bottomShadow, bottomShadowOpacityStyle]}>
           <LinearGradient
             colors={[blackZeroColor, blackFifteenColor]}
-            style={styles.gradient}
+            style={gradientStyles}
           />
         </Animated.View>
       </View>
