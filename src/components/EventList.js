@@ -10,12 +10,20 @@ import EventCard from "./EventCard";
 import Touchable from "./Touchable";
 import SectionHeader from "./SectionHeader";
 import { selectEventIsFree } from "../selectors/event";
-import type { Event, EventDays, LocalizedFieldRef } from "../data/event";
+import type {
+  SavedEvents,
+  Event,
+  EventDays,
+  LocalizedFieldRef
+} from "../data/event";
 import { bgColor, eventCardShadow } from "../constants/colors";
 
 type Props = {
   locale: string,
   events: EventDays,
+  savedEvents: SavedEvents,
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void,
   refreshing?: boolean,
   onRefresh?: () => void,
   onPress: (eventName: string) => void,
@@ -25,9 +33,14 @@ type Props = {
 const separator = style => () => <View style={style} />;
 
 type ItemProps = { item: Event };
-const renderItem = (styles, locale, onPress, getAssetUrl) => ({
-  item: event
-}: ItemProps) => (
+const renderItem = (
+  isSavedEvent,
+  addSavedEvent,
+  removeSavedEvent,
+  locale,
+  onPress,
+  getAssetUrl
+) => ({ item: event }: ItemProps) => (
   <ContentPadding>
     <Touchable
       style={styles.eventListItem}
@@ -42,6 +55,14 @@ const renderItem = (styles, locale, onPress, getAssetUrl) => ({
         endTime={event.fields.endTime[locale]}
         imageUrl={getAssetUrl(event.fields.eventsListPicture)}
         isFree={selectEventIsFree(event)}
+        isSaved={isSavedEvent(event.sys.id)}
+        toggleSaved={active => {
+          if (active) {
+            addSavedEvent(event.sys.id);
+          } else {
+            removeSavedEvent(event.sys.id);
+          }
+        }}
       />
     </Touchable>
   </ContentPadding>
@@ -70,8 +91,12 @@ class EventList extends Component<Props> {
   };
 
   shouldComponentUpdate(nextProps: Props) {
-    const { locale, refreshing } = this.props;
-    const { locale: nextLocale, refreshing: nextRefreshing } = nextProps;
+    const { locale, refreshing, savedEvents } = this.props;
+    const {
+      locale: nextLocale,
+      refreshing: nextRefreshing,
+      savedEvents: nextSavedEvents
+    } = nextProps;
 
     const ids = eventIds(this.props.events);
     const nextIds = eventIds(nextProps.events);
@@ -79,13 +104,17 @@ class EventList extends Component<Props> {
     return (
       !equals(ids, nextIds) ||
       locale !== nextLocale ||
-      refreshing !== nextRefreshing
+      refreshing !== nextRefreshing ||
+      savedEvents !== nextSavedEvents
     );
   }
 
   render() {
     const {
       events,
+      savedEvents,
+      addSavedEvent,
+      removeSavedEvent,
       locale,
       refreshing,
       onRefresh,
@@ -93,13 +122,22 @@ class EventList extends Component<Props> {
       getAssetUrl
     } = this.props;
 
+    const isSavedEvent = id => savedEvents.has(id);
+
     return (
       <SectionList
         stickySectionHeadersEnabled
         sections={eventSections(events, locale)}
         renderSectionHeader={renderSectionHeader}
         renderSectionFooter={separator(styles.sectionFooter)}
-        renderItem={renderItem(styles, locale, onPress, getAssetUrl)}
+        renderItem={renderItem(
+          isSavedEvent,
+          addSavedEvent,
+          removeSavedEvent,
+          locale,
+          onPress,
+          getAssetUrl
+        )}
         keyExtractor={event => event.sys.id}
         contentContainerStyle={styles.container}
         ItemSeparatorComponent={separator(styles.itemSeparator)}

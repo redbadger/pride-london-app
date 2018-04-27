@@ -122,6 +122,9 @@ describe("EventList", () => {
         onPress={() => {}}
         getAssetById={() => {}}
         getAssetUrl={() => {}}
+        savedEvents={new Set()}
+        addSavedEvent={() => {}}
+        removeSavedEvent={() => {}}
         {...props}
       />
     );
@@ -151,14 +154,16 @@ describe("EventList", () => {
     const props = {
       locale: "en-GB",
       refreshing: false,
-      events
+      events,
+      savedEvents: new Set()
     };
 
     it("stops update if locale, refresing and events stay the same", () => {
       const nextProps = {
         locale: "en-GB",
         refreshing: false,
-        events: events.slice(0, 2) // force different instance
+        events: events.slice(0, 2), // force different instance
+        savedEvents: props.savedEvents
       };
 
       const output = render(props);
@@ -171,7 +176,8 @@ describe("EventList", () => {
       const nextProps = {
         locale: "en-US",
         refreshing: false,
-        events
+        events,
+        savedEvents: props.savedEvents
       };
 
       const output = render(props);
@@ -184,7 +190,8 @@ describe("EventList", () => {
       const nextProps = {
         locale: "en-GB",
         refreshing: true,
-        events
+        events,
+        savedEvents: props.savedEvents
       };
 
       const output = render(props);
@@ -197,7 +204,22 @@ describe("EventList", () => {
       const nextProps = {
         locale: "en-GB",
         refreshing: false,
-        events: events.slice(0, 1)
+        events: events.slice(0, 1),
+        savedEvents: props.savedEvents
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+
+    it("allows savedEvents change", () => {
+      const nextProps = {
+        locale: "en-GB",
+        refreshing: false,
+        events,
+        savedEvents: new Set(["test"])
       };
 
       const output = render(props);
