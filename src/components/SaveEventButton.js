@@ -23,12 +23,13 @@ export default class SaveEventButton extends React.Component<Props, State> {
   };
 
   state = {
-    progress: null
+    progress: new Animated.Value(0)
   };
 
   componentDidMount() {
-    const value = this.props.active ? 1 : 0;
-    this.state.progress = new Animated.Value(value);
+    if (this.props.active) {
+      this.state.progress = new Animated.Value(1);
+    }
   }
 
   componentDidUpdate(prevProps: Props) {

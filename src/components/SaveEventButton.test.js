@@ -26,7 +26,7 @@ describe("update from inactive to active", () => {
 
     output.setProps({ active: true, onPress });
     expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
-      duration: 1800,
+      duration: 1920,
       toValue: 1,
       easing: Easing.linear,
       useNativeDriver: true
