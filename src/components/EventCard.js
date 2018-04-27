@@ -2,12 +2,9 @@
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import formatDate from "date-fns/format";
-import {
-  eventPriceBgColor,
-  eventCardTextColor,
-  eventPriceColor
-} from "../constants/colors";
+import { lightNavyBlueColor } from "../constants/colors";
 import Text from "./Text";
+import SaveEventButton from "./SaveEventButton";
 import { formattedEventPrice } from "../data/formatters";
 
 type Props = {
@@ -18,7 +15,9 @@ type Props = {
   startTime: string,
   endTime: string,
   imageUrl: string,
-  isFree: boolean
+  isFree: boolean,
+  isSaved: boolean,
+  toggleSaved: boolean => void
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
 
@@ -30,7 +29,9 @@ const EventCard = ({
   imageUrl,
   eventPriceLow,
   eventPriceHigh,
-  isFree
+  isFree,
+  isSaved,
+  toggleSaved
 }: Props) => {
   const eventStartTime = removeTimezoneFromDateString(startTime);
   const eventEndTime = removeTimezoneFromDateString(endTime);
@@ -48,29 +49,55 @@ const EventCard = ({
         resizeMode="cover"
       >
         <View style={styles.eventPriceContainer}>
-          <Text type="price" style={styles.eventPrice}>
+          <Text type="price" color="whiteColor" style={styles.eventPrice}>
             {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
           </Text>
         </View>
       </ImageBackground>
       <View style={styles.eventCardDetails}>
-        <Text type="small" style={styles.eventTime}>
-          {timeDisplay}
-        </Text>
-        <View style={styles.eventNameContainer}>
-          <Text type="h3" style={styles.eventName}>
-            {name}
+        <View style={styles.column}>
+          <View style={styles.row}>
+            <View style={styles.column}>
+              <Text
+                type="small"
+                color="lightNavyBlueColor"
+                style={styles.eventTime}
+              >
+                {timeDisplay}
+              </Text>
+              <Text
+                numberOfLines={2}
+                type="h3"
+                color="lightNavyBlueColor"
+                style={styles.eventName}
+              >
+                {name}
+              </Text>
+            </View>
+            <View>
+              <SaveEventButton active={isSaved} onPress={toggleSaved} />
+            </View>
+          </View>
+          <Text type="small" color="lightNavyBlueColor">
+            {locationName}
           </Text>
         </View>
-        <Text type="small" style={styles.eventLocation}>
-          {locationName}
-        </Text>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  row: {
+    flex: 0,
+    flexDirection: "row"
+  },
+  column: {
+    flex: 0,
+    flexDirection: "column",
+    flexGrow: 1,
+    flexShrink: 1
+  },
   eventCard: {
     height: 108,
     flexDirection: "row",
@@ -83,31 +110,20 @@ const styles = StyleSheet.create({
   },
   eventPriceContainer: {
     height: 23,
-    backgroundColor: eventPriceBgColor,
+    backgroundColor: lightNavyBlueColor,
     position: "absolute",
     paddingHorizontal: 5,
     justifyContent: "center"
   },
   eventCardDetails: {
     flex: 1,
-    padding: 8
-  },
-  eventNameContainer: {
-    flexDirection: "row"
-  },
-  eventName: {
-    color: eventCardTextColor,
-    paddingTop: 4
-  },
-  eventPrice: {
-    color: eventPriceColor
+    paddingLeft: 8
   },
   eventTime: {
-    color: eventCardTextColor
+    paddingTop: 12
   },
-  eventLocation: {
-    paddingTop: 4,
-    color: eventCardTextColor
+  eventName: {
+    paddingTop: 4
   }
 });
 
