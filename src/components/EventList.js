@@ -33,34 +33,35 @@ type Props = {
 const separator = style => () => <View style={style} />;
 
 type ItemProps = { item: Event };
-const renderItem = (
+
+export const renderItem = ({
   isSavedEvent,
   addSavedEvent,
   removeSavedEvent,
   locale,
   onPress,
   getAssetUrl
-) => ({ item: event }: ItemProps) => (
+}) => ({ item }: ItemProps) => (
   <ContentPadding>
     <Touchable
       style={styles.eventListItem}
-      onPress={() => onPress(event.sys.id)}
+      onPress={() => onPress(item.sys.id)}
     >
       <EventCard
-        name={event.fields.name[locale]}
-        locationName={event.fields.locationName[locale]}
-        eventPriceLow={event.fields.eventPriceLow[locale]}
-        eventPriceHigh={event.fields.eventPriceHigh[locale]}
-        startTime={event.fields.startTime[locale]}
-        endTime={event.fields.endTime[locale]}
-        imageUrl={getAssetUrl(event.fields.eventsListPicture)}
-        isFree={selectEventIsFree(event)}
-        isSaved={isSavedEvent(event.sys.id)}
+        name={item.fields.name[locale]}
+        locationName={item.fields.locationName[locale]}
+        eventPriceLow={item.fields.eventPriceLow[locale]}
+        eventPriceHigh={item.fields.eventPriceHigh[locale]}
+        startTime={item.fields.startTime[locale]}
+        endTime={item.fields.endTime[locale]}
+        imageUrl={getAssetUrl(item.fields.eventsListPicture)}
+        isFree={selectEventIsFree(item)}
+        isSaved={isSavedEvent(item.sys.id)}
         toggleSaved={active => {
           if (active) {
-            addSavedEvent(event.sys.id);
+            addSavedEvent(item.sys.id);
           } else {
-            removeSavedEvent(event.sys.id);
+            removeSavedEvent(item.sys.id);
           }
         }}
       />
@@ -130,14 +131,14 @@ class EventList extends Component<Props> {
         sections={eventSections(events, locale)}
         renderSectionHeader={renderSectionHeader}
         renderSectionFooter={separator(styles.sectionFooter)}
-        renderItem={renderItem(
+        renderItem={renderItem({
           isSavedEvent,
           addSavedEvent,
           removeSavedEvent,
           locale,
           onPress,
           getAssetUrl
-        )}
+        })}
         keyExtractor={event => event.sys.id}
         contentContainerStyle={styles.container}
         ItemSeparatorComponent={separator(styles.itemSeparator)}
