@@ -2,7 +2,7 @@
 import type { Reducer } from "redux";
 import type { SaveEventAction } from "../actions/saved-events";
 
-type State = Set<string>;
+export type State = Set<string>;
 
 const defaultState = new Set();
 
