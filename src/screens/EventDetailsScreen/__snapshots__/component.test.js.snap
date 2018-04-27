@@ -92,7 +92,10 @@ exports[`EventHeader renders correctly 1`] = `
       onPress={[Function]}
       source={1}
     />
-    <FavouriteButton />
+    <FavouriteButton
+      active={true}
+      onPress={[Function]}
+    />
   </ContentPadding>
 </Header>
 `;
@@ -126,7 +129,13 @@ exports[`renders correctly 1`] = `
   }
 >
   <EventHeader
-    onBack={[Function]}
+    isSaved={true}
+    navigation={
+      Object {
+        "goBack": [Function],
+      }
+    }
+    toggleFavourite={[Function]}
   />
   <ShadowedScrollView
     bottomShadow={true}
@@ -788,7 +797,13 @@ exports[`renders correctly with missing details 1`] = `
   }
 >
   <EventHeader
-    onBack={[Function]}
+    isSaved={false}
+    navigation={
+      Object {
+        "goBack": [Function],
+      }
+    }
+    toggleFavourite={[Function]}
   />
   <ShadowedScrollView
     bottomShadow={true}

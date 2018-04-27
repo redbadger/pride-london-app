@@ -76,32 +76,29 @@ const event: Event = ({
   }
 }: any);
 
-it("renders correctly", () => {
-  const getAssetUrl = () =>
-    "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
-  const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
-    goBack: () => {}
-  }: any);
+const getAssetUrl = () =>
+  "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
 
+const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
+  goBack: () => {}
+}: any);
+
+it("renders correctly", () => {
   const output = shallow(
     <Component
-      navigation={navigation}
       event={event}
       getAssetUrl={getAssetUrl}
+      isSaved
+      navigation={navigation}
+      toggleFavourite={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
 });
 
 it("renders correctly with missing details", () => {
-  const getAssetUrl = () =>
-    "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
-  const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
-    goBack: () => {}
-  }: any);
   const output = shallow(
     <Component
-      navigation={navigation}
       event={{
         ...event,
         fields: {
@@ -111,6 +108,8 @@ it("renders correctly with missing details", () => {
         }
       }}
       getAssetUrl={getAssetUrl}
+      navigation={navigation}
+      toggleFavourite={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
@@ -118,7 +117,9 @@ it("renders correctly with missing details", () => {
 
 describe("EventHeader", () => {
   it("renders correctly", () => {
-    const output = shallow(<EventHeader onBack={() => {}} />);
+    const output = shallow(
+      <EventHeader isSaved navigation={navigation} toggleFavourite={() => {}} />
+    );
     expect(output).toMatchSnapshot();
   });
 });

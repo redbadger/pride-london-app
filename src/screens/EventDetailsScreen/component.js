@@ -26,21 +26,27 @@ import type {
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
-type Props = {
-  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
-  event: Event,
-  getAssetUrl: LocalizedFieldRef => string
-};
+type EventHeaderProps = {|
+  isSaved: boolean,
+  toggleFavourite: boolean => void,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>
+|};
 
-export const EventHeader = ({ onBack }: { onBack: Function }) => (
+export const EventHeader = ({
+  isSaved,
+  navigation,
+  toggleFavourite
+}: EventHeaderProps) => (
   <Header backgroundColor={darkBlueGreyTwoColor}>
     <ContentPadding style={styles.headerContent}>
       <IconButton
         accessibilityLabel="Back"
-        onPress={onBack}
+        onPress={() => {
+          navigation.goBack(null);
+        }}
         source={chevronLeftWhite}
       />
-      <FavouriteButton />
+      <FavouriteButton active={isSaved} onPress={toggleFavourite} />
     </ContentPadding>
   </Header>
 );
@@ -76,8 +82,18 @@ export const EventTickets = ({ event }: { event: Event }) => (
   </ContentPadding>
 );
 
+type Props = {
+  event: Event,
+  getAssetUrl: LocalizedFieldRef => string,
+  isSaved: boolean,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
+  toggleFavourite: boolean => void
+};
+
 class EventDetailsScreen extends PureComponent<Props> {
-  static defaultProps = {};
+  static defaultProps = {
+    isSaved: false
+  };
 
   static navigationOptions = {
     header: null,
@@ -89,9 +105,9 @@ class EventDetailsScreen extends PureComponent<Props> {
     return (
       <View style={styles.container}>
         <EventHeader
-          onBack={() => {
-            this.props.navigation.goBack(null);
-          }}
+          isSaved={this.props.isSaved}
+          toggleFavourite={this.props.toggleFavourite}
+          navigation={this.props.navigation}
         />
         <ShadowedScrollView topShadow={false}>
           <Image
