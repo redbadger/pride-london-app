@@ -21,71 +21,78 @@ type Props = {
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
 
-const EventCard = ({
-  name,
-  locationName,
-  startTime,
-  endTime,
-  imageUrl,
-  eventPriceLow,
-  eventPriceHigh,
-  isFree,
-  isSaved,
-  toggleSaved
-}: Props) => {
-  const eventStartTime = removeTimezoneFromDateString(startTime);
-  const eventEndTime = removeTimezoneFromDateString(endTime);
-  const timeFormat = "HH:mm";
-  const timeDisplay = `${formatDate(eventStartTime, timeFormat)} - ${formatDate(
-    eventEndTime,
-    timeFormat
-  )}`;
+class EventCard extends React.PureComponent<Props> {
+  static defaultProps = {
+    isSaved: false
+  };
 
-  return (
-    <View style={styles.eventCard}>
-      <ImageBackground
-        style={styles.imageContainer}
-        source={{ uri: imageUrl }}
-        resizeMode="cover"
-      >
-        <View style={styles.eventPriceContainer}>
-          <Text type="price" color="whiteColor" style={styles.eventPrice}>
-            {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
-          </Text>
-        </View>
-      </ImageBackground>
-      <View style={styles.eventCardDetails}>
-        <View style={styles.column}>
-          <View style={styles.row}>
-            <View style={styles.column}>
-              <Text
-                type="small"
-                color="lightNavyBlueColor"
-                style={styles.eventTime}
-              >
-                {timeDisplay}
-              </Text>
-              <Text
-                numberOfLines={2}
-                type="h3"
-                color="lightNavyBlueColor"
-                style={styles.eventName}
-              >
-                {name}
-              </Text>
-            </View>
-            <View>
-              <SaveEventButton active={isSaved} onPress={toggleSaved} />
-            </View>
+  render() {
+    const {
+      name,
+      locationName,
+      startTime,
+      endTime,
+      imageUrl,
+      eventPriceLow,
+      eventPriceHigh,
+      isFree,
+      isSaved,
+      toggleSaved
+    } = this.props;
+    const eventStartTime = removeTimezoneFromDateString(startTime);
+    const eventEndTime = removeTimezoneFromDateString(endTime);
+    const timeFormat = "HH:mm";
+    const timeDisplay = `${formatDate(
+      eventStartTime,
+      timeFormat
+    )} - ${formatDate(eventEndTime, timeFormat)}`;
+
+    return (
+      <View style={styles.eventCard}>
+        <ImageBackground
+          style={styles.imageContainer}
+          source={{ uri: imageUrl }}
+          resizeMode="cover"
+        >
+          <View style={styles.eventPriceContainer}>
+            <Text type="price" color="whiteColor">
+              {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
+            </Text>
           </View>
-          <Text type="small" color="lightNavyBlueColor">
-            {locationName}
-          </Text>
+        </ImageBackground>
+        <View style={styles.eventCardDetails}>
+          <View style={styles.column}>
+            <View style={styles.row}>
+              <View style={styles.column}>
+                <Text
+                  type="small"
+                  color="lightNavyBlueColor"
+                  style={styles.eventTime}
+                >
+                  {timeDisplay}
+                </Text>
+                <Text
+                  numberOfLines={2}
+                  type="h3"
+                  color="lightNavyBlueColor"
+                  style={styles.eventName}
+                >
+                  {name}
+                </Text>
+              </View>
+              <View>
+                <SaveEventButton active={isSaved} onPress={toggleSaved} />
+              </View>
+            </View>
+            <Text type="small" color="lightNavyBlueColor">
+              {locationName}
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   row: {

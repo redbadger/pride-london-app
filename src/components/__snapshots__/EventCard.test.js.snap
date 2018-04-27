@@ -111,6 +111,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
           <SaveEventButton
             active={false}
             onDark={false}
+            onPress={[Function]}
           />
         </View>
       </View>
@@ -237,6 +238,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
           <SaveEventButton
             active={false}
             onDark={false}
+            onPress={[Function]}
           />
         </View>
       </View>
@@ -363,6 +365,7 @@ exports[`renders correctly when isFree is true 1`] = `
           <SaveEventButton
             active={false}
             onDark={false}
+            onPress={[Function]}
           />
         </View>
       </View>
