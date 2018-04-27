@@ -72,3 +72,6 @@ settings.json
 
 fabric.properties
 coverage/
+
+# Bundle artifact
+*.jsbundle

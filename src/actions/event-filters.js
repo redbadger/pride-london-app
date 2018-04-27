@@ -1,5 +1,13 @@
 // @flow
 import type { DateRange, Time } from "../data/date-time";
+import type { EventCategoryName } from "../data/event";
+import type {
+  Area,
+  Price,
+  Audience,
+  VenueDetail,
+  AccessibilityOption
+} from "../data/event-filters";
 import type { StandardAction } from "./";
 
 type EventFiltersActionType =
@@ -8,8 +16,13 @@ type EventFiltersActionType =
   | "CLEAR_STAGED_EVENT_FILTERS";
 type EventFiltersPayload = {
   date?: ?DateRange,
-  time?: Set<Time>,
-  categories?: Set<string>
+  timeOfDay?: Set<Time>,
+  price?: Set<Price>,
+  categories?: Set<EventCategoryName>,
+  audience?: Set<Audience>,
+  venueDetails?: Set<VenueDetail>,
+  accessibilityOptions?: Set<AccessibilityOption>,
+  area?: Set<Area>
 };
 
 export type EventFiltersAction = StandardAction<

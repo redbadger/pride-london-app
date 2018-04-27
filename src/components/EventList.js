@@ -7,16 +7,11 @@ import { concat, equals } from "ramda";
 
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
-import Text from "./Text";
 import Touchable from "./Touchable";
+import SectionHeader from "./SectionHeader";
+import { selectEventIsFree } from "../selectors/event";
 import type { Event, EventDays, LocalizedFieldRef } from "../data/event";
-import {
-  bgColor,
-  eventCardTextColor,
-  sectionHeaderShadow,
-  sectionHeaderBgColor,
-  eventCardShadow
-} from "../constants/colors";
+import { bgColor, eventCardShadow } from "../constants/colors";
 
 type Props = {
   locale: string,
@@ -46,7 +41,7 @@ const renderItem = (styles, locale, onPress, getAssetUrl) => ({
         startTime={event.fields.startTime[locale]}
         endTime={event.fields.endTime[locale]}
         imageUrl={getAssetUrl(event.fields.eventsListPicture)}
-        isFree={event.fields.isFree[locale]}
+        isFree={selectEventIsFree(event)}
       />
     </Touchable>
   </ContentPadding>
@@ -55,17 +50,8 @@ const renderItem = (styles, locale, onPress, getAssetUrl) => ({
 type Section = SectionBase<Event> & { title: string };
 
 type SectionProps = { section: Section };
-const renderSectionHeader = styles => ({ section }: SectionProps) => (
-  <ContentPadding style={styles.sectionHeader}>
-    <Text
-      type="h2"
-      style={styles.sectionHeaderText}
-      accessible
-      accessibilityTraits={["header"]}
-    >
-      {section.title}
-    </Text>
-  </ContentPadding>
+const renderSectionHeader = ({ section }: SectionProps) => (
+  <SectionHeader title={section.title} />
 );
 
 const eventSections = (events: EventDays, locale: string): Section[] =>
@@ -111,7 +97,7 @@ class EventList extends Component<Props> {
       <SectionList
         stickySectionHeadersEnabled
         sections={eventSections(events, locale)}
-        renderSectionHeader={renderSectionHeader(styles)}
+        renderSectionHeader={renderSectionHeader}
         renderSectionFooter={separator(styles.sectionFooter)}
         renderItem={renderItem(styles, locale, onPress, getAssetUrl)}
         keyExtractor={event => event.sys.id}
@@ -147,24 +133,6 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 3,
     backgroundColor: bgColor
-  },
-  sectionHeader: {
-    height: 40,
-    justifyContent: "center",
-    backgroundColor: sectionHeaderBgColor,
-
-    // The below properties are required for ioS shadow
-    shadowColor: sectionHeaderShadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 3,
-    // The below properties are required for android shadow
-    borderWidth: 0,
-    elevation: 3,
-    marginBottom: 6
-  },
-  sectionHeaderText: {
-    color: eventCardTextColor
   },
   sectionFooter: {
     height: 6
