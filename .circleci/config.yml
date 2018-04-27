@@ -272,14 +272,14 @@ jobs:
               brew bundle
       - <<: *save-brew-cache
       - run:
-          name: Install global npm dependencies
+          name: Set npm version and install global npm dependencies
           command: |
+              npm i -g n
+              sudo n 9.3
               npm i -g detox-cli
               npm i -g react-native-cli
       - restore_cache:
           key: osx-dependencies-{{ checksum "package.json" }}
-      - run: npm i -g n
-      - run: sudo n 9.3
       - run:
           name: Install dependencies
           command: npm install
