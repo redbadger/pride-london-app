@@ -30,7 +30,7 @@ exports[`applies styles to clear button when showClear=true 1`] = `
       onPress={[Function]}
       style={Object {}}
     />
-    <View
+    <Component
       style={
         Object {
           "paddingTop": 4,
@@ -54,7 +54,7 @@ exports[`applies styles to clear button when showClear=true 1`] = `
       >
         Filter Events
       </Text>
-    </View>
+    </Component>
     <ActionButton
       key="1"
       label="Clear all"
@@ -99,7 +99,7 @@ exports[`renders correctly 1`] = `
       onPress={[Function]}
       style={Object {}}
     />
-    <View
+    <Component
       style={
         Object {
           "paddingTop": 4,
@@ -123,7 +123,7 @@ exports[`renders correctly 1`] = `
       >
         Filter Events
       </Text>
-    </View>
+    </Component>
     <ActionButton
       key="0"
       label="Clear all"

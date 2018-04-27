@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
 import { filterButtonTextColor, whiteColor } from "../constants/colors";
@@ -12,7 +12,7 @@ type Props = {
   label: string,
   onPress: Function,
   onRef?: Function,
-  style?: StyleObj,
+  style?: ViewStyleProp,
   badgeValue?: ?number,
   active: boolean
 };

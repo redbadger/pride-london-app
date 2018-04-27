@@ -2,7 +2,7 @@
 import * as React from "react";
 import { StyleSheet, ScrollView, View, Animated } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import { blackZeroColor, blackFifteenColor } from "../constants/colors";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   bottomShadow?: boolean,
   children: React.Node,
   shadowOpacity?: number,
-  style: StyleObj
+  style: ViewStyleProp
 };
 
 const shadowFadeDuration: number = 100;

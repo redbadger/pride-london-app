@@ -2,7 +2,7 @@
 import React from "react";
 import { View, StyleSheet, ScrollView, PixelRatio } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import CategoryPill from "./CategoryPill";
 import Text from "./Text";
 import text from "../constants/text";
@@ -17,7 +17,7 @@ import type { EventCategoryName } from "../data/event";
 
 type Props = {
   selectedCategories: Set<EventCategoryName>,
-  style?: StyleObj
+  style?: ViewStyleProp
 };
 
 class CategoriesPills extends React.PureComponent<Props> {

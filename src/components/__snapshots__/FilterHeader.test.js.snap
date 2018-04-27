@@ -23,7 +23,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "paddingBottom": 12,
@@ -36,9 +36,9 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-    </View>
+    </Component>
   </ContentPadding>
-  <View
+  <Component
     style={
       Object {
         "backgroundColor": "#20215a",
@@ -60,7 +60,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
       }
       text="Select dates"
     />
-    <View
+    <Component
       style={
         Object {
           "borderColor": "#ffffff",
@@ -80,7 +80,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
       }
       text="Add filters"
     />
-  </View>
+  </Component>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}
@@ -112,7 +112,7 @@ exports[`renders correctly with any date and any time 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "paddingBottom": 12,
@@ -125,9 +125,9 @@ exports[`renders correctly with any date and any time 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-    </View>
+    </Component>
   </ContentPadding>
-  <View
+  <Component
     style={
       Object {
         "backgroundColor": "#20215a",
@@ -149,7 +149,7 @@ exports[`renders correctly with any date and any time 1`] = `
       }
       text="Select dates"
     />
-    <View
+    <Component
       style={
         Object {
           "borderColor": "#ffffff",
@@ -169,7 +169,7 @@ exports[`renders correctly with any date and any time 1`] = `
       }
       text="Add filters"
     />
-  </View>
+  </Component>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}
@@ -201,7 +201,7 @@ exports[`renders correctly with date range and two times 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "paddingBottom": 12,
@@ -214,9 +214,9 @@ exports[`renders correctly with date range and two times 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-    </View>
+    </Component>
   </ContentPadding>
-  <View
+  <Component
     style={
       Object {
         "backgroundColor": "#20215a",
@@ -238,7 +238,7 @@ exports[`renders correctly with date range and two times 1`] = `
       }
       text="2 Feb - 3 Feb"
     />
-    <View
+    <Component
       style={
         Object {
           "borderColor": "#ffffff",
@@ -258,7 +258,7 @@ exports[`renders correctly with date range and two times 1`] = `
       }
       text="Add filters"
     />
-  </View>
+  </Component>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}
@@ -290,7 +290,7 @@ exports[`renders correctly with single date and single time 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "paddingBottom": 12,
@@ -303,9 +303,9 @@ exports[`renders correctly with single date and single time 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-    </View>
+    </Component>
   </ContentPadding>
-  <View
+  <Component
     style={
       Object {
         "backgroundColor": "#20215a",
@@ -327,7 +327,7 @@ exports[`renders correctly with single date and single time 1`] = `
       }
       text="2 Feb"
     />
-    <View
+    <Component
       style={
         Object {
           "borderColor": "#ffffff",
@@ -347,7 +347,7 @@ exports[`renders correctly with single date and single time 1`] = `
       }
       text="Add filters"
     />
-  </View>
+  </Component>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}
@@ -379,7 +379,7 @@ exports[`renders correctly with tag filters selected 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "paddingBottom": 12,
@@ -392,9 +392,9 @@ exports[`renders correctly with tag filters selected 1`] = `
         onFilterPress={[Function]}
         selectedCategories={Set {}}
       />
-    </View>
+    </Component>
   </ContentPadding>
-  <View
+  <Component
     style={
       Object {
         "backgroundColor": "#20215a",
@@ -416,7 +416,7 @@ exports[`renders correctly with tag filters selected 1`] = `
       }
       text="Select dates"
     />
-    <View
+    <Component
       style={
         Object {
           "borderColor": "#ffffff",
@@ -436,7 +436,7 @@ exports[`renders correctly with tag filters selected 1`] = `
       }
       text="Filters"
     />
-  </View>
+  </Component>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}

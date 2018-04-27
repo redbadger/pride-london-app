@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { StyleSheet } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
 import { whiteColor } from "../constants/colors";
@@ -9,7 +9,7 @@ import { whiteColor } from "../constants/colors";
 type Props = {
   label: string,
   onPress?: Function,
-  style?: StyleObj
+  style?: ViewStyleProp
 };
 
 const ActionButton = ({ label, onPress, style }: Props) => (

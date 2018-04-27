@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import eventCategories from "../constants/event-categories";
 import locale from "../data/locale";
@@ -20,7 +20,7 @@ const categoryStyleBackgroundColor = (category: EventCategoryName) => {
 
 type Props = {
   name: EventCategoryName,
-  style?: StyleObj
+  style?: ViewStyleProp
 };
 
 const CategoryPill = ({ name, style }: Props) => (

@@ -42,7 +42,7 @@ exports[`renders badge value when provided 1`] = `
   >
     1-2-3 filtered
   </Text>
-  <View
+  <Component
     style={
       Object {
         "marginLeft": 6,
@@ -52,7 +52,7 @@ exports[`renders badge value when provided 1`] = `
     <NumberBadge
       value={2}
     />
-  </View>
+  </Component>
 </Touchable>
 `;
 
