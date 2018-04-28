@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
+<Component
   style={
     Object {
       "display": "flex",
     }
   }
 >
-  <View
+  <Component
     style={
       Object {
         "height": 50,
@@ -34,5 +34,5 @@ exports[`renders correctly 1`] = `
       }
     }
   />
-</View>
+</Component>
 `;

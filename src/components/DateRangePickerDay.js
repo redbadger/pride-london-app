@@ -1,6 +1,9 @@
 // @flow
-import React from "react";
+import React, { Component } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import { equals } from "ramda";
+import { format } from "date-fns";
+
 import Text from "./Text";
 
 import {
@@ -70,7 +73,22 @@ const dotStyle = (marking: DayMarking) => [
     : { backgroundColor: dateRangePickerSelectedColor }
 ];
 
-export default class Day extends React.PureComponent<DayProps> {
+export default class Day extends Component<DayProps> {
+  shouldComponentUpdate = (nextProps: DayProps): boolean => {
+    const { state, marking, date } = this.props;
+    const {
+      state: nextState,
+      marking: nextMarking,
+      date: nextDate
+    } = nextProps;
+
+    return (
+      state !== nextState ||
+      !equals(marking, nextMarking) ||
+      !equals(date, nextDate)
+    );
+  };
+
   onPress = () => {
     if (this.props.state !== "disabled") this.props.onPress(this.props.date);
   };
@@ -82,11 +100,16 @@ export default class Day extends React.PureComponent<DayProps> {
 
   render() {
     const { state, marking, date } = this.props;
+    const label = format(date.dateString, "dddd, MMMM D");
+    const traits = marking.selected ? ["button", "selected"] : ["button"];
 
     return (
       <TouchableWithoutFeedback
         onPress={this.onPress}
         onLongPress={this.onLongPress}
+        accessibilityTraits={traits}
+        accessibilityLabel={label}
+        accessibilityComponentType="button"
       >
         <View style={styles.container}>
           {marking.selected && (

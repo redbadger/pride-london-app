@@ -1,39 +1,55 @@
 // @flow
 import React from "react";
 import { Text as RnText, StyleSheet } from "react-native";
-import Markdown from "react-native-easy-markdown";
-
 import type { TextProps } from "react-native/Libraries/Text/TextProps";
-
+import Markdown from "react-native-easy-markdown";
+import { mergeDeepRight } from "ramda";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
 
-export type TextType = "h1" | "h2" | "h3" | "h4" | "text" | "small" | "price";
+export type TextType =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "text"
+  | "small"
+  | "xSmall"
+  | "price";
+
+export type ColorType = "lightNavyBlueColor" | "blackColor";
 
 type Props = {
-  type?: TextType,
-  color?: "lightNavyBlueColor" | "blackColor",
-  markdown?: boolean,
+  type: TextType,
+  color: ColorType,
+  markdown: boolean,
   ...TextProps
 };
 
-const Text = ({ type, markdown, style, color, ...otherProps }: Props) =>
-  markdown ? (
-    <Markdown
-      style={style}
-      markdownStyles={{ ...textStyles, ...markdownStyles }}
-      {...otherProps}
-    />
-  ) : (
-    <RnText
-      style={[type && styles[type], color && styles[color], style]}
-      {...otherProps}
-    />
-  );
-Text.defaultProps = {
-  type: "text",
-  markdown: false,
-  color: "blackColor"
-};
+class Text extends React.PureComponent<Props> {
+  static defaultProps = {
+    type: "text",
+    markdown: false,
+    color: "blackColor"
+  };
+
+  render() {
+    const { color, type, markdown, style, ...otherProps } = this.props;
+    const typedType: TextType = (type: any);
+    const typedColor: ColorType = (color: any);
+    return markdown ? (
+      <Markdown
+        style={style}
+        markdownStyles={mergeDeepRight(textStyles, markdownStyles)}
+        {...otherProps}
+      />
+    ) : (
+      <RnText
+        style={[styles[typedType], styles[typedColor], style]}
+        {...otherProps}
+      />
+    );
+  }
+}
 
 const textStyles = {
   h1: {
@@ -69,16 +85,22 @@ const textStyles = {
     fontSize: 14,
     lineHeight: 20
   },
+  xSmall: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 12,
+    lineHeight: 16,
+    includeFontPadding: false
+  },
   price: {
     fontFamily: "Roboto-Bold",
     fontSize: 14,
     lineHeight: 20
   },
-  lightNavyBlueColor: {
-    color: lightNavyBlueColor
-  },
   blackColor: {
     color: blackColor
+  },
+  lightNavyBlueColor: {
+    color: lightNavyBlueColor
   }
 };
 

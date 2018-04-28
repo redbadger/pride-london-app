@@ -1,86 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View>
-  <Text
-    color="blackColor"
-    markdown={false}
-    style={
-      Object {
-        "marginTop": 24,
-      }
-    }
-    type="h1"
-  >
-    Pride in the Park
-  </Text>
-  <View
-    style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "wrap",
-        "marginBottom": 16,
-        "marginTop": 16,
-      }
-    }
-  >
-    <CategoryPill
-      key="Community"
-      name="Community"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Social and Networking"
-      name="Social and Networking"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Sports and Activities"
-      name="Sports and Activities"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Music"
-      name="Music"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-  </View>
+<IconList>
   <IconItem
-    icon={
-      <Image
-        source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    source={1}
   >
     <Text
       color="lightNavyBlueColor"
@@ -92,107 +15,49 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#111111",
-        }
-      }
       type="small"
     >
       11:00AM - 6:00PM
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    onPress={[Function]}
+    source={1}
   >
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      delayPressIn={50}
-      onPress={[Function]}
+    <TextLink>
+      Vauxhall Pleasure Gardens
+    </TextLink>
+    <Text
+      color="blackColor"
+      markdown={false}
+      type="small"
     >
-      <View
-        style={
-          Object {
-            "alignSelf": "flex-start",
-            "borderBottomColor": "#2cda9d",
-            "borderBottomWidth": 1,
-            "marginBottom": 2,
-          }
-        }
-      >
-        <Text
-          color="lightNavyBlueColor"
-          markdown={false}
-          type="h4"
-        >
-          Vauxhall Pleasure Gardens
-        </Text>
-      </View>
-      <Text
-        color="blackColor"
-        markdown={false}
-        type="small"
-      >
-        Vauxhall Pleasure Gardens
-      </Text>
-      <Text
-        color="blackColor"
-        markdown={false}
-        type="small"
-      >
-        Vauxhall Pleasure Gardens
-      </Text>
-      <Text
-        color="blackColor"
-        markdown={false}
-        type="small"
-      >
-        London
-      </Text>
-      <Text
-        color="blackColor"
-        markdown={false}
-        type="small"
-      >
-        EC1M 3HA
-      </Text>
-    </Touchable>
+      Vauxhall Pleasure Gardens
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      type="small"
+    >
+      Vauxhall Pleasure Gardens
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      type="small"
+    >
+      London
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      type="small"
+    >
+      EC1M 3HA
+    </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-        style={
-          Object {
-            "marginTop": -3,
-          }
-        }
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    source={1}
   >
     <Text
       color="lightNavyBlueColor"
@@ -203,21 +68,7 @@ exports[`renders correctly 1`] = `
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-        style={
-          Object {
-            "marginTop": -2,
-          }
-        }
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    source={1}
   >
     <Text
       color="lightNavyBlueColor"
@@ -228,17 +79,7 @@ exports[`renders correctly 1`] = `
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-        style={
-          Object {
-            "marginTop": 3,
-          }
-        }
-      />
-    }
-    style={Object {}}
+    source={1}
   >
     <Text
       color="lightNavyBlueColor"
@@ -250,15 +91,10 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
-      style={
-        Object {
-          "color": "#111111",
-        }
-      }
       type="small"
     >
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</View>
+</IconList>
 `;

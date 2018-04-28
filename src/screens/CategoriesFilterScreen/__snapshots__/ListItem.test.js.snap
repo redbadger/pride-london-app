@@ -51,7 +51,7 @@ exports[`ListItem Component renders correctly 1`] = `
     }
     width={20}
   />
-  <View
+  <Component
     onLayout={[Function]}
   >
     <Text
@@ -77,7 +77,7 @@ exports[`ListItem Component renders correctly 1`] = `
     >
       Music
     </Text>
-  </View>
+  </Component>
 </Touchable>
 `;
 
@@ -121,7 +121,7 @@ exports[`ListItem Component renders correctly without selected 1`] = `
       ]
     }
   />
-  <View
+  <Component
     onLayout={[Function]}
   >
     <Text
@@ -147,6 +147,6 @@ exports[`ListItem Component renders correctly without selected 1`] = `
     >
       Music
     </Text>
-  </View>
+  </Component>
 </Touchable>
 `;

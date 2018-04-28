@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, Image, PixelRatio } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Touchable from "./Touchable";
 import {
   interestButtonBgColor,
@@ -13,14 +13,15 @@ import text from "../constants/text";
 import Text from "./Text";
 import CategoriesPills from "./CategoriesPills";
 import chevronRightImg from "../../assets/images/chevronRight.png";
+import type { EventCategoryName } from "../data/event";
 
 type Props = {
-  selectedCategories: Set<string>,
+  selectedCategories: Set<EventCategoryName>,
   onFilterPress: Function
 };
 
 type CategoriesFilterButtonProps = {
-  style?: StyleObj,
+  style?: ViewStyleProp,
   onPress: Function
 };
 
@@ -41,7 +42,14 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
   selectedCategories.size === 0 ? (
     <View style={styles.contentInterest}>
       {PixelRatio.getFontScale() < 1.5 && (
-        <Text type="h1" style={styles.filterTitle} allowFontScaling={false}>
+        <Text
+          type="h1"
+          style={styles.filterTitle}
+          allowFontScaling={false}
+          accessible
+          accessibilityTraits={["header"]}
+          accessibilityLabel={text.tabEvents}
+        >
           {text.filterTitle}
         </Text>
       )}

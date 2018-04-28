@@ -1,7 +1,8 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
+import { equals } from "ramda";
 import Text from "../../components/Text";
 import type { Event } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
@@ -24,7 +25,24 @@ type Props = {
   getAssetUrl: LocalizedFieldRef => string
 };
 
-class HomeScreen extends PureComponent<Props> {
+class HomeScreen extends Component<Props> {
+  shouldComponentUpdate = (nextProps: Props): boolean => {
+    const { loading, featuredEventsTitle } = this.props;
+    const {
+      loading: nextLoading,
+      featuredEventsTitle: nextFeaturedEventsTitle
+    } = nextProps;
+
+    const ids = this.props.featuredEvents.map(e => e.sys.id);
+    const nextIds = nextProps.featuredEvents.map(e => e.sys.id);
+
+    return (
+      loading !== nextLoading ||
+      featuredEventsTitle !== nextFeaturedEventsTitle ||
+      !equals(ids, nextIds)
+    );
+  };
+
   eventDetails = (eventId: string) => {
     this.props.navigation.navigate(EVENT_DETAILS, { eventId });
   };

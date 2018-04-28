@@ -28,6 +28,7 @@ class MultiSelectDialog extends React.PureComponent<Props> {
     return (
       <Dialog
         applyButtonText={this.props.applyButtonText}
+        applyButtonLabel={this.props.applyButtonText}
         onApply={this.props.onApply}
         onCancel={this.props.onCancel}
         title={this.props.title}

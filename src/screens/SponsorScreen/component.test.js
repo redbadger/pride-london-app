@@ -33,6 +33,7 @@ const generateSponsors = (count = 2): Sponsor[] =>
   );
 
 const getAssetUrl = jest.fn().mockReturnValue("http://example.com/image.png");
+const getAssetSize = jest.fn();
 const navigation: any = {
   goBack: jest.fn()
 };
@@ -44,6 +45,7 @@ describe("SponsorScreen Component", () => {
         navigation={navigation}
         sponsors={generateSponsors(2)}
         getAssetUrl={getAssetUrl}
+        getAssetSize={getAssetSize}
         {...props}
       />
     );

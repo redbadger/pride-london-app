@@ -9,6 +9,7 @@ import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
+import FilterModal from "./screens/FilterModal";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
 import SupportUsScreen from "./screens/SupportUsScreen";
 import SponsorScreen from "./screens/SponsorScreen";
@@ -32,6 +33,7 @@ import {
   PARADE,
   SAVED,
   SUPPORT_US,
+  FILTER_MODAL,
   DONATE,
   SPONSOR
 } from "./constants/routes";
@@ -150,7 +152,7 @@ const SupportUsStack = StackNavigator(
   }
 );
 
-export default TabNavigator(
+const TabNav = TabNavigator(
   {
     [HOME]: { screen: HomeStack },
     [EVENT_LIST]: { screen: EventsStack },
@@ -166,3 +168,22 @@ export default TabNavigator(
     initialRouteName: HOME
   }
 );
+
+const RootStack = StackNavigator(
+  {
+    Main: {
+      screen: TabNav
+    },
+    [FILTER_MODAL]: {
+      screen: FilterModal
+    }
+  },
+  {
+    mode: "modal",
+    navigationOptions: {
+      header: null
+    }
+  }
+);
+
+export default RootStack;
