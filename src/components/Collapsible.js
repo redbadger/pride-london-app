@@ -26,8 +26,6 @@ type State = {
   gradientOpacity: Object
 };
 
-const collapsedHeight = 100;
-
 class Collapsible extends PureComponent<Props, State> {
   static defaultProps = {
     maxHeight: 140,
@@ -50,12 +48,11 @@ class Collapsible extends PureComponent<Props, State> {
 
     Animated.timing(contentContainerHeight, {
       toValue,
-      duration: this.state.contentHeight * 0.8,
-      useNativeDriver: true
+      duration: this.state.contentHeight * 0.8
     }).start();
 
     Animated.timing(gradientOpacity, {
-      toValue,
+      toValue: 1 - toValue,
       duration: this.state.contentHeight * 0.8,
       useNativeDriver: true
     }).start();
@@ -65,8 +62,9 @@ class Collapsible extends PureComponent<Props, State> {
     this.setState({ collapsed: !this.state.collapsed });
   };
 
-  measureContentHeight = (event: LayoutEvent) =>
+  measureContentHeight = (event: LayoutEvent) => {
     this.setState({ contentHeight: event.nativeEvent.layout.height });
+  };
 
   render() {
     const { children, showMoreLabel, maxHeight, showLessLabel } = this.props;
@@ -77,10 +75,7 @@ class Collapsible extends PureComponent<Props, State> {
     const textContainerHeightStyle = {
       height: contentContainerHeight.interpolate({
         inputRange: [0, 1],
-        outputRange: [
-          contentHeight,
-          collapsible ? collapsedHeight : contentHeight
-        ]
+        outputRange: [collapsible ? maxHeight : contentHeight, contentHeight]
       })
     };
     const gradientOpacityStyle = {
@@ -93,12 +88,12 @@ class Collapsible extends PureComponent<Props, State> {
     return (
       <View>
         <View>
-          <Animated.View
+          <Animated.ScrollView
+            scrollEnabled={false}
             style={textContainerHeightStyle}
-            onLayout={this.measureContentHeight}
           >
-            {children}
-          </Animated.View>
+            <View onLayout={this.measureContentHeight}>{children}</View>
+          </Animated.ScrollView>
           {collapsible && (
             <Animated.View style={[styles.gradient, gradientOpacityStyle]}>
               <LinearGradient

@@ -116,12 +116,15 @@ class EventDetailsScreen extends PureComponent<Props> {
               />
             </LayoutColumn>
           </ContentPadding>
-          <PerformanceList
-            performances={groupPerformancesByPeriod(
-              event.fields.performances && event.fields.performances[locale]
+          {event.fields.performances &&
+            event.fields.performances[locale] && (
+              <PerformanceList
+                performances={groupPerformancesByPeriod(
+                  event.fields.performances && event.fields.performances[locale]
+                )}
+                locale={locale}
+              />
             )}
-            locale={locale}
-          />
           <ContentPadding styles={styles.content}>
             <LayoutColumn spacing={20}>
               {event.fields.accessibilityDetails && <SectionDivider />}

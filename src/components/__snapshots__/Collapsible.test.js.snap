@@ -4,20 +4,24 @@ exports[`renders correctly 1`] = `
 <Component>
   <Component>
     <AnimatedComponent
-      onLayout={[Function]}
+      scrollEnabled={false}
       style={
         Object {
           "height": 0,
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <Component
+        onLayout={[Function]}
       >
-        Hello
-      </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Hello
+        </Text>
+      </Component>
     </AnimatedComponent>
   </Component>
 </Component>

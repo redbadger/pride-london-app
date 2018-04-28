@@ -48,6 +48,7 @@ export default {
   eventDetailsGenderNeutralToilets: "Gender neutral toilets",
   selectDates: "Select dates",
   eventDetailsAbout: "About",
+  eventDetailsSchedule: "Schedule",
   eventDetailsReadMore: "Read more",
   eventDetailsReadLess: "Read less",
   eventDetailsContactEmailSubject: "Pride In London event enquiry",

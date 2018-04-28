@@ -532,10 +532,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         />
       </LayoutColumn>
     </ContentPadding>
-    <PerformanceList
-      locale="en-GB"
-      performances={Array []}
-    />
     <ContentPadding
       padding={Object {}}
       style={Object {}}
@@ -1201,10 +1197,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         />
       </LayoutColumn>
     </ContentPadding>
-    <PerformanceList
-      locale="en-GB"
-      performances={Array []}
-    />
     <ContentPadding
       padding={Object {}}
       style={Object {}}
