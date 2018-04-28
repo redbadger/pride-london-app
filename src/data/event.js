@@ -125,3 +125,5 @@ export type EventCategoryMap = {
 };
 
 export type PerformancePeriods = Performance[][];
+
+export type SavedEvents = Set<string>;

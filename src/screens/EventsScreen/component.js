@@ -2,7 +2,11 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { EventDays, LocalizedFieldRef } from "../../data/event";
+import type {
+  SavedEvents,
+  EventDays,
+  LocalizedFieldRef
+} from "../../data/event";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";
@@ -16,6 +20,9 @@ import locale from "../../data/locale";
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
+  savedEvents: SavedEvents,
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void,
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>,
@@ -41,6 +48,9 @@ class EventsScreen extends PureComponent<Props> {
       navigation,
       updateEvents,
       events,
+      savedEvents,
+      addSavedEvent,
+      removeSavedEvent,
       refreshing,
       getAssetUrl
     } = this.props;
@@ -57,6 +67,9 @@ class EventsScreen extends PureComponent<Props> {
           <EventList
             locale={locale}
             events={events}
+            savedEvents={savedEvents}
+            addSavedEvent={addSavedEvent}
+            removeSavedEvent={removeSavedEvent}
             refreshing={refreshing}
             onRefresh={() => {
               updateEvents();

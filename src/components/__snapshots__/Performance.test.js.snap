@@ -4,42 +4,38 @@ exports[`renders correctly 1`] = `
 <Component
   style={
     Object {
-      "flex": 1,
+      "borderBottomWidth": 1,
+      "borderColor": "#d8d8d8",
+      "flexDirection": "row",
+      "padding": 12,
     }
   }
 >
-  <Component
+  <Text
+    color="blackColor"
+    markdown={false}
     style={
       Object {
-        "alignItems": "flex-start",
-        "borderBottomWidth": 1,
-        "borderColor": "#d8d8d8",
-        "flexDirection": "row",
-        "padding": 12,
+        "fontWeight": "bold",
+        "width": 90,
       }
     }
+    type="text"
   >
-    <Text
-      color="blackColor"
-      markdown={false}
-      style={
-        Object {
-          "fontWeight": "bold",
-          "width": 90,
-        }
+    Invalid Date
+  </Text>
+  <Text
+    color="blackColor"
+    markdown={false}
+    numberOfLines={3}
+    style={
+      Object {
+        "flex": 1,
       }
-      type="text"
-    >
-      Invalid Date
-    </Text>
-    <Text
-      color="blackColor"
-      markdown={false}
-      style={Object {}}
-      type="text"
-    >
-      DJ Bag-o-Donuts
-    </Text>
-  </Component>
+    }
+    type="text"
+  >
+    DJ Bag-o-Donuts
+  </Text>
 </Component>
 `;
