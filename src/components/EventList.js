@@ -10,12 +10,20 @@ import EventCard from "./EventCard";
 import Touchable from "./Touchable";
 import SectionHeader from "./SectionHeader";
 import { selectEventIsFree } from "../selectors/event";
-import type { Event, EventDays, LocalizedFieldRef } from "../data/event";
+import type {
+  SavedEvents,
+  Event,
+  EventDays,
+  LocalizedFieldRef
+} from "../data/event";
 import { bgColor, eventCardShadow } from "../constants/colors";
 
 type Props = {
   locale: string,
   events: EventDays,
+  savedEvents: SavedEvents,
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void,
   refreshing?: boolean,
   onRefresh?: () => void,
   onPress: (eventName: string) => void,
@@ -25,23 +33,46 @@ type Props = {
 const separator = style => () => <View style={style} />;
 
 type ItemProps = { item: Event };
-const renderItem = (styles, locale, onPress, getAssetUrl) => ({
-  item: event
-}: ItemProps) => (
+
+type RenderItemArgs = {
+  isSavedEvent: string => boolean,
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void,
+  locale: string,
+  onPress: (eventName: string) => void,
+  getAssetUrl: LocalizedFieldRef => string
+};
+
+export const renderItem = ({
+  isSavedEvent,
+  addSavedEvent,
+  removeSavedEvent,
+  locale,
+  onPress,
+  getAssetUrl
+}: RenderItemArgs) => ({ item }: ItemProps) => (
   <ContentPadding>
     <Touchable
       style={styles.eventListItem}
-      onPress={() => onPress(event.sys.id)}
+      onPress={() => onPress(item.sys.id)}
     >
       <EventCard
-        name={event.fields.name[locale]}
-        locationName={event.fields.locationName[locale]}
-        eventPriceLow={event.fields.eventPriceLow[locale]}
-        eventPriceHigh={event.fields.eventPriceHigh[locale]}
-        startTime={event.fields.startTime[locale]}
-        endTime={event.fields.endTime[locale]}
-        imageUrl={getAssetUrl(event.fields.eventsListPicture)}
-        isFree={selectEventIsFree(event)}
+        name={item.fields.name[locale]}
+        locationName={item.fields.locationName[locale]}
+        eventPriceLow={item.fields.eventPriceLow[locale]}
+        eventPriceHigh={item.fields.eventPriceHigh[locale]}
+        startTime={item.fields.startTime[locale]}
+        endTime={item.fields.endTime[locale]}
+        imageUrl={getAssetUrl(item.fields.eventsListPicture)}
+        isFree={selectEventIsFree(item)}
+        isSaved={isSavedEvent(item.sys.id)}
+        toggleSaved={active => {
+          if (active) {
+            addSavedEvent(item.sys.id);
+          } else {
+            removeSavedEvent(item.sys.id);
+          }
+        }}
       />
     </Touchable>
   </ContentPadding>
@@ -70,8 +101,12 @@ class EventList extends Component<Props> {
   };
 
   shouldComponentUpdate(nextProps: Props) {
-    const { locale, refreshing } = this.props;
-    const { locale: nextLocale, refreshing: nextRefreshing } = nextProps;
+    const { locale, refreshing, savedEvents } = this.props;
+    const {
+      locale: nextLocale,
+      refreshing: nextRefreshing,
+      savedEvents: nextSavedEvents
+    } = nextProps;
 
     const ids = eventIds(this.props.events);
     const nextIds = eventIds(nextProps.events);
@@ -79,13 +114,17 @@ class EventList extends Component<Props> {
     return (
       !equals(ids, nextIds) ||
       locale !== nextLocale ||
-      refreshing !== nextRefreshing
+      refreshing !== nextRefreshing ||
+      savedEvents !== nextSavedEvents
     );
   }
 
   render() {
     const {
       events,
+      savedEvents,
+      addSavedEvent,
+      removeSavedEvent,
       locale,
       refreshing,
       onRefresh,
@@ -93,13 +132,22 @@ class EventList extends Component<Props> {
       getAssetUrl
     } = this.props;
 
+    const isSavedEvent = id => savedEvents.has(id);
+
     return (
       <SectionList
         stickySectionHeadersEnabled
         sections={eventSections(events, locale)}
         renderSectionHeader={renderSectionHeader}
         renderSectionFooter={separator(styles.sectionFooter)}
-        renderItem={renderItem(styles, locale, onPress, getAssetUrl)}
+        renderItem={renderItem({
+          isSavedEvent,
+          addSavedEvent,
+          removeSavedEvent,
+          locale,
+          onPress,
+          getAssetUrl
+        })}
         keyExtractor={event => event.sys.id}
         contentContainerStyle={styles.container}
         ItemSeparatorComponent={separator(styles.itemSeparator)}

@@ -21,6 +21,9 @@ describe("EventsScreen Component", () => {
         updateEvents={() => Promise.resolve()}
         getAssetUrl={() => ""}
         selectedCategories={new Set()}
+        addSavedEvent={() => {}}
+        removeSavedEvent={() => {}}
+        savedEvents={new Set()}
       />
     );
     expect(output).toMatchSnapshot();
@@ -36,6 +39,9 @@ describe("EventsScreen Component", () => {
         updateEvents={() => Promise.resolve()}
         getAssetUrl={() => ""}
         selectedCategories={new Set()}
+        addSavedEvent={() => {}}
+        removeSavedEvent={() => {}}
+        savedEvents={new Set()}
       />
     );
 
@@ -59,6 +65,9 @@ describe("EventsScreen Component", () => {
         updateEvents={() => Promise.resolve()}
         getAssetUrl={() => ""}
         selectedCategories={new Set()}
+        addSavedEvent={() => {}}
+        removeSavedEvent={() => {}}
+        savedEvents={new Set()}
       />
     );
 

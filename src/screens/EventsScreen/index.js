@@ -2,9 +2,9 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Props as ComponentProps } from "./component";
 import getAssetUrl from "../../data/get-asset-url";
 import { updateEvents } from "../../actions/events";
+import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
   selectEventsLoading,
@@ -12,6 +12,7 @@ import {
   selectFilteredEvents,
   selectAssetById
 } from "../../selectors/events";
+import type { Props as ComponentProps } from "./component";
 import Component from "./component";
 
 type OwnProps = {
@@ -22,6 +23,7 @@ type Props = ComponentProps & OwnProps;
 
 const mapStateToProps = state => ({
   events: groupEventsByStartTime(selectFilteredEvents(state)),
+  savedEvents: state.savedEvents,
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state),
   getAssetUrl: getAssetUrl(id => selectAssetById(state, id)),
@@ -29,7 +31,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  updateEvents
+  updateEvents,
+  addSavedEvent,
+  removeSavedEvent
 };
 
 const connector: Connector<OwnProps, Props> = connect(

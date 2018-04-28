@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getDerivedStateFromProps returns state with progress as animated value of 0 when state.progress = null and props.active = false 1`] = `
+Object {
+  "progress": 0,
+}
+`;
+
+exports[`getDerivedStateFromProps returns state with progress as animated value of 1 when state.progress = null and props.active = true 1`] = `
+Object {
+  "progress": 1,
+}
+`;
+
 exports[`renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="button"
@@ -1862,9 +1874,9 @@ exports[`renders correctly 1`] = `
                       "a": 0,
                       "ix": 3,
                       "k": Array [
-                        1,
-                        1,
-                        1,
+                        0.8,
+                        0.8,
+                        0.8,
                         1,
                       ],
                     },
@@ -1947,7 +1959,7 @@ exports[`renders correctly 1`] = `
           },
         ],
         "markers": Array [],
-        "nm": "Heart_Details",
+        "nm": "Heart_List",
         "op": 54,
         "v": "5.1.9",
         "w": 48,
