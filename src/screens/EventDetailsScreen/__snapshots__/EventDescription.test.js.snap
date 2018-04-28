@@ -14,26 +14,20 @@ exports[`renders correctly 1`] = `
   >
     About
   </Text>
-  <Component>
-    <AnimatedComponent
-      scrollEnabled={false}
-      style={
-        Object {
-          "height": 0,
-        }
-      }
+  <Collapsible
+    maxHeight={140}
+    showLessLabel="Read less"
+    showMoreLabel="Read more"
+  >
+    <Text
+      color="blackColor"
+      markdown={true}
+      type="text"
     >
-      <Text
-        color="blackColor"
-        markdown={true}
-        onLayout={[Function]}
-        type="text"
-      >
-        Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
+      Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
 
 Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.
-      </Text>
-    </AnimatedComponent>
-  </Component>
+    </Text>
+  </Collapsible>
 </Component>
 `;
