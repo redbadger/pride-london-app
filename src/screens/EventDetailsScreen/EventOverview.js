@@ -26,9 +26,9 @@ type Props = {
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
 
-const buildDateFromEuropeanDateString = dateString => {
+const reformatEuropeanDateString = dateString => {
   const [day, month, year] = dateString.split("/");
-  return new Date(year, month, day);
+  return `${year}-${month}-${day}`;
 };
 
 const EventOverview = ({ event }: Props) => {
@@ -60,7 +60,7 @@ const EventOverview = ({ event }: Props) => {
     : [];
   const orderedRecurrenceDates = [
     event.fields.startTime[locale],
-    ...recurrenceDates.map(buildDateFromEuropeanDateString)
+    ...recurrenceDates.map(reformatEuropeanDateString)
   ].sort(dateComparator);
   const formattedRecurrenceDates = `${text.runsFrom} ${formatDate(
     orderedRecurrenceDates[0],

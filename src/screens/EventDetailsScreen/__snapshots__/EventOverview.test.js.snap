@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="h4"
     >
-      Sun, 09 Jul 2017 - Sun, 15 Jul 2018
+      Mon, 09 Jul 2018 - Sun, 15 Jul 2018
     </Text>
     <Text
       color="blackColor"
@@ -20,6 +20,19 @@ exports[`renders correctly 1`] = `
       type="small"
     >
       11:00AM - 6:00PM
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "fontStyle": "italic",
+        }
+      }
+      type="small"
+    >
+      Runs from: 9 Jul - 15 Jul
     </Text>
   </IconItem>
   <IconItem
