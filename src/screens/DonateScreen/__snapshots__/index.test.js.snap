@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backgroundColor="#2d2f7f"
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "maxWidth": 440,
+          "width": "100%",
+        }
+      }
+    >
+      <IconButton
+        accessibilityLabel="Back"
+        onPress={[Function]}
+        source={1}
+        testID="back"
+      />
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "color": "#ffffff",
+          }
+        }
+        type="h2"
+      >
+        Donate
+      </Text>
+      <Component
+        style={
+          Object {
+            "height": 48,
+            "width": 48,
+          }
+        }
+      />
+    </ContentPadding>
+  </Header>
+  <KeyboardAvoidingView
+    behavior="padding"
+    enabled={true}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <ScrollView>
+      <Component
+        style={
+          Object {
+            "alignSelf": "center",
+            "maxWidth": 440,
+            "width": "100%",
+          }
+        }
+      >
+        <ImageHeader
+          image={1}
+          title={
+            Array [
+              "\\"It's the first time I feel",
+              "accepted in a big group.\\"",
+            ]
+          }
+        />
+        <ContentPadding
+          padding={Object {}}
+          style={Object {}}
+        >
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "marginTop": 12,
+              }
+            }
+            type="h2"
+          >
+            Be part of the movement that drives diversity
+          </Text>
+          <Text
+            color="blackColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            type="text"
+          >
+            The need for Pride is as strong as ever. A huge amount of progress has been made for LGBT+ people but challenges and stigma are still rife. Whether you take part to celebrate, party or protest. Pride in London is your platform to make change. Your donations keep us marching.
+          </Text>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "marginBottom": 16,
+                "marginTop": 20,
+              }
+            }
+            type="h3"
+          >
+            Make a single donation
+          </Text>
+          <SegmentedControl
+            onValueChange={[Function]}
+            selectedIndex={-1}
+            values={
+              Array [
+                "£5",
+                "£10",
+                "£20",
+              ]
+            }
+          />
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "marginBottom": 8,
+                "marginTop": 20,
+              }
+            }
+            type="h4"
+          >
+            Other amount (£)
+          </Text>
+          <DonateScreen
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder="0.00"
+            value={null}
+          />
+          <Text
+            color="blackColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "marginTop": 10,
+              }
+            }
+            type="small"
+          >
+            The minimum donation amount is £2.
+          </Text>
+          <Component
+            style={
+              Object {
+                "marginTop": 16,
+                "paddingVertical": 12,
+              }
+            }
+          >
+            <Button
+              disabled={true}
+              onPress={[Function]}
+            >
+              Donate
+            </Button>
+          </Component>
+        </ContentPadding>
+      </Component>
+    </ScrollView>
+  </KeyboardAvoidingView>
+</Component>
+`;

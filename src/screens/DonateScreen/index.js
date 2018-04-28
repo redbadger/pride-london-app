@@ -38,7 +38,10 @@ class DonateScreen extends React.PureComponent<Props, State> {
   };
 
   onAmountSelected = (selectedAmount: string) => {
-    this.setState({ selectedAmount, otherAmount: null });
+    this.setState({
+      selectedAmount: selectedAmount.substr(1),
+      otherAmount: null
+    });
   };
 
   onOtherAmountFocus = () => {
@@ -50,7 +53,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
   };
 
   onDonatePress = () => {
-    const amount = this.state.amount || "0";
+    const amount = this.state.selectedAmount || this.state.otherAmount || "0";
     Linking.openURL(
       `https://donate.prideinlondon.org/?amount=${encodeURIComponent(amount)}`
     );
