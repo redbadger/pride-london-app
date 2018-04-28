@@ -1,6 +1,9 @@
 describe("Pride App", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
+    await waitFor(element(by.id("events-tab-button")))
+      .toExist()
+      .withTimeout(20000);
   });
 
   it("should start on Home page", async () => {

@@ -68,10 +68,7 @@ export const filterButtonsBgColor = darkBlueGreyTwoColor;
 
 export const eventListHeaderBgColor = lightishGreyColor;
 export const eventListHeaderColor = "rgb(51, 51, 51)";
-export const eventCardTextColor = "rgb(45, 47, 127)";
-export const eventPriceColor = whiteColor;
 export const eventCardShadow = "rgba(0, 0, 0, 0.2)";
-export const eventPriceBgColor = "rgb(45, 47, 127)";
 export const sectionHeaderBgColor = lightGreyColor;
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
 export const sectionHeaderTextColor = "rgb(45, 47, 127)";

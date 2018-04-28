@@ -20,14 +20,28 @@ const navigation: NavigationScreenProp<{
 describe("FeaturedEventListScreen Component", () => {
   it("renders correctly", () => {
     const output = shallow(
-      <Component navigation={navigation} events={[]} getAssetUrl={() => ""} />
+      <Component
+        navigation={navigation}
+        events={[]}
+        getAssetUrl={() => ""}
+        addSavedEvent={() => {}}
+        removeSavedEvent={() => {}}
+        savedEvents={new Set()}
+      />
     );
     expect(output).toMatchSnapshot();
   });
 
   it("navigates to event details on event item press", () => {
     const output = shallow(
-      <Component navigation={navigation} events={[]} getAssetUrl={() => ""} />
+      <Component
+        navigation={navigation}
+        events={[]}
+        getAssetUrl={() => ""}
+        addSavedEvent={() => {}}
+        removeSavedEvent={() => {}}
+        savedEvents={new Set()}
+      />
     );
     const onPress = output.find(EventList).prop("onPress");
     onPress("my-event");

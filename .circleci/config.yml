@@ -6,6 +6,14 @@ save-cache: &save-cache
     paths:
       - node_modules
     key: dependencies-{{ checksum "package.json" }}
+get-cache-osx: &get-cache-osx
+  restore_cache:
+    key: osx-dependencies-{{ checksum "../package.json" }}
+save-cache-osx: &save-cache-osx
+  save_cache:
+    paths:
+      - /Users/distiller/project/node_modules
+    key: osx-dependencies-{{ checksum "../package.json" }}
 android-secrets: &android-secrets
   run: 
     command: |
@@ -25,12 +33,17 @@ gradle-key: &gradle-key
   jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
   gems-{{ checksum "Gemfile.lock" }}
-restore-gradlecache: &restore-gradle-cache
+brew-key: &brew-key
+  brew-{{ checksum "BrewFile" }}
+restore-gradle-cache: &restore-gradle-cache
   restore_cache:
     key: *gradle-key 
 restore-gems-cache: &restore-gems-cache
   restore_cache:
     key: *gems-key
+restore-brew-cache: &restore-brew-cache
+  restore_cache:
+    key: *brew-key
 save-gradle-cache: &save-gradle-cache
   save_cache:
     key: *gradle-key
@@ -42,6 +55,11 @@ save-gems-cache: &save-gems-cache
     key: *gems-key
     paths:
       - vendor/bundle
+save-brew-cache: &save-brew-cache
+  save_cache:
+    key: *brew-key
+    paths:
+      - /usr/local/Homebrew
 
 version: 2
 jobs:
@@ -160,12 +178,23 @@ jobs:
           command:  echo "ruby-2.4" > ~/.ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
-      - run: yarn
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *get-cache-osx
+      - run:
+          name: Set npm version
+          command: |
+              npm i -g n
+              sudo n 9.3
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - <<: *save-cache-osx
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
-      - run: bundle install
       - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run: 
             command: |
@@ -196,7 +225,19 @@ jobs:
           command:  echo "ruby-2.4" > ~/.ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
-      - run: yarn
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *get-cache-osx
+      - run:
+          name: Set npm version
+          command: |
+              npm i -g n
+              sudo n 9.3
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - <<: *save-cache-osx
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
@@ -222,9 +263,6 @@ jobs:
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
     shell: /bin/bash --login -o pipefail
-    machine:
-      pre:
-        - xcrun instruments -w "iPhone 7 (10.2) [" || true
     steps:
       - checkout:
           path: /Users/distiller/project
@@ -234,13 +272,31 @@ jobs:
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - run:
+          name: Pre-start simulator
+          command: xcrun simctl boot "iPhone 7" || true
+      - <<: *restore-brew-cache
+      - run:
+          name: Install HomeBrew dependencies
           command: |
-              brew update
-              brew tap wix/brew
-              brew install --HEAD applesimutils
-              yarn global add detox-cli
-              yarn global add react-native-cli
-      - run: yarn
+              brew tap homebrew/bundle
+              brew bundle
+      - <<: *save-brew-cache
+      - run:
+          name: Set npm version and install global npm dependencies
+          command: |
+              npm i -g n
+              sudo n 9.3
+              npm i -g detox-cli
+              npm i -g react-native-cli
+      - restore_cache:
+          key: osx-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          paths:
+            - /Users/distiller/project/node_modules
+          key: osx-dependencies-{{ checksum "package.json" }}
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
