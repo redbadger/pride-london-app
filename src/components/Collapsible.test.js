@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Animated, Text } from "react-native";
+import { Text } from "react-native";
 import { shallow } from "enzyme";
 import Collapsible from "./Collapsible";
 

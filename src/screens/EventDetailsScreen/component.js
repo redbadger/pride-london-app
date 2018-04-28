@@ -132,7 +132,7 @@ class EventDetailsScreen extends PureComponent<Props> {
             event.fields.performances[locale] && (
               <PerformanceList
                 performances={groupPerformancesByPeriod(
-                  event.fields.performances && event.fields.performances[locale]
+                  event.fields.performances[locale]
                 )}
                 locale={locale}
               />
