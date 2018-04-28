@@ -65,6 +65,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
@@ -154,6 +155,7 @@ exports[`renders correctly with any date and any time 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
@@ -243,6 +245,7 @@ exports[`renders correctly with date range and two times 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
@@ -332,6 +335,7 @@ exports[`renders correctly with single date and single time 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
@@ -421,6 +425,7 @@ exports[`renders correctly with tag filters selected 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />

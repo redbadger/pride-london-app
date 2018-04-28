@@ -62,6 +62,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
