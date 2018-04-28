@@ -14,13 +14,14 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
+    color="blackColor"
+    markdown={false}
     style={
       Object {
         "color": "#2d2f7f",
         "fontWeight": "bold",
+        "marginLeft": 1,
+        "marginTop": 2,
       }
     }
     type="xSmall"
