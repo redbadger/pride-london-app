@@ -223,7 +223,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
       >
         * Pride in London is one of the top three biggest events in London, attracting an estimated one million visitors across the footprint. 
 * Be part of our award winning marketing and advertising campaign. 
-* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues
+* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues.
       </Text>
     </ContentPadding>
   </ShadowedScrollView>

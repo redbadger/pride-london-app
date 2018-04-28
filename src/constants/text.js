@@ -72,7 +72,7 @@ export default {
   sponsorTextPartnerWithUs:
     "Build your brand, engage your internal network and be part of a global movement to support diversity. To find out more, please contact sponsor@prideinlondon.org.",
   sponsorTextPartnerWithUsList:
-    "* Pride in London is one of the top three biggest events in London, attracting an estimated one million visitors across the footprint. \n* Be part of our award winning marketing and advertising campaign. \n* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues",
+    "* Pride in London is one of the top three biggest events in London, attracting an estimated one million visitors across the footprint. \n* Be part of our award winning marketing and advertising campaign. \n* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues.",
   sponsorContactEmailSubject: "Sponsorship enquiry",
   sponsorContactButtonText: "Email to partner with us",
   anyDay: "Any day",
