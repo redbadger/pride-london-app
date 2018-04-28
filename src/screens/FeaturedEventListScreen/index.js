@@ -2,24 +2,22 @@
 import { connect } from "react-redux";
 import type { Connector, MapStateToProps } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
-import type { EventDays, LocalizedFieldRef } from "../../data/event";
 import getAssetUrl from "../../data/get-asset-url";
+import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import type { State } from "../../reducers";
 import {
   groupEventsByStartTime,
   selectFeaturedEventsByTitle,
   selectAssetById
 } from "../../selectors/events";
+import type { Props as ComponentProps } from "./component";
 import Component from "./component";
 
 type OwnProps = {
   navigation: NavigationScreenProp<{ params: { title: string } }>
 };
 
-type Props = {
-  events: EventDays,
-  getAssetUrl: LocalizedFieldRef => string
-} & OwnProps;
+type Props = ComponentProps & OwnProps;
 
 const mapStateToProps: MapStateToProps<State, OwnProps, *> = (
   state,
@@ -28,10 +26,18 @@ const mapStateToProps: MapStateToProps<State, OwnProps, *> = (
   events: groupEventsByStartTime(
     selectFeaturedEventsByTitle(state, ownProps.navigation.state.params.title)
   ),
+  savedEvents: state.savedEvents,
   getAssetUrl: getAssetUrl(id => selectAssetById(state, id))
 });
 
-// $FlowFixMe
-const connector: Connector<OwnProps, Props> = connect(mapStateToProps);
+const mapDispatchToProps = {
+  addSavedEvent,
+  removeSavedEvent
+};
+
+const connector: Connector<OwnProps, Props> = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
 
 export default connector(Component);
