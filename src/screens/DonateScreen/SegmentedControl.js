@@ -14,44 +14,36 @@ type Props = {|
   values: string[]
 |};
 
-class SegmentedControl extends React.PureComponent<Props> {
-  render() {
-    const { onValueChange, selectedIndex, values } = this.props;
-    return (
-      <View style={styles.container}>
-        {values.map((value, index) => (
-          <Touchable
-            key={value}
-            accessibilityComponentType={
-              index === selectedIndex
-                ? "radiobutton_checked"
-                : "radiobutton_unchecked"
-            }
-            accessibilityTraits={
-              index === selectedIndex ? ["button", "selected"] : ["button"]
-            }
-            onPress={() => onValueChange(value)}
-            style={[
-              styles.button,
-              index === selectedIndex && styles.buttonSelected,
-              index === 0 && styles.buttonBorderStart,
-              index === values.length - 1 && styles.buttonBorderEnd,
-              index - 1 !== selectedIndex && styles.borderButtonLeft
-            ]}
-          >
-            <Text
-              type="h2"
-              color="lightNavyBlueColor"
-              style={styles.buttonText}
-            >
-              {value}
-            </Text>
-          </Touchable>
-        ))}
-      </View>
-    );
-  }
-}
+const SegmentedControl = ({ onValueChange, selectedIndex, values }: Props) => (
+  <View style={styles.container}>
+    {values.map((value, index) => (
+      <Touchable
+        key={value}
+        accessibilityComponentType={
+          index === selectedIndex
+            ? "radiobutton_checked"
+            : "radiobutton_unchecked"
+        }
+        accessibilityTraits={
+          index === selectedIndex ? ["button", "selected"] : ["button"]
+        }
+        onPress={() => onValueChange(value)}
+        style={[
+          styles.button,
+          index === selectedIndex && styles.buttonSelected,
+          index === 0 && styles.buttonBorderStart,
+          index === values.length - 1 && styles.buttonBorderEnd,
+          index - 1 !== selectedIndex && styles.borderButtonLeft
+        ]}
+        testID={`button-${index}`}
+      >
+        <Text type="h2" color="lightNavyBlueColor" style={styles.buttonText}>
+          {value}
+        </Text>
+      </Touchable>
+    ))}
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

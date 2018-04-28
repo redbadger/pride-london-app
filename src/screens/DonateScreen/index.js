@@ -75,7 +75,9 @@ class DonateScreen extends React.PureComponent<Props, State> {
 
   onDonatePress = () => {
     const amount = this.state.amount || "0";
-    Linking.openURL(`https://donate.prideinlondon.org/?amount=${amount}`);
+    Linking.openURL(
+      `https://donate.prideinlondon.org/?amount=${encodeURIComponent(amount)}`
+    );
   };
 
   render() {
