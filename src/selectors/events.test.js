@@ -1,4 +1,6 @@
+import parseDate from "date-fns/parse";
 import {
+  getTimePeriod,
   groupEventsByStartTime,
   groupPerformancesByPeriod,
   selectEvents,
@@ -285,6 +287,45 @@ describe("groupEventsByStartTime", () => {
   });
 });
 
+describe("getTimePeriod", () => {
+  it("5:59am is Evening (late)", () => {
+    const expected = "Evening";
+    const actual = getTimePeriod(parseDate("2018-01-01T05:59"));
+
+    expect(actual).toEqual(expected);
+  });
+  it("6:00am is Morning", () => {
+    const expected = "Morning";
+    const actual = getTimePeriod(parseDate("2018-01-01T06:00"));
+
+    expect(actual).toEqual(expected);
+  });
+  it("11:59am is Morning", () => {
+    const expected = "Morning";
+    const actual = getTimePeriod(parseDate("2018-01-01T11:59"));
+
+    expect(actual).toEqual(expected);
+  });
+  it("12:00am is Afternoon", () => {
+    const expected = "Afternoon";
+    const actual = getTimePeriod(parseDate("2018-01-01T12:00"));
+
+    expect(actual).toEqual(expected);
+  });
+  it("5:59pm is Afternoon", () => {
+    const expected = "Afternoon";
+    const actual = getTimePeriod(parseDate("2018-01-01T17:59"));
+
+    expect(actual).toEqual(expected);
+  });
+  it("6:00pm is Evening", () => {
+    const expected = "Evening";
+    const actual = getTimePeriod(parseDate("2018-01-01T18:00"));
+
+    expect(actual).toEqual(expected);
+  });
+});
+
 describe("groupPerformancesByPeriod", () => {
   it("returns empty array when no performances exist", () => {
     const expected = [];
@@ -296,7 +337,7 @@ describe("groupPerformancesByPeriod", () => {
   it("separates two individual performances by period and sorts", () => {
     const performances = [
       {
-        fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
+        fields: { startTime: { "en-GB": "2018-08-01T18:01:00" } },
         sys: { contentType: { sys: { id: "performance" } } }
       },
       {
@@ -314,7 +355,7 @@ describe("groupPerformancesByPeriod", () => {
       ],
       [
         {
-          fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
+          fields: { startTime: { "en-GB": "2018-08-01T18:01:00" } },
           sys: { contentType: { sys: { id: "performance" } } }
         }
       ]
@@ -327,7 +368,7 @@ describe("groupPerformancesByPeriod", () => {
   it("leaves two performances in the same period together", () => {
     const performances = [
       {
-        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        fields: { startTime: { "en-GB": "2018-08-01T09:00:00" } },
         sys: { contentType: { sys: { id: "performance" } } }
       },
       {
@@ -339,7 +380,7 @@ describe("groupPerformancesByPeriod", () => {
     const expected = [
       [
         {
-          fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+          fields: { startTime: { "en-GB": "2018-08-01T09:00:00" } },
           sys: { contentType: { sys: { id: "performance" } } }
         },
         {
@@ -356,7 +397,7 @@ describe("groupPerformancesByPeriod", () => {
   it("makes two groups", () => {
     const performances = [
       {
-        fields: { startTime: { "en-GB": "2018-08-01T02:00:00" } },
+        fields: { startTime: { "en-GB": "2018-08-01T07:00:00" } },
         sys: { contentType: { sys: { id: "performance" } } }
       },
       {
@@ -368,11 +409,11 @@ describe("groupPerformancesByPeriod", () => {
         sys: { contentType: { sys: { id: "performance" } } }
       },
       {
-        fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
+        fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
         sys: { contentType: { sys: { id: "performance" } } }
       },
       {
-        fields: { startTime: { "en-GB": "2018-08-01T17:00:00" } },
+        fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
         sys: { contentType: { sys: { id: "performance" } } }
       }
     ];
@@ -380,7 +421,7 @@ describe("groupPerformancesByPeriod", () => {
     const expected = [
       [
         {
-          fields: { startTime: { "en-GB": "2018-08-01T02:00:00" } },
+          fields: { startTime: { "en-GB": "2018-08-01T07:00:00" } },
           sys: { contentType: { sys: { id: "performance" } } }
         },
         {
@@ -394,11 +435,11 @@ describe("groupPerformancesByPeriod", () => {
       ],
       [
         {
-          fields: { startTime: { "en-GB": "2018-08-01T17:00:00" } },
+          fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
           sys: { contentType: { sys: { id: "performance" } } }
         },
         {
-          fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
+          fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
           sys: { contentType: { sys: { id: "performance" } } }
         }
       ]
@@ -411,27 +452,7 @@ describe("groupPerformancesByPeriod", () => {
   it("makes multiple groups", () => {
     const performances = [
       {
-        fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T23:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T17:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T11:30:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T02:00:00" } },
+        fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
         sys: { contentType: { sys: { id: "performance" } } }
       },
       {
@@ -439,21 +460,29 @@ describe("groupPerformancesByPeriod", () => {
         sys: { contentType: { sys: { id: "performance" } } }
       },
       {
-        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        fields: { startTime: { "en-GB": "2018-08-02T02:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T11:30:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
+        sys: { contentType: { sys: { id: "performance" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
         sys: { contentType: { sys: { id: "performance" } } }
       }
     ];
 
     const expected = [
       [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T02:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
         {
           fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
           sys: { contentType: { sys: { id: "performance" } } }
@@ -471,7 +500,7 @@ describe("groupPerformancesByPeriod", () => {
       ],
       [
         {
-          fields: { startTime: { "en-GB": "2018-08-01T17:00:00" } },
+          fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
           sys: { contentType: { sys: { id: "performance" } } }
         },
         {
@@ -479,7 +508,11 @@ describe("groupPerformancesByPeriod", () => {
           sys: { contentType: { sys: { id: "performance" } } }
         },
         {
-          fields: { startTime: { "en-GB": "2018-08-01T23:00:00" } },
+          fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+          sys: { contentType: { sys: { id: "performance" } } }
+        },
+        {
+          fields: { startTime: { "en-GB": "2018-08-02T02:00:00" } },
           sys: { contentType: { sys: { id: "performance" } } }
         }
       ]

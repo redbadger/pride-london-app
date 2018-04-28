@@ -46,7 +46,7 @@ exports[`renders correctly 1`] = `
             },
           },
         ],
-        "title": "Afternoon",
+        "title": "Evening",
       },
       Object {
         "data": Array [

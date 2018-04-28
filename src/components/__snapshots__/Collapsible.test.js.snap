@@ -22,26 +22,3 @@ exports[`renders correctly 1`] = `
   </Component>
 </Component>
 `;
-
-exports[`renders correctly when it should expand 1`] = `
-<Component>
-  <Component>
-    <AnimatedComponent
-      onLayout={[Function]}
-      style={
-        Object {
-          "height": 0,
-        }
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
-        Hello
-      </Text>
-    </AnimatedComponent>
-  </Component>
-</Component>
-`;
