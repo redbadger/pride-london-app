@@ -207,7 +207,7 @@ describe("correctDates", () => {
     const cmsData = {
       entries: [
         {
-          sys: { id: "1" },
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
           fields: {
             startTime: { "en-GB": "2018-07-07T22:3001:00" },
             endTime: { "en-GB": "2018-07-07T10:3001:00" }
@@ -228,7 +228,7 @@ describe("correctDates", () => {
     const expectedCmsData = {
       entries: [
         {
-          sys: { id: "1" },
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
           fields: {
             startTime: { "en-GB": "2018-07-07T10:3001:00" },
             endTime: { "en-GB": "2018-07-07T22:3001:00" }

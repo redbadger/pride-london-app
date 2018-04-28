@@ -8,7 +8,7 @@ import IconList from "./IconList";
 import emailIcon from "../../../assets/images/email.png";
 import callIcon from "../../../assets/images/call.png";
 import text from "../../constants/text";
-import TextLink from "./TextLink";
+import TextLink from "../../components/TextLink";
 
 type Props = {
   email?: string,

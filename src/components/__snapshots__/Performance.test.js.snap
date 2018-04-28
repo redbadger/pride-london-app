@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "borderBottomWidth": 1,
+      "borderColor": "#d8d8d8",
+      "flexDirection": "row",
+      "padding": 12,
+    }
+  }
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "fontWeight": "bold",
+        "width": 90,
+      }
+    }
+    type="text"
+  >
+    Invalid Date
+  </Text>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    numberOfLines={3}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+    type="text"
+  >
+    DJ Bag-o-Donuts
+  </Text>
+</Component>
+`;

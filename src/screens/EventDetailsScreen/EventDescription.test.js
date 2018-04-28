@@ -1,6 +1,5 @@
 // @flow
 import React from "react";
-import { Animated } from "react-native";
 import { shallow } from "enzyme";
 import EventDescription from "./EventDescription";
 import type { Event } from "../../data/event";
@@ -74,42 +73,4 @@ it("renders correctly", () => {
 
   const output = shallow(<EventDescription event={event} />);
   expect(output).toMatchSnapshot();
-});
-
-describe("#toggleCollapsed", () => {
-  it("animates height and gradient when it opens", () => {
-    jest.mock("Animated", () => ({
-      createTimer: jest.fn(),
-      timing: jest.fn(() => ({
-        start: jest.fn()
-      })),
-      Value: jest.fn(() => ({
-        interpolate: jest.fn()
-      }))
-    }));
-
-    const component = new EventDescription();
-    component.state = {
-      collapsed: true,
-      textHeight: 100
-    };
-    component.textContainerHeight = { value: 1 };
-    component.gradientOpacity = { value: 1 };
-    component.toggleCollapsed();
-    expect(Animated.timing).toBeCalledWith(
-      { value: 1 },
-      {
-        duration: 80,
-        toValue: 0
-      }
-    );
-    expect(Animated.timing).toBeCalledWith(
-      { value: 1 },
-      {
-        duration: 80,
-        toValue: 0,
-        useNativeDriver: true
-      }
-    );
-  });
 });

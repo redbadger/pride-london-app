@@ -6,7 +6,7 @@ import { formattedEventPriceRange } from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
 import Text from "../../components/Text";
-import TextLink from "./TextLink";
+import TextLink from "../../components/TextLink";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event } from "../../data/event";

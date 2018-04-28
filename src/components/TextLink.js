@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import Text from "../../components/Text";
-import { eucalyptusGreenColor } from "../../constants/colors";
+import Text from "./Text";
+import { eucalyptusGreenColor } from "../constants/colors";
 
 type Props = {
   children: string
