@@ -23,10 +23,6 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <PerformanceList
-        locale="en-GB"
-        performances={Array []}
-      />
       <Text
         color="blackColor"
         markdown={true}

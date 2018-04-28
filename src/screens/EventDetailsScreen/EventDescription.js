@@ -8,8 +8,6 @@ import text from "../../constants/text";
 import type { Event } from "../../data/event";
 import locale from "../../data/locale";
 import Text from "../../components/Text";
-import PerformanceList from "../../components/PerformanceList";
-import { groupPerformancesByPeriod } from "../../selectors/events";
 import Touchable from "../../components/Touchable";
 import TextLink from "./TextLink";
 
@@ -78,12 +76,6 @@ class EventDescription extends PureComponent<
             style={textContainerHeightStyle}
             scrollEnabled={false}
           >
-            <PerformanceList
-              performances={groupPerformancesByPeriod(
-                event.fields.performances && event.fields.performances[locale]
-              )}
-              locale={locale}
-            />
             <Text markdown onLayout={this.measureTextHeight}>
               {event.fields.eventDescription[locale]}
             </Text>

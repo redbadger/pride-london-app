@@ -530,6 +530,25 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           locationName="Vauxhall Pleasure Gardens"
           lon={-0.12092150000000856}
         />
+      </LayoutColumn>
+    </ContentPadding>
+    <PerformanceList
+      locale="en-GB"
+      performances={Array []}
+    />
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+      styles={
+        Object {
+          "marginBottom": 32,
+          "marginTop": 16,
+        }
+      }
+    >
+      <LayoutColumn
+        spacing={20}
+      >
         <SectionDivider />
         <EventAccessibility
           event={
@@ -1180,6 +1199,25 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           locationName="Vauxhall Pleasure Gardens"
           lon={-0.12092150000000856}
         />
+      </LayoutColumn>
+    </ContentPadding>
+    <PerformanceList
+      locale="en-GB"
+      performances={Array []}
+    />
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+      styles={
+        Object {
+          "marginBottom": 32,
+          "marginTop": 16,
+        }
+      }
+    >
+      <LayoutColumn
+        spacing={20}
+      >
         <SectionDivider />
         <EventContact
           email="john.smith@eventname.com"
