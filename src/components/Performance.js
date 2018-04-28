@@ -13,18 +13,14 @@ type Props = {
   startTime: string
 };
 
-const Performance = ({ title, startTime }: Props) => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.startTime}>
-          {formatDate(startTime, timeFormat)}
-        </Text>
-        <Text style={styles.title}>{title}</Text>
-      </View>
+const Performance = ({ title, startTime }: Props) => (
+  <View style={styles.container}>
+    <View style={styles.content}>
+      <Text style={styles.startTime}>{formatDate(startTime, timeFormat)}</Text>
+      <Text style={styles.title}>{title}</Text>
     </View>
-  );
-};
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
