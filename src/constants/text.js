@@ -66,6 +66,18 @@ export default {
   supportUsSponsorDescription: "Support the community",
   supportUsVolunteer: "Volunteer",
   supportUsVolunteerDescription: "Passionate about equality? Join us.",
+  sponsorTitle: "Partner with us",
+  sponsorLevelHeading: "partners",
+  sponsorHeadingOurPartners: "Our main 2018 partners",
+  sponsorTextOurPartners:
+    "A huge thank you to our main partners for their continued support.",
+  sponsorHeadingPartnerWithUs: "Partner with us",
+  sponsorTextPartnerWithUs:
+    "Build your brand, engage your internal network and be part of a global movement to support diversity. To find out more, please contact sponsor@prideinlondon.org.",
+  sponsorTextPartnerWithUsList:
+    "* Pride in London is one of the top three biggest events in London, attracting an estimated one million visitors across the footprint. \n* Be part of our award winning marketing and advertising campaign. \n* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues.",
+  sponsorContactEmailSubject: "Sponsorship enquiry",
+  sponsorContactButtonText: "Email to partner with us",
   anyDay: "Any day",
   anyTime: "Any time",
   time: {

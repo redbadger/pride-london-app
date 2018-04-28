@@ -247,17 +247,17 @@ describe("correctDates", () => {
     expect(savedCmsData).toEqual(expectedCmsData);
   });
 
-  it("leaves entries of type 'performance' alone", async () => {
+  it("does not change entry when startDate or endDate is undefined", async () => {
     const cmsData = {
       entries: [
         {
-          sys: { contentType: { sys: { id: "performance" } } },
+          sys: { id: "1" },
           fields: {
-            startTime: { "en-GB": "2018-07-07T22:3001:00" }
+            name: { "en-GB": "I am not an event" }
           }
         }
       ],
-      assets: [{ sys: { id: "1" } }],
+      assets: [],
       deletedEntries: [],
       deletedAssets: [],
       nextSyncToken: "abc"
@@ -268,24 +268,12 @@ describe("correctDates", () => {
       syncToken: "123"
     });
     const mockAsyncStorage = { setItem: jest.fn() };
-    const expectedCmsData = {
-      entries: [
-        {
-          sys: { contentType: { sys: { id: "performance" } } },
-          fields: {
-            startTime: { "en-GB": "2018-07-07T22:3001:00" }
-          }
-        }
-      ],
-      assets: [{ sys: { id: "1" } }],
-      syncToken: "abc"
-    };
 
     const savedCmsData = await saveCmsData(
       cmsData,
       mockLoadCmsData,
       mockAsyncStorage
     );
-    expect(savedCmsData).toEqual(expectedCmsData);
+    expect(savedCmsData.entries[0]).toBe(cmsData.entries[0]);
   });
 });

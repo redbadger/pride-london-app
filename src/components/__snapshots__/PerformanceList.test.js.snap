@@ -14,6 +14,7 @@ exports[`renders correctly 1`] = `
       }
       color="lightNavyBlueColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "marginBottom": 8,
@@ -51,6 +52,7 @@ exports[`renders correctly 1`] = `
         <Text
           color="blackColor"
           markdown={false}
+          markdownStyle={Object {}}
           style={
             Object {
               "color": "rgb(45, 47, 127)",
@@ -108,6 +110,7 @@ exports[`renders correctly 1`] = `
         <Text
           color="blackColor"
           markdown={false}
+          markdownStyle={Object {}}
           style={
             Object {
               "color": "rgb(45, 47, 127)",

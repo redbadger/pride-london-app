@@ -1,5 +1,5 @@
 // @flow
-export type LocalizedFieldRef = { [string]: { sys: { id: string } } };
+import type { LocalizedFieldRef } from "./localized-field-ref";
 
 export type Event = {
   fields: {
@@ -70,31 +70,6 @@ export type FeaturedEvents = {
         id: "featuredEvents"
       }
     },
-    revision: number
-  }
-};
-
-export type Asset = {
-  fields: {
-    title: { [string]: string },
-    file: {
-      [string]: {
-        contentType: string,
-        fileName: string,
-        url: string,
-        details: {
-          size: number,
-          image: {
-            height: number,
-            width: number
-          }
-        }
-      }
-    }
-  },
-  sys: {
-    id: string,
-    type: "Asset",
     revision: number
   }
 };

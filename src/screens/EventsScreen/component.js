@@ -2,11 +2,8 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type {
-  SavedEvents,
-  EventDays,
-  LocalizedFieldRef
-} from "../../data/event";
+import type { SavedEvents, EventDays } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
 import { bgColor } from "../../constants/colors";

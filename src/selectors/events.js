@@ -6,13 +6,13 @@ import R from "ramda";
 
 import type { State } from "../reducers";
 import type {
-  Asset,
   Event,
   FeaturedEvents,
   EventDays,
   Performance,
   PerformancePeriods
 } from "../data/event";
+import type { Asset } from "../data/asset";
 import { buildEventFilter } from "./event-filters";
 
 import locale from "../data/locale";

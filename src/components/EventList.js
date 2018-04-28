@@ -10,12 +10,8 @@ import EventCard from "./EventCard";
 import Touchable from "./Touchable";
 import SectionHeader from "./SectionHeader";
 import { selectEventIsFree } from "../selectors/event";
-import type {
-  SavedEvents,
-  Event,
-  EventDays,
-  LocalizedFieldRef
-} from "../data/event";
+import type { SavedEvents, Event, EventDays } from "../data/event";
+import type { LocalizedFieldRef } from "../data/localized-field-ref";
 import { bgColor, eventCardShadow } from "../constants/colors";
 
 type Props = {

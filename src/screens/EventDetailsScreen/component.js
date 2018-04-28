@@ -20,11 +20,8 @@ import PerformanceList from "../../components/PerformanceList";
 import { groupPerformancesByPeriod } from "../../selectors/events";
 import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type {
-  Event,
-  LocalizedFieldRef,
-  EventCategoryName
-} from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
@@ -98,7 +95,6 @@ class EventDetailsScreen extends PureComponent<Props> {
   };
 
   static navigationOptions = {
-    header: null,
     tabBarVisible: false
   };
 

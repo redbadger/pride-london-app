@@ -96,3 +96,6 @@ export const eventTileTextColor = "rgb(45, 47, 127)";
 // SUPPORT US
 
 export const supportUsButtonShadow = "rgba(0, 0, 0, 0.2)";
+
+// SPONSOR
+export const sponsorLogoBackgroundColor = "rgba(243, 243, 243, 0.5)";

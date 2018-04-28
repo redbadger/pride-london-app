@@ -14,6 +14,7 @@ exports[`renders correctly 1`] = `
   <Text
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "fontWeight": "bold",
@@ -27,6 +28,7 @@ exports[`renders correctly 1`] = `
   <Text
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     numberOfLines={3}
     style={
       Object {

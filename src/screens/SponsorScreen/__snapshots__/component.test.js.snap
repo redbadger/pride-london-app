@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SponsorScreen Component renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    backgroundColor="#2d2f7f"
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "maxWidth": 440,
+          "width": "100%",
+        }
+      }
+    >
+      <IconButton
+        accessibilityLabel="Back"
+        onPress={[Function]}
+        source={1}
+        testID="back"
+      />
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "color": "#ffffff",
+          }
+        }
+        type="h2"
+      >
+        Partner with us
+      </Text>
+      <Component
+        style={
+          Object {
+            "height": 48,
+            "width": 48,
+          }
+        }
+      />
+    </ContentPadding>
+  </Header>
+  <ShadowedScrollView
+    bottomShadow={true}
+    shadowOpacity={0.6}
+    style={Object {}}
+    topShadow={false}
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={
+        Object {
+          "alignSelf": "center",
+          "maxWidth": 440,
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "marginTop": 24,
+          }
+        }
+        type="h1"
+      >
+        Our main 2018 partners
+      </Text>
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="text"
+      >
+        A huge thank you to our main partners for their continued support.
+      </Text>
+      <SponsorLogoContainer
+        getAssetSize={[MockFunction]}
+        getAssetUrl={[MockFunction]}
+        sponsorLevel="Headline"
+        style={
+          Object {
+            "marginTop": 16,
+          }
+        }
+      />
+      <SponsorLogoContainer
+        getAssetSize={[MockFunction]}
+        getAssetUrl={[MockFunction]}
+        sponsorLevel="Gold"
+        sponsors={
+          Array [
+            Object {
+              "fields": Object {
+                "sponsorLevel": Object {
+                  "en-GB": "Gold",
+                },
+                "sponsorLogo": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "id": "asset1",
+                    },
+                  },
+                },
+                "sponsorName": Object {
+                  "en-GB": "Sponsor 1",
+                },
+                "sponsorUrl": Object {
+                  "en-GB": "http://example.com",
+                },
+              },
+              "sys": Object {
+                "id": "1",
+              },
+            },
+            Object {
+              "fields": Object {
+                "sponsorLevel": Object {
+                  "en-GB": "Gold",
+                },
+                "sponsorLogo": Object {
+                  "en-GB": Object {
+                    "sys": Object {
+                      "id": "asset2",
+                    },
+                  },
+                },
+                "sponsorName": Object {
+                  "en-GB": "Sponsor 2",
+                },
+                "sponsorUrl": Object {
+                  "en-GB": "http://example.com",
+                },
+              },
+              "sys": Object {
+                "id": "2",
+              },
+            },
+          ]
+        }
+        style={
+          Object {
+            "marginTop": 20,
+          }
+        }
+      />
+      <SponsorLogoContainer
+        getAssetSize={[MockFunction]}
+        getAssetUrl={[MockFunction]}
+        sponsorLevel="Silver"
+        style={
+          Object {
+            "marginTop": 20,
+          }
+        }
+      />
+      <SponsorLogoContainer
+        getAssetSize={[MockFunction]}
+        getAssetUrl={[MockFunction]}
+        sponsorLevel="Bronze"
+        style={
+          Object {
+            "marginTop": 20,
+          }
+        }
+      />
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "marginTop": 24,
+          }
+        }
+        type="h1"
+      >
+        Partner with us
+      </Text>
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "paddingBottom": 10,
+          }
+        }
+        type="text"
+      >
+        Build your brand, engage your internal network and be part of a global movement to support diversity. To find out more, please contact sponsor@prideinlondon.org.
+      </Text>
+      <Text
+        color="blackColor"
+        markdown={true}
+        markdownStyle={
+          Object {
+            "text": Object {
+              "color": "#2d2f7f",
+              "fontSize": 14,
+              "lineHeight": 20,
+            },
+          }
+        }
+        type="text"
+      >
+        * Pride in London is one of the top three biggest events in London, attracting an estimated one million visitors across the footprint. 
+* Be part of our award winning marketing and advertising campaign. 
+* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues.
+      </Text>
+    </ContentPadding>
+  </ShadowedScrollView>
+  <Component
+    style={
+      Object {
+        "alignSelf": "center",
+        "maxWidth": 440,
+        "paddingVertical": 12,
+        "width": "100%",
+      }
+    }
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+    >
+      <Button
+        disabled={false}
+        onPress={[Function]}
+        testID="emailLauncher"
+      >
+        Email to partner with us
+      </Button>
+    </ContentPadding>
+  </Component>
+</Component>
+`;
