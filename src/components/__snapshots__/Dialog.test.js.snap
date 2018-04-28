@@ -9,6 +9,7 @@ exports[`renders correctly 1`] = `
   visible={true}
 >
   <TouchableWithoutFeedback
+    accessible={false}
     onPress={[Function]}
     style={
       Object {
@@ -16,7 +17,7 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "backgroundColor": "rgba(0, 0, 0, 0.7)",
@@ -26,8 +27,10 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <TouchableWithoutFeedback>
-        <View
+      <TouchableWithoutFeedback
+        accessible={false}
+      >
+        <Component
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -36,7 +39,7 @@ exports[`renders correctly 1`] = `
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "alignItems": "center",
@@ -49,7 +52,7 @@ exports[`renders correctly 1`] = `
               }
             }
           >
-            <View
+            <Component
               style={
                 Array [
                   Object {
@@ -62,20 +65,22 @@ exports[`renders correctly 1`] = `
                 ]
               }
             />
-            <Text
-              markdown={false}
+            <Component
               style={
-                Object {
-                  "alignSelf": "flex-end",
-                  "color": "rgb(45, 47, 127)",
-                  "marginBottom": 6,
-                }
+                Array [
+                  Object {
+                    "flexGrow": 1,
+                    "width": 0,
+                  },
+                  Object {
+                    "alignItems": "center",
+                  },
+                ]
               }
-              type="h3"
             >
               Hello World
-            </Text>
-            <View
+            </Component>
+            <Component
               style={
                 Array [
                   Object {
@@ -88,15 +93,17 @@ exports[`renders correctly 1`] = `
                 ]
               }
             />
-          </View>
+          </Component>
           Lorem Ipsum is placeholder text commonly used...
-        </View>
+        </Component>
       </TouchableWithoutFeedback>
       <Touchable
         accessibilityComponentType="button"
+        accessibilityLabel="Good bye"
         accessibilityTraits={
           Array [
             "button",
+            "header",
           ]
         }
         delayPressIn={50}
@@ -113,6 +120,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
+          color="blackColor"
           markdown={false}
           style={
             Object {
@@ -125,7 +133,7 @@ exports[`renders correctly 1`] = `
           Bye
         </Text>
       </Touchable>
-    </View>
+    </Component>
   </TouchableWithoutFeedback>
 </Component>
 `;

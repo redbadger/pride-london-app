@@ -11,6 +11,18 @@ const showEvents = (numberOfEvents: number) => {
   return `Show ${numberOfEvents} events`;
 };
 
+const showEventsLabel = (numberOfEvents: number) => {
+  if (numberOfEvents <= 0) {
+    return "Show events (none selected)";
+  }
+
+  if (numberOfEvents === 1) {
+    return "Show 1 selected event";
+  }
+
+  return `Show ${numberOfEvents} selected events`;
+};
+
 export default {
   tabHome: "Home",
   tabEvents: "Events",
@@ -19,8 +31,10 @@ export default {
   tabSupportUs: "Support us",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All events",
+  addFilters: "Add filters",
   filters: "Filters",
   filterPickerApply: showEvents,
+  filterPickerApplyLabel: showEventsLabel,
   filterDayPickerTitle: "Select dates",
   filterTimePickerTitle: "Select time",
   filterTitle: "Show me",
@@ -30,8 +44,9 @@ export default {
   eventDetailsAccessibility: "Accessibility",
   eventDetailsAccessibilityDetails: "Accessibility Details",
   eventDetailsContact: "Contact",
-  eventDetailsBuyButton: "Buy tickets",
+  eventDetailsBuyButton: "Get tickets",
   eventDetailsGenderNeutralToilets: "Gender neutral toilets",
+  selectDates: "Select dates",
   eventDetailsAbout: "About",
   eventDetailsReadMore: "Read more",
   eventDetailsReadLess: "Read less",
@@ -55,8 +70,26 @@ export default {
     afternoon: "Afternoon",
     evening: "Evening"
   },
+  tags: {
+    audience: "Age group",
+    price: "Price",
+    free: "Show only free events",
+    timeOfDay: "Time of day",
+    morning: "Morning",
+    afternoon: "Afternoon",
+    evening: "Evening",
+    venueDetails: "Venue options",
+    accessibilityOptions: "Accessibility",
+    "Gender neutral toilets": "Gender-neutral toilets",
+    Indoors: "Indoor",
+    Outdoors: "Outdoor",
+    "Accessible Toilets": "Accessible toilets",
+    "Wheelchair accessibile": "Wheelchair access",
+    area: "Area of London"
+  },
   cancel: "Cancel",
   zeroSelected: "0 selected",
   showEvents,
-  clearAll: "Clear all"
+  clearAll: "Clear all",
+  filterEvents: "Filter Events"
 };

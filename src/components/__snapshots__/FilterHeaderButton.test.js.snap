@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`renders badge value when provided 1`] = `
 <Touchable
   accessibilityComponentType="button"
+  accessibilityLabel="1-2-3 filtered"
   accessibilityTraits={
     Array [
       "button",
@@ -14,6 +15,7 @@ exports[`renders correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "flexDirection": "row",
         "justifyContent": "center",
         "paddingHorizontal": 8,
       },
@@ -24,12 +26,118 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    color="blackColor"
     markdown={false}
     style={
+      Array [
+        Object {
+          "fontFamily": "Roboto-Medium",
+        },
+        Object {
+          "color": "rgb(44, 218, 157)",
+        },
+      ]
+    }
+    type="text"
+  >
+    1-2-3 filtered
+  </Text>
+  <Component
+    style={
       Object {
-        "color": "rgb(44, 218, 157)",
-        "fontFamily": "Roboto-Medium",
+        "marginLeft": 6,
       }
+    }
+  >
+    <NumberBadge
+      value={2}
+    />
+  </Component>
+</Touchable>
+`;
+
+exports[`renders correct styles when inactive 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityLabel="One two three filtered"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingHorizontal": 8,
+      },
+      Object {
+        "marginTop": 16,
+      },
+    ]
+  }
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    style={
+      Array [
+        Object {
+          "fontFamily": "Roboto-Medium",
+        },
+        Object {
+          "color": "#ffffff",
+        },
+      ]
+    }
+    type="text"
+  >
+    1-2-3 filtered
+  </Text>
+</Touchable>
+`;
+
+exports[`renders correctly 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityLabel="1-2-3 filtered"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingHorizontal": 8,
+      },
+      Object {
+        "marginTop": 16,
+      },
+    ]
+  }
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    style={
+      Array [
+        Object {
+          "fontFamily": "Roboto-Medium",
+        },
+        Object {
+          "color": "rgb(44, 218, 157)",
+        },
+      ]
     }
     type="text"
   >

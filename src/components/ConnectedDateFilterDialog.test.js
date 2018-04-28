@@ -15,12 +15,22 @@ const initialState = {
     selectedFilters: {
       categories: new Set(),
       date: null,
-      time: new Set()
+      timeOfDay: new Set(),
+      price: new Set(),
+      audience: new Set(),
+      venueDetails: new Set(),
+      accessibilityOptions: new Set(),
+      area: new Set()
     },
     stagedFilters: {
       categories: new Set(),
       date: null,
-      time: new Set()
+      timeOfDay: new Set(),
+      price: new Set(),
+      audience: new Set(),
+      venueDetails: new Set(),
+      accessibilityOptions: new Set(),
+      area: new Set()
     }
   }
 };
@@ -28,7 +38,12 @@ const initialState = {
 const singleDateFilters = {
   categories: new Set(),
   date: { startDate: "2018-02-02", endDate: "2018-02-02" },
-  time: new Set()
+  timeOfDay: new Set(),
+  price: new Set(),
+  audience: new Set(),
+  venueDetails: new Set(),
+  accessibilityOptions: new Set(),
+  area: new Set()
 };
 
 const singleDateFilterState = {

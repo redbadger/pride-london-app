@@ -4,30 +4,34 @@ import { View, StyleSheet, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
-import TimeFilterDialog from "./ConnectedTimeFilterDialog";
 import ContentPadding from "./ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
-import { filterBgColor, lightNavyBlueColor } from "../constants/colors";
+import {
+  filterBgColor,
+  filterButtonsBgColor,
+  whiteColor,
+  lightNavyBlueColor
+} from "../constants/colors";
 import text from "../constants/text";
-import type { DateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
+import type { DateRange } from "../data/date-time";
+import type { EventCategoryName } from "../data/event";
 
 export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateRange,
-  timeFilter: Set<Time>,
-  selectedCategories: Set<string>
+  onFilterButtonPress: () => void,
+  selectedCategories: Set<EventCategoryName>,
+  numTagFiltersSelected: number
 };
 
 type State = {
-  datesPickerVisible: boolean,
-  timesPickerVisible: boolean
+  datesPickerVisible: boolean
 };
 
 class FilterHeader extends React.PureComponent<Props, State> {
   state = {
-    datesPickerVisible: false,
-    timesPickerVisible: false
+    datesPickerVisible: false
   };
 
   showDatePicker = () => {
@@ -38,29 +42,17 @@ class FilterHeader extends React.PureComponent<Props, State> {
     this.setState({ datesPickerVisible: false });
   };
 
-  showTimePicker = () => {
-    this.setState({ timesPickerVisible: true });
-  };
-
-  hideTimePicker = () => {
-    this.setState({ timesPickerVisible: false });
-  };
-
   render() {
     const {
       dateFilter,
-      timeFilter,
       onFilterCategoriesPress,
-      selectedCategories
+      selectedCategories,
+      onFilterButtonPress,
+      numTagFiltersSelected
     } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
-      : text.anyDay;
-    const timeArray = Array.from(timeFilter);
-    const formattedTimeFilter =
-      timeArray.length > 0 && timeArray.length < 3
-        ? timeArray.map(time => text.time[time]).join(", ")
-        : text.anyTime;
+      : text.selectDates;
 
     return (
       <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
@@ -75,34 +67,32 @@ class FilterHeader extends React.PureComponent<Props, State> {
               onFilterPress={onFilterCategoriesPress}
               selectedCategories={selectedCategories}
             />
-            <View style={styles.contentFilters}>
-              <FilterHeaderButton
-                text={formattedDateFilter}
-                onPress={this.showDatePicker}
-                style={styles.filterButton}
-              />
-              <FilterHeaderButton
-                text={formattedTimeFilter}
-                onPress={this.showTimePicker}
-                style={styles.filterButton}
-              />
-              <FilterHeaderButton
-                text={text.filters}
-                onPress={() => {}}
-                style={styles.filterButton}
-              />
-            </View>
           </View>
         </ContentPadding>
+        <View style={styles.contentFilters}>
+          <FilterHeaderButton
+            active={!!dateFilter}
+            text={formattedDateFilter}
+            label={`filter by date: ${formattedDateFilter}`}
+            onPress={this.showDatePicker}
+            style={styles.filterButton}
+          />
+          <View style={styles.dividerLine} />
+          <FilterHeaderButton
+            active={numTagFiltersSelected > 0}
+            text={numTagFiltersSelected > 0 ? text.filters : text.addFilters}
+            label={numTagFiltersSelected > 0 ? text.filters : text.addFilters}
+            onPress={onFilterButtonPress}
+            style={styles.filterButton}
+            badgeValue={
+              numTagFiltersSelected > 0 ? numTagFiltersSelected : null
+            }
+          />
+        </View>
         <DateFilterDialog
           onApply={this.hideDatePicker}
           onCancel={this.hideDatePicker}
           visible={this.state.datesPickerVisible}
-        />
-        <TimeFilterDialog
-          onApply={this.hideTimePicker}
-          onCancel={this.hideTimePicker}
-          visible={this.state.timesPickerVisible}
         />
       </SafeAreaView>
     );
@@ -119,10 +109,16 @@ const styles = StyleSheet.create({
   },
   contentFilters: {
     flexDirection: "row",
-    marginTop: 8
+    justifyContent: "space-between",
+    backgroundColor: filterButtonsBgColor,
+    height: 48
   },
   filterButton: {
-    marginRight: 8
+    flex: 1
+  },
+  dividerLine: {
+    borderLeftWidth: StyleSheet.hairlineWidth,
+    borderColor: whiteColor
   }
 });
 
