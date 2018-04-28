@@ -18,6 +18,7 @@ exports[`CategoryPill Component renders correctly 1`] = `
   <Text
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Array [
         Object {

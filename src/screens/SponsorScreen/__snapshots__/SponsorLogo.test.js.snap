@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SponsorLogo Component renders correctly with Gold Level 1`] = `
+<Component
+  style={
+    Object {
+      "height": "48%",
+      "width": "75%",
+    }
+  }
+>
+  <Image
+    accessibilityLabel="sponsorName"
+    resizeMode="contain"
+    source={
+      Object {
+        "height": 100,
+        "uri": "sponsorLogoUrl",
+        "width": 100,
+      }
+    }
+    style={
+      Object {
+        "maxHeight": "100%",
+        "maxWidth": "100%",
+      }
+    }
+  />
+</Component>
+`;
+
+exports[`SponsorLogo Component renders correctly with Silver Level 1`] = `
+<Component
+  style={
+    Object {
+      "height": "48%",
+      "width": "80%",
+    }
+  }
+>
+  <Image
+    accessibilityLabel="sponsorName"
+    resizeMode="contain"
+    source={
+      Object {
+        "height": 100,
+        "uri": "sponsorLogoUrl",
+        "width": 100,
+      }
+    }
+    style={
+      Object {
+        "maxHeight": "100%",
+        "maxWidth": "100%",
+      }
+    }
+  />
+</Component>
+`;

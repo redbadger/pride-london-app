@@ -29,6 +29,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -54,6 +55,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       accessible={true}
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "alignSelf": "flex-end",

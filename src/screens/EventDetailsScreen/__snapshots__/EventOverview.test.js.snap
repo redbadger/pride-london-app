@@ -8,6 +8,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="lightNavyBlueColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="h4"
     >
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
@@ -15,6 +16,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="small"
     >
       11:00AM - 6:00PM
@@ -30,6 +32,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="small"
     >
       Vauxhall Pleasure Gardens
@@ -37,6 +40,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="small"
     >
       Vauxhall Pleasure Gardens
@@ -44,6 +48,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="small"
     >
       London
@@ -51,6 +56,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="small"
     >
       EC1M 3HA
@@ -62,6 +68,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="lightNavyBlueColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="h4"
     >
       £19.95 - £30
@@ -73,6 +80,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="lightNavyBlueColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="h4"
     >
       Gender neutral toilets
@@ -84,6 +92,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="lightNavyBlueColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="h4"
     >
       Accessibility
@@ -91,6 +100,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       type="small"
     >
       Accessible Toilets, Hearing loop installed

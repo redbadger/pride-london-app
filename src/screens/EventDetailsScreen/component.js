@@ -18,11 +18,8 @@ import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "./SectionDivider";
 import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type {
-  Event,
-  LocalizedFieldRef,
-  EventCategoryName
-} from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
@@ -96,7 +93,6 @@ class EventDetailsScreen extends PureComponent<Props> {
   };
 
   static navigationOptions = {
-    header: null,
     tabBarVisible: false
   };
 

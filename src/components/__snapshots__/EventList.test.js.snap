@@ -237,6 +237,7 @@ exports[`EventList renders section headers correctly 1`] = `
     accessible={true}
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "rgb(45, 47, 127)",
