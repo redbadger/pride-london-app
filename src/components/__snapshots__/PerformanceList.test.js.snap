@@ -53,7 +53,7 @@ exports[`renders correctly 1`] = `
           markdown={false}
           style={
             Object {
-              "color": undefined,
+              "color": "rgb(45, 47, 127)",
             }
           }
           type="h3"
@@ -110,7 +110,7 @@ exports[`renders correctly 1`] = `
           markdown={false}
           style={
             Object {
-              "color": undefined,
+              "color": "rgb(45, 47, 127)",
             }
           }
           type="h3"
