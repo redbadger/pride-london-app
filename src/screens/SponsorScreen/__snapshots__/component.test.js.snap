@@ -17,8 +17,11 @@ exports[`SponsorScreen Component renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
+          "alignSelf": "center",
           "flexDirection": "row",
           "justifyContent": "space-between",
+          "maxWidth": 440,
+          "width": "100%",
         }
       }
     >
@@ -53,7 +56,13 @@ exports[`SponsorScreen Component renders correctly 1`] = `
   <ScrollView>
     <ContentPadding
       padding={Object {}}
-      style={Object {}}
+      style={
+        Object {
+          "alignSelf": "center",
+          "maxWidth": 440,
+          "width": "100%",
+        }
+      }
     >
       <Text
         color="blackColor"

@@ -55,7 +55,7 @@ class SponsorScreen extends PureComponent<Props> {
           </ContentPadding>
         </Header>
         <ScrollView>
-          <ContentPadding>
+          <ContentPadding style={styles.scrollContainer}>
             <Text style={styles.sponsorMainHeading} type="h1">
               {text.sponsorMainHeading}
             </Text>
@@ -99,9 +99,12 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor
   },
   headerContent: {
+    width: "100%",
+    maxWidth: 440,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    alignSelf: "center"
   },
   headerTitle: {
     color: whiteColor
@@ -109,6 +112,11 @@ const styles = StyleSheet.create({
   phantomIcon: {
     width: 48,
     height: 48
+  },
+  scrollContainer: {
+    width: "100%",
+    maxWidth: 440,
+    alignSelf: "center"
   },
   sponsorMainHeading: {
     marginTop: 24
