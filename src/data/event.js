@@ -25,7 +25,8 @@ export type Event = {
     ticketingUrl: { [string]: string },
     venueDetails: { [string]: string[] },
     individualEventPicture: LocalizedFieldRef,
-    eventsListPicture: LocalizedFieldRef
+    eventsListPicture: LocalizedFieldRef,
+    recurrenceDates?: { [string]: string[] }
   },
   sys: {
     id: string,

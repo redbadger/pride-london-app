@@ -1,7 +1,9 @@
 // @flow
 import React from "react";
+import { StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
+import dateComparator from "date-fns/compare_asc";
 import { formattedEventPriceRange } from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
@@ -23,6 +25,11 @@ type Props = {
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
+
+const buildDateFromEuropeanDateString = dateString => {
+  const [day, month, year] = dateString.split("/");
+  return new Date(year, month, day);
+};
 
 const EventOverview = ({ event }: Props) => {
   const startTime = removeTimezoneFromDateString(
@@ -48,6 +55,21 @@ const EventOverview = ({ event }: Props) => {
     event.fields.locationName[locale]
   ];
 
+  const recurrenceDates = event.fields.recurrenceDates
+    ? event.fields.recurrenceDates[locale]
+    : [];
+  const orderedRecurrenceDates = [
+    event.fields.startTime[locale],
+    ...recurrenceDates.map(buildDateFromEuropeanDateString)
+  ].sort(dateComparator);
+  const formattedRecurrenceDates = `${text.runsFrom} ${formatDate(
+    orderedRecurrenceDates[0],
+    "D MMM"
+  )} - ${formatDate(
+    orderedRecurrenceDates[orderedRecurrenceDates.length - 1],
+    "D MMM"
+  )}`;
+
   return (
     <IconList>
       <IconItem source={dateIcon}>
@@ -55,6 +77,11 @@ const EventOverview = ({ event }: Props) => {
           {dateDisplay}
         </Text>
         <Text type="small">{timeDisplay}</Text>
+        {orderedRecurrenceDates.length > 1 && (
+          <Text type="small" style={styles.recurrenceDates}>
+            {formattedRecurrenceDates}
+          </Text>
+        )}
       </IconItem>
 
       <IconItem
@@ -111,5 +138,11 @@ const EventOverview = ({ event }: Props) => {
     </IconList>
   );
 };
+
+const styles = StyleSheet.create({
+  recurrenceDates: {
+    fontStyle: "italic"
+  }
+});
 
 export default EventOverview;

@@ -103,5 +103,6 @@ export default {
   zeroSelected: "0 selected",
   showEvents,
   clearAll: "Clear all",
-  filterEvents: "Filter Events"
+  filterEvents: "Filter Events",
+  runsFrom: "Runs from:"
 };
