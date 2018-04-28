@@ -35,10 +35,7 @@ const entryNotDeleted = (entry, deletedEntryIds) =>
   !deletedEntryIds.includes(entry.sys.id);
 
 const correctDates = (entry: Object) => {
-  if (
-    (entry.sys.contentType && entry.sys.contentType.sys.id) !== "event" ||
-    !entry.fields
-  ) {
+  if (!entry.fields) {
     return entry;
   }
 
