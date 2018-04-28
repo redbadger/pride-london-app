@@ -26,15 +26,19 @@ import {
   whiteColor
 } from "../../constants/colors";
 import text from "../../constants/text";
+import SegmentedControl from "./SegmentedControl";
 
 type Props = {|
   navigation: NavigationScreenProp<NavigationState>
 |};
 
 type State = {|
-  amount: ?string,
+  selectedAmount: ?string,
+  otherAmount: ?string,
   otherAmountFocused: boolean
 |};
+
+const selectableAmounts = ["£5", "£10", "£20"];
 
 class DonateScreen extends React.PureComponent<Props, State> {
   static navigationOptions = {
@@ -42,20 +46,31 @@ class DonateScreen extends React.PureComponent<Props, State> {
   };
 
   state = {
-    amount: null,
+    selectedAmount: null,
+    otherAmount: null,
     otherAmountFocused: false
   };
 
+  onAmountSelected = (selectedAmount: string) => {
+    this.setState({
+      selectedAmount,
+      otherAmount: null
+    });
+  };
+
   onOtherAmountFocused = () => {
-    this.setState({ otherAmountFocused: true });
+    this.setState({
+      selectedAmount: null,
+      otherAmountFocused: true
+    });
   };
 
   onOtherAmountBlurred = () => {
     this.setState({ otherAmountFocused: false });
   };
 
-  onOtherAmountChanged = (amount: string) => {
-    this.setState({ amount });
+  onOtherAmountChanged = (otherAmount: string) => {
+    this.setState({ otherAmount });
   };
 
   onDonatePress = () => {
@@ -64,7 +79,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { amount, otherAmountFocused } = this.state;
+    const { selectedAmount, otherAmount, otherAmountFocused } = this.state;
 
     return (
       <View style={styles.container}>
@@ -107,6 +122,11 @@ class DonateScreen extends React.PureComponent<Props, State> {
               >
                 {text.donateAmountSelectionLabel}
               </Text>
+              <SegmentedControl
+                onValueChange={this.onAmountSelected}
+                selectedIndex={selectableAmounts.indexOf(selectedAmount)}
+                values={selectableAmounts}
+              />
               <Text
                 type="h4"
                 color="lightNavyBlueColor"
@@ -126,13 +146,16 @@ class DonateScreen extends React.PureComponent<Props, State> {
                   otherAmountFocused && styles.otherAmountFocused
                 ]}
                 underlineColorAndroid={transparent}
-                value={amount}
+                value={otherAmount}
               />
               <Text type="small" style={styles.hintSpacing}>
                 {text.donateMinimumAmount}
               </Text>
               <View style={styles.ctaSpacing}>
-                <Button disabled={!amount} onPress={this.onDonatePress}>
+                <Button
+                  disabled={!selectedAmount && !otherAmount}
+                  onPress={this.onDonatePress}
+                >
                   {text.donateButtonText}
                 </Button>
               </View>
