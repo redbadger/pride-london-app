@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly when isFree is false and there is a price range 1`] = `
-<View
+<Component
   style={
     Object {
       "borderRadius": 5,
@@ -25,7 +25,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "backgroundColor": "#2d2f7f",
@@ -43,9 +43,9 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       >
         From £12
       </Text>
-    </View>
+    </Component>
   </ImageBackground>
-  <View
+  <Component
     style={
       Object {
         "flex": 1,
@@ -53,7 +53,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "flex": 0,
@@ -63,7 +63,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
         }
       }
     >
-      <View
+      <Component
         style={
           Object {
             "flex": 0,
@@ -71,7 +71,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
           }
         }
       >
-        <View
+        <Component
           style={
             Object {
               "flex": 0,
@@ -106,15 +106,15 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
           >
             name
           </Text>
-        </View>
-        <View>
+        </Component>
+        <Component>
           <SaveEventButton
             active={false}
             onDark={false}
             onPress={[Function]}
           />
-        </View>
-      </View>
+        </Component>
+      </Component>
       <Text
         color="lightNavyBlueColor"
         markdown={false}
@@ -122,13 +122,13 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       >
         location
       </Text>
-    </View>
-  </View>
-</View>
+    </Component>
+  </Component>
+</Component>
 `;
 
 exports[`renders correctly when isFree is false and there's only one price 1`] = `
-<View
+<Component
   style={
     Object {
       "borderRadius": 5,
@@ -152,7 +152,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "backgroundColor": "#2d2f7f",
@@ -170,9 +170,9 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       >
         £12
       </Text>
-    </View>
+    </Component>
   </ImageBackground>
-  <View
+  <Component
     style={
       Object {
         "flex": 1,
@@ -180,7 +180,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "flex": 0,
@@ -190,7 +190,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
         }
       }
     >
-      <View
+      <Component
         style={
           Object {
             "flex": 0,
@@ -198,7 +198,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
           }
         }
       >
-        <View
+        <Component
           style={
             Object {
               "flex": 0,
@@ -233,15 +233,15 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
           >
             name
           </Text>
-        </View>
-        <View>
+        </Component>
+        <Component>
           <SaveEventButton
             active={false}
             onDark={false}
             onPress={[Function]}
           />
-        </View>
-      </View>
+        </Component>
+      </Component>
       <Text
         color="lightNavyBlueColor"
         markdown={false}
@@ -249,13 +249,13 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       >
         location
       </Text>
-    </View>
-  </View>
-</View>
+    </Component>
+  </Component>
+</Component>
 `;
 
 exports[`renders correctly when isFree is true 1`] = `
-<View
+<Component
   style={
     Object {
       "borderRadius": 5,
@@ -279,7 +279,7 @@ exports[`renders correctly when isFree is true 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "backgroundColor": "#2d2f7f",
@@ -297,9 +297,9 @@ exports[`renders correctly when isFree is true 1`] = `
       >
         Free
       </Text>
-    </View>
+    </Component>
   </ImageBackground>
-  <View
+  <Component
     style={
       Object {
         "flex": 1,
@@ -307,7 +307,7 @@ exports[`renders correctly when isFree is true 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "flex": 0,
@@ -317,7 +317,7 @@ exports[`renders correctly when isFree is true 1`] = `
         }
       }
     >
-      <View
+      <Component
         style={
           Object {
             "flex": 0,
@@ -325,7 +325,7 @@ exports[`renders correctly when isFree is true 1`] = `
           }
         }
       >
-        <View
+        <Component
           style={
             Object {
               "flex": 0,
@@ -360,15 +360,15 @@ exports[`renders correctly when isFree is true 1`] = `
           >
             name
           </Text>
-        </View>
-        <View>
+        </Component>
+        <Component>
           <SaveEventButton
             active={false}
             onDark={false}
             onPress={[Function]}
           />
-        </View>
-      </View>
+        </Component>
+      </Component>
       <Text
         color="lightNavyBlueColor"
         markdown={false}
@@ -376,7 +376,7 @@ exports[`renders correctly when isFree is true 1`] = `
       >
         location
       </Text>
-    </View>
-  </View>
-</View>
+    </Component>
+  </Component>
+</Component>
 `;

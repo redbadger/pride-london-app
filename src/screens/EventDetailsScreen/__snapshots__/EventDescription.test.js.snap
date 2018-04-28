@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View>
+<Component>
   <Text
     color="lightNavyBlueColor"
     markdown={false}
@@ -14,7 +14,7 @@ exports[`renders correctly 1`] = `
   >
     About
   </Text>
-  <View>
+  <Component>
     <AnimatedComponent
       scrollEnabled={false}
       style={
@@ -34,6 +34,6 @@ exports[`renders correctly 1`] = `
 Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.
       </Text>
     </AnimatedComponent>
-  </View>
-</View>
+  </Component>
+</Component>
 `;

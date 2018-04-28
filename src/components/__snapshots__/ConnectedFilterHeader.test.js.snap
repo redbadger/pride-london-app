@@ -23,7 +23,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "paddingBottom": 12,
@@ -33,9 +33,9 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       testID="filter-header"
     >
       <FilterHeaderCategories />
-    </View>
+    </Component>
   </ContentPadding>
-  <View
+  <Component
     style={
       Object {
         "backgroundColor": "#20215a",
@@ -57,7 +57,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       }
       text="Select dates"
     />
-    <View
+    <Component
       style={
         Object {
           "borderColor": "#ffffff",
@@ -76,7 +76,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       }
       text="Add filters"
     />
-  </View>
+  </Component>
   <Connect(DateRangePickerDialog)
     onApply={[Function]}
     onCancel={[Function]}

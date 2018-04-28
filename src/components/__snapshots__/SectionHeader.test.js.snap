@@ -44,7 +44,7 @@ exports[`renders correctly 1`] = `
   >
     Section Header
   </Text>
-  <View />
+  <Component />
 </ContentPadding>
 `;
 
@@ -92,7 +92,7 @@ exports[`renders correctly with badge text 1`] = `
   >
     Section Header
   </Text>
-  <View
+  <Component
     style={
       Object {
         "marginLeft": 6,
@@ -102,7 +102,7 @@ exports[`renders correctly with badge text 1`] = `
     <NumberBadge
       value={2}
     />
-  </View>
+  </Component>
 </ContentPadding>
 `;
 
@@ -136,6 +136,6 @@ exports[`renders correctly without shadow 1`] = `
   >
     Section Header
   </Text>
-  <View />
+  <Component />
 </ContentPadding>
 `;

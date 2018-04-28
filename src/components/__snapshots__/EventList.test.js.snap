@@ -246,6 +246,6 @@ exports[`EventList renders section headers correctly 1`] = `
   >
     Hello
   </Text>
-  <View />
+  <Component />
 </ContentPadding>
 `;

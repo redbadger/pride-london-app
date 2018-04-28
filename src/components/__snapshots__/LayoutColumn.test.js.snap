@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does not wrap null components 1`] = `
-<View
+<Component
   style={
     Array [
       Object {
@@ -14,7 +14,7 @@ exports[`does not wrap null components 1`] = `
     ]
   }
 >
-  <View
+  <Component
     key=".0"
     style={
       Object {
@@ -22,9 +22,9 @@ exports[`does not wrap null components 1`] = `
       }
     }
   >
-    <View />
-  </View>
-  <View
+    <Component />
+  </Component>
+  <Component
     key=".2"
     style={
       Object {
@@ -32,13 +32,13 @@ exports[`does not wrap null components 1`] = `
       }
     }
   >
-    <View />
-  </View>
-</View>
+    <Component />
+  </Component>
+</Component>
 `;
 
 exports[`renders correctly 1`] = `
-<View
+<Component
   style={
     Array [
       Object {
@@ -51,7 +51,7 @@ exports[`renders correctly 1`] = `
     ]
   }
 >
-  <View
+  <Component
     key=".0"
     style={
       Object {
@@ -59,9 +59,9 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <View />
-  </View>
-  <View
+    <Component />
+  </Component>
+  <Component
     key=".1"
     style={
       Object {
@@ -69,9 +69,9 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <View />
-  </View>
-  <View
+    <Component />
+  </Component>
+  <Component
     key=".2"
     style={
       Object {
@@ -79,7 +79,7 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <View />
-  </View>
-</View>
+    <Component />
+  </Component>
+</Component>
 `;

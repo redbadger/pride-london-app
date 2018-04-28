@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "backgroundColor": "rgba(0, 0, 0, 0.7)",
@@ -30,7 +30,7 @@ exports[`renders correctly 1`] = `
       <TouchableWithoutFeedback
         accessible={false}
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -39,7 +39,7 @@ exports[`renders correctly 1`] = `
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "alignItems": "center",
@@ -52,7 +52,7 @@ exports[`renders correctly 1`] = `
               }
             }
           >
-            <View
+            <Component
               style={
                 Array [
                   Object {
@@ -65,7 +65,7 @@ exports[`renders correctly 1`] = `
                 ]
               }
             />
-            <View
+            <Component
               style={
                 Array [
                   Object {
@@ -79,8 +79,8 @@ exports[`renders correctly 1`] = `
               }
             >
               Hello World
-            </View>
-            <View
+            </Component>
+            <Component
               style={
                 Array [
                   Object {
@@ -93,9 +93,9 @@ exports[`renders correctly 1`] = `
                 ]
               }
             />
-          </View>
+          </Component>
           Lorem Ipsum is placeholder text commonly used...
-        </View>
+        </Component>
       </TouchableWithoutFeedback>
       <Touchable
         accessibilityComponentType="button"
@@ -133,7 +133,7 @@ exports[`renders correctly 1`] = `
           Bye
         </Text>
       </Touchable>
-    </View>
+    </Component>
   </TouchableWithoutFeedback>
 </Component>
 `;

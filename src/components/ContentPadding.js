@@ -2,7 +2,7 @@
 import React from "react";
 import type { Node } from "react";
 import { View } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import ScreenSizeProvider from "./ScreenSizeProvider";
 import type { ScreenSize } from "./ScreenSizeProvider";
 
@@ -16,7 +16,7 @@ type PaddingOption = { [ScreenSize]: Padding };
 type Props = {
   children: Node,
   padding?: PaddingOption,
-  style?: StyleObj
+  style?: ViewStyleProp
 };
 
 const defaultPadding = {

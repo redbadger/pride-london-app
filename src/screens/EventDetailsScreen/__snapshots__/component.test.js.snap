@@ -22,7 +22,7 @@ exports[`EventAccessibility renders correctly 1`] = `
 `;
 
 exports[`EventCategories renders correctly 1`] = `
-<View
+<Component
   style={
     Object {
       "flexDirection": "row",
@@ -71,7 +71,7 @@ exports[`EventCategories renders correctly 1`] = `
       }
     }
   />
-</View>
+</Component>
 `;
 
 exports[`EventHeader renders correctly 1`] = `
@@ -121,7 +121,7 @@ exports[`EventTickets renders correctly 1`] = `
 `;
 
 exports[`renders correctly 1`] = `
-<View
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -785,11 +785,11 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       }
     }
   />
-</View>
+</Component>
 `;
 
 exports[`renders correctly with missing details 1`] = `
-<View
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -1204,5 +1204,5 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       </LayoutColumn>
     </ContentPadding>
   </ShadowedScrollView>
-</View>
+</Component>
 `;
