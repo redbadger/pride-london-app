@@ -13,7 +13,7 @@ type Props = {
 };
 
 type State = {
-  progress: Object
+  progress?: Object
 };
 
 export default class SaveEventButton extends React.Component<Props, State> {
@@ -22,33 +22,39 @@ export default class SaveEventButton extends React.Component<Props, State> {
     onDark: false
   };
 
-  state = {
-    progress: new Animated.Value(0)
-  };
-
-  componentDidMount() {
-    if (this.props.active) {
-      this.state.progress = new Animated.Value(1);
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    if (!prevState.progress) {
+      const value = nextProps.active ? 1 : 0;
+      return {
+        progress: new Animated.Value(value)
+      };
     }
+    return null;
   }
 
+  state = {
+    progress: null
+  };
+
   componentDidUpdate(prevProps: Props) {
-    const value = this.props.active ? 1 : 0;
-    if (this.props.active === true && prevProps.active === false) {
-      Animated.timing(this.state.progress, {
-        toValue: value,
-        duration: 1920,
-        easing: Easing.linear,
-        useNativeDriver: true
-      }).start();
-      return;
+    if (this.state.progress) {
+      const value = this.props.active ? 1 : 0;
+      if (this.props.active === true && prevProps.active === false) {
+        Animated.timing(this.state.progress, {
+          toValue: value,
+          duration: 1920,
+          easing: Easing.linear,
+          useNativeDriver: true
+        }).start();
+      } else if (this.props.active !== prevProps.active) {
+        Animated.timing(this.state.progress, {
+          toValue: value,
+          duration: 0,
+          easing: Easing.linear,
+          useNativeDriver: true
+        }).start();
+      }
     }
-    Animated.timing(this.state.progress, {
-      toValue: value,
-      duration: 0,
-      easing: Easing.linear,
-      useNativeDriver: true
-    }).start();
   }
 
   handlePress = () => {

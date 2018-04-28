@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getDerivedStateFromProps returns state with progress as animated value of 0 when state.progress = null and props.active = false 1`] = `
+Object {
+  "progress": 0,
+}
+`;
+
+exports[`getDerivedStateFromProps returns state with progress as animated value of 1 when state.progress = null and props.active = true 1`] = `
+Object {
+  "progress": 1,
+}
+`;
+
 exports[`renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="button"
