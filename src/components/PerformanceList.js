@@ -52,7 +52,7 @@ const PerformanceList = ({ performances, locale }: Props) => (
             <Collapsible>
               {section.data.map(item => (
                 <PerformanceItem
-                  key={item.fields.title[locale]}
+                  key={item.fields.startTime[locale]}
                   startTime={item.fields.startTime[locale]}
                   title={item.fields.title[locale]}
                 />

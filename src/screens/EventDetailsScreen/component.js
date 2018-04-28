@@ -127,11 +127,13 @@ class EventDetailsScreen extends PureComponent<Props> {
             )}
           <ContentPadding styles={styles.content}>
             <LayoutColumn spacing={20}>
-              {event.fields.accessibilityDetails && <SectionDivider />}
               {event.fields.accessibilityDetails && (
                 <EventAccessibility event={event} />
               )}
-              {(event.fields.email || event.fields.phone) && <SectionDivider />}
+              {event.fields.accessibilityDetails &&
+                (event.fields.email || event.fields.phone) && (
+                  <SectionDivider />
+                )}
               {(event.fields.email || event.fields.phone) && (
                 <EventContact
                   email={event.fields.email && event.fields.email[locale]}

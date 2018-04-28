@@ -75,7 +75,7 @@ exports[`renders correctly 1`] = `
           showMoreLabel="Show more"
         >
           <Performance
-            key="Jackie Potato"
+            key="2018-08-01T13:00:00"
             startTime="2018-08-01T13:00:00"
             title="Jackie Potato"
           />
@@ -132,7 +132,7 @@ exports[`renders correctly 1`] = `
           showMoreLabel="Show more"
         >
           <Performance
-            key="Krystal Pools"
+            key="2018-08-01T18:00:00"
             startTime="2018-08-01T18:00:00"
             title="Krystal Pools"
           />

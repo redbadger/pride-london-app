@@ -545,7 +545,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       <LayoutColumn
         spacing={20}
       >
-        <SectionDivider />
         <EventAccessibility
           event={
             Object {
@@ -1210,7 +1209,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       <LayoutColumn
         spacing={20}
       >
-        <SectionDivider />
         <EventContact
           email="john.smith@eventname.com"
           phone="07891234567"
