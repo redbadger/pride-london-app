@@ -30,7 +30,7 @@ exports[`Header Component renders correctly 1`] = `
     }
     type="h1"
   >
-    Show me
+    Showing
   </Text>
   <Component
     style={
