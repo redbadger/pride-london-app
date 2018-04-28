@@ -20,16 +20,16 @@ const tags: Tags = {
   price: ["free"],
   audience: ["Families", "Youth", "16+", "18+"],
   timeOfDay: ["morning", "afternoon", "evening"],
-  venueDetails: ["Gender neutral toilets", "Outdoors", "Indoors"],
+  venueDetails: ["Gender neutral toilets", "Indoors", "Outdoors"],
   accessibilityOptions: [
-    "Step free access",
-    "Wheelchair accessibile",
+    "Accessible parking spaces at venue",
     "Accessible Toilets",
     "BSL Interpreter",
-    "Hearing loop installed",
     "Complimentary ticket for personal assistant",
+    "Hearing loop installed",
     "Service animals welcome",
-    "Accessible parking spaces at venue"
+    "Step free access",
+    "Wheelchair accessibile"
   ]
 };
 
