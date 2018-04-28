@@ -1,12 +1,6 @@
 // @flow
 import React from "react";
-import {
-  KeyboardAvoidingView,
-  Linking,
-  ScrollView,
-  StyleSheet,
-  View
-} from "react-native";
+import { Linking, ScrollView, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 import donateHeader from "../../../assets/images/donateHeader.png";
@@ -14,6 +8,7 @@ import Button from "../../components/ButtonPrimary";
 import Header from "../../components/Header";
 import ImageHeader from "../../components/ImageHeader";
 import IconButton from "../../components/IconButton";
+import KeyboardAvoidingView from "../../components/KeyboardAvoidingView";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
 import { lightNavyBlueColor, whiteColor } from "../../constants/colors";
@@ -61,82 +56,91 @@ class DonateScreen extends React.PureComponent<Props, State> {
     );
   };
 
-  render() {
-    const { selectedAmount, otherAmount } = this.state;
+  renderHeader() {
+    return (
+      <Header backgroundColor={lightNavyBlueColor}>
+        <ContentPadding style={styles.headerContent}>
+          <IconButton
+            accessibilityLabel="Back"
+            onPress={() => {
+              this.props.navigation.goBack(null);
+            }}
+            source={chevronLeftWhite}
+            testID="back"
+          />
+          <Text type="h2" style={styles.headerTitle}>
+            {text.donateTitle}
+          </Text>
+          <View style={styles.phantomIcon} />
+        </ContentPadding>
+      </Header>
+    );
+  }
 
+  renderContent() {
+    const { selectedAmount, otherAmount } = this.state;
+    return (
+      <ScrollView>
+        <View style={styles.scrollContainer}>
+          <ImageHeader image={donateHeader} title={text.donateHeader} />
+          <ContentPadding>
+            <Text
+              type="h2"
+              color="lightNavyBlueColor"
+              style={styles.introHeadingSpacing}
+            >
+              {text.donateIntroductionHeading}
+            </Text>
+            <Text>{text.donateIntroduction}</Text>
+            <Text
+              type="h3"
+              color="lightNavyBlueColor"
+              style={styles.amountSelectionlabelSpacing}
+            >
+              {text.donateAmountSelectionLabel}
+            </Text>
+            <SegmentedControl
+              onValueChange={this.onAmountSelected}
+              selectedIndex={selectableAmounts.indexOf(selectedAmount)}
+              values={selectableAmounts}
+            />
+            <Text
+              type="h4"
+              color="lightNavyBlueColor"
+              style={styles.otherAmountlabelSpacing}
+            >
+              {text.donateOtherAmountLabel}
+            </Text>
+            <NumberTextField
+              placeholder={(0).toFixed(2)}
+              onFocus={this.onOtherAmountFocus}
+              onChangeText={this.onOtherAmountChange}
+              value={otherAmount}
+            />
+            <Text type="small" style={styles.minimumAmountSpacing}>
+              {text.donateMinimumAmount}
+            </Text>
+            <View style={styles.ctaSpacing}>
+              <Button
+                disabled={!selectedAmount && !otherAmount}
+                onPress={this.onDonatePress}
+              >
+                {text.donateButtonText}
+              </Button>
+            </View>
+          </ContentPadding>
+        </View>
+      </ScrollView>
+    );
+  }
+
+  render() {
     return (
       <View style={styles.container}>
-        <Header backgroundColor={lightNavyBlueColor}>
-          <ContentPadding style={styles.headerContent}>
-            <IconButton
-              accessibilityLabel="Back"
-              onPress={() => {
-                this.props.navigation.goBack(null);
-              }}
-              source={chevronLeftWhite}
-              testID="back"
-            />
-            <Text type="h2" style={styles.headerTitle}>
-              {text.donateTitle}
-            </Text>
-            <View style={styles.phantomIcon} />
-          </ContentPadding>
-        </Header>
-        <ScrollView>
-          <KeyboardAvoidingView
-            behavior="position"
-            enabled
-            style={styles.scrollContainer}
-          >
-            <ImageHeader image={donateHeader} title={text.donateHeader} />
-            <ContentPadding>
-              <Text
-                type="h2"
-                color="lightNavyBlueColor"
-                style={styles.introHeadingSpacing}
-              >
-                {text.donateIntroductionHeading}
-              </Text>
-              <Text>{text.donateIntroduction}</Text>
-              <Text
-                type="h3"
-                color="lightNavyBlueColor"
-                style={styles.amountSelectionlabelSpacing}
-              >
-                {text.donateAmountSelectionLabel}
-              </Text>
-              <SegmentedControl
-                onValueChange={this.onAmountSelected}
-                selectedIndex={selectableAmounts.indexOf(selectedAmount)}
-                values={selectableAmounts}
-              />
-              <Text
-                type="h4"
-                color="lightNavyBlueColor"
-                style={styles.otherAmountlabelSpacing}
-              >
-                {text.donateOtherAmountLabel}
-              </Text>
-              <NumberTextField
-                placeholder={(0).toFixed(2)}
-                onFocus={this.onOtherAmountFocus}
-                onChangeText={this.onOtherAmountChange}
-                value={otherAmount}
-              />
-              <Text type="small" style={styles.minimumAmountSpacing}>
-                {text.donateMinimumAmount}
-              </Text>
-              <View style={styles.ctaSpacing}>
-                <Button
-                  disabled={!selectedAmount && !otherAmount}
-                  onPress={this.onDonatePress}
-                >
-                  {text.donateButtonText}
-                </Button>
-              </View>
-            </ContentPadding>
-          </KeyboardAvoidingView>
-        </ScrollView>
+        {this.renderHeader()}
+        <KeyboardAvoidingView behavior="padding" enabled style={styles.content}>
+          {this.renderContent()}
+        </KeyboardAvoidingView>
       </View>
     );
   }
@@ -161,6 +165,9 @@ const styles = StyleSheet.create({
   phantomIcon: {
     width: 48,
     height: 48
+  },
+  content: {
+    flex: 1
   },
   scrollContainer: {
     width: "100%",

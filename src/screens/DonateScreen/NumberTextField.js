@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { PixelRatio, StyleSheet, TextInput } from "react-native";
+import { PixelRatio, Platform, StyleSheet, TextInput } from "react-native";
 import {
   lightNavyBlueColor,
   transparent,
@@ -60,7 +60,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     fontFamily: "Poppins-SemiBold",
     fontSize: 18,
-    color: lightNavyBlueColor
+    color: lightNavyBlueColor,
+    ...Platform.select({
+      android: {
+        lineHeight: 18,
+        includeFontPadding: false,
+        textAlignVertical: "bottom"
+      }
+    })
   },
   focused: {
     borderColor: eucalyptusGreenColor
