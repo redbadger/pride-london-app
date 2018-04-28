@@ -1,8 +1,14 @@
 // @flow
 import React from "react";
+import { email } from "react-native-communications";
 import { shallow } from "enzyme";
 import Component from "./component";
 import type { Sponsor } from "../../data/sponsor";
+import text from "../../constants/text";
+
+jest.mock("react-native-communications", () => ({
+  email: jest.fn(() => {})
+}));
 
 const generateSponsors = (count = 2): Sponsor[] =>
   Array.from(Array(count))
@@ -40,6 +46,10 @@ const navigation: any = {
   goBack: jest.fn()
 };
 
+beforeEach(() => {
+  email.mockClear();
+});
+
 describe("SponsorScreen Component", () => {
   const render = props =>
     shallow(
@@ -62,6 +72,19 @@ describe("SponsorScreen Component", () => {
     const backBtn = output.find({ testID: "back" });
     backBtn.simulate("press");
     expect(navigation.goBack).toHaveBeenCalledWith(null);
+  });
+
+  it("opens the configured email app on tap", () => {
+    const output = render();
+
+    output.find({ testID: "emailLauncher" }).simulate("press");
+    expect(email).toBeCalledWith(
+      ["sponsor@prideinlondon.org"],
+      null,
+      null,
+      text.sponsorContactEmailSubject,
+      null
+    );
   });
 });
 
