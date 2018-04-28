@@ -144,7 +144,7 @@ const SupportUsStack = StackNavigator(
     [SPONSOR]: { screen: SponsorScreen }
   },
   {
-    initialRouteName: DONATE,
+    initialRouteName: SUPPORT_US,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
       tabBarLabel: text.tabSupportUs
@@ -166,7 +166,7 @@ const TabNav = TabNavigator(
     tabBarPosition: "bottom",
     swipeEnabled: false,
     animationEnabled: false,
-    initialRouteName: SUPPORT_US
+    initialRouteName: HOME
   }
 );
 

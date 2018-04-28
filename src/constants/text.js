@@ -79,7 +79,7 @@ export default {
   sponsorContactEmailSubject: "Sponsorship enquiry",
   sponsorContactButtonText: "Email to partner with us",
   donateTitle: "Donate",
-  donateHeaderText: '"It\'s the first time I feel accepted in a big group."',
+  donateHeader: ["\"It's the first time I feel", 'accepted in a big group."'],
   donateIntroductionHeading: "Be part of the movement that drives diversity",
   donateIntroduction:
     "The need for Pride is as strong as ever. A huge amount of progress has been made for LGBT+ people but challenges and stigma are still rife. Whether you take part to celebrate, party or protest. Pride in London is your platform to make change. Your donations keep us marching.",

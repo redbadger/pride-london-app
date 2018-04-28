@@ -1,11 +1,10 @@
 // @flow
 import React from "react";
 import {
-  Linking,
   KeyboardAvoidingView,
+  Linking,
   ScrollView,
   StyleSheet,
-  TextInput,
   View
 } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
@@ -17,15 +16,9 @@ import ImageHeader from "../../components/ImageHeader";
 import IconButton from "../../components/IconButton";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
-import {
-  lightNavyBlueColor,
-  transparent,
-  inputFieldBorderColor,
-  inputFieldPlaceholderColor,
-  eucalyptusGreenColor,
-  whiteColor
-} from "../../constants/colors";
+import { lightNavyBlueColor, whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
+import NumberTextField from "./NumberTextField";
 import SegmentedControl from "./SegmentedControl";
 
 type Props = {|
@@ -34,8 +27,7 @@ type Props = {|
 
 type State = {|
   selectedAmount: ?string,
-  otherAmount: ?string,
-  otherAmountFocused: boolean
+  otherAmount: ?string
 |};
 
 const selectableAmounts = ["£5", "£10", "£20"];
@@ -47,29 +39,18 @@ class DonateScreen extends React.PureComponent<Props, State> {
 
   state = {
     selectedAmount: null,
-    otherAmount: null,
-    otherAmountFocused: false
+    otherAmount: null
   };
 
   onAmountSelected = (selectedAmount: string) => {
-    this.setState({
-      selectedAmount,
-      otherAmount: null
-    });
+    this.setState({ selectedAmount, otherAmount: null });
   };
 
-  onOtherAmountFocused = () => {
-    this.setState({
-      selectedAmount: null,
-      otherAmountFocused: true
-    });
+  onOtherAmountFocus = () => {
+    this.setState({ selectedAmount: null });
   };
 
-  onOtherAmountBlurred = () => {
-    this.setState({ otherAmountFocused: false });
-  };
-
-  onOtherAmountChanged = (otherAmount: string) => {
+  onOtherAmountChange = (otherAmount: string) => {
     this.setState({ otherAmount });
   };
 
@@ -81,7 +62,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { selectedAmount, otherAmount, otherAmountFocused } = this.state;
+    const { selectedAmount, otherAmount } = this.state;
 
     return (
       <View style={styles.container}>
@@ -107,7 +88,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
             enabled
             style={styles.scrollContainer}
           >
-            <ImageHeader image={donateHeader} title={text.donateHeaderText} />
+            <ImageHeader image={donateHeader} title={text.donateHeader} />
             <ContentPadding>
               <Text
                 type="h2"
@@ -136,21 +117,13 @@ class DonateScreen extends React.PureComponent<Props, State> {
               >
                 {text.donateOtherAmountLabel}
               </Text>
-              <TextInput
-                keyboardType="numeric"
-                onBlur={this.onOtherAmountBlurred}
-                onFocus={this.onOtherAmountFocused}
-                onChangeText={this.onOtherAmountChanged}
-                placeholder={otherAmountFocused ? "0.00" : null}
-                placeholderTextColor={inputFieldPlaceholderColor}
-                style={[
-                  styles.otherAmount,
-                  otherAmountFocused && styles.otherAmountFocused
-                ]}
-                underlineColorAndroid={transparent}
+              <NumberTextField
+                placeholder={(0).toFixed(2)}
+                onFocus={this.onOtherAmountFocus}
+                onChangeText={this.onOtherAmountChange}
                 value={otherAmount}
               />
-              <Text type="small" style={styles.hintSpacing}>
+              <Text type="small" style={styles.minimumAmountSpacing}>
                 {text.donateMinimumAmount}
               </Text>
               <View style={styles.ctaSpacing}>
@@ -205,20 +178,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 8
   },
-  otherAmount: {
-    borderColor: inputFieldBorderColor,
-    borderWidth: 1,
-    borderRadius: 4,
-    height: 50,
-    paddingHorizontal: 14,
-    fontFamily: "Poppins-SemiBold",
-    fontSize: 18,
-    color: lightNavyBlueColor
-  },
-  otherAmountFocused: {
-    borderColor: eucalyptusGreenColor
-  },
-  hintSpacing: {
+  minimumAmountSpacing: {
     marginTop: 10
   },
   ctaSpacing: {
