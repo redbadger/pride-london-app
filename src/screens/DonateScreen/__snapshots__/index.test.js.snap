@@ -122,8 +122,8 @@ exports[`renders correctly 1`] = `
             Make a single donation
           </Text>
           <SegmentedControl
-            onValueChange={[Function]}
-            selectedIndex={-1}
+            onSelectedIndexChange={[Function]}
+            selectedIndex={null}
             values={
               Array [
                 "£5",

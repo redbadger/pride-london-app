@@ -9,12 +9,16 @@ import {
 } from "../../constants/colors";
 
 type Props = {|
-  onValueChange: (value: string) => void,
+  onSelectedIndexChange: number => void,
   selectedIndex: ?number,
   values: string[]
 |};
 
-const SegmentedControl = ({ onValueChange, selectedIndex, values }: Props) => (
+const SegmentedControl = ({
+  onSelectedIndexChange,
+  selectedIndex,
+  values
+}: Props) => (
   <View style={styles.container}>
     {values.map((value, index) => (
       <Touchable
@@ -27,7 +31,7 @@ const SegmentedControl = ({ onValueChange, selectedIndex, values }: Props) => (
         accessibilityTraits={
           index === selectedIndex ? ["button", "selected"] : ["button"]
         }
-        onPress={() => onValueChange(value)}
+        onPress={() => onSelectedIndexChange(index)}
         style={[
           styles.button,
           index === selectedIndex && styles.buttonSelected,

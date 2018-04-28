@@ -21,7 +21,7 @@ type Props = {|
 |};
 
 type State = {|
-  selectedAmount: ?string,
+  selectedAmount: ?number,
   otherAmount: ?string
 |};
 
@@ -37,9 +37,9 @@ class DonateScreen extends React.PureComponent<Props, State> {
     otherAmount: null
   };
 
-  onAmountSelected = (selectedAmount: string) => {
+  onAmountSelected = (selectedAmount: number) => {
     this.setState({
-      selectedAmount: selectedAmount.substr(1),
+      selectedAmount,
       otherAmount: null
     });
   };
@@ -53,9 +53,13 @@ class DonateScreen extends React.PureComponent<Props, State> {
   };
 
   onDonatePress = () => {
-    const amount = this.state.selectedAmount || this.state.otherAmount || "0";
+    const amount =
+      this.state.selectedAmount != null
+        ? selectableAmounts[this.state.selectedAmount].substr(1)
+        : this.state.otherAmount;
+    const encodedAmount = encodeURIComponent(amount || "0");
     Linking.openURL(
-      `https://donate.prideinlondon.org/?amount=${encodeURIComponent(amount)}`
+      `https://donate.prideinlondon.org/?amount=${encodedAmount}`
     );
   };
 
@@ -103,8 +107,8 @@ class DonateScreen extends React.PureComponent<Props, State> {
               {text.donateAmountSelectionLabel}
             </Text>
             <SegmentedControl
-              onValueChange={this.onAmountSelected}
-              selectedIndex={selectableAmounts.indexOf(selectedAmount)}
+              onSelectedIndexChange={this.onAmountSelected}
+              selectedIndex={selectedAmount}
               values={selectableAmounts}
             />
             <Text
@@ -125,7 +129,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
             </Text>
             <View style={styles.ctaSpacing}>
               <Button
-                disabled={!selectedAmount && !otherAmount}
+                disabled={selectedAmount == null && !otherAmount}
                 onPress={this.onDonatePress}
               >
                 {text.donateButtonText}

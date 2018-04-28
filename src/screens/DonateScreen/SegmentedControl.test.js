@@ -6,7 +6,7 @@ import SegmentedControl from "./SegmentedControl";
 it("renders correctly", () => {
   const output = shallow(
     <SegmentedControl
-      onValueChange={() => {}}
+      onSelectedIndexChange={() => {}}
       selectedIndex={0}
       values={["One", "Two", "Three"]}
     />
@@ -17,7 +17,7 @@ it("renders correctly", () => {
 it("renders correctly without selection", () => {
   const output = shallow(
     <SegmentedControl
-      onValueChange={() => {}}
+      onSelectedIndexChange={() => {}}
       selectedIndex={null}
       values={["One", "Two"]}
     />
@@ -25,16 +25,16 @@ it("renders correctly without selection", () => {
   expect(output).toMatchSnapshot();
 });
 
-it("invokes onValueChange on button press", () => {
-  const onValueChange = jest.fn();
+it("invokes onSelectedIndexChange on button press", () => {
+  const onSelectedIndexChange = jest.fn();
   const output = shallow(
     <SegmentedControl
-      onValueChange={onValueChange}
+      onSelectedIndexChange={onSelectedIndexChange}
       selectedIndex={0}
       values={["One", "Two", "Three"]}
     />
   );
 
   output.find({ testID: "button-1" }).simulate("press");
-  expect(onValueChange).toHaveBeenCalledWith("Two");
+  expect(onSelectedIndexChange).toHaveBeenCalledWith(1);
 });
