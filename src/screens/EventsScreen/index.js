@@ -2,7 +2,6 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Props as ComponentProps } from "./component";
 import getAssetUrl from "../../data/get-asset-url";
 import { updateEvents } from "../../actions/events";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
@@ -13,6 +12,7 @@ import {
   selectFilteredEvents,
   selectAssetById
 } from "../../selectors/events";
+import type { Props as ComponentProps } from "./component";
 import Component from "./component";
 
 type OwnProps = {

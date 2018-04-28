@@ -32,7 +32,7 @@ export type Props = {
   getAssetUrl: LocalizedFieldRef => string
 };
 
-class EventsScreen extends PureComponent<Props> {
+class FeaturedEventsListScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null,
     tabBarVisible: false
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EventsScreen;
+export default FeaturedEventsListScreen;
