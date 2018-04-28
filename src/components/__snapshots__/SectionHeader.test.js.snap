@@ -35,6 +35,7 @@ exports[`renders correctly 1`] = `
     accessible={true}
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "rgb(45, 47, 127)",
@@ -83,6 +84,7 @@ exports[`renders correctly with badge text 1`] = `
     accessible={true}
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "rgb(45, 47, 127)",
@@ -127,6 +129,7 @@ exports[`renders correctly without shadow 1`] = `
     accessible={true}
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "rgb(45, 47, 127)",

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = `
-<Component>
+<Component
+  style={Object {}}
+>
   <Component
     style={
       Object {
@@ -16,6 +18,7 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
     <Text
       color="lightNavyBlueColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "marginLeft": 5,
@@ -34,7 +37,6 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
       Object {
         "flexDirection": "row",
         "flexWrap": "wrap",
-        "marginBottom": 20,
         "marginTop": 12,
       }
     }
@@ -120,7 +122,9 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
 `;
 
 exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] = `
-<Component>
+<Component
+  style={Object {}}
+>
   <Component
     style={
       Object {
@@ -135,6 +139,7 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
     <Text
       color="lightNavyBlueColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "marginLeft": 5,
@@ -153,7 +158,6 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
       Object {
         "flexDirection": "row",
         "flexWrap": "wrap",
-        "marginBottom": 20,
         "marginTop": 12,
       }
     }

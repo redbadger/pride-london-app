@@ -5,6 +5,7 @@ exports[`renders correctly 1`] = `
   <Text
     color="lightNavyBlueColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "marginBottom": 4,
@@ -26,6 +27,7 @@ exports[`renders correctly 1`] = `
       <Text
         color="blackColor"
         markdown={true}
+        markdownStyle={Object {}}
         onLayout={[Function]}
         type="text"
       >

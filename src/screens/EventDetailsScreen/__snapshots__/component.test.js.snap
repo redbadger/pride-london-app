@@ -7,6 +7,7 @@ exports[`EventAccessibility renders correctly 1`] = `
   <Text
     color="lightNavyBlueColor"
     markdown={false}
+    markdownStyle={Object {}}
     type="h2"
   >
     Accessibility Details
@@ -14,6 +15,7 @@ exports[`EventAccessibility renders correctly 1`] = `
   <Text
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     type="text"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
@@ -158,6 +160,7 @@ exports[`renders correctly 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "marginBottom": 8,
@@ -820,6 +823,7 @@ exports[`renders correctly with missing details 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "marginBottom": 8,

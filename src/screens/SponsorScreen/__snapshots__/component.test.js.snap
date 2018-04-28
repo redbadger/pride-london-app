@@ -34,6 +34,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "#ffffff",
@@ -67,6 +68,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "marginTop": 24,
@@ -79,11 +81,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
       <Text
         color="blackColor"
         markdown={false}
-        style={
-          Object {
-            "marginBottom": 16,
-          }
-        }
+        markdownStyle={Object {}}
         type="text"
       >
          A huge thank you to our main partners for their continued support.
@@ -92,6 +90,11 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         getAssetSize={[MockFunction]}
         getAssetUrl={[MockFunction]}
         sponsorLevel="Headline"
+        style={
+          Object {
+            "marginTop": 16,
+          }
+        }
       />
       <SponsorLogoContainer
         getAssetSize={[MockFunction]}
@@ -147,17 +150,76 @@ exports[`SponsorScreen Component renders correctly 1`] = `
             },
           ]
         }
+        style={
+          Object {
+            "marginTop": 20,
+          }
+        }
       />
       <SponsorLogoContainer
         getAssetSize={[MockFunction]}
         getAssetUrl={[MockFunction]}
         sponsorLevel="Silver"
+        style={
+          Object {
+            "marginTop": 20,
+          }
+        }
       />
       <SponsorLogoContainer
         getAssetSize={[MockFunction]}
         getAssetUrl={[MockFunction]}
         sponsorLevel="Bronze"
+        style={
+          Object {
+            "marginTop": 20,
+          }
+        }
       />
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "marginTop": 24,
+          }
+        }
+        type="h1"
+      >
+        Partner with us
+      </Text>
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "paddingBottom": 10,
+          }
+        }
+        type="text"
+      >
+        Build your brand, engage your internal network and be part of a global movement to support diversity. To find out more, please contact sponsor@prideinlondon.org.
+      </Text>
+      <Text
+        color="blackColor"
+        markdown={true}
+        markdownStyle={
+          Object {
+            "text": Object {
+              "color": "#2d2f7f",
+              "fontSize": 14,
+              "lineHeight": 20,
+            },
+          }
+        }
+        type="text"
+      >
+        * Pride in London is one of the top three biggest events in London, attracting an estimated one million visitors across the footprint. 
+* Be part of our award winning marketing and advertising campaign. 
+* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues
+      </Text>
     </ContentPadding>
   </ScrollView>
 </Component>

@@ -19,6 +19,7 @@ exports[`CategoriesPills Component renders correctly 1`] = `
   <Text
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "#2cda9d",

@@ -1,7 +1,8 @@
 // @flow
 import React from "react";
-import { Text as RnText, StyleSheet } from "react-native";
+import { Text as RnText, StyleSheet, PixelRatio } from "react-native";
 import type { TextProps } from "react-native/Libraries/Text/TextProps";
+import type { TextStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Markdown from "react-native-easy-markdown";
 import { mergeDeepRight } from "ramda";
 import { blackColor, lightNavyBlueColor } from "../constants/colors";
@@ -22,6 +23,7 @@ type Props = {
   type: TextType,
   color: ColorType,
   markdown: boolean,
+  markdownStyle: TextStyleProp,
   ...TextProps
 };
 
@@ -29,17 +31,28 @@ class Text extends React.PureComponent<Props> {
   static defaultProps = {
     type: "text",
     markdown: false,
-    color: "blackColor"
+    color: "blackColor",
+    markdownStyle: {}
   };
 
   render() {
-    const { color, type, markdown, style, ...otherProps } = this.props;
+    const {
+      color,
+      type,
+      markdown,
+      style,
+      markdownStyle,
+      ...otherProps
+    } = this.props;
     const typedType: TextType = (type: any);
     const typedColor: ColorType = (color: any);
     return markdown ? (
       <Markdown
         style={style}
-        markdownStyles={mergeDeepRight(textStyles, markdownStyles)}
+        markdownStyles={mergeDeepRight(
+          mergeDeepRight(textStyles, markdownDefaultStyles),
+          markdownStyle
+        )}
         {...otherProps}
       />
     ) : (
@@ -104,11 +117,30 @@ const textStyles = {
   }
 };
 
-const markdownStyles = {
+const markdownDefaultStyles = {
   // "u" - underline is listed in react-native-easy-markdown
   // but doesn't exist in the markdown spec so should be rendered bold
   u: {
     fontWeight: "bold"
+  },
+  list: {
+    marginBottom: 5,
+    marginHorizontal: 16
+  },
+  listItem: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    marginBottom: 5
+  },
+  listItemBullet: {
+    alignSelf: "flex-start",
+    width: 4,
+    height: 4,
+    backgroundColor: "black",
+    borderRadius: 2,
+    marginTop: 11 * PixelRatio.getFontScale(),
+    marginRight: 10
   },
   text: {
     color: blackColor

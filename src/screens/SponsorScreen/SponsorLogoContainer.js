@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, Image, Linking } from "react-native";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import SponsorLogo from "./SponsorLogo";
 import sponsorHeadline from "../../../assets/images/sponsorHeadline.png";
 import sponsorGold from "../../../assets/images/sponsorGold.png";
@@ -19,7 +20,8 @@ type Props = {
   sponsorLevel: SponsorLevel,
   sponsors: Sponsor[],
   getAssetUrl: LocalizedFieldRef => string,
-  getAssetSize: LocalizedFieldRef => { width: number, height: number }
+  getAssetSize: LocalizedFieldRef => { width: number, height: number },
+  style?: ViewStyleProp
 };
 
 const sponsorLevelIcons = {
@@ -33,9 +35,10 @@ const SponsorLogoContainer = ({
   sponsorLevel,
   getAssetUrl,
   getAssetSize,
-  sponsors
+  sponsors,
+  style
 }: Props) => (
-  <View>
+  <View style={style}>
     <View style={styles.header}>
       <Image source={sponsorLevelIcons[sponsorLevel]} />
       <Text style={styles.sponsorHeading} type="h3" color="lightNavyBlueColor">
@@ -79,6 +82,10 @@ const SponsorLogoContainer = ({
   </View>
 );
 
+SponsorLogoContainer.defaultProps = {
+  style: {}
+};
+
 const styles = StyleSheet.create({
   header: {
     alignItems: "center",
@@ -98,8 +105,7 @@ const styles = StyleSheet.create({
   logoRow: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 12,
-    marginBottom: 20
+    marginTop: 12
   },
   sponsorTile: {
     height: 100,

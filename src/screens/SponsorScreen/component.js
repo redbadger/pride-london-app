@@ -60,41 +60,60 @@ class SponsorScreen extends PureComponent<Props> {
         <ScrollView>
           <ContentPadding style={styles.scrollContainer}>
             <Text style={styles.sponsorMainHeading} type="h1">
-              {text.sponsorMainHeading}
+              {text.sponsorHeadingOurPartners}
             </Text>
-            <Text style={styles.sponsorSubHeading}>
-              {text.sponsorSubHeading}
-            </Text>
+            <Text>{text.sponsorTextOurPartners}</Text>
             <SponsorLogoContainer
               sponsorLevel="Headline"
               sponsors={groupSponsors.Headline}
               getAssetUrl={getAssetUrl}
               getAssetSize={getAssetSize}
+              style={styles.sponsorLogoContainerSpacingSmall}
             />
             <SponsorLogoContainer
               sponsorLevel="Gold"
               sponsors={groupSponsors.Gold}
               getAssetUrl={getAssetUrl}
               getAssetSize={getAssetSize}
+              style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Silver"
               sponsors={groupSponsors.Silver}
               getAssetUrl={getAssetUrl}
               getAssetSize={getAssetSize}
+              style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Bronze"
               sponsors={groupSponsors.Bronze}
               getAssetUrl={getAssetUrl}
               getAssetSize={getAssetSize}
+              style={styles.sponsorLogoContainerSpacingLarge}
             />
+            <Text style={styles.sponsorMainHeading} type="h1">
+              {text.sponsorHeadingPartnerWithUs}
+            </Text>
+            <Text style={styles.sponsorTextPartnerWithUs}>
+              {text.sponsorTextPartnerWithUs}
+            </Text>
+            <Text markdown markdownStyle={markdownStyle}>
+              {text.sponsorTextPartnerWithUsList}
+            </Text>
           </ContentPadding>
         </ScrollView>
       </View>
     );
   }
 }
+
+const markdownStyle = {
+  text: {
+    fontSize: 14,
+    lineHeight: 20,
+    color: lightNavyBlueColor
+  }
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -124,8 +143,14 @@ const styles = StyleSheet.create({
   sponsorMainHeading: {
     marginTop: 24
   },
-  sponsorSubHeading: {
-    marginBottom: 16
+  sponsorTextPartnerWithUs: {
+    paddingBottom: 10
+  },
+  sponsorLogoContainerSpacingSmall: {
+    marginTop: 16
+  },
+  sponsorLogoContainerSpacingLarge: {
+    marginTop: 20
   }
 });
 
