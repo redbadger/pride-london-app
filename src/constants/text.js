@@ -78,6 +78,15 @@ export default {
     "* Pride in London is one of the top three biggest events in London, attracting an estimated one million visitors across the footprint. \n* Be part of our award winning marketing and advertising campaign. \n* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues.",
   sponsorContactEmailSubject: "Sponsorship enquiry",
   sponsorContactButtonText: "Email to partner with us",
+  donateTitle: "Donate",
+  donateHeaderText: '"It\'s the first time I feel accepted in a big group."',
+  donateIntroductionHeading: "Be part of the movement that drives diversity",
+  donateIntroduction:
+    "The need for Pride is as strong as ever. A huge amount of progress has been made for LGBT+ people but challenges and stigma are still rife. Whether you take part to celebrate, party or protest. Pride in London is your platform to make change. Your donations keep us marching.",
+  donateAmountSelectionLabel: "Make a single donation",
+  donateOtherAmountLabel: "Other amount (£)",
+  donateMinimumAmount: "The minimum donation amount is £2.",
+  donateButtonText: "Donate",
   anyDay: "Any day",
   anyTime: "Any time",
   time: {

@@ -32,6 +32,8 @@ export const headerBgColor = "#A5A5A5";
 export const transparent = "transparent";
 
 export const textColor = "#272727";
+export const inputFieldBorderColor = "rgb(204, 204, 204)";
+export const inputFieldPlaceholderColor = "rgb(204, 204, 204)";
 
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 export const blackZeroColor = "rgba(0, 0, 0, 0)";
@@ -98,4 +100,5 @@ export const eventTileTextColor = "rgb(45, 47, 127)";
 export const supportUsButtonShadow = "rgba(0, 0, 0, 0.2)";
 
 // SPONSOR
+
 export const sponsorLogoBackgroundColor = "rgba(243, 243, 243, 0.5)";

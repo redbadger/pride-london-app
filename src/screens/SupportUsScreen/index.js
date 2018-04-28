@@ -10,6 +10,7 @@ import supportUsVolunteerBgTopRight from "../../../assets/images/supportUsVolunt
 import supportUsShopBgBottomRight from "../../../assets/images/supportUsShopBgBottomRight.png";
 import supportUsSponsorBgTopRight from "../../../assets/images/supportUsSponsorBgTopRight.png";
 import Header from "../../components/Header";
+import ImageHeader from "../../components/ImageHeader";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
 import {
@@ -22,7 +23,6 @@ import {
 import { DONATE, SPONSOR } from "../../constants/routes";
 import text from "../../constants/text";
 import SupportUsButton from "./SupportUsButton";
-import SupportUsSectionHeader from "./SupportUsSectionHeader";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>
@@ -39,7 +39,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
     </Header>
     <ScrollView>
       <View style={styles.scrollContainer}>
-        <SupportUsSectionHeader
+        <ImageHeader
           image={supportUsAsIndividual}
           title={text.supportUsAsIndividual}
         />
@@ -76,7 +76,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             style={styles.buttonSpacing}
           />
         </ContentPadding>
-        <SupportUsSectionHeader
+        <ImageHeader
           image={supportUsAsBusiness}
           title={text.supportUsAsBusiness}
         />

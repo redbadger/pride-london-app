@@ -1,17 +1,17 @@
 // @flow
 import React from "react";
 import { ImageBackground, StyleSheet } from "react-native";
-import type { ImageRef } from "../../data/image-ref";
-import ContentPadding from "../../components/ContentPadding";
-import Text from "../../components/Text";
-import { lightNavyBlueColor, whiteColor } from "../../constants/colors";
+import type { ImageRef } from "../data/image-ref";
+import ContentPadding from "./ContentPadding";
+import Text from "./Text";
+import { lightNavyBlueColor, whiteColor } from "../constants/colors";
 
 type Props = {
   image: ImageRef,
   title: string
 };
 
-const SupportUsSectionHeader = ({ image, title }: Props) => (
+const ImageHeader = ({ image, title }: Props) => (
   <ImageBackground style={styles.image} source={image} resizeMode="cover">
     <ContentPadding
       padding={{
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SupportUsSectionHeader;
+export default ImageHeader;
