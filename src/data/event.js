@@ -25,7 +25,8 @@ export type Event = {
     ticketingUrl: { [string]: string },
     venueDetails: { [string]: string[] },
     individualEventPicture: LocalizedFieldRef,
-    eventsListPicture: LocalizedFieldRef
+    eventsListPicture: LocalizedFieldRef,
+    performances: { [string]: Performance[] }
   },
   sys: {
     id: string,
@@ -33,6 +34,23 @@ export type Event = {
     contentType: {
       sys: {
         id: "event"
+      }
+    },
+    revision: number
+  }
+};
+
+export type Performance = {
+  fields: {
+    title: { [string]: string },
+    startTime: { [string]: string }
+  },
+  sys: {
+    id: string,
+    type: string,
+    contentType: {
+      sys: {
+        id: "performance"
       }
     },
     revision: number
@@ -80,5 +98,7 @@ export type EventCategoryName =
 export type EventCategoryMap = {
   [string]: { [EventCategoryName]: EventCategory }
 };
+
+export type PerformancePeriods = Performance[][];
 
 export type SavedEvents = Set<string>;

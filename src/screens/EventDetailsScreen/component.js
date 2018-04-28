@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, Linking, View, StyleSheet } from "react-native";
+import { Image, Linking, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
@@ -16,6 +16,8 @@ import IconButton from "../../components/IconButton";
 import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "./SectionDivider";
+import PerformanceList from "../../components/PerformanceList";
+import { groupPerformancesByPeriod } from "../../selectors/events";
 import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event, EventCategoryName } from "../../data/event";
@@ -124,11 +126,26 @@ class EventDetailsScreen extends PureComponent<Props> {
                 lon={event.fields.location[locale].lon}
                 locationName={event.fields.locationName[locale]}
               />
-              {event.fields.accessibilityDetails && <SectionDivider />}
+            </LayoutColumn>
+          </ContentPadding>
+          {event.fields.performances &&
+            event.fields.performances[locale] && (
+              <PerformanceList
+                performances={groupPerformancesByPeriod(
+                  event.fields.performances[locale]
+                )}
+                locale={locale}
+              />
+            )}
+          <ContentPadding styles={styles.content}>
+            <LayoutColumn spacing={20}>
               {event.fields.accessibilityDetails && (
                 <EventAccessibility event={event} />
               )}
-              {(event.fields.email || event.fields.phone) && <SectionDivider />}
+              {event.fields.accessibilityDetails &&
+                (event.fields.email || event.fields.phone) && (
+                  <SectionDivider />
+                )}
               {(event.fields.email || event.fields.phone) && (
                 <EventContact
                   email={event.fields.email && event.fields.email[locale]}
