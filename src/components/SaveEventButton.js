@@ -37,23 +37,14 @@ export default class SaveEventButton extends React.Component<Props, State> {
   };
 
   componentDidUpdate(prevProps: Props) {
-    if (this.state.progress) {
+    if (this.state.progress && this.props.active !== prevProps.active) {
       const value = this.props.active ? 1 : 0;
-      if (this.props.active === true && prevProps.active === false) {
-        Animated.timing(this.state.progress, {
-          toValue: value,
-          duration: 1920,
-          easing: Easing.linear,
-          useNativeDriver: true
-        }).start();
-      } else if (this.props.active !== prevProps.active) {
-        Animated.timing(this.state.progress, {
-          toValue: value,
-          duration: 0,
-          easing: Easing.linear,
-          useNativeDriver: true
-        }).start();
-      }
+      Animated.timing(this.state.progress, {
+        toValue: value,
+        duration: value * 1920,
+        easing: Easing.linear,
+        useNativeDriver: true
+      }).start();
     }
   }
 
