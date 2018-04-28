@@ -183,6 +183,11 @@ jobs:
       - <<: *save-gems-cache
       - <<: *get-cache-osx
       - run:
+          name: Set npm version
+          command: |
+              npm i -g n
+              sudo n 9.3
+      - run:
           name: Install dependencies
           command: yarn install
       - <<: *save-cache-osx
@@ -224,6 +229,11 @@ jobs:
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
       - <<: *get-cache-osx
+      - run:
+          name: Set npm version
+          command: |
+              npm i -g n
+              sudo n 9.3
       - run:
           name: Install dependencies
           command: yarn install
