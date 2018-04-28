@@ -14,21 +14,17 @@ type Props = {
 };
 
 const Performance = ({ title, startTime }: Props) => (
-  <View style={styles.container}>
-    <View style={styles.content}>
-      <Text style={styles.startTime}>{formatDate(startTime, timeFormat)}</Text>
-      <Text style={styles.title}>{title}</Text>
-    </View>
+  <View style={styles.content}>
+    <Text style={styles.startTime}>{formatDate(startTime, timeFormat)}</Text>
+    <Text numberOfLines={3} style={styles.title}>
+      {title}
+    </Text>
   </View>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   content: {
     flexDirection: "row",
-    alignItems: "flex-start",
     padding: 12,
     borderBottomWidth: 1,
     borderColor: lightishGreyColor
@@ -37,7 +33,7 @@ const styles = StyleSheet.create({
     width: 90,
     fontWeight: "bold"
   },
-  title: {}
+  title: { flex: 1 }
 });
 
 export default Performance;
