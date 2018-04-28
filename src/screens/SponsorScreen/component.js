@@ -31,9 +31,12 @@ class SponsorScreen extends PureComponent<Props> {
   render() {
     const { navigation, sponsors, getAssetUrl, getAssetSize } = this.props;
 
+    const sortByName = R.sortBy(sponsor =>
+      sponsor.fields.sponsorName[locale].toLowerCase()
+    );
     const groupSponsors = R.groupBy(
       sponsor => sponsor.fields.sponsorLevel[locale],
-      sponsors
+      sortByName(sponsors)
     );
 
     return (

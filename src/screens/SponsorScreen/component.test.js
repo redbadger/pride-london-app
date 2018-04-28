@@ -5,32 +5,34 @@ import Component from "./component";
 import type { Sponsor } from "../../data/sponsor";
 
 const generateSponsors = (count = 2): Sponsor[] =>
-  Array.from(Array(count)).map(
-    (_, i) =>
-      ({
-        sys: {
-          id: String(i + 1)
-        },
-        fields: {
-          sponsorName: {
-            "en-GB": "some other"
+  Array.from(Array(count))
+    .map(
+      (_, i) =>
+        ({
+          sys: {
+            id: String(i + 1)
           },
-          sponsorLogo: {
-            "en-GB": {
-              sys: {
-                id: `asset${i + 1}`
+          fields: {
+            sponsorName: {
+              "en-GB": `Sponsor ${i + 1}`
+            },
+            sponsorLogo: {
+              "en-GB": {
+                sys: {
+                  id: `asset${i + 1}`
+                }
               }
+            },
+            sponsorUrl: {
+              "en-GB": "http://example.com"
+            },
+            sponsorLevel: {
+              "en-GB": "Gold"
             }
-          },
-          sponsorUrl: {
-            "en-GB": "http://example.com"
-          },
-          sponsorLevel: {
-            "en-GB": "Gold"
           }
-        }
-      }: any)
-  );
+        }: any)
+    )
+    .reverse();
 
 const getAssetUrl = jest.fn().mockReturnValue("http://example.com/image.png");
 const getAssetSize = jest.fn();

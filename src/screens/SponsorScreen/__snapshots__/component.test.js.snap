@@ -112,7 +112,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
                   },
                 },
                 "sponsorName": Object {
-                  "en-GB": "some other",
+                  "en-GB": "Sponsor 1",
                 },
                 "sponsorUrl": Object {
                   "en-GB": "http://example.com",
@@ -135,7 +135,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
                   },
                 },
                 "sponsorName": Object {
-                  "en-GB": "some other",
+                  "en-GB": "Sponsor 2",
                 },
                 "sponsorUrl": Object {
                   "en-GB": "http://example.com",
