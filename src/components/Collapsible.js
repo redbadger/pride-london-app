@@ -92,7 +92,9 @@ class Collapsible extends PureComponent<Props, State> {
             scrollEnabled={false}
             style={textContainerHeightStyle}
           >
-            <View onLayout={this.measureContentHeight}>{children}</View>
+            <View testID="children" onLayout={this.measureContentHeight}>
+              {children}
+            </View>
           </Animated.ScrollView>
           {collapsible && (
             <Animated.View style={[styles.gradient, gradientOpacityStyle]}>
@@ -108,7 +110,9 @@ class Collapsible extends PureComponent<Props, State> {
             onPress={this.toggleCollapsed}
             style={styles.toggleContainer}
           >
-            <TextLink>{collapsed ? showMoreLabel : showLessLabel}</TextLink>
+            <TextLink testID="showmore">
+              {collapsed ? showMoreLabel : showLessLabel}
+            </TextLink>
           </Touchable>
         )}
       </View>
