@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
+<Component
   style={
     Object {
       "flex": 1,
     }
   }
 >
-  <View
+  <Component
     style={
       Object {
         "alignItems": "flex-start",
@@ -37,6 +37,6 @@ exports[`renders correctly 1`] = `
     >
       DJ Bag-o-Donuts
     </Text>
-  </View>
-</View>
+  </Component>
+</Component>
 `;
