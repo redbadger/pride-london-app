@@ -11,7 +11,7 @@ import Text from "./Text";
 import { getTimePeriod } from "../selectors/events";
 import type { Performance, PerformancePeriods } from "../data/event";
 import {
-  eventCardTextColor,
+  sectionHeaderTextColor,
   sectionHeaderShadow,
   sectionHeaderBgColor
 } from "../constants/colors";
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   sectionHeaderText: {
-    color: eventCardTextColor
+    color: sectionHeaderTextColor
   },
   section: {
     marginBottom: 20
