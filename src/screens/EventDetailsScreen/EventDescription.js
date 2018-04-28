@@ -9,7 +9,7 @@ import type { Event } from "../../data/event";
 import locale from "../../data/locale";
 import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
-import TextLink from "./TextLink";
+import TextLink from "../../components/TextLink";
 
 type Props = { event: Event };
 

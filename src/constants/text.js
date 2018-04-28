@@ -52,6 +52,8 @@ export default {
   eventDetailsReadLess: "Read less",
   eventDetailsContactEmailSubject: "Pride In London event enquiry",
   eventDetailsContactEmailBody: "Dear event organiser,",
+  collapsibleShowMore: "Show more",
+  collapsibleShowLess: "Show less",
   supportUsTitle: "Support us",
   supportUsAsIndividual: "As an individual",
   supportUsAsBusiness: "As a business",
