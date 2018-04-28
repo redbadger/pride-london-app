@@ -32,9 +32,7 @@ export default class SaveEventButton extends React.Component<Props, State> {
     return null;
   }
 
-  state = {
-    progress: null
-  };
+  state = {};
 
   componentDidUpdate(prevProps: Props) {
     if (this.state.progress && this.props.active !== prevProps.active) {
