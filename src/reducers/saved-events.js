@@ -1,13 +1,13 @@
 // @flow
 import type { Reducer } from "redux";
-import type { SaveEventAction } from "../actions/saved-events";
+import type { SavedEventAction } from "../actions/saved-events";
 import type { SavedEvents as State } from "../data/event";
 
 const defaultState = new Set();
 
-const savedEvents: Reducer<State, SaveEventAction> = (
+const savedEvents: Reducer<State, SavedEventAction> = (
   state: State = defaultState,
-  action: SaveEventAction
+  action: SavedEventAction
 ) => {
   switch (action.type) {
     case "ADD_SAVED_EVENT":
