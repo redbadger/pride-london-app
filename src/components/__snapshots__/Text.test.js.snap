@@ -95,6 +95,9 @@ exports[`renders markdown component based on flag 1`] = `
       "u": Object {
         "fontWeight": "bold",
       },
+      "whiteColor": Object {
+        "color": "#ffffff",
+      },
       "xSmall": Object {
         "fontFamily": "Poppins-SemiBold",
         "fontSize": 12,

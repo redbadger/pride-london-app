@@ -38,7 +38,8 @@ const buildState = (
   eventFilters: {
     selectedFilters,
     stagedFilters
-  }
+  },
+  savedEvents: new Set()
 });
 
 export type BuildEventArguments = {

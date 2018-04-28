@@ -28,7 +28,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     <Component
       style={
         Object {
-          "backgroundColor": "rgb(45, 47, 127)",
+          "backgroundColor": "#2d2f7f",
           "height": 23,
           "justifyContent": "center",
           "paddingHorizontal": 5,
@@ -37,14 +37,9 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       }
     >
       <Text
-        color="blackColor"
+        color="whiteColor"
         markdown={false}
         markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
         type="price"
       >
         From £12
@@ -55,59 +50,83 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     style={
       Object {
         "flex": 1,
-        "padding": 8,
+        "paddingLeft": 8,
       }
     }
   >
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      style={
-        Object {
-          "color": "rgb(45, 47, 127)",
-        }
-      }
-      type="small"
-    >
-      12:12 - 13:12
-    </Text>
     <Component
       style={
         Object {
-          "flexDirection": "row",
+          "flex": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
         }
       }
     >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
+      <Component
         style={
           Object {
-            "color": "rgb(45, 47, 127)",
-            "paddingTop": 4,
+            "flex": 0,
+            "flexDirection": "row",
           }
         }
-        type="h3"
       >
-        name
+        <Component
+          style={
+            Object {
+              "flex": 0,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "flexShrink": 1,
+            }
+          }
+        >
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "paddingTop": 12,
+              }
+            }
+            type="small"
+          >
+            12:12 - 13:12
+          </Text>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            numberOfLines={2}
+            style={
+              Object {
+                "paddingTop": 4,
+              }
+            }
+            type="h3"
+          >
+            name
+          </Text>
+        </Component>
+        <Component>
+          <SaveEventButton
+            active={false}
+            onDark={false}
+            onPress={[Function]}
+          />
+        </Component>
+      </Component>
+      <Text
+        color="lightNavyBlueColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="small"
+      >
+        location
       </Text>
     </Component>
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      style={
-        Object {
-          "color": "rgb(45, 47, 127)",
-          "paddingTop": 4,
-        }
-      }
-      type="small"
-    >
-      location
-    </Text>
   </Component>
 </Component>
 `;
@@ -140,7 +159,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     <Component
       style={
         Object {
-          "backgroundColor": "rgb(45, 47, 127)",
+          "backgroundColor": "#2d2f7f",
           "height": 23,
           "justifyContent": "center",
           "paddingHorizontal": 5,
@@ -149,14 +168,9 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       }
     >
       <Text
-        color="blackColor"
+        color="whiteColor"
         markdown={false}
         markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
         type="price"
       >
         £12
@@ -167,59 +181,83 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     style={
       Object {
         "flex": 1,
-        "padding": 8,
+        "paddingLeft": 8,
       }
     }
   >
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      style={
-        Object {
-          "color": "rgb(45, 47, 127)",
-        }
-      }
-      type="small"
-    >
-      12:12 - 13:12
-    </Text>
     <Component
       style={
         Object {
-          "flexDirection": "row",
+          "flex": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
         }
       }
     >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
+      <Component
         style={
           Object {
-            "color": "rgb(45, 47, 127)",
-            "paddingTop": 4,
+            "flex": 0,
+            "flexDirection": "row",
           }
         }
-        type="h3"
       >
-        name
+        <Component
+          style={
+            Object {
+              "flex": 0,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "flexShrink": 1,
+            }
+          }
+        >
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "paddingTop": 12,
+              }
+            }
+            type="small"
+          >
+            12:12 - 13:12
+          </Text>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            numberOfLines={2}
+            style={
+              Object {
+                "paddingTop": 4,
+              }
+            }
+            type="h3"
+          >
+            name
+          </Text>
+        </Component>
+        <Component>
+          <SaveEventButton
+            active={false}
+            onDark={false}
+            onPress={[Function]}
+          />
+        </Component>
+      </Component>
+      <Text
+        color="lightNavyBlueColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="small"
+      >
+        location
       </Text>
     </Component>
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      style={
-        Object {
-          "color": "rgb(45, 47, 127)",
-          "paddingTop": 4,
-        }
-      }
-      type="small"
-    >
-      location
-    </Text>
   </Component>
 </Component>
 `;
@@ -252,7 +290,7 @@ exports[`renders correctly when isFree is true 1`] = `
     <Component
       style={
         Object {
-          "backgroundColor": "rgb(45, 47, 127)",
+          "backgroundColor": "#2d2f7f",
           "height": 23,
           "justifyContent": "center",
           "paddingHorizontal": 5,
@@ -261,14 +299,9 @@ exports[`renders correctly when isFree is true 1`] = `
       }
     >
       <Text
-        color="blackColor"
+        color="whiteColor"
         markdown={false}
         markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
         type="price"
       >
         Free
@@ -279,59 +312,83 @@ exports[`renders correctly when isFree is true 1`] = `
     style={
       Object {
         "flex": 1,
-        "padding": 8,
+        "paddingLeft": 8,
       }
     }
   >
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      style={
-        Object {
-          "color": "rgb(45, 47, 127)",
-        }
-      }
-      type="small"
-    >
-      12:12 - 13:12
-    </Text>
     <Component
       style={
         Object {
-          "flexDirection": "row",
+          "flex": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
         }
       }
     >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
+      <Component
         style={
           Object {
-            "color": "rgb(45, 47, 127)",
-            "paddingTop": 4,
+            "flex": 0,
+            "flexDirection": "row",
           }
         }
-        type="h3"
       >
-        name
+        <Component
+          style={
+            Object {
+              "flex": 0,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "flexShrink": 1,
+            }
+          }
+        >
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "paddingTop": 12,
+              }
+            }
+            type="small"
+          >
+            12:12 - 13:12
+          </Text>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            numberOfLines={2}
+            style={
+              Object {
+                "paddingTop": 4,
+              }
+            }
+            type="h3"
+          >
+            name
+          </Text>
+        </Component>
+        <Component>
+          <SaveEventButton
+            active={false}
+            onDark={false}
+            onPress={[Function]}
+          />
+        </Component>
+      </Component>
+      <Text
+        color="lightNavyBlueColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="small"
+      >
+        location
       </Text>
     </Component>
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      style={
-        Object {
-          "color": "rgb(45, 47, 127)",
-          "paddingTop": 4,
-        }
-      }
-      type="small"
-    >
-      location
-    </Text>
   </Component>
 </Component>
 `;

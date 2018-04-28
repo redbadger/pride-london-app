@@ -51,11 +51,14 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
     </ContentPadding>
   </Header>
   <EventList
+    addSavedEvent={[Function]}
     events={Array []}
     getAssetUrl={[Function]}
     locale="en-GB"
     onPress={[Function]}
     refreshing={false}
+    removeSavedEvent={[Function]}
+    savedEvents={Set {}}
   />
 </Component>
 `;

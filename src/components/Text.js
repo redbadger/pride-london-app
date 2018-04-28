@@ -5,7 +5,11 @@ import type { TextProps } from "react-native/Libraries/Text/TextProps";
 import type { TextStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Markdown from "react-native-easy-markdown";
 import { mergeDeepRight } from "ramda";
-import { blackColor, lightNavyBlueColor } from "../constants/colors";
+import {
+  blackColor,
+  lightNavyBlueColor,
+  whiteColor
+} from "../constants/colors";
 
 export type TextType =
   | "h1"
@@ -17,7 +21,7 @@ export type TextType =
   | "xSmall"
   | "price";
 
-export type ColorType = "lightNavyBlueColor" | "blackColor";
+export type ColorType = "lightNavyBlueColor" | "blackColor" | "whiteColor";
 
 type Props = {
   type: TextType,
@@ -114,6 +118,9 @@ const textStyles = {
   },
   lightNavyBlueColor: {
     color: lightNavyBlueColor
+  },
+  whiteColor: {
+    color: whiteColor
   }
 };
 

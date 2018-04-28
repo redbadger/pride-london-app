@@ -6,7 +6,7 @@ import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
-import FavouriteButton from "./FavouriteButton";
+import SaveEventButton from "../../components/SaveEventButton";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -23,21 +23,27 @@ import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
-type Props = {
-  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
-  event: Event,
-  getAssetUrl: LocalizedFieldRef => string
-};
+type EventHeaderProps = {|
+  isSaved: boolean,
+  toggleSaved: boolean => void,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>
+|};
 
-export const EventHeader = ({ onBack }: { onBack: Function }) => (
+export const EventHeader = ({
+  isSaved,
+  navigation,
+  toggleSaved
+}: EventHeaderProps) => (
   <Header backgroundColor={darkBlueGreyTwoColor}>
     <ContentPadding style={styles.headerContent}>
       <IconButton
         accessibilityLabel="Back"
-        onPress={onBack}
+        onPress={() => {
+          navigation.goBack(null);
+        }}
         source={chevronLeftWhite}
       />
-      <FavouriteButton />
+      <SaveEventButton active={isSaved} onPress={toggleSaved} />
     </ContentPadding>
   </Header>
 );
@@ -73,8 +79,18 @@ export const EventTickets = ({ event }: { event: Event }) => (
   </ContentPadding>
 );
 
+type Props = {
+  event: Event,
+  getAssetUrl: LocalizedFieldRef => string,
+  isSaved: boolean,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
+  toggleSaved: boolean => void
+};
+
 class EventDetailsScreen extends PureComponent<Props> {
-  static defaultProps = {};
+  static defaultProps = {
+    isSaved: false
+  };
 
   static navigationOptions = {
     tabBarVisible: false
@@ -85,9 +101,9 @@ class EventDetailsScreen extends PureComponent<Props> {
     return (
       <View style={styles.container}>
         <EventHeader
-          onBack={() => {
-            this.props.navigation.goBack(null);
-          }}
+          isSaved={this.props.isSaved}
+          toggleSaved={this.props.toggleSaved}
+          navigation={this.props.navigation}
         />
         <ShadowedScrollView topShadow={false}>
           <Image

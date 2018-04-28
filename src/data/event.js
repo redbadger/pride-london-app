@@ -80,3 +80,5 @@ export type EventCategoryName =
 export type EventCategoryMap = {
   [string]: { [EventCategoryName]: EventCategory }
 };
+
+export type SavedEvents = Set<string>;
