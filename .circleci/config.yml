@@ -1,19 +1,63 @@
-get-cache: &get-cache
+yarn-key: &yarn-key
+  v1-dependencies-{{ checksum "yarn.lock" }}
+yarn-osx-key: &yarn-osx-key
+  v1-dependencies-{{ checksum "/Users/distiller/project/yarn.lock" }}
+gradle-key: &gradle-key
+  v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+gems-key: &gems-key
+  v1-gems-{{ checksum "Gemfile.lock" }}
+brew-key: &brew-key
+  v1-brew-{{ checksum "BrewFile" }}
+ruby-dependencies: &ruby-dependencies
+  run:
+    name: Download Ruby Dependencies
+    command: bundle install --path vendor/bundle
+android-dependencies: &android-dependencies
+  run:
+    name: Download Android Dependencies
+    command: ./gradlew androidDependencies
+get-yarn-cache: &get-yarn-cache
   restore_cache:
-    key: dependencies-{{ checksum "package.json" }}
-save-cache: &save-cache
+    key: *yarn-key
+save-yarn-cache: &save-yarn-cache
   save_cache:
     paths:
       - node_modules
-    key: dependencies-{{ checksum "package.json" }}
-get-cache-osx: &get-cache-osx
+    key: *yarn-key
+# Mac machine builds have different paths and arch
+get-yarn-cache-osx: &get-yarn-cache-osx
   restore_cache:
-    key: osx-dependencies-{{ checksum "../package.json" }}
-save-cache-osx: &save-cache-osx
+    key: *yarn-osx-key
+save-yarn-cache-osx: &save-yarn-cache-osx
   save_cache:
     paths:
       - /Users/distiller/project/node_modules
-    key: osx-dependencies-{{ checksum "../package.json" }}
+    key: *yarn-osx-key
+restore-gradle-cache: &restore-gradle-cache
+  restore_cache:
+    key: *gradle-key
+save-gradle-cache: &save-gradle-cache
+  save_cache:
+    key: *gradle-key
+    paths:
+      - ~/.gradle
+      - ~/.m2
+restore-gems-cache: &restore-gems-cache
+  restore_cache:
+    key: *gems-key
+save-gems-cache: &save-gems-cache
+  save_cache:
+    key: *gems-key
+    paths:
+      - vendor/bundle
+restore-brew-cache: &restore-brew-cache
+  restore_cache:
+    key: *brew-key
+save-brew-cache: &save-brew-cache
+  save_cache:
+    key: *brew-key
+    paths:
+      - /usr/local/Homebrew
 android-secrets: &android-secrets
   run:
     command: |
@@ -30,45 +74,6 @@ fabric-android-secrets: &fabric-android-secrets
   run:
     command: |
       echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
-ruby-dependencies: &ruby-dependencies
-  run:
-    name: Download Ruby Dependencies
-    command: bundle install --path vendor/bundle
-android-dependencies: &android-dependencies
-  run:
-    name: Download Android Dependencies
-    command: ./gradlew androidDependencies
-gradle-key: &gradle-key
-  jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
-gems-key: &gems-key
-  gems-{{ checksum "Gemfile.lock" }}
-brew-key: &brew-key
-  brew-{{ checksum "BrewFile" }}
-restore-gradle-cache: &restore-gradle-cache
-  restore_cache:
-    key: *gradle-key
-restore-gems-cache: &restore-gems-cache
-  restore_cache:
-    key: *gems-key
-restore-brew-cache: &restore-brew-cache
-  restore_cache:
-    key: *brew-key
-save-gradle-cache: &save-gradle-cache
-  save_cache:
-    key: *gradle-key
-    paths:
-      - ~/.gradle
-      - ~/.m2
-save-gems-cache: &save-gems-cache
-  save_cache:
-    key: *gems-key
-    paths:
-      - vendor/bundle
-save-brew-cache: &save-brew-cache
-  save_cache:
-    key: *brew-key
-    paths:
-      - /usr/local/Homebrew
 
 version: 2
 jobs:
@@ -79,7 +84,7 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
-      - <<: *get-cache
+      - <<: *get-yarn-cache
       - run:
           name: Test reporter status
           command: |
@@ -89,7 +94,7 @@ jobs:
       - run:
           name: Install dependencies
           command: yarn install
-      - <<: *save-cache
+      - <<: *save-yarn-cache
       - run:
           name: Lint source
           command: yarn lint
@@ -231,17 +236,21 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - <<: *get-cache-osx
+      - <<: *get-yarn-cache-osx
       - run:
           name: Set npm version
           command: |
-              npm i -g n
+              yarn global add n
               sudo n 9.3
       - run:
           name: Install dependencies
           command: yarn install
           working_directory: /Users/distiller/project
-      - <<: *save-cache-osx
+      - <<: *save-yarn-cache-osx
+      - run:
+          name: Generate .env
+          command: node ./scripts/generate-dotenv.js
+          working_directory: /Users/distiller/project
       - run:
           name: Set Fabric secret
           command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
@@ -277,16 +286,17 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - <<: *get-cache-osx
+      - <<: *get-yarn-cache-osx
       - run:
           name: Set npm version
           command: |
-              npm i -g n
+              yarn global add n
               sudo n 9.3
       - run:
           name: Install dependencies
           command: yarn install
-      - <<: *save-cache-osx
+          working_directory: /Users/distiller/project
+      - <<: *save-yarn-cache-osx
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
@@ -324,16 +334,17 @@ jobs:
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - <<: *get-cache-osx
+      - <<: *get-yarn-cache-osx
       - run:
           name: Set npm version
           command: |
-              npm i -g n
+              yarn global add n
               sudo n 9.3
       - run:
           name: Install dependencies
           command: yarn install
-      - <<: *save-cache-osx
+          working_directory: /Users/distiller/project
+      - <<: *save-yarn-cache-osx
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
@@ -374,19 +385,16 @@ jobs:
       - run:
           name: Set npm version and install global npm dependencies
           command: |
-              npm i -g n
+              yarn global add n
               sudo n 9.3
-              npm i -g detox-cli
-              npm i -g react-native-cli
-      - restore_cache:
-          key: osx-dependencies-{{ checksum "package.json" }}
+              yarn global add detox-cli
+              yarn global add react-native-cli
+      - <<: *get-yarn-cache-osx
       - run:
           name: Install dependencies
-          command: npm install
-      - save_cache:
-          paths:
-            - /Users/distiller/project/node_modules
-          key: osx-dependencies-{{ checksum "package.json" }}
+          command: yarn install
+          working_directory: /Users/distiller/project
+      - <<: *save-yarn-cache-osx
       - run:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
