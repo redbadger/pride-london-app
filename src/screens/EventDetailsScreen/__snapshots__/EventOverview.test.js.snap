@@ -1,298 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
-  style={
-    Object {
-      "paddingBottom": 10,
-      "paddingTop": 15,
-    }
-  }
->
-  <Text
-    allowFontScaling={true}
-    markdown={false}
-    onLayout={[Function]}
-    style={Object {}}
-    type="h1"
-  >
-    Pride in the Park
-  </Text>
-  <View
-    style={
-      Object {
-        "flexDirection": "row",
-        "flexWrap": "wrap",
-        "marginBottom": 20,
-        "marginTop": 16,
-      }
-    }
-  >
-    <CategoryPill
-      key="Community"
-      name="Community"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Social and Networking"
-      name="Social and Networking"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Sports and Activities"
-      name="Sports and Activities"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-    <CategoryPill
-      key="Music"
-      name="Music"
-      style={
-        Object {
-          "marginBottom": 8,
-          "marginRight": 8,
-        }
-      }
-    />
-  </View>
+<IconList>
   <IconItem
-    icon={
-      <Image
-        source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    source={1}
   >
     <Text
-      allowFontScaling={true}
+      color="lightNavyBlueColor"
       markdown={false}
-      onLayout={[Function]}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      markdownStyle={Object {}}
       type="h4"
     >
       Sun, 09 Jul 2017 - Sun, 15 Jul 2018
     </Text>
     <Text
-      allowFontScaling={true}
+      color="blackColor"
       markdown={false}
-      onLayout={[Function]}
-      style={
-        Object {
-          "color": "#111111",
-        }
-      }
+      markdownStyle={Object {}}
       type="small"
     >
       11:00AM - 6:00PM
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    onPress={[Function]}
+    source={1}
   >
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      delayPressIn={50}
-      onPress={[Function]}
+    <TextLink>
+      Vauxhall Pleasure Gardens
+    </TextLink>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
     >
-      <View
-        style={
-          Object {
-            "alignSelf": "flex-start",
-            "borderBottomColor": "#2cda9d",
-            "borderBottomWidth": 1,
-            "marginBottom": 2,
-          }
-        }
-      >
-        <Text
-          allowFontScaling={true}
-          markdown={false}
-          onLayout={[Function]}
-          style={
-            Object {
-              "color": "#2d2f7f",
-            }
-          }
-          type="h4"
-        >
-          Vauxhall Pleasure Gardens
-        </Text>
-      </View>
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
-        type="small"
-      >
-        Vauxhall Pleasure Gardens
-      </Text>
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
-        type="small"
-      >
-        Vauxhall Pleasure Gardens
-      </Text>
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
-        type="small"
-      >
-        London
-      </Text>
-      <Text
-        allowFontScaling={true}
-        markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
-        type="small"
-      >
-        EC1M 3HA
-      </Text>
-    </Touchable>
+      Vauxhall Pleasure Gardens
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      Vauxhall Pleasure Gardens
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      London
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      EC1M 3HA
+    </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    source={1}
   >
     <Text
-      allowFontScaling={true}
+      color="lightNavyBlueColor"
       markdown={false}
-      onLayout={[Function]}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      markdownStyle={Object {}}
       type="h4"
     >
       £19.95 - £30
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-      />
-    }
-    style={
-      Object {
-        "marginBottom": 20,
-      }
-    }
+    source={1}
   >
     <Text
-      allowFontScaling={true}
+      color="lightNavyBlueColor"
       markdown={false}
-      onLayout={[Function]}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      markdownStyle={Object {}}
       type="h4"
     >
       Gender neutral toilets
     </Text>
   </IconItem>
   <IconItem
-    icon={
-      <Image
-        source={1}
-        style={
-          Object {
-            "marginTop": 2,
-          }
-        }
-      />
-    }
-    style={Object {}}
+    source={1}
   >
     <Text
-      allowFontScaling={true}
+      color="lightNavyBlueColor"
       markdown={false}
-      onLayout={[Function]}
-      style={
-        Object {
-          "color": "#2d2f7f",
-        }
-      }
+      markdownStyle={Object {}}
       type="h4"
     >
       Accessibility
     </Text>
     <Text
-      allowFontScaling={true}
+      color="blackColor"
       markdown={false}
-      onLayout={[Function]}
-      style={
-        Object {
-          "color": "#111111",
-        }
-      }
+      markdownStyle={Object {}}
       type="small"
     >
       Accessible Toilets, Hearing loop installed
     </Text>
   </IconItem>
-</View>
+</IconList>
 `;

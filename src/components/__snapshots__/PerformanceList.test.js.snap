@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component>
+  <ContentPadding
+    padding={Object {}}
+    style={Object {}}
+  >
+    <Text
+      accessibilityTraits={
+        Array [
+          "header",
+        ]
+      }
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "marginBottom": 8,
+        }
+      }
+      type="h2"
+    >
+      Schedule
+    </Text>
+  </ContentPadding>
+  <Component>
+    <Component
+      key="Afternoon"
+    >
+      <ContentPadding
+        padding={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#f3f3f3",
+            "borderWidth": 0,
+            "elevation": 3,
+            "height": 40,
+            "justifyContent": "center",
+            "paddingTop": 8,
+            "shadowColor": "rgba(0, 0, 0, 0.14)",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 1,
+            "shadowRadius": 3,
+          }
+        }
+      >
+        <Text
+          color="blackColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          style={
+            Object {
+              "color": "rgb(45, 47, 127)",
+            }
+          }
+          type="h3"
+        >
+          Afternoon
+        </Text>
+      </ContentPadding>
+      <ContentPadding
+        padding={Object {}}
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <Collapsible
+          maxHeight={140}
+          showLessLabel="Show less"
+          showMoreLabel="Show more"
+        >
+          <Performance
+            key="2018-08-01T13:00:00"
+            startTime="2018-08-01T13:00:00"
+            title="Jackie Potato"
+          />
+        </Collapsible>
+      </ContentPadding>
+    </Component>
+    <Component
+      key="Evening"
+    >
+      <ContentPadding
+        padding={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#f3f3f3",
+            "borderWidth": 0,
+            "elevation": 3,
+            "height": 40,
+            "justifyContent": "center",
+            "paddingTop": 8,
+            "shadowColor": "rgba(0, 0, 0, 0.14)",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 1,
+            "shadowRadius": 3,
+          }
+        }
+      >
+        <Text
+          color="blackColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          style={
+            Object {
+              "color": "rgb(45, 47, 127)",
+            }
+          }
+          type="h3"
+        >
+          Evening
+        </Text>
+      </ContentPadding>
+      <ContentPadding
+        padding={Object {}}
+        style={
+          Object {
+            "marginBottom": 20,
+          }
+        }
+      >
+        <Collapsible
+          maxHeight={140}
+          showLessLabel="Show less"
+          showMoreLabel="Show more"
+        >
+          <Performance
+            key="2018-08-01T18:00:00"
+            startTime="2018-08-01T18:00:00"
+            title="Krystal Pools"
+          />
+        </Collapsible>
+      </ContentPadding>
+    </Component>
+  </Component>
+</Component>
+`;

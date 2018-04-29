@@ -1,17 +1,12 @@
 // @flow
 import React from "react";
-import { Image, View, StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
+import { formattedEventPriceRange } from "../../data/formatters";
 import IconItem from "./IconItem";
-import Touchable from "../../components/Touchable";
-import CategoryPill from "../../components/CategoryPill";
+import IconList from "./IconList";
 import Text from "../../components/Text";
-import {
-  lightNavyBlueColor,
-  blackColor,
-  eucalyptusGreenColor
-} from "../../constants/colors";
+import TextLink from "../../components/TextLink";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event } from "../../data/event";
@@ -28,16 +23,6 @@ type Props = {
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-export const displayPrice = (
-  isFree: boolean,
-  eventPriceLow: number,
-  eventPriceHigh?: number
-) => {
-  if (isFree) return text.isFreePrice;
-  if (eventPriceHigh && eventPriceHigh > eventPriceLow)
-    return `£${eventPriceLow} - £${eventPriceHigh}`;
-  return `£${eventPriceLow}`;
-};
 
 const EventOverview = ({ event }: Props) => {
   const startTime = removeTimezoneFromDateString(
@@ -64,125 +49,67 @@ const EventOverview = ({ event }: Props) => {
   ];
 
   return (
-    <View style={styles.content}>
-      <Text type="h1">{event.fields.name[locale]}</Text>
-      <View style={styles.categoryPillContainer}>
-        {event.fields.eventCategories[locale].map(categoryName => (
-          <CategoryPill
-            key={categoryName}
-            name={categoryName}
-            style={styles.categoryPill}
-          />
-        ))}
-      </View>
-      <IconItem
-        icon={<Image style={styles.icon} source={dateIcon} />}
-        style={styles.iconItem}
-      >
-        <Text type="h4" style={styles.detailTitle}>
+    <IconList>
+      <IconItem source={dateIcon}>
+        <Text type="h4" color="lightNavyBlueColor">
           {dateDisplay}
         </Text>
-        <Text type="small" style={styles.text}>
-          {timeDisplay}
-        </Text>
+        <Text type="small">{timeDisplay}</Text>
       </IconItem>
 
       <IconItem
-        icon={<Image source={locationIcon} style={styles.icon} />}
-        style={styles.iconItem}
+        onPress={() => showLocation(...eventLocation)}
+        source={locationIcon}
       >
-        <Touchable onPress={() => showLocation(...eventLocation)}>
-          <View style={styles.detailTitleLink}>
-            <Text type="h4" style={styles.detailTitle}>
-              {event.fields.locationName[locale]}
-            </Text>
-          </View>
-          {event.fields.addressLine1 && (
-            <Text type="small">{event.fields.addressLine1[locale]}</Text>
-          )}
-          {event.fields.addressLine2 && (
-            <Text type="small">{event.fields.addressLine2[locale]}</Text>
-          )}
-          {event.fields.city && (
-            <Text type="small">{event.fields.city[locale]}</Text>
-          )}
-          {event.fields.postcode && (
-            <Text type="small">{event.fields.postcode[locale]}</Text>
-          )}
-        </Touchable>
+        <TextLink>{event.fields.locationName[locale]}</TextLink>
+        {event.fields.addressLine1 && (
+          <Text type="small">{event.fields.addressLine1[locale]}</Text>
+        )}
+        {event.fields.addressLine2 && (
+          <Text type="small">{event.fields.addressLine2[locale]}</Text>
+        )}
+        {event.fields.city && (
+          <Text type="small">{event.fields.city[locale]}</Text>
+        )}
+        {event.fields.postcode && (
+          <Text type="small">{event.fields.postcode[locale]}</Text>
+        )}
       </IconItem>
-      <IconItem icon={<Image source={ticketsIcon} />} style={styles.iconItem}>
-        <Text type="h4" style={styles.detailTitle}>
-          {displayPrice(
+
+      <IconItem source={ticketsIcon}>
+        <Text type="h4" color="lightNavyBlueColor">
+          {formattedEventPriceRange(
             event.fields.isFree[locale],
             event.fields.eventPriceLow[locale],
             event.fields.eventPriceHigh[locale]
           )}
         </Text>
       </IconItem>
+
       {event.fields.venueDetails &&
         event.fields.venueDetails[locale].includes(
           strings.venueDetailsGenderNeutralToilets
         ) && (
-          <IconItem
-            icon={<Image source={genderNeutralIcon} />}
-            style={styles.iconItem}
-          >
-            <Text type="h4" style={styles.detailTitle}>
+          <IconItem source={genderNeutralIcon}>
+            <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsGenderNeutralToilets}
             </Text>
           </IconItem>
         )}
+
       {event.fields.accessibilityOptions &&
         event.fields.accessibilityOptions[locale].length > 0 && (
-          <IconItem
-            icon={<Image style={styles.icon} source={accessibilityIcon} />}
-          >
-            <Text type="h4" style={styles.detailTitle}>
+          <IconItem source={accessibilityIcon}>
+            <Text type="h4" color="lightNavyBlueColor">
               {text.eventDetailsAccessibility}
             </Text>
-            <Text type="small" style={styles.text}>
+            <Text type="small">
               {event.fields.accessibilityOptions[locale].join(", ")}
             </Text>
           </IconItem>
         )}
-    </View>
+    </IconList>
   );
 };
-
-const styles = StyleSheet.create({
-  content: {
-    paddingTop: 15,
-    paddingBottom: 10
-  },
-  categoryPillContainer: {
-    marginTop: 16,
-    marginBottom: 20,
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  categoryPill: {
-    marginBottom: 8,
-    marginRight: 8
-  },
-  iconItem: {
-    marginBottom: 20
-  },
-  icon: {
-    marginTop: 2
-  },
-  detailTitle: {
-    color: lightNavyBlueColor
-  },
-  text: {
-    color: blackColor
-  },
-  detailTitleLink: {
-    borderBottomColor: eucalyptusGreenColor,
-    borderBottomWidth: StyleSheet.hairlineWidth * 2,
-    alignSelf: "flex-start",
-    marginBottom: 2
-  }
-});
 
 export default EventOverview;

@@ -11,7 +11,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "center",
@@ -22,16 +22,15 @@ exports[`HomeScreen Component renders correctly 1`] = `
       }
     >
       <Text
-        allowFontScaling={true}
+        color="blackColor"
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
+        markdownStyle={Object {}}
         type="text"
       >
         Header - TBD
       </Text>
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Object {
           "alignItems": "center",
@@ -44,9 +43,9 @@ exports[`HomeScreen Component renders correctly 1`] = `
       }
     >
       <Text
-        allowFontScaling={true}
+        color="blackColor"
         markdown={false}
-        onLayout={[Function]}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -68,9 +67,9 @@ exports[`HomeScreen Component renders correctly 1`] = `
         testID="view-all"
       >
         <Text
-          allowFontScaling={true}
+          color="blackColor"
           markdown={false}
-          onLayout={[Function]}
+          markdownStyle={Object {}}
           style={
             Object {
               "color": "rgb(45, 47, 127)",
@@ -81,8 +80,8 @@ exports[`HomeScreen Component renders correctly 1`] = `
           View all
         </Text>
       </Touchable>
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Object {
           "flex": 1,
@@ -192,7 +191,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
           name="some other"
         />
       </Touchable>
-    </View>
+    </Component>
   </ScrollView>
 </SafeAreaView>
 `;
@@ -208,7 +207,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "center",
@@ -219,16 +218,15 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       }
     >
       <Text
-        allowFontScaling={true}
+        color="blackColor"
         markdown={false}
-        onLayout={[Function]}
-        style={Object {}}
+        markdownStyle={Object {}}
         type="text"
       >
         Header - TBD
       </Text>
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Object {
           "alignItems": "center",
@@ -241,9 +239,9 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       }
     >
       <Text
-        allowFontScaling={true}
+        color="blackColor"
         markdown={false}
-        onLayout={[Function]}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -265,9 +263,9 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
         testID="view-all"
       >
         <Text
-          allowFontScaling={true}
+          color="blackColor"
           markdown={false}
-          onLayout={[Function]}
+          markdownStyle={Object {}}
           style={
             Object {
               "color": "rgb(45, 47, 127)",
@@ -278,8 +276,8 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           View all
         </Text>
       </Touchable>
-    </View>
-    <View
+    </Component>
+    <Component
       style={
         Object {
           "flex": 1,
@@ -439,7 +437,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           name="some other"
         />
       </Touchable>
-    </View>
+    </Component>
   </ScrollView>
 </SafeAreaView>
 `;

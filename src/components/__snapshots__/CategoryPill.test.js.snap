@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CategoryPill Component renders correctly 1`] = `
-<View
+<Component
   style={
     Array [
       Object {
@@ -16,9 +16,9 @@ exports[`CategoryPill Component renders correctly 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
+    color="blackColor"
     markdown={false}
-    onLayout={[Function]}
+    markdownStyle={Object {}}
     style={
       Array [
         Object {
@@ -34,5 +34,5 @@ exports[`CategoryPill Component renders correctly 1`] = `
   >
     Music
   </Text>
-</View>
+</Component>
 `;

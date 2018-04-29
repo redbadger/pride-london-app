@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterModal renders correctly 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "bottom": "always",
+      "top": "never",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    onCancelPress={[Function]}
+    onClearPress={[Function]}
+    showClear={false}
+  />
+  <ShadowedScrollView
+    bottomShadow={true}
+    shadowOpacity={0.6}
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+      }
+    }
+    topShadow={true}
+  >
+    <FilterSectionList
+      eventFilters={
+        Object {
+          "price": Set {},
+        }
+      }
+      handleCheckboxChange={[Function]}
+    />
+  </ShadowedScrollView>
+  <Component
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
+      }
+    }
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+    >
+      <Button
+        disabled={false}
+        onPress={[Function]}
+      >
+        Show 26 events
+      </Button>
+    </ContentPadding>
+  </Component>
+</withOrientation>
+`;

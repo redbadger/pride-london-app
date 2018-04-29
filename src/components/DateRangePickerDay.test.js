@@ -19,7 +19,7 @@ const date = (year, month, day) => {
   };
 };
 
-describe("DarteRangePickerDay", () => {
+describe("dateRangePickerDay", () => {
   it("renders without date selection", () => {
     const output = render({ date: date(2018, 7, 12), marking: {} });
 
@@ -127,6 +127,62 @@ describe("DarteRangePickerDay", () => {
       output.simulate("longPress");
 
       expect(onLongPress).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("#shouldComponentUpdate", () => {
+    const props = {
+      date: date(2018, 7, 12),
+      marking: { selected: true, startingDay: true, endingDay: true }
+    };
+
+    it("stops update if state markings and date are the same", () => {
+      const nextProps = {
+        date: date(2018, 7, 12),
+        marking: { selected: true, startingDay: true, endingDay: true }
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(false);
+    });
+
+    it("updates when state changes", () => {
+      const nextProps = {
+        state: "disabled",
+        date: date(2018, 7, 12),
+        marking: { selected: true, startingDay: true, endingDay: true }
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+
+    it("updates when markings change", () => {
+      const nextProps = {
+        date: date(2018, 7, 12),
+        marking: { selected: true, endingDay: true }
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+
+    it("updates when date changes", () => {
+      const nextProps = {
+        date: date(2018, 8, 12),
+        marking: { selected: true, startingDay: true, endingDay: true }
+      };
+
+      const output = render(props);
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
     });
   });
 });

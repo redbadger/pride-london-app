@@ -1,17 +1,18 @@
 // @flow
 import React from "react";
 import { Image, StyleSheet } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
 
-import checkBoxCheckedUrl from "./check-box-checked.png";
+import checkboxUrl from "../../assets/images/checkBox.png";
+import checkBoxCheckedUrl from "../../assets/images/checkBoxChecked.png";
 
 type Props = {
   checked: boolean,
   label: string,
   onChange: Function,
-  style?: StyleObj
+  style?: ViewStyleProp
 };
 
 const CheckBox = ({ checked, label, onChange, style }: Props) => (
@@ -23,8 +24,8 @@ const CheckBox = ({ checked, label, onChange, style }: Props) => (
     onPress={onChange}
     style={[styles.container, style]}
   >
-    <Text>{label}</Text>
-    {checked && <Image source={checkBoxCheckedUrl} />}
+    <Text style={styles.text}>{label}</Text>
+    <Image source={checked ? checkBoxCheckedUrl : checkboxUrl} />
   </Touchable>
 );
 
@@ -37,6 +38,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between"
+  },
+  text: {
+    // prevents text from pushing icon off screen
+    flex: 1
   }
 });
 

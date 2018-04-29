@@ -5,7 +5,6 @@ exports[`renders correctly 1`] = `
   accessible={true}
   allowFontScaling={true}
   ellipsizeMode="tail"
-  onLayout={[Function]}
   style={
     Array [
       Object {
@@ -13,7 +12,10 @@ exports[`renders correctly 1`] = `
         "fontSize": 16,
         "lineHeight": 24,
       },
-      Object {},
+      Object {
+        "color": "#111111",
+      },
+      undefined,
     ]
   }
 >
@@ -26,6 +28,9 @@ exports[`renders markdown component based on flag 1`] = `
   debug={false}
   markdownStyles={
     Object {
+      "blackColor": Object {
+        "color": "#111111",
+      },
       "h1": Object {
         "fontFamily": "Poppins-Bold",
         "fontSize": 24,
@@ -49,6 +54,28 @@ exports[`renders markdown component based on flag 1`] = `
         "fontSize": 16,
         "lineHeight": 24,
       },
+      "lightNavyBlueColor": Object {
+        "color": "#2d2f7f",
+      },
+      "list": Object {
+        "marginBottom": 5,
+        "marginHorizontal": 16,
+      },
+      "listItem": Object {
+        "alignItems": "flex-start",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+        "marginBottom": 5,
+      },
+      "listItemBullet": Object {
+        "alignSelf": "flex-start",
+        "backgroundColor": "black",
+        "borderRadius": 2,
+        "height": 4,
+        "marginRight": 10,
+        "marginTop": 22,
+        "width": 4,
+      },
       "price": Object {
         "fontFamily": "Roboto-Bold",
         "fontSize": 14,
@@ -61,15 +88,25 @@ exports[`renders markdown component based on flag 1`] = `
       },
       "text": Object {
         "color": "#111111",
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "lineHeight": 24,
       },
       "u": Object {
         "fontWeight": "bold",
       },
+      "whiteColor": Object {
+        "color": "#ffffff",
+      },
+      "xSmall": Object {
+        "fontFamily": "Poppins-SemiBold",
+        "fontSize": 12,
+        "includeFontPadding": false,
+        "lineHeight": 16,
+      },
     }
   }
-  onLayout={[Function]}
   parseInline={false}
-  style={Object {}}
   useDefaultStyles={true}
 >
   **Some markdown**

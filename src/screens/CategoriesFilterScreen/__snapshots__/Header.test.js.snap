@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Component renders correctly 1`] = `
-<View>
-  <View
+<Component>
+  <Component
     style={
       Object {
         "flexDirection": "row",
@@ -15,12 +15,13 @@ exports[`Header Component renders correctly 1`] = `
     <ActionButton
       label="Cancel"
       onPress={[Function]}
+      style={Object {}}
     />
-  </View>
+  </Component>
   <Text
-    allowFontScaling={true}
+    color="blackColor"
     markdown={false}
-    onLayout={[Function]}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "#ffffff",
@@ -32,7 +33,7 @@ exports[`Header Component renders correctly 1`] = `
   >
     Show me
   </Text>
-  <View
+  <Component
     style={
       Object {
         "height": 88,
@@ -45,6 +46,6 @@ exports[`Header Component renders correctly 1`] = `
       selectedCategories={Set {}}
       style={Object {}}
     />
-  </View>
-</View>
+  </Component>
+</Component>
 `;

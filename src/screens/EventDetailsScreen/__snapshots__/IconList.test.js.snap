@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "marginVertical": -6,
+    }
+  }
+>
+  <LayoutColumn
+    spacing={4}
+  >
+    <IconItem
+      source={
+        Object {
+          "uri": "/super-awesome-image.jpg",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        type="h4"
+      >
+        some thing
+      </Text>
+    </IconItem>
+    <IconItem
+      onPress={[Function]}
+      source={
+        Object {
+          "uri": "/super-awesome-image.jpg",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        type="h4"
+      >
+        some thing
+      </Text>
+    </IconItem>
+  </LayoutColumn>
+</Component>
+`;

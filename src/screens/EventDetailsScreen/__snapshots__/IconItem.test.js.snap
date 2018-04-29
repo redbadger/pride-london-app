@@ -1,38 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
+<Component
   style={
-    Array [
-      Object {
-        "flex": 1,
-        "flexDirection": "row",
-      },
-      Object {},
-    ]
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "minHeight": 44,
+    }
   }
 >
-  <View
-    style={
+  <Image
+    source={
       Object {
-        "height": 20,
-        "marginRight": 18,
-        "width": 40,
+        "uri": "/super-awesome-image.jpg",
       }
     }
-  >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    >
-      Some icon
-    </Text>
-  </View>
-  <View
     style={
       Object {
-        "flex": 1,
+        "height": 32,
+        "marginRight": 20,
+        "marginVertical": 6,
+        "width": 32,
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "paddingVertical": 6,
       }
     }
   >
@@ -44,6 +42,60 @@ exports[`renders correctly 1`] = `
     >
       some thing
     </Text>
-  </View>
-</View>
+  </Component>
+</Component>
+`;
+
+exports[`renders correctly when passed an onPress handler 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "minHeight": 44,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "/super-awesome-image.jpg",
+      }
+    }
+    style={
+      Object {
+        "height": 32,
+        "marginRight": 20,
+        "marginVertical": 6,
+        "width": 32,
+      }
+    }
+  />
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    onPress={[Function]}
+    style={
+      Object {
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "paddingVertical": 6,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      type="h4"
+    >
+      some thing
+    </Text>
+  </Touchable>
+</Component>
 `;

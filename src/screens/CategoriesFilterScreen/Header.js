@@ -2,32 +2,16 @@
 import React from "react";
 import { View, StyleSheet, PixelRatio } from "react-native";
 import Text from "../../components/Text";
+import ActionButton from "../../components/ActionButton";
 import text from "../../constants/text";
 import { whiteColor } from "../../constants/colors";
 import CategoriesPills from "../../components/CategoriesPills";
-import Touchable from "../../components/Touchable";
+import type { EventCategoryName } from "../../data/event";
 
 type Props = {
   onClose?: Function,
   onClearAll?: Function,
-  selectedCategories: Set<string>
-};
-
-type ActionButtonProps = {
-  label: string,
-  onPress?: Function
-};
-
-const ActionButton = ({ label, onPress }: ActionButtonProps) => (
-  <Touchable onPress={onPress}>
-    <Text type="h4" style={styles.actionButtonText}>
-      {label}
-    </Text>
-  </Touchable>
-);
-
-ActionButton.defaultProps = {
-  onPress: () => {}
+  selectedCategories: Set<EventCategoryName>
 };
 
 const Header = ({ onClose, onClearAll, selectedCategories }: Props) => (
@@ -58,9 +42,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 10
-  },
-  actionButtonText: {
-    color: whiteColor
   },
   categoriesPills: {
     width: "100%",

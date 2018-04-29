@@ -9,7 +9,10 @@ import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
+import FilterModal from "./screens/FilterModal";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
+import SupportUsScreen from "./screens/SupportUsScreen";
+import SponsorScreen from "./screens/SponsorScreen";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
 import iconEventsActive from "../assets/images/eventsActive.png";
@@ -29,7 +32,10 @@ import {
   EVENT_CATEGORIES_FILTER,
   PARADE,
   SAVED,
-  SUPPORT_US
+  SUPPORT_US,
+  FILTER_MODAL,
+  DONATE,
+  SPONSOR
 } from "./constants/routes";
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
@@ -132,7 +138,9 @@ const SavedStack = StackNavigator(
 
 const SupportUsStack = StackNavigator(
   {
-    [SUPPORT_US]: { screen: withShadow(() => <View />) }
+    [SUPPORT_US]: { screen: withShadow(SupportUsScreen) },
+    [DONATE]: { screen: withShadow(() => <View />) },
+    [SPONSOR]: { screen: SponsorScreen }
   },
   {
     initialRouteName: SUPPORT_US,
@@ -144,7 +152,7 @@ const SupportUsStack = StackNavigator(
   }
 );
 
-export default TabNavigator(
+const TabNav = TabNavigator(
   {
     [HOME]: { screen: HomeStack },
     [EVENT_LIST]: { screen: EventsStack },
@@ -160,3 +168,22 @@ export default TabNavigator(
     initialRouteName: HOME
   }
 );
+
+const RootStack = StackNavigator(
+  {
+    Main: {
+      screen: TabNav
+    },
+    [FILTER_MODAL]: {
+      screen: FilterModal
+    }
+  },
+  {
+    mode: "modal",
+    navigationOptions: {
+      header: null
+    }
+  }
+);
+
+export default RootStack;

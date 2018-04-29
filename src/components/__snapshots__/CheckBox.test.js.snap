@@ -22,14 +22,21 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
+    color="blackColor"
     markdown={false}
-    onLayout={[Function]}
-    style={Object {}}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
     type="text"
   >
     Bananas
   </Text>
+  <Image
+    source={1}
+  />
 </Touchable>
 `;
 
@@ -56,10 +63,14 @@ exports[`renders correctly when checked 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
+    color="blackColor"
     markdown={false}
-    onLayout={[Function]}
-    style={Object {}}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
     type="text"
   >
     Bananas

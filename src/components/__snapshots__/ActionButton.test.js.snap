@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+  style={Object {}}
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "color": "#ffffff",
+      }
+    }
+    type="h4"
+  >
+    some action
+  </Text>
+</Touchable>
+`;
+
+exports[`renders with optional props 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+  style={Object {}}
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "color": "#ffffff",
+      }
+    }
+    type="h4"
+  >
+    some action
+  </Text>
+</Touchable>
+`;

@@ -123,7 +123,7 @@ android {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode androidVersionCode
-        versionName "1.0.5"
+        versionName "1.0.6"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -222,6 +222,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(':lottie-react-native')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-linear-gradient')
     implementation(project(':react-native-maps')) {

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CategoriesPills Component renders correctly 1`] = `
-<View
+<Component
   style={
     Array [
       Object {
@@ -17,9 +17,9 @@ exports[`CategoriesPills Component renders correctly 1`] = `
   }
 >
   <Text
-    allowFontScaling={true}
+    color="blackColor"
     markdown={false}
-    onLayout={[Function]}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "#2cda9d",
@@ -31,5 +31,5 @@ exports[`CategoriesPills Component renders correctly 1`] = `
   >
     0 selected
   </Text>
-</View>
+</Component>
 `;
