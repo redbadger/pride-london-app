@@ -23,7 +23,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <View
+    <Component
       style={
         Object {
           "paddingBottom": 12,
@@ -33,53 +33,51 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       testID="filter-header"
     >
       <FilterHeaderCategories />
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-            "marginTop": 8,
-          }
-        }
-      >
-        <FilterHeaderButton
-          label="filter by date: Any day"
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Any day"
-        />
-        <FilterHeaderButton
-          label="Any time"
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Any time"
-        />
-        <FilterHeaderButton
-          label="Filters"
-          onPress={[Function]}
-          style={
-            Object {
-              "marginRight": 8,
-            }
-          }
-          text="Filters"
-        />
-      </View>
-    </View>
+    </Component>
   </ContentPadding>
+  <Component
+    style={
+      Object {
+        "backgroundColor": "#20215a",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <FilterHeaderButton
+      active={false}
+      badgeValue={null}
+      label="filter by date: Select dates"
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Select dates"
+    />
+    <Component
+      style={
+        Object {
+          "borderColor": "#ffffff",
+          "borderLeftWidth": 0.5,
+        }
+      }
+    />
+    <FilterHeaderButton
+      active={false}
+      badgeValue={null}
+      label="Add filters"
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Add filters"
+    />
+  </Component>
   <Connect(DateRangePickerDialog)
-    onApply={[Function]}
-    onCancel={[Function]}
-    visible={false}
-  />
-  <Connect(MultiSelectDialog)
     onApply={[Function]}
     onCancel={[Function]}
     visible={false}
@@ -90,6 +88,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
 exports[`ConnectedFilterHeader renders connector 1`] = `
 <FilterHeader
   dateFilter={null}
+  numTagFiltersSelected={0}
   store={
     Object {
       "clearActions": [Function],
@@ -121,6 +120,5 @@ exports[`ConnectedFilterHeader renders connector 1`] = `
       "unsubscribe": [Function],
     }
   }
-  timeFilter={Set {}}
 />
 `;

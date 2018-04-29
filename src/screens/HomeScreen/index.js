@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import strings from "../../constants/strings";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type { Event } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import getAssetUrl from "../../data/get-asset-url";
 import {
   selectFeaturedEventsByTitle,

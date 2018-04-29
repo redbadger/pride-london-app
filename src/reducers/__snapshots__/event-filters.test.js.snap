@@ -3,14 +3,24 @@
 exports[`Event filters reducer initialises with default state 1`] = `
 Object {
   "selectedFilters": Object {
+    "accessibilityOptions": Set {},
+    "area": Set {},
+    "audience": Set {},
     "categories": Set {},
     "date": null,
-    "time": Set {},
+    "price": Set {},
+    "timeOfDay": Set {},
+    "venueDetails": Set {},
   },
   "stagedFilters": Object {
+    "accessibilityOptions": Set {},
+    "area": Set {},
+    "audience": Set {},
     "categories": Set {},
     "date": null,
-    "time": Set {},
+    "price": Set {},
+    "timeOfDay": Set {},
+    "venueDetails": Set {},
   },
 }
 `;

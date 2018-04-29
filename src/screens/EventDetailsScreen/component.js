@@ -1,11 +1,12 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, Linking, View, StyleSheet } from "react-native";
+import { Image, Linking, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
+import SaveEventButton from "../../components/SaveEventButton";
 import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -15,32 +16,36 @@ import IconButton from "../../components/IconButton";
 import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "./SectionDivider";
+import PerformanceList from "../../components/PerformanceList";
+import { groupPerformancesByPeriod } from "../../selectors/events";
 import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
-import heartWhite from "../../../assets/images/heart-white.png";
 
-type Props = {
-  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
-  event: Event,
-  getAssetUrl: LocalizedFieldRef => string
-};
+type EventHeaderProps = {|
+  isSaved: boolean,
+  toggleSaved: boolean => void,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>
+|};
 
-export const EventHeader = ({ onBack }: { onBack: Function }) => (
+export const EventHeader = ({
+  isSaved,
+  navigation,
+  toggleSaved
+}: EventHeaderProps) => (
   <Header backgroundColor={darkBlueGreyTwoColor}>
     <ContentPadding style={styles.headerContent}>
       <IconButton
         accessibilityLabel="Back"
-        onPress={onBack}
+        onPress={() => {
+          navigation.goBack(null);
+        }}
         source={chevronLeftWhite}
       />
-      <IconButton
-        accessibilityLabel="Favourite"
-        onPress={() => {}}
-        source={heartWhite}
-      />
+      <SaveEventButton active={isSaved} onPress={toggleSaved} />
     </ContentPadding>
   </Header>
 );
@@ -50,7 +55,7 @@ export const EventCategories = ({ event }: { event: Event }) => (
     {event.fields.eventCategories[locale].map(categoryName => (
       <CategoryPill
         key={categoryName}
-        name={categoryName}
+        name={((categoryName: any): EventCategoryName)}
         style={styles.categoryPill}
       />
     ))}
@@ -76,11 +81,20 @@ export const EventTickets = ({ event }: { event: Event }) => (
   </ContentPadding>
 );
 
+type Props = {
+  event: Event,
+  getAssetUrl: LocalizedFieldRef => string,
+  isSaved: boolean,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
+  toggleSaved: boolean => void
+};
+
 class EventDetailsScreen extends PureComponent<Props> {
-  static defaultProps = {};
+  static defaultProps = {
+    isSaved: false
+  };
 
   static navigationOptions = {
-    header: null,
     tabBarVisible: false
   };
 
@@ -89,9 +103,9 @@ class EventDetailsScreen extends PureComponent<Props> {
     return (
       <View style={styles.container}>
         <EventHeader
-          onBack={() => {
-            this.props.navigation.goBack(null);
-          }}
+          isSaved={this.props.isSaved}
+          toggleSaved={this.props.toggleSaved}
+          navigation={this.props.navigation}
         />
         <ShadowedScrollView topShadow={false}>
           <Image
@@ -112,11 +126,26 @@ class EventDetailsScreen extends PureComponent<Props> {
                 lon={event.fields.location[locale].lon}
                 locationName={event.fields.locationName[locale]}
               />
-              {event.fields.accessibilityDetails && <SectionDivider />}
+            </LayoutColumn>
+          </ContentPadding>
+          {event.fields.performances &&
+            event.fields.performances[locale] && (
+              <PerformanceList
+                performances={groupPerformancesByPeriod(
+                  event.fields.performances[locale]
+                )}
+                locale={locale}
+              />
+            )}
+          <ContentPadding styles={styles.content}>
+            <LayoutColumn spacing={20}>
               {event.fields.accessibilityDetails && (
                 <EventAccessibility event={event} />
               )}
-              {(event.fields.email || event.fields.phone) && <SectionDivider />}
+              {event.fields.accessibilityDetails &&
+                (event.fields.email || event.fields.phone) && (
+                  <SectionDivider />
+                )}
               {(event.fields.email || event.fields.phone) && (
                 <EventContact
                   email={event.fields.email && event.fields.email[locale]}

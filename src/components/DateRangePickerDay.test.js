@@ -19,7 +19,7 @@ const date = (year, month, day) => {
   };
 };
 
-describe("DarteRangePickerDay", () => {
+describe("dateRangePickerDay", () => {
   it("renders without date selection", () => {
     const output = render({ date: date(2018, 7, 12), marking: {} });
 

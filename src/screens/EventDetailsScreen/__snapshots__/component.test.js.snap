@@ -7,6 +7,7 @@ exports[`EventAccessibility renders correctly 1`] = `
   <Text
     color="lightNavyBlueColor"
     markdown={false}
+    markdownStyle={Object {}}
     type="h2"
   >
     Accessibility Details
@@ -14,6 +15,7 @@ exports[`EventAccessibility renders correctly 1`] = `
   <Text
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     type="text"
   >
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet, odio vel imperdiet ultricies, libero nibh convallis ante, a imperdiet sapien risus non nisi. 
@@ -22,7 +24,7 @@ exports[`EventAccessibility renders correctly 1`] = `
 `;
 
 exports[`EventCategories renders correctly 1`] = `
-<View
+<Component
   style={
     Object {
       "flexDirection": "row",
@@ -71,7 +73,7 @@ exports[`EventCategories renders correctly 1`] = `
       }
     }
   />
-</View>
+</Component>
 `;
 
 exports[`EventHeader renders correctly 1`] = `
@@ -92,10 +94,10 @@ exports[`EventHeader renders correctly 1`] = `
       onPress={[Function]}
       source={1}
     />
-    <IconButton
-      accessibilityLabel="Favourite"
+    <SaveEventButton
+      active={true}
+      onDark={false}
       onPress={[Function]}
-      source={1}
     />
   </ContentPadding>
 </Header>
@@ -121,7 +123,7 @@ exports[`EventTickets renders correctly 1`] = `
 `;
 
 exports[`renders correctly 1`] = `
-<View
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -130,10 +132,17 @@ exports[`renders correctly 1`] = `
   }
 >
   <EventHeader
-    onBack={[Function]}
+    isSaved={true}
+    navigation={
+      Object {
+        "goBack": [Function],
+      }
+    }
+    toggleSaved={[Function]}
   />
   <ShadowedScrollView
     bottomShadow={true}
+    shadowOpacity={1}
     style={Object {}}
     topShadow={false}
   >
@@ -161,6 +170,7 @@ exports[`renders correctly 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "marginBottom": 8,
@@ -533,7 +543,21 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           locationName="Vauxhall Pleasure Gardens"
           lon={-0.12092150000000856}
         />
-        <SectionDivider />
+      </LayoutColumn>
+    </ContentPadding>
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+      styles={
+        Object {
+          "marginBottom": 32,
+          "marginTop": 16,
+        }
+      }
+    >
+      <LayoutColumn
+        spacing={20}
+      >
         <EventAccessibility
           event={
             Object {
@@ -778,11 +802,11 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       }
     }
   />
-</View>
+</Component>
 `;
 
 exports[`renders correctly with missing details 1`] = `
-<View
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -791,10 +815,17 @@ exports[`renders correctly with missing details 1`] = `
   }
 >
   <EventHeader
-    onBack={[Function]}
+    isSaved={false}
+    navigation={
+      Object {
+        "goBack": [Function],
+      }
+    }
+    toggleSaved={[Function]}
   />
   <ShadowedScrollView
     bottomShadow={true}
+    shadowOpacity={1}
     style={Object {}}
     topShadow={false}
   >
@@ -822,6 +853,7 @@ exports[`renders correctly with missing details 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "marginBottom": 8,
@@ -1182,7 +1214,21 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           locationName="Vauxhall Pleasure Gardens"
           lon={-0.12092150000000856}
         />
-        <SectionDivider />
+      </LayoutColumn>
+    </ContentPadding>
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+      styles={
+        Object {
+          "marginBottom": 32,
+          "marginTop": 16,
+        }
+      }
+    >
+      <LayoutColumn
+        spacing={20}
+      >
         <EventContact
           email="john.smith@eventname.com"
           phone="07891234567"
@@ -1190,5 +1236,5 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
       </LayoutColumn>
     </ContentPadding>
   </ShadowedScrollView>
-</View>
+</Component>
 `;

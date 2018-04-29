@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <View
+  <Component
     onLayout={[Function]}
     style={
       Object {
@@ -54,7 +54,7 @@ exports[`renders correctly 1`] = `
       }
       testID="tab-0"
     >
-      <View
+      <Component
         style={
           Object {
             "flex": 1,
@@ -108,7 +108,7 @@ exports[`renders correctly 1`] = `
             0
           </Text>
         </AnimatedComponent>
-      </View>
+      </Component>
       <AnimatedComponent
         allowFontScaling={true}
         numberOfLines={1}
@@ -153,7 +153,7 @@ exports[`renders correctly 1`] = `
       }
       testID="tab-1"
     >
-      <View
+      <Component
         style={
           Object {
             "flex": 1,
@@ -207,7 +207,7 @@ exports[`renders correctly 1`] = `
             1
           </Text>
         </AnimatedComponent>
-      </View>
+      </Component>
       <AnimatedComponent
         allowFontScaling={true}
         numberOfLines={1}
@@ -252,6 +252,6 @@ exports[`renders correctly 1`] = `
         ]
       }
     />
-  </View>
+  </Component>
 </withOrientation>
 `;

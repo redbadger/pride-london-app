@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, Image, PixelRatio } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Touchable from "./Touchable";
 import {
   interestButtonBgColor,
@@ -13,14 +13,15 @@ import text from "../constants/text";
 import Text from "./Text";
 import CategoriesPills from "./CategoriesPills";
 import chevronRightImg from "../../assets/images/chevronRight.png";
+import type { EventCategoryName } from "../data/event";
 
 type Props = {
-  selectedCategories: Set<string>,
+  selectedCategories: Set<EventCategoryName>,
   onFilterPress: Function
 };
 
 type CategoriesFilterButtonProps = {
-  style?: StyleObj,
+  style?: ViewStyleProp,
   onPress: Function
 };
 

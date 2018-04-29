@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
+<Component
   style={
     Array [
       Object {
@@ -36,10 +36,15 @@ exports[`renders correctly 1`] = `
         ]
       }
       style={
-        Object {
-          "height": 8,
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "height": 8,
+            "width": "100%",
+          },
+          Object {
+            "opacity": 1,
+          },
+        ]
       }
     />
   </AnimatedComponent>
@@ -48,7 +53,7 @@ exports[`renders correctly 1`] = `
     onScroll={[Function]}
     scrollEventThrottle={16}
   >
-    <View
+    <Component
       onLayout={[Function]}
     />
   </ScrollView>
@@ -76,12 +81,17 @@ exports[`renders correctly 1`] = `
         ]
       }
       style={
-        Object {
-          "height": 8,
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "height": 8,
+            "width": "100%",
+          },
+          Object {
+            "opacity": 1,
+          },
+        ]
       }
     />
   </AnimatedComponent>
-</View>
+</Component>
 `;

@@ -29,6 +29,7 @@ exports[`renders correctly with date selection 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -54,6 +55,7 @@ exports[`renders correctly with date selection 1`] = `
       accessible={true}
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "alignSelf": "flex-end",
@@ -111,6 +113,7 @@ exports[`renders correctly with range selection 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -136,6 +139,7 @@ exports[`renders correctly with range selection 1`] = `
       accessible={true}
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "alignSelf": "flex-end",
@@ -193,6 +197,7 @@ exports[`renders correctly without date selection 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "rgb(45, 47, 127)",
@@ -218,6 +223,7 @@ exports[`renders correctly without date selection 1`] = `
       accessible={true}
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "alignSelf": "flex-end",
