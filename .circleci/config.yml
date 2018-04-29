@@ -243,10 +243,6 @@ jobs:
           working_directory: /Users/distiller/project
       - <<: *save-cache-osx
       - run:
-          name: Generate .env
-          command: node ./scripts/generate-dotenv.js
-          working_directory: /Users/distiller/project
-      - run:
           name: Set Fabric secret
           command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
       - run:
