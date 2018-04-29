@@ -226,8 +226,6 @@ jobs:
     steps:
       - checkout:
           path: /Users/distiller/project
-      - attach_workspace:
-          at: /Users/distiller/project
       - run:
           name: Set Ruby Version
           command:  echo "ruby-2.4" > ~/.ruby-version
@@ -417,8 +415,6 @@ workflows:
               ignore:
                 - master
       - alpha-ios:
-          requires:
-            - build
           filters:
             branches:
               ignore:
