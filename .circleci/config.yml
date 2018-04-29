@@ -110,6 +110,7 @@ jobs:
       - image: circleci/android:api-27-node8-alpha
     environment:
       TERM: dumb
+      APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
     steps:
       - checkout:
           path: ~/project
@@ -127,6 +128,7 @@ jobs:
             command: |
                 bundle exec fastlane alpha \
                 submit:true \
+                apk_path:$APK_PATH \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
                 fabric_api_token:$FABRIC_API_KEY \
@@ -160,25 +162,13 @@ jobs:
             command: |
                 bundle exec fastlane beta \
                 submit:true \
+                apk_path:$APK_PATH \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
                 fabric_api_token:$FABRIC_API_KEY \
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
-                commit_sha:$CIRCLE_SHA1
-      - run:
-            name: Resign APK with upload key
-            command: |
-                ../scripts/apk-resigner.sh \ 
-                $APK_PATH \
-                $ANDROID_PROD_KEYSTORE_PATH \
-                $ANDROID_PROD_KEYSTORE_ALIAS \
-                $ANDROID_PROD_KEYSTORE_PASSWORD
-      - run:
-            name: Upload resigned APK to Play Store
-            command: |
-                bundle exec fastlane upload_play_store \
-                
+                commit_sha:$CIRCLE_SHA1       
       - store_artifacts:
           path: ~/project/android/app/build/outputs
 
