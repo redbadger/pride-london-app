@@ -33,7 +33,7 @@ fabric-android-secrets: &fabric-android-secrets
 ruby-dependencies: &ruby-dependencies
   run:
     name: Download Ruby Dependencies
-    command: bundle check || bundle install --path vendor/bundle
+    command: bundle install --path vendor/bundle
 android-dependencies: &android-dependencies
   run:
     name: Download Android Dependencies
@@ -345,7 +345,7 @@ jobs:
       - run:
             command: |
                 bundle exec fastlane release \
-                submit:true \
+                submit:true
 
   e2e-ios:
     macos:
