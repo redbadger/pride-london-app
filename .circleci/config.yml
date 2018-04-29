@@ -190,7 +190,7 @@ jobs:
       TERM: dumb
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
-      APK_PATH: "./app/build/outputs/apk/beta/release/app-production-release.apk"
+      APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
     steps:
       - checkout:
           path: ~/project
