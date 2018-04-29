@@ -432,10 +432,10 @@ workflows:
           filters:
             branches:
               only:
-                - android-beta-play-store
+                - master
       - release-ios:
           filters:
             branches:
               only:
-                - android-beta-play-store
+                - master
 
