@@ -412,6 +412,8 @@ workflows:
               ignore:
                 - master
       - alpha-ios:
+          requires:
+            - build
           filters:
             branches:
               ignore:
