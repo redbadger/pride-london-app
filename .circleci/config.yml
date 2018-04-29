@@ -240,6 +240,7 @@ jobs:
       - run:
           name: Install dependencies
           command: yarn install
+          working_directory: /Users/distiller/project
       - <<: *save-cache-osx
       - run:
           name: Generate .env
