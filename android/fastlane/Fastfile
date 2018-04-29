@@ -3,26 +3,30 @@ fastlane_version "2.93.1"
 default_platform :android
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
-  end
-
-  desc "Build application"
-  lane :build_beta do
-    gradle(
-      task: 'assemble',
-      build_type: 'Release',
-      flavor: "beta",
-    )
-  end
-
   desc "Build alpha"
   lane :build_alpha do
     gradle(
       task: "assemble",
       build_type: "release",
       flavor: "alpha",
+    )
+  end
+
+  desc "Build beta"
+  lane :build_beta do
+    gradle(
+      task: 'assemble',
+      build_type: 'release',
+      flavor: "beta",
+    )
+  end
+
+  desc "Build release"
+  lane :build_release do
+    gradle(
+      task: 'assemble',
+      build_type: 'release',
+      flavor: "production",
     )
   end
 
@@ -74,6 +78,17 @@ platform :android do
     end
   end
 
+  desc "Build and deploy to Play Store"
+  lane :release do |options|
+    build_release
+    if options[:submit]
+      deploy_play_store(
+        apk: options[:apk_path],
+        upload_key: options[:upload_key]
+      )
+    end
+  end
+
   desc "Deploy to HockeyApp"
   lane :deploy_hockey do |options|
     hockey(
@@ -84,10 +99,10 @@ platform :android do
       status: options[:status],
       notify: options[:notify],
       commit_sha: options[:commit_sha]
-    )
+      )
   end
 
-  desc "Upload to Beta by Fabric"
+  desc "Deploy to Beta by Fabric"
   lane :deploy_fabric do |options|
     File.write("./notes.txt", options[:notes])
     crashlytics(
@@ -97,6 +112,19 @@ platform :android do
       notes_path: "fastlane/notes.txt",
       groups: options[:groups],
       notifications: options[:notify]
+      )
+  end
+
+  desc "Deploy to Play Store"
+  lane :deploy_play_store do |options|
+    upload_to_play_store(
+      track: 'beta',
+      apk: options[:apk],
+      json_key: options[:upload_key],
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      validate_only: false
     )
   end
 
