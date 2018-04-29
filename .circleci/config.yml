@@ -209,7 +209,7 @@ jobs:
                 bundle exec fastlane release \
                 submit:true \
                 apk_path:$APK_PATH \
-                upload_key:$UPLOAD_KEY_PATH
+                upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
 
   alpha-ios:
     macos:
