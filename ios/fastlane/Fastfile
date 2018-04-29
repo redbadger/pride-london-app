@@ -87,7 +87,7 @@ platform :ios do
   end
 
   desc "Build and Deploy a release to iTunes Connect"
-  lane :release do
+  lane :release do |options|
     # Testflight builds can be promoted to production so
     # we have to do another build with appstore signing
     increment_build_number(
