@@ -162,8 +162,8 @@ mac-ios-step-defaults: &mac-ios-step-defaults
     - run:
         name: Set Ruby Version
         command:  echo "ruby-2.4" > ~/.ruby-version
-    # Not using a workspace here as Node and Yarn versions
-    # differ between the macOS image and the Docker containers above.
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
     - <<: *ruby-dependencies
     - <<: *mac-ios-set-node-version
     - <<: *osx-yarn-dependencies
@@ -316,8 +316,8 @@ jobs:
 
   alpha-ios:
     <<: *mac-ios-job-defaults
-    steps:
-      - <<: *mac-ios-step-defaults
+    <<: *mac-ios-step-defaults
+    steps+:
       - run:
           command: |
             bundle exec fastlane alpha \
