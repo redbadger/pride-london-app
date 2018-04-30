@@ -348,42 +348,42 @@ workflows:
     jobs:
       - build
       - e2e-ios:
-        requires:
-          - build
+          requires:
+            - build
       - alpha-android:
-        requires:
-          - build
-        filters:
-          branches:
-            ignore:
-              - master
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - master
       - alpha-ios:
-        filters:
-          branches:
-            ignore:
-              - master
+          filters:
+            branches:
+              ignore:
+                - master
       - beta-android:
-        requires:
-          - build
-        filters:
-          branches:
-            only:
-              - master
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
       - beta-ios:
-        filters:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only:
+                - master
       - release-android:
-        requires:
-          - build
-        filters:
-          branches:
-            only:
-              - master
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
       - release-ios:
-        filters:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only:
+                - master
 
