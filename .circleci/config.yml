@@ -7,17 +7,13 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
-      - <<: *get-yarn-cache
       - run:
           name: Test reporter status
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
             ./cc-test-reporter before-build
-      - run:
-          name: Install dependencies
-          command: yarn install
-      - <<: *save-yarn-cache
+      - <<: *yarn-dependencies
       - run:
           name: Lint source
           command: yarn lint
@@ -181,7 +177,6 @@ yarn-dependencies: &yarn-dependencies
   run:
     name: Install dependencies
     command: yarn install
-    working_directory: /Users/distiller/project
   <<: *save-yarn-cache
 
 osx-yarn-dependencies: &osx-yarn-dependencies
