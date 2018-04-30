@@ -163,6 +163,7 @@ jobs:
       - <<: *osx-yarn-dependencies
       - <<: *osx-generate-env
       - run: yarn test:e2e
+
 yarn-key: &yarn-key
   v1-dependencies-{{ checksum "yarn.lock" }}
 yarn-osx-key: &yarn-osx-key
@@ -340,7 +341,6 @@ mac-ios-set-node-version: &mac-ios-set-node-version
     command: |
       yarn global add n
       sudo n 9.3
-
 
 workflows:
   version: 2
