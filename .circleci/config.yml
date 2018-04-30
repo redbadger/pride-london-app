@@ -24,13 +24,15 @@ save-yarn-cache: &save-yarn-cache
 
 # Mac machine builds have different paths and arch
 get-yarn-cache-osx: &get-yarn-cache-osx
-  restore_cache:
-    key: *yarn-osx-key
+  steps:
+    - restore_cache:
+        key: *yarn-osx-key
 save-yarn-cache-osx: &save-yarn-cache-osx
-  save_cache:
-    paths:
-      - /Users/distiller/project/node_modules
-    key: *yarn-osx-key
+  steps:
+    - save_cache:
+        paths:
+          - /Users/distiller/project/node_modules
+        key: *yarn-osx-key
 
 restore-gradle-cache: &restore-gradle-cache
   restore_cache:
@@ -67,10 +69,11 @@ yarn-dependencies: &yarn-dependencies
 
 osx-yarn-dependencies: &osx-yarn-dependencies
   <<: *get-yarn-cache-osx
-  run:
-    name: Install dependencies with Yarn
-    command: yarn install
-    working_directory: /Users/distiller/project
+  steps+:
+    - run:
+        name: Install dependencies with Yarn
+        command: yarn install
+        working_directory: /Users/distiller/project
   <<: *save-yarn-cache-osx
 
 ruby-dependencies: &ruby-dependencies
