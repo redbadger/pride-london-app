@@ -61,11 +61,9 @@ save-brew-cache: &save-brew-cache
       - /usr/local/Homebrew
 
 yarn-dependencies: &yarn-dependencies
-  <<: *get-yarn-cache
   run:
     name: Install dependencies
     command: yarn install
-  <<: *save-yarn-cache
 
 osx-yarn-dependencies: &osx-yarn-dependencies
   <<: *get-yarn-cache-osx
@@ -233,7 +231,9 @@ jobs:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
             ./cc-test-reporter before-build
+      - <<: *get-yarn-cache
       - <<: *yarn-dependencies
+      - <<: *save-yarn-cache
       - run:
           name: Lint source
           command: yarn lint
