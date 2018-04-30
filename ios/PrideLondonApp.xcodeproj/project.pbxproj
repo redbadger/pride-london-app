@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -17,10 +16,6 @@
 		090907FD2090D408005719EE /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0788C0199C4676924E752F /* Lottie.framework */; };
 		090908002090D4C0005719EE /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090907F32090D39D005719EE /* Lottie.framework */; };
 		090908012090D4C0005719EE /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 090907F32090D39D005719EE /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		09E8120320977A8B003EC9E1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16964194204301BF0058AF96 /* Crashlytics.framework */; };
-		09E8120420977A8B003EC9E1 /* Crashlytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16964194204301BF0058AF96 /* Crashlytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		09E8123320977A99003EC9E1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16964195204301BF0058AF96 /* Fabric.framework */; };
-		09E8123420977A99003EC9E1 /* Fabric.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16964195204301BF0058AF96 /* Fabric.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		10B4868C8BCD4D86BDBC946D /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC984739B4624E9481CEE51E /* Poppins-Medium.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		1366647879EE4250ADEF4246 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 939F6855FDA045B6BECAB69F /* Roboto-MediumItalic.ttf */; };
@@ -412,9 +407,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				09E8120420977A8B003EC9E1 /* Crashlytics.framework in Embed Frameworks */,
 				090908012090D4C0005719EE /* Lottie.framework in Embed Frameworks */,
-				09E8123420977A99003EC9E1 /* Fabric.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,7 +496,6 @@
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
-				09E8120320977A8B003EC9E1 /* Crashlytics.framework in Frameworks */,
 				090908002090D4C0005719EE /* Lottie.framework in Frameworks */,
 				090907FD2090D408005719EE /* Lottie.framework in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
@@ -514,7 +506,6 @@
 				16964196204301DC0058AF96 /* Crashlytics.framework in Frameworks */,
 				EEF84AE0632D437BB1763EA4 /* libAirMaps.a in Frameworks */,
 				3E67D28869C44E63B2795DC9 /* libSplashScreen.a in Frameworks */,
-				09E8123320977A99003EC9E1 /* Fabric.framework in Frameworks */,
 				95A7B0F285774B6D8D5C7289 /* libBVLinearGradient.a in Frameworks */,
 				692D5633F6B843FBA8E8BE22 /* libLottie.a in Frameworks */,
 				FC84244B2A4F4565BBCADEE5 /* libLottieReactNative.a in Frameworks */,
