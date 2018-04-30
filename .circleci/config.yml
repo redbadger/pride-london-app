@@ -24,15 +24,13 @@ save-yarn-cache: &save-yarn-cache
 
 # Mac machine builds have different paths and arch
 get-yarn-cache-osx: &get-yarn-cache-osx
-  steps+:
-    - restore_cache:
-        key: *yarn-osx-key
+  restore_cache:
+    key: *yarn-osx-key
 save-yarn-cache-osx: &save-yarn-cache-osx
-  steps+:
-    - save_cache:
-        paths:
-          - /Users/distiller/project/node_modules
-        key: *yarn-osx-key
+  save_cache:
+    paths:
+      - /Users/distiller/project/node_modules
+    key: *yarn-osx-key
 
 restore-gradle-cache: &restore-gradle-cache
   restore_cache:
@@ -68,38 +66,42 @@ yarn-dependencies: &yarn-dependencies
     command: yarn install
 
 osx-yarn-dependencies: &osx-yarn-dependencies
-  <<: *get-yarn-cache-osx
-  steps+:
-    - run:
-        name: Install dependencies with Yarn
-        command: yarn install
-        working_directory: /Users/distiller/project
-  <<: *save-yarn-cache-osx
+  run:
+    name: Install dependencies with Yarn
+    command: yarn install
+    working_directory: /Users/distiller/project
 
 ruby-dependencies: &ruby-dependencies
-  <<: *restore-gems-cache
   run:
     name: Download Ruby Dependencies
     command: bundle install --path vendor/bundle
-  <<: *save-gems-cache
 
 android-dependencies: &android-dependencies
-  <<: *restore-gradle-cache
   run:
     name: Download Android Dependencies
     command: ./gradlew androidDependencies
-  <<: *save-gradle-cache
 
 brew-depdendencies: &brew-depdendencies
-  <<: *restore-brew-cache
   run:
     name: Install HomeBrew dependencies
     command: |
       brew tap homebrew/bundle
       brew bundle
-  <<: *save-brew-cache
 
-android-dev-secrets: &android-dev-secrets
+mac-ios-set-node-version: &mac-ios-set-node-version
+  run:
+    name: Set npm version
+    command: |
+      yarn global add n
+      sudo n 9.
+
+osx-generate-env: &osx-generate-env
+  run:
+    name: Generate .env
+    command: node ./scripts/generate-dotenv.js
+    working_directory: /Users/distiller/project
+
+android-secrets: &android-secrets
   run:
     command: |
       git clone git@github.com:redbadger/pride-android-secrets.git
@@ -113,67 +115,292 @@ android-release-secrets: &android-release-secrets
       echo -e "keystore=$ANDROID_RELEASE_KEYSTORE_PATH\nkeystore.alias=$ANDROID_RELEASE_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
 fabric-android-secrets: &fabric-android-secrets
   run:
+    name: Set Fabric secret
     command: |
       echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
-
-docker-android-job-defaults: &docker-android-job-defaults
-  working_directory: ~/project/android
-  docker:
-    - image: circleci/android:api-27-node8-alpha
-
-docker-android-env: &docker-android-env
-  TERM: dumb
-  LC_ALL: en_US.UTF-8
-  LANG: en_US.UTF-8
-
-docker-android-step-defaults: &docker-android-step-defaults
-  checkout:
-    path: ~/project
-  attach_workspace:
-    at: ~/project
-  <<: *restore-gradle-cache
-  <<: *ruby-dependencies
-  <<: *android-dependencies
-  <<: *save-gradle-cache
-  <<: *fabric-android-secrets
-
-osx-generate-env: &osx-generate-env
+fabric-ios-secrets: &fabric-ios-secrets
   run:
-    name: Generate .env
-    command: node ./scripts/generate-dotenv.js
-    working_directory: /Users/distiller/project
+    name: Set Fabric secret
+    command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
 
-mac-ios-job-defaults: &mac-ios-job-defaults
-  macos:
-    xcode: "9.2.0"
-  working_directory: /Users/distiller/project/ios
-  environment:
-    FL_OUTPUT_DIR: /Users/distiller/project/output
-  shell: /bin/bash --login -o pipefail
+version: 2
+jobs:
+  # build is a reserved job name for running circleci locally
+  build:
+    docker:
+      - image: circleci/node:9.3
+    working_directory: ~/project
+    steps:
+      - checkout
+      - <<: *get-yarn-cache
+      - run:
+          name: Test reporter status
+          command: |
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+              chmod +x ./cc-test-reporter
+              ./cc-test-reporter before-build
+      - <<: *yarn-dependencies
+      - <<: *save-yarn-cache
+      - run:
+          name: Lint source
+          command: yarn lint
+      - run:
+          name: Type check
+          command: yarn flow
+      - run:
+          name: Unit test
+          command: |
+              yarn test
+              ./cc-test-reporter after-build
+      - run:
+          name: Generate .env
+          command: node ./scripts/generate-dotenv.js
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - node_modules
+            - .env
 
-mac-ios-set-node-version: &mac-ios-set-node-version
-  run:
-    name: Set npm version
-    command: |
-      yarn global add n
-      sudo n 9.3
+  alpha-android:
+    working_directory: ~/project/android
+    docker:
+      - image: circleci/android:api-27-node8-alpha
+    environment:
+      TERM: dumb
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
+    steps:
+      - checkout:
+          path: ~/project
+      - attach_workspace:
+          at: ~/project
+      - <<: *android-secrets
+      - <<: *fabric-android-secrets
+      - <<: *restore-gradle-cache
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - <<: *save-gems-cache
+      - run:
+            command: |
+                bundle exec fastlane alpha \
+                submit:true \
+                apk_path:$APK_PATH \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                commit_sha:$CIRCLE_SHA1
+      - store_artifacts:
+          path: ~/project/android/app/build/outputs
 
-mac-ios-step-defaults: &mac-ios-step-defaults
-  <<: *ruby-dependencies
-  <<: *mac-ios-set-node-version
-  <<: *osx-yarn-dependencies
-  <<: *osx-generate-env
-  steps:
-    - checkout:
-        path: /Users/distiller/project
-    - run:
-        name: Set Ruby Version
-        command:  echo "ruby-2.4" > ~/.ruby-version
+  beta-android:
+    working_directory: ~/project/android
+    docker:
+      - image: circleci/android:api-27-node8-alpha
+    environment:
+      TERM: dumb
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
+    steps:
+      - checkout:
+          path: ~/project
+      - attach_workspace:
+          at: ~/project
+      - <<: *android-secrets
+      - <<: *fabric-android-secrets
+      - <<: *restore-gradle-cache
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - <<: *save-gems-cache
+      - run:
+            command: |
+                bundle exec fastlane beta \
+                submit:true \
+                apk_path:$APK_PATH \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                commit_sha:$CIRCLE_SHA1
+      - store_artifacts:
+          path: ~/project/android/app/build/outputs
+
+  release-android:
+    working_directory: ~/project/android
+    docker:
+      - image: circleci/android:api-27-node8-alpha
+    environment:
+      TERM: dumb
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
+    steps:
+      - checkout:
+          path: ~/project
+      - attach_workspace:
+          at: ~/project
+      - <<: *android-release-secrets
+      - <<: *fabric-android-secrets
+      - <<: *restore-gradle-cache
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - <<: *save-gems-cache
+      - run:
+            command: |
+                bundle exec fastlane release \
+                submit:true \
+                apk_path:$APK_PATH \
+                upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
+
+  alpha-ios:
+    macos:
+      xcode: "9.2.0"
+    working_directory: /Users/distiller/project/ios
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: /Users/distiller/project
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
-    - run:
-        name: Set Fabric secret
-        command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *get-yarn-cache-osx
+      - <<: *mac-ios-set-node-version
+      - <<: *osx-yarn-dependencies
+      - <<: *save-yarn-cache-osx
+      - <<: *osx-generate-env
+      - <<: *fabric-ios-secrets
+      - run:
+            command: |
+                bundle exec fastlane alpha \
+                submit:true \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                ci_build_num:$CIRCLE_BUILD_NUM \
+                commit_sha:$CIRCLE_SHA1
+      - store_artifacts:
+          path: /Users/distiller/project/output
+
+  beta-ios:
+    macos:
+      xcode: "9.2.0"
+    working_directory: /Users/distiller/project/ios
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: /Users/distiller/project
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *get-yarn-cache-osx
+      - <<: *mac-ios-set-node-version
+      - <<: *osx-yarn-dependencies
+      - <<: *save-yarn-cache-osx
+      - <<: *osx-generate-env
+      - <<: *fabric-ios-secrets
+      - run:
+            command: |
+                bundle exec fastlane beta \
+                submit:true \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                ci_build_num:$CIRCLE_BUILD_NUM \
+                commit_sha:$CIRCLE_SHA1
+
+  release-ios:
+    macos:
+      xcode: "9.2.0"
+    working_directory: /Users/distiller/project/ios
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: /Users/distiller/project
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *get-yarn-cache-osx
+      - <<: *mac-ios-set-node-version
+      - <<: *osx-yarn-dependencies
+      - <<: *save-yarn-cache-osx
+      - <<: *osx-generate-env
+      - <<: *fabric-ios-secrets
+      - run:
+            command: |
+                bundle exec fastlane release \
+                submit:true
+
+  e2e-ios:
+    macos:
+      xcode: "9.2.0"
+    working_directory: /Users/distiller/project/
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: /Users/distiller/project
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - run:
+          name: Pre-start simulator
+          command: xcrun simctl boot "iPhone 7" || true
+      - <<: *restore-brew-cache
+      - run:
+          name: Install HomeBrew dependencies
+          command: |
+              brew tap homebrew/bundle
+              brew bundle
+      - <<: *save-brew-cache
+      - <<: *mac-ios-set-node-version
+      - run:
+          name: Install global yarn dependencies
+          command: |
+              yarn global add detox-cli
+              yarn global add react-native-cli
+      - <<: *get-yarn-cache-osx
+      - <<: *osx-yarn-dependencies
+      - <<: *save-yarn-cache-osx
+      - <<: *fabric-ios-secrets
+      - run: yarn test:e2e
 
 workflows:
   version: 2
@@ -220,163 +447,3 @@ workflows:
               only:
                 - master
 
-version: 2
-jobs:
-  # build is a reserved job name for running circleci locally
-  build:
-    docker:
-      - image: circleci/node:9.3
-    working_directory: ~/project
-    steps:
-      - checkout
-      - run:
-          name: Test reporter status
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-            ./cc-test-reporter before-build
-      - <<: *get-yarn-cache
-      - <<: *yarn-dependencies
-      - <<: *save-yarn-cache
-      - run:
-          name: Lint source
-          command: yarn lint
-      - run:
-          name: Type check
-          command: yarn flow
-      - run:
-          name: Unit test
-          command: |
-            yarn test
-            ./cc-test-reporter after-build
-      - run:
-          name: Generate .env
-          command: node ./scripts/generate-dotenv.js
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - node_modules
-            - .env
-
-  alpha-android:
-    <<: *docker-android-job-defaults
-    environment:
-      <<: *docker-android-env
-      APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
-    steps:
-      - <<: *docker-android-step-defaults
-      - <<: *android-dev-secrets
-      - run:
-          command: |
-            bundle exec fastlane alpha \
-            submit:true \
-            apk_path:$APK_PATH \
-            api_token:$HOCKEY_APP_TOKEN \
-            app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
-            fabric_api_token:$FABRIC_API_KEY \
-            fabric_build_secret:$FABRIC_BUILD_SECRET \
-            fabric_groups:$FABRIC_GROUPS \
-            commit_sha:$CIRCLE_SHA1
-      - store_artifacts:
-          path: *android-artifacts-path
-
-  beta-android:
-    <<: *docker-android-job-defaults
-    environment:
-      <<: *docker-android-env
-      APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
-    steps:
-      - <<: *docker-android-step-defaults
-      - <<: *android-dev-secrets
-      - run:
-          command: |
-            bundle exec fastlane beta \
-            submit:true \
-            apk_path:$APK_PATH \
-            api_token:$HOCKEY_APP_TOKEN \
-            app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
-            fabric_api_token:$FABRIC_API_KEY \
-            fabric_build_secret:$FABRIC_BUILD_SECRET \
-            fabric_groups:$FABRIC_GROUPS \
-            commit_sha:$CIRCLE_SHA1
-      - store_artifacts:
-          path: *android-artifacts-path
-
-  release-android:
-    <<: *docker-android-job-defaults
-    environment:
-      <<: *docker-android-env
-      APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
-    steps:
-      - <<: *docker-android-step-defaults
-      - <<: *android-release-secrets
-      - run:
-          command: |
-            bundle exec fastlane release \
-            submit:true \
-            apk_path:$APK_PATH \
-            upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
-
-  alpha-ios:
-    <<: *mac-ios-job-defaults
-    <<: *mac-ios-step-defaults
-    steps+:
-      - run:
-          command: |
-            bundle exec fastlane alpha \
-            submit:true \
-            api_token:$HOCKEY_APP_TOKEN \
-            app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
-            fabric_api_token:$FABRIC_API_KEY \
-            fabric_build_secret:$FABRIC_BUILD_SECRET \
-            fabric_groups:$FABRIC_GROUPS \
-            ci_build_num:$CIRCLE_BUILD_NUM \
-            commit_sha:$CIRCLE_SHA1
-      - store_artifacts:
-          path: *ios-artifacts-path
-
-  beta-ios:
-    <<: *mac-ios-job-defaults
-    steps:
-      - <<: *mac-ios-step-defaults
-      - run:
-          command: |
-            bundle exec fastlane beta \
-            submit:true \
-            api_token:$HOCKEY_APP_TOKEN \
-            app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
-            fabric_api_token:$FABRIC_API_KEY \
-            fabric_build_secret:$FABRIC_BUILD_SECRET \
-            fabric_groups:$FABRIC_GROUPS \
-            ci_build_num:$CIRCLE_BUILD_NUM \
-            commit_sha:$CIRCLE_SHA1
-      - store_artifacts:
-          path: *ios-artifacts-path
-
-  release-ios:
-    <<: *mac-ios-job-defaults
-    steps:
-      - <<: *mac-ios-step-defaults
-      - run:
-          command: |
-            bundle exec fastlane release \
-            submit:true
-
-  e2e-ios:
-    <<: *mac-ios-job-defaults
-    steps:
-      - checkout:
-          path: /Users/distiller/project
-      - run:
-          name: Pre-start simulator
-          command: xcrun simctl boot "iPhone 7" || true
-      - <<: *brew-depdendencies
-      - <<: *mac-ios-set-node-version
-      - run:
-          name: Install global yarn dependencies
-          command: |
-            yarn global add detox-cli
-            yarn global add react-native-cli
-      - <<: *osx-yarn-dependencies
-      - <<: *osx-generate-env
-      - run: yarn test:e2e
