@@ -140,22 +140,6 @@ job-defaults-macos: &job-defaults-macos
     FL_OUTPUT_DIR: /Users/distiller/project/output
   shell: /bin/bash --login -o pipefail
 
-step-defaults-macos: &step-defaults-macos
-  steps:
-    - <<: *checkout-macos
-    - <<: *set-ruby-version-macos
-    # Not using a workspace here as Node and Yarn versions
-    # differ between the macOS image and the Docker containers above.
-    - <<: *fabric-secrets-ios
-    - <<: *restore-gems-cache
-    - <<: *ruby-dependencies
-    - <<: *save-gems-cache
-    - <<: *set-node-version-macos
-    - <<: *get-yarn-cache-macos
-    - <<: *yarn-dependencies-macos
-    - <<: *save-yarn-cache-macos
-    - <<: *generate-env-macos
-
 checkout-macos: &checkout-macos
   checkout:
     path: /Users/distiller/project
@@ -300,8 +284,20 @@ jobs:
   alpha-ios:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project/ios
-    <<: *step-defaults-macos
     steps:
+      - <<: *checkout-macos
+      - <<: *set-ruby-version-macos
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *fabric-secrets-ios
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *set-node-version-macos
+      - <<: *get-yarn-cache-macos
+      - <<: *yarn-dependencies-macos
+      - <<: *save-yarn-cache-macos
+      - <<: *generate-env-macos
       - run:
             command: |
                 bundle exec fastlane alpha \
