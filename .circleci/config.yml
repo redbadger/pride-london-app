@@ -1,276 +1,3 @@
-
-version: 2
-jobs:
-  # build is a reserved job name for running circleci locally
-  build:
-    docker:
-      - image: circleci/node:9.3
-    working_directory: ~/project
-    steps:
-      - checkout
-      - <<: *get-yarn-cache
-      - run:
-          name: Test reporter status
-          command: |
-              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-              chmod +x ./cc-test-reporter
-              ./cc-test-reporter before-build
-      - <<: *yarn-dependencies
-      - <<: *save-yarn-cache
-      - run:
-          name: Lint source
-          command: yarn lint
-      - run:
-          name: Type check
-          command: yarn flow
-      - run:
-          name: Unit test
-          command: |
-              yarn test
-              ./cc-test-reporter after-build
-      - run:
-          name: Generate .env
-          command: node ./scripts/generate-dotenv.js
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - node_modules
-            - .env
-
-  alpha-android:
-    <<: *docker-android-job-defaults
-    environment:
-      <<: *docker-android-env
-      APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
-    steps:
-      - <<: *docker-android-checkout
-      - <<: *docker-android-workspace
-      - <<: *android-secrets
-      - <<: *fabric-android-secrets
-      - <<: *restore-gradle-cache
-      - <<: *restore-gems-cache
-      - <<: *ruby-dependencies
-      - <<: *android-dependencies
-      - <<: *save-gradle-cache
-      - <<: *save-gems-cache
-      - run:
-            command: |
-                bundle exec fastlane alpha \
-                submit:true \
-                apk_path:$APK_PATH \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
-                fabric_api_token:$FABRIC_API_KEY \
-                fabric_build_secret:$FABRIC_BUILD_SECRET \
-                fabric_groups:$FABRIC_GROUPS \
-                commit_sha:$CIRCLE_SHA1
-      - <<: *docker-android-store-artifacts
-
-  beta-android:
-    <<: *docker-android-job-defaults
-    environment:
-      <<: *docker-android-env
-      APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
-    steps:
-      - <<: *docker-android-checkout
-      - <<: *docker-android-workspace
-      - <<: *android-secrets
-      - <<: *fabric-android-secrets
-      - <<: *restore-gradle-cache
-      - <<: *restore-gems-cache
-      - <<: *ruby-dependencies
-      - <<: *android-dependencies
-      - <<: *save-gradle-cache
-      - <<: *save-gems-cache
-      - run:
-            command: |
-                bundle exec fastlane beta \
-                submit:true \
-                apk_path:$APK_PATH \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
-                fabric_api_token:$FABRIC_API_KEY \
-                fabric_build_secret:$FABRIC_BUILD_SECRET \
-                fabric_groups:$FABRIC_GROUPS \
-                commit_sha:$CIRCLE_SHA1
-      - <<: *docker-android-store-artifacts
-
-  release-android:
-    <<: *docker-android-job-defaults
-    environment:
-      <<: *docker-android-env
-      APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
-    steps:
-      - <<: *docker-android-checkout
-      - <<: *docker-android-workspace
-      - <<: *android-release-secrets
-      - <<: *fabric-android-secrets
-      - <<: *restore-gradle-cache
-      - <<: *restore-gems-cache
-      - <<: *ruby-dependencies
-      - <<: *android-dependencies
-      - <<: *save-gradle-cache
-      - <<: *save-gems-cache
-      - run:
-            command: |
-                bundle exec fastlane release \
-                submit:true \
-                apk_path:$APK_PATH \
-                upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
-
-  alpha-ios:
-    <<: *mac-ios-job-defaults
-    steps:
-      - <<: *mac-ios-checkout
-      - <<: *mac-ios-set-ruby-version
-      # Not using a workspace here as Node and Yarn versions
-      # differ between the macOS image and the Docker containers above.
-      - <<: *restore-gems-cache
-      - <<: *ruby-dependencies
-      - <<: *save-gems-cache
-      - <<: *get-yarn-cache-osx
-      - <<: *mac-ios-set-node-version
-      - <<: *osx-yarn-dependencies
-      - <<: *save-yarn-cache-osx
-      - <<: *osx-generate-env
-      - <<: *fabric-ios-secrets
-      - run:
-            command: |
-                bundle exec fastlane alpha \
-                submit:true \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
-                fabric_api_token:$FABRIC_API_KEY \
-                fabric_build_secret:$FABRIC_BUILD_SECRET \
-                fabric_groups:$FABRIC_GROUPS \
-                ci_build_num:$CIRCLE_BUILD_NUM \
-                commit_sha:$CIRCLE_SHA1
-      - store_artifacts:
-          path: /Users/distiller/project/output
-
-  beta-ios:
-    <<: *mac-ios-job-defaults
-    steps:
-      - <<: *mac-ios-checkout
-      - <<: *mac-ios-set-ruby-version
-      # Not using a workspace here as Node and Yarn versions
-      # differ between the macOS image and the Docker containers above.
-      - <<: *restore-gems-cache
-      - <<: *ruby-dependencies
-      - <<: *save-gems-cache
-      - <<: *get-yarn-cache-osx
-      - <<: *mac-ios-set-node-version
-      - <<: *osx-yarn-dependencies
-      - <<: *save-yarn-cache-osx
-      - <<: *osx-generate-env
-      - <<: *fabric-ios-secrets
-      - run:
-            command: |
-                bundle exec fastlane beta \
-                submit:true \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
-                fabric_api_token:$FABRIC_API_KEY \
-                fabric_build_secret:$FABRIC_BUILD_SECRET \
-                fabric_groups:$FABRIC_GROUPS \
-                ci_build_num:$CIRCLE_BUILD_NUM \
-                commit_sha:$CIRCLE_SHA1
-
-  release-ios:
-    <<: *mac-ios-job-defaults
-    steps:
-      - <<: *mac-ios-checkout
-      - <<: *mac-ios-set-ruby-version
-      # Not using a workspace here as Node and Yarn versions
-      # differ between the macOS image and the Docker containers above.
-      - <<: *restore-gems-cache
-      - <<: *ruby-dependencies
-      - <<: *save-gems-cache
-      - <<: *get-yarn-cache-osx
-      - <<: *mac-ios-set-node-version
-      - <<: *osx-yarn-dependencies
-      - <<: *save-yarn-cache-osx
-      - <<: *osx-generate-env
-      - <<: *fabric-ios-secrets
-      - run:
-            command: |
-                bundle exec fastlane release \
-                submit:true
-
-  e2e-ios:
-    <<: *mac-ios-job-defaults
-    steps:
-      - <<: *mac-ios-checkout
-      - <<: *mac-ios-set-ruby-version
-      # Not using a workspace here as Node and Yarn versions
-      # differ between the macOS image and the Docker containers above.
-      - run:
-          name: Pre-start simulator
-          command: xcrun simctl boot "iPhone 7" || true
-      - <<: *restore-brew-cache
-      - run:
-          name: Install HomeBrew dependencies
-          command: |
-              brew tap homebrew/bundle
-              brew bundle
-      - <<: *save-brew-cache
-      - <<: *mac-ios-set-node-version
-      - run:
-          name: Install global yarn dependencies
-          command: |
-              yarn global add detox-cli
-              yarn global add react-native-cli
-      - <<: *get-yarn-cache-osx
-      - <<: *osx-yarn-dependencies
-      - <<: *save-yarn-cache-osx
-      - <<: *fabric-ios-secrets
-      - run: yarn test:e2e
-
-workflows:
-  version: 2
-  node-android-ios:
-    jobs:
-      - build
-      - e2e-ios:
-          requires:
-            - build
-      - alpha-android:
-          requires:
-            - build
-          filters:
-            branches:
-              ignore:
-                - master
-      - alpha-ios:
-          filters:
-            branches:
-              ignore:
-                - master
-      - beta-android:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
-      - beta-ios:
-          filters:
-            branches:
-              only:
-                - master
-      - release-android:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
-      - release-ios:
-          filters:
-            branches:
-              only:
-                - master
-
 yarn-key: &yarn-key
   v1-dependencies-{{ checksum "yarn.lock" }}
 yarn-osx-key: &yarn-osx-key
@@ -361,19 +88,6 @@ brew-depdendencies: &brew-depdendencies
       brew tap homebrew/bundle
       brew bundle
 
-mac-ios-set-node-version: &mac-ios-set-node-version
-  run:
-    name: Set node version
-    command: |
-      yarn global add n
-      sudo n 9.
-
-osx-generate-env: &osx-generate-env
-  run:
-    name: Generate .env
-    command: node ./scripts/generate-dotenv.js
-    working_directory: /Users/distiller/project
-
 android-secrets: &android-secrets
   run:
     command: |
@@ -386,6 +100,7 @@ android-release-secrets: &android-release-secrets
       git clone git@github.com:redbadger/pride-android-secrets.git
       mkdir -p .gradle
       echo -e "keystore=$ANDROID_RELEASE_KEYSTORE_PATH\nkeystore.alias=$ANDROID_RELEASE_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
+      
 fabric-android-secrets: &fabric-android-secrets
   run:
     name: Set Fabric secret
@@ -434,3 +149,288 @@ mac-ios-set-ruby-version: &mac-ios-set-ruby-version
   run:
     name: Set Ruby Version
     command:  echo "ruby-2.4" > ~/.ruby-version
+
+mac-ios-set-node-version: &mac-ios-set-node-version
+  run:
+    name: Set node version
+    command: |
+      yarn global add n
+      sudo n 9.
+
+mac-ios-generate-env: &mac-ios-generate-env
+  run:
+    name: Generate .env
+    command: node ./scripts/generate-dotenv.js
+    working_directory: /Users/distiller/project
+
+version: 2
+jobs:
+  # build is a reserved job name for running circleci locally
+  build:
+    docker:
+      - image: circleci/node:9.3
+    working_directory: ~/project
+    steps:
+      - checkout
+      - <<: *get-yarn-cache
+      - run:
+          name: Test reporter status
+          command: |
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+              chmod +x ./cc-test-reporter
+              ./cc-test-reporter before-build
+      - <<: *yarn-dependencies
+      - <<: *save-yarn-cache
+      - run:
+          name: Lint source
+          command: yarn lint
+      - run:
+          name: Type check
+          command: yarn flow
+      - run:
+          name: Unit test
+          command: |
+              yarn test
+              ./cc-test-reporter after-build
+      - run:
+          name: Generate .env
+          command: node ./scripts/generate-dotenv.js
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - node_modules
+            - .env
+
+  alpha-android:
+    <<: *docker-android-job-defaults
+    environment:
+      <<: *docker-android-env
+      APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
+    steps:
+      - <<: *docker-android-checkout
+      - <<: *docker-android-workspace
+      - <<: *android-secrets
+      - <<: *fabric-android-secrets
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *restore-gradle-cache
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - run:
+            command: |
+                bundle exec fastlane alpha \
+                submit:true \
+                apk_path:$APK_PATH \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                commit_sha:$CIRCLE_SHA1
+      - <<: *docker-android-store-artifacts
+
+  beta-android:
+    <<: *docker-android-job-defaults
+    environment:
+      <<: *docker-android-env
+      APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
+    steps:
+      - <<: *docker-android-checkout
+      - <<: *docker-android-workspace
+      - <<: *android-secrets
+      - <<: *fabric-android-secrets
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *restore-gradle-cache
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - run:
+            command: |
+                bundle exec fastlane beta \
+                submit:true \
+                apk_path:$APK_PATH \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                commit_sha:$CIRCLE_SHA1
+      - <<: *docker-android-store-artifacts
+
+  release-android:
+    <<: *docker-android-job-defaults
+    environment:
+      <<: *docker-android-env
+      APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
+    steps:
+      - <<: *docker-android-checkout
+      - <<: *docker-android-workspace
+      - <<: *android-release-secrets
+      - <<: *fabric-android-secrets
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *restore-gradle-cache
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - run:
+            command: |
+                bundle exec fastlane release \
+                submit:true \
+                apk_path:$APK_PATH \
+                upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
+
+  alpha-ios:
+    <<: *mac-ios-job-defaults
+    steps:
+      - <<: *mac-ios-checkout
+      - <<: *mac-ios-set-ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *fabric-ios-secrets
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *mac-ios-set-node-version
+      - <<: *get-yarn-cache-osx
+      - <<: *osx-yarn-dependencies
+      - <<: *save-yarn-cache-osx
+      - <<: *mac-ios-generate-env
+      - run:
+            command: |
+                bundle exec fastlane alpha \
+                submit:true \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                ci_build_num:$CIRCLE_BUILD_NUM \
+                commit_sha:$CIRCLE_SHA1
+      - store_artifacts:
+          path: /Users/distiller/project/output
+
+  beta-ios:
+    <<: *mac-ios-job-defaults
+    steps:
+      - <<: *mac-ios-checkout
+      - <<: *mac-ios-set-ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *fabric-ios-secrets
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *mac-ios-set-node-version
+      - <<: *get-yarn-cache-osx
+      - <<: *osx-yarn-dependencies
+      - <<: *save-yarn-cache-osx
+      - <<: *mac-ios-generate-env
+      - run:
+            command: |
+                bundle exec fastlane beta \
+                submit:true \
+                api_token:$HOCKEY_APP_TOKEN \
+                app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
+                fabric_api_token:$FABRIC_API_KEY \
+                fabric_build_secret:$FABRIC_BUILD_SECRET \
+                fabric_groups:$FABRIC_GROUPS \
+                ci_build_num:$CIRCLE_BUILD_NUM \
+                commit_sha:$CIRCLE_SHA1
+
+  release-ios:
+    <<: *mac-ios-job-defaults
+    steps:
+      - <<: *mac-ios-checkout
+      - <<: *mac-ios-set-ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *fabric-ios-secrets
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *mac-ios-set-node-version
+      - <<: *get-yarn-cache-osx
+      - <<: *osx-yarn-dependencies
+      - <<: *save-yarn-cache-osx
+      - <<: *mac-ios-generate-env
+      - run:
+            command: |
+                bundle exec fastlane release \
+                submit:true
+
+  e2e-ios:
+    <<: *mac-ios-job-defaults
+    steps:
+      - <<: *mac-ios-checkout
+      - <<: *mac-ios-set-ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *fabric-ios-secrets
+      - run:
+          name: Pre-start simulator
+          command: xcrun simctl boot "iPhone 7" || true
+      - <<: *restore-brew-cache
+      - run:
+          name: Install HomeBrew dependencies
+          command: |
+              brew tap homebrew/bundle
+              brew bundle
+      - <<: *save-brew-cache
+      - <<: *mac-ios-set-node-version
+      - run:
+          name: Install global yarn dependencies
+          command: |
+              yarn global add detox-cli
+              yarn global add react-native-cli
+      - <<: *get-yarn-cache-osx
+      - <<: *osx-yarn-dependencies
+      - <<: *save-yarn-cache-osx
+      - run: yarn test:e2e
+
+workflows:
+  version: 2
+  node-android-ios:
+    jobs:
+      - build
+      - e2e-ios:
+          requires:
+            - build
+      - alpha-android:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore:
+                - master
+      - alpha-ios:
+          filters:
+            branches:
+              ignore:
+                - master
+      - beta-android:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+      - beta-ios:
+          filters:
+            branches:
+              only:
+                - master
+      - release-android:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+      - release-ios:
+          filters:
+            branches:
+              only:
+                - master
