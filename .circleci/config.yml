@@ -159,6 +159,10 @@ mac-ios-set-node-version: &mac-ios-set-node-version
       sudo n 9.3
 
 mac-ios-step-defaults: &mac-ios-step-defaults
+  <<: *ruby-dependencies
+  <<: *mac-ios-set-node-version
+  <<: *osx-yarn-dependencies
+  <<: *osx-generate-env
   steps:
     - checkout:
         path: /Users/distiller/project
@@ -170,10 +174,6 @@ mac-ios-step-defaults: &mac-ios-step-defaults
     - run:
         name: Set Fabric secret
         command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
-  <<: *ruby-dependencies
-  <<: *mac-ios-set-node-version
-  <<: *osx-yarn-dependencies
-  <<: *osx-generate-env
 
 workflows:
   version: 2
