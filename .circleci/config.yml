@@ -109,7 +109,7 @@ fabric-android-secrets: &fabric-android-secrets
 fabric-ios-secrets: &fabric-ios-secrets
   run:
     name: Set Fabric secret
-    command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+    command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> /Users/distiller/project/ios/PrideLondonApp/fabric.properties
 
 docker-android-job-defaults: &docker-android-job-defaults
   working_directory: ~/project/android
