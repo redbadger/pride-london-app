@@ -1,7 +1,7 @@
 yarn-key: &yarn-key
   v1-dependencies-{{ checksum "yarn.lock" }}
 yarn-osx-key: &yarn-osx-key
-  v1-dependencies-{{ checksum "/Users/distiller/project/yarn.lock" }}
+  v1-dependencies-osx-{{ checksum "/Users/distiller/project/yarn.lock" }}
 gradle-key: &gradle-key
   v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
