@@ -187,34 +187,34 @@ jobs:
       - checkout
       - <<: *get-yarn-cache
       - run:
-          name: Test reporter status
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-            ./cc-test-reporter before-build
+        name: Test reporter status
+        command: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
       - run:
-          name: Install dependencies
-          command: yarn install
+        name: Install dependencies
+        command: yarn install
       - <<: *save-yarn-cache
       - run:
-          name: Lint source
-          command: yarn lint
+        name: Lint source
+        command: yarn lint
       - run:
-          name: Type check
-          command: yarn flow
+        name: Type check
+        command: yarn flow
       - run:
-          name: Unit test
-          command: |
-            yarn test
-            ./cc-test-reporter after-build
+        name: Unit test
+        command: |
+          yarn test
+          ./cc-test-reporter after-build
       - run:
-          name: Generate .env
-          command: node ./scripts/generate-dotenv.js
+        name: Generate .env
+        command: node ./scripts/generate-dotenv.js
       - persist_to_workspace:
-          root: ~/project
-          paths:
-          - node_modules
-          - .env
+        root: ~/project
+        paths:
+        - node_modules
+        - .env
 
   alpha-android:
     <<: *docker-android-job-defaults
