@@ -91,13 +91,13 @@ docker-android-step-defaults: &docker-android-step-defaults
       path: ~/project
   - attach_workspace:
       at: ~/project
-  # - <<: *restore-gradle-cache
-  # - <<: *restore-gems-cache
-  # - <<: *ruby-dependencies
-  # - <<: *android-dependencies
-  # - <<: *save-gradle-cache
-  # - <<: *save-gems-cache
-  # - <<: *fabric-android-secrets
+  - <<: *restore-gradle-cache
+  - <<: *restore-gems-cache
+  - <<: *ruby-dependencies
+  - <<: *android-dependencies
+  - <<: *save-gradle-cache
+  - <<: *save-gems-cache
+  - <<: *fabric-android-secrets
 
 version: 2
 jobs:
