@@ -24,7 +24,7 @@ save-yarn-cache: &save-yarn-cache
 
 # Mac machine builds have different paths and arch
 get-yarn-cache-osx: &get-yarn-cache-osx
-  steps:
+  steps+:
     - restore_cache:
         key: *yarn-osx-key
 save-yarn-cache-osx: &save-yarn-cache-osx
@@ -167,13 +167,13 @@ mac-ios-step-defaults: &mac-ios-step-defaults
         command:  echo "ruby-2.4" > ~/.ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
-    - <<: *ruby-dependencies
-    - <<: *mac-ios-set-node-version
-    - <<: *osx-yarn-dependencies
-    - <<: *osx-generate-env
     - run:
         name: Set Fabric secret
         command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+  <<: *ruby-dependencies
+  <<: *mac-ios-set-node-version
+  <<: *osx-yarn-dependencies
+  <<: *osx-generate-env
 
 workflows:
   version: 2
