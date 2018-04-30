@@ -1,7 +1,7 @@
 yarn-key: &yarn-key
   v1-dependencies-{{ checksum "yarn.lock" }}
-yarn-osx-key: &yarn-osx-key
-  v1-dependencies-osx-{{ checksum "/Users/distiller/project/yarn.lock" }}
+yarn-macos-key: &yarn-macos-key
+  v1-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
 gradle-key: &gradle-key
   v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
@@ -22,15 +22,15 @@ save-yarn-cache: &save-yarn-cache
       - node_modules
     key: *yarn-key
 
-# Mac machine builds have different paths and arch
-get-yarn-cache-osx: &get-yarn-cache-osx
+# macOS machine builds have different paths and arch
+get-yarn-cache-macos: &get-yarn-cache-macos
   restore_cache:
-    key: *yarn-osx-key
-save-yarn-cache-osx: &save-yarn-cache-osx
+    key: *yarn-macos-key
+save-yarn-cache-macos: &save-yarn-cache-macos
   save_cache:
     paths:
       - /Users/distiller/project/node_modules
-    key: *yarn-osx-key
+    key: *yarn-macos-key
 
 restore-gradle-cache: &restore-gradle-cache
   restore_cache:
@@ -65,7 +65,7 @@ yarn-dependencies: &yarn-dependencies
     name: Install dependencies
     command: yarn install
 
-osx-yarn-dependencies: &osx-yarn-dependencies
+macos-ios-yarn-dependencies: &macos-ios-yarn-dependencies
   run:
     name: Install dependencies with Yarn
     command: yarn install
@@ -133,30 +133,30 @@ docker-android-store-artifacts: &docker-android-store-artifacts
   store_artifacts:
     path: ~/project/android/app/build/outputs
 
-mac-ios-job-defaults: &mac-ios-job-defaults
+macos-ios-job-defaults: &macos-ios-job-defaults
   macos:
     xcode: "9.2.0"
   environment:
     FL_OUTPUT_DIR: /Users/distiller/project/output
   shell: /bin/bash --login -o pipefail
 
-mac-ios-checkout: &mac-ios-checkout
+macos-ios-checkout: &macos-ios-checkout
   checkout:
     path: /Users/distiller/project
 
-mac-ios-set-ruby-version: &mac-ios-set-ruby-version
+macos-ios-set-ruby-version: &macos-ios-set-ruby-version
   run:
     name: Set Ruby Version
     command:  echo "ruby-2.4" > ~/.ruby-version
 
-mac-ios-set-node-version: &mac-ios-set-node-version
+macos-ios-set-node-version: &macos-ios-set-node-version
   run:
     name: Set node version
     command: |
       yarn global add n
       sudo n 9.
 
-mac-ios-generate-env: &mac-ios-generate-env
+macos-ios-generate-env: &macos-ios-generate-env
   run:
     name: Generate .env
     command: node ./scripts/generate-dotenv.js
@@ -282,22 +282,22 @@ jobs:
                 upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
 
   alpha-ios:
-    <<: *mac-ios-job-defaults
+    <<: *macos-ios-job-defaults
     working_directory: /Users/distiller/project/ios
     steps:
-      - <<: *mac-ios-checkout
-      - <<: *mac-ios-set-ruby-version
+      - <<: *macos-ios-checkout
+      - <<: *macos-ios-set-ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - <<: *fabric-ios-secrets
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - <<: *mac-ios-set-node-version
-      - <<: *get-yarn-cache-osx
-      - <<: *osx-yarn-dependencies
-      - <<: *save-yarn-cache-osx
-      - <<: *mac-ios-generate-env
+      - <<: *macos-ios-set-node-version
+      - <<: *get-yarn-cache-macos
+      - <<: *macos-ios-yarn-dependencies
+      - <<: *save-yarn-cache-macos
+      - <<: *macos-ios-generate-env
       - run:
             command: |
                 bundle exec fastlane alpha \
@@ -313,22 +313,22 @@ jobs:
           path: /Users/distiller/project/output
 
   beta-ios:
-    <<: *mac-ios-job-defaults
+    <<: *macos-ios-job-defaults
     working_directory: /Users/distiller/project/ios
     steps:
-      - <<: *mac-ios-checkout
-      - <<: *mac-ios-set-ruby-version
+      - <<: *macos-ios-checkout
+      - <<: *macos-ios-set-ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - <<: *fabric-ios-secrets
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - <<: *mac-ios-set-node-version
-      - <<: *get-yarn-cache-osx
-      - <<: *osx-yarn-dependencies
-      - <<: *save-yarn-cache-osx
-      - <<: *mac-ios-generate-env
+      - <<: *macos-ios-set-node-version
+      - <<: *get-yarn-cache-macos
+      - <<: *macos-ios-yarn-dependencies
+      - <<: *save-yarn-cache-macos
+      - <<: *macos-ios-generate-env
       - run:
             command: |
                 bundle exec fastlane beta \
@@ -342,33 +342,33 @@ jobs:
                 commit_sha:$CIRCLE_SHA1
 
   release-ios:
-    <<: *mac-ios-job-defaults
+    <<: *macos-ios-job-defaults
     working_directory: /Users/distiller/project/ios
     steps:
-      - <<: *mac-ios-checkout
-      - <<: *mac-ios-set-ruby-version
+      - <<: *macos-ios-checkout
+      - <<: *macos-ios-set-ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - <<: *fabric-ios-secrets
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
-      - <<: *mac-ios-set-node-version
-      - <<: *get-yarn-cache-osx
-      - <<: *osx-yarn-dependencies
-      - <<: *save-yarn-cache-osx
-      - <<: *mac-ios-generate-env
+      - <<: *macos-ios-set-node-version
+      - <<: *get-yarn-cache-macos
+      - <<: *macos-ios-yarn-dependencies
+      - <<: *save-yarn-cache-macos
+      - <<: *macos-ios-generate-env
       - run:
             command: |
                 bundle exec fastlane release \
                 submit:true
 
   e2e-ios:
-    <<: *mac-ios-job-defaults
+    <<: *macos-ios-job-defaults
     working_directory: /Users/distiller/project
     steps:
-      - <<: *mac-ios-checkout
-      - <<: *mac-ios-set-ruby-version
+      - <<: *macos-ios-checkout
+      - <<: *macos-ios-set-ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - <<: *fabric-ios-secrets
@@ -382,15 +382,15 @@ jobs:
               brew tap homebrew/bundle
               brew bundle
       - <<: *save-brew-cache
-      - <<: *mac-ios-set-node-version
+      - <<: *macos-ios-set-node-version
       - run:
           name: Install global yarn dependencies
           command: |
               yarn global add detox-cli
               yarn global add react-native-cli
-      - <<: *get-yarn-cache-osx
-      - <<: *osx-yarn-dependencies
-      - <<: *save-yarn-cache-osx
+      - <<: *get-yarn-cache-macos
+      - <<: *macos-ios-yarn-dependencies
+      - <<: *save-yarn-cache-macos
       - run: yarn test:e2e
 
 workflows:
