@@ -119,7 +119,7 @@ android {
     buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId "com.pridelondonapp"
+        applicationId "org.prideinlondon.festival"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode androidVersionCode
@@ -163,25 +163,26 @@ android {
     productFlavors {
         alpha {
             dimension "tier"
-            applicationId 'com.pridelondonapp.alpha'
-            resValue "string", "build_config_package", "com.pridelondonapp"
+            applicationId 'org.prideinlondon.festival.alpha'
+            resValue "string", "build_config_package", "org.prideinlondon.festival"
             resValue "string", "app_name", "Pride Alpha"
         }
         beta {
             dimension "tier"
-            applicationId 'com.pridelondonapp.beta'
-            resValue "string", "build_config_package", "com.pridelondonapp"
+            applicationId 'org.prideinlondon.festival.beta'
+            resValue "string", "build_config_package", "org.prideinlondon.festival"
             resValue "string", "app_name", "Pride Beta"
         }
         dev {
-            applicationId 'com.pridelondonapp.dev'
-            resValue "string", "build_config_package", "com.pridelondonapp"
+            dimension "tier"
+            applicationId 'org.prideinlondon.festival.dev'
+            resValue "string", "build_config_package", "org.prideinlondon.festival"
             resValue "string", "app_name", "Pride DEV"
         }
         production {
             dimension "tier"
-            applicationId 'com.pridelondonapp'
-            resValue "string", "build_config_package", "com.pridelondonapp"
+            applicationId 'org.prideinlondon.festival'
+            resValue "string", "build_config_package", "org.prideinlondon.festival"
             resValue "string", "app_name", "Pride London App"
         }
     }
