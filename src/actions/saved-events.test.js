@@ -26,7 +26,9 @@ describe("addSavedEvent", () => {
     const id = "e45cee87-e7cf-47ae-9799-229d4aab207d";
     const storedEvents = new Set(["b", "c"]);
     const mockDispatch = jest.fn();
-    const mockFetchSavedEvents = jest.fn().mockReturnValue(storedEvents);
+    const mockFetchSavedEvents = jest
+      .fn()
+      .mockReturnValue(Promise.resolve(storedEvents));
     const mockStoreSavedEvents = jest.fn();
 
     await addSavedEvent(id, mockFetchSavedEvents, mockStoreSavedEvents)(
@@ -58,7 +60,9 @@ describe("removeSavedEvent", () => {
     const id = "e45cee87-e7cf-47ae-9799-229d4aab207d";
     const storedEvents = new Set([id, "b", "c"]);
     const mockDispatch = jest.fn();
-    const mockFetchSavedEvents = jest.fn().mockReturnValue(storedEvents);
+    const mockFetchSavedEvents = jest
+      .fn()
+      .mockReturnValue(Promise.resolve(storedEvents));
     const mockStoreSavedEvents = jest.fn();
 
     await removeSavedEvent(id, mockFetchSavedEvents, mockStoreSavedEvents)(
