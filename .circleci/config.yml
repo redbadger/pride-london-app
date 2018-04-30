@@ -150,9 +150,6 @@ jobs:
       - run:
           name: Pre-start simulator
           command: xcrun simctl boot "iPhone 7" || true
-
-      # Not using a workspace here as Node and Yarn versions
-      # differ between the macOS image and the Docker containers above.
       - <<: *brew-depdendencies
       - <<: *mac-ios-set-node-version
       - run:
@@ -179,7 +176,6 @@ android-artifacts-path: &android-artifacts-path
 ios-artifacts-path: &ios-artifacts-path
   /Users/distiller/project/output
 
-# Dependency management anchors
 yarn-dependencies: &yarn-dependencies
   <<: *get-yarn-cache
   run:
@@ -283,7 +279,6 @@ fabric-android-secrets: &fabric-android-secrets
     command: |
       echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
 
-# The following anchors are for usable pieces of our jobs
 docker-android-job-defaults: &docker-android-job-defaults
   working_directory: ~/project/android
   docker:
