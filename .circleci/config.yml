@@ -133,6 +133,18 @@ docker-android-env: &docker-android-env
   LC_ALL: en_US.UTF-8
   LANG: en_US.UTF-8
 
+docker-android-store-artifacts: &docker-android-store-artifacts
+  store_artifacts:
+    path: ~/project/android/app/build/outputs
+
+mac-ios-job-defaults: &mac-ios-job-defaults
+  macos:
+    xcode: "9.2.0"
+  working_directory: /Users/distiller/project/ios
+  environment:
+    FL_OUTPUT_DIR: /Users/distiller/project/output
+  shell: /bin/bash --login -o pipefail
+
 version: 2
 jobs:
   # build is a reserved job name for running circleci locally
@@ -200,8 +212,7 @@ jobs:
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
                 commit_sha:$CIRCLE_SHA1
-      - store_artifacts:
-          path: ~/project/android/app/build/outputs
+      - <<: *docker-android-store-artifacts
 
   beta-android:
     <<: *docker-android-job-defaults
@@ -232,8 +243,7 @@ jobs:
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
                 commit_sha:$CIRCLE_SHA1
-      - store_artifacts:
-          path: ~/project/android/app/build/outputs
+      - <<: *docker-android-store-artifacts
 
   release-android:
     <<: *docker-android-job-defaults
@@ -261,12 +271,7 @@ jobs:
                 upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
 
   alpha-ios:
-    macos:
-      xcode: "9.2.0"
-    working_directory: /Users/distiller/project/ios
-    environment:
-      FL_OUTPUT_DIR: /Users/distiller/project/output
-    shell: /bin/bash --login -o pipefail
+    <<: *mac-ios-job-defaults
     steps:
       - checkout:
           path: /Users/distiller/project
@@ -299,12 +304,7 @@ jobs:
           path: /Users/distiller/project/output
 
   beta-ios:
-    macos:
-      xcode: "9.2.0"
-    working_directory: /Users/distiller/project/ios
-    environment:
-      FL_OUTPUT_DIR: /Users/distiller/project/output
-    shell: /bin/bash --login -o pipefail
+    <<: *mac-ios-job-defaults
     steps:
       - checkout:
           path: /Users/distiller/project
@@ -335,12 +335,7 @@ jobs:
                 commit_sha:$CIRCLE_SHA1
 
   release-ios:
-    macos:
-      xcode: "9.2.0"
-    working_directory: /Users/distiller/project/ios
-    environment:
-      FL_OUTPUT_DIR: /Users/distiller/project/output
-    shell: /bin/bash --login -o pipefail
+    <<: *mac-ios-job-defaults
     steps:
       - checkout:
           path: /Users/distiller/project
