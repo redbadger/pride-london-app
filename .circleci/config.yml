@@ -28,7 +28,7 @@ get-yarn-cache-osx: &get-yarn-cache-osx
     - restore_cache:
         key: *yarn-osx-key
 save-yarn-cache-osx: &save-yarn-cache-osx
-  steps:
+  steps+:
     - save_cache:
         paths:
           - /Users/distiller/project/node_modules
