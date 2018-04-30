@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventsScreen Component renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Connect(FilterHeader)
+    onFilterButtonPress={[Function]}
+    onFilterCategoriesPress={[Function]}
+    selectedCategories={Set {}}
+  />
+  <EventList
+    addSavedEvent={[Function]}
+    events={Array []}
+    getAssetUrl={[Function]}
+    locale="en-GB"
+    onPress={[Function]}
+    onRefresh={[Function]}
+    refreshing={false}
+    removeSavedEvent={[Function]}
+    savedEvents={Set {}}
+  />
+</Component>
+`;
