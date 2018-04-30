@@ -45,13 +45,13 @@ android-dependencies: &android-dependencies
   <<: *save-gradle-cache
 
 brew-depdendencies: &brew-depdendencies
-  - <<: *restore-brew-cache
-  - run:
-      name: Install HomeBrew dependencies
-      command: |
-          brew tap homebrew/bundle
-          brew bundle
-  - <<: *save-brew-cache
+  <<: *restore-brew-cache
+  run:
+    name: Install HomeBrew dependencies
+    command: |
+      brew tap homebrew/bundle
+      brew bundle
+  <<: *save-brew-cache
   
 get-yarn-cache: &get-yarn-cache
   restore_cache:
@@ -222,9 +222,9 @@ jobs:
       <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
     steps:
-      <<: *docker-android-step-defaults
-      <<: *android-dev-secrets
-      run:
+      - <<: *docker-android-step-defaults
+      - <<: *android-dev-secrets
+      - run:
         command: |
           bundle exec fastlane alpha \
           submit:true \
@@ -235,8 +235,8 @@ jobs:
           fabric_build_secret:$FABRIC_BUILD_SECRET \
           fabric_groups:$FABRIC_GROUPS \
           commit_sha:$CIRCLE_SHA1
-      store_artifacts:
-        path: *android-artifacts-path
+      - store_artifacts:
+          path: *android-artifacts-path
 
   beta-android:
     <<: *docker-android-job-defaults
@@ -244,9 +244,9 @@ jobs:
       <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
     steps:
-      <<: *docker-android-step-defaults
-      <<: *android-dev-secrets
-      run:
+      - <<: *docker-android-step-defaults
+      - <<: *android-dev-secrets
+      - run:
         command: |
           bundle exec fastlane beta \
           submit:true \
@@ -257,8 +257,8 @@ jobs:
           fabric_build_secret:$FABRIC_BUILD_SECRET \
           fabric_groups:$FABRIC_GROUPS \
           commit_sha:$CIRCLE_SHA1
-      store_artifacts:
-        path: *android-artifacts-path
+      - store_artifacts:
+          path: *android-artifacts-path
 
   release-android:
     <<: *docker-android-job-defaults
@@ -266,9 +266,9 @@ jobs:
       <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
     steps:
-      <<: *docker-android-step-defaults
-      <<: *android-release-secrets
-      run:
+      - <<: *docker-android-step-defaults
+      - <<: *android-release-secrets
+      - run:
         command: |
           bundle exec fastlane release \
           submit:true \
@@ -278,26 +278,26 @@ jobs:
   alpha-ios:
     <<: *mac-ios-job-defaults
     steps:
-      <<: *mac-ios-step-defaults
-      run:
-        command: |
-          bundle exec fastlane alpha \
-          submit:true \
-          api_token:$HOCKEY_APP_TOKEN \
-          app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
-          fabric_api_token:$FABRIC_API_KEY \
-          fabric_build_secret:$FABRIC_BUILD_SECRET \
-          fabric_groups:$FABRIC_GROUPS \
-          ci_build_num:$CIRCLE_BUILD_NUM \
-          commit_sha:$CIRCLE_SHA1
-      store_artifacts:
-        path: *ios-artifacts-path
+      - <<: *mac-ios-step-defaults
+      - run:
+          command: |
+            bundle exec fastlane alpha \
+            submit:true \
+            api_token:$HOCKEY_APP_TOKEN \
+            app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
+            fabric_api_token:$FABRIC_API_KEY \
+            fabric_build_secret:$FABRIC_BUILD_SECRET \
+            fabric_groups:$FABRIC_GROUPS \
+            ci_build_num:$CIRCLE_BUILD_NUM \
+            commit_sha:$CIRCLE_SHA1
+      - store_artifacts:
+          path: *ios-artifacts-path
 
   beta-ios:
     <<: *mac-ios-job-defaults
     steps:
-      <<: *mac-ios-step-defaults
-      run:
+      - <<: *mac-ios-step-defaults
+      - run:
         command: |
           bundle exec fastlane beta \
           submit:true \
@@ -308,14 +308,14 @@ jobs:
           fabric_groups:$FABRIC_GROUPS \
           ci_build_num:$CIRCLE_BUILD_NUM \
           commit_sha:$CIRCLE_SHA1
-      store_artifacts:
+      - store_artifacts:
         path: *ios-artifacts-path
 
   release-ios:
     <<: *mac-ios-job-defaults
     steps:
-      <<: *mac-ios-step-defaults
-      run:
+      - <<: *mac-ios-step-defaults
+      - run:
         command: |
           bundle exec fastlane release \
           submit:true
@@ -323,24 +323,24 @@ jobs:
   e2e-ios:
     <<: *mac-ios-job-defaults
     steps:
-      checkout:
+      - checkout:
         path: /Users/distiller/project
-      run:
+      - run:
         name: Pre-start simulator
         command: xcrun simctl boot "iPhone 7" || true
       
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
-      <<: *brew-depdendencies
-      <<: *mac-ios-set-node-version
-      run:
+      - <<: *brew-depdendencies
+      - <<: *mac-ios-set-node-version
+      - run:
         name: Install global npm dependencies
         command: |
           yarn global add detox-cli
           yarn global add react-native-cli
-      <<: *osx-yarn-dependencies
-      <<: *osx-generate-env
-      run: yarn test:e2e
+      - <<: *osx-yarn-dependencies
+      - <<: *osx-generate-env
+      - run: yarn test:e2e
 
 workflows:
   version: 2
