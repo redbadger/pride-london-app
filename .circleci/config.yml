@@ -294,9 +294,9 @@ jobs:
       - <<: *ruby-dependencies
       - <<: *save-gems-cache
       - <<: *mac-ios-set-node-version
-      # - <<: *get-yarn-cache-osx
+      - <<: *get-yarn-cache-osx
       - <<: *osx-yarn-dependencies
-      # - <<: *save-yarn-cache-osx
+      - <<: *save-yarn-cache-osx
       - <<: *mac-ios-generate-env
       - run:
             command: |
