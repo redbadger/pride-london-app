@@ -35,8 +35,8 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-          - node_modules
-          - .env
+            - node_modules
+            - .env
 
   alpha-android:
     <<: *docker-android-job-defaults
