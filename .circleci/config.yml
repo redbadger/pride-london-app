@@ -156,20 +156,21 @@ mac-ios-set-node-version: &mac-ios-set-node-version
       sudo n 9.3
 
 mac-ios-step-defaults: &mac-ios-step-defaults
-  checkout:
-    path: /Users/distiller/project
-  run:
-    name: Set Ruby Version
-    command:  echo "ruby-2.4" > ~/.ruby-version
-  # Not using a workspace here as Node and Yarn versions
-  # differ between the macOS image and the Docker containers above.
-  <<: *ruby-dependencies
-  <<: *mac-ios-set-node-version
-  <<: *osx-yarn-dependencies
-  <<: *osx-generate-env
-  run:
-    name: Set Fabric secret
-    command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+  steps:
+    - checkout:
+        path: /Users/distiller/project
+    - run:
+        name: Set Ruby Version
+        command:  echo "ruby-2.4" > ~/.ruby-version
+    # Not using a workspace here as Node and Yarn versions
+    # differ between the macOS image and the Docker containers above.
+    - <<: *ruby-dependencies
+    - <<: *mac-ios-set-node-version
+    - <<: *osx-yarn-dependencies
+    - <<: *osx-generate-env
+    - run:
+        name: Set Fabric secret
+        command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
 
 workflows:
   version: 2
