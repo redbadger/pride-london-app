@@ -1,4 +1,4 @@
-package com.pridelondonapp;
+package org.prideinlondon.festival;
 
 import android.app.Application;
 

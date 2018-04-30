@@ -15,16 +15,25 @@ save-cache-osx: &save-cache-osx
       - /Users/distiller/project/node_modules
     key: osx-dependencies-{{ checksum "../package.json" }}
 android-secrets: &android-secrets
-  run: 
+  run:
     command: |
       git clone git@github.com:redbadger/pride-android-secrets.git
-      mkdir -p .gradle 
-      echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" >> .gradle/gradle.properties
-      echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties  
+      mkdir -p .gradle
+      echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
+android-release-secrets: &android-release-secrets
+  run:
+    command: |
+      git clone git@github.com:redbadger/pride-android-secrets.git
+      mkdir -p .gradle
+      echo -e "keystore=$ANDROID_RELEASE_KEYSTORE_PATH\nkeystore.alias=$ANDROID_RELEASE_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
+fabric-android-secrets: &fabric-android-secrets
+  run:
+    command: |
+      echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
 ruby-dependencies: &ruby-dependencies
   run:
     name: Download Ruby Dependencies
-    command: bundle check || bundle install --path vendor/bundle
+    command: bundle install --path vendor/bundle
 android-dependencies: &android-dependencies
   run:
     name: Download Android Dependencies
@@ -37,7 +46,7 @@ brew-key: &brew-key
   brew-{{ checksum "BrewFile" }}
 restore-gradle-cache: &restore-gradle-cache
   restore_cache:
-    key: *gradle-key 
+    key: *gradle-key
 restore-gems-cache: &restore-gems-cache
   restore_cache:
     key: *gems-key
@@ -107,28 +116,33 @@ jobs:
       - image: circleci/android:api-27-node8-alpha
     environment:
       TERM: dumb
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
     steps:
       - checkout:
           path: ~/project
       - attach_workspace:
           at: ~/project
       - <<: *android-secrets
+      - <<: *fabric-android-secrets
       - <<: *restore-gradle-cache
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *android-dependencies
       - <<: *save-gradle-cache
       - <<: *save-gems-cache
-      - run: 
+      - run:
             command: |
                 bundle exec fastlane alpha \
                 submit:true \
+                apk_path:$APK_PATH \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
                 fabric_api_token:$FABRIC_API_KEY \
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
-                commit_sha:$CIRCLE_SHA1 
+                commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: ~/project/android/app/build/outputs
 
@@ -138,22 +152,27 @@ jobs:
       - image: circleci/android:api-27-node8-alpha
     environment:
       TERM: dumb
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
     steps:
       - checkout:
           path: ~/project
       - attach_workspace:
           at: ~/project
       - <<: *android-secrets
+      - <<: *fabric-android-secrets
       - <<: *restore-gradle-cache
       - <<: *restore-gems-cache
       - <<: *ruby-dependencies
       - <<: *android-dependencies
       - <<: *save-gradle-cache
       - <<: *save-gems-cache
-      - run: 
+      - run:
             command: |
                 bundle exec fastlane beta \
                 submit:true \
+                apk_path:$APK_PATH \
                 api_token:$HOCKEY_APP_TOKEN \
                 app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
                 fabric_api_token:$FABRIC_API_KEY \
@@ -162,6 +181,35 @@ jobs:
                 commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: ~/project/android/app/build/outputs
+
+  release-android:
+    working_directory: ~/project/android
+    docker:
+      - image: circleci/android:api-27-node8-alpha
+    environment:
+      TERM: dumb
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
+    steps:
+      - checkout:
+          path: ~/project
+      - attach_workspace:
+          at: ~/project
+      - <<: *android-release-secrets
+      - <<: *fabric-android-secrets
+      - <<: *restore-gradle-cache
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - <<: *save-gems-cache
+      - run:
+            command: |
+                bundle exec fastlane release \
+                submit:true \
+                apk_path:$APK_PATH \
+                upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
 
   alpha-ios:
     macos:
@@ -195,8 +243,10 @@ jobs:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
-      - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
-      - run: 
+      - run:
+          name: Set Fabric secret
+          command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+      - run:
             command: |
                 bundle exec fastlane alpha \
                 submit:true \
@@ -242,9 +292,10 @@ jobs:
           name: Generate .env
           command: node ./scripts/generate-dotenv.js
           working_directory: /Users/distiller/project
-      - run: bundle install
-      - run: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
-      - run: 
+      - run:
+          name: Set Fabric secret
+          command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+      - run:
             command: |
                 bundle exec fastlane beta \
                 submit:true \
@@ -255,6 +306,46 @@ jobs:
                 fabric_groups:$FABRIC_GROUPS \
                 ci_build_num:$CIRCLE_BUILD_NUM \
                 commit_sha:$CIRCLE_SHA1
+
+  release-ios:
+    macos:
+      xcode: "9.2.0"
+    working_directory: /Users/distiller/project/ios
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: /Users/distiller/project
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *get-cache-osx
+      - run:
+          name: Set npm version
+          command: |
+              npm i -g n
+              sudo n 9.3
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - <<: *save-cache-osx
+      - run:
+          name: Generate .env
+          command: node ./scripts/generate-dotenv.js
+          working_directory: /Users/distiller/project
+      - run:
+          name: Set Fabric secret
+          command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+      - run:
+            command: |
+                bundle exec fastlane release \
+                submit:true
 
   e2e-ios:
     macos:
@@ -319,8 +410,6 @@ workflows:
               ignore:
                 - master
       - alpha-ios:
-          requires:
-            - build     
           filters:
             branches:
               ignore:
@@ -333,9 +422,20 @@ workflows:
               only:
                 - master
       - beta-ios:
+          filters:
+            branches:
+              only:
+                - master
+      - release-android:
           requires:
             - build
           filters:
             branches:
               only:
                 - master
+      - release-ios:
+          filters:
+            branches:
+              only:
+                - master
+
