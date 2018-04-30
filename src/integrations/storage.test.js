@@ -1,4 +1,10 @@
-import { loadCmsData, saveCmsData } from "./storage";
+import {
+  loadCmsData,
+  saveCmsData,
+  fetchSavedEvents,
+  storeSavedEvents,
+  SAVED_EVENTS_DATA_KEY
+} from "./storage";
 
 describe("saveCmsData", () => {
   it("appends entries to list found in local storage", async () => {
@@ -275,5 +281,50 @@ describe("correctDates", () => {
       mockAsyncStorage
     );
     expect(savedCmsData.entries[0]).toBe(cmsData.entries[0]);
+  });
+});
+
+describe("fetchSavedEvents", () => {
+  it("calls getItem with correct key", async () => {
+    const mockData = ["a", "b", "c"];
+    const spy = jest
+      .fn()
+      .mockReturnValue(Promise.resolve(JSON.stringify(mockData)));
+    const mockAsyncStorage = { getItem: spy };
+
+    await fetchSavedEvents(mockAsyncStorage);
+    expect(spy).toHaveBeenCalledWith(SAVED_EVENTS_DATA_KEY);
+  });
+
+  it("parses JSON array from local storage", async () => {
+    const mockData = ["a", "b", "c"];
+    const mockAsyncStorage = { getItem: () => JSON.stringify(mockData) };
+
+    const loadedData = await fetchSavedEvents(mockAsyncStorage);
+    expect(loadedData).toEqual(new Set(mockData));
+  });
+
+  it("returns empty Set if data is malformed", async () => {
+    const mockData = { abc: "123" };
+    const mockAsyncStorage = { getItem: () => JSON.stringify(mockData) };
+
+    const loadedData = await fetchSavedEvents(mockAsyncStorage);
+    expect(loadedData).toEqual(new Set());
+  });
+});
+
+describe("storeSavedEvents", () => {
+  it("calls setItem with correct key and value", async () => {
+    const values = ["a", "b", "c"];
+    const events = new Set(values);
+    const spy = jest.fn().mockReturnValue(Promise.resolve());
+    const mockAsyncStorage = { setItem: spy };
+
+    const done = await storeSavedEvents(events, mockAsyncStorage);
+    expect(spy).toHaveBeenCalledWith(
+      SAVED_EVENTS_DATA_KEY,
+      JSON.stringify(values)
+    );
+    expect(done).toEqual(events);
   });
 });
