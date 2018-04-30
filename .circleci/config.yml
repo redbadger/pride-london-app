@@ -90,7 +90,7 @@ brew-depdendencies: &brew-depdendencies
 
 mac-ios-set-node-version: &mac-ios-set-node-version
   run:
-    name: Set npm version
+    name: Set node version
     command: |
       yarn global add n
       sudo n 9.
@@ -122,6 +122,16 @@ fabric-ios-secrets: &fabric-ios-secrets
   run:
     name: Set Fabric secret
     command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+
+docker-android-job-defaults: &docker-android-job-defaults
+  working_directory: ~/project/android
+  docker:
+    - image: circleci/android:api-27-node8-alpha
+
+docker-android-env: &docker-android-env
+  TERM: dumb
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
 
 version: 2
 jobs:
@@ -162,13 +172,9 @@ jobs:
             - .env
 
   alpha-android:
-    working_directory: ~/project/android
-    docker:
-      - image: circleci/android:api-27-node8-alpha
+    <<: *docker-android-job-defaults
     environment:
-      TERM: dumb
-      LC_ALL: en_US.UTF-8
-      LANG: en_US.UTF-8
+      <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
     steps:
       - checkout:
@@ -198,13 +204,9 @@ jobs:
           path: ~/project/android/app/build/outputs
 
   beta-android:
-    working_directory: ~/project/android
-    docker:
-      - image: circleci/android:api-27-node8-alpha
+    <<: *docker-android-job-defaults
     environment:
-      TERM: dumb
-      LC_ALL: en_US.UTF-8
-      LANG: en_US.UTF-8
+      <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
     steps:
       - checkout:
@@ -234,13 +236,9 @@ jobs:
           path: ~/project/android/app/build/outputs
 
   release-android:
-    working_directory: ~/project/android
-    docker:
-      - image: circleci/android:api-27-node8-alpha
+    <<: *docker-android-job-defaults
     environment:
-      TERM: dumb
-      LC_ALL: en_US.UTF-8
-      LANG: en_US.UTF-8
+      <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
     steps:
       - checkout:
