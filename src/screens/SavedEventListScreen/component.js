@@ -6,6 +6,7 @@ import type { SavedEvents, EventDays } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventList from "../../components/EventList";
 import Header from "../../components/Header";
+import text from "../../constants/text";
 import ContentPadding from "../../components/ContentPadding";
 import IconButton from "../../components/IconButton";
 import Text from "../../components/Text";
@@ -64,7 +65,7 @@ class SavedEventListScreen extends PureComponent<Props> {
         <Header backgroundColor={lightNavyBlueColor}>
           <ContentPadding style={styles.headerContent}>
             <Text type="h2" style={styles.headerTitle}>
-              Saveeeeed events
+              {text.savedEventsTitle}
             </Text>
           </ContentPadding>
         </Header>

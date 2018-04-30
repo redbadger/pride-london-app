@@ -161,3 +161,9 @@ export const selectFeaturedEventsByTitle = (state: State, title: string) => {
     selectEventById(state, e.sys.id)
   ): any): Event[]);
 };
+
+export const selectSavedEvents = (state: State) => {
+  const events = getEventsState(state).entries;
+  const savedEvents = state.savedEvents;
+  return events.filter(event => savedEvents.has(event.sys.id));
+};

@@ -9,7 +9,7 @@ import {
   groupEventsByStartTime,
   selectEventsLoading,
   selectEventsRefreshing,
-  selectFilteredEvents,
+  selectSavedEvents,
   selectAssetById
 } from "../../selectors/events";
 import type { Props as ComponentProps } from "./component";
@@ -22,7 +22,7 @@ type OwnProps = {
 type Props = ComponentProps & OwnProps;
 
 const mapStateToProps = state => ({
-  events: groupEventsByStartTime(selectFilteredEvents(state)),
+  events: groupEventsByStartTime(selectSavedEvents(state)),
   savedEvents: state.savedEvents,
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state),
