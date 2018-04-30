@@ -133,6 +133,14 @@ docker-android-env: &docker-android-env
   LC_ALL: en_US.UTF-8
   LANG: en_US.UTF-8
 
+docker-android-checkout: &docker-android-checkout
+  checkout:
+    path: ~/project
+
+docker-android-workspace: &docker-android-workspace
+  attach_workspace:
+    at: ~/project
+
 docker-android-store-artifacts: &docker-android-store-artifacts
   store_artifacts:
     path: ~/project/android/app/build/outputs
@@ -144,6 +152,15 @@ mac-ios-job-defaults: &mac-ios-job-defaults
   environment:
     FL_OUTPUT_DIR: /Users/distiller/project/output
   shell: /bin/bash --login -o pipefail
+
+mac-ios-checkout: &mac-ios-checkout
+  checkout:
+    path: /Users/distiller/project
+
+mac-ios-set-ruby-version: &mac-ios-set-ruby-version
+  run:
+    name: Set Ruby Version
+    command:  echo "ruby-2.4" > ~/.ruby-version
 
 version: 2
 jobs:
@@ -189,10 +206,8 @@ jobs:
       <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/alpha/release/app-alpha-release.apk"
     steps:
-      - checkout:
-          path: ~/project
-      - attach_workspace:
-          at: ~/project
+      - <<: *docker-android-checkout
+      - <<: *docker-android-workspace
       - <<: *android-secrets
       - <<: *fabric-android-secrets
       - <<: *restore-gradle-cache
@@ -220,10 +235,8 @@ jobs:
       <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
     steps:
-      - checkout:
-          path: ~/project
-      - attach_workspace:
-          at: ~/project
+      - <<: *docker-android-checkout
+      - <<: *docker-android-workspace
       - <<: *android-secrets
       - <<: *fabric-android-secrets
       - <<: *restore-gradle-cache
@@ -251,10 +264,8 @@ jobs:
       <<: *docker-android-env
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
     steps:
-      - checkout:
-          path: ~/project
-      - attach_workspace:
-          at: ~/project
+      - <<: *docker-android-checkout
+      - <<: *docker-android-workspace
       - <<: *android-release-secrets
       - <<: *fabric-android-secrets
       - <<: *restore-gradle-cache
@@ -273,11 +284,8 @@ jobs:
   alpha-ios:
     <<: *mac-ios-job-defaults
     steps:
-      - checkout:
-          path: /Users/distiller/project
-      - run:
-          name: Set Ruby Version
-          command:  echo "ruby-2.4" > ~/.ruby-version
+      - <<: *mac-ios-checkout
+      - <<: *mac-ios-set-ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - <<: *restore-gems-cache
@@ -306,11 +314,8 @@ jobs:
   beta-ios:
     <<: *mac-ios-job-defaults
     steps:
-      - checkout:
-          path: /Users/distiller/project
-      - run:
-          name: Set Ruby Version
-          command:  echo "ruby-2.4" > ~/.ruby-version
+      - <<: *mac-ios-checkout
+      - <<: *mac-ios-set-ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - <<: *restore-gems-cache
@@ -337,11 +342,8 @@ jobs:
   release-ios:
     <<: *mac-ios-job-defaults
     steps:
-      - checkout:
-          path: /Users/distiller/project
-      - run:
-          name: Set Ruby Version
-          command:  echo "ruby-2.4" > ~/.ruby-version
+      - <<: *mac-ios-checkout
+      - <<: *mac-ios-set-ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - <<: *restore-gems-cache
@@ -359,18 +361,10 @@ jobs:
                 submit:true
 
   e2e-ios:
-    macos:
-      xcode: "9.2.0"
-    working_directory: /Users/distiller/project/
-    environment:
-      FL_OUTPUT_DIR: /Users/distiller/project/output
-    shell: /bin/bash --login -o pipefail
+    <<: *mac-ios-job-defaults
     steps:
-      - checkout:
-          path: /Users/distiller/project
-      - run:
-          name: Set Ruby Version
-          command:  echo "ruby-2.4" > ~/.ruby-version
+      - <<: *mac-ios-checkout
+      - <<: *mac-ios-set-ruby-version
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - run:
@@ -439,4 +433,3 @@ workflows:
             branches:
               only:
                 - master
-
