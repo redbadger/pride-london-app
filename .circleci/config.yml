@@ -100,7 +100,7 @@ android-release-secrets: &android-release-secrets
       git clone git@github.com:redbadger/pride-android-secrets.git
       mkdir -p .gradle
       echo -e "keystore=$ANDROID_RELEASE_KEYSTORE_PATH\nkeystore.alias=$ANDROID_RELEASE_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
-      
+
 fabric-android-secrets: &fabric-android-secrets
   run:
     name: Set Fabric secret
@@ -136,7 +136,6 @@ docker-android-store-artifacts: &docker-android-store-artifacts
 mac-ios-job-defaults: &mac-ios-job-defaults
   macos:
     xcode: "9.2.0"
-  working_directory: /Users/distiller/project/ios
   environment:
     FL_OUTPUT_DIR: /Users/distiller/project/output
   shell: /bin/bash --login -o pipefail
@@ -284,6 +283,7 @@ jobs:
 
   alpha-ios:
     <<: *mac-ios-job-defaults
+    working_directory: /Users/distiller/project/ios
     steps:
       - <<: *mac-ios-checkout
       - <<: *mac-ios-set-ruby-version
@@ -314,6 +314,7 @@ jobs:
 
   beta-ios:
     <<: *mac-ios-job-defaults
+    working_directory: /Users/distiller/project/ios
     steps:
       - <<: *mac-ios-checkout
       - <<: *mac-ios-set-ruby-version
@@ -342,6 +343,7 @@ jobs:
 
   release-ios:
     <<: *mac-ios-job-defaults
+    working_directory: /Users/distiller/project/ios
     steps:
       - <<: *mac-ios-checkout
       - <<: *mac-ios-set-ruby-version
@@ -363,6 +365,7 @@ jobs:
 
   e2e-ios:
     <<: *mac-ios-job-defaults
+    working_directory: /Users/distiller/project
     steps:
       - <<: *mac-ios-checkout
       - <<: *mac-ios-set-ruby-version
