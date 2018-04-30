@@ -1,167 +1,3 @@
-yarn-key: &yarn-key
-  v1-dependencies-{{ checksum "yarn.lock" }}
-yarn-osx-key: &yarn-osx-key
-  v1-dependencies-osx-{{ checksum "/Users/distiller/project/yarn.lock" }}
-gradle-key: &gradle-key
-  v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
-gems-key: &gems-key
-  v1-gems-{{ checksum "Gemfile.lock" }}
-brew-key: &brew-key
-  v1-brew-{{ checksum "BrewFile" }}
-android-artifacts-path: &android-artifacts-path
-  $HOME/project/android/app/build/outputs
-ios-artifacts-path: &ios-artifacts-path
-  /Users/distiller/project/output
-
-get-yarn-cache: &get-yarn-cache
-  restore_cache:
-    key: *yarn-key
-save-yarn-cache: &save-yarn-cache
-  save_cache:
-    paths:
-      - node_modules
-    key: *yarn-key
-
-# Mac machine builds have different paths and arch
-get-yarn-cache-osx: &get-yarn-cache-osx
-  restore_cache:
-    key: *yarn-osx-key
-save-yarn-cache-osx: &save-yarn-cache-osx
-  save_cache:
-    paths:
-      - /Users/distiller/project/node_modules
-    key: *yarn-osx-key
-
-restore-gradle-cache: &restore-gradle-cache
-  restore_cache:
-    key: *gradle-key
-save-gradle-cache: &save-gradle-cache
-  save_cache:
-    key: *gradle-key
-    paths:
-      - ~/.gradle
-      - ~/.m2
-
-restore-gems-cache: &restore-gems-cache
-  restore_cache:
-    key: *gems-key
-save-gems-cache: &save-gems-cache
-  save_cache:
-    key: *gems-key
-    paths:
-      - vendor/bundle
-
-restore-brew-cache: &restore-brew-cache
-  restore_cache:
-    key: *brew-key
-save-brew-cache: &save-brew-cache
-  save_cache:
-    key: *brew-key
-    paths:
-      - /usr/local/Homebrew
-
-yarn-dependencies: &yarn-dependencies
-  run:
-    name: Install dependencies
-    command: yarn install
-
-osx-yarn-dependencies: &osx-yarn-dependencies
-  run:
-    name: Install dependencies with Yarn
-    command: yarn install
-    working_directory: /Users/distiller/project
-
-ruby-dependencies: &ruby-dependencies
-  run:
-    name: Download Ruby Dependencies
-    command: bundle install --path vendor/bundle
-
-android-dependencies: &android-dependencies
-  run:
-    name: Download Android Dependencies
-    command: ./gradlew androidDependencies
-
-brew-depdendencies: &brew-depdendencies
-  run:
-    name: Install HomeBrew dependencies
-    command: |
-      brew tap homebrew/bundle
-      brew bundle
-
-mac-ios-set-node-version: &mac-ios-set-node-version
-  run:
-    name: Set node version
-    command: |
-      yarn global add n
-      sudo n 9.
-
-osx-generate-env: &osx-generate-env
-  run:
-    name: Generate .env
-    command: node ./scripts/generate-dotenv.js
-    working_directory: /Users/distiller/project
-
-android-secrets: &android-secrets
-  run:
-    command: |
-      git clone git@github.com:redbadger/pride-android-secrets.git
-      mkdir -p .gradle
-      echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
-android-release-secrets: &android-release-secrets
-  run:
-    command: |
-      git clone git@github.com:redbadger/pride-android-secrets.git
-      mkdir -p .gradle
-      echo -e "keystore=$ANDROID_RELEASE_KEYSTORE_PATH\nkeystore.alias=$ANDROID_RELEASE_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
-fabric-android-secrets: &fabric-android-secrets
-  run:
-    name: Set Fabric secret
-    command: |
-      echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
-fabric-ios-secrets: &fabric-ios-secrets
-  run:
-    name: Set Fabric secret
-    command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
-
-docker-android-job-defaults: &docker-android-job-defaults
-  working_directory: ~/project/android
-  docker:
-    - image: circleci/android:api-27-node8-alpha
-
-docker-android-env: &docker-android-env
-  TERM: dumb
-  LC_ALL: en_US.UTF-8
-  LANG: en_US.UTF-8
-
-docker-android-checkout: &docker-android-checkout
-  checkout:
-    path: ~/project
-
-docker-android-workspace: &docker-android-workspace
-  attach_workspace:
-    at: ~/project
-
-docker-android-store-artifacts: &docker-android-store-artifacts
-  store_artifacts:
-    path: ~/project/android/app/build/outputs
-
-mac-ios-job-defaults: &mac-ios-job-defaults
-  macos:
-    xcode: "9.2.0"
-  working_directory: /Users/distiller/project/ios
-  environment:
-    FL_OUTPUT_DIR: /Users/distiller/project/output
-  shell: /bin/bash --login -o pipefail
-
-mac-ios-checkout: &mac-ios-checkout
-  checkout:
-    path: /Users/distiller/project
-
-mac-ios-set-ruby-version: &mac-ios-set-ruby-version
-  run:
-    name: Set Ruby Version
-    command:  echo "ruby-2.4" > ~/.ruby-version
-
 version: 2
 jobs:
   # build is a reserved job name for running circleci locally
@@ -433,3 +269,167 @@ workflows:
             branches:
               only:
                 - master
+
+yarn-key: &yarn-key
+  v1-dependencies-{{ checksum "yarn.lock" }}
+yarn-osx-key: &yarn-osx-key
+  v1-dependencies-osx-{{ checksum "/Users/distiller/project/yarn.lock" }}
+gradle-key: &gradle-key
+  v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+gems-key: &gems-key
+  v1-gems-{{ checksum "Gemfile.lock" }}
+brew-key: &brew-key
+  v1-brew-{{ checksum "BrewFile" }}
+android-artifacts-path: &android-artifacts-path
+  $HOME/project/android/app/build/outputs
+ios-artifacts-path: &ios-artifacts-path
+  /Users/distiller/project/output
+
+get-yarn-cache: &get-yarn-cache
+  restore_cache:
+    key: *yarn-key
+save-yarn-cache: &save-yarn-cache
+  save_cache:
+    paths:
+      - node_modules
+    key: *yarn-key
+
+# Mac machine builds have different paths and arch
+get-yarn-cache-osx: &get-yarn-cache-osx
+  restore_cache:
+    key: *yarn-osx-key
+save-yarn-cache-osx: &save-yarn-cache-osx
+  save_cache:
+    paths:
+      - /Users/distiller/project/node_modules
+    key: *yarn-osx-key
+
+restore-gradle-cache: &restore-gradle-cache
+  restore_cache:
+    key: *gradle-key
+save-gradle-cache: &save-gradle-cache
+  save_cache:
+    key: *gradle-key
+    paths:
+      - ~/.gradle
+      - ~/.m2
+
+restore-gems-cache: &restore-gems-cache
+  restore_cache:
+    key: *gems-key
+save-gems-cache: &save-gems-cache
+  save_cache:
+    key: *gems-key
+    paths:
+      - vendor/bundle
+
+restore-brew-cache: &restore-brew-cache
+  restore_cache:
+    key: *brew-key
+save-brew-cache: &save-brew-cache
+  save_cache:
+    key: *brew-key
+    paths:
+      - /usr/local/Homebrew
+
+yarn-dependencies: &yarn-dependencies
+  run:
+    name: Install dependencies
+    command: yarn install
+
+osx-yarn-dependencies: &osx-yarn-dependencies
+  run:
+    name: Install dependencies with Yarn
+    command: yarn install
+    working_directory: /Users/distiller/project
+
+ruby-dependencies: &ruby-dependencies
+  run:
+    name: Download Ruby Dependencies
+    command: bundle install --path vendor/bundle
+
+android-dependencies: &android-dependencies
+  run:
+    name: Download Android Dependencies
+    command: ./gradlew androidDependencies
+
+brew-depdendencies: &brew-depdendencies
+  run:
+    name: Install HomeBrew dependencies
+    command: |
+      brew tap homebrew/bundle
+      brew bundle
+
+mac-ios-set-node-version: &mac-ios-set-node-version
+  run:
+    name: Set node version
+    command: |
+      yarn global add n
+      sudo n 9.
+
+osx-generate-env: &osx-generate-env
+  run:
+    name: Generate .env
+    command: node ./scripts/generate-dotenv.js
+    working_directory: /Users/distiller/project
+
+android-secrets: &android-secrets
+  run:
+    command: |
+      git clone git@github.com:redbadger/pride-android-secrets.git
+      mkdir -p .gradle
+      echo -e "keystore=$ANDROID_KEYSTORE_PATH\nkeystore.alias=$ANDROID_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
+android-release-secrets: &android-release-secrets
+  run:
+    command: |
+      git clone git@github.com:redbadger/pride-android-secrets.git
+      mkdir -p .gradle
+      echo -e "keystore=$ANDROID_RELEASE_KEYSTORE_PATH\nkeystore.alias=$ANDROID_RELEASE_KEYSTORE_ALIAS\nkeystore.password=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nkeystore.keypass=$ANDROID_RELEASE_KEYSTORE_PASSWORD\nversionCode=$CIRCLE_BUILD_NUM" > .gradle/gradle.properties
+fabric-android-secrets: &fabric-android-secrets
+  run:
+    name: Set Fabric secret
+    command: |
+      echo -e "apiSecret=$FABRIC_BUILD_SECRET\napiKey=$FABRIC_API_KEY" >> ./app/fabric.properties
+fabric-ios-secrets: &fabric-ios-secrets
+  run:
+    name: Set Fabric secret
+    command: echo -e "$FABRIC_API_KEY\n$FABRIC_BUILD_SECRET" >> ./PrideLondonApp/fabric.properties
+
+docker-android-job-defaults: &docker-android-job-defaults
+  working_directory: ~/project/android
+  docker:
+    - image: circleci/android:api-27-node8-alpha
+
+docker-android-env: &docker-android-env
+  TERM: dumb
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
+
+docker-android-checkout: &docker-android-checkout
+  checkout:
+    path: ~/project
+
+docker-android-workspace: &docker-android-workspace
+  attach_workspace:
+    at: ~/project
+
+docker-android-store-artifacts: &docker-android-store-artifacts
+  store_artifacts:
+    path: ~/project/android/app/build/outputs
+
+mac-ios-job-defaults: &mac-ios-job-defaults
+  macos:
+    xcode: "9.2.0"
+  working_directory: /Users/distiller/project/ios
+  environment:
+    FL_OUTPUT_DIR: /Users/distiller/project/output
+  shell: /bin/bash --login -o pipefail
+
+mac-ios-checkout: &mac-ios-checkout
+  checkout:
+    path: /Users/distiller/project
+
+mac-ios-set-ruby-version: &mac-ios-set-ruby-version
+  run:
+    name: Set Ruby Version
+    command:  echo "ruby-2.4" > ~/.ruby-version
