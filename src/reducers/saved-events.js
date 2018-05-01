@@ -22,6 +22,8 @@ const savedEvents: Reducer<State, SavedEventAction> = (
         return newState;
       }
       return state;
+    case "RECEIVE_SAVED_EVENTS":
+      return action.events;
     default:
       return state;
   }

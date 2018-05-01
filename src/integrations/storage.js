@@ -18,7 +18,7 @@ type CmsData = {
   nextSyncToken: string
 };
 
-const DATA_KEY = "@CmsStore:data";
+const CMS_DATA_KEY = "@CmsStore:data";
 
 const addOrUpdateEntry = (entries, newEntry) => {
   const indexToUpdate = entries.findIndex(
@@ -90,7 +90,7 @@ export const saveCmsData = async (
   const syncToken = cmsData.nextSyncToken;
   const newCmsData = { entries, assets, syncToken };
 
-  await AsyncStorageObj.setItem(DATA_KEY, JSON.stringify(newCmsData));
+  await AsyncStorageObj.setItem(CMS_DATA_KEY, JSON.stringify(newCmsData));
 
   return newCmsData;
 };
@@ -98,6 +98,36 @@ export const saveCmsData = async (
 export const loadCmsData = async (
   AsyncStorageObj: AsyncStorage = AsyncStorage
 ): Promise<SavedData> => {
-  const stringData = await AsyncStorageObj.getItem(DATA_KEY);
+  const stringData = await AsyncStorageObj.getItem(CMS_DATA_KEY);
   return JSON.parse(stringData);
+};
+
+export const SAVED_EVENTS_DATA_KEY = "@SavedEvents:data";
+
+const onlyStrings = (acc: Set<string>, value: mixed) => {
+  if (typeof value === "string") {
+    return acc.add(value);
+  }
+  return acc;
+};
+
+export const fetchSavedEvents = async (
+  AsyncStorageObj: AsyncStorage = AsyncStorage
+): Promise<Set<string>> => {
+  const stringData = await AsyncStorageObj.getItem(SAVED_EVENTS_DATA_KEY);
+  const data: mixed = JSON.parse(stringData);
+  const events = new Set();
+  if (Array.isArray(data)) {
+    return data.reduce(onlyStrings, events);
+  }
+  return events;
+};
+
+export const storeSavedEvents = async (
+  events: Set<string>,
+  AsyncStorageObj: AsyncStorage = AsyncStorage
+): Promise<Set<string>> => {
+  const data = JSON.stringify(Array.from(events.values()));
+  await AsyncStorageObj.setItem(SAVED_EVENTS_DATA_KEY, data);
+  return events;
 };

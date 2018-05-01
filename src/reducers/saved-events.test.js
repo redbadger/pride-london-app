@@ -56,4 +56,19 @@ describe("Saved events reducer", () => {
       expect(state).toMatchSnapshot();
     });
   });
+
+  describe("RECEIVE_SAVED_EVENTS action", () => {
+    it("updates saved events", () => {
+      const a = "7b717417-eb24-40c6-8f50-00fc724918f4";
+      const b = "bbf24715-1a40-42d3-a246-8d002ecad2a2";
+
+      const initialState = new Set();
+      const state = reducer(initialState, {
+        type: "RECEIVE_SAVED_EVENTS",
+        events: new Set([a, b])
+      });
+
+      expect(state).toMatchSnapshot();
+    });
+  });
 });
