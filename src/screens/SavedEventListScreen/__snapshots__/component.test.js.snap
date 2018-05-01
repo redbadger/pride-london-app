@@ -40,7 +40,13 @@ exports[`EventsScreen Component renders correctly 1`] = `
   </Header>
   <EventList
     addSavedEvent={[Function]}
-    events={Array []}
+    events={
+      Array [
+        Object {
+          "name": "super duper event",
+        },
+      ]
+    }
     getAssetUrl={[Function]}
     locale="en-GB"
     onPress={[Function]}
@@ -49,5 +55,21 @@ exports[`EventsScreen Component renders correctly 1`] = `
     removeSavedEvent={[Function]}
     savedEvents={Set {}}
   />
+</Component>
+`;
+
+exports[`EventsScreen Component renders no saved events screen when there are no events 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <StandaloneHeader
+    title="Saved Events"
+  />
+  <NoSavedEvents />
 </Component>
 `;
