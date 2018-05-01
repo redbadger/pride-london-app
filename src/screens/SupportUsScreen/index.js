@@ -9,8 +9,6 @@ import supportUsDonateBgTopRight from "../../../assets/images/supportUsDonateBgT
 import supportUsVolunteerBgTopRight from "../../../assets/images/supportUsVolunteerBgTopRight.png";
 import supportUsShopBgBottomRight from "../../../assets/images/supportUsShopBgBottomRight.png";
 import supportUsSponsorBgTopRight from "../../../assets/images/supportUsSponsorBgTopRight.png";
-import Header from "../../components/Header";
-import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
 import {
   lightNavyBlueColor,
@@ -23,6 +21,7 @@ import { DONATE, SPONSOR } from "../../constants/routes";
 import text from "../../constants/text";
 import SupportUsButton from "./SupportUsButton";
 import SupportUsSectionHeader from "./SupportUsSectionHeader";
+import StandaloneHeader from "../../components/StandaloneHeader";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>
@@ -30,13 +29,7 @@ type Props = {
 
 const EventDetailsScreen = ({ navigation }: Props) => (
   <View style={styles.container}>
-    <Header backgroundColor={lightNavyBlueColor}>
-      <ContentPadding style={styles.headerContent}>
-        <Text type="h2" style={styles.headerTitle}>
-          {text.supportUsTitle}
-        </Text>
-      </ContentPadding>
-    </Header>
+    <StandaloneHeader title={text.supportUsTitle} />
     <ScrollView>
       <View style={styles.scrollContainer}>
         <SupportUsSectionHeader
@@ -105,15 +98,6 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: 440,
     alignSelf: "center"
-  },
-  headerContent: {
-    height: 48,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  headerTitle: {
-    color: whiteColor
   },
   sectionSpacing: {
     marginBottom: 16

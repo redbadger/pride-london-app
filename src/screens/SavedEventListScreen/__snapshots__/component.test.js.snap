@@ -9,35 +9,9 @@ exports[`EventsScreen Component renders correctly 1`] = `
     }
   }
 >
-  <Header
-    backgroundColor="#2d2f7f"
-  >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "height": 48,
-          "justifyContent": "center",
-        }
-      }
-    >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        type="h2"
-      >
-        Saved Events
-      </Text>
-    </ContentPadding>
-  </Header>
+  <StandaloneHeader
+    title="Saved Events"
+  />
   <EventList
     addSavedEvent={[Function]}
     events={Array []}

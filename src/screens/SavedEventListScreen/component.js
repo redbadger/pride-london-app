@@ -5,15 +5,10 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventList from "../../components/EventList";
-import Header from "../../components/Header";
 import text from "../../constants/text";
-import ContentPadding from "../../components/ContentPadding";
 import Text from "../../components/Text";
-import {
-  bgColor,
-  whiteColor,
-  lightNavyBlueColor
-} from "../../constants/colors";
+import StandaloneHeader from "../../components/StandaloneHeader";
+import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
   EVENT_CATEGORIES_FILTER,
@@ -59,13 +54,7 @@ class SavedEventListScreen extends PureComponent<Props> {
     } = this.props;
     return (
       <View style={styles.container}>
-        <Header backgroundColor={lightNavyBlueColor}>
-          <ContentPadding style={styles.headerContent}>
-            <Text type="h2" style={styles.headerTitle}>
-              {text.savedEventsTitle}
-            </Text>
-          </ContentPadding>
-        </Header>
+        <StandaloneHeader title={text.savedEventsTitle} />
         {this.props.loading ? (
           <Text>Loading...</Text>
         ) : (
@@ -94,15 +83,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: bgColor
-  },
-  headerContent: {
-    height: 48,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  headerTitle: {
-    color: whiteColor
   }
 });
 
