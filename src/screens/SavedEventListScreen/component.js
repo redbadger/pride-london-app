@@ -53,9 +53,7 @@ class SavedEventListScreen extends PureComponent<Props> {
             addSavedEvent={addSavedEvent}
             removeSavedEvent={removeSavedEvent}
             refreshing={refreshing}
-            onRefresh={() => {
-              updateEvents();
-            }}
+            onRefresh={updateEvents}
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
