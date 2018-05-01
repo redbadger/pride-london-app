@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import React, { PureComponent } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
@@ -9,25 +9,41 @@ import iconSave from "../../../assets/images/save.png";
 import noSavedEvents from "../../../assets/images/howToSaveEvents.png";
 import text from "../../constants/text";
 import { cardBgColor, titleTextColor } from "../../constants/colors";
+import { EVENT_LIST } from "../../constants/routes";
+import strings from "../../constants/strings";
 
-const NoSavedEvents = () => (
-  <View style={styles.container}>
-    <Image style={styles.image} source={noSavedEvents} />
-    <View style={styles.contentOverlay}>
-      <Text type="h1" style={styles.title}>
-        {text.noSavedEventsTitle}
-      </Text>
-      <Text style={styles.infoText}>
-        {text.noSavedEventsPart1}&nbsp;
-        <Image style={styles.saveIcon} source={iconSave} />
-        &nbsp;{text.noSavedEventsPart2}
-      </Text>
-      <ButtonPrimary onPress={() => {}}>
-        {text.noSavedEventsButton}
-      </ButtonPrimary>
-    </View>
-  </View>
-);
+type Props = {
+  navigation: NavigationScreenProp<NavigationState>
+};
+
+class NoSavedEvents extends PureComponent<Props> {
+  eventList = () => {
+    this.props.navigation.navigate(EVENT_LIST, {
+      title: strings.featuredEventsTitle
+    });
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image style={styles.image} source={noSavedEvents} />
+        <View style={styles.contentOverlay}>
+          <Text type="h1" style={styles.title}>
+            {text.noSavedEventsTitle}
+          </Text>
+          <Text style={styles.infoText}>
+            {text.noSavedEventsPart1}&nbsp;
+            <Image style={styles.saveIcon} source={iconSave} />
+            &nbsp;{text.noSavedEventsPart2}
+          </Text>
+          <ButtonPrimary onPress={this.eventList}>
+            {text.noSavedEventsButton}
+          </ButtonPrimary>
+        </View>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

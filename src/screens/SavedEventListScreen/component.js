@@ -59,7 +59,8 @@ class SavedEventListScreen extends PureComponent<Props> {
           </ContentPadding>
         </Header>
         {loading && <Loading />}
-        {!loading && events.length === 0 && <NoSavedEvents />}
+        {!loading &&
+          events.length === 0 && <NoSavedEvents navigation={navigation} />}
         {!loading &&
           events.length !== 0 && (
             <EventList
