@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
@@ -56,6 +55,7 @@ describe("EventsScreen Component", () => {
       <Component
         navigation={navigation}
         events={[]}
+        loading={false}
         refreshing={false}
         updateEvents={() => Promise.resolve()}
         getAssetUrl={() => ""}

@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent } from "react";
 import { Image, StyleSheet, View } from "react-native";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -33,7 +34,7 @@ class NoSavedEvents extends PureComponent<Props> {
           </Text>
           <Text style={styles.infoText}>
             {text.noSavedEventsPart1}&nbsp;
-            <Image style={styles.saveIcon} source={iconSave} />
+            <Image source={iconSave} />
             &nbsp;{text.noSavedEventsPart2}
           </Text>
           <ButtonPrimary onPress={this.eventList}>
