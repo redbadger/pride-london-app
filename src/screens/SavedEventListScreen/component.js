@@ -9,11 +9,7 @@ import text from "../../constants/text";
 import StandaloneHeader from "../../components/StandaloneHeader";
 import Loading from "../../components/Loading";
 import { bgColor } from "../../constants/colors";
-import {
-  EVENT_DETAILS,
-  EVENT_CATEGORIES_FILTER,
-  FILTER_MODAL
-} from "../../constants/routes";
+import { EVENT_DETAILS } from "../../constants/routes";
 import locale from "../../data/locale";
 
 export type Props = {
