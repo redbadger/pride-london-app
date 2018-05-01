@@ -6,9 +6,15 @@ import type { SavedEvents, EventDays } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventList from "../../components/EventList";
 import text from "../../constants/text";
-import StandaloneHeader from "../../components/StandaloneHeader";
 import Loading from "../../components/Loading";
-import { bgColor } from "../../constants/colors";
+import Header from "../../components/Header";
+import ContentPadding from "../../components/ContentPadding";
+import Text from "../../components/Text";
+import {
+  whiteColor,
+  bgColor,
+  lightNavyBlueColor
+} from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import locale from "../../data/locale";
 
@@ -42,7 +48,13 @@ class SavedEventListScreen extends PureComponent<Props> {
     } = this.props;
     return (
       <View style={styles.container}>
-        <StandaloneHeader title={text.savedEventsTitle} />
+        <Header backgroundColor={lightNavyBlueColor}>
+          <ContentPadding style={styles.headerContent}>
+            <Text type="h2" style={styles.headerTitle}>
+              {text.savedEventsTitle}
+            </Text>
+          </ContentPadding>
+        </Header>
         {this.props.loading ? (
           <Loading />
         ) : (
@@ -71,6 +83,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: bgColor
+  },
+  headerContent: {
+    height: 48,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  headerTitle: {
+    color: whiteColor
   }
 });
 
