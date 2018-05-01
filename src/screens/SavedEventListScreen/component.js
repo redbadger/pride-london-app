@@ -8,7 +8,6 @@ import EventList from "../../components/EventList";
 import Header from "../../components/Header";
 import text from "../../constants/text";
 import ContentPadding from "../../components/ContentPadding";
-import IconButton from "../../components/IconButton";
 import Text from "../../components/Text";
 import {
   bgColor,
@@ -21,7 +20,6 @@ import {
   FILTER_MODAL
 } from "../../constants/routes";
 import locale from "../../data/locale";
-import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -32,8 +30,7 @@ export type Props = {
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>,
-  getAssetUrl: LocalizedFieldRef => string,
-  selectedCategories: Set<string>
+  getAssetUrl: LocalizedFieldRef => string
 };
 
 class SavedEventListScreen extends PureComponent<Props> {

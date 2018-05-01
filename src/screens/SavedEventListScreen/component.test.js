@@ -3,13 +3,7 @@ import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
 import Component from "./component";
-import FilterHeader from "../../components/ConnectedFilterHeader";
 import EventList from "../../components/EventList";
-import {
-  EVENT_CATEGORIES_FILTER,
-  FILTER_MODAL,
-  EVENT_DETAILS
-} from "../../constants/routes";
 
 const navigation: NavigationScreenProp<NavigationState> = ({
   navigate: () => {}
