@@ -17,6 +17,7 @@ import {
 } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import locale from "../../data/locale";
+import NoSavedEvents from "./NoSavedEvents";
 
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
