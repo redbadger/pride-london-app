@@ -33,14 +33,6 @@ class SavedEventListScreen extends PureComponent<Props> {
     header: null
   };
 
-  handleFilterCategoriesPress = () => {
-    this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
-  };
-
-  handleFilterButtonPress = () => {
-    this.props.navigation.navigate(FILTER_MODAL);
-  };
-
   render() {
     const {
       navigation,
