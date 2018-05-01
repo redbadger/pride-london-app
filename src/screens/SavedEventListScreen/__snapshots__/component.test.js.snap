@@ -67,9 +67,41 @@ exports[`EventsScreen Component renders no saved events screen when there are no
     }
   }
 >
-  <StandaloneHeader
-    title="Saved Events"
+  <Header
+    backgroundColor="#2d2f7f"
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 48,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "color": "#ffffff",
+          }
+        }
+        type="h2"
+      >
+        Saved Events
+      </Text>
+    </ContentPadding>
+  </Header>
+  <NoSavedEvents
+    navigation={
+      Object {
+        "navigate": [Function],
+      }
+    }
   />
-  <NoSavedEvents />
 </Component>
 `;
