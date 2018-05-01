@@ -26,8 +26,7 @@ const mapStateToProps = state => ({
   savedEvents: state.savedEvents,
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state),
-  getAssetUrl: getAssetUrl(id => selectAssetById(state, id)),
-  selectedCategories: state.eventFilters.selectedFilters.categories
+  getAssetUrl: getAssetUrl(id => selectAssetById(state, id))
 });
 
 const mapDispatchToProps = {
