@@ -42,7 +42,7 @@ export default class SaveEventButton extends React.Component<Props, State> {
       const value = this.props.active ? 1 : 0;
       Animated.timing(this.state.progress, {
         toValue: value,
-        duration: value * 1920,
+        duration: value * 760,
         easing: Easing.linear,
         useNativeDriver: true
       }).start();

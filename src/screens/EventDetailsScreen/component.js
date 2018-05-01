@@ -45,7 +45,7 @@ export const EventHeader = ({
         }}
         source={chevronLeftWhite}
       />
-      <SaveEventButton active={isSaved} onPress={toggleSaved} />
+      <SaveEventButton active={isSaved} onDark onPress={toggleSaved} />
     </ContentPadding>
   </Header>
 );
