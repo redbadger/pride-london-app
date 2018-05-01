@@ -6,8 +6,8 @@ import type { SavedEvents, EventDays } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventList from "../../components/EventList";
 import text from "../../constants/text";
-import Text from "../../components/Text";
 import StandaloneHeader from "../../components/StandaloneHeader";
+import Loading from "../../components/Loading";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
@@ -56,7 +56,7 @@ class SavedEventListScreen extends PureComponent<Props> {
       <View style={styles.container}>
         <StandaloneHeader title={text.savedEventsTitle} />
         {this.props.loading ? (
-          <Text>Loading...</Text>
+          <Loading />
         ) : (
           <EventList
             locale={locale}

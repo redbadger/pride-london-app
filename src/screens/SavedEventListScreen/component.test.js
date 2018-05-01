@@ -4,6 +4,7 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
 import Component from "./component";
 import EventList from "../../components/EventList";
+import Loading from "../../components/Loading";
 
 const navigation: NavigationScreenProp<NavigationState> = ({
   navigate: () => {}
@@ -44,9 +45,9 @@ describe("EventsScreen Component", () => {
       />
     );
 
-    const loadingText = output.find("Text").last();
+    const loadingText = output.find(Loading);
 
-    expect(loadingText.children().text()).toEqual("Loading...");
+    expect(loadingText.length).toEqual(1);
   });
 
   it("updates events on refresh", () => {

@@ -5,6 +5,7 @@ import { shallow } from "enzyme";
 import Component from "./component";
 import FilterHeader from "../../components/ConnectedFilterHeader";
 import EventList from "../../components/EventList";
+import Loading from "../../components/Loading";
 import {
   EVENT_CATEGORIES_FILTER,
   FILTER_MODAL,
@@ -50,9 +51,9 @@ describe("EventsScreen Component", () => {
       />
     );
 
-    const loadingText = output.find("Text");
+    const loadingText = output.find(Loading);
 
-    expect(loadingText.children().text()).toEqual("Loading...");
+    expect(loadingText.length).toEqual(1);
   });
 
   it("updates events on refresh", () => {
