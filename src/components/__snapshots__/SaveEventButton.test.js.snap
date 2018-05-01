@@ -39,7 +39,7 @@ exports[`renders correctly 1`] = `
         "ddd": 0,
         "fr": 25,
         "h": 48,
-        "ip": 6,
+        "ip": 16,
         "layers": Array [
           Object {
             "ao": 0,
@@ -1960,7 +1960,7 @@ exports[`renders correctly 1`] = `
         ],
         "markers": Array [],
         "nm": "Heart_List",
-        "op": 54,
+        "op": 35,
         "v": "5.1.9",
         "w": 48,
       }
