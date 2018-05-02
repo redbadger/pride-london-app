@@ -1996,7 +1996,7 @@ exports[`renders correctly when active 1`] = `
         "ddd": 0,
         "fr": 25,
         "h": 48,
-        "ip": 6,
+        "ip": 17,
         "layers": Array [
           Object {
             "ao": 0,
@@ -2130,9 +2130,9 @@ exports[`renders correctly when active 1`] = `
                       ],
                     },
                     "n": Array [
-                      "0p695_1_0p277_0p334",
-                      "0p695_1_0p277_0p333",
-                      "0p695_1_0p277_-2p821",
+                      "0p695_1_0p277_0p297",
+                      "0p695_1_0p277_0p296",
+                      "0p695_1_0p277_-2p508",
                     ],
                     "o": Object {
                       "x": Array [
@@ -2141,9 +2141,9 @@ exports[`renders correctly when active 1`] = `
                         0.277,
                       ],
                       "y": Array [
-                        0.334,
-                        0.333,
-                        -2.821,
+                        0.297,
+                        0.296,
+                        -2.508,
                       ],
                     },
                     "s": Array [
@@ -2193,10 +2193,10 @@ exports[`renders correctly when active 1`] = `
                       178.025,
                       100,
                     ],
-                    "t": 26,
+                    "t": 25,
                   },
                   Object {
-                    "t": 30,
+                    "t": 29,
                   },
                 ],
               },
@@ -2413,7 +2413,7 @@ exports[`renders correctly when active 1`] = `
             "bm": 0,
             "ddd": 0,
             "ind": 2,
-            "ip": 13,
+            "ip": 18,
             "ks": Object {
               "a": Object {
                 "a": 0,
@@ -2489,7 +2489,7 @@ exports[`renders correctly when active 1`] = `
                       "s": Array [
                         29,
                       ],
-                      "t": 22.543,
+                      "t": 21.543,
                     },
                     Object {
                       "e": Array [
@@ -2517,7 +2517,7 @@ exports[`renders correctly when active 1`] = `
                       "s": Array [
                         29,
                       ],
-                      "t": 33,
+                      "t": 32,
                     },
                     Object {
                       "e": Array [
@@ -2545,10 +2545,10 @@ exports[`renders correctly when active 1`] = `
                       "s": Array [
                         29,
                       ],
-                      "t": 37,
+                      "t": 36,
                     },
                     Object {
-                      "t": 40,
+                      "t": 39,
                     },
                   ],
                 },
@@ -2565,18 +2565,18 @@ exports[`renders correctly when active 1`] = `
                           0.786,
                         ],
                         "y": Array [
-                          0.477,
+                          0.524,
                         ],
                       },
                       "n": Array [
-                        "0p786_0p477_0p724_0p065",
+                        "0p786_0p524_0p724_0p059",
                       ],
                       "o": Object {
                         "x": Array [
                           0.724,
                         ],
                         "y": Array [
-                          0.065,
+                          0.059,
                         ],
                       },
                       "s": Array [
@@ -2610,10 +2610,10 @@ exports[`renders correctly when active 1`] = `
                       "s": Array [
                         26.618,
                       ],
-                      "t": 26,
+                      "t": 25,
                     },
                     Object {
-                      "t": 40,
+                      "t": 39,
                     },
                   ],
                 },
@@ -2709,10 +2709,10 @@ exports[`renders correctly when active 1`] = `
                       161,
                       100,
                     ],
-                    "t": 22,
+                    "t": 21,
                   },
                   Object {
-                    "t": 33,
+                    "t": 32,
                   },
                 ],
               },
@@ -3917,7 +3917,7 @@ exports[`renders correctly when active 1`] = `
         ],
         "markers": Array [],
         "nm": "Heart_List",
-        "op": 54,
+        "op": 37,
         "v": "5.1.9",
         "w": 48,
       }
