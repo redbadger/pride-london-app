@@ -11,7 +11,8 @@ import {
   selectAssetById,
   selectFilteredEvents,
   selectFeaturedEventsByTitle,
-  uniqueEvents
+  uniqueEvents,
+  selectSavedEvents
 } from "./events";
 import { buildEventFilter } from "./event-filters";
 
@@ -770,4 +771,93 @@ describe("selectFeaturedEventsByTitle", () => {
 
 afterEach(() => {
   buildEventFilter.mockReset();
+});
+
+describe("mapSavedIDsToEvents", () => {
+  it("returns empty array when no savedEvents", () => {
+    const state = {
+      events: {
+        entries: [
+          {
+            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            sys: { id: "1", contentType: { sys: { id: "event" } } }
+          },
+          {
+            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            sys: { id: "2", contentType: { sys: { id: "event" } } }
+          }
+        ]
+      },
+      savedEvents: new Set([])
+    };
+
+    const expected = [];
+    const actual = selectSavedEvents(state);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("returns array of saved events", () => {
+    const state = {
+      events: {
+        entries: [
+          {
+            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            sys: { id: "1", contentType: { sys: { id: "event" } } }
+          },
+          {
+            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            sys: { id: "2", contentType: { sys: { id: "event" } } }
+          }
+        ]
+      },
+      savedEvents: new Set(["1"])
+    };
+
+    const expected = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+        sys: { id: "1", contentType: { sys: { id: "event" } } }
+      }
+    ];
+    const actual = selectSavedEvents(state);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("returns array of saved events", () => {
+    const state = {
+      events: {
+        entries: [
+          {
+            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            sys: { id: "1", contentType: { sys: { id: "event" } } }
+          },
+          {
+            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            sys: { id: "2", contentType: { sys: { id: "event" } } }
+          },
+          {
+            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            sys: { id: "3", contentType: { sys: { id: "event" } } }
+          }
+        ]
+      },
+      savedEvents: new Set(["3", "2"])
+    };
+
+    const expected = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "2", contentType: { sys: { id: "event" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        sys: { id: "3", contentType: { sys: { id: "event" } } }
+      }
+    ];
+    const actual = selectSavedEvents(state);
+
+    expect(actual).toEqual(expected);
+  });
 });
