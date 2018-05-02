@@ -110,6 +110,7 @@ export default {
   filterEvents: "Filter Events",
   noSavedEventsTitle: "Where is the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
+  noSavedEventsSaveButtonAlt: "'save this event' button",
   noSavedEventsPart2: "on any events you like to save them here.",
   noSavedEventsButton: "Find Events",
   unSaveEvent: "remove event from saved list",

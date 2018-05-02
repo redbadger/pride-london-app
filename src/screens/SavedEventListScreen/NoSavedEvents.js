@@ -9,7 +9,6 @@ import noSavedEvents from "../../../assets/images/howToSaveEvents.png";
 import text from "../../constants/text";
 import { cardBgColor, titleTextColor } from "../../constants/colors";
 import { EVENT_LIST } from "../../constants/routes";
-import strings from "../../constants/strings";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>
@@ -17,9 +16,7 @@ type Props = {
 
 class NoSavedEvents extends PureComponent<Props> {
   eventList = () => {
-    this.props.navigation.navigate(EVENT_LIST, {
-      title: strings.featuredEventsTitle
-    });
+    this.props.navigation.navigate(EVENT_LIST);
   };
 
   render() {
@@ -33,7 +30,7 @@ class NoSavedEvents extends PureComponent<Props> {
           <Text style={styles.infoText}>
             {text.noSavedEventsPart1}&nbsp;
             <Image
-              accessibilityLabel={`'${text.saveEvent}' button`}
+              accessibilityLabel={text.noSavedEventsSaveButtonAlt}
               source={iconSave}
             />
             &nbsp;{text.noSavedEventsPart2}
