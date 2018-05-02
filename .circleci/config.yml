@@ -371,10 +371,10 @@ jobs:
       - <<: *set-ruby-version-macos
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
-      - <<: *fabric-secrets-ios
       - run:
           name: Pre-start simulator
           command: xcrun simctl boot "iPhone 7" || true
+      - <<: *fabric-secrets-ios
       - <<: *restore-brew-cache
       - run:
           name: Install HomeBrew dependencies
@@ -391,6 +391,7 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
+      - <<: *generate-env-macos
       - run: yarn test:e2e
 
 workflows:
