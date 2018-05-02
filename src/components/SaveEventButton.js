@@ -41,17 +41,21 @@ export default class SaveEventButton extends React.Component<Props, State> {
     // Animates heart when change from inactive -> active
     // Snaps to start when change from active -> inactive
     if (this.state.progress && this.props.active !== prevProps.active) {
-      const value = this.props.active ? 1 : 0;
-      if (this.props.active) {
-        ReactNativeHapticFeedback.trigger("impactHeavy");
-      }
-      Animated.timing(this.state.progress, {
-        toValue: value,
-        duration: value * 800,
-        easing: Easing.linear,
-        useNativeDriver: true
-      }).start();
+      this.triggerAnimation();
     }
+  }
+
+  triggerAnimation() {
+    const value = this.props.active ? 1 : 0;
+    if (this.props.active) {
+      ReactNativeHapticFeedback.trigger("impactHeavy");
+    }
+    Animated.timing(this.state.progress, {
+      toValue: value,
+      duration: value * 800,
+      easing: Easing.linear,
+      useNativeDriver: true
+    }).start();
   }
 
   handlePress = () => {
