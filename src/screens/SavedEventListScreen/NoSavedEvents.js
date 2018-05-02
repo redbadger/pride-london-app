@@ -4,6 +4,7 @@ import { Image, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
+import LayoutColumn from "../../components/LayoutColumn";
 import iconSave from "../../../assets/images/save.png";
 import noSavedEvents from "../../../assets/images/howToSaveEvents.png";
 import text from "../../constants/text";
@@ -22,8 +23,8 @@ class NoSavedEvents extends PureComponent<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={noSavedEvents} />
-        <View style={styles.contentOverlay}>
+        <LayoutColumn spacing={12}>
+          <Image style={styles.image} source={noSavedEvents} />
           <Text type="h1" style={styles.title}>
             {text.noSavedEventsTitle}
           </Text>
@@ -38,7 +39,7 @@ class NoSavedEvents extends PureComponent<Props> {
           <ButtonPrimary onPress={this.eventList}>
             {text.noSavedEventsButton}
           </ButtonPrimary>
-        </View>
+        </LayoutColumn>
       </View>
     );
   }
@@ -47,8 +48,6 @@ class NoSavedEvents extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 3,
-    flexDirection: "column",
-    flexWrap: "wrap",
     marginHorizontal: 12
   },
   image: {
@@ -56,19 +55,11 @@ const styles = StyleSheet.create({
   },
   title: {
     color: titleTextColor,
-    textAlign: "center",
-    paddingBottom: 12
-  },
-  contentOverlay: {
-    flex: 1,
-    backgroundColor: cardBgColor,
-    width: "100%",
-    alignSelf: "flex-end",
-    paddingTop: 12
+    textAlign: "center"
   },
   infoText: {
     textAlign: "center",
-    paddingBottom: 24
+    paddingBottom: 12 // 24px between button and content
   }
 });
 

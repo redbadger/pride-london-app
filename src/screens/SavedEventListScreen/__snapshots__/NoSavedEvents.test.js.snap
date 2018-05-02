@@ -5,31 +5,21 @@ exports[`renders correctly 1`] = `
   style={
     Object {
       "flex": 3,
-      "flexDirection": "column",
-      "flexWrap": "wrap",
       "marginHorizontal": 12,
     }
   }
 >
-  <Image
-    source={1}
-    style={
-      Object {
-        "alignSelf": "center",
-      }
-    }
-  />
-  <Component
-    style={
-      Object {
-        "alignSelf": "flex-end",
-        "backgroundColor": "#ffffff",
-        "flex": 1,
-        "paddingTop": 12,
-        "width": "100%",
-      }
-    }
+  <LayoutColumn
+    spacing={12}
   >
+    <Image
+      source={1}
+      style={
+        Object {
+          "alignSelf": "center",
+        }
+      }
+    />
     <Text
       color="blackColor"
       markdown={false}
@@ -37,7 +27,6 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "color": "rgb(45, 47, 127)",
-          "paddingBottom": 12,
           "textAlign": "center",
         }
       }
@@ -51,7 +40,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       style={
         Object {
-          "paddingBottom": 24,
+          "paddingBottom": 12,
           "textAlign": "center",
         }
       }
@@ -72,6 +61,6 @@ exports[`renders correctly 1`] = `
     >
       Find Events
     </Button>
-  </Component>
+  </LayoutColumn>
 </Component>
 `;
