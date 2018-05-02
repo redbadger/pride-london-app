@@ -83,6 +83,7 @@ yarn-dependencies-macos: &yarn-dependencies-macos
     command: yarn install
     working_directory: /Users/distiller/project
 
+# Detox doesn't play well with Yarn
 npm-dependencies-macos-e2e: &npm-dependencies-macos-e2e
   run:
     name: Install dependencies with npm
