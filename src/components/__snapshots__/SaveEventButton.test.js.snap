@@ -39,7 +39,7 @@ exports[`renders correctly 1`] = `
         "ddd": 0,
         "fr": 25,
         "h": 48,
-        "ip": 6,
+        "ip": 17,
         "layers": Array [
           Object {
             "ao": 0,
@@ -173,9 +173,9 @@ exports[`renders correctly 1`] = `
                       ],
                     },
                     "n": Array [
-                      "0p695_1_0p277_0p334",
-                      "0p695_1_0p277_0p333",
-                      "0p695_1_0p277_-2p821",
+                      "0p695_1_0p277_0p186",
+                      "0p695_1_0p277_0p185",
+                      "0p695_1_0p277_-1p567",
                     ],
                     "o": Object {
                       "x": Array [
@@ -184,9 +184,9 @@ exports[`renders correctly 1`] = `
                         0.277,
                       ],
                       "y": Array [
-                        0.334,
-                        0.333,
-                        -2.821,
+                        0.186,
+                        0.185,
+                        -1.567,
                       ],
                     },
                     "s": Array [
@@ -236,10 +236,10 @@ exports[`renders correctly 1`] = `
                       178.025,
                       100,
                     ],
-                    "t": 26,
+                    "t": 22,
                   },
                   Object {
-                    "t": 30,
+                    "t": 26,
                   },
                 ],
               },
@@ -456,7 +456,7 @@ exports[`renders correctly 1`] = `
             "bm": 0,
             "ddd": 0,
             "ind": 2,
-            "ip": 13,
+            "ip": 18,
             "ks": Object {
               "a": Object {
                 "a": 0,
@@ -532,7 +532,7 @@ exports[`renders correctly 1`] = `
                       "s": Array [
                         29,
                       ],
-                      "t": 22.543,
+                      "t": 22,
                     },
                     Object {
                       "e": Array [
@@ -560,7 +560,7 @@ exports[`renders correctly 1`] = `
                       "s": Array [
                         29,
                       ],
-                      "t": 33,
+                      "t": 29,
                     },
                     Object {
                       "e": Array [
@@ -588,10 +588,10 @@ exports[`renders correctly 1`] = `
                       "s": Array [
                         29,
                       ],
-                      "t": 37,
+                      "t": 33,
                     },
                     Object {
-                      "t": 40,
+                      "t": 36,
                     },
                   ],
                 },
@@ -601,25 +601,25 @@ exports[`renders correctly 1`] = `
                   "k": Array [
                     Object {
                       "e": Array [
-                        26.618,
+                        29.261,
                       ],
                       "i": Object {
                         "x": Array [
-                          0.786,
+                          0.845,
                         ],
                         "y": Array [
-                          0.477,
+                          0.399,
                         ],
                       },
                       "n": Array [
-                        "0p786_0p477_0p724_0p065",
+                        "0p845_0p399_0p724_0p052",
                       ],
                       "o": Object {
                         "x": Array [
                           0.724,
                         ],
                         "y": Array [
-                          0.065,
+                          0.052,
                         ],
                       },
                       "s": Array [
@@ -640,23 +640,23 @@ exports[`renders correctly 1`] = `
                         ],
                       },
                       "n": Array [
-                        "0p701_1p001_0p308_0p653",
+                        "0p701_1p001_0p105_0p381",
                       ],
                       "o": Object {
                         "x": Array [
-                          0.308,
+                          0.105,
                         ],
                         "y": Array [
-                          0.653,
+                          0.381,
                         ],
                       },
                       "s": Array [
-                        26.618,
+                        29.261,
                       ],
-                      "t": 26,
+                      "t": 23,
                     },
                     Object {
-                      "t": 40,
+                      "t": 36,
                     },
                   ],
                 },
@@ -672,8 +672,8 @@ exports[`renders correctly 1`] = `
                 "k": Array [
                   Object {
                     "e": Array [
-                      161,
-                      161,
+                      188,
+                      188,
                       100,
                     ],
                     "i": Object {
@@ -691,7 +691,7 @@ exports[`renders correctly 1`] = `
                     "n": Array [
                       "0p667_1_0p167_0p167",
                       "0p667_1_0p167_0p167",
-                      "0p667_1_0p167_13p952",
+                      "0p667_1_0p167_14p118",
                     ],
                     "o": Object {
                       "x": Array [
@@ -702,7 +702,7 @@ exports[`renders correctly 1`] = `
                       "y": Array [
                         0.167,
                         0.167,
-                        13.952,
+                        14.118,
                       ],
                     },
                     "s": Array [
@@ -725,14 +725,14 @@ exports[`renders correctly 1`] = `
                         0.667,
                       ],
                       "y": Array [
-                        0.979,
-                        0.979,
+                        0.994,
+                        0.994,
                         1,
                       ],
                     },
                     "n": Array [
-                      "0p477_0p979_0p333_0",
-                      "0p477_0p979_0p333_0",
+                      "0p477_0p994_0p333_0",
+                      "0p477_0p994_0p333_0",
                       "0p667_1_0p333_0",
                     ],
                     "o": Object {
@@ -748,14 +748,14 @@ exports[`renders correctly 1`] = `
                       ],
                     },
                     "s": Array [
-                      161,
-                      161,
+                      188,
+                      188,
                       100,
                     ],
-                    "t": 22,
+                    "t": 21,
                   },
                   Object {
-                    "t": 33,
+                    "t": 29,
                   },
                 ],
               },
@@ -1960,7 +1960,7 @@ exports[`renders correctly 1`] = `
         ],
         "markers": Array [],
         "nm": "Heart_List",
-        "op": 54,
+        "op": 37,
         "v": "5.1.9",
         "w": 48,
       }
