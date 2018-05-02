@@ -10,17 +10,12 @@ it("renders correctly", () => {
   const output = shallow(<SaveEventButton active={false} onPress={() => {}} />);
   output.setState({ progress: new Animated.Value(0) });
   expect(output).toMatchSnapshot();
-});
-
-it("has correct accessibilityLabel when active=false", () => {
-  const output = shallow(<SaveEventButton active={false} onPress={() => {}} />);
-  output.setState({ progress: new Animated.Value(0) });
   expect(output.find(Touchable).props().accessibilityLabel).toEqual(
     text.saveEvent
   );
 });
 
-it("has correct accessibilityLabel when active=true", () => {
+it("renders correctly when active", () => {
   const output = shallow(<SaveEventButton active onPress={() => {}} />);
   output.setState({ progress: new Animated.Value(0) });
   expect(output.find(Touchable).props().accessibilityLabel).toEqual(

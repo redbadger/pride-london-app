@@ -11,7 +11,7 @@ const navigation: NavigationScreenProp<NavigationState> = ({
   navigate: () => {}
 }: any);
 
-describe("EventsScreen Component", () => {
+describe("SavedEventListScreen Component", () => {
   const event: Event = ({
     fields: {
       name: { "en-GB": "Pride in the Park" },

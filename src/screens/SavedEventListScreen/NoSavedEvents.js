@@ -8,7 +8,7 @@ import LayoutColumn from "../../components/LayoutColumn";
 import iconSave from "../../../assets/images/save.png";
 import noSavedEvents from "../../../assets/images/howToSaveEvents.png";
 import text from "../../constants/text";
-import { titleTextColor } from "../../constants/colors";
+import { lightNavyBlueColor } from "../../constants/colors";
 import { EVENT_LIST } from "../../constants/routes";
 
 type Props = {
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   title: {
-    color: titleTextColor,
+    color: lightNavyBlueColor,
     textAlign: "center"
   },
   infoText: {
