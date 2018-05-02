@@ -96,7 +96,7 @@ exports[`EventHeader renders correctly 1`] = `
     />
     <SaveEventButton
       active={true}
-      onDark={false}
+      onDark={true}
       onPress={[Function]}
     />
   </ContentPadding>
