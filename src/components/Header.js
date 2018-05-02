@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { StatusBar, StyleSheet, View } from "react-native";
-import type { Node } from "react-native";
+import type { Node } from "react";
 import SafeAreaView from "react-native-safe-area-view";
 import ContentPadding from "./ContentPadding";
 import IconButton from "./IconButton";
