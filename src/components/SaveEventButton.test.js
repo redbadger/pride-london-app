@@ -21,6 +21,12 @@ it("renders correctly", () => {
   expect(output).toMatchSnapshot();
 });
 
+it("renders correctly when active", () => {
+  const output = shallow(<SaveEventButton active onPress={() => {}} />);
+  output.setState({ progress: new Animated.Value(0) });
+  expect(output).toMatchSnapshot();
+});
+
 describe("getDerivedStateFromProps", () => {
   it("returns state with progress as animated value of 1 when state.progress = null and props.active = true", () => {
     const props = {

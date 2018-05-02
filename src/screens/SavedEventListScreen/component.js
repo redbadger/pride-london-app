@@ -17,6 +17,7 @@ import {
 } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import locale from "../../data/locale";
+import NoSavedEvents from "./NoSavedEvents";
 
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -44,8 +45,10 @@ class SavedEventListScreen extends PureComponent<Props> {
       addSavedEvent,
       removeSavedEvent,
       refreshing,
+      loading,
       getAssetUrl
     } = this.props;
+
     return (
       <View style={styles.container}>
         <Header backgroundColor={lightNavyBlueColor}>
@@ -55,25 +58,27 @@ class SavedEventListScreen extends PureComponent<Props> {
             </Text>
           </ContentPadding>
         </Header>
-        {this.props.loading ? (
-          <Loading />
-        ) : (
-          <EventList
-            locale={locale}
-            events={events}
-            savedEvents={savedEvents}
-            addSavedEvent={addSavedEvent}
-            removeSavedEvent={removeSavedEvent}
-            refreshing={refreshing}
-            onRefresh={() => {
-              updateEvents();
-            }}
-            onPress={(eventId: string) => {
-              navigation.navigate(EVENT_DETAILS, { eventId });
-            }}
-            getAssetUrl={getAssetUrl}
-          />
-        )}
+        {loading && <Loading />}
+        {!loading &&
+          events.length === 0 && <NoSavedEvents navigation={navigation} />}
+        {!loading &&
+          events.length !== 0 && (
+            <EventList
+              locale={locale}
+              events={events}
+              savedEvents={savedEvents}
+              addSavedEvent={addSavedEvent}
+              removeSavedEvent={removeSavedEvent}
+              refreshing={refreshing}
+              onRefresh={() => {
+                updateEvents();
+              }}
+              onPress={(eventId: string) => {
+                navigation.navigate(EVENT_DETAILS, { eventId });
+              }}
+              getAssetUrl={getAssetUrl}
+            />
+          )}
       </View>
     );
   }

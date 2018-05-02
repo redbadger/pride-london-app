@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 3,
+      "marginHorizontal": 12,
+    }
+  }
+>
+  <LayoutColumn
+    spacing={12}
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "alignSelf": "center",
+        }
+      }
+    />
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "#2d2f7f",
+          "textAlign": "center",
+        }
+      }
+      type="h1"
+    >
+      Where is the love?
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "paddingBottom": 12,
+          "textAlign": "center",
+        }
+      }
+      type="text"
+    >
+      No favourites yet? Tap the
+       
+      <Image
+        accessibilityLabel="'save this event' button"
+        source={1}
+      />
+       
+      on any events you like to save them here.
+    </Text>
+    <Button
+      disabled={false}
+      onPress={[Function]}
+    >
+      Find Events
+    </Button>
+  </LayoutColumn>
+</Component>
+`;
