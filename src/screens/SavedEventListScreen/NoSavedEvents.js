@@ -8,7 +8,7 @@ import LayoutColumn from "../../components/LayoutColumn";
 import iconSave from "../../../assets/images/save.png";
 import noSavedEvents from "../../../assets/images/howToSaveEvents.png";
 import text from "../../constants/text";
-import { cardBgColor, titleTextColor } from "../../constants/colors";
+import { titleTextColor } from "../../constants/colors";
 import { EVENT_LIST } from "../../constants/routes";
 
 type Props = {
