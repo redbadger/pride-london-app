@@ -13,7 +13,8 @@ describe("Pride App", () => {
   });
 
   it("should start on Home page", async () => {
-    await expect(element(by.id("home-screen"))).toBeVisible();
+    const homeScreen = element(by.id("home-screen"));
+    await expect(homeScreen).toBeVisible();
   });
 
   it("should navigate to Events tab", async () => {
