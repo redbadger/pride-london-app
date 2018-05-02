@@ -1,9 +1,15 @@
+const { takeScreenshot } = require("./helpers");
+
 describe("Pride App", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
     await waitFor(element(by.id("events-tab-button")))
       .toExist()
-      .withTimeout(20000);
+      .withTimeout(200000);
+  });
+
+  afterEach(async () => {
+    takeScreenshot();
   });
 
   it("should start on Home page", async () => {
