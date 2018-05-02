@@ -173,7 +173,7 @@ set-node-version-macos: &set-node-version-macos
     name: Set node version
     command: |
       yarn global add n
-      sudo n 9.
+      sudo n 9.3
 
 generate-env-macos: &generate-env-macos
   run:
