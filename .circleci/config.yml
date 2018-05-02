@@ -412,6 +412,7 @@ jobs:
       - <<: *save-npm-cache-macos-e2e
       - <<: *generate-env-macos
       - run: npm run test:e2e
+      - run: echo 'hello'
 
 workflows:
   version: 2
