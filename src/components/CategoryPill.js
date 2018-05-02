@@ -1,25 +1,26 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import eventCategories from "../constants/event-categories";
 import locale from "../data/locale";
 import { blackColor, whiteColor } from "../constants/colors";
+import type { EventCategoryName } from "../data/event";
 
-const categoryStyleColor = (category: string) => {
+const categoryStyleColor = (category: EventCategoryName) => {
   const categoryData = eventCategories[locale][category];
   return { color: categoryData.contrast ? blackColor : whiteColor };
 };
 
-const categoryStyleBackgroundColor = (category: string) => {
+const categoryStyleBackgroundColor = (category: EventCategoryName) => {
   const categoryData = eventCategories[locale][category];
   return { backgroundColor: categoryData.color };
 };
 
 type Props = {
-  name: string,
-  style?: StyleObj,
+  name: EventCategoryName,
+  style?: ViewStyleProp,
   numberOfLines?: number
 };
 

@@ -10,8 +10,8 @@ import supportUsVolunteerBgTopRight from "../../../assets/images/supportUsVolunt
 import supportUsShopBgBottomRight from "../../../assets/images/supportUsShopBgBottomRight.png";
 import supportUsSponsorBgTopRight from "../../../assets/images/supportUsSponsorBgTopRight.png";
 import Header from "../../components/Header";
-import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
+import Text from "../../components/Text";
 import {
   lightNavyBlueColor,
   warmPinkColor,
@@ -106,6 +106,12 @@ const styles = StyleSheet.create({
     maxWidth: 440,
     alignSelf: "center"
   },
+  sectionSpacing: {
+    marginBottom: 16
+  },
+  buttonSpacing: {
+    marginTop: 12
+  },
   headerContent: {
     height: 48,
     flexDirection: "row",
@@ -114,12 +120,6 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: whiteColor
-  },
-  sectionSpacing: {
-    marginBottom: 16
-  },
-  buttonSpacing: {
-    marginTop: 12
   }
 });
 

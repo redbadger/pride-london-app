@@ -1,5 +1,6 @@
 // @flow
-import type { Asset, LocalizedFieldRef } from "./event";
+import type { Asset } from "./asset";
+import type { LocalizedFieldRef } from "./localized-field-ref";
 
 import locale from "../data/locale";
 

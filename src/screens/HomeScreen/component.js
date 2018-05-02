@@ -4,8 +4,10 @@ import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { equals } from "ramda";
 import Text from "../../components/Text";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type { Event } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventTile from "../../components/EventTile";
+import Loading from "../../components/Loading";
 import Touchable from "../../components/Touchable";
 import {
   cardBgColor,
@@ -66,7 +68,7 @@ class HomeScreen extends Component<Props> {
 
     return (
       <SafeAreaView testID="home-screen">
-        {this.props.loading && <Text>Loading...</Text>}
+        {this.props.loading && <Loading />}
         <ScrollView style={styles.scroller}>
           <View style={styles.header}>
             <Text>Header - TBD</Text>

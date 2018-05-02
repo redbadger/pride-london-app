@@ -2,7 +2,12 @@
 import React from "react";
 import type { NavigationScreenProp } from "react-navigation";
 import { shallow } from "enzyme";
-import Component, { AccessibilityDetails, BuyTickets } from "./component";
+import Component, {
+  EventAccessibility,
+  EventCategories,
+  EventHeader,
+  EventTickets
+} from "./component";
 import type { Event } from "../../data/event";
 
 const event: Event = ({
@@ -71,32 +76,29 @@ const event: Event = ({
   }
 }: any);
 
-it("renders correctly", () => {
-  const getAssetUrl = () =>
-    "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
-  const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
-    goBack: () => {}
-  }: any);
+const getAssetUrl = () =>
+  "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
 
+const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
+  goBack: () => {}
+}: any);
+
+it("renders correctly", () => {
   const output = shallow(
     <Component
-      navigation={navigation}
       event={event}
       getAssetUrl={getAssetUrl}
+      isSaved
+      navigation={navigation}
+      toggleSaved={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
 });
 
 it("renders correctly with missing details", () => {
-  const getAssetUrl = () =>
-    "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
-  const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
-    goBack: () => {}
-  }: any);
   const output = shallow(
     <Component
-      navigation={navigation}
       event={{
         ...event,
         fields: {
@@ -106,21 +108,39 @@ it("renders correctly with missing details", () => {
         }
       }}
       getAssetUrl={getAssetUrl}
+      navigation={navigation}
+      toggleSaved={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
 });
 
-describe("AccessibilityDetails", () => {
+describe("EventHeader", () => {
   it("renders correctly", () => {
-    const output = shallow(<AccessibilityDetails event={event} />);
+    const output = shallow(
+      <EventHeader isSaved navigation={navigation} toggleSaved={() => {}} />
+    );
     expect(output).toMatchSnapshot();
   });
 });
 
-describe("BuyTickets", () => {
+describe("EventCategories", () => {
   it("renders correctly", () => {
-    const output = shallow(<BuyTickets event={event} />);
+    const output = shallow(<EventCategories event={event} />);
+    expect(output).toMatchSnapshot();
+  });
+});
+
+describe("EventAccessibility", () => {
+  it("renders correctly", () => {
+    const output = shallow(<EventAccessibility event={event} />);
+    expect(output).toMatchSnapshot();
+  });
+});
+
+describe("EventTickets", () => {
+  it("renders correctly", () => {
+    const output = shallow(<EventTickets event={event} />);
     expect(output).toMatchSnapshot();
   });
 });

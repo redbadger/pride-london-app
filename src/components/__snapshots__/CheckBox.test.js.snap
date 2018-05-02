@@ -22,11 +22,21 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
     type="text"
   >
     Bananas
   </Text>
+  <Image
+    source={1}
+  />
 </Touchable>
 `;
 
@@ -53,7 +63,14 @@ exports[`renders correctly when checked 1`] = `
   }
 >
   <Text
+    color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
     type="text"
   >
     Bananas

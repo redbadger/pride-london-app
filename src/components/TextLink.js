@@ -1,36 +1,26 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import Text from "./Text";
 import { eucalyptusGreenColor } from "../constants/colors";
-import Touchable from "../components/Touchable";
-import type { TextType } from "./Text";
 
 type Props = {
-  children: string,
-  onPress: Function,
-  style?: StyleObj,
-  type?: TextType
+  children: string
 };
 
-const TextLink = ({ children, onPress, style, type }: Props) => (
-  <Touchable onPress={onPress} style={style}>
-    <View style={styles.detailTitleLink}>
-      <Text type={type} color="lightNavyBlueColor">
-        {children}
-      </Text>
-    </View>
-  </Touchable>
+// Note: No touch functionality here. Instead expect to be wrapped in a
+// touchable. This was due to the rouch target sizing, and the fact that
+// often you want to have this and other siblings to be touchable.
+const TextLink = ({ children }: Props) => (
+  <View style={styles.link}>
+    <Text type="h4" color="lightNavyBlueColor">
+      {children}
+    </Text>
+  </View>
 );
 
-TextLink.defaultProps = {
-  type: "h4",
-  style: {}
-};
-
 const styles = StyleSheet.create({
-  detailTitleLink: {
+  link: {
     borderBottomColor: eucalyptusGreenColor,
     borderBottomWidth: StyleSheet.hairlineWidth * 2,
     alignSelf: "flex-start",

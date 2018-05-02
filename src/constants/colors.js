@@ -35,6 +35,7 @@ export const textColor = "#272727";
 
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 export const blackZeroColor = "rgba(0, 0, 0, 0)";
+export const blackFifteenColor = "rgba(0, 0, 0, 0.1)";
 export const blackThirtyColor = "rgba(0, 0, 0, 0.3)";
 export const whiteZeroColor = "rgba(255, 255, 255, 0)";
 export const dialogBgColor = whiteColor;
@@ -42,6 +43,7 @@ export const dialogTitleColor = "rgb(45, 47, 127)";
 export const dialogApplyButtonBgColor = "rgb(44, 218, 157)";
 export const dialogApplyButtonTextColor = "rgb(45, 47, 127)";
 export const dialogHeaderDividerColor = "#F2F2F2";
+export const disabledButtonBgColor = "#cecece";
 
 // TAB BAR
 
@@ -61,18 +63,15 @@ export const interestButtonBgColor = "rgb(32, 33, 90)";
 export const interestButtonTextColor = whiteColor;
 export const filterButtonBorderColor = "rgb(44, 218, 157)";
 export const filterButtonTextColor = "rgb(44, 218, 157)";
-
+export const filterButtonsBgColor = darkBlueGreyTwoColor;
 // EVENT LIST
 
 export const eventListHeaderBgColor = lightishGreyColor;
 export const eventListHeaderColor = "rgb(51, 51, 51)";
-export const eventCardTextColor = "rgb(45, 47, 127)";
-export const eventPriceColor = whiteColor;
 export const eventCardShadow = "rgba(0, 0, 0, 0.2)";
-export const eventPriceBgColor = "rgb(45, 47, 127)";
 export const sectionHeaderBgColor = lightGreyColor;
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
-
+export const sectionHeaderTextColor = "rgb(45, 47, 127)";
 // DATE FILTER MODAL
 
 export const dateRangePickerTextColor = "rgb(45, 47, 127)";
@@ -97,3 +96,6 @@ export const eventTileTextColor = "rgb(45, 47, 127)";
 // SUPPORT US
 
 export const supportUsButtonShadow = "rgba(0, 0, 0, 0.2)";
+
+// SPONSOR
+export const sponsorLogoBackgroundColor = "rgba(243, 243, 243, 0.5)";

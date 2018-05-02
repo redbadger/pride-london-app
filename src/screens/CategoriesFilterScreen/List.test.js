@@ -2,12 +2,13 @@
 import React from "react";
 import { shallow } from "enzyme";
 import List from "./List";
+import type { EventCategoryName } from "../../data/event";
 
 const render = props => shallow(<List {...props} />);
 
 describe("List Component", () => {
   it("renders correctly", () => {
-    const stagedCategories: Set<string> = new Set(["Music"]);
+    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const onPress = () => {};
     const component = render({ locale: "en-GB", stagedCategories, onPress });
 

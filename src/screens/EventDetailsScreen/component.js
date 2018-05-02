@@ -1,61 +1,100 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, Linking, View, StyleSheet, ScrollView } from "react-native";
+import { Image, Linking, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import ContactDetails from "./ContactDetails";
+import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
+import EventMap from "./EventMap";
+import SaveEventButton from "../../components/SaveEventButton";
+import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import IconButton from "../../components/IconButton";
-import Shadow from "../../components/Shadow";
-import {
-  lightishGreyColor,
-  whiteColor,
-  darkBlueGreyTwoColor
-} from "../../constants/colors";
+import LayoutColumn from "../../components/LayoutColumn";
+import ShadowedScrollView from "../../components/ShadowedScrollView";
+import SectionDivider from "./SectionDivider";
+import PerformanceList from "../../components/PerformanceList";
+import { groupPerformancesByPeriod } from "../../selectors/events";
+import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { Event, LocalizedFieldRef } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event";
+import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import locale from "../../data/locale";
 import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
-import heartWhite from "../../../assets/images/heart-white.png";
 
-type Props = {
-  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
-  event: Event,
-  getAssetUrl: LocalizedFieldRef => string
-};
+type EventHeaderProps = {|
+  isSaved: boolean,
+  toggleSaved: boolean => void,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>
+|};
 
-export const AccessibilityDetails = ({ event }: { event: Event }) => (
-  <View>
-    <Text type="h2" color="lightNavyBlueColor" style={styles.title}>
-      {text.eventDetailsAccessibilityDetails}
-    </Text>
-    <View style={styles.accessibilityDetailsItem}>
-      <Text>{event.fields.accessibilityDetails[locale]}</Text>
-    </View>
+export const EventHeader = ({
+  isSaved,
+  navigation,
+  toggleSaved
+}: EventHeaderProps) => (
+  <Header backgroundColor={darkBlueGreyTwoColor}>
+    <ContentPadding style={styles.headerContent}>
+      <IconButton
+        accessibilityLabel="Back"
+        onPress={() => {
+          navigation.goBack(null);
+        }}
+        source={chevronLeftWhite}
+      />
+      <SaveEventButton active={isSaved} onPress={toggleSaved} />
+    </ContentPadding>
+  </Header>
+);
+
+export const EventCategories = ({ event }: { event: Event }) => (
+  <View style={styles.categories}>
+    {event.fields.eventCategories[locale].map(categoryName => (
+      <CategoryPill
+        key={categoryName}
+        name={((categoryName: any): EventCategoryName)}
+        style={styles.categoryPill}
+      />
+    ))}
   </View>
 );
 
-export const BuyTickets = ({ event }: { event: Event }) => (
-  <Shadow>
-    <ContentPadding style={styles.buyButton}>
-      <ButtonPrimary
-        onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
-      >
-        {text.eventDetailsBuyButton}
-      </ButtonPrimary>
-    </ContentPadding>
-  </Shadow>
+export const EventAccessibility = ({ event }: { event: Event }) => (
+  <LayoutColumn spacing={4}>
+    <Text type="h2" color="lightNavyBlueColor">
+      {text.eventDetailsAccessibilityDetails}
+    </Text>
+    <Text>{event.fields.accessibilityDetails[locale]}</Text>
+  </LayoutColumn>
 );
 
+export const EventTickets = ({ event }: { event: Event }) => (
+  <ContentPadding style={styles.ticketButton}>
+    <ButtonPrimary
+      onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
+    >
+      {text.eventDetailsBuyButton}
+    </ButtonPrimary>
+  </ContentPadding>
+);
+
+type Props = {
+  event: Event,
+  getAssetUrl: LocalizedFieldRef => string,
+  isSaved: boolean,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
+  toggleSaved: boolean => void
+};
+
 class EventDetailsScreen extends PureComponent<Props> {
-  static defaultProps = {};
+  static defaultProps = {
+    isSaved: false
+  };
 
   static navigationOptions = {
-    header: null,
     tabBarVisible: false
   };
 
@@ -63,46 +102,60 @@ class EventDetailsScreen extends PureComponent<Props> {
     const { event, getAssetUrl } = this.props;
     return (
       <View style={styles.container}>
-        <Header backgroundColor={darkBlueGreyTwoColor}>
-          <ContentPadding style={styles.headerContent}>
-            <IconButton
-              accessibilityLabel="Back"
-              onPress={() => {
-                this.props.navigation.goBack(null);
-              }}
-              source={chevronLeftWhite}
-            />
-            <IconButton
-              accessibilityLabel="Favourite"
-              onPress={() => {}}
-              source={heartWhite}
-            />
-          </ContentPadding>
-        </Header>
-        <ScrollView>
+        <EventHeader
+          isSaved={this.props.isSaved}
+          toggleSaved={this.props.toggleSaved}
+          navigation={this.props.navigation}
+        />
+        <ShadowedScrollView topShadow={false}>
           <Image
             style={{ aspectRatio: 5 / 3 }}
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
           <ContentPadding style={styles.content}>
-            <EventOverview event={event} />
-            <View style={styles.sectionDivider} />
-            <EventDescription event={event} />
-            {event.fields.accessibilityDetails && [
-              <View style={styles.sectionDivider} key="a1" />,
-              <AccessibilityDetails event={event} key="a2" />
-            ]}
-            {(event.fields.email || event.fields.phone) && [
-              <View style={styles.sectionDivider} key="b1" />,
-              <ContactDetails
-                email={event.fields.email[locale]}
-                phone={event.fields.phone[locale]}
-                key="b2"
+            <Text type="h1" style={styles.h1}>
+              {event.fields.name[locale]}
+            </Text>
+            <LayoutColumn spacing={20}>
+              <EventCategories event={event} />
+              <EventOverview event={event} />
+              <SectionDivider />
+              <EventDescription event={event} />
+              <EventMap
+                lat={event.fields.location[locale].lat}
+                lon={event.fields.location[locale].lon}
+                locationName={event.fields.locationName[locale]}
               />
-            ]}
+            </LayoutColumn>
           </ContentPadding>
-        </ScrollView>
-        {event.fields.ticketingUrl && <BuyTickets event={event} />}
+          {event.fields.performances &&
+            event.fields.performances[locale] && (
+              <PerformanceList
+                performances={groupPerformancesByPeriod(
+                  event.fields.performances[locale]
+                )}
+                locale={locale}
+              />
+            )}
+          <ContentPadding styles={styles.content}>
+            <LayoutColumn spacing={20}>
+              {event.fields.accessibilityDetails && (
+                <EventAccessibility event={event} />
+              )}
+              {event.fields.accessibilityDetails &&
+                (event.fields.email || event.fields.phone) && (
+                  <SectionDivider />
+                )}
+              {(event.fields.email || event.fields.phone) && (
+                <EventContact
+                  email={event.fields.email && event.fields.email[locale]}
+                  phone={event.fields.phone && event.fields.phone[locale]}
+                />
+              )}
+            </LayoutColumn>
+          </ContentPadding>
+        </ShadowedScrollView>
+        {event.fields.ticketingUrl && <EventTickets event={event} />}
       </View>
     );
   }
@@ -114,25 +167,26 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor
   },
   content: {
-    marginBottom: 24
+    marginTop: 16,
+    marginBottom: 32
   },
   headerContent: {
     flexDirection: "row",
     justifyContent: "space-between"
   },
-  sectionDivider: {
-    backgroundColor: lightishGreyColor,
-    height: 1,
-    marginVertical: 16
+  h1: {
+    marginBottom: 8
   },
-  title: {
-    marginTop: 8,
-    marginBottom: 4
+  categories: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginBottom: -8
   },
-  accessibilityDetailsItem: {
-    marginTop: 8
+  categoryPill: {
+    marginBottom: 8,
+    marginRight: 8
   },
-  buyButton: {
+  ticketButton: {
     backgroundColor: whiteColor,
     paddingVertical: 12
   }

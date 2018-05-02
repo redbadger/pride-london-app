@@ -60,6 +60,8 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 *devices.txt
+*/fastlane/metadata
+vendor/
 
 # Deco IDE
 *.deco
@@ -72,3 +74,6 @@ settings.json
 
 fabric.properties
 coverage/
+
+# Bundle artifact
+*.jsbundle

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Saved events reducer ADD_SAVED_EVENT action adds id when missing 1`] = `
+Set {
+  "bdb09a00-c62d-41c7-a660-2b4557b3b096",
+}
+`;
+
+exports[`Saved events reducer ADD_SAVED_EVENT action does not add id when present 1`] = `
+Set {
+  "279aacf6-e4ad-4383-a1bc-0a8b59ac2e64",
+}
+`;
+
+exports[`Saved events reducer RECEIVE_SAVED_EVENTS action updates saved events 1`] = `
+Set {
+  "7b717417-eb24-40c6-8f50-00fc724918f4",
+  "bbf24715-1a40-42d3-a246-8d002ecad2a2",
+}
+`;
+
+exports[`Saved events reducer REMOVE_SAVED_EVENT action does not remove id when missing 1`] = `Set {}`;
+
+exports[`Saved events reducer REMOVE_SAVED_EVENT action removes id when present 1`] = `Set {}`;
+
+exports[`Saved events reducer initialises with default state 1`] = `Set {}`;

@@ -1,4 +1,4 @@
-fastlane_version "2.89.0"
+fastlane_version "2.93.1"
 
 default_platform :ios
 
@@ -15,7 +15,7 @@ platform :ios do
   desc "Signed build"
   lane :build do |options|
     match(
-      type: options[:match_type], 
+      type: options[:match_type],
       app_identifier: options[:app_identifier],
       readonly: true
     )
@@ -31,7 +31,7 @@ platform :ios do
   lane :alpha do |options|
     increment_build_number(build_number:options[:ci_build_num])
     build(
-      match_type: "adhoc", 
+      match_type: "adhoc",
       export_method: "ad-hoc",
       configuration: "AdhocAlpha",
       app_identifier: "org.prideinlondon.festival.alpha"
@@ -61,7 +61,7 @@ platform :ios do
     ensure_git_branch(branch: "master")
     increment_build_number(build_number:options[:ci_build_num])
     build(
-      match_type: "adhoc", 
+      match_type: "adhoc",
       export_method: "ad-hoc",
       configuration: "AdhocBeta",
       app_identifier: "org.prideinlondon.festival.beta"
@@ -84,10 +84,15 @@ platform :ios do
         notes: notes,
       )
     end
-    # Testflight builds can be promoted to production so 
+  end
+
+  desc "Build and Deploy a release to iTunes Connect"
+  lane :release do |options|
+    # Testflight builds can be promoted to production so
     # we have to do another build with appstore signing
+    app_version = get_version_number(xcodeproj: "PrideLondonApp.xcodeproj")
     increment_build_number(
-      build_number: latest_testflight_build_number + 1,
+      build_number: latest_testflight_build_number(version: app_version, live:false) + 1,
       xcodeproj: "PrideLondonApp.xcodeproj"
     )
     build(
@@ -97,7 +102,7 @@ platform :ios do
       app_identifier: "org.prideinlondon.festival"
     )
     if options[:submit]
-      deploy_testflight 
+      deploy_testflight
     end
   end
 

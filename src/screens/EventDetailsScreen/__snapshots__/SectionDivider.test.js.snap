@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#d8d8d8",
+      "height": 1,
+    }
+  }
+/>
+`;

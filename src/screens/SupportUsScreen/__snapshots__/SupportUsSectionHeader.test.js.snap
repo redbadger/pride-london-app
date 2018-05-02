@@ -32,7 +32,9 @@ exports[`renders correctly 1`] = `
     style={Object {}}
   >
     <Text
+      color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "backgroundColor": "#ffffff",
