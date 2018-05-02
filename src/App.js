@@ -125,7 +125,8 @@ const ParadeStack = StackNavigator(
 
 const SavedStack = StackNavigator(
   {
-    [SAVED]: { screen: withShadow(SavedEventListScreen) }
+    [SAVED]: { screen: withShadow(SavedEventListScreen) },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen }
   },
   {
     initialRouteName: SAVED,
