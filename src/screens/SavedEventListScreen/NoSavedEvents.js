@@ -3,9 +3,7 @@ import React, { PureComponent } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
-import ContentPadding from "../../components/ContentPadding";
 import ButtonPrimary from "../../components/ButtonPrimary";
-import whiteCheck from "../../../assets/images/whiteCheck.png";
 import iconSave from "../../../assets/images/save.png";
 import noSavedEvents from "../../../assets/images/howToSaveEvents.png";
 import text from "../../constants/text";
@@ -35,7 +33,7 @@ class NoSavedEvents extends PureComponent<Props> {
           <Text style={styles.infoText}>
             {text.noSavedEventsPart1}&nbsp;
             <Image
-              accessibilityLabel="'save this event' button"
+              accessibilityLabel={`'${text.saveEvent}' button`}
               source={iconSave}
             />
             &nbsp;{text.noSavedEventsPart2}

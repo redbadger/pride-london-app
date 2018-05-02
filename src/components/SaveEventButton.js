@@ -5,6 +5,7 @@ import LottieView from "lottie-react-native";
 import Touchable from "./Touchable";
 import heartAnimationLight from "../../assets/animations/save-event-light.json";
 import heartAnimationDark from "../../assets/animations/save-event-dark.json";
+import text from "../constants/text";
 
 type Props = {
   active: boolean,
@@ -57,7 +58,9 @@ export default class SaveEventButton extends React.Component<Props, State> {
     const source = this.props.onDark ? heartAnimationLight : heartAnimationDark;
     return (
       <Touchable
-        accessibilityLabel="Favourite"
+        accessibilityLabel={
+          this.props.active ? text.unSaveEvent : text.saveEvent
+        }
         onPress={this.handlePress}
         style={styles.button}
       >

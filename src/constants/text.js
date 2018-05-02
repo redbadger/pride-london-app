@@ -111,5 +111,7 @@ export default {
   noSavedEventsTitle: "Where is the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
   noSavedEventsPart2: "on any events you like to save them here.",
-  noSavedEventsButton: "Find Events"
+  noSavedEventsButton: "Find Events",
+  unSaveEvent: "remove event from saved list",
+  saveEvent: "save this event"
 };

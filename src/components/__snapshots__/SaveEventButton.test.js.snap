@@ -15,7 +15,7 @@ Object {
 exports[`renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="button"
-  accessibilityLabel="Favourite"
+  accessibilityLabel="save this event"
   accessibilityTraits={
     Array [
       "button",

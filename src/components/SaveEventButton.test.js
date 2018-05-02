@@ -3,11 +3,29 @@ import React from "react";
 import { Animated, Easing } from "react-native";
 import { shallow } from "enzyme";
 import SaveEventButton from "./SaveEventButton";
+import Touchable from "./Touchable";
+import text from "../constants/text";
 
 it("renders correctly", () => {
   const output = shallow(<SaveEventButton active={false} onPress={() => {}} />);
   output.setState({ progress: new Animated.Value(0) });
   expect(output).toMatchSnapshot();
+});
+
+it("has correct accessibilityLabel when active=false", () => {
+  const output = shallow(<SaveEventButton active={false} onPress={() => {}} />);
+  output.setState({ progress: new Animated.Value(0) });
+  expect(output.find(Touchable).props().accessibilityLabel).toEqual(
+    text.saveEvent
+  );
+});
+
+it("has correct accessibilityLabel when active=true", () => {
+  const output = shallow(<SaveEventButton active onPress={() => {}} />);
+  output.setState({ progress: new Animated.Value(0) });
+  expect(output.find(Touchable).props().accessibilityLabel).toEqual(
+    text.unSaveEvent
+  );
 });
 
 describe("getDerivedStateFromProps", () => {
