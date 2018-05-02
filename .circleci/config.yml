@@ -412,6 +412,8 @@ jobs:
       - <<: *save-npm-cache-macos-e2e
       - <<: *generate-env-macos
       - run: npm run test:e2e
+      - store_artifacts:
+          path: /tmp/screenshots
 
 workflows:
   version: 2
