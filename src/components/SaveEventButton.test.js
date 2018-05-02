@@ -3,24 +3,17 @@ import React from "react";
 import { Animated, Easing } from "react-native";
 import { shallow } from "enzyme";
 import SaveEventButton from "./SaveEventButton";
-import Touchable from "./Touchable";
-import text from "../constants/text";
 
 it("renders correctly", () => {
   const output = shallow(<SaveEventButton active={false} onPress={() => {}} />);
   output.setState({ progress: new Animated.Value(0) });
   expect(output).toMatchSnapshot();
-  expect(output.find(Touchable).props().accessibilityLabel).toEqual(
-    text.saveEventButtonSaveEvent
-  );
 });
 
 it("renders correctly when active", () => {
   const output = shallow(<SaveEventButton active onPress={() => {}} />);
   output.setState({ progress: new Animated.Value(0) });
-  expect(output.find(Touchable).props().accessibilityLabel).toEqual(
-    text.saveEventButtonUnSaveEvent
-  );
+  expect(output).toMatchSnapshot();
 });
 
 describe("getDerivedStateFromProps", () => {
