@@ -60,6 +60,7 @@ exports[`renders correctly 1`] = `
       No favourites yet? Tap the
        
       <Image
+        accessibilityLabel="'save this event' button"
         source={1}
       />
        
