@@ -4,7 +4,7 @@ const { existsSync, mkdirSync } = require("fs");
 const SCREENSHOT_DIR = "/tmp/screenshots";
 
 const SCREENSHOT_OPTIONS = {
-  timeout: 1000,
+  timeout: 10000,
   killSignal: "SIGKILL"
 };
 
