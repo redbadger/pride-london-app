@@ -142,6 +142,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 12
   },
   tile: {
+    flex: 1,
+    flexGrow: 1,
+    flexBasis: "47%",
     marginHorizontal: 4,
     marginBottom: 12,
     borderRadius: 3,

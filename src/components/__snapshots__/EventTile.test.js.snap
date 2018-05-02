@@ -4,11 +4,7 @@ exports[`renders correctly 1`] = `
 <Component
   style={
     Object {
-      "flex": 1,
-      "flexDirection": "column",
-      "height": 200,
-      "overflow": "hidden",
-      "width": 167,
+      "minHeight": 200,
     }
   }
 >
@@ -23,7 +19,7 @@ exports[`renders correctly 1`] = `
       Object {
         "backgroundColor": "#C1C1C1",
         "height": 120,
-        "width": 167,
+        "width": "100%",
       }
     }
   >
@@ -48,7 +44,6 @@ exports[`renders correctly 1`] = `
   <Component
     style={
       Object {
-        "minHeight": 60,
         "paddingHorizontal": 8,
         "paddingTop": 8,
       }

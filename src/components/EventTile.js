@@ -50,14 +50,10 @@ const EventTile = ({ eventCategory, name, date, imageUrl }: Props) => (
 
 const styles = StyleSheet.create({
   eventTile: {
-    width: 167,
-    height: 200,
-    flexDirection: "column",
-    overflow: "hidden",
-    flex: 1
+    minHeight: 200
   },
   imageContainer: {
-    width: 167,
+    width: "100%",
     height: 120,
     backgroundColor: imageBgColor
   },
@@ -68,7 +64,6 @@ const styles = StyleSheet.create({
     right: 0
   },
   details: {
-    minHeight: 60,
     paddingTop: 8,
     paddingHorizontal: 8
   }
