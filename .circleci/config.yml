@@ -392,6 +392,7 @@ jobs:
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
+      - run: detox clean-framework-cache && detox build-framework-cache
       - run: yarn test:e2e
 
 workflows:
