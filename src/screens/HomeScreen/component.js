@@ -18,6 +18,7 @@ import {
   bgColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
+import text from "../../constants/text";
 
 import locale from "../../data/locale";
 
@@ -80,7 +81,7 @@ class HomeScreen extends Component<Props> {
             <View style={styles.viewAllContainer}>
               <Touchable onPress={this.eventList} testID="view-all">
                 <Text type="h4" style={{ color: titleTextColor }}>
-                  View all
+                  {text.homeViewAll}
                 </Text>
               </Touchable>
             </View>
@@ -129,7 +130,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   viewAllContainer: {
-    width: 56,
     height: 24,
     justifyContent: "center",
     borderBottomWidth: 1,
