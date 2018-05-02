@@ -59,7 +59,9 @@ export default class SaveEventButton extends React.Component<Props, State> {
     return (
       <Touchable
         accessibilityLabel={
-          this.props.active ? text.unSaveEvent : text.saveEvent
+          this.props.active
+            ? text.saveEventButtonUnSaveEvent
+            : text.saveEventButtonSaveEvent
         }
         onPress={this.handlePress}
         style={styles.button}

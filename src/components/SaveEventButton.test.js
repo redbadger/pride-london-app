@@ -11,7 +11,7 @@ it("renders correctly", () => {
   output.setState({ progress: new Animated.Value(0) });
   expect(output).toMatchSnapshot();
   expect(output.find(Touchable).props().accessibilityLabel).toEqual(
-    text.saveEvent
+    text.saveEventButtonSaveEvent
   );
 });
 
@@ -19,7 +19,7 @@ it("renders correctly when active", () => {
   const output = shallow(<SaveEventButton active onPress={() => {}} />);
   output.setState({ progress: new Animated.Value(0) });
   expect(output.find(Touchable).props().accessibilityLabel).toEqual(
-    text.unSaveEvent
+    text.saveEventButtonUnSaveEvent
   );
 });
 

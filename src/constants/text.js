@@ -113,6 +113,6 @@ export default {
   noSavedEventsSaveButtonAlt: "'save this event' button",
   noSavedEventsPart2: "on any events you like to save them here.",
   noSavedEventsButton: "Find Events",
-  unSaveEvent: "remove event from saved list",
-  saveEvent: "save this event"
+  saveEventButtonUnSaveEvent: "remove event from saved list",
+  saveEventButtonSaveEvent: "save this event"
 };
