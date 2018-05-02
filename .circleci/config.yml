@@ -1,9 +1,9 @@
 yarn-key: &yarn-key
   v1-dependencies-{{ checksum "yarn.lock" }}
 yarn-key-macos: &yarn-key-macos
-  v1-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
+  v2-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
 npm-key-macos-e2e: &npm-key-macos-e2e
-  v1-dependencies-macos-e2e-{{ checksum "/Users/distiller/project/package.json" }}
+  v2-dependencies-macos-e2e-{{ checksum "/Users/distiller/project/package.json" }}
 gradle-key: &gradle-key
   v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
