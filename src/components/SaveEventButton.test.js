@@ -5,14 +5,12 @@ import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import { shallow } from "enzyme";
 import SaveEventButton from "./SaveEventButton";
 
-jest.mock("react-native-haptic-feedback", () => {
-  const value = jest.fn();
-  value.trigger = jest.fn();
-  return value;
-});
+jest.mock("react-native-haptic-feedback", () => ({
+  trigger: jest.fn()
+}));
 
 beforeEach(() => {
-  ReactNativeHapticFeedback.mockClear();
+  ReactNativeHapticFeedback.trigger.mockClear();
 });
 
 it("renders correctly", () => {
