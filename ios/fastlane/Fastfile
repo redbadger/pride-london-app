@@ -90,8 +90,9 @@ platform :ios do
   lane :release do |options|
     # Testflight builds can be promoted to production so
     # we have to do another build with appstore signing
+    app_version = get_version_number(xcodeproj: "PrideLondonApp.xcodeproj")
     increment_build_number(
-      build_number: latest_testflight_build_number + 1,
+      build_number: latest_testflight_build_number(version: app_version, live:false) + 1,
       xcodeproj: "PrideLondonApp.xcodeproj"
     )
     build(
