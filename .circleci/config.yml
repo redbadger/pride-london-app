@@ -418,7 +418,7 @@ workflows:
   node-android-ios:
     jobs:
       - build
-      - e2e-ios:
+      - e2e-ios
       - alpha-android:
           requires:
             - build
