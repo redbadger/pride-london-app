@@ -55,6 +55,7 @@ export default {
   eventDetailsContactEmailBody: "Dear event organiser,",
   collapsibleShowMore: "Show more",
   collapsibleShowLess: "Show less",
+  savedEventsTitle: "Saved Events",
   supportUsTitle: "Support us",
   supportUsAsIndividual: "As an individual",
   supportUsAsBusiness: "As a business",

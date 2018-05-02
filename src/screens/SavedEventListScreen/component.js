@@ -5,14 +5,17 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventList from "../../components/EventList";
-import FilterHeader from "../../components/ConnectedFilterHeader";
+import text from "../../constants/text";
 import Loading from "../../components/Loading";
-import { bgColor } from "../../constants/colors";
+import Header from "../../components/Header";
+import ContentPadding from "../../components/ContentPadding";
+import Text from "../../components/Text";
 import {
-  EVENT_DETAILS,
-  EVENT_CATEGORIES_FILTER,
-  FILTER_MODAL
-} from "../../constants/routes";
+  whiteColor,
+  bgColor,
+  lightNavyBlueColor
+} from "../../constants/colors";
+import { EVENT_DETAILS } from "../../constants/routes";
 import locale from "../../data/locale";
 
 export type Props = {
@@ -24,21 +27,12 @@ export type Props = {
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>,
-  getAssetUrl: LocalizedFieldRef => string,
-  selectedCategories: Set<string>
+  getAssetUrl: LocalizedFieldRef => string
 };
 
-class EventsScreen extends PureComponent<Props> {
+class SavedEventListScreen extends PureComponent<Props> {
   static navigationOptions = {
     header: null
-  };
-
-  handleFilterCategoriesPress = () => {
-    this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
-  };
-
-  handleFilterButtonPress = () => {
-    this.props.navigation.navigate(FILTER_MODAL);
   };
 
   render() {
@@ -54,11 +48,13 @@ class EventsScreen extends PureComponent<Props> {
     } = this.props;
     return (
       <View style={styles.container}>
-        <FilterHeader
-          onFilterCategoriesPress={this.handleFilterCategoriesPress}
-          selectedCategories={this.props.selectedCategories}
-          onFilterButtonPress={this.handleFilterButtonPress}
-        />
+        <Header backgroundColor={lightNavyBlueColor}>
+          <ContentPadding style={styles.headerContent}>
+            <Text type="h2" style={styles.headerTitle}>
+              {text.savedEventsTitle}
+            </Text>
+          </ContentPadding>
+        </Header>
         {this.props.loading ? (
           <Loading />
         ) : (
@@ -87,7 +83,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: bgColor
+  },
+  headerContent: {
+    height: 48,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  headerTitle: {
+    color: whiteColor
   }
 });
 
-export default EventsScreen;
+export default SavedEventListScreen;
