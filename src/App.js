@@ -8,6 +8,7 @@ import LinearGradient from "react-native-linear-gradient";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
+import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FilterModal from "./screens/FilterModal";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
@@ -124,7 +125,7 @@ const ParadeStack = StackNavigator(
 
 const SavedStack = StackNavigator(
   {
-    [SAVED]: { screen: withShadow(() => <View />) }
+    [SAVED]: { screen: withShadow(SavedEventListScreen) }
   },
   {
     initialRouteName: SAVED,
