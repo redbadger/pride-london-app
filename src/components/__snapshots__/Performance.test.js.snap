@@ -4,8 +4,6 @@ exports[`renders correctly 1`] = `
 <Component
   style={
     Object {
-      "borderBottomWidth": 1,
-      "borderColor": "#d8d8d8",
       "flexDirection": "row",
       "paddingVertical": 12,
     }

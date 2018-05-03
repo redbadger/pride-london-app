@@ -14,7 +14,7 @@ import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
-import SectionDivider from "./SectionDivider";
+import SectionDivider from "../../components/SectionDivider";
 import PerformanceList from "../../components/PerformanceList";
 import { groupPerformancesByPeriod } from "../../selectors/events";
 import { whiteColor } from "../../constants/colors";

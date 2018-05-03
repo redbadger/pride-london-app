@@ -8,6 +8,7 @@ import ContentPadding from "./ContentPadding";
 import Collapsible from "./Collapsible";
 import LayoutColumn from "./LayoutColumn";
 import Text from "./Text";
+import SectionDivider from "./SectionDivider";
 
 import { getTimePeriod } from "../selectors/events";
 import type { Performance, PerformancePeriods } from "../data/event";
@@ -47,12 +48,14 @@ const PerformanceList = ({ performances, locale }: Props) => (
           </ContentPadding>
           <ContentPadding>
             <Collapsible>
-              {section.data.map(item => (
-                <PerformanceItem
-                  key={item.fields.startTime[locale]}
-                  startTime={item.fields.startTime[locale]}
-                  title={item.fields.title[locale]}
-                />
+              {section.data.map((item, i, all) => (
+                <View key={item.fields.startTime[locale]}>
+                  <PerformanceItem
+                    startTime={item.fields.startTime[locale]}
+                    title={item.fields.title[locale]}
+                  />
+                  {i !== all.length - 1 && <SectionDivider />}
+                </View>
               ))}
             </Collapsible>
           </ContentPadding>

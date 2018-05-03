@@ -69,11 +69,14 @@ exports[`renders correctly 1`] = `
           showLessLabel="Show less"
           showMoreLabel="Show more"
         >
-          <Performance
+          <Component
             key="2018-08-01T13:00:00"
-            startTime="2018-08-01T13:00:00"
-            title="Jackie Potato"
-          />
+          >
+            <Performance
+              startTime="2018-08-01T13:00:00"
+              title="Jackie Potato"
+            />
+          </Component>
         </Collapsible>
       </ContentPadding>
     </Component>
@@ -118,11 +121,14 @@ exports[`renders correctly 1`] = `
           showLessLabel="Show less"
           showMoreLabel="Show more"
         >
-          <Performance
+          <Component
             key="2018-08-01T18:00:00"
-            startTime="2018-08-01T18:00:00"
-            title="Krystal Pools"
-          />
+          >
+            <Performance
+              startTime="2018-08-01T18:00:00"
+              title="Krystal Pools"
+            />
+          </Component>
         </Collapsible>
       </ContentPadding>
     </Component>
