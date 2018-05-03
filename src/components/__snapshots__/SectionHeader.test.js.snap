@@ -9,7 +9,7 @@ exports[`renders correctly 1`] = `
         "alignItems": "center",
         "backgroundColor": "#f3f3f3",
         "flexDirection": "row",
-        "height": 40,
+        "minHeight": 40,
       },
       Object {
         "borderWidth": 0,
@@ -58,7 +58,7 @@ exports[`renders correctly with badge text 1`] = `
         "alignItems": "center",
         "backgroundColor": "#f3f3f3",
         "flexDirection": "row",
-        "height": 40,
+        "minHeight": 40,
       },
       Object {
         "borderWidth": 0,
@@ -116,7 +116,7 @@ exports[`renders correctly without shadow 1`] = `
       "alignItems": "center",
       "backgroundColor": "#f3f3f3",
       "flexDirection": "row",
-      "height": 40,
+      "minHeight": 40,
     }
   }
 >
