@@ -10,7 +10,7 @@ const SCREENSHOT_OPTIONS = {
 
 let screenshotIndex = 0;
 
-const takeScreenshot = () => {
+const takeScreenshot = async () => {
   if (!existsSync(SCREENSHOT_DIR)) mkdirSync(SCREENSHOT_DIR);
   const screenshotFilename = `${SCREENSHOT_DIR}/screenshot-${(screenshotIndex += 1)}.png`;
   execSync(

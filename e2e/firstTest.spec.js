@@ -9,7 +9,7 @@ describe("Pride App", () => {
   });
 
   afterEach(async () => {
-    takeScreenshot();
+    await takeScreenshot();
   });
 
   it("should start on Home page", async () => {
