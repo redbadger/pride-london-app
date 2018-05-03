@@ -380,7 +380,8 @@ jobs:
       - run:
             command: |
                 bundle exec fastlane release \
-                submit:true
+                submit:true \
+                ci_build_num:$CIRCLE_BUILD_NUM
 
   e2e-ios:
     <<: *job-defaults-macos
