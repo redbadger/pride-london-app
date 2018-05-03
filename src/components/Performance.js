@@ -25,7 +25,7 @@ const Performance = ({ title, startTime }: Props) => (
 const styles = StyleSheet.create({
   content: {
     flexDirection: "row",
-    padding: 12,
+    paddingVertical: 12,
     borderBottomWidth: 1,
     borderColor: lightishGreyColor
   },
