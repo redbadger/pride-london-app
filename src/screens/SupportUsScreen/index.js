@@ -11,7 +11,6 @@ import supportUsShopBgBottomRight from "../../../assets/images/supportUsShopBgBo
 import supportUsSponsorBgTopRight from "../../../assets/images/supportUsSponsorBgTopRight.png";
 import Header from "../../components/Header";
 import ContentPadding from "../../components/ContentPadding";
-import Text from "../../components/Text";
 import {
   lightNavyBlueColor,
   warmPinkColor,
@@ -30,13 +29,7 @@ type Props = {
 
 const EventDetailsScreen = ({ navigation }: Props) => (
   <View style={styles.container}>
-    <Header backgroundColor={lightNavyBlueColor}>
-      <ContentPadding style={styles.headerContent}>
-        <Text type="h2" style={styles.headerTitle}>
-          {text.supportUsTitle}
-        </Text>
-      </ContentPadding>
-    </Header>
+    <Header title={text.supportUsTitle} />
     <ScrollView>
       <View style={styles.scrollContainer}>
         <SupportUsSectionHeader
@@ -111,15 +104,6 @@ const styles = StyleSheet.create({
   },
   buttonSpacing: {
     marginTop: 12
-  },
-  headerContent: {
-    height: 48,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  headerTitle: {
-    color: whiteColor
   }
 });
 

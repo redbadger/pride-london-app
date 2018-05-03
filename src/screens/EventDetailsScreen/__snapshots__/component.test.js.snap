@@ -78,29 +78,15 @@ exports[`EventCategories renders correctly 1`] = `
 
 exports[`EventHeader renders correctly 1`] = `
 <Header
-  backgroundColor="#20215a"
->
-  <ContentPadding
-    padding={Object {}}
-    style={
-      Object {
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-      }
-    }
-  >
-    <IconButton
-      accessibilityLabel="Back"
-      onPress={[Function]}
-      source={1}
-    />
+  onBack={[Function]}
+  rightElement={
     <SaveEventButton
       active={true}
-      onDark={false}
+      onDark={true}
       onPress={[Function]}
     />
-  </ContentPadding>
-</Header>
+  }
+/>
 `;
 
 exports[`EventTickets renders correctly 1`] = `

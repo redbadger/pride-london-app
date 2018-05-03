@@ -24,6 +24,7 @@ const showEventsLabel = (numberOfEvents: number) => {
 };
 
 export default {
+  backButtonAccessibilityLabel: "Back",
   tabHome: "Home",
   tabEvents: "Events",
   tabParade: "Parade",
