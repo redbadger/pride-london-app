@@ -10,46 +10,9 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
   }
 >
   <Header
-    backgroundColor="#2d2f7f"
-  >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        }
-      }
-    >
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={[Function]}
-        source={1}
-      />
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        type="h2"
-      >
-        Featured events
-      </Text>
-      <Component
-        style={
-          Object {
-            "height": 48,
-            "width": 48,
-          }
-        }
-      />
-    </ContentPadding>
-  </Header>
+    onBack={[Function]}
+    title="Featured events"
+  />
   <EventList
     addSavedEvent={[Function]}
     events={Array []}

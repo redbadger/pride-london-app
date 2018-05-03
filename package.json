@@ -33,6 +33,7 @@
     "react-native-communications": "^2.2.1",
     "react-native-config": "^0.11.5",
     "react-native-easy-markdown": "^1.1.9",
+    "react-native-haptic-feedback": "^1.1.0",
     "react-native-linear-gradient": "^2.4.0",
     "react-native-map-link": "^1.0.6",
     "react-native-maps": "0.16.4",

@@ -8,13 +8,7 @@ import EventList from "../../components/EventList";
 import text from "../../constants/text";
 import Loading from "../../components/Loading";
 import Header from "../../components/Header";
-import ContentPadding from "../../components/ContentPadding";
-import Text from "../../components/Text";
-import {
-  whiteColor,
-  bgColor,
-  lightNavyBlueColor
-} from "../../constants/colors";
+import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import locale from "../../data/locale";
 import NoSavedEvents from "./NoSavedEvents";
@@ -51,13 +45,7 @@ class SavedEventListScreen extends PureComponent<Props> {
 
     return (
       <View style={styles.container}>
-        <Header backgroundColor={lightNavyBlueColor}>
-          <ContentPadding style={styles.headerContent}>
-            <Text type="h2" style={styles.headerTitle}>
-              {text.savedEventsTitle}
-            </Text>
-          </ContentPadding>
-        </Header>
+        <Header title={text.savedEventsTitle} />
         {loading && <Loading />}
         {!loading &&
           events.length === 0 && <NoSavedEvents navigation={navigation} />}
@@ -88,15 +76,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: bgColor
-  },
-  headerContent: {
-    height: 48,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  headerTitle: {
-    color: whiteColor
   }
 });
 

@@ -4,11 +4,30 @@ import { shallow } from "enzyme";
 import { Text } from "react-native";
 import Header from "./Header";
 
-it("renders correctly", () => {
+it("renders correctly with default props", () => {
+  const output = shallow(<Header />);
+  expect(output).toMatchSnapshot();
+});
+
+it("renders correctly with all props", () => {
   const output = shallow(
-    <Header backgroundColor="red">
-      <Text>Lorem Ipsum</Text>
-    </Header>
+    <Header
+      onBack={() => {}}
+      title="Center"
+      rightElement={<Text>Right</Text>}
+    />
+  );
+  expect(output).toMatchSnapshot();
+});
+
+it("renders correctly with only title", () => {
+  const output = shallow(<Header title="Center" />);
+  expect(output).toMatchSnapshot();
+});
+
+it("renders correctly with only onBack and rightElement", () => {
+  const output = shallow(
+    <Header onBack={() => {}} rightElement={<Text>Right</Text>} />
   );
   expect(output).toMatchSnapshot();
 });

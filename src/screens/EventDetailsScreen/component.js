@@ -12,18 +12,16 @@ import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
-import IconButton from "../../components/IconButton";
 import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "./SectionDivider";
 import PerformanceList from "../../components/PerformanceList";
 import { groupPerformancesByPeriod } from "../../selectors/events";
-import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
+import { whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event, EventCategoryName } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import locale from "../../data/locale";
-import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
 type EventHeaderProps = {|
   isSaved: boolean,
@@ -36,18 +34,14 @@ export const EventHeader = ({
   navigation,
   toggleSaved
 }: EventHeaderProps) => (
-  <Header backgroundColor={darkBlueGreyTwoColor}>
-    <ContentPadding style={styles.headerContent}>
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={() => {
-          navigation.goBack(null);
-        }}
-        source={chevronLeftWhite}
-      />
-      <SaveEventButton active={isSaved} onPress={toggleSaved} />
-    </ContentPadding>
-  </Header>
+  <Header
+    onBack={() => {
+      navigation.goBack(null);
+    }}
+    rightElement={
+      <SaveEventButton active={isSaved} onDark onPress={toggleSaved} />
+    }
+  />
 );
 
 export const EventCategories = ({ event }: { event: Event }) => (
@@ -169,10 +163,6 @@ const styles = StyleSheet.create({
   content: {
     marginTop: 16,
     marginBottom: 32
-  },
-  headerContent: {
-    flexDirection: "row",
-    justifyContent: "space-between"
   },
   h1: {
     marginBottom: 8
