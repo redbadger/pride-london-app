@@ -3,6 +3,8 @@ package org.prideinlondon.festival;
 import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
 import com.facebook.react.ReactApplication;
 import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
@@ -58,5 +60,10 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
     SoLoader.init(this, /* native exopackage */ false);
+
+    Answers.getInstance().logCustom(new CustomEvent("Test Custom Event")
+      .putCustomAttribute("Custom String", "foo")
+      .putCustomAttribute("Custom Number", 42));
+
   }
 }
