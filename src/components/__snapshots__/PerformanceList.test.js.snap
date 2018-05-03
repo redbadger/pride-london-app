@@ -25,7 +25,9 @@ exports[`renders correctly 1`] = `
       Schedule
     </Text>
   </ContentPadding>
-  <Component>
+  <LayoutColumn
+    spacing={20}
+  >
     <Component
       key="Afternoon"
     >
@@ -50,14 +52,9 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
-          color="blackColor"
+          color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
-          style={
-            Object {
-              "color": "rgb(45, 47, 127)",
-            }
-          }
           type="h3"
         >
           Afternoon
@@ -65,11 +62,7 @@ exports[`renders correctly 1`] = `
       </ContentPadding>
       <ContentPadding
         padding={Object {}}
-        style={
-          Object {
-            "marginBottom": 20,
-          }
-        }
+        style={Object {}}
       >
         <Collapsible
           maxHeight={140}
@@ -108,14 +101,9 @@ exports[`renders correctly 1`] = `
         }
       >
         <Text
-          color="blackColor"
+          color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
-          style={
-            Object {
-              "color": "rgb(45, 47, 127)",
-            }
-          }
           type="h3"
         >
           Evening
@@ -123,11 +111,7 @@ exports[`renders correctly 1`] = `
       </ContentPadding>
       <ContentPadding
         padding={Object {}}
-        style={
-          Object {
-            "marginBottom": 20,
-          }
-        }
+        style={Object {}}
       >
         <Collapsible
           maxHeight={140}
@@ -142,6 +126,6 @@ exports[`renders correctly 1`] = `
         </Collapsible>
       </ContentPadding>
     </Component>
-  </Component>
+  </LayoutColumn>
 </Component>
 `;
