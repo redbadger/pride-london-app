@@ -13,6 +13,8 @@ export const formatDateRange = (dateRange: DateRange) =>
       ].join(" - ")
     : formatDate(dateRange.startDate, "D MMM");
 
+export const formatTime = value => formatDate(value, "HH:mm");
+
 export const formatPrice = (price: number) => {
   if (price === Math.trunc(price)) {
     return String(price);

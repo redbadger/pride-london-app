@@ -1,12 +1,10 @@
 // @flow
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import formatDate from "date-fns/format";
+import { formatTime } from "../data/formatters";
 
 import Text from "./Text";
 import { lightishGreyColor } from "../constants/colors";
-
-const timeFormat = "h:mma";
 
 type Props = {
   title: string,
@@ -15,7 +13,7 @@ type Props = {
 
 const Performance = ({ title, startTime }: Props) => (
   <View style={styles.content}>
-    <Text style={styles.startTime}>{formatDate(startTime, timeFormat)}</Text>
+    <Text style={styles.startTime}>{formatTime(startTime)}</Text>
     <Text numberOfLines={3} style={styles.title}>
       {title}
     </Text>
