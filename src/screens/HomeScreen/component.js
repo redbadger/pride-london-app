@@ -129,12 +129,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "center",
     marginHorizontal: 12
   },
   tile: {
-    flex: 1,
-    flexGrow: 1,
-    flexBasis: "47%",
+    width: "47%",
     marginHorizontal: 4,
     marginBottom: 12,
     borderRadius: 3,
