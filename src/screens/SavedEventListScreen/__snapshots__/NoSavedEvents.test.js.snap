@@ -50,6 +50,7 @@ exports[`renders correctly 1`] = `
        
       <Image
         accessibilityLabel="'save this event' button"
+        accessible={true}
         source={1}
       />
        

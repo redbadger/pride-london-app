@@ -32,6 +32,7 @@ class NoSavedEvents extends PureComponent<Props> {
             {text.noSavedEventsPart1}&nbsp;
             <Image
               accessibilityLabel={text.noSavedEventsSaveButtonAlt}
+              accessible
               source={iconSave}
             />
             &nbsp;{text.noSavedEventsPart2}
