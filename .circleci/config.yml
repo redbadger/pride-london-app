@@ -1,7 +1,9 @@
 yarn-key: &yarn-key
   v1-dependencies-{{ checksum "yarn.lock" }}
 yarn-key-macos: &yarn-key-macos
-  v1-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
+  v2-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
+npm-key-macos-e2e: &npm-key-macos-e2e
+  v2-dependencies-macos-e2e-{{ checksum "/Users/distiller/project/package.json" }}
 gradle-key: &gradle-key
   v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
@@ -31,6 +33,16 @@ save-yarn-cache-macos: &save-yarn-cache-macos
     paths:
       - /Users/distiller/project/node_modules
     key: *yarn-key-macos
+
+# Detox doesn't play well with Yarn
+get-npm-cache-macos-e2e: &get-npm-cache-macos-e2e
+  restore_cache:
+    key: *npm-key-macos-e2e
+save-npm-cache-macos-e2e: &save-npm-cache-macos-e2e
+  save_cache:
+    paths:
+      - /Users/distiller/project/node_modules
+    key: *npm-key-macos-e2e
 
 restore-gradle-cache: &restore-gradle-cache
   restore_cache:
@@ -69,6 +81,13 @@ yarn-dependencies-macos: &yarn-dependencies-macos
   run:
     name: Install dependencies with Yarn
     command: yarn install
+    working_directory: /Users/distiller/project
+
+# Detox doesn't play well with Yarn
+npm-dependencies-macos-e2e: &npm-dependencies-macos-e2e
+  run:
+    name: Install dependencies with npm
+    command: npm install
     working_directory: /Users/distiller/project
 
 ruby-dependencies: &ruby-dependencies
@@ -154,7 +173,7 @@ set-node-version-macos: &set-node-version-macos
     name: Set node version
     command: |
       yarn global add n
-      sudo n 9.
+      sudo n 9.3
 
 generate-env-macos: &generate-env-macos
   run:
@@ -361,7 +380,8 @@ jobs:
       - run:
             command: |
                 bundle exec fastlane release \
-                submit:true
+                submit:true \
+                ci_build_num:$CIRCLE_BUILD_NUM
 
   e2e-ios:
     <<: *job-defaults-macos
@@ -375,6 +395,7 @@ jobs:
       - run:
           name: Pre-start simulator
           command: xcrun simctl boot "iPhone 7" || true
+      - <<: *fabric-secrets-ios
       - <<: *restore-brew-cache
       - run:
           name: Install HomeBrew dependencies
@@ -384,23 +405,24 @@ jobs:
       - <<: *save-brew-cache
       - <<: *set-node-version-macos
       - run:
-          name: Install global yarn dependencies
+          name: Install global npm dependencies
           command: |
-              yarn global add detox-cli
-              yarn global add react-native-cli
-      - <<: *get-yarn-cache-macos
-      - <<: *yarn-dependencies-macos
-      - <<: *save-yarn-cache-macos
-      - run: yarn test:e2e
+              npm i -g detox-cli
+              npm i -g react-native-cli
+      - <<: *get-npm-cache-macos-e2e
+      - <<: *npm-dependencies-macos-e2e
+      - <<: *save-npm-cache-macos-e2e
+      - <<: *generate-env-macos
+      - run: npm run test:e2e
+      - store_artifacts:
+          path: /tmp/screenshots
 
 workflows:
   version: 2
   node-android-ios:
     jobs:
       - build
-      - e2e-ios:
-          requires:
-            - build
+      - e2e-ios
       - alpha-android:
           requires:
             - build
