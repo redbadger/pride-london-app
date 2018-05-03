@@ -28,12 +28,14 @@ class NoSavedEvents extends PureComponent<Props> {
           <Text type="h1" style={styles.title}>
             {text.noSavedEventsTitle}
           </Text>
-          <Text style={styles.infoText}>
+          <Text
+            style={styles.infoText}
+            accessibilityLabel={`${text.noSavedEventsPart1} ${
+              text.noSavedEventsSaveButtonAlt
+            } ${text.noSavedEventsPart2}`}
+          >
             {text.noSavedEventsPart1}&nbsp;
-            <Image
-              accessibilityLabel={text.noSavedEventsSaveButtonAlt}
-              source={iconSave}
-            />
+            <Image source={iconSave} />
             &nbsp;{text.noSavedEventsPart2}
           </Text>
           <ButtonPrimary onPress={this.eventList}>
