@@ -38,7 +38,9 @@ export const EventHeader = ({
     onBack={() => {
       navigation.goBack(null);
     }}
-    rightElement={<SaveEventButton active={isSaved} onPress={toggleSaved} />}
+    rightElement={
+      <SaveEventButton active={isSaved} onDark onPress={toggleSaved} />
+    }
   />
 );
 
