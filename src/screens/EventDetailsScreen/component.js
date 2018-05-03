@@ -135,23 +135,27 @@ class EventDetailsScreen extends PureComponent<Props> {
                     locale={locale}
                   />
                 )}
-              <ContentPadding>
-                <LayoutColumn spacing={20}>
-                  {event.fields.accessibilityDetails && <SectionDivider />}
-                  {event.fields.accessibilityDetails && (
-                    <EventAccessibility event={event} />
-                  )}
-                  {(event.fields.email || event.fields.phone) && (
-                    <SectionDivider />
-                  )}
-                  {(event.fields.email || event.fields.phone) && (
-                    <EventContact
-                      email={event.fields.email && event.fields.email[locale]}
-                      phone={event.fields.phone && event.fields.phone[locale]}
-                    />
-                  )}
-                </LayoutColumn>
-              </ContentPadding>
+              {(event.fields.accessibilityDetails ||
+                event.fields.email ||
+                event.fields.phone) && (
+                <ContentPadding>
+                  <LayoutColumn spacing={20}>
+                    {event.fields.accessibilityDetails && <SectionDivider />}
+                    {event.fields.accessibilityDetails && (
+                      <EventAccessibility event={event} />
+                    )}
+                    {(event.fields.email || event.fields.phone) && (
+                      <SectionDivider />
+                    )}
+                    {(event.fields.email || event.fields.phone) && (
+                      <EventContact
+                        email={event.fields.email && event.fields.email[locale]}
+                        phone={event.fields.phone && event.fields.phone[locale]}
+                      />
+                    )}
+                  </LayoutColumn>
+                </ContentPadding>
+              )}
             </LayoutColumn>
           </View>
         </ShadowedScrollView>
