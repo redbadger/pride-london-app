@@ -136,7 +136,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -180,7 +180,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -224,7 +224,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -268,7 +268,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -419,7 +419,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -463,7 +463,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -507,7 +507,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -551,7 +551,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -595,7 +595,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",
@@ -639,7 +639,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       >
         <EventTile
           date="2018-07-10T00:00"
-          eventCategory={
+          eventCategories={
             Array [
               "Cabaret & Variety",
               "Music",

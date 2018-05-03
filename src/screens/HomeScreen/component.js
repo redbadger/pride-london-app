@@ -97,7 +97,7 @@ class HomeScreen extends Component<Props> {
                 <EventTile
                   name={event.fields.name[locale]}
                   date={event.fields.startTime[locale]}
-                  eventCategory={event.fields.eventCategories[locale]}
+                  eventCategories={event.fields.eventCategories[locale]}
                   imageUrl={this.props.getAssetUrl(
                     event.fields.eventsListPicture
                   )}

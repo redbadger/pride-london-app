@@ -5,15 +5,16 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import Text from "../components/Text";
 import CategoryPill from "./CategoryPill";
 import { imageBgColor, eventTileTextColor } from "../constants/colors";
+import type { EventCategoryName } from "../data/event";
 
 type Props = {
-  eventCategory: Array,
+  eventCategories: EventCategoryName[],
   name: string,
   date: string,
   imageUrl: string
 };
 
-const EventTile = ({ eventCategory, name, date, imageUrl }: Props) => (
+const EventTile = ({ eventCategories, name, date, imageUrl }: Props) => (
   <View style={styles.eventTile}>
     <ImageBackground
       style={styles.imageContainer}
@@ -21,15 +22,9 @@ const EventTile = ({ eventCategory, name, date, imageUrl }: Props) => (
       resizeMode="cover"
     >
       <View style={styles.categoryPillContainer}>
-        {eventCategory
-          .slice(0, 1)
-          .map(categoryName => (
-            <CategoryPill
-              key={categoryName}
-              name={categoryName}
-              numberOfLines={2}
-            />
-          ))}
+        {eventCategories[0] && (
+          <CategoryPill name={eventCategories[0]} numberOfLines={2} />
+        )}
       </View>
     </ImageBackground>
     <View style={styles.details}>

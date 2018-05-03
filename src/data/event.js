@@ -4,7 +4,7 @@ import type { LocalizedFieldRef } from "./localized-field-ref";
 export type Event = {
   fields: {
     name: { [string]: string },
-    eventCategories: { [string]: string[] },
+    eventCategories: { [string]: EventCategoryName[] },
     audience: { [string]: string[] },
     startTime: { [string]: string },
     endTime: { [string]: string },

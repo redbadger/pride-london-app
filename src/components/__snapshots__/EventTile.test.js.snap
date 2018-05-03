@@ -34,8 +34,7 @@ exports[`renders correctly 1`] = `
       }
     >
       <CategoryPill
-        key="music"
-        name="music"
+        name="Health"
         numberOfLines={2}
         style={Object {}}
       />
