@@ -8,6 +8,7 @@ import IconButton from "./IconButton";
 import Text from "./Text";
 import chevronLeftWhite from "../../assets/images/chevron-left-white.png";
 import { lightNavyBlueColor } from "../constants/colors";
+import text from "../constants/text";
 
 type Props = {
   onBack?: () => void,
@@ -17,7 +18,7 @@ type Props = {
 
 const renderBackButton = onBack => (
   <IconButton
-    accessibilityLabel="Back"
+    accessibilityLabel={text.backButtonAccessibilityLabel}
     onPress={onBack}
     source={chevronLeftWhite}
   />
