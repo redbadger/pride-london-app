@@ -4,7 +4,6 @@ import { StyleSheet, View } from "react-native";
 import { formatTime } from "../data/formatters";
 
 import Text from "./Text";
-import { lightishGreyColor } from "../constants/colors";
 
 type Props = {
   title: string,
