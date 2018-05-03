@@ -18,6 +18,19 @@ type State = {
   progress?: Object
 };
 
+const triggerAnimation = (progress: Object, active: boolean) => {
+  const value = active ? 1 : 0;
+  if (active) {
+    ReactNativeHapticFeedback.trigger("impactHeavy");
+  }
+  Animated.timing(progress, {
+    toValue: value,
+    duration: value * 800,
+    easing: Easing.linear,
+    useNativeDriver: true
+  }).start();
+};
+
 export default class SaveEventButton extends React.Component<Props, State> {
   static defaultProps = {
     active: false,
@@ -41,21 +54,8 @@ export default class SaveEventButton extends React.Component<Props, State> {
     // Animates heart when change from inactive -> active
     // Snaps to start when change from active -> inactive
     if (this.state.progress && this.props.active !== prevProps.active) {
-      this.triggerAnimation();
+      triggerAnimation(this.state.progress, this.props.active);
     }
-  }
-
-  triggerAnimation() {
-    const value = this.props.active ? 1 : 0;
-    if (this.props.active) {
-      ReactNativeHapticFeedback.trigger("impactHeavy");
-    }
-    Animated.timing(this.state.progress, {
-      toValue: value,
-      duration: value * 800,
-      easing: Easing.linear,
-      useNativeDriver: true
-    }).start();
   }
 
   handlePress = () => {
