@@ -2,7 +2,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import EventTile from "./EventTile";
-import categories from "../constants/event-categories";
 
 it("renders correctly", () => {
   const output = shallow(

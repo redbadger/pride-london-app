@@ -9,11 +9,11 @@ import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventTile from "../../components/EventTile";
 import Loading from "../../components/Loading";
 import Touchable from "../../components/Touchable";
+import TextLink from "../../components/TextLink";
 import {
   cardBgColor,
   imageBgColor,
   titleTextColor,
-  eucalyptusGreenColor,
   eventCardShadow,
   bgColor
 } from "../../constants/colors";
@@ -78,13 +78,9 @@ class HomeScreen extends Component<Props> {
             <Text type="h2" style={{ color: titleTextColor }}>
               {this.props.featuredEventsTitle}
             </Text>
-            <View style={styles.viewAllContainer}>
-              <Touchable onPress={this.eventList} testID="view-all">
-                <Text type="h4" style={{ color: titleTextColor }}>
-                  {text.homeViewAll}
-                </Text>
-              </Touchable>
-            </View>
+            <Touchable onPress={this.eventList} testID="view-all">
+              <TextLink>{text.homeViewAll}</TextLink>
+            </Touchable>
           </View>
           <View style={styles.container}>
             {events.map(event => (
@@ -128,12 +124,6 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     justifyContent: "space-between",
     alignItems: "center"
-  },
-  viewAllContainer: {
-    height: 24,
-    justifyContent: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: eucalyptusGreenColor
   },
   container: {
     flex: 1,
