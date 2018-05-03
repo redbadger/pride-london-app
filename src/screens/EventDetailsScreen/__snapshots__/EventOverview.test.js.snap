@@ -19,7 +19,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      11:00AM - 6:00PM
+      11:00 - 18:00
     </Text>
   </IconItem>
   <IconItem
