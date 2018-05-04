@@ -9,6 +9,7 @@ it("renders correctly", () => {
       name="Hello Pride"
       date="2017-03-17"
       imageUrl="http://placekitten.com/200/400"
+      eventCategories={["Health", "Music"]}
     />
   );
   expect(output).toMatchSnapshot();
