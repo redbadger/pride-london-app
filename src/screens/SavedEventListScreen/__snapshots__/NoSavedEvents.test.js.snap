@@ -55,12 +55,20 @@ exports[`renders correctly 1`] = `
        
       on any events you like to save them here.
     </Text>
-    <Button
-      disabled={false}
-      onPress={[Function]}
+    <Component
+      style={
+        Object {
+          "marginBottom": 24,
+        }
+      }
     >
-      Find Events
-    </Button>
+      <Button
+        disabled={false}
+        onPress={[Function]}
+      >
+        Find Events
+      </Button>
+    </Component>
   </LayoutColumn>
 </ScrollView>
 `;

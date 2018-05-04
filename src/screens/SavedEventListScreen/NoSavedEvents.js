@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, StyleSheet, ScrollView } from "react-native";
+import { Image, StyleSheet, ScrollView, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -38,9 +38,11 @@ class NoSavedEvents extends PureComponent<Props> {
             <Image source={iconSave} />
             &nbsp;{text.noSavedEventsPart2}
           </Text>
-          <ButtonPrimary onPress={this.eventList}>
-            {text.noSavedEventsButton}
-          </ButtonPrimary>
+          <View style={styles.pad}>
+            <ButtonPrimary onPress={this.eventList}>
+              {text.noSavedEventsButton}
+            </ButtonPrimary>
+          </View>
         </LayoutColumn>
       </ScrollView>
     );
@@ -51,6 +53,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 3,
     marginHorizontal: 12
+  },
+  pad: {
+    marginBottom: 24 // padding when you scroll to bottom
   },
   image: {
     alignSelf: "center"
