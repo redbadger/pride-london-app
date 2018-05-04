@@ -45,7 +45,9 @@ const EventTile = ({ eventCategories, name, date, imageUrl }: Props) => (
 
 const styles = StyleSheet.create({
   eventTile: {
-    minHeight: 200
+    minHeight: 200,
+    borderRadius: 3,
+    overflow: "hidden"
   },
   imageContainer: {
     width: "100%",

@@ -4,7 +4,9 @@ exports[`renders correctly 1`] = `
 <Component
   style={
     Object {
+      "borderRadius": 3,
       "minHeight": 200,
+      "overflow": "hidden",
     }
   }
 >
