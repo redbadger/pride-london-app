@@ -40,7 +40,7 @@ SectionHeader.defaultProps = {
 
 const styles = StyleSheet.create({
   sectionHeader: {
-    height: 40,
+    minHeight: 40,
     alignItems: "center",
     backgroundColor: sectionHeaderBgColor,
     flexDirection: "row"
