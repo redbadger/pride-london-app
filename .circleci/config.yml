@@ -470,10 +470,10 @@ workflows:
       - release-android:
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - master
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
       - release-ios:
           filters:
             branches:
