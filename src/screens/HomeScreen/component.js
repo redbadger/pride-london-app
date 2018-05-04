@@ -90,7 +90,7 @@ class HomeScreen extends Component<Props> {
                   key={event.sys.id}
                   style={[
                     styles.tileContainer,
-                    index % 2 == 0 && styles.startOfRowTileContainer
+                    index % 2 === 0 && styles.startOfRowTileContainer
                   ]}
                 >
                   <Touchable
@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
   sectionTitle: {
     flexDirection: "row",
     marginTop: 12,
-    marginBottom: 6,
     justifyContent: "space-between",
     alignItems: "center"
   },
