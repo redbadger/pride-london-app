@@ -103,17 +103,16 @@ const styles = StyleSheet.create({
     flexShrink: 1
   },
   eventCard: {
-    height: 108,
+    minHeight: 108,
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5
   },
   imageContainer: {
-    width: 114,
-    height: 108
+    width: 114
   },
   eventPriceContainer: {
-    height: 23,
+    minHeight: 23,
     backgroundColor: lightNavyBlueColor,
     position: "absolute",
     paddingHorizontal: 5,
