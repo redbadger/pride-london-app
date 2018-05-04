@@ -23,7 +23,6 @@
 {
   #if DEBUG == 0
     [Fabric with:@[[Crashlytics class]]];
-    [Crashlytics crash];
   #endif
   NSURL *jsCodeLocation;
 
