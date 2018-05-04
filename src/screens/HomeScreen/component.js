@@ -10,6 +10,7 @@ import EventTile from "../../components/EventTile";
 import Loading from "../../components/Loading";
 import Touchable from "../../components/Touchable";
 import TextLink from "../../components/TextLink";
+import ContentPadding from "../../components/ContentPadding";
 import {
   cardBgColor,
   imageBgColor,
@@ -74,33 +75,42 @@ class HomeScreen extends Component<Props> {
           <View style={styles.header}>
             <Text>Header - TBD</Text>
           </View>
-          <View style={styles.sectionTitle}>
-            <Text type="h2" style={{ color: titleTextColor }}>
-              {this.props.featuredEventsTitle}
-            </Text>
-            <Touchable onPress={this.eventList} testID="view-all">
-              <TextLink>{text.homeViewAll}</TextLink>
-            </Touchable>
-          </View>
-          <View style={styles.container}>
-            {events.map(event => (
-              <Touchable
-                key={event.sys.id}
-                style={styles.tile}
-                onPress={() => this.eventDetails(event.sys.id)}
-                testID={`event-tile-${event.sys.id}`}
-              >
-                <EventTile
-                  name={event.fields.name[locale]}
-                  date={event.fields.startTime[locale]}
-                  eventCategories={event.fields.eventCategories[locale]}
-                  imageUrl={this.props.getAssetUrl(
-                    event.fields.eventsListPicture
-                  )}
-                />
+          <ContentPadding style={styles.mainContentContainer}>
+            <View style={styles.sectionTitle}>
+              <Text type="h2" style={{ color: titleTextColor }}>
+                {this.props.featuredEventsTitle}
+              </Text>
+              <Touchable onPress={this.eventList} testID="view-all">
+                <TextLink>{text.homeViewAll}</TextLink>
               </Touchable>
-            ))}
-          </View>
+            </View>
+            <View style={styles.tilesContainer}>
+              {events.map((event, index) => (
+                <View
+                  key={event.sys.id}
+                  style={[
+                    styles.tileContainer,
+                    index % 2 == 0 && styles.startOfRowTileContainer
+                  ]}
+                >
+                  <Touchable
+                    style={styles.tile}
+                    onPress={() => this.eventDetails(event.sys.id)}
+                    testID={`event-tile-${event.sys.id}`}
+                  >
+                    <EventTile
+                      name={event.fields.name[locale]}
+                      date={event.fields.startTime[locale]}
+                      eventCategories={event.fields.eventCategories[locale]}
+                      imageUrl={this.props.getAssetUrl(
+                        event.fields.eventsListPicture
+                      )}
+                    />
+                  </Touchable>
+                </View>
+              ))}
+            </View>
+          </ContentPadding>
         </ScrollView>
       </SafeAreaView>
     );
@@ -111,6 +121,10 @@ const styles = StyleSheet.create({
   scroller: {
     backgroundColor: cardBgColor
   },
+  mainContentContainer: {
+    maxWidth: 440,
+    alignSelf: "center"
+  },
   header: {
     height: 292,
     alignItems: "center",
@@ -119,23 +133,24 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     flexDirection: "row",
-    marginHorizontal: 16,
     marginTop: 12,
     marginBottom: 6,
     justifyContent: "space-between",
     alignItems: "center"
   },
-  container: {
+  tilesContainer: {
     flex: 1,
     flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    marginHorizontal: 12
+    flexWrap: "wrap"
+  },
+  tileContainer: {
+    width: "50%",
+    marginBottom: 12
+  },
+  startOfRowTileContainer: {
+    paddingRight: 8
   },
   tile: {
-    width: "47%",
-    marginHorizontal: 4,
-    marginBottom: 12,
     borderRadius: 3,
     // The below properties are required for ioS shadow
     shadowColor: eventCardShadow,
