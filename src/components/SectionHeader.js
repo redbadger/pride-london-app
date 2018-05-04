@@ -4,11 +4,7 @@ import { StyleSheet, View } from "react-native";
 import ContentPadding from "./ContentPadding";
 import Text from "./Text";
 import NumberBadge from "./NumberBadge";
-import {
-  sectionHeaderShadow,
-  sectionHeaderBgColor,
-  sectionHeaderTextColor
-} from "../constants/colors";
+import { sectionHeaderShadow, sectionHeaderBgColor } from "../constants/colors";
 
 type Props = { title: string, hasShadow?: boolean, badgeValue?: ?number };
 
@@ -21,7 +17,7 @@ const SectionHeader = ({ title, hasShadow, badgeValue }: Props) => {
     <ContentPadding style={containerStyles}>
       <Text
         type="h2"
-        style={styles.sectionHeaderText}
+        color="lightNavyBlueColor"
         accessible
         accessibilityTraits={["header"]}
       >
@@ -59,9 +55,6 @@ const styles = StyleSheet.create({
     // The below properties are required for android shadow
     borderWidth: 0,
     elevation: 3
-  },
-  sectionHeaderText: {
-    color: sectionHeaderTextColor
   },
   badgeWrapper: {
     marginLeft: 6
