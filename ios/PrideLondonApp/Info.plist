@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Bugsnag</key>
-	<dict>
-		<key>APIKey</key>
-		<string></string>
-	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -27,6 +22,11 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Bugsnag</key>
+	<dict>
+		<key>APIKey</key>
+		<string>__RN_CONFIG_BUGSNAG_API_KEY</string>
+	</dict>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>

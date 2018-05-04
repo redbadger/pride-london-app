@@ -78,5 +78,3 @@ coverage/
 # Bundle artifact
 *.jsbundle
 
-# Bugsnag
-bugsnag.properties
