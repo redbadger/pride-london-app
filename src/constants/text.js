@@ -109,10 +109,10 @@ export default {
   showEvents,
   clearAll: "Clear all",
   filterEvents: "Filter Events",
-  noSavedEventsTitle: "Where is the love?",
+  noSavedEventsTitle: "Where's the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
   noSavedEventsSaveButtonAlt: "'save this event' button",
-  noSavedEventsPart2: "on any events you like to save them here.",
+  noSavedEventsPart2: "on any \nevent you like to save them here.",
   noSavedEventsButton: "Find Events",
   saveEventButtonUnSaveEvent: "remove event from saved list",
   saveEventButtonSaveEvent: "save this event"
