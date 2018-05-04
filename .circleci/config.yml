@@ -313,7 +313,7 @@ jobs:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project/ios
     environment:
-      - <<: *env-macos
+      <<: *env-macos
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -346,7 +346,7 @@ jobs:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project/ios
     environment:
-      - <<: *env-macos
+      <<: *env-macos
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -377,7 +377,7 @@ jobs:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project/ios
     environment:
-      - <<: *env-macos
+      <<: *env-macos
       CONTENTFUL_SPACE_ID: $RELEASE_CONTENTFUL_SPACE_ID
       CONTENTFUL_API_KEY: $RELEASE_CONTENTFUL_API_KEY
       GOOGLE_MAPS_API_KEY: $RELEASE_GOOGLE_MAPS_API_KEY
@@ -404,6 +404,8 @@ jobs:
   e2e-ios:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project
+    environment:
+      <<: *env-macos
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
