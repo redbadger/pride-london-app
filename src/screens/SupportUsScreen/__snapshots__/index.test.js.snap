@@ -10,34 +10,8 @@ exports[`renders correctly 1`] = `
   }
 >
   <Header
-    backgroundColor="#2d2f7f"
-  >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "height": 48,
-          "justifyContent": "center",
-        }
-      }
-    >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        type="h2"
-      >
-        Support us
-      </Text>
-    </ContentPadding>
-  </Header>
+    title="Support us"
+  />
   <ScrollView>
     <Component
       style={

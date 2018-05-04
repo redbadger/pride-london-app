@@ -12,18 +12,16 @@ import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
-import IconButton from "../../components/IconButton";
 import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
-import SectionDivider from "./SectionDivider";
+import SectionDivider from "../../components/SectionDivider";
 import PerformanceList from "../../components/PerformanceList";
 import { groupPerformancesByPeriod } from "../../selectors/events";
-import { whiteColor, darkBlueGreyTwoColor } from "../../constants/colors";
+import { whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event, EventCategoryName } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import locale from "../../data/locale";
-import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
 type EventHeaderProps = {|
   isSaved: boolean,
@@ -36,18 +34,14 @@ export const EventHeader = ({
   navigation,
   toggleSaved
 }: EventHeaderProps) => (
-  <Header backgroundColor={darkBlueGreyTwoColor}>
-    <ContentPadding style={styles.headerContent}>
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={() => {
-          navigation.goBack(null);
-        }}
-        source={chevronLeftWhite}
-      />
-      <SaveEventButton active={isSaved} onPress={toggleSaved} />
-    </ContentPadding>
-  </Header>
+  <Header
+    onBack={() => {
+      navigation.goBack(null);
+    }}
+    rightElement={
+      <SaveEventButton active={isSaved} onDark onPress={toggleSaved} />
+    }
+  />
 );
 
 export const EventCategories = ({ event }: { event: Event }) => (
@@ -112,48 +106,58 @@ class EventDetailsScreen extends PureComponent<Props> {
             style={{ aspectRatio: 5 / 3 }}
             source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
           />
-          <ContentPadding style={styles.content}>
-            <Text type="h1" style={styles.h1}>
-              {event.fields.name[locale]}
-            </Text>
+          <View style={styles.content}>
             <LayoutColumn spacing={20}>
-              <EventCategories event={event} />
-              <EventOverview event={event} />
-              <SectionDivider />
-              <EventDescription event={event} />
-              <EventMap
-                lat={event.fields.location[locale].lat}
-                lon={event.fields.location[locale].lon}
-                locationName={event.fields.locationName[locale]}
-              />
-            </LayoutColumn>
-          </ContentPadding>
-          {event.fields.performances &&
-            event.fields.performances[locale] && (
-              <PerformanceList
-                performances={groupPerformancesByPeriod(
-                  event.fields.performances[locale]
-                )}
-                locale={locale}
-              />
-            )}
-          <ContentPadding styles={styles.content}>
-            <LayoutColumn spacing={20}>
-              {event.fields.accessibilityDetails && (
-                <EventAccessibility event={event} />
-              )}
-              {event.fields.accessibilityDetails &&
-                (event.fields.email || event.fields.phone) && (
+              <ContentPadding>
+                <Text type="h1" style={styles.h1}>
+                  {event.fields.name[locale]}
+                </Text>
+                <LayoutColumn spacing={20}>
+                  <EventCategories event={event} />
+                  <EventOverview event={event} />
                   <SectionDivider />
+                  <EventDescription event={event} />
+                  <EventMap
+                    lat={event.fields.location[locale].lat}
+                    lon={event.fields.location[locale].lon}
+                    locationName={event.fields.locationName[locale]}
+                  />
+                  {event.fields.performances &&
+                    event.fields.performances[locale] && <SectionDivider />}
+                </LayoutColumn>
+              </ContentPadding>
+              {event.fields.performances &&
+                event.fields.performances[locale] && (
+                  <PerformanceList
+                    performances={groupPerformancesByPeriod(
+                      event.fields.performances[locale]
+                    )}
+                    locale={locale}
+                  />
                 )}
-              {(event.fields.email || event.fields.phone) && (
-                <EventContact
-                  email={event.fields.email && event.fields.email[locale]}
-                  phone={event.fields.phone && event.fields.phone[locale]}
-                />
+              {(event.fields.accessibilityDetails ||
+                event.fields.email ||
+                event.fields.phone) && (
+                <ContentPadding>
+                  <LayoutColumn spacing={20}>
+                    {event.fields.accessibilityDetails && <SectionDivider />}
+                    {event.fields.accessibilityDetails && (
+                      <EventAccessibility event={event} />
+                    )}
+                    {(event.fields.email || event.fields.phone) && (
+                      <SectionDivider />
+                    )}
+                    {(event.fields.email || event.fields.phone) && (
+                      <EventContact
+                        email={event.fields.email && event.fields.email[locale]}
+                        phone={event.fields.phone && event.fields.phone[locale]}
+                      />
+                    )}
+                  </LayoutColumn>
+                </ContentPadding>
               )}
             </LayoutColumn>
-          </ContentPadding>
+          </View>
         </ShadowedScrollView>
         {event.fields.ticketingUrl && <EventTickets event={event} />}
       </View>
@@ -169,10 +173,6 @@ const styles = StyleSheet.create({
   content: {
     marginTop: 16,
     marginBottom: 32
-  },
-  headerContent: {
-    flexDirection: "row",
-    justifyContent: "space-between"
   },
   h1: {
     marginBottom: 8

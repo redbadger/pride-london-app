@@ -24,6 +24,7 @@ const showEventsLabel = (numberOfEvents: number) => {
 };
 
 export default {
+  backButtonAccessibilityLabel: "Back",
   tabHome: "Home",
   tabEvents: "Events",
   tabParade: "Parade",
@@ -55,6 +56,7 @@ export default {
   eventDetailsContactEmailBody: "Dear event organiser,",
   collapsibleShowMore: "Show more",
   collapsibleShowLess: "Show less",
+  savedEventsTitle: "Saved Events",
   supportUsTitle: "Support us",
   supportUsAsIndividual: "As an individual",
   supportUsAsBusiness: "As a business",
@@ -115,5 +117,13 @@ export default {
   zeroSelected: "0 selected",
   showEvents,
   clearAll: "Clear all",
-  filterEvents: "Filter Events"
+  filterEvents: "Filter Events",
+  noSavedEventsTitle: "Where's the love?",
+  noSavedEventsPart1: "No favourites yet? Tap the",
+  noSavedEventsSaveButtonAlt: "'save this event' button",
+  noSavedEventsPart2: "on any \nevent you like to save them here.",
+  noSavedEventsButton: "Find Events",
+  saveEventButtonUnSaveEvent: "remove event from saved list",
+  saveEventButtonSaveEvent: "save this event",
+  homeViewAll: "View all"
 };

@@ -1,11 +1,10 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
-import formatDate from "date-fns/format";
 import { lightNavyBlueColor } from "../constants/colors";
 import Text from "./Text";
 import SaveEventButton from "./SaveEventButton";
-import { formattedEventPrice } from "../data/formatters";
+import { formattedEventPrice, formatTime } from "../data/formatters";
 
 type Props = {
   name: string,
@@ -41,11 +40,9 @@ class EventCard extends React.PureComponent<Props> {
     } = this.props;
     const eventStartTime = removeTimezoneFromDateString(startTime);
     const eventEndTime = removeTimezoneFromDateString(endTime);
-    const timeFormat = "HH:mm";
-    const timeDisplay = `${formatDate(
-      eventStartTime,
-      timeFormat
-    )} - ${formatDate(eventEndTime, timeFormat)}`;
+    const timeDisplay = `${formatTime(eventStartTime)} - ${formatTime(
+      eventEndTime
+    )}`;
 
     return (
       <View style={styles.eventCard}>

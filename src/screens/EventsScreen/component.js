@@ -1,11 +1,12 @@
 // @flow
 import React, { PureComponent } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event";
 import type { LocalizedFieldRef } from "../../data/localized-field-ref";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
+import Loading from "../../components/Loading";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
@@ -59,7 +60,7 @@ class EventsScreen extends PureComponent<Props> {
           onFilterButtonPress={this.handleFilterButtonPress}
         />
         {this.props.loading ? (
-          <Text>Loading...</Text>
+          <Loading />
         ) : (
           <EventList
             locale={locale}

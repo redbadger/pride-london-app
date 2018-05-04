@@ -4,6 +4,7 @@ import { shallow } from "enzyme";
 import Component from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import type { Event } from "../../data/event";
+import Loading from "../../components/Loading";
 
 const generateEvents = (count = 2): Event[] =>
   Array.from(Array(count)).map(
@@ -25,6 +26,9 @@ const generateEvents = (count = 2): Event[] =>
           },
           startTime: {
             "en-GB": "2018-07-10T00:00"
+          },
+          eventCategories: {
+            "en-GB": ["Cabaret & Variety", "Music"]
           }
         }
       }: any)
@@ -70,9 +74,9 @@ describe("HomeScreen Component", () => {
       loading: true
     });
 
-    const loadingText = output.find("Text").first();
+    const loadingText = output.find(Loading);
 
-    expect(loadingText.children().text()).toEqual("Loading...");
+    expect(loadingText.length).toEqual(1);
   });
 
   it("navigates to featured event list when tapped", () => {

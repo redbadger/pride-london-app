@@ -6,15 +6,13 @@ import { View, StyleSheet } from "react-native";
 import PerformanceItem from "./Performance";
 import ContentPadding from "./ContentPadding";
 import Collapsible from "./Collapsible";
+import LayoutColumn from "./LayoutColumn";
 import Text from "./Text";
+import SectionDivider from "./SectionDivider";
 
 import { getTimePeriod } from "../selectors/events";
 import type { Performance, PerformancePeriods } from "../data/event";
-import {
-  sectionHeaderTextColor,
-  sectionHeaderShadow,
-  sectionHeaderBgColor
-} from "../constants/colors";
+import { sectionHeaderShadow, sectionHeaderBgColor } from "../constants/colors";
 import text from "../constants/text";
 
 type Props = {
@@ -40,28 +38,30 @@ const PerformanceList = ({ performances, locale }: Props) => (
         {text.eventDetailsSchedule}
       </Text>
     </ContentPadding>
-    <View>
+    <LayoutColumn spacing={20}>
       {sections(performances, locale).map(section => (
         <View key={section.title}>
           <ContentPadding style={styles.sectionHeader}>
-            <Text type="h3" style={styles.sectionHeaderText}>
+            <Text type="h3" color="lightNavyBlueColor">
               {section.title}
             </Text>
           </ContentPadding>
-          <ContentPadding style={styles.section}>
+          <ContentPadding>
             <Collapsible>
-              {section.data.map(item => (
-                <PerformanceItem
-                  key={item.fields.startTime[locale]}
-                  startTime={item.fields.startTime[locale]}
-                  title={item.fields.title[locale]}
-                />
+              {section.data.map((item, i, all) => (
+                <View key={item.fields.startTime[locale]}>
+                  <PerformanceItem
+                    startTime={item.fields.startTime[locale]}
+                    title={item.fields.title[locale]}
+                  />
+                  {i !== all.length - 1 && <SectionDivider />}
+                </View>
               ))}
             </Collapsible>
           </ContentPadding>
         </View>
       ))}
-    </View>
+    </LayoutColumn>
   </View>
 );
 
@@ -83,12 +83,6 @@ const styles = StyleSheet.create({
     // The below properties are required for android shadow
     borderWidth: 0,
     elevation: 3
-  },
-  sectionHeaderText: {
-    color: sectionHeaderTextColor
-  },
-  section: {
-    marginBottom: 20
   }
 });
 

@@ -12,6 +12,13 @@ Set {
 }
 `;
 
+exports[`Saved events reducer RECEIVE_SAVED_EVENTS action updates saved events 1`] = `
+Set {
+  "7b717417-eb24-40c6-8f50-00fc724918f4",
+  "bbf24715-1a40-42d3-a246-8d002ecad2a2",
+}
+`;
+
 exports[`Saved events reducer REMOVE_SAVED_EVENT action does not remove id when missing 1`] = `Set {}`;
 
 exports[`Saved events reducer REMOVE_SAVED_EVENT action removes id when present 1`] = `Set {}`;

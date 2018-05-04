@@ -94,6 +94,7 @@ export const groupPerformancesByPeriod = (
 };
 
 const getEventsState = (state: State) => state.events;
+const getSavedEventsState = (state: State) => state.savedEvents;
 
 const addPerformances = (state: State) => event => {
   const oldEvent = ((event: any): Event);
@@ -159,5 +160,13 @@ export const selectFeaturedEventsByTitle = (state: State, title: string) => {
 
   return ((featured.fields.events[locale].map(e =>
     selectEventById(state, e.sys.id)
+  ): any): Event[]);
+};
+
+export const selectSavedEvents = (state: State) => {
+  const events = getEventsState(state).entries;
+  const savedEvents = getSavedEventsState(state);
+  return ((events.filter(event =>
+    savedEvents.has(event.sys.id)
   ): any): Event[]);
 };

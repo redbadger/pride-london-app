@@ -1,11 +1,26 @@
 // @flow
 import React from "react";
 import { Animated, Easing } from "react-native";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import { shallow } from "enzyme";
 import SaveEventButton from "./SaveEventButton";
 
+jest.mock("react-native-haptic-feedback", () => ({
+  trigger: jest.fn()
+}));
+
+beforeEach(() => {
+  ReactNativeHapticFeedback.trigger.mockClear();
+});
+
 it("renders correctly", () => {
   const output = shallow(<SaveEventButton active={false} onPress={() => {}} />);
+  output.setState({ progress: new Animated.Value(0) });
+  expect(output).toMatchSnapshot();
+});
+
+it("renders correctly when active", () => {
+  const output = shallow(<SaveEventButton active onPress={() => {}} />);
   output.setState({ progress: new Animated.Value(0) });
   expect(output).toMatchSnapshot();
 });
@@ -51,7 +66,7 @@ describe("getDerivedStateFromProps", () => {
 });
 
 describe("update from inactive to active", () => {
-  it("animates the heart", () => {
+  it("animates the heart and vibrates", () => {
     const mockAnimatedValue = {};
     jest.mock("Animated", () => ({
       timing: jest.fn(() => ({
@@ -68,11 +83,12 @@ describe("update from inactive to active", () => {
     output.setState({ progress: new Animated.Value(0) });
     output.setProps({ active: true, onPress });
     expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
-      duration: 1920,
+      duration: 800,
       toValue: 1,
       easing: Easing.linear,
       useNativeDriver: true
     });
+    expect(ReactNativeHapticFeedback.trigger).toBeCalledWith("impactHeavy");
   });
 });
 
