@@ -155,9 +155,10 @@ store-artifacts-docker: &store-artifacts-docker
 job-defaults-macos: &job-defaults-macos
   macos:
     xcode: "9.2.0"
-  environment:
-    FL_OUTPUT_DIR: /Users/distiller/project/output
   shell: /bin/bash --login -o pipefail
+
+env-macos: &env-macos
+  FL_OUTPUT_DIR: /Users/distiller/project/output
 
 checkout-macos: &checkout-macos
   checkout:
@@ -174,6 +175,12 @@ set-node-version-macos: &set-node-version-macos
     command: |
       yarn global add n
       sudo n 9.3
+
+generate-env: &generate-env
+  run:
+    name: Generate .env
+    command: node ./scripts/generate-dotenv.js
+    working_directory: ~/project
 
 generate-env-macos: &generate-env-macos
   run:
@@ -210,14 +217,10 @@ jobs:
           command: |
               yarn test
               ./cc-test-reporter after-build
-      - run:
-          name: Generate .env
-          command: node ./scripts/generate-dotenv.js
       - persist_to_workspace:
           root: ~/project
           paths:
             - node_modules
-            - .env
 
   alpha-android:
     <<: *job-defaults-docker
@@ -235,6 +238,7 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
+      - <<: *generate-env
       - run:
             command: |
                 bundle exec fastlane alpha \
@@ -264,6 +268,7 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
+      - <<: *generate-env
       - run:
             command: |
                 bundle exec fastlane beta \
@@ -282,6 +287,9 @@ jobs:
     environment:
       <<: *env-docker
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
+      CONTENTFUL_SPACE_ID: $RELEASE_CONTENTFUL_SPACE_ID
+      CONTENTFUL_API_KEY: $RELEASE_CONTENTFUL_API_KEY
+      GOOGLE_MAPS_API_KEY: $RELEASE_GOOGLE_MAPS_API_KEY
     steps:
       - <<: *checkout-docker
       - <<: *workspace-docker
@@ -293,6 +301,7 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
+      - <<: *generate-env
       - run:
             command: |
                 bundle exec fastlane release \
@@ -303,6 +312,8 @@ jobs:
   alpha-ios:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project/ios
+    environment:
+      - <<: *env-macos
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -334,6 +345,8 @@ jobs:
   beta-ios:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project/ios
+    environment:
+      - <<: *env-macos
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -363,6 +376,11 @@ jobs:
   release-ios:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project/ios
+    environment:
+      - <<: *env-macos
+      CONTENTFUL_SPACE_ID: $RELEASE_CONTENTFUL_SPACE_ID
+      CONTENTFUL_API_KEY: $RELEASE_CONTENTFUL_API_KEY
+      GOOGLE_MAPS_API_KEY: $RELEASE_GOOGLE_MAPS_API_KEY
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
