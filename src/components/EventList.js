@@ -51,6 +51,7 @@ export const renderItem = ({
     <Touchable
       style={styles.eventListItem}
       onPress={() => onPress(item.sys.id)}
+      accessible={false}
     >
       <EventCard
         name={item.fields.name[locale]}

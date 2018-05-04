@@ -12,6 +12,7 @@ exports[`EventList #renderItem renders items correctly 1`] = `
         "button",
       ]
     }
+    accessible={false}
     delayPressIn={50}
     onPress={[Function]}
     style={
