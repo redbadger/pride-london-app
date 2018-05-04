@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component
+<ScrollView
   style={
     Object {
       "flex": 3,
@@ -62,5 +62,5 @@ exports[`renders correctly 1`] = `
       Find Events
     </Button>
   </LayoutColumn>
-</Component>
+</ScrollView>
 `;

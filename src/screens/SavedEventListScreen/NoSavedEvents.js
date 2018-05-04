@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -22,7 +22,7 @@ class NoSavedEvents extends PureComponent<Props> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <LayoutColumn spacing={12}>
           <Image style={styles.image} source={noSavedEvents} />
           <Text type="h1" style={styles.title}>
@@ -42,7 +42,7 @@ class NoSavedEvents extends PureComponent<Props> {
             {text.noSavedEventsButton}
           </ButtonPrimary>
         </LayoutColumn>
-      </View>
+      </ScrollView>
     );
   }
 }
