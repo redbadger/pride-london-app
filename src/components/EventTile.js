@@ -3,30 +3,39 @@ import { format } from "date-fns";
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import Text from "../components/Text";
+import CategoryPill from "./CategoryPill";
 import { imageBgColor, eventTileTextColor } from "../constants/colors";
+import type { EventCategoryName } from "../data/event";
 
 type Props = {
+  eventCategories: EventCategoryName[],
   name: string,
   date: string,
   imageUrl: string
 };
 
-const EventTile = ({ name, date, imageUrl }: Props) => (
+const EventTile = ({ eventCategories, name, date, imageUrl }: Props) => (
   <View style={styles.eventTile}>
     <ImageBackground
       style={styles.imageContainer}
       source={{ uri: imageUrl }}
       resizeMode="cover"
-    />
+    >
+      <View style={styles.categoryPillContainer}>
+        {eventCategories[0] && (
+          <CategoryPill name={eventCategories[0]} numberOfLines={2} />
+        )}
+      </View>
+    </ImageBackground>
     <View style={styles.details}>
       <Text type="small" style={{ color: eventTileTextColor }}>
         {format(date, "ddd, D MMMM")}
       </Text>
       <Text
-        type="h4"
+        type="h3"
+        numberOfLines={2}
         style={{ color: eventTileTextColor }}
         ellipsizeMode="tail"
-        numberOfLines={2}
       >
         {name}
       </Text>
@@ -36,17 +45,24 @@ const EventTile = ({ name, date, imageUrl }: Props) => (
 
 const styles = StyleSheet.create({
   eventTile: {
-    flexDirection: "column",
+    minHeight: 200,
+    borderRadius: 3,
     overflow: "hidden"
   },
   imageContainer: {
-    borderRadius: 4,
+    width: "100%",
     height: 120,
     backgroundColor: imageBgColor
   },
+  categoryPillContainer: {
+    position: "absolute",
+    flexWrap: "wrap",
+    bottom: 0,
+    right: 0
+  },
   details: {
-    minHeight: 80,
-    paddingTop: 8
+    paddingTop: 8,
+    paddingHorizontal: 8
   }
 });
 

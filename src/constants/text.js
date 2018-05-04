@@ -115,5 +115,6 @@ export default {
   noSavedEventsPart2: "on any \nevent you like to save them here.",
   noSavedEventsButton: "Find Events",
   saveEventButtonUnSaveEvent: "remove event from saved list",
-  saveEventButtonSaveEvent: "save this event"
+  saveEventButtonSaveEvent: "save this event",
+  homeViewAll: "View all"
 };
