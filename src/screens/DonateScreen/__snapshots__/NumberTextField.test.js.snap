@@ -8,11 +8,11 @@ exports[`renders correctly 1`] = `
   onChangeText={[Function]}
   onFocus={[Function]}
   placeholder={null}
-  placeholderTextColor="rgb(204, 204, 204)"
+  placeholderTextColor="#cecece"
   style={
     Array [
       Object {
-        "borderColor": "rgb(204, 204, 204)",
+        "borderColor": "#cecece",
         "borderRadius": 4,
         "borderWidth": 1,
         "color": "#2d2f7f",

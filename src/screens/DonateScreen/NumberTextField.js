@@ -4,8 +4,7 @@ import { PixelRatio, Platform, StyleSheet, TextInput } from "react-native";
 import {
   lightNavyBlueColor,
   transparent,
-  inputFieldBorderColor,
-  inputFieldPlaceholderColor,
+  mediumGreyColor,
   eucalyptusGreenColor
 } from "../../constants/colors";
 
@@ -42,7 +41,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
         onFocus={this.onFocus}
         onChangeText={onChangeText}
         placeholder={focused ? placeholder : null}
-        placeholderTextColor={inputFieldPlaceholderColor}
+        placeholderTextColor={mediumGreyColor}
         style={[styles.base, focused && styles.focused]}
         underlineColorAndroid={transparent}
         value={value}
@@ -53,7 +52,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
 
 const styles = StyleSheet.create({
   base: {
-    borderColor: inputFieldBorderColor,
+    borderColor: mediumGreyColor,
     borderWidth: 1,
     borderRadius: 4,
     height: 50 * PixelRatio.getFontScale(),

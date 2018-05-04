@@ -21,6 +21,7 @@ export const whiteColor = "#ffffff";
 export const velvetColor = "#660c63";
 export const blackColor = "#111111";
 export const coralColor = "#ff5b44";
+export const mediumGreyColor = "#cecece";
 export const shadowColor = "rgba(0, 0, 0, 0.1)";
 
 // CUSTOM
@@ -32,8 +33,6 @@ export const headerBgColor = "#A5A5A5";
 export const transparent = "transparent";
 
 export const textColor = "#272727";
-export const inputFieldBorderColor = "rgb(204, 204, 204)";
-export const inputFieldPlaceholderColor = "rgb(204, 204, 204)";
 
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 export const blackZeroColor = "rgba(0, 0, 0, 0)";
@@ -45,7 +44,6 @@ export const dialogTitleColor = "rgb(45, 47, 127)";
 export const dialogApplyButtonBgColor = "rgb(44, 218, 157)";
 export const dialogApplyButtonTextColor = "rgb(45, 47, 127)";
 export const dialogHeaderDividerColor = "#F2F2F2";
-export const disabledButtonBgColor = "#cecece";
 
 // TAB BAR
 

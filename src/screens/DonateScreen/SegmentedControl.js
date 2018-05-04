@@ -3,10 +3,7 @@ import React from "react";
 import { PixelRatio, StyleSheet, View } from "react-native";
 import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
-import {
-  inputFieldBorderColor,
-  eucalyptusGreenColor
-} from "../../constants/colors";
+import { mediumGreyColor, eucalyptusGreenColor } from "../../constants/colors";
 
 type Props = {|
   onSelectedIndexChange: number => void,
@@ -55,7 +52,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flexGrow: 1,
-    borderColor: inputFieldBorderColor,
+    borderColor: mediumGreyColor,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     height: 50 * PixelRatio.getFontScale(),
