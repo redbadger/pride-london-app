@@ -2,7 +2,7 @@
 import React from "react";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
-import { formattedEventPriceRange } from "../../data/formatters";
+import { formattedEventPriceRange, formatTime } from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
 import Text from "../../components/Text";
@@ -30,17 +30,13 @@ const EventOverview = ({ event }: Props) => {
   );
   const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
   const dateFormat = "ddd, DD MMM YYYY";
-  const timeFormat = "h:mmA";
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)
     : `${formatDate(startTime, dateFormat)} - ${formatDate(
         endTime,
         dateFormat
       )}`;
-  const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
-    endTime,
-    timeFormat
-  )}`;
+  const timeDisplay = `${formatTime(startTime)} - ${formatTime(endTime)}`;
 
   const eventLocation = [
     event.fields.location[locale].lat,

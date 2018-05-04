@@ -5,6 +5,7 @@ import { shallow } from "enzyme";
 import Component from "./component";
 import type { Sponsor } from "../../data/sponsor";
 import text from "../../constants/text";
+import Header from "../../components/Header";
 
 jest.mock("react-native-communications", () => ({
   email: jest.fn(() => {})
@@ -69,8 +70,8 @@ describe("SponsorScreen Component", () => {
 
   it("navigates back when user presses back button in toolbar", () => {
     const output = render();
-    const backBtn = output.find({ testID: "back" });
-    backBtn.simulate("press");
+    const backFn = output.find(Header).prop("onBack");
+    backFn("press");
     expect(navigation.goBack).toHaveBeenCalledWith(null);
   });
 

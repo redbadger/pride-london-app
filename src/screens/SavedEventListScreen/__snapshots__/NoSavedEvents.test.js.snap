@@ -32,9 +32,11 @@ exports[`renders correctly 1`] = `
       }
       type="h1"
     >
-      Where is the love?
+      Where's the love?
     </Text>
     <Text
+      accessibilityLabel="No favourites yet? Tap the 'save this event' button on any 
+event you like to save them here."
       color="blackColor"
       markdown={false}
       markdownStyle={Object {}}
@@ -49,11 +51,11 @@ exports[`renders correctly 1`] = `
       No favourites yet? Tap the
        
       <Image
-        accessibilityLabel="'save this event' button"
         source={1}
       />
        
-      on any events you like to save them here.
+      on any 
+event you like to save them here.
     </Text>
     <Button
       disabled={false}

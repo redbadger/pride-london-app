@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { lightishGreyColor } from "../../constants/colors";
+import { lightishGreyColor } from "../constants/colors";
 
 const SectionDivider = () => <View style={styles.sectionDivider} />;
 
