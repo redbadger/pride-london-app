@@ -4,7 +4,8 @@ exports[`renders correctly 1`] = `
 <Component
   style={
     Object {
-      "flexDirection": "column",
+      "borderRadius": 3,
+      "minHeight": 200,
       "overflow": "hidden",
     }
   }
@@ -19,15 +20,32 @@ exports[`renders correctly 1`] = `
     style={
       Object {
         "backgroundColor": "#C1C1C1",
-        "borderRadius": 4,
         "height": 120,
+        "width": "100%",
       }
     }
-  />
+  >
+    <Component
+      style={
+        Object {
+          "bottom": 0,
+          "flexWrap": "wrap",
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <CategoryPill
+        name="Health"
+        numberOfLines={2}
+        style={Object {}}
+      />
+    </Component>
+  </ImageBackground>
   <Component
     style={
       Object {
-        "minHeight": 80,
+        "paddingHorizontal": 8,
         "paddingTop": 8,
       }
     }
@@ -56,7 +74,7 @@ exports[`renders correctly 1`] = `
           "color": "rgb(45, 47, 127)",
         }
       }
-      type="h4"
+      type="h3"
     >
       Hello Pride
     </Text>
