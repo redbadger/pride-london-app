@@ -1,76 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<ScrollView
-  style={
-    Object {
-      "flex": 3,
-      "marginHorizontal": 12,
+<ScrollView>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "flex": 3,
+        "marginBottom": 12,
+      }
     }
-  }
->
-  <LayoutColumn
-    spacing={12}
   >
-    <Image
-      source={1}
-      style={
-        Object {
-          "alignSelf": "center",
-        }
-      }
-    />
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      style={
-        Object {
-          "color": "#2d2f7f",
-          "textAlign": "center",
-        }
-      }
-      type="h1"
+    <LayoutColumn
+      spacing={12}
     >
-      Where's the love?
-    </Text>
-    <Text
-      accessibilityLabel="No favourites yet? Tap the 'save this event' button on any 
-event you like to save them here."
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      style={
-        Object {
-          "paddingBottom": 12,
-          "textAlign": "center",
-        }
-      }
-      type="text"
-    >
-      No favourites yet? Tap the
-       
       <Image
         source={1}
-      />
-       
-      on any 
-event you like to save them here.
-    </Text>
-    <Component
-      style={
-        Object {
-          "marginBottom": 24,
+        style={
+          Object {
+            "alignSelf": "center",
+          }
         }
-      }
-    >
+      />
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "color": "#2d2f7f",
+            "textAlign": "center",
+          }
+        }
+        type="h1"
+      >
+        Where's the love?
+      </Text>
+      <Text
+        accessibilityLabel="No favourites yet? Tap the 'save this event' button on any 
+event you like to save them here."
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "paddingBottom": 12,
+            "textAlign": "center",
+          }
+        }
+        type="text"
+      >
+        No favourites yet? Tap the
+         
+        <Image
+          source={1}
+        />
+         
+        on any 
+event you like to save them here.
+      </Text>
       <Button
         disabled={false}
         onPress={[Function]}
       >
         Find Events
       </Button>
-    </Component>
-  </LayoutColumn>
+    </LayoutColumn>
+  </ContentPadding>
 </ScrollView>
 `;

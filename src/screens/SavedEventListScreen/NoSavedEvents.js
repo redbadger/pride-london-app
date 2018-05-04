@@ -1,10 +1,11 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, StyleSheet, ScrollView, View } from "react-native";
+import { Image, StyleSheet, ScrollView } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import LayoutColumn from "../../components/LayoutColumn";
+import ContentPadding from "../../components/ContentPadding";
 import iconSave from "../../../assets/images/save.png";
 import noSavedEvents from "../../../assets/images/howToSaveEvents.png";
 import text from "../../constants/text";
@@ -22,28 +23,28 @@ class NoSavedEvents extends PureComponent<Props> {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <LayoutColumn spacing={12}>
-          <Image style={styles.image} source={noSavedEvents} />
-          <Text type="h1" style={styles.title}>
-            {text.noSavedEventsTitle}
-          </Text>
-          <Text
-            style={styles.infoText}
-            accessibilityLabel={`${text.noSavedEventsPart1} ${
-              text.noSavedEventsSaveButtonAlt
-            } ${text.noSavedEventsPart2}`}
-          >
-            {text.noSavedEventsPart1}&nbsp;
-            <Image source={iconSave} />
-            &nbsp;{text.noSavedEventsPart2}
-          </Text>
-          <View style={styles.pad}>
+      <ScrollView>
+        <ContentPadding style={styles.container}>
+          <LayoutColumn spacing={12}>
+            <Image style={styles.image} source={noSavedEvents} />
+            <Text type="h1" style={styles.title}>
+              {text.noSavedEventsTitle}
+            </Text>
+            <Text
+              style={styles.infoText}
+              accessibilityLabel={`${text.noSavedEventsPart1} ${
+                text.noSavedEventsSaveButtonAlt
+              } ${text.noSavedEventsPart2}`}
+            >
+              {text.noSavedEventsPart1}&nbsp;
+              <Image source={iconSave} />
+              &nbsp;{text.noSavedEventsPart2}
+            </Text>
             <ButtonPrimary onPress={this.eventList}>
               {text.noSavedEventsButton}
             </ButtonPrimary>
-          </View>
-        </LayoutColumn>
+          </LayoutColumn>
+        </ContentPadding>
       </ScrollView>
     );
   }
@@ -52,10 +53,7 @@ class NoSavedEvents extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 3,
-    marginHorizontal: 12
-  },
-  pad: {
-    marginBottom: 24 // padding when you scroll to bottom
+    marginBottom: 12
   },
   image: {
     alignSelf: "center"
