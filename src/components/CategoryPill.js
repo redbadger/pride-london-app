@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
@@ -26,11 +26,8 @@ type Props = {
   onPress?: Function
 };
 
-const CategoryPill = ({ name, style, numberOfLines, onPress }: Props) => (
-  <Touchable
-    style={[styles.categoryPill, categoryStyleBackgroundColor(name), style]}
-    onPress={onPress}
-  >
+const CategoryPill = ({ name, style, numberOfLines, onPress }: Props) => {
+  const text = (
     <Text
       type="h3"
       numberOfLines={numberOfLines}
@@ -38,13 +35,22 @@ const CategoryPill = ({ name, style, numberOfLines, onPress }: Props) => (
     >
       {name}
     </Text>
-  </Touchable>
-);
+  );
+  const css = [styles.categoryPill, categoryStyleBackgroundColor(name), style];
+
+  return onPress ? (
+    <Touchable style={css} onPress={onPress}>
+      {text}
+    </Touchable>
+  ) : (
+    <View style={css}>{text}</View>
+  );
+};
 
 CategoryPill.defaultProps = {
   style: {},
   numberOfLines: undefined,
-  onPress: () => {}
+  onPress: undefined
 };
 
 const styles = StyleSheet.create({
