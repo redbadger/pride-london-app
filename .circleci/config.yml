@@ -334,6 +334,7 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
+      - <<: *release-api-keys
       - <<: *generate-env-macos
       - run:
             command: |
