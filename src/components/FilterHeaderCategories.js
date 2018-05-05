@@ -22,7 +22,7 @@ type Props = {
 
 type CategoriesFilterButtonProps = {
   style?: ViewStyleProp,
-  onPress: Function
+  onPress?: Function
 };
 
 const CategoriesFilterButton = ({
@@ -35,12 +35,13 @@ const CategoriesFilterButton = ({
 );
 
 CategoriesFilterButton.defaultProps = {
-  style: {}
+  style: {},
+  onPress: () => {}
 };
 
 const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
   selectedCategories.size === 0 ? (
-    <View style={styles.contentInterest}>
+    <View style={styles.contentInterest} onPress={onFilterPress}>
       {PixelRatio.getFontScale() < 1.5 && (
         <Text
           type="h1"
@@ -53,18 +54,19 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
           {text.filterTitle}
         </Text>
       )}
-      <View style={styles.interestButton}>
+      <Touchable style={styles.interestButton} onPress={onFilterPress}>
         <Text type="h2" style={styles.interestButtonText}>
           {text.filterByInterest}
         </Text>
         <CategoriesFilterButton onPress={onFilterPress} />
-      </View>
+      </Touchable>
     </View>
   ) : (
     <View style={styles.categoryPillsContainer}>
       <CategoriesPills
         style={styles.categoryPills}
         selectedCategories={selectedCategories}
+        onPress={onFilterPress}
       />
       <CategoriesFilterButton onPress={onFilterPress} />
     </View>
