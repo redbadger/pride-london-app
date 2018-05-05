@@ -6,45 +6,59 @@ import Touchable from "../../components/Touchable";
 import { mediumGreyColor, eucalyptusGreenColor } from "../../constants/colors";
 
 type Props = {|
-  onSelectedIndexChange: number => void,
-  selectedIndex: ?number,
-  values: string[]
+  onValueChange: (value: any) => void,
+  selectedValue: ?any,
+  children: SegmentedControl.Item[]
 |};
 
 const SegmentedControl = ({
-  onSelectedIndexChange,
-  selectedIndex,
-  values
-}: Props) => (
-  <View style={styles.container}>
-    {values.map((value, index) => (
-      <Touchable
-        key={value}
-        accessibilityComponentType={
-          index === selectedIndex
-            ? "radiobutton_checked"
-            : "radiobutton_unchecked"
-        }
-        accessibilityTraits={
-          index === selectedIndex ? ["button", "selected"] : ["button"]
-        }
-        onPress={() => onSelectedIndexChange(index)}
-        style={[
-          styles.button,
-          index === selectedIndex && styles.buttonSelected,
-          index === 0 && styles.buttonBorderStart,
-          index === values.length - 1 && styles.buttonBorderEnd,
-          index - 1 !== selectedIndex && styles.borderButtonLeft
-        ]}
-        testID={`button-${index}`}
-      >
-        <Text type="h2" color="lightNavyBlueColor" style={styles.buttonText}>
-          {value}
-        </Text>
-      </Touchable>
-    ))}
-  </View>
-);
+  onValueChange,
+  selectedValue,
+  children
+}: Props) => {
+  let selectedIndex = -1;
+  const items = React.Children.map(children, (child, index) => {
+    if (child.props.value === selectedValue) {
+      selectedIndex = index;
+    }
+
+    return {
+      label: child.props.label,
+      value: child.props.value
+    };
+  });
+
+  return (
+    <View style={styles.container}>
+      {items.map(({ label, value }, index) => (
+        <Touchable
+          key={value}
+          accessibilityComponentType={
+            index === selectedIndex
+              ? "radiobutton_checked"
+              : "radiobutton_unchecked"
+          }
+          accessibilityTraits={
+            index === selectedIndex ? ["button", "selected"] : ["button"]
+          }
+          onPress={() => onValueChange(value)}
+          style={[
+            styles.button,
+            index === selectedIndex && styles.buttonSelected,
+            index === 0 && styles.buttonBorderStart,
+            index === items.length - 1 && styles.buttonBorderEnd,
+            index - 1 !== selectedIndex && styles.borderButtonLeft
+          ]}
+          testID={`button-${index}`}
+        >
+          <Text type="h2" color="lightNavyBlueColor" style={styles.buttonText}>
+            {label}
+          </Text>
+        </Touchable>
+      ))}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -80,5 +94,12 @@ const styles = StyleSheet.create({
     marginTop: 2
   }
 });
+
+type ItemProps = {|
+  label: string,
+  value: any
+|};
+
+SegmentedControl.Item = (props: ItemProps) => null; // eslint-disable-line no-unused-vars
 
 export default SegmentedControl;

@@ -24,10 +24,10 @@ it("sets selected and clears other amound when using the amount selector", () =>
   const amountSelector = output.find(SegmentedControl);
 
   output.setState({ otherAmount: "20" });
-  amountSelector.prop("onSelectedIndexChange")(1);
+  amountSelector.prop("onValueChange")(10);
   expect(output.state()).toEqual({
     otherAmount: null,
-    selectedAmount: 1
+    selectedAmount: 10
   });
 });
 
@@ -35,7 +35,7 @@ it("clears selected amount when focusing the other amount input", () => {
   const output = shallow(<DonateScreen navigation={null} />);
   const otherAmount = output.find(NumberTextField);
 
-  output.setState({ selectedAmount: 1 });
+  output.setState({ selectedAmount: 10 });
   otherAmount.prop("onFocus")();
   expect(output.state()).toEqual({
     otherAmount: null,
@@ -64,7 +64,7 @@ it("opens donation website with default amount when pressing donate button", () 
 
 it("opens donation website with selected amount when pressing donate button", () => {
   const output = shallow(<DonateScreen navigation={null} />);
-  output.setState({ selectedAmount: 1 });
+  output.setState({ selectedAmount: 10 });
   output.find(Button).simulate("press");
   expect(openURLSpy).toHaveBeenCalledWith(
     "https://donate.prideinlondon.org/?amount=10"

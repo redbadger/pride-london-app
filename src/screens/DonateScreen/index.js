@@ -25,7 +25,7 @@ type State = {|
   otherAmount: ?string
 |};
 
-const selectableAmounts = ["£5", "£10", "£20"];
+const selectableAmounts = [5, 10, 20];
 
 class DonateScreen extends React.PureComponent<Props, State> {
   static navigationOptions = {
@@ -55,7 +55,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
   onDonatePress = () => {
     const amount =
       this.state.selectedAmount != null
-        ? selectableAmounts[this.state.selectedAmount].substr(1)
+        ? String(this.state.selectedAmount)
         : this.state.otherAmount;
     const encodedAmount = encodeURIComponent(amount || "0");
     Linking.openURL(
@@ -107,10 +107,17 @@ class DonateScreen extends React.PureComponent<Props, State> {
               {text.donateAmountSelectionLabel}
             </Text>
             <SegmentedControl
-              onSelectedIndexChange={this.onAmountSelected}
-              selectedIndex={selectedAmount}
-              values={selectableAmounts}
-            />
+              onValueChange={this.onAmountSelected}
+              selectedValue={selectedAmount}
+            >
+              {selectableAmounts.map(amount => (
+                <SegmentedControl.Item
+                  key={amount}
+                  label={`£${amount}`}
+                  value={amount}
+                />
+              ))}
+            </SegmentedControl>
             <Text
               type="h4"
               color="lightNavyBlueColor"

@@ -192,9 +192,7 @@ exports[`renders correctly without selection 1`] = `
           "borderTopLeftRadius": 4,
         },
         false,
-        Object {
-          "borderLeftWidth": 1,
-        },
+        false,
       ]
     }
     testID="button-0"

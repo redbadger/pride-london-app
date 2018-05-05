@@ -122,16 +122,25 @@ exports[`renders correctly 1`] = `
             Make a single donation
           </Text>
           <SegmentedControl
-            onSelectedIndexChange={[Function]}
-            selectedIndex={null}
-            values={
-              Array [
-                "£5",
-                "£10",
-                "£20",
-              ]
-            }
-          />
+            onValueChange={[Function]}
+            selectedValue={null}
+          >
+            <Component
+              key="5"
+              label="£5"
+              value={5}
+            />
+            <Component
+              key="10"
+              label="£10"
+              value={10}
+            />
+            <Component
+              key="20"
+              label="£20"
+              value={20}
+            />
+          </SegmentedControl>
           <Text
             color="lightNavyBlueColor"
             markdown={false}
