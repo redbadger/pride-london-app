@@ -192,8 +192,8 @@ release-api-keys: &release-api-keys
   run:
     name: Set release API keys
     command: |
-      export CONTENTFUL_SPACE_ID=$RELEASE_CONTENTFUL_SPACE_ID &&
-      export CONTENTFUL_API_KEY=$RELEASE_CONTENTFUL_API_KEY &&
+      export CONTENTFUL_SPACE_ID=$RELEASE_CONTENTFUL_SPACE_ID
+      export CONTENTFUL_API_KEY=$RELEASE_CONTENTFUL_API_KEY
       export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY
 
 version: 2
