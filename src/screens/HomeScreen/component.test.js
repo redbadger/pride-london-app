@@ -1,10 +1,42 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import Component from "./component";
+import { HomeScreen as Component } from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import type { Event } from "../../data/event";
+import type { HeaderBanner } from "../../data/header-banner";
 import Loading from "../../components/Loading";
+
+const generateHeaderBanners = (count = 2): HeaderBanner[] =>
+  Array.from(Array(count)).map(
+    (_, i) =>
+      ({
+        sys: {
+          id: String(i + 1)
+        },
+        fields: {
+          heading: {
+            "en-GB": "Pride"
+          },
+          headingLine2: {
+            "en-GB": "Festival"
+          },
+          subHeading: {
+            "en-GB": "from - to"
+          },
+          heroImage: {
+            "en-GB": {
+              sys: {
+                id: `asset${i + 1}`
+              }
+            }
+          },
+          backgroundColour: {
+            "en-GB": "#ff0000"
+          }
+        }
+      }: any)
+  );
 
 const generateEvents = (count = 2): Event[] =>
   Array.from(Array(count)).map(
@@ -49,6 +81,7 @@ describe("HomeScreen Component", () => {
       <Component
         navigation={navigation}
         loading={false}
+        headerBanners={generateHeaderBanners(2)}
         featuredEventsTitle="Featured events"
         featuredEvents={generateEvents(2)}
         getAssetSource={getAssetSource}
@@ -60,7 +93,7 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(5);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetSource).toHaveBeenCalledTimes(4);
+    expect(getAssetSource).toHaveBeenCalledTimes(5); // 4 events + 1 banner
     expect(getAssetSource).toHaveBeenCalledWith({ sys: { id: "asset1" } });
   });
 
@@ -68,7 +101,7 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(10);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetSource).toHaveBeenCalledTimes(6);
+    expect(getAssetSource).toHaveBeenCalledTimes(7); // 6 events + 1 banner
   });
 
   it("renders loading indicator when loading", () => {
@@ -101,6 +134,7 @@ describe("HomeScreen Component", () => {
 
   describe("#shouldComponentUpdate", () => {
     const props = {
+      headerBanners: generateHeaderBanners(2),
       featuredEventsTitle: "Title",
       featuredEvents: generateEvents(3),
       loading: false
@@ -109,6 +143,7 @@ describe("HomeScreen Component", () => {
     it("stops updates if loading state, title and events are the same", () => {
       const output = render(props);
       const nextProps = {
+        headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
         featuredEvents: generateEvents(3),
         loading: false
@@ -122,6 +157,7 @@ describe("HomeScreen Component", () => {
     it("updates when different events are displayed", () => {
       const output = render(props);
       const nextProps = {
+        headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
         featuredEvents: generateEvents(5),
         loading: false
@@ -135,6 +171,7 @@ describe("HomeScreen Component", () => {
     it("updates when different title is shown", () => {
       const output = render(props);
       const nextProps = {
+        headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Other Title",
         featuredEvents: generateEvents(3),
         loading: false
@@ -148,9 +185,24 @@ describe("HomeScreen Component", () => {
     it("updates when loading events", () => {
       const output = render(props);
       const nextProps = {
+        headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
         featuredEvents: generateEvents(3),
         loading: true
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(true);
+    });
+
+    it("updates when different header banner is displayed", () => {
+      const output = render(props);
+      const nextProps = {
+        headerBanners: generateHeaderBanners(3),
+        featuredEventsTitle: "Title",
+        featuredEvents: generateEvents(3),
+        loading: false
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);

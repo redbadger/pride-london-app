@@ -9,6 +9,7 @@ import EventList from "../../components/EventList";
 import text from "../../constants/text";
 import Loading from "../../components/Loading";
 import Header from "../../components/Header";
+import withStatusBar from "../../components/withStatusBar";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import locale from "../../data/locale";
@@ -26,11 +27,7 @@ export type Props = {
   getAssetSource: FieldRef => ImageSource
 };
 
-class SavedEventListScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
-  };
-
+export class SavedEventListScreen extends PureComponent<Props> {
   render() {
     const {
       navigation,
@@ -80,4 +77,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SavedEventListScreen;
+export default withStatusBar(SavedEventListScreen, {});

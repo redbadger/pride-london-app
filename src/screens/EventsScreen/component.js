@@ -8,6 +8,7 @@ import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
 import Loading from "../../components/Loading";
+import withStatusBar from "../../components/withStatusBar";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
@@ -29,11 +30,7 @@ export type Props = {
   selectedCategories: Set<string>
 };
 
-class EventsScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
-  };
-
+export class EventsScreen extends PureComponent<Props> {
   handleFilterCategoriesPress = () => {
     this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
   };
@@ -91,4 +88,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EventsScreen;
+export default withStatusBar(EventsScreen, {});

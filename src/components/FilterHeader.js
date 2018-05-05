@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, StatusBar } from "react-native";
+import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
@@ -9,8 +9,7 @@ import FilterHeaderCategories from "./FilterHeaderCategories";
 import {
   filterBgColor,
   filterButtonsBgColor,
-  whiteColor,
-  lightNavyBlueColor
+  whiteColor
 } from "../constants/colors";
 import text from "../constants/text";
 import { formatDateRange } from "../data/formatters";
@@ -55,12 +54,11 @@ class FilterHeader extends React.PureComponent<Props, State> {
       : text.selectDates;
 
     return (
-      <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
-        <StatusBar
-          barStyle="light-content"
-          animated
-          backgroundColor={lightNavyBlueColor}
-        />
+      <SafeAreaView
+        accessibilityTraits={["header"]}
+        style={styles.container}
+        forceInset={{ top: "always" }}
+      >
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
             <FilterHeaderCategories
