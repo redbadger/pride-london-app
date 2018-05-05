@@ -24,9 +24,12 @@ exports[`renders correctly with all props 1`] = `
     style={
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "flexDirection": "row",
         "height": 48,
         "justifyContent": "space-between",
+        "maxWidth": 440,
+        "width": "100%",
       }
     }
   >
@@ -78,9 +81,12 @@ exports[`renders correctly with default props 1`] = `
     style={
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "flexDirection": "row",
         "height": 48,
         "justifyContent": "space-between",
+        "maxWidth": 440,
+        "width": "100%",
       }
     }
   >
@@ -128,9 +134,12 @@ exports[`renders correctly with only onBack and rightElement 1`] = `
     style={
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "flexDirection": "row",
         "height": 48,
         "justifyContent": "space-between",
+        "maxWidth": 440,
+        "width": "100%",
       }
     }
   >
@@ -174,9 +183,12 @@ exports[`renders correctly with only title 1`] = `
     style={
       Object {
         "alignItems": "center",
+        "alignSelf": "center",
         "flexDirection": "row",
         "height": 48,
         "justifyContent": "space-between",
+        "maxWidth": 440,
+        "width": "100%",
       }
     }
   >

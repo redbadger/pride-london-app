@@ -1,0 +1,264 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <Touchable
+    accessibilityComponentType="radiobutton_checked"
+    accessibilityTraits={
+      Array [
+        "button",
+        "selected",
+      ]
+    }
+    delayPressIn={50}
+    key="One"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderBottomWidth": 1,
+          "borderColor": "#cecece",
+          "borderTopWidth": 1,
+          "flexGrow": 1,
+          "height": 100,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#2cda9d",
+          "borderColor": "#2cda9d",
+        },
+        Object {
+          "borderBottomLeftRadius": 4,
+          "borderLeftWidth": 1,
+          "borderTopLeftRadius": 4,
+        },
+        false,
+        Object {
+          "borderLeftWidth": 1,
+        },
+      ]
+    }
+    testID="button-0"
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "marginTop": 2,
+        }
+      }
+      type="h2"
+    >
+      One
+    </Text>
+  </Touchable>
+  <Touchable
+    accessibilityComponentType="radiobutton_unchecked"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    key="Two"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderBottomWidth": 1,
+          "borderColor": "#cecece",
+          "borderTopWidth": 1,
+          "flexGrow": 1,
+          "height": 100,
+          "justifyContent": "center",
+        },
+        false,
+        false,
+        false,
+        false,
+      ]
+    }
+    testID="button-1"
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "marginTop": 2,
+        }
+      }
+      type="h2"
+    >
+      Two
+    </Text>
+  </Touchable>
+  <Touchable
+    accessibilityComponentType="radiobutton_unchecked"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    key="Three"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderBottomWidth": 1,
+          "borderColor": "#cecece",
+          "borderTopWidth": 1,
+          "flexGrow": 1,
+          "height": 100,
+          "justifyContent": "center",
+        },
+        false,
+        false,
+        Object {
+          "borderBottomRightRadius": 4,
+          "borderRightWidth": 1,
+          "borderTopRightRadius": 4,
+        },
+        Object {
+          "borderLeftWidth": 1,
+        },
+      ]
+    }
+    testID="button-2"
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "marginTop": 2,
+        }
+      }
+      type="h2"
+    >
+      Three
+    </Text>
+  </Touchable>
+</Component>
+`;
+
+exports[`renders correctly without selection 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <Touchable
+    accessibilityComponentType="radiobutton_unchecked"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    key="One"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderBottomWidth": 1,
+          "borderColor": "#cecece",
+          "borderTopWidth": 1,
+          "flexGrow": 1,
+          "height": 100,
+          "justifyContent": "center",
+        },
+        false,
+        Object {
+          "borderBottomLeftRadius": 4,
+          "borderLeftWidth": 1,
+          "borderTopLeftRadius": 4,
+        },
+        false,
+        false,
+      ]
+    }
+    testID="button-0"
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "marginTop": 2,
+        }
+      }
+      type="h2"
+    >
+      One
+    </Text>
+  </Touchable>
+  <Touchable
+    accessibilityComponentType="radiobutton_unchecked"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    key="Two"
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderBottomWidth": 1,
+          "borderColor": "#cecece",
+          "borderTopWidth": 1,
+          "flexGrow": 1,
+          "height": 100,
+          "justifyContent": "center",
+        },
+        false,
+        false,
+        Object {
+          "borderBottomRightRadius": 4,
+          "borderRightWidth": 1,
+          "borderTopRightRadius": 4,
+        },
+        Object {
+          "borderLeftWidth": 1,
+        },
+      ]
+    }
+    testID="button-1"
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "marginTop": 2,
+        }
+      }
+      type="h2"
+    >
+      Two
+    </Text>
+  </Touchable>
+</Component>
+`;
