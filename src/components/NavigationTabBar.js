@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { Animated, StyleSheet, View } from "react-native";
-import { NavigationActions } from "react-navigation";
 import type { TabScene, _TabBarBottomProps } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import {
