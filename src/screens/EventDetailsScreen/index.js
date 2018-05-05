@@ -9,6 +9,7 @@ import type { State } from "../../reducers";
 import { selectEventById, selectAssetById } from "../../selectors/events";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import Component from "./component";
+import { setEventFilters } from "../../actions/event-filters";
 
 type OwnProps = {
   navigation: NavigationScreenProp<{ params: { eventId: string } }>
@@ -38,7 +39,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       return dispatch(addSavedEvent(id));
     }
     return dispatch(removeSavedEvent(id));
-  }
+  },
+  setCategoryFilter: category =>
+    dispatch(setEventFilters({ categories: new Set([category]) }))
 });
 
 // $FlowFixMe

@@ -91,6 +91,7 @@ it("renders correctly", () => {
       isSaved
       navigation={navigation}
       toggleSaved={() => {}}
+      setCategoryFilter={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
@@ -110,6 +111,7 @@ it("renders correctly with missing details", () => {
       getAssetUrl={getAssetUrl}
       navigation={navigation}
       toggleSaved={() => {}}
+      setCategoryFilter={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
@@ -126,21 +128,39 @@ describe("EventHeader", () => {
 
 describe("EventCategories", () => {
   it("renders correctly", () => {
-    const output = shallow(<EventCategories event={event} />);
+    const output = shallow(
+      <EventCategories
+        event={event}
+        navigation={navigation}
+        setCategoryFilter={() => {}}
+      />
+    );
     expect(output).toMatchSnapshot();
   });
 });
 
 describe("EventAccessibility", () => {
   it("renders correctly", () => {
-    const output = shallow(<EventAccessibility event={event} />);
+    const output = shallow(
+      <EventAccessibility
+        event={event}
+        navigation={navigation}
+        setCategoryFilter={() => {}}
+      />
+    );
     expect(output).toMatchSnapshot();
   });
 });
 
 describe("EventTickets", () => {
   it("renders correctly", () => {
-    const output = shallow(<EventTickets event={event} />);
+    const output = shallow(
+      <EventTickets
+        event={event}
+        navigation={navigation}
+        setCategoryFilter={() => {}}
+      />
+    );
     expect(output).toMatchSnapshot();
   });
 });

@@ -1,8 +1,9 @@
 // @flow
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
+import Touchable from "./Touchable";
 import eventCategories from "../constants/event-categories";
 import locale from "../data/locale";
 import { blackColor, whiteColor } from "../constants/colors";
@@ -21,12 +22,14 @@ const categoryStyleBackgroundColor = (category: EventCategoryName) => {
 type Props = {
   name: EventCategoryName,
   style?: ViewStyleProp,
-  numberOfLines?: number
+  numberOfLines?: number,
+  onPress?: Function
 };
 
-const CategoryPill = ({ name, style, numberOfLines }: Props) => (
-  <View
+const CategoryPill = ({ name, style, numberOfLines, onPress }: Props) => (
+  <Touchable
     style={[styles.categoryPill, categoryStyleBackgroundColor(name), style]}
+    onPress={onPress}
   >
     <Text
       type="h3"
@@ -35,16 +38,18 @@ const CategoryPill = ({ name, style, numberOfLines }: Props) => (
     >
       {name}
     </Text>
-  </View>
+  </Touchable>
 );
 
 CategoryPill.defaultProps = {
   style: {},
-  numberOfLines: undefined
+  numberOfLines: undefined,
+  onPress: () => {}
 };
 
 const styles = StyleSheet.create({
   categoryPill: {
+    minHeight: 20,
     paddingLeft: 5,
     paddingRight: 5
   },

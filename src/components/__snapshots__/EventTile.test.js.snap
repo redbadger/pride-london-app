@@ -38,6 +38,7 @@ exports[`renders correctly 1`] = `
       <CategoryPill
         name="Health"
         numberOfLines={2}
+        onPress={[Function]}
         style={Object {}}
       />
     </Component>

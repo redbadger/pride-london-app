@@ -36,6 +36,7 @@ exports[`EventCategories renders correctly 1`] = `
   <CategoryPill
     key="Community"
     name="Community"
+    onPress={[Function]}
     style={
       Object {
         "marginBottom": 8,
@@ -46,6 +47,7 @@ exports[`EventCategories renders correctly 1`] = `
   <CategoryPill
     key="Social and Networking"
     name="Social and Networking"
+    onPress={[Function]}
     style={
       Object {
         "marginBottom": 8,
@@ -56,6 +58,7 @@ exports[`EventCategories renders correctly 1`] = `
   <CategoryPill
     key="Sports and Activities"
     name="Sports and Activities"
+    onPress={[Function]}
     style={
       Object {
         "marginBottom": 8,
@@ -66,6 +69,7 @@ exports[`EventCategories renders correctly 1`] = `
   <CategoryPill
     key="Music"
     name="Music"
+    onPress={[Function]}
     style={
       Object {
         "marginBottom": 8,
@@ -292,6 +296,12 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                   },
                 }
               }
+              navigation={
+                Object {
+                  "goBack": [Function],
+                }
+              }
+              setCategoryFilter={[Function]}
             />
             <EventOverview
               event={
@@ -974,6 +984,12 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                   },
                 }
               }
+              navigation={
+                Object {
+                  "goBack": [Function],
+                }
+              }
+              setCategoryFilter={[Function]}
             />
             <EventOverview
               event={
