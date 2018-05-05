@@ -1,17 +1,22 @@
 // @flow
 import React from "react";
-import { Linking } from "react-native";
+import { Keyboard, Linking } from "react-native";
 import { shallow } from "enzyme";
 import DonateScreen from ".";
 import Button from "../../components/ButtonPrimary";
+import Header from "../../components/Header";
 import NumberTextField from "./NumberTextField";
 import SegmentedControl from "./SegmentedControl";
 
 let openURLSpy;
+let addKeyboardListenerSpy;
+let removeKeyboardListenerSpy;
 beforeEach(() => {
   openURLSpy = jest
     .spyOn(Linking, "openURL")
     .mockImplementation(() => Promise.resolve());
+  addKeyboardListenerSpy = jest.spyOn(Keyboard, "addListener");
+  removeKeyboardListenerSpy = jest.spyOn(Keyboard, "removeListener");
 });
 
 it("renders correctly", () => {
@@ -83,10 +88,33 @@ it("opens donation website with other amount when pressing donate button", () =>
 it("navigates back when user presses back button in toolbar", () => {
   const navigation = { goBack: jest.fn() };
   const output = shallow(<DonateScreen navigation={navigation} />);
-  output.find({ testID: "back" }).simulate("press");
+  output.find(Header).simulate("back");
   expect(navigation.goBack).toHaveBeenCalledWith(null);
+});
+
+it("scrolls down to reveal Donate button when keyboard shows", () => {
+  const output = shallow(<DonateScreen navigation={null} />);
+  const scrollToEnd = jest.fn();
+  output.instance().scrollViewRef.current = { scrollToEnd };
+
+  expect(addKeyboardListenerSpy).toHaveBeenCalledWith(
+    "keyboardDidShow",
+    expect.any(Function)
+  );
+
+  const listener = addKeyboardListenerSpy.mock.calls[0][1];
+  listener();
+  expect(scrollToEnd).toHaveBeenCalled();
+
+  output.unmount();
+  expect(removeKeyboardListenerSpy).toHaveBeenCalledWith(
+    "keyboardDidShow",
+    listener
+  );
 });
 
 afterEach(() => {
   openURLSpy.mockRestore();
+  addKeyboardListenerSpy.mockRestore();
+  removeKeyboardListenerSpy.mockRestore();
 });

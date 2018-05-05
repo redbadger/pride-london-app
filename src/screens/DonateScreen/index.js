@@ -1,17 +1,16 @@
 // @flow
 import React from "react";
-import { Linking, ScrollView, StyleSheet, View } from "react-native";
+import type { ElementRef } from "react";
+import { Keyboard, Linking, ScrollView, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 import donateHeader from "../../../assets/images/donateHeader.png";
 import Button from "../../components/ButtonPrimary";
 import Header from "../../components/Header";
 import ImageHeader from "../../components/ImageHeader";
-import IconButton from "../../components/IconButton";
 import KeyboardAvoidingView from "../../components/KeyboardAvoidingView";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
-import { lightNavyBlueColor, whiteColor } from "../../constants/colors";
+import { whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
 import NumberTextField from "./NumberTextField";
 import SegmentedControl from "./SegmentedControl";
@@ -36,6 +35,14 @@ class DonateScreen extends React.PureComponent<Props, State> {
     selectedAmount: null,
     otherAmount: null
   };
+
+  componentDidMount() {
+    Keyboard.addListener("keyboardDidShow", this.keyboardDidShow);
+  }
+
+  componentWillUnmount() {
+    Keyboard.removeListener("keyboardDidShow", this.keyboardDidShow);
+  }
 
   onAmountSelected = (selectedAmount: number) => {
     this.setState({
@@ -63,31 +70,28 @@ class DonateScreen extends React.PureComponent<Props, State> {
     );
   };
 
+  keyboardDidShow = () => {
+    this.scrollViewRef.current.scrollToEnd();
+  };
+
+  // $FlowFixMe: For some reason flow doesn't know about React.createRef.
+  scrollViewRef: ElementRef<typeof ScrollView> = React.createRef();
+
   renderHeader() {
     return (
-      <Header backgroundColor={lightNavyBlueColor}>
-        <ContentPadding style={styles.headerContent}>
-          <IconButton
-            accessibilityLabel="Back"
-            onPress={() => {
-              this.props.navigation.goBack(null);
-            }}
-            source={chevronLeftWhite}
-            testID="back"
-          />
-          <Text type="h2" style={styles.headerTitle}>
-            {text.donateTitle}
-          </Text>
-          <View style={styles.phantomIcon} />
-        </ContentPadding>
-      </Header>
+      <Header
+        onBack={() => {
+          this.props.navigation.goBack(null);
+        }}
+        title={text.donateTitle}
+      />
     );
   }
 
   renderContent() {
     const { selectedAmount, otherAmount } = this.state;
     return (
-      <ScrollView>
+      <ScrollView ref={this.scrollViewRef}>
         <View style={styles.scrollContainer}>
           <ImageHeader image={donateHeader} title={text.donateHeader} />
           <ContentPadding>
@@ -129,6 +133,9 @@ class DonateScreen extends React.PureComponent<Props, State> {
               placeholder={(0).toFixed(2)}
               onFocus={this.onOtherAmountFocus}
               onChangeText={this.onOtherAmountChange}
+              onSubmitEditing={this.onDonatePress}
+              returnKeyLabel={text.donateButtonText}
+              returnKeyType="go"
               value={otherAmount}
             />
             <Text type="small" style={styles.minimumAmountSpacing}>
@@ -164,21 +171,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: whiteColor
-  },
-  headerContent: {
-    width: "100%",
-    maxWidth: 440,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    alignSelf: "center"
-  },
-  headerTitle: {
-    color: whiteColor
-  },
-  phantomIcon: {
-    width: 48,
-    height: 48
   },
   content: {
     flex: 1

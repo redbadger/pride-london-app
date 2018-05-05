@@ -12,6 +12,9 @@ type Props = {|
   placeholder: string,
   onFocus: () => void,
   onChangeText: string => void,
+  returnKeyLabel?: string,
+  returnKeyType?: "done" | "go" | "next" | "search" | "send",
+  onSubmitEditing?: () => void,
   value: ?string
 |};
 
@@ -32,19 +35,18 @@ class DonateScreen extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { placeholder, onChangeText, value } = this.props;
+    const { placeholder, onFocus, ...otherProps } = this.props;
     const { focused } = this.state;
     return (
       <TextInput
         keyboardType="numeric"
         onBlur={this.onBlur}
         onFocus={this.onFocus}
-        onChangeText={onChangeText}
         placeholder={focused ? placeholder : null}
         placeholderTextColor={mediumGreyColor}
         style={[styles.base, focused && styles.focused]}
         underlineColorAndroid={transparent}
-        value={value}
+        {...otherProps}
       />
     );
   }

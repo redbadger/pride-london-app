@@ -10,50 +10,9 @@ exports[`renders correctly 1`] = `
   }
 >
   <Header
-    backgroundColor="#2d2f7f"
-  >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "maxWidth": 440,
-          "width": "100%",
-        }
-      }
-    >
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={[Function]}
-        source={1}
-        testID="back"
-      />
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        type="h2"
-      >
-        Donate
-      </Text>
-      <Component
-        style={
-          Object {
-            "height": 48,
-            "width": 48,
-          }
-        }
-      />
-    </ContentPadding>
-  </Header>
+    onBack={[Function]}
+    title="Donate"
+  />
   <KeyboardAvoidingView
     behavior="padding"
     enabled={true}
@@ -158,7 +117,10 @@ exports[`renders correctly 1`] = `
           <DonateScreen
             onChangeText={[Function]}
             onFocus={[Function]}
+            onSubmitEditing={[Function]}
             placeholder="0.00"
+            returnKeyLabel="Donate"
+            returnKeyType="go"
             value={null}
           />
           <Text
