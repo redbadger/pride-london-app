@@ -322,7 +322,6 @@ jobs:
     environment:
       <<: *env-macos
     steps:
-      - <<: *release-api-keys
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
       # Not using a workspace here as Node and Yarn versions
