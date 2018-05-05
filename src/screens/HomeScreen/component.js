@@ -5,7 +5,8 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { equals } from "ramda";
 import Text from "../../components/Text";
 import type { Event } from "../../data/event";
-import type { LocalizedFieldRef } from "../../data/localized-field-ref";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 import EventTile from "../../components/EventTile";
 import Loading from "../../components/Loading";
 import Touchable from "../../components/Touchable";
@@ -28,7 +29,7 @@ type Props = {
   featuredEventsTitle: string,
   featuredEvents: Event[],
   loading: boolean,
-  getAssetUrl: LocalizedFieldRef => string
+  getAssetSource: FieldRef => ImageSource
 };
 
 class HomeScreen extends Component<Props> {
@@ -102,8 +103,8 @@ class HomeScreen extends Component<Props> {
                       name={event.fields.name[locale]}
                       date={event.fields.startTime[locale]}
                       eventCategories={event.fields.eventCategories[locale]}
-                      imageUrl={this.props.getAssetUrl(
-                        event.fields.eventsListPicture
+                      image={this.props.getAssetSource(
+                        event.fields.eventsListPicture[locale]
                       )}
                     />
                   </Touchable>

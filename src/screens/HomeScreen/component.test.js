@@ -34,7 +34,11 @@ const generateEvents = (count = 2): Event[] =>
       }: any)
   );
 
-const getAssetUrl = jest.fn().mockReturnValue("http://example.com/image.png");
+const getAssetSource = jest.fn().mockReturnValue({
+  uri: "http://example.com/image.png",
+  width: 1,
+  height: 1
+});
 const navigation: any = {
   navigate: jest.fn()
 };
@@ -47,7 +51,7 @@ describe("HomeScreen Component", () => {
         loading={false}
         featuredEventsTitle="Featured events"
         featuredEvents={generateEvents(2)}
-        getAssetUrl={getAssetUrl}
+        getAssetSource={getAssetSource}
         {...props}
       />
     );
@@ -56,17 +60,15 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(5);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetUrl).toHaveBeenCalledTimes(4);
-    expect(getAssetUrl).toHaveBeenCalledWith({
-      "en-GB": { sys: { id: "asset1" } }
-    });
+    expect(getAssetSource).toHaveBeenCalledTimes(4);
+    expect(getAssetSource).toHaveBeenCalledWith({ sys: { id: "asset1" } });
   });
 
   it("renders max 6 events", () => {
     const featuredEvents = generateEvents(10);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetUrl).toHaveBeenCalledTimes(6);
+    expect(getAssetSource).toHaveBeenCalledTimes(6);
   });
 
   it("renders loading indicator when loading", () => {
@@ -159,6 +161,6 @@ describe("HomeScreen Component", () => {
 });
 
 afterEach(() => {
-  getAssetUrl.mockClear();
+  getAssetSource.mockClear();
   navigation.navigate.mockClear();
 });
