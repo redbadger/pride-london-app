@@ -296,8 +296,8 @@ jobs:
       <<: *env-docker
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
     steps:
-      - <<: *release-api-keys
       - <<: *checkout-docker
+      - <<: *release-api-keys
       - <<: *workspace-docker
       - <<: *android-release-secrets
       - <<: *fabric-secrets-android
@@ -385,8 +385,8 @@ jobs:
     environment:
       <<: *env-macos
     steps:
-      - <<: *release-api-keys
       - <<: *checkout-macos
+      - <<: *release-api-keys
       - <<: *set-ruby-version-macos
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
