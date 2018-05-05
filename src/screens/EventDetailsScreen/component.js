@@ -20,7 +20,8 @@ import { groupPerformancesByPeriod } from "../../selectors/events";
 import { whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
 import type { Event, EventCategoryName } from "../../data/event";
-import type { LocalizedFieldRef } from "../../data/localized-field-ref";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 import locale from "../../data/locale";
 import { EVENT_LIST } from "../../constants/routes";
 
@@ -91,7 +92,7 @@ export const EventTickets = ({ event }: { event: Event }) => (
 
 type Props = {
   event: Event,
-  getAssetUrl: LocalizedFieldRef => string,
+  getAssetSource: FieldRef => ImageSource,
   isSaved: boolean,
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
   toggleSaved: boolean => void,
@@ -108,7 +109,7 @@ class EventDetailsScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { event, getAssetUrl, navigation, setCategoryFilter } = this.props;
+    const { event, getAssetSource, navigation, setCategoryFilter } = this.props;
     return (
       <View style={styles.container}>
         <EventHeader
@@ -117,10 +118,15 @@ class EventDetailsScreen extends PureComponent<Props> {
           navigation={navigation}
         />
         <ShadowedScrollView topShadow={false}>
-          <Image
-            style={{ aspectRatio: 5 / 3 }}
-            source={{ uri: getAssetUrl(event.fields.individualEventPicture) }}
-          />
+          <View style={{ aspectRatio: 5 / 3 }}>
+            <Image
+              style={styles.image}
+              resizeMode="cover"
+              source={getAssetSource(
+                event.fields.individualEventPicture[locale]
+              )}
+            />
+          </View>
           <View style={styles.content}>
             <LayoutColumn spacing={20}>
               <ContentPadding>
@@ -188,6 +194,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: whiteColor
+  },
+  image: {
+    maxWidth: "100%",
+    maxHeight: "100%"
   },
   content: {
     marginTop: 16,

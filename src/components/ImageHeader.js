@@ -1,17 +1,17 @@
 // @flow
 import React from "react";
 import { ImageBackground, StyleSheet } from "react-native";
-import type { ImageRef } from "../../data/image-ref";
-import ContentPadding from "../../components/ContentPadding";
-import Text from "../../components/Text";
-import { lightNavyBlueColor, whiteColor } from "../../constants/colors";
+import type { ImageRef } from "../data/image-ref";
+import ContentPadding from "./ContentPadding";
+import Text from "./Text";
+import { lightNavyBlueColor, whiteColor } from "../constants/colors";
 
 type Props = {
   image: ImageRef,
-  title: string
+  title: string | string[]
 };
 
-const SupportUsSectionHeader = ({ image, title }: Props) => (
+const ImageHeader = ({ image, title }: Props) => (
   <ImageBackground style={styles.image} source={image} resizeMode="cover">
     <ContentPadding
       padding={{
@@ -19,10 +19,13 @@ const SupportUsSectionHeader = ({ image, title }: Props) => (
         medium: { horizontal: 16, vertical: 16 },
         large: { horizontal: 16, vertical: 16 }
       }}
+      style={styles.contentPadding}
     >
-      <Text type="h1" style={styles.title}>
-        {title}
-      </Text>
+      {(Array.isArray(title) ? title : [title]).map(line => (
+        <Text key={line} type="h1" style={styles.title}>
+          {line}
+        </Text>
+      ))}
     </ContentPadding>
   </ImageBackground>
 );
@@ -30,16 +33,17 @@ const SupportUsSectionHeader = ({ image, title }: Props) => (
 const styles = StyleSheet.create({
   image: {
     aspectRatio: 2 / 1,
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
+  },
+  contentPadding: {
     alignItems: "flex-start"
   },
   title: {
-    backgroundColor: whiteColor,
     color: lightNavyBlueColor,
+    backgroundColor: whiteColor,
     paddingHorizontal: 8,
-    paddingTop: 4,
-    lineHeight: 36
+    paddingTop: 8
   }
 });
 
-export default SupportUsSectionHeader;
+export default ImageHeader;

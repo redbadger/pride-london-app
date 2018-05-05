@@ -21,6 +21,7 @@ export const whiteColor = "#ffffff";
 export const velvetColor = "#660c63";
 export const blackColor = "#111111";
 export const coralColor = "#ff5b44";
+export const mediumGreyColor = "#cecece";
 export const shadowColor = "rgba(0, 0, 0, 0.1)";
 
 // CUSTOM
@@ -43,7 +44,6 @@ export const dialogTitleColor = "rgb(45, 47, 127)";
 export const dialogApplyButtonBgColor = "rgb(44, 218, 157)";
 export const dialogApplyButtonTextColor = "rgb(45, 47, 127)";
 export const dialogHeaderDividerColor = "#F2F2F2";
-export const disabledButtonBgColor = "#cecece";
 
 // TAB BAR
 
@@ -97,4 +97,5 @@ export const eventTileTextColor = "rgb(45, 47, 127)";
 export const supportUsButtonShadow = "rgba(0, 0, 0, 0.2)";
 
 // SPONSOR
+
 export const sponsorLogoBackgroundColor = "rgba(243, 243, 243, 0.5)";
