@@ -192,9 +192,10 @@ release-api-keys: &release-api-keys
   run:
     name: Set release API keys
     command: |
-      export CONTENTFUL_SPACE_ID=$RELEASE_CONTENTFUL_SPACE_ID
-      export CONTENTFUL_API_KEY=$RELEASE_CONTENTFUL_API_KEY
-      export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY
+      echo 'export CONTENTFUL_SPACE_ID=$RELEASE_CONTENTFUL_SPACE_ID' >> $BASH_ENV
+      echo 'export CONTENTFUL_API_KEY=$RELEASE_CONTENTFUL_API_KEY' >> $BASH_ENV
+      echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
+      source $BASH_ENV
 
 version: 2
 jobs:
@@ -297,7 +298,6 @@ jobs:
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
     steps:
       - <<: *checkout-docker
-      - <<: *release-api-keys
       - <<: *workspace-docker
       - <<: *android-release-secrets
       - <<: *fabric-secrets-android
@@ -307,6 +307,7 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
+      - <<: *release-api-keys
       - <<: *generate-env
       - run:
             command: |
@@ -386,7 +387,6 @@ jobs:
       <<: *env-macos
     steps:
       - <<: *checkout-macos
-      - <<: *release-api-keys
       - <<: *set-ruby-version-macos
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
@@ -398,6 +398,7 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
+      - <<: *release-api-keys
       - <<: *generate-env-macos
       - run:
             command: |
