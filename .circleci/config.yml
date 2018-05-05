@@ -298,7 +298,6 @@ jobs:
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
     steps:
       - <<: *checkout-docker
-      - <<: *release-api-keys
       - <<: *workspace-docker
       - <<: *android-release-secrets
       - <<: *fabric-secrets-android
@@ -308,6 +307,7 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
+      - <<: *release-api-keys
       - <<: *generate-env
       - run:
             command: |
@@ -334,7 +334,6 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
-      - <<: *release-api-keys
       - <<: *generate-env-macos
       - run:
             command: |
@@ -388,7 +387,6 @@ jobs:
       <<: *env-macos
     steps:
       - <<: *checkout-macos
-      - <<: *release-api-keys
       - <<: *set-ruby-version-macos
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
@@ -400,6 +398,7 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
+      - <<: *release-api-keys
       - <<: *generate-env-macos
       - run:
             command: |
