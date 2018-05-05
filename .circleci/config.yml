@@ -188,6 +188,14 @@ generate-env-macos: &generate-env-macos
     command: node ./scripts/generate-dotenv.js
     working_directory: /Users/distiller/project
 
+release-api-keys: &release-api-keys
+  run:
+    name: Set release API keys
+    command: |
+      export CONTENTFUL_SPACE_ID=$RELEASE_CONTENTFUL_SPACE_ID
+      export CONTENTFUL_API_KEY=$RELEASE_CONTENTFUL_API_KEY
+      export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY
+
 version: 2
 jobs:
   # build is a reserved job name for running circleci locally
@@ -287,10 +295,8 @@ jobs:
     environment:
       <<: *env-docker
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
-      CONTENTFUL_SPACE_ID: $RELEASE_CONTENTFUL_SPACE_ID
-      CONTENTFUL_API_KEY: $RELEASE_CONTENTFUL_API_KEY
-      GOOGLE_MAPS_API_KEY: $RELEASE_GOOGLE_MAPS_API_KEY
     steps:
+      - <<: *release-api-keys
       - <<: *checkout-docker
       - <<: *workspace-docker
       - <<: *android-release-secrets
@@ -378,10 +384,8 @@ jobs:
     working_directory: /Users/distiller/project/ios
     environment:
       <<: *env-macos
-      CONTENTFUL_SPACE_ID: $RELEASE_CONTENTFUL_SPACE_ID
-      CONTENTFUL_API_KEY: $RELEASE_CONTENTFUL_API_KEY
-      GOOGLE_MAPS_API_KEY: $RELEASE_GOOGLE_MAPS_API_KEY
     steps:
+      - <<: *release-api-keys
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
       # Not using a workspace here as Node and Yarn versions
