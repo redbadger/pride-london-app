@@ -4,6 +4,7 @@ import { shallow } from "enzyme";
 import Component from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import type { Event } from "../../data/event";
+import Loading from "../../components/Loading";
 
 const generateEvents = (count = 2): Event[] =>
   Array.from(Array(count)).map(
@@ -25,12 +26,19 @@ const generateEvents = (count = 2): Event[] =>
           },
           startTime: {
             "en-GB": "2018-07-10T00:00"
+          },
+          eventCategories: {
+            "en-GB": ["Cabaret & Variety", "Music"]
           }
         }
       }: any)
   );
 
-const getAssetUrl = jest.fn().mockReturnValue("http://example.com/image.png");
+const getAssetSource = jest.fn().mockReturnValue({
+  uri: "http://example.com/image.png",
+  width: 1,
+  height: 1
+});
 const navigation: any = {
   navigate: jest.fn()
 };
@@ -43,7 +51,7 @@ describe("HomeScreen Component", () => {
         loading={false}
         featuredEventsTitle="Featured events"
         featuredEvents={generateEvents(2)}
-        getAssetUrl={getAssetUrl}
+        getAssetSource={getAssetSource}
         {...props}
       />
     );
@@ -52,17 +60,15 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(5);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetUrl).toHaveBeenCalledTimes(4);
-    expect(getAssetUrl).toHaveBeenCalledWith({
-      "en-GB": { sys: { id: "asset1" } }
-    });
+    expect(getAssetSource).toHaveBeenCalledTimes(4);
+    expect(getAssetSource).toHaveBeenCalledWith({ sys: { id: "asset1" } });
   });
 
   it("renders max 6 events", () => {
     const featuredEvents = generateEvents(10);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetUrl).toHaveBeenCalledTimes(6);
+    expect(getAssetSource).toHaveBeenCalledTimes(6);
   });
 
   it("renders loading indicator when loading", () => {
@@ -70,9 +76,9 @@ describe("HomeScreen Component", () => {
       loading: true
     });
 
-    const loadingText = output.find("Text").first();
+    const loadingText = output.find(Loading);
 
-    expect(loadingText.children().text()).toEqual("Loading...");
+    expect(loadingText.length).toEqual(1);
   });
 
   it("navigates to featured event list when tapped", () => {
@@ -155,6 +161,6 @@ describe("HomeScreen Component", () => {
 });
 
 afterEach(() => {
-  getAssetUrl.mockClear();
+  getAssetSource.mockClear();
   navigation.navigate.mockClear();
 });

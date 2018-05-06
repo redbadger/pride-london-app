@@ -17,6 +17,7 @@
 		090907FD2090D408005719EE /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0788C0199C4676924E752F /* Lottie.framework */; };
 		090908002090D4C0005719EE /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090907F32090D39D005719EE /* Lottie.framework */; };
 		090908012090D4C0005719EE /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 090907F32090D39D005719EE /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0F97045F02ED482B9C1E9502 /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A07DCBA3E154DB190496711 /* libRNReactNativeHapticFeedback.a */; };
 		10B4868C8BCD4D86BDBC946D /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC984739B4624E9481CEE51E /* Poppins-Medium.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		1366647879EE4250ADEF4246 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 939F6855FDA045B6BECAB69F /* Roboto-MediumItalic.ttf */; };
@@ -216,6 +217,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
 			remoteInfo = "privatedata-tvOS";
+		};
+		16F5947D209CA1D900703940 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNReactNativeHapticFeedback;
 		};
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -464,10 +472,12 @@
 		88788B71E6054B03A6B62D25 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BoldItalic.ttf"; path = "../assets/fonts/Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		939F6855FDA045B6BECAB69F /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-MediumItalic.ttf"; path = "../assets/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		942CC624E7ED4161939675A2 /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
+		9A07DCBA3E154DB190496711 /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = "<group>"; };
 		AC984739B4624E9481CEE51E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B02A5A5671CA4B19B5BCD0B4 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		C5C678778AAE46BC9D691AEC /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		F3E9F6E137EF4895832E3D99 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		F7F30F2CFAEF426BA05F1A4F /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		F8C91E1E19B24BFD87EAF972 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
@@ -510,6 +520,7 @@
 				95A7B0F285774B6D8D5C7289 /* libBVLinearGradient.a in Frameworks */,
 				692D5633F6B843FBA8E8BE22 /* libLottie.a in Frameworks */,
 				FC84244B2A4F4565BBCADEE5 /* libLottieReactNative.a in Frameworks */,
+				0F97045F02ED482B9C1E9502 /* libRNReactNativeHapticFeedback.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +663,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		16F5947A209CA1D900703940 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16F5947E209CA1D900703940 /* libRNReactNativeHapticFeedback.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +727,7 @@
 				F8C91E1E19B24BFD87EAF972 /* SplashScreen.xcodeproj */,
 				6428AA583D204A5785008825 /* Lottie.xcodeproj */,
 				791D0ECB203641F8BF34F4C7 /* LottieReactNative.xcodeproj */,
+				D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -767,6 +787,7 @@
 				6B0788C0199C4676924E752F /* Lottie.framework */,
 				0EE022A2E7224301B182CD7A /* libLottie.a */,
 				4136FF47A2BC434294DAD39E /* libLottieReactNative.a */,
+				9A07DCBA3E154DB190496711 /* libRNReactNativeHapticFeedback.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -962,6 +983,10 @@
 					ProjectRef = 686F40911AD148C6A00AD018 /* ReactNativeConfig.xcodeproj */;
 				},
 				{
+					ProductGroup = 16F5947A209CA1D900703940 /* Products */;
+					ProjectRef = D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */;
+				},
+				{
 					ProductGroup = D9D0E1352066DB7D00E28562 /* Products */;
 					ProjectRef = F8C91E1E19B24BFD87EAF972 /* SplashScreen.xcodeproj */;
 				},
@@ -1120,6 +1145,13 @@
 			fileType = archive.ar;
 			path = "libprivatedata-tvOS.a";
 			remoteRef = 1617938D201649D500BA3C13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16F5947E209CA1D900703940 /* libRNReactNativeHapticFeedback.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNReactNativeHapticFeedback.a;
+			remoteRef = 16F5947D209CA1D900703940 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {
@@ -1354,7 +1386,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\nexport DEVELOPMENT_BUILD_CONFIGURATIONS=\"+(Debug)\"\n../node_modules/react-native-schemes-manager/lib/react-native-xcode.sh";
+			shellScript = "export DEVELOPMENT_BUILD_CONFIGURATIONS=\"+(Debug)\"\nexport NODE_BINARY=node\n../node_modules/react-native-schemes-manager/lib/react-native-xcode.sh";
 		};
 		1696416D204301860058AF96 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1367,7 +1399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n    apiKey=$(sed -n '1p' < ./PrideLondonApp/fabric.properties)\n    apiSecret=$(sed -n '2p' < ./PrideLondonApp/fabric.properties)\n    /usr/libexec/PlistBuddy -c \"Set :Fabric:APIKey string $apiKey\" ./Info.plist\n    ./Fabric.framework/run $apiKey $apiSecret\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n    apiKey=$(sed -n '1p' < ./PrideLondonApp/fabric.properties)\n    apiSecret=$(sed -n '2p' < ./PrideLondonApp/fabric.properties)\n    ./Fabric.framework/run $apiKey $apiSecret\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1435,6 +1467,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1472,6 +1505,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1513,6 +1547,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1552,6 +1587,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1635,6 +1671,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1670,6 +1707,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1755,6 +1793,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1790,6 +1829,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1875,6 +1915,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1910,6 +1951,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

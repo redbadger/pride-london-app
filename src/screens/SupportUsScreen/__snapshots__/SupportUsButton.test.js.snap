@@ -64,6 +64,7 @@ exports[`picks different icon for external links 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "#ffffff",
@@ -91,6 +92,7 @@ exports[`picks different icon for external links 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "color": "#ffffff",
@@ -168,6 +170,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "#2d2f7f",
@@ -195,6 +198,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "color": "#2d2f7f",
@@ -272,6 +276,7 @@ exports[`renders correctly 1`] = `
       <Text
         color="blackColor"
         markdown={false}
+        markdownStyle={Object {}}
         style={
           Object {
             "color": "#ffffff",
@@ -299,6 +304,7 @@ exports[`renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "color": "#ffffff",

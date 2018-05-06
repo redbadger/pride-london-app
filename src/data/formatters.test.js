@@ -1,6 +1,7 @@
 // @flow
 import {
   formatDateRange,
+  formatTime,
   formatPrice,
   formattedEventPrice,
   formattedEventPriceRange
@@ -21,6 +22,15 @@ describe("formatDateRange", () => {
       endDate: "2018-01-02"
     });
     expect(result).toBe("1 Jan - 2 Jan");
+  });
+});
+
+describe("formatTime", () => {
+  it("formats time correctly", () => {
+    const a = formatTime("2017-07-09T11:00");
+    expect(a).toBe("11:00");
+    const b = formatTime("2017-07-09T06:00");
+    expect(b).toBe("06:00");
   });
 });
 

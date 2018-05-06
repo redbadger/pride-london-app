@@ -1,14 +1,13 @@
 // @flow
 import React, { PureComponent } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type {
-  SavedEvents,
-  EventDays,
-  LocalizedFieldRef
-} from "../../data/event";
+import type { SavedEvents, EventDays } from "../../data/event";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
 import FilterHeader from "../../components/ConnectedFilterHeader";
+import Loading from "../../components/Loading";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
@@ -26,7 +25,7 @@ export type Props = {
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>,
-  getAssetUrl: LocalizedFieldRef => string,
+  getAssetSource: FieldRef => ImageSource,
   selectedCategories: Set<string>
 };
 
@@ -52,7 +51,7 @@ class EventsScreen extends PureComponent<Props> {
       addSavedEvent,
       removeSavedEvent,
       refreshing,
-      getAssetUrl
+      getAssetSource
     } = this.props;
     return (
       <View style={styles.container}>
@@ -62,7 +61,7 @@ class EventsScreen extends PureComponent<Props> {
           onFilterButtonPress={this.handleFilterButtonPress}
         />
         {this.props.loading ? (
-          <Text>Loading...</Text>
+          <Loading />
         ) : (
           <EventList
             locale={locale}
@@ -77,7 +76,7 @@ class EventsScreen extends PureComponent<Props> {
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
-            getAssetUrl={getAssetUrl}
+            getAssetSource={getAssetSource}
           />
         )}
       </View>

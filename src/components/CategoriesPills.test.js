@@ -44,4 +44,33 @@ describe("CategoriesPills Component", () => {
       expect(component.scrollToLastPill()).toBeUndefined();
     });
   });
+
+  describe("touch handling", () => {
+    it("triggers onPress when the user taps", () => {
+      const onPress = jest.fn();
+      const instance = render({
+        onPress,
+        selectedCategories: new Set()
+      }).instance();
+
+      instance.onTouchStart();
+      instance.onTouchEnd();
+
+      expect(onPress).toHaveBeenCalled();
+    });
+
+    it("does not trigger onPress when the user scrolls", () => {
+      const onPress = jest.fn();
+      const instance = render({
+        onPress,
+        selectedCategories: new Set()
+      }).instance();
+
+      instance.onTouchStart();
+      instance.onScroll();
+      instance.onTouchEnd();
+
+      expect(onPress).not.toHaveBeenCalled();
+    });
+  });
 });

@@ -83,7 +83,7 @@ exports[`EventList renders correctly 1`] = `
               "eventPriceLow": Object {
                 "en-GB": "0",
               },
-              "imageUrl": Object {
+              "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
               },
               "isFree": Object {
@@ -121,7 +121,7 @@ exports[`EventList renders correctly 1`] = `
               "eventPriceLow": Object {
                 "en-GB": "0",
               },
-              "imageUrl": Object {
+              "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
               },
               "isFree": Object {
@@ -164,7 +164,7 @@ exports[`EventList renders correctly 1`] = `
               "eventPriceLow": Object {
                 "en-GB": "0",
               },
-              "imageUrl": Object {
+              "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
               },
               "isFree": Object {
@@ -211,7 +211,7 @@ exports[`EventList renders section headers correctly 1`] = `
         "alignItems": "center",
         "backgroundColor": "#f3f3f3",
         "flexDirection": "row",
-        "height": 40,
+        "minHeight": 40,
       },
       Object {
         "borderWidth": 0,
@@ -235,13 +235,9 @@ exports[`EventList renders section headers correctly 1`] = `
       ]
     }
     accessible={true}
-    color="blackColor"
+    color="lightNavyBlueColor"
     markdown={false}
-    style={
-      Object {
-        "color": "rgb(45, 47, 127)",
-      }
-    }
+    markdownStyle={Object {}}
     type="h2"
   >
     Hello

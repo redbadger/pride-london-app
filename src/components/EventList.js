@@ -10,12 +10,9 @@ import EventCard from "./EventCard";
 import Touchable from "./Touchable";
 import SectionHeader from "./SectionHeader";
 import { selectEventIsFree } from "../selectors/event";
-import type {
-  SavedEvents,
-  Event,
-  EventDays,
-  LocalizedFieldRef
-} from "../data/event";
+import type { SavedEvents, Event, EventDays } from "../data/event";
+import type { FieldRef } from "../data/field-ref";
+import type { ImageSource } from "../data/get-asset-source";
 import { bgColor, eventCardShadow } from "../constants/colors";
 
 type Props = {
@@ -27,7 +24,7 @@ type Props = {
   refreshing?: boolean,
   onRefresh?: () => void,
   onPress: (eventName: string) => void,
-  getAssetUrl: LocalizedFieldRef => string
+  getAssetSource: FieldRef => ImageSource
 };
 
 const separator = style => () => <View style={style} />;
@@ -40,7 +37,7 @@ type RenderItemArgs = {
   removeSavedEvent: string => void,
   locale: string,
   onPress: (eventName: string) => void,
-  getAssetUrl: LocalizedFieldRef => string
+  getAssetSource: FieldRef => ImageSource
 };
 
 export const renderItem = ({
@@ -49,7 +46,7 @@ export const renderItem = ({
   removeSavedEvent,
   locale,
   onPress,
-  getAssetUrl
+  getAssetSource
 }: RenderItemArgs) => ({ item }: ItemProps) => (
   <ContentPadding>
     <Touchable
@@ -63,7 +60,7 @@ export const renderItem = ({
         eventPriceHigh={item.fields.eventPriceHigh[locale]}
         startTime={item.fields.startTime[locale]}
         endTime={item.fields.endTime[locale]}
-        imageUrl={getAssetUrl(item.fields.eventsListPicture)}
+        image={getAssetSource(item.fields.eventsListPicture[locale])}
         isFree={selectEventIsFree(item)}
         isSaved={isSavedEvent(item.sys.id)}
         toggleSaved={active => {
@@ -129,7 +126,7 @@ class EventList extends Component<Props> {
       refreshing,
       onRefresh,
       onPress,
-      getAssetUrl
+      getAssetSource
     } = this.props;
 
     const isSavedEvent = id => savedEvents.has(id);
@@ -146,7 +143,7 @@ class EventList extends Component<Props> {
           removeSavedEvent,
           locale,
           onPress,
-          getAssetUrl
+          getAssetSource
         })}
         keyExtractor={event => event.sys.id}
         contentContainerStyle={styles.container}

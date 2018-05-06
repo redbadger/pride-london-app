@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`renders correctly with all props 1`] = `
 <withOrientation
   accessibilityTraits={
     Array [
@@ -9,22 +9,213 @@ exports[`renders correctly 1`] = `
   }
   style={
     Object {
-      "backgroundColor": "red",
+      "backgroundColor": "#2d2f7f",
     }
   }
 >
   <StatusBar
     animated={true}
-    backgroundColor="red"
+    backgroundColor="#2d2f7f"
     barStyle="light-content"
     showHideTransition="fade"
   />
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+        "maxWidth": 440,
+        "width": "100%",
+      }
+    }
   >
-    Lorem Ipsum
-  </Text>
+    <IconButton
+      accessibilityLabel="Back"
+      onPress={[Function]}
+      source={1}
+    />
+    <Text
+      color="whiteColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="h2"
+    >
+      Center
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+    >
+      Right
+    </Text>
+  </ContentPadding>
+</withOrientation>
+`;
+
+exports[`renders correctly with default props 1`] = `
+<withOrientation
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
+  }
+  style={
+    Object {
+      "backgroundColor": "#2d2f7f",
+    }
+  }
+>
+  <StatusBar
+    animated={true}
+    backgroundColor="#2d2f7f"
+    barStyle="light-content"
+    showHideTransition="fade"
+  />
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+        "maxWidth": 440,
+        "width": "100%",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "height": 48,
+          "width": 48,
+        }
+      }
+    />
+    <Component
+      style={
+        Object {
+          "height": 48,
+          "width": 48,
+        }
+      }
+    />
+  </ContentPadding>
+</withOrientation>
+`;
+
+exports[`renders correctly with only onBack and rightElement 1`] = `
+<withOrientation
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
+  }
+  style={
+    Object {
+      "backgroundColor": "#2d2f7f",
+    }
+  }
+>
+  <StatusBar
+    animated={true}
+    backgroundColor="#2d2f7f"
+    barStyle="light-content"
+    showHideTransition="fade"
+  />
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+        "maxWidth": 440,
+        "width": "100%",
+      }
+    }
+  >
+    <IconButton
+      accessibilityLabel="Back"
+      onPress={[Function]}
+      source={1}
+    />
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+    >
+      Right
+    </Text>
+  </ContentPadding>
+</withOrientation>
+`;
+
+exports[`renders correctly with only title 1`] = `
+<withOrientation
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
+  }
+  style={
+    Object {
+      "backgroundColor": "#2d2f7f",
+    }
+  }
+>
+  <StatusBar
+    animated={true}
+    backgroundColor="#2d2f7f"
+    barStyle="light-content"
+    showHideTransition="fade"
+  />
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+        "maxWidth": 440,
+        "width": "100%",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "height": 48,
+          "width": 48,
+        }
+      }
+    />
+    <Text
+      color="whiteColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="h2"
+    >
+      Center
+    </Text>
+    <Component
+      style={
+        Object {
+          "height": 48,
+          "width": 48,
+        }
+      }
+    />
+  </ContentPadding>
 </withOrientation>
 `;

@@ -1,11 +1,11 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
-import formatDate from "date-fns/format";
 import { lightNavyBlueColor } from "../constants/colors";
 import Text from "./Text";
 import SaveEventButton from "./SaveEventButton";
-import { formattedEventPrice } from "../data/formatters";
+import { formattedEventPrice, formatTime } from "../data/formatters";
+import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
   name: string,
@@ -14,7 +14,7 @@ type Props = {
   eventPriceHigh: number,
   startTime: string,
   endTime: string,
-  imageUrl: string,
+  image: ImageSource,
   isFree: boolean,
   isSaved: boolean,
   toggleSaved: boolean => void
@@ -32,7 +32,7 @@ class EventCard extends React.PureComponent<Props> {
       locationName,
       startTime,
       endTime,
-      imageUrl,
+      image,
       eventPriceLow,
       eventPriceHigh,
       isFree,
@@ -41,17 +41,15 @@ class EventCard extends React.PureComponent<Props> {
     } = this.props;
     const eventStartTime = removeTimezoneFromDateString(startTime);
     const eventEndTime = removeTimezoneFromDateString(endTime);
-    const timeFormat = "HH:mm";
-    const timeDisplay = `${formatDate(
-      eventStartTime,
-      timeFormat
-    )} - ${formatDate(eventEndTime, timeFormat)}`;
+    const timeDisplay = `${formatTime(eventStartTime)} - ${formatTime(
+      eventEndTime
+    )}`;
 
     return (
       <View style={styles.eventCard}>
         <ImageBackground
           style={styles.imageContainer}
-          source={{ uri: imageUrl }}
+          source={image}
           resizeMode="cover"
         >
           <View style={styles.eventPriceContainer}>
@@ -106,17 +104,16 @@ const styles = StyleSheet.create({
     flexShrink: 1
   },
   eventCard: {
-    height: 108,
+    minHeight: 108,
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5
   },
   imageContainer: {
-    width: 114,
-    height: 108
+    width: 114
   },
   eventPriceContainer: {
-    height: 23,
+    minHeight: 23,
     backgroundColor: lightNavyBlueColor,
     position: "absolute",
     paddingHorizontal: 5,

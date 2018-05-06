@@ -5882,6 +5882,10 @@ react-native-easy-markdown@^1.1.9:
   dependencies:
     simple-markdown "^0.1.1"
 
+react-native-haptic-feedback@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.1.0.tgz#e75fd660516c31390e15e5bbf09ff3d71c9eef0d"
+
 react-native-linear-gradient@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"

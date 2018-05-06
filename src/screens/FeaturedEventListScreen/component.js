@@ -2,24 +2,14 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import type {
-  SavedEvents,
-  EventDays,
-  LocalizedFieldRef
-} from "../../data/event";
-import ContentPadding from "../../components/ContentPadding";
+import type { SavedEvents, EventDays } from "../../data/event";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
 import Header from "../../components/Header";
-import IconButton from "../../components/IconButton";
-import Text from "../../components/Text";
-import {
-  bgColor,
-  whiteColor,
-  lightNavyBlueColor
-} from "../../constants/colors";
+import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
-import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 
 import locale from "../../data/locale";
 
@@ -29,7 +19,7 @@ export type Props = {
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
-  getAssetUrl: LocalizedFieldRef => string
+  getAssetSource: FieldRef => ImageSource
 };
 
 class FeaturedEventsListScreen extends PureComponent<Props> {
@@ -41,21 +31,12 @@ class FeaturedEventsListScreen extends PureComponent<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Header backgroundColor={lightNavyBlueColor}>
-          <ContentPadding style={styles.headerContent}>
-            <IconButton
-              accessibilityLabel="Back"
-              onPress={() => {
-                this.props.navigation.goBack(null);
-              }}
-              source={chevronLeftWhite}
-            />
-            <Text type="h2" style={styles.headerTitle}>
-              {text.featuredEventListTitle}
-            </Text>
-            <View style={styles.phantomIcon} />
-          </ContentPadding>
-        </Header>
+        <Header
+          onBack={() => {
+            this.props.navigation.goBack(null);
+          }}
+          title={text.featuredEventListTitle}
+        />
         <EventList
           locale={locale}
           events={this.props.events}
@@ -65,7 +46,7 @@ class FeaturedEventsListScreen extends PureComponent<Props> {
           onPress={(eventId: string) => {
             this.props.navigation.navigate(EVENT_DETAILS, { eventId });
           }}
-          getAssetUrl={this.props.getAssetUrl}
+          getAssetSource={this.props.getAssetSource}
         />
       </View>
     );
@@ -76,18 +57,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: bgColor
-  },
-  headerContent: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  headerTitle: {
-    color: whiteColor
-  },
-  phantomIcon: {
-    width: 48,
-    height: 48
   }
 });
 

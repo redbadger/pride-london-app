@@ -20,22 +20,6 @@ or alternatively using `brew cask install fastlane`
 
 ## Android
 
-### android test
-
-```
-fastlane android test
-```
-
-Runs all the tests
-
-### android build
-
-```
-fastlane android build
-```
-
-Build application
-
 ### android build_alpha
 
 ```
@@ -43,6 +27,22 @@ fastlane android build_alpha
 ```
 
 Build alpha
+
+### android build_beta
+
+```
+fastlane android build_beta
+```
+
+Build beta
+
+### android build_release
+
+```
+fastlane android build_release
+```
+
+Build release
 
 ### android alpha
 
@@ -60,6 +60,14 @@ fastlane android beta
 
 Build and deploy to Beta lane
 
+### android release
+
+```
+fastlane android release
+```
+
+Build and deploy to Play Store
+
 ### android deploy_hockey
 
 ```
@@ -67,6 +75,22 @@ fastlane android deploy_hockey
 ```
 
 Deploy to HockeyApp
+
+### android deploy_fabric
+
+```
+fastlane android deploy_fabric
+```
+
+Deploy to Beta by Fabric
+
+### android deploy_play_store
+
+```
+fastlane android deploy_play_store
+```
+
+Deploy to Play Store
 
 ---
 

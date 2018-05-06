@@ -2,7 +2,7 @@
 import type { Reducer } from "redux";
 import type { CmsAction } from "../actions/events";
 import type { CmsEntry } from "../integrations/cms";
-import type { Asset } from "../data/event";
+import type { Asset } from "../data/asset";
 
 export type State = {
   entries: CmsEntry[],

@@ -6,7 +6,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     Object {
       "borderRadius": 5,
       "flexDirection": "row",
-      "height": 108,
+      "minHeight": 108,
       "overflow": "hidden",
     }
   }
@@ -15,12 +15,13 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
     resizeMode="cover"
     source={
       Object {
+        "height": 10,
         "uri": "https://image.jpg",
+        "width": 10,
       }
     }
     style={
       Object {
-        "height": 108,
         "width": 114,
       }
     }
@@ -29,8 +30,8 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       style={
         Object {
           "backgroundColor": "#2d2f7f",
-          "height": 23,
           "justifyContent": "center",
+          "minHeight": 23,
           "paddingHorizontal": 5,
           "position": "absolute",
         }
@@ -39,6 +40,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       <Text
         color="whiteColor"
         markdown={false}
+        markdownStyle={Object {}}
         type="price"
       >
         From £12
@@ -84,6 +86,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
           <Text
             color="lightNavyBlueColor"
             markdown={false}
+            markdownStyle={Object {}}
             style={
               Object {
                 "paddingTop": 12,
@@ -96,6 +99,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
           <Text
             color="lightNavyBlueColor"
             markdown={false}
+            markdownStyle={Object {}}
             numberOfLines={2}
             style={
               Object {
@@ -118,6 +122,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       <Text
         color="lightNavyBlueColor"
         markdown={false}
+        markdownStyle={Object {}}
         type="small"
       >
         location
@@ -133,7 +138,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     Object {
       "borderRadius": 5,
       "flexDirection": "row",
-      "height": 108,
+      "minHeight": 108,
       "overflow": "hidden",
     }
   }
@@ -142,12 +147,13 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
     resizeMode="cover"
     source={
       Object {
+        "height": 10,
         "uri": "https://image.jpg",
+        "width": 10,
       }
     }
     style={
       Object {
-        "height": 108,
         "width": 114,
       }
     }
@@ -156,8 +162,8 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       style={
         Object {
           "backgroundColor": "#2d2f7f",
-          "height": 23,
           "justifyContent": "center",
+          "minHeight": 23,
           "paddingHorizontal": 5,
           "position": "absolute",
         }
@@ -166,6 +172,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       <Text
         color="whiteColor"
         markdown={false}
+        markdownStyle={Object {}}
         type="price"
       >
         £12
@@ -211,6 +218,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
           <Text
             color="lightNavyBlueColor"
             markdown={false}
+            markdownStyle={Object {}}
             style={
               Object {
                 "paddingTop": 12,
@@ -223,6 +231,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
           <Text
             color="lightNavyBlueColor"
             markdown={false}
+            markdownStyle={Object {}}
             numberOfLines={2}
             style={
               Object {
@@ -245,6 +254,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       <Text
         color="lightNavyBlueColor"
         markdown={false}
+        markdownStyle={Object {}}
         type="small"
       >
         location
@@ -260,7 +270,7 @@ exports[`renders correctly when isFree is true 1`] = `
     Object {
       "borderRadius": 5,
       "flexDirection": "row",
-      "height": 108,
+      "minHeight": 108,
       "overflow": "hidden",
     }
   }
@@ -269,12 +279,13 @@ exports[`renders correctly when isFree is true 1`] = `
     resizeMode="cover"
     source={
       Object {
+        "height": 10,
         "uri": "https://image.jpg",
+        "width": 10,
       }
     }
     style={
       Object {
-        "height": 108,
         "width": 114,
       }
     }
@@ -283,8 +294,8 @@ exports[`renders correctly when isFree is true 1`] = `
       style={
         Object {
           "backgroundColor": "#2d2f7f",
-          "height": 23,
           "justifyContent": "center",
+          "minHeight": 23,
           "paddingHorizontal": 5,
           "position": "absolute",
         }
@@ -293,6 +304,7 @@ exports[`renders correctly when isFree is true 1`] = `
       <Text
         color="whiteColor"
         markdown={false}
+        markdownStyle={Object {}}
         type="price"
       >
         Free
@@ -338,6 +350,7 @@ exports[`renders correctly when isFree is true 1`] = `
           <Text
             color="lightNavyBlueColor"
             markdown={false}
+            markdownStyle={Object {}}
             style={
               Object {
                 "paddingTop": 12,
@@ -350,6 +363,7 @@ exports[`renders correctly when isFree is true 1`] = `
           <Text
             color="lightNavyBlueColor"
             markdown={false}
+            markdownStyle={Object {}}
             numberOfLines={2}
             style={
               Object {
@@ -372,6 +386,7 @@ exports[`renders correctly when isFree is true 1`] = `
       <Text
         color="lightNavyBlueColor"
         markdown={false}
+        markdownStyle={Object {}}
         type="small"
       >
         location

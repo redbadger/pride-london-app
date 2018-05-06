@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "alignSelf": "flex-start",
+      "borderBottomColor": "#2cda9d",
+      "borderBottomWidth": 1,
+      "marginBottom": 2,
+    }
+  }
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h4"
+  >
+    Some text
+  </Text>
+</Component>
+`;

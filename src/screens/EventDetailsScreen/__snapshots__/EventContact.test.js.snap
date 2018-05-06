@@ -7,6 +7,7 @@ exports[`renders correctly 1`] = `
   <Text
     color="lightNavyBlueColor"
     markdown={false}
+    markdownStyle={Object {}}
     type="h2"
   >
     Contact
@@ -39,6 +40,7 @@ exports[`renders correctly when only email is given 1`] = `
   <Text
     color="lightNavyBlueColor"
     markdown={false}
+    markdownStyle={Object {}}
     type="h2"
   >
     Contact
@@ -63,6 +65,7 @@ exports[`renders correctly when only phone is given 1`] = `
   <Text
     color="lightNavyBlueColor"
     markdown={false}
+    markdownStyle={Object {}}
     type="h2"
   >
     Contact

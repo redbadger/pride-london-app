@@ -57,6 +57,7 @@ exports[`ListItem Component renders correctly 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Array [
           Object {
@@ -127,6 +128,7 @@ exports[`ListItem Component renders correctly without selected 1`] = `
     <Text
       color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Array [
           Object {

@@ -24,6 +24,7 @@ const showEventsLabel = (numberOfEvents: number) => {
 };
 
 export default {
+  backButtonAccessibilityLabel: "Back",
   tabHome: "Home",
   tabEvents: "Events",
   tabParade: "Parade",
@@ -48,10 +49,14 @@ export default {
   eventDetailsGenderNeutralToilets: "Gender neutral toilets",
   selectDates: "Select dates",
   eventDetailsAbout: "About",
+  eventDetailsSchedule: "Schedule",
   eventDetailsReadMore: "Read more",
   eventDetailsReadLess: "Read less",
   eventDetailsContactEmailSubject: "Pride In London event enquiry",
   eventDetailsContactEmailBody: "Dear event organiser,",
+  collapsibleShowMore: "Show more",
+  collapsibleShowLess: "Show less",
+  savedEventsTitle: "Saved Events",
   supportUsTitle: "Support us",
   supportUsAsIndividual: "As an individual",
   supportUsAsBusiness: "As a business",
@@ -63,6 +68,27 @@ export default {
   supportUsSponsorDescription: "Support the community",
   supportUsVolunteer: "Volunteer",
   supportUsVolunteerDescription: "Passionate about equality? Join us.",
+  sponsorTitle: "Partner with us",
+  sponsorLevelHeading: "partners",
+  sponsorHeadingOurPartners: "Our main 2018 partners",
+  sponsorTextOurPartners:
+    "A huge thank you to our main partners for their continued support.",
+  sponsorHeadingPartnerWithUs: "Partner with us",
+  sponsorTextPartnerWithUs:
+    "Build your brand, engage your internal network and be part of a global movement to support diversity. To find out more, please contact sponsor@prideinlondon.org.",
+  sponsorTextPartnerWithUsList:
+    "* Pride in London is one of the top three biggest events in London, attracting an estimated one million visitors across the footprint. \n* Be part of our award winning marketing and advertising campaign. \n* 80% of those surveyed in our 2016 research agreed that they are more likely to think better of a brand if it is supportive of LGBT+ issues.",
+  sponsorContactEmailSubject: "Sponsorship enquiry",
+  sponsorContactButtonText: "Email to partner with us",
+  donateTitle: "Donate",
+  donateHeader: ["\"It's the first time I feel", 'accepted in a big group."'],
+  donateIntroductionHeading: "Be part of the movement that drives diversity",
+  donateIntroduction:
+    "The need for Pride is as strong as ever. A huge amount of progress has been made for LGBT+ people but challenges and stigma are still rife. Whether you take part to celebrate, party or protest. Pride in London is your platform to make change. Your donations keep us marching.",
+  donateAmountSelectionLabel: "Make a single donation",
+  donateOtherAmountLabel: "Other amount (£)",
+  donateMinimumAmount: "The minimum donation amount is £2.",
+  donateButtonText: "Donate",
   anyDay: "Any day",
   anyTime: "Any time",
   time: {
@@ -91,5 +117,13 @@ export default {
   zeroSelected: "0 selected",
   showEvents,
   clearAll: "Clear all",
-  filterEvents: "Filter Events"
+  filterEvents: "Filter Events",
+  noSavedEventsTitle: "Where's the love?",
+  noSavedEventsPart1: "No favourites yet? Tap the",
+  noSavedEventsSaveButtonAlt: "'save this event' button",
+  noSavedEventsPart2: "on any \nevent you like to save them here.",
+  noSavedEventsButton: "Find Events",
+  saveEventButtonUnSaveEvent: "remove event from saved list",
+  saveEventButtonSaveEvent: "save this event",
+  homeViewAll: "View all"
 };

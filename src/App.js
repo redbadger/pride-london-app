@@ -5,13 +5,16 @@ import { Image, StyleSheet, View } from "react-native";
 import type { TabScene } from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
 
+import DonateScreen from "./screens/DonateScreen";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
+import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FilterModal from "./screens/FilterModal";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
 import SupportUsScreen from "./screens/SupportUsScreen";
+import SponsorScreen from "./screens/SponsorScreen";
 import iconHomeActive from "../assets/images/homeActive.png";
 import iconHomeDefault from "../assets/images/homeDefault.png";
 import iconEventsActive from "../assets/images/eventsActive.png";
@@ -123,7 +126,8 @@ const ParadeStack = StackNavigator(
 
 const SavedStack = StackNavigator(
   {
-    [SAVED]: { screen: withShadow(() => <View />) }
+    [SAVED]: { screen: withShadow(SavedEventListScreen) },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen }
   },
   {
     initialRouteName: SAVED,
@@ -138,8 +142,8 @@ const SavedStack = StackNavigator(
 const SupportUsStack = StackNavigator(
   {
     [SUPPORT_US]: { screen: withShadow(SupportUsScreen) },
-    [DONATE]: { screen: withShadow(() => <View />) },
-    [SPONSOR]: { screen: withShadow(() => <View />) }
+    [DONATE]: { screen: DonateScreen },
+    [SPONSOR]: { screen: SponsorScreen }
   },
   {
     initialRouteName: SUPPORT_US,

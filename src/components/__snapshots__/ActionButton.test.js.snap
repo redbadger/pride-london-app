@@ -15,6 +15,7 @@ exports[`renders correctly 1`] = `
   <Text
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "#ffffff",
@@ -42,6 +43,7 @@ exports[`renders with optional props 1`] = `
   <Text
     color="blackColor"
     markdown={false}
+    markdownStyle={Object {}}
     style={
       Object {
         "color": "#ffffff",

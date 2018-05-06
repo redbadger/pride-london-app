@@ -1,10 +1,10 @@
 // @flow
-export type LocalizedFieldRef = { [string]: { sys: { id: string } } };
+import type { FieldRef } from "./field-ref";
 
 export type Event = {
   fields: {
     name: { [string]: string },
-    eventCategories: { [string]: string[] },
+    eventCategories: { [string]: EventCategoryName[] },
     audience: { [string]: string[] },
     startTime: { [string]: string },
     endTime: { [string]: string },
@@ -24,8 +24,9 @@ export type Event = {
     phone?: { [string]: string },
     ticketingUrl: { [string]: string },
     venueDetails: { [string]: string[] },
-    individualEventPicture: LocalizedFieldRef,
-    eventsListPicture: LocalizedFieldRef
+    individualEventPicture: { [string]: FieldRef },
+    eventsListPicture: { [string]: FieldRef },
+    performances: { [string]: Performance[] }
   },
   sys: {
     id: string,
@@ -33,6 +34,23 @@ export type Event = {
     contentType: {
       sys: {
         id: "event"
+      }
+    },
+    revision: number
+  }
+};
+
+export type Performance = {
+  fields: {
+    title: { [string]: string },
+    startTime: { [string]: string }
+  },
+  sys: {
+    id: string,
+    type: string,
+    contentType: {
+      sys: {
+        id: "performance"
       }
     },
     revision: number
@@ -52,31 +70,6 @@ export type FeaturedEvents = {
         id: "featuredEvents"
       }
     },
-    revision: number
-  }
-};
-
-export type Asset = {
-  fields: {
-    title: { [string]: string },
-    file: {
-      [string]: {
-        contentType: string,
-        fileName: string,
-        url: string,
-        details: {
-          size: number,
-          image: {
-            height: number,
-            width: number
-          }
-        }
-      }
-    }
-  },
-  sys: {
-    id: string,
-    type: "Asset",
     revision: number
   }
 };
@@ -105,5 +98,7 @@ export type EventCategoryName =
 export type EventCategoryMap = {
   [string]: { [EventCategoryName]: EventCategory }
 };
+
+export type PerformancePeriods = Performance[][];
 
 export type SavedEvents = Set<string>;

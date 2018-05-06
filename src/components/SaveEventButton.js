@@ -1,10 +1,12 @@
 // @flow
 import React from "react";
 import { Animated, Easing, StyleSheet } from "react-native";
+import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import LottieView from "lottie-react-native";
 import Touchable from "./Touchable";
 import heartAnimationLight from "../../assets/animations/save-event-light.json";
 import heartAnimationDark from "../../assets/animations/save-event-dark.json";
+import text from "../constants/text";
 
 type Props = {
   active: boolean,
@@ -14,6 +16,19 @@ type Props = {
 
 type State = {
   progress?: Object
+};
+
+const triggerAnimation = (progress: Object, active: boolean) => {
+  const value = active ? 1 : 0;
+  if (active) {
+    ReactNativeHapticFeedback.trigger("impactHeavy");
+  }
+  Animated.timing(progress, {
+    toValue: value,
+    duration: value * 800,
+    easing: Easing.linear,
+    useNativeDriver: true
+  }).start();
 };
 
 export default class SaveEventButton extends React.Component<Props, State> {
@@ -39,13 +54,7 @@ export default class SaveEventButton extends React.Component<Props, State> {
     // Animates heart when change from inactive -> active
     // Snaps to start when change from active -> inactive
     if (this.state.progress && this.props.active !== prevProps.active) {
-      const value = this.props.active ? 1 : 0;
-      Animated.timing(this.state.progress, {
-        toValue: value,
-        duration: value * 1920,
-        easing: Easing.linear,
-        useNativeDriver: true
-      }).start();
+      triggerAnimation(this.state.progress, this.props.active);
     }
   }
 
@@ -57,7 +66,11 @@ export default class SaveEventButton extends React.Component<Props, State> {
     const source = this.props.onDark ? heartAnimationLight : heartAnimationDark;
     return (
       <Touchable
-        accessibilityLabel="Favourite"
+        accessibilityLabel={
+          this.props.active
+            ? text.saveEventButtonUnSaveEvent
+            : text.saveEventButtonSaveEvent
+        }
         onPress={this.handlePress}
         style={styles.button}
       >

@@ -9,7 +9,7 @@ exports[`renders correctly 1`] = `
         "alignItems": "center",
         "backgroundColor": "#f3f3f3",
         "flexDirection": "row",
-        "height": 40,
+        "minHeight": 40,
       },
       Object {
         "borderWidth": 0,
@@ -33,13 +33,9 @@ exports[`renders correctly 1`] = `
       ]
     }
     accessible={true}
-    color="blackColor"
+    color="lightNavyBlueColor"
     markdown={false}
-    style={
-      Object {
-        "color": "rgb(45, 47, 127)",
-      }
-    }
+    markdownStyle={Object {}}
     type="h2"
   >
     Section Header
@@ -57,7 +53,7 @@ exports[`renders correctly with badge text 1`] = `
         "alignItems": "center",
         "backgroundColor": "#f3f3f3",
         "flexDirection": "row",
-        "height": 40,
+        "minHeight": 40,
       },
       Object {
         "borderWidth": 0,
@@ -81,13 +77,9 @@ exports[`renders correctly with badge text 1`] = `
       ]
     }
     accessible={true}
-    color="blackColor"
+    color="lightNavyBlueColor"
     markdown={false}
-    style={
-      Object {
-        "color": "rgb(45, 47, 127)",
-      }
-    }
+    markdownStyle={Object {}}
     type="h2"
   >
     Section Header
@@ -114,7 +106,7 @@ exports[`renders correctly without shadow 1`] = `
       "alignItems": "center",
       "backgroundColor": "#f3f3f3",
       "flexDirection": "row",
-      "height": 40,
+      "minHeight": 40,
     }
   }
 >
@@ -125,13 +117,9 @@ exports[`renders correctly without shadow 1`] = `
       ]
     }
     accessible={true}
-    color="blackColor"
+    color="lightNavyBlueColor"
     markdown={false}
-    style={
-      Object {
-        "color": "rgb(45, 47, 127)",
-      }
-    }
+    markdownStyle={Object {}}
     type="h2"
   >
     Section Header
