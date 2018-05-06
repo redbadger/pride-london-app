@@ -5,6 +5,7 @@ import { shallow } from "enzyme";
 import Component from "./component";
 import type { Sponsor } from "../../data/sponsor";
 import text from "../../constants/text";
+import Header from "../../components/Header";
 
 jest.mock("react-native-communications", () => ({
   email: jest.fn(() => {})
@@ -40,8 +41,11 @@ const generateSponsors = (count = 2): Sponsor[] =>
     )
     .reverse();
 
-const getAssetUrl = jest.fn().mockReturnValue("http://example.com/image.png");
-const getAssetSize = jest.fn();
+const getAssetSource = jest.fn().mockReturnValue({
+  uri: "http://example.com/image.png",
+  width: 1,
+  height: 1
+});
 const navigation: any = {
   goBack: jest.fn()
 };
@@ -56,8 +60,7 @@ describe("SponsorScreen Component", () => {
       <Component
         navigation={navigation}
         sponsors={generateSponsors(2)}
-        getAssetUrl={getAssetUrl}
-        getAssetSize={getAssetSize}
+        getAssetSource={getAssetSource}
         {...props}
       />
     );
@@ -69,8 +72,8 @@ describe("SponsorScreen Component", () => {
 
   it("navigates back when user presses back button in toolbar", () => {
     const output = render();
-    const backBtn = output.find({ testID: "back" });
-    backBtn.simulate("press");
+    const backFn = output.find(Header).prop("onBack");
+    backFn("press");
     expect(navigation.goBack).toHaveBeenCalledWith(null);
   });
 
@@ -89,6 +92,6 @@ describe("SponsorScreen Component", () => {
 });
 
 afterEach(() => {
-  getAssetUrl.mockClear();
+  getAssetSource.mockClear();
   navigation.goBack.mockClear();
 });

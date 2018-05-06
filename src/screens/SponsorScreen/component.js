@@ -4,17 +4,16 @@ import { StyleSheet, View } from "react-native";
 import { email as sendEmail } from "react-native-communications";
 import R from "ramda";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import chevronLeftWhite from "../../../assets/images/chevron-left-white.png";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
-import IconButton from "../../components/IconButton";
 import Text from "../../components/Text";
 import Button from "../../components/ButtonPrimary";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SponsorLogoContainer from "./SponsorLogoContainer";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { LocalizedFieldRef } from "../../data/localized-field-ref";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 import type { Sponsor } from "../../data/sponsor";
 
 import locale from "../../data/locale";
@@ -22,8 +21,7 @@ import locale from "../../data/locale";
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   sponsors: Sponsor[],
-  getAssetUrl: LocalizedFieldRef => string,
-  getAssetSize: LocalizedFieldRef => { width: number, height: number }
+  getAssetSource: FieldRef => ImageSource
 };
 
 class SponsorScreen extends PureComponent<Props> {
@@ -42,7 +40,7 @@ class SponsorScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { navigation, sponsors, getAssetUrl, getAssetSize } = this.props;
+    const { navigation, sponsors, getAssetSource } = this.props;
 
     const sortByName = R.sortBy(sponsor =>
       sponsor.fields.sponsorName[locale].toLowerCase()
@@ -54,22 +52,12 @@ class SponsorScreen extends PureComponent<Props> {
 
     return (
       <View style={styles.container}>
-        <Header backgroundColor={lightNavyBlueColor}>
-          <ContentPadding style={styles.headerContent}>
-            <IconButton
-              accessibilityLabel="Back"
-              onPress={() => {
-                navigation.goBack(null);
-              }}
-              source={chevronLeftWhite}
-              testID="back"
-            />
-            <Text type="h2" style={styles.headerTitle}>
-              {text.sponsorTitle}
-            </Text>
-            <View style={styles.phantomIcon} />
-          </ContentPadding>
-        </Header>
+        <Header
+          onBack={() => {
+            navigation.goBack(null);
+          }}
+          title={text.sponsorTitle}
+        />
         <ShadowedScrollView topShadow={false} shadowOpacity={0.6}>
           <ContentPadding style={styles.scrollContainer}>
             <Text style={styles.sponsorMainHeading} type="h1">
@@ -79,29 +67,25 @@ class SponsorScreen extends PureComponent<Props> {
             <SponsorLogoContainer
               sponsorLevel="Headline"
               sponsors={groupSponsors.Headline}
-              getAssetUrl={getAssetUrl}
-              getAssetSize={getAssetSize}
+              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingSmall}
             />
             <SponsorLogoContainer
               sponsorLevel="Gold"
               sponsors={groupSponsors.Gold}
-              getAssetUrl={getAssetUrl}
-              getAssetSize={getAssetSize}
+              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Silver"
               sponsors={groupSponsors.Silver}
-              getAssetUrl={getAssetUrl}
-              getAssetSize={getAssetSize}
+              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Bronze"
               sponsors={groupSponsors.Bronze}
-              getAssetUrl={getAssetUrl}
-              getAssetSize={getAssetSize}
+              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <Text style={styles.sponsorMainHeading} type="h1">
@@ -142,21 +126,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: whiteColor
-  },
-  headerContent: {
-    width: "100%",
-    maxWidth: 440,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    alignSelf: "center"
-  },
-  headerTitle: {
-    color: whiteColor
-  },
-  phantomIcon: {
-    width: 48,
-    height: 48
   },
   scrollContainer: {
     width: "100%",

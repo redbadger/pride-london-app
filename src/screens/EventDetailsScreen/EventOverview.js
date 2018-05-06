@@ -4,11 +4,11 @@ import { StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import dateComparator from "date-fns/compare_asc";
-import { formattedEventPriceRange } from "../../data/formatters";
+import { formattedEventPriceRange, formatTime } from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
 import Text from "../../components/Text";
-import TextLink from "./TextLink";
+import TextLink from "../../components/TextLink";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
 import type { Event } from "../../data/event";
@@ -37,17 +37,13 @@ const EventOverview = ({ event }: Props) => {
   );
   const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
   const dateFormat = "ddd, DD MMM YYYY";
-  const timeFormat = "h:mmA";
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)
     : `${formatDate(startTime, dateFormat)} - ${formatDate(
         endTime,
         dateFormat
       )}`;
-  const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
-    endTime,
-    timeFormat
-  )}`;
+  const timeDisplay = `${formatTime(startTime)} - ${formatTime(endTime)}`;
 
   const eventLocation = [
     event.fields.location[locale].lat,

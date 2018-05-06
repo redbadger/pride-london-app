@@ -10,50 +10,9 @@ exports[`SponsorScreen Component renders correctly 1`] = `
   }
 >
   <Header
-    backgroundColor="#2d2f7f"
-  >
-    <ContentPadding
-      padding={Object {}}
-      style={
-        Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-          "maxWidth": 440,
-          "width": "100%",
-        }
-      }
-    >
-      <IconButton
-        accessibilityLabel="Back"
-        onPress={[Function]}
-        source={1}
-        testID="back"
-      />
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        type="h2"
-      >
-        Partner with us
-      </Text>
-      <Component
-        style={
-          Object {
-            "height": 48,
-            "width": 48,
-          }
-        }
-      />
-    </ContentPadding>
-  </Header>
+    onBack={[Function]}
+    title="Partner with us"
+  />
   <ShadowedScrollView
     bottomShadow={true}
     shadowOpacity={0.6}
@@ -92,8 +51,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         A huge thank you to our main partners for their continued support.
       </Text>
       <SponsorLogoContainer
-        getAssetSize={[MockFunction]}
-        getAssetUrl={[MockFunction]}
+        getAssetSource={[MockFunction]}
         sponsorLevel="Headline"
         style={
           Object {
@@ -102,8 +60,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         }
       />
       <SponsorLogoContainer
-        getAssetSize={[MockFunction]}
-        getAssetUrl={[MockFunction]}
+        getAssetSource={[MockFunction]}
         sponsorLevel="Gold"
         sponsors={
           Array [
@@ -162,8 +119,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         }
       />
       <SponsorLogoContainer
-        getAssetSize={[MockFunction]}
-        getAssetUrl={[MockFunction]}
+        getAssetSource={[MockFunction]}
         sponsorLevel="Silver"
         style={
           Object {
@@ -172,8 +128,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         }
       />
       <SponsorLogoContainer
-        getAssetSize={[MockFunction]}
-        getAssetUrl={[MockFunction]}
+        getAssetSource={[MockFunction]}
         sponsorLevel="Bronze"
         style={
           Object {

@@ -1,12 +1,12 @@
 // @flow
-import type { LocalizedFieldRef } from "./localized-field-ref";
+import type { FieldRef } from "./field-ref";
 
 export type SponsorLevel = "Headline" | "Gold" | "Silver" | "Bronze";
 
 export type Sponsor = {
   fields: {
     sponsorName: { [string]: string },
-    sponsorLogo: LocalizedFieldRef,
+    sponsorLogo: { [string]: FieldRef },
     sponsorUrl: { [string]: string },
     sponsorLevel: { [string]: SponsorLevel }
   },

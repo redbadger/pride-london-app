@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`collapsing behaviour when content does not exceed limit renders correctly 1`] = `
+<Component>
+  <Component>
+    <AnimatedComponent
+      scrollEnabled={false}
+      style={
+        Object {
+          "height": 100,
+        }
+      }
+    >
+      <Component
+        onLayout={[Function]}
+        testID="children"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Hello
+        </Text>
+      </Component>
+    </AnimatedComponent>
+  </Component>
+</Component>
+`;
+
+exports[`collapsing behaviour when content exceeds limit renders correctly 1`] = `
+<Component>
+  <Component>
+    <AnimatedComponent
+      scrollEnabled={false}
+      style={
+        Object {
+          "height": 200,
+        }
+      }
+    >
+      <Component
+        onLayout={[Function]}
+        testID="children"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Hello
+        </Text>
+      </Component>
+    </AnimatedComponent>
+    <AnimatedComponent
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "height": 30,
+            "position": "absolute",
+            "width": "100%",
+          },
+          Object {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <LinearGradient
+        colors={
+          Array [
+            "rgba(255, 255, 255, 0)",
+            "#ffffff",
+          ]
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "height": 30,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
+    </AnimatedComponent>
+  </Component>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    onPress={[Function]}
+    style={
+      Object {
+        "alignSelf": "flex-end",
+      }
+    }
+  >
+    <TextLink
+      testID="showmore"
+    >
+      more
+    </TextLink>
+  </Touchable>
+</Component>
+`;
+
+exports[`collapsing behaviour when expanded renders correctly 1`] = `
+<Component>
+  <Component>
+    <AnimatedComponent
+      scrollEnabled={false}
+      style={
+        Object {
+          "height": 200,
+        }
+      }
+    >
+      <Component
+        onLayout={[Function]}
+        testID="children"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Hello
+        </Text>
+      </Component>
+    </AnimatedComponent>
+    <AnimatedComponent
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "height": 30,
+            "position": "absolute",
+            "width": "100%",
+          },
+          Object {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <LinearGradient
+        colors={
+          Array [
+            "rgba(255, 255, 255, 0)",
+            "#ffffff",
+          ]
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "height": 30,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
+    </AnimatedComponent>
+  </Component>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    onPress={[Function]}
+    style={
+      Object {
+        "alignSelf": "flex-end",
+      }
+    }
+  >
+    <TextLink
+      testID="showmore"
+    >
+      less
+    </TextLink>
+  </Touchable>
+</Component>
+`;
+
+exports[`renders correctly 1`] = `
+<Component>
+  <Component>
+    <AnimatedComponent
+      scrollEnabled={false}
+      style={
+        Object {
+          "height": 0,
+        }
+      }
+    >
+      <Component
+        onLayout={[Function]}
+        testID="children"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Hello
+        </Text>
+      </Component>
+    </AnimatedComponent>
+  </Component>
+</Component>
+`;
