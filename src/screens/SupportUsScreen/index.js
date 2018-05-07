@@ -12,7 +12,6 @@ import supportUsSponsorBgTopRight from "../../../assets/images/supportUsSponsorB
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import ImageHeader from "../../components/ImageHeader";
-import withStatusBar from "../../components/withStatusBar";
 import {
   lightNavyBlueColor,
   warmPinkColor,
@@ -28,7 +27,7 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>
 };
 
-export const SupportUsScreen = ({ navigation }: Props) => (
+const SupportUsScreen = ({ navigation }: Props) => (
   <View style={styles.container}>
     <Header title={text.supportUsTitle} />
     <ScrollView>
@@ -108,4 +107,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withStatusBar(SupportUsScreen, {});
+export default SupportUsScreen;

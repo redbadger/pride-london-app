@@ -2,7 +2,7 @@
 import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
-import { SavedEventListScreen as Component } from "./component";
+import Component from "./component";
 import EventList from "../../components/EventList";
 import Loading from "../../components/Loading";
 import NoSavedEvents from "./NoSavedEvents";

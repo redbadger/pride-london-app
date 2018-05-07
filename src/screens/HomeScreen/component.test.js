@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import { HomeScreen as Component } from "./component";
+import Component from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import type { Event } from "../../data/event";
 import type { HeaderBanner } from "../../data/header-banner";

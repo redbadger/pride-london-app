@@ -13,14 +13,12 @@ import Loading from "../../components/Loading";
 import Touchable from "../../components/Touchable";
 import TextLink from "../../components/TextLink";
 import ContentPadding from "../../components/ContentPadding";
-import withStatusBar from "../../components/withStatusBar";
 import {
   cardBgColor,
   imageBgColor,
   titleTextColor,
   eventCardShadow,
-  bgColor,
-  transparent
+  bgColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
@@ -36,7 +34,7 @@ type Props = {
   getAssetSource: FieldRef => ImageSource
 };
 
-export class HomeScreen extends Component<Props> {
+class HomeScreen extends Component<Props> {
   shouldComponentUpdate = (nextProps: Props): boolean => {
     const { loading, featuredEventsTitle } = this.props;
     const {
@@ -189,7 +187,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withStatusBar(HomeScreen, {
-  backgroundColor: transparent,
-  translucent: true
-});
+export default HomeScreen;
