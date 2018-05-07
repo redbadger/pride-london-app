@@ -2,7 +2,11 @@
 import React from "react";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
-import { formattedEventPriceRange, formatTime } from "../../data/formatters";
+import {
+  formattedEventPriceRange,
+  formatTime,
+  removeTimezoneFromCmsDateString
+} from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
 import Text from "../../components/Text";
@@ -23,13 +27,11 @@ type Props = {
   event: Event
 };
 
-const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-
 const EventOverview = ({ event }: Props) => {
-  const startTime = removeTimezoneFromDateString(
+  const startTime = removeTimezoneFromCmsDateString(
     event.fields.startTime[locale]
   );
-  const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
+  const endTime = removeTimezoneFromCmsDateString(event.fields.endTime[locale]);
   const dateFormat = "ddd, DD MMM YYYY";
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)

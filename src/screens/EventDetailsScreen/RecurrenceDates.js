@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 import dateComparator from "date-fns/compare_asc";
 import formatDate from "date-fns/format";
 import Text from "../../components/Text";
+import { removeTimezoneFromCmsDateString } from "../../data/formatters";
 import text from "../../constants/text";
 
 const reformatEuropeanDateString = dateString => {
@@ -18,7 +19,7 @@ type Props = {
 
 const RecurrenceDates = ({ recurrenceDates, startTime }: Props) => {
   const orderedRecurrenceDates = [
-    startTime,
+    removeTimezoneFromCmsDateString(startTime),
     ...recurrenceDates.map(reformatEuropeanDateString)
   ].sort(dateComparator);
 
