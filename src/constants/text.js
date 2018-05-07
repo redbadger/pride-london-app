@@ -125,5 +125,7 @@ export default {
   noSavedEventsButton: "Find Events",
   saveEventButtonUnSaveEvent: "remove event from saved list",
   saveEventButtonSaveEvent: "save this event",
-  homeViewAll: "View all"
+  homeViewAll: "View all",
+  homeSupportUs: "Support us",
+  homeSupportUsDescription: "Be part of the movement"
 };

@@ -217,7 +217,7 @@ exports[`renders correctly 1`] = `
   accessibilityComponentType="button"
   accessibilityTraits={
     Array [
-      "button",
+      "link",
     ]
   }
   delayPressIn={50}

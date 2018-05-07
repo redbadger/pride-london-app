@@ -3,68 +3,8 @@ import React from "react";
 import { shallow } from "enzyme";
 import Component from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
-import type { Event } from "../../data/event";
-import type { HeaderBanner } from "../../data/header-banner";
 import Loading from "../../components/Loading";
-
-const generateHeaderBanners = (count = 2): HeaderBanner[] =>
-  Array.from(Array(count)).map(
-    (_, i) =>
-      ({
-        sys: {
-          id: String(i + 1)
-        },
-        fields: {
-          heading: {
-            "en-GB": "Pride"
-          },
-          headingLine2: {
-            "en-GB": "Festival"
-          },
-          subHeading: {
-            "en-GB": "from - to"
-          },
-          heroImage: {
-            "en-GB": {
-              sys: {
-                id: `asset${i + 1}`
-              }
-            }
-          },
-          backgroundColour: {
-            "en-GB": "#ff0000"
-          }
-        }
-      }: any)
-  );
-
-const generateEvents = (count = 2): Event[] =>
-  Array.from(Array(count)).map(
-    (_, i) =>
-      ({
-        sys: {
-          id: String(i + 1)
-        },
-        fields: {
-          name: {
-            "en-GB": "some other"
-          },
-          eventsListPicture: {
-            "en-GB": {
-              sys: {
-                id: `asset${i + 1}`
-              }
-            }
-          },
-          startTime: {
-            "en-GB": "2018-07-10T00:00"
-          },
-          eventCategories: {
-            "en-GB": ["Cabaret & Variety", "Music"]
-          }
-        }
-      }: any)
-  );
+import { generateHeaderBanners, generateEvents } from "./__test-data";
 
 const getAssetSource = jest.fn().mockReturnValue({
   uri: "http://example.com/image.png",
@@ -93,7 +33,7 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(5);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetSource).toHaveBeenCalledTimes(5); // 4 events + 1 banner
+    expect(getAssetSource).toHaveBeenCalledTimes(4);
     expect(getAssetSource).toHaveBeenCalledWith({ sys: { id: "asset1" } });
   });
 
@@ -101,7 +41,7 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(10);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetSource).toHaveBeenCalledTimes(7); // 6 events + 1 banner
+    expect(getAssetSource).toHaveBeenCalledTimes(6);
   });
 
   it("renders loading indicator when loading", () => {

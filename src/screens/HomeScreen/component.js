@@ -1,27 +1,27 @@
 // @flow
 import React, { Component } from "react";
-import { ImageBackground, StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import { equals, sortBy } from "ramda";
-import Text from "../../components/Text";
-import type { Event } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
-import type { HeaderBanner } from "../../data/header-banner";
+import { equals } from "ramda";
+import Header from "./Header";
+import ContentPadding from "../../components/ContentPadding";
 import EventTile from "../../components/EventTile";
 import Loading from "../../components/Loading";
-import Touchable from "../../components/Touchable";
+import Text from "../../components/Text";
 import TextLink from "../../components/TextLink";
-import ContentPadding from "../../components/ContentPadding";
+import Touchable from "../../components/Touchable";
 import {
   cardBgColor,
-  imageBgColor,
   titleTextColor,
   eventCardShadow,
   bgColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
+import type { Event } from "../../data/event";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
+import type { HeaderBanner } from "../../data/header-banner";
 
 import locale from "../../data/locale";
 
@@ -72,14 +72,9 @@ class HomeScreen extends Component<Props> {
       headerBanners,
       featuredEvents,
       featuredEventsTitle,
-      getAssetSource
+      getAssetSource,
+      navigation
     } = this.props;
-
-    const sortByHeroImage = sortBy(
-      banner => banner.fields.heroImage[locale].sys.id
-    );
-    const day = Math.floor(Date.now() / 1000 / 60 / 60 / 24);
-    const banner = sortByHeroImage(headerBanners)[day % headerBanners.length];
 
     // Show only even number of events (2, 4 or 6).
     // Never show more than 6 events.
@@ -87,19 +82,15 @@ class HomeScreen extends Component<Props> {
     const events = featuredEvents.slice(0, eventsCount);
 
     return (
-      <View
-        testID="home-screen"
-        style={{
-          backgroundColor: banner && banner.fields.backgroundColour[locale]
-        }}
-      >
-        {loading && <Loading />}
+      <View testID="home-screen">
         <ScrollView style={styles.scroller}>
-          <ImageBackground
-            style={styles.header}
-            source={banner && getAssetSource(banner.fields.heroImage[locale])}
+          <Header
+            headerBanners={headerBanners}
+            getAssetSource={getAssetSource}
+            navigation={navigation}
           />
           <ContentPadding style={styles.mainContentContainer}>
+            {loading && <Loading />}
             <View style={styles.sectionTitle}>
               <Text type="h2" style={{ color: titleTextColor }}>
                 {featuredEventsTitle}
@@ -148,12 +139,6 @@ const styles = StyleSheet.create({
   mainContentContainer: {
     maxWidth: 440,
     alignSelf: "center"
-  },
-  header: {
-    height: 292,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: imageBgColor
   },
   sectionTitle: {
     flexDirection: "row",

@@ -9,6 +9,7 @@ import supportUsDonateBgTopRight from "../../../assets/images/supportUsDonateBgT
 import supportUsVolunteerBgTopRight from "../../../assets/images/supportUsVolunteerBgTopRight.png";
 import supportUsShopBgBottomRight from "../../../assets/images/supportUsShopBgBottomRight.png";
 import supportUsSponsorBgTopRight from "../../../assets/images/supportUsSponsorBgTopRight.png";
+import ButtonWithShapes from "../../components/ButtonWithShapes";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import ImageHeader from "../../components/ImageHeader";
@@ -21,7 +22,6 @@ import {
 } from "../../constants/colors";
 import { DONATE, SPONSOR } from "../../constants/routes";
 import text from "../../constants/text";
-import SupportUsButton from "./SupportUsButton";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>
@@ -37,7 +37,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
           title={text.supportUsAsIndividual}
         />
         <ContentPadding style={styles.sectionSpacing}>
-          <SupportUsButton
+          <ButtonWithShapes
             color={lightNavyBlueColor}
             title={text.supportUsDonate}
             description={text.supportUsDonateDescription}
@@ -47,24 +47,22 @@ const SupportUsScreen = ({ navigation }: Props) => (
             url={DONATE}
             style={styles.buttonSpacing}
           />
-          <SupportUsButton
+          <ButtonWithShapes
             color={warmPinkColor}
             title={text.supportUsVolunteer}
             description={text.supportUsVolunteerDescription}
             bgTopRight={supportUsVolunteerBgTopRight}
             navigation={navigation}
             url="https://example.com"
-            isExternalLink
             style={styles.buttonSpacing}
           />
-          <SupportUsButton
+          <ButtonWithShapes
             color={vomitYellowColor}
             title={text.supportUsShop}
             description={text.supportUsShopDescription}
             bgBottomRight={supportUsShopBgBottomRight}
             navigation={navigation}
             url="https://example.com"
-            isExternalLink
             contrast
             style={styles.buttonSpacing}
           />
@@ -74,7 +72,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
           title={text.supportUsAsBusiness}
         />
         <ContentPadding style={styles.sectionSpacing}>
-          <SupportUsButton
+          <ButtonWithShapes
             color={turquoiseBlueColor}
             title={text.supportUsSponsor}
             description={text.supportUsSponsorDescription}
