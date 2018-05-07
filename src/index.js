@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import SplashScreen from "react-native-splash-screen";
 import { Client } from "bugsnag-react-native";
+
 import reducers from "./reducers";
 import { getEvents } from "./actions/events";
 import { loadSavedEvents } from "./actions/saved-events";
