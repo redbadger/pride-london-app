@@ -62,19 +62,20 @@ exports[`ConnectedFilterHeader renders component 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
     <FilterHeaderButton
       active={false}
       badgeValue={null}
-      label="Add filters"
+      label="Filter by area, price..."
       style={
         Object {
           "flex": 1,
         }
       }
-      text="Add filters"
+      text="Filter by area, price..."
     />
   </Component>
   <Connect(DateRangePickerDialog)
