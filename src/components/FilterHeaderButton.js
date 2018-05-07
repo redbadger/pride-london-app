@@ -33,6 +33,7 @@ const FilterHeaderButton = ({
     accessibilityLabel={label}
   >
     <Text
+      type="small"
       style={[
         styles.buttonText,
         active ? styles.activeColor : styles.inactiveColor

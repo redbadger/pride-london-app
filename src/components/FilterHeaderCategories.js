@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, Image, PixelRatio } from "react-native";
+import { View, StyleSheet, Image, PixelRatio, Platform } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Touchable from "./Touchable";
 import {
@@ -72,6 +72,8 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
     </View>
   );
 
+const verticalTextCorrection = Platform.OS === "ios" ? 4 : 2;
+
 const styles = StyleSheet.create({
   contentInterest: {
     flexDirection: "row",
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
   },
   filterTitle: {
     color: filterShowMeTextColor,
-    paddingTop: 8,
+    paddingTop: verticalTextCorrection,
     marginRight: 8
   },
   categoryPillsContainer: {
@@ -111,6 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 4
   },
   interestButtonText: {
+    marginTop: verticalTextCorrection,
     color: interestButtonTextColor
   }
 });
