@@ -64,20 +64,21 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
     <FilterHeaderButton
       active={false}
       badgeValue={null}
-      label="Add filters"
+      label="Filter by area, price..."
       onPress={[Function]}
       style={
         Object {
           "flex": 1,
         }
       }
-      text="Add filters"
+      text="Filter by area, price..."
     />
   </Component>
   <Connect(DateRangePickerDialog)
@@ -152,20 +153,21 @@ exports[`renders correctly with any date and any time 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
     <FilterHeaderButton
       active={false}
       badgeValue={null}
-      label="Add filters"
+      label="Filter by area, price..."
       onPress={[Function]}
       style={
         Object {
           "flex": 1,
         }
       }
-      text="Add filters"
+      text="Filter by area, price..."
     />
   </Component>
   <Connect(DateRangePickerDialog)
@@ -240,20 +242,21 @@ exports[`renders correctly with date range and two times 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
     <FilterHeaderButton
       active={false}
       badgeValue={null}
-      label="Add filters"
+      label="Filter by area, price..."
       onPress={[Function]}
       style={
         Object {
           "flex": 1,
         }
       }
-      text="Add filters"
+      text="Filter by area, price..."
     />
   </Component>
   <Connect(DateRangePickerDialog)
@@ -328,20 +331,21 @@ exports[`renders correctly with single date and single time 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />
     <FilterHeaderButton
       active={false}
       badgeValue={null}
-      label="Add filters"
+      label="Filter by area, price..."
       onPress={[Function]}
       style={
         Object {
           "flex": 1,
         }
       }
-      text="Add filters"
+      text="Filter by area, price..."
     />
   </Component>
   <Connect(DateRangePickerDialog)
@@ -416,6 +420,7 @@ exports[`renders correctly with tag filters selected 1`] = `
         Object {
           "borderColor": "#ffffff",
           "borderLeftWidth": 0.5,
+          "opacity": 0.4,
         }
       }
     />

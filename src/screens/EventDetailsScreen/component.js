@@ -23,6 +23,7 @@ import type { Event, EventCategoryName } from "../../data/event";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import locale from "../../data/locale";
+import { EVENT_LIST } from "../../constants/routes";
 
 type EventHeaderProps = {|
   isSaved: boolean,
@@ -45,13 +46,26 @@ export const EventHeader = ({
   />
 );
 
-export const EventCategories = ({ event }: { event: Event }) => (
+export const EventCategories = ({
+  event,
+  navigation,
+  setCategoryFilter
+}: {
+  event: Event,
+  navigation: NavigationScreenProp,
+  setCategoryFilter: EventCategoryName => void
+}) => (
   <View style={styles.categories}>
     {event.fields.eventCategories[locale].map(categoryName => (
       <CategoryPill
         key={categoryName}
         name={((categoryName: any): EventCategoryName)}
         style={styles.categoryPill}
+        onPress={() => {
+          navigation.popToTop({ immediate: true });
+          navigation.navigate(EVENT_LIST);
+          setCategoryFilter(categoryName);
+        }}
       />
     ))}
   </View>
@@ -81,7 +95,8 @@ type Props = {
   getAssetSource: FieldRef => ImageSource,
   isSaved: boolean,
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
-  toggleSaved: boolean => void
+  toggleSaved: boolean => void,
+  setCategoryFilter: EventCategoryName => void
 };
 
 class EventDetailsScreen extends PureComponent<Props> {
@@ -94,13 +109,13 @@ class EventDetailsScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { event, getAssetSource } = this.props;
+    const { event, getAssetSource, navigation, setCategoryFilter } = this.props;
     return (
       <View style={styles.container}>
         <EventHeader
           isSaved={this.props.isSaved}
           toggleSaved={this.props.toggleSaved}
-          navigation={this.props.navigation}
+          navigation={navigation}
         />
         <ShadowedScrollView topShadow={false}>
           <View style={{ aspectRatio: 5 / 3 }}>
@@ -119,7 +134,11 @@ class EventDetailsScreen extends PureComponent<Props> {
                   {event.fields.name[locale]}
                 </Text>
                 <LayoutColumn spacing={20}>
-                  <EventCategories event={event} />
+                  <EventCategories
+                    event={event}
+                    navigation={navigation}
+                    setCategoryFilter={setCategoryFilter}
+                  />
                   <EventOverview event={event} />
                   <SectionDivider />
                   <EventDescription event={event} />

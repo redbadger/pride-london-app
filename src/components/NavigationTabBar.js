@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { Animated, StyleSheet, View } from "react-native";
-import { NavigationActions } from "react-navigation";
 import type { TabScene, _TabBarBottomProps } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import {
@@ -33,19 +32,7 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
   activeTabWidth: Animated.Value;
 
   handleTabPress = (index: number) => {
-    const { jumpToIndex, navigation } = this.props;
-    const currentIndex = navigation.state.index;
-
-    if (currentIndex === index) {
-      const childRoute = navigation.state.routes[index];
-      if (typeof childRoute.index === "number" && childRoute.index > 0) {
-        navigation.dispatch(
-          NavigationActions.popToTop({ key: childRoute.key })
-        );
-      }
-    } else {
-      jumpToIndex(index);
-    }
+    this.props.jumpToIndex(index);
   };
 
   updateActiveTabLine = () => {

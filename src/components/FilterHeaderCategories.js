@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, Image, PixelRatio } from "react-native";
+import { View, StyleSheet, Image, PixelRatio, Platform } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Touchable from "./Touchable";
 import {
@@ -22,7 +22,7 @@ type Props = {
 
 type CategoriesFilterButtonProps = {
   style?: ViewStyleProp,
-  onPress: Function
+  onPress?: Function
 };
 
 const CategoriesFilterButton = ({
@@ -35,12 +35,13 @@ const CategoriesFilterButton = ({
 );
 
 CategoriesFilterButton.defaultProps = {
-  style: {}
+  style: {},
+  onPress: () => {}
 };
 
 const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
   selectedCategories.size === 0 ? (
-    <View style={styles.contentInterest}>
+    <View style={styles.contentInterest} onPress={onFilterPress}>
       {PixelRatio.getFontScale() < 1.5 && (
         <Text
           type="h1"
@@ -53,22 +54,25 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
           {text.filterTitle}
         </Text>
       )}
-      <View style={styles.interestButton}>
+      <Touchable style={styles.interestButton} onPress={onFilterPress}>
         <Text type="h2" style={styles.interestButtonText}>
           {text.filterByInterest}
         </Text>
         <CategoriesFilterButton onPress={onFilterPress} />
-      </View>
+      </Touchable>
     </View>
   ) : (
     <View style={styles.categoryPillsContainer}>
       <CategoriesPills
         style={styles.categoryPills}
         selectedCategories={selectedCategories}
+        onPress={onFilterPress}
       />
       <CategoriesFilterButton onPress={onFilterPress} />
     </View>
   );
+
+const verticalTextCorrection = Platform.OS === "ios" ? 4 : 2;
 
 const styles = StyleSheet.create({
   contentInterest: {
@@ -78,7 +82,7 @@ const styles = StyleSheet.create({
   },
   filterTitle: {
     color: filterShowMeTextColor,
-    paddingTop: 8,
+    paddingTop: verticalTextCorrection,
     marginRight: 8
   },
   categoryPillsContainer: {
@@ -109,6 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 4
   },
   interestButtonText: {
+    marginTop: verticalTextCorrection,
     color: interestButtonTextColor
   }
 });

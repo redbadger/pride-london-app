@@ -116,7 +116,8 @@ const styles = StyleSheet.create({
   },
   dividerLine: {
     borderLeftWidth: StyleSheet.hairlineWidth,
-    borderColor: whiteColor
+    borderColor: whiteColor,
+    opacity: 0.4
   }
 });
 
