@@ -50,6 +50,34 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     : sections.days;
 };
 
+export const expandRecurringEvents = (events: Event[]): Event[] =>
+  events.reduce((acc, curr) => {
+    if (
+      !!curr.fields.recurrenceDates &&
+      curr.fields.recurrenceDates[locale].length > 0
+    ) {
+      const clones = curr.fields.recurrenceDates[locale].map(recurrance => {
+        const [day, month, year] = recurrance.split("/");
+        const eventStartTime = curr.fields.startTime[locale].split("T")[1];
+        return R.mergeDeepRight(curr, {
+          fields: {
+            recurrenceDates: undefined,
+            startTime: {
+              [locale]: `${year}-${month}-${day}T${eventStartTime}`
+            }
+          },
+          sys: {
+            contentType: {
+              sys: { id: `${curr.sys.contentType.sys.id}-${recurrance}` }
+            }
+          }
+        });
+      });
+      return [...acc, curr, ...clones];
+    }
+    return [...acc, curr];
+  }, []);
+
 export const getTimePeriod = (date: Date) => {
   const splits = [6, 12, 18];
   const hours = getHours(date);
