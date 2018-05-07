@@ -2,6 +2,7 @@
 import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import getHours from "date-fns/get_hours";
+import isSameDay from "date-fns/is_same_day";
 import R from "ramda";
 
 import type { State } from "../reducers";
@@ -63,10 +64,20 @@ export const expandRecurringEvents = (events: Event[]): Event[] =>
       const clones = recurrenceDates.map(recurrance => {
         const [day, month, year] = recurrance.split("/");
         const eventStartTime = curr.fields.startTime[locale].split("T")[1];
+        const eventEndTime = curr.fields.endTime[locale].split("T")[1];
+        const startAndEndAreSameDay = isSameDay(
+          curr.fields.startTime[locale],
+          curr.fields.endTime[locale]
+        );
         return R.mergeDeepRight(curr, {
           fields: {
             startTime: {
               [locale]: `${year}-${month}-${day}T${eventStartTime}`
+            },
+            endTime: {
+              [locale]: startAndEndAreSameDay
+                ? `${year}-${month}-${day}T${eventEndTime}`
+                : curr.fields.endTime[locale]
             }
           },
           sys: {
