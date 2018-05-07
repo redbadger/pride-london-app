@@ -125,9 +125,9 @@
       },
       "ios.sim.release": {
         "binaryPath":
-          "ios/build/Build/Products/Release-iphonesimulator/PrideLondonApp.app",
+          "ios/build/Build/Products/Release-iphonesimulator/Pride in LDN.app",
         "build":
-          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+          "PRODUCT_NAME=PrideLondonApp xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
       }
