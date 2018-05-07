@@ -88,45 +88,11 @@ it("renders correctly", () => {
   expect(output).toMatchSnapshot();
 });
 
-it("renders day range for recurring dates", () => {
+it("renders recurrence dates when provided", () => {
   const output = shallow(<EventOverview event={defaultEvent} />);
-  const recurringDateText = output
-    .find("IconItem")
-    .first()
-    .find("Text")
-    .last()
-    .children()
-    .text();
+  const recurrenceDates = output.find("RecurrenceDates");
 
-  expect(recurringDateText).toContain("9 Jul - 15 Jul");
-});
-
-it("renders sorted day range for recurring dates if out of order", () => {
-  const event: Event = ({
-    fields: {
-      ...defaultEvent.fields,
-      recurrenceDates: {
-        "en-GB": [
-          "14/07/2018",
-          "10/07/2018",
-          "11/07/2018",
-          "13/07/2018",
-          "12/07/2018",
-          "15/07/2018"
-        ]
-      }
-    }
-  }: any);
-  const output = shallow(<EventOverview event={event} />);
-  const recurringDateText = output
-    .find("IconItem")
-    .first()
-    .find("Text")
-    .last()
-    .children()
-    .text();
-
-  expect(recurringDateText).toContain("9 Jul - 15 Jul");
+  expect(recurrenceDates.length).toBe(1);
 });
 
 it("does not render recurring dates when none provided", () => {
@@ -137,10 +103,7 @@ it("does not render recurring dates when none provided", () => {
     }
   }: any);
   const output = shallow(<EventOverview event={event} />);
-  const iconTexts = output
-    .find("IconItem")
-    .first()
-    .find("Text");
+  const recurrenceDates = output.find("RecurrenceDates");
 
-  expect(iconTexts.length).toBe(2);
+  expect(recurrenceDates.length).toBe(0);
 });

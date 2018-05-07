@@ -1,9 +1,7 @@
 // @flow
 import React from "react";
-import { StyleSheet } from "react-native";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
-import dateComparator from "date-fns/compare_asc";
 import { formattedEventPriceRange, formatTime } from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
@@ -19,17 +17,13 @@ import accessibilityIcon from "../../../assets/images/accessibility.png";
 import ticketsIcon from "../../../assets/images/tickets.png";
 import locationIcon from "../../../assets/images/location.png";
 import showLocation from "./openMapLink";
+import RecurrenceDates from "./RecurrenceDates";
 
 type Props = {
   event: Event
 };
 
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-
-const reformatEuropeanDateString = dateString => {
-  const [day, month, year] = dateString.split("/");
-  return `${year}-${month}-${day}`;
-};
 
 const EventOverview = ({ event }: Props) => {
   const startTime = removeTimezoneFromDateString(
@@ -51,21 +45,6 @@ const EventOverview = ({ event }: Props) => {
     event.fields.locationName[locale]
   ];
 
-  const recurrenceDates = event.fields.recurrenceDates
-    ? event.fields.recurrenceDates[locale]
-    : [];
-  const orderedRecurrenceDates = [
-    event.fields.startTime[locale],
-    ...recurrenceDates.map(reformatEuropeanDateString)
-  ].sort(dateComparator);
-  const formattedRecurrenceDates = `${text.runsFrom} ${formatDate(
-    orderedRecurrenceDates[0],
-    "D MMM"
-  )} - ${formatDate(
-    orderedRecurrenceDates[orderedRecurrenceDates.length - 1],
-    "D MMM"
-  )}`;
-
   return (
     <IconList>
       <IconItem source={dateIcon}>
@@ -73,10 +52,11 @@ const EventOverview = ({ event }: Props) => {
           {dateDisplay}
         </Text>
         <Text type="small">{timeDisplay}</Text>
-        {orderedRecurrenceDates.length > 1 && (
-          <Text type="small" style={styles.recurrenceDates}>
-            {formattedRecurrenceDates}
-          </Text>
+        {event.fields.recurrenceDates && (
+          <RecurrenceDates
+            recurrenceDates={event.fields.recurrenceDates[locale]}
+            startTime={event.fields.startTime[locale]}
+          />
         )}
       </IconItem>
 
@@ -134,11 +114,5 @@ const EventOverview = ({ event }: Props) => {
     </IconList>
   );
 };
-
-const styles = StyleSheet.create({
-  recurrenceDates: {
-    fontStyle: "italic"
-  }
-});
 
 export default EventOverview;
