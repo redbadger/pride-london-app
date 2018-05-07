@@ -290,7 +290,7 @@ describe("groupEventsByStartTime", () => {
 });
 
 describe("expandRecurringEvents", () => {
-  it("creates new events for each recurring date at midnight", () => {
+  it("creates new events for each recurrence date", () => {
     const events = [
       {
         fields: {
@@ -316,9 +316,41 @@ describe("expandRecurringEvents", () => {
       {
         fields: {
           startTime: { "en-GB": "2018-08-03T00:00+00:00" },
-          recurrenceDates: undefined
+          recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1-03/08/2018" } } }
+        sys: { contentType: { sys: { id: "event1-recurrence-03/08/2018" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
+        sys: { contentType: { sys: { id: "event2" } } }
+      }
+    ];
+
+    expect(expandRecurringEvents(events)).toEqual(expected);
+  });
+
+  it("does not create new events if they are already clones of another", () => {
+    const events = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-02T00:00+00:00" },
+          recurrenceDates: { "en-GB": ["03/08/2018"] }
+        },
+        sys: { contentType: { sys: { id: "event1-recurrence-03/08/2018" } } }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
+        sys: { contentType: { sys: { id: "event2" } } }
+      }
+    ];
+
+    const expected = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-02T00:00+00:00" },
+          recurrenceDates: { "en-GB": ["03/08/2018"] }
+        },
+        sys: { contentType: { sys: { id: "event1-recurrence-03/08/2018" } } }
       },
       {
         fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },

@@ -52,23 +52,28 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
 
 export const expandRecurringEvents = (events: Event[]): Event[] =>
   events.reduce((acc, curr) => {
-    if (
-      !!curr.fields.recurrenceDates &&
-      curr.fields.recurrenceDates[locale].length > 0
-    ) {
-      const clones = curr.fields.recurrenceDates[locale].map(recurrance => {
+    const recurrenceDates = curr.fields.recurrenceDates
+      ? curr.fields.recurrenceDates[locale]
+      : [];
+    const shouldExpandEvent =
+      recurrenceDates.length > 0 &&
+      !curr.sys.contentType.sys.id.includes("recurrence");
+
+    if (shouldExpandEvent) {
+      const clones = recurrenceDates.map(recurrance => {
         const [day, month, year] = recurrance.split("/");
         const eventStartTime = curr.fields.startTime[locale].split("T")[1];
         return R.mergeDeepRight(curr, {
           fields: {
-            recurrenceDates: undefined,
             startTime: {
               [locale]: `${year}-${month}-${day}T${eventStartTime}`
             }
           },
           sys: {
             contentType: {
-              sys: { id: `${curr.sys.contentType.sys.id}-${recurrance}` }
+              sys: {
+                id: `${curr.sys.contentType.sys.id}-recurrence-${recurrance}`
+              }
             }
           }
         });
