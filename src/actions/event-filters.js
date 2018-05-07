@@ -11,6 +11,7 @@ import type {
 import type { StandardAction } from "./";
 
 type EventFiltersActionType =
+  | "SET_EVENT_FILTERS"
   | "STAGE_EVENT_FILTERS"
   | "COMMIT_EVENT_FILTERS"
   | "CLEAR_STAGED_EVENT_FILTERS";
@@ -29,6 +30,15 @@ export type EventFiltersAction = StandardAction<
   EventFiltersActionType,
   EventFiltersPayload
 >;
+
+export const setEventFilters = (updates: EventFiltersPayload) => (
+  dispatch: Dispatch<EventFiltersAction>
+) => {
+  dispatch({
+    type: "SET_EVENT_FILTERS",
+    payload: updates
+  });
+};
 
 export const stageEventFilters = (updates: EventFiltersPayload) => (
   dispatch: Dispatch<EventFiltersAction>

@@ -73,19 +73,6 @@ it("jumps to tab onPress", () => {
   expect(jumpToIndex).toHaveBeenCalledWith(1);
 });
 
-it("jumps pops child states when pressing already active tab", () => {
-  const output = render();
-  output
-    .find({ testID: "tab-0" })
-    .props()
-    .onPress();
-  expect(navigationDispatch).toHaveBeenCalledWith({
-    immediate: undefined,
-    key: "1",
-    type: "Navigation/POP_TO_TOP"
-  });
-});
-
 it("animates active tab line on focus change", () => {
   const output = render();
   const instance = output.instance();

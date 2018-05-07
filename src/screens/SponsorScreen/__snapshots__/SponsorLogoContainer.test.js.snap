@@ -73,7 +73,13 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
       >
         <SponsorLogo
           sponsorLevel="Gold"
-          sponsorLogoUrl="http://example.com/image.png"
+          sponsorLogo={
+            Object {
+              "height": 1,
+              "uri": "http://example.com/image.png",
+              "width": 1,
+            }
+          }
           sponsorName="some other"
         />
       </Touchable>
@@ -112,7 +118,13 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
       >
         <SponsorLogo
           sponsorLevel="Gold"
-          sponsorLogoUrl="http://example.com/image.png"
+          sponsorLogo={
+            Object {
+              "height": 1,
+              "uri": "http://example.com/image.png",
+              "width": 1,
+            }
+          }
           sponsorName="some other"
         />
       </Touchable>
@@ -194,7 +206,13 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
       >
         <SponsorLogo
           sponsorLevel="Gold"
-          sponsorLogoUrl="http://example.com/image.png"
+          sponsorLogo={
+            Object {
+              "height": 1,
+              "uri": "http://example.com/image.png",
+              "width": 1,
+            }
+          }
           sponsorName="some other"
         />
       </Touchable>
@@ -233,7 +251,13 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
       >
         <SponsorLogo
           sponsorLevel="Gold"
-          sponsorLogoUrl="http://example.com/image.png"
+          sponsorLogo={
+            Object {
+              "height": 1,
+              "uri": "http://example.com/image.png",
+              "width": 1,
+            }
+          }
           sponsorName="some other"
         />
       </Touchable>

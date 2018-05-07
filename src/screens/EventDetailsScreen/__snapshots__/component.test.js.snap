@@ -36,6 +36,7 @@ exports[`EventCategories renders correctly 1`] = `
   <CategoryPill
     key="Community"
     name="Community"
+    onPress={[Function]}
     style={
       Object {
         "marginBottom": 8,
@@ -46,6 +47,7 @@ exports[`EventCategories renders correctly 1`] = `
   <CategoryPill
     key="Social and Networking"
     name="Social and Networking"
+    onPress={[Function]}
     style={
       Object {
         "marginBottom": 8,
@@ -56,6 +58,7 @@ exports[`EventCategories renders correctly 1`] = `
   <CategoryPill
     key="Sports and Activities"
     name="Sports and Activities"
+    onPress={[Function]}
     style={
       Object {
         "marginBottom": 8,
@@ -66,6 +69,7 @@ exports[`EventCategories renders correctly 1`] = `
   <CategoryPill
     key="Music"
     name="Music"
+    onPress={[Function]}
     style={
       Object {
         "marginBottom": 8,
@@ -132,18 +136,30 @@ exports[`renders correctly 1`] = `
     style={Object {}}
     topShadow={false}
   >
-    <Image
-      source={
-        Object {
-          "uri": "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
-        }
-      }
+    <Component
       style={
         Object {
           "aspectRatio": 1.6666666666666667,
         }
       }
-    />
+    >
+      <Image
+        resizeMode="cover"
+        source={
+          Object {
+            "height": 100,
+            "uri": "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
+            "width": 256,
+          }
+        }
+        style={
+          Object {
+            "maxHeight": "100%",
+            "maxWidth": "100%",
+          }
+        }
+      />
+    </Component>
     <Component
       style={
         Object {
@@ -292,6 +308,12 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                   },
                 }
               }
+              navigation={
+                Object {
+                  "goBack": [Function],
+                }
+              }
+              setCategoryFilter={[Function]}
             />
             <EventOverview
               event={
@@ -818,18 +840,30 @@ exports[`renders correctly with missing details 1`] = `
     style={Object {}}
     topShadow={false}
   >
-    <Image
-      source={
-        Object {
-          "uri": "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
-        }
-      }
+    <Component
       style={
         Object {
           "aspectRatio": 1.6666666666666667,
         }
       }
-    />
+    >
+      <Image
+        resizeMode="cover"
+        source={
+          Object {
+            "height": 100,
+            "uri": "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
+            "width": 256,
+          }
+        }
+        style={
+          Object {
+            "maxHeight": "100%",
+            "maxWidth": "100%",
+          }
+        }
+      />
+    </Component>
     <Component
       style={
         Object {
@@ -974,6 +1008,12 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                   },
                 }
               }
+              navigation={
+                Object {
+                  "goBack": [Function],
+                }
+              }
+              setCategoryFilter={[Function]}
             />
             <EventOverview
               event={

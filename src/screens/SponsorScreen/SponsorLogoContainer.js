@@ -12,15 +12,15 @@ import Touchable from "../../components/Touchable";
 import text from "../../constants/text";
 import { sponsorLogoBackgroundColor } from "../../constants/colors";
 import type { SponsorLevel, Sponsor } from "../../data/sponsor";
-import type { LocalizedFieldRef } from "../../data/localized-field-ref";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 
 import locale from "../../data/locale";
 
 type Props = {
   sponsorLevel: SponsorLevel,
   sponsors: Sponsor[],
-  getAssetUrl: LocalizedFieldRef => string,
-  getAssetSize: LocalizedFieldRef => { width: number, height: number },
+  getAssetSource: FieldRef => ImageSource,
   style?: ViewStyleProp
 };
 
@@ -33,8 +33,7 @@ const sponsorLevelIcons = {
 
 const SponsorLogoContainer = ({
   sponsorLevel,
-  getAssetUrl,
-  getAssetSize,
+  getAssetSource,
   sponsors,
   style
 }: Props) => (
@@ -72,8 +71,7 @@ const SponsorLogoContainer = ({
               <SponsorLogo
                 sponsorName={sponsor.fields.sponsorName[locale]}
                 sponsorLevel={sponsor.fields.sponsorLevel[locale]}
-                sponsorLogoUrl={getAssetUrl(sponsor.fields.sponsorLogo)}
-                sponsorLogoSize={getAssetSize(sponsor.fields.sponsorLogo)}
+                sponsorLogo={getAssetSource(sponsor.fields.sponsorLogo[locale])}
               />
             </Touchable>
           </View>

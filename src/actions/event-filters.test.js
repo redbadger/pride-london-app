@@ -1,8 +1,26 @@
 import {
+  setEventFilters,
   stageEventFilters,
   commitEventFilters,
   clearStagedEventFilters
 } from "./event-filters";
+
+describe("setEventFilters", () => {
+  it("creates correct action with expected payload", () => {
+    const updates = {
+      date: "2018-02-02",
+      time: ["morning"]
+    };
+    const mockDispatch = jest.fn();
+
+    setEventFilters(updates)(mockDispatch);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: "SET_EVENT_FILTERS",
+      payload: updates
+    });
+  });
+});
 
 describe("stageEventFilters", () => {
   it("calls correct action with expected payload", async () => {

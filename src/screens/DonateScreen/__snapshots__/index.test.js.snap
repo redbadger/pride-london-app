@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    onBack={[Function]}
+    title="Donate"
+  />
+  <KeyboardAvoidingView
+    behavior="padding"
+    enabled={true}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <ScrollView>
+      <Component
+        style={
+          Object {
+            "alignSelf": "center",
+            "maxWidth": 440,
+            "width": "100%",
+          }
+        }
+      >
+        <ImageHeader
+          image={1}
+          title={
+            Array [
+              "\\"It's the first time I feel",
+              "accepted in a big group.\\"",
+            ]
+          }
+        />
+        <ContentPadding
+          padding={Object {}}
+          style={Object {}}
+        >
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "marginTop": 12,
+              }
+            }
+            type="h2"
+          >
+            Be part of the movement that drives diversity
+          </Text>
+          <Text
+            color="blackColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            type="text"
+          >
+            The need for Pride is as strong as ever. A huge amount of progress has been made for LGBT+ people but challenges and stigma are still rife. Whether you take part to celebrate, party or protest. Pride in London is your platform to make change. Your donations keep us marching.
+          </Text>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "marginBottom": 16,
+                "marginTop": 20,
+              }
+            }
+            type="h3"
+          >
+            Make a single donation
+          </Text>
+          <SegmentedControl
+            onValueChange={[Function]}
+            selectedValue={null}
+          >
+            <Component
+              key="5"
+              label="£5"
+              value={5}
+            />
+            <Component
+              key="10"
+              label="£10"
+              value={10}
+            />
+            <Component
+              key="20"
+              label="£20"
+              value={20}
+            />
+          </SegmentedControl>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "marginBottom": 8,
+                "marginTop": 20,
+              }
+            }
+            type="h4"
+          >
+            Other amount (£)
+          </Text>
+          <DonateScreen
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            onSubmitEditing={[Function]}
+            placeholder="0.00"
+            returnKeyLabel="Donate"
+            returnKeyType="go"
+            value={null}
+          />
+          <Text
+            color="blackColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "marginTop": 10,
+              }
+            }
+            type="small"
+          >
+            The minimum donation amount is £2.
+          </Text>
+          <Component
+            style={
+              Object {
+                "marginTop": 16,
+                "paddingVertical": 12,
+              }
+            }
+          >
+            <Button
+              disabled={true}
+              onPress={[Function]}
+            >
+              Donate
+            </Button>
+          </Component>
+        </ContentPadding>
+      </Component>
+    </ScrollView>
+  </KeyboardAvoidingView>
+</Component>
+`;

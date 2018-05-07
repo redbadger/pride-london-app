@@ -1435,8 +1435,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n    fabricApiKey=$(sed -n '1p' < ./PrideLondonApp/fabric.properties)\n    fabricApiSecret=$(sed -n '2p' < ./PrideLondonApp/fabric.properties)\n    /usr/libexec/PlistBuddy -c \"Set :Fabric:APIKey string $fabricApiKey\" ./Info.plist\n    ./Fabric.framework/run $fabricApiKey $fabricApiSecret\nfi\n\n";
-			showEnvVarsInLog = 0;
+			shellScript = "if [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n    apiKey=$(sed -n '1p' < ./PrideLondonApp/fabric.properties)\n    apiSecret=$(sed -n '2p' < ./PrideLondonApp/fabric.properties)\n    ./Fabric.framework/run $apiKey $apiSecret\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

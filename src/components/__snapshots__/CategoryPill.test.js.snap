@@ -5,6 +5,7 @@ exports[`CategoryPill Component renders correctly 1`] = `
   style={
     Array [
       Object {
+        "minHeight": 20,
         "paddingLeft": 5,
         "paddingRight": 5,
       },

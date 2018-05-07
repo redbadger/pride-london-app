@@ -1,10 +1,10 @@
 // @flow
-import type { LocalizedFieldRef } from "./localized-field-ref";
+import type { FieldRef } from "./field-ref";
 
 export type Event = {
   fields: {
     name: { [string]: string },
-    eventCategories: { [string]: string[] },
+    eventCategories: { [string]: EventCategoryName[] },
     audience: { [string]: string[] },
     startTime: { [string]: string },
     endTime: { [string]: string },
@@ -24,8 +24,8 @@ export type Event = {
     phone?: { [string]: string },
     ticketingUrl: { [string]: string },
     venueDetails: { [string]: string[] },
-    individualEventPicture: LocalizedFieldRef,
-    eventsListPicture: LocalizedFieldRef,
+    individualEventPicture: { [string]: FieldRef },
+    eventsListPicture: { [string]: FieldRef },
     performances: { [string]: Performance[] }
   },
   sys: {

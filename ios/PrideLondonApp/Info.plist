@@ -30,7 +30,7 @@
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string></string>
+		<string>__RN_CONFIG_FABRIC_API_KEY</string>
 		<key>Kits</key>
 		<array>
 			<dict>
