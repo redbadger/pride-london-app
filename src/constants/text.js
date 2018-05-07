@@ -118,6 +118,7 @@ export default {
   showEvents,
   clearAll: "Clear all",
   filterEvents: "Filter Events",
+  runsFrom: "Runs from:",
   noSavedEventsTitle: "Where's the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
   noSavedEventsSaveButtonAlt: "'save this event' button",
