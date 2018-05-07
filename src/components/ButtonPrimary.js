@@ -6,7 +6,7 @@ import Text from "./Text";
 import {
   eucalyptusGreenColor,
   lightNavyBlueColor,
-  disabledButtonBgColor,
+  mediumGreyColor,
   greyishBrownColor
 } from "../constants/colors";
 
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     color: lightNavyBlueColor
   },
   disabledButton: {
-    backgroundColor: disabledButtonBgColor
+    backgroundColor: mediumGreyColor
   },
   disabledText: {
     color: greyishBrownColor

@@ -3,7 +3,8 @@ import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event";
-import type { LocalizedFieldRef } from "../../data/localized-field-ref";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
 import text from "../../constants/text";
 import Loading from "../../components/Loading";
@@ -22,7 +23,7 @@ export type Props = {
   loading: boolean,
   refreshing: boolean,
   updateEvents: () => Promise<void>,
-  getAssetUrl: LocalizedFieldRef => string
+  getAssetSource: FieldRef => ImageSource
 };
 
 class SavedEventListScreen extends PureComponent<Props> {
@@ -40,7 +41,7 @@ class SavedEventListScreen extends PureComponent<Props> {
       removeSavedEvent,
       refreshing,
       loading,
-      getAssetUrl
+      getAssetSource
     } = this.props;
 
     return (
@@ -64,7 +65,7 @@ class SavedEventListScreen extends PureComponent<Props> {
               onPress={(eventId: string) => {
                 navigation.navigate(EVENT_DETAILS, { eventId });
               }}
-              getAssetUrl={getAssetUrl}
+              getAssetSource={getAssetSource}
             />
           )}
       </View>

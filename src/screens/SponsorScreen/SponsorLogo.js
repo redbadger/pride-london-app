@@ -2,20 +2,15 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 import type { SponsorLevel } from "../../data/sponsor";
+import type { ImageSource } from "../../data/get-asset-source";
 
 type Props = {
   sponsorName: string,
-  sponsorLogoUrl: string,
-  sponsorLevel: SponsorLevel,
-  sponsorLogoSize: { width: number, height: number }
+  sponsorLogo: ImageSource,
+  sponsorLevel: SponsorLevel
 };
 
-const SponsorLogo = ({
-  sponsorName,
-  sponsorLogoUrl,
-  sponsorLevel,
-  sponsorLogoSize
-}: Props) => (
+const SponsorLogo = ({ sponsorName, sponsorLogo, sponsorLevel }: Props) => (
   <View
     style={
       sponsorLevel === "Headline" || sponsorLevel === "Gold"
@@ -27,7 +22,7 @@ const SponsorLogo = ({
       style={styles.image}
       resizeMode="contain"
       accessibilityLabel={sponsorName}
-      source={{ uri: sponsorLogoUrl, ...sponsorLogoSize }}
+      source={sponsorLogo}
     />
   </View>
 );

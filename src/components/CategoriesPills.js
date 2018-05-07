@@ -17,7 +17,8 @@ import type { EventCategoryName } from "../data/event";
 
 type Props = {
   selectedCategories: Set<EventCategoryName>,
-  style?: ViewStyleProp
+  style?: ViewStyleProp,
+  onPress?: Function
 };
 
 class CategoriesPills extends React.PureComponent<Props> {
@@ -25,7 +26,22 @@ class CategoriesPills extends React.PureComponent<Props> {
     style: {}
   };
 
+  onTouchStart = () => {
+    this.shouldTriggerPress = true;
+  };
+
+  onScroll = () => {
+    this.shouldTriggerPress = false;
+  };
+
+  onTouchEnd = (e: any) => {
+    if (this.shouldTriggerPress && this.props.onPress) {
+      this.props.onPress(e);
+    }
+  };
+
   scrollView: ?Object;
+  shouldTriggerPress: boolean = false;
 
   scrollToLastPill = () => {
     if (!this.scrollView) {
@@ -59,6 +75,9 @@ class CategoriesPills extends React.PureComponent<Props> {
               horizontal
               showsHorizontalScrollIndicator={false}
               onContentSizeChange={this.scrollToLastPill}
+              onTouchStart={this.onTouchStart}
+              onScroll={this.onScroll}
+              onTouchEnd={this.onTouchEnd}
             >
               {Array.from(selectedCategories).map(name => (
                 <CategoryPill

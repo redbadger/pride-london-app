@@ -22,7 +22,7 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <SupportUsSectionHeader
+      <ImageHeader
         image={1}
         title="As an individual"
       />
@@ -78,7 +78,7 @@ exports[`renders correctly 1`] = `
           url="https://example.com"
         />
       </ContentPadding>
-      <SupportUsSectionHeader
+      <ImageHeader
         image={1}
         title="As a business"
       />

@@ -40,8 +40,11 @@ const generateSponsors = (count = 2): Sponsor[] =>
       }: any)
   );
 
-const getAssetUrl = jest.fn().mockReturnValue("http://example.com/image.png");
-const getAssetSize = jest.fn();
+const getAssetSource = jest.fn().mockReturnValue({
+  uri: "http://example.com/image.png",
+  width: 1,
+  height: 1
+});
 
 describe("SponsorLogoContainer Component", () => {
   it("renders correctly with Gold Level", () => {
@@ -49,8 +52,7 @@ describe("SponsorLogoContainer Component", () => {
       <SponsorLogoContainer
         sponsorLevel="Gold"
         sponsors={generateSponsors(2)}
-        getAssetUrl={getAssetUrl}
-        getAssetSize={getAssetSize}
+        getAssetSource={getAssetSource}
       />
     );
     expect(output).toMatchSnapshot();
@@ -61,8 +63,7 @@ describe("SponsorLogoContainer Component", () => {
       <SponsorLogoContainer
         sponsorLevel="Silver"
         sponsors={generateSponsors(2)}
-        getAssetUrl={getAssetUrl}
-        getAssetSize={getAssetSize}
+        getAssetSource={getAssetSource}
       />
     );
     expect(output).toMatchSnapshot();
@@ -73,8 +74,7 @@ describe("SponsorLogoContainer Component", () => {
       <SponsorLogoContainer
         sponsorLevel="Silver"
         sponsors={generateSponsors(2)}
-        getAssetUrl={getAssetUrl}
-        getAssetSize={getAssetSize}
+        getAssetSource={getAssetSource}
       />
     );
     const sponsorLink = output.find({ testID: "sponsor-tile-1" });

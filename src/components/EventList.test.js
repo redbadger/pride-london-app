@@ -31,7 +31,7 @@ const events = [
         eventPriceHigh: {
           "en-GB": "0"
         },
-        imageUrl: {
+        eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
         },
         isFree: {
@@ -65,7 +65,7 @@ const events = [
         eventPriceHigh: {
           "en-GB": "0"
         },
-        imageUrl: {
+        eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
         },
         isFree: {
@@ -101,7 +101,7 @@ const events = [
         eventPriceHigh: {
           "en-GB": "0"
         },
-        imageUrl: {
+        eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
         },
         isFree: {
@@ -121,8 +121,7 @@ describe("EventList", () => {
         refreshing={false}
         onRefresh={() => {}}
         onPress={() => {}}
-        getAssetById={() => {}}
-        getAssetUrl={() => {}}
+        getAssetSource={() => {}}
         savedEvents={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -152,7 +151,7 @@ describe("EventList", () => {
         removeSavedEvent: () => {},
         locale: "en-GB",
         onPress: () => {},
-        getAssetUrl: () => {}
+        getAssetSource: () => {}
       });
       const output = shallow(<Item item={events[0][0]} />);
 
@@ -168,7 +167,7 @@ describe("EventList", () => {
         removeSavedEvent: () => {},
         locale: "en-GB",
         onPress: () => {},
-        getAssetUrl: () => {}
+        getAssetSource: () => {}
       });
       const output = shallow(<Item item={event} />);
       const toggleSaved = output.find(EventCard).prop("toggleSaved");
@@ -185,7 +184,7 @@ describe("EventList", () => {
         removeSavedEvent: spy,
         locale: "en-GB",
         onPress: () => {},
-        getAssetUrl: () => {}
+        getAssetSource: () => {}
       });
       const output = shallow(<Item item={event} />);
       const toggleSaved = output.find(EventCard).prop("toggleSaved");
