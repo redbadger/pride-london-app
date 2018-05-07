@@ -4,6 +4,7 @@ import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import getHours from "date-fns/get_hours";
 import isSameDay from "date-fns/is_same_day";
 import R from "ramda";
+import { buildEventFilter } from "./event-filters";
 
 import type { State } from "../reducers";
 import type {
@@ -14,7 +15,6 @@ import type {
   PerformancePeriods
 } from "../data/event";
 import type { Asset } from "../data/asset";
-import { buildEventFilter } from "./event-filters";
 
 import locale from "../data/locale";
 
@@ -51,8 +51,15 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     : sections.days;
 };
 
-export const expandRecurringEvents = (events: Event[]): Event[] =>
-  events.reduce((acc, curr) => {
+// When properly typed CmsEntry[] => CmsEntry[]
+// flow inexblicably crashes on server start 💩 (flow-bin v0.67.0)
+// $FlowFixMe
+export const expandRecurringEventsInEntries = entries =>
+  entries.reduce((acc, curr) => {
+    if (curr.sys.contentType.sys.id !== "event") {
+      return [...acc, curr];
+    }
+
     const recurrenceDates = curr.fields.recurrenceDates
       ? curr.fields.recurrenceDates[locale]
       : [];

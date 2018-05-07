@@ -3,6 +3,7 @@ import type { Reducer } from "redux";
 import type { CmsAction } from "../actions/events";
 import type { CmsEntry } from "../integrations/cms";
 import type { Asset } from "../data/asset";
+import { expandRecurringEventsInEntries } from "../selectors/events";
 
 export type State = {
   entries: CmsEntry[],
@@ -17,6 +18,8 @@ const defaultState = {
   loading: true,
   refreshing: false
 };
+
+const processEntries = entries => expandRecurringEventsInEntries(entries);
 
 const events: Reducer<State, CmsAction> = (
   state: State = defaultState,
@@ -40,7 +43,7 @@ const events: Reducer<State, CmsAction> = (
         ...state,
         loading: false,
         refreshing: false,
-        entries: action.payload ? action.payload.entries : [],
+        entries: action.payload ? processEntries(action.payload.entries) : [],
         assets: action.payload ? action.payload.assets : []
       };
     default:
