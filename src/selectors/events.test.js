@@ -298,11 +298,11 @@ describe("expandRecurringEvents", () => {
           endTime: { "en-GB": "2018-08-02T03:00+00:00" },
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1" } } }
+        sys: { id: "event1" }
       },
       {
         fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
-        sys: { contentType: { sys: { id: "event2" } } }
+        sys: { id: "event2" }
       }
     ];
 
@@ -313,7 +313,7 @@ describe("expandRecurringEvents", () => {
           endTime: { "en-GB": "2018-08-02T03:00+00:00" },
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1" } } }
+        sys: { id: "event1" }
       },
       {
         fields: {
@@ -321,11 +321,11 @@ describe("expandRecurringEvents", () => {
           endTime: { "en-GB": "2018-08-03T03:00+00:00" },
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1-recurrence-03/08/2018" } } }
+        sys: { id: "event1-recurrence-03/08/2018" }
       },
       {
         fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
-        sys: { contentType: { sys: { id: "event2" } } }
+        sys: { id: "event2" }
       }
     ];
 
@@ -339,11 +339,11 @@ describe("expandRecurringEvents", () => {
           startTime: { "en-GB": "2018-08-02T00:00+00:00" },
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1-recurrence-03/08/2018" } } }
+        sys: { id: "event1-recurrence-03/08/2018" }
       },
       {
         fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
-        sys: { contentType: { sys: { id: "event2" } } }
+        sys: { id: "event2" }
       }
     ];
 
@@ -353,11 +353,11 @@ describe("expandRecurringEvents", () => {
           startTime: { "en-GB": "2018-08-02T00:00+00:00" },
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1-recurrence-03/08/2018" } } }
+        sys: { id: "event1-recurrence-03/08/2018" }
       },
       {
         fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
-        sys: { contentType: { sys: { id: "event2" } } }
+        sys: { id: "event2" }
       }
     ];
 
@@ -372,11 +372,11 @@ describe("expandRecurringEvents", () => {
           endTime: { "en-GB": "2018-08-10T03:00+00:00" },
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1" } } }
+        sys: { id: "event1" }
       },
       {
         fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
-        sys: { contentType: { sys: { id: "event2" } } }
+        sys: { id: "event2" }
       }
     ];
 
@@ -387,7 +387,7 @@ describe("expandRecurringEvents", () => {
           endTime: { "en-GB": "2018-08-10T03:00+00:00" },
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1" } } }
+        sys: { id: "event1" }
       },
       {
         fields: {
@@ -395,11 +395,11 @@ describe("expandRecurringEvents", () => {
           endTime: { "en-GB": "2018-08-10T03:00+00:00" },
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
-        sys: { contentType: { sys: { id: "event1-recurrence-03/08/2018" } } }
+        sys: { id: "event1-recurrence-03/08/2018" }
       },
       {
         fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
-        sys: { contentType: { sys: { id: "event2" } } }
+        sys: { id: "event2" }
       }
     ];
 

@@ -57,8 +57,7 @@ export const expandRecurringEvents = (events: Event[]): Event[] =>
       ? curr.fields.recurrenceDates[locale]
       : [];
     const shouldExpandEvent =
-      recurrenceDates.length > 0 &&
-      !curr.sys.contentType.sys.id.includes("recurrence");
+      recurrenceDates.length > 0 && !curr.sys.id.includes("recurrence");
 
     if (shouldExpandEvent) {
       const clones = recurrenceDates.map(recurrance => {
@@ -81,11 +80,7 @@ export const expandRecurringEvents = (events: Event[]): Event[] =>
             }
           },
           sys: {
-            contentType: {
-              sys: {
-                id: `${curr.sys.contentType.sys.id}-recurrence-${recurrance}`
-              }
-            }
+            id: `${curr.sys.id}-recurrence-${recurrance}`
           }
         });
       });
