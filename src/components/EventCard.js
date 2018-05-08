@@ -52,7 +52,7 @@ class EventCard extends React.PureComponent<Props> {
     } = this.props;
     const eventStartTime = removeTimezoneFromDateString(startTime);
     const eventEndTime = removeTimezoneFromDateString(endTime);
-    const timeDisplay = `${formatTime(eventStartTime)} - ${formatTime(
+    const timeDisplay = `${formatTime(eventStartTime)} – ${formatTime(
       eventEndTime
     )}`;
 
