@@ -1,17 +1,15 @@
 // @flow
 import { NAVIGATION, navigate } from "./navigation";
 
-const navigationState = (currentName: string) => {
-  return {
-    index: 0,
-    routes: [
-      {
-        key: "0",
-        routeName: currentName
-      }
-    ]
-  };
-};
+const navigationState = (currentName: string) => ({
+  index: 0,
+  routes: [
+    {
+      key: "0",
+      routeName: currentName
+    }
+  ]
+});
 
 const nestedNavigationState = (currentName: string) => ({
   index: 0,
