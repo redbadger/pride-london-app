@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="h4"
     >
-      Mon, 09 Jul 2018 - Sun, 15 Jul 2018
+      Mon, 09 Jul 2018 – Sun, 15 Jul 2018
     </Text>
     <Text
       color="blackColor"
@@ -19,7 +19,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      11:00 - 18:00
+      11:00 – 18:00
     </Text>
     <RecurrenceDates
       recurrenceDates={

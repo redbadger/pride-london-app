@@ -38,15 +38,11 @@ exports[`renders correctly 1`] = `
       delayPressIn={50}
       onPress={[Function]}
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
-          },
-          Object {
-            "flex": 0,
-            "flexDirection": "row",
-          },
-        ]
+        Object {
+          "flex": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+        }
       }
     >
       <ImageBackground
@@ -104,7 +100,7 @@ exports[`renders correctly 1`] = `
           }
           type="small"
         >
-          12:12 - 13:12
+          12:12 – 13:12
         </Text>
         <Text
           color="lightNavyBlueColor"
@@ -178,15 +174,11 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       delayPressIn={50}
       onPress={[Function]}
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
-          },
-          Object {
-            "flex": 0,
-            "flexDirection": "row",
-          },
-        ]
+        Object {
+          "flex": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+        }
       }
     >
       <ImageBackground
@@ -244,7 +236,7 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
           }
           type="small"
         >
-          12:12 - 13:12
+          12:12 – 13:12
         </Text>
         <Text
           color="lightNavyBlueColor"
@@ -318,15 +310,11 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       delayPressIn={50}
       onPress={[Function]}
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
-          },
-          Object {
-            "flex": 0,
-            "flexDirection": "row",
-          },
-        ]
+        Object {
+          "flex": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+        }
       }
     >
       <ImageBackground
@@ -384,7 +372,7 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
           }
           type="small"
         >
-          12:12 - 13:12
+          12:12 – 13:12
         </Text>
         <Text
           color="lightNavyBlueColor"
@@ -458,15 +446,11 @@ exports[`renders correctly when isFree is true 1`] = `
       delayPressIn={50}
       onPress={[Function]}
       style={
-        Array [
-          Object {
-            "flexGrow": 1,
-          },
-          Object {
-            "flex": 0,
-            "flexDirection": "row",
-          },
-        ]
+        Object {
+          "flex": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+        }
       }
     >
       <ImageBackground
@@ -524,7 +508,7 @@ exports[`renders correctly when isFree is true 1`] = `
           }
           type="small"
         >
-          12:12 - 13:12
+          12:12 – 13:12
         </Text>
         <Text
           color="lightNavyBlueColor"
