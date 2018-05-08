@@ -18,7 +18,8 @@ export type BuildEventArguments = {
   location?: {
     lat: number,
     lon: number
-  }
+  },
+  isFree?: boolean
 };
 
 const buildEvent = ({
@@ -30,13 +31,15 @@ const buildEvent = ({
   location = {
     lon: -0.15343029999996816,
     lat: 51.5352875
-  }
+  },
+  isFree = false
 }: BuildEventArguments) =>
   (({
     fields: {
       startTime: { "en-GB": startTime },
       endTime: { "en-GB": endTime },
       eventCategories: { "en-GB": eventCategories },
+      isFree: { "en-GB": isFree },
       eventPriceLow: { "en-GB": eventPriceLow },
       eventPriceHigh: { "en-GB": eventPriceHigh },
       location: { "en-GB": location }
