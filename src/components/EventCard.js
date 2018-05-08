@@ -57,78 +57,61 @@ class EventCard extends React.PureComponent<Props> {
     )}`;
 
     return (
-      <Touchable
-        style={styles.container}
-        onPress={() => onPress(id)}
-        accessible={false}
-      >
+      <View style={styles.container}>
         <View style={styles.eventCard}>
-          <ImageBackground
-            style={styles.imageContainer}
-            source={image}
-            resizeMode="cover"
+          <Touchable
+            style={[styles.touchable, styles.row]}
+            onPress={() => onPress(id)}
           >
-            <View style={styles.eventPriceContainer}>
-              <Text type="price" color="whiteColor">
-                {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
-              </Text>
-            </View>
-          </ImageBackground>
-          <View style={styles.eventCardDetails}>
-            <View style={styles.column}>
-              <View style={styles.row}>
-                <View style={styles.column}>
-                  <Text
-                    type="small"
-                    color="lightNavyBlueColor"
-                    style={styles.eventTime}
-                  >
-                    {timeDisplay}
-                  </Text>
-                  <Text
-                    numberOfLines={2}
-                    type="h3"
-                    color="lightNavyBlueColor"
-                    style={styles.eventName}
-                  >
-                    {name}
-                  </Text>
-                </View>
-                <View>
-                  <SaveEventButton
-                    active={isSaved}
-                    onPress={active => {
-                      if (active) {
-                        addSavedEvent(id);
-                      } else {
-                        removeSavedEvent(id);
-                      }
-                    }}
-                  />
-                </View>
+            <ImageBackground
+              style={styles.imageContainer}
+              source={image}
+              resizeMode="cover"
+            >
+              <View style={styles.eventPriceContainer}>
+                <Text type="price" color="whiteColor">
+                  {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
+                </Text>
               </View>
-              <Text type="small" color="lightNavyBlueColor">
+            </ImageBackground>
+            <View style={styles.eventCardDetails}>
+              <Text
+                type="small"
+                color="lightNavyBlueColor"
+                style={styles.eventTime}
+              >
+                {timeDisplay}
+              </Text>
+              <Text
+                numberOfLines={2}
+                type="h3"
+                color="lightNavyBlueColor"
+                style={styles.eventName}
+              >
+                {name}
+              </Text>
+              <Text numberOfLines={1} type="small" color="lightNavyBlueColor">
                 {locationName}
               </Text>
             </View>
-          </View>
+          </Touchable>
+          <SaveEventButton
+            active={isSaved}
+            onPress={active => {
+              if (active) {
+                addSavedEvent(id);
+              } else {
+                removeSavedEvent(id);
+              }
+            }}
+          />
         </View>
-      </Touchable>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flex: 0,
-    flexDirection: "row"
-  },
-  column: {
-    flex: 0,
-    flexDirection: "column",
-    flexGrow: 1,
-    flexShrink: 1
-  },
   container: {
     borderRadius: 5,
     // The below properties are required for ioS shadow
@@ -147,8 +130,15 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     borderRadius: 5
   },
+  touchable: {
+    flexGrow: 1
+  },
   imageContainer: {
     width: 114
+  },
+  row: {
+    flex: 0,
+    flexDirection: "row"
   },
   eventPriceContainer: {
     minHeight: 23,

@@ -1,16 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Touchable
-  accessibilityComponentType="button"
-  accessibilityTraits={
-    Array [
-      "button",
-    ]
-  }
-  accessible={false}
-  delayPressIn={50}
-  onPress={[Function]}
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -37,139 +28,120 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <ImageBackground
-      resizeMode="cover"
-      source={
-        Object {
-          "height": 100,
-          "uri": "https://image.jpg",
-          "width": 100,
-        }
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
       }
+      delayPressIn={50}
+      onPress={[Function]}
       style={
-        Object {
-          "width": 114,
-        }
-      }
-    >
-      <Component
-        style={
+        Array [
           Object {
-            "backgroundColor": "#2d2f7f",
-            "justifyContent": "center",
-            "minHeight": 23,
-            "paddingHorizontal": 5,
-            "position": "absolute",
-          }
-        }
-      >
-        <Text
-          color="whiteColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          type="price"
-        >
-          Free
-        </Text>
-      </Component>
-    </ImageBackground>
-    <Component
-      style={
-        Object {
-          "flex": 1,
-          "paddingLeft": 8,
-        }
-      }
-    >
-      <Component
-        style={
+            "flexGrow": 1,
+          },
           Object {
             "flex": 0,
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <ImageBackground
+        resizeMode="cover"
+        source={
+          Object {
+            "height": 100,
+            "uri": "https://image.jpg",
+            "width": 100,
+          }
+        }
+        style={
+          Object {
+            "width": 114,
           }
         }
       >
         <Component
           style={
             Object {
-              "flex": 0,
-              "flexDirection": "row",
+              "backgroundColor": "#2d2f7f",
+              "justifyContent": "center",
+              "minHeight": 23,
+              "paddingHorizontal": 5,
+              "position": "absolute",
             }
           }
         >
-          <Component
-            style={
-              Object {
-                "flex": 0,
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
-              }
-            }
+          <Text
+            color="whiteColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            type="price"
           >
-            <Text
-              color="lightNavyBlueColor"
-              markdown={false}
-              markdownStyle={Object {}}
-              style={
-                Object {
-                  "paddingTop": 12,
-                }
-              }
-              type="small"
-            >
-              12:12 - 13:12
-            </Text>
-            <Text
-              color="lightNavyBlueColor"
-              markdown={false}
-              markdownStyle={Object {}}
-              numberOfLines={2}
-              style={
-                Object {
-                  "paddingTop": 4,
-                }
-              }
-              type="h3"
-            >
-              name
-            </Text>
-          </Component>
-          <Component>
-            <SaveEventButton
-              active={false}
-              onDark={false}
-              onPress={[Function]}
-            />
-          </Component>
+            Free
+          </Text>
         </Component>
+      </ImageBackground>
+      <Component
+        style={
+          Object {
+            "flex": 1,
+            "paddingLeft": 8,
+          }
+        }
+      >
         <Text
           color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
+          style={
+            Object {
+              "paddingTop": 12,
+            }
+          }
+          type="small"
+        >
+          12:12 - 13:12
+        </Text>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          numberOfLines={2}
+          style={
+            Object {
+              "paddingTop": 4,
+            }
+          }
+          type="h3"
+        >
+          name
+        </Text>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          numberOfLines={1}
           type="small"
         >
           location
         </Text>
       </Component>
-    </Component>
+    </Touchable>
+    <SaveEventButton
+      active={false}
+      onDark={false}
+      onPress={[Function]}
+    />
   </Component>
-</Touchable>
+</Component>
 `;
 
 exports[`renders correctly when isFree is false and there is a price range 1`] = `
-<Touchable
-  accessibilityComponentType="button"
-  accessibilityTraits={
-    Array [
-      "button",
-    ]
-  }
-  accessible={false}
-  delayPressIn={50}
-  onPress={[Function]}
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -196,139 +168,120 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
       }
     }
   >
-    <ImageBackground
-      resizeMode="cover"
-      source={
-        Object {
-          "height": 10,
-          "uri": "https://image.jpg",
-          "width": 10,
-        }
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
       }
+      delayPressIn={50}
+      onPress={[Function]}
       style={
-        Object {
-          "width": 114,
-        }
-      }
-    >
-      <Component
-        style={
+        Array [
           Object {
-            "backgroundColor": "#2d2f7f",
-            "justifyContent": "center",
-            "minHeight": 23,
-            "paddingHorizontal": 5,
-            "position": "absolute",
-          }
-        }
-      >
-        <Text
-          color="whiteColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          type="price"
-        >
-          From £12
-        </Text>
-      </Component>
-    </ImageBackground>
-    <Component
-      style={
-        Object {
-          "flex": 1,
-          "paddingLeft": 8,
-        }
-      }
-    >
-      <Component
-        style={
+            "flexGrow": 1,
+          },
           Object {
             "flex": 0,
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <ImageBackground
+        resizeMode="cover"
+        source={
+          Object {
+            "height": 10,
+            "uri": "https://image.jpg",
+            "width": 10,
+          }
+        }
+        style={
+          Object {
+            "width": 114,
           }
         }
       >
         <Component
           style={
             Object {
-              "flex": 0,
-              "flexDirection": "row",
+              "backgroundColor": "#2d2f7f",
+              "justifyContent": "center",
+              "minHeight": 23,
+              "paddingHorizontal": 5,
+              "position": "absolute",
             }
           }
         >
-          <Component
-            style={
-              Object {
-                "flex": 0,
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
-              }
-            }
+          <Text
+            color="whiteColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            type="price"
           >
-            <Text
-              color="lightNavyBlueColor"
-              markdown={false}
-              markdownStyle={Object {}}
-              style={
-                Object {
-                  "paddingTop": 12,
-                }
-              }
-              type="small"
-            >
-              12:12 - 13:12
-            </Text>
-            <Text
-              color="lightNavyBlueColor"
-              markdown={false}
-              markdownStyle={Object {}}
-              numberOfLines={2}
-              style={
-                Object {
-                  "paddingTop": 4,
-                }
-              }
-              type="h3"
-            >
-              name
-            </Text>
-          </Component>
-          <Component>
-            <SaveEventButton
-              active={false}
-              onDark={false}
-              onPress={[Function]}
-            />
-          </Component>
+            From £12
+          </Text>
         </Component>
+      </ImageBackground>
+      <Component
+        style={
+          Object {
+            "flex": 1,
+            "paddingLeft": 8,
+          }
+        }
+      >
         <Text
           color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
+          style={
+            Object {
+              "paddingTop": 12,
+            }
+          }
+          type="small"
+        >
+          12:12 - 13:12
+        </Text>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          numberOfLines={2}
+          style={
+            Object {
+              "paddingTop": 4,
+            }
+          }
+          type="h3"
+        >
+          name
+        </Text>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          numberOfLines={1}
           type="small"
         >
           location
         </Text>
       </Component>
-    </Component>
+    </Touchable>
+    <SaveEventButton
+      active={false}
+      onDark={false}
+      onPress={[Function]}
+    />
   </Component>
-</Touchable>
+</Component>
 `;
 
 exports[`renders correctly when isFree is false and there's only one price 1`] = `
-<Touchable
-  accessibilityComponentType="button"
-  accessibilityTraits={
-    Array [
-      "button",
-    ]
-  }
-  accessible={false}
-  delayPressIn={50}
-  onPress={[Function]}
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -355,139 +308,120 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
       }
     }
   >
-    <ImageBackground
-      resizeMode="cover"
-      source={
-        Object {
-          "height": 10,
-          "uri": "https://image.jpg",
-          "width": 10,
-        }
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
       }
+      delayPressIn={50}
+      onPress={[Function]}
       style={
-        Object {
-          "width": 114,
-        }
-      }
-    >
-      <Component
-        style={
+        Array [
           Object {
-            "backgroundColor": "#2d2f7f",
-            "justifyContent": "center",
-            "minHeight": 23,
-            "paddingHorizontal": 5,
-            "position": "absolute",
-          }
-        }
-      >
-        <Text
-          color="whiteColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          type="price"
-        >
-          £12
-        </Text>
-      </Component>
-    </ImageBackground>
-    <Component
-      style={
-        Object {
-          "flex": 1,
-          "paddingLeft": 8,
-        }
-      }
-    >
-      <Component
-        style={
+            "flexGrow": 1,
+          },
           Object {
             "flex": 0,
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <ImageBackground
+        resizeMode="cover"
+        source={
+          Object {
+            "height": 10,
+            "uri": "https://image.jpg",
+            "width": 10,
+          }
+        }
+        style={
+          Object {
+            "width": 114,
           }
         }
       >
         <Component
           style={
             Object {
-              "flex": 0,
-              "flexDirection": "row",
+              "backgroundColor": "#2d2f7f",
+              "justifyContent": "center",
+              "minHeight": 23,
+              "paddingHorizontal": 5,
+              "position": "absolute",
             }
           }
         >
-          <Component
-            style={
-              Object {
-                "flex": 0,
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
-              }
-            }
+          <Text
+            color="whiteColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            type="price"
           >
-            <Text
-              color="lightNavyBlueColor"
-              markdown={false}
-              markdownStyle={Object {}}
-              style={
-                Object {
-                  "paddingTop": 12,
-                }
-              }
-              type="small"
-            >
-              12:12 - 13:12
-            </Text>
-            <Text
-              color="lightNavyBlueColor"
-              markdown={false}
-              markdownStyle={Object {}}
-              numberOfLines={2}
-              style={
-                Object {
-                  "paddingTop": 4,
-                }
-              }
-              type="h3"
-            >
-              name
-            </Text>
-          </Component>
-          <Component>
-            <SaveEventButton
-              active={false}
-              onDark={false}
-              onPress={[Function]}
-            />
-          </Component>
+            £12
+          </Text>
         </Component>
+      </ImageBackground>
+      <Component
+        style={
+          Object {
+            "flex": 1,
+            "paddingLeft": 8,
+          }
+        }
+      >
         <Text
           color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
+          style={
+            Object {
+              "paddingTop": 12,
+            }
+          }
+          type="small"
+        >
+          12:12 - 13:12
+        </Text>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          numberOfLines={2}
+          style={
+            Object {
+              "paddingTop": 4,
+            }
+          }
+          type="h3"
+        >
+          name
+        </Text>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          numberOfLines={1}
           type="small"
         >
           location
         </Text>
       </Component>
-    </Component>
+    </Touchable>
+    <SaveEventButton
+      active={false}
+      onDark={false}
+      onPress={[Function]}
+    />
   </Component>
-</Touchable>
+</Component>
 `;
 
 exports[`renders correctly when isFree is true 1`] = `
-<Touchable
-  accessibilityComponentType="button"
-  accessibilityTraits={
-    Array [
-      "button",
-    ]
-  }
-  accessible={false}
-  delayPressIn={50}
-  onPress={[Function]}
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -514,124 +448,114 @@ exports[`renders correctly when isFree is true 1`] = `
       }
     }
   >
-    <ImageBackground
-      resizeMode="cover"
-      source={
-        Object {
-          "height": 10,
-          "uri": "https://image.jpg",
-          "width": 10,
-        }
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
       }
+      delayPressIn={50}
+      onPress={[Function]}
       style={
-        Object {
-          "width": 114,
-        }
-      }
-    >
-      <Component
-        style={
+        Array [
           Object {
-            "backgroundColor": "#2d2f7f",
-            "justifyContent": "center",
-            "minHeight": 23,
-            "paddingHorizontal": 5,
-            "position": "absolute",
-          }
-        }
-      >
-        <Text
-          color="whiteColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          type="price"
-        >
-          Free
-        </Text>
-      </Component>
-    </ImageBackground>
-    <Component
-      style={
-        Object {
-          "flex": 1,
-          "paddingLeft": 8,
-        }
-      }
-    >
-      <Component
-        style={
+            "flexGrow": 1,
+          },
           Object {
             "flex": 0,
-            "flexDirection": "column",
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <ImageBackground
+        resizeMode="cover"
+        source={
+          Object {
+            "height": 10,
+            "uri": "https://image.jpg",
+            "width": 10,
+          }
+        }
+        style={
+          Object {
+            "width": 114,
           }
         }
       >
         <Component
           style={
             Object {
-              "flex": 0,
-              "flexDirection": "row",
+              "backgroundColor": "#2d2f7f",
+              "justifyContent": "center",
+              "minHeight": 23,
+              "paddingHorizontal": 5,
+              "position": "absolute",
             }
           }
         >
-          <Component
-            style={
-              Object {
-                "flex": 0,
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
-              }
-            }
+          <Text
+            color="whiteColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            type="price"
           >
-            <Text
-              color="lightNavyBlueColor"
-              markdown={false}
-              markdownStyle={Object {}}
-              style={
-                Object {
-                  "paddingTop": 12,
-                }
-              }
-              type="small"
-            >
-              12:12 - 13:12
-            </Text>
-            <Text
-              color="lightNavyBlueColor"
-              markdown={false}
-              markdownStyle={Object {}}
-              numberOfLines={2}
-              style={
-                Object {
-                  "paddingTop": 4,
-                }
-              }
-              type="h3"
-            >
-              name
-            </Text>
-          </Component>
-          <Component>
-            <SaveEventButton
-              active={false}
-              onDark={false}
-              onPress={[Function]}
-            />
-          </Component>
+            Free
+          </Text>
         </Component>
+      </ImageBackground>
+      <Component
+        style={
+          Object {
+            "flex": 1,
+            "paddingLeft": 8,
+          }
+        }
+      >
         <Text
           color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
+          style={
+            Object {
+              "paddingTop": 12,
+            }
+          }
+          type="small"
+        >
+          12:12 - 13:12
+        </Text>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          numberOfLines={2}
+          style={
+            Object {
+              "paddingTop": 4,
+            }
+          }
+          type="h3"
+        >
+          name
+        </Text>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          numberOfLines={1}
           type="small"
         >
           location
         </Text>
       </Component>
-    </Component>
+    </Touchable>
+    <SaveEventButton
+      active={false}
+      onDark={false}
+      onPress={[Function]}
+    />
   </Component>
-</Touchable>
+</Component>
 `;
