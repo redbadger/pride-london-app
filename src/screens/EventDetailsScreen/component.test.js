@@ -76,8 +76,12 @@ const event: Event = ({
   }
 }: any);
 
-const getAssetUrl = () =>
-  "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg";
+const getAssetSource = () => ({
+  uri:
+    "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
+  width: 256,
+  height: 100
+});
 
 const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
   goBack: () => {}
@@ -87,10 +91,11 @@ it("renders correctly", () => {
   const output = shallow(
     <Component
       event={event}
-      getAssetUrl={getAssetUrl}
+      getAssetSource={getAssetSource}
       isSaved
       navigation={navigation}
       toggleSaved={() => {}}
+      setCategoryFilter={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
@@ -107,9 +112,10 @@ it("renders correctly with missing details", () => {
           accessibilityDetails: undefined
         }
       }}
-      getAssetUrl={getAssetUrl}
+      getAssetSource={getAssetSource}
       navigation={navigation}
       toggleSaved={() => {}}
+      setCategoryFilter={() => {}}
     />
   );
   expect(output).toMatchSnapshot();
@@ -126,21 +132,39 @@ describe("EventHeader", () => {
 
 describe("EventCategories", () => {
   it("renders correctly", () => {
-    const output = shallow(<EventCategories event={event} />);
+    const output = shallow(
+      <EventCategories
+        event={event}
+        navigation={navigation}
+        setCategoryFilter={() => {}}
+      />
+    );
     expect(output).toMatchSnapshot();
   });
 });
 
 describe("EventAccessibility", () => {
   it("renders correctly", () => {
-    const output = shallow(<EventAccessibility event={event} />);
+    const output = shallow(
+      <EventAccessibility
+        event={event}
+        navigation={navigation}
+        setCategoryFilter={() => {}}
+      />
+    );
     expect(output).toMatchSnapshot();
   });
 });
 
 describe("EventTickets", () => {
   it("renders correctly", () => {
-    const output = shallow(<EventTickets event={event} />);
+    const output = shallow(
+      <EventTickets
+        event={event}
+        navigation={navigation}
+        setCategoryFilter={() => {}}
+      />
+    );
     expect(output).toMatchSnapshot();
   });
 });

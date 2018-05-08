@@ -6,19 +6,20 @@ import Text from "../components/Text";
 import CategoryPill from "./CategoryPill";
 import { imageBgColor, eventTileTextColor } from "../constants/colors";
 import type { EventCategoryName } from "../data/event";
+import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
   eventCategories: EventCategoryName[],
   name: string,
   date: string,
-  imageUrl: string
+  image: ImageSource
 };
 
-const EventTile = ({ eventCategories, name, date, imageUrl }: Props) => (
+const EventTile = ({ eventCategories, name, date, image }: Props) => (
   <View style={styles.eventTile}>
     <ImageBackground
       style={styles.imageContainer}
-      source={{ uri: imageUrl }}
+      source={image}
       resizeMode="cover"
     >
       <View style={styles.categoryPillContainer}>

@@ -1565,6 +1565,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PIL_DISPLAY_NAME = PrideLondonApp;
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
 				PRODUCT_NAME = PrideLondonApp;
 				PROVISIONING_PROFILE = "e828b1cc-f5e4-4eda-a782-9adc28ee6f25";
@@ -1605,8 +1606,9 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PIL_DISPLAY_NAME = "Pride in LDN";
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
-				PRODUCT_NAME = "Pride in LDN";
+				PRODUCT_NAME = PrideLondonApp;
 				PROVISIONING_PROFILE = "4c82a347-359f-4613-b253-a79edd192dea";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore org.prideinlondon.festival";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1689,8 +1691,9 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PIL_DISPLAY_NAME = "Pride Beta";
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival.beta;
-				PRODUCT_NAME = "Pride Beta";
+				PRODUCT_NAME = PrideLondonApp;
 				PROVISIONING_PROFILE = "a451db04-c40a-416e-a3b5-182d917d6f38";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival.beta";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1811,8 +1814,9 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PIL_DISPLAY_NAME = "Pride Adhoc";
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
-				PRODUCT_NAME = "Pride Adhoc";
+				PRODUCT_NAME = PrideLondonApp;
 				PROVISIONING_PROFILE = "ff182cdf-c005-45d5-a1fe-a24b95c417b6";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1933,8 +1937,9 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PIL_DISPLAY_NAME = "Pride Alpha";
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival.alpha;
-				PRODUCT_NAME = "Pride Alpha";
+				PRODUCT_NAME = PrideLondonApp;
 				PROVISIONING_PROFILE = "fa187394-876e-4e9b-8a54-19ecbbef1f3e";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival.alpha";
 				VERSIONING_SYSTEM = "apple-generic";

@@ -12,7 +12,8 @@ import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SponsorLogoContainer from "./SponsorLogoContainer";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { LocalizedFieldRef } from "../../data/localized-field-ref";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 import type { Sponsor } from "../../data/sponsor";
 
 import locale from "../../data/locale";
@@ -20,8 +21,7 @@ import locale from "../../data/locale";
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   sponsors: Sponsor[],
-  getAssetUrl: LocalizedFieldRef => string,
-  getAssetSize: LocalizedFieldRef => { width: number, height: number }
+  getAssetSource: FieldRef => ImageSource
 };
 
 class SponsorScreen extends PureComponent<Props> {
@@ -40,7 +40,7 @@ class SponsorScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { navigation, sponsors, getAssetUrl, getAssetSize } = this.props;
+    const { navigation, sponsors, getAssetSource } = this.props;
 
     const sortByName = R.sortBy(sponsor =>
       sponsor.fields.sponsorName[locale].toLowerCase()
@@ -67,29 +67,25 @@ class SponsorScreen extends PureComponent<Props> {
             <SponsorLogoContainer
               sponsorLevel="Headline"
               sponsors={groupSponsors.Headline}
-              getAssetUrl={getAssetUrl}
-              getAssetSize={getAssetSize}
+              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingSmall}
             />
             <SponsorLogoContainer
               sponsorLevel="Gold"
               sponsors={groupSponsors.Gold}
-              getAssetUrl={getAssetUrl}
-              getAssetSize={getAssetSize}
+              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Silver"
               sponsors={groupSponsors.Silver}
-              getAssetUrl={getAssetUrl}
-              getAssetSize={getAssetSize}
+              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Bronze"
               sponsors={groupSponsors.Bronze}
-              getAssetUrl={getAssetUrl}
-              getAssetSize={getAssetSize}
+              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <Text style={styles.sponsorMainHeading} type="h1">
