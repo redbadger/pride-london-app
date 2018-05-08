@@ -1,67 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly when isFree is false and there is a price range 1`] = `
-<Component
+exports[`renders correctly 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  accessible={false}
+  delayPressIn={50}
+  onPress={[Function]}
   style={
     Object {
+      "backgroundColor": "#ffffff",
       "borderRadius": 5,
-      "flexDirection": "row",
-      "minHeight": 108,
-      "overflow": "hidden",
+      "borderWidth": 0,
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.2)",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 1,
+      "shadowRadius": 3,
     }
   }
 >
-  <ImageBackground
-    resizeMode="cover"
-    source={
-      Object {
-        "height": 10,
-        "uri": "https://image.jpg",
-        "width": 10,
-      }
-    }
-    style={
-      Object {
-        "width": 114,
-      }
-    }
-  >
-    <Component
-      style={
-        Object {
-          "backgroundColor": "#2d2f7f",
-          "justifyContent": "center",
-          "minHeight": 23,
-          "paddingHorizontal": 5,
-          "position": "absolute",
-        }
-      }
-    >
-      <Text
-        color="whiteColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        type="price"
-      >
-        From £12
-      </Text>
-    </Component>
-  </ImageBackground>
   <Component
     style={
       Object {
-        "flex": 1,
-        "paddingLeft": 8,
+        "borderRadius": 5,
+        "flexDirection": "row",
+        "minHeight": 108,
+        "overflow": "hidden",
       }
     }
   >
+    <ImageBackground
+      resizeMode="cover"
+      source={
+        Object {
+          "height": 100,
+          "uri": "https://image.jpg",
+          "width": 100,
+        }
+      }
+      style={
+        Object {
+          "width": 114,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "backgroundColor": "#2d2f7f",
+            "justifyContent": "center",
+            "minHeight": 23,
+            "paddingHorizontal": 5,
+            "position": "absolute",
+          }
+        }
+      >
+        <Text
+          color="whiteColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="price"
+        >
+          Free
+        </Text>
+      </Component>
+    </ImageBackground>
     <Component
       style={
         Object {
-          "flex": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
+          "flex": 1,
+          "paddingLeft": 8,
         }
       }
     >
@@ -69,7 +85,9 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
         style={
           Object {
             "flex": 0,
-            "flexDirection": "row",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
           }
         }
       >
@@ -77,123 +95,307 @@ exports[`renders correctly when isFree is false and there is a price range 1`] =
           style={
             Object {
               "flex": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "flexDirection": "row",
             }
           }
         >
-          <Text
-            color="lightNavyBlueColor"
-            markdown={false}
-            markdownStyle={Object {}}
+          <Component
             style={
               Object {
-                "paddingTop": 12,
+                "flex": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
-            type="small"
           >
-            12:12 - 13:12
-          </Text>
-          <Text
-            color="lightNavyBlueColor"
-            markdown={false}
-            markdownStyle={Object {}}
-            numberOfLines={2}
-            style={
-              Object {
-                "paddingTop": 4,
+            <Text
+              color="lightNavyBlueColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
               }
-            }
-            type="h3"
-          >
-            name
-          </Text>
+              type="small"
+            >
+              12:12 - 13:12
+            </Text>
+            <Text
+              color="lightNavyBlueColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              numberOfLines={2}
+              style={
+                Object {
+                  "paddingTop": 4,
+                }
+              }
+              type="h3"
+            >
+              name
+            </Text>
+          </Component>
+          <Component>
+            <SaveEventButton
+              active={false}
+              onDark={false}
+              onPress={[Function]}
+            />
+          </Component>
         </Component>
-        <Component>
-          <SaveEventButton
-            active={false}
-            onDark={false}
-            onPress={[Function]}
-          />
-        </Component>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="small"
+        >
+          location
+        </Text>
       </Component>
-      <Text
-        color="lightNavyBlueColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        type="small"
-      >
-        location
-      </Text>
     </Component>
   </Component>
-</Component>
+</Touchable>
+`;
+
+exports[`renders correctly when isFree is false and there is a price range 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  accessible={false}
+  delayPressIn={50}
+  onPress={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "borderRadius": 5,
+      "borderWidth": 0,
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.2)",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 1,
+      "shadowRadius": 3,
+    }
+  }
+>
+  <Component
+    style={
+      Object {
+        "borderRadius": 5,
+        "flexDirection": "row",
+        "minHeight": 108,
+        "overflow": "hidden",
+      }
+    }
+  >
+    <ImageBackground
+      resizeMode="cover"
+      source={
+        Object {
+          "height": 10,
+          "uri": "https://image.jpg",
+          "width": 10,
+        }
+      }
+      style={
+        Object {
+          "width": 114,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "backgroundColor": "#2d2f7f",
+            "justifyContent": "center",
+            "minHeight": 23,
+            "paddingHorizontal": 5,
+            "position": "absolute",
+          }
+        }
+      >
+        <Text
+          color="whiteColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="price"
+        >
+          From £12
+        </Text>
+      </Component>
+    </ImageBackground>
+    <Component
+      style={
+        Object {
+          "flex": 1,
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "flex": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "flex": 0,
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Component
+            style={
+              Object {
+                "flex": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              }
+            }
+          >
+            <Text
+              color="lightNavyBlueColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
+              }
+              type="small"
+            >
+              12:12 - 13:12
+            </Text>
+            <Text
+              color="lightNavyBlueColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              numberOfLines={2}
+              style={
+                Object {
+                  "paddingTop": 4,
+                }
+              }
+              type="h3"
+            >
+              name
+            </Text>
+          </Component>
+          <Component>
+            <SaveEventButton
+              active={false}
+              onDark={false}
+              onPress={[Function]}
+            />
+          </Component>
+        </Component>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="small"
+        >
+          location
+        </Text>
+      </Component>
+    </Component>
+  </Component>
+</Touchable>
 `;
 
 exports[`renders correctly when isFree is false and there's only one price 1`] = `
-<Component
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  accessible={false}
+  delayPressIn={50}
+  onPress={[Function]}
   style={
     Object {
+      "backgroundColor": "#ffffff",
       "borderRadius": 5,
-      "flexDirection": "row",
-      "minHeight": 108,
-      "overflow": "hidden",
+      "borderWidth": 0,
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.2)",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 1,
+      "shadowRadius": 3,
     }
   }
 >
-  <ImageBackground
-    resizeMode="cover"
-    source={
-      Object {
-        "height": 10,
-        "uri": "https://image.jpg",
-        "width": 10,
-      }
-    }
-    style={
-      Object {
-        "width": 114,
-      }
-    }
-  >
-    <Component
-      style={
-        Object {
-          "backgroundColor": "#2d2f7f",
-          "justifyContent": "center",
-          "minHeight": 23,
-          "paddingHorizontal": 5,
-          "position": "absolute",
-        }
-      }
-    >
-      <Text
-        color="whiteColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        type="price"
-      >
-        £12
-      </Text>
-    </Component>
-  </ImageBackground>
   <Component
     style={
       Object {
-        "flex": 1,
-        "paddingLeft": 8,
+        "borderRadius": 5,
+        "flexDirection": "row",
+        "minHeight": 108,
+        "overflow": "hidden",
       }
     }
   >
+    <ImageBackground
+      resizeMode="cover"
+      source={
+        Object {
+          "height": 10,
+          "uri": "https://image.jpg",
+          "width": 10,
+        }
+      }
+      style={
+        Object {
+          "width": 114,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "backgroundColor": "#2d2f7f",
+            "justifyContent": "center",
+            "minHeight": 23,
+            "paddingHorizontal": 5,
+            "position": "absolute",
+          }
+        }
+      >
+        <Text
+          color="whiteColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="price"
+        >
+          £12
+        </Text>
+      </Component>
+    </ImageBackground>
     <Component
       style={
         Object {
-          "flex": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
+          "flex": 1,
+          "paddingLeft": 8,
         }
       }
     >
@@ -201,7 +403,9 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
         style={
           Object {
             "flex": 0,
-            "flexDirection": "row",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
           }
         }
       >
@@ -209,123 +413,148 @@ exports[`renders correctly when isFree is false and there's only one price 1`] =
           style={
             Object {
               "flex": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "flexDirection": "row",
             }
           }
         >
-          <Text
-            color="lightNavyBlueColor"
-            markdown={false}
-            markdownStyle={Object {}}
+          <Component
             style={
               Object {
-                "paddingTop": 12,
+                "flex": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
-            type="small"
           >
-            12:12 - 13:12
-          </Text>
-          <Text
-            color="lightNavyBlueColor"
-            markdown={false}
-            markdownStyle={Object {}}
-            numberOfLines={2}
-            style={
-              Object {
-                "paddingTop": 4,
+            <Text
+              color="lightNavyBlueColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
               }
-            }
-            type="h3"
-          >
-            name
-          </Text>
+              type="small"
+            >
+              12:12 - 13:12
+            </Text>
+            <Text
+              color="lightNavyBlueColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              numberOfLines={2}
+              style={
+                Object {
+                  "paddingTop": 4,
+                }
+              }
+              type="h3"
+            >
+              name
+            </Text>
+          </Component>
+          <Component>
+            <SaveEventButton
+              active={false}
+              onDark={false}
+              onPress={[Function]}
+            />
+          </Component>
         </Component>
-        <Component>
-          <SaveEventButton
-            active={false}
-            onDark={false}
-            onPress={[Function]}
-          />
-        </Component>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="small"
+        >
+          location
+        </Text>
       </Component>
-      <Text
-        color="lightNavyBlueColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        type="small"
-      >
-        location
-      </Text>
     </Component>
   </Component>
-</Component>
+</Touchable>
 `;
 
 exports[`renders correctly when isFree is true 1`] = `
-<Component
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  accessible={false}
+  delayPressIn={50}
+  onPress={[Function]}
   style={
     Object {
+      "backgroundColor": "#ffffff",
       "borderRadius": 5,
-      "flexDirection": "row",
-      "minHeight": 108,
-      "overflow": "hidden",
+      "borderWidth": 0,
+      "elevation": 3,
+      "shadowColor": "rgba(0, 0, 0, 0.2)",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 1,
+      "shadowRadius": 3,
     }
   }
 >
-  <ImageBackground
-    resizeMode="cover"
-    source={
-      Object {
-        "height": 10,
-        "uri": "https://image.jpg",
-        "width": 10,
-      }
-    }
-    style={
-      Object {
-        "width": 114,
-      }
-    }
-  >
-    <Component
-      style={
-        Object {
-          "backgroundColor": "#2d2f7f",
-          "justifyContent": "center",
-          "minHeight": 23,
-          "paddingHorizontal": 5,
-          "position": "absolute",
-        }
-      }
-    >
-      <Text
-        color="whiteColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        type="price"
-      >
-        Free
-      </Text>
-    </Component>
-  </ImageBackground>
   <Component
     style={
       Object {
-        "flex": 1,
-        "paddingLeft": 8,
+        "borderRadius": 5,
+        "flexDirection": "row",
+        "minHeight": 108,
+        "overflow": "hidden",
       }
     }
   >
+    <ImageBackground
+      resizeMode="cover"
+      source={
+        Object {
+          "height": 10,
+          "uri": "https://image.jpg",
+          "width": 10,
+        }
+      }
+      style={
+        Object {
+          "width": 114,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "backgroundColor": "#2d2f7f",
+            "justifyContent": "center",
+            "minHeight": 23,
+            "paddingHorizontal": 5,
+            "position": "absolute",
+          }
+        }
+      >
+        <Text
+          color="whiteColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="price"
+        >
+          Free
+        </Text>
+      </Component>
+    </ImageBackground>
     <Component
       style={
         Object {
-          "flex": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
+          "flex": 1,
+          "paddingLeft": 8,
         }
       }
     >
@@ -333,7 +562,9 @@ exports[`renders correctly when isFree is true 1`] = `
         style={
           Object {
             "flex": 0,
-            "flexDirection": "row",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
           }
         }
       >
@@ -341,57 +572,66 @@ exports[`renders correctly when isFree is true 1`] = `
           style={
             Object {
               "flex": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "flexDirection": "row",
             }
           }
         >
-          <Text
-            color="lightNavyBlueColor"
-            markdown={false}
-            markdownStyle={Object {}}
+          <Component
             style={
               Object {
-                "paddingTop": 12,
+                "flex": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
               }
             }
-            type="small"
           >
-            12:12 - 13:12
-          </Text>
-          <Text
-            color="lightNavyBlueColor"
-            markdown={false}
-            markdownStyle={Object {}}
-            numberOfLines={2}
-            style={
-              Object {
-                "paddingTop": 4,
+            <Text
+              color="lightNavyBlueColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
               }
-            }
-            type="h3"
-          >
-            name
-          </Text>
+              type="small"
+            >
+              12:12 - 13:12
+            </Text>
+            <Text
+              color="lightNavyBlueColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              numberOfLines={2}
+              style={
+                Object {
+                  "paddingTop": 4,
+                }
+              }
+              type="h3"
+            >
+              name
+            </Text>
+          </Component>
+          <Component>
+            <SaveEventButton
+              active={false}
+              onDark={false}
+              onPress={[Function]}
+            />
+          </Component>
         </Component>
-        <Component>
-          <SaveEventButton
-            active={false}
-            onDark={false}
-            onPress={[Function]}
-          />
-        </Component>
+        <Text
+          color="lightNavyBlueColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="small"
+        >
+          location
+        </Text>
       </Component>
-      <Text
-        color="lightNavyBlueColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        type="small"
-      >
-        location
-      </Text>
     </Component>
   </Component>
-</Component>
+</Touchable>
 `;

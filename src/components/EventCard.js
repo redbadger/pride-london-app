@@ -1,13 +1,19 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
-import { lightNavyBlueColor } from "../constants/colors";
-import Text from "./Text";
 import SaveEventButton from "./SaveEventButton";
+import Text from "./Text";
+import Touchable from "./Touchable";
+import {
+  blackTwentyColor,
+  lightNavyBlueColor,
+  whiteColor
+} from "../constants/colors";
 import { formattedEventPrice, formatTime } from "../data/formatters";
 import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
+  id: string,
   name: string,
   locationName: string,
   eventPriceLow: number,
@@ -17,7 +23,9 @@ type Props = {
   image: ImageSource,
   isFree: boolean,
   isSaved: boolean,
-  toggleSaved: boolean => void
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void,
+  onPress: (id: string) => void
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
 
@@ -28,6 +36,7 @@ class EventCard extends React.PureComponent<Props> {
 
   render() {
     const {
+      id,
       name,
       locationName,
       startTime,
@@ -37,7 +46,9 @@ class EventCard extends React.PureComponent<Props> {
       eventPriceHigh,
       isFree,
       isSaved,
-      toggleSaved
+      addSavedEvent,
+      removeSavedEvent,
+      onPress
     } = this.props;
     const eventStartTime = removeTimezoneFromDateString(startTime);
     const eventEndTime = removeTimezoneFromDateString(endTime);
@@ -46,48 +57,63 @@ class EventCard extends React.PureComponent<Props> {
     )}`;
 
     return (
-      <View style={styles.eventCard}>
-        <ImageBackground
-          style={styles.imageContainer}
-          source={image}
-          resizeMode="cover"
-        >
-          <View style={styles.eventPriceContainer}>
-            <Text type="price" color="whiteColor">
-              {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
-            </Text>
-          </View>
-        </ImageBackground>
-        <View style={styles.eventCardDetails}>
-          <View style={styles.column}>
-            <View style={styles.row}>
-              <View style={styles.column}>
-                <Text
-                  type="small"
-                  color="lightNavyBlueColor"
-                  style={styles.eventTime}
-                >
-                  {timeDisplay}
-                </Text>
-                <Text
-                  numberOfLines={2}
-                  type="h3"
-                  color="lightNavyBlueColor"
-                  style={styles.eventName}
-                >
-                  {name}
-                </Text>
-              </View>
-              <View>
-                <SaveEventButton active={isSaved} onPress={toggleSaved} />
-              </View>
+      <Touchable
+        style={styles.container}
+        onPress={() => onPress(id)}
+        accessible={false}
+      >
+        <View style={styles.eventCard}>
+          <ImageBackground
+            style={styles.imageContainer}
+            source={image}
+            resizeMode="cover"
+          >
+            <View style={styles.eventPriceContainer}>
+              <Text type="price" color="whiteColor">
+                {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
+              </Text>
             </View>
-            <Text type="small" color="lightNavyBlueColor">
-              {locationName}
-            </Text>
+          </ImageBackground>
+          <View style={styles.eventCardDetails}>
+            <View style={styles.column}>
+              <View style={styles.row}>
+                <View style={styles.column}>
+                  <Text
+                    type="small"
+                    color="lightNavyBlueColor"
+                    style={styles.eventTime}
+                  >
+                    {timeDisplay}
+                  </Text>
+                  <Text
+                    numberOfLines={2}
+                    type="h3"
+                    color="lightNavyBlueColor"
+                    style={styles.eventName}
+                  >
+                    {name}
+                  </Text>
+                </View>
+                <View>
+                  <SaveEventButton
+                    active={isSaved}
+                    onPress={active => {
+                      if (active) {
+                        addSavedEvent(id);
+                      } else {
+                        removeSavedEvent(id);
+                      }
+                    }}
+                  />
+                </View>
+              </View>
+              <Text type="small" color="lightNavyBlueColor">
+                {locationName}
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
+      </Touchable>
     );
   }
 }
@@ -102,6 +128,18 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flexGrow: 1,
     flexShrink: 1
+  },
+  container: {
+    borderRadius: 5,
+    // The below properties are required for ioS shadow
+    shadowColor: blackTwentyColor,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    // The below properties are required for android shadow
+    borderWidth: 0,
+    elevation: 3,
+    backgroundColor: whiteColor
   },
   eventCard: {
     minHeight: 108,
