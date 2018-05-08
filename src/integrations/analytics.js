@@ -8,27 +8,25 @@ import { HOME } from "../constants/routes";
 
 const { Analytics } = NativeModules;
 
-const trackEvent = (name, data) => {
-  if (NativeModules.Analytics) {
-    Analytics.trackEvent(name, data);
+const trackEvent = (action: Action) => {
+  switch (action.type) {
+    case INIT:
+      Analytics.trackEvent("Screen Event", { screen: HOME });
+      break;
+    case NAVIGATION:
+      if (action.route) {
+        Analytics.trackEvent("Screen Event", { screen: action.route });
+      }
+      break;
+    default:
+      break;
   }
 };
 
 type Action = NavigationAction | InitAction;
 
 const analytics = () => (next: Action => mixed) => (action: Action) => {
-  switch (action.type) {
-    case INIT:
-      trackEvent("Screen Event", { screen: HOME });
-      break;
-    case NAVIGATION:
-      if (action.route) {
-        trackEvent("Screen Event", { screen: action.route });
-      }
-      break;
-    default:
-      break;
-  }
+  trackEvent(action);
   return next(action);
 };
 
