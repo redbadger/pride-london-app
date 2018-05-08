@@ -1,4 +1,5 @@
 import {
+  correctPrice,
   loadCmsData,
   saveCmsData,
   fetchSavedEvents,
@@ -205,6 +206,182 @@ describe("loadCmsData", () => {
 
     const loadedData = await loadCmsData(mockAsyncStorage);
     expect(loadedData).toEqual(mockData);
+  });
+});
+
+describe("correctPrice", () => {
+  // const initialEntry = {
+  //   fields: {
+  //     isFree: {
+  //       'en-GB': true
+  //     },
+  //     eventPriceLow: {
+  //       'en-GB': 0
+  //     },
+  //     eventPriceHigh: {
+  //       'en-GB': 0
+  //     }
+  //   }
+  // };
+
+  it("should reverse the prices if priceLow is higher than priceHigh", () => {
+    const initialEntry = {
+      fields: {
+        isFree: {
+          "en-GB": true
+        },
+        eventPriceLow: {
+          "en-GB": 20
+        },
+        eventPriceHigh: {
+          "en-GB": 10
+        }
+      }
+    };
+
+    const result = {
+      fields: {
+        isFree: {
+          "en-GB": false
+        },
+        eventPriceLow: {
+          "en-GB": 10
+        },
+        eventPriceHigh: {
+          "en-GB": 20
+        }
+      }
+    };
+
+    expect(correctPrice(initialEntry)).toEqual(result);
+  });
+
+  it("should reverse the prices if priceLow is higher than priceHigh and set isFree to true because priceHigh is zero", () => {
+    const initialEntry = {
+      fields: {
+        isFree: {
+          "en-GB": false
+        },
+        eventPriceLow: {
+          "en-GB": 20
+        },
+        eventPriceHigh: {
+          "en-GB": 0
+        }
+      }
+    };
+
+    const result = {
+      fields: {
+        isFree: {
+          "en-GB": true
+        },
+        eventPriceLow: {
+          "en-GB": 0
+        },
+        eventPriceHigh: {
+          "en-GB": 20
+        }
+      }
+    };
+
+    expect(correctPrice(initialEntry)).toEqual(result);
+  });
+
+  it("should set the isFree flag to false if both the prices are greater than zero", () => {
+    const initialEntry = {
+      fields: {
+        isFree: {
+          "en-GB": true
+        },
+        eventPriceLow: {
+          "en-GB": 10
+        },
+        eventPriceHigh: {
+          "en-GB": 20
+        }
+      }
+    };
+
+    const result = {
+      fields: {
+        isFree: {
+          "en-GB": false
+        },
+        eventPriceLow: {
+          "en-GB": 10
+        },
+        eventPriceHigh: {
+          "en-GB": 20
+        }
+      }
+    };
+
+    expect(correctPrice(initialEntry)).toEqual(result);
+  });
+
+  it("should set the isFree flag to true if one of the prices (priceHigh) is greater than zero", () => {
+    const initialEntry = {
+      fields: {
+        isFree: {
+          "en-GB": true
+        },
+        eventPriceLow: {
+          "en-GB": 0
+        },
+        eventPriceHigh: {
+          "en-GB": 20
+        }
+      }
+    };
+
+    const result = {
+      fields: {
+        isFree: {
+          "en-GB": true
+        },
+        eventPriceLow: {
+          "en-GB": 0
+        },
+        eventPriceHigh: {
+          "en-GB": 20
+        }
+      }
+    };
+
+    expect(correctPrice(initialEntry)).toEqual(result);
+  });
+
+  it("should set the isFree flag as true if both prices are 0", () => {
+    const initialEntry = {
+      fields: {
+        isFree: {
+          "en-GB": false
+        },
+        eventPriceLow: {
+          "en-GB": 0
+        },
+        eventPriceHigh: {
+          "en-GB": 0
+        }
+      }
+    };
+
+    const result = {
+      fields: {
+        isFree: {
+          "en-GB": true
+        },
+        eventPriceLow: {
+          "en-GB": 0
+        },
+        eventPriceHigh: {
+          "en-GB": 0
+        }
+      }
+    };
+
+    expect(correctPrice(initialEntry)).toEqual(result);
   });
 });
 

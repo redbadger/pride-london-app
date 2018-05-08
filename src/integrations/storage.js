@@ -58,6 +58,31 @@ const correctDates = (entry: Object) => {
   };
 };
 
+export const correctPrice = (entry: Object) => {
+  const priceLow = entry.fields.eventPriceLow[locale];
+  const priceHigh = entry.fields.eventPriceHigh[locale];
+
+  const swapPriceFields = {
+    eventPriceLow: {
+      [locale]: priceHigh
+    },
+    eventPriceHigh: {
+      [locale]: priceLow
+    }
+  };
+
+  return {
+    ...entry,
+    fields: {
+      ...entry.fields,
+      ...(priceLow > priceHigh && swapPriceFields),
+      isFree: {
+        [locale]: priceHigh === 0 || priceLow === 0
+      }
+    }
+  };
+};
+
 const updateCmsEntryList = (newList, deletedList, localList) => {
   const deletedEntryIds = deletedList.map(deletedEntry => deletedEntry.sys.id);
 
