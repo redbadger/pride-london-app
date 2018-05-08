@@ -59,10 +59,7 @@ class EventCard extends React.PureComponent<Props> {
     return (
       <View style={styles.container}>
         <View style={styles.eventCard}>
-          <Touchable
-            style={[styles.touchable, styles.row]}
-            onPress={() => onPress(id)}
-          >
+          <Touchable style={styles.touchable} onPress={() => onPress(id)}>
             <ImageBackground
               style={styles.imageContainer}
               source={image}
@@ -131,14 +128,12 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   touchable: {
-    flexGrow: 1
+    flexGrow: 1,
+    flex: 0,
+    flexDirection: "row"
   },
   imageContainer: {
     width: 114
-  },
-  row: {
-    flex: 0,
-    flexDirection: "row"
   },
   eventPriceContainer: {
     minHeight: 23,
