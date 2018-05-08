@@ -32,9 +32,13 @@ class FeaturedEventsListScreen extends PureComponent<Props> {
     return (
       <View style={styles.container}>
         <Header
-          onBack={() => {
-            this.props.navigation.goBack(null);
-          }}
+          leftElement={
+            <Header.BackButton
+              onPress={() => {
+                this.props.navigation.goBack(null);
+              }}
+            />
+          }
           title={text.featuredEventListTitle}
         />
         <EventList
