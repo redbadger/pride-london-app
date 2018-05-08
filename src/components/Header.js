@@ -31,11 +31,7 @@ const renderTitle = (title: string) => (
 );
 
 const Header = ({ onBack, title, rightElement }: Props) => {
-  const leftElement = onBack ? (
-    renderBackButton(onBack)
-  ) : (
-    <View style={styles.phantomIcon} />
-  );
+  const leftElement = onBack ? renderBackButton(onBack) : null;
   const titleElement = title ? renderTitle(title) : null;
   return (
     <SafeAreaView
@@ -48,7 +44,7 @@ const Header = ({ onBack, title, rightElement }: Props) => {
         backgroundColor={lightNavyBlueColor}
       />
       <ContentPadding style={styles.headerContent}>
-        {leftElement}
+        {leftElement || <View style={styles.phantomIcon} />}
         {titleElement}
         {rightElement || <View style={styles.phantomIcon} />}
       </ContentPadding>
@@ -67,7 +63,10 @@ const styles = StyleSheet.create({
     height: 48,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    alignSelf: "center",
+    maxWidth: 440,
+    width: "100%"
   },
   phantomIcon: {
     width: 48,

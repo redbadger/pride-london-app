@@ -2,6 +2,7 @@
 
 exports[`FilterHeaderCategories Component renders correctly 1`] = `
 <Component
+  onPress={[Function]}
   style={
     Object {
       "alignItems": "center",
@@ -10,7 +11,15 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
     }
   }
 >
-  <Component
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    onPress={[Function]}
     style={
       Object {
         "alignItems": "center",
@@ -32,16 +41,17 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
       style={
         Object {
           "color": "#ffffff",
+          "marginTop": 4,
         }
       }
       type="h2"
     >
-      All events
+      All event types
     </Text>
     <CategoriesFilterButton
       onPress={[Function]}
       style={Object {}}
     />
-  </Component>
+  </Touchable>
 </Component>
 `;

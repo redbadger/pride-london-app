@@ -1,7 +1,8 @@
 // @flow
 import React from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
+import { View, StyleSheet, Platform } from "react-native";
 import { lightNavyBlueColor, eucalyptusGreenColor } from "../constants/colors";
+import Text from "../components/Text";
 
 type Props = {
   value: number
@@ -28,8 +29,9 @@ const styles = StyleSheet.create({
     color: lightNavyBlueColor,
     fontWeight: "bold",
     ...Platform.select({
-      android: {
-        marginTop: -2
+      ios: {
+        marginTop: 2,
+        marginLeft: 1
       }
     })
   }

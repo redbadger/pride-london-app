@@ -5,6 +5,7 @@ import { Image, StyleSheet, View } from "react-native";
 import type { TabScene } from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
 
+import DonateScreen from "./screens/DonateScreen";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
@@ -141,7 +142,7 @@ const SavedStack = StackNavigator(
 const SupportUsStack = StackNavigator(
   {
     [SUPPORT_US]: { screen: withShadow(SupportUsScreen) },
-    [DONATE]: { screen: withShadow(() => <View />) },
+    [DONATE]: { screen: DonateScreen },
     [SPONSOR]: { screen: SponsorScreen }
   },
   {

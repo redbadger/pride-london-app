@@ -5,6 +5,7 @@ import { lightNavyBlueColor } from "../constants/colors";
 import Text from "./Text";
 import SaveEventButton from "./SaveEventButton";
 import { formattedEventPrice, formatTime } from "../data/formatters";
+import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
   name: string,
@@ -13,7 +14,7 @@ type Props = {
   eventPriceHigh: number,
   startTime: string,
   endTime: string,
-  imageUrl: string,
+  image: ImageSource,
   isFree: boolean,
   isSaved: boolean,
   toggleSaved: boolean => void
@@ -31,7 +32,7 @@ class EventCard extends React.PureComponent<Props> {
       locationName,
       startTime,
       endTime,
-      imageUrl,
+      image,
       eventPriceLow,
       eventPriceHigh,
       isFree,
@@ -48,7 +49,7 @@ class EventCard extends React.PureComponent<Props> {
       <View style={styles.eventCard}>
         <ImageBackground
           style={styles.imageContainer}
-          source={{ uri: imageUrl }}
+          source={image}
           resizeMode="cover"
         >
           <View style={styles.eventPriceContainer}>

@@ -4,7 +4,8 @@ import {
   formatTime,
   formatPrice,
   formattedEventPrice,
-  formattedEventPriceRange
+  formattedEventPriceRange,
+  removeTimezoneFromCmsDateString
 } from "./formatters";
 
 describe("formatDateRange", () => {
@@ -31,6 +32,15 @@ describe("formatTime", () => {
     expect(a).toBe("11:00");
     const b = formatTime("2017-07-09T06:00");
     expect(b).toBe("06:00");
+  });
+});
+
+describe("removeTimezoneFromCmsDateString", () => {
+  it("formats dateString correctly", () => {
+    const dateString = "2018-04-09T20:00+01:00";
+    const expected = "2018-04-09T20:00";
+
+    expect(removeTimezoneFromCmsDateString(dateString)).toEqual(expected);
   });
 });
 

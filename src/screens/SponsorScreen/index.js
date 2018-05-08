@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Sponsor } from "../../data/sponsor";
-import type { LocalizedFieldRef } from "../../data/localized-field-ref";
-import getAssetUrl from "../../data/get-asset-url";
-import getAssetSize from "../../data/get-asset-size";
+import type { FieldRef } from "../../data/field-ref";
+import getAssetSource from "../../data/get-asset-source";
+import type { ImageSource } from "../../data/get-asset-source";
 import { selectAssetById } from "../../selectors/events";
 import { selectSponsors } from "../../selectors/sponsors";
 import Component from "./component";
@@ -16,14 +16,12 @@ type OwnProps = {
 
 type Props = {
   sponsors: Sponsor[],
-  getAssetUrl: LocalizedFieldRef => string,
-  getAssetSize: LocalizedFieldRef => { width: number, height: number }
+  getAssetSource: FieldRef => ImageSource
 } & OwnProps;
 
 const mapStateToProps = state => ({
   sponsors: selectSponsors(state),
-  getAssetUrl: getAssetUrl(id => selectAssetById(state, id)),
-  getAssetSize: getAssetSize(id => selectAssetById(state, id))
+  getAssetSource: getAssetSource(id => selectAssetById(state, id))
 });
 
 const mapDispatchToProps = {};

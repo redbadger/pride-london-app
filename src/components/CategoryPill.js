@@ -3,6 +3,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
+import Touchable from "./Touchable";
 import eventCategories from "../constants/event-categories";
 import locale from "../data/locale";
 import { blackColor, whiteColor } from "../constants/colors";
@@ -21,13 +22,12 @@ const categoryStyleBackgroundColor = (category: EventCategoryName) => {
 type Props = {
   name: EventCategoryName,
   style?: ViewStyleProp,
-  numberOfLines?: number
+  numberOfLines?: number,
+  onPress?: Function
 };
 
-const CategoryPill = ({ name, style, numberOfLines }: Props) => (
-  <View
-    style={[styles.categoryPill, categoryStyleBackgroundColor(name), style]}
-  >
+const CategoryPill = ({ name, style, numberOfLines, onPress }: Props) => {
+  const text = (
     <Text
       type="h3"
       numberOfLines={numberOfLines}
@@ -35,16 +35,27 @@ const CategoryPill = ({ name, style, numberOfLines }: Props) => (
     >
       {name}
     </Text>
-  </View>
-);
+  );
+  const css = [styles.categoryPill, categoryStyleBackgroundColor(name), style];
+
+  return onPress ? (
+    <Touchable style={css} onPress={onPress}>
+      {text}
+    </Touchable>
+  ) : (
+    <View style={css}>{text}</View>
+  );
+};
 
 CategoryPill.defaultProps = {
   style: {},
-  numberOfLines: undefined
+  numberOfLines: undefined,
+  onPress: undefined
 };
 
 const styles = StyleSheet.create({
   categoryPill: {
+    minHeight: 20,
     paddingLeft: 5,
     paddingRight: 5
   },

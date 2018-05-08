@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector, MapStateToProps } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
-import getAssetUrl from "../../data/get-asset-url";
+import getAssetSource from "../../data/get-asset-source";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import type { State } from "../../reducers";
 import {
@@ -27,7 +27,7 @@ const mapStateToProps: MapStateToProps<State, OwnProps, *> = (
     selectFeaturedEventsByTitle(state, ownProps.navigation.state.params.title)
   ),
   savedEvents: state.savedEvents,
-  getAssetUrl: getAssetUrl(id => selectAssetById(state, id))
+  getAssetSource: getAssetSource(id => selectAssetById(state, id))
 });
 
 const mapDispatchToProps = {

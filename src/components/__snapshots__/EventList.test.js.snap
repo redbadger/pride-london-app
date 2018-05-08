@@ -84,7 +84,7 @@ exports[`EventList renders correctly 1`] = `
               "eventPriceLow": Object {
                 "en-GB": "0",
               },
-              "imageUrl": Object {
+              "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
               },
               "isFree": Object {
@@ -122,7 +122,7 @@ exports[`EventList renders correctly 1`] = `
               "eventPriceLow": Object {
                 "en-GB": "0",
               },
-              "imageUrl": Object {
+              "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
               },
               "isFree": Object {
@@ -165,7 +165,7 @@ exports[`EventList renders correctly 1`] = `
               "eventPriceLow": Object {
                 "en-GB": "0",
               },
-              "imageUrl": Object {
+              "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
               },
               "isFree": Object {

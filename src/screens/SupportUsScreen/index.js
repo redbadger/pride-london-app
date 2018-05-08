@@ -9,8 +9,9 @@ import supportUsDonateBgTopRight from "../../../assets/images/supportUsDonateBgT
 import supportUsVolunteerBgTopRight from "../../../assets/images/supportUsVolunteerBgTopRight.png";
 import supportUsShopBgBottomRight from "../../../assets/images/supportUsShopBgBottomRight.png";
 import supportUsSponsorBgTopRight from "../../../assets/images/supportUsSponsorBgTopRight.png";
-import Header from "../../components/Header";
 import ContentPadding from "../../components/ContentPadding";
+import Header from "../../components/Header";
+import ImageHeader from "../../components/ImageHeader";
 import {
   lightNavyBlueColor,
   warmPinkColor,
@@ -21,7 +22,6 @@ import {
 import { DONATE, SPONSOR } from "../../constants/routes";
 import text from "../../constants/text";
 import SupportUsButton from "./SupportUsButton";
-import SupportUsSectionHeader from "./SupportUsSectionHeader";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>
@@ -32,7 +32,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
     <Header title={text.supportUsTitle} />
     <ScrollView>
       <View style={styles.scrollContainer}>
-        <SupportUsSectionHeader
+        <ImageHeader
           image={supportUsAsIndividual}
           title={text.supportUsAsIndividual}
         />
@@ -69,7 +69,7 @@ const EventDetailsScreen = ({ navigation }: Props) => (
             style={styles.buttonSpacing}
           />
         </ContentPadding>
-        <SupportUsSectionHeader
+        <ImageHeader
           image={supportUsAsBusiness}
           title={text.supportUsAsBusiness}
         />

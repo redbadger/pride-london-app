@@ -8,9 +8,8 @@ describe("SponsorLogo Component", () => {
     const output = shallow(
       <SponsorLogo
         sponsorName="sponsorName"
-        sponsorLogoUrl="sponsorLogoUrl"
+        sponsorLogo={{ uri: "sponsorLogoUrl", width: 100, height: 100 }}
         sponsorLevel="Gold"
-        sponsorLogoSize={{ width: 100, height: 100 }}
       />
     );
     expect(output).toMatchSnapshot();
@@ -20,9 +19,8 @@ describe("SponsorLogo Component", () => {
     const output = shallow(
       <SponsorLogo
         sponsorName="sponsorName"
-        sponsorLogoUrl="sponsorLogoUrl"
+        sponsorLogo={{ uri: "sponsorLogoUrl", width: 100, height: 100 }}
         sponsorLevel="Silver"
-        sponsorLogoSize={{ width: 100, height: 100 }}
       />
     );
     expect(output).toMatchSnapshot();
