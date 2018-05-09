@@ -3,7 +3,7 @@ import React from "react";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import {
-  formattedLongEventPrice,
+  formatLongEventPrice,
   formatTime,
   removeTimezoneFromCmsDateString
 } from "../../data/formatters";
@@ -83,7 +83,7 @@ const EventOverview = ({ event }: Props) => {
 
       <IconItem source={ticketsIcon}>
         <Text type="h4" color="lightNavyBlueColor">
-          {formattedLongEventPrice(
+          {formatLongEventPrice(
             event.fields.eventPriceLow[locale],
             event.fields.eventPriceHigh[locale]
           )}

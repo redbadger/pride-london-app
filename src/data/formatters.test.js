@@ -3,8 +3,8 @@ import {
   formatDateRange,
   formatTime,
   formatPrice,
-  formattedShortEventPrice,
-  formattedLongEventPrice,
+  formatShortEventPrice,
+  formatLongEventPrice,
   removeTimezoneFromCmsDateString
 } from "./formatters";
 
@@ -55,51 +55,51 @@ describe("formatPrice", () => {
   });
 });
 
-describe("formattedShortEventPrice", () => {
+describe("formatShortEventPrice", () => {
   it("returns Free as the price when both prices are zero", () => {
-    const result = formattedShortEventPrice(0, 0);
+    const result = formatShortEventPrice(0, 0);
     expect(result).toBe("Free");
   });
 
   it("returns the eventPriceLow when it equals the eventPriceHigh", () => {
-    const result = formattedShortEventPrice(4.55, 4.55);
+    const result = formatShortEventPrice(4.55, 4.55);
     expect(result).toBe("£4.55");
   });
 
   it("returns From eventPriceLow when there is a range of prices", () => {
-    const result = formattedShortEventPrice(12, 15.5);
+    const result = formatShortEventPrice(12, 15.5);
     expect(result).toBe("From £12");
   });
 
   it("returns From eventPriceLow when there is a range of prices from £0", () => {
-    const result = formattedShortEventPrice(0, 15.5);
+    const result = formatShortEventPrice(0, 15.5);
     expect(result).toBe("From £0");
   });
 
   it("returns eventPriceLow when the prices are the same, but not zero", () => {
-    const result = formattedShortEventPrice(15.5, 15.5);
+    const result = formatShortEventPrice(15.5, 15.5);
     expect(result).toBe("£15.50");
   });
 });
 
-describe("formattedLongEventPrice", () => {
+describe("formatLongEventPrice", () => {
   it("returns free for free events", () => {
-    expect(formattedLongEventPrice(0, 0)).toEqual("Free");
+    expect(formatLongEventPrice(0, 0)).toEqual("Free");
   });
 
   it("returns the range of prices when zero and a higher price are given", () => {
-    expect(formattedLongEventPrice(0, 2)).toEqual("£0 - £2");
+    expect(formatLongEventPrice(0, 2)).toEqual("£0 - £2");
   });
 
   it("returns the range of prices when a higher price is also given", () => {
-    expect(formattedLongEventPrice(1, 2)).toEqual("£1 - £2");
+    expect(formatLongEventPrice(1, 2)).toEqual("£1 - £2");
   });
 
   it("returns the low price if both prices are the same", () => {
-    expect(formattedLongEventPrice(2, 2)).toEqual("£2");
+    expect(formatLongEventPrice(2, 2)).toEqual("£2");
   });
 
   it("formats the prices with 2 decimals", () => {
-    expect(formattedLongEventPrice(1.12, 2.12)).toEqual("£1.12 - £2.12");
+    expect(formatLongEventPrice(1.12, 2.12)).toEqual("£1.12 - £2.12");
   });
 });

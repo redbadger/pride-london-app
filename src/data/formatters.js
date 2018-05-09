@@ -26,7 +26,7 @@ export const formatPrice = (price: number) => {
   return price.toFixed(2);
 };
 
-export const formattedShortEventPrice = (
+export const formatShortEventPrice = (
   eventPriceLow: number,
   eventPriceHigh: number
 ) => {
@@ -41,7 +41,7 @@ export const formattedShortEventPrice = (
   return displayPrice;
 };
 
-export const formattedLongEventPrice = (
+export const formatLongEventPrice = (
   eventPriceLow: number,
   eventPriceHigh: number
 ) => {

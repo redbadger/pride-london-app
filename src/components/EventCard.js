@@ -4,7 +4,7 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import { lightNavyBlueColor } from "../constants/colors";
 import Text from "./Text";
 import SaveEventButton from "./SaveEventButton";
-import { formattedShortEventPrice, formatTime } from "../data/formatters";
+import { formatShortEventPrice, formatTime } from "../data/formatters";
 import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
@@ -52,7 +52,7 @@ class EventCard extends React.PureComponent<Props> {
         >
           <View style={styles.eventPriceContainer}>
             <Text type="price" color="whiteColor">
-              {formattedShortEventPrice(eventPriceLow, eventPriceHigh)}
+              {formatShortEventPrice(eventPriceLow, eventPriceHigh)}
             </Text>
           </View>
         </ImageBackground>
