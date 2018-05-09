@@ -361,6 +361,25 @@ jobs:
       - <<: *generate-env-macos
       - run:
             command: |
+              react-native bundle \
+              --platform ios \
+              --dev false \
+              --entry-file index.js \
+              --bundle-output ios-release.bundle \
+              --sourcemap-output ios-release.bundle.map
+      - run:
+          command: |
+              yarn global add bugsnag-sourcemaps
+      - run:
+          command: |
+              bugsnag-sourcemaps upload \
+              --api-key $BUGSNAG_API_KEY \
+              --minified-file ios-release.bundle \
+              --source-map ios-release.bundle.map \
+              --minified-url main.jsbundle \
+              --upload-sources
+      - run:
+            command: |
                 bundle exec fastlane alpha \
                 submit:true \
                 api_token:$HOCKEY_APP_TOKEN \
