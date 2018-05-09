@@ -16,7 +16,6 @@ export type Event = {
     locationName: { [string]: string },
     eventPriceLow: { [string]: number },
     eventPriceHigh: { [string]: number },
-    isFree: { [string]: boolean },
     accessibilityOptions: { [string]: string[] },
     eventDescription: { [string]: string },
     accessibilityDetails: { [string]: string },
