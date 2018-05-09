@@ -3,6 +3,7 @@
 import formatDate from "date-fns/format";
 import type { DateRange } from "./date-time";
 import text from "../constants/text";
+import { isFree } from "../selectors/event";
 
 /* eslint-disable import/prefer-default-export */
 export const formatDateRange = (dateRange: DateRange) =>
@@ -25,13 +26,12 @@ export const formatPrice = (price: number) => {
   return price.toFixed(2);
 };
 
-export const formattedEventPrice = (
-  isFree: boolean,
+export const formattedShortEventPrice = (
   eventPriceLow: number,
   eventPriceHigh: number
 ) => {
   let displayPrice;
-  if (isFree) {
+  if (isFree(eventPriceLow, eventPriceHigh)) {
     displayPrice = `${text.isFreePrice}`;
   } else if (eventPriceLow === eventPriceHigh) {
     displayPrice = `£${formatPrice(eventPriceLow)}`;
@@ -41,12 +41,11 @@ export const formattedEventPrice = (
   return displayPrice;
 };
 
-export const formattedEventPriceRange = (
-  isFree: boolean,
+export const formattedLongEventPrice = (
   eventPriceLow: number,
-  eventPriceHigh?: number
+  eventPriceHigh: number
 ) => {
-  if (isFree) return text.isFreePrice;
+  if (isFree(eventPriceLow, eventPriceHigh)) return text.isFreePrice;
   if (eventPriceHigh && eventPriceHigh > eventPriceLow)
     return `£${formatPrice(eventPriceLow)} - £${formatPrice(eventPriceHigh)}`;
   return `£${formatPrice(eventPriceLow)}`;

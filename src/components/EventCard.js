@@ -4,7 +4,7 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import { lightNavyBlueColor } from "../constants/colors";
 import Text from "./Text";
 import SaveEventButton from "./SaveEventButton";
-import { formattedEventPrice, formatTime } from "../data/formatters";
+import { formattedShortEventPrice, formatTime } from "../data/formatters";
 import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
@@ -15,7 +15,6 @@ type Props = {
   startTime: string,
   endTime: string,
   image: ImageSource,
-  isFree: boolean,
   isSaved: boolean,
   toggleSaved: boolean => void
 };
@@ -35,7 +34,6 @@ class EventCard extends React.PureComponent<Props> {
       image,
       eventPriceLow,
       eventPriceHigh,
-      isFree,
       isSaved,
       toggleSaved
     } = this.props;
@@ -54,7 +52,7 @@ class EventCard extends React.PureComponent<Props> {
         >
           <View style={styles.eventPriceContainer}>
             <Text type="price" color="whiteColor">
-              {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
+              {formattedShortEventPrice(eventPriceLow, eventPriceHigh)}
             </Text>
           </View>
         </ImageBackground>
