@@ -21,11 +21,14 @@ const ImageHeader = ({ image, title }: Props) => (
       }}
       style={styles.contentPadding}
     >
-      {(Array.isArray(title) ? title : [title]).map(line => (
-        <Text key={line} type="h1" style={styles.title}>
-          {line}
-        </Text>
-      ))}
+      {(Array.isArray(title) ? title : [title]).map((line, index, all) => {
+        const zIndex = all.length - index;
+        return (
+          <Text key={line} type="h1" style={[{ zIndex }, styles.title]}>
+            {line}
+          </Text>
+        );
+      })}
     </ContentPadding>
   </ImageBackground>
 );
@@ -41,6 +44,7 @@ const styles = StyleSheet.create({
   title: {
     color: lightNavyBlueColor,
     backgroundColor: whiteColor,
+    marginTop: -8,
     paddingHorizontal: 8,
     paddingTop: 8
   }
