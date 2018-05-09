@@ -5,6 +5,7 @@ exports[`renders correctly 1`] = `
   style={
     Object {
       "backgroundColor": "#ffffff",
+      "flex": 1,
     }
   }
 >
