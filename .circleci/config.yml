@@ -361,7 +361,7 @@ jobs:
       - <<: *generate-env-macos
       - run:
             command: |
-              react-native bundle \
+              npx react-native bundle \
               --platform ios \
               --dev false \
               --entry-file index.js \
