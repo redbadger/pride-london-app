@@ -6,14 +6,17 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import SplashScreen from "react-native-splash-screen";
-import { Client } from "bugsnag-react-native";
+import Config from "react-native-config";
+import { Client, Configuration } from "bugsnag-react-native";
 
 import reducers from "./reducers";
 import { getEvents } from "./actions/events";
 import { loadSavedEvents } from "./actions/saved-events";
 import App from "./App";
 
-const bugsnag = new Client();
+const bugsnagConfiguration = new Configuration();
+bugsnagConfiguration.releaseStage = Config.RELEASE_STAGE;
+const bugsnag = new Client(bugsnagConfiguration);
 
 // https://github.com/react-navigation/react-navigation/issues/3956#issuecomment-380648083
 YellowBox.ignoreWarnings([
