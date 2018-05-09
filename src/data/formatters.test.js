@@ -88,11 +88,11 @@ describe("formatLongEventPrice", () => {
   });
 
   it("returns the range of prices when zero and a higher price are given", () => {
-    expect(formatLongEventPrice(0, 2)).toEqual("£0 - £2");
+    expect(formatLongEventPrice(0, 2)).toEqual("£0 — £2");
   });
 
   it("returns the range of prices when a higher price is also given", () => {
-    expect(formatLongEventPrice(1, 2)).toEqual("£1 - £2");
+    expect(formatLongEventPrice(1, 2)).toEqual("£1 — £2");
   });
 
   it("returns the low price if both prices are the same", () => {
@@ -100,6 +100,6 @@ describe("formatLongEventPrice", () => {
   });
 
   it("formats the prices with 2 decimals", () => {
-    expect(formatLongEventPrice(1.12, 2.12)).toEqual("£1.12 - £2.12");
+    expect(formatLongEventPrice(1.12, 2.12)).toEqual("£1.12 — £2.12");
   });
 });

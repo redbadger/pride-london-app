@@ -47,6 +47,6 @@ export const formatLongEventPrice = (
 ) => {
   if (isFree(eventPriceLow, eventPriceHigh)) return text.isFreePrice;
   if (eventPriceHigh && eventPriceHigh > eventPriceLow)
-    return `£${formatPrice(eventPriceLow)} - £${formatPrice(eventPriceHigh)}`;
+    return `£${formatPrice(eventPriceLow)} — £${formatPrice(eventPriceHigh)}`;
   return `£${formatPrice(eventPriceLow)}`;
 };
