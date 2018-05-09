@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { TabNavigator, StackNavigator } from "react-navigation";
+import { createStackNavigator, createTabNavigator } from "react-navigation";
 import { Image, StyleSheet, View } from "react-native";
 import type { TabScene } from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const HomeStack = StackNavigator(
+const HomeStack = createStackNavigator(
   {
     [HOME]: { screen: withShadow(HomeScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen },
@@ -91,7 +91,7 @@ const HomeStack = StackNavigator(
   }
 );
 
-const EventsStack = StackNavigator(
+const EventsStack = createStackNavigator(
   {
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen },
@@ -110,7 +110,7 @@ const EventsStack = StackNavigator(
   }
 );
 
-const ParadeStack = StackNavigator(
+const ParadeStack = createStackNavigator(
   {
     [PARADE]: { screen: withShadow(() => <View />) }
   },
@@ -124,7 +124,7 @@ const ParadeStack = StackNavigator(
   }
 );
 
-const SavedStack = StackNavigator(
+const SavedStack = createStackNavigator(
   {
     [SAVED]: { screen: withShadow(SavedEventListScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen }
@@ -139,7 +139,7 @@ const SavedStack = StackNavigator(
   }
 );
 
-const SupportUsStack = StackNavigator(
+const SupportUsStack = createStackNavigator(
   {
     [SUPPORT_US]: { screen: withShadow(SupportUsScreen) },
     [DONATE]: { screen: DonateScreen },
@@ -155,7 +155,7 @@ const SupportUsStack = StackNavigator(
   }
 );
 
-const TabNav = TabNavigator(
+const TabNav = createTabNavigator(
   {
     [HOME]: { screen: HomeStack },
     [EVENT_LIST]: { screen: EventsStack },
@@ -172,7 +172,7 @@ const TabNav = TabNavigator(
   }
 );
 
-const RootStack = StackNavigator(
+const RootStack = createStackNavigator(
   {
     Main: {
       screen: TabNav
