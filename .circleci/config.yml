@@ -197,6 +197,26 @@ release-api-keys: &release-api-keys
       echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
       source $BASH_ENV
 
+set-alpha-stage: &set-alpha-stage
+  run:
+    name: Set release stage env-var to alpha
+    command: |
+      echo 'export RELEASE_STAGE=alpha' >> $BASH_ENV
+      source $BASH_ENV
+set-beta-stage: &set-beta-stage
+  run:
+    name: Set release stage env-var to beta
+    command: |
+      echo 'export RELEASE_STAGE=beta' >> $BASH_ENV
+      source $BASH_ENV
+set-release-stage: &set-release-stage
+  run:
+    name: Set release stage env-var to release
+    command: |
+      echo 'export RELEASE_STAGE=release' >> $BASH_ENV
+      source $BASH_ENV
+
+
 version: 2
 jobs:
   # build is a reserved job name for running circleci locally
@@ -247,6 +267,7 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
+      - <<: *set-alpha-stage
       - <<: *generate-env
       - run:
             command: |
@@ -277,6 +298,7 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
+      - <<: *set-beta-stage
       - <<: *generate-env
       - run:
             command: |
@@ -308,6 +330,7 @@ jobs:
       - <<: *android-dependencies
       - <<: *save-gradle-cache
       - <<: *release-api-keys
+      - <<: *set-release-stage
       - <<: *generate-env
       - run:
             command: |
@@ -334,6 +357,7 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
+      - <<: *set-alpha-stage
       - <<: *generate-env-macos
       - run:
             command: |
@@ -367,6 +391,7 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
+      - <<: *set-beta-stage
       - <<: *generate-env-macos
       - run:
             command: |
@@ -399,6 +424,7 @@ jobs:
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
       - <<: *release-api-keys
+      - <<: *set-release-stage
       - <<: *generate-env-macos
       - run:
             command: |
