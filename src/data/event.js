@@ -26,7 +26,8 @@ export type Event = {
     venueDetails: { [string]: string[] },
     individualEventPicture: { [string]: FieldRef },
     eventsListPicture: { [string]: FieldRef },
-    performances: { [string]: Performance[] }
+    performances: { [string]: Performance[] },
+    recurrenceDates?: { [string]: string[] }
   },
   sys: {
     id: string,

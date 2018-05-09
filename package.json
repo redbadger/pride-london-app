@@ -11,10 +11,12 @@
     "test": "jest src --maxWorkers=2",
     "test:e2e": "yarn test:e2e:build && yarn test:e2e:run",
     "test:e2e:dev":
-      "detox test --reuse --loglevel verbose --debug-synchronization 1000",
+      "detox test -c ios.sim.debug --reuse --loglevel verbose --debug-synchronization 1000",
     "test:e2e:run":
       "detox test -c ios.sim.debug --loglevel verbose --debug-synchronization 1000",
-    "test:e2e:build": "detox build",
+    "test:e2e:build": "detox build -c ios.sim.debug",
+    "test:e2e:release":
+      "detox build -c ios.sim.release && detox test -c ios.sim.release --loglevel verbose --debug-synchronization 1000",
     "precommit": "lint-staged",
     "lint": "eslint src",
     "flow": "flow src",
@@ -119,6 +121,14 @@
           "ios/build/Build/Products/Debug-iphonesimulator/PrideLondonApp.app",
         "build":
           "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 7"
+      },
+      "ios.sim.release": {
+        "binaryPath":
+          "ios/build/Build/Products/Release-iphonesimulator/PrideLondonApp.app",
+        "build":
+          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
       }

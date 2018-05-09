@@ -39,7 +39,7 @@ exports[`renders badge value when provided 1`] = `
         },
       ]
     }
-    type="text"
+    type="small"
   >
     1-2-3 filtered
   </Text>
@@ -96,7 +96,7 @@ exports[`renders correct styles when inactive 1`] = `
         },
       ]
     }
-    type="text"
+    type="small"
   >
     1-2-3 filtered
   </Text>
@@ -142,7 +142,7 @@ exports[`renders correctly 1`] = `
         },
       ]
     }
-    type="text"
+    type="small"
   >
     1-2-3 filtered
   </Text>

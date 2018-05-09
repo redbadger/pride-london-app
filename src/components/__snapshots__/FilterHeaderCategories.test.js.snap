@@ -41,11 +41,12 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
       style={
         Object {
           "color": "#ffffff",
+          "marginTop": 4,
         }
       }
       type="h2"
     >
-      All events
+      All event types
     </Text>
     <CategoriesFilterButton
       onPress={[Function]}

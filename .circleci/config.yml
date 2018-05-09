@@ -438,7 +438,7 @@ jobs:
       - <<: *npm-dependencies-macos-e2e
       - <<: *save-npm-cache-macos-e2e
       - <<: *generate-env-macos
-      - run: npm run test:e2e
+      - run: npm run test:e2e:release
       - store_artifacts:
           path: /tmp/screenshots
 
