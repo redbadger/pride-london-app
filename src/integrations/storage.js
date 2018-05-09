@@ -63,8 +63,10 @@ const orderHighLowPrice = (entry: Object) => {
     return entry;
   }
 
-  const priceLow = entry.fields.eventPriceLow[locale];
-  const priceHigh = entry.fields.eventPriceHigh[locale];
+  const priceLow =
+    entry.fields.eventPriceLow && entry.fields.eventPriceLow[locale];
+  const priceHigh =
+    entry.fields.eventPriceHigh && entry.fields.eventPriceHigh[locale];
 
   if (priceLow < priceHigh) return entry;
 
@@ -73,10 +75,10 @@ const orderHighLowPrice = (entry: Object) => {
     fields: {
       ...entry.fields,
       eventPriceLow: {
-        [locale]: priceHigh
+        [locale]: priceHigh || 0
       },
       eventPriceHigh: {
-        [locale]: priceLow
+        [locale]: priceLow || 0
       }
     }
   };
