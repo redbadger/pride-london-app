@@ -9,7 +9,6 @@ import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import Touchable from "./Touchable";
 import SectionHeader from "./SectionHeader";
-import { selectEventIsFree } from "../selectors/event";
 import type { SavedEvents, Event, EventDays } from "../data/event";
 import type { FieldRef } from "../data/field-ref";
 import type { ImageSource } from "../data/get-asset-source";
@@ -61,7 +60,6 @@ export const renderItem = ({
         startTime={item.fields.startTime[locale]}
         endTime={item.fields.endTime[locale]}
         image={getAssetSource(item.fields.eventsListPicture[locale])}
-        isFree={selectEventIsFree(item)}
         isSaved={isSavedEvent(item.sys.id)}
         toggleSaved={active => {
           if (active) {

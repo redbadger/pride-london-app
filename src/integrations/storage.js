@@ -58,13 +58,40 @@ const correctDates = (entry: Object) => {
   };
 };
 
+const orderHighLowPrice = (entry: Object) => {
+  if (!entry.fields) {
+    return entry;
+  }
+
+  const priceLow =
+    entry.fields.eventPriceLow && entry.fields.eventPriceLow[locale];
+  const priceHigh =
+    entry.fields.eventPriceHigh && entry.fields.eventPriceHigh[locale];
+
+  if (priceLow < priceHigh) return entry;
+
+  return {
+    ...entry,
+    fields: {
+      ...entry.fields,
+      eventPriceLow: {
+        [locale]: priceHigh || 0
+      },
+      eventPriceHigh: {
+        [locale]: priceLow || 0
+      }
+    }
+  };
+};
+
 const updateCmsEntryList = (newList, deletedList, localList) => {
   const deletedEntryIds = deletedList.map(deletedEntry => deletedEntry.sys.id);
 
   return newList
     .reduce(addOrUpdateEntry, localList)
     .filter(entry => entryNotDeleted(entry, deletedEntryIds))
-    .map(correctDates);
+    .map(correctDates)
+    .map(orderHighLowPrice);
 };
 
 export const saveCmsData = async (
