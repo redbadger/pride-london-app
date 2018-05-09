@@ -12,7 +12,6 @@ it("renders correctly", () => {
       locationName: { "en-GB": "Vauxhall Pleasure Gardens" },
       startTime: { "en-GB": "2017-07-09T11:00+01:00" },
       endTime: { "en-GB": "2018-07-15T18:00+01:00" },
-      isFree: { "en-GB": false },
       eventPriceLow: { "en-GB": 19.95 },
       eventPriceHigh: { "en-GB": 30 },
       eventDescription: {
