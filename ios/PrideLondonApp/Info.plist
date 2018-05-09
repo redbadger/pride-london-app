@@ -22,11 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>Bugsnag</key>
-	<dict>
-		<key>APIKey</key>
-		<string>__RN_CONFIG_BUGSNAG_API_KEY</string>
-	</dict>
+	<key>BugsnagAPIKey</key>
+	<string>__RN_CONFIG_BUGSNAG_API_KEY</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -44,7 +41,7 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
-	<string/>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>comgooglemaps</string>
@@ -65,7 +62,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Bold.ttf</string>
