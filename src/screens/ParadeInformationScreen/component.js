@@ -69,7 +69,10 @@ const styles = StyleSheet.create({
   },
   scrollPage: {
     paddingTop: 24,
-    marginBottom: 12
+    marginBottom: 12,
+    width: "100%",
+    maxWidth: 440,
+    alignSelf: "center"
   },
   pageDescription: {
     paddingTop: 12

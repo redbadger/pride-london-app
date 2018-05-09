@@ -15,8 +15,11 @@ exports[`renders correctly 1`] = `
     <Component
       style={
         Object {
+          "alignSelf": "center",
           "marginBottom": 12,
+          "maxWidth": 440,
           "paddingTop": 24,
+          "width": "100%",
         }
       }
     >
