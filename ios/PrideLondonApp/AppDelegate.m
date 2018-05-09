@@ -15,8 +15,6 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <BugsnagReactNative/BugsnagReactNative.h>
-#import <Bugsnag.h>
-#import <BugsnagConfiguration.h>
 
 #import "SplashScreen.h"
 
@@ -28,15 +26,8 @@
     [[Fabric sharedSDK] setDebug: YES];
     [Fabric with:@[[Crashlytics class]]];
   #endif
-
-  // Init Bugsnag natively first in case React Native crashes before launching
-  BugsnagConfiguration *config = [BugsnagConfiguration new];
-  config.releaseStage = [self plistValueForKey:@"__RN_CONFIG_RELEASE_STAGE"];
-  [Bugsnag startBugsnagWithConfiguration:config];
-  [Bugsnag notifyError:[NSError errorWithDomain:@"com.example" code:408 userInfo:nil]];
-  // Launch Bugsnag for React Native code
   [BugsnagReactNative start];
-
+  
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
@@ -54,12 +45,6 @@
   [self.window makeKeyAndVisible];
   [SplashScreen show];
   return YES;
-}
-
--(NSString *) plistValueForKey:(NSString *)key {
-  NSBundle* mainBundle = [NSBundle mainBundle];
-  NSString *value = [mainBundle objectForInfoDictionaryKey:key];
-  return value;
 }
 
 @end
