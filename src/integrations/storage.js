@@ -82,22 +82,6 @@ const orderHighLowPrice = (entry: Object) => {
   };
 };
 
-const setIsFreeFlag = (entry: Object) => {
-  if (!entry.fields) {
-    return entry;
-  }
-
-  return {
-    ...entry,
-    fields: {
-      ...entry.fields,
-      isFree: {
-        [locale]: entry.fields.eventPriceLow[locale] === 0
-      }
-    }
-  };
-};
-
 const updateCmsEntryList = (newList, deletedList, localList) => {
   const deletedEntryIds = deletedList.map(deletedEntry => deletedEntry.sys.id);
 
@@ -105,8 +89,7 @@ const updateCmsEntryList = (newList, deletedList, localList) => {
     .reduce(addOrUpdateEntry, localList)
     .filter(entry => entryNotDeleted(entry, deletedEntryIds))
     .map(correctDates)
-    .map(orderHighLowPrice)
-    .map(setIsFreeFlag);
+    .map(orderHighLowPrice);
 };
 
 export const saveCmsData = async (
