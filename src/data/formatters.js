@@ -30,15 +30,13 @@ export const formatShortEventPrice = (
   eventPriceLow: number,
   eventPriceHigh: number
 ) => {
-  let displayPrice;
   if (isFree(eventPriceLow, eventPriceHigh)) {
-    displayPrice = `${text.isFreePrice}`;
-  } else if (eventPriceLow === eventPriceHigh) {
-    displayPrice = `£${formatPrice(eventPriceLow)}`;
-  } else {
-    displayPrice = `${text.eventFromPrice} £${formatPrice(eventPriceLow)}`;
+    return `${text.isFreePrice}`;
   }
-  return displayPrice;
+  if (eventPriceLow === eventPriceHigh) {
+    return `£${formatPrice(eventPriceLow)}`;
+  }
+  return `${text.eventFromPrice} £${formatPrice(eventPriceLow)}`;
 };
 
 export const formatLongEventPrice = (
