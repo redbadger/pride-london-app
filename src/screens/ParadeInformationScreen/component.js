@@ -9,9 +9,21 @@ import ContentPadding from "../../components/ContentPadding";
 import LayoutColumn from "../../components/LayoutColumn";
 import text from "../../constants/text";
 
-import donateHeader from "../../../assets/images/donateHeader.png";
+import trafalgarImg from "../../../assets/images/trafalgarSquare.jpg";
+import cabaretImg from "../../../assets/images/cabaret.jpg";
+import divaImg from "../../../assets/images/womensStage2018.jpg";
+import familyImg from "../../../assets/images/familyArea.jpg";
+import communityImg from "../../../assets/images/community.jpg";
 
 import { whiteColor } from "../../constants/colors";
+
+const mapImage = {
+  trafalgar: trafalgarImg,
+  cabaret: cabaretImg,
+  diva: divaImg,
+  family: familyImg,
+  community: communityImg
+};
 
 const ParadeInformationScreen = () => {
   const tx = text.paradeInformationScreen;
@@ -33,7 +45,7 @@ const ParadeInformationScreen = () => {
             {tx.stages.map(stage => (
               <View key={stage.stageHeading}>
                 <ImageHeader
-                  image={donateHeader}
+                  image={mapImage[stage.stageImage]}
                   title={stage.stageHeading}
                   subtitle={stage.stageSubheading}
                 />

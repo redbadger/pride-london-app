@@ -139,35 +139,35 @@ export default {
         stageSubheading: "",
         stageDescription:
           "One of the most popular and iconic areas on the day and close to where the Parade finishes. As usual there will be a mixture of famous faces and community acts from across the LGBT+ spectrum sprinkled with celebrities together with the Pride's Got Talent Finalists all under the watchful eye of Nelson's Column.",
-        stageImage: ""
+        stageImage: "trafalgar"
       },
       {
         stageHeading: "Cabaret Stage",
         stageSubheading: "Dean Street",
         stageDescription:
           "Located in the Heart of Soho - Dean Street - no one should miss the Cabaret Stage, packed with diverse, colourful and entertaining acts from the LGBT+ Cabaret Community. This stage will also showcase the Pride's Got Talent Cabaret Finalists.",
-        stageImage: ""
+        stageImage: "cabaret"
       },
       {
         stageHeading: "Women's Stage / Diva Stage",
         stageSubheading: "Leicester Square",
         stageDescription:
           "Nestled in the iconic Leicester Square - this collaboration with Diva brings the best acts offered by and for the women's community. Expect high energy, fabulous talent and our female led Pride's Got Talent Acts.",
-        stageImage: ""
+        stageImage: "diva"
       },
       {
         stageHeading: "Family Stage",
         stageSubheading: "Golden Square",
         stageDescription:
           "An intimate and fun stage, the best destination for fun and family entertainment",
-        stageImage: ""
+        stageImage: "family"
       },
       {
         stageHeading: "Community Village",
         stageSubheading: "Soho Square",
         stageDescription:
           "Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to see find out more about some amazing charities and not for profit groups.",
-        stageImage: ""
+        stageImage: "community"
       }
     ]
   }
