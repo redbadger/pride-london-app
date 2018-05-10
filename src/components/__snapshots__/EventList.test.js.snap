@@ -5,43 +5,19 @@ exports[`EventList #renderItem renders items correctly 1`] = `
   padding={Object {}}
   style={Object {}}
 >
-  <Touchable
-    accessibilityComponentType="button"
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
-    delayPressIn={50}
+  <EventCard
+    addSavedEvent={[Function]}
+    endTime="2018-08-11T00:00"
+    eventPriceHigh="0"
+    eventPriceLow="0"
+    id="1"
+    isSaved={false}
+    locationName="Somewhere"
+    name="some event"
     onPress={[Function]}
-    style={
-      Object {
-        "backgroundColor": "#ffffff",
-        "borderRadius": 5,
-        "borderWidth": 0,
-        "elevation": 3,
-        "shadowColor": "rgba(0, 0, 0, 0.2)",
-        "shadowOffset": Object {
-          "height": 1,
-          "width": 0,
-        },
-        "shadowOpacity": 1,
-        "shadowRadius": 3,
-      }
-    }
-  >
-    <EventCard
-      endTime="2018-08-11T00:00"
-      eventPriceHigh="0"
-      eventPriceLow="0"
-      isFree={false}
-      isSaved={false}
-      locationName="Somewhere"
-      name="some event"
-      startTime="2018-07-10T00:00"
-      toggleSaved={[Function]}
-    />
-  </Touchable>
+    removeSavedEvent={[Function]}
+    startTime="2018-07-10T00:00"
+  />
 </ContentPadding>
 `;
 
@@ -86,9 +62,6 @@ exports[`EventList renders correctly 1`] = `
               "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
               },
-              "isFree": Object {
-                "en-GB": true,
-              },
               "locationName": Object {
                 "en-GB": "Somewhere",
               },
@@ -123,9 +96,6 @@ exports[`EventList renders correctly 1`] = `
               },
               "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
-              },
-              "isFree": Object {
-                "en-GB": true,
               },
               "locationName": Object {
                 "en-GB": "Somewhere",
@@ -166,9 +136,6 @@ exports[`EventList renders correctly 1`] = `
               },
               "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
-              },
-              "isFree": Object {
-                "en-GB": true,
               },
               "locationName": Object {
                 "en-GB": "Somewhere",

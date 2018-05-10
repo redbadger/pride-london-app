@@ -118,6 +118,7 @@ export default {
   showEvents,
   clearAll: "Clear all",
   filterEvents: "Filter Events",
+  runsFrom: "Runs from:",
   noSavedEventsTitle: "Where's the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
   noSavedEventsSaveButtonAlt: "'save this event' button",
@@ -127,5 +128,49 @@ export default {
   saveEventButtonSaveEvent: "save this event",
   homeViewAll: "View all",
   homeSupportUs: "Support us",
-  homeSupportUsDescription: "Be part of the movement"
+  homeSupportUsDescription: "Be part of the movement",
+  paradeInformationScreen: {
+    headerTitle: "Parade",
+    pageHeading: "London Parade",
+    pageSubheading: "Sunday 7th July",
+    pageDescription:
+      "The Pride in London Parade provides a platform for every part of London’s LGBT+ community to raise awareness of LGBT+ issues and campaign for the freedoms that will allow us to live our lives on a genuinely equal footing. It gives us a chance to be visible and speak loudly to the rest of the world about what we have achieved, how far we have come and what is still needed.",
+    stages: [
+      {
+        stageHeading: "Trafalgar Square",
+        stageSubheading: "",
+        stageDescription:
+          "One of the most popular and iconic areas on the day and close to where the Parade finishes. As usual there will be a mixture of famous faces and community acts from across the LGBT+ spectrum sprinkled with celebrities together with the Pride's Got Talent Finalists all under the watchful eye of Nelson's Column.",
+        stageImage: "trafalgar"
+      },
+      {
+        stageHeading: "Cabaret Stage",
+        stageSubheading: "Dean Street",
+        stageDescription:
+          "Located in the Heart of Soho - Dean Street - no one should miss the Cabaret Stage, packed with diverse, colourful and entertaining acts from the LGBT+ Cabaret Community. This stage will also showcase the Pride's Got Talent Cabaret Finalists.",
+        stageImage: "cabaret"
+      },
+      {
+        stageHeading: "Women's Stage / Diva Stage",
+        stageSubheading: "Leicester Square",
+        stageDescription:
+          "Nestled in the iconic Leicester Square - this collaboration with Diva brings the best acts offered by and for the women's community. Expect high energy, fabulous talent and our female led Pride's Got Talent Acts.",
+        stageImage: "diva"
+      },
+      {
+        stageHeading: "Family Stage",
+        stageSubheading: "Golden Square",
+        stageDescription:
+          "An intimate and fun stage, the best destination for fun and family entertainment",
+        stageImage: "family"
+      },
+      {
+        stageHeading: "Community Village",
+        stageSubheading: "Soho Square",
+        stageDescription:
+          "Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to see find out more about some amazing charities and not for profit groups.",
+        stageImage: "community"
+      }
+    ]
+  }
 };

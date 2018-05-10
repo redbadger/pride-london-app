@@ -16,7 +16,6 @@ export type Event = {
     locationName: { [string]: string },
     eventPriceLow: { [string]: number },
     eventPriceHigh: { [string]: number },
-    isFree: { [string]: boolean },
     accessibilityOptions: { [string]: string[] },
     eventDescription: { [string]: string },
     accessibilityDetails: { [string]: string },
@@ -26,7 +25,8 @@ export type Event = {
     venueDetails: { [string]: string[] },
     individualEventPicture: { [string]: FieldRef },
     eventsListPicture: { [string]: FieldRef },
-    performances: { [string]: Performance[] }
+    performances: { [string]: Performance[] },
+    recurrenceDates?: { [string]: string[] }
   },
   sys: {
     id: string,

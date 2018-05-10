@@ -50,7 +50,7 @@ const generateEventPrice = () => {
   const eventPriceLow = isFree ? 0 : 5;
   const eventPriceHigh = isFree ? 0 : 20;
 
-  return { isFree, eventPriceLow, eventPriceHigh };
+  return { eventPriceLow, eventPriceHigh };
 };
 
 const generateSelectedCategories = categories => {
@@ -68,7 +68,7 @@ const generateEvent = (categories, assets) => {
   const selectedCategories = generateSelectedCategories(categories);
   const { eventStartDate, eventEndDate } = generateEventDates();
   const { latitude, longitude } = generateEventLocation();
-  const { isFree, eventPriceLow, eventPriceHigh } = generateEventPrice();
+  const { eventPriceLow, eventPriceHigh } = generateEventPrice();
 
   const ticketingUrl =
     Math.random() >= 0.5 ? "https://prideinlondon.org/" : undefined;
@@ -89,7 +89,6 @@ const generateEvent = (categories, assets) => {
       },
       startTime: { "en-GB": eventStartDate },
       endTime: { "en-GB": eventEndDate },
-      isFree: { "en-GB": isFree },
       eventPriceLow: { "en-GB": eventPriceLow },
       eventPriceHigh: { "en-GB": eventPriceHigh },
       eventDescription: {

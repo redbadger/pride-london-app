@@ -24,6 +24,7 @@ exports[`renders correctly 1`] = `
     >
       <ImageHeader
         image={1}
+        subtitle=""
         title="As an individual"
       />
       <ContentPadding
@@ -78,6 +79,7 @@ exports[`renders correctly 1`] = `
       </ContentPadding>
       <ImageHeader
         image={1}
+        subtitle=""
         title="As a business"
       />
       <ContentPadding

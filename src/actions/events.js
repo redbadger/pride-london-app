@@ -19,7 +19,6 @@ export const getEvents = (
   });
 
   const cmsData = await getCmsDataFn();
-
   dispatch({
     type: "RECEIVE_CMS_DATA",
     payload: cmsData

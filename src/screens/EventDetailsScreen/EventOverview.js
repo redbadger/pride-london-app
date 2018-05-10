@@ -2,7 +2,11 @@
 import React from "react";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
-import { formattedEventPriceRange, formatTime } from "../../data/formatters";
+import {
+  formatLongEventPrice,
+  formatTime,
+  removeTimezoneFromCmsDateString
+} from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
 import Text from "../../components/Text";
@@ -17,26 +21,25 @@ import accessibilityIcon from "../../../assets/images/accessibility.png";
 import ticketsIcon from "../../../assets/images/tickets.png";
 import locationIcon from "../../../assets/images/location.png";
 import showLocation from "./openMapLink";
+import RecurrenceDates from "./RecurrenceDates";
 
 type Props = {
   event: Event
 };
 
-const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-
 const EventOverview = ({ event }: Props) => {
-  const startTime = removeTimezoneFromDateString(
+  const startTime = removeTimezoneFromCmsDateString(
     event.fields.startTime[locale]
   );
-  const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
+  const endTime = removeTimezoneFromCmsDateString(event.fields.endTime[locale]);
   const dateFormat = "ddd, DD MMM YYYY";
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)
-    : `${formatDate(startTime, dateFormat)} - ${formatDate(
+    : `${formatDate(startTime, dateFormat)} – ${formatDate(
         endTime,
         dateFormat
       )}`;
-  const timeDisplay = `${formatTime(startTime)} - ${formatTime(endTime)}`;
+  const timeDisplay = `${formatTime(startTime)} – ${formatTime(endTime)}`;
 
   const eventLocation = [
     event.fields.location[locale].lat,
@@ -51,6 +54,12 @@ const EventOverview = ({ event }: Props) => {
           {dateDisplay}
         </Text>
         <Text type="small">{timeDisplay}</Text>
+        {event.fields.recurrenceDates && (
+          <RecurrenceDates
+            recurrenceDates={event.fields.recurrenceDates[locale]}
+            startTime={event.fields.startTime[locale]}
+          />
+        )}
       </IconItem>
 
       <IconItem
@@ -74,8 +83,7 @@ const EventOverview = ({ event }: Props) => {
 
       <IconItem source={ticketsIcon}>
         <Text type="h4" color="lightNavyBlueColor">
-          {formattedEventPriceRange(
-            event.fields.isFree[locale],
+          {formatLongEventPrice(
             event.fields.eventPriceLow[locale],
             event.fields.eventPriceHigh[locale]
           )}
