@@ -35,14 +35,13 @@ exports[`renders correctly 1`] = `
     }
   >
     <Text
-      color="blackColor"
+      color="lightNavyBlueColor"
       key="Fruit"
       markdown={false}
       markdownStyle={Object {}}
       style={
         Object {
           "backgroundColor": "#ffffff",
-          "color": "#2d2f7f",
           "paddingHorizontal": 8,
           "paddingTop": 8,
         }
@@ -90,14 +89,13 @@ exports[`renders correctly with multiple lines 1`] = `
     }
   >
     <Text
-      color="blackColor"
+      color="lightNavyBlueColor"
       key="This is a"
       markdown={false}
       markdownStyle={Object {}}
       style={
         Object {
           "backgroundColor": "#ffffff",
-          "color": "#2d2f7f",
           "paddingHorizontal": 8,
           "paddingTop": 8,
         }
@@ -107,14 +105,13 @@ exports[`renders correctly with multiple lines 1`] = `
       This is a
     </Text>
     <Text
-      color="blackColor"
+      color="lightNavyBlueColor"
       key="longer heading"
       markdown={false}
       markdownStyle={Object {}}
       style={
         Object {
           "backgroundColor": "#ffffff",
-          "color": "#2d2f7f",
           "paddingHorizontal": 8,
           "paddingTop": 8,
         }
@@ -162,14 +159,13 @@ exports[`renders correctly with subtitle 1`] = `
     }
   >
     <Text
-      color="blackColor"
+      color="lightNavyBlueColor"
       key="Fruit"
       markdown={false}
       markdownStyle={Object {}}
       style={
         Object {
           "backgroundColor": "#ffffff",
-          "color": "#2d2f7f",
           "paddingHorizontal": 8,
           "paddingTop": 8,
         }
@@ -179,13 +175,12 @@ exports[`renders correctly with subtitle 1`] = `
       Fruit
     </Text>
     <Text
-      color="blackColor"
+      color="whiteColor"
       markdown={false}
       markdownStyle={Object {}}
       style={
         Object {
           "backgroundColor": "#2d2f7f",
-          "color": "#ffffff",
           "paddingHorizontal": 8,
           "paddingTop": 4,
         }

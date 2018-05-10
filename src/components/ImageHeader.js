@@ -23,12 +23,17 @@ const ImageHeader = ({ image, title, subtitle }: Props) => (
       style={styles.contentPadding}
     >
       {(Array.isArray(title) ? title : [title]).map(line => (
-        <Text key={line} type="h1" style={styles.title}>
+        <Text
+          key={line}
+          color="lightNavyBlueColor"
+          type="h1"
+          style={styles.title}
+        >
           {line}
         </Text>
       ))}
       {subtitle && (
-        <Text type="h2" style={styles.subtitle}>
+        <Text type="h2" color="whiteColor" style={styles.subtitle}>
           {subtitle}
         </Text>
       )}
@@ -49,14 +54,12 @@ const styles = StyleSheet.create({
     alignItems: "flex-start"
   },
   title: {
-    color: lightNavyBlueColor,
     backgroundColor: whiteColor,
     paddingHorizontal: 8,
     paddingTop: 8
   },
   subtitle: {
     backgroundColor: lightNavyBlueColor,
-    color: whiteColor,
     paddingHorizontal: 8,
     paddingTop: 4
   }
