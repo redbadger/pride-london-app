@@ -127,6 +127,8 @@ export default {
   saveEventButtonUnSaveEvent: "remove event from saved list",
   saveEventButtonSaveEvent: "save this event",
   homeViewAll: "View all",
+  homeSupportUs: "Support us",
+  homeSupportUsDescription: "Be part of the movement",
   paradeInformationScreen: {
     headerTitle: "Parade",
     pageHeading: "London Parade",
