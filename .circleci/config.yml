@@ -298,7 +298,6 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
-      - <<: *set-beta-stage
       - <<: *generate-env
       - run:
             name: Build Beta binary and upload for distribution
