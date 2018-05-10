@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
 import ActionButton from "../../components/ActionButton";
 import Text from "../../components/Text";
 import ContentPadding from "../../components/ContentPadding";
@@ -15,7 +14,7 @@ type Props = {
 };
 
 const Header = ({ onClearPress, onCancelPress, showClear }: Props) => (
-  <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
+  <View style={styles.container}>
     <ContentPadding style={styles.content}>
       <ActionButton label={text.cancel} onPress={onCancelPress} />
       <View style={styles.titleWrapper}>
@@ -35,7 +34,7 @@ const Header = ({ onClearPress, onCancelPress, showClear }: Props) => (
         key={showClear ? 1 : 0}
       />
     </ContentPadding>
-  </SafeAreaView>
+  </View>
 );
 
 const styles = StyleSheet.create({

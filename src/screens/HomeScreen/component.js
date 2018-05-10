@@ -82,8 +82,8 @@ class HomeScreen extends Component<Props> {
     const events = featuredEvents.slice(0, eventsCount);
 
     return (
-      <View testID="home-screen">
-        <ScrollView style={styles.scroller}>
+      <ScrollView testID="home-screen">
+        <View style={styles.content}>
           <Header
             headerBanners={headerBanners}
             getAssetSource={getAssetSource}
@@ -126,14 +126,14 @@ class HomeScreen extends Component<Props> {
               ))}
             </View>
           </ContentPadding>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  scroller: {
+  content: {
     backgroundColor: cardBgColor
   },
   mainContentContainer: {

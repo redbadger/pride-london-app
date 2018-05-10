@@ -2,7 +2,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import type { Node } from "react";
-import SafeAreaView from "react-native-safe-area-view";
 import ContentPadding from "./ContentPadding";
 import IconButton from "./IconButton";
 import Text from "./Text";
@@ -34,17 +33,13 @@ const Header = ({ onBack, title, rightElement }: Props) => {
   const leftElement = onBack ? renderBackButton(onBack) : null;
   const titleElement = title ? renderTitle(title) : null;
   return (
-    <SafeAreaView
-      accessibilityTraits={["header"]}
-      forceInset={{ top: "always" }}
-      style={{ backgroundColor: lightNavyBlueColor }}
-    >
+    <View accessibilityTraits={["header"]} style={styles.container}>
       <ContentPadding style={styles.headerContent}>
         {leftElement || <View style={styles.phantomIcon} />}
         {titleElement}
         {rightElement || <View style={styles.phantomIcon} />}
       </ContentPadding>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -55,6 +50,9 @@ Header.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: lightNavyBlueColor
+  },
   headerContent: {
     height: 48,
     flexDirection: "row",

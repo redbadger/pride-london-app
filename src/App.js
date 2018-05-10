@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
-import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import { Platform, StatusBar, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import { transparent } from "./constants/colors";
+import { lightNavyBlueColor } from "./constants/colors";
 import Navigation from "./Navigation";
 
 // The SafeAreaView cannot detect if the Android status bar is
@@ -15,20 +15,21 @@ if (Platform.OS === "android") {
 }
 
 const App = () => (
-  <View style={styles.container}>
+  <SafeAreaView forceInset={{ top: "always" }} style={styles.container}>
     <StatusBar
       animated
       barStyle="light-content"
-      backgroundColor={transparent}
+      backgroundColor={lightNavyBlueColor}
       translucent
     />
     <Navigation />
-  </View>
+  </SafeAreaView>
 );
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: lightNavyBlueColor
   }
 });
 

@@ -25,7 +25,11 @@ import iconSavedActive from "../assets/images/savedActive.png";
 import iconSavedDefault from "../assets/images/savedDefault.png";
 import iconSupportUsActive from "../assets/images/supportUsActive.png";
 import iconSupportUsDefault from "../assets/images/supportUsDefault.png";
-import { transparent, tabBarShadowColor } from "./constants/colors";
+import {
+  lightNavyBlueColor,
+  transparent,
+  tabBarShadowColor
+} from "./constants/colors";
 import {
   EVENT_LIST,
   EVENT_DETAILS,
@@ -69,6 +73,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     bottom: 0
+  },
+  card: {
+    shadowOpacity: 0,
+    backgroundColor: lightNavyBlueColor
   }
 });
 
@@ -87,7 +95,8 @@ const HomeStack = StackNavigator(
         testID: "home-tab-button"
       }
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -106,7 +115,8 @@ const EventsStack = StackNavigator(
         testID: "events-tab-button"
       }
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -120,7 +130,8 @@ const ParadeStack = StackNavigator(
       tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
       tabBarLabel: text.tabParade
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -135,7 +146,8 @@ const SavedStack = StackNavigator(
       tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
       tabBarLabel: text.tabSaved
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -151,7 +163,8 @@ const SupportUsStack = StackNavigator(
       tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
       tabBarLabel: text.tabSupportUs
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -168,7 +181,10 @@ const TabNav = TabNavigator(
     tabBarPosition: "bottom",
     swipeEnabled: false,
     animationEnabled: false,
-    initialRouteName: HOME
+    initialRouteName: HOME,
+    cardStyle: {
+      backgroundColor: "blue"
+    }
   }
 );
 
@@ -185,7 +201,8 @@ const RootStack = StackNavigator(
     mode: "modal",
     navigationOptions: {
       header: null
-    }
+    },
+    cardStyle: styles.card
   }
 );
 
