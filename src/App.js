@@ -9,6 +9,7 @@ import DonateScreen from "./screens/DonateScreen";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
+import ParadeInformationScreen from "./screens/ParadeInformationScreen";
 import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FilterModal from "./screens/FilterModal";
@@ -112,7 +113,7 @@ const EventsStack = StackNavigator(
 
 const ParadeStack = StackNavigator(
   {
-    [PARADE]: { screen: withShadow(() => <View />) }
+    [PARADE]: { screen: withShadow(ParadeInformationScreen) }
   },
   {
     initialRouteName: PARADE,
