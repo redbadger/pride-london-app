@@ -8,6 +8,15 @@ fi
 PLATFORM=$1
 API_KEY=$2
 
+if [ "$PLATFORM" == "ios" ]
+  MINIFIED_URL = main.jsbundle
+elif [ "$PLATFORM" == "android" ]
+  MINIFIED_URL = index.android.bundle
+else
+  echo 'Valid platforms or ios or android'
+  exit -1
+fi
+
 npx react-native bundle \
 --platform $PLATFORM \
 --dev false \
@@ -19,5 +28,5 @@ npx bugsnag-sourcemaps upload \
 --api-key $API_KEY \
 --minified-file $PLATFORM-release.bundle \
 --source-map $PLATFORM-release.bundle.map \
---minified-url main.jsbundle \
+--minified-url $MINIFIED_URL \
 --upload-sources
