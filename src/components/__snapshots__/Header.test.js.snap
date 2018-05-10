@@ -7,18 +7,17 @@ exports[`renders correctly with all props 1`] = `
       "header",
     ]
   }
+  forceInset={
+    Object {
+      "top": "always",
+    }
+  }
   style={
     Object {
       "backgroundColor": "#2d2f7f",
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={
@@ -64,18 +63,17 @@ exports[`renders correctly with default props 1`] = `
       "header",
     ]
   }
+  forceInset={
+    Object {
+      "top": "always",
+    }
+  }
   style={
     Object {
       "backgroundColor": "#2d2f7f",
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={
@@ -117,18 +115,17 @@ exports[`renders correctly with only onBack and rightElement 1`] = `
       "header",
     ]
   }
+  forceInset={
+    Object {
+      "top": "always",
+    }
+  }
   style={
     Object {
       "backgroundColor": "#2d2f7f",
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={
@@ -166,18 +163,17 @@ exports[`renders correctly with only title 1`] = `
       "header",
     ]
   }
+  forceInset={
+    Object {
+      "top": "always",
+    }
+  }
   style={
     Object {
       "backgroundColor": "#2d2f7f",
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={

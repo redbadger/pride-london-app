@@ -39,6 +39,7 @@ class AppWrapper extends Component<{}> {
     store.dispatch(getEvents());
     store.dispatch(loadSavedEvents());
   }
+
   render() {
     return (
       <Provider store={store}>
