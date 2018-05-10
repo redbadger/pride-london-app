@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    title="Parade"
+  />
+  <ScrollView>
+    <Component
+      style={
+        Object {
+          "alignSelf": "center",
+          "marginBottom": 12,
+          "maxWidth": 440,
+          "paddingTop": 24,
+          "width": "100%",
+        }
+      }
+    >
+      <LayoutColumn
+        spacing={24}
+      >
+        <ContentPadding
+          padding={Object {}}
+          style={Object {}}
+        >
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            type="h1"
+          >
+            London Parade
+          </Text>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            type="h2"
+          >
+            Sunday 7th July
+          </Text>
+          <Text
+            color="blackColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            style={
+              Object {
+                "paddingTop": 12,
+              }
+            }
+            type="text"
+          >
+            The Pride in London Parade provides a platform for every part of London’s LGBT+ community to raise awareness of LGBT+ issues and campaign for the freedoms that will allow us to live our lives on a genuinely equal footing. It gives us a chance to be visible and speak loudly to the rest of the world about what we have achieved, how far we have come and what is still needed.
+          </Text>
+        </ContentPadding>
+        <Component
+          key="Trafalgar Square"
+        >
+          <ImageHeader
+            image={1}
+            subtitle=""
+            title="Trafalgar Square"
+          />
+          <ContentPadding
+            padding={Object {}}
+            style={Object {}}
+          >
+            <Text
+              color="blackColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
+              }
+              type="text"
+            >
+              One of the most popular and iconic areas on the day and close to where the Parade finishes. As usual there will be a mixture of famous faces and community acts from across the LGBT+ spectrum sprinkled with celebrities together with the Pride's Got Talent Finalists all under the watchful eye of Nelson's Column.
+            </Text>
+          </ContentPadding>
+        </Component>
+        <Component
+          key="Cabaret Stage"
+        >
+          <ImageHeader
+            image={1}
+            subtitle="Dean Street"
+            title="Cabaret Stage"
+          />
+          <ContentPadding
+            padding={Object {}}
+            style={Object {}}
+          >
+            <Text
+              color="blackColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
+              }
+              type="text"
+            >
+              Located in the Heart of Soho - Dean Street - no one should miss the Cabaret Stage, packed with diverse, colourful and entertaining acts from the LGBT+ Cabaret Community. This stage will also showcase the Pride's Got Talent Cabaret Finalists.
+            </Text>
+          </ContentPadding>
+        </Component>
+        <Component
+          key="Women's Stage / Diva Stage"
+        >
+          <ImageHeader
+            image={1}
+            subtitle="Leicester Square"
+            title="Women's Stage / Diva Stage"
+          />
+          <ContentPadding
+            padding={Object {}}
+            style={Object {}}
+          >
+            <Text
+              color="blackColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
+              }
+              type="text"
+            >
+              Nestled in the iconic Leicester Square - this collaboration with Diva brings the best acts offered by and for the women's community. Expect high energy, fabulous talent and our female led Pride's Got Talent Acts.
+            </Text>
+          </ContentPadding>
+        </Component>
+        <Component
+          key="Family Stage"
+        >
+          <ImageHeader
+            image={1}
+            subtitle="Golden Square"
+            title="Family Stage"
+          />
+          <ContentPadding
+            padding={Object {}}
+            style={Object {}}
+          >
+            <Text
+              color="blackColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
+              }
+              type="text"
+            >
+              An intimate and fun stage, the best destination for fun and family entertainment
+            </Text>
+          </ContentPadding>
+        </Component>
+        <Component
+          key="Community Village"
+        >
+          <ImageHeader
+            image={1}
+            subtitle="Soho Square"
+            title="Community Village"
+          />
+          <ContentPadding
+            padding={Object {}}
+            style={Object {}}
+          >
+            <Text
+              color="blackColor"
+              markdown={false}
+              markdownStyle={Object {}}
+              style={
+                Object {
+                  "paddingTop": 12,
+                }
+              }
+              type="text"
+            >
+              Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to see find out more about some amazing charities and not for profit groups.
+            </Text>
+          </ContentPadding>
+        </Component>
+      </LayoutColumn>
+    </Component>
+  </ScrollView>
+</Component>
+`;

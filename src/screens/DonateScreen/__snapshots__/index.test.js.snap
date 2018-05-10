@@ -38,6 +38,7 @@ exports[`renders correctly 1`] = `
       >
         <ImageHeader
           image={1}
+          subtitle=""
           title={
             Array [
               "\\"It's the first time I feel",

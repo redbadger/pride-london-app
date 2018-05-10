@@ -18,12 +18,6 @@ exports[`Header renders correctly with all props 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={
@@ -112,12 +106,6 @@ exports[`Header renders correctly with default props 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={
@@ -188,12 +176,6 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={
@@ -280,12 +262,6 @@ exports[`Header renders correctly with only title 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={

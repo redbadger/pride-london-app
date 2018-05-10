@@ -8,10 +8,11 @@ import { lightNavyBlueColor, whiteColor } from "../constants/colors";
 
 type Props = {
   image: ImageRef,
-  title: string | string[]
+  title: string | string[],
+  subtitle?: string
 };
 
-const ImageHeader = ({ image, title }: Props) => (
+const ImageHeader = ({ image, title, subtitle }: Props) => (
   <ImageBackground style={styles.image} source={image} resizeMode="cover">
     <ContentPadding
       padding={{
@@ -22,13 +23,27 @@ const ImageHeader = ({ image, title }: Props) => (
       style={styles.contentPadding}
     >
       {(Array.isArray(title) ? title : [title]).map(line => (
-        <Text key={line} type="h1" style={styles.title}>
+        <Text
+          key={line}
+          color="lightNavyBlueColor"
+          type="h1"
+          style={styles.title}
+        >
           {line}
         </Text>
       ))}
+      {subtitle && (
+        <Text type="h2" color="whiteColor" style={styles.subtitle}>
+          {subtitle}
+        </Text>
+      )}
     </ContentPadding>
   </ImageBackground>
 );
+
+ImageHeader.defaultProps = {
+  subtitle: ""
+};
 
 const styles = StyleSheet.create({
   image: {
@@ -39,10 +54,14 @@ const styles = StyleSheet.create({
     alignItems: "flex-start"
   },
   title: {
-    color: lightNavyBlueColor,
     backgroundColor: whiteColor,
     paddingHorizontal: 8,
     paddingTop: 8
+  },
+  subtitle: {
+    backgroundColor: lightNavyBlueColor,
+    paddingHorizontal: 8,
+    paddingTop: 4
   }
 });
 

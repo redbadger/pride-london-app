@@ -24,7 +24,6 @@ export type Props = {
 
 class FeaturedEventsListScreen extends PureComponent<Props> {
   static navigationOptions = {
-    header: null,
     tabBarVisible: false
   };
 

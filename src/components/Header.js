@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { StatusBar, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import type { Node } from "react";
 import SafeAreaView from "react-native-safe-area-view";
 import ContentPadding from "./ContentPadding";
@@ -22,11 +22,6 @@ const Header = ({ leftElement, title, rightElement }: Props) => (
     style={{ backgroundColor: lightNavyBlueColor }}
     forceInset={{ top: "always" }}
   >
-    <StatusBar
-      barStyle="light-content"
-      animated
-      backgroundColor={lightNavyBlueColor}
-    />
     <ContentPadding style={styles.container}>
       <View style={styles.first}>{leftElement}</View>
       <View style={styles.title}>
