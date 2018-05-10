@@ -18,7 +18,6 @@ const bugsnagConfiguration = new Configuration();
 bugsnagConfiguration.releaseStage = Config.RELEASE_STAGE
   ? Config.RELEASE_STAGE
   : "dev";
-bugsnagConfiguration.notifyReleaseStages = ["alpha", "beta", "release"];
 const bugsnag = new Client(bugsnagConfiguration);
 
 // https://github.com/react-navigation/react-navigation/issues/3956#issuecomment-380648083
