@@ -13,7 +13,6 @@ it("renders correctly", () => {
       locationName="location"
       startTime="2018-09-11T12:12:12+01:00"
       endTime="2018-09-12T13:12:12+01:00"
-      isFree
       eventPriceLow={0}
       eventPriceHigh={0}
       image={{ uri: "https://image.jpg", width: 100, height: 100 }}
@@ -35,7 +34,6 @@ it("calls onPress with id when pressed", () => {
       locationName="location"
       startTime="2018-09-11T12:12:12+01:00"
       endTime="2018-09-12T13:12:12+01:00"
-      isFree
       eventPriceLow={0}
       eventPriceHigh={0}
       image={{ uri: "https://image.jpg", width: 100, height: 100 }}
@@ -58,7 +56,6 @@ it("calls addSavedEvent when SaveEventButton.onPress is called with true", () =>
       locationName="location"
       startTime="2018-09-11T12:12:12+01:00"
       endTime="2018-09-12T13:12:12+01:00"
-      isFree
       eventPriceLow={0}
       eventPriceHigh={0}
       image={{ uri: "https://image.jpg", width: 100, height: 100 }}
@@ -81,7 +78,6 @@ it("calls removeSavedEvent when SaveEventButton.onPress is called with false", (
       locationName="location"
       startTime="2018-09-11T12:12:12+01:00"
       endTime="2018-09-12T13:12:12+01:00"
-      isFree
       eventPriceLow={0}
       eventPriceHigh={0}
       image={{ uri: "https://image.jpg", width: 100, height: 100 }}
@@ -95,7 +91,7 @@ it("calls removeSavedEvent when SaveEventButton.onPress is called with false", (
   expect(mockRemoveSavedEvent).toBeCalledWith("id");
 });
 
-it("renders correctly when isFree is true", () => {
+it("renders correctly when the event is free", () => {
   const output = shallow(
     <EventCard
       id="id"
@@ -103,7 +99,6 @@ it("renders correctly when isFree is true", () => {
       locationName="location"
       startTime="2018-09-16T12:12:12+01:00"
       endTime="2018-09-16T13:12:12+01:00"
-      isFree
       eventPriceLow={0}
       eventPriceHigh={0}
       image={{ uri: "https://image.jpg", width: 10, height: 10 }}
@@ -116,7 +111,7 @@ it("renders correctly when isFree is true", () => {
   expect(output).toMatchSnapshot();
 });
 
-it("renders correctly when isFree is false and there is a price range", () => {
+it("renders correctly when there is a price range", () => {
   const output = shallow(
     <EventCard
       id="id"
@@ -124,7 +119,6 @@ it("renders correctly when isFree is false and there is a price range", () => {
       locationName="location"
       startTime="2018-09-16T12:12:12+01:00"
       endTime="2018-09-16T13:12:12+01:00"
-      isFree={false}
       eventPriceLow={12}
       eventPriceHigh={14}
       image={{ uri: "https://image.jpg", width: 10, height: 10 }}
@@ -137,7 +131,7 @@ it("renders correctly when isFree is false and there is a price range", () => {
   expect(output).toMatchSnapshot();
 });
 
-it("renders correctly when isFree is false and there's only one price", () => {
+it("renders correctly when there is only one price", () => {
   const output = shallow(
     <EventCard
       id="id"
@@ -145,7 +139,6 @@ it("renders correctly when isFree is false and there's only one price", () => {
       locationName="location"
       startTime="2018-09-16T12:12:12+01:00"
       endTime="2018-09-16T13:12:12+01:00"
-      isFree={false}
       eventPriceLow={12}
       eventPriceHigh={12}
       image={{ uri: "https://image.jpg", width: 10, height: 10 }}

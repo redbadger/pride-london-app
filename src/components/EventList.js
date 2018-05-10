@@ -7,7 +7,6 @@ import { concat, equals } from "ramda";
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import SectionHeader from "./SectionHeader";
-import { selectEventIsFree } from "../selectors/event";
 import { whiteColor } from "../constants/colors";
 import type { SavedEvents, Event, EventDays } from "../data/event";
 import type { FieldRef } from "../data/field-ref";
@@ -56,7 +55,6 @@ export const renderItem = ({
       startTime={item.fields.startTime[locale]}
       endTime={item.fields.endTime[locale]}
       image={getAssetSource(item.fields.eventsListPicture[locale])}
-      isFree={selectEventIsFree(item)}
       isSaved={isSavedEvent(item.sys.id)}
       addSavedEvent={addSavedEvent}
       removeSavedEvent={removeSavedEvent}

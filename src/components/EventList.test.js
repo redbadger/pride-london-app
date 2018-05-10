@@ -32,9 +32,6 @@ const events = [
         },
         eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
-        },
-        isFree: {
-          "en-GB": true
         }
       }
     },
@@ -66,9 +63,6 @@ const events = [
         },
         eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
-        },
-        isFree: {
-          "en-GB": true
         }
       }
     }
@@ -102,9 +96,6 @@ const events = [
         },
         eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
-        },
-        isFree: {
-          "en-GB": true
         }
       }
     }

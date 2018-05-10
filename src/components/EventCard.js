@@ -9,7 +9,7 @@ import {
   lightNavyBlueColor,
   whiteColor
 } from "../constants/colors";
-import { formattedEventPrice, formatTime } from "../data/formatters";
+import { formatShortEventPrice, formatTime } from "../data/formatters";
 import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
@@ -21,7 +21,6 @@ type Props = {
   startTime: string,
   endTime: string,
   image: ImageSource,
-  isFree: boolean,
   isSaved: boolean,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
@@ -44,7 +43,6 @@ class EventCard extends React.PureComponent<Props> {
       image,
       eventPriceLow,
       eventPriceHigh,
-      isFree,
       isSaved,
       addSavedEvent,
       removeSavedEvent,
@@ -67,7 +65,7 @@ class EventCard extends React.PureComponent<Props> {
             >
               <View style={styles.eventPriceContainer}>
                 <Text type="price" color="whiteColor">
-                  {formattedEventPrice(isFree, eventPriceLow, eventPriceHigh)}
+                  {formatShortEventPrice(eventPriceLow, eventPriceHigh)}
                 </Text>
               </View>
             </ImageBackground>

@@ -84,7 +84,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="h4"
     >
-      £19.95 - £30
+      £19.95 — £30
     </Text>
   </IconItem>
   <IconItem
