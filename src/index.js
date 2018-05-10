@@ -36,7 +36,6 @@ const store = createStore(
 class AppWrapper extends Component<{}> {
   componentDidMount() {
     SplashScreen.hide();
-    bugsnag.notify(new Error("Test error"));
     store.dispatch(getEvents());
     store.dispatch(loadSavedEvents());
   }
