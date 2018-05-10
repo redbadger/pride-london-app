@@ -13,7 +13,7 @@ if [ "$PLATFORM" == "ios" ]
 elif [ "$PLATFORM" == "android" ]
   MINIFIED_URL = index.android.bundle
 else
-  echo 'Valid platforms or ios or android'
+  echo 'Valid platforms are ios or android'
   exit -1
 fi
 
