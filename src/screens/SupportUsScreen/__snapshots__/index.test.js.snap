@@ -53,7 +53,6 @@ exports[`renders correctly 1`] = `
           bgTopRight={1}
           color="#fc4984"
           description="Passionate about equality? Join us."
-          isExternalLink={true}
           navigation={null}
           style={
             Object {
@@ -68,7 +67,6 @@ exports[`renders correctly 1`] = `
           color="#c3d30e"
           contrast={true}
           description="Visit our online shop on The Gay UK"
-          isExternalLink={true}
           navigation={null}
           style={
             Object {

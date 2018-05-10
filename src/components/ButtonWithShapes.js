@@ -3,35 +3,38 @@ import React from "react";
 import { Image, Linking, PixelRatio, StyleSheet, View } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import chevronRightCircleWhite from "../../../assets/images/chevronRightCircleWhite.png";
-import externalLinkBlue from "../../../assets/images/externalLinkBlue.png";
-import externalLinkWhite from "../../../assets/images/externalLinkWhite.png";
-import ContentPadding from "../../components/ContentPadding";
-import Text from "../../components/Text";
-import Touchable from "../../components/Touchable";
+import chevronRightCircleWhite from "../../assets/images/chevronRightCircleWhite.png";
+import externalLinkBlue from "../../assets/images/externalLinkBlue.png";
+import externalLinkWhite from "../../assets/images/externalLinkWhite.png";
+import ContentPadding from "./ContentPadding";
+import Text from "./Text";
+import Touchable from "./Touchable";
 import {
   lightNavyBlueColor,
   whiteColor,
   supportUsButtonShadow
-} from "../../constants/colors";
-import type { ImageRef } from "../../data/image-ref";
+} from "../constants/colors";
+import type { ImageRef } from "../data/image-ref";
 
-type Props = {
+type Props = {|
   color: string,
   title: string,
   description: string,
+  centerText?: boolean,
   bgBottomLeft?: ImageRef,
   bgTopRight?: ImageRef,
   bgBottomRight?: ImageRef,
   navigation: NavigationScreenProp<NavigationState>,
   url: string,
-  isExternalLink?: boolean,
   contrast?: boolean,
   style?: ViewStyleProp
-};
+|};
 
-const pickLinkIcon = (isExternalLink: boolean, contrast: boolean) => {
-  if (isExternalLink) {
+const isExternalLink = (url: string) =>
+  url.startsWith("http://") || url.startsWith("https://");
+
+const pickLinkIcon = (url: string, contrast: boolean) => {
+  if (isExternalLink(url)) {
     return contrast ? externalLinkBlue : externalLinkWhite;
   }
 
@@ -40,7 +43,7 @@ const pickLinkIcon = (isExternalLink: boolean, contrast: boolean) => {
 
 class SupportUsButton extends React.PureComponent<Props> {
   onPress = () => {
-    if (this.props.isExternalLink) {
+    if (isExternalLink(this.props.url)) {
       Linking.openURL(this.props.url);
     } else {
       this.props.navigation.navigate(this.props.url);
@@ -52,10 +55,11 @@ class SupportUsButton extends React.PureComponent<Props> {
       color,
       title,
       description,
+      centerText,
       bgBottomLeft,
       bgTopRight,
       bgBottomRight,
-      isExternalLink,
+      url,
       contrast,
       style
     } = this.props;
@@ -79,6 +83,7 @@ class SupportUsButton extends React.PureComponent<Props> {
             medium: { horizontal: 20, vertical: 0 },
             large: { horizontal: 29, vertical: 0 }
           }}
+          style={centerText && styles.centerText}
         >
           <View style={styles.titleContainer}>
             <Text
@@ -88,7 +93,7 @@ class SupportUsButton extends React.PureComponent<Props> {
               {title}
             </Text>
             <Image
-              source={pickLinkIcon(!!isExternalLink, !!contrast)}
+              source={pickLinkIcon(url, !!contrast)}
               style={styles.titleIcon}
             />
           </View>
@@ -133,6 +138,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     right: 0
+  },
+  centerText: {
+    alignItems: "center"
   },
   titleContainer: {
     flexDirection: "row"

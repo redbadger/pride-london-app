@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeScreen Component renders correctly 1`] = `
-<SafeAreaView
+<Component
   testID="home-screen"
 >
   <ScrollView
@@ -11,25 +11,103 @@ exports[`HomeScreen Component renders correctly 1`] = `
       }
     }
   >
-    <Component
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#C1C1C1",
-          "height": 292,
-          "justifyContent": "center",
+    <Header
+      getAssetSource={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset1",
+                },
+              },
+            ],
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset2",
+                },
+              },
+            ],
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset3",
+                },
+              },
+            ],
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset4",
+                },
+              },
+            ],
+          ],
         }
       }
-    >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        type="text"
-      >
-        Header - TBD
-      </Text>
-    </Component>
+      headerBanners={
+        Array [
+          Object {
+            "fields": Object {
+              "backgroundColour": Object {
+                "en-GB": "#ff0000",
+              },
+              "heading": Object {
+                "en-GB": "Pride",
+              },
+              "headingLine2": Object {
+                "en-GB": "Festival",
+              },
+              "heroImage": Object {
+                "en-GB": Object {
+                  "sys": Object {
+                    "id": "asset1",
+                  },
+                },
+              },
+              "subHeading": Object {
+                "en-GB": "from - to",
+              },
+            },
+            "sys": Object {
+              "id": "1",
+            },
+          },
+          Object {
+            "fields": Object {
+              "backgroundColour": Object {
+                "en-GB": "#ff0000",
+              },
+              "heading": Object {
+                "en-GB": "Pride",
+              },
+              "headingLine2": Object {
+                "en-GB": "Festival",
+              },
+              "heroImage": Object {
+                "en-GB": Object {
+                  "sys": Object {
+                    "id": "asset2",
+                  },
+                },
+              },
+              "subHeading": Object {
+                "en-GB": "from - to",
+              },
+            },
+            "sys": Object {
+              "id": "2",
+            },
+          },
+        ]
+      }
+      navigation={
+        Object {
+          "navigate": [MockFunction],
+        }
+      }
+    />
     <ContentPadding
       padding={Object {}}
       style={
@@ -322,11 +400,11 @@ exports[`HomeScreen Component renders correctly 1`] = `
       </Component>
     </ContentPadding>
   </ScrollView>
-</SafeAreaView>
+</Component>
 `;
 
 exports[`HomeScreen Component renders max 6 events 1`] = `
-<SafeAreaView
+<Component
   testID="home-screen"
 >
   <ScrollView
@@ -336,25 +414,117 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       }
     }
   >
-    <Component
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#C1C1C1",
-          "height": 292,
-          "justifyContent": "center",
+    <Header
+      getAssetSource={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset1",
+                },
+              },
+            ],
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset2",
+                },
+              },
+            ],
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset3",
+                },
+              },
+            ],
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset4",
+                },
+              },
+            ],
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset5",
+                },
+              },
+            ],
+            Array [
+              Object {
+                "sys": Object {
+                  "id": "asset6",
+                },
+              },
+            ],
+          ],
         }
       }
-    >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        type="text"
-      >
-        Header - TBD
-      </Text>
-    </Component>
+      headerBanners={
+        Array [
+          Object {
+            "fields": Object {
+              "backgroundColour": Object {
+                "en-GB": "#ff0000",
+              },
+              "heading": Object {
+                "en-GB": "Pride",
+              },
+              "headingLine2": Object {
+                "en-GB": "Festival",
+              },
+              "heroImage": Object {
+                "en-GB": Object {
+                  "sys": Object {
+                    "id": "asset1",
+                  },
+                },
+              },
+              "subHeading": Object {
+                "en-GB": "from - to",
+              },
+            },
+            "sys": Object {
+              "id": "1",
+            },
+          },
+          Object {
+            "fields": Object {
+              "backgroundColour": Object {
+                "en-GB": "#ff0000",
+              },
+              "heading": Object {
+                "en-GB": "Pride",
+              },
+              "headingLine2": Object {
+                "en-GB": "Festival",
+              },
+              "heroImage": Object {
+                "en-GB": Object {
+                  "sys": Object {
+                    "id": "asset2",
+                  },
+                },
+              },
+              "subHeading": Object {
+                "en-GB": "from - to",
+              },
+            },
+            "sys": Object {
+              "id": "2",
+            },
+          },
+        ]
+      }
+      navigation={
+        Object {
+          "navigate": [MockFunction],
+        }
+      }
+    />
     <ContentPadding
       padding={Object {}}
       style={
@@ -763,5 +933,5 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
       </Component>
     </ContentPadding>
   </ScrollView>
-</SafeAreaView>
+</Component>
 `;
