@@ -208,6 +208,218 @@ describe("loadCmsData", () => {
   });
 });
 
+describe("correctPrice", () => {
+  const mockLoadCmsData = async () => ({
+    entries: [],
+    assets: [],
+    syncToken: "123"
+  });
+
+  const mockAsyncStorage = { setItem: jest.fn() };
+
+  it("should set prices to zero if they are not provided", async () => {
+    const cmsData = {
+      entries: [
+        {
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T22:3001:00" },
+            endTime: { "en-GB": "2018-07-07T10:3001:00" }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      deletedEntries: [],
+      deletedAssets: [],
+      nextSyncToken: "abc"
+    };
+
+    const expectedCmsData = {
+      entries: [
+        {
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T10:3001:00" },
+            endTime: { "en-GB": "2018-07-07T22:3001:00" },
+            eventPriceLow: {
+              "en-GB": 0
+            },
+            eventPriceHigh: {
+              "en-GB": 0
+            }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      syncToken: "abc"
+    };
+
+    const savedCmsData = await saveCmsData(
+      cmsData,
+      mockLoadCmsData,
+      mockAsyncStorage
+    );
+
+    expect(savedCmsData).toEqual(expectedCmsData);
+  });
+
+  it("should set prices to zero if they are undefined", async () => {
+    const cmsData = {
+      entries: [
+        {
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T22:3001:00" },
+            endTime: { "en-GB": "2018-07-07T10:3001:00" },
+            eventPriceLow: {
+              "en-GB": undefined
+            },
+            eventPriceHigh: {
+              "en-GB": undefined
+            }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      deletedEntries: [],
+      deletedAssets: [],
+      nextSyncToken: "abc"
+    };
+
+    const expectedCmsData = {
+      entries: [
+        {
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T10:3001:00" },
+            endTime: { "en-GB": "2018-07-07T22:3001:00" },
+            eventPriceLow: {
+              "en-GB": 0
+            },
+            eventPriceHigh: {
+              "en-GB": 0
+            }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      syncToken: "abc"
+    };
+
+    const savedCmsData = await saveCmsData(
+      cmsData,
+      mockLoadCmsData,
+      mockAsyncStorage
+    );
+
+    expect(savedCmsData).toEqual(expectedCmsData);
+  });
+
+  it("should reverse the prices if priceLow is higher than priceHigh", async () => {
+    const cmsData = {
+      entries: [
+        {
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T22:3001:00" },
+            endTime: { "en-GB": "2018-07-07T10:3001:00" },
+            eventPriceLow: {
+              "en-GB": 20
+            },
+            eventPriceHigh: {
+              "en-GB": 10
+            }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      deletedEntries: [],
+      deletedAssets: [],
+      nextSyncToken: "abc"
+    };
+
+    const expectedCmsData = {
+      entries: [
+        {
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T10:3001:00" },
+            endTime: { "en-GB": "2018-07-07T22:3001:00" },
+            eventPriceLow: {
+              "en-GB": 10
+            },
+            eventPriceHigh: {
+              "en-GB": 20
+            }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      syncToken: "abc"
+    };
+
+    const savedCmsData = await saveCmsData(
+      cmsData,
+      mockLoadCmsData,
+      mockAsyncStorage
+    );
+
+    expect(savedCmsData).toEqual(expectedCmsData);
+  });
+
+  it("should reverse the prices if priceLow is set to 10 and priceHigh is set to zero", async () => {
+    const cmsData = {
+      entries: [
+        {
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T22:3001:00" },
+            endTime: { "en-GB": "2018-07-07T10:3001:00" },
+            eventPriceLow: {
+              "en-GB": 20
+            },
+            eventPriceHigh: {
+              "en-GB": 0
+            }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      deletedEntries: [],
+      deletedAssets: [],
+      nextSyncToken: "abc"
+    };
+
+    const expectedCmsData = {
+      entries: [
+        {
+          sys: { contentType: { sys: { id: "event" } }, id: "1" },
+          fields: {
+            startTime: { "en-GB": "2018-07-07T10:3001:00" },
+            endTime: { "en-GB": "2018-07-07T22:3001:00" },
+            eventPriceLow: {
+              "en-GB": 0
+            },
+            eventPriceHigh: {
+              "en-GB": 20
+            }
+          }
+        }
+      ],
+      assets: [{ sys: { id: "1" } }],
+      syncToken: "abc"
+    };
+
+    const savedCmsData = await saveCmsData(
+      cmsData,
+      mockLoadCmsData,
+      mockAsyncStorage
+    );
+
+    expect(savedCmsData).toEqual(expectedCmsData);
+  });
+});
+
 describe("correctDates", () => {
   it("switches dates if end date is before start date", async () => {
     const cmsData = {
@@ -216,7 +428,13 @@ describe("correctDates", () => {
           sys: { contentType: { sys: { id: "event" } }, id: "1" },
           fields: {
             startTime: { "en-GB": "2018-07-07T22:3001:00" },
-            endTime: { "en-GB": "2018-07-07T10:3001:00" }
+            endTime: { "en-GB": "2018-07-07T10:3001:00" },
+            eventPriceLow: {
+              "en-GB": 0
+            },
+            eventPriceHigh: {
+              "en-GB": 0
+            }
           }
         }
       ],
@@ -237,7 +455,13 @@ describe("correctDates", () => {
           sys: { contentType: { sys: { id: "event" } }, id: "1" },
           fields: {
             startTime: { "en-GB": "2018-07-07T10:3001:00" },
-            endTime: { "en-GB": "2018-07-07T22:3001:00" }
+            endTime: { "en-GB": "2018-07-07T22:3001:00" },
+            eventPriceLow: {
+              "en-GB": 0
+            },
+            eventPriceHigh: {
+              "en-GB": 0
+            }
           }
         }
       ],
@@ -259,7 +483,13 @@ describe("correctDates", () => {
         {
           sys: { id: "1" },
           fields: {
-            name: { "en-GB": "I am not an event" }
+            name: { "en-GB": "I am not an event" },
+            eventPriceLow: {
+              "en-GB": 0
+            },
+            eventPriceHigh: {
+              "en-GB": 0
+            }
           }
         }
       ],
@@ -280,7 +510,7 @@ describe("correctDates", () => {
       mockLoadCmsData,
       mockAsyncStorage
     );
-    expect(savedCmsData.entries[0]).toBe(cmsData.entries[0]);
+    expect(savedCmsData.entries[0]).toEqual(cmsData.entries[0]);
   });
 });
 
