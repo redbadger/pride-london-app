@@ -385,9 +385,7 @@ jobs:
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
                 ci_build_num:$CIRCLE_BUILD_NUM \
-                commit_sha:$CIRCLE_SHA1 \
-                release_stage:$RELEASE_STAGE \
-                bugsnag_api_key:$BUGSNAG_API_KEY
+                commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: /Users/distiller/project/output
 
