@@ -34,7 +34,6 @@ exports[`EventList #renderItem renders items correctly 1`] = `
       endTime="2018-08-11T00:00"
       eventPriceHigh="0"
       eventPriceLow="0"
-      isFree={false}
       isSaved={false}
       locationName="Somewhere"
       name="some event"
@@ -86,9 +85,6 @@ exports[`EventList renders correctly 1`] = `
               "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
               },
-              "isFree": Object {
-                "en-GB": true,
-              },
               "locationName": Object {
                 "en-GB": "Somewhere",
               },
@@ -123,9 +119,6 @@ exports[`EventList renders correctly 1`] = `
               },
               "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
-              },
-              "isFree": Object {
-                "en-GB": true,
               },
               "locationName": Object {
                 "en-GB": "Somewhere",
@@ -166,9 +159,6 @@ exports[`EventList renders correctly 1`] = `
               },
               "eventsListPicture": Object {
                 "en-GB": "http://placekitten.com/200/300",
-              },
-              "isFree": Object {
-                "en-GB": true,
               },
               "locationName": Object {
                 "en-GB": "Somewhere",
