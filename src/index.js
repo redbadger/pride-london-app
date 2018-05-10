@@ -20,7 +20,7 @@ bugsnagConfiguration.releaseStage = Config.RELEASE_STAGE
   : "dev";
 // Only send reports for releases from master branch
 bugsnagConfiguration.notifyReleaseStages = ["beta", "release"];
-const bugsnag = new Client(bugsnagConfiguration);
+const bugsnag = new Client(bugsnagConfiguration); // eslint-disable-line no-unused-vars
 
 // https://github.com/react-navigation/react-navigation/issues/3956#issuecomment-380648083
 YellowBox.ignoreWarnings([
