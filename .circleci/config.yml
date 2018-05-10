@@ -197,12 +197,6 @@ release-api-keys: &release-api-keys
       echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
       source $BASH_ENV
 
-set-beta-stage: &set-alpha-stage
-  run:
-    name: Set release stage env-var to alpha
-    command: |
-      echo 'export RELEASE_STAGE=alpha' >> $BASH_ENV
-      source $BASH_ENV
 set-beta-stage: &set-beta-stage
   run:
     name: Set release stage env-var to beta
@@ -285,7 +279,6 @@ jobs:
       - <<: *restore-gradle-cache
       - <<: *android-dependencies
       - <<: *save-gradle-cache
-      - <<: *set-alpha-stage
       - <<: *generate-env
       - run:
             name: Build Alpha binary and upload for distribution
@@ -299,7 +292,6 @@ jobs:
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
                 commit_sha:$CIRCLE_SHA1
-      - <<: *bugsnag-upload-sourcemaps-android
       - <<: *store-artifacts-docker
 
   beta-android:
