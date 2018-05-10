@@ -265,9 +265,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -389,9 +386,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -507,9 +501,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                           "updatedAt": "2018-03-04T10:13:53.398Z",
                         },
                       },
-                    },
-                    "isFree": Object {
-                      "en-GB": false,
                     },
                     "location": Object {
                       "en-GB": Object {
@@ -641,9 +632,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -768,9 +756,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                 "updatedAt": "2018-03-04T10:13:53.398Z",
               },
             },
-          },
-          "isFree": Object {
-            "en-GB": false,
           },
           "location": Object {
             "en-GB": Object {
@@ -967,9 +952,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -1087,9 +1069,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -1201,9 +1180,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                           "updatedAt": "2018-03-04T10:13:53.398Z",
                         },
                       },
-                    },
-                    "isFree": Object {
-                      "en-GB": false,
                     },
                     "location": Object {
                       "en-GB": Object {
