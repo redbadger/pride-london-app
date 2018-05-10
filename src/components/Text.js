@@ -12,6 +12,7 @@ import {
 } from "../constants/colors";
 
 export type TextType =
+  | "uber"
   | "h1"
   | "h2"
   | "h3"
@@ -57,6 +58,7 @@ class Text extends React.PureComponent<Props> {
           mergeDeepRight(textStyles, markdownDefaultStyles),
           markdownStyle
         )}
+        renderImage={() => null}
         {...otherProps}
       />
     ) : (
@@ -69,6 +71,12 @@ class Text extends React.PureComponent<Props> {
 }
 
 const textStyles = {
+  uber: {
+    fontFamily: "Poppins-ExtraBold",
+    fontSize: 32,
+    lineHeight: 36,
+    includeFontPadding: false
+  },
   h1: {
     fontFamily: "Poppins-Bold",
     fontSize: 24,

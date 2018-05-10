@@ -2,7 +2,7 @@
 import React from "react";
 import { Linking } from "react-native";
 import { shallow } from "enzyme";
-import SupportUsButton from "./SupportUsButton";
+import ButtonWithShapes from "./ButtonWithShapes";
 
 let openURLSpy;
 beforeEach(() => {
@@ -13,7 +13,7 @@ beforeEach(() => {
 
 it("renders correctly", () => {
   const output = shallow(
-    <SupportUsButton
+    <ButtonWithShapes
       color="red"
       title="Fruit..."
       description="Apples, Bananas, Tomatos"
@@ -26,13 +26,12 @@ it("renders correctly", () => {
 
 it("picks different icon for external links", () => {
   const output = shallow(
-    <SupportUsButton
+    <ButtonWithShapes
       color="red"
       title="Fruit..."
       description="Apples, Bananas, Tomatos"
       navigation={null}
       url="https://example.com"
-      isExternalLink
     />
   );
   expect(output).toMatchSnapshot();
@@ -40,13 +39,12 @@ it("picks different icon for external links", () => {
 
 it("picks different icon for external links with contrast color", () => {
   const output = shallow(
-    <SupportUsButton
+    <ButtonWithShapes
       color="red"
       title="Fruit..."
       description="Apples, Bananas, Tomatos"
       navigation={null}
       url="https://example.com"
-      isExternalLink
       contrast
     />
   );
@@ -58,7 +56,7 @@ it("navigates to route onPress", () => {
     navigate: jest.fn()
   };
   const output = shallow(
-    <SupportUsButton
+    <ButtonWithShapes
       color="red"
       title="Fruit..."
       description="Apples, Bananas, Tomatos"
@@ -73,13 +71,12 @@ it("navigates to route onPress", () => {
 
 it("navigates to external link onPress", () => {
   const output = shallow(
-    <SupportUsButton
+    <ButtonWithShapes
       color="red"
       title="Fruit..."
       description="Apples, Bananas, Tomatos"
       navigation={null}
       url="https://example.com"
-      isExternalLink
     />
   );
   output.simulate("press");

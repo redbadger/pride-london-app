@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { StatusBar, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import type { Node } from "react";
 import SafeAreaView from "react-native-safe-area-view";
 import ContentPadding from "./ContentPadding";
@@ -36,13 +36,9 @@ const Header = ({ onBack, title, rightElement }: Props) => {
   return (
     <SafeAreaView
       accessibilityTraits={["header"]}
+      forceInset={{ top: "always" }}
       style={{ backgroundColor: lightNavyBlueColor }}
     >
-      <StatusBar
-        barStyle="light-content"
-        animated
-        backgroundColor={lightNavyBlueColor}
-      />
       <ContentPadding style={styles.headerContent}>
         {leftElement || <View style={styles.phantomIcon} />}
         {titleElement}
