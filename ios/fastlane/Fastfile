@@ -53,6 +53,10 @@ platform :ios do
         notify: "0",
         notes: notes
       )
+      upload_symbols_to_bugsnag
+      send_build_to_bugsnag(
+        options[:release_stage]
+      )
     end
   end
 
@@ -83,6 +87,10 @@ platform :ios do
         notify: "1",
         notes: notes,
       )
+      upload_symbols_to_bugsnag
+      send_build_to_bugsnag(
+        options[:release_stage]
+      )
     end
   end
 
@@ -98,6 +106,11 @@ platform :ios do
     )
     if options[:submit]
       deploy_testflight
+      download_dsyms(version: get_version_number)
+      upload_symbols_to_bugsnag
+      send_build_to_bugsnag(
+        options[:release_stage]
+      )
     end
   end
 
