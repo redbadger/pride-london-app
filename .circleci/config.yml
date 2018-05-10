@@ -395,7 +395,8 @@ jobs:
                 fabric_groups:$FABRIC_GROUPS \
                 ci_build_num:$CIRCLE_BUILD_NUM \
                 commit_sha:$CIRCLE_SHA1 \
-                release_stage:$RELEASE_STAGE
+                release_stage:$RELEASE_STAGE \
+                bugsnag_api_key:$BUGSNAG_API_KEY
       - <<: *bugsnag-upload-sourcemaps-ios
       - store_artifacts:
           path: /Users/distiller/project/output
@@ -432,7 +433,8 @@ jobs:
                 fabric_groups:$FABRIC_GROUPS \
                 ci_build_num:$CIRCLE_BUILD_NUM \
                 commit_sha:$CIRCLE_SHA1 \
-                release_stage:$RELEASE_STAGE
+                release_stage:$RELEASE_STAGE \
+                bugsnag_api_key:$BUGSNAG_API_KEY
       - <<: *bugsnag-upload-sourcemaps-ios
 
   release-ios:
@@ -462,7 +464,8 @@ jobs:
                 bundle exec fastlane release \
                 submit:true \
                 ci_build_num:$CIRCLE_BUILD_NUM \
-                release_stage:$RELEASE_STAGE
+                release_stage:$RELEASE_STAGE \
+                bugsnag_api_key:$BUGSNAG_API_KEY
       - <<: *bugsnag-upload-sourcemaps-ios
 
   e2e-ios:
