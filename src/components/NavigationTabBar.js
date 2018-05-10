@@ -31,8 +31,8 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
   activeTabX: Animated.Value;
   activeTabWidth: Animated.Value;
 
-  handleTabPress = (index: number) => {
-    this.props.jumpToIndex(index);
+  handleTabPress = (key: string) => {
+    this.props.jumpTo(key);
   };
 
   updateActiveTabLine = () => {
@@ -62,20 +62,21 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
 
   renderLabel = (scene: TabScene) => {
     const { position, navigation } = this.props;
-    const { index } = scene;
+    const { index, focused } = scene;
     const { routes } = navigation.state;
 
     // Prepend '-1', so there are always at least 2 items in inputRange
     const inputRange = [-1, ...routes.map((x, i) => i)];
-    const color = position.interpolate({
-      inputRange,
-      outputRange: inputRange.map(
-        inputIndex =>
-          inputIndex === index ? tabBarActiveLabelColor : tabBarLabelColor
-      )
-    });
-    const tintColor = scene.focused ? tabBarActiveLabelColor : tabBarLabelColor;
-    const label = this.props.getLabel({ ...scene, tintColor });
+    // const color = "#666666";
+    // position.interpolate({
+    //   inputRange,
+    //   outputRange: inputRange.map(
+    //     inputIndex =>
+    //       inputIndex === index ? tabBarActiveLabelColor : tabBarLabelColor
+    //   )
+    // });
+    const color = focused ? tabBarActiveLabelColor : tabBarLabelColor;
+    const label = this.props.getLabelText(scene);
 
     return (
       <Animated.Text
@@ -90,32 +91,36 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
 
   renderIcon = (scene: TabScene) => {
     const { position, navigation } = this.props;
-    const { route, index } = scene;
+    const { route, index, focused } = scene;
     const { routes } = navigation.state;
 
     // Prepend '-1', so there are always at least 2 items in inputRange
     const inputRange = [-1, ...routes.map((x, i) => i)];
-    const activeOpacity = position.interpolate({
-      inputRange,
-      outputRange: inputRange.map(i => (i === index ? 1 : 0))
-    });
-    const inactiveOpacity = position.interpolate({
-      inputRange,
-      outputRange: inputRange.map(i => (i === index ? 0 : 1))
-    });
+    const opacity = focused ? 1 : 0;
+    const opacitInv = focused ? 0 : 1;
+    // const activeOpacity = 1;
+    // position.interpolate({
+    //   inputRange,
+    //   outputRange: inputRange.map(i => (i === index ? 1 : 0))
+    // });
+    // const inactiveOpacity = 0.5
+    // position.interpolate({
+    //   inputRange,
+    //   outputRange: inputRange.map(i => (i === index ? 0 : 1))
+    // });
 
     // We render the icon twice at the same position on top of each other:
     // active and inactive one, so we can fade between them.
     return (
       <View style={styles.iconContainer}>
-        <Animated.View style={[styles.icon, { opacity: activeOpacity }]}>
+        <Animated.View style={[styles.icon, { opacity }]}>
           {this.props.renderIcon({
             route,
             index,
             focused: true
           })}
         </Animated.View>
-        <Animated.View style={[styles.icon, { opacity: inactiveOpacity }]}>
+        <Animated.View style={[styles.icon, { opacity: opacitInv }]}>
           {this.props.renderIcon({
             route,
             index,
@@ -170,7 +175,7 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
                   this.tabLayouts[index] = event.nativeEvent.layout;
                   this.updateActiveTabLine();
                 }}
-                onPress={() => this.handleTabPress(index)}
+                onPress={() => this.handleTabPress(route.key)}
                 style={styles.tab}
               >
                 {this.renderIcon(scene)}
