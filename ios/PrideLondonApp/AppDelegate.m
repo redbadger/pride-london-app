@@ -23,7 +23,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   #if DEBUG == 0
-    [[Fabric sharedSDK] setDebug: YES];
     [Fabric with:@[[Crashlytics class]]];
   #endif
   [BugsnagReactNative start];
