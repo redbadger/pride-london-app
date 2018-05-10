@@ -72,6 +72,12 @@ exports[`does not render markdown images 1`] = `
       "u": Object {
         "fontWeight": "bold",
       },
+      "uber": Object {
+        "fontFamily": "Poppins-ExtraBold",
+        "fontSize": 32,
+        "includeFontPadding": false,
+        "lineHeight": 36,
+      },
       "whiteColor": Object {
         "color": "#ffffff",
       },
