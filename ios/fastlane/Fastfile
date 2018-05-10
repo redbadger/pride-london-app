@@ -55,7 +55,7 @@ platform :ios do
       )
       upload_symbols_to_bugsnag
       send_build_to_bugsnag(
-        options[:release_stage]
+        release_stage: options[:release_stage]
       )
     end
   end
@@ -89,7 +89,7 @@ platform :ios do
       )
       upload_symbols_to_bugsnag
       send_build_to_bugsnag(
-        options[:release_stage]
+        release_stage: options[:release_stage]
       )
     end
   end
@@ -109,7 +109,7 @@ platform :ios do
       download_dsyms(version: get_version_number)
       upload_symbols_to_bugsnag
       send_build_to_bugsnag(
-        options[:release_stage]
+        release_stage: options[:release_stage]
       )
     end
   end
