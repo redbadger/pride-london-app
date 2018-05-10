@@ -35,11 +35,11 @@ const EventOverview = ({ event }: Props) => {
   const dateFormat = "ddd, DD MMM YYYY";
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)
-    : `${formatDate(startTime, dateFormat)} - ${formatDate(
+    : `${formatDate(startTime, dateFormat)} – ${formatDate(
         endTime,
         dateFormat
       )}`;
-  const timeDisplay = `${formatTime(startTime)} - ${formatTime(endTime)}`;
+  const timeDisplay = `${formatTime(startTime)} – ${formatTime(endTime)}`;
 
   const eventLocation = [
     event.fields.location[locale].lat,

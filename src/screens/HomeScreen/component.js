@@ -13,10 +13,10 @@ import Touchable from "../../components/Touchable";
 import TextLink from "../../components/TextLink";
 import ContentPadding from "../../components/ContentPadding";
 import {
+  blackTwentyColor,
   cardBgColor,
   imageBgColor,
   titleTextColor,
-  eventCardShadow,
   bgColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   tile: {
     borderRadius: 3,
     // The below properties are required for ioS shadow
-    shadowColor: eventCardShadow,
+    shadowColor: blackTwentyColor,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 1,
     shadowRadius: 3,
