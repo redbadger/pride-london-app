@@ -197,19 +197,6 @@ release-api-keys: &release-api-keys
       echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
       source $BASH_ENV
 
-set-beta-stage: &set-beta-stage
-  run:
-    name: Set release stage env-var to beta
-    command: |
-      echo 'export RELEASE_STAGE=beta' >> $BASH_ENV
-      source $BASH_ENV
-set-release-stage: &set-release-stage
-  run:
-    name: Set release stage env-var to release
-    command: |
-      echo 'export RELEASE_STAGE=release' >> $BASH_ENV
-      source $BASH_ENV
-
 bugsnag-upload-sourcemaps-android: &bugsnag-upload-sourcemaps-android
   run:
     name: Generate js sourcemaps and upload to Bugsnag
@@ -299,6 +286,7 @@ jobs:
     environment:
       <<: *env-docker
       APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
+      RELEASE_STAGE: "beta"
     steps:
       - <<: *checkout-docker
       - <<: *workspace-docker
@@ -332,6 +320,7 @@ jobs:
     environment:
       <<: *env-docker
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
+      RELEASE_STAGE: "release"
     steps:
       - <<: *checkout-docker
       - <<: *workspace-docker
@@ -344,7 +333,6 @@ jobs:
       - <<: *android-dependencies
       - <<: *save-gradle-cache
       - <<: *release-api-keys
-      - <<: *set-release-stage
       - <<: *generate-env
       - run:
             name: Build Release binary and upload for distribution
@@ -394,6 +382,7 @@ jobs:
     working_directory: /Users/distiller/project/ios
     environment:
       <<: *env-macos
+      RELEASE_STAGE: "beta"
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -407,7 +396,6 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
-      - <<: *set-beta-stage
       - <<: *generate-env-macos
       - run:
             name: Build Beta binary and upload for distribution
@@ -430,6 +418,7 @@ jobs:
     working_directory: /Users/distiller/project/ios
     environment:
       <<: *env-macos
+      RELEASE_STAGE: "release"
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -444,7 +433,6 @@ jobs:
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
       - <<: *release-api-keys
-      - <<: *set-release-stage
       - <<: *generate-env-macos
       - run:
             name: Build Release binary and upload for distribution
