@@ -8,13 +8,13 @@ fi
 PLATFORM=$1
 API_KEY=$2
 
-if [ "$PLATFORM" == "ios" ]
-  MINIFIED_URL = main.jsbundle
-elif [ "$PLATFORM" == "android" ]
-  MINIFIED_URL = index.android.bundle
+if [ "$PLATFORM" == "ios" ]; then
+  MINIFIED_URL = main.jsbundle;
+elif [ "$PLATFORM" == "android" ]; then
+  MINIFIED_URL = index.android.bundle;
 else
-  echo 'Valid platforms are ios or android'
-  exit -1
+  echo 'Valid platforms are ios or android';
+  exit -1;
 fi
 
 npx react-native bundle \
