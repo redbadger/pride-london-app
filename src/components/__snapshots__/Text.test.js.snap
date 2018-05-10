@@ -1,5 +1,114 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`does not render markdown images 1`] = `
+<Component
+  debug={false}
+  markdownStyles={
+    Object {
+      "blackColor": Object {
+        "color": "#111111",
+      },
+      "h1": Object {
+        "fontFamily": "Poppins-Bold",
+        "fontSize": 24,
+        "includeFontPadding": false,
+        "lineHeight": 28,
+      },
+      "h2": Object {
+        "fontFamily": "Poppins-SemiBold",
+        "fontSize": 18,
+        "includeFontPadding": false,
+        "lineHeight": 24,
+      },
+      "h3": Object {
+        "fontFamily": "Poppins-SemiBold",
+        "fontSize": 16,
+        "includeFontPadding": false,
+        "lineHeight": 20,
+      },
+      "h4": Object {
+        "fontFamily": "Roboto-Medium",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      "lightNavyBlueColor": Object {
+        "color": "#2d2f7f",
+      },
+      "list": Object {
+        "marginBottom": 5,
+        "marginHorizontal": 16,
+      },
+      "listItem": Object {
+        "alignItems": "flex-start",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+        "marginBottom": 5,
+      },
+      "listItemBullet": Object {
+        "alignSelf": "flex-start",
+        "backgroundColor": "black",
+        "borderRadius": 2,
+        "height": 4,
+        "marginRight": 10,
+        "marginTop": 22,
+        "width": 4,
+      },
+      "price": Object {
+        "fontFamily": "Roboto-Bold",
+        "fontSize": 14,
+        "lineHeight": 20,
+      },
+      "small": Object {
+        "fontFamily": "Roboto",
+        "fontSize": 14,
+        "lineHeight": 20,
+      },
+      "text": Object {
+        "color": "#111111",
+        "fontFamily": "Roboto",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      "u": Object {
+        "fontWeight": "bold",
+      },
+      "uber": Object {
+        "fontFamily": "Poppins-ExtraBold",
+        "fontSize": 32,
+        "includeFontPadding": false,
+        "lineHeight": 36,
+      },
+      "whiteColor": Object {
+        "color": "#ffffff",
+      },
+      "xSmall": Object {
+        "fontFamily": "Poppins-SemiBold",
+        "fontSize": 12,
+        "includeFontPadding": false,
+        "lineHeight": 16,
+      },
+    }
+  }
+  parseInline={false}
+  renderImage={[Function]}
+  useDefaultStyles={true}
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    key="block_0"
+    style={
+      Object {
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "marginBottom": 10,
+      }
+    }
+  />
+</Component>
+`;
+
 exports[`renders correctly 1`] = `
 <Text
   accessible={true}
@@ -113,6 +222,7 @@ exports[`renders markdown component based on flag 1`] = `
     }
   }
   parseInline={false}
+  renderImage={[Function]}
   useDefaultStyles={true}
 >
   **Some markdown**
