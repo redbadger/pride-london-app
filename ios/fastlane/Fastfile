@@ -53,11 +53,6 @@ platform :ios do
         notify: "0",
         notes: notes
       )
-      upload_symbols_to_bugsnag
-      send_build_to_bugsnag(
-        api_key: options[:bugsnag_api_key],
-        release_stage: options[:release_stage]
-      )
     end
   end
 
