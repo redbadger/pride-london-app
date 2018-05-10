@@ -25,8 +25,8 @@
   #if DEBUG == 0
     [Fabric with:@[[Crashlytics class]]];
   #endif
+  
   [BugsnagReactNative start];
-  [CrashlyticsKit crash];
   
   NSURL *jsCodeLocation;
 
