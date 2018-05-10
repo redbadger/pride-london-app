@@ -4,8 +4,6 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 import com.facebook.react.ReactApplication;
-import com.airbnb.android.react.maps.MapsPackage;
-import com.airbnb.android.react.lottie.LottiePackage;
 import com.bugsnag.BugsnagReactNative;
 import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
