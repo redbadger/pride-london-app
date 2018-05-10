@@ -361,25 +361,6 @@ jobs:
       - <<: *generate-env-macos
       - run:
             command: |
-              npx react-native bundle \
-              --platform ios \
-              --dev false \
-              --entry-file index.js \
-              --bundle-output ios-release.bundle \
-              --sourcemap-output ios-release.bundle.map
-      - run:
-          command: |
-              yarn global add bugsnag-sourcemaps
-      - run:
-          command: |
-              bugsnag-sourcemaps upload \
-              --api-key $BUGSNAG_API_KEY \
-              --minified-file ios-release.bundle \
-              --source-map ios-release.bundle.map \
-              --minified-url main.jsbundle \
-              --upload-sources
-      - run:
-            command: |
                 bundle exec fastlane alpha \
                 submit:true \
                 api_token:$HOCKEY_APP_TOKEN \
@@ -389,6 +370,24 @@ jobs:
                 fabric_groups:$FABRIC_GROUPS \
                 ci_build_num:$CIRCLE_BUILD_NUM \
                 commit_sha:$CIRCLE_SHA1
+      - run:
+            name: Create source map bundle for Bugsnag
+            command: |
+              npx react-native bundle \
+              --platform ios \
+              --dev false \
+              --entry-file index.js \
+              --bundle-output ios-release.bundle \
+              --sourcemap-output ios-release.bundle.map
+      - run:
+          name: Upload bugsnag source maps
+          command: |
+              npx bugsnag-sourcemaps upload \
+              --api-key $BUGSNAG_API_KEY \
+              --minified-file ios-release.bundle \
+              --source-map ios-release.bundle.map \
+              --minified-url main.jsbundle \
+              --upload-sources
       - store_artifacts:
           path: /Users/distiller/project/output
 
