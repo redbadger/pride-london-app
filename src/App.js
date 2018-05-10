@@ -1,6 +1,9 @@
 // @flow
 import React from "react";
-import { createStackNavigator, createTabNavigator } from "react-navigation";
+import {
+  createStackNavigator,
+  createBottomTabNavigator
+} from "react-navigation";
 import { Image, StyleSheet, View } from "react-native";
 import type { TabScene } from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
@@ -81,8 +84,6 @@ const HomeStack = createStackNavigator(
   {
     initialRouteName: HOME,
     navigationOptions: {
-      tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
-      tabBarLabel: text.tabHome,
       tabBarTestIDProps: {
         testID: "home-tab-button"
       }
@@ -99,13 +100,6 @@ const EventsStack = createStackNavigator(
   },
   {
     initialRouteName: EVENT_LIST,
-    navigationOptions: {
-      tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
-      tabBarLabel: text.tabEvents,
-      tabBarTestIDProps: {
-        testID: "events-tab-button"
-      }
-    },
     headerMode: "none"
   }
 );
@@ -116,10 +110,6 @@ const ParadeStack = createStackNavigator(
   },
   {
     initialRouteName: PARADE,
-    navigationOptions: {
-      tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
-      tabBarLabel: text.tabParade
-    },
     headerMode: "none"
   }
 );
@@ -131,10 +121,6 @@ const SavedStack = createStackNavigator(
   },
   {
     initialRouteName: SAVED,
-    navigationOptions: {
-      tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-      tabBarLabel: text.tabSaved
-    },
     headerMode: "none"
   }
 );
@@ -147,21 +133,51 @@ const SupportUsStack = createStackNavigator(
   },
   {
     initialRouteName: SUPPORT_US,
-    navigationOptions: {
-      tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-      tabBarLabel: text.tabSupportUs
-    },
+
     headerMode: "none"
   }
 );
 
-const TabNav = createTabNavigator(
+const TabNav = createBottomTabNavigator(
   {
-    [HOME]: { screen: HomeStack },
-    [EVENT_LIST]: { screen: EventsStack },
-    [PARADE]: { screen: ParadeStack },
-    [SAVED]: { screen: SavedStack },
-    [SUPPORT_US]: { screen: SupportUsStack }
+    [HOME]: {
+      screen: HomeStack,
+      navigationOptions: {
+        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+        tabBarLabel: text.tabHome
+      }
+    },
+    [EVENT_LIST]: {
+      screen: EventsStack,
+      navigationOptions: {
+        tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
+        tabBarLabel: text.tabEvents,
+        tabBarTestIDProps: {
+          testID: "events-tab-button"
+        }
+      }
+    },
+    [PARADE]: {
+      screen: ParadeStack,
+      navigationOptions: {
+        tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
+        tabBarLabel: text.tabParade
+      }
+    },
+    [SAVED]: {
+      screen: SavedStack,
+      navigationOptions: {
+        tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
+        tabBarLabel: text.tabSaved
+      }
+    },
+    [SUPPORT_US]: {
+      screen: SupportUsStack,
+      navigationOptions: {
+        tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
+        tabBarLabel: text.tabSupportUs
+      }
+    }
   },
   {
     tabBarComponent: NavigationTabBar,
