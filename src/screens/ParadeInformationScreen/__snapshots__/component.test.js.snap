@@ -35,7 +35,7 @@ exports[`renders correctly 1`] = `
             color="lightNavyBlueColor"
             markdown={false}
             markdownStyle={Object {}}
-            type="h1"
+            type="uber"
           >
             London Parade
           </Text>
@@ -116,12 +116,12 @@ exports[`renders correctly 1`] = `
           </ContentPadding>
         </Component>
         <Component
-          key="Women's Stage / Diva Stage"
+          key="Women's / Diva Stage"
         >
           <ImageHeader
             image={1}
             subtitle="Leicester Square"
-            title="Women's Stage / Diva Stage"
+            title="Women's / Diva Stage"
           />
           <ContentPadding
             padding={Object {}}
