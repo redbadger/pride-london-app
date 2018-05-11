@@ -9,9 +9,12 @@ import SplashScreen from "react-native-splash-screen";
 import Config from "react-native-config";
 import { Client, Configuration } from "bugsnag-react-native";
 
+import analytics from "./integrations/analytics";
 import reducers from "./reducers";
+import { init } from "./actions";
 import { getEvents } from "./actions/events";
 import { loadSavedEvents } from "./actions/saved-events";
+import { navigate } from "./actions/navigation";
 import App from "./App";
 
 const bugsnagConfiguration = new Configuration();
@@ -30,12 +33,15 @@ YellowBox.ignoreWarnings([
 
 const store = createStore(
   reducers,
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk, analytics))
 );
+
+const handleNavigationChange = navigate(store.dispatch);
 
 class AppWrapper extends Component<{}> {
   componentDidMount() {
     SplashScreen.hide();
+    store.dispatch(init());
     store.dispatch(getEvents());
     store.dispatch(loadSavedEvents());
   }
@@ -43,7 +49,7 @@ class AppWrapper extends Component<{}> {
   render() {
     return (
       <Provider store={store}>
-        <App />
+        <App onNavigationStateChange={handleNavigationChange} />
       </Provider>
     );
   }
