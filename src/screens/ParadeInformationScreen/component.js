@@ -34,7 +34,7 @@ const ParadeInformationScreen = () => {
         <View style={styles.scrollPage}>
           <LayoutColumn spacing={24}>
             <ContentPadding>
-              <Text type="h1" color="lightNavyBlueColor">
+              <Text type="uber" color="lightNavyBlueColor">
                 {tx.pageHeading}
               </Text>
               <Text type="h2" color="lightNavyBlueColor">
