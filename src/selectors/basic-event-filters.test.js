@@ -104,6 +104,33 @@ describe("buildTimeFilter", () => {
   });
 });
 
+describe("bug busting the buildTimeFilter for overnight events", () => {
+  const buggyEvent = buildEvent({
+    startTime: "2018-08-02T14:00:00",
+    endTime: "2018-08-03T00:00:00"
+  });
+
+  const happyEvent = buildEvent({
+    startTime: "2018-08-02T14:00:00",
+    endTime: "2018-08-02T23:59:00"
+  });
+
+  it("checks for bugs in the morning", () => {
+    const filter = buildTimeFilter("morning");
+    expect(filter(buggyEvent)).toBe(false);
+  });
+
+  it("checks for bugs in the afternoon", () => {
+    const filter = buildTimeFilter("afternoon");
+    expect(filter(buggyEvent)).toBe(true);
+  });
+
+  it("checks for bugs in the evening", () => {
+    const filter = buildTimeFilter("evening");
+    expect(filter(buggyEvent)).toBe(true);
+  });
+});
+
 describe("buildCategoryFilter", () => {
   const eventWithNoCategory = buildEvent({ eventCategories: [] });
   const eventWithOneCategory = buildEvent({ eventCategories: ["Community"] });
