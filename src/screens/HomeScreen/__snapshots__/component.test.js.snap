@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeScreen Component renders correctly 1`] = `
-<Component
+<ScrollView
   testID="home-screen"
 >
-  <ScrollView
+  <Component
     style={
       Object {
         "backgroundColor": "#ffffff",
@@ -399,15 +399,15 @@ exports[`HomeScreen Component renders correctly 1`] = `
         </Component>
       </Component>
     </ContentPadding>
-  </ScrollView>
-</Component>
+  </Component>
+</ScrollView>
 `;
 
 exports[`HomeScreen Component renders max 6 events 1`] = `
-<Component
+<ScrollView
   testID="home-screen"
 >
-  <ScrollView
+  <Component
     style={
       Object {
         "backgroundColor": "#ffffff",
@@ -932,6 +932,6 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
         </Component>
       </Component>
     </ContentPadding>
-  </ScrollView>
-</Component>
+  </Component>
+</ScrollView>
 `;

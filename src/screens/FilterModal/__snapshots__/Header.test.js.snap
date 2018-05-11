@@ -1,12 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`applies styles to clear button when showClear=true 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
-  }
+<Component
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -67,16 +62,11 @@ exports[`applies styles to clear button when showClear=true 1`] = `
       }
     />
   </ContentPadding>
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
-  }
+<Component
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -137,5 +127,5 @@ exports[`renders correctly 1`] = `
       }
     />
   </ContentPadding>
-</withOrientation>
+</Component>
 `;
