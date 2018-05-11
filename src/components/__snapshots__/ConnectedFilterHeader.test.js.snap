@@ -29,7 +29,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories />
     </Component>

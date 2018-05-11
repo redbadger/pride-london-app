@@ -29,7 +29,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -118,7 +118,7 @@ exports[`renders correctly with any date and any time 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -207,7 +207,7 @@ exports[`renders correctly with date range and two times 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -296,7 +296,7 @@ exports[`renders correctly with single date and single time 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -385,7 +385,7 @@ exports[`renders correctly with tag filters selected 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
