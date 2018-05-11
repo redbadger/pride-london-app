@@ -83,11 +83,6 @@ const HomeStack = createStackNavigator(
   },
   {
     initialRouteName: HOME,
-    navigationOptions: {
-      tabBarTestIDProps: {
-        testID: "home-tab-button"
-      }
-    },
     headerMode: "none"
   }
 );
@@ -106,7 +101,7 @@ const EventsStack = createStackNavigator(
 
 const ParadeStack = createStackNavigator(
   {
-    [PARADE]: { screen: withShadow(() => <View />) }
+    [PARADE]: { screen: withShadow(ParadeInformationScreen) }
   },
   {
     initialRouteName: PARADE,
@@ -144,7 +139,10 @@ const TabNav = createBottomTabNavigator(
       screen: HomeStack,
       navigationOptions: {
         tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
-        tabBarLabel: text.tabHome
+        tabBarLabel: text.tabHome,
+        tabBarTestIDProps: {
+          testID: "home-tab-button"
+        }
       }
     },
     [EVENT_LIST]: {
