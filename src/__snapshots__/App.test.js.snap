@@ -19,7 +19,6 @@ exports[`renders correctly 1`] = `
     backgroundColor="#2d2f7f"
     barStyle="light-content"
     showHideTransition="fade"
-    translucent={true}
   />
   <NavigationContainer />
 </withOrientation>
