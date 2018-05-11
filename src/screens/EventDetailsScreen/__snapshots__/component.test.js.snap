@@ -82,7 +82,11 @@ exports[`EventCategories renders correctly 1`] = `
 
 exports[`EventHeader renders correctly 1`] = `
 <Header
-  onBack={[Function]}
+  leftElement={
+    <Unknown
+      onPress={[Function]}
+    />
+  }
   rightElement={
     <SaveEventButton
       active={true}

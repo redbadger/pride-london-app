@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly with all props 1`] = `
-<Component
+exports[`Header renders correctly with all props 1`] = `
+<withOrientation
   accessibilityTraits={
     Array [
       "header",
     ]
+  }
+  forceInset={
+    Object {
+      "top": "always",
+    }
   }
   style={
     Object {
@@ -27,36 +32,73 @@ exports[`renders correctly with all props 1`] = `
       }
     }
   >
-    <IconButton
-      accessibilityLabel="Back"
-      onPress={[Function]}
-      source={1}
-    />
-    <Text
-      color="whiteColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      type="h2"
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "flex": 1,
+          "marginRight": "auto",
+        }
+      }
     >
-      Center
-    </Text>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Left
+      </Text>
+    </Component>
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 0,
+          "paddingTop": 4,
+        }
+      }
     >
-      Right
-    </Text>
+      <Text
+        color="whiteColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="h2"
+      >
+        Center
+      </Text>
+    </Component>
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flex": 1,
+          "marginLeft": "auto",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Right
+      </Text>
+    </Component>
   </ContentPadding>
-</Component>
+</withOrientation>
 `;
 
-exports[`renders correctly with default props 1`] = `
-<Component
+exports[`Header renders correctly with default props 1`] = `
+<withOrientation
   accessibilityTraits={
     Array [
       "header",
     ]
+  }
+  forceInset={
+    Object {
+      "top": "always",
+    }
   }
   style={
     Object {
@@ -81,29 +123,52 @@ exports[`renders correctly with default props 1`] = `
     <Component
       style={
         Object {
-          "height": 48,
-          "width": 48,
+          "alignItems": "flex-start",
+          "flex": 1,
+          "marginRight": "auto",
         }
       }
     />
     <Component
       style={
         Object {
-          "height": 48,
-          "width": 48,
+          "alignItems": "center",
+          "flex": 0,
+          "paddingTop": 4,
+        }
+      }
+    >
+      <Text
+        color="whiteColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="h2"
+      />
+    </Component>
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flex": 1,
+          "marginLeft": "auto",
         }
       }
     />
   </ContentPadding>
-</Component>
+</withOrientation>
 `;
 
-exports[`renders correctly with only onBack and rightElement 1`] = `
-<Component
+exports[`Header renders correctly with only onBack and rightElement 1`] = `
+<withOrientation
   accessibilityTraits={
     Array [
       "header",
     ]
+  }
+  forceInset={
+    Object {
+      "top": "always",
+    }
   }
   style={
     Object {
@@ -125,28 +190,71 @@ exports[`renders correctly with only onBack and rightElement 1`] = `
       }
     }
   >
-    <IconButton
-      accessibilityLabel="Back"
-      onPress={[Function]}
-      source={1}
-    />
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "flex": 1,
+          "marginRight": "auto",
+        }
+      }
     >
-      Right
-    </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Left
+      </Text>
+    </Component>
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 0,
+          "paddingTop": 4,
+        }
+      }
+    >
+      <Text
+        color="whiteColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="h2"
+      />
+    </Component>
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flex": 1,
+          "marginLeft": "auto",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Right
+      </Text>
+    </Component>
   </ContentPadding>
-</Component>
+</withOrientation>
 `;
 
-exports[`renders correctly with only title 1`] = `
-<Component
+exports[`Header renders correctly with only title 1`] = `
+<withOrientation
   accessibilityTraits={
     Array [
       "header",
     ]
+  }
+  forceInset={
+    Object {
+      "top": "always",
+    }
   }
   style={
     Object {
@@ -171,27 +279,47 @@ exports[`renders correctly with only title 1`] = `
     <Component
       style={
         Object {
-          "height": 48,
-          "width": 48,
+          "alignItems": "flex-start",
+          "flex": 1,
+          "marginRight": "auto",
         }
       }
     />
-    <Text
-      color="whiteColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      type="h2"
-    >
-      Center
-    </Text>
     <Component
       style={
         Object {
-          "height": 48,
-          "width": 48,
+          "alignItems": "center",
+          "flex": 0,
+          "paddingTop": 4,
+        }
+      }
+    >
+      <Text
+        color="whiteColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="h2"
+      >
+        Center
+      </Text>
+    </Component>
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flex": 1,
+          "marginLeft": "auto",
         }
       }
     />
   </ContentPadding>
-</Component>
+</withOrientation>
+`;
+
+exports[`Header.BackButton renders correctly with default props 1`] = `
+<IconButton
+  accessibilityLabel="Back"
+  onPress={[Function]}
+  source={1}
+/>
 `;

@@ -1,131 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`applies styles to clear button when showClear=true 1`] = `
-<Component
-  style={
-    Object {
-      "backgroundColor": "#2d2f7f",
-      "height": 50,
-    }
-  }
->
-  <ContentPadding
-    padding={Object {}}
-    style={
-      Object {
-        "alignItems": "center",
-        "flex": 1,
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-      }
-    }
-  >
+<Header
+  leftElement={
     <ActionButton
       label="Cancel"
       onPress={[Function]}
       style={Object {}}
     />
-    <Component
-      style={
-        Object {
-          "paddingTop": 4,
-        }
-      }
-    >
-      <Text
-        accessibilityTraits={
-          Array [
-            "header",
-          ]
-        }
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        type="h2"
-      >
-        Filter Events
-      </Text>
-    </Component>
+  }
+  rightElement={
     <ActionButton
-      key="1"
       label="Clear all"
       onPress={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
+      style={Object {}}
     />
-  </ContentPadding>
-</Component>
+  }
+  title="Filter Events"
+/>
 `;
 
 exports[`renders correctly 1`] = `
-<Component
-  style={
-    Object {
-      "backgroundColor": "#2d2f7f",
-      "height": 50,
-    }
-  }
->
-  <ContentPadding
-    padding={Object {}}
-    style={
-      Object {
-        "alignItems": "center",
-        "flex": 1,
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-      }
-    }
-  >
+<Header
+  leftElement={
     <ActionButton
       label="Cancel"
       onPress={[Function]}
       style={Object {}}
     />
-    <Component
-      style={
-        Object {
-          "paddingTop": 4,
-        }
-      }
-    >
-      <Text
-        accessibilityTraits={
-          Array [
-            "header",
-          ]
-        }
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#ffffff",
-          }
-        }
-        type="h2"
-      >
-        Filter Events
-      </Text>
-    </Component>
-    <ActionButton
-      key="0"
-      label="Clear all"
-      onPress={[Function]}
-      style={
-        Object {
-          "opacity": 0,
-        }
-      }
-    />
-  </ContentPadding>
-</Component>
+  }
+  rightElement={null}
+  title="Filter Events"
+/>
 `;

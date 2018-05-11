@@ -61,7 +61,11 @@ const Header = ({ headerBanners, getAssetSource, navigation }: Props) => {
             {banner.fields.heading[locale]}
           </Text>
           {banner.fields.headingLine2 && (
-            <Text type="uber" color="lightNavyBlueColor" style={styles.heading}>
+            <Text
+              type="uber"
+              color="lightNavyBlueColor"
+              style={[styles.heading, styles.headingBelow]}
+            >
               {banner.fields.headingLine2[locale]}
             </Text>
           )}
@@ -109,7 +113,12 @@ const styles = StyleSheet.create({
   heading: {
     backgroundColor: whiteColor,
     paddingHorizontal: 8,
-    paddingTop: 8
+    paddingTop: 8,
+    zIndex: 2
+  },
+  headingBelow: {
+    marginTop: -6,
+    zIndex: 1
   },
   subHeading: {
     backgroundColor: lightNavyBlueColor,

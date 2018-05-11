@@ -14,6 +14,7 @@
 
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <BugsnagReactNative/BugsnagReactNative.h>
 
 #import "SplashScreen.h"
 
@@ -24,6 +25,9 @@
   #if DEBUG == 0
     [Fabric with:@[[Crashlytics class]]];
   #endif
+  
+  [BugsnagReactNative start];
+  
   NSURL *jsCodeLocation;
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];

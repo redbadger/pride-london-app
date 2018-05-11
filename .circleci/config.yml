@@ -197,6 +197,25 @@ release-api-keys: &release-api-keys
       echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
       source $BASH_ENV
 
+bugsnag-upload-sourcemaps-android: &bugsnag-upload-sourcemaps-android
+  run:
+    name: Generate js sourcemaps and upload to Bugsnag
+    command: |
+        ./scripts/upload-sourcemaps.sh \
+        android \
+        $BUGSNAG_API_KEY
+    working_directory: ~/project
+
+bugsnag-upload-sourcemaps-ios: &bugsnag-upload-sourcemaps-ios
+  run:
+    name: Generate js sourcemaps and upload to Bugsnag
+    command: |
+        ./scripts/upload-sourcemaps.sh \
+        ios \
+        $BUGSNAG_API_KEY
+    working_directory: /Users/distiller/project
+
+
 version: 2
 jobs:
   # build is a reserved job name for running circleci locally
@@ -249,6 +268,7 @@ jobs:
       - <<: *save-gradle-cache
       - <<: *generate-env
       - run:
+            name: Build Alpha binary and upload for distribution
             command: |
                 bundle exec fastlane alpha \
                 submit:true \
@@ -266,6 +286,7 @@ jobs:
     environment:
       <<: *env-docker
       APK_PATH: "./app/build/outputs/apk/beta/release/app-beta-release.apk"
+      RELEASE_STAGE: "beta"
     steps:
       - <<: *checkout-docker
       - <<: *workspace-docker
@@ -279,6 +300,7 @@ jobs:
       - <<: *save-gradle-cache
       - <<: *generate-env
       - run:
+            name: Build Beta binary and upload for distribution
             command: |
                 bundle exec fastlane beta \
                 submit:true \
@@ -289,6 +311,7 @@ jobs:
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
                 commit_sha:$CIRCLE_SHA1
+      - <<: *bugsnag-upload-sourcemaps-android
       - <<: *store-artifacts-docker
 
   release-android:
@@ -296,6 +319,7 @@ jobs:
     environment:
       <<: *env-docker
       APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
+      RELEASE_STAGE: "release"
     steps:
       - <<: *checkout-docker
       - <<: *workspace-docker
@@ -310,11 +334,13 @@ jobs:
       - <<: *release-api-keys
       - <<: *generate-env
       - run:
+            name: Build Release binary and upload for distribution
             command: |
                 bundle exec fastlane release \
                 submit:true \
                 apk_path:$APK_PATH \
                 upload_key:$PLAY_STORE_UPLOAD_KEY_PATH
+      - <<: *bugsnag-upload-sourcemaps-android
 
   alpha-ios:
     <<: *job-defaults-macos
@@ -336,6 +362,7 @@ jobs:
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
       - run:
+            name: Build Alpha binary and upload for distribution
             command: |
                 bundle exec fastlane alpha \
                 submit:true \
@@ -354,6 +381,7 @@ jobs:
     working_directory: /Users/distiller/project/ios
     environment:
       <<: *env-macos
+      RELEASE_STAGE: "beta"
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -369,6 +397,7 @@ jobs:
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
       - run:
+            name: Build Beta binary and upload for distribution
             command: |
                 bundle exec fastlane beta \
                 submit:true \
@@ -378,13 +407,17 @@ jobs:
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
                 ci_build_num:$CIRCLE_BUILD_NUM \
-                commit_sha:$CIRCLE_SHA1
+                commit_sha:$CIRCLE_SHA1 \
+                release_stage:$RELEASE_STAGE \
+                bugsnag_api_key:$BUGSNAG_API_KEY
+      - <<: *bugsnag-upload-sourcemaps-ios
 
   release-ios:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project/ios
     environment:
       <<: *env-macos
+      RELEASE_STAGE: "release"
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -401,10 +434,14 @@ jobs:
       - <<: *release-api-keys
       - <<: *generate-env-macos
       - run:
+            name: Build Release binary and upload for distribution
             command: |
                 bundle exec fastlane release \
                 submit:true \
-                ci_build_num:$CIRCLE_BUILD_NUM
+                ci_build_num:$CIRCLE_BUILD_NUM \
+                release_stage:$RELEASE_STAGE \
+                bugsnag_api_key:$BUGSNAG_API_KEY
+      - <<: *bugsnag-upload-sourcemaps-ios
 
   e2e-ios:
     <<: *job-defaults-macos
