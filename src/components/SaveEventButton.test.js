@@ -15,13 +15,11 @@ beforeEach(() => {
 
 it("renders correctly", () => {
   const output = shallow(<SaveEventButton active={false} onPress={() => {}} />);
-  output.setState({ progress: new Animated.Value(0) });
   expect(output).toMatchSnapshot();
 });
 
 it("renders correctly when active", () => {
   const output = shallow(<SaveEventButton active onPress={() => {}} />);
-  output.setState({ progress: new Animated.Value(0) });
   expect(output).toMatchSnapshot();
 });
 
