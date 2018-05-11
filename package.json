@@ -25,6 +25,7 @@
     "postversion": "react-native-version --reset-build"
   },
   "dependencies": {
+    "bugsnag-react-native": "^2.9.3",
     "contentful": "^5.0.5",
     "date-fns": "^1.29.0",
     "lottie-react-native": "2.3.2",
@@ -52,6 +53,7 @@
     "babel-eslint": "^8.2.1",
     "babel-jest": "22.2.2",
     "babel-preset-react-native": "4.0.0",
+    "bugsnag-sourcemaps": "^1.0.3",
     "commander": "^2.13.0",
     "contentful-management": "^4.1.4",
     "detox": "^7.3.3",
