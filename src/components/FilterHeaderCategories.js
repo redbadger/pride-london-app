@@ -29,7 +29,11 @@ const CategoriesFilterButton = ({
   style,
   onPress
 }: CategoriesFilterButtonProps) => (
-  <Touchable style={[styles.categoriesFilterButton, style]} onPress={onPress}>
+  <Touchable
+    accessibilityLabel={text.categoryFilterButton}
+    style={[styles.categoriesFilterButton, style]}
+    onPress={onPress}
+  >
     <Image source={chevronRightImg} />
   </Touchable>
 );
