@@ -2,6 +2,7 @@
 import React from "react";
 import type { ElementRef } from "react";
 import { Keyboard, Linking, ScrollView, StyleSheet, View } from "react-native";
+import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import donateHeader from "../../../assets/images/donateHeader.png";
 import Button from "../../components/ButtonPrimary";
@@ -92,7 +93,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
     const { selectedAmount, otherAmount } = this.state;
     return (
       <ScrollView ref={this.scrollViewRef}>
-        <View style={styles.scrollContainer}>
+        <SafeAreaView style={styles.scrollContainer}>
           <ImageHeader image={donateHeader} title={text.donateHeader} />
           <ContentPadding>
             <Text
@@ -150,7 +151,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
               </Button>
             </View>
           </ContentPadding>
-        </View>
+        </SafeAreaView>
       </ScrollView>
     );
   }
