@@ -58,6 +58,7 @@ class Text extends React.PureComponent<Props> {
           mergeDeepRight(textStyles, markdownDefaultStyles),
           markdownStyle
         )}
+        renderImage={() => null}
         {...otherProps}
       />
     ) : (

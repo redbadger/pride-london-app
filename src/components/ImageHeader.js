@@ -32,11 +32,11 @@ const ImageHeader = ({ image, title, subtitle }: Props) => (
           {line}
         </Text>
       ))}
-      {subtitle && (
+      {subtitle ? (
         <Text type="h2" color="whiteColor" style={styles.subtitle}>
           {subtitle}
         </Text>
-      )}
+      ) : null}
     </ContentPadding>
   </ImageBackground>
 );
