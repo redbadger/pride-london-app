@@ -88,7 +88,10 @@ it("opens donation website with other amount when pressing donate button", () =>
 it("navigates back when user presses back button in toolbar", () => {
   const navigation = { goBack: jest.fn() };
   const output = shallow(<DonateScreen navigation={navigation} />);
-  output.find(Header).simulate("back");
+  const header = output.find(Header).shallow();
+  const backButton = header.find(Header.BackButton).shallow();
+  const backFn = backButton.prop("onPress");
+  backFn();
   expect(navigation.goBack).toHaveBeenCalledWith(null);
 });
 

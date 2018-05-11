@@ -72,8 +72,10 @@ describe("SponsorScreen Component", () => {
 
   it("navigates back when user presses back button in toolbar", () => {
     const output = render();
-    const backFn = output.find(Header).prop("onBack");
-    backFn("press");
+    const header = output.find(Header).shallow();
+    const backButton = header.find(Header.BackButton).shallow();
+    const backFn = backButton.prop("onPress");
+    backFn();
     expect(navigation.goBack).toHaveBeenCalledWith(null);
   });
 
