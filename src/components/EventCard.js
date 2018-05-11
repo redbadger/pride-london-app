@@ -33,7 +33,7 @@ class EventCard extends React.PureComponent<Props> {
     isSaved: false
   };
 
-  handleToggleSave = active => {
+  handleToggleSave = (active: boolean) => {
     if (active) {
       this.props.addSavedEvent(this.props.id);
     } else {
