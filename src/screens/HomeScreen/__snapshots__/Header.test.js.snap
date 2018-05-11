@@ -60,6 +60,7 @@ exports[`renders correctly 1`] = `
             "backgroundColor": "#ffffff",
             "paddingHorizontal": 8,
             "paddingTop": 8,
+            "zIndex": 2,
           }
         }
         type="uber"
@@ -71,11 +72,18 @@ exports[`renders correctly 1`] = `
         markdown={false}
         markdownStyle={Object {}}
         style={
-          Object {
-            "backgroundColor": "#ffffff",
-            "paddingHorizontal": 8,
-            "paddingTop": 8,
-          }
+          Array [
+            Object {
+              "backgroundColor": "#ffffff",
+              "paddingHorizontal": 8,
+              "paddingTop": 8,
+              "zIndex": 2,
+            },
+            Object {
+              "marginTop": -6,
+              "zIndex": 1,
+            },
+          ]
         }
         type="uber"
       >
