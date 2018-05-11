@@ -22,16 +22,19 @@ const ImageHeader = ({ image, title, subtitle }: Props) => (
       }}
       style={styles.contentPadding}
     >
-      {(Array.isArray(title) ? title : [title]).map(line => (
-        <Text
-          key={line}
-          color="lightNavyBlueColor"
-          type="h1"
-          style={styles.title}
-        >
-          {line}
-        </Text>
-      ))}
+      {(Array.isArray(title) ? title : [title]).map((line, index, all) => {
+        const zIndex = all.length - index;
+        return (
+          <Text
+            key={line}
+            color="lightNavyBlueColor"
+            type="h1"
+            style={[{ zIndex }, styles.title]}
+          >
+            {line}
+          </Text>
+        );
+      })}
       {subtitle ? (
         <Text type="h2" color="whiteColor" style={styles.subtitle}>
           {subtitle}
@@ -55,6 +58,7 @@ const styles = StyleSheet.create({
   },
   title: {
     backgroundColor: whiteColor,
+    marginTop: -8,
     paddingHorizontal: 8,
     paddingTop: 8
   },

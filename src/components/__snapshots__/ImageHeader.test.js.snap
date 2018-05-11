@@ -40,11 +40,17 @@ exports[`renders correctly 1`] = `
       markdown={false}
       markdownStyle={Object {}}
       style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "paddingHorizontal": 8,
-          "paddingTop": 8,
-        }
+        Array [
+          Object {
+            "zIndex": 1,
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+            "marginTop": -8,
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+          },
+        ]
       }
       type="h1"
     >
@@ -94,11 +100,17 @@ exports[`renders correctly with multiple lines 1`] = `
       markdown={false}
       markdownStyle={Object {}}
       style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "paddingHorizontal": 8,
-          "paddingTop": 8,
-        }
+        Array [
+          Object {
+            "zIndex": 2,
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+            "marginTop": -8,
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+          },
+        ]
       }
       type="h1"
     >
@@ -110,11 +122,17 @@ exports[`renders correctly with multiple lines 1`] = `
       markdown={false}
       markdownStyle={Object {}}
       style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "paddingHorizontal": 8,
-          "paddingTop": 8,
-        }
+        Array [
+          Object {
+            "zIndex": 1,
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+            "marginTop": -8,
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+          },
+        ]
       }
       type="h1"
     >
@@ -164,11 +182,17 @@ exports[`renders correctly with subtitle 1`] = `
       markdown={false}
       markdownStyle={Object {}}
       style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "paddingHorizontal": 8,
-          "paddingTop": 8,
-        }
+        Array [
+          Object {
+            "zIndex": 1,
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+            "marginTop": -8,
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+          },
+        ]
       }
       type="h1"
     >
