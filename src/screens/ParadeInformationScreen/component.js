@@ -29,7 +29,7 @@ const ParadeInformationScreen = () => {
   const tx = text.paradeInformationScreen;
   return (
     <View style={styles.container}>
-      <Header title={tx.headerTitle} />
+      <Header title={tx.headerTitle} testID="page-heading-parade" />
       <ScrollView>
         <View style={styles.scrollPage}>
           <LayoutColumn spacing={24}>

@@ -13,7 +13,8 @@ import text from "../constants/text";
 type Props = {
   onBack?: () => void,
   title?: string,
-  rightElement?: Node
+  rightElement?: Node,
+  testID?: string
 };
 
 const renderBackButton = onBack => (
@@ -24,15 +25,15 @@ const renderBackButton = onBack => (
   />
 );
 
-const renderTitle = (title: string) => (
-  <Text type="h2" color="whiteColor">
+const renderTitle = (title: string, testID: string) => (
+  <Text type="h2" color="whiteColor" testID={testID}>
     {title}
   </Text>
 );
 
-const Header = ({ onBack, title, rightElement }: Props) => {
+const Header = ({ onBack, title, rightElement, testID }: Props) => {
   const leftElement = onBack ? renderBackButton(onBack) : null;
-  const titleElement = title ? renderTitle(title) : null;
+  const titleElement = title && testID ? renderTitle(title, testID) : null;
   return (
     <SafeAreaView
       accessibilityTraits={["header"]}
@@ -51,7 +52,8 @@ const Header = ({ onBack, title, rightElement }: Props) => {
 Header.defaultProps = {
   title: undefined,
   onBack: undefined,
-  rightElement: undefined
+  rightElement: undefined,
+  testID: undefined
 };
 
 const styles = StyleSheet.create({

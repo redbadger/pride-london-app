@@ -29,7 +29,7 @@ type Props = {
 
 const SupportUsScreen = ({ navigation }: Props) => (
   <View style={styles.container}>
-    <Header title={text.supportUsTitle} />
+    <Header title={text.supportUsTitle} testID="page-heading-support-us" />
     <ScrollView>
       <View style={styles.scrollContainer}>
         <ImageHeader
