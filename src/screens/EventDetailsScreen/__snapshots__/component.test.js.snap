@@ -94,22 +94,24 @@ exports[`EventHeader renders correctly 1`] = `
 `;
 
 exports[`EventTickets renders correctly 1`] = `
-<ContentPadding
-  padding={Object {}}
-  style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "paddingVertical": 12,
+<withOrientation>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
+      }
     }
-  }
->
-  <Button
-    disabled={false}
-    onPress={[Function]}
   >
-    Get tickets
-  </Button>
-</ContentPadding>
+    <Button
+      disabled={false}
+      onPress={[Function]}
+    >
+      Get tickets
+    </Button>
+  </ContentPadding>
+</withOrientation>
 `;
 
 exports[`renders correctly 1`] = `

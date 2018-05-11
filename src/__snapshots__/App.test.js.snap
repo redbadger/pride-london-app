@@ -4,6 +4,7 @@ exports[`renders correctly 1`] = `
 <withOrientation
   forceInset={
     Object {
+      "bottom": "never",
       "top": "always",
     }
   }
