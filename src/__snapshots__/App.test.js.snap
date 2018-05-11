@@ -1,20 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component
+<withOrientation
+  forceInset={
+    Object {
+      "bottom": "never",
+      "top": "always",
+    }
+  }
   style={
     Object {
+      "backgroundColor": "#2d2f7f",
       "flex": 1,
     }
   }
 >
   <StatusBar
     animated={true}
-    backgroundColor="transparent"
+    backgroundColor="#2d2f7f"
     barStyle="light-content"
     showHideTransition="fade"
-    translucent={true}
   />
   <NavigationContainer />
-</Component>
+</withOrientation>
 `;
