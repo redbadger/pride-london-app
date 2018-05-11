@@ -104,16 +104,16 @@ describe("buildTimeFilter", () => {
   });
 });
 
-describe("bug busting the buildTimeFilter for overnight events", () => {
+describe("bug busting the buildTimeFilter for events that end at midnight", () => {
   const buggyEvent = buildEvent({
     startTime: "2018-08-02T14:00:00",
     endTime: "2018-08-03T00:00:00"
   });
 
-  const happyEvent = buildEvent({
-    startTime: "2018-08-02T14:00:00",
-    endTime: "2018-08-02T23:59:00"
-  });
+  // const happyEvent = buildEvent({
+  //   startTime: "2018-08-02T14:00:00",
+  //   endTime: "2018-08-02T23:59:00"
+  // });
 
   it("checks for bugs in the morning", () => {
     const filter = buildTimeFilter("morning");
@@ -130,6 +130,8 @@ describe("bug busting the buildTimeFilter for overnight events", () => {
     expect(filter(buggyEvent)).toBe(true);
   });
 });
+
+// TODO - Create events that span varying times
 
 describe("buildCategoryFilter", () => {
   const eventWithNoCategory = buildEvent({ eventCategories: [] });

@@ -3,6 +3,7 @@ import areRangesOverlapping from "date-fns/are_ranges_overlapping";
 import endOfDay from "date-fns/end_of_day";
 import getHours from "date-fns/get_hours";
 import startOfDay from "date-fns/start_of_day";
+import isSameDay from "date-fns/is_same_day";
 import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
 import type { Event, EventCategoryName } from "../data/event";
@@ -19,17 +20,38 @@ export const buildDateRangeFilter = (date: DateRange) => (event: Event) =>
     event.fields.endTime[locale]
   );
 
-export const buildTimeFilter = (time: Time) => {
-  if (time === "morning") {
-    return (event: Event) => getHours(event.fields.startTime[locale]) < 12;
-  } else if (time === "afternoon") {
-    return (event: Event) =>
-      getHours(event.fields.startTime[locale]) < 18 &&
-      getHours(event.fields.endTime[locale]) > 12;
+function* range(num, end, step = 1): Array<number> {
+  while (num < end) {
+    yield num;
+    num += step;
   }
+}
 
-  // time === "evening"
-  return (event: Event) => getHours(event.fields.endTime[locale]) >= 18;
+const morningHours = Array.from(range(0, 11));
+const afternoonHours = Array.from(range(12, 17));
+const eveningHours = Array.from(range(18, 23));
+
+type TimeFilter = (timeFilter: Time) => (event: Event) => any;
+/* eslint-disable consistent-return */
+export const buildTimeFilter: TimeFilter = timeFilter => event => {
+  const { startTime, endTime } = event.fields;
+  const start = getHours(startTime[locale]);
+  const end = getHours(endTime[locale]);
+  switch (timeFilter) {
+    case "morning":
+      return morningHours.some(x => x === start);
+    case "afternoon":
+      return afternoonHours.some(x => x === start || x === end);
+    case "evening":
+      return eveningHours.some(x => {
+        const updateEnd = end <= start ? 24 : end;
+        return Array.from(range(start, updateEnd)).some(
+          eventHour => eventHour === x
+        );
+      });
+    default:
+      return false;
+  }
 };
 
 export const buildCategoryFilter = (categories: Set<EventCategoryName>) => {
