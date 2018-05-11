@@ -14,3 +14,10 @@ it("renders correctly with multiple lines", () => {
   );
   expect(output).toMatchSnapshot();
 });
+
+it("renders correctly with subtitle", () => {
+  const output = shallow(
+    <ImageHeader image={0} title="Fruit" subtitle="Is very good" />
+  );
+  expect(output).toMatchSnapshot();
+});
