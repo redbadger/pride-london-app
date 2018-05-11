@@ -18,7 +18,7 @@ const render = props =>
           routes: [{ key: "1", index: 1 }, { key: "2" }]
         }
       }}
-      jumpToIndex={() => {}}
+      jumpTo={() => {}}
       getTestIDProps={scene => ({
         testID: `tab-${scene.index}`
       })}
@@ -64,13 +64,13 @@ it("stores measurements of tabs onLayout", () => {
 });
 
 it("jumps to tab onPress", () => {
-  const jumpToIndex = jest.fn();
-  const output = render({ jumpToIndex });
+  const jumpTo = jest.fn();
+  const output = render({ jumpTo });
   output
     .find({ testID: "tab-1" })
     .props()
     .onPress();
-  expect(jumpToIndex).toHaveBeenCalledWith(1);
+  expect(jumpTo).toHaveBeenCalledWith(1);
 });
 
 it("animates active tab line on focus change", () => {
