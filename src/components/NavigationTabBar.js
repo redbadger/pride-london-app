@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Animated, StyleSheet, View } from "react-native";
+import { Animated, StyleSheet, View, Text } from "react-native";
 import type { TabScene, _TabBarBottomProps } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import {
@@ -61,72 +61,44 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
   };
 
   renderLabel = (scene: TabScene) => {
-    const { position, navigation } = this.props;
-    const { index, focused } = scene;
-    const { routes } = navigation.state;
-
-    // Prepend '-1', so there are always at least 2 items in inputRange
-    const inputRange = [-1, ...routes.map((x, i) => i)];
-    // const color = "#666666";
-    // position.interpolate({
-    //   inputRange,
-    //   outputRange: inputRange.map(
-    //     inputIndex =>
-    //       inputIndex === index ? tabBarActiveLabelColor : tabBarLabelColor
-    //   )
-    // });
+    const { focused } = scene;
     const color = focused ? tabBarActiveLabelColor : tabBarLabelColor;
     const label = this.props.getLabelText(scene);
 
     return (
-      <Animated.Text
+      <Text
         numberOfLines={1}
         style={[styles.label, { color }]}
         allowFontScaling
       >
         {label}
-      </Animated.Text>
+      </Text>
     );
   };
 
   renderIcon = (scene: TabScene) => {
-    const { position, navigation } = this.props;
     const { route, index, focused } = scene;
-    const { routes } = navigation.state;
-
-    // Prepend '-1', so there are always at least 2 items in inputRange
-    const inputRange = [-1, ...routes.map((x, i) => i)];
     const opacity = focused ? 1 : 0;
     const opacitInv = focused ? 0 : 1;
-    // const activeOpacity = 1;
-    // position.interpolate({
-    //   inputRange,
-    //   outputRange: inputRange.map(i => (i === index ? 1 : 0))
-    // });
-    // const inactiveOpacity = 0.5
-    // position.interpolate({
-    //   inputRange,
-    //   outputRange: inputRange.map(i => (i === index ? 0 : 1))
-    // });
 
     // We render the icon twice at the same position on top of each other:
     // active and inactive one, so we can fade between them.
     return (
       <View style={styles.iconContainer}>
-        <Animated.View style={[styles.icon, { opacity }]}>
+        <View style={[styles.icon, { opacity }]}>
           {this.props.renderIcon({
             route,
             index,
             focused: true
           })}
-        </Animated.View>
-        <Animated.View style={[styles.icon, { opacity: opacitInv }]}>
+        </View>
+        <View style={[styles.icon, { opacity: opacitInv }]}>
           {this.props.renderIcon({
             route,
             index,
             focused: false
           })}
-        </Animated.View>
+        </View>
       </View>
     );
   };
