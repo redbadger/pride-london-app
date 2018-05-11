@@ -23,7 +23,7 @@ const render = props =>
         testID: `tab-${scene.index}`
       })}
       renderIcon={scene => <Text>{scene.index}</Text>}
-      getLabel={scene => `Tab ${scene.index}`}
+      getLabelText={scene => `Tab ${scene.index}`}
       {...props}
     />
   );
@@ -70,7 +70,7 @@ it("jumps to tab onPress", () => {
     .find({ testID: "tab-1" })
     .props()
     .onPress();
-  expect(jumpTo).toHaveBeenCalledWith(1);
+  expect(jumpTo).toHaveBeenCalledWith("2");
 });
 
 it("animates active tab line on focus change", () => {
