@@ -33,6 +33,14 @@ class EventCard extends React.PureComponent<Props> {
     isSaved: false
   };
 
+  handleToggleSave = active => {
+    if (active) {
+      this.props.addSavedEvent(this.props.id);
+    } else {
+      this.props.removeSavedEvent(this.props.id);
+    }
+  };
+
   render() {
     const {
       id,
@@ -44,8 +52,6 @@ class EventCard extends React.PureComponent<Props> {
       eventPriceLow,
       eventPriceHigh,
       isSaved,
-      addSavedEvent,
-      removeSavedEvent,
       onPress
     } = this.props;
     const eventStartTime = removeTimezoneFromDateString(startTime);
@@ -90,16 +96,7 @@ class EventCard extends React.PureComponent<Props> {
               </Text>
             </View>
           </Touchable>
-          <SaveEventButton
-            active={isSaved}
-            onPress={active => {
-              if (active) {
-                addSavedEvent(id);
-              } else {
-                removeSavedEvent(id);
-              }
-            }}
-          />
+          <SaveEventButton active={isSaved} onPress={this.handleToggleSave} />
         </View>
       </View>
     );
