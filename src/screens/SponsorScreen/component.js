@@ -53,9 +53,13 @@ class SponsorScreen extends PureComponent<Props> {
     return (
       <View style={styles.container}>
         <Header
-          onBack={() => {
-            navigation.goBack(null);
-          }}
+          leftElement={
+            <Header.BackButton
+              onPress={() => {
+                navigation.goBack(null);
+              }}
+            />
+          }
           title={text.sponsorTitle}
         />
         <ShadowedScrollView topShadow={false} shadowOpacity={0.6}>

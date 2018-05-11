@@ -37,9 +37,13 @@ export const EventHeader = ({
   toggleSaved
 }: EventHeaderProps) => (
   <Header
-    onBack={() => {
-      navigation.goBack(null);
-    }}
+    leftElement={
+      <Header.BackButton
+        onPress={() => {
+          navigation.goBack(null);
+        }}
+      />
+    }
     rightElement={
       <SaveEventButton active={isSaved} onDark onPress={toggleSaved} />
     }
