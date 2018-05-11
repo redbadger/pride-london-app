@@ -37,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
             new SplashScreenReactPackage(),
             new MapsPackage(),
             new LinearGradientPackage(),
-            new ReactNativeConfigPackage()
+            new ReactNativeConfigPackage(),
+            new AnalyticsPackage()
       );
     }
 

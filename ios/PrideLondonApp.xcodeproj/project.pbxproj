@@ -17,6 +17,7 @@
 		090907FD2090D408005719EE /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0788C0199C4676924E752F /* Lottie.framework */; };
 		090908002090D4C0005719EE /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090907F32090D39D005719EE /* Lottie.framework */; };
 		090908012090D4C0005719EE /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 090907F32090D39D005719EE /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09767B4D209DFECB0051E437 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 09767B4B209DFEC50051E437 /* Analytics.m */; };
 		0F97045F02ED482B9C1E9502 /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A07DCBA3E154DB190496711 /* libRNReactNativeHapticFeedback.a */; };
 		10B4868C8BCD4D86BDBC946D /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC984739B4624E9481CEE51E /* Poppins-Medium.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -434,6 +435,8 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* PrideLondonAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrideLondonAppTests.m; sourceTree = "<group>"; };
 		0551B12566AC4BE3876EE344 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBoldItalic.ttf"; path = "../assets/fonts/Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		09767B4A209DFEC50051E437 /* Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = PrideLondonApp/Analytics.h; sourceTree = "<group>"; };
+		09767B4B209DFEC50051E437 /* Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Analytics.m; path = PrideLondonApp/Analytics.m; sourceTree = "<group>"; };
 		0EE022A2E7224301B182CD7A /* libLottie.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLottie.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -628,6 +631,8 @@
 		13B07FAE1A68108700A75B9A /* PrideLondonApp */ = {
 			isa = PBXGroup;
 			children = (
+				09767B4A209DFEC50051E437 /* Analytics.h */,
+				09767B4B209DFEC50051E437 /* Analytics.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				166018CE2043526D0093B336 /* fabric.properties */,
@@ -1418,6 +1423,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				09767B4D209DFECB0051E437 /* Analytics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
