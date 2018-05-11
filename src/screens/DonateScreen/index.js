@@ -80,9 +80,13 @@ class DonateScreen extends React.PureComponent<Props, State> {
   renderHeader() {
     return (
       <Header
-        onBack={() => {
-          this.props.navigation.goBack(null);
-        }}
+        leftElement={
+          <Header.BackButton
+            onPress={() => {
+              this.props.navigation.goBack(null);
+            }}
+          />
+        }
         title={text.donateTitle}
       />
     );
