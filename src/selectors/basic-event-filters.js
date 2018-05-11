@@ -26,9 +26,9 @@ function* range(num, end, step = 1): Array<number> {
   }
 }
 
-const morningHours = Array.from(range(0, 11));
-const afternoonHours = Array.from(range(12, 17));
-const eveningHours = Array.from(range(18, 23));
+const morningHours = Array.from(range(0, 12));
+const afternoonHours = Array.from(range(12, 18));
+const eveningHours = Array.from(range(18, 24));
 
 type TimeFilter = (timeFilter: Time) => (event: Event) => any;
 /* eslint-disable consistent-return */

@@ -134,7 +134,7 @@ describe("buildTimeFilter - an event from 11am until 8pm", () => {
 
   it("checks for bugs in the morning", () => {
     const filter = buildTimeFilter("morning");
-    expect(filter(event)).toBe(false);
+    expect(filter(event)).toBe(true);
   });
 
   it("checks for bugs in the afternoon", () => {
