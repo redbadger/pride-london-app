@@ -30,10 +30,6 @@ export type Props = {
 };
 
 class EventsScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
-  };
-
   handleFilterCategoriesPress = () => {
     this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
   };
