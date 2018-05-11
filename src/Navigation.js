@@ -25,11 +25,7 @@ import iconSavedActive from "../assets/images/savedActive.png";
 import iconSavedDefault from "../assets/images/savedDefault.png";
 import iconSupportUsActive from "../assets/images/supportUsActive.png";
 import iconSupportUsDefault from "../assets/images/supportUsDefault.png";
-import {
-  lightNavyBlueColor,
-  transparent,
-  tabBarShadowColor
-} from "./constants/colors";
+import { transparent, tabBarShadowColor } from "./constants/colors";
 import {
   EVENT_LIST,
   EVENT_DETAILS,
@@ -75,8 +71,7 @@ const styles = StyleSheet.create({
     bottom: 0
   },
   card: {
-    shadowOpacity: 0,
-    backgroundColor: lightNavyBlueColor
+    shadowOpacity: 0
   }
 });
 
