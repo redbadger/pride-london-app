@@ -3,7 +3,6 @@ import areRangesOverlapping from "date-fns/are_ranges_overlapping";
 import endOfDay from "date-fns/end_of_day";
 import getHours from "date-fns/get_hours";
 import startOfDay from "date-fns/start_of_day";
-import isSameDay from "date-fns/is_same_day";
 import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
 import type { Event, EventCategoryName } from "../data/event";
@@ -34,14 +33,18 @@ const eveningHours = Array.from(range(18, 23));
 type TimeFilter = (timeFilter: Time) => (event: Event) => any;
 /* eslint-disable consistent-return */
 export const buildTimeFilter: TimeFilter = timeFilter => event => {
-  const { startTime, endTime } = event.fields;
-  const start = getHours(startTime[locale]);
-  const end = getHours(endTime[locale]);
+  const start = getHours(event.fields.startTime[locale]);
+  const end = getHours(event.fields.endTime[locale]);
   switch (timeFilter) {
     case "morning":
       return morningHours.some(x => x === start);
     case "afternoon":
-      return afternoonHours.some(x => x === start || x === end);
+      return afternoonHours.some(x => {
+        const updateEnd = end <= start ? 24 : end;
+        return Array.from(range(start, updateEnd)).some(
+          eventHour => eventHour === x
+        );
+      });
     case "evening":
       return eveningHours.some(x => {
         const updateEnd = end <= start ? 24 : end;

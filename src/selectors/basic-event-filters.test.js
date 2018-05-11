@@ -104,34 +104,49 @@ describe("buildTimeFilter", () => {
   });
 });
 
-describe("bug busting the buildTimeFilter for events that end at midnight", () => {
-  const buggyEvent = buildEvent({
+describe("buildTimeFilter - event from 2pm until midnight", () => {
+  const event = buildEvent({
     startTime: "2018-08-02T14:00:00",
     endTime: "2018-08-03T00:00:00"
   });
 
-  // const happyEvent = buildEvent({
-  //   startTime: "2018-08-02T14:00:00",
-  //   endTime: "2018-08-02T23:59:00"
-  // });
-
   it("checks for bugs in the morning", () => {
     const filter = buildTimeFilter("morning");
-    expect(filter(buggyEvent)).toBe(false);
+    expect(filter(event)).toBe(false);
   });
 
   it("checks for bugs in the afternoon", () => {
     const filter = buildTimeFilter("afternoon");
-    expect(filter(buggyEvent)).toBe(true);
+    expect(filter(event)).toBe(true);
   });
 
   it("checks for bugs in the evening", () => {
     const filter = buildTimeFilter("evening");
-    expect(filter(buggyEvent)).toBe(true);
+    expect(filter(event)).toBe(true);
   });
 });
 
-// TODO - Create events that span varying times
+describe("buildTimeFilter - an event from 11am until 8pm", () => {
+  const event = buildEvent({
+    startTime: "2018-08-02T11:00:00",
+    endTime: "2018-08-03T20:00:00"
+  });
+
+  it("checks for bugs in the morning", () => {
+    const filter = buildTimeFilter("morning");
+    expect(filter(event)).toBe(false);
+  });
+
+  it("checks for bugs in the afternoon", () => {
+    const filter = buildTimeFilter("afternoon");
+    expect(filter(event)).toBe(true);
+  });
+
+  it("checks for bugs in the evening", () => {
+    const filter = buildTimeFilter("evening");
+    expect(filter(event)).toBe(true);
+  });
+});
 
 describe("buildCategoryFilter", () => {
   const eventWithNoCategory = buildEvent({ eventCategories: [] });
