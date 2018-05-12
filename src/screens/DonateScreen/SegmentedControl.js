@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     borderColor: mediumGreyColor,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    height: 50 * PixelRatio.getFontScale(),
+    height: 50 * Math.min(1.22, PixelRatio.getFontScale()),
     alignItems: "center",
     justifyContent: "center"
   },
