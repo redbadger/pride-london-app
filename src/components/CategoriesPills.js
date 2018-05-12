@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     backgroundColor: darkBlueGreyTwoColor,
     flex: 1,
     alignItems: "center",
-    height: 44 * PixelRatio.getFontScale(),
+    height: 44 * Math.min(1.25, PixelRatio.getFontScale()),
     borderRadius: 4,
     flexDirection: "row"
   },
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     width: 15,
-    height: 44 * PixelRatio.getFontScale(),
+    height: 44 * Math.min(1.25, PixelRatio.getFontScale()),
     zIndex: 10,
     borderRadius: 4
   },

@@ -16,20 +16,20 @@ exports[`does not render markdown images 1`] = `
       },
       "h2": Object {
         "fontFamily": "Poppins-SemiBold",
-        "fontSize": 18,
+        "fontSize": 22,
         "includeFontPadding": false,
-        "lineHeight": 24,
+        "lineHeight": 29,
       },
       "h3": Object {
         "fontFamily": "Poppins-SemiBold",
-        "fontSize": 16,
+        "fontSize": 20,
         "includeFontPadding": false,
-        "lineHeight": 20,
+        "lineHeight": 25,
       },
       "h4": Object {
         "fontFamily": "Roboto-Medium",
-        "fontSize": 16,
-        "lineHeight": 24,
+        "fontSize": 20,
+        "lineHeight": 30,
       },
       "lightNavyBlueColor": Object {
         "color": "#2d2f7f",
@@ -55,19 +55,19 @@ exports[`does not render markdown images 1`] = `
       },
       "price": Object {
         "fontFamily": "Roboto-Bold",
-        "fontSize": 14,
-        "lineHeight": 20,
+        "fontSize": 18,
+        "lineHeight": 26,
       },
       "small": Object {
         "fontFamily": "Roboto",
-        "fontSize": 14,
-        "lineHeight": 20,
+        "fontSize": 18,
+        "lineHeight": 26,
       },
       "text": Object {
         "color": "#111111",
         "fontFamily": "Roboto",
-        "fontSize": 16,
-        "lineHeight": 24,
+        "fontSize": 20,
+        "lineHeight": 30,
       },
       "u": Object {
         "fontWeight": "bold",
@@ -83,9 +83,9 @@ exports[`does not render markdown images 1`] = `
       },
       "xSmall": Object {
         "fontFamily": "Poppins-SemiBold",
-        "fontSize": 12,
+        "fontSize": 14,
         "includeFontPadding": false,
-        "lineHeight": 16,
+        "lineHeight": 18,
       },
     }
   }
@@ -112,14 +112,14 @@ exports[`does not render markdown images 1`] = `
 exports[`renders correctly 1`] = `
 <Text
   accessible={true}
-  allowFontScaling={true}
+  allowFontScaling={false}
   ellipsizeMode="tail"
   style={
     Array [
       Object {
         "fontFamily": "Roboto",
-        "fontSize": 16,
-        "lineHeight": 24,
+        "fontSize": 20,
+        "lineHeight": 30,
       },
       Object {
         "color": "#111111",
@@ -148,20 +148,20 @@ exports[`renders markdown component based on flag 1`] = `
       },
       "h2": Object {
         "fontFamily": "Poppins-SemiBold",
-        "fontSize": 18,
+        "fontSize": 22,
         "includeFontPadding": false,
-        "lineHeight": 24,
+        "lineHeight": 29,
       },
       "h3": Object {
         "fontFamily": "Poppins-SemiBold",
-        "fontSize": 16,
+        "fontSize": 20,
         "includeFontPadding": false,
-        "lineHeight": 20,
+        "lineHeight": 25,
       },
       "h4": Object {
         "fontFamily": "Roboto-Medium",
-        "fontSize": 16,
-        "lineHeight": 24,
+        "fontSize": 20,
+        "lineHeight": 30,
       },
       "lightNavyBlueColor": Object {
         "color": "#2d2f7f",
@@ -187,19 +187,19 @@ exports[`renders markdown component based on flag 1`] = `
       },
       "price": Object {
         "fontFamily": "Roboto-Bold",
-        "fontSize": 14,
-        "lineHeight": 20,
+        "fontSize": 18,
+        "lineHeight": 26,
       },
       "small": Object {
         "fontFamily": "Roboto",
-        "fontSize": 14,
-        "lineHeight": 20,
+        "fontSize": 18,
+        "lineHeight": 26,
       },
       "text": Object {
         "color": "#111111",
         "fontFamily": "Roboto",
-        "fontSize": 16,
-        "lineHeight": 24,
+        "fontSize": 20,
+        "lineHeight": 30,
       },
       "u": Object {
         "fontWeight": "bold",
@@ -215,9 +215,9 @@ exports[`renders markdown component based on flag 1`] = `
       },
       "xSmall": Object {
         "fontFamily": "Poppins-SemiBold",
-        "fontSize": 12,
+        "fontSize": 14,
         "includeFontPadding": false,
-        "lineHeight": 16,
+        "lineHeight": 18,
       },
     }
   }

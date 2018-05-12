@@ -37,13 +37,14 @@ exports[`renders correctly 1`] = `
         Where's the love?
       </Text>
       <Text
-        accessibilityLabel="No favourites yet? Tap the 'save this event' button on any 
-event you like to save them here."
+        accessibilityLabel="No favourites yet? Tap the 'save this event' button on any event you like to save them here."
         color="blackColor"
         markdown={false}
         markdownStyle={Object {}}
         style={
           Object {
+            "alignSelf": "center",
+            "maxWidth": 300,
             "paddingBottom": 12,
             "textAlign": "center",
           }
@@ -56,8 +57,7 @@ event you like to save them here."
           source={1}
         />
          
-        on any 
-event you like to save them here.
+        on any event you like to save them here.
       </Text>
       <Button
         disabled={false}

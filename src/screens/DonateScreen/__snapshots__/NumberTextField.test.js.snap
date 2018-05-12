@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <TextInput
-  allowFontScaling={true}
+  allowFontScaling={false}
   keyboardType="numeric"
   onBlur={[Function]}
   onChangeText={[Function]}
@@ -17,8 +17,8 @@ exports[`renders correctly 1`] = `
         "borderWidth": 1,
         "color": "#2d2f7f",
         "fontFamily": "Poppins-SemiBold",
-        "fontSize": 18,
-        "height": 100,
+        "fontSize": 22,
+        "height": 61,
         "paddingHorizontal": 14,
       },
       false,

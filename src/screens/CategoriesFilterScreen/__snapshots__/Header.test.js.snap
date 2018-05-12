@@ -36,7 +36,7 @@ exports[`Header Component renders correctly 1`] = `
   <Component
     style={
       Object {
-        "height": 88,
+        "height": 55,
         "marginBottom": 16,
         "width": "100%",
       }

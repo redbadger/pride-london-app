@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   categoriesPills: {
     width: "100%",
-    height: 44 * PixelRatio.getFontScale(),
+    height: 44 * Math.min(1.25, PixelRatio.getFontScale()),
     marginBottom: 16
   },
   filterTitle: {

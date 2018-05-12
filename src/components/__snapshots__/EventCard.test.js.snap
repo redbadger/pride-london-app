@@ -85,7 +85,9 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "flex": 1,
+            "paddingBottom": 12,
             "paddingLeft": 8,
+            "paddingTop": 12,
           }
         }
       >
@@ -93,11 +95,6 @@ exports[`renders correctly 1`] = `
           color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
-          style={
-            Object {
-              "paddingTop": 12,
-            }
-          }
           type="small"
         >
           12:12 – 13:12
@@ -221,7 +218,9 @@ exports[`renders correctly when the event is free 1`] = `
         style={
           Object {
             "flex": 1,
+            "paddingBottom": 12,
             "paddingLeft": 8,
+            "paddingTop": 12,
           }
         }
       >
@@ -229,11 +228,6 @@ exports[`renders correctly when the event is free 1`] = `
           color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
-          style={
-            Object {
-              "paddingTop": 12,
-            }
-          }
           type="small"
         >
           12:12 – 13:12
@@ -357,7 +351,9 @@ exports[`renders correctly when there is a price range 1`] = `
         style={
           Object {
             "flex": 1,
+            "paddingBottom": 12,
             "paddingLeft": 8,
+            "paddingTop": 12,
           }
         }
       >
@@ -365,11 +361,6 @@ exports[`renders correctly when there is a price range 1`] = `
           color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
-          style={
-            Object {
-              "paddingTop": 12,
-            }
-          }
           type="small"
         >
           12:12 – 13:12
@@ -493,7 +484,9 @@ exports[`renders correctly when there is only one price 1`] = `
         style={
           Object {
             "flex": 1,
+            "paddingBottom": 12,
             "paddingLeft": 8,
+            "paddingTop": 12,
           }
         }
       >
@@ -501,11 +494,6 @@ exports[`renders correctly when there is only one price 1`] = `
           color="lightNavyBlueColor"
           markdown={false}
           markdownStyle={Object {}}
-          style={
-            Object {
-              "paddingTop": 12,
-            }
-          }
           type="small"
         >
           12:12 – 13:12

@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: categoriesFilterButtonBgColor,
     alignItems: "center",
     width: 44,
-    height: 44 * PixelRatio.getFontScale(),
+    height: 44 * Math.min(1.25, PixelRatio.getFontScale()),
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   },
