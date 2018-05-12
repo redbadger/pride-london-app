@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
 import ContentPadding from "./ContentPadding";
@@ -54,11 +53,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
       : text.selectDates;
 
     return (
-      <SafeAreaView
-        accessibilityTraits={["header"]}
-        style={styles.container}
-        forceInset={{ top: "always" }}
-      >
+      <View accessibilityTraits={["header"]} style={styles.container}>
         <ContentPadding>
           <View testID="filter-header" style={styles.content}>
             <FilterHeaderCategories
@@ -92,7 +87,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
           onCancel={this.hideDatePicker}
           visible={this.state.datesPickerVisible}
         />
-      </SafeAreaView>
+      </View>
     );
   }
 }
