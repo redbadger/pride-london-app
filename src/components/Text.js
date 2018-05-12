@@ -70,7 +70,7 @@ class Text extends React.PureComponent<Props> {
   }
 }
 
-export const cap = (def, max) => {
+export const cap = (def: number, max: number) => {
   const size = def * PixelRatio.getFontScale();
   if (size > max) {
     return max / PixelRatio.getFontScale();

@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { PixelRatio, View, StyleSheet, ImageBackground } from "react-native";
 import SaveEventButton from "./SaveEventButton";
 import Text from "./Text";
 import Touchable from "./Touchable";
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor
   },
   eventCard: {
-    minHeight: 108,
+    height: 108 * Math.min(1.25, PixelRatio.getFontScale()),
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5
@@ -139,8 +139,7 @@ const styles = StyleSheet.create({
   eventCardDetails: {
     flex: 1,
     paddingLeft: 8,
-    paddingTop: 12,
-    paddingBottom: 12
+    paddingTop: 12
   },
   eventName: {
     paddingTop: 4
