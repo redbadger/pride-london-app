@@ -1,9 +1,15 @@
 // @flow
 import React from "react";
+import { PixelRatio } from "react-native";
 import { shallow } from "enzyme";
 import Markdown from "react-native-easy-markdown";
-import Text from "./Text";
+import Text, { cap } from "./Text";
 import { lightNavyBlueColor } from "../constants/colors";
+
+let getFontScaleSpy;
+beforeEach(() => {
+  getFontScaleSpy = jest.spyOn(PixelRatio, "getFontScale");
+});
 
 it("renders correctly", () => {
   const output = shallow(<Text>Some text</Text>);
@@ -29,7 +35,6 @@ it("does not render markdown images", () => {
     <Text markdown>![Test](https://placehold.it/320x320.png)</Text>
   );
   const markdown = output.find(Markdown).shallow();
-  console.log(markdown);
   expect(markdown).toMatchSnapshot();
 });
 
@@ -45,4 +50,30 @@ it("renders text in blue when color is set", () => {
   const output = shallow(<Text color="lightNavyBlueColor">Some text</Text>);
 
   expect(output.props().style).toContainEqual(style);
+});
+
+describe("cap", () => {
+  it(`creates rendered font size of 6 for input (12, 14) and font scale 0.5`, () => {
+    getFontScaleSpy.mockReturnValue(0.5);
+    expect(cap(12, 14) * 0.5).toBe(6);
+  });
+
+  it(`creates rendered font size of 12 for input (12, 14) and font scale 1`, () => {
+    getFontScaleSpy.mockReturnValue(1);
+    expect(cap(12, 14) * 1).toBe(12);
+  });
+
+  it(`creates rendered font size of 13.2 for input (12, 14) and font scale 1.1`, () => {
+    getFontScaleSpy.mockReturnValue(1.1);
+    expect(cap(12, 14) * 1.1).toBeCloseTo(13.2, 5);
+  });
+
+  it(`creates rendered font size of 14 for input (12, 14) and font scale 1.5`, () => {
+    getFontScaleSpy.mockReturnValue(1.5);
+    expect(cap(12, 14) * 1.5).toBe(14);
+  });
+});
+
+afterEach(() => {
+  getFontScaleSpy.mockRestore();
 });
