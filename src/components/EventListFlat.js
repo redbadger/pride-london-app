@@ -62,7 +62,9 @@ export const renderItem = ({
           startTime={item.event.fields.startTime[locale]}
           endTime={item.event.fields.endTime[locale]}
           image={getAssetSource(item.event.fields.eventsListPicture[locale])}
-          isSaved={isSavedEvent(item.event.sys.id)}
+          isSaved={
+            item.event && item.event.sys && isSavedEvent(item.event.sys.id)
+          }
           addSavedEvent={addSavedEvent}
           removeSavedEvent={removeSavedEvent}
           onPress={onPress}
@@ -72,7 +74,7 @@ export const renderItem = ({
     </View>
   ) : (
     <View>
-      <SectionHeader title={item.header.title} />
+      <SectionHeader title={item.header ? item.header.title : ""} />
       <View style={styles.sectionFooter} />
     </View>
   );

@@ -5,8 +5,9 @@ import SafeAreaView from "react-native-safe-area-view";
 import { lightNavyBlueColor } from "./constants/colors";
 import Navigation from "./Navigation";
 
-UIManager.setLayoutAnimationEnabledExperimental &&
+if (UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const App = () => (
   <SafeAreaView
