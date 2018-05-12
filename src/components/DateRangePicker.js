@@ -109,7 +109,7 @@ class DateRangePicker extends React.PureComponent<Props> {
 
     return (
       <Calendar
-        current={dateRange ? dateRange.endDate : null}
+        current={dateRange ? dateRange.startDate : null}
         markedDates={getMarkedDates(dateRange, formatDate(today, "YYYY-MM-DD"))}
         markingType="period"
         onDayPress={this.onDaySelected}
