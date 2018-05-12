@@ -63,12 +63,15 @@ class Text extends React.PureComponent<Props> {
       />
     ) : (
       <RnText
+        allowFontScaling={false}
         style={[styles[typedType], styles[typedColor], style]}
         {...otherProps}
       />
     );
   }
 }
+
+const cap = (def, max) => Math.min(max, def * PixelRatio.getFontScale());
 
 const textStyles = {
   uber: {
@@ -85,41 +88,41 @@ const textStyles = {
   },
   h2: {
     fontFamily: "Poppins-SemiBold",
-    fontSize: 18,
-    lineHeight: 24,
+    fontSize: cap(18, 22),
+    lineHeight: cap(24, 29),
     includeFontPadding: false
   },
   h3: {
     fontFamily: "Poppins-SemiBold",
-    fontSize: 16,
-    lineHeight: 20,
+    fontSize: cap(16, 20),
+    lineHeight: cap(20, 25),
     includeFontPadding: false
   },
   h4: {
     fontFamily: "Roboto-Medium",
-    fontSize: 16,
-    lineHeight: 24
+    fontSize: cap(16, 20),
+    lineHeight: cap(24, 30)
   },
   text: {
     fontFamily: "Roboto",
-    fontSize: 16,
-    lineHeight: 24
+    fontSize: cap(16, 20),
+    lineHeight: cap(24, 30)
   },
   small: {
     fontFamily: "Roboto",
-    fontSize: 14,
-    lineHeight: 20
+    fontSize: cap(14, 18),
+    lineHeight: cap(20, 26)
   },
   xSmall: {
     fontFamily: "Poppins-SemiBold",
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: cap(12, 14),
+    lineHeight: cap(16, 18),
     includeFontPadding: false
   },
   price: {
     fontFamily: "Roboto-Bold",
-    fontSize: 14,
-    lineHeight: 20
+    fontSize: cap(14, 18),
+    lineHeight: cap(20, 26)
   },
   blackColor: {
     color: blackColor

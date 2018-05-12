@@ -122,7 +122,7 @@ export default {
   noSavedEventsTitle: "Where's the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
   noSavedEventsSaveButtonAlt: "'save this event' button",
-  noSavedEventsPart2: "on any \nevent you like to save them here.",
+  noSavedEventsPart2: "on any event you like to save them here.",
   noSavedEventsButton: "Find Events",
   saveEventButtonUnSaveEvent: "remove event from saved list",
   saveEventButtonSaveEvent: "save this event",

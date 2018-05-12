@@ -70,11 +70,7 @@ class EventCard extends React.PureComponent<Props> {
               </View>
             </ImageBackground>
             <View style={styles.eventCardDetails}>
-              <Text
-                type="small"
-                color="lightNavyBlueColor"
-                style={styles.eventTime}
-              >
+              <Text type="small" color="lightNavyBlueColor">
                 {timeDisplay}
               </Text>
               <Text
@@ -142,10 +138,9 @@ const styles = StyleSheet.create({
   },
   eventCardDetails: {
     flex: 1,
-    paddingLeft: 8
-  },
-  eventTime: {
-    paddingTop: 12
+    paddingLeft: 8,
+    paddingTop: 12,
+    paddingBottom: 12
   },
   eventName: {
     paddingTop: 4

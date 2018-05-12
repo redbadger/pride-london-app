@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Animated, StyleSheet, View } from "react-native";
+import { Animated, PixelRatio, StyleSheet, View } from "react-native";
 import type { TabScene, _TabBarBottomProps } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import {
@@ -81,7 +81,7 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
       <Animated.Text
         numberOfLines={1}
         style={[styles.label, { color }]}
-        allowFontScaling
+        allowFontScaling={false}
       >
         {label}
       </Animated.Text>
@@ -195,6 +195,8 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
   }
 }
 
+const cap = (def, max) => Math.min(max, def * PixelRatio.getFontScale());
+
 const styles = StyleSheet.create({
   tabBarWrapper: {
     backgroundColor: tabBarBgColor,
@@ -238,7 +240,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: "Poppins-Bold",
-    fontSize: 12,
+    fontSize: cap(12, 13),
     lineHeight: 16,
     includeFontPadding: false
   }

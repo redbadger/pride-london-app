@@ -109,7 +109,7 @@ class SupportUsButton extends React.PureComponent<Props> {
 const styles = StyleSheet.create({
   button: {
     justifyContent: "center",
-    height: 100 * PixelRatio.getFontScale(),
+    height: 100 * Math.min(1.25, PixelRatio.getFontScale()),
     minHeight: 100,
     borderRadius: 5,
     overflow: "hidden",
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   titleIcon: {
     marginLeft: 8,
     alignSelf: "center",
-    transform: [{ translateY: -4 * PixelRatio.getFontScale() }]
+    transform: [{ translateY: -4 * Math.min(1.25, PixelRatio.getFontScale()) }]
   },
   text: {
     color: whiteColor

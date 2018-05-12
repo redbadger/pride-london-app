@@ -39,6 +39,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
     const { focused } = this.state;
     return (
       <TextInput
+        allowFontScaling={false}
         keyboardType="numeric"
         onBlur={this.onBlur}
         onFocus={this.onFocus}
@@ -52,19 +53,21 @@ class DonateScreen extends React.PureComponent<Props, State> {
   }
 }
 
+const cap = (def, max) => Math.min(max, def * PixelRatio.getFontScale());
+
 const styles = StyleSheet.create({
   base: {
     borderColor: mediumGreyColor,
     borderWidth: 1,
     borderRadius: 4,
-    height: 50 * PixelRatio.getFontScale(),
+    height: 50 * Math.min(1.22, PixelRatio.getFontScale()),
     paddingHorizontal: 14,
     fontFamily: "Poppins-SemiBold",
-    fontSize: 18,
+    fontSize: cap(18, 22),
     color: lightNavyBlueColor,
     ...Platform.select({
       android: {
-        lineHeight: 18,
+        lineHeight: cap(18, 22),
         includeFontPadding: false,
         textAlignVertical: "bottom"
       }
