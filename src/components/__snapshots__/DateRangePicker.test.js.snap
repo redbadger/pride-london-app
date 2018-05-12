@@ -58,7 +58,7 @@ exports[`renders correctly no dates 1`] = `
 
 exports[`renders correctly only startDate 1`] = `
 <Calendar
-  current="2018-01-01"
+  current={null}
   dayComponent={[Function]}
   hideExtraDays={true}
   markedDates={
@@ -119,7 +119,7 @@ exports[`renders correctly only startDate 1`] = `
 
 exports[`renders correctly startDate after endDate 1`] = `
 <Calendar
-  current="2018-01-01"
+  current={null}
   dayComponent={[Function]}
   hideExtraDays={true}
   markedDates={
@@ -183,7 +183,7 @@ exports[`renders correctly startDate after endDate 1`] = `
 
 exports[`renders correctly startDate before endDate 1`] = `
 <Calendar
-  current="2018-01-01"
+  current={null}
   dayComponent={[Function]}
   hideExtraDays={true}
   markedDates={
@@ -247,7 +247,7 @@ exports[`renders correctly startDate before endDate 1`] = `
 
 exports[`renders correctly startDate equals endDate 1`] = `
 <Calendar
-  current="2018-01-01"
+  current={null}
   dayComponent={[Function]}
   hideExtraDays={true}
   markedDates={
