@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Animated, PixelRatio, StyleSheet, View } from "react-native";
+import { Animated, StyleSheet, View } from "react-native";
 import type { TabScene, _TabBarBottomProps } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import {
@@ -10,6 +10,7 @@ import {
   tabBarActiveLabelColor,
   tabBarBorderColor
 } from "../constants/colors";
+import { cap } from "./Text";
 import Touchable from "./Touchable";
 
 class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
@@ -78,11 +79,7 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
     const label = this.props.getLabel({ ...scene, tintColor });
 
     return (
-      <Animated.Text
-        numberOfLines={1}
-        style={[styles.label, { color }]}
-        allowFontScaling={false}
-      >
+      <Animated.Text numberOfLines={1} style={[styles.label, { color }]}>
         {label}
       </Animated.Text>
     );
@@ -195,8 +192,6 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
   }
 }
 
-const cap = (def, max) => Math.min(max, def * PixelRatio.getFontScale());
-
 const styles = StyleSheet.create({
   tabBarWrapper: {
     backgroundColor: tabBarBgColor,
@@ -241,7 +236,7 @@ const styles = StyleSheet.create({
   label: {
     fontFamily: "Poppins-Bold",
     fontSize: cap(12, 13),
-    lineHeight: 16,
+    lineHeight: cap(16, 17),
     includeFontPadding: false
   }
 });

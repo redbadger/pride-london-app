@@ -173,8 +173,8 @@ exports[`SponsorScreen Component renders correctly 1`] = `
           Object {
             "text": Object {
               "color": "#2d2f7f",
-              "fontSize": 14,
-              "lineHeight": 20,
+              "fontSize": 9,
+              "lineHeight": 13,
             },
           }
         }

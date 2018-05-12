@@ -110,15 +110,14 @@ exports[`renders correctly 1`] = `
         </AnimatedComponent>
       </Component>
       <AnimatedComponent
-        allowFontScaling={false}
         numberOfLines={1}
         style={
           Array [
             Object {
               "fontFamily": "Poppins-Bold",
-              "fontSize": 13,
+              "fontSize": 6.5,
               "includeFontPadding": false,
-              "lineHeight": 16,
+              "lineHeight": 8.5,
             },
             Object {
               "color": "rgba(45, 47, 127, 1)",
@@ -209,15 +208,14 @@ exports[`renders correctly 1`] = `
         </AnimatedComponent>
       </Component>
       <AnimatedComponent
-        allowFontScaling={false}
         numberOfLines={1}
         style={
           Array [
             Object {
               "fontFamily": "Poppins-Bold",
-              "fontSize": 13,
+              "fontSize": 6.5,
               "includeFontPadding": false,
-              "lineHeight": 16,
+              "lineHeight": 8.5,
             },
             Object {
               "color": "rgba(88, 88, 88, 1)",

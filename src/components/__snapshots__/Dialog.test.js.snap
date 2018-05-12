@@ -97,43 +97,21 @@ exports[`renders correctly 1`] = `
           Lorem Ipsum is placeholder text commonly used...
         </Component>
       </TouchableWithoutFeedback>
-      <Touchable
-        accessibilityComponentType="button"
-        accessibilityLabel="Good bye"
-        accessibilityTraits={
-          Array [
-            "button",
-            "header",
-          ]
-        }
-        delayPressIn={50}
-        onPress={[Function]}
+      <Component
         style={
           Object {
-            "alignItems": "center",
-            "backgroundColor": "rgb(44, 218, 157)",
-            "borderRadius": 4,
-            "height": 48,
-            "justifyContent": "center",
             "marginTop": 8,
           }
         }
       >
-        <Text
-          color="blackColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          style={
-            Object {
-              "color": "rgb(45, 47, 127)",
-              "lineHeight": 48,
-            }
-          }
-          type="h2"
+        <Button
+          accessibilityLabel="Good bye"
+          disabled={false}
+          onPress={[Function]}
         >
           Bye
-        </Text>
-      </Touchable>
+        </Button>
+      </Component>
     </Component>
   </TouchableWithoutFeedback>
 </Component>

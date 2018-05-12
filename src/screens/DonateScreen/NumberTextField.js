@@ -7,6 +7,7 @@ import {
   mediumGreyColor,
   eucalyptusGreenColor
 } from "../../constants/colors";
+import { cap } from "../../components/Text";
 
 type Props = {|
   placeholder: string,
@@ -39,7 +40,6 @@ class DonateScreen extends React.PureComponent<Props, State> {
     const { focused } = this.state;
     return (
       <TextInput
-        allowFontScaling={false}
         keyboardType="numeric"
         onBlur={this.onBlur}
         onFocus={this.onFocus}
@@ -52,8 +52,6 @@ class DonateScreen extends React.PureComponent<Props, State> {
     );
   }
 }
-
-const cap = (def, max) => Math.min(max, def * PixelRatio.getFontScale());
 
 const styles = StyleSheet.create({
   base: {

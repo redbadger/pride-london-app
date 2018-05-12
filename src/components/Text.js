@@ -63,7 +63,6 @@ class Text extends React.PureComponent<Props> {
       />
     ) : (
       <RnText
-        allowFontScaling={false}
         style={[styles[typedType], styles[typedColor], style]}
         {...otherProps}
       />
@@ -71,19 +70,26 @@ class Text extends React.PureComponent<Props> {
   }
 }
 
-const cap = (def, max) => Math.min(max, def * PixelRatio.getFontScale());
+export const cap = (def, max) => {
+  const size = def * PixelRatio.getFontScale();
+  if (size > max) {
+    return max / PixelRatio.getFontScale();
+  }
+
+  return def;
+};
 
 const textStyles = {
   uber: {
     fontFamily: "Poppins-ExtraBold",
-    fontSize: 32,
-    lineHeight: 36,
+    fontSize: cap(32, 32),
+    lineHeight: cap(36, 36),
     includeFontPadding: false
   },
   h1: {
     fontFamily: "Poppins-Bold",
-    fontSize: 24,
-    lineHeight: 28,
+    fontSize: cap(24, 24),
+    lineHeight: cap(28, 28),
     includeFontPadding: false
   },
   h2: {
@@ -157,7 +163,7 @@ const markdownDefaultStyles = {
     height: 4,
     backgroundColor: "black",
     borderRadius: 2,
-    marginTop: 11 * PixelRatio.getFontScale(),
+    marginTop: 10 * Math.min(1.29, PixelRatio.getFontScale()),
     marginRight: 10
   },
   text: {

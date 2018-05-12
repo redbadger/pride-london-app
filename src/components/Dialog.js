@@ -8,7 +8,7 @@ import {
   View
 } from "react-native";
 import Text from "./Text";
-import Touchable from "./Touchable";
+import Button from "./ButtonPrimary";
 import {
   dialogBackdropColor,
   dialogBgColor,
@@ -68,16 +68,11 @@ const Dialog = ({
             {children}
           </View>
         </TouchableWithoutFeedback>
-        <Touchable
-          onPress={onApply}
-          style={styles.applyButton}
-          accessibilityLabel={applyButtonLabel}
-          accessibilityTraits={["button", "header"]}
-        >
-          <Text type="h2" style={styles.applyButtonText}>
+        <View style={styles.applyButtonContainer}>
+          <Button onPress={onApply} accessibilityLabel={applyButtonLabel}>
             {applyButtonText}
-          </Text>
-        </Touchable>
+          </Button>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   </Modal>
@@ -126,17 +121,8 @@ const styles = StyleSheet.create({
   headerSideRight: {
     alignItems: "flex-end"
   },
-  applyButton: {
-    backgroundColor: dialogApplyButtonBgColor,
-    borderRadius: 4,
-    height: 48,
-    marginTop: 8,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  applyButtonText: {
-    color: dialogApplyButtonTextColor,
-    lineHeight: 48
+  applyButtonContainer: {
+    marginTop: 8
   }
 });
 
