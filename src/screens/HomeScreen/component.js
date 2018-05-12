@@ -163,6 +163,8 @@ const styles = StyleSheet.create({
     paddingRight: 8
   },
   tile: {
+    flex: 1,
+    justifyContent: "flex-start",
     borderRadius: 3,
     // The below properties are required for ioS shadow
     shadowColor: blackTwentyColor,
