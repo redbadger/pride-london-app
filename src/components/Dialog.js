@@ -7,13 +7,10 @@ import {
   TouchableWithoutFeedback,
   View
 } from "react-native";
-import Text from "./Text";
 import Button from "./ButtonPrimary";
 import {
   dialogBackdropColor,
   dialogBgColor,
-  dialogApplyButtonBgColor,
-  dialogApplyButtonTextColor,
   dialogHeaderDividerColor
 } from "../constants/colors";
 
