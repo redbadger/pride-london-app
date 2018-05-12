@@ -1,8 +1,8 @@
 // @flow
 import React from "react";
 import ActionButton from "../../components/ActionButton";
-import text from "../../constants/text";
 import GlobalHeader from "../../components/Header";
+import text from "../../constants/text";
 
 type Props = {
   onClearPress: () => void,

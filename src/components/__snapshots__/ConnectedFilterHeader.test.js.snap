@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ConnectedFilterHeader renders component 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -82,7 +77,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`ConnectedFilterHeader renders connector 1`] = `
