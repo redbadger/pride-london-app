@@ -3,6 +3,9 @@ import areRangesOverlapping from "date-fns/are_ranges_overlapping";
 import endOfDay from "date-fns/end_of_day";
 import getHours from "date-fns/get_hours";
 import startOfDay from "date-fns/start_of_day";
+import getDate from "date-fns/get_date";
+import isAfter from "date-fns/is_after";
+import { range } from "ramda";
 import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
 import type { Event, EventCategoryName } from "../data/event";
@@ -19,38 +22,46 @@ export const buildDateRangeFilter = (date: DateRange) => (event: Event) =>
     event.fields.endTime[locale]
   );
 
-function* range(num, end, step = 1): Array<number> {
-  while (num < end) {
-    yield num;
-    num += step;
-  }
-}
+const morningHours = range(6, 12);
+const afternoonHours = range(12, 18);
+const eveningHours = [...range(18, 24), ...range(0, 6)];
 
-const morningHours = Array.from(range(0, 12));
-const afternoonHours = Array.from(range(12, 18));
-const eveningHours = Array.from(range(18, 24));
-
-type TimeFilter = (timeFilter: Time) => (event: Event) => any;
+type TimeFilter = (timeFilter: Time) => (event: Event) => boolean;
 /* eslint-disable consistent-return */
 export const buildTimeFilter: TimeFilter = timeFilter => event => {
   const start = getHours(event.fields.startTime[locale]);
   const end = getHours(event.fields.endTime[locale]);
+  const multiDayEvent = isAfter(
+    getDate(event.fields.endTime[locale]),
+    getDate(event.fields.startTime[locale])
+  );
   switch (timeFilter) {
     case "morning":
-      return morningHours.some(x => x === start);
+      return morningHours.some(morningHour => {
+        if (multiDayEvent) {
+          return [...range(start, 24), ...range(0, end)].some(
+            eventHour => eventHour === morningHour
+          );
+        }
+        return range(start, end).some(eventHour => eventHour === morningHour);
+      });
     case "afternoon":
-      return afternoonHours.some(x => {
-        const updateEnd = end <= start ? 24 : end;
-        return Array.from(range(start, updateEnd)).some(
-          eventHour => eventHour === x
-        );
+      return afternoonHours.some(afternoonHour => {
+        if (multiDayEvent) {
+          return [...range(start, 24), ...range(0, end)].some(
+            eventHour => eventHour === afternoonHour
+          );
+        }
+        return range(start, end).some(eventHour => eventHour === afternoonHour);
       });
     case "evening":
-      return eveningHours.some(x => {
-        const updateEnd = end <= start ? 24 : end;
-        return Array.from(range(start, updateEnd)).some(
-          eventHour => eventHour === x
-        );
+      return eveningHours.some(eveningHour => {
+        if (multiDayEvent) {
+          return [...range(start, 24), ...range(0, end)].some(
+            eventHour => eventHour === eveningHour
+          );
+        }
+        return range(start, end).some(eventHour => eventHour === eveningHour);
       });
     default:
       return false;
