@@ -52,6 +52,55 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     : sections.days;
 };
 
+const generateRecurringEvent = event => recurrance => {
+  const [recurranceDay, recurrancyMonth, recurranceYear] = recurrance.split(
+    "/"
+  );
+  const [eventStartDate, eventStartTime] = event.fields.startTime[locale].split(
+    "T"
+  );
+  const eventEndTime = event.fields.endTime[locale].split("T")[1];
+  const [eventStartYear, eventStartMonth, eventStartDay] = eventStartDate.split(
+    "-"
+  );
+  const startAndEndAreSameDay = isSameDay(
+    event.fields.startTime[locale],
+    event.fields.endTime[locale]
+  );
+
+  return R.mergeDeepRight(event, {
+    fields: {
+      startTime: {
+        [locale]: formatContentfulDate(
+          recurranceYear,
+          recurrancyMonth,
+          recurranceDay,
+          eventStartTime
+        )
+      },
+      endTime: {
+        [locale]: startAndEndAreSameDay
+          ? formatContentfulDate(
+              recurranceYear,
+              recurrancyMonth,
+              recurranceDay,
+              eventEndTime
+            )
+          : event.fields.endTime[locale]
+      },
+      recurrenceDates: {
+        [locale]: [
+          `${eventStartDay}/${eventStartMonth}/${eventStartYear}`,
+          ...event.fields.recurrenceDates[locale]
+        ]
+      }
+    },
+    sys: {
+      id: `${event.sys.id}-recurrence-${recurrance}`
+    }
+  });
+};
+
 // When properly typed CmsEntry[] => CmsEntry[]
 // flow inexblicably crashes on server start 💩 (flow-bin v0.67.0)
 // $FlowFixMe
@@ -68,58 +117,7 @@ export const expandRecurringEventsInEntries = entries =>
       recurrenceDates.length > 0 && !curr.sys.id.includes("recurrence");
 
     if (shouldExpandEvent) {
-      const clones = recurrenceDates.map(recurrance => {
-        const [
-          recurranceDay,
-          recurrancyMonth,
-          recurranceYear
-        ] = recurrance.split("/");
-        const [eventStartDate, eventStartTime] = curr.fields.startTime[
-          locale
-        ].split("T");
-        const eventEndTime = curr.fields.endTime[locale].split("T")[1];
-        const [
-          eventStartYear,
-          eventStartMonth,
-          eventStartDay
-        ] = eventStartDate.split("-");
-        const startAndEndAreSameDay = isSameDay(
-          curr.fields.startTime[locale],
-          curr.fields.endTime[locale]
-        );
-
-        return R.mergeDeepRight(curr, {
-          fields: {
-            startTime: {
-              [locale]: formatContentfulDate(
-                recurranceYear,
-                recurrancyMonth,
-                recurranceDay,
-                eventStartTime
-              )
-            },
-            endTime: {
-              [locale]: startAndEndAreSameDay
-                ? formatContentfulDate(
-                    recurranceYear,
-                    recurrancyMonth,
-                    recurranceDay,
-                    eventEndTime
-                  )
-                : curr.fields.endTime[locale]
-            },
-            recurrenceDates: {
-              [locale]: [
-                `${eventStartDay}/${eventStartMonth}/${eventStartYear}`,
-                ...recurrenceDates
-              ]
-            }
-          },
-          sys: {
-            id: `${curr.sys.id}-recurrence-${recurrance}`
-          }
-        });
-      });
+      const clones = recurrenceDates.map(generateRecurringEvent(curr));
       return [...acc, curr, ...clones];
     }
     return [...acc, curr];
