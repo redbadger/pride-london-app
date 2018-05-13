@@ -15,6 +15,17 @@ export const formatDateRange = (dateRange: DateRange) =>
 
 export const formatTime = (value: string) => formatDate(value, "HH:mm");
 
+export const formatContentfulDate = (
+  year: string,
+  month: string,
+  day: string,
+  time: string
+) => {
+  const correctedDay = day.length < 2 ? `0${day}` : day;
+  const correctedMonth = month.length < 2 ? `0${month}` : month;
+  return `${year}-${correctedMonth}-${correctedDay}T${time}`;
+};
+
 export const removeTimezoneFromCmsDateString = (isoString: string) =>
   isoString.slice(0, -6);
 

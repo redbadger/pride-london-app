@@ -5,6 +5,7 @@ import getHours from "date-fns/get_hours";
 import isSameDay from "date-fns/is_same_day";
 import R from "ramda";
 import { buildEventFilter } from "./event-filters";
+import { formatContentfulDate } from "../data/formatters";
 
 import type { State } from "../reducers";
 import type {
@@ -90,11 +91,21 @@ export const expandRecurringEventsInEntries = entries =>
         return R.mergeDeepRight(curr, {
           fields: {
             startTime: {
-              [locale]: `${recurranceYear}-${recurrancyMonth}-${recurranceDay}T${eventStartTime}`
+              [locale]: formatContentfulDate(
+                recurranceYear,
+                recurrancyMonth,
+                recurranceDay,
+                eventStartTime
+              )
             },
             endTime: {
               [locale]: startAndEndAreSameDay
-                ? `${recurranceYear}-${recurrancyMonth}-${recurranceDay}T${eventEndTime}`
+                ? formatContentfulDate(
+                    recurranceYear,
+                    recurrancyMonth,
+                    recurranceDay,
+                    eventEndTime
+                  )
                 : curr.fields.endTime[locale]
             },
             recurrenceDates: {
