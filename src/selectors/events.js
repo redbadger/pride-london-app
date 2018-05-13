@@ -68,22 +68,40 @@ export const expandRecurringEventsInEntries = entries =>
 
     if (shouldExpandEvent) {
       const clones = recurrenceDates.map(recurrance => {
-        const [day, month, year] = recurrance.split("/");
-        const eventStartTime = curr.fields.startTime[locale].split("T")[1];
+        const [
+          recurranceDay,
+          recurrancyMonth,
+          recurranceYear
+        ] = recurrance.split("/");
+        const [eventStartDate, eventStartTime] = curr.fields.startTime[
+          locale
+        ].split("T");
         const eventEndTime = curr.fields.endTime[locale].split("T")[1];
+        const [
+          eventStartYear,
+          eventStartMonth,
+          eventStartDay
+        ] = eventStartDate.split("-");
         const startAndEndAreSameDay = isSameDay(
           curr.fields.startTime[locale],
           curr.fields.endTime[locale]
         );
+
         return R.mergeDeepRight(curr, {
           fields: {
             startTime: {
-              [locale]: `${year}-${month}-${day}T${eventStartTime}`
+              [locale]: `${recurranceYear}-${recurrancyMonth}-${recurranceDay}T${eventStartTime}`
             },
             endTime: {
               [locale]: startAndEndAreSameDay
-                ? `${year}-${month}-${day}T${eventEndTime}`
+                ? `${recurranceYear}-${recurrancyMonth}-${recurranceDay}T${eventEndTime}`
                 : curr.fields.endTime[locale]
+            },
+            recurrenceDates: {
+              [locale]: [
+                `${eventStartDay}/${eventStartMonth}/${eventStartYear}`,
+                ...recurrenceDates
+              ]
             }
           },
           sys: {

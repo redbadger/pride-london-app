@@ -319,7 +319,7 @@ describe("expandRecurringEventsInEntries", () => {
         fields: {
           startTime: { "en-GB": "2018-08-03T00:00+00:00" },
           endTime: { "en-GB": "2018-08-03T03:00+00:00" },
-          recurrenceDates: { "en-GB": ["03/08/2018"] }
+          recurrenceDates: { "en-GB": ["02/08/2018", "03/08/2018"] }
         },
         sys: {
           id: "event1-recurrence-03/08/2018",
@@ -402,7 +402,7 @@ describe("expandRecurringEventsInEntries", () => {
         fields: {
           startTime: { "en-GB": "2018-08-03T00:00+00:00" },
           endTime: { "en-GB": "2018-08-10T03:00+00:00" },
-          recurrenceDates: { "en-GB": ["03/08/2018"] }
+          recurrenceDates: { "en-GB": ["02/08/2018", "03/08/2018"] }
         },
         sys: {
           id: "event1-recurrence-03/08/2018",
