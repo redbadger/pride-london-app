@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 import com.facebook.react.ReactApplication;
+import com.bugsnag.BugsnagReactNative;
 import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -32,12 +33,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            BugsnagReactNative.getPackage(),
             new RNReactNativeHapticFeedbackPackage(),
             new LottiePackage(),
             new SplashScreenReactPackage(),
             new MapsPackage(),
             new LinearGradientPackage(),
-            new ReactNativeConfigPackage()
+            new ReactNativeConfigPackage(),
+            new AnalyticsPackage()
       );
     }
 
@@ -57,6 +60,7 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
+    BugsnagReactNative.start(this);
     SoLoader.init(this, /* native exopackage */ false);
   }
 }

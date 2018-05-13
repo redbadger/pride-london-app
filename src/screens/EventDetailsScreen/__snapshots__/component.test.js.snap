@@ -82,7 +82,11 @@ exports[`EventCategories renders correctly 1`] = `
 
 exports[`EventHeader renders correctly 1`] = `
 <Header
-  onBack={[Function]}
+  leftElement={
+    <Unknown
+      onPress={[Function]}
+    />
+  }
   rightElement={
     <SaveEventButton
       active={true}
@@ -94,22 +98,24 @@ exports[`EventHeader renders correctly 1`] = `
 `;
 
 exports[`EventTickets renders correctly 1`] = `
-<ContentPadding
-  padding={Object {}}
-  style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "paddingVertical": 12,
+<withOrientation>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
+      }
     }
-  }
->
-  <Button
-    disabled={false}
-    onPress={[Function]}
   >
-    Get tickets
-  </Button>
-</ContentPadding>
+    <Button
+      disabled={false}
+      onPress={[Function]}
+    >
+      Get tickets
+    </Button>
+  </ContentPadding>
+</withOrientation>
 `;
 
 exports[`renders correctly 1`] = `
@@ -265,9 +271,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -389,9 +392,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -507,9 +507,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                           "updatedAt": "2018-03-04T10:13:53.398Z",
                         },
                       },
-                    },
-                    "isFree": Object {
-                      "en-GB": false,
                     },
                     "location": Object {
                       "en-GB": Object {
@@ -641,9 +638,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -768,9 +762,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                 "updatedAt": "2018-03-04T10:13:53.398Z",
               },
             },
-          },
-          "isFree": Object {
-            "en-GB": false,
           },
           "location": Object {
             "en-GB": Object {
@@ -967,9 +958,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -1087,9 +1075,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                         },
                       },
                     },
-                    "isFree": Object {
-                      "en-GB": false,
-                    },
                     "location": Object {
                       "en-GB": Object {
                         "lat": 51.4875152,
@@ -1201,9 +1186,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                           "updatedAt": "2018-03-04T10:13:53.398Z",
                         },
                       },
-                    },
-                    "isFree": Object {
-                      "en-GB": false,
                     },
                     "location": Object {
                       "en-GB": Object {

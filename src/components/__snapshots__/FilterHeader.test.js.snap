@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly with any date and any time (empty time set) 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
+<Component
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
   }
   style={
     Object {
@@ -13,12 +13,6 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={Object {}}
@@ -87,15 +81,15 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly with any date and any time 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
+<Component
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
   }
   style={
     Object {
@@ -103,12 +97,6 @@ exports[`renders correctly with any date and any time 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={Object {}}
@@ -177,15 +165,15 @@ exports[`renders correctly with any date and any time 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly with date range and two times 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
+<Component
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
   }
   style={
     Object {
@@ -193,12 +181,6 @@ exports[`renders correctly with date range and two times 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={Object {}}
@@ -267,15 +249,15 @@ exports[`renders correctly with date range and two times 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly with single date and single time 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
+<Component
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
   }
   style={
     Object {
@@ -283,12 +265,6 @@ exports[`renders correctly with single date and single time 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={Object {}}
@@ -357,15 +333,15 @@ exports[`renders correctly with single date and single time 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly with tag filters selected 1`] = `
-<withOrientation
-  forceInset={
-    Object {
-      "top": "always",
-    }
+<Component
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
   }
   style={
     Object {
@@ -373,12 +349,6 @@ exports[`renders correctly with tag filters selected 1`] = `
     }
   }
 >
-  <StatusBar
-    animated={true}
-    backgroundColor="#2d2f7f"
-    barStyle="light-content"
-    showHideTransition="fade"
-  />
   <ContentPadding
     padding={Object {}}
     style={Object {}}
@@ -447,5 +417,5 @@ exports[`renders correctly with tag filters selected 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;

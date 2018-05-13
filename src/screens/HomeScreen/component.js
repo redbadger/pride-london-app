@@ -1,31 +1,34 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, SafeAreaView, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { equals } from "ramda";
-import Text from "../../components/Text";
-import type { Event } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
+import Header from "./Header";
+import ContentPadding from "../../components/ContentPadding";
 import EventTile from "../../components/EventTile";
 import Loading from "../../components/Loading";
-import Touchable from "../../components/Touchable";
+import Text from "../../components/Text";
 import TextLink from "../../components/TextLink";
-import ContentPadding from "../../components/ContentPadding";
+import Touchable from "../../components/Touchable";
 import {
+  blackTwentyColor,
   cardBgColor,
-  imageBgColor,
   titleTextColor,
-  eventCardShadow,
-  bgColor
+  bgColor,
+  lightNavyBlueColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
+import type { Event } from "../../data/event";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
+import type { HeaderBanner } from "../../data/header-banner";
 
 import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
+  headerBanners: HeaderBanner[],
   featuredEventsTitle: string,
   featuredEvents: Event[],
   loading: boolean,
@@ -40,12 +43,16 @@ class HomeScreen extends Component<Props> {
       featuredEventsTitle: nextFeaturedEventsTitle
     } = nextProps;
 
+    const bannerIds = this.props.headerBanners.map(e => e.sys.id);
+    const nextBannerIds = nextProps.headerBanners.map(e => e.sys.id);
+
     const ids = this.props.featuredEvents.map(e => e.sys.id);
     const nextIds = nextProps.featuredEvents.map(e => e.sys.id);
 
     return (
       loading !== nextLoading ||
       featuredEventsTitle !== nextFeaturedEventsTitle ||
+      !equals(bannerIds, nextBannerIds) ||
       !equals(ids, nextIds)
     );
   };
@@ -61,25 +68,33 @@ class HomeScreen extends Component<Props> {
   };
 
   render() {
+    const {
+      loading,
+      headerBanners,
+      featuredEvents,
+      featuredEventsTitle,
+      getAssetSource,
+      navigation
+    } = this.props;
+
     // Show only even number of events (2, 4 or 6).
     // Never show more than 6 events.
-    const eventsCount = Math.min(
-      6,
-      Math.floor(this.props.featuredEvents.length / 2) * 2
-    );
-    const events = this.props.featuredEvents.slice(0, eventsCount);
+    const eventsCount = Math.min(6, Math.floor(featuredEvents.length / 2) * 2);
+    const events = featuredEvents.slice(0, eventsCount);
 
     return (
-      <SafeAreaView testID="home-screen">
-        {this.props.loading && <Loading />}
-        <ScrollView style={styles.scroller}>
-          <View style={styles.header}>
-            <Text>Header - TBD</Text>
-          </View>
+      <ScrollView testID="home-screen" style={styles.container}>
+        <View style={styles.content}>
+          <Header
+            headerBanners={headerBanners}
+            getAssetSource={getAssetSource}
+            navigation={navigation}
+          />
           <ContentPadding style={styles.mainContentContainer}>
+            {loading && <Loading />}
             <View style={styles.sectionTitle}>
               <Text type="h2" style={{ color: titleTextColor }}>
-                {this.props.featuredEventsTitle}
+                {featuredEventsTitle}
               </Text>
               <Touchable onPress={this.eventList} testID="view-all">
                 <TextLink>{text.homeViewAll}</TextLink>
@@ -103,7 +118,7 @@ class HomeScreen extends Component<Props> {
                       name={event.fields.name[locale]}
                       date={event.fields.startTime[locale]}
                       eventCategories={event.fields.eventCategories[locale]}
-                      image={this.props.getAssetSource(
+                      image={getAssetSource(
                         event.fields.eventsListPicture[locale]
                       )}
                     />
@@ -112,25 +127,22 @@ class HomeScreen extends Component<Props> {
               ))}
             </View>
           </ContentPadding>
-        </ScrollView>
-      </SafeAreaView>
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  scroller: {
+  container: {
+    backgroundColor: lightNavyBlueColor
+  },
+  content: {
     backgroundColor: cardBgColor
   },
   mainContentContainer: {
     maxWidth: 440,
     alignSelf: "center"
-  },
-  header: {
-    height: 292,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: imageBgColor
   },
   sectionTitle: {
     flexDirection: "row",
@@ -153,7 +165,7 @@ const styles = StyleSheet.create({
   tile: {
     borderRadius: 3,
     // The below properties are required for ioS shadow
-    shadowColor: eventCardShadow,
+    shadowColor: blackTwentyColor,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 1,
     shadowRadius: 3,

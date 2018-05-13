@@ -3,7 +3,7 @@ import React from "react";
 import formatDate from "date-fns/format";
 import isSameDay from "date-fns/is_same_day";
 import {
-  formattedEventPriceRange,
+  formatLongEventPrice,
   formatTime,
   removeTimezoneFromCmsDateString
 } from "../../data/formatters";
@@ -35,11 +35,11 @@ const EventOverview = ({ event }: Props) => {
   const dateFormat = "ddd, DD MMM YYYY";
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)
-    : `${formatDate(startTime, dateFormat)} - ${formatDate(
+    : `${formatDate(startTime, dateFormat)} – ${formatDate(
         endTime,
         dateFormat
       )}`;
-  const timeDisplay = `${formatTime(startTime)} - ${formatTime(endTime)}`;
+  const timeDisplay = `${formatTime(startTime)} – ${formatTime(endTime)}`;
 
   const eventLocation = [
     event.fields.location[locale].lat,
@@ -83,8 +83,7 @@ const EventOverview = ({ event }: Props) => {
 
       <IconItem source={ticketsIcon}>
         <Text type="h4" color="lightNavyBlueColor">
-          {formattedEventPriceRange(
-            event.fields.isFree[locale],
+          {formatLongEventPrice(
             event.fields.eventPriceLow[locale],
             event.fields.eventPriceHigh[locale]
           )}

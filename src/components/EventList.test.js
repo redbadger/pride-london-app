@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import EventList, { renderItem } from "./EventList";
-import EventCard from "./EventCard";
 
 const events = [
   [
@@ -33,9 +32,6 @@ const events = [
         },
         eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
-        },
-        isFree: {
-          "en-GB": true
         }
       }
     },
@@ -67,9 +63,6 @@ const events = [
         },
         eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
-        },
-        isFree: {
-          "en-GB": true
         }
       }
     }
@@ -103,9 +96,6 @@ const events = [
         },
         eventsListPicture: {
           "en-GB": "http://placekitten.com/200/300"
-        },
-        isFree: {
-          "en-GB": true
         }
       }
     }
@@ -156,40 +146,6 @@ describe("EventList", () => {
       const output = shallow(<Item item={events[0][0]} />);
 
       expect(output).toMatchSnapshot();
-    });
-
-    it("calls addSavedEvent when toggleSaved is called with true", () => {
-      const event = events[0][0];
-      const spy = jest.fn();
-      const Item = renderItem({
-        isSavedEvent: () => false,
-        addSavedEvent: spy,
-        removeSavedEvent: () => {},
-        locale: "en-GB",
-        onPress: () => {},
-        getAssetSource: () => {}
-      });
-      const output = shallow(<Item item={event} />);
-      const toggleSaved = output.find(EventCard).prop("toggleSaved");
-      toggleSaved(true);
-      expect(spy).toBeCalledWith(event.sys.id);
-    });
-
-    it("calls removeSavedEvent when toggleSaved is called with false", () => {
-      const event = events[0][0];
-      const spy = jest.fn();
-      const Item = renderItem({
-        isSavedEvent: () => false,
-        addSavedEvent: () => {},
-        removeSavedEvent: spy,
-        locale: "en-GB",
-        onPress: () => {},
-        getAssetSource: () => {}
-      });
-      const output = shallow(<Item item={event} />);
-      const toggleSaved = output.find(EventCard).prop("toggleSaved");
-      toggleSaved(false);
-      expect(spy).toBeCalledWith(event.sys.id);
     });
   });
 

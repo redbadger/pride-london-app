@@ -122,9 +122,9 @@ brew update && brew cask install react-native-debugger
 
 Then to debug:
 
-1. Close any other debugger windows you have open
-1. Open the App from your Applications folder
-1. Start debugging in the app using one of the following methods:
+1.  Close any other debugger windows you have open
+1.  Open the App from your Applications folder
+1.  Start debugging in the app using one of the following methods:
 
 | Platform    | Command                                                                           |
 | ----------- | --------------------------------------------------------------------------------- |
@@ -192,3 +192,5 @@ To find out more about ADRs have a read of this article: http://thinkrelevance.c
 
 * We would like to thank [BrowserStack](https://www.browserstack.com) for allowing us to use their resources to test the Pride in London App for free!
   [![BrowserStack Logo](images/browserstack-logo-600x315.png)](https://www.browserstack.com)
+
+* We would like to thank [Bugsnag](https://www.bugsnag.com) for allowing us to use their tool to monitor the Pride in London App for free

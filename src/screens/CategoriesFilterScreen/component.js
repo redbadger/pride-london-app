@@ -28,7 +28,6 @@ export type Props = {
 
 class CategoriesFilterScreen extends PureComponent<Props> {
   static navigationOptions = {
-    header: null,
     tabBarVisible: false
   };
 

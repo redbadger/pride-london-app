@@ -27,10 +27,6 @@ export type Props = {
 };
 
 class SavedEventListScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
-  };
-
   render() {
     const {
       navigation,

@@ -26,8 +26,8 @@ export const shadowColor = "rgba(0, 0, 0, 0.1)";
 
 // CUSTOM
 
-export const bgColor = "#ffffff";
-export const cardBgColor = "#ffffff";
+export const bgColor = whiteColor;
+export const cardBgColor = whiteColor;
 export const imageBgColor = "#C1C1C1";
 export const headerBgColor = "#A5A5A5";
 export const transparent = "transparent";
@@ -37,6 +37,7 @@ export const textColor = "#272727";
 export const dialogBackdropColor = "rgba(0, 0, 0, 0.7)";
 export const blackZeroColor = "rgba(0, 0, 0, 0)";
 export const blackFifteenColor = "rgba(0, 0, 0, 0.1)";
+export const blackTwentyColor = "rgba(0, 0, 0, 0.2)";
 export const blackThirtyColor = "rgba(0, 0, 0, 0.3)";
 export const whiteZeroColor = "rgba(255, 255, 255, 0)";
 export const dialogBgColor = whiteColor;
@@ -68,7 +69,6 @@ export const filterButtonsBgColor = darkBlueGreyTwoColor;
 
 export const eventListHeaderBgColor = lightishGreyColor;
 export const eventListHeaderColor = "rgb(51, 51, 51)";
-export const eventCardShadow = "rgba(0, 0, 0, 0.2)";
 export const sectionHeaderBgColor = lightGreyColor;
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
 // DATE FILTER MODAL

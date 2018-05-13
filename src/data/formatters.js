@@ -3,6 +3,7 @@
 import formatDate from "date-fns/format";
 import type { DateRange } from "./date-time";
 import text from "../constants/text";
+import { isFree } from "../selectors/event";
 
 /* eslint-disable import/prefer-default-export */
 export const formatDateRange = (dateRange: DateRange) =>
@@ -38,29 +39,25 @@ export const formatPrice = (price: number) => {
   return price.toFixed(2);
 };
 
-export const formattedEventPrice = (
-  isFree: boolean,
+export const formatShortEventPrice = (
   eventPriceLow: number,
   eventPriceHigh: number
 ) => {
-  let displayPrice;
-  if (isFree) {
-    displayPrice = `${text.isFreePrice}`;
-  } else if (eventPriceLow === eventPriceHigh) {
-    displayPrice = `£${formatPrice(eventPriceLow)}`;
-  } else {
-    displayPrice = `${text.eventFromPrice} £${formatPrice(eventPriceLow)}`;
+  if (isFree(eventPriceLow, eventPriceHigh)) {
+    return `${text.isFreePrice}`;
   }
-  return displayPrice;
+  if (eventPriceLow === eventPriceHigh) {
+    return `£${formatPrice(eventPriceLow)}`;
+  }
+  return `${text.eventFromPrice} £${formatPrice(eventPriceLow)}`;
 };
 
-export const formattedEventPriceRange = (
-  isFree: boolean,
+export const formatLongEventPrice = (
   eventPriceLow: number,
-  eventPriceHigh?: number
+  eventPriceHigh: number
 ) => {
-  if (isFree) return text.isFreePrice;
+  if (isFree(eventPriceLow, eventPriceHigh)) return text.isFreePrice;
   if (eventPriceHigh && eventPriceHigh > eventPriceLow)
-    return `£${formatPrice(eventPriceLow)} - £${formatPrice(eventPriceHigh)}`;
+    return `£${formatPrice(eventPriceLow)} — £${formatPrice(eventPriceHigh)}`;
   return `£${formatPrice(eventPriceLow)}`;
 };
