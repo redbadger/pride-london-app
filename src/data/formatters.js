@@ -23,7 +23,8 @@ export const formatContentfulDate = (
 ) => {
   const correctedDay = day.length < 2 ? `0${day}` : day;
   const correctedMonth = month.length < 2 ? `0${month}` : month;
-  return `${year}-${correctedMonth}-${correctedDay}T${time}`;
+  const correctedYear = year.length < 4 ? `20${year}` : year;
+  return `${correctedYear}-${correctedMonth}-${correctedDay}T${time}`;
 };
 
 export const removeTimezoneFromCmsDateString = (isoString: string) =>
