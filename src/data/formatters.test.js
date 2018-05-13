@@ -56,6 +56,11 @@ describe("formatContentfulDate", () => {
     const date = formatContentfulDate("18", "05", "24", "13:00");
     expect(date).toEqual("2018-05-24T13:00");
   });
+
+  it("formats date without time", () => {
+    const date = formatContentfulDate("18", "05", "24");
+    expect(date).toEqual("2018-05-24");
+  });
 });
 
 describe("removeTimezoneFromCmsDateString", () => {

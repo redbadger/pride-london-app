@@ -19,12 +19,13 @@ export const formatContentfulDate = (
   year: string,
   month: string,
   day: string,
-  time: string
+  time?: string
 ) => {
   const correctedDay = day.length < 2 ? `0${day}` : day;
   const correctedMonth = month.length < 2 ? `0${month}` : month;
   const correctedYear = year.length < 4 ? `20${year}` : year;
-  return `${correctedYear}-${correctedMonth}-${correctedDay}T${time}`;
+  const correctedTime = time ? `T${time}` : "";
+  return `${correctedYear}-${correctedMonth}-${correctedDay}${correctedTime}`;
 };
 
 export const removeTimezoneFromCmsDateString = (isoString: string) =>
