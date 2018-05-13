@@ -1,30 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<TextInput
-  allowFontScaling={true}
-  keyboardType="numeric"
-  onBlur={[Function]}
-  onChangeText={[Function]}
-  onFocus={[Function]}
-  placeholder={null}
-  placeholderTextColor="#cecece"
-  style={
-    Array [
+<Component
+  accessibilityLabel="13.37, edit box, A number; double tap to enter text"
+  accessible={true}
+>
+  <Text
+    color="lightNavyBlueColor"
+    importantForAccessibility="no"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
       Object {
-        "borderColor": "#cecece",
-        "borderRadius": 4,
-        "borderWidth": 1,
-        "color": "#2d2f7f",
-        "fontFamily": "Poppins-SemiBold",
-        "fontSize": 18,
-        "height": 100,
-        "paddingHorizontal": 14,
-      },
-      false,
-    ]
-  }
-  underlineColorAndroid="transparent"
-  value="13.37"
-/>
+        "marginBottom": 8,
+      }
+    }
+    type="h4"
+  >
+    A number
+  </Text>
+  <TextInput
+    allowFontScaling={true}
+    importantForAccessibility="no"
+    keyboardType="numeric"
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    placeholder={null}
+    placeholderTextColor="#cecece"
+    style={
+      Array [
+        Object {
+          "borderColor": "#cecece",
+          "borderRadius": 4,
+          "borderWidth": 1,
+          "color": "#2d2f7f",
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 18,
+          "height": 100,
+          "paddingHorizontal": 14,
+        },
+        false,
+      ]
+    }
+    underlineColorAndroid="transparent"
+    value="13.37"
+  />
+</Component>
 `;
