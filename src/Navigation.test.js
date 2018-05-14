@@ -6,14 +6,7 @@ import {
   EVENT_LIST,
   EVENT_DETAILS,
   FEATURED_EVENT_LIST,
-  HOME,
-  EVENT_CATEGORIES_FILTER,
-  PARADE,
-  SAVED,
-  SUPPORT_US,
-  FILTER_MODAL,
-  DONATE,
-  SPONSOR
+  HOME
 } from "./constants/routes";
 
 // TODO: Temporarily disabled due to https://github.com/react-navigation/react-navigation/issues/256
@@ -59,5 +52,6 @@ describe("getTabTestId", () => {
 
   it("returns a test id if the routeName is matched", () => {
     const result = getTabTestId(EVENT_LIST);
+    expect(result).toEqual("events-tab-button");
   });
 });
