@@ -108,9 +108,11 @@ class SupportUsButton extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   button: {
+    // Can't use `minHeight` because it has a weird behaviour. The
+    // button will have the correct size but the sibling elements
+    // will layout according to the buttons (smaller) `height`.
+    height: Math.max(100, 100 * Math.min(1.25, PixelRatio.getFontScale())),
     justifyContent: "center",
-    height: 100 * Math.min(1.25, PixelRatio.getFontScale()),
-    minHeight: 100,
     borderRadius: 5,
     overflow: "hidden",
 

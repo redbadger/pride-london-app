@@ -32,6 +32,7 @@ export default {
   tabSupportUs: "Support us",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
+  categoryFilterButton: "Filter by event type",
   addFilters: "Filter by area, price...",
   filters: "Filters",
   filterPickerApply: showEvents,

@@ -1,7 +1,9 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import FilterHeaderCategories from "./FilterHeaderCategories";
+import FilterHeaderCategories, {
+  CategoriesFilterButton
+} from "./FilterHeaderCategories";
 
 const baseProps = {
   onFilterPress: () => {},
@@ -22,5 +24,13 @@ describe("FilterHeaderCategories Component", () => {
     );
 
     expect(output.find("CategoriesPills").length).toEqual(1);
+  });
+});
+
+describe("FilterHeaderCategories CategoriesFilterButton component", () => {
+  it("renders correctly", () => {
+    const output = shallow(<CategoriesFilterButton onPress={() => {}} />);
+
+    expect(output).toMatchSnapshot();
   });
 });

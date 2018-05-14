@@ -123,7 +123,10 @@ const ParadeStack = StackNavigator(
     initialRouteName: PARADE,
     navigationOptions: {
       tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
-      tabBarLabel: text.tabParade
+      tabBarLabel: text.tabParade,
+      tabBarTestIDProps: {
+        testID: "parade-tab-button"
+      }
     },
     headerMode: "none",
     cardStyle: styles.card
@@ -139,7 +142,10 @@ const SavedStack = StackNavigator(
     initialRouteName: SAVED,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-      tabBarLabel: text.tabSaved
+      tabBarLabel: text.tabSaved,
+      tabBarTestIDProps: {
+        testID: "saved-events-tab-button"
+      }
     },
     headerMode: "none",
     cardStyle: styles.card
@@ -156,7 +162,10 @@ const SupportUsStack = StackNavigator(
     initialRouteName: SUPPORT_US,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-      tabBarLabel: text.tabSupportUs
+      tabBarLabel: text.tabSupportUs,
+      tabBarTestIDProps: {
+        testID: "support-us-tab-button"
+      }
     },
     headerMode: "none",
     cardStyle: styles.card
