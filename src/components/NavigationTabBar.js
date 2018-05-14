@@ -104,7 +104,7 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
   };
 
   render() {
-    const { navigation, getTestIDProps } = this.props;
+    const { navigation, getTabTestID } = this.props;
     const { routes } = navigation.state;
 
     const activeTabLineScale = Animated.divide(
@@ -135,14 +135,10 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
           {routes.map((route, index) => {
             const focused = index === navigation.state.index;
             const scene = { route, index, focused };
-            const { testID, accessibilityLabel } =
-              (getTestIDProps && getTestIDProps(scene)) || {};
-
             return (
               <Touchable
                 key={route.key}
-                testID={testID}
-                accessibilityLabel={accessibilityLabel}
+                testID={getTabTestID(route.routeName)}
                 onLayout={event => {
                   this.tabLayouts[index] = event.nativeEvent.layout;
                   this.updateActiveTabLine();

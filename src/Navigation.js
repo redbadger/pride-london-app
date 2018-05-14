@@ -75,6 +75,15 @@ const styles = StyleSheet.create({
   }
 });
 
+const getTabTestId = (routeName: string) => {
+  switch (routeName) {
+    case EVENT_LIST:
+      return "events-tab-button";
+    default:
+      return "";
+  }
+};
+
 const HomeStack = createStackNavigator(
   {
     [HOME]: { screen: withShadow(HomeScreen) },
@@ -182,7 +191,10 @@ const TabNav = createBottomTabNavigator(
     tabBarPosition: "bottom",
     swipeEnabled: false,
     animationEnabled: false,
-    initialRouteName: HOME
+    initialRouteName: HOME,
+    tabBarOptions: {
+      getTabTestID: getTabTestId
+    }
   }
 );
 
