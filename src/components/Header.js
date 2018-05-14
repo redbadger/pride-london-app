@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
 import type { Node } from "react";
 import ContentPadding from "./ContentPadding";
 import IconButton from "./IconButton";
