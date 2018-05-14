@@ -3,6 +3,7 @@ import areRangesOverlapping from "date-fns/are_ranges_overlapping";
 import endOfDay from "date-fns/end_of_day";
 import getHours from "date-fns/get_hours";
 import startOfDay from "date-fns/start_of_day";
+import differenceInHours from "date-fns/difference_in_hours";
 import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
 import type { Event, EventCategoryName } from "../data/event";
@@ -19,17 +20,37 @@ export const buildDateRangeFilter = (date: DateRange) => (event: Event) =>
     event.fields.endTime[locale]
   );
 
-export const buildTimeFilter = (time: Time) => {
-  if (time === "morning") {
-    return (event: Event) => getHours(event.fields.startTime[locale]) < 12;
-  } else if (time === "afternoon") {
-    return (event: Event) =>
-      getHours(event.fields.startTime[locale]) < 18 &&
-      getHours(event.fields.endTime[locale]) > 12;
-  }
+type TimeFilter = (timeFilter: Time) => (event: Event) => boolean;
 
-  // time === "evening"
-  return (event: Event) => getHours(event.fields.endTime[locale]) >= 18;
+const rangeFromTime = (timeFilter: Time) => {
+  switch (timeFilter) {
+    case "morning":
+      return [6, 12];
+    case "afternoon":
+      return [12, 18];
+    case "evening":
+      return [18, 30];
+    default:
+      return [0, 0];
+  }
+};
+
+export const buildTimeFilter: TimeFilter = (timeFilter: Time) => event => {
+  const [rangeMin, rangeMax] = rangeFromTime(timeFilter);
+  const relativeRangeMax = rangeMax - rangeMin;
+  const eventStartHour = getHours(event.fields.startTime[locale]);
+  const eventDuration = differenceInHours(
+    event.fields.endTime[locale],
+    event.fields.startTime[locale]
+  );
+  const relativeStartHour = (eventStartHour - rangeMin) % 24;
+  const relativeEndHour = (relativeStartHour + eventDuration) % 24;
+  return (
+    (relativeStartHour >= 0 && relativeStartHour < relativeRangeMax) ||
+    (relativeEndHour >= 0 && relativeEndHour < relativeRangeMax) ||
+    (relativeEndHour >= 0 && relativeStartHour < 0) ||
+    relativeEndHour < relativeStartHour
+  );
 };
 
 export const buildCategoryFilter = (categories: Set<EventCategoryName>) => {
