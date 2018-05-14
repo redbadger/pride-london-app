@@ -1,4 +1,15 @@
-import { toFormat, isBefore, addDays, parse } from "./date";
+import {
+  toFormat,
+  isBefore,
+  addDays,
+  parse,
+  compareAsc,
+  areRangesOverlapping,
+  startOfDay,
+  endOfDay,
+  getHours,
+  differenceInCalendarDays
+} from "./date";
 
 describe("toFormat", () => {
   it("formats a date", () => {
@@ -36,5 +47,91 @@ describe("parse", () => {
     expect(parse("2018-07-07T04:00+01:00")).toEqual(
       new Date("2018-07-07T04:00+01:00")
     );
+  });
+});
+
+describe("compareAsc", () => {
+  it("returns -1 when first date is before the second date", () => {
+    expect(compareAsc("2018-07-07T04:00+01:00", "2018-07-08T04:00+01:00")).toBe(
+      -1
+    );
+  });
+
+  it("returns 0 when both dates are the same", () => {
+    expect(compareAsc("2018-07-07T04:00+01:00", "2018-07-07T04:00+01:00")).toBe(
+      0
+    );
+  });
+
+  it("returns 1 when first date is after the second date", () => {
+    expect(compareAsc("2018-07-07T04:00+01:00", "2018-07-06T04:00+01:00")).toBe(
+      1
+    );
+  });
+});
+
+describe("areRangesOverlapping", () => {
+  it("returns true when ranges overlap", () => {
+    expect(
+      areRangesOverlapping(
+        "2018-07-07T04:00+01:00",
+        "2018-07-10T04:00+01:00",
+        "2018-07-08T04:00+01:00",
+        "2018-07-11T04:00+01:00"
+      )
+    ).toBe(true);
+  });
+
+  it("returns false when ranges do not overlap", () => {
+    expect(
+      areRangesOverlapping(
+        "2018-07-07T04:00+01:00",
+        "2018-07-10T04:00+01:00",
+        "2018-07-11T04:00+01:00",
+        "2018-07-14T04:00+01:00"
+      )
+    ).toBe(false);
+  });
+});
+
+describe("startOfDay", () => {
+  it("returns the start of a given day", () => {
+    expect(startOfDay("2018-07-07T04:00+01:00")).toEqual(
+      new Date("2018-07-07T00:00+01:00")
+    );
+  });
+});
+
+describe("endOfDay", () => {
+  it("returns the end of a given day", () => {
+    expect(endOfDay("2018-07-07T04:00+01:00")).toEqual(
+      new Date("2018-07-07T23:59:59.999+01:00")
+    );
+  });
+});
+
+describe("getHours", () => {
+  it("returns the hours into a given day", () => {
+    expect(getHours("2018-07-07T04:00+01:00")).toBe(4);
+  });
+});
+
+describe("differenceInCalendarDays", () => {
+  it("returns the calendar days between two dates", () => {
+    expect(
+      differenceInCalendarDays(
+        "2018-07-09T04:00+01:00",
+        "2018-07-07T04:00+01:00"
+      )
+    ).toBe(2);
+  });
+
+  it("returns a negative value if dates are ascending", () => {
+    expect(
+      differenceInCalendarDays(
+        "2018-07-07T04:00+01:00",
+        "2018-07-09T04:00+01:00"
+      )
+    ).toBe(-2);
   });
 });
