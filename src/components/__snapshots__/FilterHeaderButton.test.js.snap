@@ -33,7 +33,6 @@ exports[`renders badge value when provided 1`] = `
       Array [
         Object {
           "fontFamily": "Roboto-Medium",
-          "lineHeight": 10,
           "textAlign": "center",
         },
         Object {
@@ -92,7 +91,6 @@ exports[`renders correct styles when inactive 1`] = `
       Array [
         Object {
           "fontFamily": "Roboto-Medium",
-          "lineHeight": 10,
           "textAlign": "center",
         },
         Object {
@@ -140,7 +138,6 @@ exports[`renders correctly 1`] = `
       Array [
         Object {
           "fontFamily": "Roboto-Medium",
-          "lineHeight": 10,
           "textAlign": "center",
         },
         Object {

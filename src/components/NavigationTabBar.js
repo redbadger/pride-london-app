@@ -10,7 +10,7 @@ import {
   tabBarActiveLabelColor,
   tabBarBorderColor
 } from "../constants/colors";
-import { cap } from "./Text";
+import Text from "./Text";
 import Touchable from "./Touchable";
 
 class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
@@ -62,26 +62,13 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
   };
 
   renderLabel = (scene: TabScene) => {
-    const { position, navigation } = this.props;
-    const { index } = scene;
-    const { routes } = navigation.state;
-
-    // Prepend '-1', so there are always at least 2 items in inputRange
-    const inputRange = [-1, ...routes.map((x, i) => i)];
-    const color = position.interpolate({
-      inputRange,
-      outputRange: inputRange.map(
-        inputIndex =>
-          inputIndex === index ? tabBarActiveLabelColor : tabBarLabelColor
-      )
-    });
     const tintColor = scene.focused ? tabBarActiveLabelColor : tabBarLabelColor;
     const label = this.props.getLabel({ ...scene, tintColor });
 
     return (
-      <Animated.Text numberOfLines={1} style={[styles.label, { color }]}>
+      <Text type="tabBarItem" numberOfLines={1} style={{ color: tintColor }}>
         {label}
-      </Animated.Text>
+      </Text>
     );
   };
 
@@ -232,12 +219,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     top: 0
-  },
-  label: {
-    fontFamily: "Poppins-Bold",
-    fontSize: cap(12, 13),
-    lineHeight: cap(16, 17),
-    includeFontPadding: false
   }
 });
 

@@ -18,7 +18,7 @@ exports[`renders correctly 1`] = `
         "color": "#2d2f7f",
         "fontFamily": "Poppins-SemiBold",
         "fontSize": 11,
-        "height": 61,
+        "height": 61.111111111111114,
         "paddingHorizontal": 14,
       },
       false,

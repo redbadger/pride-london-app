@@ -81,7 +81,7 @@ exports[`picks different icon for external links 1`] = `
             "marginLeft": 8,
             "transform": Array [
               Object {
-                "translateY": -5,
+                "translateY": -4,
               },
             ],
           }
@@ -186,7 +186,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
             "marginLeft": 8,
             "transform": Array [
               Object {
-                "translateY": -5,
+                "translateY": -4,
               },
             ],
           }
@@ -291,7 +291,7 @@ exports[`renders correctly 1`] = `
             "marginLeft": 8,
             "transform": Array [
               Object {
-                "translateY": -5,
+                "translateY": -4,
               },
             ],
           }

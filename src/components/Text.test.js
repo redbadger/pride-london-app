@@ -3,7 +3,7 @@ import React from "react";
 import { PixelRatio } from "react-native";
 import { shallow } from "enzyme";
 import Markdown from "react-native-easy-markdown";
-import Text, { cap } from "./Text";
+import Text, { scaleFont, scaleWithFont } from "./Text";
 import { lightNavyBlueColor } from "../constants/colors";
 
 let getFontScaleSpy;
@@ -52,25 +52,47 @@ it("renders text in blue when color is set", () => {
   expect(output.props().style).toContainEqual(style);
 });
 
-describe("cap", () => {
-  it(`creates rendered font size of 6 for input (12, 14) and font scale 0.5`, () => {
+describe("scaleFont", () => {
+  it("returns default font size for smaller scale", () => {
     getFontScaleSpy.mockReturnValue(0.5);
-    expect(cap(12, 14) * 0.5).toBe(6);
+    expect(scaleFont("text", 12)).toBe(12);
   });
 
-  it(`creates rendered font size of 12 for input (12, 14) and font scale 1`, () => {
+  it("returns default font size for default scale", () => {
     getFontScaleSpy.mockReturnValue(1);
-    expect(cap(12, 14) * 1).toBe(12);
+    expect(scaleFont("text", 12)).toBe(12);
   });
 
-  it(`creates rendered font size of 13.2 for input (12, 14) and font scale 1.1`, () => {
+  it("returns default font size for larger (but still below max) scale", () => {
     getFontScaleSpy.mockReturnValue(1.1);
-    expect(cap(12, 14) * 1.1).toBeCloseTo(13.2, 5);
+    expect(scaleFont("text", 12)).toBe(12);
   });
 
-  it(`creates rendered font size of 14 for input (12, 14) and font scale 1.5`, () => {
+  it("returns reduced font size for larger than max scale", () => {
     getFontScaleSpy.mockReturnValue(1.5);
-    expect(cap(12, 14) * 1.5).toBe(14);
+    expect(scaleFont("text", 12)).toBe(10);
+  });
+});
+
+describe("scaleWithFont", () => {
+  it("returns reduced size for smaller scale", () => {
+    getFontScaleSpy.mockReturnValue(0.5);
+    expect(scaleWithFont("text", 12)).toBe(6);
+  });
+
+  it("returns default size for default scale", () => {
+    getFontScaleSpy.mockReturnValue(1);
+    expect(scaleWithFont("text", 12)).toBe(12);
+  });
+
+  it("returns increased size for larger (but still below max) scale", () => {
+    getFontScaleSpy.mockReturnValue(1.1);
+    expect(scaleWithFont("text", 12)).toBeCloseTo(13.2, 5);
+  });
+
+  it("returns max size for larger than max scale", () => {
+    getFontScaleSpy.mockReturnValue(1.5);
+    expect(scaleWithFont("text", 12)).toBe(15);
   });
 });
 

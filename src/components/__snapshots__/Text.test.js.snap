@@ -18,7 +18,7 @@ exports[`does not render markdown images 1`] = `
         "fontFamily": "Poppins-SemiBold",
         "fontSize": 11,
         "includeFontPadding": false,
-        "lineHeight": 14.5,
+        "lineHeight": 14.666666666666668,
       },
       "h3": Object {
         "fontFamily": "Poppins-SemiBold",
@@ -50,18 +50,24 @@ exports[`does not render markdown images 1`] = `
         "borderRadius": 2,
         "height": 4,
         "marginRight": 10,
-        "marginTop": 12.9,
+        "marginTop": 12.857142857142858,
         "width": 4,
       },
       "price": Object {
         "fontFamily": "Roboto-Bold",
         "fontSize": 9,
-        "lineHeight": 13,
+        "lineHeight": 12.857142857142858,
       },
       "small": Object {
         "fontFamily": "Roboto",
         "fontSize": 9,
-        "lineHeight": 13,
+        "lineHeight": 12.857142857142858,
+      },
+      "tabBarItem": Object {
+        "fontFamily": "Poppins-Bold",
+        "fontSize": 6.5,
+        "includeFontPadding": false,
+        "lineHeight": 8.666666666666666,
       },
       "text": Object {
         "color": "#111111",
@@ -85,7 +91,7 @@ exports[`does not render markdown images 1`] = `
         "fontFamily": "Poppins-SemiBold",
         "fontSize": 7,
         "includeFontPadding": false,
-        "lineHeight": 9,
+        "lineHeight": 9.333333333333334,
       },
     }
   }
@@ -150,7 +156,7 @@ exports[`renders markdown component based on flag 1`] = `
         "fontFamily": "Poppins-SemiBold",
         "fontSize": 11,
         "includeFontPadding": false,
-        "lineHeight": 14.5,
+        "lineHeight": 14.666666666666668,
       },
       "h3": Object {
         "fontFamily": "Poppins-SemiBold",
@@ -182,18 +188,24 @@ exports[`renders markdown component based on flag 1`] = `
         "borderRadius": 2,
         "height": 4,
         "marginRight": 10,
-        "marginTop": 12.9,
+        "marginTop": 12.857142857142858,
         "width": 4,
       },
       "price": Object {
         "fontFamily": "Roboto-Bold",
         "fontSize": 9,
-        "lineHeight": 13,
+        "lineHeight": 12.857142857142858,
       },
       "small": Object {
         "fontFamily": "Roboto",
         "fontSize": 9,
-        "lineHeight": 13,
+        "lineHeight": 12.857142857142858,
+      },
+      "tabBarItem": Object {
+        "fontFamily": "Poppins-Bold",
+        "fontSize": 6.5,
+        "includeFontPadding": false,
+        "lineHeight": 8.666666666666666,
       },
       "text": Object {
         "color": "#111111",
@@ -217,7 +229,7 @@ exports[`renders markdown component based on flag 1`] = `
         "fontFamily": "Poppins-SemiBold",
         "fontSize": 7,
         "includeFontPadding": false,
-        "lineHeight": 9,
+        "lineHeight": 9.333333333333334,
       },
     }
   }

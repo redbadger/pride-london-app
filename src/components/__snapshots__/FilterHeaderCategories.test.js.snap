@@ -17,7 +17,7 @@ exports[`FilterHeaderCategories CategoriesFilterButton component renders correct
       "backgroundColor": "rgb(25, 26, 71)",
       "borderBottomRightRadius": 4,
       "borderTopRightRadius": 4,
-      "height": 88,
+      "height": 55,
       "width": 44,
     }
   }

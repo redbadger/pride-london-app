@@ -2,7 +2,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
-import Text, { cap } from "./Text";
+import Text from "./Text";
 import Touchable from "./Touchable";
 import { filterButtonTextColor, whiteColor } from "../constants/colors";
 import NumberBadge from "./NumberBadge";
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: "Roboto-Medium",
-    lineHeight: cap(20, 20),
     textAlign: "center"
   },
   activeColor: {

@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, PixelRatio } from "react-native";
-import Text from "../../components/Text";
+import { View, StyleSheet } from "react-native";
+import Text, { scaleWithFont } from "../../components/Text";
 import ActionButton from "../../components/ActionButton";
 import text from "../../constants/text";
 import { whiteColor } from "../../constants/colors";
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   categoriesPills: {
     width: "100%",
-    height: 44 * Math.min(1.25, PixelRatio.getFontScale()),
+    height: scaleWithFont("h3", 44),
     marginBottom: 16
   },
   filterTitle: {
