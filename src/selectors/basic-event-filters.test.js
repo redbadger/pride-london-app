@@ -83,144 +83,146 @@ describe("buildDateRangeFilter", () => {
 });
 
 describe("buildTimeFilter", () => {
-  it("recognises an event that starts and ends in the morning", () => {
-    const morningEvent = buildEvent({
-      startTime: "2018-08-02T06:00:00",
-      endTime: "2018-08-02T11:00:00"
+  describe("events spanning a single time slot", () => {
+    it("correctly filters an event that starts and ends in the same morning", () => {
+      const morningEvent = buildEvent({
+        startTime: "2018-08-02T06:00:00",
+        endTime: "2018-08-02T11:59:00"
+      });
+
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(morningEvent)).toBe(true);
+      expect(afternoonFilter(morningEvent)).toBe(false);
+      expect(eveningFilter(morningEvent)).toBe(false);
     });
 
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(morningEvent)).toBe(true);
-    expect(afternoonFilter(morningEvent)).toBe(false);
-    expect(eveningFilter(morningEvent)).toBe(false);
+    it("correctly filters an event that starts and ends in the same afternoon", () => {
+      const afternoonEvent = buildEvent({
+        startTime: "2018-08-02T12:00:00",
+        endTime: "2018-08-02T17:59:00"
+      });
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(afternoonEvent)).toBe(false);
+      expect(afternoonFilter(afternoonEvent)).toBe(true);
+      expect(eveningFilter(afternoonEvent)).toBe(false);
+    });
+
+    it("correctly filters an event that starts and ends in the same evening", () => {
+      const eveningEvent = buildEvent({
+        startTime: "2018-08-02T18:00:00",
+        endTime: "2018-08-03T05:59:00"
+      });
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(eveningEvent)).toBe(false);
+      expect(afternoonFilter(eveningEvent)).toBe(false);
+      expect(eveningFilter(eveningEvent)).toBe(true);
+    });
   });
 
-  it("recognises an event that starts and ends in the afternoon", () => {
-    const afternoonEvent = buildEvent({
-      startTime: "2018-08-02T14:00:00",
-      endTime: "2018-08-02T15:00:00"
-    });
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(afternoonEvent)).toBe(false);
-    expect(afternoonFilter(afternoonEvent)).toBe(true);
-    expect(eveningFilter(afternoonEvent)).toBe(false);
-  });
+  describe("events spanning multiple time slots", () => {
+    it("correctly filters an event spanning morning to afternoon", () => {
+      const morningToAfternoon = buildEvent({
+        startTime: "2018-08-02T09:00:00",
+        endTime: "2018-08-02T15:00:00"
+      });
 
-  it("recognises an event that starts and ends in the evening", () => {
-    const eveningEvent = buildEvent({
-      startTime: "2018-08-02T19:00:00",
-      endTime: "2018-08-02T23:00:00"
-    });
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(eveningEvent)).toBe(false);
-    expect(afternoonFilter(eveningEvent)).toBe(false);
-    expect(eveningFilter(eveningEvent)).toBe(true);
-  });
-});
-
-describe("events spanning multiple time slots", () => {
-  it("correctly filters an event spanning morning to afternoon", () => {
-    const morningToAfternoon = buildEvent({
-      startTime: "2018-08-02T09:00:00",
-      endTime: "2018-08-02T15:00:00"
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(morningToAfternoon)).toBe(true);
+      expect(afternoonFilter(morningToAfternoon)).toBe(true);
+      expect(eveningFilter(morningToAfternoon)).toBe(false);
     });
 
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(morningToAfternoon)).toBe(true);
-    expect(afternoonFilter(morningToAfternoon)).toBe(true);
-    expect(eveningFilter(morningToAfternoon)).toBe(false);
-  });
+    it("correctly filters an event spanning afternoon to evening", () => {
+      const afternoonToEvening = buildEvent({
+        startTime: "2018-08-02T14:00:00",
+        endTime: "2018-08-02T20:00:00"
+      });
 
-  it("correctly filters an event spanning afternoon to evening", () => {
-    const afternoonToEvening = buildEvent({
-      startTime: "2018-08-02T14:00:00",
-      endTime: "2018-08-02T20:00:00"
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(afternoonToEvening)).toBe(false);
+      expect(afternoonFilter(afternoonToEvening)).toBe(true);
+      expect(eveningFilter(afternoonToEvening)).toBe(true);
     });
 
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(afternoonToEvening)).toBe(false);
-    expect(afternoonFilter(afternoonToEvening)).toBe(true);
-    expect(eveningFilter(afternoonToEvening)).toBe(true);
-  });
+    it("correctly filters an event spanning morning to evening", () => {
+      const morningToEvening = buildEvent({
+        startTime: "2018-08-02T09:00:00",
+        endTime: "2018-08-02T20:00:00"
+      });
 
-  it("correctly filters an event spanning morning to evening", () => {
-    const morningToEvening = buildEvent({
-      startTime: "2018-08-02T09:00:00",
-      endTime: "2018-08-02T20:00:00"
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(morningToEvening)).toBe(true);
+      expect(afternoonFilter(morningToEvening)).toBe(true);
+      expect(eveningFilter(morningToEvening)).toBe(true);
     });
 
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(morningToEvening)).toBe(true);
-    expect(afternoonFilter(morningToEvening)).toBe(true);
-    expect(eveningFilter(morningToEvening)).toBe(true);
-  });
+    it("correctly filters an event spanning evening to morning", () => {
+      const eveningToMorning = buildEvent({
+        startTime: "2018-08-02T20:00:00",
+        endTime: "2018-08-03T08:00:00"
+      });
 
-  it("correctly filters an event spanning evening to morning", () => {
-    const eveningToMorning = buildEvent({
-      startTime: "2018-08-02T20:00:00",
-      endTime: "2018-08-03T08:00:00"
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(eveningToMorning)).toBe(true);
+      expect(afternoonFilter(eveningToMorning)).toBe(false);
+      expect(eveningFilter(eveningToMorning)).toBe(true);
     });
 
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(eveningToMorning)).toBe(true);
-    expect(afternoonFilter(eveningToMorning)).toBe(false);
-    expect(eveningFilter(eveningToMorning)).toBe(true);
-  });
+    it("correctly filters an event spanning afternoon to morning", () => {
+      const afternoonToMorning = buildEvent({
+        startTime: "2018-08-02T16:00:00",
+        endTime: "2018-08-03T11:00:00"
+      });
 
-  it("correctly filters an event spanning afternoon to morning", () => {
-    const afternoonToMorning = buildEvent({
-      startTime: "2018-08-02T16:00:00",
-      endTime: "2018-08-03T11:00:00"
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(afternoonToMorning)).toBe(true);
+      expect(afternoonFilter(afternoonToMorning)).toBe(true);
+      expect(eveningFilter(afternoonToMorning)).toBe(true);
     });
 
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(afternoonToMorning)).toBe(true);
-    expect(afternoonFilter(afternoonToMorning)).toBe(true);
-    expect(eveningFilter(afternoonToMorning)).toBe(true);
-  });
+    it("correctly filters an event spanning evening to afternoon", () => {
+      const eveningToAfternoon = buildEvent({
+        startTime: "2018-08-02T20:00:00",
+        endTime: "2018-08-03T15:00:00"
+      });
 
-  it("correctly filters an event spanning evening to afternoon", () => {
-    const eveningToAfternoon = buildEvent({
-      startTime: "2018-08-02T20:00:00",
-      endTime: "2018-08-03T15:00:00"
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(eveningToAfternoon)).toBe(true);
+      expect(afternoonFilter(eveningToAfternoon)).toBe(true);
+      expect(eveningFilter(eveningToAfternoon)).toBe(true);
     });
 
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(eveningToAfternoon)).toBe(true);
-    expect(afternoonFilter(eveningToAfternoon)).toBe(true);
-    expect(eveningFilter(eveningToAfternoon)).toBe(true);
-  });
+    it("correctly filters an event spanning morning to morning the following day", () => {
+      const morningToMorning = buildEvent({
+        startTime: "2018-08-02T09:00:00",
+        endTime: "2018-08-03T10:00:00"
+      });
 
-  it("correctly filters an event spanning morning to morning the following day", () => {
-    const morningToMorning = buildEvent({
-      startTime: "2018-08-02T09:00:00",
-      endTime: "2018-08-03T10:00:00"
+      const morningFilter = buildTimeFilter("morning");
+      const afternoonFilter = buildTimeFilter("afternoon");
+      const eveningFilter = buildTimeFilter("evening");
+      expect(morningFilter(morningToMorning)).toBe(true);
+      expect(afternoonFilter(morningToMorning)).toBe(true);
+      expect(eveningFilter(morningToMorning)).toBe(true);
     });
-
-    const morningFilter = buildTimeFilter("morning");
-    const afternoonFilter = buildTimeFilter("afternoon");
-    const eveningFilter = buildTimeFilter("evening");
-    expect(morningFilter(morningToMorning)).toBe(true);
-    expect(afternoonFilter(morningToMorning)).toBe(true);
-    expect(eveningFilter(morningToMorning)).toBe(true);
   });
 });
 
