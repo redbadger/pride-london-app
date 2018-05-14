@@ -82,15 +82,21 @@ export const getTabTestId = (routeName: string) => {
   switch (routeName) {
     case EVENT_LIST:
       return "events-tab-button";
+    case PARADE:
+      return "parade-tab-button";
+    case SAVED:
+      return "saved-events-tab-button";
+    case SUPPORT_US:
+      return "support-us-tab-button";
     default:
       return "";
   }
 };
 
 export const getNavigationOptions = (
-  navigation: object,
-  navigationOptions: object,
-  tabBarLessRoutes: array
+  navigation: Object,
+  navigationOptions: Object,
+  tabBarLessRoutes: Array
 ) => {
   const { routeName } = navigation.state.routes[navigation.state.index];
   if (tabBarLessRoutes.includes(routeName)) {
