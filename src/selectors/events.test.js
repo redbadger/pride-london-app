@@ -1,4 +1,4 @@
-import parseDate from "date-fns/parse";
+import { parse as parseDate } from "../lib/date";
 import {
   getTimePeriod,
   groupEventsByStartTime,

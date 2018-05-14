@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
-import formatDate from "date-fns/format";
-import isSameDay from "date-fns/is_same_day";
+import { toFormat as formatDate, isSameDay } from "../../lib/date";
 import {
   formatLongEventPrice,
   formatTime,

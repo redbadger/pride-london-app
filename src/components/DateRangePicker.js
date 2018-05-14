@@ -1,9 +1,7 @@
 // @flow
 import React from "react";
 import { Calendar } from "react-native-calendars";
-import formatDate from "date-fns/format";
-import addDays from "date-fns/add_days";
-import isBefore from "date-fns/is_before";
+import { toFormat as formatDate, isBefore, addDays } from "../lib/date";
 import type { DateRange } from "../data/date-time";
 
 import Day from "./DateRangePickerDay";

@@ -1,8 +1,10 @@
 // @flow
-import areRangesOverlapping from "date-fns/are_ranges_overlapping";
-import endOfDay from "date-fns/end_of_day";
-import getHours from "date-fns/get_hours";
-import startOfDay from "date-fns/start_of_day";
+import {
+  areRangesOverlapping,
+  startOfDay,
+  endOfDay,
+  getHours
+} from "../lib/date";
 import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
 import type { Event, EventCategoryName } from "../data/event";

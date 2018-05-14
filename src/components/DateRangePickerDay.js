@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import { equals } from "ramda";
-import { format } from "date-fns";
+import { toFormat } from "../lib/date";
 
 import Text from "./Text";
 
@@ -100,7 +100,7 @@ export default class Day extends Component<DayProps> {
 
   render() {
     const { state, marking, date } = this.props;
-    const label = format(date.dateString, "dddd, MMMM D");
+    const label = toFormat(date.dateString, "dddd, MMMM D");
     const traits = marking.selected ? ["button", "selected"] : ["button"];
 
     return (

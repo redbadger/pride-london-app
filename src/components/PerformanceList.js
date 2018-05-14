@@ -1,5 +1,4 @@
 // @flow
-import parseDate from "date-fns/parse";
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
@@ -10,6 +9,7 @@ import LayoutColumn from "./LayoutColumn";
 import Text from "./Text";
 import SectionDivider from "./SectionDivider";
 
+import { parse as parseDate } from "../lib/date";
 import { getTimePeriod } from "../selectors/events";
 import type { Performance, PerformancePeriods } from "../data/event";
 import { sectionHeaderShadow, sectionHeaderBgColor } from "../constants/colors";

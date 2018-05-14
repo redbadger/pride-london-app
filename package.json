@@ -29,6 +29,7 @@
     "contentful": "^5.0.5",
     "date-fns": "^1.29.0",
     "lottie-react-native": "2.3.2",
+    "luxon": "^1.2.0",
     "ramda": "^0.25.0",
     "react": "16.3.1",
     "react-native": "0.55.4",

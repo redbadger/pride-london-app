@@ -2,13 +2,13 @@
 import React, { Component } from "react";
 import { StyleSheet, SectionList, View } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
-import formatDate from "date-fns/format";
 import { concat, equals } from "ramda";
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import SectionHeader from "./SectionHeader";
 import { whiteColor } from "../constants/colors";
 import type { SavedEvents, Event, EventDays } from "../data/event";
+import { toFormat as formatDate } from "../lib/date";
 import type { FieldRef } from "../data/field-ref";
 import type { ImageSource } from "../data/get-asset-source";
 

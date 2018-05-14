@@ -1,8 +1,10 @@
 // @flow
-import parseDate from "date-fns/parse";
-import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
-import getHours from "date-fns/get_hours";
 import R from "ramda";
+import {
+  parse as parseDate,
+  getHours,
+  differenceInCalendarDays
+} from "../lib/date";
 
 import type { State } from "../reducers";
 import type {

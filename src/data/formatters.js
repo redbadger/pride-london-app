@@ -1,11 +1,10 @@
 // @flow
 
-import formatDate from "date-fns/format";
+import { toFormat as formatDate } from "../lib/date";
 import type { DateRange } from "./date-time";
 import text from "../constants/text";
 import { isFree } from "../selectors/event";
 
-/* eslint-disable import/prefer-default-export */
 export const formatDateRange = (dateRange: DateRange) =>
   dateRange.startDate !== dateRange.endDate
     ? [

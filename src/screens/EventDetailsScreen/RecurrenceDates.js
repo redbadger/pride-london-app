@@ -1,8 +1,10 @@
 // @flow
 import React from "react";
 import { StyleSheet } from "react-native";
-import dateComparator from "date-fns/compare_asc";
-import formatDate from "date-fns/format";
+import {
+  toFormat as formatDate,
+  compareAsc as compareDateAsc
+} from "../../lib/date";
 import Text from "../../components/Text";
 import { removeTimezoneFromCmsDateString } from "../../data/formatters";
 import text from "../../constants/text";
@@ -21,7 +23,7 @@ const RecurrenceDates = ({ recurrenceDates, startTime }: Props) => {
   const orderedRecurrenceDates = [
     removeTimezoneFromCmsDateString(startTime),
     ...recurrenceDates.map(reformatEuropeanDateString)
-  ].sort(dateComparator);
+  ].sort(compareDateAsc);
 
   const formattedRecurrenceDates = `${text.runsFrom} ${formatDate(
     orderedRecurrenceDates[0],
