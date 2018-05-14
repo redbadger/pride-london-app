@@ -1,52 +1,74 @@
 // @flow
-// import { DateTime } from "luxon";
+import { DateTime, Interval } from "luxon";
 
 import DfFormat from "date-fns/format";
-import DfIsBefore from "date-fns/is_before";
-import DfAddDays from "date-fns/add_days";
 import DFParse from "date-fns/parse";
-import DfIsSameDay from "date-fns/is_same_day";
-import DfDateComparator from "date-fns/compare_asc";
-import DfAreRangesOverlapping from "date-fns/are_ranges_overlapping";
-import DfStartOfDay from "date-fns/start_of_day";
-import DfEndOfDay from "date-fns/end_of_day";
 import DfGetHours from "date-fns/get_hours";
 import DfDifferenceInCalendarDays from "date-fns/difference_in_calendar_days";
+
+const contentfulISOFormatOptions = {
+  suppressMilliseconds: true,
+  suppressSeconds: true
+};
 
 // export const toFormat = (date: string, format: string) =>
 //   DateTime.fromISO(date).toFormat(format);
 
-// export const isBefore = (d1: string, d2: string) =>
-//   DateTime.fromISO(d1) < DateTime.fromISO(d2);
+export const isBefore = (d1: string, d2: string) =>
+  +DateTime.fromISO(d1) < +DateTime.fromISO(d2);
 
-// export const addDays = (date: string, days: number) =>
-//   DateTime.fromISO(date).add({ days });
+export const addDays = (date: string, days: number) =>
+  DateTime.fromISO(date)
+    .plus({ days })
+    .toISO(contentfulISOFormatOptions);
 
-// export const isSameDay = (d1: string, d2: string) => DateTime.fromISO(d1).hasSame(d2, 'day');
+export const isSameDay = (d1: string, d2: string) =>
+  DateTime.fromISO(d1).hasSame(DateTime.fromISO(d2), "day");
 
 export const toFormat = (date: string | Date, format: string) =>
   DfFormat(date, format);
 
-export const isBefore = (d1: string, d2: string) => DfIsBefore(d1, d2);
-
-export const isSameDay = (d1: string, d2: string) => DfIsSameDay(d1, d2);
-
-export const addDays = (date: string, days: number) => DfAddDays(date, days);
-
 export const parse = (date: string | Date) => DFParse(date);
 
-export const compareAsc = (d1: string, d2: string) => DfDateComparator(d1, d2);
+export const compareAsc = (d1: string, d2: string) => {
+  const coercedD1 = +DateTime.fromISO(d1);
+  const coercedD2 = +DateTime.fromISO(d2);
+  if (coercedD1 < coercedD2) {
+    return -1;
+  }
+  if (coercedD1 > coercedD2) {
+    return 1;
+  }
+  return 0;
+};
 
 export const areRangesOverlapping = (
-  d1Start: string | Date,
-  d1End: string | Date,
-  d2Start: string | Date,
-  d2End: string | Date
-) => DfAreRangesOverlapping(d1Start, d1End, d2Start, d2End);
+  d1Start: string,
+  d1End: string,
+  d2Start: string,
+  d2End: string
+) => {
+  const range1 = Interval.fromDateTimes(
+    DateTime.fromISO(d1Start),
+    DateTime.fromISO(d1End)
+  );
+  const range2 = Interval.fromDateTimes(
+    DateTime.fromISO(d2Start),
+    DateTime.fromISO(d2End)
+  );
 
-export const startOfDay = (date: string) => DfStartOfDay(date);
+  return range1.overlaps(range2);
+};
 
-export const endOfDay = (date: string) => DfEndOfDay(date);
+export const startOfDay = (date: string) =>
+  DateTime.fromISO(date)
+    .startOf("day")
+    .toISO(contentfulISOFormatOptions);
+
+export const endOfDay = (date: string) =>
+  DateTime.fromISO(date)
+    .endOf("day")
+    .toISO(contentfulISOFormatOptions);
 
 export const getHours = (date: string | Date) => DfGetHours(date);
 

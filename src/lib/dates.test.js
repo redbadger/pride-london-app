@@ -37,7 +37,7 @@ describe("isBefore", () => {
 describe("addDays", () => {
   it("adds days to a given date", () => {
     expect(addDays("2018-07-07T04:00+01:00", 2)).toEqual(
-      new Date("2018-07-09T04:00+01:00")
+      "2018-07-09T04:00+01:00"
     );
   });
 });
@@ -97,7 +97,7 @@ describe("areRangesOverlapping", () => {
 describe("startOfDay", () => {
   it("returns the start of a given day", () => {
     expect(startOfDay("2018-07-07T04:00+01:00")).toEqual(
-      new Date("2018-07-07T00:00+01:00")
+      "2018-07-07T00:00+01:00"
     );
   });
 });
@@ -105,7 +105,7 @@ describe("startOfDay", () => {
 describe("endOfDay", () => {
   it("returns the end of a given day", () => {
     expect(endOfDay("2018-07-07T04:00+01:00")).toEqual(
-      new Date("2018-07-07T23:59:59.999+01:00")
+      "2018-07-07T23:59:59.999+01:00"
     );
   });
 });
