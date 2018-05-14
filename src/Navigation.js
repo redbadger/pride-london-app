@@ -146,22 +146,32 @@ const TabNav = createBottomTabNavigator(
   {
     [HOME]: {
       screen: HomeStack,
-      navigationOptions: {
-        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
-        tabBarLabel: text.tabHome,
-        tabBarTestIDProps: {
-          testID: "home-tab-button"
+      navigationOptions: ({ navigation }) => {
+        let { routeName } = navigation.state.routes[navigation.state.index];
+        let navigationOptions = {
+          tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+          tabBarLabel: text.tabHome
+        };
+        if (routeName === FEATURED_EVENT_LIST) {
+          navigationOptions.tabBarVisible = false;
         }
+
+        return navigationOptions;
       }
     },
     [EVENT_LIST]: {
       screen: EventsStack,
-      navigationOptions: {
-        tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
-        tabBarLabel: text.tabEvents,
-        tabBarTestIDProps: {
-          testID: "events-tab-button"
+      navigationOptions: ({ navigation }) => {
+        let { routeName } = navigation.state.routes[navigation.state.index];
+        let navigationOptions = {
+          tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
+          tabBarLabel: text.tabEvents
+        };
+        if (routeName === FEATURED_EVENT_LIST) {
+          navigationOptions.tabBarVisible = false;
         }
+
+        return navigationOptions;
       }
     },
     [PARADE]: {
@@ -173,16 +183,32 @@ const TabNav = createBottomTabNavigator(
     },
     [SAVED]: {
       screen: SavedStack,
-      navigationOptions: {
-        tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-        tabBarLabel: text.tabSaved
+      navigationOptions: ({ navigation }) => {
+        let { routeName } = navigation.state.routes[navigation.state.index];
+        let navigationOptions = {
+          tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
+          tabBarLabel: text.tabSaved
+        };
+        if (routeName === EVENT_DETAILS) {
+          navigationOptions.tabBarVisible = false;
+        }
+
+        return navigationOptions;
       }
     },
     [SUPPORT_US]: {
       screen: SupportUsStack,
-      navigationOptions: {
-        tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-        tabBarLabel: text.tabSupportUs
+      navigationOptions: ({ navigation }) => {
+        let { routeName } = navigation.state.routes[navigation.state.index];
+        let navigationOptions = {
+          tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
+          tabBarLabel: text.tabSupportUs
+        };
+        if (routeName === DONATE || routeName === SPONSOR) {
+          navigationOptions.tabBarVisible = false;
+        }
+
+        return navigationOptions;
       }
     }
   },
