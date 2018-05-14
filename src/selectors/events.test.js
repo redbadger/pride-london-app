@@ -463,7 +463,7 @@ describe("expandRecurringEventsInEntries", () => {
     expect(expandRecurringEventsInEntries(events)).toEqual(expected);
   });
 
-  it.only("modifies endTime if on a different day to starTime but before the recurrance date", () => {
+  it("modifies endTime if on a different day to starTime but before the recurrance date", () => {
     const events = [
       {
         fields: {
