@@ -157,13 +157,7 @@ describe("EventAccessibility", () => {
 
 describe("EventTickets", () => {
   it("renders correctly", () => {
-    const output = shallow(
-      <EventTickets
-        event={event}
-        navigation={navigation}
-        setCategoryFilter={() => {}}
-      />
-    );
+    const output = shallow(<EventTickets url="https://prideinlondon.org/" />);
     expect(output).toMatchSnapshot();
   });
 });
