@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const getTabTestId = (routeName: string) => {
+export const getTabTestId = (routeName: string) => {
   switch (routeName) {
     case EVENT_LIST:
       return "events-tab-button";
@@ -94,7 +94,7 @@ export const getNavigationOptions = (
 ) => {
   const { routeName } = navigation.state.routes[navigation.state.index];
   if (tabBarLessRoutes.includes(routeName)) {
-    navigationOptions.tabBarVisible = false;
+    Object.assign(navigationOptions, { tabBarVisible: false });
   }
   return navigationOptions;
 };
