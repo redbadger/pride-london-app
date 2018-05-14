@@ -236,6 +236,9 @@ const TabNav = createBottomTabNavigator(
     initialRouteName: HOME,
     cardStyle: {
       backgroundColor: "blue"
+    },
+    tabBarOptions: {
+      getTabTestID: getTabTestId
     }
   }
 );
