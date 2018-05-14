@@ -10,6 +10,7 @@ exports[`SavedEventListScreen Component renders correctly 1`] = `
   }
 >
   <Header
+    testID="page-heading-saved-events"
     title="Saved Events"
   />
   <EventList
@@ -147,6 +148,7 @@ exports[`SavedEventListScreen Component renders no saved events screen when ther
   }
 >
   <Header
+    testID="page-heading-saved-events"
     title="Saved Events"
   />
   <NoSavedEvents
