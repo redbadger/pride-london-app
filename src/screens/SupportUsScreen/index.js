@@ -53,7 +53,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
             description={text.supportUsVolunteerDescription}
             bgTopRight={supportUsVolunteerBgTopRight}
             navigation={navigation}
-            url="https://example.com"
+            url="https://prideinlondon.org/volunteer"
             style={styles.buttonSpacing}
           />
           <ButtonWithShapes
@@ -62,7 +62,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
             description={text.supportUsShopDescription}
             bgBottomRight={supportUsShopBgBottomRight}
             navigation={navigation}
-            url="https://example.com"
+            url="https://www.thegayshop.co.uk/product-category/pride/pride-in-london-shop/"
             contrast
             style={styles.buttonSpacing}
           />

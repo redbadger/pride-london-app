@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
     }
   >
     <ScrollView>
-      <Component
+      <withOrientation
         style={
           Object {
             "alignSelf": "center",
@@ -157,7 +157,7 @@ exports[`renders correctly 1`] = `
             </Button>
           </Component>
         </ContentPadding>
-      </Component>
+      </withOrientation>
     </ScrollView>
   </KeyboardAvoidingView>
 </Component>

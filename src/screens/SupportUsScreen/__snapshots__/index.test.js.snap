@@ -61,7 +61,7 @@ exports[`renders correctly 1`] = `
             }
           }
           title="Volunteer"
-          url="https://example.com"
+          url="https://prideinlondon.org/volunteer"
         />
         <SupportUsButton
           bgBottomRight={1}
@@ -75,7 +75,7 @@ exports[`renders correctly 1`] = `
             }
           }
           title="Buy merchandise"
-          url="https://example.com"
+          url="https://www.thegayshop.co.uk/product-category/pride/pride-in-london-shop/"
         />
       </ContentPadding>
       <ImageHeader
