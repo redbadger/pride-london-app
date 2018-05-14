@@ -87,6 +87,18 @@ const getTabTestId = (routeName: string) => {
   }
 };
 
+const getNavigationOptions = (
+  navigation: object,
+  navigationOptions: object,
+  tabBarLessRoutes: array
+) => {
+  const { routeName } = navigation.state.routes[navigation.state.index];
+  if (tabBarLessRoutes.includes(routeName)) {
+    navigationOptions.tabBarVisible = false;
+  }
+  return navigationOptions;
+};
+
 const HomeStack = createStackNavigator(
   {
     [HOME]: { screen: withShadow(HomeScreen) },
@@ -166,33 +178,29 @@ const TabNav = createBottomTabNavigator(
     [HOME]: {
       screen: HomeStack,
       navigationOptions: ({ navigation }) => {
-        const { routeName } = navigation.state.routes[navigation.state.index];
-        const navigationOptions = {
-          tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
-          tabBarLabel: text.tabHome,
-          tabBarVisible: true
-        };
-        if (routeName === FEATURED_EVENT_LIST || routeName === EVENT_DETAILS) {
-          navigationOptions.tabBarVisible = false;
-        }
-
-        return navigationOptions;
+        return getNavigationOptions(
+          navigation,
+          {
+            tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+            tabBarLabel: text.tabHome,
+            tabBarVisible: true
+          },
+          [FEATURED_EVENT_LIST, EVENT_DETAILS]
+        );
       }
     },
     [EVENT_LIST]: {
       screen: EventsStack,
       navigationOptions: ({ navigation }) => {
-        const { routeName } = navigation.state.routes[navigation.state.index];
-        const navigationOptions = {
-          tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
-          tabBarLabel: text.tabEvents,
-          tabBarVisible: true
-        };
-        if (routeName === EVENT_DETAILS) {
-          navigationOptions.tabBarVisible = false;
-        }
-
-        return navigationOptions;
+        return getNavigationOptions(
+          navigation,
+          {
+            tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
+            tabBarLabel: text.tabEvents,
+            tabBarVisible: true
+          },
+          [EVENT_DETAILS]
+        );
       }
     },
     [PARADE]: {
@@ -205,33 +213,29 @@ const TabNav = createBottomTabNavigator(
     [SAVED]: {
       screen: SavedStack,
       navigationOptions: ({ navigation }) => {
-        const { routeName } = navigation.state.routes[navigation.state.index];
-        const navigationOptions = {
-          tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-          tabBarLabel: text.tabSaved,
-          tabBarVisible: true
-        };
-        if (routeName === EVENT_DETAILS) {
-          navigationOptions.tabBarVisible = false;
-        }
-
-        return navigationOptions;
+        return getNavigationOptions(
+          navigation,
+          {
+            tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
+            tabBarLabel: text.tabSaved,
+            tabBarVisible: true
+          },
+          [EVENT_DETAILS]
+        );
       }
     },
     [SUPPORT_US]: {
       screen: SupportUsStack,
       navigationOptions: ({ navigation }) => {
-        const { routeName } = navigation.state.routes[navigation.state.index];
-        const navigationOptions = {
-          tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-          tabBarLabel: text.tabSupportUs,
-          tabBarVisible: true
-        };
-        if (routeName === DONATE || routeName === SPONSOR) {
-          navigationOptions.tabBarVisible = false;
-        }
-
-        return navigationOptions;
+        return getNavigationOptions(
+          navigation,
+          {
+            tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
+            tabBarLabel: text.tabSupportUs,
+            tabBarVisible: true
+          },
+          [DONATE, SPONSOR]
+        );
       }
     }
   },
