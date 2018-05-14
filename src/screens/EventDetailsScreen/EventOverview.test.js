@@ -61,7 +61,6 @@ const defaultEvent: Event = ({
         "Music"
       ]
     },
-    timeOfDay: { "en-GB": ["Afternoon"] },
     recurrenceDates: {
       "en-GB": [
         "10/07/2018",

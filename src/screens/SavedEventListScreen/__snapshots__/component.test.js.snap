@@ -116,11 +116,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
               "ticketingUrl": Object {
                 "en-GB": "https://prideinlondon.org/pride-in-the-park/",
               },
-              "timeOfDay": Object {
-                "en-GB": Array [
-                  "Afternoon",
-                ],
-              },
               "venueDetails": Object {
                 "en-GB": Array [
                   "Gender neutral toilets",
