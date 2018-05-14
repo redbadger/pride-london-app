@@ -3,6 +3,7 @@ import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import getHours from "date-fns/get_hours";
 import isSameDay from "date-fns/is_same_day";
+import isBefore from "date-fns/is_before";
 import R from "ramda";
 import { buildEventFilter } from "./event-filters";
 import { formatContentfulDate } from "../data/formatters";
@@ -63,30 +64,34 @@ const generateRecurringEvent = event => recurrance => {
   const [eventStartYear, eventStartMonth, eventStartDay] = eventStartDate.split(
     "-"
   );
-  const startAndEndAreSameDay = isSameDay(
-    event.fields.startTime[locale],
-    event.fields.endTime[locale]
+
+  const recurrenceStartDate = formatContentfulDate(
+    recurranceYear,
+    recurrancyMonth,
+    recurranceDay,
+    eventStartTime
   );
+
+  const shouldModifyEndTime =
+    isSameDay(event.fields.startTime[locale], event.fields.endTime[locale]) ||
+    isBefore(event.fields.endTime[locale], recurrenceStartDate);
+
+  const recurrenceEndDate = shouldModifyEndTime
+    ? formatContentfulDate(
+        recurranceYear,
+        recurrancyMonth,
+        recurranceDay,
+        eventEndTime
+      )
+    : event.fields.endTime[locale];
 
   return R.mergeDeepRight(event, {
     fields: {
       startTime: {
-        [locale]: formatContentfulDate(
-          recurranceYear,
-          recurrancyMonth,
-          recurranceDay,
-          eventStartTime
-        )
+        [locale]: recurrenceStartDate
       },
       endTime: {
-        [locale]: startAndEndAreSameDay
-          ? formatContentfulDate(
-              recurranceYear,
-              recurrancyMonth,
-              recurranceDay,
-              eventEndTime
-            )
-          : event.fields.endTime[locale]
+        [locale]: recurrenceEndDate
       },
       recurrenceDates: {
         [locale]: [
