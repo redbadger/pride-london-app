@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, Image, PixelRatio, Platform } from "react-native";
-import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Touchable from "./Touchable";
 import {
   interestButtonBgColor,
@@ -21,21 +20,22 @@ type Props = {
 };
 
 type CategoriesFilterButtonProps = {
-  style?: ViewStyleProp,
   onPress?: Function
 };
 
-const CategoriesFilterButton = ({
-  style,
+export const CategoriesFilterButton = ({
   onPress
 }: CategoriesFilterButtonProps) => (
-  <Touchable style={[styles.categoriesFilterButton, style]} onPress={onPress}>
+  <Touchable
+    accessibilityLabel={text.categoryFilterButton}
+    style={styles.categoriesFilterButton}
+    onPress={onPress}
+  >
     <Image source={chevronRightImg} />
   </Touchable>
 );
 
 CategoriesFilterButton.defaultProps = {
-  style: {},
   onPress: () => {}
 };
 
