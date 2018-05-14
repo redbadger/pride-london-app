@@ -163,8 +163,8 @@ const TabNav = createBottomTabNavigator(
     [HOME]: {
       screen: HomeStack,
       navigationOptions: ({ navigation }) => {
-        let { routeName } = navigation.state.routes[navigation.state.index];
-        let navigationOptions = {
+        const { routeName } = navigation.state.routes[navigation.state.index];
+        const navigationOptions = {
           tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
           tabBarLabel: text.tabHome
         };
@@ -178,8 +178,8 @@ const TabNav = createBottomTabNavigator(
     [EVENT_LIST]: {
       screen: EventsStack,
       navigationOptions: ({ navigation }) => {
-        let { routeName } = navigation.state.routes[navigation.state.index];
-        let navigationOptions = {
+        const { routeName } = navigation.state.routes[navigation.state.index];
+        const navigationOptions = {
           tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
           tabBarLabel: text.tabEvents
         };
@@ -200,8 +200,8 @@ const TabNav = createBottomTabNavigator(
     [SAVED]: {
       screen: SavedStack,
       navigationOptions: ({ navigation }) => {
-        let { routeName } = navigation.state.routes[navigation.state.index];
-        let navigationOptions = {
+        const { routeName } = navigation.state.routes[navigation.state.index];
+        const navigationOptions = {
           tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
           tabBarLabel: text.tabSaved
         };
@@ -215,8 +215,8 @@ const TabNav = createBottomTabNavigator(
     [SUPPORT_US]: {
       screen: SupportUsStack,
       navigationOptions: ({ navigation }) => {
-        let { routeName } = navigation.state.routes[navigation.state.index];
-        let navigationOptions = {
+        const { routeName } = navigation.state.routes[navigation.state.index];
+        const navigationOptions = {
           tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
           tabBarLabel: text.tabSupportUs
         };
