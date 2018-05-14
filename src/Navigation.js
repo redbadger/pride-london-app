@@ -177,8 +177,8 @@ const TabNav = createBottomTabNavigator(
   {
     [HOME]: {
       screen: HomeStack,
-      navigationOptions: ({ navigation }) => {
-        return getNavigationOptions(
+      navigationOptions: ({ navigation }) =>
+        getNavigationOptions(
           navigation,
           {
             tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
@@ -186,13 +186,12 @@ const TabNav = createBottomTabNavigator(
             tabBarVisible: true
           },
           [FEATURED_EVENT_LIST, EVENT_DETAILS]
-        );
-      }
+        )
     },
     [EVENT_LIST]: {
       screen: EventsStack,
-      navigationOptions: ({ navigation }) => {
-        return getNavigationOptions(
+      navigationOptions: ({ navigation }) =>
+        getNavigationOptions(
           navigation,
           {
             tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
@@ -200,8 +199,7 @@ const TabNav = createBottomTabNavigator(
             tabBarVisible: true
           },
           [EVENT_DETAILS]
-        );
-      }
+        )
     },
     [PARADE]: {
       screen: ParadeStack,
@@ -212,8 +210,8 @@ const TabNav = createBottomTabNavigator(
     },
     [SAVED]: {
       screen: SavedStack,
-      navigationOptions: ({ navigation }) => {
-        return getNavigationOptions(
+      navigationOptions: ({ navigation }) =>
+        getNavigationOptions(
           navigation,
           {
             tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
@@ -221,13 +219,12 @@ const TabNav = createBottomTabNavigator(
             tabBarVisible: true
           },
           [EVENT_DETAILS]
-        );
-      }
+        )
     },
     [SUPPORT_US]: {
       screen: SupportUsStack,
-      navigationOptions: ({ navigation }) => {
-        return getNavigationOptions(
+      navigationOptions: ({ navigation }) =>
+        getNavigationOptions(
           navigation,
           {
             tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
@@ -235,8 +232,7 @@ const TabNav = createBottomTabNavigator(
             tabBarVisible: true
           },
           [DONATE, SPONSOR]
-        );
-      }
+        )
     }
   },
   {
