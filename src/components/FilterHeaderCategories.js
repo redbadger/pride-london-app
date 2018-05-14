@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, Image, PixelRatio, Platform } from "react-native";
-import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Touchable from "./Touchable";
 import {
   interestButtonBgColor,
