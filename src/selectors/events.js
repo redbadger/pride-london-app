@@ -52,7 +52,7 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     : sections.days;
 };
 
-export const getTimePeriod = (date: Date) => {
+export const getTimePeriod = (date: string) => {
   const splits = [6, 12, 18];
   const hours = getHours(date);
   if (hours >= splits[0] && hours < splits[1]) {
@@ -80,8 +80,8 @@ export const groupPerformancesByPeriod = (
         const previous: Performance = buffer[buffer.length - 1];
 
         if (
-          getTimePeriod(parseDate(previous.fields.startTime[locale])) !==
-          getTimePeriod(parseDate(performance.fields.startTime[locale]))
+          getTimePeriod(previous.fields.startTime[locale]) !==
+          getTimePeriod(performance.fields.startTime[locale])
         )
           return { periods: [...periods, buffer], buffer: [performance] };
 

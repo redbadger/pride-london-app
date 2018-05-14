@@ -9,7 +9,6 @@ import LayoutColumn from "./LayoutColumn";
 import Text from "./Text";
 import SectionDivider from "./SectionDivider";
 
-import { parse as parseDate } from "../lib/date";
 import { getTimePeriod } from "../selectors/events";
 import type { Performance, PerformancePeriods } from "../data/event";
 import { sectionHeaderShadow, sectionHeaderBgColor } from "../constants/colors";
@@ -23,7 +22,7 @@ type Props = {
 const sections = (performances: PerformancePeriods, locale: string) =>
   performances.map((a: Performance[]) => ({
     data: a,
-    title: getTimePeriod(parseDate(a[0].fields.startTime[locale]))
+    title: getTimePeriod(a[0].fields.startTime[locale])
   }));
 
 const PerformanceList = ({ performances, locale }: Props) => (

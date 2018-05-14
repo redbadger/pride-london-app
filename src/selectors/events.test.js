@@ -1,4 +1,3 @@
-import { parse as parseDate } from "../lib/date";
 import {
   getTimePeriod,
   groupEventsByStartTime,
@@ -291,37 +290,37 @@ describe("groupEventsByStartTime", () => {
 describe("getTimePeriod", () => {
   it("5:59am is Evening (late)", () => {
     const expected = "Evening";
-    const actual = getTimePeriod(parseDate("2018-01-01T05:59"));
+    const actual = getTimePeriod("2018-01-01T05:59");
 
     expect(actual).toEqual(expected);
   });
   it("6:00am is Morning", () => {
     const expected = "Morning";
-    const actual = getTimePeriod(parseDate("2018-01-01T06:00"));
+    const actual = getTimePeriod("2018-01-01T06:00");
 
     expect(actual).toEqual(expected);
   });
   it("11:59am is Morning", () => {
     const expected = "Morning";
-    const actual = getTimePeriod(parseDate("2018-01-01T11:59"));
+    const actual = getTimePeriod("2018-01-01T11:59");
 
     expect(actual).toEqual(expected);
   });
   it("12:00am is Afternoon", () => {
     const expected = "Afternoon";
-    const actual = getTimePeriod(parseDate("2018-01-01T12:00"));
+    const actual = getTimePeriod("2018-01-01T12:00");
 
     expect(actual).toEqual(expected);
   });
   it("5:59pm is Afternoon", () => {
     const expected = "Afternoon";
-    const actual = getTimePeriod(parseDate("2018-01-01T17:59"));
+    const actual = getTimePeriod("2018-01-01T17:59");
 
     expect(actual).toEqual(expected);
   });
   it("6:00pm is Evening", () => {
     const expected = "Evening";
-    const actual = getTimePeriod(parseDate("2018-01-01T18:00"));
+    const actual = getTimePeriod("2018-01-01T18:00");
 
     expect(actual).toEqual(expected);
   });
