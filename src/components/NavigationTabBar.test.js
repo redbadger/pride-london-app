@@ -15,13 +15,14 @@ const render = props =>
         dispatch: navigationDispatch,
         state: {
           index: 0,
-          routes: [{ key: "1", index: 1 }, { key: "2" }]
+          routes: [
+            { key: "1", index: 1, routeName: "tab-0" },
+            { key: "2", routeName: "tab-1" }
+          ]
         }
       }}
       jumpTo={() => {}}
-      getTestIDProps={scene => ({
-        testID: `tab-${scene.index}`
-      })}
+      getTabTestID={routeName => routeName}
       renderIcon={scene => <Text>{scene.index}</Text>}
       getLabelText={scene => `Tab ${scene.index}`}
       {...props}
