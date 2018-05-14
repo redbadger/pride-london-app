@@ -139,7 +139,10 @@ const SavedStack = createStackNavigator(
     initialRouteName: SAVED,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-      tabBarLabel: text.tabSaved
+      tabBarLabel: text.tabSaved,
+      tabBarTestIDProps: {
+        testID: "saved-events-tab-button"
+      }
     },
     headerMode: "none"
   }

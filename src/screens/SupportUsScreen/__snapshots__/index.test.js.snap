@@ -10,6 +10,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Header
+    testID="page-heading-support-us"
     title="Support us"
   />
   <ScrollView>
