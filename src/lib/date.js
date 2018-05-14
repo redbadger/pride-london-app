@@ -2,7 +2,6 @@
 import { DateTime, Interval } from "luxon";
 
 import DfFormat from "date-fns/format";
-import DFParse from "date-fns/parse";
 
 const contentfulISOFormatOptions = {
   suppressMilliseconds: true,
@@ -26,7 +25,7 @@ export const isSameDay = (d1: string, d2: string) =>
 export const toFormat = (date: string | Date, format: string) =>
   DfFormat(date, format);
 
-export const parse = (date: string | Date) => DFParse(date);
+export const parse = (date: string) => DateTime.fromISO(date).toJSDate();
 
 export const compareAsc = (d1: string, d2: string) => {
   const coercedD1 = +DateTime.fromISO(d1);
