@@ -21,17 +21,15 @@ type Props = {
 };
 
 type CategoriesFilterButtonProps = {
-  style?: ViewStyleProp,
   onPress?: Function
 };
 
-const CategoriesFilterButton = ({
-  style,
+export const CategoriesFilterButton = ({
   onPress
 }: CategoriesFilterButtonProps) => (
   <Touchable
     accessibilityLabel={text.categoryFilterButton}
-    style={[styles.categoriesFilterButton, style]}
+    style={styles.categoriesFilterButton}
     onPress={onPress}
   >
     <Image source={chevronRightImg} />
@@ -39,7 +37,6 @@ const CategoriesFilterButton = ({
 );
 
 CategoriesFilterButton.defaultProps = {
-  style: {},
   onPress: () => {}
 };
 
