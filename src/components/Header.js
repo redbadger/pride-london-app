@@ -13,10 +13,11 @@ import text from "../constants/text";
 type Props = {
   leftElement?: Node,
   title?: string,
-  rightElement?: Node
+  rightElement?: Node,
+  testID?: string
 };
 
-const Header = ({ leftElement, title, rightElement }: Props) => (
+const Header = ({ leftElement, title, rightElement, testID }: Props) => (
   <SafeAreaView
     accessibilityTraits={["header"]}
     style={styles.container}
@@ -25,7 +26,7 @@ const Header = ({ leftElement, title, rightElement }: Props) => (
     <ContentPadding style={styles.headerContent}>
       <View style={styles.first}>{leftElement}</View>
       <View style={styles.title}>
-        <Text type="h2" color="whiteColor">
+        <Text type="h2" color="whiteColor" testID={testID}>
           {title}
         </Text>
       </View>
@@ -37,7 +38,8 @@ const Header = ({ leftElement, title, rightElement }: Props) => (
 Header.defaultProps = {
   leftElement: undefined,
   title: undefined,
-  rightElement: undefined
+  rightElement: undefined,
+  testID: undefined
 };
 
 const styles = StyleSheet.create({

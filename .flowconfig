@@ -23,6 +23,12 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
+; Ignore iOS platform
+.*/ios/.*
+
+; Ignore Android platform
+.*/android/.*
+
 .*/node_modules/config-chain/.*
 
 [include]

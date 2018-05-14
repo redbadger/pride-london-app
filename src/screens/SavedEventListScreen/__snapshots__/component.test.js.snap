@@ -10,6 +10,7 @@ exports[`SavedEventListScreen Component renders correctly 1`] = `
   }
 >
   <Header
+    testID="page-heading-saved-events"
     title="Saved Events"
   />
   <EventList
@@ -116,11 +117,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
               "ticketingUrl": Object {
                 "en-GB": "https://prideinlondon.org/pride-in-the-park/",
               },
-              "timeOfDay": Object {
-                "en-GB": Array [
-                  "Afternoon",
-                ],
-              },
               "venueDetails": Object {
                 "en-GB": Array [
                   "Gender neutral toilets",
@@ -152,6 +148,7 @@ exports[`SavedEventListScreen Component renders no saved events screen when ther
   }
 >
   <Header
+    testID="page-heading-saved-events"
     title="Saved Events"
   />
   <NoSavedEvents
