@@ -3,9 +3,7 @@ import areRangesOverlapping from "date-fns/are_ranges_overlapping";
 import endOfDay from "date-fns/end_of_day";
 import getHours from "date-fns/get_hours";
 import startOfDay from "date-fns/start_of_day";
-import getDate from "date-fns/get_date";
-import isAfter from "date-fns/is_after";
-import { range } from "ramda";
+import differenceInHours from "date-fns/difference_in_hours";
 import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
 import type { Event, EventCategoryName } from "../data/event";
@@ -22,50 +20,37 @@ export const buildDateRangeFilter = (date: DateRange) => (event: Event) =>
     event.fields.endTime[locale]
   );
 
-const morningHours = range(6, 12);
-const afternoonHours = range(12, 18);
-const eveningHours = [...range(18, 24), ...range(0, 6)];
-
 type TimeFilter = (timeFilter: Time) => (event: Event) => boolean;
-/* eslint-disable consistent-return */
-export const buildTimeFilter: TimeFilter = timeFilter => event => {
-  const start = getHours(event.fields.startTime[locale]);
-  const end = getHours(event.fields.endTime[locale]);
-  const multiDayEvent = isAfter(
-    getDate(event.fields.endTime[locale]),
-    getDate(event.fields.startTime[locale])
-  );
+
+const rangeFromTime = (timeFilter: Time) => {
   switch (timeFilter) {
     case "morning":
-      return morningHours.some(morningHour => {
-        if (multiDayEvent) {
-          return [...range(start, 24), ...range(0, end)].some(
-            eventHour => eventHour === morningHour
-          );
-        }
-        return range(start, end).some(eventHour => eventHour === morningHour);
-      });
+      return [6, 12];
     case "afternoon":
-      return afternoonHours.some(afternoonHour => {
-        if (multiDayEvent) {
-          return [...range(start, 24), ...range(0, end)].some(
-            eventHour => eventHour === afternoonHour
-          );
-        }
-        return range(start, end).some(eventHour => eventHour === afternoonHour);
-      });
+      return [12, 18];
     case "evening":
-      return eveningHours.some(eveningHour => {
-        if (multiDayEvent) {
-          return [...range(start, 24), ...range(0, end)].some(
-            eventHour => eventHour === eveningHour
-          );
-        }
-        return range(start, end).some(eventHour => eventHour === eveningHour);
-      });
+      return [18, 30];
     default:
-      return false;
+      return [0, 0];
   }
+};
+
+export const buildTimeFilter: TimeFilter = (timeFilter: Time) => event => {
+  const [rangeMin, rangeMax] = rangeFromTime(timeFilter);
+  const relativeRangeMax = rangeMax - rangeMin;
+  const eventStartHour = getHours(event.fields.startTime[locale]);
+  const eventDuration = differenceInHours(
+    event.fields.endTime[locale],
+    event.fields.startTime[locale]
+  );
+  const relativeStartHour = (eventStartHour - rangeMin) % 24;
+  const relativeEndHour = (relativeStartHour + eventDuration) % 24;
+  return (
+    (relativeStartHour >= 0 && relativeStartHour < relativeRangeMax) ||
+    (relativeEndHour >= 0 && relativeEndHour < relativeRangeMax) ||
+    (relativeEndHour >= 0 && relativeStartHour < 0) ||
+    relativeEndHour < relativeStartHour
+  );
 };
 
 export const buildCategoryFilter = (categories: Set<EventCategoryName>) => {
