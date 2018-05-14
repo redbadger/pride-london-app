@@ -166,9 +166,10 @@ const TabNav = createBottomTabNavigator(
         const { routeName } = navigation.state.routes[navigation.state.index];
         const navigationOptions = {
           tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
-          tabBarLabel: text.tabHome
+          tabBarLabel: text.tabHome,
+          tabBarVisible: true
         };
-        if (routeName === FEATURED_EVENT_LIST) {
+        if (routeName === FEATURED_EVENT_LIST || routeName === EVENT_DETAILS) {
           navigationOptions.tabBarVisible = false;
         }
 
@@ -181,9 +182,10 @@ const TabNav = createBottomTabNavigator(
         const { routeName } = navigation.state.routes[navigation.state.index];
         const navigationOptions = {
           tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
-          tabBarLabel: text.tabEvents
+          tabBarLabel: text.tabEvents,
+          tabBarVisible: true
         };
-        if (routeName === FEATURED_EVENT_LIST) {
+        if (routeName === EVENT_DETAILS) {
           navigationOptions.tabBarVisible = false;
         }
 
@@ -203,7 +205,8 @@ const TabNav = createBottomTabNavigator(
         const { routeName } = navigation.state.routes[navigation.state.index];
         const navigationOptions = {
           tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-          tabBarLabel: text.tabSaved
+          tabBarLabel: text.tabSaved,
+          tabBarVisible: true
         };
         if (routeName === EVENT_DETAILS) {
           navigationOptions.tabBarVisible = false;
@@ -218,7 +221,8 @@ const TabNav = createBottomTabNavigator(
         const { routeName } = navigation.state.routes[navigation.state.index];
         const navigationOptions = {
           tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-          tabBarLabel: text.tabSupportUs
+          tabBarLabel: text.tabSupportUs,
+          tabBarVisible: true
         };
         if (routeName === DONATE || routeName === SPONSOR) {
           navigationOptions.tabBarVisible = false;
