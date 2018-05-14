@@ -27,10 +27,6 @@ export type Props = {
 };
 
 class CategoriesFilterScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    tabBarVisible: false
-  };
-
   handleClose = () => {
     this.props.onClose();
     this.props.navigation.goBack();

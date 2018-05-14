@@ -27,10 +27,6 @@ type State = {|
 const selectableAmounts = [5, 10, 20];
 
 class DonateScreen extends React.PureComponent<Props, State> {
-  static navigationOptions = {
-    tabBarVisible: false
-  };
-
   state = {
     selectedAmount: null,
     otherAmount: null

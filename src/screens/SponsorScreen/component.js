@@ -25,10 +25,6 @@ type Props = {
 };
 
 class SponsorScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    tabBarVisible: false
-  };
-
   sponsorEmailButtonPress = () => {
     sendEmail(
       ["sponsor@prideinlondon.org"],
