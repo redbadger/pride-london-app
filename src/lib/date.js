@@ -24,7 +24,7 @@ import DfDifferenceInCalendarDays from "date-fns/difference_in_calendar_days";
 
 // export const isSameDay = (d1: string, d2: string) => DateTime.fromISO(d1).hasSame(d2, 'day');
 
-export const toFormat = (date: string, format: string) =>
+export const toFormat = (date: string | Date, format: string) =>
   DfFormat(date, format);
 
 export const isBefore = (d1: string, d2: string) => DfIsBefore(d1, d2);
@@ -50,5 +50,7 @@ export const endOfDay = (date: string) => DfEndOfDay(date);
 
 export const getHours = (date: string | Date) => DfGetHours(date);
 
-export const differenceInCalendarDays = (d1: string, d2: string) =>
-  DfDifferenceInCalendarDays(d1, d2);
+export const differenceInCalendarDays = (
+  d1: string | Date,
+  d2: string | Date
+) => DfDifferenceInCalendarDays(d1, d2);
