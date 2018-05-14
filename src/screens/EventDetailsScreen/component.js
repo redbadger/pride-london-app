@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent } from "react";
 import { Image, Linking, StyleSheet, View } from "react-native";
+import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
 import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
@@ -85,13 +86,15 @@ export const EventAccessibility = ({ event }: { event: Event }) => (
 );
 
 export const EventTickets = ({ event }: { event: Event }) => (
-  <ContentPadding style={styles.ticketButton}>
-    <ButtonPrimary
-      onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
-    >
-      {text.eventDetailsBuyButton}
-    </ButtonPrimary>
-  </ContentPadding>
+  <SafeAreaView>
+    <ContentPadding style={styles.ticketButton}>
+      <ButtonPrimary
+        onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
+      >
+        {text.eventDetailsBuyButton}
+      </ButtonPrimary>
+    </ContentPadding>
+  </SafeAreaView>
 );
 
 type Props = {

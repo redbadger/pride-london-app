@@ -14,7 +14,8 @@ import {
   blackTwentyColor,
   cardBgColor,
   titleTextColor,
-  bgColor
+  bgColor,
+  lightNavyBlueColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
@@ -82,8 +83,8 @@ class HomeScreen extends Component<Props> {
     const events = featuredEvents.slice(0, eventsCount);
 
     return (
-      <View testID="home-screen">
-        <ScrollView style={styles.scroller}>
+      <ScrollView testID="home-screen" style={styles.container}>
+        <View style={styles.content}>
           <Header
             headerBanners={headerBanners}
             getAssetSource={getAssetSource}
@@ -126,14 +127,17 @@ class HomeScreen extends Component<Props> {
               ))}
             </View>
           </ContentPadding>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  scroller: {
+  container: {
+    backgroundColor: lightNavyBlueColor
+  },
+  content: {
     backgroundColor: cardBgColor
   },
   mainContentContainer: {

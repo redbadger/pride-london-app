@@ -29,7 +29,6 @@ it("does not render markdown images", () => {
     <Text markdown>![Test](https://placehold.it/320x320.png)</Text>
   );
   const markdown = output.find(Markdown).shallow();
-  console.log(markdown);
   expect(markdown).toMatchSnapshot();
 });
 

@@ -49,6 +49,14 @@ export default class SaveEventButton extends React.Component<Props, State> {
 
   state = {};
 
+  shouldComponentUpdate(nextProps: Props) {
+    return (
+      this.props.active !== nextProps.active ||
+      this.props.onDark !== nextProps.onDark ||
+      this.props.onPress !== nextProps.onPress
+    );
+  }
+
   componentDidUpdate(prevProps: Props) {
     // Only animate if props.active has changed,
     // Animates heart when change from inactive -> active

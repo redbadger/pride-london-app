@@ -72,6 +72,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     bottom: 0
+  },
+  card: {
+    shadowOpacity: 0
   }
 });
 
@@ -92,7 +95,8 @@ const HomeStack = createStackNavigator(
   },
   {
     initialRouteName: HOME,
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -104,6 +108,13 @@ const EventsStack = createStackNavigator(
   },
   {
     initialRouteName: EVENT_LIST,
+    navigationOptions: {
+      tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
+      tabBarLabel: text.tabEvents,
+      tabBarTestIDProps: {
+        testID: "events-tab-button"
+      }
+    },
     headerMode: "none"
   }
 );
@@ -114,7 +125,8 @@ const ParadeStack = createStackNavigator(
   },
   {
     initialRouteName: PARADE,
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -125,6 +137,10 @@ const SavedStack = createStackNavigator(
   },
   {
     initialRouteName: SAVED,
+    navigationOptions: {
+      tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
+      tabBarLabel: text.tabSaved
+    },
     headerMode: "none"
   }
 );
@@ -137,8 +153,8 @@ const SupportUsStack = createStackNavigator(
   },
   {
     initialRouteName: SUPPORT_US,
-
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -218,8 +234,8 @@ const TabNav = createBottomTabNavigator(
     swipeEnabled: false,
     animationEnabled: false,
     initialRouteName: HOME,
-    tabBarOptions: {
-      getTabTestID: getTabTestId
+    cardStyle: {
+      backgroundColor: "blue"
     }
   }
 );
@@ -237,7 +253,8 @@ const RootStack = createStackNavigator(
     mode: "modal",
     navigationOptions: {
       header: null
-    }
+    },
+    cardStyle: styles.card
   }
 );
 
