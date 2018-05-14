@@ -32,6 +32,7 @@ export default {
   tabSupportUs: "Support us",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
+  categoryFilterButton: "Filter by event type",
   addFilters: "Filter by area, price...",
   filters: "Filters",
   filterPickerApply: showEvents,
@@ -151,7 +152,7 @@ export default {
         stageImage: "cabaret"
       },
       {
-        stageHeading: "Women's Stage / Diva Stage",
+        stageHeading: "Women's / Diva Stage",
         stageSubheading: "Leicester Square",
         stageDescription:
           "Nestled in the iconic Leicester Square - this collaboration with Diva brings the best acts offered by and for the women's community. Expect high energy, fabulous talent and our female led Pride's Got Talent Acts.",

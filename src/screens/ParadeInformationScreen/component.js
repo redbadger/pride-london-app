@@ -29,12 +29,12 @@ const ParadeInformationScreen = () => {
   const tx = text.paradeInformationScreen;
   return (
     <View style={styles.container}>
-      <Header title={tx.headerTitle} />
+      <Header title={tx.headerTitle} testID="page-heading-parade" />
       <ScrollView>
         <View style={styles.scrollPage}>
           <LayoutColumn spacing={24}>
             <ContentPadding>
-              <Text type="h1" color="lightNavyBlueColor">
+              <Text type="uber" color="lightNavyBlueColor">
                 {tx.pageHeading}
               </Text>
               <Text type="h2" color="lightNavyBlueColor">

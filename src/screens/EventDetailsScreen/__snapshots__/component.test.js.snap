@@ -82,7 +82,11 @@ exports[`EventCategories renders correctly 1`] = `
 
 exports[`EventHeader renders correctly 1`] = `
 <Header
-  onBack={[Function]}
+  leftElement={
+    <Unknown
+      onPress={[Function]}
+    />
+  }
   rightElement={
     <SaveEventButton
       active={true}
@@ -94,22 +98,24 @@ exports[`EventHeader renders correctly 1`] = `
 `;
 
 exports[`EventTickets renders correctly 1`] = `
-<ContentPadding
-  padding={Object {}}
-  style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "paddingVertical": 12,
+<withOrientation>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
+      }
     }
-  }
->
-  <Button
-    disabled={false}
-    onPress={[Function]}
   >
-    Get tickets
-  </Button>
-</ContentPadding>
+    <Button
+      disabled={false}
+      onPress={[Function]}
+    >
+      Get tickets
+    </Button>
+  </ContentPadding>
+</withOrientation>
 `;
 
 exports[`renders correctly 1`] = `
@@ -292,11 +298,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                     "ticketingUrl": Object {
                       "en-GB": "https://prideinlondon.org/pride-in-the-park/",
                     },
-                    "timeOfDay": Object {
-                      "en-GB": Array [
-                        "Afternoon",
-                      ],
-                    },
                     "venueDetails": Object {
                       "en-GB": Array [
                         "Gender neutral toilets",
@@ -413,11 +414,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                     "ticketingUrl": Object {
                       "en-GB": "https://prideinlondon.org/pride-in-the-park/",
                     },
-                    "timeOfDay": Object {
-                      "en-GB": Array [
-                        "Afternoon",
-                      ],
-                    },
                     "venueDetails": Object {
                       "en-GB": Array [
                         "Gender neutral toilets",
@@ -528,11 +524,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                     },
                     "ticketingUrl": Object {
                       "en-GB": "https://prideinlondon.org/pride-in-the-park/",
-                    },
-                    "timeOfDay": Object {
-                      "en-GB": Array [
-                        "Afternoon",
-                      ],
                     },
                     "venueDetails": Object {
                       "en-GB": Array [
@@ -659,11 +650,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                     "ticketingUrl": Object {
                       "en-GB": "https://prideinlondon.org/pride-in-the-park/",
                     },
-                    "timeOfDay": Object {
-                      "en-GB": Array [
-                        "Afternoon",
-                      ],
-                    },
                     "venueDetails": Object {
                       "en-GB": Array [
                         "Gender neutral toilets",
@@ -783,11 +769,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
           },
           "ticketingUrl": Object {
             "en-GB": "https://prideinlondon.org/pride-in-the-park/",
-          },
-          "timeOfDay": Object {
-            "en-GB": Array [
-              "Afternoon",
-            ],
           },
           "venueDetails": Object {
             "en-GB": Array [
@@ -977,11 +958,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                       "en-GB": "2017-07-09T11:00+01:00",
                     },
                     "ticketingUrl": undefined,
-                    "timeOfDay": Object {
-                      "en-GB": Array [
-                        "Afternoon",
-                      ],
-                    },
                     "venueDetails": Object {
                       "en-GB": Array [
                         "Gender neutral toilets",
@@ -1094,11 +1070,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                       "en-GB": "2017-07-09T11:00+01:00",
                     },
                     "ticketingUrl": undefined,
-                    "timeOfDay": Object {
-                      "en-GB": Array [
-                        "Afternoon",
-                      ],
-                    },
                     "venueDetails": Object {
                       "en-GB": Array [
                         "Gender neutral toilets",
@@ -1206,11 +1177,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
                       "en-GB": "2017-07-09T11:00+01:00",
                     },
                     "ticketingUrl": undefined,
-                    "timeOfDay": Object {
-                      "en-GB": Array [
-                        "Afternoon",
-                      ],
-                    },
                     "venueDetails": Object {
                       "en-GB": Array [
                         "Gender neutral toilets",

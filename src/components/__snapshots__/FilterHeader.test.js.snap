@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly with any date and any time (empty time set) 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -29,7 +24,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -86,20 +81,15 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly with any date and any time 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -118,7 +108,7 @@ exports[`renders correctly with any date and any time 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -175,20 +165,15 @@ exports[`renders correctly with any date and any time 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly with date range and two times 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -207,7 +192,7 @@ exports[`renders correctly with date range and two times 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -264,20 +249,15 @@ exports[`renders correctly with date range and two times 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly with single date and single time 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -296,7 +276,7 @@ exports[`renders correctly with single date and single time 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -353,20 +333,15 @@ exports[`renders correctly with single date and single time 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;
 
 exports[`renders correctly with tag filters selected 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -385,7 +360,7 @@ exports[`renders correctly with tag filters selected 1`] = `
           "paddingTop": 16,
         }
       }
-      testID="filter-header"
+      testID="event-filter-header"
     >
       <FilterHeaderCategories
         onFilterPress={[Function]}
@@ -442,5 +417,5 @@ exports[`renders correctly with tag filters selected 1`] = `
     onCancel={[Function]}
     visible={false}
   />
-</withOrientation>
+</Component>
 `;

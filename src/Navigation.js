@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     bottom: 0
+  },
+  card: {
+    shadowOpacity: 0
   }
 });
 
@@ -87,7 +90,8 @@ const HomeStack = StackNavigator(
         testID: "home-tab-button"
       }
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -106,7 +110,8 @@ const EventsStack = StackNavigator(
         testID: "events-tab-button"
       }
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -118,9 +123,13 @@ const ParadeStack = StackNavigator(
     initialRouteName: PARADE,
     navigationOptions: {
       tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
-      tabBarLabel: text.tabParade
+      tabBarLabel: text.tabParade,
+      tabBarTestIDProps: {
+        testID: "parade-tab-button"
+      }
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -133,9 +142,13 @@ const SavedStack = StackNavigator(
     initialRouteName: SAVED,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-      tabBarLabel: text.tabSaved
+      tabBarLabel: text.tabSaved,
+      tabBarTestIDProps: {
+        testID: "saved-events-tab-button"
+      }
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -149,9 +162,13 @@ const SupportUsStack = StackNavigator(
     initialRouteName: SUPPORT_US,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-      tabBarLabel: text.tabSupportUs
+      tabBarLabel: text.tabSupportUs,
+      tabBarTestIDProps: {
+        testID: "support-us-tab-button"
+      }
     },
-    headerMode: "none"
+    headerMode: "none",
+    cardStyle: styles.card
   }
 );
 
@@ -168,7 +185,10 @@ const TabNav = TabNavigator(
     tabBarPosition: "bottom",
     swipeEnabled: false,
     animationEnabled: false,
-    initialRouteName: HOME
+    initialRouteName: HOME,
+    cardStyle: {
+      backgroundColor: "blue"
+    }
   }
 );
 
@@ -185,7 +205,8 @@ const RootStack = StackNavigator(
     mode: "modal",
     navigationOptions: {
       header: null
-    }
+    },
+    cardStyle: styles.card
   }
 );
 
