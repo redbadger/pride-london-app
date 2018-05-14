@@ -134,4 +134,16 @@ describe("differenceInCalendarDays", () => {
       )
     ).toBe(-2);
   });
+
+  it("returns 0 for different hours of the same day", () => {
+    expect(
+      differenceInCalendarDays("2018-08-01T10:00:00", "2018-08-01T00:00:00")
+    ).toBe(0);
+  });
+
+  it("returns integer for hours spanning a day boundary", () => {
+    expect(
+      differenceInCalendarDays("2018-08-03T03:00:00", "2018-08-04T00:00:00")
+    ).toBe(-1);
+  });
 });

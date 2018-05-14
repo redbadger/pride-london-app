@@ -36,8 +36,8 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
 
         const previous: Event = buffer[buffer.length - 1];
         const diff = differenceInCalendarDays(
-          parseDate(previous.fields.startTime[locale]),
-          parseDate(event.fields.startTime[locale])
+          previous.fields.startTime[locale],
+          event.fields.startTime[locale]
         );
 
         if (diff !== 0) return { days: [...days, buffer], buffer: [event] };

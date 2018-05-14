@@ -3,7 +3,6 @@ import { DateTime, Interval } from "luxon";
 
 import DfFormat from "date-fns/format";
 import DFParse from "date-fns/parse";
-import DfDifferenceInCalendarDays from "date-fns/difference_in_calendar_days";
 
 const contentfulISOFormatOptions = {
   suppressMilliseconds: true,
@@ -71,7 +70,9 @@ export const endOfDay = (date: string) =>
 
 export const getHours = (date: string) => DateTime.fromISO(date).hour;
 
-export const differenceInCalendarDays = (
-  d1: string | Date,
-  d2: string | Date
-) => DfDifferenceInCalendarDays(d1, d2);
+export const differenceInCalendarDays = (d1: string, d2: string) => {
+  const D1 = DateTime.fromISO(d1);
+  const D2 = DateTime.fromISO(d2);
+  const diff = D1.diff(D2, "days").toObject().days || 0;
+  return Math.round(diff);
+};
