@@ -87,7 +87,7 @@ const getTabTestId = (routeName: string) => {
   }
 };
 
-const getNavigationOptions = (
+export const getNavigationOptions = (
   navigation: object,
   navigationOptions: object,
   tabBarLessRoutes: array
