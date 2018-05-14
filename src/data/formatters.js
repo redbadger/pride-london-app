@@ -22,9 +22,9 @@ export const formatContentfulDate = (
   day: string,
   time?: string
 ) => {
-  const correctedDay = day.length < 2 ? `0${day}` : day;
-  const correctedMonth = month.length < 2 ? `0${month}` : month;
-  const correctedYear = year.length < 4 ? `20${year}` : year;
+  const correctedDay = day.padStart(2, "0");
+  const correctedMonth = month.padStart(2, "0");
+  const correctedYear = year.padStart(4, "20");
   const correctedTime = time ? `T${time}` : "";
   return `${correctedYear}-${correctedMonth}-${correctedDay}${correctedTime}`;
 };
