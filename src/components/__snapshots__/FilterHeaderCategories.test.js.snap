@@ -41,6 +41,7 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
 >
   <Touchable
     accessibilityComponentType="button"
+    accessibilityLabel="Filter by event type"
     accessibilityTraits={
       Array [
         "button",
@@ -80,5 +81,38 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
       onPress={[Function]}
     />
   </Touchable>
+</Component>
+`;
+
+exports[`FilterHeaderCategories Component renders multiple category pills with selected categories and accessibility label 1`] = `
+<Component
+  accessibilityLabel="Filtering event type by Music, Nightlife, Community"
+  accessible={true}
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <CategoriesPills
+    onPress={[Function]}
+    selectedCategories={
+      Set {
+        "Music",
+        "Nightlife",
+        "Community",
+      }
+    }
+    style={
+      Object {
+        "borderBottomRightRadius": 0,
+        "borderTopRightRadius": 0,
+        "minHeight": 44,
+      }
+    }
+  />
+  <CategoriesFilterButton
+    onPress={[Function]}
+  />
 </Component>
 `;
