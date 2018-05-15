@@ -2,7 +2,14 @@
 // import { shallow } from "enzyme";
 // import Navigation from "./Navigation";
 import { hideTabBarOnSubRoutes, getTabTestId } from "./Navigation";
-import { EVENT_LIST, EVENT_DETAILS, HOME } from "./constants/routes";
+import {
+  EVENT_LIST,
+  EVENT_DETAILS,
+  HOME,
+  PARADE,
+  SAVED,
+  SUPPORT_US
+} from "./constants/routes";
 
 // TODO: Temporarily disabled due to https://github.com/react-navigation/react-navigation/issues/256
 it("renders correctly", () => {
@@ -56,5 +63,14 @@ describe("getTabTestId", () => {
   it("returns a test id if the routeName is matched", () => {
     const result = getTabTestId(EVENT_LIST);
     expect(result).toEqual("events-tab-button");
+
+    const result1 = getTabTestId(PARADE);
+    expect(result1).toEqual("parade-tab-button");
+
+    const result2 = getTabTestId(SAVED);
+    expect(result2).toEqual("saved-events-tab-button");
+
+    const result3 = getTabTestId(SUPPORT_US);
+    expect(result3).toEqual("support-us-tab-button");
   });
 });
