@@ -108,11 +108,6 @@ export const hideTabBarOnSubRoutes = (
   };
 };
 
-// console.log(hideTabBarOnSubRoutes(SUPPORT_US, {
-//   tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-//   tabBarLabel: text.tabSupportUs
-// })({navigation}: NavigationScreenConfigProps))
-
 const HomeStack = createStackNavigator(
   {
     [HOME]: { screen: withShadow(HomeScreen) },
