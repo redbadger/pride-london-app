@@ -33,6 +33,7 @@ export default {
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
   categoryFilterButton: "Filter by event type",
+  categoryFilterContents: "Filtering event type by",
   addFilters: "Filter by area, price...",
   filters: "Filters",
   filterPickerApply: showEvents,
