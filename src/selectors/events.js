@@ -20,7 +20,12 @@ import type { Asset } from "../data/asset";
 
 import locale from "../data/locale";
 
-const getFieldsEventsLocale = R.lensPath(["fields", "events", locale]);
+const fieldsEventsLocaleLens = R.lensPath(["fields", "events", locale]);
+const fieldsPerformancesLocaleLens = R.lensPath([
+  "fields",
+  "performances",
+  locale
+]);
 
 export const uniqueEvents = R.uniqBy(element => element.sys.id);
 
@@ -175,15 +180,17 @@ const getEventsState = (state: State) => state.events;
 const getSavedEventsState = (state: State) => state.savedEvents;
 
 const addPerformances = (state: State) => event => {
-  const oldEvent = ((event: any): Event);
-  const newEvent: Event = { ...oldEvent };
-  if (oldEvent.fields && oldEvent.fields.performances) {
-    const performances = (oldEvent.fields.performances[locale].map(
-      performance => selectPerformanceById(state, performance.sys.id)
-    ): any[]);
-    newEvent.fields.performances[locale] = performances;
+  const performances = R.view(fieldsPerformancesLocaleLens, event);
+  if (performances) {
+    return R.set(
+      fieldsPerformancesLocaleLens,
+      performances.map(performance =>
+        selectPerformanceById(state, performance.sys.id)
+      ),
+      event
+    );
   }
-  return newEvent;
+  return event;
 };
 
 // Type hack to force array filter to one type https://github.com/facebook/flow/issues/1915
@@ -197,7 +204,7 @@ export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
     entry => entry.sys.contentType.sys.id === "featuredEvents"
   ): any[]): FeaturedEvents[]).map((entry: FeaturedEvents) =>
     R.set(
-      getFieldsEventsLocale,
+      fieldsEventsLocaleLens,
       uniqueEvents(entry.fields.events[locale]),
       entry
     )

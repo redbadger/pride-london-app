@@ -76,21 +76,19 @@ export const EventCategories = ({
   </View>
 );
 
-export const EventAccessibility = ({ event }: { event: Event }) => (
+export const EventAccessibility = ({ children }: { children: string }) => (
   <LayoutColumn spacing={4}>
     <Text type="h2" color="lightNavyBlueColor">
       {text.eventDetailsAccessibilityDetails}
     </Text>
-    <Text>{event.fields.accessibilityDetails[locale]}</Text>
+    <Text>{children}</Text>
   </LayoutColumn>
 );
 
-export const EventTickets = ({ event }: { event: Event }) => (
+export const EventTickets = ({ url }: { url: string }) => (
   <SafeAreaView>
     <ContentPadding style={styles.ticketButton}>
-      <ButtonPrimary
-        onPress={() => Linking.openURL(event.fields.ticketingUrl[locale])}
-      >
+      <ButtonPrimary onPress={() => Linking.openURL(url)}>
         {text.eventDetailsBuyButton}
       </ButtonPrimary>
     </ContentPadding>
@@ -170,7 +168,9 @@ class EventDetailsScreen extends PureComponent<Props> {
                   <LayoutColumn spacing={20}>
                     {event.fields.accessibilityDetails && <SectionDivider />}
                     {event.fields.accessibilityDetails && (
-                      <EventAccessibility event={event} />
+                      <EventAccessibility>
+                        {event.fields.accessibilityDetails[locale]}
+                      </EventAccessibility>
                     )}
                     {(event.fields.email || event.fields.phone) && (
                       <SectionDivider />
@@ -187,7 +187,9 @@ class EventDetailsScreen extends PureComponent<Props> {
             </LayoutColumn>
           </View>
         </ShadowedScrollView>
-        {event.fields.ticketingUrl && <EventTickets event={event} />}
+        {event.fields.ticketingUrl && (
+          <EventTickets url={event.fields.ticketingUrl[locale]} />
+        )}
       </View>
     );
   }
