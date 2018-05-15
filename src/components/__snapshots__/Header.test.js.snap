@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders correctly with all props 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -85,20 +80,15 @@ exports[`Header renders correctly with all props 1`] = `
       </Text>
     </Component>
   </ContentPadding>
-</withOrientation>
+</Component>
 `;
 
 exports[`Header renders correctly with default props 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -155,20 +145,15 @@ exports[`Header renders correctly with default props 1`] = `
       }
     />
   </ContentPadding>
-</withOrientation>
+</Component>
 `;
 
 exports[`Header renders correctly with only onBack and rightElement 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -241,20 +226,15 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
       </Text>
     </Component>
   </ContentPadding>
-</withOrientation>
+</Component>
 `;
 
 exports[`Header renders correctly with only title 1`] = `
-<withOrientation
+<Component
   accessibilityTraits={
     Array [
       "header",
     ]
-  }
-  forceInset={
-    Object {
-      "top": "always",
-    }
   }
   style={
     Object {
@@ -313,7 +293,7 @@ exports[`Header renders correctly with only title 1`] = `
       }
     />
   </ContentPadding>
-</withOrientation>
+</Component>
 `;
 
 exports[`Header.BackButton renders correctly with default props 1`] = `
