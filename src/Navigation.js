@@ -5,7 +5,11 @@ import {
   createStackNavigator
 } from "react-navigation";
 import { Image, StyleSheet, View } from "react-native";
-import type { TabScene } from "react-navigation";
+import type {
+  TabScene,
+  NavigationScreenConfigProps,
+  NavigationTabScreenOptions
+} from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
 import DonateScreen from "./screens/DonateScreen";
 import EventsScreen from "./screens/EventsScreen";
@@ -93,17 +97,21 @@ export const getTabTestId = (routeName: string) => {
   }
 };
 
-export const getNavigationOptions = (
-  navigation: Object,
-  navigationOptions: Object,
-  tabBarLessRoutes: Array
-) => {
+export const hideTabBarOnSubRoutes = (
+  initialRouteName: string,
+  navigationOptions: NavigationTabScreenOptions
+) => ({ navigation }: NavigationScreenConfigProps) => {
   const { routeName } = navigation.state.routes[navigation.state.index];
-  if (tabBarLessRoutes.includes(routeName)) {
-    Object.assign(navigationOptions, { tabBarVisible: false });
-  }
-  return navigationOptions;
+  return {
+    ...navigationOptions,
+    tabBarVisible: routeName === initialRouteName
+  };
 };
+
+// console.log(hideTabBarOnSubRoutes(SUPPORT_US, {
+//   tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
+//   tabBarLabel: text.tabSupportUs
+// })({navigation}: NavigationScreenConfigProps))
 
 const HomeStack = createStackNavigator(
   {
@@ -183,62 +191,38 @@ const TabNav = createBottomTabNavigator(
   {
     [HOME]: {
       screen: HomeStack,
-      navigationOptions: ({ navigation }) =>
-        getNavigationOptions(
-          navigation,
-          {
-            tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
-            tabBarLabel: text.tabHome,
-            tabBarVisible: true
-          },
-          [FEATURED_EVENT_LIST, EVENT_DETAILS]
-        )
+      navigationOptions: hideTabBarOnSubRoutes(HOME, {
+        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+        tabBarLabel: text.tabHome
+      })
     },
     [EVENT_LIST]: {
       screen: EventsStack,
-      navigationOptions: ({ navigation }) =>
-        getNavigationOptions(
-          navigation,
-          {
-            tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
-            tabBarLabel: text.tabEvents,
-            tabBarVisible: true
-          },
-          [EVENT_DETAILS]
-        )
+      navigationOptions: hideTabBarOnSubRoutes(EVENT_LIST, {
+        tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
+        tabBarLabel: text.tabEvents
+      })
     },
     [PARADE]: {
       screen: ParadeStack,
-      navigationOptions: {
+      navigationOptions: hideTabBarOnSubRoutes(PARADE, {
         tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
         tabBarLabel: text.tabParade
-      }
+      })
     },
     [SAVED]: {
       screen: SavedStack,
-      navigationOptions: ({ navigation }) =>
-        getNavigationOptions(
-          navigation,
-          {
-            tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-            tabBarLabel: text.tabSaved,
-            tabBarVisible: true
-          },
-          [EVENT_DETAILS]
-        )
+      navigationOptions: hideTabBarOnSubRoutes(SAVED, {
+        tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
+        tabBarLabel: text.tabSaved
+      })
     },
     [SUPPORT_US]: {
       screen: SupportUsStack,
-      navigationOptions: ({ navigation }) =>
-        getNavigationOptions(
-          navigation,
-          {
-            tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-            tabBarLabel: text.tabSupportUs,
-            tabBarVisible: true
-          },
-          [DONATE, SPONSOR]
-        )
+      navigationOptions: hideTabBarOnSubRoutes(SUPPORT_US, {
+        tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
+        tabBarLabel: text.tabSupportUs
+      })
     }
   },
   {
