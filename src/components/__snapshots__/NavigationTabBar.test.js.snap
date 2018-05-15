@@ -62,7 +62,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <AnimatedComponent
+        <Component
           style={
             Array [
               Object {
@@ -84,8 +84,8 @@ exports[`renders correctly 1`] = `
           >
             0
           </Text>
-        </AnimatedComponent>
-        <AnimatedComponent
+        </Component>
+        <Component
           style={
             Array [
               Object {
@@ -107,10 +107,12 @@ exports[`renders correctly 1`] = `
           >
             0
           </Text>
-        </AnimatedComponent>
+        </Component>
       </Component>
-      <AnimatedComponent
+      <Text
+        accessible={true}
         allowFontScaling={true}
+        ellipsizeMode="tail"
         numberOfLines={1}
         style={
           Array [
@@ -121,13 +123,13 @@ exports[`renders correctly 1`] = `
               "lineHeight": 16,
             },
             Object {
-              "color": "rgba(45, 47, 127, 1)",
+              "color": "rgb(45, 47, 127)",
             },
           ]
         }
       >
         Tab 0
-      </AnimatedComponent>
+      </Text>
     </Touchable>
     <Touchable
       accessibilityComponentType="button"
@@ -161,7 +163,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <AnimatedComponent
+        <Component
           style={
             Array [
               Object {
@@ -183,8 +185,8 @@ exports[`renders correctly 1`] = `
           >
             1
           </Text>
-        </AnimatedComponent>
-        <AnimatedComponent
+        </Component>
+        <Component
           style={
             Array [
               Object {
@@ -206,10 +208,12 @@ exports[`renders correctly 1`] = `
           >
             1
           </Text>
-        </AnimatedComponent>
+        </Component>
       </Component>
-      <AnimatedComponent
+      <Text
+        accessible={true}
         allowFontScaling={true}
+        ellipsizeMode="tail"
         numberOfLines={1}
         style={
           Array [
@@ -220,13 +224,13 @@ exports[`renders correctly 1`] = `
               "lineHeight": 16,
             },
             Object {
-              "color": "rgba(88, 88, 88, 1)",
+              "color": "rgb(88, 88, 88)",
             },
           ]
         }
       >
         Tab 1
-      </AnimatedComponent>
+      </Text>
     </Touchable>
     <AnimatedComponent
       style={

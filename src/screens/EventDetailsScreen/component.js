@@ -109,10 +109,6 @@ class EventDetailsScreen extends PureComponent<Props> {
     isSaved: false
   };
 
-  static navigationOptions = {
-    tabBarVisible: false
-  };
-
   render() {
     const { event, getAssetSource, navigation, setCategoryFilter } = this.props;
     return (
