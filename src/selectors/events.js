@@ -2,7 +2,11 @@
 import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import getHours from "date-fns/get_hours";
+import isSameDay from "date-fns/is_same_day";
+import isBefore from "date-fns/is_before";
 import R from "ramda";
+import { buildEventFilter } from "./event-filters";
+import { formatContentfulDate } from "../data/formatters";
 
 import type { State } from "../reducers";
 import type {
@@ -13,7 +17,6 @@ import type {
   PerformancePeriods
 } from "../data/event";
 import type { Asset } from "../data/asset";
-import { buildEventFilter } from "./event-filters";
 
 import locale from "../data/locale";
 
@@ -49,6 +52,81 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     ? [...sections.days, sections.buffer]
     : sections.days;
 };
+
+const generateRecurringEvent = event => recurrance => {
+  const [recurranceDay, recurrancyMonth, recurranceYear] = recurrance.split(
+    "/"
+  );
+  const [eventStartDate, eventStartTime] = event.fields.startTime[locale].split(
+    "T"
+  );
+  const eventEndTime = event.fields.endTime[locale].split("T")[1];
+  const [eventStartYear, eventStartMonth, eventStartDay] = eventStartDate.split(
+    "-"
+  );
+
+  const recurrenceStartDate = formatContentfulDate(
+    recurranceYear,
+    recurrancyMonth,
+    recurranceDay,
+    eventStartTime
+  );
+
+  const shouldModifyEndTime =
+    isSameDay(event.fields.startTime[locale], event.fields.endTime[locale]) ||
+    isBefore(event.fields.endTime[locale], recurrenceStartDate);
+
+  const recurrenceEndDate = shouldModifyEndTime
+    ? formatContentfulDate(
+        recurranceYear,
+        recurrancyMonth,
+        recurranceDay,
+        eventEndTime
+      )
+    : event.fields.endTime[locale];
+
+  return R.mergeDeepRight(event, {
+    fields: {
+      startTime: {
+        [locale]: recurrenceStartDate
+      },
+      endTime: {
+        [locale]: recurrenceEndDate
+      },
+      recurrenceDates: {
+        [locale]: [
+          `${eventStartDay}/${eventStartMonth}/${eventStartYear}`,
+          ...event.fields.recurrenceDates[locale]
+        ]
+      }
+    },
+    sys: {
+      id: `${event.sys.id}-recurrence-${recurrance}`
+    }
+  });
+};
+
+// When properly typed CmsEntry[] => CmsEntry[]
+// flow inexblicably crashes on server start 💩 (flow-bin v0.67.0)
+// $FlowFixMe
+export const expandRecurringEventsInEntries = entries =>
+  entries.reduce((acc, curr) => {
+    if (curr.sys.contentType.sys.id !== "event") {
+      return [...acc, curr];
+    }
+
+    const recurrenceDates = curr.fields.recurrenceDates
+      ? curr.fields.recurrenceDates[locale]
+      : [];
+    const shouldExpandEvent =
+      recurrenceDates.length > 0 && !curr.sys.id.includes("recurrence");
+
+    if (shouldExpandEvent) {
+      const clones = recurrenceDates.map(generateRecurringEvent(curr));
+      return [...acc, curr, ...clones];
+    }
+    return [...acc, curr];
+  }, []);
 
 export const getTimePeriod = (date: Date) => {
   const splits = [6, 12, 18];
