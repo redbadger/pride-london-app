@@ -9,7 +9,7 @@ describe("Pride App", () => {
     await takeScreenshot();
   });
 
-  it("should start on Home page", async () => {
+  it("should start on Home screen", async () => {
     await expect(element(by.id("home-screen"))).toBeVisible();
   });
 

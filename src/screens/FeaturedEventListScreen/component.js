@@ -23,10 +23,6 @@ export type Props = {
 };
 
 class FeaturedEventsListScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    tabBarVisible: false
-  };
-
   render() {
     return (
       <View style={styles.container}>
