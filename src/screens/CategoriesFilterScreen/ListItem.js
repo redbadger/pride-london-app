@@ -1,6 +1,13 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, View, Animated, Dimensions, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Animated,
+  Dimensions,
+  Image,
+  Platform
+} from "react-native";
 import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import { whiteColor, blackColor } from "../../constants/colors";
@@ -47,6 +54,16 @@ class ListItem extends Component<
     }).start();
   }
 
+  getAccessibilityLabel = (label: string, selected: boolean) =>
+    Platform.select({
+      ios: selected
+        ? `${label}, checkbox, selected`
+        : `${label}, checkbox, empty`,
+      android: selected
+        ? `checked checkbox, ${label}`
+        : `not checked checkbox, ${label}`
+    });
+
   decorationWidth = new Animated.Value(0);
 
   // Measuring text width on initial render
@@ -67,6 +84,12 @@ class ListItem extends Component<
       <Touchable
         style={styles.itemContainer}
         onPress={() => onPress(category.label)}
+        accessibilityComponentType="none"
+        accessibilityTraits="none"
+        accessibilityLabel={this.getAccessibilityLabel(
+          category.label,
+          selected
+        )}
       >
         <Animated.View
           style={[
