@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, Platform } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
@@ -15,12 +15,20 @@ type Props = {
   style?: ViewStyleProp
 };
 
+const getAccessibilityLabel = (label: string, checked: boolean) => {
+  return Platform.select({
+    ios: checked ? `${label}, checkbox, selected` : `${label}, checkbox, empty`,
+    android: checked
+      ? `checked checkbox, ${label}`
+      : `not checked checkbox, ${label}`
+  });
+};
+
 const CheckBox = ({ checked, label, onChange, style }: Props) => (
   <Touchable
-    accessibilityComponentType={
-      checked ? "radiobutton_checked" : "radiobutton_unchecked"
-    }
-    accessibilityTraits={checked ? ["button", "selected"] : ["button"]}
+    accessibilityComponentType={"none"}
+    accessibilityTraits={"none"}
+    accessibilityLabel={getAccessibilityLabel(label, checked)}
     onPress={onChange}
     style={[styles.container, style]}
   >
