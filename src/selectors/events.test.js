@@ -322,7 +322,7 @@ describe("expandRecurringEventsInEntries", () => {
           recurrenceDates: { "en-GB": ["02/08/2018", "03/08/2018"] }
         },
         sys: {
-          id: "event1-recurrence-03/08/2018-0",
+          id: "event1-recurrence-03/08/2018",
           contentType: { sys: { id: "event" } }
         }
       },
@@ -367,7 +367,7 @@ describe("expandRecurringEventsInEntries", () => {
           recurrenceDates: { "en-GB": ["02/08/2018", "3/8/2018"] }
         },
         sys: {
-          id: "event1-recurrence-3/8/2018-0",
+          id: "event1-recurrence-3/8/2018",
           contentType: { sys: { id: "event" } }
         }
       },
@@ -388,7 +388,7 @@ describe("expandRecurringEventsInEntries", () => {
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
         sys: {
-          id: "event1-recurrence-03/08/2018-0",
+          id: "event1-recurrence-03/08/2018",
           contentType: { sys: { id: "event" } }
         }
       },
@@ -405,7 +405,7 @@ describe("expandRecurringEventsInEntries", () => {
           recurrenceDates: { "en-GB": ["03/08/2018"] }
         },
         sys: {
-          id: "event1-recurrence-03/08/2018-0",
+          id: "event1-recurrence-03/08/2018",
           contentType: { sys: { id: "event" } }
         }
       },
@@ -490,7 +490,7 @@ describe("expandRecurringEventsInEntries", () => {
           recurrenceDates: { "en-GB": ["02/08/2018", "03/08/2018"] }
         },
         sys: {
-          id: "event1-recurrence-03/08/2018-0",
+          id: "event1-recurrence-03/08/2018",
           contentType: { sys: { id: "event" } }
         }
       },
@@ -535,7 +535,7 @@ describe("expandRecurringEventsInEntries", () => {
           recurrenceDates: { "en-GB": ["02/08/2018", "06/08/2018"] }
         },
         sys: {
-          id: "event1-recurrence-06/08/2018-0",
+          id: "event1-recurrence-06/08/2018",
           contentType: { sys: { id: "event" } }
         }
       },
