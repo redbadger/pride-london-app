@@ -26,7 +26,7 @@ const getAccessibilityLabel = (label: string, checked: boolean) =>
 const CheckBox = ({ checked, label, onChange, style }: Props) => (
   <Touchable
     accessibilityComponentType="none"
-    accessibilityTraits="none"
+    accessibilityTraits={["none"]}
     accessibilityLabel={getAccessibilityLabel(label, checked)}
     onPress={onChange}
     style={[styles.container, style]}

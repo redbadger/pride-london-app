@@ -85,7 +85,7 @@ class ListItem extends Component<
         style={styles.itemContainer}
         onPress={() => onPress(category.label)}
         accessibilityComponentType="none"
-        accessibilityTraits="none"
+        accessibilityTraits={["none"]}
         accessibilityLabel={this.getAccessibilityLabel(
           category.label,
           selected
