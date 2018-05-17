@@ -2,6 +2,9 @@
 ; We fork some components by platform
 .*/node_modules/.*/*[.]android.js
 
+# Ignore broken react-native-linear-gradient prop annotations
+.*/node_modules/react-native-linear-gradient/*
+
 ; Ignore "BUCK" generated dirs
 <PROJECT_ROOT>/\.buckd/
 
@@ -19,6 +22,12 @@
 
 ; Ignore metro
 .*/node_modules/metro/.*
+
+; Ignore iOS platform
+.*/ios/.*
+
+; Ignore Android platform
+.*/android/.*
 
 .*/node_modules/config-chain/.*
 
@@ -56,4 +65,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 
 [version]
-^0.65.0
+^0.67.0

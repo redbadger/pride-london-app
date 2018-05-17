@@ -122,9 +122,9 @@ brew update && brew cask install react-native-debugger
 
 Then to debug:
 
-1. Close any other debugger windows you have open
-1. Open the App from your Applications folder
-1. Start debugging in the app using one of the following methods:
+1.  Close any other debugger windows you have open
+1.  Open the App from your Applications folder
+1.  Start debugging in the app using one of the following methods:
 
 | Platform    | Command                                                                           |
 | ----------- | --------------------------------------------------------------------------------- |
@@ -179,7 +179,7 @@ Follow the [contribution guidelines](./CONTRIBUTING.md) to have a smooth experie
 
 We will keep a collection of records for "architecturally significant" decisions: those that affect the structure, non-functional characteristics, dependencies, interfaces, or construction techniques.
 
-When making such changes please include a new ADR in your PR for future prosperity.
+When making such changes please include a new ADR in your PR.
 
 * Install `adr-tools`: https://github.com/npryce/adr-tools
 * To create a new record: `adr new Implement as Unix shell scripts`
@@ -192,3 +192,5 @@ To find out more about ADRs have a read of this article: http://thinkrelevance.c
 
 * We would like to thank [BrowserStack](https://www.browserstack.com) for allowing us to use their resources to test the Pride in London App for free!
   [![BrowserStack Logo](images/browserstack-logo-600x315.png)](https://www.browserstack.com)
+
+* We would like to thank [Bugsnag](https://www.bugsnag.com) for allowing us to use their tool to monitor the Pride in London App for free

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Text
+  color="blackColor"
+  markdown={false}
+  markdownStyle={Object {}}
+  style={
+    Object {
+      "fontStyle": "italic",
+    }
+  }
+  type="small"
+>
+  Runs from: 9 Jul - 15 Jul
+</Text>
+`;

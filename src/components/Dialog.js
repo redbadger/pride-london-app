@@ -14,23 +14,24 @@ import {
   dialogBgColor,
   dialogApplyButtonBgColor,
   dialogApplyButtonTextColor,
-  dialogHeaderDividerColor,
-  textColor
+  dialogHeaderDividerColor
 } from "../constants/colors";
 
 type Props = {
   applyButtonText: string,
+  applyButtonLabel: string,
   children: Node,
   headerLeft?: Node,
   headerRight?: Node,
   onApply: Function,
   onCancel?: Function,
-  title: string,
+  title: Node,
   visible: boolean
 };
 
 const Dialog = ({
   applyButtonText,
+  applyButtonLabel,
   children,
   headerLeft,
   headerRight,
@@ -45,17 +46,21 @@ const Dialog = ({
     transparent
     visible={visible}
   >
-    <TouchableWithoutFeedback style={styles.backdrop} onPress={onCancel}>
+    <TouchableWithoutFeedback
+      style={styles.backdrop}
+      onPress={onCancel}
+      accessible={false}
+    >
       <View style={styles.container}>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback accessible={false}>
           <View style={styles.content}>
             <View style={styles.header}>
               <View style={[styles.headerSide, styles.headerSideLeft]}>
                 {headerLeft}
               </View>
-              <Text type="h3" style={styles.headerTitle}>
+              <View style={[styles.headerSide, styles.headerSideMiddle]}>
                 {title}
-              </Text>
+              </View>
               <View style={[styles.headerSide, styles.headerSideRight]}>
                 {headerRight}
               </View>
@@ -63,8 +68,15 @@ const Dialog = ({
             {children}
           </View>
         </TouchableWithoutFeedback>
-        <Touchable onPress={onApply} style={styles.applyButton}>
-          <Text style={styles.applyButtonText}>{applyButtonText}</Text>
+        <Touchable
+          onPress={onApply}
+          style={styles.applyButton}
+          accessibilityLabel={applyButtonLabel}
+          accessibilityTraits={["button", "header"]}
+        >
+          <Text type="h2" style={styles.applyButtonText}>
+            {applyButtonText}
+          </Text>
         </Touchable>
       </View>
     </TouchableWithoutFeedback>
@@ -108,11 +120,11 @@ const styles = StyleSheet.create({
   headerSideLeft: {
     alignItems: "flex-start"
   },
+  headerSideMiddle: {
+    alignItems: "center"
+  },
   headerSideRight: {
     alignItems: "flex-end"
-  },
-  headerTitle: {
-    color: textColor
   },
   applyButton: {
     backgroundColor: dialogApplyButtonBgColor,
@@ -123,7 +135,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   applyButtonText: {
-    color: dialogApplyButtonTextColor
+    color: dialogApplyButtonTextColor,
+    lineHeight: 48
   }
 });
 

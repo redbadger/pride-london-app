@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<View
+<Component
   style={
     Object {
-      "flexDirection": "column",
+      "borderRadius": 3,
+      "minHeight": 200,
       "overflow": "hidden",
     }
   }
@@ -13,27 +14,48 @@ exports[`renders correctly 1`] = `
     resizeMode="cover"
     source={
       Object {
+        "height": 200,
         "uri": "http://placekitten.com/200/400",
+        "width": 400,
       }
     }
     style={
       Object {
         "backgroundColor": "#C1C1C1",
-        "borderRadius": 4,
         "height": 120,
+        "width": "100%",
       }
     }
-  />
-  <View
+  >
+    <Component
+      style={
+        Object {
+          "bottom": 0,
+          "flexWrap": "wrap",
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <CategoryPill
+        name="Health"
+        numberOfLines={2}
+        style={Object {}}
+      />
+    </Component>
+  </ImageBackground>
+  <Component
     style={
       Object {
-        "minHeight": 80,
+        "paddingHorizontal": 8,
         "paddingTop": 8,
       }
     }
   >
     <Text
+      color="blackColor"
       markdown={false}
+      markdownStyle={Object {}}
       style={
         Object {
           "color": "rgb(45, 47, 127)",
@@ -44,18 +66,20 @@ exports[`renders correctly 1`] = `
       Fri, 17 March
     </Text>
     <Text
+      color="blackColor"
       ellipsizeMode="tail"
       markdown={false}
+      markdownStyle={Object {}}
       numberOfLines={2}
       style={
         Object {
           "color": "rgb(45, 47, 127)",
         }
       }
-      type="h4"
+      type="h3"
     >
       Hello Pride
     </Text>
-  </View>
-</View>
+  </Component>
+</Component>
 `;

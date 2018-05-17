@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<LayoutColumn
+  spacing={4}
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <IconList>
+    <IconItem
+      onPress={[Function]}
+      source={1}
+    >
+      <TextLink>
+        milo@red-badger.com
+      </TextLink>
+    </IconItem>
+    <IconItem
+      onPress={[Function]}
+      source={1}
+    >
+      <TextLink>
+        1-800-555-WOOF
+      </TextLink>
+    </IconItem>
+  </IconList>
+</LayoutColumn>
+`;
+
+exports[`renders correctly when only email is given 1`] = `
+<LayoutColumn
+  spacing={4}
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <IconList>
+    <IconItem
+      onPress={[Function]}
+      source={1}
+    >
+      <TextLink>
+        milo@red-badger.com
+      </TextLink>
+    </IconItem>
+  </IconList>
+</LayoutColumn>
+`;
+
+exports[`renders correctly when only phone is given 1`] = `
+<LayoutColumn
+  spacing={4}
+>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h2"
+  >
+    Contact
+  </Text>
+  <IconList>
+    <IconItem
+      onPress={[Function]}
+      source={1}
+    >
+      <TextLink>
+        1-800-555-WOOF
+      </TextLink>
+    </IconItem>
+  </IconList>
+</LayoutColumn>
+`;

@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ImageBackground
+  resizeMode="cover"
+  source={0}
+  style={
+    Object {
+      "aspectRatio": 2,
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <ContentPadding
+    padding={
+      Object {
+        "large": Object {
+          "horizontal": 16,
+          "vertical": 16,
+        },
+        "medium": Object {
+          "horizontal": 16,
+          "vertical": 16,
+        },
+        "small": Object {
+          "horizontal": 8,
+          "vertical": 8,
+        },
+      }
+    }
+    style={
+      Object {
+        "alignItems": "flex-start",
+      }
+    }
+  >
+    <Text
+      color="lightNavyBlueColor"
+      key="Fruit"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Array [
+          Object {
+            "zIndex": 1,
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+            "marginTop": -8,
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+          },
+        ]
+      }
+      type="h1"
+    >
+      Fruit
+    </Text>
+  </ContentPadding>
+</ImageBackground>
+`;
+
+exports[`renders correctly with multiple lines 1`] = `
+<ImageBackground
+  resizeMode="cover"
+  source={0}
+  style={
+    Object {
+      "aspectRatio": 2,
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <ContentPadding
+    padding={
+      Object {
+        "large": Object {
+          "horizontal": 16,
+          "vertical": 16,
+        },
+        "medium": Object {
+          "horizontal": 16,
+          "vertical": 16,
+        },
+        "small": Object {
+          "horizontal": 8,
+          "vertical": 8,
+        },
+      }
+    }
+    style={
+      Object {
+        "alignItems": "flex-start",
+      }
+    }
+  >
+    <Text
+      color="lightNavyBlueColor"
+      key="This is a"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Array [
+          Object {
+            "zIndex": 2,
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+            "marginTop": -8,
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+          },
+        ]
+      }
+      type="h1"
+    >
+      This is a
+    </Text>
+    <Text
+      color="lightNavyBlueColor"
+      key="longer heading"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Array [
+          Object {
+            "zIndex": 1,
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+            "marginTop": -8,
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+          },
+        ]
+      }
+      type="h1"
+    >
+      longer heading
+    </Text>
+  </ContentPadding>
+</ImageBackground>
+`;
+
+exports[`renders correctly with subtitle 1`] = `
+<ImageBackground
+  resizeMode="cover"
+  source={0}
+  style={
+    Object {
+      "aspectRatio": 2,
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <ContentPadding
+    padding={
+      Object {
+        "large": Object {
+          "horizontal": 16,
+          "vertical": 16,
+        },
+        "medium": Object {
+          "horizontal": 16,
+          "vertical": 16,
+        },
+        "small": Object {
+          "horizontal": 8,
+          "vertical": 8,
+        },
+      }
+    }
+    style={
+      Object {
+        "alignItems": "flex-start",
+      }
+    }
+  >
+    <Text
+      color="lightNavyBlueColor"
+      key="Fruit"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Array [
+          Object {
+            "zIndex": 1,
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+            "marginTop": -8,
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+          },
+        ]
+      }
+      type="h1"
+    >
+      Fruit
+    </Text>
+    <Text
+      color="whiteColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "backgroundColor": "#2d2f7f",
+          "paddingHorizontal": 8,
+          "paddingTop": 4,
+        }
+      }
+      type="h2"
+    >
+      Is very good
+    </Text>
+  </ContentPadding>
+</ImageBackground>
+`;

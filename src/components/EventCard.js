@@ -1,123 +1,151 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
-import formatDate from "date-fns/format";
-import {
-  eventPriceBgColor,
-  eventCardTextColor,
-  eventPriceColor
-} from "../constants/colors";
+import SaveEventButton from "./SaveEventButton";
 import Text from "./Text";
+import Touchable from "./Touchable";
+import {
+  blackTwentyColor,
+  lightNavyBlueColor,
+  whiteColor
+} from "../constants/colors";
+import { formatShortEventPrice, formatTime } from "../data/formatters";
+import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
+  id: string,
   name: string,
   locationName: string,
   eventPriceLow: number,
   eventPriceHigh: number,
   startTime: string,
   endTime: string,
-  imageUrl: string,
-  isFree: boolean
+  image: ImageSource,
+  isSaved: boolean,
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void,
+  onPress: (id: string) => void
 };
 const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-const getEventPrice = (isFree, eventPriceLow, eventPriceHigh) => {
-  let displayPrice;
-  if (isFree) {
-    displayPrice = "Free";
-  } else if (eventPriceLow === eventPriceHigh) {
-    displayPrice = `£${eventPriceLow}`;
-  } else {
-    displayPrice = `From £${eventPriceLow}`;
-  }
-  return displayPrice;
-};
 
-const EventCard = ({
-  name,
-  locationName,
-  startTime,
-  endTime,
-  imageUrl,
-  eventPriceLow,
-  eventPriceHigh,
-  isFree
-}: Props) => {
-  const eventStartTime = removeTimezoneFromDateString(startTime);
-  const eventEndTime = removeTimezoneFromDateString(endTime);
-  const timeFormat = "HH:mm";
-  const timeDisplay = `${formatDate(eventStartTime, timeFormat)} - ${formatDate(
-    eventEndTime,
-    timeFormat
-  )}`;
+class EventCard extends React.PureComponent<Props> {
+  static defaultProps = {
+    isSaved: false
+  };
 
-  return (
-    <View style={styles.eventCard}>
-      <ImageBackground
-        style={styles.imageContainer}
-        source={{ uri: imageUrl }}
-        resizeMode="cover"
-      >
-        <View style={styles.eventPriceContainer}>
-          <Text type="price" style={styles.eventPrice}>
-            {getEventPrice(isFree, eventPriceLow, eventPriceHigh)}
-          </Text>
+  handleToggleSave = (active: boolean) => {
+    if (active) {
+      this.props.addSavedEvent(this.props.id);
+    } else {
+      this.props.removeSavedEvent(this.props.id);
+    }
+  };
+
+  render() {
+    const {
+      id,
+      name,
+      locationName,
+      startTime,
+      endTime,
+      image,
+      eventPriceLow,
+      eventPriceHigh,
+      isSaved,
+      onPress
+    } = this.props;
+    const eventStartTime = removeTimezoneFromDateString(startTime);
+    const eventEndTime = removeTimezoneFromDateString(endTime);
+    const timeDisplay = `${formatTime(eventStartTime)} – ${formatTime(
+      eventEndTime
+    )}`;
+
+    return (
+      <View style={styles.container}>
+        <View style={styles.eventCard}>
+          <Touchable style={styles.touchable} onPress={() => onPress(id)}>
+            <ImageBackground
+              style={styles.imageContainer}
+              source={image}
+              resizeMode="cover"
+            >
+              <View style={styles.eventPriceContainer}>
+                <Text type="price" color="whiteColor">
+                  {formatShortEventPrice(eventPriceLow, eventPriceHigh)}
+                </Text>
+              </View>
+            </ImageBackground>
+            <View style={styles.eventCardDetails}>
+              <Text
+                type="small"
+                color="lightNavyBlueColor"
+                style={styles.eventTime}
+              >
+                {timeDisplay}
+              </Text>
+              <Text
+                numberOfLines={2}
+                type="h3"
+                color="lightNavyBlueColor"
+                style={styles.eventName}
+              >
+                {name}
+              </Text>
+              <Text numberOfLines={1} type="small" color="lightNavyBlueColor">
+                {locationName}
+              </Text>
+            </View>
+          </Touchable>
+          <SaveEventButton active={isSaved} onPress={this.handleToggleSave} />
         </View>
-      </ImageBackground>
-      <View style={styles.eventCardDetails}>
-        <Text type="small" style={styles.eventTime}>
-          {timeDisplay}
-        </Text>
-        <View style={styles.eventNameContainer}>
-          <Text type="h3" style={styles.eventName}>
-            {name}
-          </Text>
-        </View>
-        <Text style={styles.eventLocation}>{locationName}</Text>
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
+  container: {
+    borderRadius: 5,
+    // The below properties are required for ioS shadow
+    shadowColor: blackTwentyColor,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    // The below properties are required for android shadow
+    borderWidth: 0,
+    elevation: 3,
+    backgroundColor: whiteColor
+  },
   eventCard: {
-    height: 108,
+    minHeight: 108,
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5
   },
+  touchable: {
+    flexGrow: 1,
+    flex: 0,
+    flexDirection: "row"
+  },
   imageContainer: {
-    width: 114,
-    height: 108
+    width: 114
   },
   eventPriceContainer: {
-    height: 23,
-    backgroundColor: eventPriceBgColor,
+    minHeight: 23,
+    backgroundColor: lightNavyBlueColor,
     position: "absolute",
     paddingHorizontal: 5,
     justifyContent: "center"
   },
   eventCardDetails: {
     flex: 1,
-    padding: 8
-  },
-  eventNameContainer: {
-    flexDirection: "row"
-  },
-  eventName: {
-    color: eventCardTextColor,
-    paddingTop: 4
-  },
-  eventPrice: {
-    color: eventPriceColor
+    paddingLeft: 8
   },
   eventTime: {
-    color: eventCardTextColor
+    paddingTop: 12
   },
-  eventLocation: {
-    fontSize: 12,
-    lineHeight: 16,
-    paddingTop: 4,
-    color: eventCardTextColor
+  eventName: {
+    paddingTop: 4
   }
 });
 

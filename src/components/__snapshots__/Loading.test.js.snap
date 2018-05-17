@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Text
+  color="blackColor"
+  markdown={false}
+  markdownStyle={Object {}}
+  type="text"
+>
+  Loading...
+</Text>
+`;

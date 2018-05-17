@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Component renders correctly 1`] = `
+<ShadowedScrollView
+  bottomShadow={true}
+  shadowOpacity={1}
+  style={
+    Object {
+      "backgroundColor": "rgb(45, 47, 127)",
+    }
+  }
+  topShadow={true}
+>
+  <ListItem
+    category={
+      Object {
+        "color": "#ff5b44",
+        "contrast": false,
+        "label": "Cabaret and Variety",
+      }
+    }
+    key="Cabaret and Variety"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#2acfff",
+        "contrast": true,
+        "label": "Community",
+      }
+    }
+    key="Community"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#2c77e5",
+        "contrast": false,
+        "label": "Talks and Debates",
+      }
+    }
+    key="Talks and Debates"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#7de2d1",
+        "contrast": true,
+        "label": "Film and Screenings",
+      }
+    }
+    key="Film and Screenings"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#fc4984",
+        "contrast": false,
+        "label": "Plays and Theatre",
+      }
+    }
+    key="Plays and Theatre"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#00a3bd",
+        "contrast": true,
+        "label": "Social and Networking",
+      }
+    }
+    key="Social and Networking"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#ffd95e",
+        "contrast": true,
+        "label": "Nightlife",
+      }
+    }
+    key="Nightlife"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#bc01ff",
+        "contrast": false,
+        "label": "Exhibition and Tours",
+      }
+    }
+    key="Exhibition and Tours"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#c3d30e",
+        "contrast": true,
+        "label": "Sports and Activities",
+      }
+    }
+    key="Sports and Activities"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#ff88f1",
+        "contrast": true,
+        "label": "Health",
+      }
+    }
+    key="Health"
+    onPress={[Function]}
+    selected={false}
+  />
+  <ListItem
+    category={
+      Object {
+        "color": "#5770d1",
+        "contrast": false,
+        "label": "Music",
+      }
+    }
+    key="Music"
+    onPress={[Function]}
+    selected={true}
+  />
+</ShadowedScrollView>
+`;

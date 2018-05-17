@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<IconList>
+  <IconItem
+    source={1}
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="h4"
+    >
+      Mon, 09 Jul 2018 – Sun, 15 Jul 2018
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      11:00 – 18:00
+    </Text>
+    <RecurrenceDates
+      recurrenceDates={
+        Array [
+          "10/07/2018",
+          "11/07/2018",
+          "12/07/2018",
+          "13/07/2018",
+          "14/07/2018",
+          "15/07/2018",
+        ]
+      }
+      startTime="2018-07-09T11:00+01:00"
+    />
+  </IconItem>
+  <IconItem
+    onPress={[Function]}
+    source={1}
+  >
+    <TextLink>
+      Vauxhall Pleasure Gardens
+    </TextLink>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      Vauxhall Pleasure Gardens
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      Vauxhall Pleasure Gardens
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      London
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      EC1M 3HA
+    </Text>
+  </IconItem>
+  <IconItem
+    source={1}
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="h4"
+    >
+      £19.95 — £30
+    </Text>
+  </IconItem>
+  <IconItem
+    source={1}
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="h4"
+    >
+      Gender neutral toilets
+    </Text>
+  </IconItem>
+  <IconItem
+    source={1}
+  >
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="h4"
+    >
+      Accessibility
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      type="small"
+    >
+      Accessible Toilets, Hearing loop installed
+    </Text>
+  </IconItem>
+</IconList>
+`;

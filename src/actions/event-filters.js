@@ -1,20 +1,44 @@
 // @flow
 import type { DateRange, Time } from "../data/date-time";
+import type { EventCategoryName } from "../data/event";
+import type {
+  Area,
+  Price,
+  Audience,
+  VenueDetail,
+  AccessibilityOption
+} from "../data/event-filters";
 import type { StandardAction } from "./";
 
 type EventFiltersActionType =
+  | "SET_EVENT_FILTERS"
   | "STAGE_EVENT_FILTERS"
   | "COMMIT_EVENT_FILTERS"
   | "CLEAR_STAGED_EVENT_FILTERS";
 type EventFiltersPayload = {
   date?: ?DateRange,
-  time?: Set<Time>
+  timeOfDay?: Set<Time>,
+  price?: Set<Price>,
+  categories?: Set<EventCategoryName>,
+  audience?: Set<Audience>,
+  venueDetails?: Set<VenueDetail>,
+  accessibilityOptions?: Set<AccessibilityOption>,
+  area?: Set<Area>
 };
 
 export type EventFiltersAction = StandardAction<
   EventFiltersActionType,
   EventFiltersPayload
 >;
+
+export const setEventFilters = (updates: EventFiltersPayload) => (
+  dispatch: Dispatch<EventFiltersAction>
+) => {
+  dispatch({
+    type: "SET_EVENT_FILTERS",
+    payload: updates
+  });
+};
 
 export const stageEventFilters = (updates: EventFiltersPayload) => (
   dispatch: Dispatch<EventFiltersAction>

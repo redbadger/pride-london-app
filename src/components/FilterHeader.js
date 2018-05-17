@@ -1,35 +1,35 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, StatusBar } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
+import { View, StyleSheet } from "react-native";
 import DateFilterDialog from "./ConnectedDateFilterDialog";
 import FilterHeaderButton from "./FilterHeaderButton";
-import TimeFilterDialog from "./ConnectedTimeFilterDialog";
-import Text from "./Text";
 import ContentPadding from "./ContentPadding";
+import FilterHeaderCategories from "./FilterHeaderCategories";
 import {
-  interestButtonBgColor,
-  interestButtonTextColor,
-  filterBgColor
+  filterBgColor,
+  filterButtonsBgColor,
+  whiteColor
 } from "../constants/colors";
 import text from "../constants/text";
-import type { DateRange, Time } from "../data/date-time";
 import { formatDateRange } from "../data/formatters";
+import type { DateRange } from "../data/date-time";
+import type { EventCategoryName } from "../data/event";
 
-type Props = {
+export type Props = {
+  onFilterCategoriesPress: Function,
   dateFilter: ?DateRange,
-  timeFilter: Set<Time>
+  onFilterButtonPress: () => void,
+  selectedCategories: Set<EventCategoryName>,
+  numTagFiltersSelected: number
 };
 
 type State = {
-  datesPickerVisible: boolean,
-  timesPickerVisible: boolean
+  datesPickerVisible: boolean
 };
 
 class FilterHeader extends React.PureComponent<Props, State> {
   state = {
-    datesPickerVisible: false,
-    timesPickerVisible: false
+    datesPickerVisible: false
   };
 
   showDatePicker = () => {
@@ -40,70 +40,54 @@ class FilterHeader extends React.PureComponent<Props, State> {
     this.setState({ datesPickerVisible: false });
   };
 
-  showTimePicker = () => {
-    this.setState({ timesPickerVisible: true });
-  };
-
-  hideTimePicker = () => {
-    this.setState({ timesPickerVisible: false });
-  };
-
   render() {
-    const { dateFilter, timeFilter } = this.props;
+    const {
+      dateFilter,
+      onFilterCategoriesPress,
+      selectedCategories,
+      onFilterButtonPress,
+      numTagFiltersSelected
+    } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
-      : text.anyDay;
-    const timeArray = Array.from(timeFilter);
-    const formattedTimeFilter =
-      timeArray.length > 0 && timeArray.length < 3
-        ? timeArray.map(time => text.time[time]).join(", ")
-        : text.anyTime;
+      : text.selectDates;
 
     return (
-      <SafeAreaView style={styles.container} forceInset={{ top: "always" }}>
-        <StatusBar barStyle="light-content" animated />
+      <View accessibilityTraits={["header"]} style={styles.container}>
         <ContentPadding>
-          <View testID="filter-header" style={styles.content}>
-            <View style={styles.contentInterest}>
-              <View style={styles.interestButton}>
-                <Text type="h2" style={styles.interestButtonText}>
-                  {text.filterByInterest}
-                </Text>
-              </View>
-              <View style={styles.mapButton}>
-                <Text style={styles.mapButtonText}>Map</Text>
-              </View>
-            </View>
-            <View style={styles.contentFilters}>
-              <FilterHeaderButton
-                text={formattedDateFilter}
-                onPress={this.showDatePicker}
-                style={styles.filterButton}
-              />
-              <FilterHeaderButton
-                text={formattedTimeFilter}
-                onPress={this.showTimePicker}
-                style={styles.filterButton}
-              />
-              <FilterHeaderButton
-                text={text.filters}
-                onPress={() => {}}
-                style={styles.filterButton}
-              />
-            </View>
+          <View testID="event-filter-header" style={styles.content}>
+            <FilterHeaderCategories
+              onFilterPress={onFilterCategoriesPress}
+              selectedCategories={selectedCategories}
+            />
           </View>
         </ContentPadding>
+        <View style={styles.contentFilters}>
+          <FilterHeaderButton
+            active={!!dateFilter}
+            text={formattedDateFilter}
+            label={`filter by date: ${formattedDateFilter}`}
+            onPress={this.showDatePicker}
+            style={styles.filterButton}
+          />
+          <View style={styles.dividerLine} />
+          <FilterHeaderButton
+            active={numTagFiltersSelected > 0}
+            text={numTagFiltersSelected > 0 ? text.filters : text.addFilters}
+            label={numTagFiltersSelected > 0 ? text.filters : text.addFilters}
+            onPress={onFilterButtonPress}
+            style={styles.filterButton}
+            badgeValue={
+              numTagFiltersSelected > 0 ? numTagFiltersSelected : null
+            }
+          />
+        </View>
         <DateFilterDialog
           onApply={this.hideDatePicker}
           onCancel={this.hideDatePicker}
           visible={this.state.datesPickerVisible}
         />
-        <TimeFilterDialog
-          onApply={this.hideTimePicker}
-          onCancel={this.hideTimePicker}
-          visible={this.state.timesPickerVisible}
-        />
-      </SafeAreaView>
+      </View>
     );
   }
 }
@@ -116,42 +100,19 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 12
   },
-  contentInterest: {
-    alignItems: "center",
-    flexDirection: "row"
-  },
-  interestButton: {
-    flex: 1,
-    height: 44,
-    backgroundColor: interestButtonBgColor,
-    paddingHorizontal: 12,
-    borderRadius: 4,
-    justifyContent: "center"
-  },
-  interestButtonText: {
-    color: interestButtonTextColor
-  },
-  mapButton: {
-    marginLeft: 12,
-    width: 52,
-    height: 52,
-    backgroundColor: interestButtonBgColor,
-    alignItems: "center",
-    justifyContent: "flex-end",
-    borderRadius: 25
-  },
-  mapButtonText: {
-    color: interestButtonTextColor,
-    fontFamily: "Poppins-Bold",
-    fontSize: 14,
-    paddingBottom: 6
-  },
   contentFilters: {
     flexDirection: "row",
-    marginTop: 8
+    justifyContent: "space-between",
+    backgroundColor: filterButtonsBgColor,
+    height: 48
   },
   filterButton: {
-    marginRight: 8
+    flex: 1
+  },
+  dividerLine: {
+    borderLeftWidth: StyleSheet.hairlineWidth,
+    borderColor: whiteColor,
+    opacity: 0.4
   }
 });
 

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "flex": 1,
+      },
+      Object {},
+    ]
+  }
+>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "height": 8,
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        },
+        Object {
+          "opacity": 0,
+        },
+      ]
+    }
+  >
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0.1)",
+          "rgba(0, 0, 0, 0)",
+        ]
+      }
+      style={
+        Array [
+          Object {
+            "height": 8,
+            "width": "100%",
+          },
+          Object {
+            "opacity": 1,
+          },
+        ]
+      }
+    />
+  </AnimatedComponent>
+  <ScrollView
+    onLayout={[Function]}
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+  >
+    <Component
+      onLayout={[Function]}
+    />
+  </ScrollView>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "height": 8,
+          "left": 0,
+          "position": "absolute",
+          "width": "100%",
+        },
+        Object {
+          "opacity": 1,
+        },
+      ]
+    }
+  >
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0.1)",
+        ]
+      }
+      style={
+        Array [
+          Object {
+            "height": 8,
+            "width": "100%",
+          },
+          Object {
+            "opacity": 1,
+          },
+        ]
+      }
+    />
+  </AnimatedComponent>
+</Component>
+`;

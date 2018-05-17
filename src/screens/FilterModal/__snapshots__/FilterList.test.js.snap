@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterList renders correctly 1`] = `
+<React.Fragment>
+  <CheckBox
+    checked={true}
+    key="free"
+    label="Show only free events"
+    onChange={[Function]}
+    style={
+      Array [
+        Object {
+          "paddingHorizontal": 8,
+          "paddingVertical": 0,
+        },
+        Object {
+          "paddingVertical": 16,
+        },
+      ]
+    }
+  />
+</React.Fragment>
+`;

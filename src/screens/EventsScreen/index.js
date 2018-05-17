@@ -2,9 +2,9 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { EventDays, LocalizedFieldRef } from "../../data/event";
-import getAssetUrl from "../../data/get-asset-url";
+import getAssetSource from "../../data/get-asset-source";
 import { updateEvents } from "../../actions/events";
+import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
   selectEventsLoading,
@@ -12,29 +12,28 @@ import {
   selectFilteredEvents,
   selectAssetById
 } from "../../selectors/events";
+import type { Props as ComponentProps } from "./component";
 import Component from "./component";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>
 };
 
-type Props = {
-  events: EventDays,
-  loading: boolean,
-  refreshing: boolean,
-  updateEvents: () => Promise<void>,
-  getAssetUrl: LocalizedFieldRef => string
-} & OwnProps;
+type Props = ComponentProps & OwnProps;
 
 const mapStateToProps = state => ({
   events: groupEventsByStartTime(selectFilteredEvents(state)),
+  savedEvents: state.savedEvents,
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state),
-  getAssetUrl: getAssetUrl(id => selectAssetById(state, id))
+  getAssetSource: getAssetSource(id => selectAssetById(state, id)),
+  selectedCategories: state.eventFilters.selectedFilters.categories
 });
 
 const mapDispatchToProps = {
-  updateEvents
+  updateEvents,
+  addSavedEvent,
+  removeSavedEvent
 };
 
 const connector: Connector<OwnProps, Props> = connect(

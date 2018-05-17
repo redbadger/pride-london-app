@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#2cda9d",
+      "borderRadius": 10,
+      "height": 20,
+      "justifyContent": "center",
+      "width": 20,
+    }
+  }
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "color": "#2d2f7f",
+        "fontWeight": "bold",
+        "marginLeft": 1,
+        "marginTop": 2,
+      }
+    }
+    type="xSmall"
+  >
+    1
+  </Text>
+</Component>
+`;

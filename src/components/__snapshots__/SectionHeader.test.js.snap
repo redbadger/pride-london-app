@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f3f3f3",
+        "flexDirection": "row",
+        "minHeight": 40,
+      },
+      Object {
+        "borderWidth": 0,
+        "elevation": 3,
+        "marginBottom": 6,
+        "shadowColor": "rgba(0, 0, 0, 0.14)",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 3,
+      },
+    ]
+  }
+>
+  <Text
+    accessibilityTraits={
+      Array [
+        "header",
+      ]
+    }
+    accessible={true}
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h2"
+  >
+    Section Header
+  </Text>
+  <Component />
+</ContentPadding>
+`;
+
+exports[`renders correctly with badge text 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f3f3f3",
+        "flexDirection": "row",
+        "minHeight": 40,
+      },
+      Object {
+        "borderWidth": 0,
+        "elevation": 3,
+        "marginBottom": 6,
+        "shadowColor": "rgba(0, 0, 0, 0.14)",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 3,
+      },
+    ]
+  }
+>
+  <Text
+    accessibilityTraits={
+      Array [
+        "header",
+      ]
+    }
+    accessible={true}
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h2"
+  >
+    Section Header
+  </Text>
+  <Component
+    style={
+      Object {
+        "marginLeft": 6,
+      }
+    }
+  >
+    <NumberBadge
+      value={2}
+    />
+  </Component>
+</ContentPadding>
+`;
+
+exports[`renders correctly without shadow 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#f3f3f3",
+      "flexDirection": "row",
+      "minHeight": 40,
+    }
+  }
+>
+  <Text
+    accessibilityTraits={
+      Array [
+        "header",
+      ]
+    }
+    accessible={true}
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h2"
+  >
+    Section Header
+  </Text>
+  <Component />
+</ContentPadding>
+`;

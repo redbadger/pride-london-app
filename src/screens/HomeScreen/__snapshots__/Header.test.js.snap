@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "height": 225,
+        },
+        Object {
+          "backgroundColor": "#ff0000",
+        },
+      ]
+    }
+  >
+    <Image
+      resizeMode="contain"
+      source={
+        Object {
+          "height": 650,
+          "uri": "https://example.com/images/header-1.png",
+          "width": 810,
+        }
+      }
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-end",
+            "marginHorizontal": 10,
+            "marginTop": 7,
+          },
+          Object {
+            "height": 218,
+            "width": 271.66153846153844,
+          },
+        ]
+      }
+    />
+    <ContentPadding
+      padding={Object {}}
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "alignSelf": "center",
+          "height": "100%",
+          "justifyContent": "center",
+          "maxWidth": 440,
+          "position": "absolute",
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        color="lightNavyBlueColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "paddingHorizontal": 8,
+            "paddingTop": 8,
+            "zIndex": 2,
+          }
+        }
+        type="uber"
+      >
+        Pride
+      </Text>
+      <Text
+        color="lightNavyBlueColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#ffffff",
+              "paddingHorizontal": 8,
+              "paddingTop": 8,
+              "zIndex": 2,
+            },
+            Object {
+              "marginTop": -6,
+              "zIndex": 1,
+            },
+          ]
+        }
+        type="uber"
+      >
+        Festival
+      </Text>
+      <Text
+        color="whiteColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Object {
+            "backgroundColor": "#2d2f7f",
+            "paddingHorizontal": 8,
+            "paddingTop": 4,
+          }
+        }
+        type="h2"
+      >
+        from - to
+      </Text>
+    </ContentPadding>
+  </Component>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "alignSelf": "center",
+        "marginTop": -37,
+        "maxWidth": 440,
+        "width": "100%",
+      }
+    }
+  >
+    <SupportUsButton
+      bgBottomLeft={1}
+      bgTopRight={1}
+      centerText={true}
+      color="#2d2f7f"
+      description="Be part of the movement"
+      navigation={null}
+      title="Support us"
+      url="SUPPORT_US"
+    />
+  </ContentPadding>
+</Component>
+`;
+
+exports[`renders nothing when no banner is available 1`] = `""`;

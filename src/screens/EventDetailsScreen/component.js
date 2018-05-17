@@ -1,195 +1,196 @@
 // @flow
 import React, { PureComponent } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { Image, Linking, StyleSheet, View } from "react-native";
+import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
-import formatDate from "date-fns/format";
-import isSameDay from "date-fns/is_same_day";
-import Header from "./Header";
-import IconItem from "./IconItem";
-import CategoryLabel from "./CategoryLabel";
+import EventContact from "./EventContact";
+import EventOverview from "./EventOverview";
+import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
+import SaveEventButton from "../../components/SaveEventButton";
+import CategoryPill from "../../components/CategoryPill";
 import Text from "../../components/Text";
-import Button from "../../components/Button";
+import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
-import {
-  eventDetailsBgColor,
-  eventDetailsHeaderBgColor
-} from "../../constants/colors";
+import Header from "../../components/Header";
+import LayoutColumn from "../../components/LayoutColumn";
+import ShadowedScrollView from "../../components/ShadowedScrollView";
+import SectionDivider from "../../components/SectionDivider";
+import PerformanceList from "../../components/PerformanceList";
+import { groupPerformancesByPeriod } from "../../selectors/events";
+import { whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
-import strings from "../../constants/strings";
-import type { Event, LocalizedFieldRef } from "../../data/event";
-
+import type { Event, EventCategoryName } from "../../data/event";
+import type { FieldRef } from "../../data/field-ref";
+import type { ImageSource } from "../../data/get-asset-source";
 import locale from "../../data/locale";
+import { EVENT_LIST } from "../../constants/routes";
 
-type Props = {
-  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
-  event: Event,
-  getAssetUrl: LocalizedFieldRef => string
-};
+type EventHeaderProps = {|
+  isSaved: boolean,
+  toggleSaved: boolean => void,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>
+|};
 
-const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
-
-const renderEventOverview = event => {
-  const startTime = removeTimezoneFromDateString(
-    event.fields.startTime[locale]
-  );
-  const endTime = removeTimezoneFromDateString(event.fields.endTime[locale]);
-  const dateFormat = "DD MMMM YYYY";
-  const timeFormat = "HH:mm";
-  const dateDisplay = isSameDay(startTime, endTime)
-    ? formatDate(startTime, dateFormat)
-    : `${formatDate(startTime, dateFormat)} - ${formatDate(
-        endTime,
-        dateFormat
-      )}`;
-  const timeDisplay = `${formatDate(startTime, timeFormat)} - ${formatDate(
-    endTime,
-    timeFormat
-  )}`;
-
-  return (
-    <ContentPadding style={styles.content}>
-      <Text type="h1">{event.fields.name[locale]}</Text>
-      <View style={styles.categoryLabelContainer}>
-        {event.fields.eventCategories[locale].map(categoryName => (
-          <CategoryLabel key={categoryName} categoryName={categoryName} />
-        ))}
-      </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Text type="small">icn</Text>}
-          title={dateDisplay}
-          content={<Text type="small">{timeDisplay}</Text>}
-        />
-      </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Text type="small">icn</Text>}
-          title={event.fields.locationName[locale]}
-        />
-      </View>
-      <View style={styles.iconItemWrapper}>
-        <IconItem
-          icon={<Text type="small">icn</Text>}
-          title={`${text.eventDetailsPrice}${
-            event.fields.eventPriceLow[locale]
-          }`}
-        />
-      </View>
-      {event.fields.venueDetails &&
-        event.fields.venueDetails[locale].includes(
-          strings.venueDetailsGenderNeutralToilets
-        ) && (
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="small">icn</Text>}
-              title={text.eventDetailsGenderNeutralToilets}
-            />
-          </View>
-        )}
-      {event.fields.accessibilityOptions &&
-        event.fields.accessibilityOptions[locale].length > 0 && (
-          <View style={styles.iconItemWrapper}>
-            <IconItem
-              icon={<Text type="small">icn</Text>}
-              title={text.eventDetailsAccessibility}
-              content={
-                <Text type="small">
-                  {event.fields.accessibilityOptions[locale].join(", ")}
-                </Text>
-              }
-            />
-          </View>
-        )}
-    </ContentPadding>
-  );
-};
-
-const renderEventDescription = event => (
-  <ContentPadding style={styles.content}>
-    <Text markdown>{event.fields.eventDescription[locale]}</Text>
-    <View style={styles.mapWrapper}>
-      <EventMap
-        lat={event.fields.location[locale].lat}
-        lon={event.fields.location[locale].lon}
-        locationName={event.fields.locationName[locale]}
+export const EventHeader = ({
+  isSaved,
+  navigation,
+  toggleSaved
+}: EventHeaderProps) => (
+  <Header
+    leftElement={
+      <Header.BackButton
+        onPress={() => {
+          navigation.goBack(null);
+        }}
       />
-    </View>
-  </ContentPadding>
+    }
+    rightElement={
+      <SaveEventButton active={isSaved} onDark onPress={toggleSaved} />
+    }
+  />
 );
 
-const renderEventDetails = event =>
-  (event.fields.accessibilityDetails ||
-    event.fields.email ||
-    event.fields.phone ||
-    event.fields.ticketingUrl) && (
-    <ContentPadding>
-      <View style={styles.sectionDivider} />
-      <View style={styles.content}>
-        {event.fields.accessibilityDetails && (
-          <View style={styles.detailsSection}>
-            <Text type="h2">{text.eventDetailsAccessibilityDetails}</Text>
-            <View style={styles.accessibilityDetailsItem}>
-              <Text>{event.fields.accessibilityDetails[locale]}</Text>
-            </View>
-          </View>
-        )}
-        {(event.fields.email || event.fields.phone) && (
-          <View style={styles.detailsSection}>
-            <Text type="h2">{text.eventDetailsContact}</Text>
-            {event.fields.email && (
-              <View style={styles.contactItem}>
-                <IconItem
-                  icon={<Text type="small">icn</Text>}
-                  title={event.fields.email[locale]}
-                  titleType="text"
-                />
-              </View>
-            )}
-            {event.fields.phone && (
-              <View style={styles.contactItem}>
-                <IconItem
-                  icon={<Text type="small">icn</Text>}
-                  title={event.fields.phone[locale]}
-                  titleType="text"
-                />
-              </View>
-            )}
-          </View>
-        )}
-        {event.fields.ticketingUrl && (
-          <View style={styles.buyButton}>
-            <Button
-              text={text.eventDetailsBuyButton}
-              url={event.fields.ticketingUrl[locale]}
-            />
-          </View>
-        )}
-      </View>
+export const EventCategories = ({
+  event,
+  navigation,
+  setCategoryFilter
+}: {
+  event: Event,
+  navigation: NavigationScreenProp,
+  setCategoryFilter: EventCategoryName => void
+}) => (
+  <View style={styles.categories}>
+    {event.fields.eventCategories[locale].map(categoryName => (
+      <CategoryPill
+        key={categoryName}
+        name={((categoryName: any): EventCategoryName)}
+        style={styles.categoryPill}
+        onPress={() => {
+          navigation.popToTop({ immediate: true });
+          navigation.navigate(EVENT_LIST);
+          setCategoryFilter(categoryName);
+        }}
+      />
+    ))}
+  </View>
+);
+
+export const EventAccessibility = ({ children }: { children: string }) => (
+  <LayoutColumn spacing={4}>
+    <Text type="h2" color="lightNavyBlueColor">
+      {text.eventDetailsAccessibilityDetails}
+    </Text>
+    <Text>{children}</Text>
+  </LayoutColumn>
+);
+
+export const EventTickets = ({ url }: { url: string }) => (
+  <SafeAreaView>
+    <ContentPadding style={styles.ticketButton}>
+      <ButtonPrimary onPress={() => Linking.openURL(url)}>
+        {text.eventDetailsBuyButton}
+      </ButtonPrimary>
     </ContentPadding>
-  );
+  </SafeAreaView>
+);
+
+type Props = {
+  event: Event,
+  getAssetSource: FieldRef => ImageSource,
+  isSaved: boolean,
+  navigation: NavigationScreenProp<{ params: { eventId: string } }>,
+  toggleSaved: boolean => void,
+  setCategoryFilter: EventCategoryName => void
+};
 
 class EventDetailsScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    header: null
+  static defaultProps = {
+    isSaved: false
   };
-  static defaultProps = {};
 
   render() {
-    const { event, getAssetUrl } = this.props;
+    const { event, getAssetSource, navigation, setCategoryFilter } = this.props;
     return (
-      <ScrollView style={styles.container}>
-        <Header
-          onBackButtonPress={() => {
-            this.props.navigation.goBack(null);
-          }}
-          imageUrl={getAssetUrl(event.fields.individualEventPicture)}
+      <View style={styles.container}>
+        <EventHeader
+          isSaved={this.props.isSaved}
+          toggleSaved={this.props.toggleSaved}
+          navigation={navigation}
         />
-        {renderEventOverview(event)}
-        <View style={styles.sectionDivider} />
-        {renderEventDescription(event)}
-        {renderEventDetails(event)}
-      </ScrollView>
+        <ShadowedScrollView topShadow={false}>
+          <View style={{ aspectRatio: 5 / 3 }}>
+            <Image
+              style={styles.image}
+              resizeMode="cover"
+              source={getAssetSource(
+                event.fields.individualEventPicture[locale]
+              )}
+            />
+          </View>
+          <View style={styles.content}>
+            <LayoutColumn spacing={20}>
+              <ContentPadding>
+                <Text type="h1" style={styles.h1}>
+                  {event.fields.name[locale]}
+                </Text>
+                <LayoutColumn spacing={20}>
+                  <EventCategories
+                    event={event}
+                    navigation={navigation}
+                    setCategoryFilter={setCategoryFilter}
+                  />
+                  <EventOverview event={event} />
+                  <SectionDivider />
+                  <EventDescription event={event} />
+                  <EventMap
+                    lat={event.fields.location[locale].lat}
+                    lon={event.fields.location[locale].lon}
+                    locationName={event.fields.locationName[locale]}
+                  />
+                  {event.fields.performances &&
+                    event.fields.performances[locale] && <SectionDivider />}
+                </LayoutColumn>
+              </ContentPadding>
+              {event.fields.performances &&
+                event.fields.performances[locale] && (
+                  <PerformanceList
+                    performances={groupPerformancesByPeriod(
+                      event.fields.performances[locale]
+                    )}
+                    locale={locale}
+                  />
+                )}
+              {(event.fields.accessibilityDetails ||
+                event.fields.email ||
+                event.fields.phone) && (
+                <ContentPadding>
+                  <LayoutColumn spacing={20}>
+                    {event.fields.accessibilityDetails && <SectionDivider />}
+                    {event.fields.accessibilityDetails && (
+                      <EventAccessibility>
+                        {event.fields.accessibilityDetails[locale]}
+                      </EventAccessibility>
+                    )}
+                    {(event.fields.email || event.fields.phone) && (
+                      <SectionDivider />
+                    )}
+                    {(event.fields.email || event.fields.phone) && (
+                      <EventContact
+                        email={event.fields.email && event.fields.email[locale]}
+                        phone={event.fields.phone && event.fields.phone[locale]}
+                      />
+                    )}
+                  </LayoutColumn>
+                </ContentPadding>
+              )}
+            </LayoutColumn>
+          </View>
+        </ShadowedScrollView>
+        {event.fields.ticketingUrl && (
+          <EventTickets url={event.fields.ticketingUrl[locale]} />
+        )}
+      </View>
     );
   }
 }
@@ -197,40 +198,31 @@ class EventDetailsScreen extends PureComponent<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: eventDetailsBgColor
+    backgroundColor: whiteColor
+  },
+  image: {
+    maxWidth: "100%",
+    maxHeight: "100%"
   },
   content: {
-    flex: 1,
-    paddingVertical: 15,
-    backgroundColor: eventDetailsBgColor
-  },
-  categoryLabelContainer: {
     marginTop: 16,
-    marginBottom: 20,
+    marginBottom: 32
+  },
+  h1: {
+    marginBottom: 8
+  },
+  categories: {
     flexDirection: "row",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    marginBottom: -8
   },
-  iconItemWrapper: {
-    marginBottom: 20
+  categoryPill: {
+    marginBottom: 8,
+    marginRight: 8
   },
-  sectionDivider: {
-    height: 4,
-    backgroundColor: eventDetailsHeaderBgColor
-  },
-  mapWrapper: {
-    marginTop: 8
-  },
-  detailsSection: {
-    marginBottom: 20
-  },
-  accessibilityDetailsItem: {
-    marginTop: 8
-  },
-  contactItem: {
-    marginTop: 16
-  },
-  buyButton: {
-    marginTop: 16
+  ticketButton: {
+    backgroundColor: whiteColor,
+    paddingVertical: 12
   }
 });
 
