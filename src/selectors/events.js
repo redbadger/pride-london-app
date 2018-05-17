@@ -128,7 +128,14 @@ export const expandRecurringEventsInEntries = entries =>
 
     if (shouldExpandEvent) {
       const clones = recurrenceDates.map(generateRecurringEvent(curr));
-      return [...acc, curr, ...clones];
+
+      const expandedEvents = R.uniqWith(
+        (a: Event, b: Event) =>
+          isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
+        [curr, ...clones]
+      );
+
+      return [...acc, ...expandedEvents];
     }
     return [...acc, curr];
   }, []);
