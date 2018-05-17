@@ -1,7 +1,7 @@
 // @flow
 import type { Asset, LocalizedFieldRef } from "./event";
 
-const locale = "en-GB";
+import locale from "../data/locale";
 
 export default (getAssetById: string => Asset) => (
   fieldRef: LocalizedFieldRef

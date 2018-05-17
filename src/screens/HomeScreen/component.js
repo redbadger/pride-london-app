@@ -13,7 +13,7 @@ import {
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 
-const locale = "en-GB";
+import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
