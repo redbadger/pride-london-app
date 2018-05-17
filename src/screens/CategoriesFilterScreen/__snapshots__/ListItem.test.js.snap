@@ -4,7 +4,11 @@ exports[`ListItem Component renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="none"
   accessibilityLabel="Music, checkbox, selected"
-  accessibilityTraits="none"
+  accessibilityTraits={
+    Array [
+      "none",
+    ]
+  }
   delayPressIn={50}
   onPress={[Function]}
   style={
@@ -83,7 +87,11 @@ exports[`ListItem Component renders correctly without selected 1`] = `
 <Touchable
   accessibilityComponentType="none"
   accessibilityLabel="Music, checkbox, empty"
-  accessibilityTraits="none"
+  accessibilityTraits={
+    Array [
+      "none",
+    ]
+  }
   delayPressIn={50}
   onPress={[Function]}
   style={
