@@ -97,7 +97,7 @@ describe("Events reducer", () => {
           recurrenceDates: { "en-GB": ["02/08/2018", "03/08/2018"] }
         },
         sys: {
-          id: "event1-recurrence-03/08/2018-0",
+          id: "event1-recurrence-03/08/2018",
           contentType: { sys: { id: "event" } }
         }
       }
