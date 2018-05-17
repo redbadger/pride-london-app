@@ -1,7 +1,7 @@
 // @flow
 import "core-js/modules/es7.string.pad-start";
 import React, { Component } from "react";
-import { YellowBox } from "react-native";
+import { YellowBox, AppState } from "react-native";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -39,12 +39,20 @@ const store = createStore(
 
 const handleNavigationChange = navigate(store.dispatch);
 
+const handleAppStateChange = () => {
+  if (AppState.currentState === "active") store.dispatch(getEvents());
+};
+
 class AppWrapper extends Component<{}> {
   componentDidMount() {
     SplashScreen.hide();
     store.dispatch(init());
-    store.dispatch(getEvents());
     store.dispatch(loadSavedEvents());
+    AppState.addEventListener("change", handleAppStateChange);
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener("change", handleAppStateChange);
   }
 
   render() {
