@@ -58,7 +58,7 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     : sections.days;
 };
 
-const generateRecurringEvent = event => recurrance => {
+const generateRecurringEvent = event => (recurrance, i) => {
   const [recurranceDay, recurrancyMonth, recurranceYear] = recurrance.split(
     "/"
   );
@@ -106,7 +106,7 @@ const generateRecurringEvent = event => recurrance => {
       }
     },
     sys: {
-      id: `${event.sys.id}-recurrence-${recurrance}`
+      id: `${event.sys.id}-recurrence-${recurrance}-${i}`
     }
   });
 };
