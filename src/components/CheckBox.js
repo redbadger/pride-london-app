@@ -15,19 +15,18 @@ type Props = {
   style?: ViewStyleProp
 };
 
-const getAccessibilityLabel = (label: string, checked: boolean) => {
-  return Platform.select({
+const getAccessibilityLabel = (label: string, checked: boolean) =>
+  Platform.select({
     ios: checked ? `${label}, checkbox, selected` : `${label}, checkbox, empty`,
     android: checked
       ? `checked checkbox, ${label}`
       : `not checked checkbox, ${label}`
   });
-};
 
 const CheckBox = ({ checked, label, onChange, style }: Props) => (
   <Touchable
-    accessibilityComponentType={"none"}
-    accessibilityTraits={"none"}
+    accessibilityComponentType="none"
+    accessibilityTraits="none"
     accessibilityLabel={getAccessibilityLabel(label, checked)}
     onPress={onChange}
     style={[styles.container, style]}
