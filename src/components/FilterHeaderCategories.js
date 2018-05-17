@@ -66,13 +66,7 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
       </Touchable>
     </View>
   ) : (
-    <View
-      style={styles.categoryPillsContainer}
-      accessible
-      accessibilityLabel={`${text.categoryFilterContents} ${[
-        ...selectedCategories
-      ].join(", ")}`}
-    >
+    <View style={styles.categoryPillsContainer}>
       <CategoriesPills
         style={styles.categoryPills}
         selectedCategories={selectedCategories}

@@ -23,14 +23,22 @@ type Props = {
   name: EventCategoryName,
   style?: ViewStyleProp,
   numberOfLines?: number,
-  onPress?: Function
+  onPress?: Function,
+  labelForAccessibility?: string
 };
 
-const CategoryPill = ({ name, style, numberOfLines, onPress }: Props) => {
+const CategoryPill = ({
+  name,
+  style,
+  numberOfLines,
+  onPress,
+  labelForAccessibility
+}: Props) => {
   const text = (
     <Text
       type="h3"
       numberOfLines={numberOfLines}
+      accessibilityLabel={labelForAccessibility || name}
       style={[styles.categoryPillText, categoryStyleColor(name)]}
     >
       {name}

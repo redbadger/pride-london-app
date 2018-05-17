@@ -17,6 +17,7 @@ exports[`CategoryPill Component renders correctly 1`] = `
   }
 >
   <Text
+    accessibilityLabel="Music"
     color="blackColor"
     markdown={false}
     markdownStyle={Object {}}

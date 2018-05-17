@@ -86,8 +86,6 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
 
 exports[`FilterHeaderCategories Component renders multiple category pills with selected categories and accessibility label 1`] = `
 <Component
-  accessibilityLabel="Filtering event type by Music, Nightlife, Community"
-  accessible={true}
   style={
     Object {
       "flexDirection": "row",
