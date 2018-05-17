@@ -58,7 +58,8 @@ const CategoryPill = ({
 CategoryPill.defaultProps = {
   style: {},
   numberOfLines: undefined,
-  onPress: undefined
+  onPress: undefined,
+  labelForAccessibility: undefined
 };
 
 const styles = StyleSheet.create({

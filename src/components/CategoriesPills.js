@@ -24,11 +24,10 @@ type Props = {
 const createAccessibilityLabel = (
   listPrefix: string,
   pillsList: Set<EventCategoryName>
-) => {
-  return pillsList.size > 0
+) =>
+  pillsList.size > 0
     ? `${listPrefix} ${[...pillsList].join(", ")}`
     : text.categoryFilterEmpty;
-};
 
 class CategoriesPills extends React.PureComponent<Props> {
   static defaultProps = {
