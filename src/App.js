@@ -1,11 +1,16 @@
 // @flow
 import React from "react";
 import { StatusBar, StyleSheet } from "react-native";
+import type { NavigationState } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import { lightNavyBlueColor } from "./constants/colors";
 import Navigation from "./Navigation";
 
-const App = () => (
+export type Props = {
+  onNavigationStateChange: (NavigationState, NavigationState) => void
+};
+
+const App = ({ onNavigationStateChange }: Props) => (
   <SafeAreaView
     forceInset={{ top: "always", bottom: "never" }}
     style={styles.container}
@@ -15,7 +20,7 @@ const App = () => (
       barStyle="light-content"
       backgroundColor={lightNavyBlueColor}
     />
-    <Navigation />
+    <Navigation onNavigationStateChange={onNavigationStateChange} />
   </SafeAreaView>
 );
 

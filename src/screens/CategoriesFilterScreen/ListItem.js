@@ -100,7 +100,7 @@ class ListItem extends Component<
           />
         )}
         <View onLayout={this.handleOnLayout}>
-          <Text style={[styles.itemText, { color: textColor }]}>
+          <Text type="h1" style={[styles.itemText, { color: textColor }]}>
             {category.label}
           </Text>
         </View>
@@ -130,9 +130,6 @@ const styles = StyleSheet.create({
     paddingLeft: 32,
     paddingTop: 10,
     color: whiteColor,
-    textAlign: "left",
-    fontFamily: "Poppins-Bold",
-    fontSize: 24,
     letterSpacing: 0
   }
 });

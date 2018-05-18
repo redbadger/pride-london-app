@@ -1,10 +1,10 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ScrollView, PixelRatio } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import CategoryPill from "./CategoryPill";
-import Text from "./Text";
+import Text, { scaleWithFont } from "./Text";
 import text from "../constants/text";
 
 import {
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: darkBlueGreyTwoColor,
     flex: 1,
     alignItems: "center",
-    height: 44 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h3", 44),
     borderRadius: 4,
     flexDirection: "row"
   },
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     width: 15,
-    height: 44 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h3", 44),
     zIndex: 10,
     borderRadius: 4
   },
