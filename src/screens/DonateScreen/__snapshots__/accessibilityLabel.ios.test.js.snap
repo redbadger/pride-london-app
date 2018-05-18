@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns value VoiceOver would say if: focused, no placeholder, no value, selection at end 1`] = `"Company, text field, is editing, insertion point at end"`;
+
+exports[`returns value VoiceOver would say if: focused, placeholder, no value, selection at start 1`] = `"Company, text field, is editing, Your company, insertion point at start"`;
+
+exports[`returns value VoiceOver would say if: focused, placeholder, value, no selection 1`] = `"Company, text field, is editing, Aperture Science, insertion point at start"`;
+
+exports[`returns value VoiceOver would say if: not focused, no placeholder, no value 1`] = `"Company, text field; double tap to edit"`;
+
+exports[`returns value VoiceOver would say if: not focused, placeholder, no value 1`] = `"Company, Your company, text field; double tap to edit"`;
+
+exports[`returns value VoiceOver would say if: not focused, placeholder, value 1`] = `"Company, Aperture Science, text field; double tap to edit"`;

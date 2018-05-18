@@ -24,11 +24,12 @@ type Props = {|
 |};
 
 type State = {|
-  focused: boolean
+  focused: boolean,
+  selection: ?{ start: number, end: number }
 |};
 
 class DonateScreen extends React.PureComponent<Props, State> {
-  state = { focused: false };
+  state = { focused: false, selection: undefined };
 
   onFocus = () => {
     this.setState({ focused: true });
@@ -39,9 +40,15 @@ class DonateScreen extends React.PureComponent<Props, State> {
     this.setState({ focused: false });
   };
 
+  onSelectionChange = (e: {
+    nativeEvent: { selection: { start: number, end: number }, target: number }
+  }) => {
+    this.setState({ selection: e.nativeEvent.selection });
+  };
+
   render() {
     const { label, placeholder, onFocus, style, ...otherProps } = this.props;
-    const { focused } = this.state;
+    const { focused, selection } = this.state;
 
     // Note on accessibility:
     // React Native does not support to mark up labels for input fields
@@ -56,7 +63,8 @@ class DonateScreen extends React.PureComponent<Props, State> {
           label,
           placeholder,
           otherProps.value,
-          focused
+          focused,
+          selection
         )}
         style={style}
       >
@@ -72,6 +80,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
           keyboardType="numeric"
           onBlur={this.onBlur}
           onFocus={this.onFocus}
+          onSelectionChange={this.onSelectionChange}
           placeholder={focused ? placeholder : null}
           placeholderTextColor={mediumGreyColor}
           style={[styles.input, focused && styles.inputFocused]}

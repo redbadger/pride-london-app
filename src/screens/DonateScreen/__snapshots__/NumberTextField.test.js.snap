@@ -26,6 +26,7 @@ exports[`renders correctly 1`] = `
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}
+    onSelectionChange={[Function]}
     placeholder={null}
     placeholderTextColor="#cecece"
     style={

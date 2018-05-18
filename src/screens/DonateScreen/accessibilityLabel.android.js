@@ -4,7 +4,8 @@ const getAccessibiltyLabel = (
   label: string,
   placeholder: ?string,
   value: ?string,
-  focused: boolean
+  focused: boolean,
+  selection: ?{ start: number, end: number } // eslint-disable-line no-unused-vars
 ) => {
   const labelParts = [];
   if (focused) {
@@ -25,7 +26,11 @@ const getAccessibiltyLabel = (
     descriptionParts.push("double tap and hold to long press");
   }
 
-  return [labelParts.join(", "), descriptionParts.join(", ")].join("; ");
+  if (descriptionParts.length > 0) {
+    return `${labelParts.join(", ")}; ${descriptionParts.join(", ")}`;
+  }
+
+  return labelParts.join(", ");
 };
 
 export default getAccessibiltyLabel;

@@ -4,7 +4,8 @@ const getAccessibiltyLabel = (
   label: string,
   placeholder: ?string,
   value: ?string,
-  focused: boolean
+  focused: boolean,
+  selection: ?{ start: number, end: number }
 ) => {
   const labelParts = [];
   const descriptionParts = [];
@@ -21,7 +22,8 @@ const getAccessibiltyLabel = (
       labelParts.push(placeholder);
     }
 
-    labelParts.push("insertion point at START/END");
+    const insertionPoint = selection && selection.start > 0 ? "end" : "start";
+    labelParts.push(`insertion point at ${insertionPoint}`);
   } else {
     if (value) {
       labelParts.push(value);
@@ -34,7 +36,11 @@ const getAccessibiltyLabel = (
     descriptionParts.push("double tap to edit");
   }
 
-  return [labelParts.join(", "), descriptionParts.join(", ")].join("; ");
+  if (descriptionParts.length > 0) {
+    return `${labelParts.join(", ")}; ${descriptionParts.join(", ")}`;
+  }
+
+  return labelParts.join(", ");
 };
 
 export default getAccessibiltyLabel;
