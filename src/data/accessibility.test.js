@@ -1,5 +1,4 @@
-import { checkboxAccessibilityLabel } from "./accessibility";
-import { Platform } from "react-native";
+import checkboxAccessibilityLabel from "./accessibility";
 
 describe("checkboxAccessibilityLabel", () => {
   it("indicates status of checkbox", () => {

@@ -1,20 +1,13 @@
 // @flow
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  View,
-  Animated,
-  Dimensions,
-  Image,
-  Platform
-} from "react-native";
+import { StyleSheet, View, Animated, Dimensions, Image } from "react-native";
 import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import { whiteColor, blackColor } from "../../constants/colors";
 import whiteCheck from "../../../assets/images/whiteCheck.png";
 import blackCheck from "../../../assets/images/blackCheck.png";
 import type { EventCategory } from "../../data/event";
-import { checkboxAccessibilityLabel } from "../../data/accessibility";
+import checkboxAccessibilityLabel from "../../data/accessibility";
 
 type ListItemProps = {
   category: EventCategory,

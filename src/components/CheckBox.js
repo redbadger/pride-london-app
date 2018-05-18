@@ -1,10 +1,10 @@
 // @flow
 import React from "react";
-import { Image, StyleSheet, Platform } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
-import { checkboxAccessibilityLabel } from "../data/accessibility";
+import checkboxAccessibilityLabel from "../data/accessibility";
 
 import checkboxUrl from "../../assets/images/checkBox.png";
 import checkBoxCheckedUrl from "../../assets/images/checkBoxChecked.png";
