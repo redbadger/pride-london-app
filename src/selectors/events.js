@@ -60,17 +60,13 @@ const generateRecurringEvent = event => recurrence => {
     "/"
   );
 
-  const startTime = DateTime.fromFormat(
-    event.fields.startTime[locale],
-    contentfulFormat,
-    { setZone: true }
-  );
+  const startTime = DateTime.fromISO(event.fields.startTime[locale], {
+    setZone: true
+  });
 
-  const endTime = DateTime.fromFormat(
-    event.fields.endTime[locale],
-    contentfulFormat,
-    { setZone: true }
-  );
+  const endTime = DateTime.fromISO(event.fields.endTime[locale], {
+    setZone: true
+  });
 
   const recurrenceStartTime = startTime.set({
     year: recurrenceYear,
