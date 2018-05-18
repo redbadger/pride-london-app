@@ -40,7 +40,7 @@ import {
   HOME,
   EVENT_CATEGORIES_FILTER,
   PARADE,
-  SAVED,
+  SAVED_EVENT_LIST,
   SUPPORT_US,
   FILTER_MODAL,
   DONATE,
@@ -88,7 +88,7 @@ export const getTabTestId = (routeName: string) => {
       return "events-tab-button";
     case PARADE:
       return "parade-tab-button";
-    case SAVED:
+    case SAVED_EVENT_LIST:
       return "saved-events-tab-button";
     case SUPPORT_US:
       return "support-us-tab-button";
