@@ -31,6 +31,7 @@ exports[`renders correctly 1`] = `
         }
       }
       loadingEnabled={true}
+      provider="google"
       scrollEnabled={false}
       style={
         Object {
