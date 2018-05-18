@@ -9,6 +9,7 @@ import {
   mediumGreyColor,
   eucalyptusGreenColor
 } from "../../constants/colors";
+import getAccessibiltyLabel from "./accessibilityLabel";
 
 type Props = {|
   label: string,
@@ -25,33 +26,6 @@ type Props = {|
 type State = {|
   focused: boolean
 |};
-
-const getAccessibiltyLabel = (
-  label: string,
-  value: ?string,
-  focused: boolean
-) => {
-  const labelParts = [];
-  if (focused) {
-    labelParts.push("editing");
-  }
-
-  if (value) {
-    labelParts.push(value);
-  }
-
-  labelParts.push("edit box");
-  labelParts.push(label);
-
-  const descriptionParts = [];
-  if (!focused) {
-    descriptionParts.push("double tap to enter text");
-  } else {
-    descriptionParts.push("double tap and hold to long press");
-  }
-
-  return [labelParts.join(", "), descriptionParts.join(", ")].join("; ");
-};
 
 class DonateScreen extends React.PureComponent<Props, State> {
   state = { focused: false };
@@ -72,12 +46,15 @@ class DonateScreen extends React.PureComponent<Props, State> {
     // Note on accessibility:
     // React Native does not support to mark up labels for input fields
     // properly. See for example: https://github.com/facebook/react-native/issues/14989
+    // This is why we use a custom `accessibilityLabel`, which tries to mimic,
+    // TalkBack/VoiceOver behaviour.
 
     return (
       <View
         accessible
         accessibilityLabel={getAccessibiltyLabel(
           label,
+          placeholder,
           otherProps.value,
           focused
         )}

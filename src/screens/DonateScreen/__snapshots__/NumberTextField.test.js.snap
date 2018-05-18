@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <Component
-  accessibilityLabel="13.37, edit box, A number; double tap to enter text"
+  accessibilityLabel="A number, 13.37, text field; double tap to edit"
   accessible={true}
 >
   <Text
