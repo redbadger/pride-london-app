@@ -14,6 +14,7 @@ import { whiteColor, blackColor } from "../../constants/colors";
 import whiteCheck from "../../../assets/images/whiteCheck.png";
 import blackCheck from "../../../assets/images/blackCheck.png";
 import type { EventCategory } from "../../data/event";
+import { checkboxAccessibilityLabel } from "../../data/accessibility";
 
 type ListItemProps = {
   category: EventCategory,
@@ -54,16 +55,6 @@ class ListItem extends Component<
     }).start();
   }
 
-  getAccessibilityLabel = (label: string, selected: boolean) =>
-    Platform.select({
-      ios: selected
-        ? `${label}, checkbox, selected`
-        : `${label}, checkbox, empty`,
-      android: selected
-        ? `checked checkbox, ${label}`
-        : `not checked checkbox, ${label}`
-    });
-
   decorationWidth = new Animated.Value(0);
 
   // Measuring text width on initial render
@@ -86,7 +77,7 @@ class ListItem extends Component<
         onPress={() => onPress(category.label)}
         accessibilityComponentType="none"
         accessibilityTraits={["none"]}
-        accessibilityLabel={this.getAccessibilityLabel(
+        accessibilityLabel={checkboxAccessibilityLabel(
           category.label,
           selected
         )}
