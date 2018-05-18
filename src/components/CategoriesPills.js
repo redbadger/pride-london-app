@@ -76,7 +76,10 @@ class CategoriesPills extends React.PureComponent<Props> {
             {text.zeroSelected}
           </Text>
         ) : (
-          <View style={styles.scrollView}>
+          <View
+            style={styles.scrollView}
+            importantForAccessibility="no-hide-descendants"
+          >
             <LinearGradient
               style={[styles.scrollShadow, styles.scrollShadowLeft]}
               end={{ x: 0, y: 0.5 }}
@@ -99,10 +102,6 @@ class CategoriesPills extends React.PureComponent<Props> {
                   key={name}
                   name={name}
                   style={styles.categoryPill}
-                  labelForAccessibility={createAccessibilityLabel(
-                    text.categoryFilterContents,
-                    selectedCategories
-                  )}
                 />
               ))}
             </ScrollView>
