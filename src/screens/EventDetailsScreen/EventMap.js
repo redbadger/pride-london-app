@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { StyleSheet } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import openMapLink from "./openMapLink";
 import Touchable from "../../components/Touchable";
 import Delayed from "../../components/Delayed";
@@ -19,6 +19,7 @@ const EventMap = ({ lat, lon, locationName }: Props) => (
   >
     <Delayed delay={600}>
       <MapView
+        provider={PROVIDER_GOOGLE}
         style={styles.map}
         initialRegion={{
           latitude: lat,
