@@ -21,6 +21,8 @@ exports[`renders correctly 1`] = `
     barStyle="light-content"
     showHideTransition="fade"
   />
-  <NavigationContainer />
+  <NavigationContainer
+    onNavigationStateChange={[Function]}
+  />
 </withOrientation>
 `;
