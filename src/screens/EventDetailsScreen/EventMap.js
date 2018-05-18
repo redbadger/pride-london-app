@@ -21,7 +21,7 @@ const EventMap = ({ lat, lon, locationName }: Props) => (
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
-        initialRegion={{
+        region={{
           latitude: lat,
           longitude: lon,
           latitudeDelta: 0.008,
