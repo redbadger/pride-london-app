@@ -17,7 +17,7 @@ exports[`FilterHeaderCategories CategoriesFilterButton component renders correct
       "backgroundColor": "rgb(25, 26, 71)",
       "borderBottomRightRadius": 4,
       "borderTopRightRadius": 4,
-      "height": 88,
+      "height": 44,
       "width": 44,
     }
   }
@@ -39,6 +39,29 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
     }
   }
 >
+  <Text
+    accessibilityLabel="Events"
+    accessibilityTraits={
+      Array [
+        "header",
+      ]
+    }
+    accessible={true}
+    allowFontScaling={false}
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginRight": 8,
+        "paddingTop": 4,
+      }
+    }
+    type="h1"
+  >
+    Showing
+  </Text>
   <Touchable
     accessibilityComponentType="button"
     accessibilityTraits={

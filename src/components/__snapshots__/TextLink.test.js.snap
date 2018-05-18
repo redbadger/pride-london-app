@@ -6,7 +6,7 @@ exports[`renders correctly 1`] = `
     Object {
       "alignSelf": "flex-start",
       "borderBottomColor": "#2cda9d",
-      "borderBottomWidth": 1,
+      "borderBottomWidth": 2,
       "marginBottom": 2,
     }
   }

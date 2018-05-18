@@ -1,12 +1,13 @@
 // @flow
 import React from "react";
-import { PixelRatio, Platform, StyleSheet, TextInput } from "react-native";
+import { Platform, StyleSheet, TextInput } from "react-native";
 import {
   lightNavyBlueColor,
   transparent,
   mediumGreyColor,
   eucalyptusGreenColor
 } from "../../constants/colors";
+import { scaleFont, scaleWithFont } from "../../components/Text";
 
 type Props = {|
   placeholder: string,
@@ -57,14 +58,14 @@ const styles = StyleSheet.create({
     borderColor: mediumGreyColor,
     borderWidth: 1,
     borderRadius: 4,
-    height: 50 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h2", 50),
     paddingHorizontal: 14,
     fontFamily: "Poppins-SemiBold",
-    fontSize: 18,
+    fontSize: scaleFont("h2", 18),
     color: lightNavyBlueColor,
     ...Platform.select({
       android: {
-        lineHeight: 18,
+        lineHeight: scaleFont("h2", 18),
         includeFontPadding: false,
         textAlignVertical: "bottom"
       }

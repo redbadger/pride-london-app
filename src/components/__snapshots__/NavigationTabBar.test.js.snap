@@ -12,7 +12,7 @@ exports[`renders correctly 1`] = `
     Object {
       "backgroundColor": "rgb(243, 243, 243)",
       "borderTopColor": "rgba(0, 0, 0, 0.25)",
-      "borderTopWidth": 0.5,
+      "borderTopWidth": 1,
       "paddingHorizontal": 8,
     }
   }
@@ -110,23 +110,16 @@ exports[`renders correctly 1`] = `
         </Component>
       </Component>
       <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
         numberOfLines={1}
         style={
-          Array [
-            Object {
-              "fontFamily": "Poppins-Bold",
-              "fontSize": 12,
-              "includeFontPadding": false,
-              "lineHeight": 16,
-            },
-            Object {
-              "color": "rgb(45, 47, 127)",
-            },
-          ]
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
         }
+        type="tabBarItem"
       >
         Tab 0
       </Text>
@@ -211,23 +204,16 @@ exports[`renders correctly 1`] = `
         </Component>
       </Component>
       <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
         numberOfLines={1}
         style={
-          Array [
-            Object {
-              "fontFamily": "Poppins-Bold",
-              "fontSize": 12,
-              "includeFontPadding": false,
-              "lineHeight": 16,
-            },
-            Object {
-              "color": "rgb(88, 88, 88)",
-            },
-          ]
+          Object {
+            "color": "rgb(88, 88, 88)",
+          }
         }
+        type="tabBarItem"
       >
         Tab 1
       </Text>

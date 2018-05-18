@@ -3,11 +3,10 @@ import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import getHours from "date-fns/get_hours";
 import isSameDay from "date-fns/is_same_day";
-import isBefore from "date-fns/is_before";
 import R from "ramda";
+import { DateTime } from "luxon";
 import { buildEventFilter } from "./event-filters";
-import { formatContentfulDate } from "../data/formatters";
-
+import { contentfulFormat } from "../data/formatters";
 import type { State } from "../reducers";
 import type {
   Event,
@@ -17,7 +16,6 @@ import type {
   PerformancePeriods
 } from "../data/event";
 import type { Asset } from "../data/asset";
-
 import locale from "../data/locale";
 
 const fieldsEventsLocaleLens = R.lensPath(["fields", "events", locale]);
@@ -58,55 +56,46 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     : sections.days;
 };
 
-const generateRecurringEvent = event => recurrance => {
-  const [recurranceDay, recurrancyMonth, recurranceYear] = recurrance.split(
+const generateRecurringEvent = event => recurrence => {
+  const [recurrenceDay, recurrenceMonth, recurrenceYear] = recurrence.split(
     "/"
   );
-  const [eventStartDate, eventStartTime] = event.fields.startTime[locale].split(
-    "T"
-  );
-  const eventEndTime = event.fields.endTime[locale].split("T")[1];
-  const [eventStartYear, eventStartMonth, eventStartDay] = eventStartDate.split(
-    "-"
-  );
 
-  const recurrenceStartDate = formatContentfulDate(
-    recurranceYear,
-    recurrancyMonth,
-    recurranceDay,
-    eventStartTime
-  );
+  const startTime = DateTime.fromISO(event.fields.startTime[locale], {
+    setZone: true
+  });
 
-  const shouldModifyEndTime =
-    isSameDay(event.fields.startTime[locale], event.fields.endTime[locale]) ||
-    isBefore(event.fields.endTime[locale], recurrenceStartDate);
+  const endTime = DateTime.fromISO(event.fields.endTime[locale], {
+    setZone: true
+  });
 
-  const recurrenceEndDate = shouldModifyEndTime
-    ? formatContentfulDate(
-        recurranceYear,
-        recurrancyMonth,
-        recurranceDay,
-        eventEndTime
-      )
-    : event.fields.endTime[locale];
+  const recurrenceStartTime = startTime.set({
+    year: recurrenceYear,
+    month: recurrenceMonth,
+    day: recurrenceDay
+  });
+
+  const diff = recurrenceStartTime.diff(startTime);
+
+  const recurrenceEndTime = endTime.plus(diff);
 
   return R.mergeDeepRight(event, {
     fields: {
       startTime: {
-        [locale]: recurrenceStartDate
+        [locale]: recurrenceStartTime.toFormat(contentfulFormat)
       },
       endTime: {
-        [locale]: recurrenceEndDate
+        [locale]: recurrenceEndTime.toFormat(contentfulFormat)
       },
       recurrenceDates: {
         [locale]: [
-          `${eventStartDay}/${eventStartMonth}/${eventStartYear}`,
+          startTime.toFormat("dd/LL/yyyy"),
           ...event.fields.recurrenceDates[locale]
         ]
       }
     },
     sys: {
-      id: `${event.sys.id}-recurrence-${recurrance}`
+      id: `${event.sys.id}-recurrence-${recurrence}`
     }
   });
 };
@@ -128,7 +117,14 @@ export const expandRecurringEventsInEntries = entries =>
 
     if (shouldExpandEvent) {
       const clones = recurrenceDates.map(generateRecurringEvent(curr));
-      return [...acc, curr, ...clones];
+
+      const expandedEvents = R.uniqWith(
+        (a: Event, b: Event) =>
+          isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
+        [curr, ...clones]
+      );
+
+      return [...acc, ...expandedEvents];
     }
     return [...acc, curr];
   }, []);
