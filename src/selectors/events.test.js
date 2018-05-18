@@ -418,6 +418,46 @@ describe("expandRecurringEventsInEntries", () => {
     expect(expandRecurringEventsInEntries(events)).toEqual(expected);
   });
 
+  it("does not create new events recurrence is on the same day as start date", () => {
+    const events = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-02T00:00+00:00" },
+          endTime: { "en-GB": "2018-08-02T04:00+00:00" },
+          recurrenceDates: { "en-GB": ["02/08/2018"] }
+        },
+        sys: {
+          id: "event1",
+          contentType: { sys: { id: "event" } }
+        }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
+        sys: { id: "event2", contentType: { sys: { id: "event" } } }
+      }
+    ];
+
+    const expected = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-02T00:00+00:00" },
+          endTime: { "en-GB": "2018-08-02T04:00+00:00" },
+          recurrenceDates: { "en-GB": ["02/08/2018"] }
+        },
+        sys: {
+          id: "event1",
+          contentType: { sys: { id: "event" } }
+        }
+      },
+      {
+        fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
+        sys: { id: "event2", contentType: { sys: { id: "event" } } }
+      }
+    ];
+
+    expect(expandRecurringEventsInEntries(events)).toEqual(expected);
+  });
+
   it("updates endTime to be same distance from startTime", () => {
     const events = [
       {

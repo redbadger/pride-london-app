@@ -2,6 +2,7 @@
 import parseDate from "date-fns/parse";
 import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
 import getHours from "date-fns/get_hours";
+import isSameDay from "date-fns/is_same_day";
 import R from "ramda";
 import { DateTime } from "luxon";
 import { buildEventFilter } from "./event-filters";
@@ -116,7 +117,14 @@ export const expandRecurringEventsInEntries = entries =>
 
     if (shouldExpandEvent) {
       const clones = recurrenceDates.map(generateRecurringEvent(curr));
-      return [...acc, curr, ...clones];
+
+      const expandedEvents = R.uniqWith(
+        (a: Event, b: Event) =>
+          isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
+        [curr, ...clones]
+      );
+
+      return [...acc, ...expandedEvents];
     }
     return [...acc, curr];
   }, []);
