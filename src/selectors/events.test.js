@@ -1,4 +1,5 @@
 import parseDate from "date-fns/parse";
+import { DateTime } from "luxon";
 import {
   getTimePeriod,
   groupEventsByStartTime,
@@ -13,7 +14,8 @@ import {
   selectFeaturedEventsByTitle,
   uniqueEvents,
   selectSavedEvents,
-  expandRecurringEventsInEntries
+  expandRecurringEventsInEntries,
+  eventIsAfter
 } from "./events";
 import { buildEventFilter } from "./event-filters";
 
@@ -1138,5 +1140,27 @@ describe("mapSavedIDsToEvents", () => {
     const actual = selectSavedEvents(state);
 
     expect(actual).toEqual(expected);
+  });
+});
+
+describe("eventIsAfter", () => {
+  it("filters events before the passed date", () => {
+    const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
+    const event = {
+      fields: { endTime: { "en-GB": "2018-07-01T00:00:00+01:00" } },
+      sys: { id: "2", contentType: { sys: { id: "event" } } }
+    };
+
+    expect(eventIsAfter(date)(event)).toEqual(false);
+  });
+
+  it("does not filter events after the passed date", () => {
+    const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
+    const event = {
+      fields: { endTime: { "en-GB": "2018-08-01T00:00:00+01:00" } },
+      sys: { id: "2", contentType: { sys: { id: "event" } } }
+    };
+
+    expect(eventIsAfter(date)(event)).toEqual(true);
   });
 });

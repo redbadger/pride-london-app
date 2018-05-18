@@ -191,7 +191,7 @@ const addPerformances = (state: State) => (event: Event) => {
   return event;
 };
 
-const isAfter = (date: DateTime) => (event: Event) => {
+export const eventIsAfter = (date: DateTime) => (event: Event) => {
   const endTime = DateTime.fromISO(event.fields.endTime[locale]);
   return DateTime.max(date, endTime) === endTime;
 };
@@ -200,9 +200,8 @@ const isAfter = (date: DateTime) => (event: Event) => {
 export const selectEvents = (state: State): Event[] =>
   ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
-  ): any[]): Event[])
-    .map(addPerformances(state))
-    .filter(isAfter(getGlobalFiltersState(state).hideEventsBefore));
+  ): any[]): Event[]).map(addPerformances(state));
+// .filter(eventIsAfter(getGlobalFiltersState(state).hideEventsBefore));
 
 export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
   ((getEventsState(state).entries.filter(
