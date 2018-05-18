@@ -69,10 +69,10 @@ export const set = (date: string, values: Object) =>
     .set(values)
     .toISO(contentfulISOFormatOptions);
 
-export const diff = (d1: string, d2: string) =>
+export const diff = (d1: string, d2: string, unit?: string | string[]) =>
   parse(d1)
     // $FlowFixMe
-    .diff(parse(d2))
+    .diff(parse(d2), unit)
     .toObject();
 
 export const add = (date: string, values: Object) =>
