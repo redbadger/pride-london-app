@@ -67,14 +67,16 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
           </Text>
         }
         headerRight={
-          <Touchable
-            onPress={this.clear}
-            accessibilityLabel="Clear date selection"
-          >
-            <Text type="small" style={{ color: dialogTitleColor }}>
-              Clear
-            </Text>
-          </Touchable>
+          dateRange ? (
+            <Touchable
+              onPress={this.clear}
+              accessibilityLabel="Clear date selection"
+            >
+              <Text type="small" style={{ color: dialogTitleColor }}>
+                Clear
+              </Text>
+            </Touchable>
+          ) : null
         }
         onApply={this.props.onApply}
         onCancel={this.props.onCancel}
