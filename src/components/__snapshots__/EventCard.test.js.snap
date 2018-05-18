@@ -23,7 +23,7 @@ exports[`renders correctly 1`] = `
       Object {
         "borderRadius": 5,
         "flexDirection": "row",
-        "height": 135,
+        "height": 108,
         "overflow": "hidden",
       }
     }
@@ -155,7 +155,7 @@ exports[`renders correctly when the event is free 1`] = `
       Object {
         "borderRadius": 5,
         "flexDirection": "row",
-        "height": 135,
+        "height": 108,
         "overflow": "hidden",
       }
     }
@@ -287,7 +287,7 @@ exports[`renders correctly when there is a price range 1`] = `
       Object {
         "borderRadius": 5,
         "flexDirection": "row",
-        "height": 135,
+        "height": 108,
         "overflow": "hidden",
       }
     }
@@ -419,7 +419,7 @@ exports[`renders correctly when there is only one price 1`] = `
       Object {
         "borderRadius": 5,
         "flexDirection": "row",
-        "height": 135,
+        "height": 108,
         "overflow": "hidden",
       }
     }
