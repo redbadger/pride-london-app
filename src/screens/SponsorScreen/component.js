@@ -7,7 +7,7 @@ import R from "ramda";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
-import Text from "../../components/Text";
+import Text, { scaleFont } from "../../components/Text";
 import Button from "../../components/ButtonPrimary";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SponsorLogoContainer from "./SponsorLogoContainer";
@@ -26,10 +26,6 @@ type Props = {
 };
 
 class SponsorScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    tabBarVisible: false
-  };
-
   sponsorEmailButtonPress = () => {
     sendEmail(
       ["sponsor@prideinlondon.org"],
@@ -121,8 +117,8 @@ class SponsorScreen extends PureComponent<Props> {
 
 const markdownStyle = {
   text: {
-    fontSize: 14,
-    lineHeight: 20,
+    fontSize: scaleFont("small", 14),
+    lineHeight: scaleFont("small", 20),
     color: lightNavyBlueColor
   }
 };

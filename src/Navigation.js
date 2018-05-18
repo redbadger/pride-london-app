@@ -1,8 +1,15 @@
 // @flow
 import React from "react";
-import { TabNavigator, StackNavigator } from "react-navigation";
+import {
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
 import { Image, StyleSheet, View } from "react-native";
-import type { TabScene } from "react-navigation";
+import type {
+  TabScene,
+  NavigationScreenConfigProps,
+  NavigationTabScreenOptions
+} from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
 import DonateScreen from "./screens/DonateScreen";
 import EventsScreen from "./screens/EventsScreen";
@@ -75,7 +82,33 @@ const styles = StyleSheet.create({
   }
 });
 
-const HomeStack = StackNavigator(
+export const getTabTestId = (routeName: string) => {
+  switch (routeName) {
+    case EVENT_LIST:
+      return "events-tab-button";
+    case PARADE:
+      return "parade-tab-button";
+    case SAVED:
+      return "saved-events-tab-button";
+    case SUPPORT_US:
+      return "support-us-tab-button";
+    default:
+      return "";
+  }
+};
+
+export const hideTabBarOnSubRoutes = (
+  initialRouteName: string,
+  navigationOptions: NavigationTabScreenOptions
+) => ({ navigation }: NavigationScreenConfigProps) => {
+  const { routeName } = navigation.state.routes[navigation.state.index];
+  return {
+    ...navigationOptions,
+    tabBarVisible: routeName === initialRouteName
+  };
+};
+
+const HomeStack = createStackNavigator(
   {
     [HOME]: { screen: withShadow(HomeScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen },
@@ -83,19 +116,12 @@ const HomeStack = StackNavigator(
   },
   {
     initialRouteName: HOME,
-    navigationOptions: {
-      tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
-      tabBarLabel: text.tabHome,
-      tabBarTestIDProps: {
-        testID: "home-tab-button"
-      }
-    },
     headerMode: "none",
     cardStyle: styles.card
   }
 );
 
-const EventsStack = StackNavigator(
+const EventsStack = createStackNavigator(
   {
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen },
@@ -110,27 +136,22 @@ const EventsStack = StackNavigator(
         testID: "events-tab-button"
       }
     },
-    headerMode: "none",
-    cardStyle: styles.card
+    headerMode: "none"
   }
 );
 
-const ParadeStack = StackNavigator(
+const ParadeStack = createStackNavigator(
   {
     [PARADE]: { screen: withShadow(ParadeInformationScreen) }
   },
   {
     initialRouteName: PARADE,
-    navigationOptions: {
-      tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
-      tabBarLabel: text.tabParade
-    },
     headerMode: "none",
     cardStyle: styles.card
   }
 );
 
-const SavedStack = StackNavigator(
+const SavedStack = createStackNavigator(
   {
     [SAVED]: { screen: withShadow(SavedEventListScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen }
@@ -139,14 +160,16 @@ const SavedStack = StackNavigator(
     initialRouteName: SAVED,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
-      tabBarLabel: text.tabSaved
+      tabBarLabel: text.tabSaved,
+      tabBarTestIDProps: {
+        testID: "saved-events-tab-button"
+      }
     },
-    headerMode: "none",
-    cardStyle: styles.card
+    headerMode: "none"
   }
 );
 
-const SupportUsStack = StackNavigator(
+const SupportUsStack = createStackNavigator(
   {
     [SUPPORT_US]: { screen: withShadow(SupportUsScreen) },
     [DONATE]: { screen: DonateScreen },
@@ -154,22 +177,48 @@ const SupportUsStack = StackNavigator(
   },
   {
     initialRouteName: SUPPORT_US,
-    navigationOptions: {
-      tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
-      tabBarLabel: text.tabSupportUs
-    },
     headerMode: "none",
     cardStyle: styles.card
   }
 );
 
-const TabNav = TabNavigator(
+const TabNav = createBottomTabNavigator(
   {
-    [HOME]: { screen: HomeStack },
-    [EVENT_LIST]: { screen: EventsStack },
-    [PARADE]: { screen: ParadeStack },
-    [SAVED]: { screen: SavedStack },
-    [SUPPORT_US]: { screen: SupportUsStack }
+    [HOME]: {
+      screen: HomeStack,
+      navigationOptions: hideTabBarOnSubRoutes(HOME, {
+        tabBarIcon: tabIcon(iconHomeDefault, iconHomeActive),
+        tabBarLabel: text.tabHome
+      })
+    },
+    [EVENT_LIST]: {
+      screen: EventsStack,
+      navigationOptions: hideTabBarOnSubRoutes(EVENT_LIST, {
+        tabBarIcon: tabIcon(iconEventsDefault, iconEventsActive),
+        tabBarLabel: text.tabEvents
+      })
+    },
+    [PARADE]: {
+      screen: ParadeStack,
+      navigationOptions: hideTabBarOnSubRoutes(PARADE, {
+        tabBarIcon: tabIcon(iconParadeDefault, iconParadeActive),
+        tabBarLabel: text.tabParade
+      })
+    },
+    [SAVED]: {
+      screen: SavedStack,
+      navigationOptions: hideTabBarOnSubRoutes(SAVED, {
+        tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
+        tabBarLabel: text.tabSaved
+      })
+    },
+    [SUPPORT_US]: {
+      screen: SupportUsStack,
+      navigationOptions: hideTabBarOnSubRoutes(SUPPORT_US, {
+        tabBarIcon: tabIcon(iconSupportUsDefault, iconSupportUsActive),
+        tabBarLabel: text.tabSupportUs
+      })
+    }
   },
   {
     tabBarComponent: NavigationTabBar,
@@ -179,11 +228,14 @@ const TabNav = TabNavigator(
     initialRouteName: HOME,
     cardStyle: {
       backgroundColor: "blue"
+    },
+    tabBarOptions: {
+      getTabTestID: getTabTestId
     }
   }
 );
 
-const RootStack = StackNavigator(
+const RootStack = createStackNavigator(
   {
     Main: {
       screen: TabNav

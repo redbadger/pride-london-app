@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`FilterHeaderCategories CategoriesFilterButton component renders correctly 1`] = `
+<Touchable
+  accessibilityComponentType="button"
+  accessibilityLabel="Filter by event type"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  delayPressIn={50}
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgb(25, 26, 71)",
+      "borderBottomRightRadius": 4,
+      "borderTopRightRadius": 4,
+      "height": 44,
+      "width": 44,
+    }
+  }
+>
+  <Image
+    source={1}
+  />
+</Touchable>
+`;
+
 exports[`FilterHeaderCategories Component renders correctly 1`] = `
 <Component
   onPress={[Function]}
@@ -11,6 +39,29 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
     }
   }
 >
+  <Text
+    accessibilityLabel="Events"
+    accessibilityTraits={
+      Array [
+        "header",
+      ]
+    }
+    accessible={true}
+    allowFontScaling={false}
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "color": "#ffffff",
+        "marginRight": 8,
+        "paddingTop": 4,
+      }
+    }
+    type="h1"
+  >
+    Showing
+  </Text>
   <Touchable
     accessibilityComponentType="button"
     accessibilityTraits={
@@ -50,7 +101,6 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
     </Text>
     <CategoriesFilterButton
       onPress={[Function]}
-      style={Object {}}
     />
   </Touchable>
 </Component>

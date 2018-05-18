@@ -1,13 +1,13 @@
 // @flow
 import React from "react";
-import { Image, Linking, PixelRatio, StyleSheet, View } from "react-native";
+import { Image, Linking, StyleSheet, View } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import chevronRightCircleWhite from "../../assets/images/chevronRightCircleWhite.png";
 import externalLinkBlue from "../../assets/images/externalLinkBlue.png";
 import externalLinkWhite from "../../assets/images/externalLinkWhite.png";
 import ContentPadding from "./ContentPadding";
-import Text from "./Text";
+import Text, { scaleWithFont } from "./Text";
 import Touchable from "./Touchable";
 import {
   lightNavyBlueColor,
@@ -108,9 +108,11 @@ class SupportUsButton extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   button: {
+    // Can't use `minHeight` because it has a weird behaviour. The
+    // button will have the correct size but the sibling elements
+    // will layout according to the buttons (smaller) `height`.
+    height: Math.max(100, scaleWithFont("h3", 100)),
     justifyContent: "center",
-    height: 100 * PixelRatio.getFontScale(),
-    minHeight: 100,
     borderRadius: 5,
     overflow: "hidden",
 
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
   titleIcon: {
     marginLeft: 8,
     alignSelf: "center",
-    transform: [{ translateY: -4 * PixelRatio.getFontScale() }]
+    transform: [{ translateY: scaleWithFont("h1", -4) }]
   },
   text: {
     color: whiteColor

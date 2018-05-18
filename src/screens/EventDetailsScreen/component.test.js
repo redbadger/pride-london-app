@@ -63,7 +63,6 @@ const event: Event = ({
         "Music"
       ]
     },
-    timeOfDay: { "en-GB": ["Afternoon"] },
     recurrenceDates: { "en-GB": ["13/1/18", "15/1/18"] },
     accessibilityDetails: {
       "en-GB":
@@ -144,26 +143,14 @@ describe("EventCategories", () => {
 
 describe("EventAccessibility", () => {
   it("renders correctly", () => {
-    const output = shallow(
-      <EventAccessibility
-        event={event}
-        navigation={navigation}
-        setCategoryFilter={() => {}}
-      />
-    );
+    const output = shallow(<EventAccessibility>Test</EventAccessibility>);
     expect(output).toMatchSnapshot();
   });
 });
 
 describe("EventTickets", () => {
   it("renders correctly", () => {
-    const output = shallow(
-      <EventTickets
-        event={event}
-        navigation={navigation}
-        setCategoryFilter={() => {}}
-      />
-    );
+    const output = shallow(<EventTickets url="https://prideinlondon.org/" />);
     expect(output).toMatchSnapshot();
   });
 });
