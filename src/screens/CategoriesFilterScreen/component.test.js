@@ -5,7 +5,7 @@ import { shallow } from "enzyme";
 import type { Event, EventCategoryName } from "../../data/event";
 import Component from "./component";
 import Header from "./Header";
-import Touchable from "../../components/Touchable";
+import Button from "../../components/ButtonPrimary";
 import List from "./List";
 
 const navigation: NavigationScreenProp<*> = ({}: any);
@@ -128,7 +128,7 @@ describe("CategoriesFilterScreen Component", () => {
     });
 
     component
-      .find(Touchable)
+      .find(Button)
       .props()
       .onPress();
     expect(applyFiltersSpy).toBeCalled();

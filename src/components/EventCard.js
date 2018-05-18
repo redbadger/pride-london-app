@@ -2,7 +2,7 @@
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import SaveEventButton from "./SaveEventButton";
-import Text from "./Text";
+import Text, { scaleWithFont } from "./Text";
 import Touchable from "./Touchable";
 import {
   blackTwentyColor,
@@ -76,11 +76,7 @@ class EventCard extends React.PureComponent<Props> {
               </View>
             </ImageBackground>
             <View style={styles.eventCardDetails}>
-              <Text
-                type="small"
-                color="lightNavyBlueColor"
-                style={styles.eventTime}
-              >
+              <Text type="small" color="lightNavyBlueColor">
                 {timeDisplay}
               </Text>
               <Text
@@ -117,7 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor
   },
   eventCard: {
-    minHeight: 108,
+    height: scaleWithFont("h3", 108),
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5
@@ -139,9 +135,7 @@ const styles = StyleSheet.create({
   },
   eventCardDetails: {
     flex: 1,
-    paddingLeft: 8
-  },
-  eventTime: {
+    paddingLeft: 8,
     paddingTop: 12
   },
   eventName: {
