@@ -10,6 +10,8 @@ gems-key: &gems-key
   v1-gems-{{ checksum "Gemfile.lock" }}
 brew-key: &brew-key
   v1-brew-{{ checksum "BrewFile" }}
+nightly-skip-key: &nightly-skip-key
+  v1-nightly-skip
 android-artifacts-path: &android-artifacts-path
   $HOME/project/android/app/build/outputs
 artifacts-path-macos: &artifacts-path-macos
@@ -72,6 +74,15 @@ save-brew-cache: &save-brew-cache
     paths:
       - /usr/local/Homebrew
 
+restore-nightly-skip-cache: &restore-nightly-skip-cache
+  restore_cache:
+    key: *nightly-skip-key
+save-nightly-skip-cache: &save-nightly-skip-cache
+  save_cache:
+    key: *nightly-skip-key
+    paths:
+      - /tmp/nightly-skip
+
 yarn-dependencies: &yarn-dependencies
   run:
     name: Install dependencies
@@ -106,6 +117,12 @@ brew-depdendencies: &brew-depdendencies
     command: |
       brew tap homebrew/bundle
       brew bundle
+
+nightly-skip-generate: &nightly-skip-generate
+  run:
+    name: Generate Nightly Skip File
+    command: |
+      git rev-parse HEAD > /tmp/nightly-skip
 
 android-secrets: &android-secrets
   run:
@@ -479,6 +496,23 @@ jobs:
       - store_artifacts:
           path: /tmp/screenshots
 
+  test-nightly:
+    <<: *job-defaults-macos
+    working_directory: /Users/distiller/project/ios
+    environment:
+      <<: *env-macos
+    steps:
+      - <<: *checkout-macos
+      - <<: *restore-nightly-skip-cache
+      - run:
+          name: Run if not run before
+          command: |
+              test ! -f /tmp/nightly-skip || \
+                test "$(cat /tmp/nightly-skip)" = "$(git rev-parse HEAD)" && \
+                echo "run build..."
+      - <<: *nightly-skip-generate
+      - <<: *save-nightly-skip-cache
+
 workflows:
   version: 2
   node-android-ios:
@@ -521,3 +555,13 @@ workflows:
             branches:
               only:
                 - master
+  nightly-release:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - nightly-builds
+    jobs:
+      - test-nightly
