@@ -122,7 +122,7 @@
         "binaryPath":
           "ios/build/Build/Products/Debug-iphonesimulator/PrideLondonApp.app",
         "build":
-          "xcodebuild -project ios/PrideLondonApp.xcworkspace -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+          "xcodebuild -workspace ios/PrideLondonApp.xcworkspace -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
       },
@@ -130,7 +130,7 @@
         "binaryPath":
           "ios/build/Build/Products/Release-iphonesimulator/PrideLondonApp.app",
         "build":
-          "xcodebuild -project ios/PrideLondonApp.xcworkspace -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+          "xcodebuild -workspace ios/PrideLondonApp.xcworkspace -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
       }
