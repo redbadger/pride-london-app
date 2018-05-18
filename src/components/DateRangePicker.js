@@ -115,7 +115,9 @@ class DateRangePicker extends React.PureComponent<Props> {
 
     return (
       <Calendar
-        current={dateRange ? dateRange.startDate : null}
+        current={
+          dateRange && this.props.forceNewRange ? dateRange.startDate : null
+        }
         markedDates={getMarkedDates(
           dateRange,
           formatDate(today.toISOString(), FORMAT_YEAR_MONTH_DAY)

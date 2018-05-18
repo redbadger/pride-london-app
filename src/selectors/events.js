@@ -1,7 +1,9 @@
 // @flow
 import R from "ramda";
+import { DateTime } from "luxon";
 import { getHours, compareAsc as compareDateAsc, isSameDay } from "../lib/date";
-
+import { buildEventFilter } from "./event-filters";
+import { contentfulFormat } from "../data/formatters";
 import type { State } from "../reducers";
 import type {
   Event,
@@ -11,11 +13,14 @@ import type {
   PerformancePeriods
 } from "../data/event";
 import type { Asset } from "../data/asset";
-import { buildEventFilter } from "./event-filters";
-
 import locale from "../data/locale";
 
-const getFieldsEventsLocale = R.lensPath(["fields", "events", locale]);
+const fieldsEventsLocaleLens = R.lensPath(["fields", "events", locale]);
+const fieldsPerformancesLocaleLens = R.lensPath([
+  "fields",
+  "performances",
+  locale
+]);
 
 export const uniqueEvents = R.uniqBy(element => element.sys.id);
 
@@ -28,6 +33,80 @@ export const groupEventsByStartTime = (events: Event[]): EventDays =>
       isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
     events.sort(sortByStartTimeAsc)
   );
+
+const generateRecurringEvent = event => recurrence => {
+  const [recurrenceDay, recurrenceMonth, recurrenceYear] = recurrence.split(
+    "/"
+  );
+
+  const startTime = DateTime.fromISO(event.fields.startTime[locale], {
+    setZone: true
+  });
+
+  const endTime = DateTime.fromISO(event.fields.endTime[locale], {
+    setZone: true
+  });
+
+  const recurrenceStartTime = startTime.set({
+    year: recurrenceYear,
+    month: recurrenceMonth,
+    day: recurrenceDay
+  });
+
+  // $FlowFixMe
+  const diff = recurrenceStartTime.diff(startTime);
+
+  const recurrenceEndTime = endTime.plus(diff);
+
+  return R.mergeDeepRight(event, {
+    fields: {
+      startTime: {
+        [locale]: recurrenceStartTime.toFormat(contentfulFormat)
+      },
+      endTime: {
+        [locale]: recurrenceEndTime.toFormat(contentfulFormat)
+      },
+      recurrenceDates: {
+        [locale]: [
+          startTime.toFormat("dd/LL/yyyy"),
+          ...event.fields.recurrenceDates[locale]
+        ]
+      }
+    },
+    sys: {
+      id: `${event.sys.id}-recurrence-${recurrence}`
+    }
+  });
+};
+
+// When properly typed CmsEntry[] => CmsEntry[]
+// flow inexblicably crashes on server start 💩 (flow-bin v0.67.0)
+// $FlowFixMe
+export const expandRecurringEventsInEntries = entries =>
+  entries.reduce((acc, curr) => {
+    if (curr.sys.contentType.sys.id !== "event") {
+      return [...acc, curr];
+    }
+
+    const recurrenceDates = curr.fields.recurrenceDates
+      ? curr.fields.recurrenceDates[locale]
+      : [];
+    const shouldExpandEvent =
+      recurrenceDates.length > 0 && !curr.sys.id.includes("recurrence");
+
+    if (shouldExpandEvent) {
+      const clones = recurrenceDates.map(generateRecurringEvent(curr));
+
+      const expandedEvents = R.uniqWith(
+        (a: Event, b: Event) =>
+          isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
+        [curr, ...clones]
+      );
+
+      return [...acc, ...expandedEvents];
+    }
+    return [...acc, curr];
+  }, []);
 
 export const getTimePeriod = (date: string) => {
   const splits = [6, 12, 18];
@@ -56,15 +135,17 @@ const getEventsState = (state: State) => state.events;
 const getSavedEventsState = (state: State) => state.savedEvents;
 
 const addPerformances = (state: State) => event => {
-  const oldEvent = ((event: any): Event);
-  const newEvent: Event = { ...oldEvent };
-  if (oldEvent.fields && oldEvent.fields.performances) {
-    const performances = (oldEvent.fields.performances[locale].map(
-      performance => selectPerformanceById(state, performance.sys.id)
-    ): any[]);
-    newEvent.fields.performances[locale] = performances;
+  const performances = R.view(fieldsPerformancesLocaleLens, event);
+  if (performances) {
+    return R.set(
+      fieldsPerformancesLocaleLens,
+      performances.map(performance =>
+        selectPerformanceById(state, performance.sys.id)
+      ),
+      event
+    );
   }
-  return newEvent;
+  return event;
 };
 
 // Type hack to force array filter to one type https://github.com/facebook/flow/issues/1915
@@ -78,7 +159,7 @@ export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
     entry => entry.sys.contentType.sys.id === "featuredEvents"
   ): any[]): FeaturedEvents[]).map((entry: FeaturedEvents) =>
     R.set(
-      getFieldsEventsLocale,
+      fieldsEventsLocaleLens,
       uniqueEvents(entry.fields.events[locale]),
       entry
     )

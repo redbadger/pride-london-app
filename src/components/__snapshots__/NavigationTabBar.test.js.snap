@@ -12,7 +12,7 @@ exports[`renders correctly 1`] = `
     Object {
       "backgroundColor": "rgb(243, 243, 243)",
       "borderTopColor": "rgba(0, 0, 0, 0.25)",
-      "borderTopWidth": 0.5,
+      "borderTopWidth": 1,
       "paddingHorizontal": 8,
     }
   }
@@ -62,7 +62,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <AnimatedComponent
+        <Component
           style={
             Array [
               Object {
@@ -84,8 +84,8 @@ exports[`renders correctly 1`] = `
           >
             0
           </Text>
-        </AnimatedComponent>
-        <AnimatedComponent
+        </Component>
+        <Component
           style={
             Array [
               Object {
@@ -107,27 +107,22 @@ exports[`renders correctly 1`] = `
           >
             0
           </Text>
-        </AnimatedComponent>
+        </Component>
       </Component>
-      <AnimatedComponent
-        allowFontScaling={true}
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
         numberOfLines={1}
         style={
-          Array [
-            Object {
-              "fontFamily": "Poppins-Bold",
-              "fontSize": 12,
-              "includeFontPadding": false,
-              "lineHeight": 16,
-            },
-            Object {
-              "color": "rgba(45, 47, 127, 1)",
-            },
-          ]
+          Object {
+            "color": "rgb(45, 47, 127)",
+          }
         }
+        type="tabBarItem"
       >
         Tab 0
-      </AnimatedComponent>
+      </Text>
     </Touchable>
     <Touchable
       accessibilityComponentType="button"
@@ -161,7 +156,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <AnimatedComponent
+        <Component
           style={
             Array [
               Object {
@@ -183,8 +178,8 @@ exports[`renders correctly 1`] = `
           >
             1
           </Text>
-        </AnimatedComponent>
-        <AnimatedComponent
+        </Component>
+        <Component
           style={
             Array [
               Object {
@@ -206,27 +201,22 @@ exports[`renders correctly 1`] = `
           >
             1
           </Text>
-        </AnimatedComponent>
+        </Component>
       </Component>
-      <AnimatedComponent
-        allowFontScaling={true}
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
         numberOfLines={1}
         style={
-          Array [
-            Object {
-              "fontFamily": "Poppins-Bold",
-              "fontSize": 12,
-              "includeFontPadding": false,
-              "lineHeight": 16,
-            },
-            Object {
-              "color": "rgba(88, 88, 88, 1)",
-            },
-          ]
+          Object {
+            "color": "rgb(88, 88, 88)",
+          }
         }
+        type="tabBarItem"
       >
         Tab 1
-      </AnimatedComponent>
+      </Text>
     </Touchable>
     <AnimatedComponent
       style={

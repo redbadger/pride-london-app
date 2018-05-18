@@ -7,11 +7,12 @@ import {
   FORMAT_DAY_MONTH
 } from "../../lib/date";
 import Text from "../../components/Text";
+import { formatContentfulDate } from "../../data/formatters";
 import text from "../../constants/text";
 
-const reformatEuropeanDateString = dateString => {
+const formatRecurrenceDates = dateString => {
   const [day, month, year] = dateString.split("/");
-  return `${year}-${month}-${day}`;
+  return formatContentfulDate(year, month, day);
 };
 
 type Props = {
@@ -22,7 +23,7 @@ type Props = {
 const RecurrenceDates = ({ recurrenceDates, startTime }: Props) => {
   const orderedRecurrenceDates = [
     startTime,
-    ...recurrenceDates.map(reformatEuropeanDateString)
+    ...recurrenceDates.map(formatRecurrenceDates)
   ].sort(compareDateAsc);
 
   const formattedRecurrenceDates = `${text.runsFrom} ${formatDate(

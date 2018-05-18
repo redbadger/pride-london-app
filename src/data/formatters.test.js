@@ -3,6 +3,7 @@ import {
   formatDateRange,
   formatTime,
   formatPrice,
+  formatContentfulDate,
   formatShortEventPrice,
   formatLongEventPrice
 } from "./formatters";
@@ -31,6 +32,33 @@ describe("formatTime", () => {
     expect(a).toBe("11:00");
     const b = formatTime("2017-07-09T06:00");
     expect(b).toBe("06:00");
+  });
+});
+
+describe("formatContentfulDate", () => {
+  it("formats a normal date", () => {
+    const date = formatContentfulDate("2018", "05", "24", "13:00");
+    expect(date).toEqual("2018-05-24T13:00");
+  });
+
+  it("formats short month string", () => {
+    const date = formatContentfulDate("2018", "5", "24", "13:00");
+    expect(date).toEqual("2018-05-24T13:00");
+  });
+
+  it("formats short day string", () => {
+    const date = formatContentfulDate("2018", "05", "4", "13:00");
+    expect(date).toEqual("2018-05-04T13:00");
+  });
+
+  it("formats short year string", () => {
+    const date = formatContentfulDate("18", "05", "24", "13:00");
+    expect(date).toEqual("2018-05-24T13:00");
+  });
+
+  it("formats date without time", () => {
+    const date = formatContentfulDate("18", "05", "24");
+    expect(date).toEqual("2018-05-24");
   });
 });
 

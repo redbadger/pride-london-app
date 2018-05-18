@@ -19,6 +19,21 @@ export const formatDateRange = (dateRange: DateRange) =>
 
 export const formatTime = (value: string) => formatDate(value, FORMAT_TIME_24);
 
+export const contentfulFormat = "yyyy-LL-dd'T'HH:mmZZ";
+
+export const formatContentfulDate = (
+  year: string,
+  month: string,
+  day: string,
+  time?: string
+) => {
+  const correctedDay = day.padStart(2, "0");
+  const correctedMonth = month.padStart(2, "0");
+  const correctedYear = year.padStart(4, "20");
+  const correctedTime = time ? `T${time}` : "";
+  return `${correctedYear}-${correctedMonth}-${correctedDay}${correctedTime}`;
+};
+
 export const formatPrice = (price: number) => {
   if (price === Math.trunc(price)) {
     return String(price);

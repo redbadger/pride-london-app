@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import SafeAreaView from "react-native-safe-area-view";
 import type { Node } from "react";
 import ContentPadding from "./ContentPadding";
 import IconButton from "./IconButton";
@@ -13,31 +12,29 @@ import text from "../constants/text";
 type Props = {
   leftElement?: Node,
   title?: string,
-  rightElement?: Node
+  rightElement?: Node,
+  testID?: string
 };
 
-const Header = ({ leftElement, title, rightElement }: Props) => (
-  <SafeAreaView
-    accessibilityTraits={["header"]}
-    style={styles.container}
-    forceInset={{ top: "always" }}
-  >
+const Header = ({ leftElement, title, rightElement, testID }: Props) => (
+  <View accessibilityTraits={["header"]} style={styles.container}>
     <ContentPadding style={styles.headerContent}>
       <View style={styles.first}>{leftElement}</View>
       <View style={styles.title}>
-        <Text type="h2" color="whiteColor">
+        <Text type="h2" color="whiteColor" testID={testID}>
           {title}
         </Text>
       </View>
       <View style={styles.last}>{rightElement}</View>
     </ContentPadding>
-  </SafeAreaView>
+  </View>
 );
 
 Header.defaultProps = {
   leftElement: undefined,
   title: undefined,
-  rightElement: undefined
+  rightElement: undefined,
+  testID: undefined
 };
 
 const styles = StyleSheet.create({

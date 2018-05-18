@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, Image, PixelRatio, Platform } from "react-native";
-import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Touchable from "./Touchable";
 import {
   interestButtonBgColor,
@@ -10,7 +9,7 @@ import {
   categoriesFilterButtonBgColor
 } from "../constants/colors";
 import text from "../constants/text";
-import Text from "./Text";
+import Text, { scaleWithFont } from "./Text";
 import CategoriesPills from "./CategoriesPills";
 import chevronRightImg from "../../assets/images/chevronRight.png";
 import type { EventCategoryName } from "../data/event";
@@ -21,21 +20,22 @@ type Props = {
 };
 
 type CategoriesFilterButtonProps = {
-  style?: ViewStyleProp,
   onPress?: Function
 };
 
-const CategoriesFilterButton = ({
-  style,
+export const CategoriesFilterButton = ({
   onPress
 }: CategoriesFilterButtonProps) => (
-  <Touchable style={[styles.categoriesFilterButton, style]} onPress={onPress}>
+  <Touchable
+    accessibilityLabel={text.categoryFilterButton}
+    style={styles.categoriesFilterButton}
+    onPress={onPress}
+  >
     <Image source={chevronRightImg} />
   </Touchable>
 );
 
 CategoriesFilterButton.defaultProps = {
-  style: {},
   onPress: () => {}
 };
 
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: categoriesFilterButtonBgColor,
     alignItems: "center",
     width: 44,
-    height: 44 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h3", 44),
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   },
