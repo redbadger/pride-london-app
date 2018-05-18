@@ -22,7 +22,9 @@ exports[`renders correctly 1`] = `
   >
     <MapView
       cacheEnabled={true}
-      initialRegion={
+      loadingEnabled={true}
+      provider="google"
+      region={
         Object {
           "latitude": 100,
           "latitudeDelta": 0.008,
@@ -30,8 +32,6 @@ exports[`renders correctly 1`] = `
           "longitudeDelta": 0.008,
         }
       }
-      loadingEnabled={true}
-      provider="google"
       scrollEnabled={false}
       style={
         Object {
@@ -47,7 +47,7 @@ exports[`renders correctly 1`] = `
             "longitude": 200,
           }
         }
-        onPress={[Function]}
+        stopPropagation={false}
       />
     </MapView>
   </Delayed>
