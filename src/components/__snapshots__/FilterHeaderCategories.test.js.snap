@@ -40,7 +40,7 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
   }
 >
   <Text
-    accessibilityLabel="Events"
+    accessibilityLabel="Showing"
     accessibilityTraits={
       Array [
         "header",
