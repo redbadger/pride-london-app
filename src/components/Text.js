@@ -20,7 +20,8 @@ export type TextType =
   | "text"
   | "small"
   | "xSmall"
-  | "price";
+  | "price"
+  | "tabBarItem";
 
 export type ColorType = "lightNavyBlueColor" | "blackColor" | "whiteColor";
 
@@ -70,56 +71,108 @@ class Text extends React.PureComponent<Props> {
   }
 }
 
+const fontScaleCaps: { [TextType]: number } = {
+  uber: 1,
+  h1: 1,
+  h2: 22 / 18,
+  h3: 20 / 16,
+  h4: 20 / 16,
+  text: 20 / 16,
+  small: 18 / 14,
+  xSmall: 14 / 12,
+  price: 18 / 14,
+  tabBarItem: 13 / 12
+};
+
+/**
+ * React Native scales font (fontSize and lineHeight) automatically based on
+ * the user selected scale (retrievable by PixelRatio.getFontScale()).
+ *
+ * This function ensures, that the font can not scale beyond the specified
+ * maximum scale. This is achieved by returning a proportial recuded font size
+ * when the scale is above the specified cap.
+ */
+export const scaleFont = (type: TextType, base: number) => {
+  const fontScale = PixelRatio.getFontScale();
+  const fontScaleCap = fontScaleCaps[type];
+  if (fontScale > fontScaleCap) {
+    const max = base * fontScaleCap;
+    return max / fontScale;
+  }
+
+  return base;
+};
+
+/**
+ * All other style props (except fontSize and lineHeight) are not affected by
+ * the user selected font scale. However, sometimes it is helpful to scale a
+ * view based on the text size of its children.
+ *
+ * This function returns a size scaled with the user selected font scale but
+ * capped by the maximum scale of the specified text type.
+ */
+export const scaleWithFont = (type: TextType, base: number) => {
+  const fontScale = PixelRatio.getFontScale();
+  const fontScaleCap = fontScaleCaps[type];
+  return base * Math.min(fontScale, fontScaleCap);
+};
+
 const textStyles = {
   uber: {
     fontFamily: "Poppins-ExtraBold",
-    fontSize: 32,
-    lineHeight: 36,
+    fontSize: scaleFont("uber", 32),
+    lineHeight: scaleFont("uber", 36),
     includeFontPadding: false
   },
   h1: {
     fontFamily: "Poppins-Bold",
-    fontSize: 24,
-    lineHeight: 28,
+    fontSize: scaleFont("h1", 24),
+    lineHeight: scaleFont("h1", 28),
     includeFontPadding: false
   },
   h2: {
     fontFamily: "Poppins-SemiBold",
-    fontSize: 18,
-    lineHeight: 24,
+    fontSize: scaleFont("h2", 18),
+    lineHeight: scaleFont("h2", 24),
     includeFontPadding: false
   },
   h3: {
     fontFamily: "Poppins-SemiBold",
-    fontSize: 16,
-    lineHeight: 20,
+    fontSize: scaleFont("h3", 16),
+    lineHeight: scaleFont("h3", 20),
     includeFontPadding: false
   },
   h4: {
     fontFamily: "Roboto-Medium",
-    fontSize: 16,
-    lineHeight: 24
+    fontSize: scaleFont("h4", 16),
+    lineHeight: scaleFont("h4", 24)
   },
   text: {
     fontFamily: "Roboto",
-    fontSize: 16,
-    lineHeight: 24
+    fontSize: scaleFont("text", 16),
+    lineHeight: scaleFont("text", 24)
   },
   small: {
     fontFamily: "Roboto",
-    fontSize: 14,
-    lineHeight: 20
+    fontSize: scaleFont("small", 14),
+    lineHeight: scaleFont("small", 20)
   },
   xSmall: {
     fontFamily: "Poppins-SemiBold",
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: scaleFont("xSmall", 12),
+    lineHeight: scaleFont("xSmall", 16),
     includeFontPadding: false
   },
   price: {
     fontFamily: "Roboto-Bold",
-    fontSize: 14,
-    lineHeight: 20
+    fontSize: scaleFont("price", 14),
+    lineHeight: scaleFont("price", 20)
+  },
+  tabBarItem: {
+    fontFamily: "Poppins-Bold",
+    fontSize: scaleFont("tabBarItem", 12),
+    lineHeight: scaleFont("tabBarItem", 16),
+    includeFontPadding: false
   },
   blackColor: {
     color: blackColor
@@ -154,7 +207,7 @@ const markdownDefaultStyles = {
     height: 4,
     backgroundColor: "black",
     borderRadius: 2,
-    marginTop: 11 * PixelRatio.getFontScale(),
+    marginTop: scaleWithFont("small", 10),
     marginRight: 10
   },
   text: {

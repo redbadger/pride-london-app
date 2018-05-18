@@ -45,49 +45,25 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       }
     />
   </Component>
-  <ContentPadding
-    padding={Object {}}
-    style={Object {}}
+  <Component
+    style={
+      Object {
+        "backgroundColor": "#2d2f7f",
+        "paddingVertical": 12,
+      }
+    }
   >
-    <Component>
-      <Touchable
-        accessibilityComponentType="button"
-        accessibilityTraits={
-          Array [
-            "button",
-          ]
-        }
-        delayPressIn={50}
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+    >
+      <Button
         disabled={false}
         onPress={[Function]}
-        style={
-          Object {
-            "backgroundColor": "#2cda9d",
-            "borderRadius": 4,
-            "marginBottom": 16,
-            "marginTop": 16,
-            "paddingBottom": 11,
-            "paddingTop": 13,
-            "width": "100%",
-          }
-        }
       >
-        <Text
-          color="blackColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          style={
-            Object {
-              "color": "#2d2f7f",
-              "textAlign": "center",
-            }
-          }
-          type="h2"
-        >
-          Show 1 event
-        </Text>
-      </Touchable>
-    </Component>
-  </ContentPadding>
+        Show 1 event
+      </Button>
+    </ContentPadding>
+  </Component>
 </withOrientation>
 `;
