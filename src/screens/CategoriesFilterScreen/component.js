@@ -4,14 +4,10 @@ import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event, EventCategoryName } from "../../data/event";
-import Text from "../../components/Text";
-import {
-  eucalyptusGreenColor,
-  lightNavyBlueColor
-} from "../../constants/colors";
+import { lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
+import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
-import Touchable from "../../components/Touchable";
 import Header from "./Header";
 import List from "./List";
 import locale from "../../data/locale";
@@ -64,19 +60,13 @@ class CategoriesFilterScreen extends PureComponent<Props> {
             onPress={this.handleFilterChange}
           />
         </View>
-        <ContentPadding>
-          <View>
-            <Touchable
-              style={styles.showEventsButton}
-              onPress={this.handleApplyFilters}
-              disabled={!events.length}
-            >
-              <Text type="h2" style={styles.showEventsText}>
-                {text.showEvents(events.length)}
-              </Text>
-            </Touchable>
-          </View>
-        </ContentPadding>
+        <View style={styles.footer}>
+          <ContentPadding>
+            <Button onPress={this.handleApplyFilters} disabled={!events.length}>
+              {text.showEvents(events.length)}
+            </Button>
+          </ContentPadding>
+        </View>
       </SafeAreaView>
     );
   }
@@ -94,18 +84,9 @@ const styles = StyleSheet.create({
   list: {
     flex: 1
   },
-  showEventsButton: {
-    backgroundColor: eucalyptusGreenColor,
-    width: "100%",
-    paddingTop: 13,
-    paddingBottom: 11,
-    borderRadius: 4,
-    marginTop: 16,
-    marginBottom: 16
-  },
-  showEventsText: {
-    color: lightNavyBlueColor,
-    textAlign: "center"
+  footer: {
+    paddingVertical: 12,
+    backgroundColor: lightNavyBlueColor
   }
 });
 
