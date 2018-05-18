@@ -6,7 +6,10 @@ import {
   areRangesOverlapping,
   startOfDay,
   endOfDay,
-  getHours
+  getHours,
+  set,
+  diff,
+  add
 } from "./date";
 
 describe("toFormat", () => {
@@ -100,5 +103,33 @@ describe("endOfDay", () => {
 describe("getHours", () => {
   it("returns the hours into a given day", () => {
     expect(getHours("2018-07-07T04:00+01:00")).toBe(4);
+  });
+});
+
+describe("set", () => {
+  it("sets specified values on to date string", () => {
+    const date = "2018-07-07T04:00+01:00";
+    const values = {
+      year: "2019",
+      month: "08",
+      day: "09"
+    };
+    expect(set(date, values)).toEqual("2019-08-09T04:00+01:00");
+  });
+});
+
+describe("diff", () => {
+  it("returns an object describing the diff between two dates", () => {
+    expect(diff("2018-07-07T04:00+01:00", "2018-08-09T04:00+01:00")).toEqual({
+      milliseconds: -2851200000
+    });
+  });
+});
+
+describe("add", () => {
+  it("adds the specified values on to a date string", () => {
+    expect(add("2018-07-07T04:00+01:00", { days: 2, months: 1 })).toEqual(
+      "2018-08-09T04:00+01:00"
+    );
   });
 });
