@@ -1,10 +1,6 @@
 // @flow
 import R from "ramda";
-import {
-  parse as parseDate,
-  getHours,
-  differenceInCalendarDays
-} from "../lib/date";
+import { getHours, compareAsc as compareDateAsc, isSameDay } from "../lib/date";
 
 import type { State } from "../reducers";
 import type {
@@ -23,34 +19,15 @@ const getFieldsEventsLocale = R.lensPath(["fields", "events", locale]);
 
 export const uniqueEvents = R.uniqBy(element => element.sys.id);
 
-export const groupEventsByStartTime = (events: Event[]): EventDays => {
-  const sections = events
-    .sort(
-      (a: Event, b: Event) =>
-        parseDate(a.fields.startTime[locale]) -
-        parseDate(b.fields.startTime[locale])
-    )
-    .reduce(
-      ({ days, buffer }, event) => {
-        if (buffer.length < 1) return { days, buffer: [event] };
+const sortByStartTimeAsc = (a: Event | Performance, b: Event | Performance) =>
+  compareDateAsc(a.fields.startTime[locale], b.fields.startTime[locale]);
 
-        const previous: Event = buffer[buffer.length - 1];
-        const diff = differenceInCalendarDays(
-          previous.fields.startTime[locale],
-          event.fields.startTime[locale]
-        );
-
-        if (diff !== 0) return { days: [...days, buffer], buffer: [event] };
-
-        return { days, buffer: [...buffer, event] };
-      },
-      { days: [], buffer: [] }
-    );
-
-  return sections.buffer.length > 0
-    ? [...sections.days, sections.buffer]
-    : sections.days;
-};
+export const groupEventsByStartTime = (events: Event[]): EventDays =>
+  R.groupWith(
+    (a: Event, b: Event) =>
+      isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
+    events.sort(sortByStartTimeAsc)
+  );
 
 export const getTimePeriod = (date: string) => {
   const splits = [6, 12, 18];
@@ -67,32 +44,12 @@ export const groupPerformancesByPeriod = (
   performances: Performance[]
 ): PerformancePeriods => {
   if (performances == null) return [];
-  const sections = performances
-    .sort(
-      (a: Performance, b: Performance) =>
-        parseDate(a.fields.startTime[locale]) -
-        parseDate(b.fields.startTime[locale])
-    )
-    .reduce(
-      ({ periods, buffer }, performance) => {
-        if (buffer.length < 1) return { periods, buffer: [performance] };
-
-        const previous: Performance = buffer[buffer.length - 1];
-
-        if (
-          getTimePeriod(previous.fields.startTime[locale]) !==
-          getTimePeriod(performance.fields.startTime[locale])
-        )
-          return { periods: [...periods, buffer], buffer: [performance] };
-
-        return { periods, buffer: [...buffer, performance] };
-      },
-      { periods: [], buffer: [] }
-    );
-
-  return sections.buffer.length > 0
-    ? [...sections.periods, sections.buffer]
-    : sections.periods;
+  return R.groupWith(
+    (a: Performance, b: Performance) =>
+      getTimePeriod(a.fields.startTime[locale]) ===
+      getTimePeriod(b.fields.startTime[locale]),
+    performances.sort(sortByStartTimeAsc)
+  );
 };
 
 const getEventsState = (state: State) => state.events;

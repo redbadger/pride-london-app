@@ -14,28 +14,24 @@ const contentfulISOFormatOptions = {
   suppressSeconds: true
 };
 
-const parseDateString = (date: string) =>
-  DateTime.fromISO(date, { setZone: true });
+const parse = (date: string) => DateTime.fromISO(date, { setZone: true });
 
 export const toFormat = (date: string, format: string) =>
-  parseDateString(date).toFormat(format);
+  parse(date).toFormat(format);
 
-export const isBefore = (d1: string, d2: string) =>
-  +parseDateString(d1) < +parseDateString(d2);
+export const isBefore = (d1: string, d2: string) => +parse(d1) < +parse(d2);
 
 export const addDays = (date: string, days: number) =>
-  parseDateString(date)
+  parse(date)
     .plus({ days })
     .toISO(contentfulISOFormatOptions);
 
 export const isSameDay = (d1: string, d2: string) =>
-  parseDateString(d1).hasSame(parseDateString(d2), "day");
-
-export const parse = (date: string) => parseDateString(date).toJSDate();
+  parse(d1).hasSame(parse(d2), "day");
 
 export const compareAsc = (d1: string, d2: string) => {
-  const coercedD1 = +parseDateString(d1);
-  const coercedD2 = +parseDateString(d2);
+  const coercedD1 = +parse(d1);
+  const coercedD2 = +parse(d2);
   if (coercedD1 < coercedD2) {
     return -1;
   }
@@ -51,33 +47,20 @@ export const areRangesOverlapping = (
   d2Start: string,
   d2End: string
 ) => {
-  const range1 = Interval.fromDateTimes(
-    parseDateString(d1Start),
-    parseDateString(d1End)
-  );
-  const range2 = Interval.fromDateTimes(
-    parseDateString(d2Start),
-    parseDateString(d2End)
-  );
+  const range1 = Interval.fromDateTimes(parse(d1Start), parse(d1End));
+  const range2 = Interval.fromDateTimes(parse(d2Start), parse(d2End));
 
   return range1.overlaps(range2);
 };
 
 export const startOfDay = (date: string) =>
-  parseDateString(date)
+  parse(date)
     .startOf("day")
     .toISO(contentfulISOFormatOptions);
 
 export const endOfDay = (date: string) =>
-  parseDateString(date)
+  parse(date)
     .endOf("day")
     .toISO(contentfulISOFormatOptions);
 
-export const getHours = (date: string) => parseDateString(date).hour;
-
-export const differenceInCalendarDays = (d1: string, d2: string) => {
-  const D1 = parseDateString(d1);
-  const D2 = parseDateString(d2);
-  const diff = D1.diff(D2, "days").toObject().days || 0;
-  return Math.round(diff);
-};
+export const getHours = (date: string) => parse(date).hour;

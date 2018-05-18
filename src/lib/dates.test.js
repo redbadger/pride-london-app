@@ -2,13 +2,11 @@ import {
   toFormat,
   isBefore,
   addDays,
-  parse,
   compareAsc,
   areRangesOverlapping,
   startOfDay,
   endOfDay,
-  getHours,
-  differenceInCalendarDays
+  getHours
 } from "./date";
 
 describe("toFormat", () => {
@@ -35,14 +33,6 @@ describe("addDays", () => {
   it("adds days to a given date", () => {
     expect(addDays("2018-07-07T04:00+01:00", 2)).toEqual(
       "2018-07-09T04:00+01:00"
-    );
-  });
-});
-
-describe("parse", () => {
-  it("parses an ISO date", () => {
-    expect(parse("2018-07-07T04:00+01:00")).toEqual(
-      new Date("2018-07-07T04:00+01:00")
     );
   });
 });
@@ -110,37 +100,5 @@ describe("endOfDay", () => {
 describe("getHours", () => {
   it("returns the hours into a given day", () => {
     expect(getHours("2018-07-07T04:00+01:00")).toBe(4);
-  });
-});
-
-describe("differenceInCalendarDays", () => {
-  it("returns the calendar days between two dates", () => {
-    expect(
-      differenceInCalendarDays(
-        "2018-07-09T04:00+01:00",
-        "2018-07-07T04:00+01:00"
-      )
-    ).toBe(2);
-  });
-
-  it("returns a negative value if dates are ascending", () => {
-    expect(
-      differenceInCalendarDays(
-        "2018-07-07T04:00+01:00",
-        "2018-07-09T04:00+01:00"
-      )
-    ).toBe(-2);
-  });
-
-  it("returns 0 for different hours of the same day", () => {
-    expect(
-      differenceInCalendarDays("2018-08-01T10:00:00", "2018-08-01T00:00:00")
-    ).toBe(0);
-  });
-
-  it("returns integer for hours spanning a day boundary", () => {
-    expect(
-      differenceInCalendarDays("2018-08-03T03:00:00", "2018-08-04T00:00:00")
-    ).toBe(-1);
   });
 });
