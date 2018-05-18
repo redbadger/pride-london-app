@@ -458,52 +458,7 @@ describe("expandRecurringEventsInEntries", () => {
     expect(expandRecurringEventsInEntries(events)).toEqual(expected);
   });
 
-  it("does not modify endTime if on different day to startTime", () => {
-    const events = [
-      {
-        fields: {
-          startTime: { "en-GB": "2018-08-02T00:00+00:00" },
-          endTime: { "en-GB": "2018-08-10T03:00+00:00" },
-          recurrenceDates: { "en-GB": ["03/08/2018"] }
-        },
-        sys: { id: "event1", contentType: { sys: { id: "event" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
-        sys: { id: "event2", contentType: { sys: { id: "event" } } }
-      }
-    ];
-
-    const expected = [
-      {
-        fields: {
-          startTime: { "en-GB": "2018-08-02T00:00+00:00" },
-          endTime: { "en-GB": "2018-08-10T03:00+00:00" },
-          recurrenceDates: { "en-GB": ["03/08/2018"] }
-        },
-        sys: { id: "event1", contentType: { sys: { id: "event" } } }
-      },
-      {
-        fields: {
-          startTime: { "en-GB": "2018-08-03T00:00+00:00" },
-          endTime: { "en-GB": "2018-08-10T03:00+00:00" },
-          recurrenceDates: { "en-GB": ["02/08/2018", "03/08/2018"] }
-        },
-        sys: {
-          id: "event1-recurrence-03/08/2018",
-          contentType: { sys: { id: "event" } }
-        }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
-        sys: { id: "event2", contentType: { sys: { id: "event" } } }
-      }
-    ];
-
-    expect(expandRecurringEventsInEntries(events)).toEqual(expected);
-  });
-
-  it("modifies endTime if on a different day to starTime but before the recurrance date", () => {
+  it("updates endTime to be same distance from startTime", () => {
     const events = [
       {
         fields: {
@@ -531,7 +486,7 @@ describe("expandRecurringEventsInEntries", () => {
       {
         fields: {
           startTime: { "en-GB": "2018-08-06T00:00+00:00" },
-          endTime: { "en-GB": "2018-08-06T03:00+00:00" },
+          endTime: { "en-GB": "2018-08-09T03:00+00:00" },
           recurrenceDates: { "en-GB": ["02/08/2018", "06/08/2018"] }
         },
         sys: {
@@ -542,6 +497,43 @@ describe("expandRecurringEventsInEntries", () => {
       {
         fields: { startTime: { "en-GB": "2018-08-01T00:00+00:00" } },
         sys: { id: "event2", contentType: { sys: { id: "event" } } }
+      }
+    ];
+
+    expect(expandRecurringEventsInEntries(events)).toEqual(expected);
+  });
+
+  it("preserves timezone of startTime and endTime", () => {
+    const events = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-04-19T23:00+14:00" },
+          endTime: { "en-GB": "2018-04-20T14:48+02:00" },
+          recurrenceDates: { "en-GB": ["25/04/2018"] }
+        },
+        sys: { id: "event1", contentType: { sys: { id: "event" } } }
+      }
+    ];
+
+    const expected = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-04-19T23:00+14:00" },
+          endTime: { "en-GB": "2018-04-20T14:48+02:00" },
+          recurrenceDates: { "en-GB": ["25/04/2018"] }
+        },
+        sys: { id: "event1", contentType: { sys: { id: "event" } } }
+      },
+      {
+        fields: {
+          startTime: { "en-GB": "2018-04-25T23:00+14:00" },
+          endTime: { "en-GB": "2018-04-26T14:48+02:00" },
+          recurrenceDates: { "en-GB": ["19/04/2018", "25/04/2018"] }
+        },
+        sys: {
+          id: "event1-recurrence-25/04/2018",
+          contentType: { sys: { id: "event" } }
+        }
       }
     ];
 
