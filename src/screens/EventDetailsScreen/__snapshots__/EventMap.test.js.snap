@@ -31,7 +31,6 @@ exports[`renders correctly 1`] = `
         }
       }
       loadingEnabled={true}
-      provider="google"
       scrollEnabled={false}
       style={
         Object {
@@ -47,7 +46,7 @@ exports[`renders correctly 1`] = `
             "longitude": 200,
           }
         }
-        stopPropagation={false}
+        onPress={[Function]}
       />
     </MapView>
   </Delayed>
