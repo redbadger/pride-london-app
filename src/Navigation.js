@@ -153,11 +153,11 @@ const ParadeStack = createStackNavigator(
 
 const SavedStack = createStackNavigator(
   {
-    [SAVED]: { screen: withShadow(SavedEventListScreen) },
+    [SAVED_EVENT_LIST]: { screen: withShadow(SavedEventListScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen }
   },
   {
-    initialRouteName: SAVED,
+    initialRouteName: SAVED_EVENT_LIST,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
       tabBarLabel: text.tabSaved,
@@ -205,9 +205,9 @@ const TabNav = createBottomTabNavigator(
         tabBarLabel: text.tabParade
       })
     },
-    [SAVED]: {
+    [SAVED_EVENT_LIST]: {
       screen: SavedStack,
-      navigationOptions: hideTabBarOnSubRoutes(SAVED, {
+      navigationOptions: hideTabBarOnSubRoutes(SAVED_EVENT_LIST, {
         tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
         tabBarLabel: text.tabSaved
       })
