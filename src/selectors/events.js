@@ -13,7 +13,8 @@ import type {
   FeaturedEvents,
   EventDays,
   Performance,
-  PerformancePeriods
+  PerformancePeriods,
+  Reference
 } from "../data/event";
 import type { Asset } from "../data/asset";
 import locale from "../data/locale";
@@ -75,7 +76,7 @@ const generateRecurringEvent = event => recurrence => {
     day: recurrenceDay
   });
 
-  const diff = recurrenceStartTime.diff(startTime);
+  const diff = recurrenceStartTime.diff(startTime, "milliseconds");
 
   const recurrenceEndTime = endTime.plus(diff);
 
@@ -174,8 +175,9 @@ export const groupPerformancesByPeriod = (
 
 const getEventsState = (state: State) => state.events;
 const getSavedEventsState = (state: State) => state.savedEvents;
+const getGlobalFiltersState = (state: State) => state.globalFilters;
 
-const addPerformances = (state: State) => event => {
+const addPerformances = (state: State) => (event: Event) => {
   const performances = R.view(fieldsPerformancesLocaleLens, event);
   if (performances) {
     return R.set(
@@ -189,11 +191,18 @@ const addPerformances = (state: State) => event => {
   return event;
 };
 
+const isAfter = (date: DateTime) => (event: Event) => {
+  const endTime = DateTime.fromISO(event.fields.endTime[locale]);
+  return DateTime.max(date, endTime) === endTime;
+};
+
 // Type hack to force array filter to one type https://github.com/facebook/flow/issues/1915
 export const selectEvents = (state: State): Event[] =>
-  ((getEventsState(state)
-    .entries.filter(entry => entry.sys.contentType.sys.id === "event")
-    .map(addPerformances(state)): any[]): Event[]);
+  ((getEventsState(state).entries.filter(
+    entry => entry.sys.contentType.sys.id === "event"
+  ): any[]): Event[])
+    .map(addPerformances(state))
+    .filter(isAfter(getGlobalFiltersState(state).hideEventsBefore));
 
 export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
   ((getEventsState(state).entries.filter(
@@ -239,9 +248,13 @@ export const selectFeaturedEventsByTitle = (state: State, title: string) => {
     return [];
   }
 
-  return ((featured.fields.events[locale].map(e =>
-    selectEventById(state, e.sys.id)
-  ): any): Event[]);
+  return featured.fields.events[locale].reduce((acc, item: Reference) => {
+    const event: ?Event = selectEventById(state, item.sys.id);
+    if (event) {
+      acc.push(event);
+    }
+    return acc;
+  }, []);
 };
 
 export const selectSavedEvents = (state: State) => {
