@@ -1,15 +1,21 @@
 // @flow
 import { DateTime, Interval } from "luxon";
 
-import DfFormat from "date-fns/format";
+export const FORMAT_DAY_MONTH = "d LLL";
+export const FORMAT_WEEKDAY_MONTH_DAY = "cccc, LLLL d";
+export const FORMAT_SHORT_WEEKDAY_DATE = "ccc, dd LLL yyyy";
+export const FORMAT_SHORT_WEEKDAY_DAY_MONTH = "ccc, d LLLL";
+export const FORMAT_WEEKDAY_DAY_MONTH = "cccc d LLLL";
+export const FORMAT_YEAR_MONTH_DAY = "yyyy-LL-dd";
+export const FORMAT_TIME_24 = "T";
 
 const contentfulISOFormatOptions = {
   suppressMilliseconds: true,
   suppressSeconds: true
 };
 
-// export const toFormat = (date: string, format: string) =>
-//   DateTime.fromISO(date).toFormat(format);
+export const toFormat = (date: string, format: string) =>
+  DateTime.fromISO(date).toFormat(format);
 
 export const isBefore = (d1: string, d2: string) =>
   +DateTime.fromISO(d1) < +DateTime.fromISO(d2);
@@ -21,9 +27,6 @@ export const addDays = (date: string, days: number) =>
 
 export const isSameDay = (d1: string, d2: string) =>
   DateTime.fromISO(d1).hasSame(DateTime.fromISO(d2), "day");
-
-export const toFormat = (date: string | Date, format: string) =>
-  DfFormat(date, format);
 
 export const parse = (date: string) => DateTime.fromISO(date).toJSDate();
 

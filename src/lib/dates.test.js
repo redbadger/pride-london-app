@@ -12,9 +12,6 @@ import {
 } from "./date";
 
 describe("toFormat", () => {
-  it("formats a date", () => {
-    expect(toFormat("2018-07-07T04:00+01:00")).toMatchSnapshot();
-  });
   it("formats a date with a given format string", () => {
     expect(toFormat("2018-07-07T04:00+01:00", "YYYY-MM-DD")).toMatchSnapshot();
   });

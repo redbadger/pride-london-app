@@ -1,6 +1,10 @@
 // @flow
 
-import { toFormat as formatDate } from "../lib/date";
+import {
+  toFormat as formatDate,
+  FORMAT_DAY_MONTH,
+  FORMAT_TIME_24
+} from "../lib/date";
 import type { DateRange } from "./date-time";
 import text from "../constants/text";
 import { isFree } from "../selectors/event";
@@ -8,12 +12,12 @@ import { isFree } from "../selectors/event";
 export const formatDateRange = (dateRange: DateRange) =>
   dateRange.startDate !== dateRange.endDate
     ? [
-        formatDate(dateRange.startDate, "D MMM"),
-        formatDate(dateRange.endDate, "D MMM")
+        formatDate(dateRange.startDate, FORMAT_DAY_MONTH),
+        formatDate(dateRange.endDate, FORMAT_DAY_MONTH)
       ].join(" - ")
-    : formatDate(dateRange.startDate, "D MMM");
+    : formatDate(dateRange.startDate, FORMAT_DAY_MONTH);
 
-export const formatTime = (value: string) => formatDate(value, "HH:mm");
+export const formatTime = (value: string) => formatDate(value, FORMAT_TIME_24);
 
 export const removeTimezoneFromCmsDateString = (isoString: string) =>
   isoString.slice(0, -6);

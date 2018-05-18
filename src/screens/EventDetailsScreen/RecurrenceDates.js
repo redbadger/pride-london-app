@@ -3,7 +3,8 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import {
   toFormat as formatDate,
-  compareAsc as compareDateAsc
+  compareAsc as compareDateAsc,
+  FORMAT_DAY_MONTH
 } from "../../lib/date";
 import Text from "../../components/Text";
 import { removeTimezoneFromCmsDateString } from "../../data/formatters";
@@ -27,10 +28,10 @@ const RecurrenceDates = ({ recurrenceDates, startTime }: Props) => {
 
   const formattedRecurrenceDates = `${text.runsFrom} ${formatDate(
     orderedRecurrenceDates[0],
-    "D MMM"
+    FORMAT_DAY_MONTH
   )} - ${formatDate(
     orderedRecurrenceDates[orderedRecurrenceDates.length - 1],
-    "D MMM"
+    FORMAT_DAY_MONTH
   )}`;
 
   return orderedRecurrenceDates.length > 1 ? (

@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`toFormat formats a date 1`] = `"2018-07-07T04:00:00.000+01:00"`;
-
-exports[`toFormat formats a date with a given format string 1`] = `"2018-07-07"`;
+exports[`toFormat formats a date with a given format string 1`] = `"YYYY-07-Jul 7, 2018"`;
