@@ -1,4 +1,5 @@
 // @flow
+import { DateTime } from "luxon";
 import {
   buildDateRangeFilter,
   buildTimeFilter,
@@ -39,7 +40,10 @@ const buildState = (
     selectedFilters,
     stagedFilters
   },
-  savedEvents: new Set()
+  savedEvents: new Set(),
+  globalFilters: {
+    hideEventsBefore: DateTime.fromISO("2018-08-02T12:00:00")
+  }
 });
 
 export type BuildEventArguments = {
