@@ -1,0 +1,6 @@
+platform :ios, '9.0'
+
+target 'PrideLondonApp' do
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
+  pod 'GoogleMaps'
+end
