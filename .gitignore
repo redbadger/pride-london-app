@@ -78,4 +78,6 @@ coverage/
 # Bundle artifact
 *.jsbundle
 
+# Cocoapods
+Pods/
 
