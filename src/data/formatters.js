@@ -19,8 +19,6 @@ export const formatDateRange = (dateRange: DateRange) =>
 
 export const formatTime = (value: string) => formatDate(value, FORMAT_TIME_24);
 
-export const contentfulFormat = "yyyy-LL-dd'T'HH:mmZZ";
-
 export const formatContentfulDate = (
   year: string,
   month: string,

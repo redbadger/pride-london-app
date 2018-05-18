@@ -7,6 +7,8 @@ export const FORMAT_SHORT_WEEKDAY_DATE = "ccc, dd LLL yyyy";
 export const FORMAT_SHORT_WEEKDAY_DAY_MONTH = "ccc, d LLLL";
 export const FORMAT_WEEKDAY_DAY_MONTH = "cccc d LLLL";
 export const FORMAT_YEAR_MONTH_DAY = "yyyy-LL-dd";
+export const FORMAT_EUROPEAN_DATE = "dd/LL/y";
+export const FORMAT_CONTENTFUL_ISO = "yyyy-LL-dd'T'HH:mmZZ";
 export const FORMAT_TIME_24 = "T";
 
 const contentfulISOFormatOptions = {
@@ -64,3 +66,19 @@ export const endOfDay = (date: string) =>
     .toISO(contentfulISOFormatOptions);
 
 export const getHours = (date: string) => parse(date).hour;
+
+export const set = (date: string, values: Object) =>
+  parse(date)
+    .set(values)
+    .toISO(contentfulISOFormatOptions);
+
+export const diff = (d1: string, d2: string) =>
+  parse(d1)
+    // $FlowFixMe
+    .diff(parse(d2))
+    .toObject();
+
+export const add = (date: string, values: Object) =>
+  parse(date)
+    .plus(values)
+    .toISO(contentfulISOFormatOptions);

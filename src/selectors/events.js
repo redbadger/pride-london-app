@@ -1,9 +1,17 @@
 // @flow
 import R from "ramda";
-import { DateTime } from "luxon";
-import { getHours, compareAsc as compareDateAsc, isSameDay } from "../lib/date";
+import {
+  getHours,
+  compareAsc as compareDateAsc,
+  isSameDay,
+  set as setDate,
+  diff as diffDate,
+  add as addToDate,
+  toFormat as formatDate,
+  FORMAT_EUROPEAN_DATE,
+  FORMAT_CONTENTFUL_ISO
+} from "../lib/date";
 import { buildEventFilter } from "./event-filters";
-import { contentfulFormat } from "../data/formatters";
 import type { State } from "../reducers";
 import type {
   Event,
@@ -39,36 +47,29 @@ const generateRecurringEvent = event => recurrence => {
     "/"
   );
 
-  const startTime = DateTime.fromISO(event.fields.startTime[locale], {
-    setZone: true
-  });
+  const startTime = event.fields.startTime[locale];
+  const endTime = event.fields.endTime[locale];
 
-  const endTime = DateTime.fromISO(event.fields.endTime[locale], {
-    setZone: true
-  });
-
-  const recurrenceStartTime = startTime.set({
+  const recurrenceStartTime = setDate(startTime, {
     year: recurrenceYear,
     month: recurrenceMonth,
     day: recurrenceDay
   });
 
-  // $FlowFixMe
-  const diff = recurrenceStartTime.diff(startTime);
-
-  const recurrenceEndTime = endTime.plus(diff);
+  const difference = diffDate(recurrenceStartTime, startTime);
+  const recurrenceEndTime = addToDate(endTime, difference);
 
   return R.mergeDeepRight(event, {
     fields: {
       startTime: {
-        [locale]: recurrenceStartTime.toFormat(contentfulFormat)
+        [locale]: formatDate(recurrenceStartTime, FORMAT_CONTENTFUL_ISO)
       },
       endTime: {
-        [locale]: recurrenceEndTime.toFormat(contentfulFormat)
+        [locale]: formatDate(recurrenceEndTime, FORMAT_CONTENTFUL_ISO)
       },
       recurrenceDates: {
         [locale]: [
-          startTime.toFormat("dd/LL/yyyy"),
+          formatDate(startTime, FORMAT_EUROPEAN_DATE),
           ...event.fields.recurrenceDates[locale]
         ]
       }
