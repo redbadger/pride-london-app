@@ -62,19 +62,16 @@ exports[`ListItem Component renders correctly 1`] = `
         Array [
           Object {
             "color": "#ffffff",
-            "fontFamily": "Poppins-Bold",
-            "fontSize": 24,
             "letterSpacing": 0,
             "paddingLeft": 32,
             "paddingTop": 10,
-            "textAlign": "left",
           },
           Object {
             "color": "#111111",
           },
         ]
       }
-      type="text"
+      type="h1"
     >
       Music
     </Text>
@@ -133,19 +130,16 @@ exports[`ListItem Component renders correctly without selected 1`] = `
         Array [
           Object {
             "color": "#ffffff",
-            "fontFamily": "Poppins-Bold",
-            "fontSize": 24,
             "letterSpacing": 0,
             "paddingLeft": 32,
             "paddingTop": 10,
-            "textAlign": "left",
           },
           Object {
             "color": "#ffffff",
           },
         ]
       }
-      type="text"
+      type="h1"
     >
       Music
     </Text>

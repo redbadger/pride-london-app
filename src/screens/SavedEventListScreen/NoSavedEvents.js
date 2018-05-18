@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   infoText: {
+    alignSelf: "center",
+    maxWidth: 300,
     textAlign: "center",
     paddingBottom: 12 // 24px between button and content
   }

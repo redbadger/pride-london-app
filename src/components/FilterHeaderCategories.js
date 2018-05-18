@@ -9,7 +9,7 @@ import {
   categoriesFilterButtonBgColor
 } from "../constants/colors";
 import text from "../constants/text";
-import Text from "./Text";
+import Text, { scaleWithFont } from "./Text";
 import CategoriesPills from "./CategoriesPills";
 import chevronRightImg from "../../assets/images/chevronRight.png";
 import type { EventCategoryName } from "../data/event";
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: categoriesFilterButtonBgColor,
     alignItems: "center",
     width: 44,
-    height: 44 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h3", 44),
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   },

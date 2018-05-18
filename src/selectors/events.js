@@ -58,7 +58,7 @@ export const groupEventsByStartTime = (events: Event[]): EventDays => {
     : sections.days;
 };
 
-const generateRecurringEvent = event => (recurrance, i) => {
+const generateRecurringEvent = event => recurrance => {
   const [recurranceDay, recurrancyMonth, recurranceYear] = recurrance.split(
     "/"
   );
@@ -106,7 +106,7 @@ const generateRecurringEvent = event => (recurrance, i) => {
       }
     },
     sys: {
-      id: `${event.sys.id}-recurrence-${recurrance}-${i}`
+      id: `${event.sys.id}-recurrence-${recurrance}`
     }
   });
 };
@@ -128,7 +128,14 @@ export const expandRecurringEventsInEntries = entries =>
 
     if (shouldExpandEvent) {
       const clones = recurrenceDates.map(generateRecurringEvent(curr));
-      return [...acc, curr, ...clones];
+
+      const expandedEvents = R.uniqWith(
+        (a: Event, b: Event) =>
+          isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
+        [curr, ...clones]
+      );
+
+      return [...acc, ...expandedEvents];
     }
     return [...acc, curr];
   }, []);
