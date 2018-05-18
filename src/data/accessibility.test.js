@@ -1,4 +1,4 @@
-import checkboxAccessibilityLabel from "./accessibility";
+import { checkboxAccessibilityLabel } from "./accessibility";
 
 describe("checkboxAccessibilityLabel", () => {
   it("indicates status of checkbox", () => {

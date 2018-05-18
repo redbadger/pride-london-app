@@ -7,7 +7,7 @@ import { whiteColor, blackColor } from "../../constants/colors";
 import whiteCheck from "../../../assets/images/whiteCheck.png";
 import blackCheck from "../../../assets/images/blackCheck.png";
 import type { EventCategory } from "../../data/event";
-import checkboxAccessibilityLabel from "../../data/accessibility";
+import { checkboxAccessibilityLabel } from "../../data/accessibility";
 
 type ListItemProps = {
   category: EventCategory,
