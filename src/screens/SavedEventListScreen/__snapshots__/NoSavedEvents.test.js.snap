@@ -23,12 +23,11 @@ exports[`renders correctly 1`] = `
         }
       />
       <Text
-        color="blackColor"
+        color="lightNavyBlueColor"
         markdown={false}
         markdownStyle={Object {}}
         style={
           Object {
-            "color": "#2d2f7f",
             "textAlign": "center",
           }
         }
@@ -55,6 +54,12 @@ exports[`renders correctly 1`] = `
          
         <Image
           source={1}
+          style={
+            Object {
+              "height": 21,
+              "width": 24,
+            }
+          }
         />
          
         on any event you like to save them here.

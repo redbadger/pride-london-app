@@ -62,7 +62,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <AnimatedComponent
+        <Component
           style={
             Array [
               Object {
@@ -84,8 +84,8 @@ exports[`renders correctly 1`] = `
           >
             0
           </Text>
-        </AnimatedComponent>
-        <AnimatedComponent
+        </Component>
+        <Component
           style={
             Array [
               Object {
@@ -107,7 +107,7 @@ exports[`renders correctly 1`] = `
           >
             0
           </Text>
-        </AnimatedComponent>
+        </Component>
       </Component>
       <Text
         color="blackColor"
@@ -156,7 +156,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <AnimatedComponent
+        <Component
           style={
             Array [
               Object {
@@ -178,8 +178,8 @@ exports[`renders correctly 1`] = `
           >
             1
           </Text>
-        </AnimatedComponent>
-        <AnimatedComponent
+        </Component>
+        <Component
           style={
             Array [
               Object {
@@ -201,7 +201,7 @@ exports[`renders correctly 1`] = `
           >
             1
           </Text>
-        </AnimatedComponent>
+        </Component>
       </Component>
       <Text
         color="blackColor"

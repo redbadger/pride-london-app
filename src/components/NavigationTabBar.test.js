@@ -15,15 +15,16 @@ const render = props =>
         dispatch: navigationDispatch,
         state: {
           index: 0,
-          routes: [{ key: "1", index: 1 }, { key: "2" }]
+          routes: [
+            { key: "1", index: 1, routeName: "tab-0" },
+            { key: "2", routeName: "tab-1" }
+          ]
         }
       }}
-      jumpToIndex={() => {}}
-      getTestIDProps={scene => ({
-        testID: `tab-${scene.index}`
-      })}
+      jumpTo={() => {}}
+      getTabTestID={routeName => routeName}
       renderIcon={scene => <Text>{scene.index}</Text>}
-      getLabel={scene => `Tab ${scene.index}`}
+      getLabelText={scene => `Tab ${scene.index}`}
       {...props}
     />
   );
@@ -64,13 +65,13 @@ it("stores measurements of tabs onLayout", () => {
 });
 
 it("jumps to tab onPress", () => {
-  const jumpToIndex = jest.fn();
-  const output = render({ jumpToIndex });
+  const jumpTo = jest.fn();
+  const output = render({ jumpTo });
   output
     .find({ testID: "tab-1" })
     .props()
     .onPress();
-  expect(jumpToIndex).toHaveBeenCalledWith(1);
+  expect(jumpTo).toHaveBeenCalledWith("2");
 });
 
 it("animates active tab line on focus change", () => {
