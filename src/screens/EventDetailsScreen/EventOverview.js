@@ -5,11 +5,7 @@ import {
   isSameDay,
   FORMAT_SHORT_WEEKDAY_DATE
 } from "../../lib/date";
-import {
-  formatLongEventPrice,
-  formatTime,
-  removeTimezoneFromCmsDateString
-} from "../../data/formatters";
+import { formatLongEventPrice, formatTime } from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
 import Text from "../../components/Text";
@@ -31,10 +27,8 @@ type Props = {
 };
 
 const EventOverview = ({ event }: Props) => {
-  const startTime = removeTimezoneFromCmsDateString(
-    event.fields.startTime[locale]
-  );
-  const endTime = removeTimezoneFromCmsDateString(event.fields.endTime[locale]);
+  const startTime = event.fields.startTime[locale];
+  const endTime = event.fields.endTime[locale];
   const dateFormat = FORMAT_SHORT_WEEKDAY_DATE;
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)

@@ -7,7 +7,6 @@ import {
   FORMAT_DAY_MONTH
 } from "../../lib/date";
 import Text from "../../components/Text";
-import { removeTimezoneFromCmsDateString } from "../../data/formatters";
 import text from "../../constants/text";
 
 const reformatEuropeanDateString = dateString => {
@@ -22,7 +21,7 @@ type Props = {
 
 const RecurrenceDates = ({ recurrenceDates, startTime }: Props) => {
   const orderedRecurrenceDates = [
-    removeTimezoneFromCmsDateString(startTime),
+    startTime,
     ...recurrenceDates.map(reformatEuropeanDateString)
   ].sort(compareDateAsc);
 

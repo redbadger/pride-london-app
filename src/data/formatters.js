@@ -19,9 +19,6 @@ export const formatDateRange = (dateRange: DateRange) =>
 
 export const formatTime = (value: string) => formatDate(value, FORMAT_TIME_24);
 
-export const removeTimezoneFromCmsDateString = (isoString: string) =>
-  isoString.slice(0, -6);
-
 export const formatPrice = (price: number) => {
   if (price === Math.trunc(price)) {
     return String(price);
