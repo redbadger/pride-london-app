@@ -7,6 +7,7 @@ import { whiteColor, blackColor } from "../../constants/colors";
 import whiteCheck from "../../../assets/images/whiteCheck.png";
 import blackCheck from "../../../assets/images/blackCheck.png";
 import type { EventCategory } from "../../data/event";
+import { checkboxAccessibilityLabel } from "../../data/accessibility";
 
 type ListItemProps = {
   category: EventCategory,
@@ -67,6 +68,12 @@ class ListItem extends Component<
       <Touchable
         style={styles.itemContainer}
         onPress={() => onPress(category.label)}
+        accessibilityComponentType="none"
+        accessibilityTraits={["none"]}
+        accessibilityLabel={checkboxAccessibilityLabel(
+          category.label,
+          selected
+        )}
       >
         <Animated.View
           style={[

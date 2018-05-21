@@ -2,10 +2,11 @@
 
 exports[`renders correctly 1`] = `
 <Touchable
-  accessibilityComponentType="radiobutton_unchecked"
+  accessibilityComponentType="none"
+  accessibilityLabel="Bananas, checkbox, empty"
   accessibilityTraits={
     Array [
-      "button",
+      "none",
     ]
   }
   delayPressIn={50}
@@ -42,11 +43,11 @@ exports[`renders correctly 1`] = `
 
 exports[`renders correctly when checked 1`] = `
 <Touchable
-  accessibilityComponentType="radiobutton_checked"
+  accessibilityComponentType="none"
+  accessibilityLabel="Bananas, checkbox, selected"
   accessibilityTraits={
     Array [
-      "button",
-      "selected",
+      "none",
     ]
   }
   delayPressIn={50}
