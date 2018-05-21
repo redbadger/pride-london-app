@@ -11,7 +11,7 @@ gems-key: &gems-key
 brew-key: &brew-key
   v1-brew-{{ checksum "BrewFile" }}
 nightly-skip-key: &nightly-skip-key
-  v1-nightly-skip
+  v2-nightly-skip
 android-artifacts-path: &android-artifacts-path
   $HOME/project/android/app/build/outputs
 artifacts-path-macos: &artifacts-path-macos
@@ -122,7 +122,8 @@ nightly-skip-generate: &nightly-skip-generate
   run:
     name: Generate Nightly Skip File
     command: |
-      git rev-parse HEAD > /tmp/nightly-skip
+      mkdir /tmp/nightly-skip
+      git rev-parse HEAD > /tmp/nightly-skip/last-commit
 
 android-secrets: &android-secrets
   run:
@@ -507,8 +508,8 @@ jobs:
       - run:
           name: Run if not run before
           command: |
-              test ! -f /tmp/nightly-skip || \
-                test "$(cat /tmp/nightly-skip)" = "$(git rev-parse HEAD)" && \
+              test ! -f /tmp/nightly-skip/last-commit || \
+                test "$(cat /tmp/nightly-skip/last-commit)" = "$(git rev-parse HEAD)" && \
                 echo "run build..."
       - <<: *nightly-skip-generate
       - <<: *save-nightly-skip-cache
