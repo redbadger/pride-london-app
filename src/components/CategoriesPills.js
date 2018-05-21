@@ -1,10 +1,10 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ScrollView, PixelRatio } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import CategoryPill from "./CategoryPill";
-import Text from "./Text";
+import Text, { scaleWithFont } from "./Text";
 import text from "../constants/text";
 
 import {
@@ -20,6 +20,14 @@ type Props = {
   style?: ViewStyleProp,
   onPress?: Function
 };
+
+const createAccessibilityLabel = (
+  listPrefix: string,
+  pillsList: Set<EventCategoryName>
+) =>
+  pillsList.size > 0
+    ? `${listPrefix} ${[...pillsList].join(", ")}`
+    : text.categoryFilterEmpty;
 
 class CategoriesPills extends React.PureComponent<Props> {
   static defaultProps = {
@@ -55,13 +63,23 @@ class CategoriesPills extends React.PureComponent<Props> {
     const { style, selectedCategories } = this.props;
 
     return (
-      <View style={[styles.selectedCategoriesPills, style]}>
+      <View
+        style={[styles.selectedCategoriesPills, style]}
+        accessible
+        accessibilityLabel={createAccessibilityLabel(
+          text.categoryFilterContents,
+          selectedCategories
+        )}
+      >
         {selectedCategories.size === 0 ? (
           <Text type="h3" style={styles.zeroSelected}>
             {text.zeroSelected}
           </Text>
         ) : (
-          <View style={styles.scrollView}>
+          <View
+            style={styles.scrollView}
+            importantForAccessibility="no-hide-descendants"
+          >
             <LinearGradient
               style={[styles.scrollShadow, styles.scrollShadowLeft]}
               end={{ x: 0, y: 0.5 }}
@@ -105,7 +123,7 @@ const styles = StyleSheet.create({
     backgroundColor: darkBlueGreyTwoColor,
     flex: 1,
     alignItems: "center",
-    height: 44 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h3", 44),
     borderRadius: 4,
     flexDirection: "row"
   },
@@ -130,7 +148,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     width: 15,
-    height: 44 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h3", 44),
     zIndex: 10,
     borderRadius: 4
   },

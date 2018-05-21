@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Animated, StyleSheet, View, Text } from "react-native";
+import { Animated, StyleSheet, View } from "react-native";
 import type { TabScene, _TabBarBottomProps } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import {
@@ -10,6 +10,7 @@ import {
   tabBarActiveLabelColor,
   tabBarBorderColor
 } from "../constants/colors";
+import Text from "./Text";
 import Touchable from "./Touchable";
 
 class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
@@ -66,11 +67,7 @@ class NavigationTabBar extends React.PureComponent<_TabBarBottomProps> {
     const label = this.props.getLabelText(scene);
 
     return (
-      <Text
-        numberOfLines={1}
-        style={[styles.label, { color }]}
-        allowFontScaling
-      >
+      <Text type="tabBarItem" numberOfLines={1} style={{ color }}>
         {label}
       </Text>
     );
@@ -208,12 +205,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     top: 0
-  },
-  label: {
-    fontFamily: "Poppins-Bold",
-    fontSize: 12,
-    lineHeight: 16,
-    includeFontPadding: false
   }
 });
 

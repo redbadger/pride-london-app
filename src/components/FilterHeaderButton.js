@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   buttonText: {
-    fontFamily: "Roboto-Medium"
+    fontFamily: "Roboto-Medium",
+    textAlign: "center"
   },
   activeColor: {
     color: filterButtonTextColor

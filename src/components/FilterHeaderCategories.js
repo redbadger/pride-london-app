@@ -9,7 +9,7 @@ import {
   categoriesFilterButtonBgColor
 } from "../constants/colors";
 import text from "../constants/text";
-import Text from "./Text";
+import Text, { scaleWithFont } from "./Text";
 import CategoriesPills from "./CategoriesPills";
 import chevronRightImg from "../../assets/images/chevronRight.png";
 import type { EventCategoryName } from "../data/event";
@@ -49,12 +49,16 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
           allowFontScaling={false}
           accessible
           accessibilityTraits={["header"]}
-          accessibilityLabel={text.tabEvents}
+          accessibilityLabel={text.filterTitle}
         >
           {text.filterTitle}
         </Text>
       )}
-      <Touchable style={styles.interestButton} onPress={onFilterPress}>
+      <Touchable
+        style={styles.interestButton}
+        onPress={onFilterPress}
+        accessibilityLabel={text.categoryFilterButton}
+      >
         <Text type="h2" style={styles.interestButtonText}>
           {text.filterByInterest}
         </Text>
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
     backgroundColor: categoriesFilterButtonBgColor,
     alignItems: "center",
     width: 44,
-    height: 44 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h3", 44),
     borderTopRightRadius: 4,
     borderBottomRightRadius: 4
   },

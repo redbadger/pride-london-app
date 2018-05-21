@@ -2,6 +2,8 @@
 
 exports[`CategoriesPills Component renders correctly 1`] = `
 <Component
+  accessibilityLabel="0 event types selected"
+  accessible={true}
   style={
     Array [
       Object {
@@ -10,7 +12,7 @@ exports[`CategoriesPills Component renders correctly 1`] = `
         "borderRadius": 4,
         "flex": 1,
         "flexDirection": "row",
-        "height": 88,
+        "height": 44,
       },
       Object {},
     ]

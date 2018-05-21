@@ -50,7 +50,7 @@ exports[`does not render markdown images 1`] = `
         "borderRadius": 2,
         "height": 4,
         "marginRight": 10,
-        "marginTop": 22,
+        "marginTop": 10,
         "width": 4,
       },
       "price": Object {
@@ -62,6 +62,12 @@ exports[`does not render markdown images 1`] = `
         "fontFamily": "Roboto",
         "fontSize": 14,
         "lineHeight": 20,
+      },
+      "tabBarItem": Object {
+        "fontFamily": "Poppins-Bold",
+        "fontSize": 12,
+        "includeFontPadding": false,
+        "lineHeight": 16,
       },
       "text": Object {
         "color": "#111111",
@@ -182,7 +188,7 @@ exports[`renders markdown component based on flag 1`] = `
         "borderRadius": 2,
         "height": 4,
         "marginRight": 10,
-        "marginTop": 22,
+        "marginTop": 10,
         "width": 4,
       },
       "price": Object {
@@ -194,6 +200,12 @@ exports[`renders markdown component based on flag 1`] = `
         "fontFamily": "Roboto",
         "fontSize": 14,
         "lineHeight": 20,
+      },
+      "tabBarItem": Object {
+        "fontFamily": "Poppins-Bold",
+        "fontSize": 12,
+        "includeFontPadding": false,
+        "lineHeight": 16,
       },
       "text": Object {
         "color": "#111111",
