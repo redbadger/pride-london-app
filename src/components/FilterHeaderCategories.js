@@ -49,12 +49,16 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
           allowFontScaling={false}
           accessible
           accessibilityTraits={["header"]}
-          accessibilityLabel={text.tabEvents}
+          accessibilityLabel={text.filterTitle}
         >
           {text.filterTitle}
         </Text>
       )}
-      <Touchable style={styles.interestButton} onPress={onFilterPress}>
+      <Touchable
+        style={styles.interestButton}
+        onPress={onFilterPress}
+        accessibilityLabel={text.categoryFilterButton}
+      >
         <Text type="h2" style={styles.interestButtonText}>
           {text.filterByInterest}
         </Text>
