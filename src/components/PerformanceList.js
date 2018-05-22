@@ -1,5 +1,4 @@
 // @flow
-import parseDate from "date-fns/parse";
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
@@ -23,7 +22,7 @@ type Props = {
 const sections = (performances: PerformancePeriods, locale: string) =>
   performances.map((a: Performance[]) => ({
     data: a,
-    title: getTimePeriod(parseDate(a[0].fields.startTime[locale]))
+    title: getTimePeriod(a[0].fields.startTime[locale])
   }));
 
 const PerformanceList = ({ performances, locale }: Props) => (

@@ -1,6 +1,6 @@
 // @flow
 import { AsyncStorage } from "react-native";
-import isBefore from "date-fns/is_before";
+import { isBefore } from "../lib/date";
 import type { CmsEntry } from "./cms";
 import locale from "../data/locale";
 
