@@ -22,8 +22,15 @@ describe("FilterHeaderCategories Component", () => {
     const output = shallow(
       <FilterHeaderCategories {...baseProps} selectedCategories={categories} />
     );
-
     expect(output.find("CategoriesPills").length).toEqual(1);
+  });
+
+  it("renders multiple category pills with selected categories and accessibility label", () => {
+    const categories = new Set(["Music", "Nightlife", "Community"]);
+    const output = shallow(
+      <FilterHeaderCategories {...baseProps} selectedCategories={categories} />
+    );
+    expect(output).toMatchSnapshot();
   });
 });
 
