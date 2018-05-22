@@ -105,27 +105,19 @@ exports[`renders correctly 1`] = `
               value={20}
             />
           </SegmentedControl>
-          <Text
-            color="lightNavyBlueColor"
-            markdown={false}
-            markdownStyle={Object {}}
-            style={
-              Object {
-                "marginBottom": 8,
-                "marginTop": 20,
-              }
-            }
-            type="h4"
-          >
-            Other amount (£)
-          </Text>
           <DonateScreen
+            label="Other amount (£)"
             onChangeText={[Function]}
             onFocus={[Function]}
             onSubmitEditing={[Function]}
             placeholder="0.00"
             returnKeyLabel="Donate"
             returnKeyType="go"
+            style={
+              Object {
+                "marginTop": 20,
+              }
+            }
             value={null}
           />
           <Text
