@@ -10,8 +10,8 @@ gems-key: &gems-key
   v1-gems-{{ checksum "Gemfile.lock" }}
 brew-key: &brew-key
   v1-brew-{{ checksum "BrewFile" }}
-nightly-skip-key: &nightly-skip-key
-  v2-nightly-skip
+nightly-key: &nightly-key
+  v0.1-nightly
 android-artifacts-path: &android-artifacts-path
   $HOME/project/android/app/build/outputs
 artifacts-path-macos: &artifacts-path-macos
@@ -74,14 +74,14 @@ save-brew-cache: &save-brew-cache
     paths:
       - /usr/local/Homebrew
 
-restore-nightly-skip-cache: &restore-nightly-skip-cache
+restore-nightly-cache: &restore-nightly-cache
   restore_cache:
-    key: *nightly-skip-key
-save-nightly-skip-cache: &save-nightly-skip-cache
+    key: *nightly-key
+save-nightly-cache: &save-nightly-cache
   save_cache:
-    key: *nightly-skip-key
+    key: *nightly-key
     paths:
-      - /tmp/nightly-skip
+      - ~/.pride-nightly
 
 yarn-dependencies: &yarn-dependencies
   run:
@@ -118,12 +118,12 @@ brew-depdendencies: &brew-depdendencies
       brew tap homebrew/bundle
       brew bundle
 
-nightly-skip-generate: &nightly-skip-generate
+nightly-generate-last-commit: &nightly-generate-last-commit
   run:
     name: Generate Nightly Skip File
     command: |
-      mkdir /tmp/nightly-skip
-      git rev-parse HEAD > /tmp/nightly-skip/last-commit
+      mkdir ~/.pride-nightly
+      git rev-parse HEAD > ~/.pride-nightly/last-commit
 
 android-secrets: &android-secrets
   run:
@@ -504,15 +504,15 @@ jobs:
       <<: *env-macos
     steps:
       - <<: *checkout-macos
-      - <<: *restore-nightly-skip-cache
+      - <<: *restore-nightly-cache
       - run:
           name: Run if not run before
           command: |
-              test ! -f /tmp/nightly-skip/last-commit || \
-                test "$(cat /tmp/nightly-skip/last-commit)" = "$(git rev-parse HEAD)" && \
+              test ! -f ~/.pride-nightly/last-commit || \
+                test "$(cat ~/.pride-nightly/last-commit)" = "$(git rev-parse HEAD)" && \
                 echo "run build..."
-      - <<: *nightly-skip-generate
-      - <<: *save-nightly-skip-cache
+      - <<: *nightly-generate-last-commit
+      - <<: *save-nightly-cache
 
 workflows:
   version: 2
@@ -559,7 +559,7 @@ workflows:
   nightly-release:
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "0 * * * *"
           filters:
             branches:
               only:
