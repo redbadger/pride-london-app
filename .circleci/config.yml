@@ -11,7 +11,7 @@ gems-key: &gems-key
 brew-key: &brew-key
   v1-brew-{{ checksum "BrewFile" }}
 nightly-key: &nightly-key
-  v0.1-nightly
+  v0.1-nightly-{{ checksum "~/.pride-nightly/last-commit" }}
 android-artifacts-path: &android-artifacts-path
   $HOME/project/android/app/build/outputs
 artifacts-path-macos: &artifacts-path-macos
@@ -81,7 +81,7 @@ save-nightly-cache: &save-nightly-cache
   save_cache:
     key: *nightly-key
     paths:
-      - ~/.pride-nightly
+      - ~/.pride-nightly/cache
 
 yarn-dependencies: &yarn-dependencies
   run:
@@ -117,13 +117,6 @@ brew-depdendencies: &brew-depdendencies
     command: |
       brew tap homebrew/bundle
       brew bundle
-
-nightly-generate-last-commit: &nightly-generate-last-commit
-  run:
-    name: Generate Nightly Skip File
-    command: |
-      mkdir -p ~/.pride-nightly
-      git rev-parse HEAD > ~/.pride-nightly/last-commit
 
 android-secrets: &android-secrets
   run:
@@ -504,16 +497,25 @@ jobs:
       <<: *env-macos
     steps:
       - <<: *checkout-macos
+      - run:
+          name: Generate Nightly Last Commit File
+          command: |
+              mkdir -p ~/.pride-nightly
+              git rev-parse HEAD > ~/.pride-nightly/last-commit
       - <<: *restore-nightly-cache
       - run:
           name: Run if not run before
           command: |
-              if [ ! -f ~/.pride-nightly/last-commit ] || [ "$(cat ~/.pride-nightly/last-commit)" != "$(git rev-parse HEAD)" ]; then
+              if [ ! -f ~/.pride-nightly/cache/last-commit ]; then
                 echo "run build..."
               else
                 echo "build not needed..."
               fi
-      - <<: *nightly-generate-last-commit
+      - run:
+          name: Generate Nightly Cache
+          command: |
+              mkdir -p ~/.pride-nightly/cache
+              cp ~/.pride-nightly/last-commit ~/.pride-nightly/cache/
       - <<: *save-nightly-cache
 
 workflows:
