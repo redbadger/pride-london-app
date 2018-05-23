@@ -508,9 +508,11 @@ jobs:
       - run:
           name: Run if not run before
           command: |
-              test ! -f ~/.pride-nightly/last-commit || \
-                test "$(cat ~/.pride-nightly/last-commit)" = "$(git rev-parse HEAD)" && \
+              if [ ! -f ~/.pride-nightly/last-commit ] || [ "$(cat ~/.pride-nightly/last-commit)" != "$(git rev-parse HEAD)" ]; then
                 echo "run build..."
+              else
+                echo "build not needed..."
+              fi
       - <<: *nightly-generate-last-commit
       - <<: *save-nightly-cache
 
