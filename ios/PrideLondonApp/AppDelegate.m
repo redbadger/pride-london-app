@@ -16,7 +16,10 @@
 #import <Crashlytics/Crashlytics.h>
 #import <BugsnagReactNative/BugsnagReactNative.h>
 
+@import GoogleMaps;
+
 #import "SplashScreen.h"
+#import "ReactNativeConfig.h"
 
 @implementation AppDelegate
 
@@ -27,6 +30,8 @@
   #endif
   
   [BugsnagReactNative start];
+  
+  [GMSServices provideAPIKey:[ReactNativeConfig envFor:@"GOOGLE_MAPS_API_KEY"]];
   
   NSURL *jsCodeLocation;
 
