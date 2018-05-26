@@ -15,9 +15,8 @@ import locale from "../../data/locale";
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
-  stagedCategories: Set<EventCategoryName>,
+  categories: Set<EventCategoryName>,
   toggleCategoryFilter: (Set<EventCategoryName>, string) => void,
-  onApplyFilters: () => void,
   onClearAll: () => void
 };
 
@@ -27,32 +26,29 @@ class CategoriesFilterScreen extends PureComponent<Props> {
   };
 
   applyFilters = () => {
-    this.props.onApplyFilters();
-    this.props.navigation.pop();
+    this.props.navigation.goBack();
   };
 
   handleFilterChange = (categoryLabel: string) => {
-    this.props.toggleCategoryFilter(this.props.stagedCategories, categoryLabel);
+    this.props.toggleCategoryFilter(this.props.categories, categoryLabel);
   };
 
   render() {
-    const { events, stagedCategories } = this.props;
+    const { events, categories } = this.props;
     const buttonLabel =
-      stagedCategories.size > 0
-        ? text.showEvents(events.length)
-        : text.showAllEvents;
+      categories.size > 0 ? text.showEvents(events.length) : text.showAllEvents;
 
     return (
       <SafeAreaView style={styles.container}>
         <Header
           onBack={this.applyFilters}
           onClearAll={this.handleClearAll}
-          selectedCategories={stagedCategories}
+          selectedCategories={categories}
         />
         <View style={styles.list}>
           <List
             locale={locale}
-            stagedCategories={stagedCategories}
+            stagedCategories={categories}
             onPress={this.handleFilterChange}
           />
         </View>

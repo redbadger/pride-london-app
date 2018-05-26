@@ -45,7 +45,7 @@ const initialState = {
 };
 
 describe("CategoriesFilterScreen Container", () => {
-  describe("dispatches stage filters action with categories payload", () => {
+  describe("dispatches set filters action with categories payload", () => {
     it("removes the selected category from the payload if it was already staged", () => {
       const store = mockStore(initialState);
       const output = shallow(
@@ -58,7 +58,7 @@ describe("CategoriesFilterScreen Container", () => {
 
       expect(actions).toEqual([
         {
-          type: "STAGE_EVENT_FILTERS",
+          type: "SET_EVENT_FILTERS",
           payload: {
             categories: new Set(["Dance"])
           }
@@ -78,39 +78,12 @@ describe("CategoriesFilterScreen Container", () => {
 
       expect(actions).toEqual([
         {
-          type: "STAGE_EVENT_FILTERS",
+          type: "SET_EVENT_FILTERS",
           payload: {
             categories: new Set(["Dance"])
           }
         }
       ]);
     });
-  });
-
-  it("dispatches commit filters action to apply filters", () => {
-    const store = mockStore(initialState);
-    const output = shallow(<Container store={store} navigation={navigation} />);
-
-    output.props().onApplyFilters();
-
-    const actions = store.getActions();
-
-    expect(actions).toEqual([{ type: "COMMIT_EVENT_FILTERS" }]);
-  });
-
-  it("dispatches commit filters action and goes back on pressing back", () => {
-    const store = mockStore(initialState);
-    const output = shallow(<Container store={store} navigation={navigation} />);
-
-    output
-      .dive()
-      .find("Header")
-      .props()
-      .onBack();
-
-    const actions = store.getActions();
-
-    expect(navigation.pop).toBeCalled();
-    expect(actions).toEqual([{ type: "COMMIT_EVENT_FILTERS" }]);
   });
 });
