@@ -58,12 +58,17 @@ exports[`renders correctly with date selection 1`] = `
       markdown={false}
       markdownStyle={Object {}}
       style={
-        Object {
-          "alignSelf": "flex-end",
-          "color": "rgb(45, 47, 127)",
-          "height": 40,
-          "paddingTop": 10,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgb(45, 47, 127)",
+            "height": 40,
+            "paddingTop": 10,
+          },
+          Object {
+            "width": 127,
+          },
+        ]
       }
       type="h3"
     >
@@ -143,12 +148,17 @@ exports[`renders correctly with range selection 1`] = `
       markdown={false}
       markdownStyle={Object {}}
       style={
-        Object {
-          "alignSelf": "flex-end",
-          "color": "rgb(45, 47, 127)",
-          "height": 40,
-          "paddingTop": 10,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgb(45, 47, 127)",
+            "height": 40,
+            "paddingTop": 10,
+          },
+          Object {
+            "width": 127,
+          },
+        ]
       }
       type="h3"
     >
@@ -192,12 +202,15 @@ exports[`renders correctly without date selection 1`] = `
       markdown={false}
       markdownStyle={Object {}}
       style={
-        Object {
-          "alignSelf": "flex-end",
-          "color": "rgb(45, 47, 127)",
-          "height": 40,
-          "paddingTop": 10,
-        }
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgb(45, 47, 127)",
+            "height": 40,
+            "paddingTop": 10,
+          },
+          null,
+        ]
       }
       type="h3"
     >
