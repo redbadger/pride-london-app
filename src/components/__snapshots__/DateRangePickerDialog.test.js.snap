@@ -2,6 +2,7 @@
 
 exports[`renders correctly with date selection 1`] = `
 <Dialog
+  applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
   headerRight={
@@ -91,6 +92,7 @@ exports[`renders correctly with date selection 1`] = `
 
 exports[`renders correctly with range selection 1`] = `
 <Dialog
+  applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
   headerRight={
@@ -180,6 +182,7 @@ exports[`renders correctly with range selection 1`] = `
 
 exports[`renders correctly without date selection 1`] = `
 <Dialog
+  applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
   headerRight={null}
