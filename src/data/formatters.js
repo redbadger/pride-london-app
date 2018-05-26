@@ -1,22 +1,23 @@
 // @flow
 
-import formatDate from "date-fns/format";
+import {
+  toFormat as formatDate,
+  FORMAT_DAY_MONTH,
+  FORMAT_TIME_24
+} from "../lib/date";
 import type { DateRange } from "./date-time";
 import text from "../constants/text";
 import { isFree } from "../selectors/event";
 
-/* eslint-disable import/prefer-default-export */
 export const formatDateRange = (dateRange: DateRange) =>
   dateRange.startDate !== dateRange.endDate
     ? [
-        formatDate(dateRange.startDate, "D MMM"),
-        formatDate(dateRange.endDate, "D MMM")
+        formatDate(dateRange.startDate, FORMAT_DAY_MONTH),
+        formatDate(dateRange.endDate, FORMAT_DAY_MONTH)
       ].join(" - ")
-    : formatDate(dateRange.startDate, "D MMM");
+    : formatDate(dateRange.startDate, FORMAT_DAY_MONTH);
 
-export const formatTime = (value: string) => formatDate(value, "HH:mm");
-
-export const contentfulFormat = "yyyy-LL-dd'T'HH:mmZZ";
+export const formatTime = (value: string) => formatDate(value, FORMAT_TIME_24);
 
 export const formatContentfulDate = (
   year: string,
@@ -30,9 +31,6 @@ export const formatContentfulDate = (
   const correctedTime = time ? `T${time}` : "";
   return `${correctedYear}-${correctedMonth}-${correctedDay}${correctedTime}`;
 };
-
-export const removeTimezoneFromCmsDateString = (isoString: string) =>
-  isoString.slice(0, -6);
 
 export const formatPrice = (price: number) => {
   if (price === Math.trunc(price)) {

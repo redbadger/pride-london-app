@@ -1,12 +1,17 @@
 // @flow
-import parseDate from "date-fns/parse";
-import differenceInCalendarDays from "date-fns/difference_in_calendar_days";
-import getHours from "date-fns/get_hours";
-import isSameDay from "date-fns/is_same_day";
 import R from "ramda";
-import { DateTime } from "luxon";
+import {
+  getHours,
+  compareAsc as compareDateAsc,
+  isSameDay,
+  set as setDate,
+  diff as diffDate,
+  add as addToDate,
+  toFormat as formatDate,
+  FORMAT_EUROPEAN_DATE,
+  FORMAT_CONTENTFUL_ISO
+} from "../lib/date";
 import { buildEventFilter } from "./event-filters";
-import { contentfulFormat } from "../data/formatters";
 import type { State } from "../reducers";
 import type {
   Event,
@@ -27,69 +32,44 @@ const fieldsPerformancesLocaleLens = R.lensPath([
 
 export const uniqueEvents = R.uniqBy(element => element.sys.id);
 
-export const groupEventsByStartTime = (events: Event[]): EventDays => {
-  const sections = events
-    .sort(
-      (a: Event, b: Event) =>
-        parseDate(a.fields.startTime[locale]) -
-        parseDate(b.fields.startTime[locale])
-    )
-    .reduce(
-      ({ days, buffer }, event) => {
-        if (buffer.length < 1) return { days, buffer: [event] };
+const sortByStartTimeAsc = (a: Event | Performance, b: Event | Performance) =>
+  compareDateAsc(a.fields.startTime[locale], b.fields.startTime[locale]);
 
-        const previous: Event = buffer[buffer.length - 1];
-        const diff = differenceInCalendarDays(
-          parseDate(previous.fields.startTime[locale]),
-          parseDate(event.fields.startTime[locale])
-        );
-
-        if (diff !== 0) return { days: [...days, buffer], buffer: [event] };
-
-        return { days, buffer: [...buffer, event] };
-      },
-      { days: [], buffer: [] }
-    );
-
-  return sections.buffer.length > 0
-    ? [...sections.days, sections.buffer]
-    : sections.days;
-};
+export const groupEventsByStartTime = (events: Event[]): EventDays =>
+  R.groupWith(
+    (a: Event, b: Event) =>
+      isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
+    events.sort(sortByStartTimeAsc)
+  );
 
 const generateRecurringEvent = event => recurrence => {
   const [recurrenceDay, recurrenceMonth, recurrenceYear] = recurrence.split(
     "/"
   );
 
-  const startTime = DateTime.fromISO(event.fields.startTime[locale], {
-    setZone: true
-  });
+  const startTime = event.fields.startTime[locale];
+  const endTime = event.fields.endTime[locale];
 
-  const endTime = DateTime.fromISO(event.fields.endTime[locale], {
-    setZone: true
-  });
-
-  const recurrenceStartTime = startTime.set({
+  const recurrenceStartTime = setDate(startTime, {
     year: recurrenceYear,
     month: recurrenceMonth,
     day: recurrenceDay
   });
 
-  const diff = recurrenceStartTime.diff(startTime);
-
-  const recurrenceEndTime = endTime.plus(diff);
+  const difference = diffDate(recurrenceStartTime, startTime);
+  const recurrenceEndTime = addToDate(endTime, difference);
 
   return R.mergeDeepRight(event, {
     fields: {
       startTime: {
-        [locale]: recurrenceStartTime.toFormat(contentfulFormat)
+        [locale]: formatDate(recurrenceStartTime, FORMAT_CONTENTFUL_ISO)
       },
       endTime: {
-        [locale]: recurrenceEndTime.toFormat(contentfulFormat)
+        [locale]: formatDate(recurrenceEndTime, FORMAT_CONTENTFUL_ISO)
       },
       recurrenceDates: {
         [locale]: [
-          startTime.toFormat("dd/LL/yyyy"),
+          formatDate(startTime, FORMAT_EUROPEAN_DATE),
           ...event.fields.recurrenceDates[locale]
         ]
       }
@@ -129,7 +109,7 @@ export const expandRecurringEventsInEntries = entries =>
     return [...acc, curr];
   }, []);
 
-export const getTimePeriod = (date: Date) => {
+export const getTimePeriod = (date: string) => {
   const splits = [6, 12, 18];
   const hours = getHours(date);
   if (hours >= splits[0] && hours < splits[1]) {
@@ -144,32 +124,12 @@ export const groupPerformancesByPeriod = (
   performances: Performance[]
 ): PerformancePeriods => {
   if (performances == null) return [];
-  const sections = performances
-    .sort(
-      (a: Performance, b: Performance) =>
-        parseDate(a.fields.startTime[locale]) -
-        parseDate(b.fields.startTime[locale])
-    )
-    .reduce(
-      ({ periods, buffer }, performance) => {
-        if (buffer.length < 1) return { periods, buffer: [performance] };
-
-        const previous: Performance = buffer[buffer.length - 1];
-
-        if (
-          getTimePeriod(parseDate(previous.fields.startTime[locale])) !==
-          getTimePeriod(parseDate(performance.fields.startTime[locale]))
-        )
-          return { periods: [...periods, buffer], buffer: [performance] };
-
-        return { periods, buffer: [...buffer, performance] };
-      },
-      { periods: [], buffer: [] }
-    );
-
-  return sections.buffer.length > 0
-    ? [...sections.periods, sections.buffer]
-    : sections.periods;
+  return R.groupWith(
+    (a: Performance, b: Performance) =>
+      getTimePeriod(a.fields.startTime[locale]) ===
+      getTimePeriod(b.fields.startTime[locale]),
+    performances.sort(sortByStartTimeAsc)
+  );
 };
 
 const getEventsState = (state: State) => state.events;
