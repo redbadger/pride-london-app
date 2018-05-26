@@ -4,43 +4,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
 <Dialog
   applyButtonLabel="Show events (none selected)"
   applyButtonText="No events"
-  headerRight={
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityLabel="Clear date selection"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      accessible={undefined}
-      delayLongPress={undefined}
-      delayPressIn={50}
-      delayPressOut={undefined}
-      disabled={undefined}
-      hitSlop={undefined}
-      onLongPress={undefined}
-      onPress={[Function]}
-      onPressIn={undefined}
-      onPressOut={undefined}
-      pressRetentionOffset={undefined}
-      style={undefined}
-    >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "rgb(45, 47, 127)",
-          }
-        }
-        type="small"
-      >
-        Clear
-      </Text>
-    </Touchable>
-  }
+  headerRight={null}
   onApply={[Function]}
   onCancel={[Function]}
   title={
