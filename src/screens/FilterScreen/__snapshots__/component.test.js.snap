@@ -16,7 +16,7 @@ exports[`FilterScreen renders correctly 1`] = `
   }
 >
   <Header
-    onCancelPress={[Function]}
+    onBackPress={[Function]}
     onClearPress={[Function]}
     showClear={false}
   />
