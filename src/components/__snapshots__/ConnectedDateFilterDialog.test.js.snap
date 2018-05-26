@@ -5,6 +5,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
   applyButtonDisabled={true}
   applyButtonLabel="Show events (none selected)"
   applyButtonText="No events"
+  headerLeft={null}
   headerRight={null}
   onApply={[Function]}
   onCancel={[Function]}
@@ -24,7 +25,6 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       style={
         Array [
           Object {
-            "alignSelf": "center",
             "color": "rgb(45, 47, 127)",
             "height": 40,
             "paddingTop": 10,

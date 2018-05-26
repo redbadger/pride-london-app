@@ -55,15 +55,9 @@ const Dialog = ({
           <View>
             <View style={styles.content}>
               <View style={styles.header}>
-                <View style={[styles.headerSide, styles.headerSideLeft]}>
-                  {headerLeft}
-                </View>
-                <View style={[styles.headerSide, styles.headerSideMiddle]}>
-                  {title}
-                </View>
-                <View style={[styles.headerSide, styles.headerSideRight]}>
-                  {headerRight}
-                </View>
+                <View style={styles.headerSideLeft}>{headerLeft}</View>
+                <View style={styles.headerSideMiddle}>{title}</View>
+                <View style={styles.headerSideRight}>{headerRight}</View>
               </View>
               {children}
             </View>
@@ -113,10 +107,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: dialogHeaderDividerColor
-  },
-  headerSide: {
-    width: 0,
-    flexGrow: 1
   },
   headerSideLeft: {
     alignItems: "flex-start"

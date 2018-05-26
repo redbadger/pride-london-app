@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import DateRangePicker from "./DateRangePicker";
 import Dialog from "./Dialog";
 import Text from "./Text";
@@ -74,6 +74,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
         headerRight={
           dateRange && (
             <Touchable
+              style={styles.clearButton}
               onPress={this.clear}
               accessibilityLabel="Clear date selection"
             >
@@ -83,6 +84,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
             </Touchable>
           )
         }
+        headerLeft={dateRange && <View style={styles.clearButton} />}
         onApply={this.props.onApply}
         onCancel={this.props.onCancel}
         visible={this.props.visible}
@@ -98,15 +100,14 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
 }
 
 const styles = StyleSheet.create({
+  clearButton: {
+    width: 44
+  },
   headerTitle: {
     color: dialogTitleColor,
-    alignSelf: "center",
     // Needs to start higher up on screen than the 'Clear' button for a11y order
     height: 40,
     paddingTop: 10
-  },
-  headerTitleWithDateRange: {
-    width: 127
   }
 });
 

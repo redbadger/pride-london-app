@@ -55,43 +55,25 @@ exports[`renders correctly 1`] = `
             >
               <Component
                 style={
-                  Array [
-                    Object {
-                      "flexGrow": 1,
-                      "width": 0,
-                    },
-                    Object {
-                      "alignItems": "flex-start",
-                    },
-                  ]
+                  Object {
+                    "alignItems": "flex-start",
+                  }
                 }
               />
               <Component
                 style={
-                  Array [
-                    Object {
-                      "flexGrow": 1,
-                      "width": 0,
-                    },
-                    Object {
-                      "alignItems": "center",
-                    },
-                  ]
+                  Object {
+                    "alignItems": "center",
+                  }
                 }
               >
                 Hello World
               </Component>
               <Component
                 style={
-                  Array [
-                    Object {
-                      "flexGrow": 1,
-                      "width": 0,
-                    },
-                    Object {
-                      "alignItems": "flex-end",
-                    },
-                  ]
+                  Object {
+                    "alignItems": "flex-end",
+                  }
                 }
               />
             </Component>

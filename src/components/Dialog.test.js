@@ -11,7 +11,6 @@ it("renders correctly", () => {
       onApply={() => {}}
       title="Hello World"
       visible
-      disabled
     >
       Lorem Ipsum is placeholder text commonly used...
     </Dialog>

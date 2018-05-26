@@ -15,7 +15,6 @@ const render = props =>
       onCancel={() => {}}
       onChange={() => {}}
       visible
-      disabled
       forceNewRange={false}
       {...props}
     />

@@ -5,6 +5,15 @@ exports[`renders correctly with date selection 1`] = `
   applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
+  headerLeft={
+    <Component
+      style={
+        Object {
+          "width": 44,
+        }
+      }
+    />
+  }
   headerRight={
     <Touchable
       accessibilityComponentType="button"
@@ -25,7 +34,11 @@ exports[`renders correctly with date selection 1`] = `
       onPressIn={undefined}
       onPressOut={undefined}
       pressRetentionOffset={undefined}
-      style={undefined}
+      style={
+        Object {
+          "width": 44,
+        }
+      }
     >
       <Text
         color="blackColor"
@@ -60,14 +73,11 @@ exports[`renders correctly with date selection 1`] = `
       style={
         Array [
           Object {
-            "alignSelf": "center",
             "color": "rgb(45, 47, 127)",
             "height": 40,
             "paddingTop": 10,
           },
-          Object {
-            "width": 127,
-          },
+          undefined,
         ]
       }
       type="h3"
@@ -95,6 +105,15 @@ exports[`renders correctly with range selection 1`] = `
   applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
+  headerLeft={
+    <Component
+      style={
+        Object {
+          "width": 44,
+        }
+      }
+    />
+  }
   headerRight={
     <Touchable
       accessibilityComponentType="button"
@@ -115,7 +134,11 @@ exports[`renders correctly with range selection 1`] = `
       onPressIn={undefined}
       onPressOut={undefined}
       pressRetentionOffset={undefined}
-      style={undefined}
+      style={
+        Object {
+          "width": 44,
+        }
+      }
     >
       <Text
         color="blackColor"
@@ -150,14 +173,11 @@ exports[`renders correctly with range selection 1`] = `
       style={
         Array [
           Object {
-            "alignSelf": "center",
             "color": "rgb(45, 47, 127)",
             "height": 40,
             "paddingTop": 10,
           },
-          Object {
-            "width": 127,
-          },
+          undefined,
         ]
       }
       type="h3"
@@ -185,6 +205,7 @@ exports[`renders correctly without date selection 1`] = `
   applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
+  headerLeft={null}
   headerRight={null}
   onApply={[Function]}
   onCancel={[Function]}
@@ -204,7 +225,6 @@ exports[`renders correctly without date selection 1`] = `
       style={
         Array [
           Object {
-            "alignSelf": "center",
             "color": "rgb(45, 47, 127)",
             "height": 40,
             "paddingTop": 10,
