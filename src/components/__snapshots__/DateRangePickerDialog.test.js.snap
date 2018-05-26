@@ -4,6 +4,7 @@ exports[`renders correctly with date selection 1`] = `
 <Dialog
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
+  disabled={false}
   headerRight={
     <Touchable
       accessibilityComponentType="button"
@@ -88,6 +89,7 @@ exports[`renders correctly with range selection 1`] = `
 <Dialog
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
+  disabled={false}
   headerRight={
     <Touchable
       accessibilityComponentType="button"
@@ -172,6 +174,7 @@ exports[`renders correctly without date selection 1`] = `
 <Dialog
   applyButtonLabel="Apply selection"
   applyButtonText="Apply"
+  disabled={true}
   headerRight={null}
   onApply={[Function]}
   onCancel={[Function]}

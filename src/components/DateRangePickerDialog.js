@@ -58,7 +58,10 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
         title={
           <Text
             type="h3"
-            style={styles.headerTitle}
+            style={[
+              styles.headerTitle,
+              dateRange && styles.headerTitleWithDateRange
+            ]}
             accessible
             accessibilityLabel={titleLabel}
             accessibilityTraits={["header"]}
@@ -96,10 +99,13 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
 const styles = StyleSheet.create({
   headerTitle: {
     color: dialogTitleColor,
-    alignSelf: "flex-end",
+    alignSelf: "center",
     // Needs to start higher up on screen than the 'Clear' button for a11y order
     height: 40,
     paddingTop: 10
+  },
+  headerTitleWithDateRange: {
+    width: 127
   }
 });
 
