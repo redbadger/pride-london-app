@@ -42,9 +42,12 @@ describe("renders correctly", () => {
   });
 });
 
-it("calls onChange with null when user presses clear button", () => {
+it("clears selected dateRange when user presses clear button", () => {
   const onChange = jest.fn();
-  const output = render({ onChange });
+  const output = render({
+    onChange,
+    dateRange: { startDate: "2018-02-02", endDate: "2018-02-08" }
+  });
   const clearButton = output.find(Dialog).prop("headerRight");
   clearButton.props.onPress();
 

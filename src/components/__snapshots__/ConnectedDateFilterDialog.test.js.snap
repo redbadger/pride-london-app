@@ -2,9 +2,9 @@
 
 exports[`ConnectedDateFilterDialog renders component 1`] = `
 <Dialog
+  applyButtonDisabled={true}
   applyButtonLabel="Show events (none selected)"
   applyButtonText="No events"
-  disabled={true}
   headerRight={null}
   onApply={[Function]}
   onCancel={[Function]}
@@ -49,6 +49,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
 
 exports[`ConnectedDateFilterDialog renders connector 1`] = `
 <DateRangePickerDialog
+  applyButtonDisabled={true}
   applyButtonLabel="Show events (none selected)"
   applyButtonText="No events"
   dateRange={null}

@@ -30,88 +30,90 @@ exports[`renders correctly 1`] = `
       <TouchableWithoutFeedback
         accessible={false}
       >
-        <Component
-          style={
-            Object {
-              "backgroundColor": "#ffffff",
-              "borderRadius": 4,
-              "paddingBottom": 8,
-            }
-          }
-        >
+        <Component>
           <Component
             style={
               Object {
-                "alignItems": "center",
-                "borderBottomColor": "#F2F2F2",
-                "borderBottomWidth": 1,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "space-between",
-                "paddingHorizontal": 16,
+                "backgroundColor": "#ffffff",
+                "borderRadius": 4,
+                "paddingBottom": 8,
               }
             }
           >
             <Component
               style={
-                Array [
-                  Object {
-                    "flexGrow": 1,
-                    "width": 0,
-                  },
-                  Object {
-                    "alignItems": "flex-start",
-                  },
-                ]
-              }
-            />
-            <Component
-              style={
-                Array [
-                  Object {
-                    "flexGrow": 1,
-                    "width": 0,
-                  },
-                  Object {
-                    "alignItems": "center",
-                  },
-                ]
+                Object {
+                  "alignItems": "center",
+                  "borderBottomColor": "#F2F2F2",
+                  "borderBottomWidth": 1,
+                  "flexDirection": "row",
+                  "height": 40,
+                  "justifyContent": "space-between",
+                  "paddingHorizontal": 16,
+                }
               }
             >
-              Hello World
+              <Component
+                style={
+                  Array [
+                    Object {
+                      "flexGrow": 1,
+                      "width": 0,
+                    },
+                    Object {
+                      "alignItems": "flex-start",
+                    },
+                  ]
+                }
+              />
+              <Component
+                style={
+                  Array [
+                    Object {
+                      "flexGrow": 1,
+                      "width": 0,
+                    },
+                    Object {
+                      "alignItems": "center",
+                    },
+                  ]
+                }
+              >
+                Hello World
+              </Component>
+              <Component
+                style={
+                  Array [
+                    Object {
+                      "flexGrow": 1,
+                      "width": 0,
+                    },
+                    Object {
+                      "alignItems": "flex-end",
+                    },
+                  ]
+                }
+              />
             </Component>
-            <Component
-              style={
-                Array [
-                  Object {
-                    "flexGrow": 1,
-                    "width": 0,
-                  },
-                  Object {
-                    "alignItems": "flex-end",
-                  },
-                ]
-              }
-            />
+            Lorem Ipsum is placeholder text commonly used...
           </Component>
-          Lorem Ipsum is placeholder text commonly used...
+          <Component
+            style={
+              Object {
+                "marginTop": 8,
+              }
+            }
+          >
+            <Button
+              accessibilityLabel="Good bye"
+              disabled={false}
+              onPress={[Function]}
+            >
+              Bye
+            </Button>
+          </Component>
         </Component>
       </TouchableWithoutFeedback>
-      <Component
-        style={
-          Object {
-            "marginTop": 8,
-          }
-        }
-      >
-        <Button
-          accessibilityLabel="Good bye"
-          disabled={true}
-          onPress={[Function]}
-        >
-          Bye
-        </Button>
-      </Component>
     </Component>
   </TouchableWithoutFeedback>
 </Component>

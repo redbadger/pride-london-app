@@ -13,6 +13,7 @@ import { dialogTitleColor } from "../constants/colors";
 type Props = {
   applyButtonText: string,
   applyButtonLabel: string,
+  applyButtonDisabled: boolean,
   dateRange: ?DateRange,
   onApply: () => void,
   onCancel: () => void,
@@ -54,7 +55,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
       <Dialog
         applyButtonText={this.props.applyButtonText}
         applyButtonLabel={this.props.applyButtonLabel}
-        disabled={!dateRange}
+        applyButtonDisabled={this.props.applyButtonDisabled}
         title={
           <Text
             type="h3"
@@ -71,7 +72,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
           </Text>
         }
         headerRight={
-          dateRange ? (
+          dateRange && (
             <Touchable
               onPress={this.clear}
               accessibilityLabel="Clear date selection"
@@ -80,7 +81,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
                 Clear
               </Text>
             </Touchable>
-          ) : null
+          )
         }
         onApply={this.props.onApply}
         onCancel={this.props.onCancel}

@@ -24,20 +24,20 @@ type Props = {
   onCancel?: Function,
   title: Node,
   visible: boolean,
-  disabled: boolean
+  applyButtonDisabled: boolean
 };
 
 const Dialog = ({
   applyButtonText,
   applyButtonLabel,
+  applyButtonDisabled,
   children,
   headerLeft,
   headerRight,
   onApply,
   onCancel,
   title,
-  visible,
-  disabled
+  visible
 }: Props) => (
   <Modal
     animationType="fade"
@@ -52,30 +52,32 @@ const Dialog = ({
     >
       <View style={styles.container}>
         <TouchableWithoutFeedback accessible={false}>
-          <View style={styles.content}>
-            <View style={styles.header}>
-              <View style={[styles.headerSide, styles.headerSideLeft]}>
-                {headerLeft}
+          <View>
+            <View style={styles.content}>
+              <View style={styles.header}>
+                <View style={[styles.headerSide, styles.headerSideLeft]}>
+                  {headerLeft}
+                </View>
+                <View style={[styles.headerSide, styles.headerSideMiddle]}>
+                  {title}
+                </View>
+                <View style={[styles.headerSide, styles.headerSideRight]}>
+                  {headerRight}
+                </View>
               </View>
-              <View style={[styles.headerSide, styles.headerSideMiddle]}>
-                {title}
-              </View>
-              <View style={[styles.headerSide, styles.headerSideRight]}>
-                {headerRight}
-              </View>
+              {children}
             </View>
-            {children}
+            <View style={styles.applyButtonContainer}>
+              <Button
+                disabled={applyButtonDisabled}
+                onPress={onApply}
+                accessibilityLabel={applyButtonLabel}
+              >
+                {applyButtonText}
+              </Button>
+            </View>
           </View>
         </TouchableWithoutFeedback>
-        <View style={styles.applyButtonContainer}>
-          <Button
-            disabled={disabled}
-            onPress={onApply}
-            accessibilityLabel={applyButtonLabel}
-          >
-            {applyButtonText}
-          </Button>
-        </View>
       </View>
     </TouchableWithoutFeedback>
   </Modal>
