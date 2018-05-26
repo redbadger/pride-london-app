@@ -17,14 +17,14 @@ import {
 type Props = {
   applyButtonText: string,
   applyButtonLabel: string,
+  applyButtonDisabled?: boolean,
   children: Node,
   headerLeft?: Node,
   headerRight?: Node,
   onApply: Function,
   onCancel?: Function,
   title: Node,
-  visible: boolean,
-  applyButtonDisabled: boolean
+  visible: boolean
 };
 
 const Dialog = ({
@@ -86,7 +86,8 @@ const Dialog = ({
 Dialog.defaultProps = {
   headerLeft: undefined,
   headerRight: undefined,
-  onCancel: () => {}
+  onCancel: () => {},
+  applyButtonDisabled: false
 };
 
 const styles = StyleSheet.create({

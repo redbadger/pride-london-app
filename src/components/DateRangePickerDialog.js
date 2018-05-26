@@ -13,7 +13,7 @@ import { dialogTitleColor } from "../constants/colors";
 type Props = {
   applyButtonText: string,
   applyButtonLabel: string,
-  applyButtonDisabled: boolean,
+  applyButtonDisabled?: boolean,
   dateRange: ?DateRange,
   onApply: () => void,
   onCancel: () => void,

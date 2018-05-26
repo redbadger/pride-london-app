@@ -24,7 +24,7 @@ type OwnProps = {
 type Props = {
   applyButtonText: string,
   applyButtonLabel: string,
-  applyButtonDisabled: boolean,
+  applyButtonDisabled?: boolean,
   dateRange: ?DateRange,
   onChange: (?DateRange) => void,
   forceNewRange: boolean
