@@ -21,7 +21,7 @@ exports[`renders correctly 1`] = `
     }
     type="text"
   >
-    Invalid Date
+    12:00
   </Text>
   <Text
     color="blackColor"
