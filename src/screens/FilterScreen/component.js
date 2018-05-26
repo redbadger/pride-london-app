@@ -21,7 +21,6 @@ type Props = {
   numEventsSelected: number,
   numTagFiltersSelected: number,
   onChange: TagFilter => void,
-  onApply: () => void,
   onCancel: () => void
 };
 
@@ -65,7 +64,6 @@ class FilterScreen extends PureComponent<Props> {
   };
 
   handleApplyButtonPress = () => {
-    this.props.onApply();
     this.props.navigation.goBack();
   };
 
