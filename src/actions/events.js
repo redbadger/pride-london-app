@@ -1,6 +1,5 @@
 // @flow
 import type { Dispatch } from "redux";
-import SplashScreen from "react-native-splash-screen";
 import { getCmsData, updateCmsData } from "../integrations/cms";
 import type { SavedData } from "../integrations/cms";
 import type { StandardAction } from "./";
@@ -13,6 +12,7 @@ type CmsActionType =
 export type CmsAction = StandardAction<CmsActionType, SavedData>;
 
 export const getEvents = (
+  hideSplashScreen: ?Function,
   getCmsDataFn: typeof getCmsData = getCmsData
 ) => async (dispatch: Dispatch<CmsAction>) => {
   dispatch({
@@ -29,8 +29,8 @@ export const getEvents = (
   // This feels quite dirty.
   // Once we have a proper splash screen, we can coordinate the
   // event loading and splash screen hiding better.
-  if (SplashScreen) {
-    SplashScreen.hide();
+  if (hideSplashScreen) {
+    hideSplashScreen();
   }
 };
 
