@@ -10,24 +10,15 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     }
   }
 >
-  <ContentPadding
-    padding={Object {}}
-    style={
-      Object {
-        "borderWidth": 0,
+  <Header
+    onBack={[Function]}
+    onClearAll={[Function]}
+    selectedCategories={
+      Set {
+        "Music",
       }
     }
-  >
-    <Header
-      onClearAll={[Function]}
-      onClose={[Function]}
-      selectedCategories={
-        Set {
-          "Music",
-        }
-      }
-    />
-  </ContentPadding>
+  />
   <Component
     style={
       Object {

@@ -31,14 +31,13 @@ describe("CategoriesFilterScreen Component", () => {
       stagedCategories,
       onApplyFilters: () => {},
       toggleCategoryFilter: () => {},
-      onClearAll: () => {},
-      onClose: () => {}
+      onClearAll: () => {}
     });
 
     expect(component).toMatchSnapshot();
   });
 
-  it("closes the view on pressing 'Close'", () => {
+  it("closes the view and applies filters on pressing back button", () => {
     const events: Event[] = ([
       {
         fields: {
@@ -49,27 +48,26 @@ describe("CategoriesFilterScreen Component", () => {
     ]: any);
 
     const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
-    const closeSpy = jest.fn();
-    const goBackSpy = jest.fn();
+    const applySpy = jest.fn();
+    const popSpy = jest.fn();
     const nav: NavigationScreenProp<NavigationState> = ({
-      goBack: goBackSpy
+      pop: popSpy
     }: any);
     const component = render({
       events,
       stagedCategories,
-      onApplyFilters: () => {},
+      onApplyFilters: applySpy,
       toggleCategoryFilter: () => {},
       onClearAll: () => {},
-      onClose: closeSpy,
       navigation: nav
     });
 
     component
       .find(Header)
       .props()
-      .onClose();
-    expect(closeSpy).toBeCalled();
-    expect(goBackSpy).toBeCalled();
+      .onBack();
+    expect(applySpy).toBeCalled();
+    expect(popSpy).toBeCalled();
   });
 
   it("clears the selected categories on pressing 'Clear All'", () => {

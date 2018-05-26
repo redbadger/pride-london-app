@@ -2,50 +2,47 @@
 
 exports[`Header Component renders correctly 1`] = `
 <Component>
-  <Component
-    style={
-      Object {
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "marginTop": 10,
-        "width": "100%",
-      }
+  <Header
+    leftElement={
+      <Unknown
+        onPress={[Function]}
+      />
     }
+    rightElement={false}
+  />
+  <ContentPadding
+    padding={Object {}}
+    style={Object {}}
   >
-    <ActionButton
-      label="Cancel"
-      onPress={[Function]}
-      style={Object {}}
-    />
-  </Component>
-  <Text
-    color="blackColor"
-    markdown={false}
-    markdownStyle={Object {}}
-    style={
-      Object {
-        "color": "#ffffff",
-        "marginBottom": 6,
-        "marginTop": 14,
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "#ffffff",
+          "marginBottom": 6,
+          "marginTop": 4,
+        }
       }
-    }
-    type="h1"
-  >
-    Showing
-  </Text>
-  <Component
-    style={
-      Object {
-        "height": 44,
-        "marginBottom": 16,
-        "width": "100%",
+      type="h1"
+    >
+      Showing
+    </Text>
+    <Component
+      style={
+        Object {
+          "height": 44,
+          "marginBottom": 16,
+          "width": "100%",
+        }
       }
-    }
-  >
-    <CategoriesPills
-      selectedCategories={Set {}}
-      style={Object {}}
-    />
-  </Component>
+    >
+      <CategoriesPills
+        selectedCategories={Set {}}
+        style={Object {}}
+      />
+    </Component>
+  </ContentPadding>
 </Component>
 `;

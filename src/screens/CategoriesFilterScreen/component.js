@@ -18,21 +18,15 @@ export type Props = {
   stagedCategories: Set<EventCategoryName>,
   toggleCategoryFilter: (Set<EventCategoryName>, string) => void,
   onApplyFilters: () => void,
-  onClearAll: () => void,
-  onClose: () => void
+  onClearAll: () => void
 };
 
 class CategoriesFilterScreen extends PureComponent<Props> {
-  handleClose = () => {
-    this.props.onClose();
-    this.props.navigation.goBack();
-  };
-
   handleClearAll = () => {
     this.props.onClearAll();
   };
 
-  handleApplyFilters = () => {
+  applyFilters = () => {
     this.props.onApplyFilters();
     this.props.navigation.pop();
   };
@@ -46,13 +40,11 @@ class CategoriesFilterScreen extends PureComponent<Props> {
 
     return (
       <SafeAreaView style={styles.container}>
-        <ContentPadding style={styles.header}>
-          <Header
-            onClose={this.handleClose}
-            onClearAll={this.handleClearAll}
-            selectedCategories={stagedCategories}
-          />
-        </ContentPadding>
+        <Header
+          onBack={this.applyFilters}
+          onClearAll={this.handleClearAll}
+          selectedCategories={stagedCategories}
+        />
         <View style={styles.list}>
           <List
             locale={locale}
@@ -62,7 +54,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         </View>
         <View style={styles.footer}>
           <ContentPadding>
-            <Button onPress={this.handleApplyFilters} disabled={!events.length}>
+            <Button onPress={this.applyFilters} disabled={!events.length}>
               {text.showEvents(events.length)}
             </Button>
           </ContentPadding>
@@ -77,9 +69,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: lightNavyBlueColor
-  },
-  header: {
-    borderWidth: 0
   },
   list: {
     flex: 1
