@@ -59,10 +59,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
         title={
           <Text
             type="h3"
-            style={[
-              styles.headerTitle,
-              dateRange && styles.headerTitleWithDateRange
-            ]}
+            style={styles.headerTitle}
             accessible
             accessibilityLabel={titleLabel}
             accessibilityTraits={["header"]}

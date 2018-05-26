@@ -23,14 +23,11 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       markdown={false}
       markdownStyle={Object {}}
       style={
-        Array [
-          Object {
-            "color": "rgb(45, 47, 127)",
-            "height": 40,
-            "paddingTop": 10,
-          },
-          null,
-        ]
+        Object {
+          "color": "rgb(45, 47, 127)",
+          "height": 40,
+          "paddingTop": 10,
+        }
       }
       type="h3"
     >
