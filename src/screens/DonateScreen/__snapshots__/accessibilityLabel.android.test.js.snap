@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns value TalkBack would say if: focused, no value 1`] = `"editing, edit box, Company; double tap and hold to long press"`;
+
+exports[`returns value TalkBack would say if: focused, value 1`] = `"editing, Aperture Science, edit box, Company; double tap and hold to long press"`;
+
+exports[`returns value TalkBack would say if: not focused, no value 1`] = `"edit box, Company; double tap to enter text"`;
+
+exports[`returns value TalkBack would say if: not focused, value 1`] = `"Aperture Science, edit box, Company; double tap to enter text"`;

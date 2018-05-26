@@ -21,6 +21,14 @@ type Props = {
   onPress?: Function
 };
 
+const createAccessibilityLabel = (
+  listPrefix: string,
+  pillsList: Set<EventCategoryName>
+) =>
+  pillsList.size > 0
+    ? `${listPrefix} ${[...pillsList].join(", ")}`
+    : text.categoryFilterEmpty;
+
 class CategoriesPills extends React.PureComponent<Props> {
   static defaultProps = {
     style: {}
@@ -55,13 +63,23 @@ class CategoriesPills extends React.PureComponent<Props> {
     const { style, selectedCategories } = this.props;
 
     return (
-      <View style={[styles.selectedCategoriesPills, style]}>
+      <View
+        style={[styles.selectedCategoriesPills, style]}
+        accessible
+        accessibilityLabel={createAccessibilityLabel(
+          text.categoryFilterContents,
+          selectedCategories
+        )}
+      >
         {selectedCategories.size === 0 ? (
           <Text type="h3" style={styles.zeroSelected}>
             {text.zeroSelected}
           </Text>
         ) : (
-          <View style={styles.scrollView}>
+          <View
+            style={styles.scrollView}
+            importantForAccessibility="no-hide-descendants"
+          >
             <LinearGradient
               style={[styles.scrollShadow, styles.scrollShadowLeft]}
               end={{ x: 0, y: 0.5 }}
