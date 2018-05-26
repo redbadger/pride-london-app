@@ -23,7 +23,8 @@ type Props = {
   onApply: Function,
   onCancel?: Function,
   title: Node,
-  visible: boolean
+  visible: boolean,
+  disabled: boolean
 };
 
 const Dialog = ({
@@ -35,7 +36,8 @@ const Dialog = ({
   onApply,
   onCancel,
   title,
-  visible
+  visible,
+  disabled
 }: Props) => (
   <Modal
     animationType="fade"
@@ -66,7 +68,11 @@ const Dialog = ({
           </View>
         </TouchableWithoutFeedback>
         <View style={styles.applyButtonContainer}>
-          <Button onPress={onApply} accessibilityLabel={applyButtonLabel}>
+          <Button
+            disabled={disabled}
+            onPress={onApply}
+            accessibilityLabel={applyButtonLabel}
+          >
             {applyButtonText}
           </Button>
         </View>

@@ -30,9 +30,9 @@ type Props = {
 } & OwnProps;
 
 const mapStateToProps = state => ({
-  applyButtonText: text.filterPickerApply(
-    selectFilteredEvents(state, true).length
-  ),
+  applyButtonText: selectDateFilter(state, true)
+    ? text.filterPickerApply(selectFilteredEvents(state, true).length)
+    : "No events",
   applyButtonLabel: text.filterPickerApplyLabel(
     selectFilteredEvents(state, true).length
   ),

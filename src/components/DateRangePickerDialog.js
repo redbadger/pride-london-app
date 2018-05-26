@@ -54,6 +54,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
       <Dialog
         applyButtonText={this.props.applyButtonText}
         applyButtonLabel={this.props.applyButtonLabel}
+        disabled={!dateRange}
         title={
           <Text
             type="h3"
