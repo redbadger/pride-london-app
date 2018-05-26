@@ -15,7 +15,7 @@ describe("CategoriesPills Component", () => {
     const output = render({ selectedCategories: new Set() });
     const noCategoriesText = output.find("Text").props().children;
 
-    expect(noCategoriesText).toEqual("0 selected");
+    expect(noCategoriesText).toEqual("All events");
   });
 
   it("renders categories pills", () => {

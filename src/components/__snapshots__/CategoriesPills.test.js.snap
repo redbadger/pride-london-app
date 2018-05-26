@@ -31,7 +31,7 @@ exports[`CategoriesPills Component renders correctly 1`] = `
     }
     type="h3"
   >
-    0 selected
+    All events
   </Text>
 </Component>
 `;

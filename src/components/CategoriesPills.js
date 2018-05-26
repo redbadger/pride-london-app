@@ -73,7 +73,7 @@ class CategoriesPills extends React.PureComponent<Props> {
       >
         {selectedCategories.size === 0 ? (
           <Text type="h3" style={styles.zeroSelected}>
-            {text.zeroSelected}
+            {text.allEvents}
           </Text>
         ) : (
           <View
