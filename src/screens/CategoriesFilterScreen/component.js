@@ -37,6 +37,10 @@ class CategoriesFilterScreen extends PureComponent<Props> {
 
   render() {
     const { events, stagedCategories } = this.props;
+    const buttonLabel =
+      stagedCategories.size > 0
+        ? text.showEvents(events.length)
+        : text.showAllEvents;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -55,7 +59,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         <View style={styles.footer}>
           <ContentPadding>
             <Button onPress={this.applyFilters} disabled={!events.length}>
-              {text.showEvents(events.length)}
+              {buttonLabel}
             </Button>
           </ContentPadding>
         </View>

@@ -14,16 +14,16 @@ const render = props =>
   shallow(<Component navigation={navigation} {...props} />);
 
 describe("CategoriesFilterScreen Component", () => {
-  it("renders correctly", () => {
-    const events: Event[] = ([
-      {
-        fields: {
-          name: { "en-GB": "Event name" },
-          eventCategories: { "en-GB": ["Music"] }
-        }
+  const events: Event[] = ([
+    {
+      fields: {
+        name: { "en-GB": "Event name" },
+        eventCategories: { "en-GB": ["Music"] }
       }
-    ]: any);
+    }
+  ]: any);
 
+  it("renders correctly", () => {
     const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
 
     const component = render({
@@ -37,16 +37,21 @@ describe("CategoriesFilterScreen Component", () => {
     expect(component).toMatchSnapshot();
   });
 
-  it("closes the view and applies filters on pressing back button", () => {
-    const events: Event[] = ([
-      {
-        fields: {
-          name: { "en-GB": "Event name" },
-          eventCategories: { "en-GB": ["Music"] }
-        }
-      }
-    ]: any);
+  it("renders correctly with no categories selected", () => {
+    const stagedCategories: Set<EventCategoryName> = new Set();
 
+    const component = render({
+      events,
+      stagedCategories,
+      onApplyFilters: () => {},
+      toggleCategoryFilter: () => {},
+      onClearAll: () => {}
+    });
+
+    expect(component).toMatchSnapshot();
+  });
+
+  it("closes the view and applies filters on pressing back button", () => {
     const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const applySpy = jest.fn();
     const popSpy = jest.fn();
@@ -71,15 +76,6 @@ describe("CategoriesFilterScreen Component", () => {
   });
 
   it("clears the selected categories on pressing 'Clear All'", () => {
-    const events: Event[] = ([
-      {
-        fields: {
-          name: { "en-GB": "Event name" },
-          eventCategories: { "en-GB": ["Music"] }
-        }
-      }
-    ]: any);
-
     const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const clearAllSpy = jest.fn();
 
@@ -100,15 +96,6 @@ describe("CategoriesFilterScreen Component", () => {
   });
 
   it("closes the view and applyies the filters", () => {
-    const events: Event[] = ([
-      {
-        fields: {
-          name: { "en-GB": "Event name" },
-          eventCategories: { "en-GB": ["Music"] }
-        }
-      }
-    ]: any);
-
     const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const applyFiltersSpy = jest.fn();
     const popSpy = jest.fn();
@@ -134,15 +121,6 @@ describe("CategoriesFilterScreen Component", () => {
   });
 
   it("updates the filters when selecting a category", () => {
-    const events: Event[] = ([
-      {
-        fields: {
-          name: { "en-GB": "Event name" },
-          eventCategories: { "en-GB": ["Music"] }
-        }
-      }
-    ]: any);
-
     const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const toggleCategoryFilterSpy = jest.fn();
 

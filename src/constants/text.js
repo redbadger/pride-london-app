@@ -119,6 +119,7 @@ export default {
   cancel: "Cancel",
   allEvents: "All events",
   showEvents,
+  showAllEvents: "Show all events",
   clearAll: "Clear all",
   reset: "Reset",
   filterEvents: "Filter Events",
