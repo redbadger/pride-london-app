@@ -1,4 +1,4 @@
-const dateFns = require("date-fns");
+const { DateTime } = require("luxon");
 const loremIpsum = require("lorem-ipsum");
 
 const festivalStartDate = "2018-06-09T09:00:00";
@@ -17,23 +17,24 @@ const generateRandomFloat = (min, max, decimals) =>
   parseFloat((Math.random() * (max - min) + min).toFixed(decimals));
 
 const generateEventDates = () => {
-  const eventStartDate = `${dateFns
-    .addHours(
-      dateFns.addDays(
-        festivalStartDate,
-        getRandomIntInclusive(0, festivalLengthDays)
-      ),
-      getRandomIntInclusive(0, eventHourRange)
-    )
-    .toISOString()
-    .slice(0, -8)}+00:00`;
-  const eventEndDate = `${dateFns
-    .addHours(
-      dateFns.addDays(eventStartDate, getRandomIntInclusive(0, 4)),
-      getRandomIntInclusive(0, 2)
-    )
-    .toISOString()
-    .slice(0, -8)}+00:00`;
+  const eventStartDate = DateTime.fromISO(festivalStartDate)
+    .plus({
+      days: getRandomIntInclusive(0, festivalLengthDays),
+      hours: getRandomIntInclusive(0, eventHourRange)
+    })
+    .toISO({
+      suppressMilliseconds: true,
+      suppressSeconds: true
+    });
+  const eventEndDate = DateTime.fromISO(eventStartDate)
+    .plus({
+      days: getRandomIntInclusive(0, 4),
+      hours: getRandomIntInclusive(0, 2)
+    })
+    .toISO({
+      suppressMilliseconds: true,
+      suppressSeconds: true
+    });
 
   return { eventStartDate, eventEndDate };
 };

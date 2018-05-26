@@ -8,7 +8,7 @@
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "run-android":
       "node node_modules/react-native/local-cli/cli.js run-android --appId org.prideinlondon.festival.dev --variant devDebug",
-    "test": "jest src --maxWorkers=2",
+    "test": "TZ=UTC jest src --maxWorkers=2",
     "test:e2e": "yarn test:e2e:build && yarn test:e2e:run",
     "test:e2e:dev":
       "detox test -c ios.sim.debug --reuse --loglevel verbose --debug-synchronization 1000",
@@ -28,7 +28,6 @@
     "bugsnag-react-native": "^2.9.3",
     "contentful": "^5.0.5",
     "core-js": "^2.5.6",
-    "date-fns": "^1.29.0",
     "lottie-react-native": "2.3.2",
     "luxon": "^1.2.0",
     "ramda": "^0.25.0",

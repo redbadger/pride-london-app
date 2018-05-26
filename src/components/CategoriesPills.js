@@ -72,8 +72,8 @@ class CategoriesPills extends React.PureComponent<Props> {
         )}
       >
         {selectedCategories.size === 0 ? (
-          <Text type="h3" style={styles.zeroSelected}>
-            {text.zeroSelected}
+          <Text type="h3" style={styles.allEvents}>
+            {text.allEvents}
           </Text>
         ) : (
           <View
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     marginRight: 2
   },
-  zeroSelected: {
+  allEvents: {
     color: eucalyptusGreenColor,
     paddingTop: 4,
     paddingLeft: 8

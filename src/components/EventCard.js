@@ -26,7 +26,6 @@ type Props = {
   removeSavedEvent: string => void,
   onPress: (id: string) => void
 };
-const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
 
 class EventCard extends React.PureComponent<Props> {
   static defaultProps = {
@@ -54,11 +53,7 @@ class EventCard extends React.PureComponent<Props> {
       isSaved,
       onPress
     } = this.props;
-    const eventStartTime = removeTimezoneFromDateString(startTime);
-    const eventEndTime = removeTimezoneFromDateString(endTime);
-    const timeDisplay = `${formatTime(eventStartTime)} – ${formatTime(
-      eventEndTime
-    )}`;
+    const timeDisplay = `${formatTime(startTime)} – ${formatTime(endTime)}`;
 
     return (
       <View style={styles.container}>
