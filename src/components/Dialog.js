@@ -17,6 +17,7 @@ import {
 type Props = {
   applyButtonText: string,
   applyButtonLabel: string,
+  applyButtonDisabled?: boolean,
   children: Node,
   headerLeft?: Node,
   headerRight?: Node,
@@ -29,6 +30,7 @@ type Props = {
 const Dialog = ({
   applyButtonText,
   applyButtonLabel,
+  applyButtonDisabled,
   children,
   headerLeft,
   headerRight,
@@ -50,26 +52,26 @@ const Dialog = ({
     >
       <View style={styles.container}>
         <TouchableWithoutFeedback accessible={false}>
-          <View style={styles.content}>
-            <View style={styles.header}>
-              <View style={[styles.headerSide, styles.headerSideLeft]}>
-                {headerLeft}
+          <View>
+            <View style={styles.content}>
+              <View style={styles.header}>
+                <View style={styles.headerSideLeft}>{headerLeft}</View>
+                <View style={styles.headerSideMiddle}>{title}</View>
+                <View style={styles.headerSideRight}>{headerRight}</View>
               </View>
-              <View style={[styles.headerSide, styles.headerSideMiddle]}>
-                {title}
-              </View>
-              <View style={[styles.headerSide, styles.headerSideRight]}>
-                {headerRight}
-              </View>
+              {children}
             </View>
-            {children}
+            <View style={styles.applyButtonContainer}>
+              <Button
+                disabled={applyButtonDisabled}
+                onPress={onApply}
+                accessibilityLabel={applyButtonLabel}
+              >
+                {applyButtonText}
+              </Button>
+            </View>
           </View>
         </TouchableWithoutFeedback>
-        <View style={styles.applyButtonContainer}>
-          <Button onPress={onApply} accessibilityLabel={applyButtonLabel}>
-            {applyButtonText}
-          </Button>
-        </View>
       </View>
     </TouchableWithoutFeedback>
   </Modal>
@@ -78,7 +80,8 @@ const Dialog = ({
 Dialog.defaultProps = {
   headerLeft: undefined,
   headerRight: undefined,
-  onCancel: () => {}
+  onCancel: () => {},
+  applyButtonDisabled: false
 };
 
 const styles = StyleSheet.create({
@@ -104,10 +107,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: dialogHeaderDividerColor
-  },
-  headerSide: {
-    width: 0,
-    flexGrow: 1
   },
   headerSideLeft: {
     alignItems: "flex-start"

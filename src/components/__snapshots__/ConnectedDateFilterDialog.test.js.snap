@@ -2,45 +2,11 @@
 
 exports[`ConnectedDateFilterDialog renders component 1`] = `
 <Dialog
+  applyButtonDisabled={true}
   applyButtonLabel="Show events (none selected)"
   applyButtonText="No events"
-  headerRight={
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityLabel="Clear date selection"
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      accessible={undefined}
-      delayLongPress={undefined}
-      delayPressIn={50}
-      delayPressOut={undefined}
-      disabled={undefined}
-      hitSlop={undefined}
-      onLongPress={undefined}
-      onPress={[Function]}
-      onPressIn={undefined}
-      onPressOut={undefined}
-      pressRetentionOffset={undefined}
-      style={undefined}
-    >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "rgb(45, 47, 127)",
-          }
-        }
-        type="small"
-      >
-        Clear
-      </Text>
-    </Touchable>
-  }
+  headerLeft={null}
+  headerRight={null}
   onApply={[Function]}
   onCancel={[Function]}
   title={
@@ -58,7 +24,6 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
       markdownStyle={Object {}}
       style={
         Object {
-          "alignSelf": "flex-end",
           "color": "rgb(45, 47, 127)",
           "height": 40,
           "paddingTop": 10,
@@ -81,6 +46,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
 
 exports[`ConnectedDateFilterDialog renders connector 1`] = `
 <DateRangePickerDialog
+  applyButtonDisabled={true}
   applyButtonLabel="Show events (none selected)"
   applyButtonText="No events"
   dateRange={null}
