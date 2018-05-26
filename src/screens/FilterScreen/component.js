@@ -36,7 +36,7 @@ const toggleTagFilter = (
   return values;
 };
 
-class FilterModal extends PureComponent<Props> {
+class FilterScreen extends PureComponent<Props> {
   componentDidMount() {
     const { navigation, onCancel } = this.props;
     this.didBlurSubscription = navigation.addListener("willBlur", onCancel);
@@ -119,4 +119,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default FilterModal;
+export default FilterScreen;

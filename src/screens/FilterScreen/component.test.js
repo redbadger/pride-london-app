@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import FilterModal from "./component";
+import FilterScreen from "./component";
 
-describe("FilterModal", () => {
+describe("FilterScreen", () => {
   it("renders correctly", () => {
     const navigation = {
       addListener: () => {},
@@ -12,7 +12,7 @@ describe("FilterModal", () => {
       price: new Set()
     };
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
@@ -36,7 +36,7 @@ describe("FilterModal", () => {
     const onCancel = () => {};
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
@@ -63,7 +63,7 @@ describe("FilterModal", () => {
     const onChange = jest.fn();
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChange}
@@ -95,7 +95,7 @@ describe("FilterModal", () => {
     };
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
@@ -119,7 +119,7 @@ describe("FilterModal", () => {
     };
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
@@ -144,7 +144,7 @@ describe("FilterModal", () => {
     };
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
@@ -169,7 +169,7 @@ describe("FilterModal", () => {
     };
     const onChangeSpy = jest.fn();
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChangeSpy}
@@ -195,7 +195,7 @@ describe("FilterModal", () => {
     };
     const onChangeSpy = jest.fn();
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChangeSpy}
@@ -222,7 +222,7 @@ describe("FilterModal", () => {
     };
     const onApplySpy = jest.fn();
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}

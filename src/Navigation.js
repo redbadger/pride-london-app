@@ -18,7 +18,7 @@ import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import ParadeInformationScreen from "./screens/ParadeInformationScreen";
 import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
-import FilterModal from "./screens/FilterModal";
+import FilterScreen from "./screens/FilterScreen";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
 import SupportUsScreen from "./screens/SupportUsScreen";
 import SponsorScreen from "./screens/SponsorScreen";
@@ -126,7 +126,7 @@ const EventsStack = createStackNavigator(
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen },
     [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen },
-    [FILTER_MODAL]: { screen: FilterModal }
+    [FILTER_MODAL]: { screen: FilterScreen }
   },
   {
     initialRouteName: EVENT_LIST,
