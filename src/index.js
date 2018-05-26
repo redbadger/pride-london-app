@@ -6,14 +6,13 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import SplashScreen from "react-native-splash-screen";
 import Config from "react-native-config";
 import { Client, Configuration } from "bugsnag-react-native";
 
 import analytics from "./integrations/analytics";
 import reducers from "./reducers";
 import { init } from "./actions";
-import { getEvents } from "./actions/events";
+import { getEvents, backgroundRefreshEvents } from "./actions/events";
 import { loadSavedEvents } from "./actions/saved-events";
 import { navigate } from "./actions/navigation";
 import App from "./App";
@@ -40,13 +39,14 @@ const store = createStore(
 const handleNavigationChange = navigate(store.dispatch);
 
 const handleAppStateChange = () => {
-  if (AppState.currentState === "active") store.dispatch(getEvents());
+  if (AppState.currentState === "active")
+    store.dispatch(backgroundRefreshEvents());
 };
 
 class AppWrapper extends Component<{}> {
   componentDidMount() {
-    SplashScreen.hide();
     store.dispatch(init());
+    store.dispatch(getEvents());
     store.dispatch(loadSavedEvents());
     AppState.addEventListener("change", handleAppStateChange);
   }
