@@ -16,41 +16,11 @@ describe("FilterScreen", () => {
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
       />
     );
     expect(output).toMatchSnapshot();
-  });
-
-  it("adds willBlur susbscription on mount", () => {
-    const removeListener = jest.fn();
-    const navigation = {
-      addListener: jest.fn(() => ({ remove: removeListener })),
-      setParams: () => {}
-    };
-    const eventFilters = {
-      price: new Set()
-    };
-    const onCancel = () => {};
-
-    const output = shallow(
-      <FilterScreen
-        navigation={navigation}
-        applyButtonText="Show 26 events"
-        onChange={() => {}}
-        onApply={() => {}}
-        onCancel={onCancel}
-        eventFilters={eventFilters}
-      />
-    );
-
-    expect(navigation.addListener).toHaveBeenCalledWith("willBlur", onCancel);
-
-    output.unmount();
-
-    expect(removeListener).toHaveBeenCalled();
   });
 
   it("dispatches empty filters when 'Clear all' button is pressed", () => {
@@ -67,7 +37,6 @@ describe("FilterScreen", () => {
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChange}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
       />
@@ -99,7 +68,6 @@ describe("FilterScreen", () => {
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numEventsSelected={0}
@@ -123,7 +91,6 @@ describe("FilterScreen", () => {
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -148,7 +115,6 @@ describe("FilterScreen", () => {
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -173,7 +139,6 @@ describe("FilterScreen", () => {
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChangeSpy}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -199,7 +164,6 @@ describe("FilterScreen", () => {
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChangeSpy}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -212,7 +176,7 @@ describe("FilterScreen", () => {
     expect(onChangeSpy).toHaveBeenCalledWith({ price: new Set() });
   });
 
-  it("calls on apply and goes back in navigation when apply button pressed", () => {
+  it("goes back in navigation when apply button pressed", () => {
     const navigation = {
       addListener: () => {},
       goBack: jest.fn()
@@ -220,13 +184,11 @@ describe("FilterScreen", () => {
     const eventFilters = {
       price: new Set(["free"])
     };
-    const onApplySpy = jest.fn();
     const output = shallow(
       <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={onApplySpy}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -236,7 +198,6 @@ describe("FilterScreen", () => {
 
     output.find("Button").simulate("Press");
 
-    expect(onApplySpy).toHaveBeenCalled();
     expect(navigation.goBack).toHaveBeenCalled();
   });
 });

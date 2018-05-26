@@ -24,12 +24,11 @@ describe("CategoriesFilterScreen Component", () => {
   ]: any);
 
   it("renders correctly", () => {
-    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
+    const categories: Set<EventCategoryName> = new Set(["Music"]);
 
     const component = render({
       events,
-      stagedCategories,
-      onApplyFilters: () => {},
+      categories,
       toggleCategoryFilter: () => {},
       onClearAll: () => {}
     });
@@ -38,12 +37,11 @@ describe("CategoriesFilterScreen Component", () => {
   });
 
   it("renders correctly with no categories selected", () => {
-    const stagedCategories: Set<EventCategoryName> = new Set();
+    const categories: Set<EventCategoryName> = new Set();
 
     const component = render({
       events,
-      stagedCategories,
-      onApplyFilters: () => {},
+      categories,
       toggleCategoryFilter: () => {},
       onClearAll: () => {}
     });
@@ -51,38 +49,13 @@ describe("CategoriesFilterScreen Component", () => {
     expect(component).toMatchSnapshot();
   });
 
-  it("closes the view and applies filters on pressing back button", () => {
-    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
-    const applySpy = jest.fn();
-    const popSpy = jest.fn();
-    const nav: NavigationScreenProp<NavigationState> = ({
-      pop: popSpy
-    }: any);
-    const component = render({
-      events,
-      stagedCategories,
-      onApplyFilters: applySpy,
-      toggleCategoryFilter: () => {},
-      onClearAll: () => {},
-      navigation: nav
-    });
-
-    component
-      .find(Header)
-      .props()
-      .onBack();
-    expect(applySpy).toBeCalled();
-    expect(popSpy).toBeCalled();
-  });
-
   it("clears the selected categories on pressing 'Clear All'", () => {
-    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
+    const categories: Set<EventCategoryName> = new Set(["Music"]);
     const clearAllSpy = jest.fn();
 
     const component = render({
       events,
-      stagedCategories,
-      onApplyFilters: () => {},
+      categories,
       toggleCategoryFilter: () => {},
       onClearAll: clearAllSpy,
       onClose: () => {}
@@ -95,17 +68,15 @@ describe("CategoriesFilterScreen Component", () => {
     expect(clearAllSpy).toBeCalled();
   });
 
-  it("closes the view and applyies the filters", () => {
-    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
-    const applyFiltersSpy = jest.fn();
-    const popSpy = jest.fn();
+  it("goes back on button press", () => {
+    const categories: Set<EventCategoryName> = new Set(["Music"]);
+    const backSpy = jest.fn();
     const nav: NavigationScreenProp<NavigationState> = ({
-      pop: popSpy
+      goBack: backSpy
     }: any);
     const component = render({
       events,
-      stagedCategories,
-      onApplyFilters: applyFiltersSpy,
+      categories,
       toggleCategoryFilter: () => {},
       onClearAll: () => {},
       onClose: () => {},
@@ -116,18 +87,16 @@ describe("CategoriesFilterScreen Component", () => {
       .find(Button)
       .props()
       .onPress();
-    expect(applyFiltersSpy).toBeCalled();
-    expect(popSpy).toBeCalled();
+    expect(backSpy).toBeCalled();
   });
 
   it("updates the filters when selecting a category", () => {
-    const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
+    const categories: Set<EventCategoryName> = new Set(["Music"]);
     const toggleCategoryFilterSpy = jest.fn();
 
     const component = render({
       events,
-      stagedCategories,
-      onApplyFilters: () => {},
+      categories,
       toggleCategoryFilter: toggleCategoryFilterSpy,
       onClearAll: () => {},
       onClose: () => {}
