@@ -117,9 +117,11 @@ export default {
     area: "Area of London"
   },
   cancel: "Cancel",
-  zeroSelected: "0 selected",
+  allEvents: "All events",
   showEvents,
+  showAllEvents: "Show all events",
   clearAll: "Clear all",
+  reset: "Reset",
   filterEvents: "Filter Events",
   runsFrom: "Runs from:",
   noSavedEventsTitle: "Where's the love?",

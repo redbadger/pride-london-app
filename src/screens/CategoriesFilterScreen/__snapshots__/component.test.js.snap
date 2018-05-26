@@ -10,24 +10,15 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     }
   }
 >
-  <ContentPadding
-    padding={Object {}}
-    style={
-      Object {
-        "borderWidth": 0,
+  <Header
+    onBack={[Function]}
+    onClearAll={[Function]}
+    selectedCategories={
+      Set {
+        "Music",
       }
     }
-  >
-    <Header
-      onClearAll={[Function]}
-      onClose={[Function]}
-      selectedCategories={
-        Set {
-          "Music",
-        }
-      }
-    />
-  </ContentPadding>
+  />
   <Component
     style={
       Object {
@@ -62,6 +53,57 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
         onPress={[Function]}
       >
         Show 1 event
+      </Button>
+    </ContentPadding>
+  </Component>
+</withOrientation>
+`;
+
+exports[`CategoriesFilterScreen Component renders correctly with no categories selected 1`] = `
+<withOrientation
+  style={
+    Object {
+      "backgroundColor": "#2d2f7f",
+      "flex": 1,
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <Header
+    onBack={[Function]}
+    onClearAll={[Function]}
+    selectedCategories={Set {}}
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <List
+      locale="en-GB"
+      onPress={[Function]}
+      stagedCategories={Set {}}
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "backgroundColor": "#2d2f7f",
+        "paddingVertical": 12,
+      }
+    }
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+    >
+      <Button
+        disabled={false}
+        onPress={[Function]}
+      >
+        Show all events
       </Button>
     </ContentPadding>
   </Component>

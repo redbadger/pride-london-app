@@ -6,7 +6,10 @@ import thunk from "redux-thunk";
 import { shallow } from "enzyme";
 import Container from "./";
 
-const navigation: NavigationScreenProp<*> = ({ goBack: jest.fn() }: any);
+const navigation: NavigationScreenProp<*> = ({
+  goBack: jest.fn(),
+  pop: jest.fn()
+}: any);
 
 const mockStore = configureStore([thunk]);
 
@@ -95,7 +98,7 @@ describe("CategoriesFilterScreen Container", () => {
     expect(actions).toEqual([{ type: "COMMIT_EVENT_FILTERS" }]);
   });
 
-  it("dispatches clear staged filters action and closes filter screen", () => {
+  it("dispatches commit filters action and goes back on pressing back", () => {
     const store = mockStore(initialState);
     const output = shallow(<Container store={store} navigation={navigation} />);
 
@@ -103,11 +106,11 @@ describe("CategoriesFilterScreen Container", () => {
       .dive()
       .find("Header")
       .props()
-      .onClose();
+      .onBack();
 
     const actions = store.getActions();
 
-    expect(navigation.goBack).toBeCalled();
-    expect(actions).toEqual([{ type: "CLEAR_STAGED_EVENT_FILTERS" }]);
+    expect(navigation.pop).toBeCalled();
+    expect(actions).toEqual([{ type: "COMMIT_EVENT_FILTERS" }]);
   });
 });
