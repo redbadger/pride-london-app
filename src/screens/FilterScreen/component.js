@@ -20,8 +20,7 @@ type Props = {
   eventFilters: FilterCollection,
   numEventsSelected: number,
   numTagFiltersSelected: number,
-  onChange: TagFilter => void,
-  onCancel: () => void
+  onChange: TagFilter => void
 };
 
 const toggleTagFilter = (
@@ -36,19 +35,6 @@ const toggleTagFilter = (
 };
 
 class FilterScreen extends PureComponent<Props> {
-  componentDidMount() {
-    const { navigation, onCancel } = this.props;
-    this.didBlurSubscription = navigation.addListener("willBlur", onCancel);
-  }
-
-  componentWillUnmount() {
-    this.didBlurSubscription.remove();
-  }
-
-  didBlurSubscription: {
-    remove: () => void
-  };
-
   clearTagFilters = () =>
     this.props.onChange(
       Object.keys(tags).reduce((acc, key) => ({ ...acc, [key]: new Set() }), {})

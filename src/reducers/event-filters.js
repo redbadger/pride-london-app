@@ -57,6 +57,10 @@ const eventFilters: Reducer<State, EventFiltersAction> = (
         ...state,
         stagedFilters: state.selectedFilters
       };
+    case "CLEAR_EVENT_FILTERS":
+      return {
+        ...defaultState
+      };
     default:
       return state;
   }

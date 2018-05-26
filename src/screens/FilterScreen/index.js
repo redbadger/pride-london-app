@@ -4,7 +4,7 @@ import type { Connector } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
 import {
   setEventFilters,
-  clearStagedEventFilters
+  clearEventFilters
 } from "../../actions/event-filters";
 import { selectFilteredEvents } from "../../selectors/events";
 import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
@@ -23,7 +23,6 @@ type Props = {
   numEventsSelected: number,
   numTagFiltersSelected: number,
   onChange: (tagFilter: TagFilter) => void,
-  onApply: () => void,
   onCancel: () => void
 } & OwnProps;
 
@@ -39,7 +38,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   onChange: tagFilter => dispatch(setEventFilters(tagFilter)),
-  onCancel: () => dispatch(clearStagedEventFilters())
+  onCancel: () => dispatch(clearEventFilters())
 });
 
 const connector: Connector<OwnProps, Props> = connect(

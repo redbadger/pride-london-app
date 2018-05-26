@@ -183,4 +183,46 @@ describe("Event filters reducer", () => {
     // this is used by selectIsStagingFilters
     expect(state.stagedFilters).toBe(state.selectedFilters);
   });
+
+  it("clears the event filters for CLEAR_EVENT_FILTERS action", () => {
+    const initialState = {
+      selectedFilters: {
+        categories: new Set(),
+        date: { startDate: "2018-03-12", endDate: "2018-03-12" },
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        area: new Set()
+      },
+      stagedFilters: {
+        categories: new Set(),
+        date: { startDate: "2018-03-20", endDate: "2018-03-20" },
+        timeOfDay: new Set(),
+        price: new Set(),
+        audience: new Set(),
+        venueDetails: new Set(),
+        accessibilityOptions: new Set(),
+        area: new Set()
+      }
+    };
+    const state = reducer(initialState, {
+      type: "CLEAR_EVENT_FILTERS"
+    });
+
+    const emptyFilters = {
+      categories: new Set(), // When this is empty it signifies no category filter.
+      date: null,
+      timeOfDay: new Set(),
+      price: new Set(),
+      audience: new Set(),
+      venueDetails: new Set(),
+      accessibilityOptions: new Set(),
+      area: new Set()
+    };
+
+    expect(state.stagedFilters).toEqual(emptyFilters);
+    expect(state.selectedFilters).toEqual(emptyFilters);
+  });
 });

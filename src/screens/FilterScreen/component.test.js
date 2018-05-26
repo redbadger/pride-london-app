@@ -23,34 +23,6 @@ describe("FilterScreen", () => {
     expect(output).toMatchSnapshot();
   });
 
-  it("adds willBlur susbscription on mount", () => {
-    const removeListener = jest.fn();
-    const navigation = {
-      addListener: jest.fn(() => ({ remove: removeListener })),
-      setParams: () => {}
-    };
-    const eventFilters = {
-      price: new Set()
-    };
-    const onCancel = () => {};
-
-    const output = shallow(
-      <FilterScreen
-        navigation={navigation}
-        applyButtonText="Show 26 events"
-        onChange={() => {}}
-        onCancel={onCancel}
-        eventFilters={eventFilters}
-      />
-    );
-
-    expect(navigation.addListener).toHaveBeenCalledWith("willBlur", onCancel);
-
-    output.unmount();
-
-    expect(removeListener).toHaveBeenCalled();
-  });
-
   it("dispatches empty filters when 'Clear all' button is pressed", () => {
     const navigation = {
       addListener: () => {}
