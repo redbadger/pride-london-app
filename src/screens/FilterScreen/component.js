@@ -36,7 +36,7 @@ const toggleTagFilter = (
   return values;
 };
 
-class FilterModal extends PureComponent<Props> {
+class FilterScreen extends PureComponent<Props> {
   componentDidMount() {
     const { navigation, onCancel } = this.props;
     this.didBlurSubscription = navigation.addListener("willBlur", onCancel);
@@ -73,7 +73,6 @@ class FilterModal extends PureComponent<Props> {
     const {
       applyButtonText,
       eventFilters,
-      navigation,
       numEventsSelected,
       numTagFiltersSelected
     } = this.props;
@@ -84,7 +83,7 @@ class FilterModal extends PureComponent<Props> {
       >
         <Header
           onClearPress={this.clearTagFilters}
-          onCancelPress={() => navigation.goBack()}
+          onBackPress={this.handleApplyButtonPress}
           showClear={numTagFiltersSelected > 0}
         />
         <ShadowedScrollView style={styles.flex} shadowOpacity={0.6}>
@@ -119,4 +118,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default FilterModal;
+export default FilterScreen;

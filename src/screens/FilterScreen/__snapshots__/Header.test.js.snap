@@ -3,15 +3,13 @@
 exports[`applies styles to clear button when showClear=true 1`] = `
 <Header
   leftElement={
-    <ActionButton
-      label="Cancel"
-      onPress={[Function]}
-      style={Object {}}
+    <Unknown
+      onPress={undefined}
     />
   }
   rightElement={
     <ActionButton
-      label="Clear all"
+      label="Reset"
       onPress={[Function]}
       style={Object {}}
     />
@@ -23,10 +21,8 @@ exports[`applies styles to clear button when showClear=true 1`] = `
 exports[`renders correctly 1`] = `
 <Header
   leftElement={
-    <ActionButton
-      label="Cancel"
-      onPress={[Function]}
-      style={Object {}}
+    <Unknown
+      onPress={undefined}
     />
   }
   rightElement={null}
