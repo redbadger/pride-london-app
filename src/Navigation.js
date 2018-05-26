@@ -125,7 +125,8 @@ const EventsStack = createStackNavigator(
   {
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen },
-    [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen }
+    [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen },
+    [FILTER_MODAL]: { screen: FilterModal }
   },
   {
     initialRouteName: EVENT_LIST,
@@ -235,13 +236,11 @@ const TabNav = createBottomTabNavigator(
   }
 );
 
+// Root stack to support modal views if we need them
 const RootStack = createStackNavigator(
   {
     Main: {
       screen: TabNav
-    },
-    [FILTER_MODAL]: {
-      screen: FilterModal
     }
   },
   {
