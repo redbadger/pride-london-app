@@ -8,3 +8,5 @@ Enzyme.configure({ adapter: new Adapter() });
 // to validate the correct styles in snapshot tests.
 NativeModules.DeviceInfo.Dimensions.window.fontScale = 1;
 NativeModules.DeviceInfo.Dimensions.window.scale = 1;
+
+process.env.TZ = "UTC";
