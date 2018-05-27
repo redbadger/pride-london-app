@@ -5,7 +5,6 @@ import { equals, flatten } from "ramda";
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import SectionHeader from "./SectionHeader";
-import { scaleWithFont } from "./Text";
 import { whiteColor } from "../constants/colors";
 import type { SavedEvents, Event, EventDays } from "../data/event";
 import { toFormat as formatDate, FORMAT_WEEKDAY_DAY_MONTH } from "../lib/date";
@@ -42,9 +41,6 @@ type RenderItemInfo = {
   item: Item // eslint-disable-line react/no-unused-prop-types
 };
 
-const eventItemHeight = scaleWithFont("h3", 108) + 12;
-const headerItemHeight = 52;
-
 const eventIds = (events: EventDays): string[] =>
   flatten(events.map(day => day.map(e => e.sys.id)));
 
@@ -76,23 +72,6 @@ class EventList extends Component<Props> {
   componentWillUpdate() {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
   }
-
-  getItemLength = (item: Item) =>
-    item.type === "event" ? eventItemHeight : headerItemHeight;
-
-  getItemLayout = (data: ?(Item[]), index: number) => {
-    if (!data) {
-      return { length: 0, offset: 0, index };
-    }
-
-    return {
-      length: this.getItemLength(data[index]),
-      offset: data
-        .slice(0, index)
-        .reduce((prev, curr) => prev + this.getItemLength(curr), 0),
-      index
-    };
-  };
 
   keyExtractor = (item: Item) => item.id;
 
@@ -170,7 +149,6 @@ class EventList extends Component<Props> {
         data={items}
         renderItem={this.renderItem}
         keyExtractor={this.keyExtractor}
-        getItemLayout={this.getItemLayout}
         contentContainerStyle={styles.container}
         refreshing={refreshing}
         onRefresh={onRefresh}

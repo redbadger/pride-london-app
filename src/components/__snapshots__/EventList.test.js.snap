@@ -144,7 +144,6 @@ exports[`EventList renders correctly 1`] = `
     ]
   }
   disableVirtualization={false}
-  getItemLayout={[Function]}
   horizontal={false}
   initialNumToRender={10}
   keyExtractor={[Function]}
