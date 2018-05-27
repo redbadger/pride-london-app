@@ -1,13 +1,13 @@
 // @flow
 import React, { Component } from "react";
 import { LayoutAnimation, StyleSheet, FlatList, View } from "react-native";
-import formatDate from "date-fns/format";
 import { concat, equals } from "ramda";
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import SectionHeader from "./SectionHeader";
 import { whiteColor } from "../constants/colors";
 import type { SavedEvents, Event, EventDays } from "../data/event";
+import { toFormat as formatDate, FORMAT_WEEKDAY_DAY_MONTH } from "../lib/date";
 import type { FieldRef } from "../data/field-ref";
 import type { ImageSource } from "../data/get-asset-source";
 
@@ -130,7 +130,7 @@ class EventList extends Component<Props> {
     events.forEach(day => {
       const headerTitle = formatDate(
         day[0].fields.startTime[locale],
-        "dddd D MMMM"
+        FORMAT_WEEKDAY_DAY_MONTH
       );
       stickyHeaderIndices.push(items.length);
       items.push({
@@ -165,6 +165,7 @@ class EventList extends Component<Props> {
         contentContainerStyle={styles.container}
         refreshing={refreshing}
         onRefresh={onRefresh}
+        windowSize={10}
       />
     );
   }

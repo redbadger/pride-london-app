@@ -3,9 +3,9 @@ import {
   formatDateRange,
   formatTime,
   formatPrice,
+  formatContentfulDate,
   formatShortEventPrice,
-  formatLongEventPrice,
-  removeTimezoneFromCmsDateString
+  formatLongEventPrice
 } from "./formatters";
 
 describe("formatDateRange", () => {
@@ -35,12 +35,30 @@ describe("formatTime", () => {
   });
 });
 
-describe("removeTimezoneFromCmsDateString", () => {
-  it("formats dateString correctly", () => {
-    const dateString = "2018-04-09T20:00+01:00";
-    const expected = "2018-04-09T20:00";
+describe("formatContentfulDate", () => {
+  it("formats a normal date", () => {
+    const date = formatContentfulDate("2018", "05", "24", "13:00");
+    expect(date).toEqual("2018-05-24T13:00");
+  });
 
-    expect(removeTimezoneFromCmsDateString(dateString)).toEqual(expected);
+  it("formats short month string", () => {
+    const date = formatContentfulDate("2018", "5", "24", "13:00");
+    expect(date).toEqual("2018-05-24T13:00");
+  });
+
+  it("formats short day string", () => {
+    const date = formatContentfulDate("2018", "05", "4", "13:00");
+    expect(date).toEqual("2018-05-04T13:00");
+  });
+
+  it("formats short year string", () => {
+    const date = formatContentfulDate("18", "05", "24", "13:00");
+    expect(date).toEqual("2018-05-24T13:00");
+  });
+
+  it("formats date without time", () => {
+    const date = formatContentfulDate("18", "05", "24");
+    expect(date).toEqual("2018-05-24");
   });
 });
 

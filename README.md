@@ -122,9 +122,9 @@ brew update && brew cask install react-native-debugger
 
 Then to debug:
 
-1. Close any other debugger windows you have open
-1. Open the App from your Applications folder
-1. Start debugging in the app using one of the following methods:
+1.  Close any other debugger windows you have open
+1.  Open the App from your Applications folder
+1.  Start debugging in the app using one of the following methods:
 
 | Platform    | Command                                                                           |
 | ----------- | --------------------------------------------------------------------------------- |

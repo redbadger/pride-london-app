@@ -7,19 +7,17 @@ import {
   TouchableWithoutFeedback,
   View
 } from "react-native";
-import Text from "./Text";
-import Touchable from "./Touchable";
+import Button from "./ButtonPrimary";
 import {
   dialogBackdropColor,
   dialogBgColor,
-  dialogApplyButtonBgColor,
-  dialogApplyButtonTextColor,
   dialogHeaderDividerColor
 } from "../constants/colors";
 
 type Props = {
   applyButtonText: string,
   applyButtonLabel: string,
+  applyButtonDisabled?: boolean,
   children: Node,
   headerLeft?: Node,
   headerRight?: Node,
@@ -32,6 +30,7 @@ type Props = {
 const Dialog = ({
   applyButtonText,
   applyButtonLabel,
+  applyButtonDisabled,
   children,
   headerLeft,
   headerRight,
@@ -53,31 +52,26 @@ const Dialog = ({
     >
       <View style={styles.container}>
         <TouchableWithoutFeedback accessible={false}>
-          <View style={styles.content}>
-            <View style={styles.header}>
-              <View style={[styles.headerSide, styles.headerSideLeft]}>
-                {headerLeft}
+          <View>
+            <View style={styles.content}>
+              <View style={styles.header}>
+                <View style={styles.headerSideLeft}>{headerLeft}</View>
+                <View style={styles.headerSideMiddle}>{title}</View>
+                <View style={styles.headerSideRight}>{headerRight}</View>
               </View>
-              <View style={[styles.headerSide, styles.headerSideMiddle]}>
-                {title}
-              </View>
-              <View style={[styles.headerSide, styles.headerSideRight]}>
-                {headerRight}
-              </View>
+              {children}
             </View>
-            {children}
+            <View style={styles.applyButtonContainer}>
+              <Button
+                disabled={applyButtonDisabled}
+                onPress={onApply}
+                accessibilityLabel={applyButtonLabel}
+              >
+                {applyButtonText}
+              </Button>
+            </View>
           </View>
         </TouchableWithoutFeedback>
-        <Touchable
-          onPress={onApply}
-          style={styles.applyButton}
-          accessibilityLabel={applyButtonLabel}
-          accessibilityTraits={["button", "header"]}
-        >
-          <Text type="h2" style={styles.applyButtonText}>
-            {applyButtonText}
-          </Text>
-        </Touchable>
       </View>
     </TouchableWithoutFeedback>
   </Modal>
@@ -86,7 +80,8 @@ const Dialog = ({
 Dialog.defaultProps = {
   headerLeft: undefined,
   headerRight: undefined,
-  onCancel: () => {}
+  onCancel: () => {},
+  applyButtonDisabled: false
 };
 
 const styles = StyleSheet.create({
@@ -113,10 +108,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: dialogHeaderDividerColor
   },
-  headerSide: {
-    width: 0,
-    flexGrow: 1
-  },
   headerSideLeft: {
     alignItems: "flex-start"
   },
@@ -126,17 +117,8 @@ const styles = StyleSheet.create({
   headerSideRight: {
     alignItems: "flex-end"
   },
-  applyButton: {
-    backgroundColor: dialogApplyButtonBgColor,
-    borderRadius: 4,
-    height: 48,
-    marginTop: 8,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  applyButtonText: {
-    color: dialogApplyButtonTextColor,
-    lineHeight: 48
+  applyButtonContainer: {
+    marginTop: 8
   }
 });
 

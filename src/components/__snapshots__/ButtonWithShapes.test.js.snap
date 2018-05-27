@@ -16,9 +16,8 @@ exports[`picks different icon for external links 1`] = `
         "borderRadius": 5,
         "borderWidth": 0,
         "elevation": 3,
-        "height": 200,
+        "height": 100,
         "justifyContent": "center",
-        "minHeight": 100,
         "overflow": "hidden",
         "shadowColor": "rgba(0, 0, 0, 0.2)",
         "shadowOffset": Object {
@@ -82,7 +81,7 @@ exports[`picks different icon for external links 1`] = `
             "marginLeft": 8,
             "transform": Array [
               Object {
-                "translateY": -8,
+                "translateY": -4,
               },
             ],
           }
@@ -122,9 +121,8 @@ exports[`picks different icon for external links with contrast color 1`] = `
         "borderRadius": 5,
         "borderWidth": 0,
         "elevation": 3,
-        "height": 200,
+        "height": 100,
         "justifyContent": "center",
-        "minHeight": 100,
         "overflow": "hidden",
         "shadowColor": "rgba(0, 0, 0, 0.2)",
         "shadowOffset": Object {
@@ -188,7 +186,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
             "marginLeft": 8,
             "transform": Array [
               Object {
-                "translateY": -8,
+                "translateY": -4,
               },
             ],
           }
@@ -228,9 +226,8 @@ exports[`renders correctly 1`] = `
         "borderRadius": 5,
         "borderWidth": 0,
         "elevation": 3,
-        "height": 200,
+        "height": 100,
         "justifyContent": "center",
-        "minHeight": 100,
         "overflow": "hidden",
         "shadowColor": "rgba(0, 0, 0, 0.2)",
         "shadowOffset": Object {
@@ -294,7 +291,7 @@ exports[`renders correctly 1`] = `
             "marginLeft": 8,
             "transform": Array [
               Object {
-                "translateY": -8,
+                "translateY": -4,
               },
             ],
           }

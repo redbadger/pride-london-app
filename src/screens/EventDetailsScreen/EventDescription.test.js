@@ -58,7 +58,6 @@ it("renders correctly", () => {
           "Music"
         ]
       },
-      timeOfDay: { "en-GB": ["Afternoon"] },
       recurrenceDates: { "en-GB": ["13/1/18", "15/1/18"] },
       accessibilityDetails: {
         "en-GB":

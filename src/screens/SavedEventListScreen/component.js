@@ -42,7 +42,10 @@ class SavedEventListScreen extends PureComponent<Props> {
 
     return (
       <View style={styles.container}>
-        <Header title={text.savedEventsTitle} />
+        <Header
+          title={text.savedEventsTitle}
+          testID="page-heading-saved-events"
+        />
         {loading && <Loading />}
         {!loading &&
           events.length === 0 && <NoSavedEvents navigation={navigation} />}

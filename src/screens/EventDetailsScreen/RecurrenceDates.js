@@ -1,15 +1,18 @@
 // @flow
 import React from "react";
 import { StyleSheet } from "react-native";
-import dateComparator from "date-fns/compare_asc";
-import formatDate from "date-fns/format";
+import {
+  toFormat as formatDate,
+  compareAsc as compareDateAsc,
+  FORMAT_DAY_MONTH
+} from "../../lib/date";
 import Text from "../../components/Text";
-import { removeTimezoneFromCmsDateString } from "../../data/formatters";
+import { formatContentfulDate } from "../../data/formatters";
 import text from "../../constants/text";
 
-const reformatEuropeanDateString = dateString => {
+const formatRecurrenceDates = dateString => {
   const [day, month, year] = dateString.split("/");
-  return `${year}-${month}-${day}`;
+  return formatContentfulDate(year, month, day);
 };
 
 type Props = {
@@ -19,16 +22,16 @@ type Props = {
 
 const RecurrenceDates = ({ recurrenceDates, startTime }: Props) => {
   const orderedRecurrenceDates = [
-    removeTimezoneFromCmsDateString(startTime),
-    ...recurrenceDates.map(reformatEuropeanDateString)
-  ].sort(dateComparator);
+    startTime,
+    ...recurrenceDates.map(formatRecurrenceDates)
+  ].sort(compareDateAsc);
 
   const formattedRecurrenceDates = `${text.runsFrom} ${formatDate(
     orderedRecurrenceDates[0],
-    "D MMM"
+    FORMAT_DAY_MONTH
   )} - ${formatDate(
     orderedRecurrenceDates[orderedRecurrenceDates.length - 1],
-    "D MMM"
+    FORMAT_DAY_MONTH
   )}`;
 
   return orderedRecurrenceDates.length > 1 ? (

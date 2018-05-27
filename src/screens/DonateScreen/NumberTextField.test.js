@@ -7,6 +7,7 @@ import NumberTextField from "./NumberTextField";
 it("renders correctly", () => {
   const output = shallow(
     <NumberTextField
+      label="A number"
       placeholder="0"
       onFocus={() => {}}
       onChangeText={() => {}}
@@ -20,6 +21,7 @@ it("renders placeholder when focused", () => {
   const onFocus = jest.fn();
   const output = shallow(
     <NumberTextField
+      label="A number"
       placeholder="0.00"
       onFocus={onFocus}
       onChangeText={() => {}}

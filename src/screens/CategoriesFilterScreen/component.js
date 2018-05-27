@@ -4,14 +4,10 @@ import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event, EventCategoryName } from "../../data/event";
-import Text from "../../components/Text";
-import {
-  eucalyptusGreenColor,
-  lightNavyBlueColor
-} from "../../constants/colors";
+import { lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
+import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
-import Touchable from "../../components/Touchable";
 import Header from "./Header";
 import List from "./List";
 import locale from "../../data/locale";
@@ -19,68 +15,50 @@ import locale from "../../data/locale";
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
-  stagedCategories: Set<EventCategoryName>,
+  categories: Set<EventCategoryName>,
   toggleCategoryFilter: (Set<EventCategoryName>, string) => void,
-  onApplyFilters: () => void,
-  onClearAll: () => void,
-  onClose: () => void
+  onClearAll: () => void
 };
 
 class CategoriesFilterScreen extends PureComponent<Props> {
-  static navigationOptions = {
-    tabBarVisible: false
-  };
-
-  handleClose = () => {
-    this.props.onClose();
-    this.props.navigation.goBack();
-  };
-
   handleClearAll = () => {
     this.props.onClearAll();
   };
 
-  handleApplyFilters = () => {
-    this.props.onApplyFilters();
-    this.props.navigation.pop();
+  applyFilters = () => {
+    this.props.navigation.goBack();
   };
 
   handleFilterChange = (categoryLabel: string) => {
-    this.props.toggleCategoryFilter(this.props.stagedCategories, categoryLabel);
+    this.props.toggleCategoryFilter(this.props.categories, categoryLabel);
   };
 
   render() {
-    const { events, stagedCategories } = this.props;
+    const { events, categories } = this.props;
+    const buttonLabel =
+      categories.size > 0 ? text.showEvents(events.length) : text.showAllEvents;
 
     return (
       <SafeAreaView style={styles.container}>
-        <ContentPadding style={styles.header}>
-          <Header
-            onClose={this.handleClose}
-            onClearAll={this.handleClearAll}
-            selectedCategories={stagedCategories}
-          />
-        </ContentPadding>
+        <Header
+          onBack={this.applyFilters}
+          onClearAll={this.handleClearAll}
+          selectedCategories={categories}
+        />
         <View style={styles.list}>
           <List
             locale={locale}
-            stagedCategories={stagedCategories}
+            stagedCategories={categories}
             onPress={this.handleFilterChange}
           />
         </View>
-        <ContentPadding>
-          <View>
-            <Touchable
-              style={styles.showEventsButton}
-              onPress={this.handleApplyFilters}
-              disabled={!events.length}
-            >
-              <Text type="h2" style={styles.showEventsText}>
-                {text.showEvents(events.length)}
-              </Text>
-            </Touchable>
-          </View>
-        </ContentPadding>
+        <View style={styles.footer}>
+          <ContentPadding>
+            <Button onPress={this.applyFilters} disabled={!events.length}>
+              {buttonLabel}
+            </Button>
+          </ContentPadding>
+        </View>
       </SafeAreaView>
     );
   }
@@ -92,24 +70,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: lightNavyBlueColor
   },
-  header: {
-    borderWidth: 0
-  },
   list: {
     flex: 1
   },
-  showEventsButton: {
-    backgroundColor: eucalyptusGreenColor,
-    width: "100%",
-    paddingTop: 13,
-    paddingBottom: 11,
-    borderRadius: 4,
-    marginTop: 16,
-    marginBottom: 16
-  },
-  showEventsText: {
-    color: lightNavyBlueColor,
-    textAlign: "center"
+  footer: {
+    paddingVertical: 12,
+    backgroundColor: lightNavyBlueColor
   }
 });
 

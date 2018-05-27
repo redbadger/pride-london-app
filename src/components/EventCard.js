@@ -2,7 +2,7 @@
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import SaveEventButton from "./SaveEventButton";
-import Text from "./Text";
+import Text, { scaleWithFont } from "./Text";
 import Touchable from "./Touchable";
 import {
   blackTwentyColor,
@@ -26,7 +26,6 @@ type Props = {
   removeSavedEvent: string => void,
   onPress: (id: string) => void
 };
-const removeTimezoneFromDateString = isoString => isoString.slice(0, -6);
 
 class EventCard extends React.PureComponent<Props> {
   static defaultProps = {
@@ -54,11 +53,7 @@ class EventCard extends React.PureComponent<Props> {
       isSaved,
       onPress
     } = this.props;
-    const eventStartTime = removeTimezoneFromDateString(startTime);
-    const eventEndTime = removeTimezoneFromDateString(endTime);
-    const timeDisplay = `${formatTime(eventStartTime)} – ${formatTime(
-      eventEndTime
-    )}`;
+    const timeDisplay = `${formatTime(startTime)} – ${formatTime(endTime)}`;
 
     return (
       <View style={styles.container}>
@@ -76,11 +71,7 @@ class EventCard extends React.PureComponent<Props> {
               </View>
             </ImageBackground>
             <View style={styles.eventCardDetails}>
-              <Text
-                type="small"
-                color="lightNavyBlueColor"
-                style={styles.eventTime}
-              >
+              <Text type="small" color="lightNavyBlueColor">
                 {timeDisplay}
               </Text>
               <Text
@@ -117,7 +108,7 @@ const styles = StyleSheet.create({
     backgroundColor: whiteColor
   },
   eventCard: {
-    minHeight: 108,
+    height: scaleWithFont("h3", 108),
     flexDirection: "row",
     overflow: "hidden",
     borderRadius: 5
@@ -139,9 +130,7 @@ const styles = StyleSheet.create({
   },
   eventCardDetails: {
     flex: 1,
-    paddingLeft: 8
-  },
-  eventTime: {
+    paddingLeft: 8,
     paddingTop: 12
   },
   eventName: {

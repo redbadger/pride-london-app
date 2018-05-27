@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
-import { PixelRatio, StyleSheet, View } from "react-native";
-import Text from "../../components/Text";
+import { StyleSheet, View } from "react-native";
+import Text, { scaleWithFont } from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import { mediumGreyColor, eucalyptusGreenColor } from "../../constants/colors";
 
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     borderColor: mediumGreyColor,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    height: 50 * PixelRatio.getFontScale(),
+    height: scaleWithFont("h2", 50),
     alignItems: "center",
     justifyContent: "center"
   },

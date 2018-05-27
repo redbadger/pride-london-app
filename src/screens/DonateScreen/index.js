@@ -28,10 +28,6 @@ type State = {|
 const selectableAmounts = [5, 10, 20];
 
 class DonateScreen extends React.PureComponent<Props, State> {
-  static navigationOptions = {
-    tabBarVisible: false
-  };
-
   state = {
     selectedAmount: null,
     otherAmount: null
@@ -111,7 +107,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
             <Text
               type="h3"
               color="lightNavyBlueColor"
-              style={styles.amountSelectionlabelSpacing}
+              style={styles.amountSelectionLabelSpacing}
             >
               {text.donateAmountSelectionLabel}
             </Text>
@@ -127,14 +123,8 @@ class DonateScreen extends React.PureComponent<Props, State> {
                 />
               ))}
             </SegmentedControl>
-            <Text
-              type="h4"
-              color="lightNavyBlueColor"
-              style={styles.otherAmountlabelSpacing}
-            >
-              {text.donateOtherAmountLabel}
-            </Text>
             <NumberTextField
+              label={text.donateOtherAmountLabel}
               placeholder={(0).toFixed(2)}
               onFocus={this.onOtherAmountFocus}
               onChangeText={this.onOtherAmountChange}
@@ -142,6 +132,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
               returnKeyLabel={text.donateButtonText}
               returnKeyType="go"
               value={otherAmount}
+              style={styles.otherAmountSpacing}
             />
             <Text type="small" style={styles.minimumAmountSpacing}>
               {text.donateMinimumAmount}
@@ -188,13 +179,12 @@ const styles = StyleSheet.create({
   introHeadingSpacing: {
     marginTop: 12
   },
-  amountSelectionlabelSpacing: {
+  amountSelectionLabelSpacing: {
     marginTop: 20,
     marginBottom: 16
   },
-  otherAmountlabelSpacing: {
-    marginTop: 20,
-    marginBottom: 8
+  otherAmountSpacing: {
+    marginTop: 20
   },
   minimumAmountSpacing: {
     marginTop: 10

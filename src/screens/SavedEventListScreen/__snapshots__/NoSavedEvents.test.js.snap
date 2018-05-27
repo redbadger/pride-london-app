@@ -23,12 +23,11 @@ exports[`renders correctly 1`] = `
         }
       />
       <Text
-        color="blackColor"
+        color="lightNavyBlueColor"
         markdown={false}
         markdownStyle={Object {}}
         style={
           Object {
-            "color": "#2d2f7f",
             "textAlign": "center",
           }
         }
@@ -37,13 +36,14 @@ exports[`renders correctly 1`] = `
         Where's the love?
       </Text>
       <Text
-        accessibilityLabel="No favourites yet? Tap the 'save this event' button on any 
-event you like to save them here."
+        accessibilityLabel="No favourites yet? Tap the 'save this event' button on any event you like to save them here."
         color="blackColor"
         markdown={false}
         markdownStyle={Object {}}
         style={
           Object {
+            "alignSelf": "center",
+            "maxWidth": 300,
             "paddingBottom": 12,
             "textAlign": "center",
           }
@@ -54,10 +54,15 @@ event you like to save them here."
          
         <Image
           source={1}
+          style={
+            Object {
+              "height": 21,
+              "width": 24,
+            }
+          }
         />
          
-        on any 
-event you like to save them here.
+        on any event you like to save them here.
       </Text>
       <Button
         disabled={false}

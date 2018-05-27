@@ -55,7 +55,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
     return (
       <View accessibilityTraits={["header"]} style={styles.container}>
         <ContentPadding>
-          <View testID="filter-header" style={styles.content}>
+          <View testID="event-filter-header" style={styles.content}>
             <FilterHeaderCategories
               onFilterPress={onFilterCategoriesPress}
               selectedCategories={selectedCategories}
