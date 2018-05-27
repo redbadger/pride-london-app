@@ -5,7 +5,7 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
-import EventList from "../../components/EventListFlat";
+import EventList from "../../components/EventList";
 import text from "../../constants/text";
 import Loading from "../../components/Loading";
 import Header from "../../components/Header";

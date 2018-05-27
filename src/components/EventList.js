@@ -1,11 +1,11 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, SectionList, View } from "react-native";
-import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
-import { concat, equals } from "ramda";
+import { FlatList, LayoutAnimation, StyleSheet, View } from "react-native";
+import { equals, flatten } from "ramda";
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import SectionHeader from "./SectionHeader";
+import { scaleWithFont } from "./Text";
 import { whiteColor } from "../constants/colors";
 import type { SavedEvents, Event, EventDays } from "../data/event";
 import { toFormat as formatDate, FORMAT_WEEKDAY_DAY_MONTH } from "../lib/date";
@@ -24,60 +24,29 @@ type Props = {
   getAssetSource: FieldRef => ImageSource
 };
 
-const separator = style => () => <View style={style} />;
-
-type ItemProps = { item: Event };
-
-type RenderItemArgs = {
-  isSavedEvent: string => boolean,
-  addSavedEvent: string => void,
-  removeSavedEvent: string => void,
-  locale: string,
-  onPress: (eventName: string) => void,
-  getAssetSource: FieldRef => ImageSource
+type Header = {
+  title: string
+};
+type HeaderItem = {
+  id: string,
+  type: "header",
+  header: Header
+};
+type EventItem = {
+  id: string,
+  type: "event",
+  event: Event
+};
+type Item = HeaderItem | EventItem;
+type RenderItemInfo = {
+  item: Item // eslint-disable-line react/no-unused-prop-types
 };
 
-export const renderItem = ({
-  isSavedEvent,
-  addSavedEvent,
-  removeSavedEvent,
-  locale,
-  onPress,
-  getAssetSource
-}: RenderItemArgs) => ({ item }: ItemProps) => (
-  <ContentPadding>
-    <EventCard
-      id={item.sys.id}
-      name={item.fields.name[locale]}
-      locationName={item.fields.locationName[locale]}
-      eventPriceLow={item.fields.eventPriceLow[locale]}
-      eventPriceHigh={item.fields.eventPriceHigh[locale]}
-      startTime={item.fields.startTime[locale]}
-      endTime={item.fields.endTime[locale]}
-      image={getAssetSource(item.fields.eventsListPicture[locale])}
-      isSaved={isSavedEvent(item.sys.id)}
-      addSavedEvent={addSavedEvent}
-      removeSavedEvent={removeSavedEvent}
-      onPress={onPress}
-    />
-  </ContentPadding>
-);
-
-type Section = SectionBase<Event> & { title: string };
-
-type SectionProps = { section: Section };
-const renderSectionHeader = ({ section }: SectionProps) => (
-  <SectionHeader title={section.title} />
-);
-
-const eventSections = (events: EventDays, locale: string): Section[] =>
-  events.map(it => ({
-    data: it,
-    title: formatDate(it[0].fields.startTime[locale], FORMAT_WEEKDAY_DAY_MONTH)
-  }));
+const eventItemHeight = scaleWithFont("h3", 108) + 12;
+const headerItemHeight = 52;
 
 const eventIds = (events: EventDays): string[] =>
-  events.map(day => day.map(e => e.sys.id)).reduce(concat, []);
+  flatten(events.map(day => day.map(e => e.sys.id)));
 
 class EventList extends Component<Props> {
   static defaultProps = {
@@ -104,60 +73,122 @@ class EventList extends Component<Props> {
     );
   }
 
-  render() {
+  componentWillUpdate() {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  }
+
+  getItemLength = (item: Item) =>
+    item.type === "event" ? eventItemHeight : headerItemHeight;
+
+  getItemLayout = (data: ?(Item[]), index: number) => {
+    if (!data) {
+      return { length: 0, offset: 0, index };
+    }
+
+    return {
+      length: this.getItemLength(data[index]),
+      offset: data
+        .slice(0, index)
+        .reduce((prev, curr) => prev + this.getItemLength(curr), 0),
+      index
+    };
+  };
+
+  keyExtractor = (item: Item) => item.id;
+
+  renderItem = ({ item }: RenderItemInfo) => {
     const {
-      events,
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
       locale,
-      refreshing,
-      onRefresh,
       onPress,
       getAssetSource
     } = this.props;
 
-    const isSavedEvent = id => savedEvents.has(id);
+    if (item.type === "event") {
+      return (
+        <ContentPadding style={styles.eventItem}>
+          <EventCard
+            id={item.event.sys.id}
+            name={item.event.fields.name[locale]}
+            locationName={item.event.fields.locationName[locale]}
+            eventPriceLow={item.event.fields.eventPriceLow[locale]}
+            eventPriceHigh={item.event.fields.eventPriceHigh[locale]}
+            startTime={item.event.fields.startTime[locale]}
+            endTime={item.event.fields.endTime[locale]}
+            image={getAssetSource(item.event.fields.eventsListPicture[locale])}
+            isSaved={savedEvents.has(item.event.sys.id)}
+            addSavedEvent={addSavedEvent}
+            removeSavedEvent={removeSavedEvent}
+            onPress={onPress}
+          />
+        </ContentPadding>
+      );
+    }
 
     return (
-      <SectionList
+      <View style={styles.headerItem}>
+        <SectionHeader title={item.header.title} />
+      </View>
+    );
+  };
+
+  render() {
+    const { events, locale, refreshing, onRefresh } = this.props;
+
+    const items: Item[] = [];
+    const stickyHeaderIndices: number[] = [];
+
+    events.forEach(day => {
+      const header: Header = {
+        title: formatDate(
+          day[0].fields.startTime[locale],
+          FORMAT_WEEKDAY_DAY_MONTH
+        )
+      };
+      const headerItem: HeaderItem = {
+        id: `header-${header.title}`,
+        type: "header",
+        header
+      };
+      stickyHeaderIndices.push(items.length);
+      items.push(headerItem);
+      items.push(
+        ...day.map(event => ({
+          id: `event-${event.sys.id}`,
+          type: "event",
+          event
+        }))
+      );
+    });
+
+    return (
+      <FlatList
         stickySectionHeadersEnabled
-        sections={eventSections(events, locale)}
-        renderSectionHeader={renderSectionHeader}
-        renderSectionFooter={separator(styles.sectionFooter)}
-        renderItem={renderItem({
-          isSavedEvent,
-          addSavedEvent,
-          removeSavedEvent,
-          locale,
-          onPress,
-          getAssetSource
-        })}
-        keyExtractor={event => event.sys.id}
+        stickyHeaderIndices={stickyHeaderIndices}
+        data={items}
+        renderItem={this.renderItem}
+        keyExtractor={this.keyExtractor}
+        getItemLayout={this.getItemLayout}
         contentContainerStyle={styles.container}
-        ItemSeparatorComponent={separator(styles.itemSeparator)}
-        SectionSeparatorComponent={separator(styles.sectionSeparator)}
         refreshing={refreshing}
         onRefresh={onRefresh}
-        windowSize={10}
       />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  itemSeparator: {
-    height: 12
-  },
-  sectionSeparator: {
-    height: 6
-  },
   container: {
     paddingTop: 0,
     backgroundColor: whiteColor
   },
-  sectionFooter: {
-    height: 6
+  headerItem: {
+    marginBottom: 6
+  },
+  eventItem: {
+    marginBottom: 12
   }
 });
 
