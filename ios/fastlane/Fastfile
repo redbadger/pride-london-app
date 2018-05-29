@@ -112,7 +112,7 @@ platform :ios do
         )
       end
     rescue => exception
-      notify_failure(exception, options[:webhook], options[:ci_build_num])
+      notify_failure(exception, options[:slack_webhook], options[:ci_build_num])
     end
   end
 
