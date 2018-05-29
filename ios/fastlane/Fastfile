@@ -125,59 +125,59 @@ platform :ios do
     )
   end
 
-    desc "Upload to HockeyApp"
-    lane :deploy_hockey do |options|
-      hockey(
-        api_token: options[:api_token],
-        public_identifier: options[:app_id],
-        notes: options[:notes],
-        status: options[:status],
-        notify: options[:notify],
-        commit_sha: options[:commit_sha]
-      )
-    end
+  desc "Upload to HockeyApp"
+  lane :deploy_hockey do |options|
+    hockey(
+      api_token: options[:api_token],
+      public_identifier: options[:app_id],
+      notes: options[:notes],
+      status: options[:status],
+      notify: options[:notify],
+      commit_sha: options[:commit_sha]
+    )
+  end
 
-    desc "Upload to Beta by Fabric"
-    lane :deploy_fabric do |options|
-      crashlytics(
-        api_token: options[:api_token],
-        build_secret: options[:build_secret],
-        notes: options[:notes],
-        groups: options[:groups],
-        notifications: options[:notify]
-      )
-    end
+  desc "Upload to Beta by Fabric"
+  lane :deploy_fabric do |options|
+    crashlytics(
+      api_token: options[:api_token],
+      build_secret: options[:build_secret],
+      notes: options[:notes],
+      groups: options[:groups],
+      notifications: options[:notify]
+    )
+  end
 
-    def build_notes(commit_sha)
-      date = Time.now.strftime('%F')
-      time = Time.now.strftime('%T')
-      commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
-      notes = "#{git_branch}/#{commit_msg} on #{date} at #{time}"
-      return notes
-    end
+  def build_notes(commit_sha)
+    date = Time.now.strftime('%F')
+    time = Time.now.strftime('%T')
+    commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
+    notes = "#{git_branch}/#{commit_msg} on #{date} at #{time}"
+    return notes
+  end
 
-    def notify_failure(exception, webhook, build_num)
-      slack(
-        message: 'iOS release build failed!',
-        success: false,
-        slack_url: webhook,
-        attachment_properties: {
-          fields: [
-            {
-              title: "Build number",
-              value: build_num,
-            },
-            {
-              title: "Error message",
-              value: exception.to_s,
-              short: false
-            }
-          ]
-        }
-      )
-    end
+  def notify_failure(exception, webhook, build_num)
+    slack(
+      message: 'iOS release build failed!',
+      success: false,
+      slack_url: webhook,
+      attachment_properties: {
+        fields: [
+          {
+            title: "Build number",
+            value: build_num,
+          },
+          {
+            title: "Error message",
+            value: exception.to_s,
+            short: false
+          }
+        ]
+      }
+    )
+  end
 
-    desc "Add devices"
+  desc "Add devices"
     lane :devices do |options|
       new_devices = get_unprovisioned_devices_from_hockey(app_bundle_id:'org.prideinlondon.festival', api_token:options[:api_token])
       register_devices(devices: new_devices)
