@@ -1115,17 +1115,26 @@ afterEach(() => {
   buildEventFilter.mockReset();
 });
 
-describe("mapSavedIDsToEvents", () => {
+describe("selectSavedEvents", () => {
   it("returns empty array when no savedEvents", () => {
     const state = {
+      eventFilters: createEventFiltersState(
+        DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      ),
       events: {
         entries: [
           {
-            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-01T12:00:00" },
+              endTime: { "en-GB": "2018-08-01T14:00:00" }
+            },
             sys: { id: "1", contentType: { sys: { id: "event" } } }
           },
           {
-            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-02T12:00:00" },
+              endTime: { "en-GB": "2018-08-02T14:00:00" }
+            },
             sys: { id: "2", contentType: { sys: { id: "event" } } }
           }
         ]
@@ -1141,46 +1150,30 @@ describe("mapSavedIDsToEvents", () => {
 
   it("returns array of saved events", () => {
     const state = {
+      eventFilters: createEventFiltersState(
+        DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      ),
       events: {
         entries: [
           {
-            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-01T12:00:00" },
+              endTime: { "en-GB": "2018-08-01T14:00:00" }
+            },
             sys: { id: "1", contentType: { sys: { id: "event" } } }
           },
           {
-            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
-            sys: { id: "2", contentType: { sys: { id: "event" } } }
-          }
-        ]
-      },
-      savedEvents: new Set(["1"])
-    };
-
-    const expected = [
-      {
-        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
-        sys: { id: "1", contentType: { sys: { id: "event" } } }
-      }
-    ];
-    const actual = selectSavedEvents(state);
-
-    expect(actual).toEqual(expected);
-  });
-
-  it("returns array of saved events", () => {
-    const state = {
-      events: {
-        entries: [
-          {
-            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
-            sys: { id: "1", contentType: { sys: { id: "event" } } }
-          },
-          {
-            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-02T12:00:00" },
+              endTime: { "en-GB": "2018-08-02T14:00:00" }
+            },
             sys: { id: "2", contentType: { sys: { id: "event" } } }
           },
           {
-            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-03T12:00:00" },
+              endTime: { "en-GB": "2018-08-03T14:00:00" }
+            },
             sys: { id: "3", contentType: { sys: { id: "event" } } }
           }
         ]
@@ -1190,11 +1183,71 @@ describe("mapSavedIDsToEvents", () => {
 
     const expected = [
       {
-        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        fields: {
+          startTime: { "en-GB": "2018-08-02T12:00:00" },
+          endTime: { "en-GB": "2018-08-02T14:00:00" }
+        },
         sys: { id: "2", contentType: { sys: { id: "event" } } }
       },
       {
-        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        fields: {
+          startTime: { "en-GB": "2018-08-03T12:00:00" },
+          endTime: { "en-GB": "2018-08-03T14:00:00" }
+        },
+        sys: { id: "3", contentType: { sys: { id: "event" } } }
+      }
+    ];
+    const actual = selectSavedEvents(state);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("filters saved events that are in the past", () => {
+    const state = {
+      eventFilters: createEventFiltersState(
+        DateTime.fromISO("2018-08-02T00:00:00+01:00")
+      ),
+      events: {
+        entries: [
+          {
+            fields: {
+              startTime: { "en-GB": "2018-08-01T12:00:00" },
+              endTime: { "en-GB": "2018-08-01T14:00:00" }
+            },
+            sys: { id: "1", contentType: { sys: { id: "event" } } }
+          },
+          {
+            fields: {
+              startTime: { "en-GB": "2018-08-02T12:00:00" },
+              endTime: { "en-GB": "2018-08-02T14:00:00" }
+            },
+            sys: { id: "2", contentType: { sys: { id: "event" } } }
+          },
+          {
+            fields: {
+              startTime: { "en-GB": "2018-08-03T12:00:00" },
+              endTime: { "en-GB": "2018-08-03T14:00:00" }
+            },
+            sys: { id: "3", contentType: { sys: { id: "event" } } }
+          }
+        ]
+      },
+      savedEvents: new Set(["1", "2", "3"])
+    };
+
+    const expected = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-02T12:00:00" },
+          endTime: { "en-GB": "2018-08-02T14:00:00" }
+        },
+        sys: { id: "2", contentType: { sys: { id: "event" } } }
+      },
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-03T12:00:00" },
+          endTime: { "en-GB": "2018-08-03T14:00:00" }
+        },
         sys: { id: "3", contentType: { sys: { id: "event" } } }
       }
     ];
