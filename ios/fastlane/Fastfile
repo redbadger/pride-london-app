@@ -178,23 +178,23 @@ platform :ios do
   end
 
   desc "Add devices"
-    lane :devices do |options|
-      new_devices = get_unprovisioned_devices_from_hockey(app_bundle_id:'org.prideinlondon.festival', api_token:options[:api_token])
-      register_devices(devices: new_devices)
-    match(
-      type: "development",
-      app_identifier: "org.prideinlondon.festival",
-      force_for_new_devices: true
-    )
-    match(
-      type: "adhoc",
-      app_identifier: "org.prideinlondon.festival.alpha",
-      force_for_new_devices: true
-    )
-    match(
-      type: "adhoc",
-      app_identifier: "org.prideinlondon.festival.beta",
-      force_for_new_devices: true
-    )
+  lane :devices do |options|
+    new_devices = get_unprovisioned_devices_from_hockey(app_bundle_id:'org.prideinlondon.festival', api_token:options[:api_token])
+    register_devices(devices: new_devices)
+  match(
+    type: "development",
+    app_identifier: "org.prideinlondon.festival",
+    force_for_new_devices: true
+  )
+  match(
+    type: "adhoc",
+    app_identifier: "org.prideinlondon.festival.alpha",
+    force_for_new_devices: true
+  )
+  match(
+    type: "adhoc",
+    app_identifier: "org.prideinlondon.festival.beta",
+    force_for_new_devices: true
+  )
   end
 end
