@@ -43,7 +43,7 @@ export type StringFilterSet =
   | Set<AccessibilityOption>;
 
 export type State = {
-  hideEventsBefore: DateTime,
+  showEventsAfter: DateTime,
   selectedFilters: FilterCollection,
   stagedFilters: FilterCollection
 };

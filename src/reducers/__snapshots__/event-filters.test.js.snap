@@ -2,7 +2,6 @@
 
 exports[`Event filters reducer initialises with default state 1`] = `
 Object {
-  "hideEventsBefore": "2018-08-01T13:00:00.000+01:00",
   "selectedFilters": Object {
     "accessibilityOptions": Set {},
     "area": Set {},
@@ -13,6 +12,7 @@ Object {
     "timeOfDay": Set {},
     "venueDetails": Set {},
   },
+  "showEventsAfter": "2018-08-01T13:00:00.000+01:00",
   "stagedFilters": Object {
     "accessibilityOptions": Set {},
     "area": Set {},

@@ -12,7 +12,7 @@ type Action = EventFiltersAction | NavigationAction | InitAction;
 const includedRoutes = [HOME, PARADE, DONATE, SPONSOR, SUPPORT_US];
 
 export const createEventFiltersState = (now: DateTime): State => ({
-  hideEventsBefore: now,
+  showEventsAfter: now,
   selectedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
@@ -71,13 +71,13 @@ const EventFilters = (now: void => DateTime) => {
       case "CLEAR_EVENT_FILTERS":
         return {
           ...defaultState,
-          hideEventsBefore: state.hideEventsBefore
+          showEventsAfter: state.showEventsAfter
         };
       case NAVIGATION:
         if (includedRoutes.includes(action.route)) {
           return {
             ...state,
-            hideEventsBefore: now()
+            showEventsAfter: now()
           };
         }
         return state;

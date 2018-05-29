@@ -163,7 +163,7 @@ export const selectEvents = (state: State): Event[] =>
     entry => entry.sys.contentType.sys.id === "event"
   ): any[]): Event[])
     .map(addPerformances(state))
-    .filter(eventIsAfter(getEventFiltersState(state).hideEventsBefore));
+    .filter(eventIsAfter(getEventFiltersState(state).showEventsAfter));
 
 export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
   ((getEventsState(state).entries.filter(

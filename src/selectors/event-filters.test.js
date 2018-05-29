@@ -37,7 +37,7 @@ const buildState = (
     refreshing: false
   },
   eventFilters: {
-    hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00"),
+    showEventsAfter: DateTime.fromISO("2018-07-07T00:00:00+01:00"),
     selectedFilters,
     stagedFilters
   },

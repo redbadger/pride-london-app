@@ -164,12 +164,12 @@ describe("Event filters reducer", () => {
 
     expect(state.stagedFilters).toEqual(emptyFilters);
     expect(state.selectedFilters).toEqual(emptyFilters);
-    expect(state.hideEventsBefore).toEqual(newTime);
+    expect(state.showEventsAfter).toEqual(newTime);
   });
 
   describe("NAVIGATION action", () => {
     each([[HOME], [PARADE], [DONATE], [SPONSOR], [SUPPORT_US]]).test(
-      "updates hideEventsBefore when route is %s",
+      "updates showEventsAfter when route is %s",
       a => {
         const reducer = Reducer(() => newTime);
         const state = reducer(createEventFiltersState(oldTime), {
@@ -177,7 +177,7 @@ describe("Event filters reducer", () => {
           route: a
         });
 
-        expect(state.hideEventsBefore).toEqual(newTime);
+        expect(state.showEventsAfter).toEqual(newTime);
       }
     );
 
@@ -188,14 +188,14 @@ describe("Event filters reducer", () => {
       [SAVED_EVENT_LIST],
       [EVENT_CATEGORIES_FILTER],
       [FILTER_MODAL]
-    ]).test("does not update hideEventsBefore when route is %s", a => {
+    ]).test("does not update showEventsAfter when route is %s", a => {
       const reducer = Reducer(() => newTime);
       const state = reducer(createEventFiltersState(oldTime), {
         type: "NAVIGATION",
         route: a
       });
 
-      expect(state.hideEventsBefore).toEqual(oldTime);
+      expect(state.showEventsAfter).toEqual(oldTime);
     });
   });
 });
