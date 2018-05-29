@@ -199,9 +199,9 @@ export const selectFeaturedEventsByTitle = (state: State, title: string) => {
     return [];
   }
 
-  return ((featured.fields.events[locale].map(e =>
-    selectEventById(state, e.sys.id)
-  ): any): Event[]);
+  return ((featured.fields.events[locale]
+    .map(e => selectEventById(state, e.sys.id))
+    .filter(event => event != null): any): Event[]);
 };
 
 export const selectSavedEvents = (state: State) => {

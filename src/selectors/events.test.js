@@ -1045,6 +1045,34 @@ describe("selectFeaturedEventsByTitle", () => {
     ];
     expect(events).toEqual(expected);
   });
+
+  it("removes events not found in state", () => {
+    const testState = {
+      events: {
+        entries: [
+          {
+            fields: {
+              title: { "en-GB": "Featured events" },
+              events: { "en-GB": [{ sys: { id: "1" } }, { sys: { id: "2" } }] }
+            },
+            sys: { contentType: { sys: { id: "featuredEvents" } } }
+          },
+          {
+            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            sys: { id: "1", contentType: { sys: { id: "event" } } }
+          }
+        ]
+      }
+    };
+    const events = selectFeaturedEventsByTitle(testState, "Featured events");
+    const expected = [
+      {
+        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+        sys: { id: "1", contentType: { sys: { id: "event" } } }
+      }
+    ];
+    expect(events).toEqual(expected);
+  });
 });
 
 afterEach(() => {
