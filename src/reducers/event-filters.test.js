@@ -3,19 +3,7 @@ import each from "jest-each";
 import { DateTime } from "luxon";
 import Reducer, { createEventFiltersState } from "./event-filters";
 import { init } from "../actions";
-import {
-  EVENT_LIST,
-  EVENT_DETAILS,
-  FEATURED_EVENT_LIST,
-  SAVED_EVENT_LIST,
-  HOME,
-  EVENT_CATEGORIES_FILTER,
-  PARADE,
-  SUPPORT_US,
-  FILTER_MODAL,
-  DONATE,
-  SPONSOR
-} from "../constants/routes";
+import { routesWithoutEvents, EVENT_LIST } from "../constants/routes";
 
 const oldTime = DateTime.fromISO("2018-04-01T12:00:00+01:00");
 const newTime = DateTime.fromISO("2018-08-01T13:00:00+01:00");
@@ -168,7 +156,17 @@ describe("Event filters reducer", () => {
   });
 
   describe("NAVIGATION action", () => {
-    each([[HOME], [PARADE], [DONATE], [SPONSOR], [SUPPORT_US]]).test(
+    test("does not update showEventsAfter when route is not in routesWithoutEvents", () => {
+      const reducer = Reducer(() => newTime);
+      const state = reducer(createEventFiltersState(oldTime), {
+        type: "NAVIGATION",
+        route: EVENT_LIST
+      });
+
+      expect(state.showEventsAfter).toEqual(oldTime);
+    });
+
+    each(routesWithoutEvents.map(item => [item])).test(
       "updates showEventsAfter when route is %s",
       a => {
         const reducer = Reducer(() => newTime);
@@ -180,22 +178,5 @@ describe("Event filters reducer", () => {
         expect(state.showEventsAfter).toEqual(newTime);
       }
     );
-
-    each([
-      [EVENT_DETAILS],
-      [EVENT_LIST],
-      [FEATURED_EVENT_LIST],
-      [SAVED_EVENT_LIST],
-      [EVENT_CATEGORIES_FILTER],
-      [FILTER_MODAL]
-    ]).test("does not update showEventsAfter when route is %s", a => {
-      const reducer = Reducer(() => newTime);
-      const state = reducer(createEventFiltersState(oldTime), {
-        type: "NAVIGATION",
-        route: a
-      });
-
-      expect(state.showEventsAfter).toEqual(oldTime);
-    });
   });
 });

@@ -5,11 +5,9 @@ import type { State } from "../data/event-filters";
 import type { NavigationAction } from "../actions/navigation";
 import type { InitAction } from "../actions";
 import { NAVIGATION } from "../actions/navigation";
-import { HOME, PARADE, SUPPORT_US, DONATE, SPONSOR } from "../constants/routes";
+import { routesWithoutEvents } from "../constants/routes";
 
 type Action = EventFiltersAction | NavigationAction | InitAction;
-
-const includedRoutes = [HOME, PARADE, DONATE, SPONSOR, SUPPORT_US];
 
 export const createEventFiltersState = (now: DateTime): State => ({
   showEventsAfter: now,
@@ -74,7 +72,7 @@ const EventFilters = (now: void => DateTime) => {
           showEventsAfter: state.showEventsAfter
         };
       case NAVIGATION:
-        if (includedRoutes.includes(action.route)) {
+        if (routesWithoutEvents.includes(action.route)) {
           return {
             ...state,
             showEventsAfter: now()
