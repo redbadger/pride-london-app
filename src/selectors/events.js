@@ -175,7 +175,7 @@ export const groupPerformancesByPeriod = (
 
 const getEventsState = (state: State) => state.events;
 const getSavedEventsState = (state: State) => state.savedEvents;
-const getGlobalFiltersState = (state: State) => state.globalFilters;
+const getEventFiltersState = (state: State) => state.eventFilters;
 
 const addPerformances = (state: State) => (event: Event) => {
   const performances = R.view(fieldsPerformancesLocaleLens, event);
@@ -202,7 +202,7 @@ export const selectEvents = (state: State): Event[] =>
     entry => entry.sys.contentType.sys.id === "event"
   ): any[]): Event[])
     .map(addPerformances(state))
-    .filter(eventIsAfter(getGlobalFiltersState(state).hideEventsBefore));
+    .filter(eventIsAfter(getEventFiltersState(state).hideEventsBefore));
 
 export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
   ((getEventsState(state).entries.filter(

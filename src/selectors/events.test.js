@@ -18,6 +18,7 @@ import {
   eventIsAfter
 } from "./events";
 import { buildEventFilter } from "./event-filters";
+import { createEventFiltersState } from "../reducers/event-filters";
 
 jest.mock("./event-filters", () => ({
   buildEventFilter: jest.fn()
@@ -808,9 +809,9 @@ describe("groupPerformancesByPeriod", () => {
 describe("selectEvents", () => {
   it("selects property", () => {
     const state = {
-      globalFilters: {
-        hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
-      },
+      eventFilters: createEventFiltersState(
+        DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      ),
       events: {
         entries: [
           {
@@ -920,9 +921,9 @@ describe("selectEventsRefreshing", () => {
 describe("selectEventById", () => {
   it("selects event from list", () => {
     const state = {
-      globalFilters: {
-        hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
-      },
+      eventFilters: createEventFiltersState(
+        DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      ),
       events: {
         entries: [
           {
@@ -965,9 +966,9 @@ describe("selectFilteredEvents", () => {
     buildEventFilter.mockReturnValue(mockFilter);
 
     const state = {
-      globalFilters: {
-        hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
-      },
+      eventFilters: createEventFiltersState(
+        DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      ),
       events: {
         entries: [
           {
@@ -1012,9 +1013,9 @@ describe("selectFilteredEvents", () => {
     buildEventFilter.mockReturnValue(mockFilter);
 
     const state = {
-      globalFilters: {
-        hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
-      },
+      eventFilters: createEventFiltersState(
+        DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      ),
       events: {
         entries: [
           {
@@ -1054,9 +1055,9 @@ describe("selectFilteredEvents", () => {
 
 describe("selectFeaturedEventsByTitle", () => {
   const state = {
-    globalFilters: {
-      hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
-    },
+    eventFilters: createEventFiltersState(
+      DateTime.fromISO("2018-07-07T00:00:00+01:00")
+    ),
     events: {
       entries: [
         {

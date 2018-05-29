@@ -37,13 +37,11 @@ const buildState = (
     refreshing: false
   },
   eventFilters: {
+    hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00"),
     selectedFilters,
     stagedFilters
   },
-  savedEvents: new Set(),
-  globalFilters: {
-    hideEventsBefore: DateTime.fromISO("2018-08-02T12:00:00")
-  }
+  savedEvents: new Set()
 });
 
 export type BuildEventArguments = {
