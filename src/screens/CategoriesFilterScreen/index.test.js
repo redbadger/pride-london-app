@@ -4,6 +4,7 @@ import type { NavigationScreenProp } from "react-navigation";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { shallow } from "enzyme";
+import { DateTime } from "luxon";
 import Container from "./";
 
 const navigation: NavigationScreenProp<*> = ({ goBack: jest.fn() }: any);
@@ -11,6 +12,9 @@ const navigation: NavigationScreenProp<*> = ({ goBack: jest.fn() }: any);
 const mockStore = configureStore([thunk]);
 
 const initialState = {
+  globalFilters: {
+    hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
+  },
   events: {
     entries: [],
     assets: [],
