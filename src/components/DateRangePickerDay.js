@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import { equals } from "ramda";
-import { toFormat, FORMAT_WEEKDAY_MONTH_DAY } from "../lib/date";
+import { toFormat, now, isBefore, FORMAT_WEEKDAY_MONTH_DAY } from "../lib/date";
 
 import Text from "./Text";
 
@@ -100,6 +100,7 @@ export default class Day extends Component<DayProps> {
 
   render() {
     const { state, marking, date } = this.props;
+    const beforeToday = isBefore(date.dateString, now());
     const label = toFormat(date.dateString, FORMAT_WEEKDAY_MONTH_DAY);
     const traits = marking.selected ? ["button", "selected"] : ["button"];
 
@@ -111,7 +112,7 @@ export default class Day extends Component<DayProps> {
         accessibilityLabel={label}
         accessibilityComponentType="button"
       >
-        <View style={styles.container}>
+        <View style={[styles.container, beforeToday ? styles.faded : {}]}>
           {marking.selected && (
             <View style={styles.overlay}>
               <View style={leftFillerStyle(marking)} />
@@ -141,6 +142,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     alignSelf: "stretch"
+  },
+  faded: {
+    opacity: 0.5
   },
   overlay: {
     position: "absolute",

@@ -2,6 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import DateRangePickerDay from "./DateRangePickerDay";
+import * as dateLib from "../lib/date";
 
 const render = props =>
   shallow(
@@ -76,6 +77,20 @@ describe("dateRangePickerDay", () => {
     });
 
     expect(output).toMatchSnapshot();
+  });
+
+  it("renders a faded day if before today", () => {
+    jest.spyOn(dateLib, "now").mockImplementation(() => "2018-08-13");
+
+    const output = render({
+      date: date(2018, 7, 12),
+      marking: {},
+      state: "disabled"
+    });
+
+    expect(output.children().props().style).toEqual(
+      expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
+    );
   });
 
   describe("interaction", () => {
