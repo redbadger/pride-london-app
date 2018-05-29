@@ -808,8 +808,19 @@ describe("groupPerformancesByPeriod", () => {
 describe("selectEvents", () => {
   it("selects property", () => {
     const state = {
+      globalFilters: {
+        hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      },
       events: {
-        entries: [{ sys: { contentType: { sys: { id: "event" } } } }]
+        entries: [
+          {
+            fields: {
+              startTime: { "en-GB": "2018-08-02T12:00:00" },
+              endTime: { "en-GB": "2018-08-02T14:00:00" }
+            },
+            sys: { contentType: { sys: { id: "event" } } }
+          }
+        ]
       }
     };
 
@@ -909,8 +920,19 @@ describe("selectEventsRefreshing", () => {
 describe("selectEventById", () => {
   it("selects event from list", () => {
     const state = {
+      globalFilters: {
+        hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      },
       events: {
-        entries: [{ sys: { id: "1", contentType: { sys: { id: "event" } } } }]
+        entries: [
+          {
+            fields: {
+              startTime: { "en-GB": "2018-08-02T12:00:00" },
+              endTime: { "en-GB": "2018-08-02T14:00:00" }
+            },
+            sys: { id: "1", contentType: { sys: { id: "event" } } }
+          }
+        ]
       }
     };
 
@@ -943,14 +965,23 @@ describe("selectFilteredEvents", () => {
     buildEventFilter.mockReturnValue(mockFilter);
 
     const state = {
+      globalFilters: {
+        hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      },
       events: {
         entries: [
           {
-            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
+              endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
+            },
             sys: { contentType: { sys: { id: "event" } } }
           },
           {
-            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-01T12:00:00+01:00" },
+              endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
+            },
             sys: { contentType: { sys: { id: "event" } } }
           }
         ]
@@ -959,7 +990,10 @@ describe("selectFilteredEvents", () => {
 
     const expected = [
       {
-        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+        fields: {
+          startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
+          endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
+        },
         sys: { contentType: { sys: { id: "event" } } }
       }
     ];
@@ -978,14 +1012,23 @@ describe("selectFilteredEvents", () => {
     buildEventFilter.mockReturnValue(mockFilter);
 
     const state = {
+      globalFilters: {
+        hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
+      },
       events: {
         entries: [
           {
-            fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
+              endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
+            },
             sys: { contentType: { sys: { id: "event" } } }
           },
           {
-            fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+            fields: {
+              startTime: { "en-GB": "2018-08-01T12:00:00+01:00" },
+              endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
+            },
             sys: { contentType: { sys: { id: "event" } } }
           }
         ]
@@ -994,7 +1037,10 @@ describe("selectFilteredEvents", () => {
 
     const expected = [
       {
-        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+        fields: {
+          startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
+          endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
+        },
         sys: { contentType: { sys: { id: "event" } } }
       }
     ];
@@ -1008,6 +1054,9 @@ describe("selectFilteredEvents", () => {
 
 describe("selectFeaturedEventsByTitle", () => {
   const state = {
+    globalFilters: {
+      hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
+    },
     events: {
       entries: [
         {
@@ -1018,11 +1067,17 @@ describe("selectFeaturedEventsByTitle", () => {
           sys: { contentType: { sys: { id: "featuredEvents" } } }
         },
         {
-          fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+          fields: {
+            startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
+            endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
+          },
           sys: { id: "1", contentType: { sys: { id: "event" } } }
         },
         {
-          fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+          fields: {
+            startTime: { "en-GB": "2018-08-01T12:00:00+01:00" },
+            endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
+          },
           sys: { id: "2", contentType: { sys: { id: "event" } } }
         }
       ]
@@ -1038,11 +1093,17 @@ describe("selectFeaturedEventsByTitle", () => {
     const events = selectFeaturedEventsByTitle(state, "Featured events");
     const expected = [
       {
-        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
+        fields: {
+          startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
+          endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
+        },
         sys: { id: "1", contentType: { sys: { id: "event" } } }
       },
       {
-        fields: { startTime: { "en-GB": "2018-08-01T00:00:00" } },
+        fields: {
+          startTime: { "en-GB": "2018-08-01T12:00:00+01:00" },
+          endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
+        },
         sys: { id: "2", contentType: { sys: { id: "event" } } }
       }
     ];

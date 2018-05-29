@@ -200,8 +200,9 @@ export const eventIsAfter = (date: DateTime) => (event: Event) => {
 export const selectEvents = (state: State): Event[] =>
   ((getEventsState(state).entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
-  ): any[]): Event[]).map(addPerformances(state));
-// .filter(eventIsAfter(getGlobalFiltersState(state).hideEventsBefore));
+  ): any[]): Event[])
+    .map(addPerformances(state))
+    .filter(eventIsAfter(getGlobalFiltersState(state).hideEventsBefore));
 
 export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
   ((getEventsState(state).entries.filter(
