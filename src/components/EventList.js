@@ -139,6 +139,7 @@ class EventList extends Component<Props> {
         SectionSeparatorComponent={separator(styles.sectionSeparator)}
         refreshing={refreshing}
         onRefresh={onRefresh}
+        windowSize={10}
       />
     );
   }

@@ -1,5 +1,5 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event";
@@ -29,7 +29,9 @@ export type Props = {
   selectedCategories: Set<string>
 };
 
-class EventsScreen extends PureComponent<Props> {
+class EventsScreen extends Component<Props> {
+  shouldComponentUpdate = () => this.props.navigation.isFocused();
+
   handleFilterCategoriesPress = () => {
     this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
   };
