@@ -1,5 +1,4 @@
 // @flow
-import type { Reducer } from "redux";
 import type { DateTime } from "luxon";
 import type { NavigationAction } from "../actions/navigation";
 import { NAVIGATION } from "../actions/navigation";
@@ -17,10 +16,7 @@ const globalFilters = (now: void => DateTime) => {
   const defaultState: State = {
     hideEventsBefore: now()
   };
-  const reducer: Reducer<State, Action> = (
-    state: State = defaultState,
-    action: any
-  ) => {
+  return (state: State = defaultState, action: Action): State => {
     switch (action.type) {
       case NAVIGATION:
         if (includedRoutes.includes(action.route)) {
@@ -33,7 +29,6 @@ const globalFilters = (now: void => DateTime) => {
         return state;
     }
   };
-  return reducer;
 };
 
 export default globalFilters;
