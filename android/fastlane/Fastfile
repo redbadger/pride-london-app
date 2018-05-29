@@ -141,23 +141,25 @@ platform :android do
   end
 
   def notify_failure(exception, webhook, build_num)
-    slack(
-      message: 'Android release build failed!',
-      success: false,
-      slack_url: webhook,
-      attachment_properties: {
-        fields: [
-          {
-            title: "Build number",
-            value: build_num,
-          },
-          {
-            title: "Error message",
-            value: exception.to_s,
-            short: false
-          }
-        ]
-      }
-    )
+    if defined?(webhook)
+      slack(
+        message: 'Android release build failed!',
+        success: false,
+        slack_url: webhook,
+        attachment_properties: {
+          fields: [
+            {
+              title: "Build number",
+              value: build_num,
+            },
+            {
+              title: "Error message",
+              value: exception.to_s,
+              short: false
+            }
+          ]
+        }
+      )
+    end
   end
 end
