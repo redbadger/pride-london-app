@@ -4,7 +4,6 @@ import type { EventFiltersAction } from "../actions/event-filters";
 import type { State } from "../data/event-filters";
 import type { NavigationAction } from "../actions/navigation";
 import type { InitAction } from "../actions";
-
 import { NAVIGATION } from "../actions/navigation";
 import { HOME, PARADE, SUPPORT_US, DONATE, SPONSOR } from "../constants/routes";
 
@@ -68,6 +67,11 @@ const EventFilters = (now: void => DateTime) => {
         return {
           ...state,
           stagedFilters: state.selectedFilters
+        };
+      case "CLEAR_EVENT_FILTERS":
+        return {
+          ...defaultState,
+          hideEventsBefore: state.hideEventsBefore
         };
       case NAVIGATION:
         if (includedRoutes.includes(action.route)) {

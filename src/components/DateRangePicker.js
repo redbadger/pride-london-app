@@ -1,9 +1,12 @@
 // @flow
 import React from "react";
 import { Calendar } from "react-native-calendars";
-import formatDate from "date-fns/format";
-import addDays from "date-fns/add_days";
-import isBefore from "date-fns/is_before";
+import {
+  toFormat as formatDate,
+  isBefore,
+  addDays,
+  FORMAT_YEAR_MONTH_DAY
+} from "../lib/date";
 import type { DateRange } from "../data/date-time";
 
 import Day from "./DateRangePickerDay";
@@ -37,7 +40,10 @@ const getMarkedDateRange = (dateRange: DateRange): DayMarkings => {
   // In between
   let inBetweenDate = startDate;
   do {
-    inBetweenDate = formatDate(addDays(inBetweenDate, 1), "YYYY-MM-DD");
+    inBetweenDate = formatDate(
+      addDays(inBetweenDate, 1),
+      FORMAT_YEAR_MONTH_DAY
+    );
     markedDates[inBetweenDate] = { selected: true };
   } while (inBetweenDate !== endDate);
 
@@ -112,7 +118,10 @@ class DateRangePicker extends React.PureComponent<Props> {
         current={
           dateRange && this.props.forceNewRange ? dateRange.startDate : null
         }
-        markedDates={getMarkedDates(dateRange, formatDate(today, "YYYY-MM-DD"))}
+        markedDates={getMarkedDates(
+          dateRange,
+          formatDate(today.toISOString(), FORMAT_YEAR_MONTH_DAY)
+        )}
         markingType="period"
         onDayPress={this.onDaySelected}
         dayComponent={Day}

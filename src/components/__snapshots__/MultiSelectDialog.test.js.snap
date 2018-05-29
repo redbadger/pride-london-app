@@ -2,6 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <Dialog
+  applyButtonDisabled={false}
   applyButtonLabel="Apply"
   applyButtonText="Apply"
   onApply={[Function]}

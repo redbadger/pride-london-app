@@ -1,12 +1,11 @@
 // @flow
 import React from "react";
-import formatDate from "date-fns/format";
-import isSameDay from "date-fns/is_same_day";
 import {
-  formatLongEventPrice,
-  formatTime,
-  removeTimezoneFromCmsDateString
-} from "../../data/formatters";
+  toFormat as formatDate,
+  isSameDay,
+  FORMAT_SHORT_WEEKDAY_DATE
+} from "../../lib/date";
+import { formatLongEventPrice, formatTime } from "../../data/formatters";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
 import Text from "../../components/Text";
@@ -28,11 +27,9 @@ type Props = {
 };
 
 const EventOverview = ({ event }: Props) => {
-  const startTime = removeTimezoneFromCmsDateString(
-    event.fields.startTime[locale]
-  );
-  const endTime = removeTimezoneFromCmsDateString(event.fields.endTime[locale]);
-  const dateFormat = "ddd, DD MMM YYYY";
+  const startTime = event.fields.startTime[locale];
+  const endTime = event.fields.endTime[locale];
+  const dateFormat = FORMAT_SHORT_WEEKDAY_DATE;
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)
     : `${formatDate(startTime, dateFormat)} – ${formatDate(

@@ -1,9 +1,11 @@
 // @flow
-import areRangesOverlapping from "date-fns/are_ranges_overlapping";
-import endOfDay from "date-fns/end_of_day";
-import getHours from "date-fns/get_hours";
-import startOfDay from "date-fns/start_of_day";
-import differenceInHours from "date-fns/difference_in_hours";
+import {
+  areRangesOverlapping,
+  startOfDay,
+  endOfDay,
+  getHours,
+  diff as dateDiff
+} from "../lib/date";
 import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
 import type { Event, EventCategoryName } from "../data/event";
@@ -39,10 +41,11 @@ export const buildTimeFilter: TimeFilter = (timeFilter: Time) => event => {
   const [rangeMin, rangeMax] = rangeFromTime(timeFilter);
   const relativeRangeMax = rangeMax - rangeMin;
   const eventStartHour = getHours(event.fields.startTime[locale]);
-  const eventDuration = differenceInHours(
+  const eventDuration = dateDiff(
     event.fields.endTime[locale],
-    event.fields.startTime[locale]
-  );
+    event.fields.startTime[locale],
+    "hours"
+  ).hours;
   const relativeStartHour = (eventStartHour - rangeMin) % 24;
   const relativeEndHour = (relativeStartHour + eventDuration) % 24;
   return (

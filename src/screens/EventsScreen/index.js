@@ -27,7 +27,8 @@ const mapStateToProps = state => ({
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state),
   getAssetSource: getAssetSource(id => selectAssetById(state, id)),
-  selectedCategories: state.eventFilters.selectedFilters.categories
+  selectedCategories: state.eventFilters.selectedFilters.categories,
+  route: state.currentRoute // not used directly, but triggers re-render on navigation
 });
 
 const mapDispatchToProps = {
