@@ -2,9 +2,13 @@ import React from "react";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { shallow } from "enzyme";
+import { DateTime } from "luxon";
 import ConnectedDateFilterDialog from "./ConnectedDateFilterDialog";
 
 const initialState = {
+  globalFilters: {
+    hideEventsBefore: DateTime.fromISO("2018-07-07T00:00:00+01:00")
+  },
   events: {
     entries: [],
     assets: [],
