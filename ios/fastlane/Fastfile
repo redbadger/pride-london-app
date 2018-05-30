@@ -93,22 +93,26 @@ platform :ios do
 
   desc "Build and Deploy a release to iTunes Connect"
   lane :release do |options|
-    ensure_git_branch(branch: "master")
-    increment_build_number(build_number:options[:ci_build_num])
-    build(
-      match_type: "appstore",
-      export_method: "app-store",
-      configuration: "Release",
-      app_identifier: "org.prideinlondon.festival"
-    )
-    if options[:submit]
-      deploy_testflight
-      download_dsyms(version: get_version_number)
-      upload_symbols_to_bugsnag
-      send_build_to_bugsnag(
-        api_key: options[:bugsnag_api_key],
-        release_stage: options[:release_stage]
+    begin
+      ensure_git_branch(branch: "master")
+      increment_build_number(build_number:options[:ci_build_num])
+      build(
+        match_type: "appstore",
+        export_method: "app-store",
+        configuration: "Release",
+        app_identifier: "org.prideinlondon.festival"
       )
+      if options[:submit]
+        deploy_testflight
+        download_dsyms(version: get_version_number)
+        upload_symbols_to_bugsnag
+        send_build_to_bugsnag(
+          api_key: options[:bugsnag_api_key],
+          release_stage: options[:release_stage]
+        )
+      end
+    rescue => exception
+      notify_failure(exception, options[:slack_webhook], options[:ci_build_num])
     end
   end
 
@@ -150,6 +154,27 @@ platform :ios do
     commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
     notes = "#{git_branch}/#{commit_msg} on #{date} at #{time}"
     return notes
+  end
+
+  def notify_failure(exception, webhook, build_num)
+    slack(
+      message: 'iOS release build failed!',
+      success: false,
+      slack_url: webhook,
+      attachment_properties: {
+        fields: [
+          {
+            title: "Build number",
+            value: build_num,
+          },
+          {
+            title: "Error message",
+            value: exception.to_s,
+            short: false
+          }
+        ]
+      }
+    )
   end
 
   desc "Add devices"
