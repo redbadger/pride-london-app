@@ -1,19 +1,19 @@
-import { getEvents, backgroundRefreshEvents, updateEvents } from "./events";
+import { getData, backgroundRefreshData, updateData } from "./data";
 
-describe("getEvents", () => {
+describe("getData", () => {
   it("calls correct actions with expected payloads", async () => {
     const mockCmsData = { entries: [{ id: "1" }] };
     const mockGetCmsData = async () => mockCmsData;
     const mockDispatch = jest.fn();
 
-    await getEvents(undefined, mockGetCmsData)(mockDispatch);
+    await getData(undefined, mockGetCmsData)(mockDispatch);
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "REQUEST_CMS_DATA"
     });
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "RECEIVE_CMS_DATA",
-      payload: mockCmsData
+      data: mockCmsData
     });
   });
 
@@ -22,23 +22,23 @@ describe("getEvents", () => {
     const mockDispatch = jest.fn();
     const hideMock = jest.fn();
 
-    await getEvents(hideMock, mockGetCmsData)(mockDispatch);
+    await getData(hideMock, mockGetCmsData)(mockDispatch);
 
     expect(hideMock).toHaveBeenCalled();
   });
 });
 
-describe("backgroundRefreshEvents", () => {
+describe("backgroundRefreshData", () => {
   it("updates the data if new content was received", async () => {
     const mockCmsData = { entries: [{ id: "1" }], updated: true };
     const mockUpdateCmsData = async () => mockCmsData;
     const mockDispatch = jest.fn();
 
-    await backgroundRefreshEvents(mockUpdateCmsData)(mockDispatch);
+    await backgroundRefreshData(mockUpdateCmsData)(mockDispatch);
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "RECEIVE_CMS_DATA",
-      payload: mockCmsData
+      data: mockCmsData
     });
   });
 
@@ -47,26 +47,26 @@ describe("backgroundRefreshEvents", () => {
     const mockUpdateCmsData = async () => mockCmsData;
     const mockDispatch = jest.fn();
 
-    await backgroundRefreshEvents(mockUpdateCmsData)(mockDispatch);
+    await backgroundRefreshData(mockUpdateCmsData)(mockDispatch);
 
     expect(mockDispatch).not.toHaveBeenCalled();
   });
 });
 
-describe("updateEvents", () => {
+describe("updateData", () => {
   it("calls correct actions with expected payloads", async () => {
     const mockCmsData = { entries: [{ id: "1" }] };
     const mockUpdateCmsData = async () => mockCmsData;
     const mockDispatch = jest.fn();
 
-    await updateEvents(mockUpdateCmsData)(mockDispatch);
+    await updateData(mockUpdateCmsData)(mockDispatch);
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "REQUEST_UPDATE_CMS_DATA"
     });
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "RECEIVE_CMS_DATA",
-      payload: mockCmsData
+      data: mockCmsData
     });
   });
 });

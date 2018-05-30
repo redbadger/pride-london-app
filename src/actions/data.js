@@ -2,19 +2,19 @@
 import type { Dispatch } from "redux";
 import { getCmsData, updateCmsData } from "../integrations/cms";
 import type { SavedData } from "../integrations/cms";
-import type { StandardAction } from "./";
 
-type CmsActionType =
-  | "REQUEST_CMS_DATA"
-  | "RECEIVE_CMS_DATA"
-  | "REQUEST_UPDATE_CMS_DATA";
+export type DataAction =
+  | { type: "REQUEST_CMS_DATA" }
+  | {
+      type: "RECEIVE_CMS_DATA",
+      data: SavedData
+    }
+  | { type: "REQUEST_UPDATE_CMS_DATA" };
 
-export type CmsAction = StandardAction<CmsActionType, SavedData>;
-
-export const getEvents = (
+export const getData = (
   hideSplashScreen: ?Function,
   getCmsDataFn: typeof getCmsData = getCmsData
-) => async (dispatch: Dispatch<CmsAction>) => {
+) => async (dispatch: Dispatch<DataAction>) => {
   dispatch({
     type: "REQUEST_CMS_DATA"
   });
@@ -23,7 +23,7 @@ export const getEvents = (
 
   dispatch({
     type: "RECEIVE_CMS_DATA",
-    payload: cmsData
+    data: cmsData
   });
 
   // This feels quite dirty.
@@ -34,27 +34,27 @@ export const getEvents = (
   }
 };
 
-export const backgroundRefreshEvents = (
+export const backgroundRefreshData = (
   updateCmsDataFn: typeof updateCmsData = updateCmsData
-) => async (dispatch: Dispatch<CmsAction>) => {
+) => async (dispatch: Dispatch<DataAction>) => {
   const cmsData = await updateCmsDataFn();
 
   if (cmsData.updated) {
-    // We can change this to visuall notify
+    // We can change this to visually notify
     // the user of new content and give them
     // the choice to explicitly load it, rather than
     // refreshing content under their hands.
     // This would be a new action type
     dispatch({
       type: "RECEIVE_CMS_DATA",
-      payload: cmsData
+      data: cmsData
     });
   }
 };
 
-export const updateEvents = (
+export const updateData = (
   updateCmsDataFn: typeof updateCmsData = updateCmsData
-) => async (dispatch: Dispatch<CmsAction>) => {
+) => async (dispatch: Dispatch<DataAction>) => {
   dispatch({
     type: "REQUEST_UPDATE_CMS_DATA"
   });
@@ -63,6 +63,6 @@ export const updateEvents = (
 
   dispatch({
     type: "RECEIVE_CMS_DATA",
-    payload: cmsData
+    data: cmsData
   });
 };
