@@ -80,7 +80,9 @@ describe("dateRangePickerDay", () => {
   });
 
   it("renders a faded day if before today", () => {
-    jest.spyOn(dateLib, "now").mockImplementation(() => "2018-08-13");
+    jest
+      .spyOn(dateLib, "now")
+      .mockImplementation(() => "2018-08-13T17:42:06+01:00");
 
     const output = render({
       date: date(2018, 7, 12),
@@ -89,6 +91,22 @@ describe("dateRangePickerDay", () => {
     });
 
     expect(output.children().props().style).toEqual(
+      expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
+    );
+  });
+
+  it("does not render a faded day if same day as today", () => {
+    jest
+      .spyOn(dateLib, "now")
+      .mockImplementation(() => "2018-08-12T17:42:06+01:00");
+
+    const output = render({
+      date: date(2018, 7, 12),
+      marking: {},
+      state: "disabled"
+    });
+
+    expect(output.children().props().style).not.toEqual(
       expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
     );
   });

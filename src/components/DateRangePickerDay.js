@@ -2,7 +2,13 @@
 import React, { Component } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import { equals } from "ramda";
-import { toFormat, now, isBefore, FORMAT_WEEKDAY_MONTH_DAY } from "../lib/date";
+import {
+  toFormat,
+  now,
+  isBefore,
+  isSameDay,
+  FORMAT_WEEKDAY_MONTH_DAY
+} from "../lib/date";
 
 import Text from "./Text";
 
@@ -100,7 +106,10 @@ export default class Day extends Component<DayProps> {
 
   render() {
     const { state, marking, date } = this.props;
-    const beforeToday = isBefore(date.dateString, now());
+    const dateNow = now();
+    const beforeToday =
+      isBefore(date.dateString, dateNow) &&
+      !isSameDay(date.dateString, dateNow);
     const label = toFormat(date.dateString, FORMAT_WEEKDAY_MONTH_DAY);
     const traits = marking.selected ? ["button", "selected"] : ["button"];
 
