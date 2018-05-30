@@ -570,6 +570,6 @@ workflows:
           filters:
             branches:
               only:
-                - nightly-builds
+                - master
     jobs:
       - test-nightly
