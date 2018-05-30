@@ -1,9 +1,16 @@
 // @flow
-import type { Reducer } from "redux";
+import { DateTime } from "luxon";
 import type { EventFiltersAction } from "../actions/event-filters";
 import type { State } from "../data/event-filters";
+import type { NavigationAction } from "../actions/navigation";
+import type { InitAction } from "../actions";
+import { NAVIGATION } from "../actions/navigation";
+import { routesWithoutEvents } from "../constants/routes";
 
-const defaultState = {
+type Action = EventFiltersAction | NavigationAction | InitAction;
+
+export const createEventFiltersState = (now: DateTime): State => ({
+  showEventsAfter: now,
   selectedFilters: {
     categories: new Set(), // When this is empty it signifies no category filter.
     date: null,
@@ -24,46 +31,58 @@ const defaultState = {
     accessibilityOptions: new Set(),
     area: new Set()
   }
-};
+});
 
-const eventFilters: Reducer<State, EventFiltersAction> = (
-  state: State = defaultState,
-  action: EventFiltersAction
-) => {
-  const filters = {
-    ...state.stagedFilters,
-    ...action.payload
+const EventFilters = (now: void => DateTime) => {
+  const defaultState: State = createEventFiltersState(now());
+  return (state: State = defaultState, action: Action): State => {
+    let filters;
+    switch (action.type) {
+      case "SET_EVENT_FILTERS":
+        filters = {
+          ...state.stagedFilters,
+          ...action.payload
+        };
+        return {
+          ...state,
+          stagedFilters: filters,
+          selectedFilters: filters
+        };
+      case "STAGE_EVENT_FILTERS":
+        return {
+          ...state,
+          stagedFilters: {
+            ...state.stagedFilters,
+            ...action.payload
+          }
+        };
+      case "COMMIT_EVENT_FILTERS":
+        return {
+          ...state,
+          selectedFilters: state.stagedFilters
+        };
+      case "CLEAR_STAGED_EVENT_FILTERS":
+        return {
+          ...state,
+          stagedFilters: state.selectedFilters
+        };
+      case "CLEAR_EVENT_FILTERS":
+        return {
+          ...defaultState,
+          showEventsAfter: state.showEventsAfter
+        };
+      case NAVIGATION:
+        if (routesWithoutEvents.includes(action.route)) {
+          return {
+            ...state,
+            showEventsAfter: now()
+          };
+        }
+        return state;
+      default:
+        return state;
+    }
   };
-
-  switch (action.type) {
-    case "SET_EVENT_FILTERS":
-      return {
-        ...state,
-        stagedFilters: filters,
-        selectedFilters: filters
-      };
-    case "STAGE_EVENT_FILTERS":
-      return {
-        ...state,
-        stagedFilters: filters
-      };
-    case "COMMIT_EVENT_FILTERS":
-      return {
-        ...state,
-        selectedFilters: state.stagedFilters
-      };
-    case "CLEAR_STAGED_EVENT_FILTERS":
-      return {
-        ...state,
-        stagedFilters: state.selectedFilters
-      };
-    case "CLEAR_EVENT_FILTERS":
-      return {
-        ...defaultState
-      };
-    default:
-      return state;
-  }
 };
 
-export default eventFilters;
+export default EventFilters;

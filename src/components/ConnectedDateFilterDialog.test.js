@@ -2,7 +2,9 @@ import React from "react";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { shallow } from "enzyme";
+import { DateTime } from "luxon";
 import ConnectedDateFilterDialog from "./ConnectedDateFilterDialog";
+import { createEventFiltersState } from "../reducers/event-filters";
 
 const initialState = {
   events: {
@@ -11,28 +13,9 @@ const initialState = {
     loading: true,
     refreshing: false
   },
-  eventFilters: {
-    selectedFilters: {
-      categories: new Set(),
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    },
-    stagedFilters: {
-      categories: new Set(),
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    }
-  }
+  eventFilters: createEventFiltersState(
+    DateTime.fromISO("2018-07-07T00:00:00+01:00")
+  )
 };
 
 const singleDateFilters = {
