@@ -7,7 +7,7 @@ import {
   EVENT_DETAILS,
   HOME,
   PARADE,
-  SAVED,
+  SAVED_EVENT_LIST,
   SUPPORT_US
 } from "./constants/routes";
 
@@ -67,7 +67,7 @@ describe("getTabTestId", () => {
     const result1 = getTabTestId(PARADE);
     expect(result1).toEqual("parade-tab-button");
 
-    const result2 = getTabTestId(SAVED);
+    const result2 = getTabTestId(SAVED_EVENT_LIST);
     expect(result2).toEqual("saved-events-tab-button");
 
     const result3 = getTabTestId(SUPPORT_US);

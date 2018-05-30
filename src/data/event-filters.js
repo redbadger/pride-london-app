@@ -1,4 +1,5 @@
 // @flow
+import type { DateTime } from "luxon";
 import type { DateRange, Time } from "./date-time";
 import type { EventCategoryName } from "./event";
 
@@ -42,6 +43,7 @@ export type StringFilterSet =
   | Set<AccessibilityOption>;
 
 export type State = {
+  showEventsAfter: DateTime,
   selectedFilters: FilterCollection,
   stagedFilters: FilterCollection
 };

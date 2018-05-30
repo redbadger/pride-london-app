@@ -1,37 +1,24 @@
 // @flow
-import reducer from "./event-filters";
+import each from "jest-each";
+import { DateTime } from "luxon";
+import Reducer, { createEventFiltersState } from "./event-filters";
+import { init } from "../actions";
+import { routesWithoutEvents, EVENT_LIST } from "../constants/routes";
+
+const oldTime = DateTime.fromISO("2018-04-01T12:00:00+01:00");
+const newTime = DateTime.fromISO("2018-08-01T13:00:00+01:00");
 
 describe("Event filters reducer", () => {
   it("initialises with default state", () => {
-    // $FlowFixMe
-    const state = reducer(undefined, {});
+    const reducer = Reducer(() => newTime);
+    const state = reducer(undefined, init());
 
     expect(state).toMatchSnapshot();
   });
 
   it("updates state with filters from payload for SET_EVENT_FILTERS action", () => {
-    const initialState = {
-      selectedFilters: {
-        categories: new Set(),
-        date: null,
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      stagedFilters: {
-        categories: new Set(),
-        date: null,
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
-    };
+    const initialState = createEventFiltersState(newTime);
+    const reducer = Reducer(() => newTime);
     const state = reducer(initialState, {
       type: "SET_EVENT_FILTERS",
       payload: {
@@ -65,28 +52,8 @@ describe("Event filters reducer", () => {
   });
 
   it("updates state with filters from payload for STAGE_EVENT_FILTERS action", () => {
-    const initialState = {
-      selectedFilters: {
-        categories: new Set(),
-        date: null,
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      stagedFilters: {
-        categories: new Set(),
-        date: null,
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
-    };
+    const initialState = createEventFiltersState(newTime);
+    const reducer = Reducer(() => newTime);
     const state = reducer(initialState, {
       type: "STAGE_EVENT_FILTERS",
       payload: {
@@ -107,28 +74,12 @@ describe("Event filters reducer", () => {
   });
 
   it("updates state with filters from payload for COMMIT_EVENT_FILTERS action", () => {
-    const initialState = {
-      selectedFilters: {
-        categories: new Set(),
-        date: null,
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      stagedFilters: {
-        categories: new Set(),
-        date: { startDate: "2018-03-12", endDate: "2018-03-12" },
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
+    const initialState = createEventFiltersState(newTime);
+    initialState.stagedFilters.date = {
+      startDate: "2018-03-12",
+      endDate: "2018-03-12"
     };
+    const reducer = Reducer(() => newTime);
     const state = reducer(initialState, {
       type: "COMMIT_EVENT_FILTERS"
     });
@@ -146,28 +97,16 @@ describe("Event filters reducer", () => {
   });
 
   it("updates state with filters from payload for CLEAR_STAGED_EVENT_FILTERS action", () => {
-    const initialState = {
-      selectedFilters: {
-        categories: new Set(),
-        date: { startDate: "2018-03-12", endDate: "2018-03-12" },
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      stagedFilters: {
-        categories: new Set(),
-        date: { startDate: "2018-03-20", endDate: "2018-03-20" },
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
+    const initialState = createEventFiltersState(newTime);
+    initialState.selectedFilters.date = {
+      startDate: "2018-03-12",
+      endDate: "2018-03-12"
     };
+    initialState.stagedFilters.date = {
+      startDate: "2018-03-12",
+      endDate: "2018-03-12"
+    };
+    const reducer = Reducer(() => newTime);
     const state = reducer(initialState, {
       type: "CLEAR_STAGED_EVENT_FILTERS"
     });
@@ -185,28 +124,17 @@ describe("Event filters reducer", () => {
   });
 
   it("clears the event filters for CLEAR_EVENT_FILTERS action", () => {
-    const initialState = {
-      selectedFilters: {
-        categories: new Set(),
-        date: { startDate: "2018-03-12", endDate: "2018-03-12" },
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      stagedFilters: {
-        categories: new Set(),
-        date: { startDate: "2018-03-20", endDate: "2018-03-20" },
-        timeOfDay: new Set(),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
+    const initialState = createEventFiltersState(newTime);
+    initialState.selectedFilters.date = {
+      startDate: "2018-03-12",
+      endDate: "2018-03-12"
     };
+    initialState.stagedFilters.date = {
+      startDate: "2018-03-12",
+      endDate: "2018-03-12"
+    };
+
+    const reducer = Reducer(() => oldTime);
     const state = reducer(initialState, {
       type: "CLEAR_EVENT_FILTERS"
     });
@@ -224,5 +152,31 @@ describe("Event filters reducer", () => {
 
     expect(state.stagedFilters).toEqual(emptyFilters);
     expect(state.selectedFilters).toEqual(emptyFilters);
+    expect(state.showEventsAfter).toEqual(newTime);
+  });
+
+  describe("NAVIGATION action", () => {
+    test("does not update showEventsAfter when route is not in routesWithoutEvents", () => {
+      const reducer = Reducer(() => newTime);
+      const state = reducer(createEventFiltersState(oldTime), {
+        type: "NAVIGATION",
+        route: EVENT_LIST
+      });
+
+      expect(state.showEventsAfter).toEqual(oldTime);
+    });
+
+    each(routesWithoutEvents.map(item => [item])).test(
+      "updates showEventsAfter when route is %s",
+      a => {
+        const reducer = Reducer(() => newTime);
+        const state = reducer(createEventFiltersState(oldTime), {
+          type: "NAVIGATION",
+          route: a
+        });
+
+        expect(state.showEventsAfter).toEqual(newTime);
+      }
+    );
   });
 });
