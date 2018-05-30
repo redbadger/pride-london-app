@@ -10,6 +10,7 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
       "selected",
     ]
   }
+  disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -117,6 +118,7 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
       "selected",
     ]
   }
+  disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -223,6 +225,7 @@ exports[`dateRangePickerDay renders a disabled day 1`] = `
       "button",
     ]
   }
+  disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -288,6 +291,7 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
       "button",
     ]
   }
+  disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -381,6 +385,7 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
       "selected",
     ]
   }
+  disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -517,6 +522,7 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
       "selected",
     ]
   }
+  disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -624,6 +630,7 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
       "selected",
     ]
   }
+  disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
 >
@@ -730,6 +737,7 @@ exports[`dateRangePickerDay renders without date selection 1`] = `
       "button",
     ]
   }
+  disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
 >

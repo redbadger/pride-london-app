@@ -117,9 +117,10 @@ export default class Day extends Component<DayProps> {
       <TouchableWithoutFeedback
         onPress={this.onPress}
         onLongPress={this.onLongPress}
-        accessibilityTraits={traits}
+        accessibilityTraits={beforeToday ? ["button", "disabled"] : traits}
         accessibilityLabel={label}
         accessibilityComponentType="button"
+        disabled={beforeToday}
       >
         <View style={[styles.container, beforeToday ? styles.faded : {}]}>
           {marking.selected && (

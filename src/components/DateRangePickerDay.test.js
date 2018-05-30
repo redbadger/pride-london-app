@@ -79,7 +79,7 @@ describe("dateRangePickerDay", () => {
     expect(output).toMatchSnapshot();
   });
 
-  it("renders a faded day if before today", () => {
+  it("renders a disabled day if before today", () => {
     jest
       .spyOn(dateLib, "now")
       .mockImplementation(() => "2018-08-13T17:42:06+01:00");
@@ -90,12 +90,14 @@ describe("dateRangePickerDay", () => {
       state: "disabled"
     });
 
+    expect(output.props().disabled).toEqual(true);
+    expect(output.props().accessibilityTraits).toContain("disabled");
     expect(output.children().props().style).toEqual(
       expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
     );
   });
 
-  it("does not render a faded day if same day as today", () => {
+  it("does not render a disabled day if same day as today", () => {
     jest
       .spyOn(dateLib, "now")
       .mockImplementation(() => "2018-08-12T17:42:06+01:00");
@@ -106,6 +108,8 @@ describe("dateRangePickerDay", () => {
       state: "disabled"
     });
 
+    expect(output.props().disabled).toEqual(false);
+    expect(output.props().accessibilityTraits).not.toContain("disabled");
     expect(output.children().props().style).not.toEqual(
       expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
     );
