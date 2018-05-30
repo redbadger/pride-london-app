@@ -21,7 +21,7 @@ const defaultState = {
 
 const processEntries = entries => expandRecurringEventsInEntries(entries);
 
-const events: Reducer<State, DataAction> = (
+const reducer: Reducer<State, DataAction> = (
   state: State = defaultState,
   action: DataAction
 ) => {
@@ -40,7 +40,6 @@ const events: Reducer<State, DataAction> = (
       };
     case "RECEIVE_CMS_DATA":
       return {
-        ...state,
         loading: false,
         refreshing: false,
         entries: processEntries(action.data.entries),
@@ -50,4 +49,4 @@ const events: Reducer<State, DataAction> = (
       return state;
   }
 };
-export default events;
+export default reducer;
