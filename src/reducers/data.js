@@ -6,7 +6,7 @@ import type { Sponsor } from "../data/sponsor";
 import decodeSponsor from "../data/sponsor";
 import locale from "../data/locale";
 import type { Decoder } from "../lib/decode";
-import { filterMap as decodeFilerMap } from "../lib/decode";
+import { filterMap as decodeFilterMap } from "../lib/decode";
 import { withDefault as resultWithDefault } from "../lib/result";
 import { expandRecurringEventsInEntries } from "../selectors/events";
 
@@ -31,7 +31,7 @@ const processEntries = entries => expandRecurringEventsInEntries(entries);
 // moving locale here so we can deal with it in a single place
 // this can be moved inside the reducer function if we later want
 // to make this dynamic
-const decodeSponsors: Decoder<Array<Sponsor>> = decodeFilerMap(
+const decodeSponsors: Decoder<Array<Sponsor>> = decodeFilterMap(
   decodeSponsor(locale)
 );
 
