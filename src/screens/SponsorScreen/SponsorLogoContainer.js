@@ -11,16 +11,13 @@ import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import text from "../../constants/text";
 import { sponsorLogoBackgroundColor } from "../../constants/colors";
-import type { SponsorLevel, Sponsor } from "../../data/sponsor";
-import type { FieldRef } from "../../data/field-ref";
+import type { SponsorLevel, Sponsor, Reference } from "../../data/sponsor";
 import type { ImageSource } from "../../data/get-asset-source";
-
-import locale from "../../data/locale";
 
 type Props = {
   sponsorLevel: SponsorLevel,
   sponsors: Sponsor[],
-  getAssetSource: FieldRef => ImageSource,
+  getAssetSource: Reference => ImageSource,
   style?: ViewStyleProp
 };
 
@@ -49,7 +46,7 @@ const SponsorLogoContainer = ({
       {sponsors &&
         sponsors.map((sponsor, index) => (
           <View
-            key={sponsor.sys.id}
+            key={sponsor.id}
             style={
               sponsorLevel === "Headline" || sponsorLevel === "Gold"
                 ? [
@@ -64,14 +61,14 @@ const SponsorLogoContainer = ({
           >
             <Touchable
               style={styles.sponsorTile}
-              onPress={() => Linking.openURL(sponsor.fields.sponsorUrl[locale])}
+              onPress={() => Linking.openURL(sponsor.fields.sponsorUrl)}
               accessibilityTraits={["link"]}
-              testID={`sponsor-tile-${sponsor.sys.id}`}
+              testID={`sponsor-tile-${sponsor.id}`}
             >
               <SponsorLogo
-                sponsorName={sponsor.fields.sponsorName[locale]}
-                sponsorLevel={sponsor.fields.sponsorLevel[locale]}
-                sponsorLogo={getAssetSource(sponsor.fields.sponsorLogo[locale])}
+                sponsorName={sponsor.fields.sponsorName}
+                sponsorLevel={sponsor.fields.sponsorLevel}
+                sponsorLogo={getAssetSource(sponsor.fields.sponsorLogo)}
               />
             </Touchable>
           </View>

@@ -16,28 +16,19 @@ const generateSponsors = (count = 2): Sponsor[] =>
     .map(
       (_, i) =>
         ({
-          sys: {
-            id: String(i + 1)
-          },
+          contentType: "sponsor",
+          locale: "en-GB",
+          id: String(i + 1),
           fields: {
-            sponsorName: {
-              "en-GB": `Sponsor ${i + 1}`
-            },
+            sponsorName: `Sponsor ${i + 1}`,
             sponsorLogo: {
-              "en-GB": {
-                sys: {
-                  id: `asset${i + 1}`
-                }
-              }
+              id: `asset${i + 1}`
             },
-            sponsorUrl: {
-              "en-GB": "http://example.com"
-            },
-            sponsorLevel: {
-              "en-GB": "Gold"
-            }
-          }
-        }: any)
+            sponsorUrl: "http://example.com",
+            sponsorLevel: "Gold"
+          },
+          revision: 1
+        }: Sponsor)
     )
     .reverse();
 

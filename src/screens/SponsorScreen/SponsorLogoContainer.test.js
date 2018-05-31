@@ -16,28 +16,19 @@ const generateSponsors = (count = 2): Sponsor[] =>
   Array.from(Array(count)).map(
     (_, i) =>
       ({
-        sys: {
-          id: String(i + 1)
-        },
+        contentType: "sponsor",
+        locale: "en-GB",
+        id: String(i + 1),
         fields: {
-          sponsorName: {
-            "en-GB": "some other"
-          },
+          sponsorName: "some other",
           sponsorLogo: {
-            "en-GB": {
-              sys: {
-                id: `asset${i + 1}`
-              }
-            }
+            id: `asset${i + 1}`
           },
-          sponsorUrl: {
-            "en-GB": "http://example.com"
-          },
-          sponsorLevel: {
-            "en-GB": "Gold"
-          }
-        }
-      }: any)
+          sponsorUrl: "http://example.com",
+          sponsorLevel: "Gold"
+        },
+        revision: 1
+      }: Sponsor)
   );
 
 const getAssetSource = jest.fn().mockReturnValue({

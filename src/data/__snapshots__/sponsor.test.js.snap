@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sponsor decoder correctly decodes valid CMS sponsor 1`] = `
+Object {
+  "contentType": "sponsor",
+  "fields": Object {
+    "sponsorLevel": "Headline",
+    "sponsorLogo": Object {
+      "id": "2o2SZPgYl2ABCWu2MoK333",
+    },
+    "sponsorName": "sponsorName",
+    "sponsorUrl": "sponsorUrl",
+  },
+  "id": "3O3SZPgYl2MUEWu2MoK2oi",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;
