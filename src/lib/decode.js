@@ -4,6 +4,8 @@ import { ok, error, map as mapResult } from "./result";
 
 // Decoders give you a way to safely convert from an unknown type to a
 // concrete type and recover from failure at runtime.
+// This is essentially a port of elm's JSON decoders
+// http://package.elm-lang.org/packages/elm-lang/core/latest/Json-Decode
 export type Decoder<A> = mixed => Result<string, A>;
 
 export const succeed = <A>(v: A): Decoder<A> => () => ok(v);
