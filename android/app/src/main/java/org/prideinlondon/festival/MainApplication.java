@@ -47,13 +47,6 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactNativeConfigPackage(),
             new LottiePackage(),
             BugsnagReactNative.getPackage(),
-            BugsnagReactNative.getPackage(),
-            new RNReactNativeHapticFeedbackPackage(),
-            new LottiePackage(),
-            new SplashScreenReactPackage(),
-            new MapsPackage(),
-            new LinearGradientPackage(),
-            new ReactNativeConfigPackage(),
             new AnalyticsPackage()
       );
     }
