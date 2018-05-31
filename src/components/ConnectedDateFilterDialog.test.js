@@ -7,7 +7,7 @@ import ConnectedDateFilterDialog from "./ConnectedDateFilterDialog";
 import { createEventFiltersState } from "../reducers/event-filters";
 
 const initialState = {
-  events: {
+  data: {
     entries: [],
     assets: [],
     loading: true,

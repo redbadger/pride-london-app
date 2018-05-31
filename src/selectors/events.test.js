@@ -811,7 +811,7 @@ describe("selectEvents", () => {
       eventFilters: createEventFiltersState(
         DateTime.fromISO("2018-07-07T00:00:00+01:00")
       ),
-      events: {
+      data: {
         entries: [
           {
             fields: {
@@ -826,14 +826,14 @@ describe("selectEvents", () => {
 
     const selected = selectEvents(state);
 
-    expect(selected).toEqual(state.events.entries);
+    expect(selected).toEqual(state.data.entries);
   });
 });
 
 describe("selectFeaturedEvents", () => {
   it("selects property", () => {
     const state = {
-      events: {
+      data: {
         entries: [
           {
             fields: { events: { "en-GB": [] } },
@@ -845,12 +845,12 @@ describe("selectFeaturedEvents", () => {
 
     const selected = selectFeaturedEvents(state);
 
-    expect(selected).toEqual(state.events.entries);
+    expect(selected).toEqual(state.data.entries);
   });
 
   it("deduplicates events", () => {
     const state = {
-      events: {
+      data: {
         entries: [
           {
             fields: {
@@ -891,7 +891,7 @@ describe("selectEventsLoading", () => {
   it("selects property", () => {
     const loading = true;
     const state = {
-      events: {
+      data: {
         loading
       }
     };
@@ -906,7 +906,7 @@ describe("selectEventsRefreshing", () => {
   it("selects property", () => {
     const refreshing = true;
     const state = {
-      events: {
+      data: {
         refreshing
       }
     };
@@ -923,7 +923,7 @@ describe("selectEventById", () => {
       eventFilters: createEventFiltersState(
         DateTime.fromISO("2018-07-07T00:00:00+01:00")
       ),
-      events: {
+      data: {
         entries: [
           {
             fields: {
@@ -938,21 +938,21 @@ describe("selectEventById", () => {
 
     const selected = selectEventById(state, "1");
 
-    expect(selected).toEqual(state.events.entries[0]);
+    expect(selected).toEqual(state.data.entries[0]);
   });
 });
 
 describe("selectAssetById", () => {
   it("selects asset from list", () => {
     const state = {
-      events: {
+      data: {
         assets: [{ sys: { id: "1" } }]
       }
     };
 
     const selected = selectAssetById(state, "1");
 
-    expect(selected).toEqual(state.events.assets[0]);
+    expect(selected).toEqual(state.data.assets[0]);
   });
 });
 
@@ -968,7 +968,7 @@ describe("selectFilteredEvents", () => {
       eventFilters: createEventFiltersState(
         DateTime.fromISO("2018-07-07T00:00:00+01:00")
       ),
-      events: {
+      data: {
         entries: [
           {
             fields: {
@@ -1015,7 +1015,7 @@ describe("selectFilteredEvents", () => {
       eventFilters: createEventFiltersState(
         DateTime.fromISO("2018-07-07T00:00:00+01:00")
       ),
-      events: {
+      data: {
         entries: [
           {
             fields: {
@@ -1057,7 +1057,7 @@ describe("selectFeaturedEventsByTitle", () => {
     eventFilters: createEventFiltersState(
       DateTime.fromISO("2018-07-07T00:00:00+01:00")
     ),
-    events: {
+    data: {
       entries: [
         {
           fields: {
@@ -1121,7 +1121,7 @@ describe("selectSavedEvents", () => {
       eventFilters: createEventFiltersState(
         DateTime.fromISO("2018-07-07T00:00:00+01:00")
       ),
-      events: {
+      data: {
         entries: [
           {
             fields: {
@@ -1153,7 +1153,7 @@ describe("selectSavedEvents", () => {
       eventFilters: createEventFiltersState(
         DateTime.fromISO("2018-07-07T00:00:00+01:00")
       ),
-      events: {
+      data: {
         entries: [
           {
             fields: {
@@ -1207,7 +1207,7 @@ describe("selectSavedEvents", () => {
       eventFilters: createEventFiltersState(
         DateTime.fromISO("2018-08-02T00:00:00+01:00")
       ),
-      events: {
+      data: {
         entries: [
           {
             fields: {

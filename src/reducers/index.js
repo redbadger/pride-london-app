@@ -1,8 +1,8 @@
 // @flow
 import { combineReducers } from "redux";
 import { DateTime } from "luxon";
-import events from "./events";
-import type { State as EventsState } from "./events";
+import data from "./data";
+import type { State as DataState } from "./data";
 import EventFilters from "./event-filters";
 import type { State as EventFiltersState } from "../data/event-filters";
 import savedEvents from "./saved-events";
@@ -12,14 +12,14 @@ import currentRoute from "./route";
 type Route = string;
 
 export type State = {
-  events: EventsState,
+  data: DataState,
   eventFilters: EventFiltersState,
   savedEvents: SavedEventsState,
   currentRoute: Route
 };
 
 export default combineReducers({
-  events,
+  data,
   eventFilters: EventFilters(DateTime.local),
   savedEvents,
   currentRoute
