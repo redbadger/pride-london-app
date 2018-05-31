@@ -73,7 +73,9 @@ exports[`SponsorScreen Component renders correctly 1`] = `
               "fields": Object {
                 "sponsorLevel": "Gold",
                 "sponsorLogo": Object {
-                  "id": "asset1",
+                  "sys": Object {
+                    "id": "asset1",
+                  },
                 },
                 "sponsorName": "Sponsor 1",
                 "sponsorUrl": "http://example.com",
@@ -87,7 +89,9 @@ exports[`SponsorScreen Component renders correctly 1`] = `
               "fields": Object {
                 "sponsorLevel": "Gold",
                 "sponsorLogo": Object {
-                  "id": "asset2",
+                  "sys": Object {
+                    "id": "asset2",
+                  },
                 },
                 "sponsorName": "Sponsor 2",
                 "sponsorUrl": "http://example.com",

@@ -1,16 +1,8 @@
 // @flow
 import * as decode from "../lib/decode";
 import type { Decoder } from "../lib/decode";
-
-// We will move this out as we move other content types to this pattern
-export type Reference = {
-  id: string
-};
-
-const referenceDecoder: Decoder<Reference> = decode.map(
-  id => ({ id }),
-  decode.at(["sys", "id"], decode.string)
-);
+import type { FieldRef } from "./field-ref";
+import decodeFieldRef from "./field-ref";
 
 export type SponsorLevel = "Headline" | "Gold" | "Silver" | "Bronze";
 
@@ -29,7 +21,7 @@ export type Sponsor = {
   revision: number,
   fields: {
     sponsorName: string,
-    sponsorLogo: Reference,
+    sponsorLogo: FieldRef,
     sponsorUrl: string,
     sponsorLevel: SponsorLevel
   }
@@ -48,7 +40,7 @@ const decodeSponsor = (locale: string): Decoder<Sponsor> =>
       "fields",
       decode.shape({
         sponsorName: decode.at(["sponsorName", locale], decode.string),
-        sponsorLogo: decode.at(["sponsorLogo", locale], referenceDecoder),
+        sponsorLogo: decode.at(["sponsorLogo", locale], decodeFieldRef),
         sponsorUrl: decode.at(["sponsorUrl", locale], decode.string),
         sponsorLevel: decode.at(["sponsorLevel", locale], sponsorLevelDecoder)
       })

@@ -22,7 +22,7 @@ const generateSponsors = (count = 2): Sponsor[] =>
           fields: {
             sponsorName: `Sponsor ${i + 1}`,
             sponsorLogo: {
-              id: `asset${i + 1}`
+              sys: { id: `asset${i + 1}` }
             },
             sponsorUrl: "http://example.com",
             sponsorLevel: "Gold"

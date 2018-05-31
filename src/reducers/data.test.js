@@ -170,7 +170,7 @@ describe("Events reducer", () => {
           locale: "en-GB",
           fields: {
             sponsorName: "sponsorName",
-            sponsorLogo: { id: "2o2SZPgYl2ABCWu2MoK333" },
+            sponsorLogo: { sys: { id: "2o2SZPgYl2ABCWu2MoK333" } },
             sponsorUrl: "sponsorUrl",
             sponsorLevel: "Headline"
           }

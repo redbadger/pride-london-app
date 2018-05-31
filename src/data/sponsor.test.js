@@ -1,7 +1,7 @@
 // @flow
 import decodeSponsor from "./sponsor";
 
-describe("sponsor", () => {
+describe("Sponsor", () => {
   describe("decoder", () => {
     it("correctly decodes valid CMS sponsor", () => {
       const data: mixed = {

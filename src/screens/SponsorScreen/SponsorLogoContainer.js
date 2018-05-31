@@ -11,13 +11,14 @@ import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import text from "../../constants/text";
 import { sponsorLogoBackgroundColor } from "../../constants/colors";
-import type { SponsorLevel, Sponsor, Reference } from "../../data/sponsor";
+import type { SponsorLevel, Sponsor } from "../../data/sponsor";
 import type { ImageSource } from "../../data/get-asset-source";
+import type { FieldRef } from "../../data/field-ref";
 
 type Props = {
   sponsorLevel: SponsorLevel,
   sponsors: Sponsor[],
-  getAssetSource: Reference => ImageSource,
+  getAssetSource: FieldRef => ImageSource,
   style?: ViewStyleProp
 };
 

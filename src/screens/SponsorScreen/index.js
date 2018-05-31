@@ -2,7 +2,8 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Sponsor, Reference } from "../../data/sponsor";
+import type { Sponsor } from "../../data/sponsor";
+import type { FieldRef } from "../../data/field-ref";
 import getAssetSource from "../../data/get-asset-source";
 import type { ImageSource } from "../../data/get-asset-source";
 import { selectAssetById } from "../../selectors/events";
@@ -15,7 +16,7 @@ type OwnProps = {
 
 type Props = {
   sponsors: Sponsor[],
-  getAssetSource: Reference => ImageSource
+  getAssetSource: FieldRef => ImageSource
 } & OwnProps;
 
 const mapStateToProps = state => ({

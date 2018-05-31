@@ -14,12 +14,13 @@ import SponsorLogoContainer from "./SponsorLogoContainer";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
 import type { ImageSource } from "../../data/get-asset-source";
-import type { Sponsor, Reference } from "../../data/sponsor";
+import type { Sponsor } from "../../data/sponsor";
+import type { FieldRef } from "../../data/field-ref";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   sponsors: Sponsor[],
-  getAssetSource: Reference => ImageSource
+  getAssetSource: FieldRef => ImageSource
 };
 
 class SponsorScreen extends PureComponent<Props> {
