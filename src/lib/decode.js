@@ -1,0 +1,107 @@
+// @flow
+import type { Result } from "./result";
+import { ok, error, map as mapResult } from "./result";
+
+// Decoders give you a way to safely convert from an unknown type to a
+// concrete type and recover from failure at runtime.
+export type Decoder<A> = mixed => Result<string, A>;
+
+export const succeed = <A>(v: A): Decoder<A> => () => ok(v);
+
+export const string: Decoder<string> = (v: mixed) => {
+  if (typeof v === "string") {
+    return ok(v);
+  }
+  return error("value is not a string");
+};
+
+export const number: Decoder<number> = (v: mixed) => {
+  if (typeof v === "number") {
+    return ok(v);
+  }
+  return error("value is not a number");
+};
+
+export const value = <A>(a: A): Decoder<A> => (v: mixed) => {
+  if (v === a) {
+    return ok(a);
+  }
+  return error("value is not equal");
+};
+
+export const field = <A>(key: string, decoder: Decoder<A>): Decoder<A> => (
+  v: mixed
+) => {
+  if (v != null && typeof v === "object") {
+    if (Object.prototype.hasOwnProperty.call(v, key)) {
+      return decoder(v[key]);
+    }
+    return error(`value is missing field '${key}'`);
+  }
+  return error(`value is not an object`);
+};
+
+const atHelp = <A>(acc: Decoder<A>, key: string): Decoder<A> => field(key, acc);
+
+export const at = <A>(keys: Array<string>, decoder: Decoder<A>): Decoder<A> =>
+  keys.reduceRight(atHelp, decoder);
+
+type ShapeValueType = <A>(Decoder<A>) => A;
+
+export const shape = <O: { [key: string]: * }>(
+  obj: O
+): Decoder<$ObjMap<O, ShapeValueType>> => (v: mixed) => {
+  if (v != null && typeof v === "object") {
+    return Object.keys(obj).reduce((acc, k) => {
+      if (acc.ok) {
+        const result = obj[k](v);
+        if (result.ok) {
+          return ok(Object.assign(acc.value, { [k]: result.value }));
+        }
+        return result;
+      }
+      return acc;
+    }, ok({}));
+  }
+  return error("value is not an object");
+};
+
+export const oneOf = <A>([decoder, ...rest]: Array<Decoder<A>>): Decoder<A> => (
+  v: mixed
+) => {
+  if (decoder) {
+    const test = decoder(v);
+    if (test.ok) {
+      return test;
+    }
+    return oneOf(rest)(v);
+  }
+  return error("no decoders matched");
+};
+
+export const map = <A, B>(fn: (a: A) => B, decoder: Decoder<A>): Decoder<B> => (
+  v: mixed
+) => mapResult(fn, decoder(v));
+
+const filterMapHelp = <A>(decoder: Decoder<A>) => (
+  acc: Array<A>,
+  item: mixed
+): Array<A> => {
+  const result: Result<string, A> = decoder(item);
+  if (result.ok) {
+    return [...acc, result.value];
+  }
+  return acc;
+};
+
+export const filterMap = <A>(decoder: Decoder<A>): Decoder<Array<A>> => (
+  v: mixed
+) => {
+  if (Array.isArray(v)) {
+    // I'm am confident this is typed correctly. I just can't seem to get
+    // flow to understand it.
+    // $FlowFixMe
+    return ok(v.reduce(filterMapHelp(decoder), []));
+  }
+  return error("value is not an array");
+};
