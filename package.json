@@ -40,7 +40,7 @@
     "react-native-haptic-feedback": "^1.1.0",
     "react-native-linear-gradient": "^2.4.0",
     "react-native-map-link": "^1.0.6",
-    "react-native-maps": "0.16.4",
+    "react-native-maps": "^0.21.0",
     "react-native-safe-area-view":
       "robbiemccorkell/react-native-safe-area-view",
     "react-native-splash-screen": "^3.0.6",

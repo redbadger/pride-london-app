@@ -4,6 +4,13 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.airbnb.android.react.lottie.LottiePackage;
+import com.bugsnag.BugsnagReactNative;
 import com.bugsnag.BugsnagReactNative;
 import com.reactlibrary.RNReactNativeHapticFeedbackPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
@@ -33,6 +40,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SplashScreenReactPackage(),
+            new MapsPackage(),
+            new LinearGradientPackage(),
+            new RNReactNativeHapticFeedbackPackage(),
+            new ReactNativeConfigPackage(),
+            new LottiePackage(),
+            BugsnagReactNative.getPackage(),
             BugsnagReactNative.getPackage(),
             new RNReactNativeHapticFeedbackPackage(),
             new LottiePackage(),

@@ -223,6 +223,13 @@ repositories {
 }
 
 dependencies {
+    compile project(':react-native-splash-screen')
+    compile project(':react-native-maps')
+    compile project(':react-native-linear-gradient')
+    compile project(':react-native-haptic-feedback')
+    compile project(':react-native-config')
+    compile project(':lottie-react-native')
+    compile project(':bugsnag-react-native')
     implementation project(':react-native-haptic-feedback')
     implementation project(':lottie-react-native')
     implementation project(':react-native-splash-screen')
