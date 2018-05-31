@@ -48,22 +48,24 @@ const atHelp = <A>(acc: Decoder<A>, key: string): Decoder<A> => field(key, acc);
 export const at = <A>(keys: Array<string>, decoder: Decoder<A>): Decoder<A> =>
   keys.reduceRight(atHelp, decoder);
 
+const shapeHelp = (obj, v) => (acc, k) => {
+  if (acc.ok) {
+    const result = obj[k](v);
+    if (result.ok) {
+      return ok(Object.assign(acc.value, { [k]: result.value }));
+    }
+    return result;
+  }
+  return acc;
+};
+
 type ShapeValueType = <A>(Decoder<A>) => A;
 
 export const shape = <O: { [key: string]: * }>(
   obj: O
 ): Decoder<$ObjMap<O, ShapeValueType>> => (v: mixed) => {
   if (v != null && typeof v === "object") {
-    return Object.keys(obj).reduce((acc, k) => {
-      if (acc.ok) {
-        const result = obj[k](v);
-        if (result.ok) {
-          return ok(Object.assign(acc.value, { [k]: result.value }));
-        }
-        return result;
-      }
-      return acc;
-    }, ok({}));
+    return Object.keys(obj).reduce(shapeHelp(obj, v), ok({}));
   }
   return error("value is not an object");
 };
