@@ -6,9 +6,8 @@ import { createClient } from "contentful/dist/contentful.browser.min";
 import { saveCmsData, loadCmsData } from "./storage";
 import type { Asset } from "../data/asset";
 import type { Event, FeaturedEvents } from "../data/event";
-import type { Sponsor } from "../data/sponsor";
 
-export type CmsEntry = Event | FeaturedEvents | Sponsor;
+export type CmsEntry = Event | FeaturedEvents;
 export type CmsData = {
   entries: CmsEntry[],
   deletedEntries: CmsEntry[],
