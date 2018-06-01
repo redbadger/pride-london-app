@@ -1,6 +1,6 @@
 // @flow
 import type { Reducer } from "redux";
-import type { CmsAction } from "../actions/events";
+import type { DataAction } from "../actions/data";
 import type { CmsEntry } from "../integrations/cms";
 import type { Asset } from "../data/asset";
 import { expandRecurringEventsInEntries } from "../selectors/events";
@@ -21,9 +21,9 @@ const defaultState = {
 
 const processEntries = entries => expandRecurringEventsInEntries(entries);
 
-const events: Reducer<State, CmsAction> = (
+const reducer: Reducer<State, DataAction> = (
   state: State = defaultState,
-  action: CmsAction
+  action: DataAction
 ) => {
   switch (action.type) {
     case "REQUEST_CMS_DATA":
@@ -40,14 +40,13 @@ const events: Reducer<State, CmsAction> = (
       };
     case "RECEIVE_CMS_DATA":
       return {
-        ...state,
         loading: false,
         refreshing: false,
-        entries: action.payload ? processEntries(action.payload.entries) : [],
-        assets: action.payload ? action.payload.assets : []
+        entries: processEntries(action.data.entries),
+        assets: action.data.assets
       };
     default:
       return state;
   }
 };
-export default events;
+export default reducer;

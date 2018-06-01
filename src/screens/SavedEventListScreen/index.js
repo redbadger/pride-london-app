@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import getAssetSource from "../../data/get-asset-source";
-import { updateEvents } from "../../actions/events";
+import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
@@ -30,7 +30,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  updateEvents,
+  updateData,
   addSavedEvent,
   removeSavedEvent
 };

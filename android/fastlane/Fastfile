@@ -80,12 +80,16 @@ platform :android do
 
   desc "Build and deploy to Play Store"
   lane :release do |options|
-    build_release
-    if options[:submit]
-      deploy_play_store(
-        apk: options[:apk_path],
-        upload_key: options[:upload_key]
-      )
+    begin
+      build_release
+      if options[:submit]
+        deploy_play_store(
+          apk: options[:apk_path],
+          upload_key: options[:upload_key]
+        )
+      end
+    rescue => exception
+      notify_failure(exception, options[:slack_webhook], options[:ci_build_num])
     end
   end
 
@@ -134,5 +138,28 @@ platform :android do
     commit_msg = sh("git log --format=%B -n 1 #{commit_sha}").strip
     notes = "#{git_branch}/#{commit_msg} on #{date} at #{time}"
     return notes
+  end
+
+  def notify_failure(exception, webhook, build_num)
+    if defined?(webhook)
+      slack(
+        message: 'Android release build failed!',
+        success: false,
+        slack_url: webhook,
+        attachment_properties: {
+          fields: [
+            {
+              title: "Build number",
+              value: build_num,
+            },
+            {
+              title: "Error message",
+              value: exception.to_s,
+              short: false
+            }
+          ]
+        }
+      )
+    end
   end
 end

@@ -1,5 +1,8 @@
 // @flow
-import { DateTime, Interval } from "luxon";
+import { DateTime as LuxonDateTime, Interval } from "luxon";
+import type { DateTimeUnit } from "luxon";
+
+export type DateTime = LuxonDateTime;
 
 export const FORMAT_DAY_MONTH = "d LLL";
 export const FORMAT_WEEKDAY_MONTH_DAY = "cccc, LLLL d";
@@ -16,12 +19,15 @@ const contentfulISOFormatOptions = {
   suppressSeconds: true
 };
 
-const parse = (date: string) => DateTime.fromISO(date, { setZone: true });
+const parse = (date: string) => LuxonDateTime.fromISO(date, { setZone: true });
 
 export const toFormat = (date: string, format: string) =>
   parse(date).toFormat(format);
 
 export const isBefore = (d1: string, d2: string) => +parse(d1) < +parse(d2);
+
+export const now = () =>
+  LuxonDateTime.local().toISO(contentfulISOFormatOptions);
 
 export const addDays = (date: string, days: number) => add(date, { days });
 
@@ -69,9 +75,12 @@ export const set = (date: string, values: Object) =>
     .set(values)
     .toISO(contentfulISOFormatOptions);
 
-export const diff = (d1: string, d2: string, unit?: string | string[]) =>
+export const diff = (
+  d1: string,
+  d2: string,
+  unit?: DateTimeUnit | DateTimeUnit[] = "milliseconds"
+) =>
   parse(d1)
-    // $FlowFixMe
     .diff(parse(d2), unit)
     .toObject();
 
