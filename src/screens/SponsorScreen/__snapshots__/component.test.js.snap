@@ -69,50 +69,36 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         sponsors={
           Array [
             Object {
+              "contentType": "sponsor",
               "fields": Object {
-                "sponsorLevel": Object {
-                  "en-GB": "Gold",
-                },
+                "sponsorLevel": "Gold",
                 "sponsorLogo": Object {
-                  "en-GB": Object {
-                    "sys": Object {
-                      "id": "asset1",
-                    },
+                  "sys": Object {
+                    "id": "asset1",
                   },
                 },
-                "sponsorName": Object {
-                  "en-GB": "Sponsor 1",
-                },
-                "sponsorUrl": Object {
-                  "en-GB": "http://example.com",
-                },
+                "sponsorName": "Sponsor 1",
+                "sponsorUrl": "http://example.com",
               },
-              "sys": Object {
-                "id": "1",
-              },
+              "id": "1",
+              "locale": "en-GB",
+              "revision": 1,
             },
             Object {
+              "contentType": "sponsor",
               "fields": Object {
-                "sponsorLevel": Object {
-                  "en-GB": "Gold",
-                },
+                "sponsorLevel": "Gold",
                 "sponsorLogo": Object {
-                  "en-GB": Object {
-                    "sys": Object {
-                      "id": "asset2",
-                    },
+                  "sys": Object {
+                    "id": "asset2",
                   },
                 },
-                "sponsorName": Object {
-                  "en-GB": "Sponsor 2",
-                },
-                "sponsorUrl": Object {
-                  "en-GB": "http://example.com",
-                },
+                "sponsorName": "Sponsor 2",
+                "sponsorUrl": "http://example.com",
               },
-              "sys": Object {
-                "id": "2",
-              },
+              "id": "2",
+              "locale": "en-GB",
+              "revision": 1,
             },
           ]
         }
