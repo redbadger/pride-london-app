@@ -4,6 +4,7 @@ exports[`renders correctly 1`] = `
 <Component
   accessibilityLabel="A number, 13.37, text field; double tap to edit"
   accessible={true}
+  style={Object {}}
 >
   <Text
     color="lightNavyBlueColor"
