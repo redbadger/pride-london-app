@@ -19,9 +19,10 @@ type Props = {
   getAssetSource: FieldRef => ImageSource
 } & OwnProps;
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, { navigation }): Props => ({
   sponsors: selectSponsors(state),
-  getAssetSource: getAssetSource(id => selectAssetById(state, id))
+  getAssetSource: getAssetSource(id => selectAssetById(state, id)),
+  navigation
 });
 
 const mapDispatchToProps = {};
