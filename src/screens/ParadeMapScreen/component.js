@@ -12,14 +12,7 @@ export default class ParadeMap extends Component<Props, State> {
   render() {
     return (
       <MapView
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: Dimensions.get("window").height - 70
-        }}
+        style={styles.mapView}
         initialRegion={{
           latitude: 51.51004,
           longitude: -0.134192,
@@ -44,7 +37,7 @@ export default class ParadeMap extends Component<Props, State> {
               alignItems: "center"
             }}
           >
-            <Text style={{ color: "white", fontSize: 12 }}>A</Text>
+            <Text style={styles.markerText}>A</Text>
           </View>
         </Marker>
         <Marker coordinate={{ longitude: -0.1265, latitude: 51.50499 }}>
@@ -58,10 +51,25 @@ export default class ParadeMap extends Component<Props, State> {
               alignItems: "center"
             }}
           >
-            <Text style={{ color: "white", fontSize: 12 }}>B</Text>
+            <Text style={styles.markerText}>B</Text>
           </View>
         </Marker>
       </MapView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  mapView: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: Dimensions.get("window").height - 70
+  },
+  markerText: {
+    color: "white",
+    fontSize: 12
+  }
+});
