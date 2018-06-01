@@ -27,10 +27,6 @@ const mapImage = {
 
 export type Props = {};
 
-// export type Props = {
-//   tx: text.paradeInformationScreen
-// };
-
 export default class ParadeInformationScreen extends Component<Props> {
   render() {
     return (
