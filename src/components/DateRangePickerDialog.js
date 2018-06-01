@@ -42,20 +42,34 @@ const formatTitleLabel = (dateRange: ?DateRange): string => {
 };
 
 class DateRangePickerDialog extends React.PureComponent<Props> {
+  static defaultProps = {
+    applyButtonDisabled: false
+  };
+
   clear = () => {
     this.props.onChange(null);
   };
 
   render() {
-    const { dateRange, forceNewRange } = this.props;
+    const {
+      applyButtonText,
+      applyButtonLabel,
+      applyButtonDisabled,
+      dateRange,
+      forceNewRange,
+      onApply,
+      onCancel,
+      onChange,
+      visible
+    } = this.props;
     const title = formatTitle(dateRange);
     const titleLabel = formatTitleLabel(dateRange);
 
     return (
       <Dialog
-        applyButtonText={this.props.applyButtonText}
-        applyButtonLabel={this.props.applyButtonLabel}
-        applyButtonDisabled={this.props.applyButtonDisabled}
+        applyButtonText={applyButtonText}
+        applyButtonLabel={applyButtonLabel}
+        applyButtonDisabled={applyButtonDisabled}
         title={
           <Text
             type="h3"
@@ -82,12 +96,12 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
           )
         }
         headerLeft={dateRange && <View style={styles.clearButton} />}
-        onApply={this.props.onApply}
-        onCancel={this.props.onCancel}
-        visible={this.props.visible}
+        onApply={onApply}
+        onCancel={onCancel}
+        visible={visible}
       >
         <DateRangePicker
-          onChange={this.props.onChange}
+          onChange={onChange}
           dateRange={dateRange}
           forceNewRange={forceNewRange}
         />
