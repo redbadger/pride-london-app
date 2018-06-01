@@ -9,7 +9,7 @@ import ContentPadding from "../../components/ContentPadding";
 import LayoutColumn from "../../components/LayoutColumn";
 import text from "../../constants/text";
 
-import trafalgarImg from "../../../assets/images/trafalgarSquare.jpg";
+// import trafalgarImg from "../../../assets/images/trafalgarSquare.jpg";
 import cabaretImg from "../../../assets/images/cabaret.jpg";
 import divaImg from "../../../assets/images/womensStage2018.jpg";
 import familyImg from "../../../assets/images/familyArea.jpg";
@@ -18,7 +18,7 @@ import communityImg from "../../../assets/images/community.jpg";
 import { whiteColor } from "../../constants/colors";
 
 const mapImage = {
-  trafalgar: trafalgarImg,
+  trafalgar: { uri: "trafalgar_square" },
   cabaret: cabaretImg,
   diva: divaImg,
   family: familyImg,
