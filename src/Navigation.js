@@ -16,6 +16,7 @@ import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import ParadeInformationScreen from "./screens/ParadeInformationScreen";
+import ParadeTabNavigator from "./screens/ParadeNavigator";
 import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FilterScreen from "./screens/FilterScreen";
@@ -143,7 +144,7 @@ const EventsStack = createStackNavigator(
 
 const ParadeStack = createStackNavigator(
   {
-    [PARADE]: { screen: withShadow(ParadeInformationScreen) }
+    [PARADE]: { screen: ParadeTabNavigator }
   },
   {
     initialRouteName: PARADE,
