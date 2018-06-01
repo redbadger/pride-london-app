@@ -29,7 +29,17 @@ type State = {|
 |};
 
 class DonateScreen extends React.PureComponent<Props, State> {
-  state = { focused: false, selection: undefined };
+  static defaultProps = {
+    returnKeyLabel: undefined,
+    returnKeyType: undefined,
+    onSubmitEditing: undefined,
+    style: {}
+  };
+
+  state = {
+    focused: false,
+    selection: undefined
+  };
 
   onFocus = () => {
     this.setState({ focused: true });

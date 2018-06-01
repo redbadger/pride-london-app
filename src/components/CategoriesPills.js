@@ -31,7 +31,8 @@ const createAccessibilityLabel = (
 
 class CategoriesPills extends React.PureComponent<Props> {
   static defaultProps = {
-    style: {}
+    style: {},
+    onPress: undefined
   };
 
   onTouchStart = () => {
