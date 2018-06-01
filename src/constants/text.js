@@ -30,6 +30,8 @@ export default {
   tabParade: "Parade",
   tabSaved: "Saved",
   tabSupportUs: "Support us",
+  tabParadeMap: "Map",
+  tabParadeStages: "Stages",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
   categoryFilterButton: "Filter by event type",

@@ -11,7 +11,8 @@ import ParadeInformationScreen from "../ParadeInformationScreen";
 import ParadeMapScreen from "../ParadeMapScreen";
 import DonateScreen from "../DonateScreen";
 import SponsorScreen from "../SponsorScreen";
-import { transparent, tabBarShadowColor } from "../../constants/colors";
+import { tabBarBgColor } from "../../constants/colors";
+import text from "../../constants/text";
 
 const styles = StyleSheet.create({
   shadowContainer: {
@@ -31,13 +32,25 @@ const styles = StyleSheet.create({
 
 const ParadeTabNavigator = createMaterialTopTabNavigator(
   {
-    [PARADE_MAP]: { screen: ParadeMapScreen },
-    [PARADE_INFORMATION]: { screen: ParadeInformationScreen }
+    [PARADE_MAP]: {
+      screen: ParadeMapScreen,
+      navigationOptions: { tabBarLabel: text.tabParadeMap }
+    },
+    [PARADE_INFORMATION]: {
+      screen: ParadeInformationScreen,
+      navigationOptions: { tabBarLabel: text.tabParadeStages }
+    }
   },
   {
     swipeEnabled: true,
     animationEnabled: false,
-    initialRouteName: PARADE_MAP
+    initialRouteName: PARADE_MAP,
+    tabBarOptions: {
+      indicatorStyle: {
+        top: 0
+      },
+      upperCaseLabel: false
+    }
   }
 );
 
