@@ -92,6 +92,14 @@ fastlane android deploy_play_store
 
 Deploy to Play Store
 
+### android promote_to_production
+
+```
+fastlane android promote_to_production
+```
+
+Promote to production
+
 ---
 
 This README.md is auto-generated and will be re-generated every time [fastlane](https://fastlane.tools) is run.

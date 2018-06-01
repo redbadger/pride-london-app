@@ -132,6 +132,23 @@ platform :android do
     )
   end
 
+  desc "Promote to production"
+  lane :promote_to_production do |options|
+    google_play_track_version_codes(
+      track: 'beta'
+    )
+
+    # write changelog file or check filename is correct?
+
+    upload_to_play_store(
+      track: 'beta',
+      track_promote_to: 'production'
+      skip_upload_apk: true
+    )
+
+    # post to slack
+  end
+
   def build_notes(commit_sha)
     date = Time.now.strftime('%F')
     time = Time.now.strftime('%T')
