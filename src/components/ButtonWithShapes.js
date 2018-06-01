@@ -42,6 +42,15 @@ const pickLinkIcon = (url: string, contrast: boolean) => {
 };
 
 class SupportUsButton extends React.PureComponent<Props> {
+  static defaultProps = {
+    centerText: false,
+    bgBottomLeft: undefined,
+    bgTopRight: undefined,
+    bgBottomRight: undefined,
+    contrast: false,
+    style: {}
+  };
+
   onPress = () => {
     if (isExternalLink(this.props.url)) {
       Linking.openURL(this.props.url);

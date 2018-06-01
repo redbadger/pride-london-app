@@ -42,6 +42,10 @@ const formatTitleLabel = (dateRange: ?DateRange): string => {
 };
 
 class DateRangePickerDialog extends React.PureComponent<Props> {
+  static defaultProps = {
+    applyButtonDisabled: false
+  };
+
   clear = () => {
     this.props.onChange(null);
   };
