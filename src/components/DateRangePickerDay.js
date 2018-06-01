@@ -80,6 +80,10 @@ const dotStyle = (marking: DayMarking) => [
 ];
 
 export default class Day extends Component<DayProps> {
+  static defaultProps = {
+    state: undefined
+  };
+
   shouldComponentUpdate = (nextProps: DayProps): boolean => {
     const { state, marking, date } = this.props;
     const {
