@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, Dimensions } from "react-native";
-import MapView, { Polyline } from "react-native-maps";
+import { StyleSheet, Dimensions, View, Text } from "react-native";
+import MapView, { Polyline, Marker } from "react-native-maps";
 
 import paradeCoordinates from "../../constants/parade-coordinates";
 
@@ -33,6 +33,34 @@ export default class ParadeMap extends Component<Props, State> {
           strokeColor={"purple"}
           lineJoin={"bevel"}
         />
+        <Marker coordinate={{ longitude: -0.14223, latitude: 51.51616 }}>
+          <View
+            style={{
+              height: 15,
+              width: 15,
+              backgroundColor: "purple",
+              borderRadius: 7,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Text style={{ color: "white", fontSize: 12 }}>A</Text>
+          </View>
+        </Marker>
+        <Marker coordinate={{ longitude: -0.1265, latitude: 51.50499 }}>
+          <View
+            style={{
+              height: 15,
+              width: 15,
+              backgroundColor: "purple",
+              borderRadius: 7,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Text style={{ color: "white", fontSize: 12 }}>B</Text>
+          </View>
+        </Marker>
       </MapView>
     );
   }
