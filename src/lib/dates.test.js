@@ -9,7 +9,8 @@ import {
   getHours,
   set,
   diff,
-  add
+  add,
+  now
 } from "./date";
 
 describe("toFormat", () => {
@@ -131,5 +132,11 @@ describe("add", () => {
     expect(add("2018-07-07T04:00+01:00", { days: 2, months: 1 })).toEqual(
       "2018-08-09T04:00+01:00"
     );
+  });
+});
+
+describe("now", () => {
+  it("returns current time as a string", () => {
+    expect(now()).toEqual(expect.any(String));
   });
 });

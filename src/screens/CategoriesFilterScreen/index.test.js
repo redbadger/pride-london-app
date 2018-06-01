@@ -16,7 +16,7 @@ const navigation: NavigationScreenProp<*> = ({
 const mockStore = configureStore([thunk]);
 
 const initialState = {
-  events: {
+  data: {
     entries: [],
     assets: [],
     loading: true,

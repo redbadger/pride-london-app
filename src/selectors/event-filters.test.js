@@ -30,7 +30,7 @@ const buildState = (
   selectedFilters: FilterCollection,
   stagedFilters: FilterCollection
 ) => ({
-  events: {
+  data: {
     entries: [],
     assets: [],
     loading: false,

@@ -26,6 +26,9 @@ export const toFormat = (date: string, format: string) =>
 
 export const isBefore = (d1: string, d2: string) => +parse(d1) < +parse(d2);
 
+export const now = () =>
+  LuxonDateTime.local().toISO(contentfulISOFormatOptions);
+
 export const addDays = (date: string, days: number) => add(date, { days });
 
 export const isSameDay = (d1: string, d2: string) =>
