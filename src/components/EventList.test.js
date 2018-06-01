@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import EventList, { renderItem } from "./EventList";
+import EventList from "./EventList";
 
 const events = [
   [
@@ -122,31 +122,6 @@ describe("EventList", () => {
   it("renders correctly", () => {
     const output = render();
     expect(output).toMatchSnapshot();
-  });
-
-  it("renders section headers correctly", () => {
-    const renderSectionHeader = render().prop("renderSectionHeader");
-    const output = shallow(
-      renderSectionHeader({ section: { title: "Hello" } })
-    );
-
-    expect(output).toMatchSnapshot();
-  });
-
-  describe("#renderItem", () => {
-    it("renders items correctly", () => {
-      const Item = renderItem({
-        isSavedEvent: () => false,
-        addSavedEvent: () => {},
-        removeSavedEvent: () => {},
-        locale: "en-GB",
-        onPress: () => {},
-        getAssetSource: () => {}
-      });
-      const output = shallow(<Item item={events[0][0]} />);
-
-      expect(output).toMatchSnapshot();
-    });
   });
 
   describe("#shouldComponentUpdate", () => {

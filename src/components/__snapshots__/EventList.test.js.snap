@@ -1,214 +1,167 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EventList #renderItem renders items correctly 1`] = `
-<ContentPadding
-  padding={Object {}}
-  style={Object {}}
->
-  <EventCard
-    addSavedEvent={[Function]}
-    endTime="2018-08-11T00:00"
-    eventPriceHigh="0"
-    eventPriceLow="0"
-    id="1"
-    isSaved={false}
-    locationName="Somewhere"
-    name="some event"
-    onPress={[Function]}
-    removeSavedEvent={[Function]}
-    startTime="2018-07-10T00:00"
-  />
-</ContentPadding>
-`;
-
 exports[`EventList renders correctly 1`] = `
-<SectionList
-  ItemSeparatorComponent={[Function]}
-  SectionSeparatorComponent={[Function]}
+<FlatList
   contentContainerStyle={
     Object {
       "backgroundColor": "#ffffff",
       "paddingTop": 0,
     }
   }
-  data={Array []}
+  data={
+    Array [
+      Object {
+        "header": Object {
+          "title": "Tuesday 10 July",
+        },
+        "id": "header-Tuesday 10 July",
+        "type": "header",
+      },
+      Object {
+        "event": Object {
+          "fields": Object {
+            "endTime": Object {
+              "en-GB": "2018-08-11T00:00",
+            },
+            "eventPriceHigh": Object {
+              "en-GB": "0",
+            },
+            "eventPriceLow": Object {
+              "en-GB": "0",
+            },
+            "eventsListPicture": Object {
+              "en-GB": "http://placekitten.com/200/300",
+            },
+            "locationName": Object {
+              "en-GB": "Somewhere",
+            },
+            "name": Object {
+              "en-GB": "some event",
+            },
+            "startTime": Object {
+              "en-GB": "2018-07-10T00:00",
+            },
+          },
+          "sys": Object {
+            "contentType": Object {
+              "sys": Object {
+                "id": "",
+              },
+            },
+            "id": "1",
+            "revision": 1,
+            "type": "",
+          },
+        },
+        "id": "event-1",
+        "type": "event",
+      },
+      Object {
+        "event": Object {
+          "fields": Object {
+            "endTime": Object {
+              "en-GB": "2018-08-11T00:00",
+            },
+            "eventPriceHigh": Object {
+              "en-GB": "0",
+            },
+            "eventPriceLow": Object {
+              "en-GB": "0",
+            },
+            "eventsListPicture": Object {
+              "en-GB": "http://placekitten.com/200/300",
+            },
+            "locationName": Object {
+              "en-GB": "Somewhere",
+            },
+            "name": Object {
+              "en-GB": "some other",
+            },
+            "startTime": Object {
+              "en-GB": "2018-07-10T00:00",
+            },
+          },
+          "sys": Object {
+            "contentType": Object {
+              "sys": Object {
+                "id": "",
+              },
+            },
+            "id": "2",
+            "revision": 1,
+            "type": "",
+          },
+        },
+        "id": "event-2",
+        "type": "event",
+      },
+      Object {
+        "header": Object {
+          "title": "Wednesday 11 July",
+        },
+        "id": "header-Wednesday 11 July",
+        "type": "header",
+      },
+      Object {
+        "event": Object {
+          "fields": Object {
+            "endTime": Object {
+              "en-GB": "2018-08-11T00:00",
+            },
+            "eventPriceHigh": Object {
+              "en-GB": "0",
+            },
+            "eventPriceLow": Object {
+              "en-GB": "0",
+            },
+            "eventsListPicture": Object {
+              "en-GB": "http://placekitten.com/200/300",
+            },
+            "locationName": Object {
+              "en-GB": "Somewhere",
+            },
+            "name": Object {
+              "en-GB": "some other",
+            },
+            "startTime": Object {
+              "en-GB": "2018-07-11T00:00",
+            },
+          },
+          "sys": Object {
+            "contentType": Object {
+              "sys": Object {
+                "id": "",
+              },
+            },
+            "id": "2",
+            "revision": 1,
+            "type": "",
+          },
+        },
+        "id": "event-2",
+        "type": "event",
+      },
+    ]
+  }
   disableVirtualization={false}
   horizontal={false}
   initialNumToRender={10}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
+  numColumns={1}
   onEndReachedThreshold={2}
   onRefresh={[Function]}
   refreshing={false}
   renderItem={[Function]}
-  renderSectionFooter={[Function]}
-  renderSectionHeader={[Function]}
   scrollEventThrottle={50}
-  sections={
+  stickyHeaderIndices={
     Array [
-      Object {
-        "data": Array [
-          Object {
-            "fields": Object {
-              "endTime": Object {
-                "en-GB": "2018-08-11T00:00",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": "0",
-              },
-              "eventPriceLow": Object {
-                "en-GB": "0",
-              },
-              "eventsListPicture": Object {
-                "en-GB": "http://placekitten.com/200/300",
-              },
-              "locationName": Object {
-                "en-GB": "Somewhere",
-              },
-              "name": Object {
-                "en-GB": "some event",
-              },
-              "startTime": Object {
-                "en-GB": "2018-07-10T00:00",
-              },
-            },
-            "sys": Object {
-              "contentType": Object {
-                "sys": Object {
-                  "id": "",
-                },
-              },
-              "id": "1",
-              "revision": 1,
-              "type": "",
-            },
-          },
-          Object {
-            "fields": Object {
-              "endTime": Object {
-                "en-GB": "2018-08-11T00:00",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": "0",
-              },
-              "eventPriceLow": Object {
-                "en-GB": "0",
-              },
-              "eventsListPicture": Object {
-                "en-GB": "http://placekitten.com/200/300",
-              },
-              "locationName": Object {
-                "en-GB": "Somewhere",
-              },
-              "name": Object {
-                "en-GB": "some other",
-              },
-              "startTime": Object {
-                "en-GB": "2018-07-10T00:00",
-              },
-            },
-            "sys": Object {
-              "contentType": Object {
-                "sys": Object {
-                  "id": "",
-                },
-              },
-              "id": "2",
-              "revision": 1,
-              "type": "",
-            },
-          },
-        ],
-        "title": "Tuesday 10 July",
-      },
-      Object {
-        "data": Array [
-          Object {
-            "fields": Object {
-              "endTime": Object {
-                "en-GB": "2018-08-11T00:00",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": "0",
-              },
-              "eventPriceLow": Object {
-                "en-GB": "0",
-              },
-              "eventsListPicture": Object {
-                "en-GB": "http://placekitten.com/200/300",
-              },
-              "locationName": Object {
-                "en-GB": "Somewhere",
-              },
-              "name": Object {
-                "en-GB": "some other",
-              },
-              "startTime": Object {
-                "en-GB": "2018-07-11T00:00",
-              },
-            },
-            "sys": Object {
-              "contentType": Object {
-                "sys": Object {
-                  "id": "",
-                },
-              },
-              "id": "2",
-              "revision": 1,
-              "type": "",
-            },
-          },
-        ],
-        "title": "Wednesday 11 July",
-      },
+      0,
+      3,
     ]
   }
   stickySectionHeadersEnabled={true}
   updateCellsBatchingPeriod={50}
-  windowSize={10}
+  windowSize={21}
 />
-`;
-
-exports[`EventList renders section headers correctly 1`] = `
-<ContentPadding
-  padding={Object {}}
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#f3f3f3",
-        "flexDirection": "row",
-        "minHeight": 40,
-      },
-      Object {
-        "borderWidth": 0,
-        "elevation": 3,
-        "marginBottom": 6,
-        "shadowColor": "rgba(0, 0, 0, 0.14)",
-        "shadowOffset": Object {
-          "height": 1,
-          "width": 0,
-        },
-        "shadowOpacity": 1,
-        "shadowRadius": 3,
-      },
-    ]
-  }
->
-  <Text
-    accessibilityTraits={
-      Array [
-        "header",
-      ]
-    }
-    accessible={true}
-    color="lightNavyBlueColor"
-    markdown={false}
-    markdownStyle={Object {}}
-    type="h2"
-  >
-    Hello
-  </Text>
-  <Component />
-</ContentPadding>
 `;
