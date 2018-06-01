@@ -1,7 +1,9 @@
-import reducer from "./events";
+// @flow
+import reducer from "./data";
 
 describe("Events reducer", () => {
   it("initialises with default state", () => {
+    // $FlowFixMe
     const state = reducer(undefined, {});
 
     expect(state).toMatchSnapshot();
@@ -49,9 +51,10 @@ describe("Events reducer", () => {
       ],
       assets: [{ sys: { id: "asset1", contentType: { sys: { id: "asset" } } } }]
     };
+    // $FlowFixMe
     const state = reducer(initialState, {
       type: "RECEIVE_CMS_DATA",
-      payload: newCmsData
+      data: newCmsData
     });
 
     expect(state.loading).toBe(false);
@@ -102,9 +105,10 @@ describe("Events reducer", () => {
         }
       }
     ];
+    // $FlowFixMe
     const state = reducer(initialState, {
       type: "RECEIVE_CMS_DATA",
-      payload: newCmsData
+      data: newCmsData
     });
 
     expect(state.loading).toBe(false);

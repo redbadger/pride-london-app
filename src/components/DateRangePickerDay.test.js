@@ -2,6 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import DateRangePickerDay from "./DateRangePickerDay";
+import * as dateLib from "../lib/date";
 
 const render = props =>
   shallow(
@@ -76,6 +77,42 @@ describe("dateRangePickerDay", () => {
     });
 
     expect(output).toMatchSnapshot();
+  });
+
+  it("renders a disabled day if before today", () => {
+    jest
+      .spyOn(dateLib, "now")
+      .mockImplementation(() => "2018-08-13T17:42:06+01:00");
+
+    const output = render({
+      date: date(2018, 7, 12),
+      marking: {},
+      state: "disabled"
+    });
+
+    expect(output.props().disabled).toEqual(true);
+    expect(output.props().accessibilityTraits).toContain("disabled");
+    expect(output.children().props().style).toEqual(
+      expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
+    );
+  });
+
+  it("does not render a disabled day if same day as today", () => {
+    jest
+      .spyOn(dateLib, "now")
+      .mockImplementation(() => "2018-08-12T17:42:06+01:00");
+
+    const output = render({
+      date: date(2018, 7, 12),
+      marking: {},
+      state: "disabled"
+    });
+
+    expect(output.props().disabled).toEqual(false);
+    expect(output.props().accessibilityTraits).not.toContain("disabled");
+    expect(output.children().props().style).not.toEqual(
+      expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
+    );
   });
 
   describe("interaction", () => {

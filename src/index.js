@@ -13,7 +13,7 @@ import { Client, Configuration } from "bugsnag-react-native";
 import analytics from "./integrations/analytics";
 import reducers from "./reducers";
 import { init } from "./actions";
-import { getEvents, backgroundRefreshEvents } from "./actions/events";
+import { getData, backgroundRefreshData } from "./actions/data";
 import { loadSavedEvents } from "./actions/saved-events";
 import { navigate } from "./actions/navigation";
 import App from "./App";
@@ -41,13 +41,13 @@ const handleNavigationChange = navigate(store.dispatch);
 
 const handleAppStateChange = () => {
   if (AppState.currentState === "active")
-    store.dispatch(backgroundRefreshEvents());
+    store.dispatch(backgroundRefreshData());
 };
 
 class AppWrapper extends Component<{}> {
   componentDidMount() {
     store.dispatch(init());
-    store.dispatch(getEvents(SplashScreen.hide));
+    store.dispatch(getData(SplashScreen.hide));
     store.dispatch(loadSavedEvents());
     AppState.addEventListener("change", handleAppStateChange);
   }
