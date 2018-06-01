@@ -206,4 +206,33 @@ describe("updateCmsData", () => {
     expect(mockSaveCmsData).not.toHaveBeenCalled();
     expect(updatedCmsData).toEqual(expectedData);
   });
+
+  it("fails silently if sync fails for some reason", async () => {
+    const mockLocalCmsData = {
+      entries: [{}],
+      assets: [{}],
+      syncToken: "123"
+    };
+    const mockLoadCmsData = () => mockLocalCmsData;
+    const mockSaveCmsData = () => {};
+    const mockClient = {
+      sync: jest.fn(() => {
+        throw new Error("Network timeout");
+      })
+    };
+
+    const updatedCmsData = await updateCmsData(
+      mockLoadCmsData,
+      mockSaveCmsData,
+      mockClient
+    );
+
+    const expectedData = {
+      ...mockLocalCmsData,
+      updated: false
+    };
+
+    expect(mockClient.sync).toHaveBeenCalled();
+    expect(updatedCmsData).toEqual(expectedData);
+  });
 });
