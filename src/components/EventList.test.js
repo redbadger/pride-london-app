@@ -1,6 +1,7 @@
 import React from "react";
+import { LayoutAnimation } from "react-native";
 import { shallow } from "enzyme";
-import EventList, { renderItem } from "./EventList";
+import EventList from "./EventList";
 
 const events = [
   [
@@ -102,6 +103,13 @@ const events = [
   ]
 ];
 
+let configureNextSpy;
+beforeEach(() => {
+  configureNextSpy = jest
+    .spyOn(LayoutAnimation, "configureNext")
+    .mockImplementation(() => {});
+});
+
 describe("EventList", () => {
   const render = props =>
     shallow(
@@ -124,29 +132,56 @@ describe("EventList", () => {
     expect(output).toMatchSnapshot();
   });
 
+  it("animates layout changes when events changed on render", () => {
+    const output = render();
+    output.setState({
+      eventsChanged: true
+    });
+    expect(configureNextSpy).toHaveBeenCalledTimes(1);
+  });
+
   it("renders section headers correctly", () => {
     const renderSectionHeader = render().prop("renderSectionHeader");
-    const output = shallow(
-      renderSectionHeader({ section: { title: "Hello" } })
-    );
+    const output = renderSectionHeader({ section: { data: events[0] } });
 
     expect(output).toMatchSnapshot();
   });
 
-  describe("#renderItem", () => {
-    it("renders items correctly", () => {
-      const Item = renderItem({
-        isSavedEvent: () => false,
-        addSavedEvent: () => {},
-        removeSavedEvent: () => {},
-        locale: "en-GB",
-        onPress: () => {},
-        getAssetSource: () => {}
-      });
-      const output = shallow(<Item item={events[0][0]} />);
+  it("renders section footers correctly", () => {
+    const renderSectionFooter = render().prop("renderSectionFooter");
+    const output = renderSectionFooter({ section: { data: events[0] } });
 
-      expect(output).toMatchSnapshot();
-    });
+    expect(output).toMatchSnapshot();
+  });
+
+  it("renders items correctly", () => {
+    const renderItem = render().prop("renderItem");
+    const output = renderItem({ item: events[0][0] });
+
+    expect(output).toMatchSnapshot();
+  });
+
+  it("renders item separators correctly", () => {
+    const ItemSeparatorComponent = render().prop("ItemSeparatorComponent");
+    const output = shallow(<ItemSeparatorComponent />);
+
+    expect(output).toMatchSnapshot();
+  });
+
+  it("renders section separators correctly", () => {
+    const SectionSeparatorComponent = render().prop(
+      "SectionSeparatorComponent"
+    );
+    const output = shallow(<SectionSeparatorComponent />);
+
+    expect(output).toMatchSnapshot();
+  });
+
+  it("extracts keys correctly", () => {
+    const keyExtractor = render().prop("keyExtractor");
+    const key = keyExtractor(events[0][0]);
+
+    expect(key).toBe("1");
   });
 
   describe("#shouldComponentUpdate", () => {
@@ -161,12 +196,16 @@ describe("EventList", () => {
       const nextProps = {
         locale: "en-GB",
         refreshing: false,
-        events: events.slice(0, 2), // force different instance
         savedEvents: props.savedEvents
+      };
+      const nextState = {
+        eventsChanged: false
       };
 
       const output = render(props);
-      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+      const shouldUpdate = output
+        .instance()
+        .shouldComponentUpdate(nextProps, nextState);
 
       expect(shouldUpdate).toBe(false);
     });
@@ -175,12 +214,16 @@ describe("EventList", () => {
       const nextProps = {
         locale: "en-US",
         refreshing: false,
-        events,
         savedEvents: props.savedEvents
+      };
+      const nextState = {
+        eventsChanged: false
       };
 
       const output = render(props);
-      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+      const shouldUpdate = output
+        .instance()
+        .shouldComponentUpdate(nextProps, nextState);
 
       expect(shouldUpdate).toBe(true);
     });
@@ -189,12 +232,16 @@ describe("EventList", () => {
       const nextProps = {
         locale: "en-GB",
         refreshing: true,
-        events,
         savedEvents: props.savedEvents
+      };
+      const nextState = {
+        eventsChanged: false
       };
 
       const output = render(props);
-      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+      const shouldUpdate = output
+        .instance()
+        .shouldComponentUpdate(nextProps, nextState);
 
       expect(shouldUpdate).toBe(true);
     });
@@ -203,12 +250,16 @@ describe("EventList", () => {
       const nextProps = {
         locale: "en-GB",
         refreshing: false,
-        events: events.slice(0, 1),
         savedEvents: props.savedEvents
+      };
+      const nextState = {
+        eventsChanged: true
       };
 
       const output = render(props);
-      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+      const shouldUpdate = output
+        .instance()
+        .shouldComponentUpdate(nextProps, nextState);
 
       expect(shouldUpdate).toBe(true);
     });
@@ -217,14 +268,22 @@ describe("EventList", () => {
       const nextProps = {
         locale: "en-GB",
         refreshing: false,
-        events,
         savedEvents: new Set(["test"])
+      };
+      const nextState = {
+        eventsChanged: false
       };
 
       const output = render(props);
-      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+      const shouldUpdate = output
+        .instance()
+        .shouldComponentUpdate(nextProps, nextState);
 
       expect(shouldUpdate).toBe(true);
     });
   });
+});
+
+afterEach(() => {
+  configureNextSpy.mockRestore();
 });
