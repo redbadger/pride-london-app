@@ -32,8 +32,6 @@ const toggleTagFilter = (
   return values;
 };
 
-// import tags from "../../data/tags";
-// May want to move this to the EventFilters actions
 const emptyFilters: EventFiltersPayload = {
   timeOfDay: new Set(),
   area: new Set(),
