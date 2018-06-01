@@ -24,7 +24,7 @@ export type Props = {
   removeSavedEvent: string => void,
   loading: boolean,
   refreshing: boolean,
-  updateEvents: () => Promise<void>,
+  updateData: () => Promise<void>,
   getAssetSource: FieldRef => ImageSource,
   selectedCategories: Set<string>
 };
@@ -43,7 +43,7 @@ class EventsScreen extends Component<Props> {
   render() {
     const {
       navigation,
-      updateEvents,
+      updateData,
       events,
       savedEvents,
       addSavedEvent,
@@ -69,7 +69,7 @@ class EventsScreen extends Component<Props> {
             removeSavedEvent={removeSavedEvent}
             refreshing={refreshing}
             onRefresh={() => {
-              updateEvents();
+              updateData();
             }}
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });

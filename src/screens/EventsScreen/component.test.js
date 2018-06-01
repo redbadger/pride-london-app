@@ -24,7 +24,7 @@ describe("EventsScreen Component", () => {
         events={[]}
         loading={false}
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
@@ -42,7 +42,7 @@ describe("EventsScreen Component", () => {
         events={[]}
         loading
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
@@ -57,14 +57,14 @@ describe("EventsScreen Component", () => {
   });
 
   it("updates events on refresh", () => {
-    const updateEvents = jest.fn();
+    const updateData = jest.fn();
     const output = shallow(
       <Component
         navigation={navigation}
         events={[]}
         loading={false}
         refreshing={false}
-        updateEvents={updateEvents}
+        updateData={updateData}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
@@ -78,7 +78,7 @@ describe("EventsScreen Component", () => {
       .props()
       .onRefresh();
 
-    expect(updateEvents).toHaveBeenCalled();
+    expect(updateData).toHaveBeenCalled();
   });
 
   describe("navigation", () => {
@@ -93,7 +93,7 @@ describe("EventsScreen Component", () => {
         events={[]}
         loading={false}
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
