@@ -1,3 +1,4 @@
+// @flow
 import locale from "./locale";
 
 describe("locale.js", () => {

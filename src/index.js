@@ -2,7 +2,6 @@
 import "core-js/modules/es7.string.pad-start";
 import React, { Component } from "react";
 import { YellowBox, AppState } from "react-native";
-import SplashScreen from "react-native-splash-screen";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -47,7 +46,7 @@ const handleAppStateChange = () => {
 class AppWrapper extends Component<{}> {
   componentDidMount() {
     store.dispatch(init());
-    store.dispatch(getData(SplashScreen.hide));
+    store.dispatch(getData());
     store.dispatch(loadSavedEvents());
     AppState.addEventListener("change", handleAppStateChange);
   }

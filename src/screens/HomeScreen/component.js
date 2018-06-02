@@ -35,6 +35,8 @@ type Props = {
   getAssetSource: FieldRef => ImageSource
 };
 
+const getId = obj => obj.id;
+
 class HomeScreen extends Component<Props> {
   shouldComponentUpdate = (nextProps: Props): boolean => {
     const { loading, featuredEventsTitle } = this.props;
@@ -43,8 +45,8 @@ class HomeScreen extends Component<Props> {
       featuredEventsTitle: nextFeaturedEventsTitle
     } = nextProps;
 
-    const bannerIds = this.props.headerBanners.map(e => e.sys.id);
-    const nextBannerIds = nextProps.headerBanners.map(e => e.sys.id);
+    const bannerIds = this.props.headerBanners.map(getId);
+    const nextBannerIds = nextProps.headerBanners.map(getId);
 
     const ids = this.props.featuredEvents.map(e => e.sys.id);
     const nextIds = nextProps.featuredEvents.map(e => e.sys.id);
