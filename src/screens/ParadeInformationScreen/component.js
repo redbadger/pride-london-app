@@ -1,7 +1,7 @@
 // @flow
 
-import React, { Component } from "react";
-import { StyleSheet, View, ScrollView, Dimensions } from "react-native";
+import React, { PureComponent } from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
 import Text from "../../components/Text";
 import Header from "../../components/Header";
 import ImageHeader from "../../components/ImageHeader";
@@ -27,7 +27,7 @@ const mapImage = {
 
 export type Props = {};
 
-export default class ParadeInformationScreen extends Component<Props> {
+class ParadeInformationScreen extends PureComponent<Props> {
   render() {
     return (
       <View style={styles.container}>
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   }
 });
 
-// export default ParadeInformationScreen;
+export default ParadeInformationScreen;

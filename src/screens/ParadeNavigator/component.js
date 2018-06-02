@@ -1,16 +1,12 @@
 // @flow
 
-import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import MapView, { Polyline } from "react-native-maps";
+import React from "react";
+import { StyleSheet } from "react-native";
 import { createMaterialTopTabNavigator } from "react-navigation";
 
 import { PARADE_INFORMATION, PARADE_MAP } from "../../constants/routes";
 import ParadeInformationScreen from "../ParadeInformationScreen";
 import ParadeMapScreen from "../ParadeMapScreen";
-import DonateScreen from "../DonateScreen";
-import SponsorScreen from "../SponsorScreen";
 import { tabBarBgColor } from "../../constants/colors";
 import text from "../../constants/text";
 
@@ -30,7 +26,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const ParadeTabNavigator = createMaterialTopTabNavigator(
+const ParadeTabNav = createMaterialTopTabNavigator(
   {
     [PARADE_MAP]: {
       screen: ParadeMapScreen,
@@ -54,4 +50,4 @@ const ParadeTabNavigator = createMaterialTopTabNavigator(
   }
 );
 
-export default ParadeTabNavigator;
+export default ParadeTabNav;
