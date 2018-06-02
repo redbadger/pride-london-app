@@ -122,8 +122,10 @@ exports[`renders correctly 1`] = `
       bgTopRight={1}
       centerText={true}
       color="#2d2f7f"
+      contrast={false}
       description="Be part of the movement"
       navigation={null}
+      style={Object {}}
       title="Support us"
       url="SUPPORT_US"
     />
