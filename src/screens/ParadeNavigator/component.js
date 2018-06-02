@@ -7,7 +7,11 @@ import { createMaterialTopTabNavigator } from "react-navigation";
 import { PARADE_INFORMATION, PARADE_MAP } from "../../constants/routes";
 import ParadeInformationScreen from "../ParadeInformationScreen";
 import ParadeMapScreen from "../ParadeMapScreen";
-import { tabBarBgColor } from "../../constants/colors";
+import {
+  lightTealColor,
+  whiteColor,
+  darkBlueGreyColor
+} from "../../constants/colors";
 import text from "../../constants/text";
 
 const styles = StyleSheet.create({
@@ -41,9 +45,16 @@ const ParadeTabNav = createMaterialTopTabNavigator(
     swipeEnabled: true,
     animationEnabled: false,
     initialRouteName: PARADE_MAP,
+
     tabBarOptions: {
+      activeTintColor: lightTealColor,
+      inactiveTintColor: whiteColor,
       indicatorStyle: {
-        top: 0
+        top: 0,
+        backgroundColor: lightTealColor
+      },
+      style: {
+        backgroundColor: darkBlueGreyColor
       },
       upperCaseLabel: false
     }
