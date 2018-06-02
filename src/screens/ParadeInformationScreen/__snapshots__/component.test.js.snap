@@ -9,10 +9,6 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Header
-    testID="page-heading-parade"
-    title="Parade"
-  />
   <ScrollView>
     <Component
       style={

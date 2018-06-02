@@ -1,7 +1,6 @@
 // @flow
 
 import React from "react";
-import { StyleSheet } from "react-native";
 import { createMaterialTopTabNavigator } from "react-navigation";
 
 import { PARADE_INFORMATION, PARADE_MAP } from "../../constants/routes";
