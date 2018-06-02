@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderBanner decoder correctly decodes valid CMS headerbanner 1`] = `
+Object {
+  "contentType": "headerBanner",
+  "fields": Object {
+    "backgroundColour": "#333333",
+    "heading": "heading",
+    "headingLine2": "headingLine2",
+    "heroImage": Object {
+      "sys": Object {
+        "id": "2o2SZPgYl2ABCWu2MoK333",
+      },
+    },
+    "subHeading": "subHeading",
+  },
+  "id": "3O3SZPgYl2MUEWu2MoK2oi",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;
