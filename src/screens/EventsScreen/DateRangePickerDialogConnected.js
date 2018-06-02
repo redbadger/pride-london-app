@@ -5,15 +5,15 @@ import {
   stageEventFilters,
   commitEventFilters,
   clearStagedEventFilters
-} from "../actions/event-filters";
-import type { DateRange } from "../data/date-time";
-import { selectFilteredEvents } from "../selectors/events";
+} from "../../actions/event-filters";
+import type { DateRange } from "../../data/date-time";
+import { selectFilteredEvents } from "../../selectors/events";
 import {
   selectDateFilter,
   selectIsStagingFilters
-} from "../selectors/event-filters";
+} from "../../selectors/event-filters";
 import Component from "./DateRangePickerDialog";
-import text from "../constants/text";
+import text from "../../constants/text";
 
 type OwnProps = {
   onApply: () => void,
@@ -32,8 +32,8 @@ type StateProps = {
 type DispatchProps = {
   onApply: () => void,
   onCancel: () => void,
-  onChange: (?DateRange) => void,
-}
+  onChange: (?DateRange) => void
+};
 
 type Props = StateProps & DispatchProps;
 

@@ -1,13 +1,13 @@
 // @flow
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
-import type { State } from "../reducers";
-import type { DateRange } from "../data/date-time";
-import type { EventCategoryName } from "../data/event";
+import type { State } from "../../reducers";
+import type { DateRange } from "../../data/date-time";
+import type { EventCategoryName } from "../../data/event";
 import {
   selectDateFilter,
   selectTagFilterSelectedCount
-} from "../selectors/event-filters";
+} from "../../selectors/event-filters";
 import Component from "./FilterHeader";
 
 type OwnProps = {

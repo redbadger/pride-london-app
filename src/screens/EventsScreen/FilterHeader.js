@@ -1,19 +1,19 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import type { DateRange } from "../data/date-time";
-import type { EventCategoryName } from "../data/event";
+import type { DateRange } from "../../data/date-time";
+import type { EventCategoryName } from "../../data/event";
 import DateRangePickerDialog from "./DateRangePickerDialogConnected";
 import FilterHeaderButton from "./FilterHeaderButton";
-import ContentPadding from "./ContentPadding";
+import ContentPadding from "../../components/ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
 import {
   filterBgColor,
   filterButtonsBgColor,
   whiteColor
-} from "../constants/colors";
-import text from "../constants/text";
-import { formatDateRange } from "../data/formatters";
+} from "../../constants/colors";
+import text from "../../constants/text";
+import { formatDateRange } from "../../data/formatters";
 
 export type Props = {
   onFilterCategoriesPress: Function,

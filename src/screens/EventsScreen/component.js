@@ -10,7 +10,7 @@ import type {
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
-import FilterHeader from "../../components/FilterHeaderConnected";
+import FilterHeader from "./FilterHeaderConnected";
 import Loading from "../../components/Loading";
 import { bgColor } from "../../constants/colors";
 import {
