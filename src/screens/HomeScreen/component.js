@@ -15,6 +15,7 @@ import {
   cardBgColor,
   titleTextColor,
   bgColor,
+  whiteColor,
   lightNavyBlueColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
@@ -90,43 +91,45 @@ class HomeScreen extends Component<Props> {
             getAssetSource={getAssetSource}
             navigation={navigation}
           />
-          <ContentPadding style={styles.mainContentContainer}>
-            {loading && <Loading />}
-            <View style={styles.sectionTitle}>
-              <Text type="h2" style={{ color: titleTextColor }}>
-                {featuredEventsTitle}
-              </Text>
-              <Touchable onPress={this.eventList} testID="view-all">
-                <TextLink>{text.homeViewAll}</TextLink>
-              </Touchable>
-            </View>
-            <View style={styles.tilesContainer}>
-              {events.map((event, index) => (
-                <View
-                  key={event.sys.id}
-                  style={[
-                    styles.tileContainer,
-                    index % 2 === 0 && styles.startOfRowTileContainer
-                  ]}
-                >
-                  <Touchable
-                    style={styles.tile}
-                    onPress={() => this.eventDetails(event.sys.id)}
-                    testID={`event-tile-${event.sys.id}`}
+          {events.length > 0 && (
+            <ContentPadding style={styles.mainContentContainer}>
+              {loading && <Loading />}
+              <View style={styles.sectionTitle}>
+                <Text type="h2" style={{ color: titleTextColor }}>
+                  {featuredEventsTitle}
+                </Text>
+                <Touchable onPress={this.eventList} testID="view-all">
+                  <TextLink>{text.homeViewAll}</TextLink>
+                </Touchable>
+              </View>
+              <View style={styles.tilesContainer}>
+                {events.map((event, index) => (
+                  <View
+                    key={event.sys.id}
+                    style={[
+                      styles.tileContainer,
+                      index % 2 === 0 && styles.startOfRowTileContainer
+                    ]}
                   >
-                    <EventTile
-                      name={event.fields.name[locale]}
-                      date={event.fields.startTime[locale]}
-                      eventCategories={event.fields.eventCategories[locale]}
-                      image={getAssetSource(
-                        event.fields.eventsListPicture[locale]
-                      )}
-                    />
-                  </Touchable>
-                </View>
-              ))}
-            </View>
-          </ContentPadding>
+                    <Touchable
+                      style={styles.tile}
+                      onPress={() => this.eventDetails(event.sys.id)}
+                      testID={`event-tile-${event.sys.id}`}
+                    >
+                      <EventTile
+                        name={event.fields.name[locale]}
+                        date={event.fields.startTime[locale]}
+                        eventCategories={event.fields.eventCategories[locale]}
+                        image={getAssetSource(
+                          event.fields.eventsListPicture[locale]
+                        )}
+                      />
+                    </Touchable>
+                  </View>
+                ))}
+              </View>
+            </ContentPadding>
+          )}
         </View>
       </ScrollView>
     );
@@ -135,7 +138,7 @@ class HomeScreen extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: lightNavyBlueColor
+    backgroundColor: whiteColor
   },
   content: {
     backgroundColor: cardBgColor
