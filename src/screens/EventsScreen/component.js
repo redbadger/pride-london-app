@@ -11,7 +11,7 @@ import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
 import FilterHeader from "./FilterHeaderConnected";
-import Loading from "../../components/Loading";
+import NoEvents from "./NoEvents";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
@@ -64,8 +64,8 @@ class EventsScreen extends Component<Props> {
           selectedCategories={this.props.selectedCategories}
           onFilterButtonPress={this.handleFilterButtonPress}
         />
-        {this.props.loading ? (
-          <Loading />
+        {this.props.loading || events.length < 1 ? (
+          <NoEvents />
         ) : (
           <EventList
             locale={locale}
