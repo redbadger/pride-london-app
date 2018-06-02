@@ -65,7 +65,7 @@ exports[`renders correctly 1`] = `
         }
         type="uber"
       >
-        Pride
+        heading
       </Text>
       <Text
         color="lightNavyBlueColor"
@@ -87,7 +87,7 @@ exports[`renders correctly 1`] = `
         }
         type="uber"
       >
-        Festival
+        headingLine2
       </Text>
       <Text
         color="whiteColor"
@@ -102,7 +102,7 @@ exports[`renders correctly 1`] = `
         }
         type="h2"
       >
-        from - to
+        subHeading
       </Text>
     </ContentPadding>
   </Component>

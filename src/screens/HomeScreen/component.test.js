@@ -4,7 +4,11 @@ import { shallow } from "enzyme";
 import Component from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import Loading from "../../components/Loading";
-import { generateHeaderBanners, generateEvents } from "./__test-data";
+import {
+  generateHeaderBanner,
+  generateEvent,
+  sampleArrayOf
+} from "../../data/__test-data";
 
 const getAssetSource = jest.fn().mockReturnValue({
   uri: "http://example.com/image.png",
@@ -14,6 +18,9 @@ const getAssetSource = jest.fn().mockReturnValue({
 const navigation: any = {
   navigate: jest.fn()
 };
+
+const generateHeaderBanners = sampleArrayOf(generateHeaderBanner);
+const generateEvents = sampleArrayOf(generateEvent);
 
 describe("HomeScreen Component", () => {
   const render = props =>
@@ -34,7 +41,9 @@ describe("HomeScreen Component", () => {
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
     expect(getAssetSource).toHaveBeenCalledTimes(4);
-    expect(getAssetSource).toHaveBeenCalledWith({ sys: { id: "asset1" } });
+    expect(getAssetSource).toHaveBeenCalledWith(
+      featuredEvents[0].fields.eventsListPicture["en-GB"]
+    );
   });
 
   it("renders max 6 events", () => {
@@ -65,10 +74,10 @@ describe("HomeScreen Component", () => {
 
   it("navigates to event when tapped", () => {
     const output = render();
-    const eventTile = output.find({ testID: "event-tile-1" });
+    const eventTile = output.find({ testID: `event-tile-KAHR4` });
     eventTile.simulate("press");
     expect(navigation.navigate).toHaveBeenCalledWith(EVENT_DETAILS, {
-      eventId: "1"
+      eventId: "KAHR4"
     });
   });
 
