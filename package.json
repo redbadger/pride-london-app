@@ -51,6 +51,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "@rgbboy/testcheck": "^1.0.0-rc.3",
     "babel-eslint": "^8.2.1",
     "babel-jest": "22.2.2",
     "babel-preset-react-native": "4.0.0",
