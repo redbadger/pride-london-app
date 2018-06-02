@@ -16,6 +16,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import io.xogus.reactnative.versioncheck.RNVersionCheckPackage;
 
 import io.fabric.sdk.android.Fabric;
 import java.util.Arrays;
@@ -40,7 +41,8 @@ public class MainApplication extends Application implements ReactApplication {
             new MapsPackage(),
             new LinearGradientPackage(),
             new ReactNativeConfigPackage(),
-            new AnalyticsPackage()
+            new AnalyticsPackage(),
+            new RNVersionCheckPackage()
       );
     }
 

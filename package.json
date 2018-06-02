@@ -44,6 +44,7 @@
     "react-native-safe-area-view":
       "robbiemccorkell/react-native-safe-area-view",
     "react-native-splash-screen": "^3.0.6",
+    "react-native-version-check": "^3.0.0-rc.5",
     "react-navigation": "^2.0.1",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",

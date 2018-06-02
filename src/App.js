@@ -5,6 +5,7 @@ import type { NavigationState } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import { lightNavyBlueColor } from "./constants/colors";
 import Navigation from "./Navigation";
+import StoreVersionChecker from "./components/StoreVersionChecker";
 
 export type Props = {
   onNavigationStateChange: (NavigationState, NavigationState) => void
@@ -24,6 +25,7 @@ const App = ({ onNavigationStateChange }: Props) => (
       barStyle="light-content"
       backgroundColor={lightNavyBlueColor}
     />
+    <StoreVersionChecker />
     <Navigation onNavigationStateChange={onNavigationStateChange} />
   </SafeAreaView>
 );

@@ -51,6 +51,7 @@
 		C7BF4CAE82A24794807F8B14 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39B45C6580BE4CD4A6D4DEBC /* Roboto-Bold.ttf */; };
 		CEAF234A6DB24F138A0FDE42 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0551B12566AC4BE3876EE344 /* Poppins-SemiBoldItalic.ttf */; };
 		D4D47B1F77B94F2F8818448B /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3680107BE344DF99D16CDA /* libReactNativeConfig.a */; };
+		D9973E5120C2C5260007257F /* libRNVersionCheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9973E4F20C2C4D20007257F /* libRNVersionCheck.a */; };
 		DB596BD92B664D6296B842A1 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C678778AAE46BC9D691AEC /* Poppins-Regular.ttf */; };
 		E22D7F242CD248F0A257CFEB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1650B649837A4A3B9F7A6FF4 /* Roboto-Regular.ttf */; };
 		EEF84AE0632D437BB1763EA4 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 653D79F0DBE4465EB8939DCB /* libAirMaps.a */; };
@@ -403,6 +404,13 @@
 			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
 			remoteInfo = ReactNativeConfig;
 		};
+		D9973E4E20C2C4D20007257F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9973E1B20C2C4D20007257F /* RNVersionCheck.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNVersionCheck;
+		};
 		D9D0E1382066DB7D00E28562 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F8C91E1E19B24BFD87EAF972 /* SplashScreen.xcodeproj */;
@@ -493,6 +501,7 @@
 		B02A5A5671CA4B19B5BCD0B4 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		C5C678778AAE46BC9D691AEC /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
+		D9973E1B20C2C4D20007257F /* RNVersionCheck.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVersionCheck.xcodeproj; path = "../node_modules/react-native-version-check/ios/RNVersionCheck.xcodeproj"; sourceTree = "<group>"; };
 		F3E9F6E137EF4895832E3D99 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		F7F30F2CFAEF426BA05F1A4F /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		F8C91E1E19B24BFD87EAF972 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
@@ -537,6 +546,7 @@
 				FC84244B2A4F4565BBCADEE5 /* libLottieReactNative.a in Frameworks */,
 				0F97045F02ED482B9C1E9502 /* libRNReactNativeHapticFeedback.a in Frameworks */,
 				C2B8A1AD4B0A4FE0A28159D1 /* libBugsnagReactNative.a in Frameworks */,
+				D9973E5120C2C5260007257F /* libRNVersionCheck.a in Frameworks */,
 				318765D00A39443CB392160E /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,6 +747,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D9973E1B20C2C4D20007257F /* RNVersionCheck.xcodeproj */,
 				5AB34E3A2077745700E0E793 /* BVLinearGradient.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -826,6 +837,14 @@
 			isa = PBXGroup;
 			children = (
 				D936DBA2201CD05000662153 /* libReactNativeConfig.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9973E1C20C2C4D20007257F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9973E4F20C2C4D20007257F /* libRNVersionCheck.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1019,6 +1038,10 @@
 				{
 					ProductGroup = 16F5947A209CA1D900703940 /* Products */;
 					ProjectRef = D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */;
+				},
+				{
+					ProductGroup = D9973E1C20C2C4D20007257F /* Products */;
+					ProjectRef = D9973E1B20C2C4D20007257F /* RNVersionCheck.xcodeproj */;
 				},
 				{
 					ProductGroup = D9D0E1352066DB7D00E28562 /* Products */;
@@ -1361,6 +1384,13 @@
 			fileType = archive.ar;
 			path = libReactNativeConfig.a;
 			remoteRef = D936DBA1201CD05000662153 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9973E4F20C2C4D20007257F /* libRNVersionCheck.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNVersionCheck.a;
+			remoteRef = D9973E4E20C2C4D20007257F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D9D0E1392066DB7D00E28562 /* libSplashScreen.a */ = {
