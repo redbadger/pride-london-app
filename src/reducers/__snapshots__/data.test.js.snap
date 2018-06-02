@@ -6,5 +6,6 @@ Object {
   "entries": Array [],
   "loading": true,
   "refreshing": false,
+  "sponsors": Array [],
 }
 `;

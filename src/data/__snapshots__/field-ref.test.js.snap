@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldRef decoder correctly decodes valid CMS fielf reference 1`] = `
+Object {
+  "sys": Object {
+    "id": "test",
+  },
+}
+`;
