@@ -5,12 +5,13 @@ import reducer from "./splash-screen";
 describe("Splash screen reducer", () => {
   it("hides splash screen on RECEIVE_CMS_DATA", () => {
     const data: any = null;
-    reducer(undefined, {
+    const newState = reducer(true, {
       type: "RECEIVE_CMS_DATA",
       data
     });
 
     expect(SplashScreen.hide).toHaveBeenCalled();
+    expect(newState).toBe(false);
   });
 });
 

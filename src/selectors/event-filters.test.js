@@ -43,7 +43,8 @@ const buildState = (
     stagedFilters
   },
   savedEvents: new Set(),
-  currentRoute: "fakeRoute"
+  currentRoute: "fakeRoute",
+  splashScreen: false
 });
 
 export type BuildEventArguments = {

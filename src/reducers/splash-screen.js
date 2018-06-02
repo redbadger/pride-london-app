@@ -3,10 +3,11 @@ import type { Reducer } from "redux";
 import SplashScreen from "react-native-splash-screen";
 import type { DataAction } from "../actions/data";
 
-type State = void;
+export type State = boolean;
+const defaultState = true;
 
 const splashScreen: Reducer<State, DataAction> = (
-  state: State = undefined,
+  state: State = defaultState,
   action: DataAction
 ) => {
   // We want to hide the splash screen on "INIT"
@@ -14,6 +15,7 @@ const splashScreen: Reducer<State, DataAction> = (
   // is still loading.
   if (action.type === "RECEIVE_CMS_DATA") {
     SplashScreen.hide();
+    return false;
   }
 
   return state;
