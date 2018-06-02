@@ -1,26 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EventList #renderItem renders items correctly 1`] = `
-<ContentPadding
-  padding={Object {}}
-  style={Object {}}
->
-  <EventCard
-    addSavedEvent={[Function]}
-    endTime="2018-08-11T00:00"
-    eventPriceHigh="0"
-    eventPriceLow="0"
-    id="1"
-    isSaved={false}
-    locationName="Somewhere"
-    name="some event"
-    onPress={[Function]}
-    removeSavedEvent={[Function]}
-    startTime="2018-07-10T00:00"
-  />
-</ContentPadding>
-`;
-
 exports[`EventList renders correctly 1`] = `
 <SectionList
   ItemSeparatorComponent={[Function]}
@@ -119,7 +98,7 @@ exports[`EventList renders correctly 1`] = `
             },
           },
         ],
-        "title": "Tuesday 10 July",
+        "key": "2018-07-10",
       },
       Object {
         "data": Array [
@@ -159,7 +138,7 @@ exports[`EventList renders correctly 1`] = `
             },
           },
         ],
-        "title": "Wednesday 11 July",
+        "key": "2018-07-11",
       },
     ]
   }
@@ -169,46 +148,62 @@ exports[`EventList renders correctly 1`] = `
 />
 `;
 
-exports[`EventList renders section headers correctly 1`] = `
+exports[`EventList renders item separators correctly 1`] = `
+<Component
+  style={
+    Object {
+      "height": 12,
+    }
+  }
+/>
+`;
+
+exports[`EventList renders items correctly 1`] = `
 <ContentPadding
   padding={Object {}}
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#f3f3f3",
-        "flexDirection": "row",
-        "minHeight": 40,
-      },
-      Object {
-        "borderWidth": 0,
-        "elevation": 3,
-        "marginBottom": 6,
-        "shadowColor": "rgba(0, 0, 0, 0.14)",
-        "shadowOffset": Object {
-          "height": 1,
-          "width": 0,
-        },
-        "shadowOpacity": 1,
-        "shadowRadius": 3,
-      },
-    ]
-  }
+  style={Object {}}
 >
-  <Text
-    accessibilityTraits={
-      Array [
-        "header",
-      ]
-    }
-    accessible={true}
-    color="lightNavyBlueColor"
-    markdown={false}
-    markdownStyle={Object {}}
-    type="h2"
-  >
-    Hello
-  </Text>
-  <Component />
+  <EventCard
+    addSavedEvent={[Function]}
+    endTime="2018-08-11T00:00"
+    eventPriceHigh="0"
+    eventPriceLow="0"
+    id="1"
+    image={undefined}
+    isSaved={false}
+    locationName="Somewhere"
+    name="some event"
+    onPress={[Function]}
+    removeSavedEvent={[Function]}
+    startTime="2018-07-10T00:00"
+  />
 </ContentPadding>
+`;
+
+exports[`EventList renders section footers correctly 1`] = `
+<Component
+  style={
+    Object {
+      "height": 6,
+    }
+  }
+/>
+`;
+
+exports[`EventList renders section headers correctly 1`] = `
+<SectionHeader
+  badgeValue={undefined}
+  hasShadow={true}
+  title="Tuesday 10 July"
+/>
+`;
+
+exports[`EventList renders section separators correctly 1`] = `
+<Component
+  style={
+    Object {
+      "height": 6,
+    }
+  }
+/>
 `;
