@@ -3,7 +3,7 @@ import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
 import Component from "./component";
-import FilterHeader from "../../components/FilterHeaderConnected";
+import FilterHeader from "./FilterHeaderConnected";
 import EventList from "../../components/EventList";
 import Loading from "../../components/Loading";
 import {
