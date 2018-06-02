@@ -3,17 +3,13 @@ import { selectSponsors } from "./sponsors";
 describe("selectSponsors", () => {
   it("selects property", () => {
     const state = {
-      events: {
-        entries: [
-          { sys: { contentType: { sys: { id: "event" } } } },
-          { sys: { contentType: { sys: { id: "sponsor" } } } }
-        ]
+      data: {
+        sponsors: []
       }
     };
 
     const selected = selectSponsors(state);
 
-    expect(selected.length).toBe(1);
-    expect(selected[0]).toBe(state.events.entries[1]);
+    expect(selected).toEqual(state.data.sponsors);
   });
 });

@@ -8,11 +8,9 @@ import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import FilterSectionList from "./FilterSectionList";
 import { bgColor } from "../../constants/colors";
-import tags from "../../data/tags";
 import type { FilterCollection, Area } from "../../data/event-filters";
 import Header from "./Header";
-
-export type TagFilter = { [string]: Set<string> };
+import type { EventFiltersPayload } from "../../actions/event-filters";
 
 type Props = {
   navigation: NavigationScreenProp<{}>,
@@ -20,9 +18,7 @@ type Props = {
   eventFilters: FilterCollection,
   numEventsSelected: number,
   numTagFiltersSelected: number,
-  onChange: TagFilter => void,
-  onApply: () => void,
-  onCancel: () => void
+  onChange: EventFiltersPayload => void
 };
 
 const toggleTagFilter = (
@@ -36,24 +32,17 @@ const toggleTagFilter = (
   return values;
 };
 
-class FilterModal extends PureComponent<Props> {
-  componentDidMount() {
-    const { navigation, onCancel } = this.props;
-    this.didBlurSubscription = navigation.addListener("willBlur", onCancel);
-  }
+const emptyFilters: EventFiltersPayload = {
+  timeOfDay: new Set(),
+  area: new Set(),
+  price: new Set(),
+  audience: new Set(),
+  venueDetails: new Set(),
+  accessibilityOptions: new Set()
+};
 
-  componentWillUnmount() {
-    this.didBlurSubscription.remove();
-  }
-
-  didBlurSubscription: {
-    remove: () => void
-  };
-
-  clearTagFilters = () =>
-    this.props.onChange(
-      Object.keys(tags).reduce((acc, key) => ({ ...acc, [key]: new Set() }), {})
-    );
+class FilterScreen extends PureComponent<Props> {
+  clearTagFilters = () => this.props.onChange(emptyFilters);
 
   handleCheckboxChange = (sectionName: string, sectionValue: string) => {
     this.props.onChange({
@@ -65,7 +54,6 @@ class FilterModal extends PureComponent<Props> {
   };
 
   handleApplyButtonPress = () => {
-    this.props.onApply();
     this.props.navigation.goBack();
   };
 
@@ -73,7 +61,6 @@ class FilterModal extends PureComponent<Props> {
     const {
       applyButtonText,
       eventFilters,
-      navigation,
       numEventsSelected,
       numTagFiltersSelected
     } = this.props;
@@ -84,7 +71,7 @@ class FilterModal extends PureComponent<Props> {
       >
         <Header
           onClearPress={this.clearTagFilters}
-          onCancelPress={() => navigation.goBack()}
+          onBackPress={this.handleApplyButtonPress}
           showClear={numTagFiltersSelected > 0}
         />
         <ShadowedScrollView style={styles.flex} shadowOpacity={0.6}>
@@ -119,4 +106,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default FilterModal;
+export default FilterScreen;

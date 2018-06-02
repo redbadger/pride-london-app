@@ -1,10 +1,10 @@
 // @flow
-import { format } from "date-fns";
 import React from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import Text from "../components/Text";
 import CategoryPill from "./CategoryPill";
 import { imageBgColor, eventTileTextColor } from "../constants/colors";
+import { toFormat, FORMAT_SHORT_WEEKDAY_DAY_MONTH } from "../lib/date";
 import type { EventCategoryName } from "../data/event";
 import type { ImageSource } from "../data/get-asset-source";
 
@@ -30,7 +30,7 @@ const EventTile = ({ eventCategories, name, date, image }: Props) => (
     </ImageBackground>
     <View style={styles.details}>
       <Text type="small" style={{ color: eventTileTextColor }}>
-        {format(date, "ddd, D MMMM")}
+        {toFormat(date, FORMAT_SHORT_WEEKDAY_DAY_MONTH)}
       </Text>
       <Text
         type="h3"

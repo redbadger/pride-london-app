@@ -57,10 +57,16 @@ export type Performance = {
   }
 };
 
+export type Reference = {
+  sys: {
+    id: string
+  }
+};
+
 export type FeaturedEvents = {
   fields: {
     title: { [string]: string },
-    events: { [string]: Event[] }
+    events: { [string]: Reference[] }
   },
   sys: {
     id: string,

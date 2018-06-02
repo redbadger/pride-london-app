@@ -11,18 +11,36 @@ describe("getCmsData", () => {
 
     const entries = await getCmsData(mockLoadCmsData, mockUpdateCmsData);
 
+    const expectedData = {
+      ...mockLocalEntries,
+      updated: false
+    };
+
     expect(mockUpdateCmsData).not.toHaveBeenCalled();
-    expect(entries).toBe(mockLocalEntries);
+    expect(entries).toEqual(expectedData);
   });
 
   it("updates events if local cms data not found", async () => {
     const mockLocalCmsData = null;
+    const mockRemoteEntries = {
+      entries: [{}],
+      assets: [{}]
+    };
     const mockLoadCmsData = () => mockLocalCmsData;
-    const mockUpdateCmsData = jest.fn();
+    const mockUpdateCmsData = jest.fn(() => ({
+      ...mockRemoteEntries,
+      updated: true
+    }));
 
-    await getCmsData(mockLoadCmsData, mockUpdateCmsData);
+    const entries = await getCmsData(mockLoadCmsData, mockUpdateCmsData);
+
+    const expectedData = {
+      ...mockRemoteEntries,
+      updated: true
+    };
 
     expect(mockUpdateCmsData).toHaveBeenCalled();
+    expect(entries).toEqual(expectedData);
   });
 });
 
@@ -52,13 +70,18 @@ describe("updateCmsData", () => {
       mockClient
     );
 
+    const expectedData = {
+      ...mockSavedCmsData,
+      updated: true
+    };
+
     expect(mockClient.sync).toHaveBeenCalledWith(
       expect.objectContaining({
         initial: true
       })
     );
     expect(mockSaveCmsData).toHaveBeenCalledWith(downloadedCmsData);
-    expect(updatedCmsData).toBe(mockSavedCmsData);
+    expect(updatedCmsData).toEqual(expectedData);
   });
 
   it("downloads full cms data if local cms data not found", async () => {
@@ -86,13 +109,18 @@ describe("updateCmsData", () => {
       mockClient
     );
 
+    const expectedData = {
+      ...mockSavedCmsData,
+      updated: true
+    };
+
     expect(mockClient.sync).toHaveBeenCalledWith(
       expect.objectContaining({
         initial: true
       })
     );
     expect(mockSaveCmsData).toHaveBeenCalledWith(downloadedCmsData);
-    expect(updatedCmsData).toBe(mockSavedCmsData);
+    expect(updatedCmsData).toEqual(expectedData);
   });
 
   it("downloads delta update if local cms data is found", async () => {
@@ -124,6 +152,11 @@ describe("updateCmsData", () => {
       mockClient
     );
 
+    const expectedData = {
+      ...mockSavedCmsData,
+      updated: true
+    };
+
     expect(mockClient.sync).toHaveBeenCalledWith(
       expect.objectContaining({
         initial: false,
@@ -131,7 +164,7 @@ describe("updateCmsData", () => {
       })
     );
     expect(mockSaveCmsData).toHaveBeenCalledWith(downloadedCmsData);
-    expect(updatedCmsData).toBe(mockSavedCmsData);
+    expect(updatedCmsData).toEqual(expectedData);
   });
 
   it("does not send delta to local storage if syncToken has not changed", async () => {
@@ -159,6 +192,11 @@ describe("updateCmsData", () => {
       mockClient
     );
 
+    const expectedData = {
+      ...mockLocalCmsData,
+      updated: false
+    };
+
     expect(mockClient.sync).toHaveBeenCalledWith(
       expect.objectContaining({
         initial: false,
@@ -166,6 +204,6 @@ describe("updateCmsData", () => {
       })
     );
     expect(mockSaveCmsData).not.toHaveBeenCalled();
-    expect(updatedCmsData).toBe(mockLocalCmsData);
+    expect(updatedCmsData).toEqual(expectedData);
   });
 });

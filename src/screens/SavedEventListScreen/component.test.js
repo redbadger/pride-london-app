@@ -87,7 +87,7 @@ describe("SavedEventListScreen Component", () => {
         events={events}
         loading={false}
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
@@ -105,7 +105,7 @@ describe("SavedEventListScreen Component", () => {
         events={events}
         loading
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
@@ -126,7 +126,7 @@ describe("SavedEventListScreen Component", () => {
         events={[]}
         loading={false}
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
@@ -140,14 +140,14 @@ describe("SavedEventListScreen Component", () => {
   });
 
   it("updates events on refresh", () => {
-    const updateEvents = jest.fn();
+    const updateData = jest.fn();
     const output = shallow(
       <Component
         navigation={navigation}
         events={events}
         loading={false}
         refreshing={false}
-        updateEvents={updateEvents}
+        updateData={updateData}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
@@ -161,6 +161,6 @@ describe("SavedEventListScreen Component", () => {
       .props()
       .onRefresh();
 
-    expect(updateEvents).toHaveBeenCalled();
+    expect(updateData).toHaveBeenCalled();
   });
 });

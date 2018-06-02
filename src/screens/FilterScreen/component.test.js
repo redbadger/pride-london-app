@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import FilterModal from "./component";
+import FilterScreen from "./component";
 
-describe("FilterModal", () => {
+describe("FilterScreen", () => {
   it("renders correctly", () => {
     const navigation = {
       addListener: () => {},
@@ -12,45 +12,15 @@ describe("FilterModal", () => {
       price: new Set()
     };
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
       />
     );
     expect(output).toMatchSnapshot();
-  });
-
-  it("adds willBlur susbscription on mount", () => {
-    const removeListener = jest.fn();
-    const navigation = {
-      addListener: jest.fn(() => ({ remove: removeListener })),
-      setParams: () => {}
-    };
-    const eventFilters = {
-      price: new Set()
-    };
-    const onCancel = () => {};
-
-    const output = shallow(
-      <FilterModal
-        navigation={navigation}
-        applyButtonText="Show 26 events"
-        onChange={() => {}}
-        onApply={() => {}}
-        onCancel={onCancel}
-        eventFilters={eventFilters}
-      />
-    );
-
-    expect(navigation.addListener).toHaveBeenCalledWith("willBlur", onCancel);
-
-    output.unmount();
-
-    expect(removeListener).toHaveBeenCalled();
   });
 
   it("dispatches empty filters when 'Clear all' button is pressed", () => {
@@ -63,11 +33,10 @@ describe("FilterModal", () => {
     const onChange = jest.fn();
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChange}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
       />
@@ -95,11 +64,10 @@ describe("FilterModal", () => {
     };
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numEventsSelected={0}
@@ -119,11 +87,10 @@ describe("FilterModal", () => {
     };
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -144,11 +111,10 @@ describe("FilterModal", () => {
     };
 
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -169,11 +135,10 @@ describe("FilterModal", () => {
     };
     const onChangeSpy = jest.fn();
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChangeSpy}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -195,11 +160,10 @@ describe("FilterModal", () => {
     };
     const onChangeSpy = jest.fn();
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={onChangeSpy}
-        onApply={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -212,7 +176,7 @@ describe("FilterModal", () => {
     expect(onChangeSpy).toHaveBeenCalledWith({ price: new Set() });
   });
 
-  it("calls on apply and goes back in navigation when apply button pressed", () => {
+  it("goes back in navigation when apply button pressed", () => {
     const navigation = {
       addListener: () => {},
       goBack: jest.fn()
@@ -220,13 +184,11 @@ describe("FilterModal", () => {
     const eventFilters = {
       price: new Set(["free"])
     };
-    const onApplySpy = jest.fn();
     const output = shallow(
-      <FilterModal
+      <FilterScreen
         navigation={navigation}
         applyButtonText="Show 26 events"
         onChange={() => {}}
-        onApply={onApplySpy}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
@@ -236,7 +198,6 @@ describe("FilterModal", () => {
 
     output.find("Button").simulate("Press");
 
-    expect(onApplySpy).toHaveBeenCalled();
     expect(navigation.goBack).toHaveBeenCalled();
   });
 });

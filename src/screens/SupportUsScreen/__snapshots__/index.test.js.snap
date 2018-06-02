@@ -39,7 +39,9 @@ exports[`renders correctly 1`] = `
         <SupportUsButton
           bgBottomLeft={1}
           bgTopRight={1}
+          centerText={false}
           color="#2d2f7f"
+          contrast={false}
           description="Every donation keeps us marching"
           navigation={null}
           style={
@@ -52,7 +54,9 @@ exports[`renders correctly 1`] = `
         />
         <SupportUsButton
           bgTopRight={1}
+          centerText={false}
           color="#fc4984"
+          contrast={false}
           description="Passionate about equality? Join us."
           navigation={null}
           style={
@@ -65,6 +69,7 @@ exports[`renders correctly 1`] = `
         />
         <SupportUsButton
           bgBottomRight={1}
+          centerText={false}
           color="#c3d30e"
           contrast={true}
           description="Visit our online shop on The Gay UK"
@@ -93,7 +98,9 @@ exports[`renders correctly 1`] = `
       >
         <SupportUsButton
           bgTopRight={1}
+          centerText={false}
           color="#00a3bd"
+          contrast={false}
           description="Support the community"
           navigation={null}
           style={

@@ -18,7 +18,7 @@ import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
 import ParadeInformationScreen from "./screens/ParadeInformationScreen";
 import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
-import FilterModal from "./screens/FilterModal";
+import FilterScreen from "./screens/FilterScreen";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
 import SupportUsScreen from "./screens/SupportUsScreen";
 import SponsorScreen from "./screens/SponsorScreen";
@@ -40,7 +40,7 @@ import {
   HOME,
   EVENT_CATEGORIES_FILTER,
   PARADE,
-  SAVED,
+  SAVED_EVENT_LIST,
   SUPPORT_US,
   FILTER_MODAL,
   DONATE,
@@ -88,7 +88,7 @@ export const getTabTestId = (routeName: string) => {
       return "events-tab-button";
     case PARADE:
       return "parade-tab-button";
-    case SAVED:
+    case SAVED_EVENT_LIST:
       return "saved-events-tab-button";
     case SUPPORT_US:
       return "support-us-tab-button";
@@ -125,7 +125,8 @@ const EventsStack = createStackNavigator(
   {
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen },
-    [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen }
+    [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen },
+    [FILTER_MODAL]: { screen: FilterScreen }
   },
   {
     initialRouteName: EVENT_LIST,
@@ -153,11 +154,11 @@ const ParadeStack = createStackNavigator(
 
 const SavedStack = createStackNavigator(
   {
-    [SAVED]: { screen: withShadow(SavedEventListScreen) },
+    [SAVED_EVENT_LIST]: { screen: withShadow(SavedEventListScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen }
   },
   {
-    initialRouteName: SAVED,
+    initialRouteName: SAVED_EVENT_LIST,
     navigationOptions: {
       tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
       tabBarLabel: text.tabSaved,
@@ -205,9 +206,9 @@ const TabNav = createBottomTabNavigator(
         tabBarLabel: text.tabParade
       })
     },
-    [SAVED]: {
+    [SAVED_EVENT_LIST]: {
       screen: SavedStack,
-      navigationOptions: hideTabBarOnSubRoutes(SAVED, {
+      navigationOptions: hideTabBarOnSubRoutes(SAVED_EVENT_LIST, {
         tabBarIcon: tabIcon(iconSavedDefault, iconSavedActive),
         tabBarLabel: text.tabSaved
       })
@@ -235,13 +236,11 @@ const TabNav = createBottomTabNavigator(
   }
 );
 
+// Root stack to support modal views if we need them
 const RootStack = createStackNavigator(
   {
     Main: {
       screen: TabNav
-    },
-    [FILTER_MODAL]: {
-      screen: FilterModal
     }
   },
   {

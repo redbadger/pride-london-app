@@ -3,7 +3,6 @@ import {
   formatDateRange,
   formatTime,
   formatPrice,
-  removeTimezoneFromCmsDateString,
   formatContentfulDate,
   formatShortEventPrice,
   formatLongEventPrice
@@ -60,15 +59,6 @@ describe("formatContentfulDate", () => {
   it("formats date without time", () => {
     const date = formatContentfulDate("18", "05", "24");
     expect(date).toEqual("2018-05-24");
-  });
-});
-
-describe("removeTimezoneFromCmsDateString", () => {
-  it("formats dateString correctly", () => {
-    const dateString = "2018-04-09T20:00+01:00";
-    const expected = "2018-04-09T20:00";
-
-    expect(removeTimezoneFromCmsDateString(dateString)).toEqual(expected);
   });
 });
 

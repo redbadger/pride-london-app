@@ -13,11 +13,9 @@ import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SponsorLogoContainer from "./SponsorLogoContainer";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import type { Sponsor } from "../../data/sponsor";
-
-import locale from "../../data/locale";
+import type { FieldRef } from "../../data/field-ref";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -40,10 +38,10 @@ class SponsorScreen extends PureComponent<Props> {
     const { navigation, sponsors, getAssetSource } = this.props;
 
     const sortByName = R.sortBy(sponsor =>
-      sponsor.fields.sponsorName[locale].toLowerCase()
+      sponsor.fields.sponsorName.toLowerCase()
     );
     const groupSponsors = R.groupBy(
-      sponsor => sponsor.fields.sponsorLevel[locale],
+      sponsor => sponsor.fields.sponsorLevel,
       sortByName(sponsors)
     );
 

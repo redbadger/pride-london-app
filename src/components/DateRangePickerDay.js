@@ -2,7 +2,13 @@
 import React, { Component } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import { equals } from "ramda";
-import { format } from "date-fns";
+import {
+  toFormat,
+  now,
+  isBefore,
+  isSameDay,
+  FORMAT_WEEKDAY_MONTH_DAY
+} from "../lib/date";
 
 import Text from "./Text";
 
@@ -74,6 +80,10 @@ const dotStyle = (marking: DayMarking) => [
 ];
 
 export default class Day extends Component<DayProps> {
+  static defaultProps = {
+    state: undefined
+  };
+
   shouldComponentUpdate = (nextProps: DayProps): boolean => {
     const { state, marking, date } = this.props;
     const {
@@ -100,18 +110,23 @@ export default class Day extends Component<DayProps> {
 
   render() {
     const { state, marking, date } = this.props;
-    const label = format(date.dateString, "dddd, MMMM D");
+    const dateNow = now();
+    const beforeToday =
+      isBefore(date.dateString, dateNow) &&
+      !isSameDay(date.dateString, dateNow);
+    const label = toFormat(date.dateString, FORMAT_WEEKDAY_MONTH_DAY);
     const traits = marking.selected ? ["button", "selected"] : ["button"];
 
     return (
       <TouchableWithoutFeedback
         onPress={this.onPress}
         onLongPress={this.onLongPress}
-        accessibilityTraits={traits}
+        accessibilityTraits={beforeToday ? ["button", "disabled"] : traits}
         accessibilityLabel={label}
         accessibilityComponentType="button"
+        disabled={beforeToday}
       >
-        <View style={styles.container}>
+        <View style={[styles.container, beforeToday ? styles.faded : {}]}>
           {marking.selected && (
             <View style={styles.overlay}>
               <View style={leftFillerStyle(marking)} />
@@ -141,6 +156,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     alignSelf: "stretch"
+  },
+  faded: {
+    opacity: 0.5
   },
   overlay: {
     position: "absolute",

@@ -14,8 +14,10 @@ type EventFiltersActionType =
   | "SET_EVENT_FILTERS"
   | "STAGE_EVENT_FILTERS"
   | "COMMIT_EVENT_FILTERS"
-  | "CLEAR_STAGED_EVENT_FILTERS";
-type EventFiltersPayload = {
+  | "CLEAR_STAGED_EVENT_FILTERS"
+  | "CLEAR_EVENT_FILTERS";
+
+export type EventFiltersPayload = {
   date?: ?DateRange,
   timeOfDay?: Set<Time>,
   price?: Set<Price>,
@@ -56,3 +58,7 @@ export const commitEventFilters = () => (
 export const clearStagedEventFilters = () => (
   dispatch: Dispatch<EventFiltersAction>
 ) => dispatch({ type: "CLEAR_STAGED_EVENT_FILTERS" });
+
+export const clearEventFilters = () => (
+  dispatch: Dispatch<EventFiltersAction>
+) => dispatch({ type: "CLEAR__EVENT_FILTERS" });

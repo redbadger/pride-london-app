@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import DateRangePicker from "./DateRangePicker";
 import Dialog from "./Dialog";
 import Text from "./Text";
@@ -13,6 +13,7 @@ import { dialogTitleColor } from "../constants/colors";
 type Props = {
   applyButtonText: string,
   applyButtonLabel: string,
+  applyButtonDisabled?: boolean,
   dateRange: ?DateRange,
   onApply: () => void,
   onCancel: () => void,
@@ -41,19 +42,34 @@ const formatTitleLabel = (dateRange: ?DateRange): string => {
 };
 
 class DateRangePickerDialog extends React.PureComponent<Props> {
+  static defaultProps = {
+    applyButtonDisabled: false
+  };
+
   clear = () => {
     this.props.onChange(null);
   };
 
   render() {
-    const { dateRange, forceNewRange } = this.props;
+    const {
+      applyButtonText,
+      applyButtonLabel,
+      applyButtonDisabled,
+      dateRange,
+      forceNewRange,
+      onApply,
+      onCancel,
+      onChange,
+      visible
+    } = this.props;
     const title = formatTitle(dateRange);
     const titleLabel = formatTitleLabel(dateRange);
 
     return (
       <Dialog
-        applyButtonText={this.props.applyButtonText}
-        applyButtonLabel={this.props.applyButtonLabel}
+        applyButtonText={applyButtonText}
+        applyButtonLabel={applyButtonLabel}
+        applyButtonDisabled={applyButtonDisabled}
         title={
           <Text
             type="h3"
@@ -67,21 +83,25 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
           </Text>
         }
         headerRight={
-          <Touchable
-            onPress={this.clear}
-            accessibilityLabel="Clear date selection"
-          >
-            <Text type="small" style={{ color: dialogTitleColor }}>
-              Clear
-            </Text>
-          </Touchable>
+          dateRange && (
+            <Touchable
+              style={styles.clearButton}
+              onPress={this.clear}
+              accessibilityLabel="Clear date selection"
+            >
+              <Text type="small" style={{ color: dialogTitleColor }}>
+                Clear
+              </Text>
+            </Touchable>
+          )
         }
-        onApply={this.props.onApply}
-        onCancel={this.props.onCancel}
-        visible={this.props.visible}
+        headerLeft={dateRange && <View style={styles.clearButton} />}
+        onApply={onApply}
+        onCancel={onCancel}
+        visible={visible}
       >
         <DateRangePicker
-          onChange={this.props.onChange}
+          onChange={onChange}
           dateRange={dateRange}
           forceNewRange={forceNewRange}
         />
@@ -91,9 +111,11 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
 }
 
 const styles = StyleSheet.create({
+  clearButton: {
+    width: 44
+  },
   headerTitle: {
     color: dialogTitleColor,
-    alignSelf: "flex-end",
     // Needs to start higher up on screen than the 'Clear' button for a11y order
     height: 40,
     paddingTop: 10

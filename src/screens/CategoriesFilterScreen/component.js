@@ -15,55 +15,47 @@ import locale from "../../data/locale";
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
-  stagedCategories: Set<EventCategoryName>,
+  categories: Set<EventCategoryName>,
   toggleCategoryFilter: (Set<EventCategoryName>, string) => void,
-  onApplyFilters: () => void,
-  onClearAll: () => void,
-  onClose: () => void
+  onClearAll: () => void
 };
 
 class CategoriesFilterScreen extends PureComponent<Props> {
-  handleClose = () => {
-    this.props.onClose();
-    this.props.navigation.goBack();
-  };
-
   handleClearAll = () => {
     this.props.onClearAll();
   };
 
-  handleApplyFilters = () => {
-    this.props.onApplyFilters();
-    this.props.navigation.pop();
+  applyFilters = () => {
+    this.props.navigation.goBack();
   };
 
   handleFilterChange = (categoryLabel: string) => {
-    this.props.toggleCategoryFilter(this.props.stagedCategories, categoryLabel);
+    this.props.toggleCategoryFilter(this.props.categories, categoryLabel);
   };
 
   render() {
-    const { events, stagedCategories } = this.props;
+    const { events, categories } = this.props;
+    const buttonLabel =
+      categories.size > 0 ? text.showEvents(events.length) : text.showAllEvents;
 
     return (
       <SafeAreaView style={styles.container}>
-        <ContentPadding style={styles.header}>
-          <Header
-            onClose={this.handleClose}
-            onClearAll={this.handleClearAll}
-            selectedCategories={stagedCategories}
-          />
-        </ContentPadding>
+        <Header
+          onBack={this.applyFilters}
+          onClearAll={this.handleClearAll}
+          selectedCategories={categories}
+        />
         <View style={styles.list}>
           <List
             locale={locale}
-            stagedCategories={stagedCategories}
+            stagedCategories={categories}
             onPress={this.handleFilterChange}
           />
         </View>
         <View style={styles.footer}>
           <ContentPadding>
-            <Button onPress={this.handleApplyFilters} disabled={!events.length}>
-              {text.showEvents(events.length)}
+            <Button onPress={this.applyFilters} disabled={!events.length}>
+              {buttonLabel}
             </Button>
           </ContentPadding>
         </View>
@@ -77,9 +69,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: lightNavyBlueColor
-  },
-  header: {
-    borderWidth: 0
   },
   list: {
     flex: 1

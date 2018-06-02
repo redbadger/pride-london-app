@@ -6,9 +6,8 @@ import { createClient } from "contentful/dist/contentful.browser.min";
 import { saveCmsData, loadCmsData } from "./storage";
 import type { Asset } from "../data/asset";
 import type { Event, FeaturedEvents } from "../data/event";
-import type { Sponsor } from "../data/sponsor";
 
-export type CmsEntry = Event | FeaturedEvents | Sponsor;
+export type CmsEntry = Event | FeaturedEvents;
 export type CmsData = {
   entries: CmsEntry[],
   deletedEntries: CmsEntry[],
@@ -19,7 +18,8 @@ export type CmsData = {
 export type SavedData = {
   entries: CmsEntry[],
   assets: Asset[],
-  syncToken: string
+  syncToken: string,
+  updated: boolean
 };
 
 type SyncOpts = {
@@ -43,7 +43,7 @@ export const getCmsData = async (
   const hasLocalCmsData = !!localCmsData;
 
   if (hasLocalCmsData) {
-    return localCmsData;
+    return { ...localCmsData, updated: false };
   }
 
   return updateCmsDataFn();
@@ -71,10 +71,10 @@ export const updateCmsData = async (
   const cmsData = await clientObj.sync(syncOpts);
 
   if (hasLocalCmsData && localCmsData.syncToken === cmsData.nextSyncToken) {
-    return localCmsData;
+    return { ...localCmsData, updated: false };
   }
 
   const savedCmsData = await saveCmsDataFn(cmsData);
 
-  return savedCmsData;
+  return { ...savedCmsData, updated: true };
 };

@@ -6,17 +6,17 @@ import text from "../../constants/text";
 
 type Props = {
   onClearPress: () => void,
-  onCancelPress: () => void,
+  onBackPress: () => void,
   showClear: boolean
 };
 
-const Header = ({ onClearPress, onCancelPress, showClear }: Props) => {
+const Header = ({ onClearPress, onBackPress, showClear }: Props) => {
   const clearElement = showClear ? (
-    <ActionButton label={text.clearAll} onPress={onClearPress} />
+    <ActionButton label={text.reset} onPress={onClearPress} />
   ) : null;
   return (
     <GlobalHeader
-      leftElement={<ActionButton label={text.cancel} onPress={onCancelPress} />}
+      leftElement={<GlobalHeader.BackButton onPress={onBackPress} />}
       title={text.filterEvents}
       rightElement={clearElement}
     />

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilterModal renders correctly 1`] = `
+exports[`FilterScreen renders correctly 1`] = `
 <withOrientation
   forceInset={
     Object {
@@ -16,7 +16,7 @@ exports[`FilterModal renders correctly 1`] = `
   }
 >
   <Header
-    onCancelPress={[Function]}
+    onBackPress={[Function]}
     onClearPress={[Function]}
     showClear={false}
   />

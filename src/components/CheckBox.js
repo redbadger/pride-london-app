@@ -4,6 +4,7 @@ import { Image, StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
+import { checkboxAccessibilityLabel } from "../data/accessibility";
 
 import checkboxUrl from "../../assets/images/checkBox.png";
 import checkBoxCheckedUrl from "../../assets/images/checkBoxChecked.png";
@@ -17,10 +18,9 @@ type Props = {
 
 const CheckBox = ({ checked, label, onChange, style }: Props) => (
   <Touchable
-    accessibilityComponentType={
-      checked ? "radiobutton_checked" : "radiobutton_unchecked"
-    }
-    accessibilityTraits={checked ? ["button", "selected"] : ["button"]}
+    accessibilityComponentType="none"
+    accessibilityTraits={["none"]}
+    accessibilityLabel={checkboxAccessibilityLabel(label, checked)}
     onPress={onChange}
     style={[styles.container, style]}
   >

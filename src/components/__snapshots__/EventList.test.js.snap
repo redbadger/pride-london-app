@@ -165,7 +165,7 @@ exports[`EventList renders correctly 1`] = `
   }
   stickySectionHeadersEnabled={true}
   updateCellsBatchingPeriod={50}
-  windowSize={21}
+  windowSize={10}
 />
 `;
 

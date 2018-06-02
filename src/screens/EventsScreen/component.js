@@ -1,12 +1,16 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { SavedEvents, EventDays } from "../../data/event";
+import type {
+  EventCategoryName,
+  SavedEvents,
+  EventDays
+} from "../../data/event";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
-import FilterHeader from "../../components/ConnectedFilterHeader";
+import FilterHeader from "../../components/FilterHeaderConnected";
 import Loading from "../../components/Loading";
 import { bgColor } from "../../constants/colors";
 import {
@@ -24,12 +28,16 @@ export type Props = {
   removeSavedEvent: string => void,
   loading: boolean,
   refreshing: boolean,
-  updateEvents: () => Promise<void>,
+  updateData: () => Promise<void>,
   getAssetSource: FieldRef => ImageSource,
-  selectedCategories: Set<string>
+  selectedCategories: Set<EventCategoryName>,
+  // route is not used directly, but triggers re-render on navigation
+  route: string // eslint-disable-line react/no-unused-prop-types
 };
 
-class EventsScreen extends PureComponent<Props> {
+class EventsScreen extends Component<Props> {
+  shouldComponentUpdate = () => this.props.navigation.isFocused();
+
   handleFilterCategoriesPress = () => {
     this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
   };
@@ -41,7 +49,7 @@ class EventsScreen extends PureComponent<Props> {
   render() {
     const {
       navigation,
-      updateEvents,
+      updateData,
       events,
       savedEvents,
       addSavedEvent,
@@ -67,7 +75,7 @@ class EventsScreen extends PureComponent<Props> {
             removeSavedEvent={removeSavedEvent}
             refreshing={refreshing}
             onRefresh={() => {
-              updateEvents();
+              updateData();
             }}
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
