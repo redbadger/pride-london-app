@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ScrollView>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "flex": 3,
+        "marginBottom": 12,
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "alignSelf": "center",
+          "marginVertical": 14,
+        }
+      }
+    />
+    <Text
+      color="lightNavyBlueColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+      type="h1"
+    >
+      No events to show
+    </Text>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "alignSelf": "center",
+          "fontWeight": "500",
+          "maxWidth": 280,
+          "textAlign": "center",
+        }
+      }
+      type="text"
+    >
+      Try changing your filters to be less specific or check back later.
+    </Text>
+  </ContentPadding>
+</ScrollView>
+`;

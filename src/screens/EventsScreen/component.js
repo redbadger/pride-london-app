@@ -12,7 +12,7 @@ import { withNavigationFocus } from "../../lib/navigation";
 import type { NavigationProps } from "../../lib/navigation";
 import EventList from "../../components/EventList";
 import FilterHeader from "./FilterHeaderConnected";
-import Loading from "../../components/Loading";
+import NoEvents from "./NoEvents";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
@@ -66,8 +66,8 @@ class EventsScreen extends Component<AllProps> {
           selectedCategories={this.props.selectedCategories}
           onFilterButtonPress={this.handleFilterButtonPress}
         />
-        {this.props.loading ? (
-          <Loading />
+        {this.props.loading || events.length < 1 ? (
+          <NoEvents />
         ) : (
           <EventList
             locale={locale}
