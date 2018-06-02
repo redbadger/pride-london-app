@@ -129,6 +129,21 @@ describe("Events reducer", () => {
     expect(state.assets).toBe(newCmsData.assets);
   });
 
+  it("sets loading and refreshing to false for RECEIVE_CMS_ERROR action", () => {
+    const initialState = {
+      entries: [],
+      assets: [],
+      headerBanners: [],
+      sponsors: [],
+      loading: true,
+      refreshing: true
+    };
+    const state = reducer(initialState, { type: "RECEIVE_CMS_ERROR" });
+
+    expect(state.loading).toBe(false);
+    expect(state.refreshing).toBe(false);
+  });
+
   describe("RECEIVE_CMS_DATA action", () => {
     it("transforms headerBanners", () => {
       const initialState = {

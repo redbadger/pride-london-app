@@ -69,6 +69,12 @@ const reducer = (state: State = defaultState, action: DataAction) => {
         ),
         sponsors: resultWithDefault([], decodeSponsors(action.data.entries))
       };
+    case "RECEIVE_CMS_ERROR":
+      return {
+        ...state,
+        loading: false,
+        refreshing: false
+      };
     default:
       return state;
   }
