@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectedFilterHeader renders component 1`] = `
+<Component
+  accessibilityTraits={
+    Array [
+      "header",
+    ]
+  }
+  style={
+    Object {
+      "backgroundColor": "rgb(45, 47, 127)",
+    }
+  }
+>
+  <ContentPadding
+    padding={Object {}}
+    style={Object {}}
+  >
+    <Component
+      style={
+        Object {
+          "paddingBottom": 12,
+          "paddingTop": 16,
+        }
+      }
+      testID="event-filter-header"
+    >
+      <FilterHeaderCategories />
+    </Component>
+  </ContentPadding>
+  <Component
+    style={
+      Object {
+        "backgroundColor": "#20215a",
+        "flexDirection": "row",
+        "height": 48,
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <FilterHeaderButton
+      active={false}
+      badgeValue={null}
+      label="filter by date: Select dates"
+      onPress={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Select dates"
+    />
+    <Component
+      style={
+        Object {
+          "borderColor": "#ffffff",
+          "borderLeftWidth": 1,
+          "opacity": 0.4,
+        }
+      }
+    />
+    <FilterHeaderButton
+      active={false}
+      badgeValue={null}
+      label="Filter by area, price..."
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+      text="Filter by area, price..."
+    />
+  </Component>
+  <Connect(DateRangePickerDialog)
+    onApply={[Function]}
+    onCancel={[Function]}
+    visible={false}
+  />
+</Component>
+`;
+
+exports[`ConnectedFilterHeader renders connector 1`] = `
+<FilterHeader
+  dateFilter={null}
+  numTagFiltersSelected={0}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+/>
+`;

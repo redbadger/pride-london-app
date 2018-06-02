@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectedDateFilterDialog renders component 1`] = `
+<Dialog
+  applyButtonDisabled={true}
+  applyButtonLabel="Show events (none selected)"
+  applyButtonText="No events"
+  headerLeft={null}
+  headerRight={null}
+  onApply={[Function]}
+  onCancel={[Function]}
+  title={
+    <Text
+      accessibilityLabel="Select dates"
+      accessibilityLiveRegion="polite"
+      accessibilityTraits={
+        Array [
+          "header",
+        ]
+      }
+      accessible={true}
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "rgb(45, 47, 127)",
+          "height": 40,
+          "paddingTop": 10,
+        }
+      }
+      type="h3"
+    >
+      Select dates
+    </Text>
+  }
+  visible={true}
+>
+  <DateRangePicker
+    dateRange={null}
+    forceNewRange={false}
+    onChange={[Function]}
+  />
+</Dialog>
+`;
+
+exports[`ConnectedDateFilterDialog renders connector 1`] = `
+<DateRangePickerDialog
+  applyButtonDisabled={true}
+  applyButtonLabel="Show events (none selected)"
+  applyButtonText="No events"
+  dateRange={null}
+  forceNewRange={false}
+  onApply={[Function]}
+  onCancel={[Function]}
+  onChange={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+  visible={true}
+/>
+`;

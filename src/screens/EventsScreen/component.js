@@ -2,11 +2,15 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { SavedEvents, EventDays } from "../../data/event";
+import type {
+  EventCategoryName,
+  SavedEvents,
+  EventDays
+} from "../../data/event";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
-import FilterHeader from "../../components/ConnectedFilterHeader";
+import FilterHeader from "../../components/FilterHeaderConnected";
 import Loading from "../../components/Loading";
 import { bgColor } from "../../constants/colors";
 import {
@@ -26,7 +30,9 @@ export type Props = {
   refreshing: boolean,
   updateData: () => Promise<void>,
   getAssetSource: FieldRef => ImageSource,
-  selectedCategories: Set<string>
+  selectedCategories: Set<EventCategoryName>,
+  // route is not used directly, but triggers re-render on navigation
+  route: string // eslint-disable-line react/no-unused-prop-types
 };
 
 class EventsScreen extends Component<Props> {
