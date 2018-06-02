@@ -14,22 +14,6 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 
-const styles = StyleSheet.create({
-  shadowContainer: {
-    flex: 1
-  },
-  shadow: {
-    width: "100%",
-    height: 7,
-    position: "absolute",
-    left: 0,
-    bottom: 0
-  },
-  card: {
-    shadowOpacity: 0
-  }
-});
-
 const ParadeTabNav = createMaterialTopTabNavigator(
   {
     [PARADE_MAP]: {

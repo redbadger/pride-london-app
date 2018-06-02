@@ -31,10 +31,6 @@ class ParadeInformationScreen extends PureComponent<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Header
-          title={text.paradeInformationScreen.headerTitle}
-          testID="page-heading-parade"
-        />
         <ScrollView>
           <View style={styles.scrollPage}>
             <LayoutColumn spacing={24}>
