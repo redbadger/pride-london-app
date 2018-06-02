@@ -126,7 +126,7 @@ export default {
   runsFrom: "Runs from:",
   noEventsTitle: "No events to show",
   noEventsDetails:
-    "Try changing your filters to be\nless specific or check back later.",
+    "Try changing your filters to be less specific or check back later.",
   noSavedEventsTitle: "Where's the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
   noSavedEventsSaveButtonAlt: "'save this event' button",

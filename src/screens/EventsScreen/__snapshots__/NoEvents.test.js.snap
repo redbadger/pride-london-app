@@ -47,8 +47,7 @@ exports[`renders correctly 1`] = `
       }
       type="text"
     >
-      Try changing your filters to be
-less specific or check back later.
+      Try changing your filters to be less specific or check back later.
     </Text>
   </ContentPadding>
 </ScrollView>
