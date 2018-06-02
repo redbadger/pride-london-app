@@ -53,7 +53,7 @@ import {
 } from "./constants/routes";
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
-import { scaleFont } from "./components/Text";
+import Text from "./components/Text";
 import type { ImageRef } from "./data/image-ref";
 
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
@@ -72,6 +72,14 @@ const withShadow = Component => props => (
   </View>
 );
 
+const paradeHeaderTitle = (headerTitle: Props) => (
+  <View>
+    <Text type="h2" color="whiteColor">
+      {headerTitle}
+    </Text>
+  </View>
+);
+
 const styles = StyleSheet.create({
   shadowContainer: {
     flex: 1
@@ -86,15 +94,8 @@ const styles = StyleSheet.create({
   card: {
     shadowOpacity: 0
   },
-  header: {
+  paradeHeader: {
     backgroundColor: lightNavyBlueColor
-  },
-  headerTitle: {
-    color: whiteColor,
-    fontFamily: "Poppins-SemiBold",
-    fontSize: scaleFont("h2", 18),
-    lineHeight: scaleFont("h2", 24),
-    includeFontPadding: false
   }
 });
 
@@ -165,9 +166,8 @@ const ParadeStack = createStackNavigator(
     initialRouteName: PARADE,
     headerMode: "float",
     navigationOptions: {
-      headerTitle: "Parade Day - 7th July",
-      headerStyle: styles.header,
-      headerTitleStyle: styles.headerTitle
+      headerTitle: paradeHeaderTitle("Parade Day - 7th July"),
+      headerStyle: styles.paradeHeader
     },
     cardStyle: styles.card
   }
