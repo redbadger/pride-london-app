@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 import { shallow } from "enzyme";
 import { DateTime } from "luxon";
 import DateRangePickerDialog from "./DateRangePickerDialogConnected";
-import { createEventFiltersState } from "../reducers/event-filters";
+import { createEventFiltersState } from "../../reducers/event-filters";
 
 const initialState = {
   data: {
