@@ -1,20 +1,28 @@
 // @flow
-import { gen, sampleOne } from "@rgbboy/testcheck";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { gen, sampleOne as sample } from "@rgbboy/testcheck";
 import type { ValueGenerator } from "@rgbboy/testcheck";
 import type { Event } from "./event";
-import type { HeaderBanner } from "./header-banner";
 import type { FieldRef } from "./field-ref";
+import type { HeaderBanner } from "./header-banner";
+import type { Sponsor } from "./sponsor";
+
+export const sampleOne = <A>(generator: ValueGenerator<A>): A =>
+  sample(generator, 30, 1);
 
 export const sampleArrayOf = <A>(
   generator: ValueGenerator<A>
 ): (number => Array<A>) => (size: number) =>
-  sampleOne(gen.array(generator, { size }), 30, 1);
+  sample(gen.array(generator, { size }), 30, 1);
 
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
     id: gen.alphaNumString
   })
 });
+
+// will change this when we refactor FieldRef
+export const generateCMSFieldRef: ValueGenerator<mixed> = generateFieldRef;
 
 export const generateHeaderBanner: ValueGenerator<HeaderBanner> = gen({
   contentType: "headerBanner",
@@ -101,4 +109,35 @@ export const generateEvent: ValueGenerator<Event> = gen({
     performances: { "en-GB": [] },
     recurrenceDates: { "en-GB": [] }
   })
+});
+
+export const generateSponsor: ValueGenerator<Sponsor> = gen({
+  contentType: "sponsor",
+  id: gen.alphaNumString,
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    sponsorName: "sponsorName",
+    sponsorLogo: generateFieldRef,
+    sponsorUrl: "sponsorUrl",
+    sponsorLevel: "Headline"
+  })
+});
+
+export const generateCMSSponsor: ValueGenerator<mixed> = gen({
+  sys: {
+    id: gen.alphaNumString,
+    contentType: {
+      sys: {
+        id: "sponsor"
+      }
+    },
+    revision: 1
+  },
+  fields: {
+    sponsorName: { "en-GB": "sponsorName" },
+    sponsorLogo: { "en-GB": generateFieldRef },
+    sponsorUrl: { "en-GB": "sponsorUrl" },
+    sponsorLevel: { "en-GB": "Headline" }
+  }
 });
