@@ -1,8 +1,7 @@
 // @flow
 import "core-js/modules/es7.string.pad-start";
 import React, { Component } from "react";
-import { YellowBox, AppState } from "react-native";
-import SplashScreen from "react-native-splash-screen";
+import { AppState, UIManager, YellowBox } from "react-native";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -32,6 +31,10 @@ YellowBox.ignoreWarnings([
   "Module RCTImageLoader"
 ]);
 
+if (UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
+
 const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(thunk, analytics))
@@ -47,7 +50,7 @@ const handleAppStateChange = () => {
 class AppWrapper extends Component<{}> {
   componentDidMount() {
     store.dispatch(init());
-    store.dispatch(getData(SplashScreen.hide));
+    store.dispatch(getData());
     store.dispatch(loadSavedEvents());
     AppState.addEventListener("change", handleAppStateChange);
   }

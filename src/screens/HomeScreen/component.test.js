@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import Component from "./component";
+import { HomeScreen as Component } from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import Loading from "../../components/Loading";
 import {
@@ -32,6 +32,7 @@ describe("HomeScreen Component", () => {
         featuredEventsTitle="Featured events"
         featuredEvents={generateEvents(2)}
         getAssetSource={getAssetSource}
+        isFocused
         {...props}
       />
     );
@@ -86,7 +87,8 @@ describe("HomeScreen Component", () => {
       headerBanners: generateHeaderBanners(2),
       featuredEventsTitle: "Title",
       featuredEvents: generateEvents(3),
-      loading: false
+      loading: false,
+      isFocused: true
     };
 
     it("stops updates if loading state, title and events are the same", () => {
@@ -95,7 +97,8 @@ describe("HomeScreen Component", () => {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
         featuredEvents: generateEvents(3),
-        loading: false
+        loading: false,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
@@ -109,7 +112,8 @@ describe("HomeScreen Component", () => {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
         featuredEvents: generateEvents(5),
-        loading: false
+        loading: false,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
@@ -123,7 +127,8 @@ describe("HomeScreen Component", () => {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Other Title",
         featuredEvents: generateEvents(3),
-        loading: false
+        loading: false,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
@@ -137,7 +142,8 @@ describe("HomeScreen Component", () => {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
         featuredEvents: generateEvents(3),
-        loading: true
+        loading: true,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
@@ -151,12 +157,24 @@ describe("HomeScreen Component", () => {
         headerBanners: generateHeaderBanners(3),
         featuredEventsTitle: "Title",
         featuredEvents: generateEvents(3),
-        loading: false
+        loading: false,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
 
       expect(shouldUpdate).toBe(true);
+    });
+
+    it("does not update when not focused", () => {
+      const output = render(props);
+      const nextProps = {
+        isFocused: false
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(false);
     });
   });
 });
