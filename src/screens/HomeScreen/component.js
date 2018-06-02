@@ -15,8 +15,7 @@ import {
   cardBgColor,
   titleTextColor,
   bgColor,
-  whiteColor,
-  lightNavyBlueColor
+  whiteColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
