@@ -1,7 +1,7 @@
 // @flow
 import "core-js/modules/es7.string.pad-start";
 import React, { Component } from "react";
-import { YellowBox, AppState } from "react-native";
+import { AppState, UIManager, YellowBox } from "react-native";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -30,6 +30,10 @@ YellowBox.ignoreWarnings([
   "Warning: isMounted(...) is deprecated",
   "Module RCTImageLoader"
 ]);
+
+if (UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const store = createStore(
   reducers,

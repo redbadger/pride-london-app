@@ -2,7 +2,7 @@
 import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
-import Component from "./component";
+import { EventsScreen as Component } from "./component";
 import FilterHeader from "./FilterHeaderConnected";
 import EventList from "../../components/EventList";
 import {
@@ -107,6 +107,7 @@ describe("EventsScreen Component", () => {
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
         route={EVENT_LIST}
+        isFocused
       />
     );
     expect(output).toMatchSnapshot();
@@ -126,6 +127,7 @@ describe("EventsScreen Component", () => {
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
         route={EVENT_LIST}
+        isFocused
       />
     );
 
@@ -146,6 +148,7 @@ describe("EventsScreen Component", () => {
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
         route={EVENT_LIST}
+        isFocused
       />
     );
 
@@ -167,6 +170,7 @@ describe("EventsScreen Component", () => {
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
         route={EVENT_LIST}
+        isFocused
       />
     );
 
@@ -197,6 +201,7 @@ describe("EventsScreen Component", () => {
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
         route={EVENT_LIST}
+        isFocused
       />
     );
 
@@ -226,6 +231,34 @@ describe("EventsScreen Component", () => {
         .props()
         .onPress(1);
       expect(navigationSpy).toBeCalledWith(EVENT_DETAILS, { eventId: 1 });
+    });
+  });
+
+  describe("#shouldComponentUpdate", () => {
+    it("does not update when not focused", () => {
+      const output = shallow(
+        <Component
+          navigation={navigation}
+          events={[]}
+          loading={false}
+          refreshing={false}
+          updateData={() => Promise.resolve()}
+          getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
+          selectedCategories={new Set()}
+          addSavedEvent={() => {}}
+          removeSavedEvent={() => {}}
+          savedEvents={new Set()}
+          route={EVENT_LIST}
+          isFocused
+        />
+      );
+      const nextProps = {
+        isFocused: false
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(false);
     });
   });
 });

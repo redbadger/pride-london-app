@@ -132,12 +132,34 @@ describe("EventList", () => {
     expect(output).toMatchSnapshot();
   });
 
-  it("animates layout changes when events changed on render", () => {
+  it("animates layout changes when events were added on render", () => {
     const output = render();
     output.setState({
-      eventsChanged: true
+      eventsAdded: 1,
+      eventsRemoved: 0,
+      eventsReordered: false
     });
     expect(configureNextSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("animates layout changes when events were removed on render", () => {
+    const output = render();
+    output.setState({
+      eventsAdded: 0,
+      eventsRemoved: 1,
+      eventsReordered: false
+    });
+    expect(configureNextSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not animate layout changes when events have been reordered", () => {
+    const output = render();
+    output.setState({
+      eventsAdded: 1,
+      eventsRemoved: 0,
+      eventsReordered: true
+    });
+    expect(configureNextSpy).not.toHaveBeenCalled();
   });
 
   it("renders section headers correctly", () => {
@@ -246,14 +268,16 @@ describe("EventList", () => {
       expect(shouldUpdate).toBe(true);
     });
 
-    it("allows update when events changue", () => {
+    it("allows update when events change", () => {
       const nextProps = {
         locale: "en-GB",
         refreshing: false,
         savedEvents: props.savedEvents
       };
       const nextState = {
-        eventsChanged: true
+        eventsAdded: 0,
+        eventsRemoved: 0,
+        eventsReordered: true
       };
 
       const output = render(props);
