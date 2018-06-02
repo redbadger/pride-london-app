@@ -133,6 +133,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
+      headerBanners: [],
       sponsors: [],
       loading: true,
       refreshing: true
