@@ -68,7 +68,12 @@ export const updateCmsData = async (
         resolveLinks: false
       };
 
-  const cmsData = await clientObj.sync(syncOpts);
+  let cmsData;
+  try {
+    cmsData = await clientObj.sync(syncOpts);
+  } catch (e) {
+    return { ...localCmsData, updated: false };
+  }
 
   if (hasLocalCmsData && localCmsData.syncToken === cmsData.nextSyncToken) {
     return { ...localCmsData, updated: false };
