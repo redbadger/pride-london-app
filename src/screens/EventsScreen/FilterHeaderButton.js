@@ -2,10 +2,10 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
-import Text from "./Text";
-import Touchable from "./Touchable";
-import { filterButtonTextColor, whiteColor } from "../constants/colors";
-import NumberBadge from "./NumberBadge";
+import Text from "../../components/Text";
+import Touchable from "../../components/Touchable";
+import { filterButtonTextColor, whiteColor } from "../../constants/colors";
+import NumberBadge from "../../components/NumberBadge";
 
 type Props = {
   text: string,

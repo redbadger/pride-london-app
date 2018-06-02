@@ -3,7 +3,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import DateRangePickerDialog from "./DateRangePickerDialog";
 import Dialog from "./Dialog";
-import type { DateRange } from "../data/date-time";
+import type { DateRange } from "../../data/date-time";
 
 const render = props =>
   shallow(
