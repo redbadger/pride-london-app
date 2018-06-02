@@ -6,13 +6,13 @@ import {
   isBefore,
   addDays,
   FORMAT_YEAR_MONTH_DAY
-} from "../lib/date";
-import type { DateRange } from "../data/date-time";
+} from "../../lib/date";
+import type { DateRange } from "../../data/date-time";
 
 import Day from "./DateRangePickerDay";
 import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
 
-import { dateRangePickerTextColor } from "../constants/colors";
+import { dateRangePickerTextColor } from "../../constants/colors";
 
 const getSortedDateRange = (dates: DateRange) =>
   isBefore(dates.endDate, dates.startDate)

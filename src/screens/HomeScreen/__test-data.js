@@ -6,31 +6,22 @@ export const generateHeaderBanners = (count: number): HeaderBanner[] =>
   Array.from(Array(count)).map(
     (_, i) =>
       ({
-        sys: {
-          id: String(i + 1)
-        },
+        contentType: "headerBanner",
+        id: String(i + 1),
+        locale: "en-GB",
+        revision: 1,
         fields: {
-          heading: {
-            "en-GB": "Pride"
-          },
-          headingLine2: {
-            "en-GB": "Festival"
-          },
-          subHeading: {
-            "en-GB": "from - to"
-          },
+          heading: "Pride",
+          headingLine2: "Festival",
+          subHeading: "from - to",
           heroImage: {
-            "en-GB": {
-              sys: {
-                id: `asset${i + 1}`
-              }
+            sys: {
+              id: `asset${i + 1}`
             }
           },
-          backgroundColour: {
-            "en-GB": "#ff0000"
-          }
+          backgroundColour: "#ff0000"
         }
-      }: any)
+      }: HeaderBanner)
   );
 
 export const generateEvents = (count: number): Event[] =>

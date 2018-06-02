@@ -1,19 +1,19 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import DateFilterDialog from "./ConnectedDateFilterDialog";
+import type { DateRange } from "../../data/date-time";
+import type { EventCategoryName } from "../../data/event";
+import DateRangePickerDialog from "./DateRangePickerDialogConnected";
 import FilterHeaderButton from "./FilterHeaderButton";
-import ContentPadding from "./ContentPadding";
+import ContentPadding from "../../components/ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
 import {
   filterBgColor,
   filterButtonsBgColor,
   whiteColor
-} from "../constants/colors";
-import text from "../constants/text";
-import { formatDateRange } from "../data/formatters";
-import type { DateRange } from "../data/date-time";
-import type { EventCategoryName } from "../data/event";
+} from "../../constants/colors";
+import text from "../../constants/text";
+import { formatDateRange } from "../../data/formatters";
 
 export type Props = {
   onFilterCategoriesPress: Function,
@@ -82,7 +82,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
             }
           />
         </View>
-        <DateFilterDialog
+        <DateRangePickerDialog
           onApply={this.hideDatePicker}
           onCancel={this.hideDatePicker}
           visible={this.state.datesPickerVisible}

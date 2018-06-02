@@ -7,12 +7,12 @@ import {
   TouchableWithoutFeedback,
   View
 } from "react-native";
-import Button from "./ButtonPrimary";
+import Button from "../../components/ButtonPrimary";
 import {
   dialogBackdropColor,
   dialogBgColor,
   dialogHeaderDividerColor
-} from "../constants/colors";
+} from "../../constants/colors";
 
 type Props = {
   applyButtonText: string,

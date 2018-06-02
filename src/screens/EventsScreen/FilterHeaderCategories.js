@@ -1,18 +1,18 @@
 // @flow
 import React from "react";
 import { View, StyleSheet, Image, PixelRatio, Platform } from "react-native";
-import Touchable from "./Touchable";
+import Touchable from "../../components/Touchable";
 import {
   interestButtonBgColor,
   interestButtonTextColor,
   filterShowMeTextColor,
   categoriesFilterButtonBgColor
-} from "../constants/colors";
-import text from "../constants/text";
-import Text, { scaleWithFont } from "./Text";
-import CategoriesPills from "./CategoriesPills";
-import chevronRightImg from "../../assets/images/chevronRight.png";
-import type { EventCategoryName } from "../data/event";
+} from "../../constants/colors";
+import text from "../../constants/text";
+import Text, { scaleWithFont } from "../../components/Text";
+import CategoriesPills from "../../components/CategoriesPills";
+import chevronRightImg from "../../../assets/images/chevronRight.png";
+import type { EventCategoryName } from "../../data/event";
 
 type Props = {
   selectedCategories: Set<EventCategoryName>,

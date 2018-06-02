@@ -8,15 +8,15 @@ import {
   isBefore,
   isSameDay,
   FORMAT_WEEKDAY_MONTH_DAY
-} from "../lib/date";
+} from "../../lib/date";
 
-import Text from "./Text";
+import Text from "../../components/Text";
 
 import {
   dateRangePickerSelectedColor,
   dateRangePickerDisabledTextColor,
   dateRangePickerTextColor
-} from "../constants/colors";
+} from "../../constants/colors";
 
 export type CalendarDay = {
   year: number,

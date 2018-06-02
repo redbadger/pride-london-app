@@ -3,12 +3,12 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import DateRangePicker from "./DateRangePicker";
 import Dialog from "./Dialog";
-import Text from "./Text";
-import Touchable from "./Touchable";
-import text from "../constants/text";
-import type { DateRange } from "../data/date-time";
-import { formatDateRange } from "../data/formatters";
-import { dialogTitleColor } from "../constants/colors";
+import Text from "../../components/Text";
+import Touchable from "../../components/Touchable";
+import text from "../../constants/text";
+import type { DateRange } from "../../data/date-time";
+import { formatDateRange } from "../../data/formatters";
+import { dialogTitleColor } from "../../constants/colors";
 
 type Props = {
   applyButtonText: string,
@@ -51,15 +51,25 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
   };
 
   render() {
-    const { dateRange, forceNewRange } = this.props;
+    const {
+      applyButtonText,
+      applyButtonLabel,
+      applyButtonDisabled,
+      dateRange,
+      forceNewRange,
+      onApply,
+      onCancel,
+      onChange,
+      visible
+    } = this.props;
     const title = formatTitle(dateRange);
     const titleLabel = formatTitleLabel(dateRange);
 
     return (
       <Dialog
-        applyButtonText={this.props.applyButtonText}
-        applyButtonLabel={this.props.applyButtonLabel}
-        applyButtonDisabled={this.props.applyButtonDisabled}
+        applyButtonText={applyButtonText}
+        applyButtonLabel={applyButtonLabel}
+        applyButtonDisabled={applyButtonDisabled}
         title={
           <Text
             type="h3"
@@ -86,12 +96,12 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
           )
         }
         headerLeft={dateRange && <View style={styles.clearButton} />}
-        onApply={this.props.onApply}
-        onCancel={this.props.onCancel}
-        visible={this.props.visible}
+        onApply={onApply}
+        onCancel={onCancel}
+        visible={visible}
       >
         <DateRangePicker
-          onChange={this.props.onChange}
+          onChange={onChange}
           dateRange={dateRange}
           forceNewRange={forceNewRange}
         />
