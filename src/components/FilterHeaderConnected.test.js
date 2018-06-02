@@ -2,7 +2,7 @@ import React from "react";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { shallow } from "enzyme";
-import ConnectedFilterHeader from "./ConnectedFilterHeader";
+import FilterHeader from "./FilterHeaderConnected";
 
 const initialState = {
   events: {
@@ -40,13 +40,13 @@ const mockStore = configureStore([thunk]);
 describe("ConnectedFilterHeader", () => {
   it("renders connector", () => {
     const store = mockStore(initialState);
-    const output = shallow(<ConnectedFilterHeader store={store} />);
+    const output = shallow(<FilterHeader store={store} />);
     expect(output).toMatchSnapshot();
   });
 
   it("renders component", () => {
     const store = mockStore(initialState);
-    const output = shallow(<ConnectedFilterHeader store={store} />);
+    const output = shallow(<FilterHeader store={store} />);
     expect(output.dive()).toMatchSnapshot();
   });
 });

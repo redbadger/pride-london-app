@@ -187,7 +187,7 @@ export const selectEventsRefreshing = (state: State) =>
   getDataState(state).refreshing;
 export const selectAssets = (state: State) => getDataState(state).assets;
 
-export const selectEventById = (state: State, id: string) =>
+export const selectEventById = (state: State, id: string): ?Event =>
   selectEvents(state).find(event => event.sys.id === id);
 
 export const selectPerformanceById = (state: State, id: string) =>
