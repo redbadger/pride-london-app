@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Router reducer NAVIGATION action stores the current route 1`] = `"somewhere"`;
-
-exports[`Router reducer initialises with default state 1`] = `""`;
