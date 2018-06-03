@@ -461,7 +461,7 @@ jobs:
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
-      - run: npm run test:e2e:release
+      - run: yarn test:e2e:release
       - store_artifacts:
           path: /tmp/screenshots
 
