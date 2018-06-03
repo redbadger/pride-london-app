@@ -2,7 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import DateRangePickerDay from "./DateRangePickerDay";
-import * as dateLib from "../lib/date";
+import * as dateLib from "../../lib/date";
 
 const render = props =>
   shallow(

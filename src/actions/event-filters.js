@@ -17,7 +17,7 @@ type EventFiltersActionType =
   | "CLEAR_STAGED_EVENT_FILTERS"
   | "CLEAR_EVENT_FILTERS";
 
-type EventFiltersPayload = {
+export type EventFiltersPayload = {
   date?: ?DateRange,
   timeOfDay?: Set<Time>,
   price?: Set<Price>,

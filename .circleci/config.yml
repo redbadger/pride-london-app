@@ -10,6 +10,8 @@ gems-key: &gems-key
   v1-gems-{{ checksum "Gemfile.lock" }}
 brew-key: &brew-key
   v1-brew-{{ checksum "BrewFile" }}
+nightly-key: &nightly-key
+  v0.1-nightly-{{ checksum "~/.pride-nightly/last-commit" }}
 android-artifacts-path: &android-artifacts-path
   $HOME/project/android/app/build/outputs
 artifacts-path-macos: &artifacts-path-macos
@@ -71,6 +73,15 @@ save-brew-cache: &save-brew-cache
     key: *brew-key
     paths:
       - /usr/local/Homebrew
+
+restore-nightly-cache: &restore-nightly-cache
+  restore_cache:
+    key: *nightly-key
+save-nightly-cache: &save-nightly-cache
+  save_cache:
+    key: *nightly-key
+    paths:
+      - ~/.pride-nightly/cache
 
 yarn-dependencies: &yarn-dependencies
   run:
@@ -215,6 +226,19 @@ bugsnag-upload-sourcemaps-ios: &bugsnag-upload-sourcemaps-ios
         $BUGSNAG_API_KEY
     working_directory: /Users/distiller/project
 
+generate-nightly-file: &generate-nightly-file
+  run:
+    name: Generate Nightly Last Commit File
+    command: |
+        mkdir -p ~/.pride-nightly
+        git rev-parse HEAD > ~/.pride-nightly/last-commit
+
+generate-nightly-cache: &generate-nightly-cache
+  run:
+    name: Generate Nightly Cache
+    command: |
+        mkdir -p ~/.pride-nightly/cache
+        cp ~/.pride-nightly/last-commit ~/.pride-nightly/cache/
 
 version: 2
 jobs:
@@ -482,6 +506,26 @@ jobs:
       - store_artifacts:
           path: /tmp/screenshots
 
+  test-nightly:
+    <<: *job-defaults-macos
+    working_directory: /Users/distiller/project/ios
+    environment:
+      <<: *env-macos
+    steps:
+      - <<: *checkout-macos
+      - <<: *generate-nightly-file
+      - <<: *restore-nightly-cache
+      - run:
+          name: Run if not run before
+          command: |
+              if [ ! -f ~/.pride-nightly/cache/last-commit ]; then
+                echo "run build..."
+              else
+                echo "build not needed..."
+              fi
+      - <<: *generate-nightly-cache
+      - <<: *save-nightly-cache
+
 workflows:
   version: 2
   node-android-ios:
@@ -524,3 +568,13 @@ workflows:
             branches:
               only:
                 - master
+  nightly-release:
+    triggers:
+      - schedule:
+          cron: "0 7 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - test-nightly

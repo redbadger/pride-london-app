@@ -1,8 +1,12 @@
+// @flow
+import type { State } from "../reducers";
 import { selectSponsors } from "./sponsors";
 
 describe("selectSponsors", () => {
   it("selects property", () => {
-    const state = {
+    // Will fix this along with the other fix me's once we have refactored
+    // @$FlowFixMe
+    const state: State = {
       data: {
         sponsors: []
       }

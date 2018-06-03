@@ -73,6 +73,8 @@ settings.json
 
 fabric.properties
 coverage/
+crashlytics-build.properties
+com_crashlytics_export_strings.xml
 
 # Bundle artifact
 *.jsbundle

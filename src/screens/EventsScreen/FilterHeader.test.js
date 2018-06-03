@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import DateFilterDialog from "./ConnectedDateFilterDialog";
+import DateRangePickerDialog from "./DateRangePickerDialogConnected";
 import FilterHeader from "./FilterHeader";
 import FilterHeaderButton from "./FilterHeaderButton";
 import type { Props as ComponentProps } from "./FilterHeader";
@@ -88,7 +88,7 @@ it("closes date picker when users presses applies changes", () => {
   const output = render();
   output.setState({ datesPickerVisible: true });
 
-  const datePicker = output.find(DateFilterDialog);
+  const datePicker = output.find(DateRangePickerDialog);
   datePicker.simulate("apply");
 
   expect(output.state("datesPickerVisible")).toBe(false);

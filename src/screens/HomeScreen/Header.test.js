@@ -2,7 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Header from "./Header";
-import { generateHeaderBanners } from "./__test-data";
+import { generateHeaderBanner, sampleArrayOf } from "../../data/__test-data";
 
 const getAssetSource = jest.fn().mockReturnValue({
   uri: "https://example.com/images/header-1.png",
@@ -13,7 +13,7 @@ const getAssetSource = jest.fn().mockReturnValue({
 it("renders correctly", () => {
   const output = shallow(
     <Header
-      headerBanners={generateHeaderBanners(2)}
+      headerBanners={sampleArrayOf(generateHeaderBanner)(2)}
       getAssetSource={getAssetSource}
       navigation={null}
     />
