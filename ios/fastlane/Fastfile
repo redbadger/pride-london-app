@@ -118,13 +118,17 @@ platform :ios do
 
   desc "Promote to Production"
   lane :promote_to_production do |options|
-    # Get build from private repo, only store latest
-
-    # Check build is same as in TestFlight
-
-    # Use Deliver to send build to production
+    # Config in DeliverFile
+    deliver submit_build --build_number latest_testflight_build_number
 
     # Post to Slack
+    if defined?(options[:slack_webhook])
+      slack(
+        message: "iOS build #{latestVersionCode} promoted to Production!",
+        success: true,
+        slack_url: options[:slack_webhook],
+      )
+    end
   end
 
   desc "Upload to TestFlight and notify testers"

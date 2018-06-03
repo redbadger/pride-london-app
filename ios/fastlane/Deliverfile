@@ -1,0 +1,7 @@
+app_identifier 'org.prideinlondon.festival'
+automatic_release(false)
+submit_for_review(true)
+submission_information({
+  add_id_info_serves_ads: false,
+  export_compliance_uses_encryption: false
+})
