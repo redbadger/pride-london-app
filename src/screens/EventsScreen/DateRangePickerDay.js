@@ -8,15 +8,15 @@ import {
   isBefore,
   isSameDay,
   FORMAT_WEEKDAY_MONTH_DAY
-} from "../lib/date";
+} from "../../lib/date";
 
-import Text from "./Text";
+import Text from "../../components/Text";
 
 import {
   dateRangePickerSelectedColor,
   dateRangePickerDisabledTextColor,
   dateRangePickerTextColor
-} from "../constants/colors";
+} from "../../constants/colors";
 
 export type CalendarDay = {
   year: number,
@@ -80,6 +80,10 @@ const dotStyle = (marking: DayMarking) => [
 ];
 
 export default class Day extends Component<DayProps> {
+  static defaultProps = {
+    state: undefined
+  };
+
   shouldComponentUpdate = (nextProps: DayProps): boolean => {
     const { state, marking, date } = this.props;
     const {

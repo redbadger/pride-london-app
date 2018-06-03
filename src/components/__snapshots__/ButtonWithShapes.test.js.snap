@@ -30,7 +30,7 @@ exports[`picks different icon for external links 1`] = `
       Object {
         "backgroundColor": "red",
       },
-      undefined,
+      Object {},
     ]
   }
 >
@@ -51,7 +51,7 @@ exports[`picks different icon for external links 1`] = `
         },
       }
     }
-    style={Object {}}
+    style={false}
   >
     <Component
       style={
@@ -135,7 +135,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
       Object {
         "backgroundColor": "red",
       },
-      undefined,
+      Object {},
     ]
   }
 >
@@ -156,7 +156,7 @@ exports[`picks different icon for external links with contrast color 1`] = `
         },
       }
     }
-    style={Object {}}
+    style={false}
   >
     <Component
       style={
@@ -240,7 +240,7 @@ exports[`renders correctly 1`] = `
       Object {
         "backgroundColor": "red",
       },
-      undefined,
+      Object {},
     ]
   }
 >
@@ -261,7 +261,7 @@ exports[`renders correctly 1`] = `
         },
       }
     }
-    style={Object {}}
+    style={false}
   >
     <Component
       style={

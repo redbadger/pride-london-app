@@ -6,13 +6,13 @@ import {
   isBefore,
   addDays,
   FORMAT_YEAR_MONTH_DAY
-} from "../lib/date";
-import type { DateRange } from "../data/date-time";
+} from "../../lib/date";
+import type { DateRange } from "../../data/date-time";
 
 import Day from "./DateRangePickerDay";
 import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
 
-import { dateRangePickerTextColor } from "../constants/colors";
+import { dateRangePickerTextColor } from "../../constants/colors";
 
 const getSortedDateRange = (dates: DateRange) =>
   isBefore(dates.endDate, dates.startDate)
@@ -88,6 +88,11 @@ type Props = {
 };
 
 class DateRangePicker extends React.PureComponent<Props> {
+  static defaultProps = {
+    dateRange: undefined,
+    today: undefined
+  };
+
   onDaySelected = (day: CalendarDay) => {
     const { dateRange, onChange, forceNewRange } = this.props;
 

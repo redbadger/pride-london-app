@@ -1,10 +1,11 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
+import { withNavigationFocus } from "../../lib/navigation";
+import type { NavigationProps } from "../../lib/navigation";
 import EventList from "../../components/EventList";
 import text from "../../constants/text";
 import Loading from "../../components/Loading";
@@ -15,22 +16,27 @@ import locale from "../../data/locale";
 import NoSavedEvents from "./NoSavedEvents";
 
 export type Props = {
-  navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
   loading: boolean,
   refreshing: boolean,
-  updateEvents: () => Promise<void>,
+  updateData: () => Promise<void>,
   getAssetSource: FieldRef => ImageSource
 };
 
-class SavedEventListScreen extends PureComponent<Props> {
+type AllProps = Props & NavigationProps;
+
+class SavedEventListScreen extends Component<AllProps> {
+  shouldComponentUpdate(nextProps: AllProps) {
+    return nextProps.isFocused;
+  }
+
   render() {
     const {
       navigation,
-      updateEvents,
+      updateData,
       events,
       savedEvents,
       addSavedEvent,
@@ -59,7 +65,7 @@ class SavedEventListScreen extends PureComponent<Props> {
               removeSavedEvent={removeSavedEvent}
               refreshing={refreshing}
               onRefresh={() => {
-                updateEvents();
+                updateData();
               }}
               onPress={(eventId: string) => {
                 navigation.navigate(EVENT_DETAILS, { eventId });
@@ -79,4 +85,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SavedEventListScreen;
+export { SavedEventListScreen };
+export default withNavigationFocus(SavedEventListScreen);

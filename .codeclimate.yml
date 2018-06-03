@@ -5,7 +5,7 @@ exclude_patterns:
 checks:
   similar-code:
     config:
-      threshold: 72
+      threshold: 150
   method-lines:
     config:
       threshold: 50

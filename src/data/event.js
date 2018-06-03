@@ -30,7 +30,6 @@ export type Event = {
   },
   sys: {
     id: string,
-    type: string,
     contentType: {
       sys: {
         id: "event"
@@ -47,7 +46,6 @@ export type Performance = {
   },
   sys: {
     id: string,
-    type: string,
     contentType: {
       sys: {
         id: "performance"
@@ -70,7 +68,6 @@ export type FeaturedEvents = {
   },
   sys: {
     id: string,
-    type: string,
     contentType: {
       sys: {
         id: "featuredEvents"

@@ -2,7 +2,7 @@
 import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
-import Component from "./component";
+import { SavedEventListScreen as Component } from "./component";
 import EventList from "../../components/EventList";
 import Loading from "../../components/Loading";
 import NoSavedEvents from "./NoSavedEvents";
@@ -87,12 +87,13 @@ describe("SavedEventListScreen Component", () => {
         events={events}
         loading={false}
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
+        isFocused
       />
     );
     expect(output).toMatchSnapshot();
@@ -105,12 +106,13 @@ describe("SavedEventListScreen Component", () => {
         events={events}
         loading
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
+        isFocused
       />
     );
 
@@ -126,12 +128,13 @@ describe("SavedEventListScreen Component", () => {
         events={[]}
         loading={false}
         refreshing={false}
-        updateEvents={() => Promise.resolve()}
+        updateData={() => Promise.resolve()}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
+        isFocused
       />
     );
 
@@ -140,19 +143,20 @@ describe("SavedEventListScreen Component", () => {
   });
 
   it("updates events on refresh", () => {
-    const updateEvents = jest.fn();
+    const updateData = jest.fn();
     const output = shallow(
       <Component
         navigation={navigation}
         events={events}
         loading={false}
         refreshing={false}
-        updateEvents={updateEvents}
+        updateData={updateData}
         getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
+        isFocused
       />
     );
 
@@ -161,6 +165,33 @@ describe("SavedEventListScreen Component", () => {
       .props()
       .onRefresh();
 
-    expect(updateEvents).toHaveBeenCalled();
+    expect(updateData).toHaveBeenCalled();
+  });
+
+  describe("#shouldComponentUpdate", () => {
+    it("does not update when not focused", () => {
+      const output = shallow(
+        <Component
+          navigation={navigation}
+          events={events}
+          loading={false}
+          refreshing={false}
+          updateData={() => Promise.resolve()}
+          getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
+          selectedCategories={new Set()}
+          addSavedEvent={() => {}}
+          removeSavedEvent={() => {}}
+          savedEvents={new Set()}
+          isFocused
+        />
+      );
+      const nextProps = {
+        isFocused: false
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(false);
+    });
   });
 });

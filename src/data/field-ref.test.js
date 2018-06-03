@@ -1,14 +1,11 @@
 // @flow
+import { generateCMSFieldRef, sampleOne } from "./__test-data";
 import decodeFieldRef from "./field-ref";
 
 describe("FieldRef", () => {
   describe("decoder", () => {
     it("correctly decodes valid CMS fielf reference", () => {
-      const data: mixed = {
-        sys: {
-          id: "test"
-        }
-      };
+      const data: mixed = sampleOne(generateCMSFieldRef);
 
       const decoded = decodeFieldRef(data);
       expect(decoded.ok).toEqual(true);
