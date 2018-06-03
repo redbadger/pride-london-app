@@ -116,6 +116,17 @@ platform :ios do
     end
   end
 
+  desc "Promote to Production"
+  lane :promote_to_production do |options|
+    # Get build from private repo, only store latest
+
+    # Check build is same as in TestFlight
+
+    # Use Deliver to send build to production
+
+    # Post to Slack
+  end
+
   desc "Upload to TestFlight and notify testers"
   lane :deploy_testflight do
     testflight(
