@@ -5,3 +5,4 @@ submission_information({
   add_id_info_serves_ads: false,
   export_compliance_uses_encryption: false
 })
+build_number 'latest'
