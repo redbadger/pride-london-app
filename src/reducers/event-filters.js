@@ -73,10 +73,17 @@ const EventFilters = (now: void => DateTime) => {
         };
       case NAVIGATION:
         if (routesWithoutEvents.includes(action.route)) {
-          return {
-            ...state,
-            showEventsAfter: now()
-          };
+          const newTime = now();
+          const diff = now()
+            .diff(state.showEventsAfter, "minutes")
+            .as("minutes");
+          if (diff >= 30) {
+            return {
+              ...state,
+              showEventsAfter: newTime
+            };
+          }
+          return state;
         }
         return state;
       default:

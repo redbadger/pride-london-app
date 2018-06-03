@@ -44,7 +44,6 @@ const buildState = (
     stagedFilters
   },
   savedEvents: new Set(),
-  currentRoute: "fakeRoute",
   splashScreen: false
 });
 
