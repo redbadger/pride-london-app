@@ -3,7 +3,7 @@ yarn-key: &yarn-key
 yarn-key-macos: &yarn-key-macos
   v3-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
 npm-key-macos-e2e: &npm-key-macos-e2e
-  v3-ccd7c39-dependencies-macos-e2e-{{ checksum "/Users/distiller/project/package.json" }}
+  v3-dependencies-macos-e2e-{{ checksum "/Users/distiller/project/package.json" }}
 gradle-key: &gradle-key
   v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
