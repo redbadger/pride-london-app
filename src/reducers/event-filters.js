@@ -74,7 +74,7 @@ const EventFilters = (now: void => DateTime) => {
       case NAVIGATION:
         if (routesWithoutEvents.includes(action.route)) {
           const newTime = now();
-          const diff = now()
+          const diff = newTime
             .diff(state.showEventsAfter, "minutes")
             .as("minutes");
           if (diff >= 30) {
