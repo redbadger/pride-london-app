@@ -2,8 +2,6 @@ yarn-key: &yarn-key
   v1-dependencies-{{ checksum "yarn.lock" }}
 yarn-key-macos: &yarn-key-macos
   v3-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
-npm-key-macos-e2e: &npm-key-macos-e2e
-  v3-475337f934cc3132da7f1cc85a36b22d846ce9db-dependencies-macos-e2e-{{ checksum "/Users/distiller/project/yarn.lock" }}
 gradle-key: &gradle-key
   v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
@@ -137,7 +135,7 @@ store-artifacts-docker: &store-artifacts-docker
 
 job-defaults-macos: &job-defaults-macos
   macos:
-    xcode: "9.3.0"
+    xcode: "9.2.0"
   shell: /bin/bash --login -o pipefail
 
 env-macos: &env-macos
