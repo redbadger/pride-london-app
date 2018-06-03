@@ -5,15 +5,15 @@ import {
   stageEventFilters,
   commitEventFilters,
   clearStagedEventFilters
-} from "../actions/event-filters";
-import type { DateRange } from "../data/date-time";
-import { selectFilteredEvents } from "../selectors/events";
+} from "../../actions/event-filters";
+import type { DateRange } from "../../data/date-time";
+import { selectFilteredEvents } from "../../selectors/events";
 import {
   selectDateFilter,
   selectIsStagingFilters
-} from "../selectors/event-filters";
+} from "../../selectors/event-filters";
 import Component from "./DateRangePickerDialog";
-import text from "../constants/text";
+import text from "../../constants/text";
 
 type OwnProps = {
   onApply: () => void,
@@ -21,16 +21,26 @@ type OwnProps = {
   visible: boolean
 };
 
-type Props = {
+type StateProps = {
   applyButtonText: string,
   applyButtonLabel: string,
   applyButtonDisabled?: boolean,
   dateRange: ?DateRange,
-  onChange: (?DateRange) => void,
   forceNewRange: boolean
-} & OwnProps;
+};
 
-const mapStateToProps = state => ({
+type DispatchProps = {
+  onApply: () => void,
+  onCancel: () => void,
+  onChange: (?DateRange) => void
+};
+
+type Props = StateProps & DispatchProps;
+
+// Note we must add a return type here for react-redux connect to work
+// with flow correctly. If not provided is silently fails if types do
+// not line up. See https://github.com/facebook/flow/issues/5343
+const mapStateToProps = (state): StateProps => ({
   applyButtonText: text.filterPickerApply(
     selectFilteredEvents(state, true).length
   ),
@@ -42,8 +52,7 @@ const mapStateToProps = state => ({
   forceNewRange: !selectIsStagingFilters(state)
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onChange: date => dispatch(stageEventFilters({ date })),
+const mapDispatchToProps = (dispatch, ownProps: OwnProps): DispatchProps => ({
   onApply: () => {
     ownProps.onApply();
     dispatch(commitEventFilters());
@@ -51,7 +60,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onCancel: () => {
     ownProps.onCancel();
     dispatch(clearStagedEventFilters());
-  }
+  },
+  onChange: date => dispatch(stageEventFilters({ date }))
 });
 
 const connector: Connector<OwnProps, Props> = connect(

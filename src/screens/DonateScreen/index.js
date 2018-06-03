@@ -4,7 +4,7 @@ import type { ElementRef } from "react";
 import { Keyboard, Linking, ScrollView, StyleSheet, View } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import donateHeader from "../../../assets/images/donateHeader.png";
+import donateHeader from "../../../assets/images/donateHeader.jpg";
 import Button from "../../components/ButtonPrimary";
 import Header from "../../components/Header";
 import ImageHeader from "../../components/ImageHeader";

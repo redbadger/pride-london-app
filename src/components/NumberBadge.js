@@ -2,7 +2,7 @@
 import React from "react";
 import { View, StyleSheet, Platform } from "react-native";
 import { lightNavyBlueColor, eucalyptusGreenColor } from "../constants/colors";
-import Text from "../components/Text";
+import Text from "./Text";
 
 type Props = {
   value: number

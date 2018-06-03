@@ -3,8 +3,8 @@ import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { shallow } from "enzyme";
 import { DateTime } from "luxon";
-import ConnectedDateFilterDialog from "./ConnectedDateFilterDialog";
-import { createEventFiltersState } from "../reducers/event-filters";
+import DateRangePickerDialog from "./DateRangePickerDialogConnected";
+import { createEventFiltersState } from "../../reducers/event-filters";
 
 const initialState = {
   data: {
@@ -43,7 +43,7 @@ describe("ConnectedDateFilterDialog", () => {
   it("renders connector", () => {
     const store = mockStore(initialState);
     const output = shallow(
-      <ConnectedDateFilterDialog
+      <DateRangePickerDialog
         store={store}
         onApply={() => {}}
         onCancel={() => {}}
@@ -56,7 +56,7 @@ describe("ConnectedDateFilterDialog", () => {
   it("renders component", () => {
     const store = mockStore(initialState);
     const output = shallow(
-      <ConnectedDateFilterDialog
+      <DateRangePickerDialog
         store={store}
         onApply={() => {}}
         onCancel={() => {}}
@@ -70,7 +70,7 @@ describe("ConnectedDateFilterDialog", () => {
     const store = mockStore(initialState);
     const mockOnApply = jest.fn();
     const output = shallow(
-      <ConnectedDateFilterDialog
+      <DateRangePickerDialog
         store={store}
         onApply={mockOnApply}
         onCancel={() => {}}
@@ -92,7 +92,7 @@ describe("ConnectedDateFilterDialog", () => {
     const store = mockStore(initialState);
     const mockOnCancel = jest.fn();
     const output = shallow(
-      <ConnectedDateFilterDialog
+      <DateRangePickerDialog
         store={store}
         onApply={() => {}}
         onCancel={mockOnCancel}
@@ -113,7 +113,7 @@ describe("ConnectedDateFilterDialog", () => {
   it("updates filters on change", () => {
     const store = mockStore(initialState);
     const output = shallow(
-      <ConnectedDateFilterDialog
+      <DateRangePickerDialog
         store={store}
         onApply={() => {}}
         onCancel={() => {}}
@@ -137,7 +137,7 @@ describe("ConnectedDateFilterDialog", () => {
   it("forces a new range when not staging filters", () => {
     const store = mockStore(singleDateFilterState);
     const output = shallow(
-      <ConnectedDateFilterDialog
+      <DateRangePickerDialog
         store={store}
         onApply={() => {}}
         onCancel={() => {}}

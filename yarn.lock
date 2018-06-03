@@ -428,6 +428,10 @@
     follow-redirects "^1.2.5"
     is-buffer "^1.1.5"
 
+"@rgbboy/testcheck@^1.0.0-rc.3":
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@rgbboy/testcheck/-/testcheck-1.0.0-rc.3.tgz#f343af99f9e78e1a70d45e7dcf5160713969ce57"
+
 "@types/node@*":
   version "9.6.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.6.tgz#439b91f9caf3983cad2eef1e11f6bedcbf9431d2"
