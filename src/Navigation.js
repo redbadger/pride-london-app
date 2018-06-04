@@ -149,7 +149,6 @@ const ParadeStack = createStackNavigator(
   },
   {
     initialRouteName: PARADE,
-    headerMode: "float",
     navigationOptions: {
       header: <ParadeHeader />
     },
