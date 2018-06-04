@@ -137,7 +137,7 @@ export default {
   homeSupportUs: "Support us",
   homeSupportUsDescription: "Be part of the movement",
   paradeInformationScreen: {
-    headerTitle: "Parade",
+    headerTitle: "Parade Day - 7th July",
     pageHeading: "London Parade",
     pageSubheading: "Sunday 7th July",
     pageDescription:

@@ -32,12 +32,7 @@ import iconSavedActive from "../assets/images/savedActive.png";
 import iconSavedDefault from "../assets/images/savedDefault.png";
 import iconSupportUsActive from "../assets/images/supportUsActive.png";
 import iconSupportUsDefault from "../assets/images/supportUsDefault.png";
-import {
-  transparent,
-  tabBarShadowColor,
-  lightNavyBlueColor,
-  whiteColor
-} from "./constants/colors";
+import { transparent, tabBarShadowColor } from "./constants/colors";
 import {
   EVENT_LIST,
   EVENT_DETAILS,
@@ -53,6 +48,7 @@ import {
 } from "./constants/routes";
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
+import ParadeHeader from "./components/ParadeHeader";
 import Text from "./components/Text";
 import type { ImageRef } from "./data/image-ref";
 
@@ -72,14 +68,6 @@ const withShadow = Component => props => (
   </View>
 );
 
-const paradeHeaderTitle = (headerTitle: Props) => (
-  <View>
-    <Text type="h2" color="whiteColor">
-      {headerTitle}
-    </Text>
-  </View>
-);
-
 const styles = StyleSheet.create({
   shadowContainer: {
     flex: 1
@@ -93,9 +81,6 @@ const styles = StyleSheet.create({
   },
   card: {
     shadowOpacity: 0
-  },
-  paradeHeader: {
-    backgroundColor: lightNavyBlueColor
   }
 });
 
@@ -166,8 +151,7 @@ const ParadeStack = createStackNavigator(
     initialRouteName: PARADE,
     headerMode: "float",
     navigationOptions: {
-      headerTitle: paradeHeaderTitle("Parade Day - 7th July"),
-      headerStyle: styles.paradeHeader
+      header: <ParadeHeader />
     },
     cardStyle: styles.card
   }
