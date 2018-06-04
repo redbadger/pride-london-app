@@ -4,7 +4,7 @@ import decodePerformance from "./performance";
 
 describe("Performance", () => {
   describe("decoder", () => {
-    it("correctly decodes valid CMS sponsor", () => {
+    it("correctly decodes valid CMS performance", () => {
       const data: mixed = sampleOne(generateCMSPerformance);
 
       const decoded = decodePerformance("en-GB")(data);
