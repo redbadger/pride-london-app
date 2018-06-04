@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import DateRangePickerDialog from "./DateRangePickerDialogConnected";
 import FilterHeader from "./FilterHeader";
 import FilterHeaderButton from "./FilterHeaderButton";
 import type { Props as ComponentProps } from "./FilterHeader";

@@ -46,7 +46,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
     applyButtonDisabled: false
   };
 
-  clear = () => {
+  onCancel = () => {
     this.props.onChange(null);
   };
 

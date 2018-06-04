@@ -17,8 +17,7 @@ import text from "../../constants/text";
 import Component from "./component";
 
 type OwnProps = {
-  navigation: NavigationScreenProp<NavigationState>,
-  goBack: () => void
+  navigation: NavigationScreenProp<NavigationState>
 };
 
 type StateProps = {
@@ -33,6 +32,7 @@ type StateProps = {
 type DispatchProps = {
   onApply: () => void,
   onCancel: () => void,
+  onReset: () => void,
   onChange: (?DateRange) => void
 };
 
@@ -67,6 +67,11 @@ const mapDispatchToProps = (
   },
   onCancel: () => {
     dispatch(clearStagedEventFilters());
+    navigation.goBack();
+  },
+  onReset: () => {
+    dispatch(stageEventFilters({ date: null }));
+    dispatch(commitEventFilters());
   },
   onChange: date => dispatch(stageEventFilters({ date }))
 });

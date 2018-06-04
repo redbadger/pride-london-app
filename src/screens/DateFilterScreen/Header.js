@@ -5,15 +5,15 @@ import CommonHeader from "../../components/Header";
 import ActionButton from "../../components/ActionButton";
 
 type Props = {
-  onBack: () => void,
-  onCancel: () => void
+  onCancel: () => void,
+  onReset: () => void
 };
 
-const Header = ({ onBack, onCancel }: Props) => (
+const Header = ({ onCancel, onReset }: Props) => (
   <View>
     <CommonHeader
-      leftElement={<CommonHeader.BackButton onPress={onBack} />}
-      rightElement={<ActionButton label="Reset" onPress={onCancel} />}
+      leftElement={<CommonHeader.BackButton onPress={onCancel} />}
+      rightElement={<ActionButton label="Reset" onPress={onReset} />}
     />
   </View>
 );

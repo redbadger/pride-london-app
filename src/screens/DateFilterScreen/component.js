@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import { lightNavyBlueColor } from "../../constants/colors";
 import Header from "./Header";
-import DateRangePicker from "../EventsScreen/DateRangePicker";
+import DateRangePicker from "./DateRangePicker";
 import Button from "../../components/ButtonPrimary";
 
 type Props = {
@@ -14,14 +14,33 @@ type Props = {
   dateRange: ?DateRange,
   onApply: () => void,
   onCancel: () => void,
+  onReset: () => void,
   onChange: (?DateRange) => void,
-  forceNewRange: boolean,
-  navigation: any
+  forceNewRange: boolean
 };
 
+// const formatTitle = (dateRange: ?DateRange): string => {
+//   if (!dateRange) return text.filterDayPickerTitle;
+
+//   return (
+//     formatDateRange(dateRange) +
+//     (dateRange.startDate === dateRange.endDate ? " -" : "")
+//   );
+// };
+
+// const formatTitleLabel = (dateRange: ?DateRange): string => {
+//   if (!dateRange) return text.filterDayPickerTitle;
+
+//   return `Selected: ${formatDateRange(dateRange)} ${
+//     dateRange.startDate === dateRange.endDate
+//       ? ", pick another day to select range"
+//       : ""
+//   }`;
+// };
+
 class DateFilterScreen extends PureComponent<Props> {
-  goBack = () => {
-    this.props.navigation.goBack();
+  static defaultProps = {
+    applyButtonDisabled: false
   };
 
   render() {
@@ -32,13 +51,16 @@ class DateFilterScreen extends PureComponent<Props> {
       applyButtonDisabled,
       onApply,
       onCancel,
+      onReset,
       applyButtonLabel,
       applyButtonText
     } = this.props;
+    // const title = formatTitle(dateRange);
+    // const titleLabel = formatTitleLabel(dateRange);
 
     return (
       <SafeAreaView style={styles.container}>
-        <Header onBack={this.goBack} onCancel={onCancel} />
+        <Header onCancel={onCancel} onReset={onReset} />
         <View style={styles.list}>
           <DateRangePicker
             onChange={onChange}

@@ -3,7 +3,6 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { DateRange } from "../../data/date-time";
 import type { EventCategoryName } from "../../data/event";
-import DateRangePickerDialog from "./DateRangePickerDialogConnected";
 import FilterHeaderButton from "./FilterHeaderButton";
 import ContentPadding from "../../components/ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
@@ -24,23 +23,7 @@ export type Props = {
   numTagFiltersSelected: number
 };
 
-type State = {
-  datesPickerVisible: boolean
-};
-
 class FilterHeader extends React.PureComponent<Props, State> {
-  state = {
-    datesPickerVisible: false
-  };
-
-  showDatePicker = () => {
-    this.setState({ datesPickerVisible: true });
-  };
-
-  hideDatePicker = () => {
-    this.setState({ datesPickerVisible: false });
-  };
-
   render() {
     const {
       dateFilter,
@@ -84,11 +67,6 @@ class FilterHeader extends React.PureComponent<Props, State> {
             }
           />
         </View>
-        <DateRangePickerDialog
-          onApply={this.hideDatePicker}
-          onCancel={this.hideDatePicker}
-          visible={this.state.datesPickerVisible}
-        />
       </View>
     );
   }
