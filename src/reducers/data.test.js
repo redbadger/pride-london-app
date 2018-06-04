@@ -14,6 +14,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      performances: {},
       sponsors: [],
       loading: false,
       refreshing: false
@@ -29,6 +30,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      performances: {},
       sponsors: [],
       loading: false,
       refreshing: false
@@ -44,6 +46,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      performances: {},
       sponsors: [],
       loading: true,
       refreshing: false
@@ -75,6 +78,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      performances: {},
       sponsors: [],
       loading: true,
       refreshing: false
@@ -134,6 +138,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      performances: {},
       sponsors: [],
       loading: true,
       refreshing: true
@@ -150,6 +155,7 @@ describe("Events reducer", () => {
         entries: [],
         assets: [],
         headerBanners: [],
+        performances: {},
         sponsors: [],
         loading: true,
         refreshing: false
@@ -211,6 +217,7 @@ describe("Events reducer", () => {
         entries: [],
         assets: [],
         headerBanners: [],
+        performances: {},
         sponsors: [],
         loading: true,
         refreshing: false

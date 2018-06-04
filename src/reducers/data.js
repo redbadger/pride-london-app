@@ -3,6 +3,7 @@ import type { DataAction } from "../actions/data";
 import type { CmsEntry } from "../integrations/cms";
 import type { Asset } from "../data/asset";
 import type { HeaderBanner } from "../data/header-banner";
+import type { Performances } from "../data/performance";
 import type { Sponsor } from "../data/sponsor";
 import decodeHeaderBanner from "../data/header-banner";
 import decodeSponsor from "../data/sponsor";
@@ -16,6 +17,7 @@ export type State = {
   entries: CmsEntry[],
   assets: Asset[],
   headerBanners: HeaderBanner[],
+  performances: Performances,
   sponsors: Sponsor[],
   loading: boolean,
   refreshing: boolean
@@ -25,6 +27,7 @@ const defaultState = {
   entries: [],
   assets: [],
   headerBanners: [],
+  performances: {},
   sponsors: [],
   loading: true,
   refreshing: false

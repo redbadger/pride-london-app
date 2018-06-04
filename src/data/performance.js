@@ -18,7 +18,7 @@ export type Performance = {
   }
 };
 
-const decodePerformance = (locale: string): Decoder<Sponsor> =>
+const decodePerformance = (locale: string): Decoder<Performance> =>
   decode.shape({
     contentType: decode.at(
       ["sys", "contentType", "sys", "id"],
