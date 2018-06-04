@@ -13,6 +13,7 @@ import Component from "./FilterHeader";
 type OwnProps = {
   onFilterCategoriesPress: Function,
   onFilterButtonPress: () => void,
+  onDateFilterButtonPress: () => void,
   selectedCategories: Set<EventCategoryName>
 };
 

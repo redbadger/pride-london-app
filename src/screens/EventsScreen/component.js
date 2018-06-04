@@ -17,7 +17,8 @@ import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
   EVENT_CATEGORIES_FILTER,
-  FILTER_MODAL
+  FILTER_MODAL,
+  DATE_FILTER_MODAL
 } from "../../constants/routes";
 import locale from "../../data/locale";
 
@@ -35,7 +36,7 @@ export type Props = {
 
 type AllProps = Props & NavigationProps;
 
-class EventsScreen extends Component<AllProps> {
+export class EventsScreen extends Component<AllProps> {
   shouldComponentUpdate(nextProps: AllProps) {
     return nextProps.isFocused;
   }
@@ -46,6 +47,10 @@ class EventsScreen extends Component<AllProps> {
 
   handleFilterButtonPress = () => {
     this.props.navigation.navigate(FILTER_MODAL);
+  };
+
+  handleDateFilterButtonPress = () => {
+    this.props.navigation.navigate(DATE_FILTER_MODAL);
   };
 
   render() {
@@ -65,6 +70,7 @@ class EventsScreen extends Component<AllProps> {
           onFilterCategoriesPress={this.handleFilterCategoriesPress}
           selectedCategories={this.props.selectedCategories}
           onFilterButtonPress={this.handleFilterButtonPress}
+          onDateFilterButtonPress={this.handleDateFilterButtonPress}
         />
         {this.props.loading || events.length < 1 ? (
           <NoEvents />
@@ -97,5 +103,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export { EventsScreen };
 export default withNavigationFocus(EventsScreen);

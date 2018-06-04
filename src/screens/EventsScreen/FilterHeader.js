@@ -19,6 +19,7 @@ export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateRange,
   onFilterButtonPress: () => void,
+  onDateFilterButtonPress: () => void,
   selectedCategories: Set<EventCategoryName>,
   numTagFiltersSelected: number
 };
@@ -46,6 +47,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
       onFilterCategoriesPress,
       selectedCategories,
       onFilterButtonPress,
+      onDateFilterButtonPress,
       numTagFiltersSelected
     } = this.props;
     const formattedDateFilter = dateFilter
@@ -67,7 +69,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
             active={!!dateFilter}
             text={formattedDateFilter}
             label={`filter by date: ${formattedDateFilter}`}
-            onPress={this.showDatePicker}
+            onPress={onDateFilterButtonPress}
             style={styles.filterButton}
           />
           <View style={styles.dividerLine} />

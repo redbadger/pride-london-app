@@ -20,6 +20,7 @@ import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FilterScreen from "./screens/FilterScreen";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
+import DateFilterScreen from "./screens/DateFilterScreen";
 import SupportUsScreen from "./screens/SupportUsScreen";
 import SponsorScreen from "./screens/SponsorScreen";
 import iconHomeActive from "../assets/images/homeActive.png";
@@ -43,6 +44,7 @@ import {
   SAVED_EVENT_LIST,
   SUPPORT_US,
   FILTER_MODAL,
+  DATE_FILTER_MODAL,
   DONATE,
   SPONSOR
 } from "./constants/routes";
@@ -126,7 +128,8 @@ const EventsStack = createStackNavigator(
     [EVENT_LIST]: { screen: withShadow(EventsScreen) },
     [EVENT_DETAILS]: { screen: EventDetailsScreen },
     [EVENT_CATEGORIES_FILTER]: { screen: CategoriesFilterScreen },
-    [FILTER_MODAL]: { screen: FilterScreen }
+    [FILTER_MODAL]: { screen: FilterScreen },
+    [DATE_FILTER_MODAL]: { screen: DateFilterScreen }
   },
   {
     initialRouteName: EVENT_LIST,

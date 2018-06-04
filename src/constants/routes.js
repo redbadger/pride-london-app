@@ -7,6 +7,7 @@ export const EVENT_CATEGORIES_FILTER = "EVENT_CATEGORIES_FILTER";
 export const PARADE = "PARADE";
 export const SUPPORT_US = "SUPPORT_US";
 export const FILTER_MODAL = "FILTER_MODAL";
+export const DATE_FILTER_MODAL = "DATE_FILTER_MODAL";
 export const DONATE = "DONATE";
 export const SPONSOR = "SPONSOR";
 
