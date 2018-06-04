@@ -79,7 +79,7 @@ export const generateCMSHeaderBanner: ValueGenerator<mixed> = gen({
   }
 });
 
-export const generateEvent: ValueGenerator<Event> = gen({
+export const generateCMSEvent: ValueGenerator<Event> = gen({
   sys: gen({
     id: gen.alphaNumString,
     contentType: {
