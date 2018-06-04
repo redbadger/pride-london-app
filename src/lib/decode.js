@@ -72,10 +72,7 @@ export const field = <A>(key: string, decoder: Decoder<A>): Decoder<A> => (
   v: mixed
 ) => {
   if (v != null && typeof v === "object") {
-    if (Object.prototype.hasOwnProperty.call(v, key)) {
-      return decoder(v[key]);
-    }
-    return error(`value is missing field '${key}'`);
+    return decoder(v[key]);
   }
   return error(`value is not an object`);
 };

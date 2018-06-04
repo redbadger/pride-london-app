@@ -223,7 +223,7 @@ describe("field", () => {
 
     expect(result.ok).toEqual(false);
     if (!result.ok) {
-      expect(result.error).toEqual("value is missing field 'a'");
+      expect(result.error).toEqual("value is not a string");
     }
   });
 
@@ -268,7 +268,7 @@ describe("at", () => {
 
     expect(result.ok).toEqual(false);
     if (!result.ok) {
-      expect(result.error).toEqual("value is missing field 'b'");
+      expect(result.error).toEqual("value is not an object");
     }
   });
 
@@ -339,7 +339,7 @@ describe("shape", () => {
 
     expect(result.ok).toEqual(false);
     if (!result.ok) {
-      expect(result.error).toEqual("value is missing field 'b'");
+      expect(result.error).toEqual("value is not an object");
     }
   });
 
