@@ -5,9 +5,9 @@ exports[`renders correctly 1`] = `
   region={
     Object {
       "latitude": 51.51004,
-      "latitudeDelta": 0.02,
+      "latitudeDelta": 0.018,
       "longitude": -0.134192,
-      "longitudeDelta": 0.0112,
+      "longitudeDelta": 4.1e-8,
     }
   }
   scrollEnabled={false}
@@ -20,6 +20,7 @@ exports[`renders correctly 1`] = `
       "top": 0,
     }
   }
+  zoomEnabled={false}
 >
   <MapPolyline
     coordinates={
@@ -634,7 +635,7 @@ exports[`renders correctly 1`] = `
         ellipsizeMode="tail"
         style={
           Object {
-            "color": "white",
+            "color": "#ffffff",
             "fontSize": 12,
           }
         }
@@ -670,7 +671,7 @@ exports[`renders correctly 1`] = `
         ellipsizeMode="tail"
         style={
           Object {
-            "color": "white",
+            "color": "#ffffff",
             "fontSize": 12,
           }
         }

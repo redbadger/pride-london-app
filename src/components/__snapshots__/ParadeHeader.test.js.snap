@@ -10,6 +10,7 @@ exports[`renders correctly 1`] = `
       "justifyContent": "center",
     }
   }
+  testID="page-heading-parade"
 >
   <Text
     color="whiteColor"
