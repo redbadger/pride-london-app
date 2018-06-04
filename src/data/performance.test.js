@@ -1,13 +1,13 @@
 // @flow
-import { generateCMSHeaderBanner, sampleOne } from "./__test-data";
-import decodeHeaderBanner from "./header-banner";
+import { generateCMSPerformance, sampleOne } from "./__test-data";
+import decodePerformance from "./performance";
 
-describe("HeaderBanner", () => {
+describe("Performance", () => {
   describe("decoder", () => {
-    it("correctly decodes valid CMS headerbanner", () => {
-      const data: mixed = sampleOne(generateCMSHeaderBanner);
+    it("correctly decodes valid CMS sponsor", () => {
+      const data: mixed = sampleOne(generateCMSPerformance);
 
-      const decoded = decodeHeaderBanner("en-GB")(data);
+      const decoded = decodePerformance("en-GB")(data);
       expect(decoded.ok).toEqual(true);
       if (decoded.ok) {
         expect(decoded.value).toMatchSnapshot();
@@ -21,13 +21,13 @@ describe("HeaderBanner", () => {
           id: "3O3SZPgYl2MUEWu2MoK2oi",
           contentType: {
             sys: {
-              id: "headerBanner"
+              id: "performance"
             }
           }
         }
       };
 
-      const decoded = decodeHeaderBanner("en-GB")(data);
+      const decoded = decodePerformance("en-GB")(data);
       expect(decoded.ok).toEqual(false);
     });
   });

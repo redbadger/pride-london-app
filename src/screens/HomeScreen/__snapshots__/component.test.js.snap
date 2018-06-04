@@ -4,7 +4,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
 <ScrollView
   style={
     Object {
-      "backgroundColor": "#2d2f7f",
+      "backgroundColor": "#ffffff",
     }
   }
   testID="home-screen"
@@ -23,28 +23,28 @@ exports[`HomeScreen Component renders correctly 1`] = `
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset1",
+                  "id": "sD7CKhNJ85Q1A5msV33d6z2ZOpt",
                 },
               },
             ],
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset2",
+                  "id": "i1rG1R19dEi3GJXGmftzSR0C",
                 },
               },
             ],
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset3",
+                  "id": "b9VUE8Pmwhi0JXmZWqL",
                 },
               },
             ],
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset4",
+                  "id": "ZeRTx8wCF",
                 },
               },
             ],
@@ -57,16 +57,16 @@ exports[`HomeScreen Component renders correctly 1`] = `
             "contentType": "headerBanner",
             "fields": Object {
               "backgroundColour": "#ff0000",
-              "heading": "Pride",
-              "headingLine2": "Festival",
+              "heading": "heading",
+              "headingLine2": "headingLine2",
               "heroImage": Object {
                 "sys": Object {
-                  "id": "asset1",
+                  "id": "un",
                 },
               },
-              "subHeading": "from - to",
+              "subHeading": "subHeading",
             },
-            "id": "1",
+            "id": "mXO5GEEzEa43BFl2IWb",
             "locale": "en-GB",
             "revision": 1,
           },
@@ -74,16 +74,16 @@ exports[`HomeScreen Component renders correctly 1`] = `
             "contentType": "headerBanner",
             "fields": Object {
               "backgroundColour": "#ff0000",
-              "heading": "Pride",
-              "headingLine2": "Festival",
+              "heading": "heading",
+              "headingLine2": "headingLine2",
               "heroImage": Object {
                 "sys": Object {
-                  "id": "asset2",
+                  "id": "5CL1KU8X302K1Z5z8dNUPMs5c4aS0",
                 },
               },
-              "subHeading": "from - to",
+              "subHeading": "subHeading",
             },
-            "id": "2",
+            "id": "iEZMo1BLhp5MzUebo",
             "locale": "en-GB",
             "revision": 1,
           },
@@ -153,7 +153,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
         }
       >
         <Component
-          key="1"
+          key="KAHR4"
           style={
             Array [
               Object {
@@ -192,13 +192,13 @@ exports[`HomeScreen Component renders correctly 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-1"
+            testID="event-tile-KAHR4"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -209,12 +209,12 @@ exports[`HomeScreen Component renders correctly 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
         <Component
-          key="2"
+          key="04cB3DgY396B2i3Mo"
           style={
             Array [
               Object {
@@ -251,13 +251,13 @@ exports[`HomeScreen Component renders correctly 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-2"
+            testID="event-tile-04cB3DgY396B2i3Mo"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -268,12 +268,12 @@ exports[`HomeScreen Component renders correctly 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
         <Component
-          key="3"
+          key="KH6KDbmv8CCKPzrCGFo7F3"
           style={
             Array [
               Object {
@@ -312,13 +312,13 @@ exports[`HomeScreen Component renders correctly 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-3"
+            testID="event-tile-KH6KDbmv8CCKPzrCGFo7F3"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -329,12 +329,12 @@ exports[`HomeScreen Component renders correctly 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
         <Component
-          key="4"
+          key="Vglv35495N98k"
           style={
             Array [
               Object {
@@ -371,13 +371,13 @@ exports[`HomeScreen Component renders correctly 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-4"
+            testID="event-tile-Vglv35495N98k"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -388,7 +388,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
@@ -402,7 +402,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
 <ScrollView
   style={
     Object {
-      "backgroundColor": "#2d2f7f",
+      "backgroundColor": "#ffffff",
     }
   }
   testID="home-screen"
@@ -421,42 +421,42 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset1",
+                  "id": "sD7CKhNJ85Q1A5msV33d6z2ZOpt",
                 },
               },
             ],
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset2",
+                  "id": "i1rG1R19dEi3GJXGmftzSR0C",
                 },
               },
             ],
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset3",
+                  "id": "b9VUE8Pmwhi0JXmZWqL",
                 },
               },
             ],
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset4",
+                  "id": "ZeRTx8wCF",
                 },
               },
             ],
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset5",
+                  "id": "3FVY9BK0i55WU3kG",
                 },
               },
             ],
             Array [
               Object {
                 "sys": Object {
-                  "id": "asset6",
+                  "id": "kyr7K991ry2cm2h6vJUr",
                 },
               },
             ],
@@ -469,16 +469,16 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
             "contentType": "headerBanner",
             "fields": Object {
               "backgroundColour": "#ff0000",
-              "heading": "Pride",
-              "headingLine2": "Festival",
+              "heading": "heading",
+              "headingLine2": "headingLine2",
               "heroImage": Object {
                 "sys": Object {
-                  "id": "asset1",
+                  "id": "un",
                 },
               },
-              "subHeading": "from - to",
+              "subHeading": "subHeading",
             },
-            "id": "1",
+            "id": "mXO5GEEzEa43BFl2IWb",
             "locale": "en-GB",
             "revision": 1,
           },
@@ -486,16 +486,16 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
             "contentType": "headerBanner",
             "fields": Object {
               "backgroundColour": "#ff0000",
-              "heading": "Pride",
-              "headingLine2": "Festival",
+              "heading": "heading",
+              "headingLine2": "headingLine2",
               "heroImage": Object {
                 "sys": Object {
-                  "id": "asset2",
+                  "id": "5CL1KU8X302K1Z5z8dNUPMs5c4aS0",
                 },
               },
-              "subHeading": "from - to",
+              "subHeading": "subHeading",
             },
-            "id": "2",
+            "id": "iEZMo1BLhp5MzUebo",
             "locale": "en-GB",
             "revision": 1,
           },
@@ -565,7 +565,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
         }
       >
         <Component
-          key="1"
+          key="KAHR4"
           style={
             Array [
               Object {
@@ -604,13 +604,13 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-1"
+            testID="event-tile-KAHR4"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -621,12 +621,12 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
         <Component
-          key="2"
+          key="04cB3DgY396B2i3Mo"
           style={
             Array [
               Object {
@@ -663,13 +663,13 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-2"
+            testID="event-tile-04cB3DgY396B2i3Mo"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -680,12 +680,12 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
         <Component
-          key="3"
+          key="KH6KDbmv8CCKPzrCGFo7F3"
           style={
             Array [
               Object {
@@ -724,13 +724,13 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-3"
+            testID="event-tile-KH6KDbmv8CCKPzrCGFo7F3"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -741,12 +741,12 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
         <Component
-          key="4"
+          key="Vglv35495N98k"
           style={
             Array [
               Object {
@@ -783,13 +783,13 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-4"
+            testID="event-tile-Vglv35495N98k"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -800,12 +800,12 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
         <Component
-          key="5"
+          key="OyviQD"
           style={
             Array [
               Object {
@@ -844,13 +844,13 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-5"
+            testID="event-tile-OyviQD"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -861,12 +861,12 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
         <Component
-          key="6"
+          key="9v86OWxd8k324h2dmMY25KX2B7NL"
           style={
             Array [
               Object {
@@ -903,13 +903,13 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-6"
+            testID="event-tile-9v86OWxd8k324h2dmMY25KX2B7NL"
           >
             <EventTile
-              date="2018-07-10T00:00"
+              date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret & Variety",
+                  "Cabaret and Variety",
                   "Music",
                 ]
               }
@@ -920,7 +920,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                   "width": 1,
                 }
               }
-              name="some other"
+              name="name"
             />
           </Touchable>
         </Component>
