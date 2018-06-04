@@ -49,7 +49,6 @@ import {
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
 import ParadeHeader from "./components/ParadeHeader";
-import Text from "./components/Text";
 import type { ImageRef } from "./data/image-ref";
 
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
