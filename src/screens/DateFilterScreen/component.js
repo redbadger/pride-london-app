@@ -68,29 +68,48 @@ class DateFilterScreen extends PureComponent<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <Header onCancel={onCancel} onReset={onReset} />
-        <View style={styles.content}>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>{title}</Text>
+        <View style={styles.page}>
+          <View>
+            <View style={styles.content}>
+              <View style={styles.header}>
+                <Text
+                  type="h3"
+                  style={styles.headerTitle}
+                  accessible
+                  accessibilityLabel={titleLabel}
+                  accessibilityTraits={["header"]}
+                  accessibilityLiveRegion="polite"
+                >
+                  {title}
+                </Text>
+              </View>
+              <DateRangePicker
+                onChange={onChange}
+                dateRange={dateRange}
+                forceNewRange={forceNewRange}
+              />
+            </View>
+            <View style={styles.applyButtonContainer}>
+              <Button
+                disabled={applyButtonDisabled}
+                onPress={onApply}
+                accessibilityLabel={applyButtonLabel}
+              >
+                {applyButtonText}
+              </Button>
+            </View>
           </View>
-          <DateRangePicker
-            onChange={onChange}
-            dateRange={dateRange}
-            forceNewRange={forceNewRange}
-          />
         </View>
-        <Button
-          disabled={applyButtonDisabled}
-          onPress={onApply}
-          accessibilityLabel={applyButtonLabel}
-        >
-          {applyButtonText}
-        </Button>
       </SafeAreaView>
     );
   }
 }
-
 const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    padding: 8,
+    justifyContent: "center"
+  },
   container: {
     flex: 1,
     justifyContent: "space-between",
@@ -102,7 +121,6 @@ const styles = StyleSheet.create({
     top: 10
   },
   content: {
-    flex: 1,
     backgroundColor: dialogBgColor,
     borderRadius: 4,
     paddingBottom: 8
@@ -115,6 +133,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: dialogHeaderDividerColor
+  },
+  applyButtonContainer: {
+    marginTop: 8
   }
 });
 
