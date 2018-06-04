@@ -3,10 +3,10 @@ import * as decode from "../lib/decode";
 import type { Decoder } from "../lib/decode";
 
 export type Images = {
-  [id: string]: Image
+  [id: string]: ImageDetails
 };
 
-export type Image = {
+export type ImageDetails = {
   id: string,
   revision: number,
   uri: string,
@@ -14,7 +14,11 @@ export type Image = {
   height: number
 };
 
-const decodeImage = (locale: string): Decoder<Image> =>
+export const getImageDetails = (images: Images) => (
+  id: string
+): ?ImageDetails => images[id];
+
+export const decodeImageDetails = (locale: string): Decoder<ImageDetails> =>
   decode.shape({
     id: decode.at(["sys", "id"], decode.string),
     revision: decode.at(["sys", "revision"], decode.number),
@@ -31,5 +35,3 @@ const decodeImage = (locale: string): Decoder<Image> =>
       decode.number
     )
   });
-
-export default decodeImage;

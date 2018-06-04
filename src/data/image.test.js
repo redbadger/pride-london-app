@@ -1,13 +1,29 @@
 // @flow
-import { generateCMSImage, sampleOne } from "./__test-data";
-import decodeImage from "./image";
+import type { ImageDetails } from "./image";
+import {
+  generateImageDetails,
+  generateCMSImage,
+  sampleOne
+} from "./__test-data";
+import { decodeImageDetails, getImageDetails } from "./image";
 
-describe("Image", () => {
-  describe("decoder", () => {
+describe("image", () => {
+  describe("getImageDetails", () => {
+    it("returns the correct imageDetails", () => {
+      const imageDetails: ImageDetails = sampleOne(generateImageDetails);
+      const getter = getImageDetails({
+        [imageDetails.id]: imageDetails
+      });
+
+      expect(getter(imageDetails.id)).toEqual(imageDetails);
+    });
+  });
+
+  describe("decodeImageDetails", () => {
     it("correctly decodes valid CMS image", () => {
       const data: mixed = sampleOne(generateCMSImage);
 
-      const decoded = decodeImage("en-GB")(data);
+      const decoded = decodeImageDetails("en-GB")(data);
       expect(decoded.ok).toEqual(true);
       if (decoded.ok) {
         expect(decoded.value).toMatchSnapshot();
@@ -22,7 +38,7 @@ describe("Image", () => {
         }
       };
 
-      const decoded = decodeImage("en-GB")(data);
+      const decoded = decodeImageDetails("en-GB")(data);
       expect(decoded.ok).toEqual(false);
     });
   });

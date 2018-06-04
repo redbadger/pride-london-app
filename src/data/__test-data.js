@@ -7,7 +7,7 @@ import { FORMAT_CONTENTFUL_ISO } from "../lib/date";
 import type { Event } from "./event";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
-import type { Image } from "./image";
+import type { ImageDetails } from "./image";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
 
@@ -41,7 +41,7 @@ export const generateImageURI: ValueGenerator<string> = gen.alphaNumString.then(
 // will change this when we refactor FieldRef
 export const generateCMSFieldRef: ValueGenerator<mixed> = generateFieldRef;
 
-export const generateImage: ValueGenerator<Image> = gen({
+export const generateImageDetails: ValueGenerator<ImageDetails> = gen({
   id: gen.alphaNumString,
   revision: 1,
   uri: generateImageURI,

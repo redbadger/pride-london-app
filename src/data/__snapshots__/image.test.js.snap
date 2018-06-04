@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Image decoder correctly decodes valid CMS image 1`] = `
+exports[`image decodeImageDetails correctly decodes valid CMS image 1`] = `
 Object {
   "height": 985,
   "id": "m3w5",

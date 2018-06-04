@@ -7,7 +7,7 @@ import type { Images } from "../data/image";
 import type { Performances } from "../data/performance";
 import type { Sponsor } from "../data/sponsor";
 import decodeHeaderBanner from "../data/header-banner";
-import decodeImage from "../data/image";
+import { decodeImageDetails } from "../data/image";
 import decodePerformance from "../data/performance";
 import decodeSponsor from "../data/sponsor";
 import locale from "../data/locale";
@@ -61,7 +61,7 @@ const decodeHeaderBanners: Decoder<Array<HeaderBanner>> = decodeFilterMap(
 
 const decodeImages: Decoder<Images> = decodeMap(
   images => images.reduce(reduceToMapHelp, {}),
-  decodeFilterMap(decodeImage(locale))
+  decodeFilterMap(decodeImageDetails(locale))
 );
 
 const decodePerformances: Decoder<Performances> = decodeMap(
