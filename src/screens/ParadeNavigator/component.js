@@ -25,10 +25,9 @@ const ParadeTabNav = createMaterialTopTabNavigator(
     }
   },
   {
-    swipeEnabled: true,
+    swipeEnabled: false,
     animationEnabled: false,
     initialRouteName: PARADE_MAP,
-
     tabBarOptions: {
       activeTintColor: lightTealColor,
       inactiveTintColor: whiteColor,
