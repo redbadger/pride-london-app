@@ -150,7 +150,7 @@ describe("Events reducer", () => {
   });
 
   describe("RECEIVE_CMS_DATA action", () => {
-    it("transforms headerBanners", () => {
+    it("decodes headerBanners", () => {
       const initialState = {
         entries: [],
         assets: [],
@@ -212,7 +212,63 @@ describe("Events reducer", () => {
       expect(state.headerBanners).toEqual(expected);
     });
 
-    it("transforms sponsors", () => {
+    it("decodes performances", () => {
+      const initialState = {
+        entries: [],
+        assets: [],
+        headerBanners: [],
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [
+          {
+            fields: {
+              title: { "en-GB": "title" },
+              startTime: { "en-GB": "2018-07-07T12:00:00+01:00" }
+            },
+            sys: {
+              id: "3O3SZPgYl2MUEWu2MoK2oi",
+              contentType: {
+                sys: {
+                  id: "performance"
+                }
+              },
+              revision: 1
+            }
+          }
+        ],
+        assets: [],
+        syncToken: "abc",
+        updated: true
+      };
+
+      const expected = {
+        "3O3SZPgYl2MUEWu2MoK2oi": {
+          id: "3O3SZPgYl2MUEWu2MoK2oi",
+          contentType: "performance",
+          revision: 1,
+          locale: "en-GB",
+          fields: {
+            title: "title",
+            startTime: "2018-07-07T12:00:00+01:00"
+          }
+        }
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.performances).toEqual(expected);
+    });
+
+    it("decodes sponsors", () => {
       const initialState = {
         entries: [],
         assets: [],
