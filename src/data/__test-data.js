@@ -97,7 +97,7 @@ export const generateCMSEvent: ValueGenerator<Event> = gen({
     audience: { "en-GB": ["???"] },
     startTime: { "en-GB": "2018-07-07T00:00+00:00" },
     endTime: { "en-GB": "2018-07-07T03:00+00:00" },
-    location: { "en-GB": { lat: 0, lon: 0 } },
+    location: { "en-GB": { lat: 0, lon: 10 } },
     addressLine1: { "en-GB": "addressLine1" },
     addressLine2: { "en-GB": "addressLine2" },
     city: { "en-GB": "city" },
@@ -120,6 +120,33 @@ export const generateCMSEvent: ValueGenerator<Event> = gen({
     eventsListPicture: gen({ "en-GB": generateFieldRef }),
     performances: { "en-GB": [] },
     recurrenceDates: { "en-GB": [] }
+  })
+});
+
+export const generateCMSEventMinimum: ValueGenerator<mixed> = gen({
+  sys: gen({
+    id: gen.alphaNumString,
+    contentType: {
+      sys: {
+        id: "event"
+      }
+    },
+    revision: 1
+  }),
+  fields: gen({
+    name: { "en-GB": "name" },
+    eventCategories: {
+      "en-GB": ["Cabaret and Variety", "Music"]
+    },
+    startTime: { "en-GB": "2018-07-07T00:00+00:00" },
+    endTime: { "en-GB": "2018-07-07T03:00+00:00" },
+    location: { "en-GB": { lat: 0, lon: 10 } },
+    locationName: { "en-GB": "locationName" },
+    eventPriceLow: { "en-GB": 0 },
+    eventPriceHigh: { "en-GB": 10 },
+    eventDescription: { "en-GB": "eventDescription" },
+    individualEventPicture: gen({ "en-GB": generateFieldRef }),
+    eventsListPicture: gen({ "en-GB": generateFieldRef })
   })
 });
 
