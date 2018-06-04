@@ -10,11 +10,12 @@ const ParadeMap = () => (
   <MapView
     style={StyleSheet.absoluteFill}
     scrollEnabled={false}
+    zoomEnabled={false}
     region={{
       latitude: 51.51004,
       longitude: -0.134192,
-      latitudeDelta: 0.02,
-      longitudeDelta: 0.0112
+      latitudeDelta: 0.018,
+      longitudeDelta: 0.000000041
     }}
   >
     <Polyline
