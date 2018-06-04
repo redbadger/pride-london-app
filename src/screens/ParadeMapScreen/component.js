@@ -3,12 +3,13 @@ import { StyleSheet, Dimensions, View, Text } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 
 import paradeCoordinates from "../../constants/parade-coordinates";
+import { velvetColor } from "../../constants/colors";
 
 export default class ParadeMap extends Component {
   render() {
     return (
       <MapView
-        style={styles.mapView}
+        style={StyleSheet.absoluteFill}
         scrollEnabled={false}
         region={{
           latitude: 51.51004,
@@ -20,7 +21,7 @@ export default class ParadeMap extends Component {
         <Polyline
           coordinates={paradeCoordinates}
           strokeWidth={5}
-          strokeColor={"purple"}
+          strokeColor={velvetColor}
           lineJoin={"bevel"}
         />
         <Marker coordinate={{ longitude: -0.14223, latitude: 51.51616 }}>
@@ -39,18 +40,10 @@ export default class ParadeMap extends Component {
 }
 
 const styles = StyleSheet.create({
-  mapView: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: Dimensions.get("window").height - 70
-  },
   markerView: {
     height: 15,
     width: 15,
-    backgroundColor: "purple",
+    backgroundColor: velvetColor,
     borderRadius: 7,
     justifyContent: "center",
     alignItems: "center"
