@@ -262,84 +262,64 @@ exports[`renders correctly 1`] = `
           "longitude": -0.1362,
         },
         Object {
-          "latitude": 51.50989,
-          "longitude": -0.13614,
-        },
-        Object {
-          "latitude": 51.5098,
+          "latitude": 51.50996,
           "longitude": -0.13607,
         },
         Object {
-          "latitude": 51.50981,
+          "latitude": 51.50997,
           "longitude": -0.13601,
         },
         Object {
-          "latitude": 51.50982,
+          "latitude": 51.50998,
           "longitude": -0.13593,
         },
         Object {
-          "latitude": 51.50982,
+          "latitude": 51.50998,
           "longitude": -0.13591,
         },
         Object {
-          "latitude": 51.50984,
+          "latitude": 51.51,
           "longitude": -0.13576,
         },
         Object {
-          "latitude": 51.50987,
+          "latitude": 51.51003,
           "longitude": -0.13564,
         },
         Object {
-          "latitude": 51.50989,
+          "latitude": 51.51005,
           "longitude": -0.13553,
         },
         Object {
-          "latitude": 51.50993,
+          "latitude": 51.51007,
           "longitude": -0.1354,
         },
         Object {
-          "latitude": 51.50997,
+          "latitude": 51.51011,
           "longitude": -0.13526,
         },
         Object {
-          "latitude": 51.50999,
+          "latitude": 51.51013,
           "longitude": -0.13517,
         },
         Object {
-          "latitude": 51.51,
+          "latitude": 51.51014,
           "longitude": -0.13515,
         },
         Object {
-          "latitude": 51.51,
+          "latitude": 51.51014,
           "longitude": -0.13514,
         },
         Object {
-          "latitude": 51.51,
+          "latitude": 51.51014,
           "longitude": -0.13513,
         },
         Object {
-          "latitude": 51.51,
+          "latitude": 51.51014,
           "longitude": -0.13512,
         },
         Object {
-          "latitude": 51.50999,
+          "latitude": 51.51013,
           "longitude": -0.1351,
-        },
-        Object {
-          "latitude": 51.50999,
-          "longitude": -0.13509,
-        },
-        Object {
-          "latitude": 51.50998,
-          "longitude": -0.13508,
-        },
-        Object {
-          "latitude": 51.50994,
-          "longitude": -0.13503,
-        },
-        Object {
-          "latitude": 51.50985,
-          "longitude": -0.13493,
         },
         Object {
           "latitude": 51.50972,
@@ -364,70 +344,6 @@ exports[`renders correctly 1`] = `
         Object {
           "latitude": 51.50858,
           "longitude": -0.13381,
-        },
-        Object {
-          "latitude": 51.5081,
-          "longitude": -0.1334,
-        },
-        Object {
-          "latitude": 51.50805,
-          "longitude": -0.1334,
-        },
-        Object {
-          "latitude": 51.50802,
-          "longitude": -0.13339,
-        },
-        Object {
-          "latitude": 51.50795,
-          "longitude": -0.13334,
-        },
-        Object {
-          "latitude": 51.50789,
-          "longitude": -0.13329,
-        },
-        Object {
-          "latitude": 51.50784,
-          "longitude": -0.13324,
-        },
-        Object {
-          "latitude": 51.50788,
-          "longitude": -0.13314,
-        },
-        Object {
-          "latitude": 51.50792,
-          "longitude": -0.13301,
-        },
-        Object {
-          "latitude": 51.50763,
-          "longitude": -0.13274,
-        },
-        Object {
-          "latitude": 51.50761,
-          "longitude": -0.13269,
-        },
-        Object {
-          "latitude": 51.5076,
-          "longitude": -0.13267,
-        },
-        Object {
-          "latitude": 51.50759,
-          "longitude": -0.13265,
-        },
-        Object {
-          "latitude": 51.50748,
-          "longitude": -0.13253,
-        },
-        Object {
-          "latitude": 51.50737,
-          "longitude": -0.13243,
-        },
-        Object {
-          "latitude": 51.50733,
-          "longitude": -0.13239,
-        },
-        Object {
-          "latitude": 51.50727,
-          "longitude": -0.13234,
         },
         Object {
           "latitude": 51.50718,
