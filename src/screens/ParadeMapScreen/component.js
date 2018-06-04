@@ -6,7 +6,7 @@ import MapView, { Polyline, Marker } from "react-native-maps";
 import paradeCoordinates from "../../constants/parade-coordinates";
 import { velvetColor, whiteColor } from "../../constants/colors";
 
-export default (ParadeMap = () => (
+const ParadeMap = () => (
   <MapView
     style={StyleSheet.absoluteFill}
     scrollEnabled={false}
@@ -34,7 +34,7 @@ export default (ParadeMap = () => (
       </View>
     </Marker>
   </MapView>
-));
+);
 
 const styles = StyleSheet.create({
   markerView: {
@@ -50,3 +50,5 @@ const styles = StyleSheet.create({
     fontSize: 12
   }
 });
+
+export default ParadeMap;
