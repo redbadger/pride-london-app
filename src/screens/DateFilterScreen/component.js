@@ -1,11 +1,18 @@
 // @flow
 import React, { PureComponent } from "react";
-import { View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import { lightNavyBlueColor } from "../../constants/colors";
+import {
+  lightNavyBlueColor,
+  dialogTitleColor,
+  dialogBgColor,
+  dialogHeaderDividerColor
+} from "../../constants/colors";
 import Header from "./Header";
 import DateRangePicker from "./DateRangePicker";
 import Button from "../../components/ButtonPrimary";
+import text from "../../constants/text";
+import { formatDateRange } from "../../data/formatters";
 
 type Props = {
   applyButtonText: string,
@@ -19,24 +26,24 @@ type Props = {
   forceNewRange: boolean
 };
 
-// const formatTitle = (dateRange: ?DateRange): string => {
-//   if (!dateRange) return text.filterDayPickerTitle;
+const formatTitle = (dateRange: ?DateRange): string => {
+  if (!dateRange) return text.filterDayPickerTitle;
 
-//   return (
-//     formatDateRange(dateRange) +
-//     (dateRange.startDate === dateRange.endDate ? " -" : "")
-//   );
-// };
+  return (
+    formatDateRange(dateRange) +
+    (dateRange.startDate === dateRange.endDate ? " -" : "")
+  );
+};
 
-// const formatTitleLabel = (dateRange: ?DateRange): string => {
-//   if (!dateRange) return text.filterDayPickerTitle;
+const formatTitleLabel = (dateRange: ?DateRange): string => {
+  if (!dateRange) return text.filterDayPickerTitle;
 
-//   return `Selected: ${formatDateRange(dateRange)} ${
-//     dateRange.startDate === dateRange.endDate
-//       ? ", pick another day to select range"
-//       : ""
-//   }`;
-// };
+  return `Selected: ${formatDateRange(dateRange)} ${
+    dateRange.startDate === dateRange.endDate
+      ? ", pick another day to select range"
+      : ""
+  }`;
+};
 
 class DateFilterScreen extends PureComponent<Props> {
   static defaultProps = {
@@ -55,26 +62,29 @@ class DateFilterScreen extends PureComponent<Props> {
       applyButtonLabel,
       applyButtonText
     } = this.props;
-    // const title = formatTitle(dateRange);
-    // const titleLabel = formatTitleLabel(dateRange);
+    const title = formatTitle(dateRange);
+    const titleLabel = formatTitleLabel(dateRange);
 
     return (
       <SafeAreaView style={styles.container}>
         <Header onCancel={onCancel} onReset={onReset} />
-        <View style={styles.list}>
+        <View style={styles.content}>
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>{title}</Text>
+          </View>
           <DateRangePicker
             onChange={onChange}
             dateRange={dateRange}
             forceNewRange={forceNewRange}
           />
-          <Button
-            disabled={applyButtonDisabled}
-            onPress={onApply}
-            accessibilityLabel={applyButtonLabel}
-          >
-            {applyButtonText}
-          </Button>
         </View>
+        <Button
+          disabled={applyButtonDisabled}
+          onPress={onApply}
+          accessibilityLabel={applyButtonLabel}
+        >
+          {applyButtonText}
+        </Button>
       </SafeAreaView>
     );
   }
@@ -85,6 +95,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: lightNavyBlueColor
+  },
+  headerTitle: {
+    color: dialogTitleColor,
+    height: 40,
+    top: 10
+  },
+  content: {
+    flex: 1,
+    backgroundColor: dialogBgColor,
+    borderRadius: 4,
+    paddingBottom: 8
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 40,
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: dialogHeaderDividerColor
   }
 });
 
