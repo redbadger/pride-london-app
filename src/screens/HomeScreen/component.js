@@ -120,7 +120,7 @@ class HomeScreen extends Component<AllProps> {
                     <Touchable
                       style={styles.tile}
                       onPress={() => this.eventDetails(event.sys.id)}
-                      testID={`event-tile-${event.sys.id}`}
+                      testID={`event-tile-${index}`}
                     >
                       <EventTile
                         name={event.fields.name[locale]}

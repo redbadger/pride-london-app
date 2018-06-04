@@ -11,6 +11,7 @@ exports[`renders correctly 1`] = `
   delayPressIn={50}
   onPress={[Function]}
   style={Object {}}
+  testID=""
 >
   <Text
     color="blackColor"
@@ -39,6 +40,7 @@ exports[`renders with optional props 1`] = `
   delayPressIn={50}
   onPress={[Function]}
   style={Object {}}
+  testID=""
 >
   <Text
     color="blackColor"

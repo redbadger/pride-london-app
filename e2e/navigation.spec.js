@@ -1,6 +1,6 @@
 const { takeScreenshot } = require("./helpers");
 
-describe("Pride App", () => {
+describe("e2e/navigation", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
   });
@@ -33,14 +33,8 @@ describe("Pride App", () => {
     await expect(element(by.id("page-heading-support-us"))).toBeVisible();
   });
 
-  it("should start on Map screen when navigated to Parade tab", async () => {
-    await element(by.id("parade-tab-button")).tap();
-    await expect(element(by.id("parade-map-screen"))).toBeVisible();
-  });
-
-  it("should navigate to Parade Information Tab from Parade Map", async () => {
-    await element(by.id("parade-tab-button")).tap();
-    await element(by.id("parade-information-button")).tap();
-    await expect(element(by.id("parade-information-screen"))).toBeVisible();
+  it("should navigate to Home tab", async () => {
+    await element(by.id("home-tab-button")).tap();
+    await expect(element(by.id("home-screen"))).toBeVisible();
   });
 });

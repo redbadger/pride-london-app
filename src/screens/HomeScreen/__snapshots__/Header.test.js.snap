@@ -128,6 +128,7 @@ exports[`renders correctly 1`] = `
       description="Be part of the movement"
       navigation={null}
       style={Object {}}
+      testID="home-header-support-us-button"
       title="Support us"
       url="SUPPORT_US"
     />

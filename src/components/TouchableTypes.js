@@ -22,7 +22,8 @@ export type TouchableProps = {
   delayPressOut?: number,
   delayLongPress?: number,
   pressRetentionOffset?: EdgeInsetsProp,
-  hitSlop?: EdgeInsetsProp
+  hitSlop?: EdgeInsetsProp,
+  testID?: string
 };
 
 /* eslint-disable import/prefer-default-export */
@@ -40,5 +41,6 @@ export const TouchableDefaultProps = {
   delayPressOut: undefined,
   delayLongPress: undefined,
   pressRetentionOffset: undefined,
-  hitSlop: undefined
+  hitSlop: undefined,
+  testID: ""
 };

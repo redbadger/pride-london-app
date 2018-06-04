@@ -24,6 +24,7 @@ exports[`renders badge value when provided 1`] = `
       },
     ]
   }
+  testID=""
 >
   <Text
     color="blackColor"
@@ -82,6 +83,7 @@ exports[`renders correct styles when inactive 1`] = `
       },
     ]
   }
+  testID=""
 >
   <Text
     color="blackColor"
@@ -129,6 +131,7 @@ exports[`renders correctly 1`] = `
       },
     ]
   }
+  testID=""
 >
   <Text
     color="blackColor"

@@ -85,6 +85,8 @@ const styles = StyleSheet.create({
 
 export const getTabTestId = (routeName: string) => {
   switch (routeName) {
+    case HOME:
+      return "home-tab-button";
     case EVENT_LIST:
       return "events-tab-button";
     case PARADE:

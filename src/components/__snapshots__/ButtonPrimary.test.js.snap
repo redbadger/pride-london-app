@@ -25,6 +25,7 @@ exports[`can be disabled 1`] = `
       },
     ]
   }
+  testID=""
 >
   <Text
     color="blackColor"
@@ -70,6 +71,7 @@ exports[`renders correctly 1`] = `
       Object {},
     ]
   }
+  testID=""
 >
   <Text
     color="blackColor"

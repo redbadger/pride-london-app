@@ -39,6 +39,7 @@ exports[`renders correctly with date selection 1`] = `
           "width": 44,
         }
       }
+      testID=""
     >
       <Text
         color="blackColor"
@@ -136,6 +137,7 @@ exports[`renders correctly with range selection 1`] = `
           "width": 44,
         }
       }
+      testID=""
     >
       <Text
         color="blackColor"

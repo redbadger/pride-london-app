@@ -9,6 +9,7 @@ exports[`renders correctly 1`] = `
     ]
   }
   background="mock background"
+  testID=""
 >
   <View
     style={

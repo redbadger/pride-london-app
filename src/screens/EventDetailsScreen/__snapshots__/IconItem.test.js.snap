@@ -87,6 +87,7 @@ exports[`renders correctly when passed an onPress handler 1`] = `
         "paddingVertical": 6,
       }
     }
+    testID=""
   >
     <Text
       accessible={true}
