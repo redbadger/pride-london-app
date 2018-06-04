@@ -4,6 +4,8 @@ import {
   string,
   number,
   value,
+  maybe,
+  array,
   field,
   at,
   shape,
@@ -93,6 +95,98 @@ describe("value", () => {
     expect(result.ok).toEqual(false);
     if (!result.ok) {
       expect(result.error).toEqual("value is not equal");
+    }
+  });
+});
+
+describe("maybe", () => {
+  it("succeeds when decoding null", () => {
+    const input: mixed = null;
+
+    const result = maybe(string)(input);
+
+    expect(result.ok).toEqual(true);
+    if (result.ok) {
+      expect(result.value).toEqual(null);
+    }
+  });
+
+  it("succeeds when decoding undefined", () => {
+    const input: mixed = undefined;
+
+    const result = maybe(string)(input);
+
+    expect(result.ok).toEqual(true);
+    if (result.ok) {
+      expect(result.value).toEqual(null);
+    }
+  });
+
+  it("succeeds when decoding value", () => {
+    const input: mixed = "value";
+
+    const result = maybe(string)(input);
+
+    expect(result.ok).toEqual(true);
+    if (result.ok) {
+      expect(result.value).toEqual("value");
+    }
+  });
+
+  it("fails when decoding incorrect type", () => {
+    const input: mixed = 1;
+
+    const result = maybe(string)(input);
+
+    expect(result.ok).toEqual(false);
+    if (!result.ok) {
+      expect(result.error).toEqual("value is not a string");
+    }
+  });
+});
+
+describe("array", () => {
+  it("succeeds when decoding empty array", () => {
+    const input: mixed = [];
+
+    const result = array(string)(input);
+
+    expect(result.ok).toEqual(true);
+    if (result.ok) {
+      expect(result.value).toEqual([]);
+    }
+  });
+
+  it("succeeds when decoding array with values", () => {
+    const input: mixed = ["a", "b", "c"];
+
+    const result = array(string)(input);
+
+    expect(result.ok).toEqual(true);
+    if (result.ok) {
+      expect(result.value).toEqual(["a", "b", "c"]);
+    }
+  });
+
+  it("fails when input is not an array", () => {
+    const input: mixed = 1;
+
+    const result = array(string)(input);
+
+    expect(result.ok).toEqual(false);
+    if (!result.ok) {
+      expect(result.error).toEqual("value is not an array");
+    }
+  });
+
+  it("fails when value inside array does not decode", () => {
+    const input: mixed = [1];
+
+    const result = array(string)(input);
+
+    expect(result.ok).toEqual(false);
+    if (!result.ok) {
+      expect(result.error).toEqual("value is not a string");
     }
   });
 });

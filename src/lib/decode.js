@@ -31,6 +31,43 @@ export const value = <A>(a: A): Decoder<A> => (v: mixed) => {
   return error("value is not equal");
 };
 
+export const maybe = <A>(decoder: Decoder<A>): Decoder<?A> => (v: mixed) => {
+  if (v == null) {
+    return ok(null);
+  }
+  const result = decoder(v);
+  // Have to unwrap to make the types happy :(
+  if (result.ok) {
+    return ok(result.value);
+  }
+  return error(result.error);
+};
+
+const arrayHelp = <A>(
+  decoder: Decoder<A>
+): ((Result<string, Array<A>>, mixed) => Result<string, Array<A>>) => (
+  acc,
+  item
+) => {
+  if (acc.ok) {
+    const result: Result<string, A> = decoder(item);
+    if (result.ok) {
+      return ok([...acc.value, result.value]);
+    }
+    return result;
+  }
+  return acc;
+};
+
+export const array = <A>(decoder: Decoder<A>): Decoder<Array<A>> => (
+  v: mixed
+) => {
+  if (Array.isArray(v)) {
+    return v.reduce(arrayHelp(decoder), ok([]));
+  }
+  return error("value is not an array");
+};
+
 export const field = <A>(key: string, decoder: Decoder<A>): Decoder<A> => (
   v: mixed
 ) => {
