@@ -1,12 +1,13 @@
+// @flow
 import { getData, backgroundRefreshData, updateData } from "./data";
 
 describe("getData", () => {
-  it("calls correct actions with expected payloads", async () => {
-    const mockCmsData = { entries: [{ id: "1" }] };
+  it("dispatches REQUEST_CMS_DATA then RECEIVE_CMS_DATA", async () => {
+    const mockCmsData: any = { entries: [{ id: "1" }] };
     const mockGetCmsData = async () => mockCmsData;
     const mockDispatch = jest.fn();
 
-    await getData(undefined, mockGetCmsData)(mockDispatch);
+    await getData(mockGetCmsData)(mockDispatch);
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "REQUEST_CMS_DATA"
@@ -17,20 +18,24 @@ describe("getData", () => {
     });
   });
 
-  it("hides the splash screen if given", async () => {
-    const mockGetCmsData = async () => {};
+  it("dispatches REQUEST_CMS_DATA then RECEIVE_CMS_ERROR on error", async () => {
+    const mockGetCmsData = () => Promise.reject(new Error("no network"));
     const mockDispatch = jest.fn();
-    const hideMock = jest.fn();
 
-    await getData(hideMock, mockGetCmsData)(mockDispatch);
+    await getData(mockGetCmsData)(mockDispatch);
 
-    expect(hideMock).toHaveBeenCalled();
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: "REQUEST_CMS_DATA"
+    });
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: "RECEIVE_CMS_ERROR"
+    });
   });
 });
 
 describe("backgroundRefreshData", () => {
   it("updates the data if new content was received", async () => {
-    const mockCmsData = { entries: [{ id: "1" }], updated: true };
+    const mockCmsData: any = { entries: [{ id: "1" }], updated: true };
     const mockUpdateCmsData = async () => mockCmsData;
     const mockDispatch = jest.fn();
 
@@ -43,8 +48,17 @@ describe("backgroundRefreshData", () => {
   });
 
   it("skips updating if no new content was received", async () => {
-    const mockCmsData = { entries: [{ id: "1" }], updated: false };
+    const mockCmsData: any = { entries: [{ id: "1" }], updated: false };
     const mockUpdateCmsData = async () => mockCmsData;
+    const mockDispatch = jest.fn();
+
+    await backgroundRefreshData(mockUpdateCmsData)(mockDispatch);
+
+    expect(mockDispatch).not.toHaveBeenCalled();
+  });
+
+  it("skips updating if updated failed", async () => {
+    const mockUpdateCmsData = () => Promise.reject(new Error("no network"));
     const mockDispatch = jest.fn();
 
     await backgroundRefreshData(mockUpdateCmsData)(mockDispatch);
@@ -54,8 +68,8 @@ describe("backgroundRefreshData", () => {
 });
 
 describe("updateData", () => {
-  it("calls correct actions with expected payloads", async () => {
-    const mockCmsData = { entries: [{ id: "1" }] };
+  it("dispatches REQUEST_UPDATE_CMS_DATA then RECEIVE_CMS_DATA", async () => {
+    const mockCmsData: any = { entries: [{ id: "1" }] };
     const mockUpdateCmsData = async () => mockCmsData;
     const mockDispatch = jest.fn();
 
@@ -67,6 +81,20 @@ describe("updateData", () => {
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "RECEIVE_CMS_DATA",
       data: mockCmsData
+    });
+  });
+
+  it("dispatches REQUEST_UPDATE_CMS_DATA then RECEIVE_CMS_ERROR on error", async () => {
+    const mockUpdateCmsData = () => Promise.reject(new Error("no network"));
+    const mockDispatch = jest.fn();
+
+    await updateData(mockUpdateCmsData)(mockDispatch);
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: "REQUEST_UPDATE_CMS_DATA"
+    });
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: "RECEIVE_CMS_ERROR"
     });
   });
 });

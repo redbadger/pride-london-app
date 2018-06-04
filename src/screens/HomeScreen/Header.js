@@ -15,19 +15,17 @@ import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import type { HeaderBanner } from "../../data/header-banner";
 
-import locale from "../../data/locale";
-
 type Props = {
   headerBanners: HeaderBanner[],
   getAssetSource: FieldRef => ImageSource,
   navigation: NavigationScreenProp<NavigationState>
 };
 
-const pickBanner = (banners: HeaderBanner[]): HeaderBanner => {
-  const sortedBanners = sortBy(
-    banner => banner.fields.heroImage[locale].sys.id,
-    banners
-  );
+const getHeroImageId = (banner: HeaderBanner): string =>
+  banner.fields.heroImage.sys.id;
+
+const pickBanner = (banners: HeaderBanner[]): ?HeaderBanner => {
+  const sortedBanners = sortBy(getHeroImageId, banners);
   const day = Math.floor(Date.now() / 1000 / 60 / 60 / 24);
   return sortedBanners[day % banners.length];
 };
@@ -36,7 +34,7 @@ const Header = ({ headerBanners, getAssetSource, navigation }: Props) => {
   const banner = pickBanner(headerBanners);
   if (!banner) return null;
 
-  const heroImage = getAssetSource(banner.fields.heroImage[locale]);
+  const heroImage = getAssetSource(banner.fields.heroImage);
   const heroImageHeight = 218; // 225 (header) - 7 (marginTop)
   const heroImageWidth = heroImage.width * (heroImageHeight / heroImage.height);
 
@@ -45,7 +43,7 @@ const Header = ({ headerBanners, getAssetSource, navigation }: Props) => {
       <View
         style={[
           styles.container,
-          { backgroundColor: banner.fields.backgroundColour[locale] }
+          { backgroundColor: banner.fields.backgroundColour }
         ]}
       >
         <Image
@@ -58,7 +56,7 @@ const Header = ({ headerBanners, getAssetSource, navigation }: Props) => {
         />
         <ContentPadding style={styles.headingContainer}>
           <Text type="uber" color="lightNavyBlueColor" style={styles.heading}>
-            {banner.fields.heading[locale]}
+            {banner.fields.heading}
           </Text>
           {banner.fields.headingLine2 && (
             <Text
@@ -66,12 +64,12 @@ const Header = ({ headerBanners, getAssetSource, navigation }: Props) => {
               color="lightNavyBlueColor"
               style={[styles.heading, styles.headingBelow]}
             >
-              {banner.fields.headingLine2[locale]}
+              {banner.fields.headingLine2}
             </Text>
           )}
           {banner.fields.subHeading && (
             <Text type="h2" color="whiteColor" style={styles.subHeading}>
-              {banner.fields.subHeading[locale]}
+              {banner.fields.subHeading}
             </Text>
           )}
         </ContentPadding>

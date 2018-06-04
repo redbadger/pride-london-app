@@ -3,12 +3,12 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import DateRangePicker from "./DateRangePicker";
 import Dialog from "./Dialog";
-import Text from "./Text";
-import Touchable from "./Touchable";
-import text from "../constants/text";
-import type { DateRange } from "../data/date-time";
-import { formatDateRange } from "../data/formatters";
-import { dialogTitleColor } from "../constants/colors";
+import Text from "../../components/Text";
+import Touchable from "../../components/Touchable";
+import text from "../../constants/text";
+import type { DateRange } from "../../data/date-time";
+import { formatDateRange } from "../../data/formatters";
+import { dialogTitleColor } from "../../constants/colors";
 
 type Props = {
   applyButtonText: string,

@@ -1,19 +1,19 @@
+// @flow
+import type { State } from "../reducers";
 import { selectHeaderBanners } from "./header-banner";
 
 describe("selectHeaderBanners", () => {
   it("selects property", () => {
-    const state = {
+    // Will fix this along with the other fix me's once we have refactored
+    // @$FlowFixMe
+    const state: State = {
       data: {
-        entries: [
-          { sys: { contentType: { sys: { id: "event" } } } },
-          { sys: { contentType: { sys: { id: "headerBanner" } } } }
-        ]
+        headerBanners: []
       }
     };
 
     const selected = selectHeaderBanners(state);
 
-    expect(selected.length).toBe(1);
-    expect(selected[0]).toBe(state.data.entries[1]);
+    expect(selected).toEqual(state.data.headerBanners);
   });
 });

@@ -33,6 +33,8 @@ const buildState = (
   data: {
     entries: [],
     assets: [],
+    headerBanners: [],
+    performances: {},
     sponsors: [],
     loading: false,
     refreshing: false
@@ -43,7 +45,7 @@ const buildState = (
     stagedFilters
   },
   savedEvents: new Set(),
-  currentRoute: "fakeRoute"
+  splashScreen: false
 });
 
 export type BuildEventArguments = {
