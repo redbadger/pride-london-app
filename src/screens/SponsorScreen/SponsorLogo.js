@@ -6,7 +6,7 @@ import type { ImageSource } from "../../data/get-asset-source";
 
 type Props = {
   sponsorName: string,
-  sponsorLogo: ImageSource,
+  sponsorLogo: ?ImageSource,
   sponsorLevel: SponsorLevel
 };
 
