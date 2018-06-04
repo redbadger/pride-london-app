@@ -6,6 +6,7 @@ Object {
   "entries": Array [],
   "headerBanners": Array [],
   "loading": true,
+  "performances": Object {},
   "refreshing": false,
   "sponsors": Array [],
 }

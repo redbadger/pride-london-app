@@ -3,12 +3,14 @@ import type { DataAction } from "../actions/data";
 import type { CmsEntry } from "../integrations/cms";
 import type { Asset } from "../data/asset";
 import type { HeaderBanner } from "../data/header-banner";
+import type { Performance, Performances } from "../data/performance";
 import type { Sponsor } from "../data/sponsor";
 import decodeHeaderBanner from "../data/header-banner";
+import decodePerformance from "../data/performance";
 import decodeSponsor from "../data/sponsor";
 import locale from "../data/locale";
 import type { Decoder } from "../lib/decode";
-import { filterMap as decodeFilterMap } from "../lib/decode";
+import { filterMap as decodeFilterMap, map as decodeMap } from "../lib/decode";
 import { withDefault as resultWithDefault } from "../lib/result";
 import { expandRecurringEventsInEntries } from "../selectors/events";
 
@@ -16,6 +18,7 @@ export type State = {
   entries: CmsEntry[],
   assets: Asset[],
   headerBanners: HeaderBanner[],
+  performances: Performances,
   sponsors: Sponsor[],
   loading: boolean,
   refreshing: boolean
@@ -25,6 +28,7 @@ const defaultState = {
   entries: [],
   assets: [],
   headerBanners: [],
+  performances: {},
   sponsors: [],
   loading: true,
   refreshing: false
@@ -37,6 +41,16 @@ const processEntries = entries => expandRecurringEventsInEntries(entries);
 // to make this dynamic
 const decodeHeaderBanners: Decoder<Array<HeaderBanner>> = decodeFilterMap(
   decodeHeaderBanner(locale)
+);
+
+const reducePerformancesHelp = (acc: Performances, item: Performance) => {
+  acc[item.id] = item; // intentional mutation as this happens in a reduce
+  return acc;
+};
+
+const decodePerformances: Decoder<Performances> = decodeMap(
+  performances => performances.reduce(reducePerformancesHelp, {}),
+  decodeFilterMap(decodePerformance(locale))
 );
 
 const decodeSponsors: Decoder<Array<Sponsor>> = decodeFilterMap(
@@ -66,6 +80,10 @@ const reducer = (state: State = defaultState, action: DataAction) => {
         headerBanners: resultWithDefault(
           [],
           decodeHeaderBanners(action.data.entries)
+        ),
+        performances: resultWithDefault(
+          {},
+          decodePerformances(action.data.entries)
         ),
         sponsors: resultWithDefault([], decodeSponsors(action.data.entries))
       };
