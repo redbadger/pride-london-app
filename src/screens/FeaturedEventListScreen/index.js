@@ -5,7 +5,7 @@ import type { NavigationScreenProp } from "react-navigation";
 import type { State } from "../../reducers";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
-import type { SavedEvents, EventDays } from "../../data/event";
+import type { SavedEvents, EventDays } from "../../data/event-deprecated";
 import getAssetSource from "../../data/get-asset-source";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {

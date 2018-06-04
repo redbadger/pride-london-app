@@ -5,7 +5,7 @@ import Text from "../components/Text";
 import CategoryPill from "./CategoryPill";
 import { imageBgColor, eventTileTextColor } from "../constants/colors";
 import { toFormat, FORMAT_SHORT_WEEKDAY_DAY_MONTH } from "../lib/date";
-import type { EventCategoryName } from "../data/event";
+import type { EventCategoryName } from "../data/event-deprecated";
 import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {

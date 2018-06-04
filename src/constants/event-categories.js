@@ -4,7 +4,7 @@
 // If we move to realise categories as its own content type then this will
 // go away and we will fetch this data.
 import * as colors from "./colors";
-import type { EventCategoryMap } from "../data/event";
+import type { EventCategoryMap } from "../data/event-deprecated";
 
 const categories: EventCategoryMap = {
   "en-GB": {

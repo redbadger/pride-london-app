@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { State } from "../../reducers";
-import type { Event, EventCategoryName } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event-deprecated";
 import { setEventFilters } from "../../actions/event-filters";
 import { selectFilteredEvents } from "../../selectors/events";
 import Component from "./component";

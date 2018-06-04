@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { State } from "../../reducers";
-import type { EventDays, SavedEvents } from "../../data/event";
+import type { EventDays, SavedEvents } from "../../data/event-deprecated";
 import type { ImageSource } from "../../data/get-asset-source";
 import type { FieldRef } from "../../data/field-ref";
 import getAssetSource from "../../data/get-asset-source";
