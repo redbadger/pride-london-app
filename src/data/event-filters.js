@@ -1,7 +1,7 @@
 // @flow
 import type { DateTime } from "luxon";
 import type { DateRange, Time } from "./date-time";
-import type { EventCategoryName } from "./event";
+import type { EventCategoryName } from "./event-deprecated";
 
 export type Area = "Central" | "East" | "North" | "South" | "West";
 export type Price = "free";

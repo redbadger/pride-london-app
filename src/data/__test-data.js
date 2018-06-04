@@ -4,7 +4,7 @@ import { gen, sampleOne as sample } from "@rgbboy/testcheck";
 import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO } from "../lib/date";
-import type { Event } from "./event";
+import type { Event } from "./event-deprecated";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
 import type { Performance } from "./performance";
