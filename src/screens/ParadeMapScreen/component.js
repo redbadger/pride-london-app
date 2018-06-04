@@ -13,7 +13,8 @@ export default class ParadeMap extends Component<Props, State> {
     return (
       <MapView
         style={styles.mapView}
-        initialRegion={{
+        scrollEnabled={false}
+        region={{
           latitude: 51.51004,
           longitude: -0.134192,
           latitudeDelta: 0.0225,
