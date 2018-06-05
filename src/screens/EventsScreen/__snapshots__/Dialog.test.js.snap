@@ -90,6 +90,7 @@ exports[`renders correctly 1`] = `
               accessibilityLabel="Good bye"
               disabled={false}
               onPress={[Function]}
+              testID=""
             >
               Bye
             </Button>

@@ -85,6 +85,7 @@ class FilterScreen extends PureComponent<Props> {
             <Button
               onPress={this.handleApplyButtonPress}
               disabled={numEventsSelected === 0}
+              testID="apply-area-and-price-filter-button"
             >
               {applyButtonText}
             </Button>

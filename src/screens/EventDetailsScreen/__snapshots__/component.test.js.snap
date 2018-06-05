@@ -89,6 +89,7 @@ exports[`EventTickets renders correctly 1`] = `
     <Button
       disabled={false}
       onPress={[Function]}
+      testID=""
     >
       Get tickets
     </Button>
@@ -104,6 +105,7 @@ exports[`renders correctly 1`] = `
       "flex": 1,
     }
   }
+  testID="event-details-screen"
 >
   <EventHeader
     isSaved={true}
@@ -508,6 +510,7 @@ exports[`renders correctly with missing details 1`] = `
       "flex": 1,
     }
   }
+  testID="event-details-screen"
 >
   <EventHeader
     isSaved={false}

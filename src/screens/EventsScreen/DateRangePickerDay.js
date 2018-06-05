@@ -125,6 +125,7 @@ export default class Day extends Component<DayProps> {
         accessibilityLabel={label}
         accessibilityComponentType="button"
         disabled={beforeToday}
+        testID={`calendar-day-${date.year}-${date.month}-${date.day}`}
       >
         <View style={[styles.container, beforeToday ? styles.faded : {}]}>
           {marking.selected && (

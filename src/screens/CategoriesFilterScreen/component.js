@@ -54,7 +54,11 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         </View>
         <View style={styles.footer}>
           <ContentPadding>
-            <Button onPress={this.applyFilters} disabled={!events.length}>
+            <Button
+              onPress={this.applyFilters}
+              disabled={!events.length}
+              testID="apply-category-filter-button"
+            >
               {buttonLabel}
             </Button>
           </ContentPadding>

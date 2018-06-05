@@ -69,6 +69,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
             label={`filter by date: ${formattedDateFilter}`}
             onPress={this.showDatePicker}
             style={styles.filterButton}
+            testID="open-date-filters-button"
           />
           <View style={styles.dividerLine} />
           <FilterHeaderButton
@@ -80,6 +81,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
             badgeValue={
               numTagFiltersSelected > 0 ? numTagFiltersSelected : null
             }
+            testID="open-area-and-price-filters-button"
           />
         </View>
         <DateRangePickerDialog

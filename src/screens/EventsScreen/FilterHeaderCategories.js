@@ -30,6 +30,7 @@ export const CategoriesFilterButton = ({
     accessibilityLabel={text.categoryFilterButton}
     style={styles.categoriesFilterButton}
     onPress={onPress}
+    testID="categories-filter-button"
   >
     <Image source={chevronRightImg} />
   </Touchable>
@@ -58,6 +59,7 @@ const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
         style={styles.interestButton}
         onPress={onFilterPress}
         accessibilityLabel={text.categoryFilterButton}
+        testID="open-category-filters-button"
       >
         <Text type="h2" style={styles.interestButtonText}>
           {text.filterByInterest}

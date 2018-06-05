@@ -4,6 +4,7 @@ exports[`renders correctly with date selection 1`] = `
 <Dialog
   applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
+  applyButtonTestID="apply-date-filter-button"
   applyButtonText="Apply"
   headerLeft={
     <Component
@@ -102,6 +103,7 @@ exports[`renders correctly with range selection 1`] = `
 <Dialog
   applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
+  applyButtonTestID="apply-date-filter-button"
   applyButtonText="Apply"
   headerLeft={
     <Component
@@ -200,6 +202,7 @@ exports[`renders correctly without date selection 1`] = `
 <Dialog
   applyButtonDisabled={false}
   applyButtonLabel="Apply selection"
+  applyButtonTestID="apply-date-filter-button"
   applyButtonText="Apply"
   headerLeft={null}
   headerRight={null}

@@ -70,6 +70,7 @@ class DateRangePickerDialog extends React.PureComponent<Props> {
         applyButtonText={applyButtonText}
         applyButtonLabel={applyButtonLabel}
         applyButtonDisabled={applyButtonDisabled}
+        applyButtonTestID="apply-date-filter-button"
         title={
           <Text
             type="h3"

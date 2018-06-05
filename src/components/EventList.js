@@ -32,21 +32,26 @@ type State = {
   eventsReordered: boolean
 };
 
+type Section = SectionBase<Event> & { index: number };
+
 type RenderItemInfo = {
-  item: Event // eslint-disable-line react/no-unused-prop-types
+  item: Event, // eslint-disable-line react/no-unused-prop-types
+  index: number,
+  section: Section
 };
 
 type RenderSectionInfo = {
-  section: SectionBase<Event> // eslint-disable-line react/no-unused-prop-types
+  section: Section // eslint-disable-line react/no-unused-prop-types
 };
 
 const eventSections = (
   events: EventDays,
   locale: string
-): SectionBase<Event>[] =>
-  events.map(it => ({
+): Section[] =>
+  events.map((it, index) => ({
     data: it,
-    key: formatDate(it[0].fields.startTime[locale], FORMAT_YEAR_MONTH_DAY)
+    key: formatDate(it[0].fields.startTime[locale], FORMAT_YEAR_MONTH_DAY),
+    index
   }));
 
 const eventIds = (events: EventDays): string[] =>
@@ -58,8 +63,11 @@ class EventList extends Component<Props, State> {
     onRefresh: undefined
   };
 
-  state = {
-    eventIds: [],
+  // react/sort-comp doesn't support class properties: https://github.com/yannickcr/eslint-plugin-react/issues/1342
+  // react/no-unused-state doesn't acknowledge usage of state in getDerivedStateFromProps: https://github.com/yannickcr/eslint-plugin-react/issues/1759
+
+  state = { // eslint-disable-line react/sort-comp
+    eventIds: [], // eslint-disable-line react/no-unused-state
     eventsAdded: 0,
     eventsRemoved: 0,
     eventsReordered: false
@@ -108,7 +116,7 @@ class EventList extends Component<Props, State> {
 
   keyExtractor = (event: Event) => event.sys.id;
 
-  renderItem = ({ item }: RenderItemInfo) => {
+  renderItem = ({ item, index, section }: RenderItemInfo) => {
     const {
       savedEvents,
       addSavedEvent,
@@ -132,6 +140,7 @@ class EventList extends Component<Props, State> {
           addSavedEvent={addSavedEvent}
           removeSavedEvent={removeSavedEvent}
           onPress={onPress}
+          testID={`event-card-${index}-${section.index}`}
         />
       </ContentPadding>
     );

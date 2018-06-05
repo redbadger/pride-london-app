@@ -25,7 +25,8 @@ type Props = {
   isSaved: boolean,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
-  onPress: (id: string) => void
+  onPress: (id: string) => void,
+  testID?: string
 };
 
 class EventCard extends React.PureComponent<Props> {
@@ -52,12 +53,13 @@ class EventCard extends React.PureComponent<Props> {
       eventPriceLow,
       eventPriceHigh,
       isSaved,
-      onPress
+      onPress,
+      testID
     } = this.props;
     const timeDisplay = `${formatTime(startTime)} – ${formatTime(endTime)}`;
 
     return (
-      <View style={styles.container}>
+      <View style={styles.container} testID={testID}>
         <View style={styles.eventCard}>
           <Touchable style={styles.touchable} onPress={() => onPress(id)}>
             <ConnectedImageBackground

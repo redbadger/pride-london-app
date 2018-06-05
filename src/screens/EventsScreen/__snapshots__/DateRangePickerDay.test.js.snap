@@ -13,6 +13,7 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
   disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
+  testID="calendar-day-2018-7-12"
 >
   <Component
     style={
@@ -121,6 +122,7 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
   disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
+  testID="calendar-day-2018-7-12"
 >
   <Component
     style={
@@ -228,6 +230,7 @@ exports[`dateRangePickerDay renders a disabled day 1`] = `
   disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
+  testID="calendar-day-2018-7-12"
 >
   <Component
     style={
@@ -294,6 +297,7 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
   disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
+  testID="calendar-day-2018-7-12"
 >
   <Component
     style={
@@ -388,6 +392,7 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
   disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
+  testID="calendar-day-2018-7-12"
 >
   <Component
     style={
@@ -525,6 +530,7 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
   disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
+  testID="calendar-day-2018-7-12"
 >
   <Component
     style={
@@ -633,6 +639,7 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
   disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
+  testID="calendar-day-2018-7-12"
 >
   <Component
     style={
@@ -740,6 +747,7 @@ exports[`dateRangePickerDay renders without date selection 1`] = `
   disabled={false}
   onLongPress={[Function]}
   onPress={[Function]}
+  testID="calendar-day-2018-7-12"
 >
   <Component
     style={

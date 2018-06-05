@@ -22,7 +22,7 @@ describe("e2e/home", () => {
     await expect(element(by.id("event-tile-0"))).toBeVisible();
   });
 
-  it("should navigate to given event page on tap", async () => {
+  it("should navigate to given event details screen on tap", async () => {
     await element(by.id("event-tile-0")).tap();
     await expect(element(by.id("event-details-screen"))).toBeVisible();
   });

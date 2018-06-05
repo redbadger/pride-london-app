@@ -51,6 +51,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       <Button
         disabled={false}
         onPress={[Function]}
+        testID="apply-category-filter-button"
       >
         Show 1 event
       </Button>
@@ -102,6 +103,7 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
       <Button
         disabled={false}
         onPress={[Function]}
+        testID="apply-category-filter-button"
       >
         Show all events
       </Button>

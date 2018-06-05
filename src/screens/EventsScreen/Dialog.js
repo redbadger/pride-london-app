@@ -18,6 +18,7 @@ type Props = {
   applyButtonText: string,
   applyButtonLabel: string,
   applyButtonDisabled?: boolean,
+  applyButtonTestID?: string,
   children: Node,
   headerLeft?: Node,
   headerRight?: Node,
@@ -31,6 +32,7 @@ const Dialog = ({
   applyButtonText,
   applyButtonLabel,
   applyButtonDisabled,
+  applyButtonTestID,
   children,
   headerLeft,
   headerRight,
@@ -66,6 +68,7 @@ const Dialog = ({
                 disabled={applyButtonDisabled}
                 onPress={onApply}
                 accessibilityLabel={applyButtonLabel}
+                testID={applyButtonTestID}
               >
                 {applyButtonText}
               </Button>
@@ -81,7 +84,8 @@ Dialog.defaultProps = {
   headerLeft: undefined,
   headerRight: undefined,
   onCancel: () => {},
-  applyButtonDisabled: false
+  applyButtonDisabled: false,
+  applyButtonTestID: ""
 };
 
 const styles = StyleSheet.create({

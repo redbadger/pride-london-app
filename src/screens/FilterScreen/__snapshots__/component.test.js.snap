@@ -55,6 +55,7 @@ exports[`FilterScreen renders correctly 1`] = `
       <Button
         disabled={false}
         onPress={[Function]}
+        testID="apply-area-and-price-filter-button"
       >
         Show 26 events
       </Button>

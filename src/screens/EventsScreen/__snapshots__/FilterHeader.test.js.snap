@@ -52,6 +52,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
           "flex": 1,
         }
       }
+      testID="open-date-filters-button"
       text="Select dates"
     />
     <Component
@@ -73,6 +74,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
           "flex": 1,
         }
       }
+      testID="open-area-and-price-filters-button"
       text="Filter by area, price..."
     />
   </Component>
@@ -136,6 +138,7 @@ exports[`renders correctly with any date and any time 1`] = `
           "flex": 1,
         }
       }
+      testID="open-date-filters-button"
       text="Select dates"
     />
     <Component
@@ -157,6 +160,7 @@ exports[`renders correctly with any date and any time 1`] = `
           "flex": 1,
         }
       }
+      testID="open-area-and-price-filters-button"
       text="Filter by area, price..."
     />
   </Component>
@@ -220,6 +224,7 @@ exports[`renders correctly with date range and two times 1`] = `
           "flex": 1,
         }
       }
+      testID="open-date-filters-button"
       text="2 Feb - 3 Feb"
     />
     <Component
@@ -241,6 +246,7 @@ exports[`renders correctly with date range and two times 1`] = `
           "flex": 1,
         }
       }
+      testID="open-area-and-price-filters-button"
       text="Filter by area, price..."
     />
   </Component>
@@ -304,6 +310,7 @@ exports[`renders correctly with single date and single time 1`] = `
           "flex": 1,
         }
       }
+      testID="open-date-filters-button"
       text="2 Feb"
     />
     <Component
@@ -325,6 +332,7 @@ exports[`renders correctly with single date and single time 1`] = `
           "flex": 1,
         }
       }
+      testID="open-area-and-price-filters-button"
       text="Filter by area, price..."
     />
   </Component>
@@ -388,6 +396,7 @@ exports[`renders correctly with tag filters selected 1`] = `
           "flex": 1,
         }
       }
+      testID="open-date-filters-button"
       text="Select dates"
     />
     <Component
@@ -409,6 +418,7 @@ exports[`renders correctly with tag filters selected 1`] = `
           "flex": 1,
         }
       }
+      testID="open-area-and-price-filters-button"
       text="Filters"
     />
   </Component>

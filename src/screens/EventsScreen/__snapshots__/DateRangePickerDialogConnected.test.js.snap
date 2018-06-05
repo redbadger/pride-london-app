@@ -4,6 +4,7 @@ exports[`ConnectedDateFilterDialog renders component 1`] = `
 <Dialog
   applyButtonDisabled={true}
   applyButtonLabel="Show events (none selected)"
+  applyButtonTestID="apply-date-filter-button"
   applyButtonText="No events"
   headerLeft={null}
   headerRight={null}
