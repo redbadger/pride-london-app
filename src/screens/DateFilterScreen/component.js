@@ -8,6 +8,7 @@ import DateRangePicker from "./DateRangePicker";
 import Button from "../../components/ButtonPrimary";
 import text from "../../constants/text";
 import { formatDateRange } from "../../data/formatters";
+import type { DateRange } from "../../data/date-time";
 
 type Props = {
   applyButtonText: string,
@@ -21,7 +22,7 @@ type Props = {
   forceNewRange: boolean
 };
 
-const formatTitle = (dateRange: ?DateRange): string => {
+export const formatTitle = (dateRange: ?DateRange): string => {
   if (!dateRange) return text.filterDayPickerTitle;
 
   return (
@@ -30,7 +31,7 @@ const formatTitle = (dateRange: ?DateRange): string => {
   );
 };
 
-const formatTitleLabel = (dateRange: ?DateRange): string => {
+export const formatTitleLabel = (dateRange: ?DateRange): string => {
   if (!dateRange) return text.filterDayPickerTitle;
 
   return `Selected: ${formatDateRange(dateRange)} ${
