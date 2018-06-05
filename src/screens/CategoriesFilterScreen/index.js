@@ -7,6 +7,7 @@ import type { Event, EventCategoryName } from "../../data/event";
 import { setEventFilters } from "../../actions/event-filters";
 import { selectFilteredEvents } from "../../selectors/events";
 import Component from "./component";
+import text from "../../constants/text";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>
@@ -31,11 +32,15 @@ type Props = StateProps & DispatchProps;
 const mapStateToProps = (
   state: State,
   { navigation }: OwnProps
-): StateProps => ({
-  navigation,
-  events: selectFilteredEvents(state, true),
-  categories: state.eventFilters.selectedFilters.categories
-});
+): StateProps => {
+  const events = selectFilteredEvents(state, true);
+  return {
+    navigation,
+    events,
+    categories: state.eventFilters.selectedFilters.categories,
+    applyButtonText: text.filterPickerApply(events.length)
+  };
+};
 
 const mapDispatchToProps = {
   toggleCategoryFilter: (originalCagegories, categoryLabel) => {

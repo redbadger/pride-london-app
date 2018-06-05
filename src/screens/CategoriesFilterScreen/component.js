@@ -5,7 +5,6 @@ import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event, EventCategoryName } from "../../data/event";
 import { lightNavyBlueColor } from "../../constants/colors";
-import text from "../../constants/text";
 import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "./Header";
@@ -17,7 +16,8 @@ export type Props = {
   events: Event[],
   categories: Set<EventCategoryName>,
   toggleCategoryFilter: (Set<EventCategoryName>, string) => void,
-  onClearAll: () => void
+  onClearAll: () => void,
+  applyButtonText: string
 };
 
 class CategoriesFilterScreen extends PureComponent<Props> {
@@ -34,9 +34,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { events, categories } = this.props;
-    const buttonLabel =
-      categories.size > 0 ? text.showEvents(events.length) : text.showAllEvents;
+    const { events, categories, applyButtonText } = this.props;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -55,7 +53,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         <View style={styles.footer}>
           <ContentPadding>
             <Button onPress={this.applyFilters} disabled={!events.length}>
-              {buttonLabel}
+              {applyButtonText}
             </Button>
           </ContentPadding>
         </View>
