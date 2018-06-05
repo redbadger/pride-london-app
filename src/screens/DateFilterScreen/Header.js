@@ -7,13 +7,15 @@ import ActionButton from "../../components/ActionButton";
 type Props = {
   onCancel: () => void,
   onReset: () => void,
-  dateRange: string
+  dateRange: string,
+  title: string
 };
 
-const Header = ({ onCancel, onReset, dateRange }: Props) => (
+const Header = ({ onCancel, onReset, dateRange, title }: Props) => (
   <View>
     <CommonHeader
       leftElement={<CommonHeader.BackButton onPress={onCancel} />}
+      title={title}
       rightElement={
         dateRange && <ActionButton label="Reset" onPress={onReset} />
       }
