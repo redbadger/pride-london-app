@@ -1,4 +1,6 @@
 // @flow
+import type { Maybe } from "./maybe";
+import { some, none } from "./maybe";
 import type { Result } from "./result";
 import { ok, error, map as mapResult } from "./result";
 
@@ -31,16 +33,13 @@ export const value = <A>(a: A): Decoder<A> => (v: mixed) => {
   return error("value is not equal");
 };
 
-export const maybe = <A>(decoder: Decoder<A>): Decoder<?A> => (v: mixed) => {
+export const maybe = <A>(decoder: Decoder<A>): Decoder<Maybe<A>> => (
+  v: mixed
+) => {
   if (v == null) {
-    return ok(null);
+    return ok(none());
   }
-  const result = decoder(v);
-  // Have to unwrap to make the types happy :(
-  if (result.ok) {
-    return ok(result.value);
-  }
-  return error(result.error);
+  return mapResult(some, decoder(v));
 };
 
 const arrayHelp = <A>(

@@ -1,6 +1,8 @@
 // @flow
-import * as decode from "../lib/decode";
+import type { Maybe } from "../lib/maybe";
+import * as maybe from "../lib/maybe";
 import type { Decoder } from "../lib/decode";
+import * as decode from "../lib/decode";
 import type { FieldRef } from "./field-ref";
 import decodeFieldRef from "./field-ref";
 
@@ -39,29 +41,29 @@ export type Event = {
   revision: number,
   fields: {
     name: string,
-    eventCategories: EventCategoryName[],
-    audience: string[],
+    eventCategories: Array<EventCategoryName>,
+    audience: Array<string>,
     startTime: string,
     endTime: string,
     location: { lat: number, lon: number },
-    addressLine1: ?string,
-    addressLine2: ?string,
-    city: ?string,
-    postcode: ?string,
+    addressLine1: Maybe<string>,
+    addressLine2: Maybe<string>,
+    city: Maybe<string>,
+    postcode: Maybe<string>,
     locationName: string,
     eventPriceLow: number,
     eventPriceHigh: number,
-    accessibilityOptions: string[],
+    accessibilityOptions: Array<string>,
     eventDescription: string,
-    accessibilityDetails: ?string,
-    email: ?string,
-    phone: ?string,
-    ticketingUrl: ?string,
-    venueDetails: string[],
+    accessibilityDetails: Maybe<string>,
+    email: Maybe<string>,
+    phone: Maybe<string>,
+    ticketingUrl: Maybe<string>,
+    venueDetails: Array<string>,
     individualEventPicture: FieldRef,
     eventsListPicture: FieldRef,
-    performances: FieldRef[],
-    recurrenceDates: string[]
+    performances: Array<FieldRef>,
+    recurrenceDates: Array<string>
   }
 };
 
@@ -69,15 +71,8 @@ const maybeField = <A>(
   locale: string,
   field: string,
   decoder: Decoder<A>
-): Decoder<?A> =>
+): Decoder<Maybe<A>> =>
   decode.field(field, decode.maybe(decode.field(locale, decoder)));
-
-const withDefaultMaybe = <A>(defaultValue: A): ((?A) => A) => value => {
-  if (value == null) {
-    return defaultValue;
-  }
-  return value;
-};
 
 const maybeFieldWithDefault = <A>(
   locale: string,
@@ -86,7 +81,7 @@ const maybeFieldWithDefault = <A>(
   defaultValue: A
 ): Decoder<A> =>
   decode.map(
-    withDefaultMaybe(defaultValue),
+    maybe.withDefault(defaultValue),
     maybeField(locale, field, decoder)
   );
 
