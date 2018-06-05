@@ -5,7 +5,7 @@ import type {
   EventCategoryName,
   SavedEvents,
   EventDays
-} from "../../data/event";
+} from "../../data/event-deprecated";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import { withNavigationFocus } from "../../lib/navigation";

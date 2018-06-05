@@ -7,7 +7,7 @@ import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import SectionHeader from "./SectionHeader";
 import { whiteColor } from "../constants/colors";
-import type { SavedEvents, Event, EventDays } from "../data/event";
+import type { SavedEvents, Event, EventDays } from "../data/event-deprecated";
 import {
   toFormat as formatDate,
   FORMAT_WEEKDAY_DAY_MONTH,

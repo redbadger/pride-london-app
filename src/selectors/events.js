@@ -21,7 +21,7 @@ import type {
   Performance,
   PerformancePeriods,
   Reference
-} from "../data/event";
+} from "../data/event-deprecated";
 import type { Asset } from "../data/asset";
 import locale from "../data/locale";
 

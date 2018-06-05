@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import type { SavedEvents, EventDays } from "../../data/event";
+import type { SavedEvents, EventDays } from "../../data/event-deprecated";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import { withNavigationFocus } from "../../lib/navigation";

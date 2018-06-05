@@ -6,7 +6,7 @@ import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import Loading from "../../components/Loading";
 import {
   generateHeaderBanner,
-  generateEvent,
+  generateCMSEvent,
   sampleArrayOf
 } from "../../data/__test-data";
 
@@ -20,7 +20,7 @@ const navigation: any = {
 };
 
 const generateHeaderBanners = sampleArrayOf(generateHeaderBanner);
-const generateEvents = sampleArrayOf(generateEvent);
+const generateCMSEvents = sampleArrayOf(generateCMSEvent);
 
 describe("HomeScreen Component", () => {
   const render = props =>
@@ -30,7 +30,7 @@ describe("HomeScreen Component", () => {
         loading={false}
         headerBanners={generateHeaderBanners(2)}
         featuredEventsTitle="Featured events"
-        featuredEvents={generateEvents(2)}
+        featuredEvents={generateCMSEvents(2)}
         getAssetSource={getAssetSource}
         isFocused
         {...props}
@@ -38,7 +38,7 @@ describe("HomeScreen Component", () => {
     );
 
   it("renders correctly", () => {
-    const featuredEvents = generateEvents(5);
+    const featuredEvents = generateCMSEvents(5);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
     expect(getAssetSource).toHaveBeenCalledTimes(4);
@@ -48,7 +48,7 @@ describe("HomeScreen Component", () => {
   });
 
   it("renders max 6 events", () => {
-    const featuredEvents = generateEvents(10);
+    const featuredEvents = generateCMSEvents(10);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
     expect(getAssetSource).toHaveBeenCalledTimes(6);
@@ -86,7 +86,7 @@ describe("HomeScreen Component", () => {
     const props = {
       headerBanners: generateHeaderBanners(2),
       featuredEventsTitle: "Title",
-      featuredEvents: generateEvents(3),
+      featuredEvents: generateCMSEvents(3),
       loading: false,
       isFocused: true
     };
@@ -96,7 +96,7 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
-        featuredEvents: generateEvents(3),
+        featuredEvents: generateCMSEvents(3),
         loading: false,
         isFocused: true
       };
@@ -111,7 +111,7 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
-        featuredEvents: generateEvents(5),
+        featuredEvents: generateCMSEvents(5),
         loading: false,
         isFocused: true
       };
@@ -126,7 +126,7 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Other Title",
-        featuredEvents: generateEvents(3),
+        featuredEvents: generateCMSEvents(3),
         loading: false,
         isFocused: true
       };
@@ -141,7 +141,7 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
-        featuredEvents: generateEvents(3),
+        featuredEvents: generateCMSEvents(3),
         loading: true,
         isFocused: true
       };
@@ -156,7 +156,7 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(3),
         featuredEventsTitle: "Title",
-        featuredEvents: generateEvents(3),
+        featuredEvents: generateCMSEvents(3),
         loading: false,
         isFocused: true
       };

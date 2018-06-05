@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
 import type { State } from "../../reducers";
-import type { Event, EventCategoryName } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event-deprecated";
 import type { FieldRef } from "../../data/field-ref";
 import type { ImageSource } from "../../data/get-asset-source";
 import getAssetSource from "../../data/get-asset-source";

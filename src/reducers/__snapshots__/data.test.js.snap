@@ -1,9 +1,247 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Events reducer RECEIVE_CMS_DATA action decodes events 1`] = `
+Array [
+  Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "accessibilityOptionsA",
+        "accessibilityOptionsB",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "???",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-07-07T03:00+00:00",
+      "eventCategories": Array [
+        "Cabaret and Variety",
+        "Music",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "0q2m69N0G0Z761e",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [],
+      "startTime": "2018-07-07T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "venueDetailsA",
+        "venueDetailsB",
+      ],
+    },
+    "id": "m3w5",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+]
+`;
+
+exports[`Events reducer RECEIVE_CMS_DATA action expands recurring events 1`] = `
+Array [
+  Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "accessibilityOptionsA",
+        "accessibilityOptionsB",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "???",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-08-02T03:00+00:00",
+      "eventCategories": Array [
+        "Cabaret and Variety",
+        "Music",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "0q2m69N0G0Z761e",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [
+        "03/08/2018",
+        "04/08/2018",
+      ],
+      "startTime": "2018-08-02T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "venueDetailsA",
+        "venueDetailsB",
+      ],
+    },
+    "id": "m3w5",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+  Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "accessibilityOptionsA",
+        "accessibilityOptionsB",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "???",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-08-03T03:00+00:00",
+      "eventCategories": Array [
+        "Cabaret and Variety",
+        "Music",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "0q2m69N0G0Z761e",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [
+        "02/08/2018",
+        "03/08/2018",
+        "04/08/2018",
+      ],
+      "startTime": "2018-08-03T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "venueDetailsA",
+        "venueDetailsB",
+      ],
+    },
+    "id": "m3w5-recurrence-03/08/2018",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+  Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "accessibilityOptionsA",
+        "accessibilityOptionsB",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "???",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-08-04T03:00+00:00",
+      "eventCategories": Array [
+        "Cabaret and Variety",
+        "Music",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "0q2m69N0G0Z761e",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [
+        "02/08/2018",
+        "03/08/2018",
+        "04/08/2018",
+      ],
+      "startTime": "2018-08-04T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "venueDetailsA",
+        "venueDetailsB",
+      ],
+    },
+    "id": "m3w5-recurrence-04/08/2018",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+]
+`;
+
 exports[`Events reducer initialises with default state 1`] = `
 Object {
   "assets": Array [],
   "entries": Array [],
+  "events": Array [],
   "headerBanners": Array [],
   "images": Object {},
   "loading": true,
