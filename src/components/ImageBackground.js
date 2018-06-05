@@ -4,7 +4,7 @@ import { ImageBackground as RNImageBackground } from "react-native";
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { ImageDetails } from "../data/image";
-import { getImageDetails as GetImageDetails } from "../data/image";
+import { getImageDetails as createImageDetailsGetter } from "../data/image";
 import type { FieldRef } from "../data/field-ref";
 
 type OwnProps = {
@@ -29,7 +29,7 @@ export const ImageBackground = ({
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (state, ownProps: OwnProps): Props => ({
-  getImageDetails: GetImageDetails(state.data.images),
+  getImageDetails: createImageDetailsGetter(state.data.images),
   ...ownProps
 });
 
