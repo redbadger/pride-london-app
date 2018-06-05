@@ -45,7 +45,7 @@ export const generateCMSFieldRef: ValueGenerator<mixed> = generateFieldRef;
 export const generateImageDetails: ValueGenerator<ImageDetails> = gen({
   id: gen.alphaNumString,
   revision: 1,
-  uri: generateImageURI,
+  uri: generateImageURI.then(value => `https:${value}`),
   width: gen.intWithin(100, 1000),
   height: gen.intWithin(100, 1000)
 });
