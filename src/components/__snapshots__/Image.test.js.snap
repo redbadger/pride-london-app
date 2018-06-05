@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Image
+  accessibilityLabel="Test Label"
+  resizeMode="contain"
+  source={
+    Object {
+      "height": 357,
+      "id": "3CU8n6O760GJ80Wr7r",
+      "revision": 1,
+      "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
+      "width": 891,
+    }
+  }
+/>
+`;
