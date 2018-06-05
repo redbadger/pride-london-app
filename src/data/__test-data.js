@@ -7,6 +7,7 @@ import { FORMAT_CONTENTFUL_ISO } from "../lib/date";
 import type { Event } from "./event-deprecated";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
+import type { ImageDetails } from "./image";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
 
@@ -33,8 +34,41 @@ export const generateDateString: ValueGenerator<string> = gen.int.then(int =>
   }).toFormat(FORMAT_CONTENTFUL_ISO)
 );
 
+export const generateImageURI: ValueGenerator<string> = gen.alphaNumString.then(
+  name => `//red-badger.com/${name}.jpg`
+);
+
 // will change this when we refactor FieldRef
 export const generateCMSFieldRef: ValueGenerator<mixed> = generateFieldRef;
+
+export const generateImageDetails: ValueGenerator<ImageDetails> = gen({
+  id: gen.alphaNumString,
+  revision: 1,
+  uri: generateImageURI,
+  width: gen.intWithin(100, 1000),
+  height: gen.intWithin(100, 1000)
+});
+
+export const generateCMSImage: ValueGenerator<mixed> = gen({
+  sys: {
+    id: gen.alphaNumString,
+    type: "Asset",
+    revision: 1
+  },
+  fields: {
+    file: {
+      "en-GB": {
+        url: generateImageURI,
+        details: {
+          image: {
+            height: gen.intWithin(100, 1000),
+            width: gen.intWithin(100, 1000)
+          }
+        }
+      }
+    }
+  }
+});
 
 export const generateHeaderBanner: ValueGenerator<HeaderBanner> = gen({
   contentType: "headerBanner",

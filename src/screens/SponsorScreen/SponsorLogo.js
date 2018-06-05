@@ -2,11 +2,11 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 import type { SponsorLevel } from "../../data/sponsor";
-import type { ImageSource } from "../../data/get-asset-source";
+import type { ImageDetails } from "../../data/image";
 
 type Props = {
   sponsorName: string,
-  sponsorLogo: ImageSource,
+  sponsorLogo: ?ImageDetails,
   sponsorLevel: SponsorLevel
 };
 

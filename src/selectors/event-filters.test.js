@@ -34,6 +34,7 @@ const buildState = (
     entries: [],
     assets: [],
     headerBanners: [],
+    images: {},
     performances: {},
     sponsors: [],
     loading: false,
