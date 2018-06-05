@@ -8,9 +8,8 @@ import { velvetColor, whiteColor } from "../../constants/colors";
 
 const ParadeMap = () => (
   <MapView
+    testID="parade-map-screen"
     style={StyleSheet.absoluteFill}
-    scrollEnabled={false}
-    zoomEnabled={false}
     region={{
       latitude: 51.51004,
       longitude: -0.134192,
