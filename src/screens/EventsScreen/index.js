@@ -6,7 +6,7 @@ import type {
   EventCategoryName,
   SavedEvents,
   EventDays
-} from "../../data/event";
+} from "../../data/event-deprecated";
 import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {

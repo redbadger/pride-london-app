@@ -21,7 +21,7 @@ import type {
   Performance,
   PerformancePeriods,
   Reference
-} from "../data/event";
+} from "../data/event-deprecated";
 import locale from "../data/locale";
 
 const fieldsEventsLocaleLens = R.lensPath(["fields", "events", locale]);

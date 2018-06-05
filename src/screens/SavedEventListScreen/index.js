@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { State } from "../../reducers";
-import type { EventDays, SavedEvents } from "../../data/event";
+import type { EventDays, SavedEvents } from "../../data/event-deprecated";
 import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {

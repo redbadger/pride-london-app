@@ -3,7 +3,7 @@ import React, { PureComponent } from "react";
 import { Linking, StyleSheet, View } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp } from "react-navigation";
-import type { Event, EventCategoryName } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event-deprecated";
 import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";

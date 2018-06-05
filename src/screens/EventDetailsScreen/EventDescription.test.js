@@ -2,7 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import EventDescription from "./EventDescription";
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 
 it("renders correctly", () => {
   const event: Event = ({

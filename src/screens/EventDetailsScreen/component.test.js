@@ -8,7 +8,7 @@ import Component, {
   EventHeader,
   EventTickets
 } from "./component";
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 
 const event: Event = ({
   fields: {

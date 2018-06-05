@@ -2,7 +2,7 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { State } from "../../reducers";
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 import type { HeaderBanner } from "../../data/header-banner";
 import type { ImageDetails } from "../../data/image";
 import { getImageDetails } from "../../data/image";

@@ -12,7 +12,7 @@ import {
   EVENT_LIST
 } from "../../constants/routes";
 
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 
 const navigation: NavigationScreenProp<NavigationState> = ({
   navigate: () => {}

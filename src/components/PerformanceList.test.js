@@ -3,7 +3,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import PerformanceList from "./PerformanceList";
 
-import type { PerformancePeriods } from "../data/event";
+import type { PerformancePeriods } from "../data/event-deprecated";
 
 it("renders correctly", () => {
   const performances: PerformancePeriods = [

@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
-import type { SavedEvents, EventDays } from "../../data/event";
+import type { SavedEvents, EventDays } from "../../data/event-deprecated";
 import EventList from "../../components/EventList";
 import Header from "../../components/Header";
 import { bgColor } from "../../constants/colors";

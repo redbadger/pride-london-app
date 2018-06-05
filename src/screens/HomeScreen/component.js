@@ -20,7 +20,7 @@ import {
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 import type { ImageDetails } from "../../data/image";
 import type { HeaderBanner } from "../../data/header-banner";
 

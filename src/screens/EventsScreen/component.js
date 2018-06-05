@@ -5,7 +5,7 @@ import type {
   EventCategoryName,
   SavedEvents,
   EventDays
-} from "../../data/event";
+} from "../../data/event-deprecated";
 import { withNavigationFocus } from "../../lib/navigation";
 import type { NavigationProps } from "../../lib/navigation";
 import EventList from "../../components/EventList";
