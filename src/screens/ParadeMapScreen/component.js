@@ -4,7 +4,7 @@ import { StyleSheet, View } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 
 import paradeCoordinates from "../../constants/parade-coordinates";
-import { velvetColor, whiteColor } from "../../constants/colors";
+import { velvetColor } from "../../constants/colors";
 import Text, { scaleWithFont } from "../../components/Text";
 
 const ParadeMap = () => (
