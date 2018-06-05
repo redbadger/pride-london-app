@@ -2,8 +2,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { SavedEvents, EventDays } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
 import { withNavigationFocus } from "../../lib/navigation";
 import type { NavigationProps } from "../../lib/navigation";
 import EventList from "../../components/EventList";
@@ -22,8 +20,7 @@ export type Props = {
   removeSavedEvent: string => void,
   loading: boolean,
   refreshing: boolean,
-  updateData: () => Promise<void>,
-  getAssetSource: FieldRef => ImageSource
+  updateData: () => Promise<void>
 };
 
 type AllProps = Props & NavigationProps;
@@ -42,8 +39,7 @@ class SavedEventListScreen extends Component<AllProps> {
       addSavedEvent,
       removeSavedEvent,
       refreshing,
-      loading,
-      getAssetSource
+      loading
     } = this.props;
 
     return (
@@ -70,7 +66,6 @@ class SavedEventListScreen extends Component<AllProps> {
               onPress={(eventId: string) => {
                 navigation.navigate(EVENT_DETAILS, { eventId });
               }}
-              getAssetSource={getAssetSource}
             />
           )}
       </View>

@@ -5,16 +5,17 @@ import { HomeScreen as Component } from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import Loading from "../../components/Loading";
 import {
+  generateImageDetails,
   generateHeaderBanner,
   generateEvent,
-  sampleArrayOf
+  sampleArrayOf,
+  sampleOne
 } from "../../data/__test-data";
 
-const getAssetSource = jest.fn().mockReturnValue({
-  uri: "http://example.com/image.png",
-  width: 1,
-  height: 1
-});
+const getImageDetails = jest
+  .fn()
+  .mockReturnValue(sampleOne(generateImageDetails));
+
 const navigation: any = {
   navigate: jest.fn()
 };
@@ -31,7 +32,7 @@ describe("HomeScreen Component", () => {
         headerBanners={generateHeaderBanners(2)}
         featuredEventsTitle="Featured events"
         featuredEvents={generateEvents(2)}
-        getAssetSource={getAssetSource}
+        getImageDetails={getImageDetails}
         isFocused
         {...props}
       />
@@ -41,17 +42,12 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(5);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetSource).toHaveBeenCalledTimes(4);
-    expect(getAssetSource).toHaveBeenCalledWith(
-      featuredEvents[0].fields.eventsListPicture["en-GB"]
-    );
   });
 
   it("renders max 6 events", () => {
     const featuredEvents = generateEvents(10);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetSource).toHaveBeenCalledTimes(6);
   });
 
   it("renders loading indicator when loading", () => {
@@ -180,6 +176,6 @@ describe("HomeScreen Component", () => {
 });
 
 afterEach(() => {
-  getAssetSource.mockClear();
+  getImageDetails.mockClear();
   navigation.navigate.mockClear();
 });

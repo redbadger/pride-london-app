@@ -22,7 +22,6 @@ import type {
   PerformancePeriods,
   Reference
 } from "../data/event";
-import type { Asset } from "../data/asset";
 import locale from "../data/locale";
 
 const fieldsEventsLocaleLens = R.lensPath(["fields", "events", locale]);
@@ -185,16 +184,12 @@ export const selectEventsLoading = (state: State) =>
   getDataState(state).loading;
 export const selectEventsRefreshing = (state: State) =>
   getDataState(state).refreshing;
-export const selectAssets = (state: State) => getDataState(state).assets;
 
 export const selectEventById = (state: State, id: string): ?Event =>
   selectEvents(state).find(event => event.sys.id === id);
 
 export const selectPerformanceById = (state: State, id: string) =>
   selectPerformances(state).find(performance => performance.sys.id === id);
-
-export const selectAssetById = (state: State, id: string): Asset =>
-  (selectAssets(state).find(asset => asset.sys.id === id): any);
 
 export const selectFilteredEvents = (
   state: State,

@@ -13,8 +13,6 @@ import {
   FORMAT_WEEKDAY_DAY_MONTH,
   FORMAT_YEAR_MONTH_DAY
 } from "../lib/date";
-import type { FieldRef } from "../data/field-ref";
-import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
   locale: string,
@@ -24,8 +22,7 @@ type Props = {
   removeSavedEvent: string => void,
   refreshing?: boolean,
   onRefresh?: () => void,
-  onPress: (id: string) => void,
-  getAssetSource: FieldRef => ImageSource
+  onPress: (id: string) => void
 };
 
 type State = {
@@ -117,8 +114,7 @@ class EventList extends Component<Props, State> {
       addSavedEvent,
       removeSavedEvent,
       locale,
-      onPress,
-      getAssetSource
+      onPress
     } = this.props;
 
     return (
@@ -131,7 +127,7 @@ class EventList extends Component<Props, State> {
           eventPriceHigh={item.fields.eventPriceHigh[locale]}
           startTime={item.fields.startTime[locale]}
           endTime={item.fields.endTime[locale]}
-          image={getAssetSource(item.fields.eventsListPicture[locale])}
+          imageReference={item.fields.eventsListPicture[locale]}
           isSaved={savedEvents.has(item.sys.id)}
           addSavedEvent={addSavedEvent}
           removeSavedEvent={removeSavedEvent}

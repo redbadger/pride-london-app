@@ -1,7 +1,6 @@
 // @flow
 import type { DataAction } from "../actions/data";
 import type { CmsEntry } from "../integrations/cms";
-import type { Asset } from "../data/asset";
 import type { HeaderBanner } from "../data/header-banner";
 import type { Images } from "../data/image";
 import type { Performances } from "../data/performance";
@@ -18,7 +17,6 @@ import { expandRecurringEventsInEntries } from "../selectors/events";
 
 export type State = {
   entries: CmsEntry[],
-  assets: Asset[],
   headerBanners: HeaderBanner[],
   images: Images,
   performances: Performances,
@@ -29,7 +27,6 @@ export type State = {
 
 const defaultState = {
   entries: [],
-  assets: [],
   headerBanners: [],
   images: {},
   performances: {},
@@ -92,7 +89,6 @@ const reducer = (state: State = defaultState, action: DataAction) => {
         loading: false,
         refreshing: false,
         entries: processEntries(action.data.entries),
-        assets: action.data.assets,
         headerBanners: resultWithDefault(
           [],
           decodeHeaderBanners(action.data.entries)

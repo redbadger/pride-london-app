@@ -942,20 +942,6 @@ describe("selectEventById", () => {
   });
 });
 
-describe("selectAssetById", () => {
-  it("selects asset from list", () => {
-    const state = {
-      data: {
-        assets: [{ sys: { id: "1" } }]
-      }
-    };
-
-    const selected = selectAssetById(state, "1");
-
-    expect(selected).toEqual(state.data.assets[0]);
-  });
-});
-
 describe("selectFilteredEvents", () => {
   it("filters events using the buildEventFilter function", () => {
     const mockFilter = jest

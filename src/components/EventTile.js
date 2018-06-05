@@ -1,25 +1,27 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { generateFieldRef, sampleOne } from "../data/__test-data";
+import ConnectedImageBackground from "../components/ImageBackground";
 import Text from "../components/Text";
 import CategoryPill from "./CategoryPill";
 import { imageBgColor, eventTileTextColor } from "../constants/colors";
 import { toFormat, FORMAT_SHORT_WEEKDAY_DAY_MONTH } from "../lib/date";
 import type { EventCategoryName } from "../data/event";
-import type { ImageSource } from "../data/get-asset-source";
+import type { FieldRef } from "../data/field-ref";
 
 type Props = {
   eventCategories: EventCategoryName[],
   name: string,
   date: string,
-  image: ImageSource
+  imageReference: FieldRef
 };
 
-const EventTile = ({ eventCategories, name, date, image }: Props) => (
+const EventTile = ({ eventCategories, name, date, imageReference }: Props) => (
   <View style={styles.eventTile}>
-    <ImageBackground
+    <ConnectedImageBackground
       style={styles.imageContainer}
-      source={image}
+      reference={imageReference}
       resizeMode="cover"
     >
       <View style={styles.categoryPillContainer}>
@@ -27,7 +29,7 @@ const EventTile = ({ eventCategories, name, date, image }: Props) => (
           <CategoryPill name={eventCategories[0]} numberOfLines={2} />
         )}
       </View>
-    </ImageBackground>
+    </ConnectedImageBackground>
     <View style={styles.details}>
       <Text type="small" style={{ color: eventTileTextColor }}>
         {toFormat(date, FORMAT_SHORT_WEEKDAY_DAY_MONTH)}

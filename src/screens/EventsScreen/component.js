@@ -6,8 +6,6 @@ import type {
   SavedEvents,
   EventDays
 } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
 import { withNavigationFocus } from "../../lib/navigation";
 import type { NavigationProps } from "../../lib/navigation";
 import EventList from "../../components/EventList";
@@ -29,7 +27,6 @@ export type Props = {
   loading: boolean,
   refreshing: boolean,
   updateData: () => Promise<void>,
-  getAssetSource: FieldRef => ImageSource,
   selectedCategories: Set<EventCategoryName>
 };
 
@@ -56,8 +53,7 @@ class EventsScreen extends Component<AllProps> {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
-      refreshing,
-      getAssetSource
+      refreshing
     } = this.props;
     return (
       <View style={styles.container}>
@@ -82,7 +78,6 @@ class EventsScreen extends Component<AllProps> {
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
-            getAssetSource={getAssetSource}
           />
         )}
       </View>

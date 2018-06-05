@@ -3,15 +3,11 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
 import type { State } from "../../reducers";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
 import type { SavedEvents, EventDays } from "../../data/event";
-import getAssetSource from "../../data/get-asset-source";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
-  selectFeaturedEventsByTitle,
-  selectAssetById
+  selectFeaturedEventsByTitle
 } from "../../selectors/events";
 import Component from "./component";
 
@@ -22,8 +18,7 @@ type OwnProps = {
 type StateProps = {
   navigation: NavigationScreenProp<{ params: { title: string } }>,
   events: EventDays,
-  savedEvents: SavedEvents,
-  getAssetSource: FieldRef => ImageSource
+  savedEvents: SavedEvents
 };
 
 type DispatchProps = {
@@ -44,8 +39,7 @@ const mapStateToProps = (
   events: groupEventsByStartTime(
     selectFeaturedEventsByTitle(state, navigation.state.params.title)
   ),
-  savedEvents: state.savedEvents,
-  getAssetSource: getAssetSource(id => selectAssetById(state, id))
+  savedEvents: state.savedEvents
 });
 
 const mapDispatchToProps = {
