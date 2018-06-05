@@ -1,10 +1,11 @@
 // @flow
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 
 import paradeCoordinates from "../../constants/parade-coordinates";
 import { velvetColor, whiteColor } from "../../constants/colors";
+import Text, { scaleWithFont } from "../../components/Text";
 
 const ParadeMap = () => (
   <MapView
@@ -25,12 +26,16 @@ const ParadeMap = () => (
     />
     <Marker coordinate={{ longitude: -0.14223, latitude: 51.51616 }}>
       <View style={styles.markerView}>
-        <Text style={styles.markerText}>A</Text>
+        <Text type="xSmall" color="whiteColor">
+          A
+        </Text>
       </View>
     </Marker>
     <Marker coordinate={{ longitude: -0.1265, latitude: 51.50499 }}>
       <View style={styles.markerView}>
-        <Text style={styles.markerText}>B</Text>
+        <Text type="xSmall" color="whiteColor">
+          B
+        </Text>
       </View>
     </Marker>
   </MapView>
@@ -38,16 +43,12 @@ const ParadeMap = () => (
 
 const styles = StyleSheet.create({
   markerView: {
-    height: 15,
-    width: 15,
+    height: Math.max(15, scaleWithFont("xSmall", 18)),
+    width: Math.max(15, scaleWithFont("xSmall", 18)),
     backgroundColor: velvetColor,
-    borderRadius: 7,
+    borderRadius: Math.max(9, scaleWithFont("xSmall", 9)),
     justifyContent: "center",
     alignItems: "center"
-  },
-  markerText: {
-    color: whiteColor,
-    fontSize: 12
   }
 });
 
