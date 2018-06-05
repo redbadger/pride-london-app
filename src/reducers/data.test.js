@@ -1,4 +1,5 @@
 // @flow
+import { generateCMSEvent, sampleOne } from "../data/__test-data";
 import reducer from "./data";
 
 describe("Events reducer", () => {
@@ -13,6 +14,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
+      events: {},
       headerBanners: [],
       images: {},
       performances: {},
@@ -30,6 +32,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
+      events: {},
       headerBanners: [],
       images: {},
       performances: {},
@@ -47,6 +50,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
+      events: {},
       headerBanners: [],
       images: {},
       performances: {},
@@ -80,6 +84,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
+      events: {},
       headerBanners: [],
       images: {},
       performances: {},
@@ -141,6 +146,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
+      events: {},
       headerBanners: [],
       images: {},
       performances: {},
@@ -155,6 +161,35 @@ describe("Events reducer", () => {
   });
 
   describe("RECEIVE_CMS_DATA action", () => {
+    it("decodes events", () => {
+      const initialState = {
+        entries: [],
+        assets: [],
+        events: {},
+        headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [sampleOne(generateCMSEvent)],
+        assets: [],
+        syncToken: "abc",
+        updated: true
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.events).toMatchSnapshot();
+    });
+
     it("decodes headerBanners", () => {
       const initialState = {
         entries: [],

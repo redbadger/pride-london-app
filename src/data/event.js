@@ -6,6 +6,10 @@ import * as decode from "../lib/decode";
 import type { FieldRef } from "./field-ref";
 import decodeFieldRef from "./field-ref";
 
+export type Events = {
+  [id: string]: Event
+};
+
 export type EventCategoryName =
   | "Cabaret and Variety"
   | "Community"
