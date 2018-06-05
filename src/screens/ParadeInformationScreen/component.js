@@ -25,7 +25,7 @@ const mapImage = {
 };
 
 const ParadeInformationScreen = () => (
-  <View style={styles.container}>
+  <View style={styles.container} testID="parade-information-screen">
     <ScrollView>
       <View style={styles.scrollPage}>
         <LayoutColumn spacing={24}>
