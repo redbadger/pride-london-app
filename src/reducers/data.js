@@ -1,4 +1,5 @@
 // @flow
+import R from "ramda";
 import type { DataAction } from "../actions/data";
 import type { CmsEntry } from "../integrations/cms";
 import type { Asset } from "../data/asset";
@@ -7,7 +8,7 @@ import type { HeaderBanner } from "../data/header-banner";
 import type { Images } from "../data/image";
 import type { Performances } from "../data/performance";
 import type { Sponsor } from "../data/sponsor";
-import decodeEvent from "../data/event";
+import { decodeEvent, expandRecurringEvents } from "../data/event";
 import decodeHeaderBanner from "../data/header-banner";
 import { decodeImageDetails } from "../data/image";
 import decodePerformance from "../data/performance";
@@ -60,7 +61,8 @@ const reduceToMapHelp = <A>(
 // this can be moved inside the reducer function if we later want
 // to make this dynamic
 const decodeEvents: Decoder<Events> = decodeMap(
-  events => events.reduce(reduceToMapHelp, {}),
+  events =>
+    R.unnest(events.map(expandRecurringEvents)).reduce(reduceToMapHelp, {}),
   decodeFilterMap(decodeEvent(locale))
 );
 

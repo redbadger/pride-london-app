@@ -1,4 +1,13 @@
 // @flow
+import R from "ramda";
+import {
+  set as setDate,
+  diff as diffDate,
+  add as addToDate,
+  toFormat as formatDate,
+  FORMAT_EUROPEAN_DATE,
+  FORMAT_CONTENTFUL_ISO
+} from "../lib/date";
 import type { Maybe } from "../lib/maybe";
 import * as maybe from "../lib/maybe";
 import type { Decoder } from "../lib/decode";
@@ -89,7 +98,7 @@ const maybeFieldWithDefault = <A>(
     maybeField(locale, field, decoder)
   );
 
-const decodeEvent = (locale: string): Decoder<Event> =>
+export const decodeEvent = (locale: string): Decoder<Event> =>
   decode.shape({
     contentType: decode.at(
       ["sys", "contentType", "sys", "id"],
@@ -179,4 +188,56 @@ const decodeEvent = (locale: string): Decoder<Event> =>
     )
   });
 
-export default decodeEvent;
+const formatEuropeanDate = value => formatDate(value, FORMAT_EUROPEAN_DATE);
+
+const generateRecurringEvent = (event: Event) => (
+  recurrenceStartTime: string
+) => {
+  const { endTime, startTime } = event.fields;
+
+  const difference = diffDate(recurrenceStartTime, startTime);
+  const recurrenceEndTime = addToDate(endTime, difference);
+
+  return R.mergeDeepRight(event, {
+    fields: {
+      startTime: formatDate(recurrenceStartTime, FORMAT_CONTENTFUL_ISO),
+      endTime: formatDate(recurrenceEndTime, FORMAT_CONTENTFUL_ISO),
+      recurrenceDates: [
+        formatDate(startTime, FORMAT_EUROPEAN_DATE),
+        ...event.fields.recurrenceDates
+      ]
+    },
+    id: `${event.id}-recurrence-${formatEuropeanDate(recurrenceStartTime)}`
+  });
+};
+
+const recurrenceDateToStartTime = (originalStartTime: string) => (
+  recurrence: string
+) => {
+  const [recurrenceDay, recurrenceMonth, recurrenceYear] = recurrence.split(
+    "/"
+  );
+
+  return formatDate(
+    setDate(originalStartTime, {
+      year: recurrenceYear,
+      month: recurrenceMonth,
+      day: recurrenceDay
+    }),
+    FORMAT_CONTENTFUL_ISO
+  );
+};
+
+export const expandRecurringEvents = (event: Event): Array<Event> => {
+  const recurrenceStartTimes = [
+    event.fields.startTime,
+    ...event.fields.recurrenceDates.map(
+      recurrenceDateToStartTime(event.fields.startTime)
+    )
+  ];
+
+  const events = R.uniq(recurrenceStartTimes)
+    .slice(1)
+    .map(generateRecurringEvent(event));
+  return [event, ...events];
+};

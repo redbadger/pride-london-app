@@ -190,6 +190,40 @@ describe("Events reducer", () => {
       expect(state.events).toMatchSnapshot();
     });
 
+    it("expands recurring events", () => {
+      const initialState = {
+        entries: [],
+        assets: [],
+        events: {},
+        headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const event = sampleOne(generateCMSEvent);
+      event.fields.startTime = { "en-GB": "2018-08-02T00:00+00:00" };
+      event.fields.endTime = { "en-GB": "2018-08-02T03:00+00:00" };
+      event.fields.recurrenceDates = { "en-GB": ["03/08/2018", "04/08/2018"] };
+
+      const newCmsData = {
+        entries: [event],
+        assets: [{ id: "1" }],
+        syncToken: "abc",
+        updated: true
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.events).toMatchSnapshot();
+    });
+
     it("decodes headerBanners", () => {
       const initialState = {
         entries: [],
