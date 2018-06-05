@@ -14,7 +14,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
-      events: {},
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -32,7 +32,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
-      events: {},
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -50,7 +50,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
-      events: {},
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -84,7 +84,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
-      events: {},
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -146,7 +146,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       assets: [],
-      events: {},
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -165,7 +165,7 @@ describe("Events reducer", () => {
       const initialState = {
         entries: [],
         assets: [],
-        events: {},
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -194,7 +194,7 @@ describe("Events reducer", () => {
       const initialState = {
         entries: [],
         assets: [],
-        events: {},
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},

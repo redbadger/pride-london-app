@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Events reducer RECEIVE_CMS_DATA action decodes events 1`] = `
-Object {
-  "m3w5": Object {
+Array [
+  Object {
     "contentType": "event",
     "fields": Object {
       "accessibilityDetails": "accessibilityDetails",
@@ -56,12 +56,12 @@ Object {
     "locale": "en-GB",
     "revision": 1,
   },
-}
+]
 `;
 
 exports[`Events reducer RECEIVE_CMS_DATA action expands recurring events 1`] = `
-Object {
-  "m3w5": Object {
+Array [
+  Object {
     "contentType": "event",
     "fields": Object {
       "accessibilityDetails": "accessibilityDetails",
@@ -118,7 +118,7 @@ Object {
     "locale": "en-GB",
     "revision": 1,
   },
-  "m3w5-recurrence-03/08/2018": Object {
+  Object {
     "contentType": "event",
     "fields": Object {
       "accessibilityDetails": "accessibilityDetails",
@@ -176,7 +176,7 @@ Object {
     "locale": "en-GB",
     "revision": 1,
   },
-  "m3w5-recurrence-04/08/2018": Object {
+  Object {
     "contentType": "event",
     "fields": Object {
       "accessibilityDetails": "accessibilityDetails",
@@ -234,14 +234,14 @@ Object {
     "locale": "en-GB",
     "revision": 1,
   },
-}
+]
 `;
 
 exports[`Events reducer initialises with default state 1`] = `
 Object {
   "assets": Array [],
   "entries": Array [],
-  "events": Object {},
+  "events": Array [],
   "headerBanners": Array [],
   "images": Object {},
   "loading": true,

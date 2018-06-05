@@ -33,7 +33,7 @@ const buildState = (
   data: {
     entries: [],
     assets: [],
-    events: {},
+    events: [],
     headerBanners: [],
     images: {},
     performances: {},
