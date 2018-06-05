@@ -51,9 +51,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       <Button
         disabled={false}
         onPress={[Function]}
-      >
-        Show 1 event
-      </Button>
+      />
     </ContentPadding>
   </Component>
 </withOrientation>
@@ -102,9 +100,7 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
       <Button
         disabled={false}
         onPress={[Function]}
-      >
-        Show all events
-      </Button>
+      />
     </ContentPadding>
   </Component>
 </withOrientation>

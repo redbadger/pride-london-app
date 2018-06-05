@@ -74,21 +74,3 @@ describe("renders correctly", () => {
     expect(output).toMatchSnapshot();
   });
 });
-
-it("opens date picker when users presses date filter button", () => {
-  const output = render();
-  const filterDateButton = output.find(FilterHeaderButton).at(0);
-  filterDateButton.simulate("press");
-
-  expect(output.state("datesPickerVisible")).toBe(true);
-});
-
-it("closes date picker when users presses applies changes", () => {
-  const output = render();
-  output.setState({ datesPickerVisible: true });
-
-  const datePicker = output.find(DateRangePickerDialog);
-  datePicker.simulate("apply");
-
-  expect(output.state("datesPickerVisible")).toBe(false);
-});

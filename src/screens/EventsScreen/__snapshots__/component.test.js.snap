@@ -10,6 +10,7 @@ exports[`EventsScreen Component renders correctly 1`] = `
   }
 >
   <Connect(FilterHeader)
+    onDateFilterButtonPress={[Function]}
     onFilterButtonPress={[Function]}
     onFilterCategoriesPress={[Function]}
     selectedCategories={Set {}}
@@ -159,6 +160,7 @@ exports[`EventsScreen Component renders correctly when loading 1`] = `
   }
 >
   <Connect(FilterHeader)
+    onDateFilterButtonPress={[Function]}
     onFilterButtonPress={[Function]}
     onFilterCategoriesPress={[Function]}
     selectedCategories={Set {}}
@@ -177,6 +179,7 @@ exports[`EventsScreen Component renders correctly with no events 1`] = `
   }
 >
   <Connect(FilterHeader)
+    onDateFilterButtonPress={[Function]}
     onFilterButtonPress={[Function]}
     onFilterCategoriesPress={[Function]}
     selectedCategories={Set {}}

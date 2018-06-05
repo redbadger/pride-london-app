@@ -14,12 +14,10 @@ exports[`renders correctly no dates 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  renderArrow={[Function]}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -75,12 +73,10 @@ exports[`renders correctly only startDate 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  renderArrow={[Function]}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -139,12 +135,10 @@ exports[`renders correctly startDate after endDate 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  renderArrow={[Function]}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -203,12 +197,10 @@ exports[`renders correctly startDate before endDate 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  renderArrow={[Function]}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -264,12 +256,10 @@ exports[`renders correctly startDate equals endDate 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  renderArrow={[Function]}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
