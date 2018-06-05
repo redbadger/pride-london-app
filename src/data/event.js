@@ -203,7 +203,7 @@ const generateRecurringEvent = (event: Event) => (
       startTime: formatDate(recurrenceStartTime, FORMAT_CONTENTFUL_ISO),
       endTime: formatDate(recurrenceEndTime, FORMAT_CONTENTFUL_ISO),
       recurrenceDates: [
-        formatDate(startTime, FORMAT_EUROPEAN_DATE),
+        formatEuropeanDate(startTime),
         ...event.fields.recurrenceDates
       ]
     },
