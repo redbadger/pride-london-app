@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import { Image } from "react-native";
 import { Calendar } from "react-native-calendars";
 import {
   toFormat as formatDate,
@@ -8,6 +9,8 @@ import {
   FORMAT_YEAR_MONTH_DAY
 } from "../../lib/date";
 import type { DateRange } from "../../data/date-time";
+import previousArrow from "./img/previous.png";
+import nextArrow from "./img/next.png";
 
 import Day from "./DateRangePickerDay";
 import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
@@ -80,6 +83,20 @@ const getMarkedDates = (dateRange: ?DateRange, today: string): DayMarkings => {
   return addDateMark(getMarkedDateRange(dateRange), today);
 };
 
+const arrowLabel = direction =>
+  direction === "left" ? "Previous Month" : "Next Month";
+
+const arrowSource = direction =>
+  direction === "left" ? previousArrow : nextArrow;
+
+const renderArrow = direction => (
+  <Image
+    accessible
+    accessibilityLabel={arrowLabel(direction)}
+    source={arrowSource(direction)}
+  />
+);
+
 type Props = {
   onChange: DateRange => void,
   dateRange?: ?DateRange,
@@ -131,6 +148,7 @@ class DateRangePicker extends React.PureComponent<Props> {
         onDayPress={this.onDaySelected}
         dayComponent={Day}
         hideExtraDays
+        renderArrow={renderArrow}
         theme={calendarTheme}
       />
     );
@@ -159,9 +177,6 @@ const calendarTheme = {
       marginHorizontal: 10,
       flexDirection: "row",
       justifyContent: "space-around"
-    },
-    arrowImage: {
-      tintColor: dateRangePickerTextColor
     },
     dayHeader: {
       marginTop: 2,
