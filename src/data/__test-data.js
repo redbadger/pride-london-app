@@ -4,7 +4,8 @@ import { gen, sampleOne as sample } from "@rgbboy/testcheck";
 import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO } from "../lib/date";
-import type { Event } from "./event-deprecated";
+import type { Event as EventDeprecated } from "./event-deprecated";
+import type { Event } from "./event";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
 import type { ImageDetails } from "./image";
@@ -113,7 +114,40 @@ export const generateCMSHeaderBanner: ValueGenerator<mixed> = gen({
   }
 });
 
-export const generateCMSEvent: ValueGenerator<Event> = gen({
+export const generateEvent: ValueGenerator<Event> = gen({
+  id: gen.alphaNumString,
+  contentType: "event",
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    name: "name",
+    eventCategories: ["Cabaret and Variety", "Music"],
+    audience: ["???"],
+    startTime: "2018-07-07T00:00+00:00",
+    endTime: "2018-07-07T03:00+00:00",
+    location: { lat: 0, lon: 10 },
+    addressLine1: "addressLine1",
+    addressLine2: "addressLine2",
+    city: "city",
+    postcode: "postcode",
+    locationName: "locationName",
+    eventPriceLow: 0,
+    eventPriceHigh: 10,
+    accessibilityOptions: ["accessibilityOptionsA", "accessibilityOptionsB"],
+    eventDescription: "eventDescription",
+    accessibilityDetails: "accessibilityDetails",
+    email: "email",
+    phone: "phone",
+    ticketingUrl: "ticketingUrl",
+    venueDetails: ["venueDetailsA", "venueDetailsB"],
+    individualEventPicture: generateFieldRef,
+    eventsListPicture: generateFieldRef,
+    performances: [],
+    recurrenceDates: []
+  })
+});
+
+export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
   sys: gen({
     id: gen.alphaNumString,
     contentType: {
