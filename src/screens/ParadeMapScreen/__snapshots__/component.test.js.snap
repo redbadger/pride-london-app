@@ -10,7 +10,6 @@ exports[`renders correctly 1`] = `
       "longitudeDelta": 4.1e-8,
     }
   }
-  scrollEnabled={false}
   style={
     Object {
       "bottom": 0,
@@ -20,7 +19,7 @@ exports[`renders correctly 1`] = `
       "top": 0,
     }
   }
-  zoomEnabled={false}
+  testID="parade-map-screen"
 >
   <MapPolyline
     coordinates={
@@ -538,23 +537,18 @@ exports[`renders correctly 1`] = `
         Object {
           "alignItems": "center",
           "backgroundColor": "#660c63",
-          "borderRadius": 7,
-          "height": 15,
+          "borderRadius": 9,
+          "height": 18,
           "justifyContent": "center",
-          "width": 15,
+          "width": 18,
         }
       }
     >
       <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#ffffff",
-            "fontSize": 12,
-          }
-        }
+        color="whiteColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="xSmall"
       >
         A
       </Text>
@@ -574,23 +568,18 @@ exports[`renders correctly 1`] = `
         Object {
           "alignItems": "center",
           "backgroundColor": "#660c63",
-          "borderRadius": 7,
-          "height": 15,
+          "borderRadius": 9,
+          "height": 18,
           "justifyContent": "center",
-          "width": 15,
+          "width": 18,
         }
       }
     >
       <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#ffffff",
-            "fontSize": 12,
-          }
-        }
+        color="whiteColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        type="xSmall"
       >
         B
       </Text>
