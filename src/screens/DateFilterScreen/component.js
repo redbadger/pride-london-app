@@ -67,7 +67,7 @@ class DateFilterScreen extends PureComponent<Props> {
 
     return (
       <SafeAreaView style={styles.container}>
-        <Header onCancel={onCancel} onReset={onReset} />
+        <Header onCancel={onCancel} onReset={onReset} dateRange={dateRange} />
         <View style={styles.page}>
           <View>
             <View style={styles.content}>
