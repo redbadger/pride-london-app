@@ -1,13 +1,8 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import {
-  lightNavyBlueColor,
-  dialogTitleColor,
-  dialogBgColor,
-  dialogHeaderDividerColor
-} from "../../constants/colors";
+import { lightNavyBlueColor, dialogBgColor } from "../../constants/colors";
 import Header from "./Header";
 import DateRangePicker from "./DateRangePicker";
 import Button from "../../components/ButtonPrimary";

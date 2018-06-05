@@ -8,14 +8,19 @@ type Props = {
   onCancel: () => void,
   onReset: () => void,
   dateRange: string,
-  title: string
+  title: string,
+  titleLabel: string
 };
 
-const Header = ({ onCancel, onReset, dateRange, title }: Props) => (
+const Header = ({ onCancel, onReset, dateRange, title, titleLabel }: Props) => (
   <View>
     <CommonHeader
       leftElement={<CommonHeader.BackButton onPress={onCancel} />}
       title={title}
+      titleLabel={titleLabel}
+      titleAccesible
+      titleAccessibilityTraits={["header"]}
+      titleAccessibilityLiveRegion="polite"
       rightElement={
         dateRange && <ActionButton label="Reset" onPress={onReset} />
       }
