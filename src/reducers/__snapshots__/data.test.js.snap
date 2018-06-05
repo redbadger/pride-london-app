@@ -5,6 +5,7 @@ Object {
   "assets": Array [],
   "entries": Array [],
   "headerBanners": Array [],
+  "images": Object {},
   "loading": true,
   "performances": Object {},
   "refreshing": false,

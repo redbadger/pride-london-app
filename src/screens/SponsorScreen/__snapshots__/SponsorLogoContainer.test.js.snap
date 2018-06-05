@@ -75,9 +75,11 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
           sponsorLevel="Gold"
           sponsorLogo={
             Object {
-              "height": 1,
-              "uri": "http://example.com/image.png",
-              "width": 1,
+              "height": 357,
+              "id": "3CU8n6O760GJ80Wr7r",
+              "revision": 1,
+              "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
+              "width": 891,
             }
           }
           sponsorName="some other"
@@ -120,9 +122,11 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
           sponsorLevel="Gold"
           sponsorLogo={
             Object {
-              "height": 1,
-              "uri": "http://example.com/image.png",
-              "width": 1,
+              "height": 357,
+              "id": "3CU8n6O760GJ80Wr7r",
+              "revision": 1,
+              "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
+              "width": 891,
             }
           }
           sponsorName="some other"
@@ -208,9 +212,11 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
           sponsorLevel="Gold"
           sponsorLogo={
             Object {
-              "height": 1,
-              "uri": "http://example.com/image.png",
-              "width": 1,
+              "height": 357,
+              "id": "3CU8n6O760GJ80Wr7r",
+              "revision": 1,
+              "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
+              "width": 891,
             }
           }
           sponsorName="some other"
@@ -253,9 +259,11 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
           sponsorLevel="Gold"
           sponsorLogo={
             Object {
-              "height": 1,
-              "uri": "http://example.com/image.png",
-              "width": 1,
+              "height": 357,
+              "id": "3CU8n6O760GJ80Wr7r",
+              "revision": 1,
+              "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
+              "width": 891,
             }
           }
           sponsorName="some other"

@@ -14,9 +14,11 @@ exports[`SponsorLogo Component renders correctly with Gold Level 1`] = `
     resizeMode="contain"
     source={
       Object {
-        "height": 100,
-        "uri": "sponsorLogoUrl",
-        "width": 100,
+        "height": 357,
+        "id": "3CU8n6O760GJ80Wr7r",
+        "revision": 1,
+        "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
+        "width": 891,
       }
     }
     style={
@@ -43,9 +45,11 @@ exports[`SponsorLogo Component renders correctly with Silver Level 1`] = `
     resizeMode="contain"
     source={
       Object {
-        "height": 100,
-        "uri": "sponsorLogoUrl",
-        "width": 100,
+        "height": 357,
+        "id": "3CU8n6O760GJ80Wr7r",
+        "revision": 1,
+        "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
+        "width": 891,
       }
     }
     style={

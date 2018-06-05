@@ -2,6 +2,7 @@
 import React from "react";
 import { Linking } from "react-native";
 import { shallow } from "enzyme";
+import { sampleOne, generateImageDetails } from "../../data/__test-data";
 import SponsorLogoContainer from "./SponsorLogoContainer";
 import type { Sponsor } from "../../data/sponsor";
 
@@ -31,11 +32,9 @@ const generateSponsors = (count = 2): Sponsor[] =>
       }: Sponsor)
   );
 
-const getAssetSource = jest.fn().mockReturnValue({
-  uri: "http://example.com/image.png",
-  width: 1,
-  height: 1
-});
+const getImageDetails = jest
+  .fn()
+  .mockReturnValue(sampleOne(generateImageDetails));
 
 describe("SponsorLogoContainer Component", () => {
   it("renders correctly with Gold Level", () => {
@@ -43,7 +42,7 @@ describe("SponsorLogoContainer Component", () => {
       <SponsorLogoContainer
         sponsorLevel="Gold"
         sponsors={generateSponsors(2)}
-        getAssetSource={getAssetSource}
+        getImageDetails={getImageDetails}
       />
     );
     expect(output).toMatchSnapshot();
@@ -54,7 +53,7 @@ describe("SponsorLogoContainer Component", () => {
       <SponsorLogoContainer
         sponsorLevel="Silver"
         sponsors={generateSponsors(2)}
-        getAssetSource={getAssetSource}
+        getImageDetails={getImageDetails}
       />
     );
     expect(output).toMatchSnapshot();
@@ -65,7 +64,7 @@ describe("SponsorLogoContainer Component", () => {
       <SponsorLogoContainer
         sponsorLevel="Silver"
         sponsors={generateSponsors(2)}
-        getAssetSource={getAssetSource}
+        getImageDetails={getImageDetails}
       />
     );
     const sponsorLink = output.find({ testID: "sponsor-tile-1" });
