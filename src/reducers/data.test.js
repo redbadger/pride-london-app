@@ -14,6 +14,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: false,
@@ -30,6 +31,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: false,
@@ -46,6 +48,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: true,
@@ -78,6 +81,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: true,
@@ -138,6 +142,7 @@ describe("Events reducer", () => {
       entries: [],
       assets: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: true,
@@ -155,6 +160,7 @@ describe("Events reducer", () => {
         entries: [],
         assets: [],
         headerBanners: [],
+        images: {},
         performances: {},
         sponsors: [],
         loading: true,
@@ -217,6 +223,65 @@ describe("Events reducer", () => {
         entries: [],
         assets: [],
         headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [],
+        assets: [
+          {
+            fields: {
+              file: {
+                "en-GB": {
+                  url: "//localhost/image.jpg",
+                  details: {
+                    image: {
+                      height: 100,
+                      width: 100
+                    }
+                  }
+                }
+              }
+            },
+            sys: {
+              id: "3O3SZPgYl2MUEWu2MoK2oi",
+              revision: 1
+            }
+          }
+        ],
+        syncToken: "abc",
+        updated: true
+      };
+
+      const expected = {
+        "3O3SZPgYl2MUEWu2MoK2oi": {
+          id: "3O3SZPgYl2MUEWu2MoK2oi",
+          revision: 1,
+          uri: "https://localhost/image.jpg",
+          width: 100,
+          height: 100
+        }
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.images).toEqual(expected);
+    });
+
+    it("decodes performances", () => {
+      const initialState = {
+        entries: [],
+        assets: [],
+        headerBanners: [],
+        images: {},
         performances: {},
         sponsors: [],
         loading: true,
@@ -273,6 +338,7 @@ describe("Events reducer", () => {
         entries: [],
         assets: [],
         headerBanners: [],
+        images: {},
         performances: {},
         sponsors: [],
         loading: true,

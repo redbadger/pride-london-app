@@ -2,6 +2,7 @@
 import React from "react";
 import { email } from "react-native-communications";
 import { shallow } from "enzyme";
+import { sampleOne, generateImageDetails } from "../../data/__test-data";
 import Component from "./component";
 import type { Sponsor } from "../../data/sponsor";
 import text from "../../constants/text";
@@ -32,11 +33,10 @@ const generateSponsors = (count = 2): Sponsor[] =>
     )
     .reverse();
 
-const getAssetSource = jest.fn().mockReturnValue({
-  uri: "http://example.com/image.png",
-  width: 1,
-  height: 1
-});
+const getImageDetails = jest
+  .fn()
+  .mockReturnValue(sampleOne(generateImageDetails));
+
 const navigation: any = {
   goBack: jest.fn()
 };
@@ -51,7 +51,7 @@ describe("SponsorScreen Component", () => {
       <Component
         navigation={navigation}
         sponsors={generateSponsors(2)}
-        getAssetSource={getAssetSource}
+        getImageDetails={getImageDetails}
         {...props}
       />
     );
@@ -85,6 +85,6 @@ describe("SponsorScreen Component", () => {
 });
 
 afterEach(() => {
-  getAssetSource.mockClear();
+  getImageDetails.mockClear();
   navigation.goBack.mockClear();
 });
