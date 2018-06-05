@@ -8,7 +8,6 @@ import {
   selectEventsLoading,
   selectEventsRefreshing,
   selectEventById,
-  selectAssetById,
   selectFilteredEvents,
   selectFeaturedEventsByTitle,
   uniqueEvents,

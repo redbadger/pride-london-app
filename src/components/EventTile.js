@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { generateFieldRef, sampleOne } from "../data/__test-data";
 import ConnectedImageBackground from "../components/ImageBackground";
 import Text from "../components/Text";
 import CategoryPill from "./CategoryPill";
