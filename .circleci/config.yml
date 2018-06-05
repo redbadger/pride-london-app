@@ -410,6 +410,7 @@ jobs:
       - <<: *set-node-version-macos
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
+      - <<: *google-maps-ios
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
       - run:
@@ -446,6 +447,7 @@ jobs:
       - <<: *set-node-version-macos
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
+      - <<: *google-maps-ios
       - <<: *save-yarn-cache-macos
       - <<: *release-api-keys
       - <<: *generate-env-macos
