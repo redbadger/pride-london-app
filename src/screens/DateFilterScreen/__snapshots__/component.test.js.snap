@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateFilterScreen renders correctly 1`] = `
+<withOrientation
+  style={
+    Object {
+      "backgroundColor": "#2d2f7f",
+      "flex": 1,
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <Header
+    onCancel={[Function]}
+    onReset={[Function]}
+    title="Select dates"
+    titleLabel="Select dates"
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+        "justifyContent": "center",
+        "padding": 16,
+      }
+    }
+  >
+    <Component>
+      <Component
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 4,
+            "paddingBottom": 8,
+            "paddingTop": 8,
+          }
+        }
+      >
+        <DateRangePicker
+          forceNewRange={false}
+          onChange={[Function]}
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "marginTop": 16,
+          }
+        }
+      >
+        <Button
+          accessibilityLabel="Show all 26 events"
+          disabled={false}
+          onPress={[Function]}
+        >
+          Show 26 events
+        </Button>
+      </Component>
+    </Component>
+  </Component>
+</withOrientation>
+`;

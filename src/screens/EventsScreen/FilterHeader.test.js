@@ -2,7 +2,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import FilterHeader from "./FilterHeader";
-import FilterHeaderButton from "./FilterHeaderButton";
 import type { Props as ComponentProps } from "./FilterHeader";
 
 const render = (
