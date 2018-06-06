@@ -21,7 +21,7 @@
     "lint": "eslint src",
     "flow": "flow src",
     "fix-xcode": "react-native-schemes-manager all",
-    "postinstall": "yarn fix-xcode || ./scripts/google-maps-ios.sh",
+    "postinstall": "yarn fix-xcode; ./scripts/google-maps-ios.sh",
     "postversion": "react-native-version --reset-build"
   },
   "dependencies": {
