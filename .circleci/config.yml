@@ -221,14 +221,6 @@ generate-nightly-cache: &generate-nightly-cache
         mkdir -p ~/.pride-nightly/cache
         cp ~/.pride-nightly/last-commit ~/.pride-nightly/cache/
 
-# fix to address build issue: https://github.com/react-community/react-native-maps/issues/2159
-google-maps-ios: &google-maps-ios
-  run:
-    name: Google Maps iOS fix
-    command: |
-      sed -i '' '/Google.*\.[h|m]/d' node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj/project.pbxproj
-    working_directory: /Users/distiller/project
-
 version: 2
 jobs:
   # build is a reserved job name for running circleci locally
@@ -374,7 +366,6 @@ jobs:
       - <<: *set-node-version-macos
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
-      - <<: *google-maps-ios
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
       - run:
@@ -410,7 +401,6 @@ jobs:
       - <<: *set-node-version-macos
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
-      - <<: *google-maps-ios
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
       - run:
@@ -447,7 +437,6 @@ jobs:
       - <<: *set-node-version-macos
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
-      - <<: *google-maps-ios
       - <<: *save-yarn-cache-macos
       - <<: *release-api-keys
       - <<: *generate-env-macos
@@ -492,7 +481,6 @@ jobs:
               npm i -g react-native-cli
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
-      - <<: *google-maps-ios
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
       - run: detox clean-framework-cache && detox build-framework-cache
