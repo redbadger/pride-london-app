@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Performance decoder correctly decodes valid CMS sponsor 1`] = `
+exports[`Performance decoder correctly decodes valid CMS performance 1`] = `
 Object {
   "contentType": "performance",
   "fields": Object {

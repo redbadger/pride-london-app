@@ -6,18 +6,14 @@ import type {
   EventCategoryName,
   SavedEvents,
   EventDays
-} from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
-import getAssetSource from "../../data/get-asset-source";
+} from "../../data/event-deprecated";
 import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
   selectEventsLoading,
   selectEventsRefreshing,
-  selectFilteredEvents,
-  selectAssetById
+  selectFilteredEvents
 } from "../../selectors/events";
 import Component from "./component";
 
@@ -26,7 +22,6 @@ type StateProps = {
   savedEvents: SavedEvents,
   loading: boolean,
   refreshing: boolean,
-  getAssetSource: FieldRef => ImageSource,
   selectedCategories: Set<EventCategoryName>
 };
 
@@ -46,7 +41,6 @@ const mapStateToProps = (state: State): StateProps => ({
   savedEvents: state.savedEvents,
   loading: selectEventsLoading(state),
   refreshing: selectEventsRefreshing(state),
-  getAssetSource: getAssetSource(id => selectAssetById(state, id)),
   selectedCategories: state.eventFilters.selectedFilters.categories
 });
 

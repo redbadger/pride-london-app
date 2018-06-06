@@ -1,11 +1,15 @@
 // @flow
+import R from "ramda";
 import type { DataAction } from "../actions/data";
 import type { CmsEntry } from "../integrations/cms";
-import type { Asset } from "../data/asset";
+import type { Event } from "../data/event";
 import type { HeaderBanner } from "../data/header-banner";
-import type { Performance, Performances } from "../data/performance";
+import type { Images } from "../data/image";
+import type { Performances } from "../data/performance";
 import type { Sponsor } from "../data/sponsor";
+import { decodeEvent, expandRecurringEvents } from "../data/event";
 import decodeHeaderBanner from "../data/header-banner";
+import { decodeImageDetails } from "../data/image";
 import decodePerformance from "../data/performance";
 import decodeSponsor from "../data/sponsor";
 import locale from "../data/locale";
@@ -16,8 +20,9 @@ import { expandRecurringEventsInEntries } from "../selectors/events";
 
 export type State = {
   entries: CmsEntry[],
-  assets: Asset[],
+  events: Event[],
   headerBanners: HeaderBanner[],
+  images: Images,
   performances: Performances,
   sponsors: Sponsor[],
   loading: boolean,
@@ -26,8 +31,9 @@ export type State = {
 
 const defaultState = {
   entries: [],
-  assets: [],
+  events: [],
   headerBanners: [],
+  images: {},
   performances: {},
   sponsors: [],
   loading: true,
@@ -36,20 +42,37 @@ const defaultState = {
 
 const processEntries = entries => expandRecurringEventsInEntries(entries);
 
-// moving locale here so we can deal with it in a single place
-// this can be moved inside the reducer function if we later want
-// to make this dynamic
-const decodeHeaderBanners: Decoder<Array<HeaderBanner>> = decodeFilterMap(
-  decodeHeaderBanner(locale)
-);
+type ObjectWithId<A> = {
+  id: string
+} & A;
 
-const reducePerformancesHelp = (acc: Performances, item: Performance) => {
+const reduceToMapHelp = <A>(
+  acc: { [id: string]: ObjectWithId<A> },
+  item: ObjectWithId<A>
+): { [id: string]: ObjectWithId<A> } => {
   acc[item.id] = item; // intentional mutation as this happens in a reduce
   return acc;
 };
 
+// moving locale here so we can deal with it in a single place
+// this can be moved inside the reducer function if we later want
+// to make this dynamic
+const decodeEvents: Decoder<Array<Event>> = decodeMap(
+  events => R.unnest(events.map(expandRecurringEvents)),
+  decodeFilterMap(decodeEvent(locale))
+);
+
+const decodeHeaderBanners: Decoder<Array<HeaderBanner>> = decodeFilterMap(
+  decodeHeaderBanner(locale)
+);
+
+const decodeImages: Decoder<Images> = decodeMap(
+  images => images.reduce(reduceToMapHelp, {}),
+  decodeFilterMap(decodeImageDetails(locale))
+);
+
 const decodePerformances: Decoder<Performances> = decodeMap(
-  performances => performances.reduce(reducePerformancesHelp, {}),
+  performances => performances.reduce(reduceToMapHelp, {}),
   decodeFilterMap(decodePerformance(locale))
 );
 
@@ -76,11 +99,12 @@ const reducer = (state: State = defaultState, action: DataAction) => {
         loading: false,
         refreshing: false,
         entries: processEntries(action.data.entries),
-        assets: action.data.assets,
+        events: resultWithDefault([], decodeEvents(action.data.entries)),
         headerBanners: resultWithDefault(
           [],
           decodeHeaderBanners(action.data.entries)
         ),
+        images: resultWithDefault({}, decodeImages(action.data.assets)),
         performances: resultWithDefault(
           {},
           decodePerformances(action.data.entries)

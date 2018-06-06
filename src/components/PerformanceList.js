@@ -10,7 +10,7 @@ import Text from "./Text";
 import SectionDivider from "./SectionDivider";
 
 import { getTimePeriod } from "../selectors/events";
-import type { Performance, PerformancePeriods } from "../data/event";
+import type { Performance, PerformancePeriods } from "../data/event-deprecated";
 import { sectionHeaderShadow, sectionHeaderBgColor } from "../constants/colors";
 import text from "../constants/text";
 

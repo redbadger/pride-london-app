@@ -11,13 +11,12 @@ import Text from "../../components/Text";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import { SUPPORT_US } from "../../constants/routes";
 import text from "../../constants/text";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
+import type { ImageDetails } from "../../data/image";
 import type { HeaderBanner } from "../../data/header-banner";
 
 type Props = {
   headerBanners: HeaderBanner[],
-  getAssetSource: FieldRef => ImageSource,
+  getImageDetails: string => ?ImageDetails,
   navigation: NavigationScreenProp<NavigationState>
 };
 
@@ -30,11 +29,13 @@ const pickBanner = (banners: HeaderBanner[]): ?HeaderBanner => {
   return sortedBanners[day % banners.length];
 };
 
-const Header = ({ headerBanners, getAssetSource, navigation }: Props) => {
+const Header = ({ headerBanners, getImageDetails, navigation }: Props) => {
   const banner = pickBanner(headerBanners);
   if (!banner) return null;
 
-  const heroImage = getAssetSource(banner.fields.heroImage);
+  const heroImage = getImageDetails(banner.fields.heroImage.sys.id);
+  if (!heroImage) return null;
+
   const heroImageHeight = 218; // 225 (header) - 7 (marginTop)
   const heroImageWidth = heroImage.width * (heroImageHeight / heroImage.height);
 

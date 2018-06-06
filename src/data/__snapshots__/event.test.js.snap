@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event decoder correctly decodes valid CMS event with all fields 1`] = `
+Object {
+  "contentType": "event",
+  "fields": Object {
+    "accessibilityDetails": "accessibilityDetails",
+    "accessibilityOptions": Array [
+      "accessibilityOptionsA",
+      "accessibilityOptionsB",
+    ],
+    "addressLine1": "addressLine1",
+    "addressLine2": "addressLine2",
+    "audience": Array [
+      "???",
+    ],
+    "city": "city",
+    "email": "email",
+    "endTime": "2018-07-07T03:00+00:00",
+    "eventCategories": Array [
+      "Cabaret and Variety",
+      "Music",
+    ],
+    "eventDescription": "eventDescription",
+    "eventPriceHigh": 10,
+    "eventPriceLow": 0,
+    "eventsListPicture": Object {
+      "sys": Object {
+        "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+      },
+    },
+    "individualEventPicture": Object {
+      "sys": Object {
+        "id": "0q2m69N0G0Z761e",
+      },
+    },
+    "location": Object {
+      "lat": 0,
+      "lon": 10,
+    },
+    "locationName": "locationName",
+    "name": "name",
+    "performances": Array [],
+    "phone": "phone",
+    "postcode": "postcode",
+    "recurrenceDates": Array [],
+    "startTime": "2018-07-07T00:00+00:00",
+    "ticketingUrl": "ticketingUrl",
+    "venueDetails": Array [
+      "venueDetailsA",
+      "venueDetailsB",
+    ],
+  },
+  "id": "m3w5",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;
+
+exports[`Event decoder correctly decodes valid CMS event with minimum fields 1`] = `
+Object {
+  "contentType": "event",
+  "fields": Object {
+    "accessibilityDetails": null,
+    "accessibilityOptions": Array [],
+    "addressLine1": null,
+    "addressLine2": null,
+    "audience": Array [],
+    "city": null,
+    "email": null,
+    "endTime": "2018-07-07T03:00+00:00",
+    "eventCategories": Array [
+      "Cabaret and Variety",
+      "Music",
+    ],
+    "eventDescription": "eventDescription",
+    "eventPriceHigh": 10,
+    "eventPriceLow": 0,
+    "eventsListPicture": Object {
+      "sys": Object {
+        "id": "0f9lQUJf",
+      },
+    },
+    "individualEventPicture": Object {
+      "sys": Object {
+        "id": "IAx5T1z2NAcvGk0eaPs36h4aj",
+      },
+    },
+    "location": Object {
+      "lat": 0,
+      "lon": 10,
+    },
+    "locationName": "locationName",
+    "name": "name",
+    "performances": Array [],
+    "phone": null,
+    "postcode": null,
+    "recurrenceDates": Array [],
+    "startTime": "2018-07-07T00:00+00:00",
+    "ticketingUrl": null,
+    "venueDetails": Array [],
+  },
+  "id": "m3w5",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;

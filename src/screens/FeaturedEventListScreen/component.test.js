@@ -23,7 +23,6 @@ describe("FeaturedEventListScreen Component", () => {
       <Component
         navigation={navigation}
         events={[]}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
@@ -37,7 +36,6 @@ describe("FeaturedEventListScreen Component", () => {
       <Component
         navigation={navigation}
         events={[]}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}

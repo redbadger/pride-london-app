@@ -2,16 +2,14 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { State } from "../../reducers";
-import type { Event } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
+import type { Event } from "../../data/event-deprecated";
 import type { HeaderBanner } from "../../data/header-banner";
-import getAssetSource from "../../data/get-asset-source";
+import type { ImageDetails } from "../../data/image";
+import { getImageDetails } from "../../data/image";
 import strings from "../../constants/strings";
 import {
   selectFeaturedEventsByTitle,
-  selectEventsLoading,
-  selectAssetById
+  selectEventsLoading
 } from "../../selectors/events";
 import { selectHeaderBanners } from "../../selectors/header-banner";
 import Component from "./component";
@@ -21,7 +19,7 @@ type StateProps = {
   featuredEventsTitle: string,
   featuredEvents: Event[],
   loading: boolean,
-  getAssetSource: FieldRef => ImageSource
+  getImageDetails: string => ?ImageDetails
 };
 
 type Props = StateProps;
@@ -37,7 +35,7 @@ const mapStateToProps = (state: State): StateProps => ({
     strings.featuredEventsTitle
   ),
   loading: selectEventsLoading(state),
-  getAssetSource: getAssetSource(id => selectAssetById(state, id))
+  getImageDetails: getImageDetails(state.data.images)
 });
 
 const mapDispatchToProps = {};

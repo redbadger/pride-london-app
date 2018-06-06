@@ -12,7 +12,7 @@ import Text from "../../components/Text";
 import TextLink from "../../components/TextLink";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 import locale from "../../data/locale";
 import dateIcon from "../../../assets/images/date.png";
 import genderNeutralIcon from "../../../assets/images/genderNeutral.png";
