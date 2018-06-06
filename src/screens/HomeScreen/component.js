@@ -21,8 +21,7 @@ import {
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
 import type { Event } from "../../data/event-deprecated";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
+import type { ImageDetails } from "../../data/image";
 import type { HeaderBanner } from "../../data/header-banner";
 
 import locale from "../../data/locale";
@@ -32,7 +31,7 @@ type Props = {
   featuredEventsTitle: string,
   featuredEvents: Event[],
   loading: boolean,
-  getAssetSource: FieldRef => ImageSource
+  getImageDetails: string => ?ImageDetails
 };
 
 type AllProps = Props & NavigationProps;
@@ -81,7 +80,7 @@ class HomeScreen extends Component<AllProps> {
       headerBanners,
       featuredEvents,
       featuredEventsTitle,
-      getAssetSource,
+      getImageDetails,
       navigation
     } = this.props;
 
@@ -95,7 +94,7 @@ class HomeScreen extends Component<AllProps> {
         <View style={styles.content}>
           <Header
             headerBanners={headerBanners}
-            getAssetSource={getAssetSource}
+            getImageDetails={getImageDetails}
             navigation={navigation}
           />
           {events.length > 0 && (
@@ -127,9 +126,7 @@ class HomeScreen extends Component<AllProps> {
                         name={event.fields.name[locale]}
                         date={event.fields.startTime[locale]}
                         eventCategories={event.fields.eventCategories[locale]}
-                        image={getAssetSource(
-                          event.fields.eventsListPicture[locale]
-                        )}
+                        imageReference={event.fields.eventsListPicture[locale]}
                       />
                     </Touchable>
                   </View>

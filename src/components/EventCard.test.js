@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
+import { generateFieldRef, sampleOne } from "../data/__test-data";
 import EventCard from "./EventCard";
 import SaveEventButton from "./SaveEventButton";
 import Touchable from "./Touchable";
@@ -15,7 +16,7 @@ it("renders correctly", () => {
       endTime="2018-09-12T13:12:12+01:00"
       eventPriceLow={0}
       eventPriceHigh={0}
-      image={{ uri: "https://image.jpg", width: 100, height: 100 }}
+      imageReference={sampleOne(generateFieldRef)}
       isSaved={false}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
@@ -36,7 +37,7 @@ it("calls onPress with id when pressed", () => {
       endTime="2018-09-12T13:12:12+01:00"
       eventPriceLow={0}
       eventPriceHigh={0}
-      image={{ uri: "https://image.jpg", width: 100, height: 100 }}
+      imageReference={sampleOne(generateFieldRef)}
       isSaved={false}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
@@ -58,7 +59,7 @@ it("calls addSavedEvent when SaveEventButton.onPress is called with true", () =>
       endTime="2018-09-12T13:12:12+01:00"
       eventPriceLow={0}
       eventPriceHigh={0}
-      image={{ uri: "https://image.jpg", width: 100, height: 100 }}
+      imageReference={sampleOne(generateFieldRef)}
       isSaved={false}
       addSavedEvent={mockAddSavedEvent}
       removeSavedEvent={() => {}}
@@ -80,7 +81,7 @@ it("calls removeSavedEvent when SaveEventButton.onPress is called with false", (
       endTime="2018-09-12T13:12:12+01:00"
       eventPriceLow={0}
       eventPriceHigh={0}
-      image={{ uri: "https://image.jpg", width: 100, height: 100 }}
+      imageReference={sampleOne(generateFieldRef)}
       isSaved={false}
       addSavedEvent={() => {}}
       removeSavedEvent={mockRemoveSavedEvent}
@@ -101,7 +102,7 @@ it("renders correctly when the event is free", () => {
       endTime="2018-09-16T13:12:12+01:00"
       eventPriceLow={0}
       eventPriceHigh={0}
-      image={{ uri: "https://image.jpg", width: 10, height: 10 }}
+      imageReference={sampleOne(generateFieldRef)}
       isSaved={false}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
@@ -121,7 +122,7 @@ it("renders correctly when there is a price range", () => {
       endTime="2018-09-16T13:12:12+01:00"
       eventPriceLow={12}
       eventPriceHigh={14}
-      image={{ uri: "https://image.jpg", width: 10, height: 10 }}
+      imageReference={sampleOne(generateFieldRef)}
       isSaved={false}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
@@ -141,7 +142,7 @@ it("renders correctly when there is only one price", () => {
       endTime="2018-09-16T13:12:12+01:00"
       eventPriceLow={12}
       eventPriceHigh={12}
-      image={{ uri: "https://image.jpg", width: 10, height: 10 }}
+      imageReference={sampleOne(generateFieldRef)}
       isSaved={false}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}

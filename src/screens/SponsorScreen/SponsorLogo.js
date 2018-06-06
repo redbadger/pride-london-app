@@ -1,12 +1,13 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet } from "react-native";
 import type { SponsorLevel } from "../../data/sponsor";
-import type { ImageDetails } from "../../data/image";
+import type { FieldRef } from "../../data/field-ref";
+import ConnectedImage from "../../components/Image";
 
 type Props = {
   sponsorName: string,
-  sponsorLogo: ?ImageDetails,
+  sponsorLogo: FieldRef,
   sponsorLevel: SponsorLevel
 };
 
@@ -18,11 +19,11 @@ const SponsorLogo = ({ sponsorName, sponsorLogo, sponsorLevel }: Props) => (
         : styles.sponsorImageSmall
     }
   >
-    <Image
+    <ConnectedImage
+      reference={sponsorLogo}
       style={styles.image}
       resizeMode="contain"
       accessibilityLabel={sponsorName}
-      source={sponsorLogo}
     />
   </View>
 );

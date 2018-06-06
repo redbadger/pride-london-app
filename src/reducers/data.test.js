@@ -13,7 +13,6 @@ describe("Events reducer", () => {
   it("sets loading flag for REQUEST_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
       events: [],
       headerBanners: [],
       images: {},
@@ -31,7 +30,6 @@ describe("Events reducer", () => {
   it("sets refreshing flag for REQUEST_UPDATE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
       events: [],
       headerBanners: [],
       images: {},
@@ -49,7 +47,6 @@ describe("Events reducer", () => {
   it("saves entries from RECEIVE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
       events: [],
       headerBanners: [],
       images: {},
@@ -77,13 +74,11 @@ describe("Events reducer", () => {
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
     expect(state.entries).toEqual(newCmsData.entries);
-    expect(state.assets).toBe(newCmsData.assets);
   });
 
   it("expands recurring events from RECEIVE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
       events: [],
       headerBanners: [],
       images: {},
@@ -139,13 +134,11 @@ describe("Events reducer", () => {
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
     expect(state.entries).toEqual(expected);
-    expect(state.assets).toBe(newCmsData.assets);
   });
 
   it("sets loading and refreshing to false for RECEIVE_CMS_ERROR action", () => {
     const initialState = {
       entries: [],
-      assets: [],
       events: [],
       headerBanners: [],
       images: {},
@@ -164,7 +157,6 @@ describe("Events reducer", () => {
     it("decodes events", () => {
       const initialState = {
         entries: [],
-        assets: [],
         events: [],
         headerBanners: [],
         images: {},
@@ -193,7 +185,6 @@ describe("Events reducer", () => {
     it("expands recurring events", () => {
       const initialState = {
         entries: [],
-        assets: [],
         events: [],
         headerBanners: [],
         images: {},
@@ -227,7 +218,7 @@ describe("Events reducer", () => {
     it("decodes headerBanners", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -290,7 +281,7 @@ describe("Events reducer", () => {
     it("decodes performances", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -348,7 +339,7 @@ describe("Events reducer", () => {
     it("decodes performances", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -405,7 +396,7 @@ describe("Events reducer", () => {
     it("decodes sponsors", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},

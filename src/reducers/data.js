@@ -2,7 +2,6 @@
 import R from "ramda";
 import type { DataAction } from "../actions/data";
 import type { CmsEntry } from "../integrations/cms";
-import type { Asset } from "../data/asset";
 import type { Event } from "../data/event";
 import type { HeaderBanner } from "../data/header-banner";
 import type { Images } from "../data/image";
@@ -21,7 +20,6 @@ import { expandRecurringEventsInEntries } from "../selectors/events";
 
 export type State = {
   entries: CmsEntry[],
-  assets: Asset[],
   events: Event[],
   headerBanners: HeaderBanner[],
   images: Images,
@@ -33,7 +31,6 @@ export type State = {
 
 const defaultState = {
   entries: [],
-  assets: [],
   events: [],
   headerBanners: [],
   images: {},
@@ -102,7 +99,6 @@ const reducer = (state: State = defaultState, action: DataAction) => {
         loading: false,
         refreshing: false,
         entries: processEntries(action.data.entries),
-        assets: action.data.assets,
         events: resultWithDefault([], decodeEvents(action.data.entries)),
         headerBanners: resultWithDefault(
           [],

@@ -3,8 +3,6 @@ import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event-deprecated";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
 import Header from "../../components/Header";
 import { bgColor } from "../../constants/colors";
@@ -18,8 +16,7 @@ export type Props = {
   events: EventDays,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
-  removeSavedEvent: string => void,
-  getAssetSource: FieldRef => ImageSource
+  removeSavedEvent: string => void
 };
 
 class FeaturedEventsListScreen extends PureComponent<Props> {
@@ -45,7 +42,6 @@ class FeaturedEventsListScreen extends PureComponent<Props> {
           onPress={(eventId: string) => {
             this.props.navigation.navigate(EVENT_DETAILS, { eventId });
           }}
-          getAssetSource={this.props.getAssetSource}
         />
       </View>
     );
