@@ -48,7 +48,7 @@ import {
 } from "./constants/routes";
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
-import ParadeHeader from "./components/ParadeHeader";
+import Header from "./components/Header";
 import type { ImageRef } from "./data/image-ref";
 
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
@@ -149,7 +149,12 @@ const ParadeStack = createStackNavigator(
   {
     initialRouteName: PARADE,
     navigationOptions: {
-      header: <ParadeHeader />
+      header: (
+        <Header
+          title={text.paradeInformationScreen.headerTitle}
+          testID="page-heading-parade"
+        />
+      )
     },
     cardStyle: styles.card
   }
