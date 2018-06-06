@@ -1,31 +1,28 @@
 // @flow
 import React from "react";
 import { View, StyleSheet } from "react-native";
-
+import type { Performance } from "../data/performance";
 import PerformanceItem from "./Performance";
 import ContentPadding from "./ContentPadding";
 import Collapsible from "./Collapsible";
 import LayoutColumn from "./LayoutColumn";
 import Text from "./Text";
 import SectionDivider from "./SectionDivider";
-
-import { getTimePeriod } from "../selectors/events-deprecated";
-import type { Performance, PerformancePeriods } from "../data/event-deprecated";
+import { getTimePeriod } from "../selectors/performance";
 import { sectionHeaderShadow, sectionHeaderBgColor } from "../constants/colors";
 import text from "../constants/text";
 
 type Props = {
-  locale: string,
-  performances: PerformancePeriods
+  performancePeriods: Performance[][]
 };
 
-const sections = (performances: PerformancePeriods, locale: string) =>
-  performances.map((a: Performance[]) => ({
+const sections = (performancePeriods: Performance[][]) =>
+  performancePeriods.map((a: Performance[]) => ({
     data: a,
-    title: getTimePeriod(a[0].fields.startTime[locale])
+    title: getTimePeriod(a[0].fields.startTime)
   }));
 
-const PerformanceList = ({ performances, locale }: Props) => (
+const PerformanceList = ({ performancePeriods }: Props) => (
   <View>
     <ContentPadding>
       <Text
@@ -38,7 +35,7 @@ const PerformanceList = ({ performances, locale }: Props) => (
       </Text>
     </ContentPadding>
     <LayoutColumn spacing={20}>
-      {sections(performances, locale).map(section => (
+      {sections(performancePeriods).map(section => (
         <View key={section.title}>
           <ContentPadding style={styles.sectionHeader}>
             <Text type="h3" color="lightNavyBlueColor">
@@ -48,10 +45,10 @@ const PerformanceList = ({ performances, locale }: Props) => (
           <ContentPadding>
             <Collapsible>
               {section.data.map((item, i, all) => (
-                <View key={item.fields.startTime[locale]}>
+                <View key={item.fields.startTime}>
                   <PerformanceItem
-                    startTime={item.fields.startTime[locale]}
-                    title={item.fields.title[locale]}
+                    startTime={item.fields.startTime}
+                    title={item.fields.title}
                   />
                   {i !== all.length - 1 && <SectionDivider />}
                 </View>
