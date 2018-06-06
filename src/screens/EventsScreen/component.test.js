@@ -12,7 +12,7 @@ import {
   EVENT_LIST
 } from "../../constants/routes";
 
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 
 const navigation: NavigationScreenProp<NavigationState> = ({
   navigate: () => {}
@@ -101,7 +101,6 @@ describe("EventsScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -121,7 +120,6 @@ describe("EventsScreen Component", () => {
         loading
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -142,7 +140,6 @@ describe("EventsScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -164,7 +161,6 @@ describe("EventsScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={updateData}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -195,7 +191,6 @@ describe("EventsScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -243,7 +238,6 @@ describe("EventsScreen Component", () => {
           loading={false}
           refreshing={false}
           updateData={() => Promise.resolve()}
-          getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
           selectedCategories={new Set()}
           addSavedEvent={() => {}}
           removeSavedEvent={() => {}}

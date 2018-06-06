@@ -4,9 +4,11 @@ import { gen, sampleOne as sample } from "@rgbboy/testcheck";
 import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO } from "../lib/date";
+import type { Event as EventDeprecated } from "./event-deprecated";
 import type { Event } from "./event";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
+import type { ImageDetails } from "./image";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
 
@@ -33,8 +35,41 @@ export const generateDateString: ValueGenerator<string> = gen.int.then(int =>
   }).toFormat(FORMAT_CONTENTFUL_ISO)
 );
 
+export const generateImageURI: ValueGenerator<string> = gen.alphaNumString.then(
+  name => `//red-badger.com/${name}.jpg`
+);
+
 // will change this when we refactor FieldRef
 export const generateCMSFieldRef: ValueGenerator<mixed> = generateFieldRef;
+
+export const generateImageDetails: ValueGenerator<ImageDetails> = gen({
+  id: gen.alphaNumString,
+  revision: 1,
+  uri: generateImageURI.then(value => `https:${value}`),
+  width: gen.intWithin(100, 1000),
+  height: gen.intWithin(100, 1000)
+});
+
+export const generateCMSImage: ValueGenerator<mixed> = gen({
+  sys: {
+    id: gen.alphaNumString,
+    type: "Asset",
+    revision: 1
+  },
+  fields: {
+    file: {
+      "en-GB": {
+        url: generateImageURI,
+        details: {
+          image: {
+            height: gen.intWithin(100, 1000),
+            width: gen.intWithin(100, 1000)
+          }
+        }
+      }
+    }
+  }
+});
 
 export const generateHeaderBanner: ValueGenerator<HeaderBanner> = gen({
   contentType: "headerBanner",
@@ -80,6 +115,39 @@ export const generateCMSHeaderBanner: ValueGenerator<mixed> = gen({
 });
 
 export const generateEvent: ValueGenerator<Event> = gen({
+  id: gen.alphaNumString,
+  contentType: "event",
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    name: "name",
+    eventCategories: ["Cabaret and Variety", "Music"],
+    audience: ["???"],
+    startTime: "2018-07-07T00:00+00:00",
+    endTime: "2018-07-07T03:00+00:00",
+    location: { lat: 0, lon: 10 },
+    addressLine1: "addressLine1",
+    addressLine2: "addressLine2",
+    city: "city",
+    postcode: "postcode",
+    locationName: "locationName",
+    eventPriceLow: 0,
+    eventPriceHigh: 10,
+    accessibilityOptions: ["accessibilityOptionsA", "accessibilityOptionsB"],
+    eventDescription: "eventDescription",
+    accessibilityDetails: "accessibilityDetails",
+    email: "email",
+    phone: "phone",
+    ticketingUrl: "ticketingUrl",
+    venueDetails: ["venueDetailsA", "venueDetailsB"],
+    individualEventPicture: generateFieldRef,
+    eventsListPicture: generateFieldRef,
+    performances: [],
+    recurrenceDates: []
+  })
+});
+
+export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
   sys: gen({
     id: gen.alphaNumString,
     contentType: {
@@ -97,7 +165,7 @@ export const generateEvent: ValueGenerator<Event> = gen({
     audience: { "en-GB": ["???"] },
     startTime: { "en-GB": "2018-07-07T00:00+00:00" },
     endTime: { "en-GB": "2018-07-07T03:00+00:00" },
-    location: { "en-GB": { lat: 0, lon: 0 } },
+    location: { "en-GB": { lat: 0, lon: 10 } },
     addressLine1: { "en-GB": "addressLine1" },
     addressLine2: { "en-GB": "addressLine2" },
     city: { "en-GB": "city" },
@@ -120,6 +188,33 @@ export const generateEvent: ValueGenerator<Event> = gen({
     eventsListPicture: gen({ "en-GB": generateFieldRef }),
     performances: { "en-GB": [] },
     recurrenceDates: { "en-GB": [] }
+  })
+});
+
+export const generateCMSEventMinimum: ValueGenerator<mixed> = gen({
+  sys: gen({
+    id: gen.alphaNumString,
+    contentType: {
+      sys: {
+        id: "event"
+      }
+    },
+    revision: 1
+  }),
+  fields: gen({
+    name: { "en-GB": "name" },
+    eventCategories: {
+      "en-GB": ["Cabaret and Variety", "Music"]
+    },
+    startTime: { "en-GB": "2018-07-07T00:00+00:00" },
+    endTime: { "en-GB": "2018-07-07T03:00+00:00" },
+    location: { "en-GB": { lat: 0, lon: 10 } },
+    locationName: { "en-GB": "locationName" },
+    eventPriceLow: { "en-GB": 0 },
+    eventPriceHigh: { "en-GB": 10 },
+    eventDescription: { "en-GB": "eventDescription" },
+    individualEventPicture: gen({ "en-GB": generateFieldRef }),
+    eventsListPicture: gen({ "en-GB": generateFieldRef })
   })
 });
 

@@ -75,9 +75,9 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
           sponsorLevel="Gold"
           sponsorLogo={
             Object {
-              "height": 1,
-              "uri": "http://example.com/image.png",
-              "width": 1,
+              "sys": Object {
+                "id": "asset1",
+              },
             }
           }
           sponsorName="some other"
@@ -120,9 +120,9 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
           sponsorLevel="Gold"
           sponsorLogo={
             Object {
-              "height": 1,
-              "uri": "http://example.com/image.png",
-              "width": 1,
+              "sys": Object {
+                "id": "asset2",
+              },
             }
           }
           sponsorName="some other"
@@ -208,9 +208,9 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
           sponsorLevel="Gold"
           sponsorLogo={
             Object {
-              "height": 1,
-              "uri": "http://example.com/image.png",
-              "width": 1,
+              "sys": Object {
+                "id": "asset1",
+              },
             }
           }
           sponsorName="some other"
@@ -253,9 +253,9 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
           sponsorLevel="Gold"
           sponsorLogo={
             Object {
-              "height": 1,
-              "uri": "http://example.com/image.png",
-              "width": 1,
+              "sys": Object {
+                "id": "asset2",
+              },
             }
           }
           sponsorName="some other"

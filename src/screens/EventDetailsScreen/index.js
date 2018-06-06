@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
 import type { State } from "../../reducers";
-import type { Event, EventCategoryName } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
-import getAssetSource from "../../data/get-asset-source";
-import { selectEventById, selectAssetById } from "../../selectors/events";
+import type { Event, EventCategoryName } from "../../data/event-deprecated";
+import { selectEventById } from "../../selectors/events";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import Component from "./component";
 import { setEventFilters } from "../../actions/event-filters";
@@ -19,7 +16,6 @@ type OwnProps = {
 type StateProps = {
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
   event: ?Event, // `maybe` because selectEventById may not find the event
-  getAssetSource: FieldRef => ImageSource,
   isSaved: boolean
 };
 
@@ -41,7 +37,6 @@ const mapStateToProps = (
   return {
     navigation,
     event: selectEventById(state, id),
-    getAssetSource: getAssetSource(eventId => selectAssetById(state, eventId)),
     isSaved: state.savedEvents.has(id)
   };
 };
