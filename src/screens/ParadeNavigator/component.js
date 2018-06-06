@@ -1,25 +1,44 @@
 // @flow
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import { createMaterialTopTabNavigator } from "react-navigation";
 
 import { PARADE_INFORMATION, PARADE_MAP } from "../../constants/routes";
 import ParadeInformationScreen from "../ParadeInformationScreen";
 import ParadeMapScreen from "../ParadeMapScreen";
-import {
-  lightTealColor,
-  whiteColor,
-  darkBlueGreyColor
-} from "../../constants/colors";
+import Text from "../../components/Text";
+import { lightTealColor, darkBlueGreyColor } from "../../constants/colors";
 import text from "../../constants/text";
 
 const ParadeTabNav = createMaterialTopTabNavigator(
   {
     [PARADE_MAP]: {
       screen: ParadeMapScreen,
-      navigationOptions: { tabBarLabel: text.tabParadeMap }
+      navigationOptions: {
+        tabBarLabel: ({ focused: boolean, tintColor: string }) => (
+          <View style={styles.view}>
+            <Text testID="parade-map-button" type="xSmall" style={styles.text}>
+              {text.tabParadeMap}
+            </Text>
+          </View>
+        )
+      }
     },
     [PARADE_INFORMATION]: {
       screen: ParadeInformationScreen,
-      navigationOptions: { tabBarLabel: text.tabParadeStages }
+      navigationOptions: {
+        tabBarLabel: ({ focused: boolean, tintColor: string }) => (
+          <View style={styles.view}>
+            <Text
+              testID="parade-information-button"
+              type="xSmall"
+              style={styles.text}
+            >
+              {text.tabParadeStages}
+            </Text>
+          </View>
+        )
+      }
     }
   },
   {
@@ -27,8 +46,6 @@ const ParadeTabNav = createMaterialTopTabNavigator(
     animationEnabled: false,
     initialRouteName: PARADE_MAP,
     tabBarOptions: {
-      activeTintColor: lightTealColor,
-      inactiveTintColor: whiteColor,
       indicatorStyle: {
         top: 0,
         backgroundColor: lightTealColor
@@ -40,5 +57,16 @@ const ParadeTabNav = createMaterialTopTabNavigator(
     }
   }
 );
+
+const styles = StyleSheet.create({
+  view: {
+    height: 33,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  text: {
+    color: lightTealColor
+  }
+});
 
 export default ParadeTabNav;
