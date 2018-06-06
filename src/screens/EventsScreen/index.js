@@ -14,7 +14,7 @@ import {
   selectEventsLoading,
   selectEventsRefreshing,
   selectFilteredEvents
-} from "../../selectors/events";
+} from "../../selectors/events-deprecated";
 import Component from "./component";
 
 type StateProps = {

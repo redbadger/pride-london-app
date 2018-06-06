@@ -4,7 +4,7 @@ import type { Connector } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
 import type { State } from "../../reducers";
 import type { Event, EventCategoryName } from "../../data/event-deprecated";
-import { selectEventById } from "../../selectors/events";
+import { selectEventById } from "../../selectors/events-deprecated";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import Component from "./component";
 import { setEventFilters } from "../../actions/event-filters";

@@ -19,7 +19,7 @@ import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "../../components/SectionDivider";
 import PerformanceList from "../../components/PerformanceList";
-import { groupPerformancesByPeriod } from "../../selectors/events";
+import { groupPerformancesByPeriod } from "../../selectors/events-deprecated";
 import { whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
 import locale from "../../data/locale";

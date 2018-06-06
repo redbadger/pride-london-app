@@ -14,7 +14,7 @@ import {
   selectSavedEvents,
   expandRecurringEventsInEntries,
   eventIsAfter
-} from "./events";
+} from "./events-deprecated";
 import { buildEventFilter } from "./event-filters";
 import { createEventFiltersState } from "../reducers/event-filters";
 
