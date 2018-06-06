@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import text from "../../constants/text";
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 import locale from "../../data/locale";
 
 import Collapsible from "../../components/Collapsible";

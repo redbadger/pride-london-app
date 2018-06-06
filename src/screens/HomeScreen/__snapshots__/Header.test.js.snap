@@ -18,9 +18,11 @@ exports[`renders correctly 1`] = `
       resizeMode="contain"
       source={
         Object {
-          "height": 650,
-          "uri": "https://example.com/images/header-1.png",
-          "width": 810,
+          "height": 357,
+          "id": "3CU8n6O760GJ80Wr7r",
+          "revision": 1,
+          "uri": "https://red-badger.com/56K46slQYXyq6SOU4UzWUW8eL7iJg.jpg",
+          "width": 891,
         }
       }
       style={
@@ -32,7 +34,7 @@ exports[`renders correctly 1`] = `
           },
           Object {
             "height": 218,
-            "width": 271.66153846153844,
+            "width": 544.0840336134454,
           },
         ]
       }

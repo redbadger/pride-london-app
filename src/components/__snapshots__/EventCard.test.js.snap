@@ -45,15 +45,15 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <ImageBackground
-        resizeMode="cover"
-        source={
+      <Connect(ImageBackground)
+        reference={
           Object {
-            "height": 100,
-            "uri": "https://image.jpg",
-            "width": 100,
+            "sys": Object {
+              "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+            },
           }
         }
+        resizeMode="cover"
         style={
           Object {
             "width": 114,
@@ -80,7 +80,7 @@ exports[`renders correctly 1`] = `
             Free
           </Text>
         </Component>
-      </ImageBackground>
+      </Connect(ImageBackground)>
       <Component
         style={
           Object {
@@ -177,15 +177,15 @@ exports[`renders correctly when the event is free 1`] = `
         }
       }
     >
-      <ImageBackground
-        resizeMode="cover"
-        source={
+      <Connect(ImageBackground)
+        reference={
           Object {
-            "height": 10,
-            "uri": "https://image.jpg",
-            "width": 10,
+            "sys": Object {
+              "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+            },
           }
         }
+        resizeMode="cover"
         style={
           Object {
             "width": 114,
@@ -212,7 +212,7 @@ exports[`renders correctly when the event is free 1`] = `
             Free
           </Text>
         </Component>
-      </ImageBackground>
+      </Connect(ImageBackground)>
       <Component
         style={
           Object {
@@ -309,15 +309,15 @@ exports[`renders correctly when there is a price range 1`] = `
         }
       }
     >
-      <ImageBackground
-        resizeMode="cover"
-        source={
+      <Connect(ImageBackground)
+        reference={
           Object {
-            "height": 10,
-            "uri": "https://image.jpg",
-            "width": 10,
+            "sys": Object {
+              "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+            },
           }
         }
+        resizeMode="cover"
         style={
           Object {
             "width": 114,
@@ -344,7 +344,7 @@ exports[`renders correctly when there is a price range 1`] = `
             From £12
           </Text>
         </Component>
-      </ImageBackground>
+      </Connect(ImageBackground)>
       <Component
         style={
           Object {
@@ -441,15 +441,15 @@ exports[`renders correctly when there is only one price 1`] = `
         }
       }
     >
-      <ImageBackground
-        resizeMode="cover"
-        source={
+      <Connect(ImageBackground)
+        reference={
           Object {
-            "height": 10,
-            "uri": "https://image.jpg",
-            "width": 10,
+            "sys": Object {
+              "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+            },
           }
         }
+        resizeMode="cover"
         style={
           Object {
             "width": 114,
@@ -476,7 +476,7 @@ exports[`renders correctly when there is only one price 1`] = `
             £12
           </Text>
         </Component>
-      </ImageBackground>
+      </Connect(ImageBackground)>
       <Component
         style={
           Object {

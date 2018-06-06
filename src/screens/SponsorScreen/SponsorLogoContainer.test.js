@@ -2,7 +2,6 @@
 import React from "react";
 import { Linking } from "react-native";
 import { shallow } from "enzyme";
-import { sampleOne, generateImageDetails } from "../../data/__test-data";
 import SponsorLogoContainer from "./SponsorLogoContainer";
 import type { Sponsor } from "../../data/sponsor";
 
@@ -32,17 +31,12 @@ const generateSponsors = (count = 2): Sponsor[] =>
       }: Sponsor)
   );
 
-const getImageDetails = jest
-  .fn()
-  .mockReturnValue(sampleOne(generateImageDetails));
-
 describe("SponsorLogoContainer Component", () => {
   it("renders correctly with Gold Level", () => {
     const output = shallow(
       <SponsorLogoContainer
         sponsorLevel="Gold"
         sponsors={generateSponsors(2)}
-        getImageDetails={getImageDetails}
       />
     );
     expect(output).toMatchSnapshot();
@@ -53,7 +47,6 @@ describe("SponsorLogoContainer Component", () => {
       <SponsorLogoContainer
         sponsorLevel="Silver"
         sponsors={generateSponsors(2)}
-        getImageDetails={getImageDetails}
       />
     );
     expect(output).toMatchSnapshot();
@@ -64,7 +57,6 @@ describe("SponsorLogoContainer Component", () => {
       <SponsorLogoContainer
         sponsorLevel="Silver"
         sponsors={generateSponsors(2)}
-        getImageDetails={getImageDetails}
       />
     );
     const sponsorLink = output.find({ testID: "sponsor-tile-1" });

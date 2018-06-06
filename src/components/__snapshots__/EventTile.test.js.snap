@@ -10,15 +10,15 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <ImageBackground
-    resizeMode="cover"
-    source={
+  <Connect(ImageBackground)
+    reference={
       Object {
-        "height": 200,
-        "uri": "http://placekitten.com/200/400",
-        "width": 400,
+        "sys": Object {
+          "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+        },
       }
     }
+    resizeMode="cover"
     style={
       Object {
         "backgroundColor": "#C1C1C1",
@@ -43,7 +43,7 @@ exports[`renders correctly 1`] = `
         style={Object {}}
       />
     </Component>
-  </ImageBackground>
+  </Connect(ImageBackground)>
   <Component
     style={
       Object {
