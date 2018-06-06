@@ -15,7 +15,7 @@ const ParadeTabNav = createMaterialTopTabNavigator(
     [PARADE_MAP]: {
       screen: ParadeMapScreen,
       navigationOptions: {
-        tabBarLabel: ({ focused: boolean, tintColor: string }) => (
+        tabBarLabel: () => (
           <View style={styles.view}>
             <Text testID="parade-map-button" type="xSmall" style={styles.text}>
               {text.tabParadeMap}
@@ -27,7 +27,7 @@ const ParadeTabNav = createMaterialTopTabNavigator(
     [PARADE_INFORMATION]: {
       screen: ParadeInformationScreen,
       navigationOptions: {
-        tabBarLabel: ({ focused: boolean, tintColor: string }) => (
+        tabBarLabel: () => (
           <View style={styles.view}>
             <Text
               testID="parade-information-button"
