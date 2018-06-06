@@ -149,15 +149,26 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <Image
-        resizeMode="cover"
-        source={
+      <Connect(Image)
+        reference={
           Object {
-            "height": 100,
-            "uri": "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
-            "width": 256,
+            "sys": Object {
+              "createdAt": "2018-03-04T10:13:53.398Z",
+              "id": "HNLFqItbkAmW8ssqQECIy",
+              "revision": 1,
+              "space": Object {
+                "sys": Object {
+                  "id": "n2o4hgsv6wcx",
+                  "linkType": "Space",
+                  "type": "Link",
+                },
+              },
+              "type": "Asset",
+              "updatedAt": "2018-03-04T10:13:53.398Z",
+            },
           }
         }
+        resizeMode="cover"
         style={
           Object {
             "maxHeight": "100%",
@@ -599,15 +610,26 @@ exports[`renders correctly with missing details 1`] = `
         }
       }
     >
-      <Image
-        resizeMode="cover"
-        source={
+      <Connect(Image)
+        reference={
           Object {
-            "height": 100,
-            "uri": "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
-            "width": 256,
+            "sys": Object {
+              "createdAt": "2018-03-04T10:13:53.398Z",
+              "id": "HNLFqItbkAmW8ssqQECIy",
+              "revision": 1,
+              "space": Object {
+                "sys": Object {
+                  "id": "n2o4hgsv6wcx",
+                  "linkType": "Space",
+                  "type": "Link",
+                },
+              },
+              "type": "Asset",
+              "updatedAt": "2018-03-04T10:13:53.398Z",
+            },
           }
         }
+        resizeMode="cover"
         style={
           Object {
             "maxHeight": "100%",

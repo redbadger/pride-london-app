@@ -13,13 +13,11 @@ import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SponsorLogoContainer from "./SponsorLogoContainer";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { ImageDetails } from "../../data/image";
 import type { Sponsor } from "../../data/sponsor";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  sponsors: Sponsor[],
-  getImageDetails: string => ?ImageDetails
+  sponsors: Sponsor[]
 };
 
 class SponsorScreen extends PureComponent<Props> {
@@ -34,7 +32,7 @@ class SponsorScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { navigation, sponsors, getImageDetails } = this.props;
+    const { navigation, sponsors } = this.props;
 
     const sortByName = R.sortBy(sponsor =>
       sponsor.fields.sponsorName.toLowerCase()
@@ -65,25 +63,21 @@ class SponsorScreen extends PureComponent<Props> {
             <SponsorLogoContainer
               sponsorLevel="Headline"
               sponsors={groupSponsors.Headline}
-              getImageDetails={getImageDetails}
               style={styles.sponsorLogoContainerSpacingSmall}
             />
             <SponsorLogoContainer
               sponsorLevel="Gold"
               sponsors={groupSponsors.Gold}
-              getImageDetails={getImageDetails}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Silver"
               sponsors={groupSponsors.Silver}
-              getImageDetails={getImageDetails}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Bronze"
               sponsors={groupSponsors.Bronze}
-              getImageDetails={getImageDetails}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <Text style={styles.sponsorMainHeading} type="h1">

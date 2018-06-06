@@ -2,7 +2,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import List from "./List";
-import type { EventCategoryName } from "../../data/event";
+import type { EventCategoryName } from "../../data/event-deprecated";
 
 const render = props => shallow(<List {...props} />);
 

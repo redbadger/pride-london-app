@@ -9,18 +9,16 @@ exports[`SponsorLogo Component renders correctly with Gold Level 1`] = `
     }
   }
 >
-  <Image
+  <Connect(Image)
     accessibilityLabel="sponsorName"
-    resizeMode="contain"
-    source={
+    reference={
       Object {
-        "height": 357,
-        "id": "3CU8n6O760GJ80Wr7r",
-        "revision": 1,
-        "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
-        "width": 891,
+        "sys": Object {
+          "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+        },
       }
     }
+    resizeMode="contain"
     style={
       Object {
         "maxHeight": "100%",
@@ -40,18 +38,16 @@ exports[`SponsorLogo Component renders correctly with Silver Level 1`] = `
     }
   }
 >
-  <Image
+  <Connect(Image)
     accessibilityLabel="sponsorName"
-    resizeMode="contain"
-    source={
+    reference={
       Object {
-        "height": 357,
-        "id": "3CU8n6O760GJ80Wr7r",
-        "revision": 1,
-        "uri": "//red-badger.com/G36Nw4N4Qb1HE305M0V.jpg",
-        "width": 891,
+        "sys": Object {
+          "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+        },
       }
     }
+    resizeMode="contain"
     style={
       Object {
         "maxHeight": "100%",
