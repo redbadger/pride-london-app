@@ -118,13 +118,14 @@ platform :ios do
 
   desc "Promote to Production"
   lane :promote_to_production do |options|
+    latestBuildNumber = latest_testflight_build_number
     # Config in DeliverFile
     deliver
 
     # Post to Slack
     if defined?(options[:slack_webhook])
       slack(
-        message: "iOS build #{latestVersionCode} promoted to Production!",
+        message: "iOS build #{latestBuildNumber} promoted to Production!",
         success: true,
         slack_url: options[:slack_webhook],
       )

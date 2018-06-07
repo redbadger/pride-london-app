@@ -1,5 +1,5 @@
 // @flow
-import { selectEventIsFree } from "./event";
+import { selectEventIsFree } from "./event-deprecated";
 import type { Event } from "../data/event-deprecated";
 
 describe("selectEventIsFree", () => {

@@ -9,5 +9,7 @@ export const SUPPORT_US = "SUPPORT_US";
 export const FILTER_MODAL = "FILTER_MODAL";
 export const DONATE = "DONATE";
 export const SPONSOR = "SPONSOR";
+export const PARADE_INFORMATION = "PARADE_INFORMATION";
+export const PARADE_MAP = "PARADE_MAP";
 
 export const routesWithoutEvents = [PARADE, DONATE, SPONSOR, SUPPORT_US];
