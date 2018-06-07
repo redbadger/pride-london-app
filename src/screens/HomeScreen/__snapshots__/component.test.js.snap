@@ -33,7 +33,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
               },
               "subHeading": "subHeading",
             },
-            "id": "mXO5GEEzEa43BFl2IWb",
+            "id": "g3QY",
             "locale": "en-GB",
             "revision": 1,
           },
@@ -50,7 +50,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
               },
               "subHeading": "subHeading",
             },
-            "id": "iEZMo1BLhp5MzUebo",
+            "id": "G36Nw4N4Qb1HE305M0V",
             "locale": "en-GB",
             "revision": 1,
           },
@@ -120,7 +120,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
         }
       >
         <Component
-          key="KAHR4"
+          key="K8pft"
           style={
             Array [
               Object {
@@ -159,14 +159,17 @@ exports[`HomeScreen Component renders correctly 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-KAHR4"
+            testID="event-tile-K8pft"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
+                  "Film and Screenings",
+                  "Nightlife",
                   "Music",
+                  "Exhibition and Tours",
+                  "Sports and Activities",
                 ]
               }
               imageReference={
@@ -181,7 +184,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="04cB3DgY396B2i3Mo"
+          key="r1QiIwgIQ7X60Q2aWr4FmDvRw"
           style={
             Array [
               Object {
@@ -218,14 +221,15 @@ exports[`HomeScreen Component renders correctly 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-04cB3DgY396B2i3Mo"
+            testID="event-tile-r1QiIwgIQ7X60Q2aWr4FmDvRw"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
+                  "Social and Networking",
                   "Music",
+                  "Sports and Activities",
                 ]
               }
               imageReference={
@@ -240,7 +244,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="KH6KDbmv8CCKPzrCGFo7F3"
+          key="67Jac7w2DoNB0lcPhi82xV84"
           style={
             Array [
               Object {
@@ -279,14 +283,16 @@ exports[`HomeScreen Component renders correctly 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-KH6KDbmv8CCKPzrCGFo7F3"
+            testID="event-tile-67Jac7w2DoNB0lcPhi82xV84"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
-                  "Music",
+                  "Plays and Theatre",
+                  "Sports and Activities",
+                  "Film and Screenings",
+                  "Talks and Debates",
                 ]
               }
               imageReference={
@@ -301,7 +307,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="Vglv35495N98k"
+          key="gH51Ec3MDIb"
           style={
             Array [
               Object {
@@ -338,14 +344,14 @@ exports[`HomeScreen Component renders correctly 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-Vglv35495N98k"
+            testID="event-tile-gH51Ec3MDIb"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
                   "Cabaret and Variety",
-                  "Music",
+                  "Exhibition and Tours",
                 ]
               }
               imageReference={
@@ -398,7 +404,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               },
               "subHeading": "subHeading",
             },
-            "id": "mXO5GEEzEa43BFl2IWb",
+            "id": "g3QY",
             "locale": "en-GB",
             "revision": 1,
           },
@@ -415,7 +421,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               },
               "subHeading": "subHeading",
             },
-            "id": "iEZMo1BLhp5MzUebo",
+            "id": "G36Nw4N4Qb1HE305M0V",
             "locale": "en-GB",
             "revision": 1,
           },
@@ -485,7 +491,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
         }
       >
         <Component
-          key="KAHR4"
+          key="K8pft"
           style={
             Array [
               Object {
@@ -524,14 +530,17 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-KAHR4"
+            testID="event-tile-K8pft"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
+                  "Film and Screenings",
+                  "Nightlife",
                   "Music",
+                  "Exhibition and Tours",
+                  "Sports and Activities",
                 ]
               }
               imageReference={
@@ -546,7 +555,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="04cB3DgY396B2i3Mo"
+          key="r1QiIwgIQ7X60Q2aWr4FmDvRw"
           style={
             Array [
               Object {
@@ -583,14 +592,15 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-04cB3DgY396B2i3Mo"
+            testID="event-tile-r1QiIwgIQ7X60Q2aWr4FmDvRw"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
+                  "Social and Networking",
                   "Music",
+                  "Sports and Activities",
                 ]
               }
               imageReference={
@@ -605,7 +615,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="KH6KDbmv8CCKPzrCGFo7F3"
+          key="67Jac7w2DoNB0lcPhi82xV84"
           style={
             Array [
               Object {
@@ -644,14 +654,16 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-KH6KDbmv8CCKPzrCGFo7F3"
+            testID="event-tile-67Jac7w2DoNB0lcPhi82xV84"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
-                  "Music",
+                  "Plays and Theatre",
+                  "Sports and Activities",
+                  "Film and Screenings",
+                  "Talks and Debates",
                 ]
               }
               imageReference={
@@ -666,7 +678,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="Vglv35495N98k"
+          key="gH51Ec3MDIb"
           style={
             Array [
               Object {
@@ -703,14 +715,14 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-Vglv35495N98k"
+            testID="event-tile-gH51Ec3MDIb"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
                   "Cabaret and Variety",
-                  "Music",
+                  "Exhibition and Tours",
                 ]
               }
               imageReference={
@@ -725,7 +737,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="OyviQD"
+          key="5n22QycLpKe1o"
           style={
             Array [
               Object {
@@ -764,14 +776,15 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-OyviQD"
+            testID="event-tile-5n22QycLpKe1o"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
+                  "Film and Screenings",
                   "Music",
+                  "Talks and Debates",
                 ]
               }
               imageReference={
@@ -786,7 +799,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="9v86OWxd8k324h2dmMY25KX2B7NL"
+          key="b6wZbwMDTlXYK5j"
           style={
             Array [
               Object {
@@ -823,14 +836,16 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
                 "shadowRadius": 3,
               }
             }
-            testID="event-tile-9v86OWxd8k324h2dmMY25KX2B7NL"
+            testID="event-tile-b6wZbwMDTlXYK5j"
           >
             <EventTile
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
+                  "Plays and Theatre",
                   "Cabaret and Variety",
-                  "Music",
+                  "Community",
+                  "Social and Networking",
                 ]
               }
               imageReference={

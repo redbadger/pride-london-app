@@ -26,9 +26,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="text"
     >
-      Lenard Pink’s singles walking tour in partnership with Pink Lobster Matchmaking, The Wild & Wonderful Women of Westminster will dissect, poke and prod those women who have battled, campaigned, fought and slept their way into the history books.
-
-Pink for Pink tours will be putting the movers, shakers and shimmiers under a large microscopic lens, examining the likes of Emmeline Pankhurst, the lady who challenged the British Establishment and got the vote for women, to Nell Gwynn who became one of the most famous mistresses of Charles II and probably one of Britain’s biggest whores.
+      eventDescription
     </Text>
   </Collapsible>
 </Component>

@@ -10,7 +10,7 @@ import strings from "../../constants/strings";
 import {
   selectFeaturedEventsByTitle,
   selectEventsLoading
-} from "../../selectors/events";
+} from "../../selectors/events-deprecated";
 import { selectHeaderBanners } from "../../selectors/header-banner";
 import Component from "./component";
 
