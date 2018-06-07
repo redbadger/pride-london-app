@@ -132,6 +132,35 @@ platform :android do
     )
   end
 
+  desc "Promote to production"
+  lane :promote_to_production do |options|
+    # We should only ever have one build in our Beta track
+    # so if this fails we have other problems
+    latestVersionCode = google_play_track_version_codes(
+      track: 'beta'
+    )[0]
+
+    # We check that a changelog has been checked in
+    expectedFile = "#{latestVersionCode}.txt"
+    if !File.exist?("metadata/android/en-GB/changelogs/" + expectedFile)
+      UI.user_error!("Changelog for Version Code #{latestVersionCode} doesn't exist!")
+    end
+
+    upload_to_play_store(
+      track: 'beta',
+      track_promote_to: 'production',
+      skip_upload_apk: true
+    )
+
+    if defined?(options[:slack_webhook])
+      slack(
+        message: "Android build #{latestVersionCode} promoted to Production!",
+        success: true,
+        slack_url: options[:slack_webhook],
+      )
+    end
+  end
+
   def build_notes(commit_sha)
     date = Time.now.strftime('%F')
     time = Time.now.strftime('%T')
