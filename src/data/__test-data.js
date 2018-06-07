@@ -63,7 +63,7 @@ export const generateImageURI: ValueGenerator<string> = gen.alphaNumString.then(
 export const generateCMSFieldRef: ValueGenerator<mixed> = generateFieldRef;
 
 export const generateImageDetails: ValueGenerator<ImageDetails> = gen({
-  id: gen.alphaNumString,
+  id: gen.alphaNumString.notEmpty(),
   revision: 1,
   uri: generateImageURI.then(value => `https:${value}`),
   width: gen.intWithin(100, 1000),
@@ -72,7 +72,7 @@ export const generateImageDetails: ValueGenerator<ImageDetails> = gen({
 
 export const generateCMSImage: ValueGenerator<mixed> = gen({
   sys: {
-    id: gen.alphaNumString,
+    id: gen.alphaNumString.notEmpty(),
     type: "Asset",
     revision: 1
   },
@@ -93,7 +93,7 @@ export const generateCMSImage: ValueGenerator<mixed> = gen({
 
 export const generateHeaderBanner: ValueGenerator<HeaderBanner> = gen({
   contentType: "headerBanner",
-  id: gen.alphaNumString,
+  id: gen.alphaNumString.notEmpty(),
   locale: "en-GB",
   revision: 1,
   fields: gen({
@@ -107,7 +107,7 @@ export const generateHeaderBanner: ValueGenerator<HeaderBanner> = gen({
 
 export const generateCMSHeaderBanner: ValueGenerator<mixed> = gen({
   sys: {
-    id: gen.alphaNumString,
+    id: gen.alphaNumString.notEmpty(),
     contentType: {
       sys: {
         id: "headerBanner"
@@ -139,7 +139,7 @@ export const generateEventCategory: ValueGenerator<
 > = gen.oneOf(eventCategoryNames);
 
 export const generateEvent: ValueGenerator<Event> = gen({
-  id: gen.alphaNumString,
+  id: gen.alphaNumString.notEmpty(),
   contentType: "event",
   locale: "en-GB",
   revision: 1,
@@ -179,7 +179,7 @@ export const generateEvent: ValueGenerator<Event> = gen({
 
 export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
   sys: gen({
-    id: gen.alphaNumString,
+    id: gen.alphaNumString.notEmpty(),
     contentType: {
       sys: {
         id: "event"
@@ -231,7 +231,7 @@ export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
 });
 
 export const generateEventMinimum: ValueGenerator<Event> = gen({
-  id: gen.alphaNumString,
+  id: gen.alphaNumString.notEmpty(),
   contentType: "event",
   locale: "en-GB",
   revision: 1,
@@ -268,7 +268,7 @@ export const generateEventMinimum: ValueGenerator<Event> = gen({
 
 export const generateCMSEventMinimum: ValueGenerator<mixed> = gen({
   sys: gen({
-    id: gen.alphaNumString,
+    id: gen.alphaNumString.notEmpty(),
     contentType: {
       sys: {
         id: "event"
@@ -295,7 +295,7 @@ export const generateCMSEventMinimum: ValueGenerator<mixed> = gen({
 
 export const generatePerformance: ValueGenerator<Performance> = gen({
   contentType: "performance",
-  id: gen.alphaNumString,
+  id: gen.alphaNumString.notEmpty(),
   locale: "en-GB",
   revision: 1,
   fields: gen({
@@ -306,7 +306,7 @@ export const generatePerformance: ValueGenerator<Performance> = gen({
 
 export const generateCMSPerformance: ValueGenerator<mixed> = gen({
   sys: {
-    id: gen.alphaNumString,
+    id: gen.alphaNumString.notEmpty(),
     contentType: {
       sys: {
         id: "performance"
@@ -326,7 +326,7 @@ export const generateCMSPerformance: ValueGenerator<mixed> = gen({
 
 export const generateSponsor: ValueGenerator<Sponsor> = gen({
   contentType: "sponsor",
-  id: gen.alphaNumString,
+  id: gen.alphaNumString.notEmpty(),
   locale: "en-GB",
   revision: 1,
   fields: gen({
@@ -339,7 +339,7 @@ export const generateSponsor: ValueGenerator<Sponsor> = gen({
 
 export const generateCMSSponsor: ValueGenerator<mixed> = gen({
   sys: {
-    id: gen.alphaNumString,
+    id: gen.alphaNumString.notEmpty(),
     contentType: {
       sys: {
         id: "sponsor"
