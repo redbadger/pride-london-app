@@ -34,7 +34,7 @@ Button.defaultProps = {
   children: "",
   disabled: false,
   onPress: () => {},
-  testID: ""
+  testID: undefined
 };
 
 const styles = StyleSheet.create({

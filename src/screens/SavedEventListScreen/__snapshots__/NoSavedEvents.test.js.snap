@@ -67,7 +67,6 @@ exports[`renders correctly 1`] = `
       <Button
         disabled={false}
         onPress={[Function]}
-        testID=""
       >
         Find Events
       </Button>

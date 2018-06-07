@@ -98,6 +98,7 @@ exports[`EventList renders correctly 1`] = `
             },
           },
         ],
+        "index": 0,
         "key": "2018-07-10",
       },
       Object {
@@ -138,6 +139,7 @@ exports[`EventList renders correctly 1`] = `
             },
           },
         ],
+        "index": 1,
         "key": "2018-07-11",
       },
     ]
@@ -176,6 +178,7 @@ exports[`EventList renders items correctly 1`] = `
     onPress={[Function]}
     removeSavedEvent={[Function]}
     startTime="2018-07-10T00:00"
+    testID="event-card-0-undefined"
   />
 </ContentPadding>
 `;

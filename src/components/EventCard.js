@@ -31,7 +31,8 @@ type Props = {
 
 class EventCard extends React.PureComponent<Props> {
   static defaultProps = {
-    isSaved: false
+    isSaved: false,
+    testID: undefined
   };
 
   handleToggleSave = (active: boolean) => {

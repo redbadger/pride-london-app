@@ -1,14 +1,21 @@
 const { takeScreenshot } = require("./helpers");
 const { formatDateRange } = require("../src/data/formatters");
 
+const formattedDateNumber = num => (num < 10 ? `0${num}` : num);
+
 const today = new Date();
+const thisDay = today.getDate();
 const thisMonth = today.getMonth() + 1;
-const formattedMonth = thisMonth < 10 ? `0${thisMonth}` : thisMonth;
 const thisYear = today.getFullYear();
+const lastDayOfMonth = new Date(thisYear, thisMonth, 0).getDate();
+
+const formattedDay = formattedDateNumber(thisDay);
+const formattedLastDay = formattedDateNumber(lastDayOfMonth);
+const formattedMonth = formattedDateNumber(thisMonth);
 
 const dateRange = {
-  startDate: `${thisYear}-${formattedMonth}-01`,
-  endDate: `${thisYear}-${formattedMonth}-28`
+  startDate: `${thisYear}-${formattedMonth}-${formattedDay}`,
+  endDate: `${thisYear}-${formattedMonth}-${formattedLastDay}`
 };
 
 describe("e2e/events", () => {
@@ -54,8 +61,12 @@ describe("e2e/events", () => {
     await element(by.id("events-tab-button")).tap();
 
     await element(by.id("open-date-filters-button")).tap();
-    await element(by.id(`calendar-day-${thisYear}-${thisMonth}-1`)).tap();
-    await element(by.id(`calendar-day-${thisYear}-${thisMonth}-28`)).tap();
+    await element(
+      by.id(`calendar-day-${thisYear}-${thisMonth}-${thisDay}`)
+    ).tap();
+    await element(
+      by.id(`calendar-day-${thisYear}-${thisMonth}-${lastDayOfMonth}`)
+    ).tap();
     await element(by.id("apply-date-filter-button")).tap();
 
     await expect(element(by.text(formatDateRange(dateRange)))).toBeVisible();

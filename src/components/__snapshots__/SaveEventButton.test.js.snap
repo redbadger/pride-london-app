@@ -29,7 +29,6 @@ exports[`renders correctly 1`] = `
       "width": 48,
     }
   }
-  testID=""
 >
   <AnimatedComponent
     loop={false}
@@ -1987,7 +1986,6 @@ exports[`renders correctly when active 1`] = `
       "width": 48,
     }
   }
-  testID=""
 >
   <AnimatedComponent
     loop={false}

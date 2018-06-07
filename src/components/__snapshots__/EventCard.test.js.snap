@@ -44,7 +44,6 @@ exports[`renders correctly 1`] = `
           "flexGrow": 1,
         }
       }
-      testID=""
     >
       <Connect(ImageBackground)
         reference={
@@ -177,7 +176,6 @@ exports[`renders correctly when the event is free 1`] = `
           "flexGrow": 1,
         }
       }
-      testID=""
     >
       <Connect(ImageBackground)
         reference={
@@ -310,7 +308,6 @@ exports[`renders correctly when there is a price range 1`] = `
           "flexGrow": 1,
         }
       }
-      testID=""
     >
       <Connect(ImageBackground)
         reference={
@@ -443,7 +440,6 @@ exports[`renders correctly when there is only one price 1`] = `
           "flexGrow": 1,
         }
       }
-      testID=""
     >
       <Connect(ImageBackground)
         reference={

@@ -11,7 +11,6 @@ exports[`renders correctly 1`] = `
   }
   delayPressIn={50}
   onPress={[Function]}
-  testID=""
 >
   <Image
     source={

@@ -37,6 +37,8 @@ export default class SaveEventButton extends React.Component<Props, State> {
     onDark: false
   };
 
+  state = {};
+
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     if (!prevState.progress) {
       const value = nextProps.active ? 1 : 0;
@@ -46,8 +48,6 @@ export default class SaveEventButton extends React.Component<Props, State> {
     }
     return null;
   }
-
-  state = {};
 
   shouldComponentUpdate(nextProps: Props) {
     return (

@@ -21,7 +21,6 @@ exports[`renders correctly 1`] = `
       Object {},
     ]
   }
-  testID=""
 >
   <Text
     color="blackColor"
@@ -63,7 +62,6 @@ exports[`renders correctly when checked 1`] = `
       Object {},
     ]
   }
-  testID=""
 >
   <Text
     color="blackColor"

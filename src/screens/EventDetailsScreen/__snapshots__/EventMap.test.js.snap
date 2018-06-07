@@ -16,7 +16,6 @@ exports[`renders correctly 1`] = `
       "overflow": "hidden",
     }
   }
-  testID=""
 >
   <Delayed
     delay={600}

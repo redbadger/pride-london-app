@@ -144,7 +144,6 @@ exports[`renders correctly 1`] = `
             <Button
               disabled={true}
               onPress={[Function]}
-              testID=""
             >
               Donate
             </Button>

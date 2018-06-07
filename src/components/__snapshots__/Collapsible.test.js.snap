@@ -99,7 +99,6 @@ exports[`collapsing behaviour when content exceeds limit renders correctly 1`] =
         "alignSelf": "flex-end",
       }
     }
-    testID=""
   >
     <TextLink
       testID="showmore"
@@ -181,7 +180,6 @@ exports[`collapsing behaviour when expanded renders correctly 1`] = `
         "alignSelf": "flex-end",
       }
     }
-    testID=""
   >
     <TextLink
       testID="showmore"

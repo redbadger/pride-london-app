@@ -85,7 +85,7 @@ Dialog.defaultProps = {
   headerRight: undefined,
   onCancel: () => {},
   applyButtonDisabled: false,
-  applyButtonTestID: ""
+  applyButtontestID: undefined
 };
 
 const styles = StyleSheet.create({

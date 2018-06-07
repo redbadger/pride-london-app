@@ -33,7 +33,6 @@ exports[`picks different icon for external links 1`] = `
       Object {},
     ]
   }
-  testID=""
 >
   <ContentPadding
     padding={
@@ -139,7 +138,6 @@ exports[`picks different icon for external links with contrast color 1`] = `
       Object {},
     ]
   }
-  testID=""
 >
   <ContentPadding
     padding={
@@ -245,7 +243,6 @@ exports[`renders correctly 1`] = `
       Object {},
     ]
   }
-  testID=""
 >
   <ContentPadding
     padding={

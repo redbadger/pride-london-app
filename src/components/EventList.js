@@ -44,10 +44,7 @@ type RenderSectionInfo = {
   section: Section // eslint-disable-line react/no-unused-prop-types
 };
 
-const eventSections = (
-  events: EventDays,
-  locale: string
-): Section[] =>
+const eventSections = (events: EventDays, locale: string): Section[] =>
   events.map((it, index) => ({
     data: it,
     key: formatDate(it[0].fields.startTime[locale], FORMAT_YEAR_MONTH_DAY),
@@ -63,11 +60,8 @@ class EventList extends Component<Props, State> {
     onRefresh: undefined
   };
 
-  // react/sort-comp doesn't support class properties: https://github.com/yannickcr/eslint-plugin-react/issues/1342
-  // react/no-unused-state doesn't acknowledge usage of state in getDerivedStateFromProps: https://github.com/yannickcr/eslint-plugin-react/issues/1759
-
-  state = { // eslint-disable-line react/sort-comp
-    eventIds: [], // eslint-disable-line react/no-unused-state
+  state = {
+    eventIds: [],
     eventsAdded: 0,
     eventsRemoved: 0,
     eventsReordered: false

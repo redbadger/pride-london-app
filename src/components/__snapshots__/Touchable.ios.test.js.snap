@@ -22,7 +22,6 @@ exports[`renders correctly 1`] = `
       },
     ]
   }
-  testID=""
 >
   <Text
     accessible={true}

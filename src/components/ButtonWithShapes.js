@@ -49,7 +49,8 @@ class SupportUsButton extends React.PureComponent<Props> {
     bgTopRight: undefined,
     bgBottomRight: undefined,
     contrast: false,
-    style: {}
+    style: {},
+    testID: undefined
   };
 
   onPress = () => {

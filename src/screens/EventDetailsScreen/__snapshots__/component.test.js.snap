@@ -89,7 +89,6 @@ exports[`EventTickets renders correctly 1`] = `
     <Button
       disabled={false}
       onPress={[Function]}
-      testID=""
     >
       Get tickets
     </Button>

@@ -56,7 +56,7 @@ FilterHeaderButton.defaultProps = {
   onRef: undefined,
   style: {},
   badgeValue: null,
-  testID: ""
+  testID: undefined
 };
 
 const styles = StyleSheet.create({

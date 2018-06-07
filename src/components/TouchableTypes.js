@@ -42,5 +42,5 @@ export const TouchableDefaultProps = {
   delayLongPress: undefined,
   pressRetentionOffset: undefined,
   hitSlop: undefined,
-  testID: ""
+  testID: undefined
 };
