@@ -67,15 +67,18 @@ const reducePerformancesHelp = (performances: Performances) => (
 const mapStateToProps = (state: State, props: OwnProps): StateProps => {
   const id = props.navigation.state.params.eventId;
   const event = getEventById(state, props);
-  const performances = getPerformancesMap(state);
+  const performancesById = getPerformancesMap(state);
+  const performances = event
+    ? event.fields.performances.reduce(
+        reducePerformancesHelp(performancesById),
+        []
+      )
+    : [];
   return {
     navigation: props.navigation,
     event,
     isSaved: state.savedEvents.has(id),
-    performances: event.fields.performances.reduce(
-      reducePerformancesHelp(performances),
-      []
-    )
+    performances
   };
 };
 
