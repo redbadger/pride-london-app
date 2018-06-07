@@ -11,15 +11,15 @@ import {
   expandRecurringEventsInEntries,
   eventIsAfter
 } from "./events-deprecated";
-import { buildEventFilter } from "./event-filters";
+import { buildEventFilterDeprecated } from "./event-filters";
 import { createEventFiltersState } from "../reducers/event-filters";
 
 jest.mock("./event-filters", () => ({
-  buildEventFilter: jest.fn()
+  buildEventFilterDeprecated: jest.fn()
 }));
 
 beforeEach(() => {
-  buildEventFilter.mockReturnValue(() => true);
+  buildEventFilterDeprecated.mockReturnValue(() => true);
 });
 
 describe("uniqueEvents", () => {
@@ -672,12 +672,12 @@ describe("selectEventById", () => {
 });
 
 describe("selectFilteredEventsDeprecated", () => {
-  it("filters events using the buildEventFilter function", () => {
+  it("filters events using the buildEventFilterDeprecated function", () => {
     const mockFilter = jest
       .fn()
       .mockReturnValue(false)
       .mockReturnValueOnce(true);
-    buildEventFilter.mockReturnValue(mockFilter);
+    buildEventFilterDeprecated.mockReturnValue(mockFilter);
 
     const state = {
       eventFilters: createEventFiltersState(
@@ -715,16 +715,16 @@ describe("selectFilteredEventsDeprecated", () => {
     const actual = selectFilteredEventsDeprecated(state);
 
     expect(actual).toEqual(expected);
-    expect(buildEventFilter).toHaveBeenCalledWith(state, false);
+    expect(buildEventFilterDeprecated).toHaveBeenCalledWith(state, false);
     expect(mockFilter).toHaveBeenCalledTimes(2);
   });
 
-  it("filters events using the buildEventFilter function with staged filters", () => {
+  it("filters events using the buildEventFilterDeprecated function with staged filters", () => {
     const mockFilter = jest
       .fn()
       .mockReturnValue(false)
       .mockReturnValueOnce(true);
-    buildEventFilter.mockReturnValue(mockFilter);
+    buildEventFilterDeprecated.mockReturnValue(mockFilter);
 
     const state = {
       eventFilters: createEventFiltersState(
@@ -762,7 +762,7 @@ describe("selectFilteredEventsDeprecated", () => {
     const actual = selectFilteredEventsDeprecated(state, true);
 
     expect(actual).toEqual(expected);
-    expect(buildEventFilter).toHaveBeenCalledWith(state, true);
+    expect(buildEventFilterDeprecated).toHaveBeenCalledWith(state, true);
     expect(mockFilter).toHaveBeenCalledTimes(2);
   });
 });
@@ -827,7 +827,7 @@ describe("selectFeaturedEventsByTitle", () => {
 });
 
 afterEach(() => {
-  buildEventFilter.mockReset();
+  buildEventFilterDeprecated.mockReset();
 });
 
 describe("selectSavedEvents", () => {

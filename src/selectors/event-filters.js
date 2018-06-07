@@ -52,7 +52,7 @@ const buildAreasFilter = (areas: Area[]) => {
   return (event: Event) => filters.some(filter => filter(event));
 };
 
-export const buildEventFilter = (
+export const buildEventFilterDeprecated = (
   state: State,
   selectStagedFilters?: boolean = false
 ) => {

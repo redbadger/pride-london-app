@@ -11,7 +11,7 @@ import {
 import {
   selectDateFilter,
   selectTimeFilter,
-  buildEventFilter,
+  buildEventFilterDeprecated,
   selectIsStagingFilters,
   selectTagFilterSelectedCount
 } from "./event-filters";
@@ -260,7 +260,7 @@ describe("selectTagFilterSelectedCount", () => {
   });
 });
 
-describe("buildEventFilter", () => {
+describe("buildEventFilterDeprecated", () => {
   const event = buildEvent({
     startTime: "2018-08-02T08:00:00",
     endTime: "2018-08-02T15:00:00"
@@ -291,7 +291,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateRangeFilter).not.toHaveBeenCalled();
   });
@@ -322,7 +322,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(
       state.eventFilters.selectedFilters.date
@@ -355,7 +355,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state, true);
+    const filter = buildEventFilterDeprecated(state, true);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(
       state.eventFilters.stagedFilters.date
@@ -394,7 +394,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(
       state.eventFilters.selectedFilters.date
@@ -424,7 +424,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).not.toHaveBeenCalled();
   });
@@ -452,7 +452,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).not.toHaveBeenCalled();
   });
@@ -484,7 +484,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).toHaveBeenCalledWith("morning");
     expect(untypedBuildTimeFilter).toHaveBeenCalledWith("evening");
@@ -516,7 +516,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -546,7 +546,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -573,7 +573,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildPriceFilter).not.toHaveBeenCalled();
   });
@@ -603,7 +603,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -632,7 +632,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
   });
 
@@ -659,7 +659,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
@@ -689,7 +689,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -718,7 +718,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
   });
 
@@ -745,7 +745,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
@@ -775,7 +775,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -804,7 +804,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
   });
 
@@ -831,7 +831,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
@@ -861,7 +861,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -890,7 +890,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
   });
 
@@ -917,7 +917,7 @@ describe("buildEventFilter", () => {
         area: new Set()
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
     expect(untypedBuildAreaFilter).not.toHaveBeenCalled();
   });
@@ -947,7 +947,7 @@ describe("buildEventFilter", () => {
         area: new Set(["North"])
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -976,7 +976,7 @@ describe("buildEventFilter", () => {
         area: new Set(["North"])
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
   });
 
@@ -1007,7 +1007,7 @@ describe("buildEventFilter", () => {
         categories: new Set(["Community"])
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -1037,7 +1037,7 @@ describe("buildEventFilter", () => {
         categories: new Set(["Community"])
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(false);
   });
 
@@ -1067,7 +1067,7 @@ describe("buildEventFilter", () => {
         categories: new Set(["Community"])
       }
     );
-    const filter = buildEventFilter(state);
+    const filter = buildEventFilterDeprecated(state);
     expect(filter(event)).toBe(true);
   });
 });
