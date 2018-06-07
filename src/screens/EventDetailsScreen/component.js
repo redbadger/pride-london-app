@@ -20,7 +20,6 @@ import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "../../components/SectionDivider";
 import PerformanceList from "../../components/PerformanceList";
-// Move this to performance selector
 import { groupPerformancesByPeriod } from "../../selectors/performance";
 import { whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
