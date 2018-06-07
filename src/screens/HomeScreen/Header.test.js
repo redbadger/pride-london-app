@@ -2,19 +2,22 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Header from "./Header";
-import { generateHeaderBanner, sampleArrayOf } from "../../data/__test-data";
+import {
+  generateImageDetails,
+  generateHeaderBanner,
+  sampleArrayOf,
+  sampleOne
+} from "../../data/__test-data";
 
-const getAssetSource = jest.fn().mockReturnValue({
-  uri: "https://example.com/images/header-1.png",
-  width: 810,
-  height: 650
-});
+const getImageDetails = jest
+  .fn()
+  .mockReturnValue(sampleOne(generateImageDetails));
 
 it("renders correctly", () => {
   const output = shallow(
     <Header
       headerBanners={sampleArrayOf(generateHeaderBanner)(2)}
-      getAssetSource={getAssetSource}
+      getImageDetails={getImageDetails}
       navigation={null}
     />
   );
@@ -25,7 +28,7 @@ it("renders nothing when no banner is available", () => {
   const output = shallow(
     <Header
       headerBanners={[]}
-      getAssetSource={getAssetSource}
+      getImageDetails={getImageDetails}
       navigation={null}
     />
   );

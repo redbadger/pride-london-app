@@ -15,7 +15,7 @@ import DonateScreen from "./screens/DonateScreen";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
-import ParadeInformationScreen from "./screens/ParadeInformationScreen";
+import ParadeTabNavigator from "./screens/ParadeNavigator";
 import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FilterScreen from "./screens/FilterScreen";
@@ -48,6 +48,7 @@ import {
 } from "./constants/routes";
 import text from "./constants/text";
 import NavigationTabBar from "./components/NavigationTabBar";
+import Header from "./components/Header";
 import type { ImageRef } from "./data/image-ref";
 
 const tabIcon = (defaultIcon: ImageRef, activeIcon: ImageRef) => ({
@@ -143,11 +144,18 @@ const EventsStack = createStackNavigator(
 
 const ParadeStack = createStackNavigator(
   {
-    [PARADE]: { screen: withShadow(ParadeInformationScreen) }
+    [PARADE]: { screen: ParadeTabNavigator }
   },
   {
     initialRouteName: PARADE,
-    headerMode: "none",
+    navigationOptions: {
+      header: (
+        <Header
+          title={text.paradeInformationScreen.headerTitle}
+          testID="page-heading-parade"
+        />
+      )
+    },
     cardStyle: styles.card
   }
 );

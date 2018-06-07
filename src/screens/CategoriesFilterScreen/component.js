@@ -3,7 +3,7 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event, EventCategoryName } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event-deprecated";
 import { lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
 import Button from "../../components/ButtonPrimary";

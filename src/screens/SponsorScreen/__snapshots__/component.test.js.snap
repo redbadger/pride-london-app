@@ -55,7 +55,6 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         A huge thank you to our main partners for their continued support.
       </Text>
       <SponsorLogoContainer
-        getAssetSource={[MockFunction]}
         sponsorLevel="Headline"
         style={
           Object {
@@ -64,7 +63,6 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         }
       />
       <SponsorLogoContainer
-        getAssetSource={[MockFunction]}
         sponsorLevel="Gold"
         sponsors={
           Array [
@@ -109,7 +107,6 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         }
       />
       <SponsorLogoContainer
-        getAssetSource={[MockFunction]}
         sponsorLevel="Silver"
         style={
           Object {
@@ -118,7 +115,6 @@ exports[`SponsorScreen Component renders correctly 1`] = `
         }
       />
       <SponsorLogoContainer
-        getAssetSource={[MockFunction]}
         sponsorLevel="Bronze"
         style={
           Object {

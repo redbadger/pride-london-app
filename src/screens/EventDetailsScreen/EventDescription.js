@@ -3,7 +3,6 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import text from "../../constants/text";
 import type { Event } from "../../data/event";
-import locale from "../../data/locale";
 
 import Collapsible from "../../components/Collapsible";
 import Text from "../../components/Text";
@@ -23,7 +22,7 @@ class EventDescription extends PureComponent<Props> {
           showMoreLabel={text.eventDetailsReadMore}
           showLessLabel={text.eventDetailsReadLess}
         >
-          <Text markdown>{event.fields.eventDescription[locale]}</Text>
+          <Text markdown>{event.fields.eventDescription}</Text>
         </Collapsible>
       </View>
     );

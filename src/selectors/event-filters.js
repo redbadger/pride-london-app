@@ -8,7 +8,7 @@ import {
   buildCategoryFilter
 } from "./basic-event-filters";
 import tags from "../data/tags";
-import type { Event } from "../data/event";
+import type { Event } from "../data/event-deprecated";
 import type { Time } from "../data/date-time";
 import type { State } from "../reducers";
 import type { Area } from "../data/event-filters";

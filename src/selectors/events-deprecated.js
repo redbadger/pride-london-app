@@ -2,7 +2,6 @@
 import R from "ramda";
 import { DateTime } from "luxon";
 import {
-  getHours,
   compareAsc as compareDateAsc,
   isSameDay,
   set as setDate,
@@ -19,10 +18,8 @@ import type {
   FeaturedEvents,
   EventDays,
   Performance,
-  PerformancePeriods,
   Reference
-} from "../data/event";
-import type { Asset } from "../data/asset";
+} from "../data/event-deprecated";
 import locale from "../data/locale";
 
 const fieldsEventsLocaleLens = R.lensPath(["fields", "events", locale]);
@@ -111,29 +108,6 @@ export const expandRecurringEventsInEntries = entries =>
     return [...acc, curr];
   }, []);
 
-export const getTimePeriod = (date: string) => {
-  const splits = [6, 12, 18];
-  const hours = getHours(date);
-  if (hours >= splits[0] && hours < splits[1]) {
-    return "Morning";
-  } else if (hours >= splits[1] && hours < splits[2]) {
-    return "Afternoon";
-  }
-  return "Evening";
-};
-
-export const groupPerformancesByPeriod = (
-  performances: Performance[]
-): PerformancePeriods => {
-  if (performances == null) return [];
-  return R.groupWith(
-    (a: Performance, b: Performance) =>
-      getTimePeriod(a.fields.startTime[locale]) ===
-      getTimePeriod(b.fields.startTime[locale]),
-    performances.sort(sortByStartTimeAsc)
-  );
-};
-
 const getDataState = (state: State) => state.data;
 const getSavedEventsState = (state: State) => state.savedEvents;
 const getEventFiltersState = (state: State) => state.eventFilters;
@@ -181,20 +155,11 @@ export const selectPerformances = (state: State) =>
     entry => entry.sys.contentType.sys.id === "performance"
   ): any[]): Performance[]);
 
-export const selectEventsLoading = (state: State) =>
-  getDataState(state).loading;
-export const selectEventsRefreshing = (state: State) =>
-  getDataState(state).refreshing;
-export const selectAssets = (state: State) => getDataState(state).assets;
-
 export const selectEventById = (state: State, id: string): ?Event =>
   selectEvents(state).find(event => event.sys.id === id);
 
 export const selectPerformanceById = (state: State, id: string) =>
   selectPerformances(state).find(performance => performance.sys.id === id);
-
-export const selectAssetById = (state: State, id: string): Asset =>
-  (selectAssets(state).find(asset => asset.sys.id === id): any);
 
 export const selectFilteredEvents = (
   state: State,

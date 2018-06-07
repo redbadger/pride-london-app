@@ -1,5 +1,5 @@
 // @flow
-import type { Event } from "../data/event";
+import type { Event } from "../data/event-deprecated";
 import locale from "../data/locale";
 
 export const isFree = (priceLow: number, priceHigh: number) =>

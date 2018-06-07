@@ -12,13 +12,10 @@ import Touchable from "../../components/Touchable";
 import text from "../../constants/text";
 import { sponsorLogoBackgroundColor } from "../../constants/colors";
 import type { SponsorLevel, Sponsor } from "../../data/sponsor";
-import type { ImageSource } from "../../data/get-asset-source";
-import type { FieldRef } from "../../data/field-ref";
 
 type Props = {
   sponsorLevel: SponsorLevel,
   sponsors: Sponsor[],
-  getAssetSource: FieldRef => ImageSource,
   style?: ViewStyleProp
 };
 
@@ -29,12 +26,7 @@ const sponsorLevelIcons = {
   Bronze: sponsorBronze
 };
 
-const SponsorLogoContainer = ({
-  sponsorLevel,
-  getAssetSource,
-  sponsors,
-  style
-}: Props) => (
+const SponsorLogoContainer = ({ sponsorLevel, sponsors, style }: Props) => (
   <View style={style}>
     <View style={styles.header}>
       <Image source={sponsorLevelIcons[sponsorLevel]} />
@@ -69,7 +61,7 @@ const SponsorLogoContainer = ({
               <SponsorLogo
                 sponsorName={sponsor.fields.sponsorName}
                 sponsorLevel={sponsor.fields.sponsorLevel}
-                sponsorLogo={getAssetSource(sponsor.fields.sponsorLogo)}
+                sponsorLogo={sponsor.fields.sponsorLogo}
               />
             </Touchable>
           </View>

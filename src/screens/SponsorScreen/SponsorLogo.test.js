@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
+import { sampleOne, generateFieldRef } from "../../data/__test-data";
 import SponsorLogo from "./SponsorLogo";
 
 describe("SponsorLogo Component", () => {
@@ -8,7 +9,7 @@ describe("SponsorLogo Component", () => {
     const output = shallow(
       <SponsorLogo
         sponsorName="sponsorName"
-        sponsorLogo={{ uri: "sponsorLogoUrl", width: 100, height: 100 }}
+        sponsorLogo={sampleOne(generateFieldRef)}
         sponsorLevel="Gold"
       />
     );
@@ -19,7 +20,7 @@ describe("SponsorLogo Component", () => {
     const output = shallow(
       <SponsorLogo
         sponsorName="sponsorName"
-        sponsorLogo={{ uri: "sponsorLogoUrl", width: 100, height: 100 }}
+        sponsorLogo={sampleOne(generateFieldRef)}
         sponsorLevel="Silver"
       />
     );

@@ -7,7 +7,7 @@ import Touchable from "./Touchable";
 import eventCategories from "../constants/event-categories";
 import locale from "../data/locale";
 import { blackColor, whiteColor } from "../constants/colors";
-import type { EventCategoryName } from "../data/event";
+import type { EventCategoryName } from "../data/event-deprecated";
 
 const categoryStyleColor = (category: EventCategoryName) => {
   const categoryData = eventCategories[locale][category];

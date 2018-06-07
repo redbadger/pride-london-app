@@ -16,7 +16,7 @@ import {
   selectTagFilterSelectedCount
 } from "./event-filters";
 import type { FilterCollection } from "../data/event-filters";
-import type { Event } from "../data/event";
+import type { Event } from "../data/event-deprecated";
 
 jest.mock("./basic-event-filters");
 const untypedBuildDateRangeFilter: any = buildDateRangeFilter;
@@ -33,7 +33,10 @@ const buildState = (
   data: {
     entries: [],
     assets: [],
+    events: [],
+    featuredEvents: [],
     headerBanners: [],
+    images: {},
     performances: {},
     sponsors: [],
     loading: false,
