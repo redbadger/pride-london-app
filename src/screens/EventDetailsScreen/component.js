@@ -170,8 +170,8 @@ class EventDetailsScreen extends PureComponent<Props> {
                       )}
                       {(event.fields.email || event.fields.phone) && (
                         <EventContact
-                          email={event.fields.email && event.fields.email}
-                          phone={event.fields.phone && event.fields.phone}
+                          email={event.fields.email}
+                          phone={event.fields.phone}
                         />
                       )}
                     </LayoutColumn>
