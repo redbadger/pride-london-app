@@ -1,13 +1,19 @@
 // @flow
 import { sampleOne, generatePerformance } from "../data/__test-data";
 import type { State } from "../reducers";
-import type { Performances } from "../data/performance";
+import type { Performance, Performances } from "../data/performance";
 import {
   getTimePeriod,
   groupPerformancesByPeriod,
   selectPerformances,
   selectPerformanceById
 } from "./performance";
+
+const createPerformance = (startTime: string, seed): Performance => {
+  const performance = sampleOne(generatePerformance, { seed });
+  performance.fields.startTime = startTime;
+  return performance;
+};
 
 describe("selectPerformances", () => {
   it("selects performances from state", () => {
@@ -48,26 +54,11 @@ describe("groupPerformancesByPeriod", () => {
 
   it("separates two individual performances by period and sorts", () => {
     const performances = [
-      {
-        fields: { startTime: "2018-08-01T18:01:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T13:00:00" }
-      }
+      createPerformance("2018-08-01T18:01:00", 74),
+      createPerformance("2018-08-01T13:00:00", 925)
     ];
 
-    const expected = [
-      [
-        {
-          fields: { startTime: "2018-08-01T13:00:00" }
-        }
-      ],
-      [
-        {
-          fields: { startTime: "2018-08-01T18:01:00" }
-        }
-      ]
-    ];
+    const expected = [[performances[1]], [performances[0]]];
     const actual = groupPerformancesByPeriod(performances);
 
     expect(actual).toEqual(expected);
@@ -75,24 +66,11 @@ describe("groupPerformancesByPeriod", () => {
 
   it("leaves two performances in the same period together", () => {
     const performances = [
-      {
-        fields: { startTime: "2018-08-01T09:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T10:00:00" }
-      }
+      createPerformance("2018-08-01T09:00:00", 1463),
+      createPerformance("2018-08-01T10:00:00", 3554)
     ];
 
-    const expected = [
-      [
-        {
-          fields: { startTime: "2018-08-01T09:00:00" }
-        },
-        {
-          fields: { startTime: "2018-08-01T10:00:00" }
-        }
-      ]
-    ];
+    const expected = [[performances[0], performances[1]]];
     const actual = groupPerformancesByPeriod(performances);
 
     expect(actual).toEqual(expected);
@@ -100,43 +78,16 @@ describe("groupPerformancesByPeriod", () => {
 
   it("makes two groups", () => {
     const performances = [
-      {
-        fields: { startTime: "2018-08-01T07:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T11:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T10:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T19:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T18:00:00" }
-      }
+      createPerformance("2018-08-01T07:00:00", 537),
+      createPerformance("2018-08-01T11:00:00", 753),
+      createPerformance("2018-08-01T10:00:00", 682),
+      createPerformance("2018-08-01T19:00:00", 139),
+      createPerformance("2018-08-01T18:00:00", 426)
     ];
 
     const expected = [
-      [
-        {
-          fields: { startTime: "2018-08-01T07:00:00" }
-        },
-        {
-          fields: { startTime: "2018-08-01T10:00:00" }
-        },
-        {
-          fields: { startTime: "2018-08-01T11:00:00" }
-        }
-      ],
-      [
-        {
-          fields: { startTime: "2018-08-01T18:00:00" }
-        },
-        {
-          fields: { startTime: "2018-08-01T19:00:00" }
-        }
-      ]
+      [performances[0], performances[2], performances[1]],
+      [performances[4], performances[3]]
     ];
     const actual = groupPerformancesByPeriod(performances);
 
@@ -145,57 +96,19 @@ describe("groupPerformancesByPeriod", () => {
 
   it("makes multiple groups", () => {
     const performances = [
-      {
-        fields: { startTime: "2018-08-01T18:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T11:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-02T02:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T11:30:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T19:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-01T13:00:00" }
-      },
-      {
-        fields: { startTime: "2018-08-02T00:00:00" }
-      }
+      createPerformance("2018-08-01T18:00:00", 724),
+      createPerformance("2018-08-01T11:00:00", 264),
+      createPerformance("2018-08-02T02:00:00", 715),
+      createPerformance("2018-08-01T11:30:00", 375),
+      createPerformance("2018-08-01T19:00:00", 245),
+      createPerformance("2018-08-01T13:00:00", 249),
+      createPerformance("2018-08-02T00:00:00", 925)
     ];
 
     const expected = [
-      [
-        {
-          fields: { startTime: "2018-08-01T11:00:00" }
-        },
-        {
-          fields: { startTime: "2018-08-01T11:30:00" }
-        }
-      ],
-      [
-        {
-          fields: { startTime: "2018-08-01T13:00:00" }
-        }
-      ],
-      [
-        {
-          fields: { startTime: "2018-08-01T18:00:00" }
-        },
-        {
-          fields: { startTime: "2018-08-01T19:00:00" }
-        },
-        {
-          fields: { startTime: "2018-08-02T00:00:00" }
-        },
-        {
-          fields: { startTime: "2018-08-02T02:00:00" }
-        }
-      ]
+      [performances[1], performances[3]],
+      [performances[5]],
+      [performances[0], performances[4], performances[6], performances[2]]
     ];
     const actual = groupPerformancesByPeriod(performances);
 

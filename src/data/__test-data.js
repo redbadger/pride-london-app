@@ -12,8 +12,21 @@ import type { ImageDetails } from "./image";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
 
-export const sampleOne = <A>(generator: ValueGenerator<A>): A =>
-  sample(generator, 30, 1);
+type Options = {
+  seed?: number
+};
+
+const defaultOptions: Options = {
+  seed: 1
+};
+
+export const sampleOne = <A>(
+  generator: ValueGenerator<A>,
+  options: Options = defaultOptions
+): A => {
+  const seed = options.seed || defaultOptions.seed;
+  return sample(generator, 30, seed);
+};
 
 export const sampleArrayOf = <A>(
   generator: ValueGenerator<A>
