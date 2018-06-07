@@ -18,7 +18,7 @@ import locale from "../data/locale";
 import type { Decoder } from "../lib/decode";
 import { filterMap as decodeFilterMap, map as decodeMap } from "../lib/decode";
 import { withDefault as resultWithDefault } from "../lib/result";
-import { expandRecurringEventsInEntries } from "../selectors/events";
+import { expandRecurringEventsInEntries } from "../selectors/events-deprecated";
 
 export type State = {
   entries: CmsEntry[],

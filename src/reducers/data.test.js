@@ -173,7 +173,7 @@ describe("Events reducer", () => {
       };
 
       const newCmsData = {
-        entries: [sampleOne(generateCMSEvent)],
+        entries: [sampleOne(generateCMSEvent, { seed: 1345 })],
         assets: [],
         syncToken: "abc",
         updated: true
@@ -201,7 +201,7 @@ describe("Events reducer", () => {
         refreshing: false
       };
 
-      const event = sampleOne(generateCMSEvent);
+      const event = sampleOne(generateCMSEvent, { seed: 3353 });
       event.fields.startTime = { "en-GB": "2018-08-02T00:00+00:00" };
       event.fields.endTime = { "en-GB": "2018-08-02T03:00+00:00" };
       event.fields.recurrenceDates = { "en-GB": ["03/08/2018", "04/08/2018"] };
