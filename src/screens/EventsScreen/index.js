@@ -12,7 +12,7 @@ import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
-  selectFilteredEvents
+  selectFilteredEventsDeprecated
 } from "../../selectors/events-deprecated";
 import { selectData } from "../../selectors";
 import { selectLoading, selectRefreshing } from "../../selectors/data";
@@ -42,7 +42,7 @@ const getDataRefreshing = createSelector([selectData], selectRefreshing);
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (state: State): StateProps => ({
-  events: groupEventsByStartTime(selectFilteredEvents(state)),
+  events: groupEventsByStartTime(selectFilteredEventsDeprecated(state)),
   savedEvents: state.savedEvents,
   loading: getDataLoading(state),
   refreshing: getDataRefreshing(state),

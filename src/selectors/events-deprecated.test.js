@@ -4,7 +4,7 @@ import {
   selectEvents,
   selectFeaturedEvents,
   selectEventById,
-  selectFilteredEvents,
+  selectFilteredEventsDeprecated,
   selectFeaturedEventsByTitle,
   uniqueEvents,
   selectSavedEvents,
@@ -671,7 +671,7 @@ describe("selectEventById", () => {
   });
 });
 
-describe("selectFilteredEvents", () => {
+describe("selectFilteredEventsDeprecated", () => {
   it("filters events using the buildEventFilter function", () => {
     const mockFilter = jest
       .fn()
@@ -712,7 +712,7 @@ describe("selectFilteredEvents", () => {
         sys: { contentType: { sys: { id: "event" } } }
       }
     ];
-    const actual = selectFilteredEvents(state);
+    const actual = selectFilteredEventsDeprecated(state);
 
     expect(actual).toEqual(expected);
     expect(buildEventFilter).toHaveBeenCalledWith(state, false);
@@ -759,7 +759,7 @@ describe("selectFilteredEvents", () => {
         sys: { contentType: { sys: { id: "event" } } }
       }
     ];
-    const actual = selectFilteredEvents(state, true);
+    const actual = selectFilteredEventsDeprecated(state, true);
 
     expect(actual).toEqual(expected);
     expect(buildEventFilter).toHaveBeenCalledWith(state, true);

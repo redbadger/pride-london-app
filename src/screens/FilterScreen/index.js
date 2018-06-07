@@ -7,7 +7,7 @@ import {
   setEventFilters,
   clearEventFilters
 } from "../../actions/event-filters";
-import { selectFilteredEvents } from "../../selectors/events-deprecated";
+import { selectFilteredEventsDeprecated } from "../../selectors/events-deprecated";
 import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
 import Component from "./component";
 import text from "../../constants/text";
@@ -40,7 +40,7 @@ const mapStateToProps = (
   state: State,
   { navigation }: OwnProps
 ): StateProps => {
-  const events = selectFilteredEvents(state, true);
+  const events = selectFilteredEventsDeprecated(state, true);
   return {
     navigation,
     applyButtonText: text.filterPickerApply(events.length),

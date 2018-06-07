@@ -161,7 +161,7 @@ export const selectEventById = (state: State, id: string): ?Event =>
 export const selectPerformanceById = (state: State, id: string) =>
   selectPerformances(state).find(performance => performance.sys.id === id);
 
-export const selectFilteredEvents = (
+export const selectFilteredEventsDeprecated = (
   state: State,
   selectStagedFilters?: boolean = false
 ) => selectEvents(state).filter(buildEventFilter(state, selectStagedFilters));
