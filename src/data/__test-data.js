@@ -3,14 +3,15 @@
 import { gen, sampleOne as sample } from "@rgbboy/testcheck";
 import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
-import { FORMAT_CONTENTFUL_ISO } from "../lib/date";
+import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
 import type { Event as EventDeprecated } from "./event-deprecated";
-import type { Event } from "./event";
+import type { Event, EventCategoryName } from "./event";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
 import type { ImageDetails } from "./image";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
+import { eventCategoryNames } from "./event";
 
 type Options = {
   seed?: number
@@ -41,6 +42,12 @@ export const generateFieldRef: ValueGenerator<FieldRef> = gen({
 
 const baseTime = 1530964800000; // July 7, 2018 12:00:00 PM GMT+00:00
 const fiveMinutes = 300000;
+
+export const generateDate: ValueGenerator<string> = gen.int.then(int =>
+  DateTime.fromMillis(baseTime + int * int * int * fiveMinutes, {
+    zone: "UTC"
+  }).toFormat(FORMAT_EUROPEAN_DATE)
+);
 
 export const generateDateString: ValueGenerator<string> = gen.int.then(int =>
   DateTime.fromMillis(baseTime + int * int * int * fiveMinutes, {
@@ -127,6 +134,10 @@ export const generateCMSHeaderBanner: ValueGenerator<mixed> = gen({
   }
 });
 
+export const generateEventCategory: ValueGenerator<
+  EventCategoryName
+> = gen.oneOf(eventCategoryNames);
+
 export const generateEvent: ValueGenerator<Event> = gen({
   id: gen.alphaNumString,
   contentType: "event",
@@ -134,8 +145,11 @@ export const generateEvent: ValueGenerator<Event> = gen({
   revision: 1,
   fields: gen({
     name: "name",
-    eventCategories: ["Cabaret and Variety", "Music"],
-    audience: ["???"],
+    eventCategories: gen.uniqueArray(generateEventCategory, {
+      minSize: 1,
+      maxSize: 5
+    }),
+    audience: gen.array(gen.alphaNumString, { minSize: 1, maxSize: 5 }),
     startTime: "2018-07-07T00:00+00:00",
     endTime: "2018-07-07T03:00+00:00",
     location: { lat: 0, lon: 10 },
@@ -146,17 +160,20 @@ export const generateEvent: ValueGenerator<Event> = gen({
     locationName: "locationName",
     eventPriceLow: 0,
     eventPriceHigh: 10,
-    accessibilityOptions: ["accessibilityOptionsA", "accessibilityOptionsB"],
+    accessibilityOptions: gen.array(gen.alphaNumString, {
+      minSize: 1,
+      maxSize: 5
+    }),
     eventDescription: "eventDescription",
     accessibilityDetails: "accessibilityDetails",
     email: "email",
     phone: "phone",
     ticketingUrl: "ticketingUrl",
-    venueDetails: ["venueDetailsA", "venueDetailsB"],
+    venueDetails: gen.array(gen.alphaNumString, { minSize: 1, maxSize: 5 }),
     individualEventPicture: generateFieldRef,
     eventsListPicture: generateFieldRef,
-    performances: [],
-    recurrenceDates: []
+    performances: gen.array(generateFieldRef, { minSize: 1, maxSize: 5 }),
+    recurrenceDates: gen.array(generateDate, { minSize: 1, maxSize: 5 })
   })
 });
 
@@ -173,9 +190,14 @@ export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
   fields: gen({
     name: { "en-GB": "name" },
     eventCategories: {
-      "en-GB": ["Cabaret and Variety", "Music"]
+      "en-GB": gen.uniqueArray(generateEventCategory, {
+        minSize: 1,
+        maxSize: 5
+      })
     },
-    audience: { "en-GB": ["???"] },
+    audience: {
+      "en-GB": gen.array(gen.alphaNumString, { minSize: 1, maxSize: 5 })
+    },
     startTime: { "en-GB": "2018-07-07T00:00+00:00" },
     endTime: { "en-GB": "2018-07-07T03:00+00:00" },
     location: { "en-GB": { lat: 0, lon: 10 } },
@@ -187,7 +209,7 @@ export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
     eventPriceLow: { "en-GB": 0 },
     eventPriceHigh: { "en-GB": 10 },
     accessibilityOptions: {
-      "en-GB": ["accessibilityOptionsA", "accessibilityOptionsB"]
+      "en-GB": gen.array(gen.alphaNumString, { minSize: 1, maxSize: 5 })
     },
     eventDescription: { "en-GB": "eventDescription" },
     accessibilityDetails: { "en-GB": "accessibilityDetails" },
@@ -195,12 +217,52 @@ export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
     phone: { "en-GB": "phone" },
     ticketingUrl: { "en-GB": "ticketingUrl" },
     venueDetails: {
-      "en-GB": ["venueDetailsA", "venueDetailsB"]
+      "en-GB": gen.array(gen.alphaNumString, { minSize: 1, maxSize: 5 })
     },
     individualEventPicture: gen({ "en-GB": generateFieldRef }),
     eventsListPicture: gen({ "en-GB": generateFieldRef }),
-    performances: { "en-GB": [] },
-    recurrenceDates: { "en-GB": [] }
+    performances: {
+      "en-GB": gen.array(generateFieldRef, { minSize: 1, maxSize: 5 })
+    },
+    recurrenceDates: {
+      "en-GB": gen.array(generateDate, { minSize: 1, maxSize: 5 })
+    }
+  })
+});
+
+export const generateEventMinimum: ValueGenerator<Event> = gen({
+  id: gen.alphaNumString,
+  contentType: "event",
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    name: "name",
+    eventCategories: gen.uniqueArray(generateEventCategory, {
+      minSize: 1,
+      maxSize: 5
+    }),
+    audience: [],
+    startTime: "2018-07-07T00:00+00:00",
+    endTime: "2018-07-07T03:00+00:00",
+    location: { lat: 0, lon: 10 },
+    addressLine1: gen.null,
+    addressLine2: gen.null,
+    city: gen.null,
+    postcode: gen.null,
+    locationName: "locationName",
+    eventPriceLow: 0,
+    eventPriceHigh: 10,
+    accessibilityOptions: [],
+    eventDescription: "eventDescription",
+    accessibilityDetails: gen.null,
+    email: gen.null,
+    phone: gen.null,
+    ticketingUrl: gen.null,
+    venueDetails: [],
+    individualEventPicture: generateFieldRef,
+    eventsListPicture: generateFieldRef,
+    performances: [],
+    recurrenceDates: []
   })
 });
 
