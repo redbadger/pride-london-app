@@ -52,11 +52,6 @@ const buildAreasFilter = (areas: Area[]) => {
   return (event: Event) => filters.some(filter => filter(event));
 };
 
-export const buildEventFilterDeprecated = (
-  state: State,
-  selectStagedFilters?: boolean = false
-) => buildEventFilter(getEventFiltersState(state, selectStagedFilters));
-
 export const buildEventFilter = ({
   date,
   timeOfDay,

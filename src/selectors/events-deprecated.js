@@ -11,7 +11,7 @@ import {
   FORMAT_EUROPEAN_DATE,
   FORMAT_CONTENTFUL_ISO
 } from "../lib/date";
-import { buildEventFilterDeprecated } from "./event-filters";
+import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
 import type {
   Event,
@@ -164,10 +164,12 @@ export const selectPerformanceById = (state: State, id: string) =>
 export const selectFilteredEventsDeprecated = (
   state: State,
   selectStagedFilters?: boolean = false
-) =>
-  selectEvents(state).filter(
-    buildEventFilterDeprecated(state, selectStagedFilters)
-  );
+) => {
+  const filters = selectStagedFilters
+    ? state.eventFilters.stagedFilters
+    : state.eventFilters.selectedFilters;
+  return selectEvents(state).filter(buildEventFilter(filters));
+};
 
 export const selectFeaturedEventsByTitle = (state: State, title: string) => {
   const featured = selectFeaturedEvents(state).find(
