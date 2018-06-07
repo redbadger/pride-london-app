@@ -483,6 +483,7 @@ exports[`Events reducer initialises with default state 1`] = `
 Object {
   "entries": Array [],
   "events": Array [],
+  "featuredEvents": Array [],
   "headerBanners": Array [],
   "images": Object {},
   "loading": true,

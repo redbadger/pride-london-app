@@ -17,6 +17,7 @@ import {
 const defaultData: DataState = {
   entries: [],
   events: [],
+  featuredEvents: [],
   headerBanners: [],
   images: {},
   performances: {},
