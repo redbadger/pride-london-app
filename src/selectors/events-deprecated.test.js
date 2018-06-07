@@ -3,8 +3,6 @@ import {
   groupEventsByStartTime,
   selectEvents,
   selectFeaturedEvents,
-  selectEventsLoading,
-  selectEventsRefreshing,
   selectEventById,
   selectFilteredEvents,
   selectFeaturedEventsByTitle,
@@ -645,36 +643,6 @@ describe("selectFeaturedEvents", () => {
     expect(selected[0].fields.events["en-GB"]).toEqual([
       { sys: { type: "Link", linkType: "Entry", id: "3O3SZPgYl2MUEWu2MoK2oi" } }
     ]);
-  });
-});
-
-describe("selectEventsLoading", () => {
-  it("selects property", () => {
-    const loading = true;
-    const state = {
-      data: {
-        loading
-      }
-    };
-
-    const selected = selectEventsLoading(state);
-
-    expect(selected).toBe(loading);
-  });
-});
-
-describe("selectEventsRefreshing", () => {
-  it("selects property", () => {
-    const refreshing = true;
-    const state = {
-      data: {
-        refreshing
-      }
-    };
-
-    const selected = selectEventsRefreshing(state);
-
-    expect(selected).toBe(refreshing);
   });
 });
 

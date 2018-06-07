@@ -155,11 +155,6 @@ export const selectPerformances = (state: State) =>
     entry => entry.sys.contentType.sys.id === "performance"
   ): any[]): Performance[]);
 
-export const selectEventsLoading = (state: State) =>
-  getDataState(state).loading;
-export const selectEventsRefreshing = (state: State) =>
-  getDataState(state).refreshing;
-
 export const selectEventById = (state: State, id: string): ?Event =>
   selectEvents(state).find(event => event.sys.id === id);
 
