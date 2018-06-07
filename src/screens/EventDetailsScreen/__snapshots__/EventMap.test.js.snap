@@ -46,7 +46,7 @@ exports[`renders correctly 1`] = `
             "longitude": 200,
           }
         }
-        onPress={[Function]}
+        stopPropagation={false}
       />
     </MapView>
   </Delayed>
