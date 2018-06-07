@@ -6,6 +6,7 @@ import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO } from "../lib/date";
 import type { Event as EventDeprecated } from "./event-deprecated";
 import type { Event } from "./event";
+import type { FeaturedEvents } from "./featured-events";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
 import type { ImageDetails } from "./image";
@@ -41,6 +42,37 @@ export const generateImageURI: ValueGenerator<string> = gen.alphaNumString.then(
 
 // will change this when we refactor FieldRef
 export const generateCMSFieldRef: ValueGenerator<mixed> = generateFieldRef;
+
+export const generateFeaturedEvents: ValueGenerator<FeaturedEvents> = gen({
+  contentType: "featuredEvents",
+  id: gen.alphaNumString.notEmpty(),
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    title: "title",
+    events: gen.array(generateFieldRef, { minSize: 0, maxSize: 10 })
+  })
+});
+
+export const generateCMSFeaturedEvents: ValueGenerator<mixed> = gen({
+  sys: {
+    id: gen.alphaNumString.notEmpty(),
+    contentType: {
+      sys: {
+        id: "featuredEvents"
+      }
+    },
+    revision: 1
+  },
+  fields: gen({
+    title: {
+      "en-GB": "title"
+    },
+    events: gen({
+      "en-GB": gen.array(generateFieldRef, { minSize: 0, maxSize: 10 })
+    })
+  })
+});
 
 export const generateImageDetails: ValueGenerator<ImageDetails> = gen({
   id: gen.alphaNumString,
