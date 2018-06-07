@@ -11,7 +11,7 @@ import tags from "../data/tags";
 import type { Event } from "../data/event-deprecated";
 import type { Time } from "../data/date-time";
 import type { State } from "../reducers";
-import type { Area } from "../data/event-filters";
+import type { Area, FilterCollection } from "../data/event-filters";
 
 const getEventFiltersState = (state: State, selectStagedFilters: boolean) =>
   selectStagedFilters
@@ -55,17 +55,18 @@ const buildAreasFilter = (areas: Area[]) => {
 export const buildEventFilterDeprecated = (
   state: State,
   selectStagedFilters?: boolean = false
-) => {
-  const {
-    date,
-    timeOfDay,
-    price,
-    audience,
-    venueDetails,
-    accessibilityOptions,
-    area,
-    categories
-  } = getEventFiltersState(state, selectStagedFilters);
+) => buildEventFilter(getEventFiltersState(state, selectStagedFilters));
+
+export const buildEventFilter = ({
+  date,
+  timeOfDay,
+  price,
+  audience,
+  venueDetails,
+  accessibilityOptions,
+  area,
+  categories
+}: FilterCollection): (Event => boolean) => {
   const timeArray = Array.from(timeOfDay);
   const areaArray = Array.from(area);
   const dateFilter: (event: Event) => boolean = date
