@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`selectEventsMap transforms array of events to map of events 1`] = `
+Object {
+  "5obj688Cj3vM": Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "0hWS71X6v20dL18",
+        "02X4sXo8lGzGTL8928CyO",
+        "t563ZL67SSGD0K1un2owA0C5",
+        "VSH6Qo8k342G5rZP",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "iTSBsb1G99KHmZFVYS4fQAl1S741",
+        "3c9BUjc848u71VcYRCWX0",
+        "7N5VV4l02bp2gOaA",
+        "p7IW7MI99tBNamFvDd8Y64ezv5",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-07-07T03:00+00:00",
+      "eventCategories": Array [
+        "Cabaret and Variety",
+        "Health",
+        "Nightlife",
+        "Music",
+        "Talks and Debates",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "833",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "NGaL",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "D5B7UO7W4V4keFNwRp27T0nZ",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "9uPH3hto1C64yfOIiRB7YIF",
+          },
+        },
+      ],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [
+        "04/07/2018",
+        "20/06/2018",
+        "10/07/2018",
+        "02/07/2018",
+        "19/07/2018",
+      ],
+      "startTime": "2018-07-07T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "Fos6Vj70ntMWl",
+        "8t85",
+      ],
+    },
+    "id": "5obj688Cj3vM",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+  "G36Nw4N4Qb1HE305M0V": Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "xipaGqs0am",
+        "b4515eG8Auw",
+        "LHLlMyK1nhZW762jVQAK1n704rrk3",
+        "eC36IkPHrjr7o5l4XuI6QBCe",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "5id",
+        "OnT4h29Nlhm2ECm2l",
+        "YvTD0M251aE83S",
+        "nR658",
+        "JUc66PnZ6p967v7Xc",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-07-07T03:00+00:00",
+      "eventCategories": Array [
+        "Community",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "81wNN6X845CZ",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "y5m7ThBnRy97PW2",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "30p2k56Ktfc4EQy3y14J9Y",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "6hID1e8X7F",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "38bBks9F84FWNHN74ByyDIicex",
+          },
+        },
+      ],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [
+        "10/07/2018",
+        "17/06/2018",
+        "15/07/2018",
+      ],
+      "startTime": "2018-07-07T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "mn204uE5Cedi2",
+        "7rIC1",
+        "869bRJ27f7",
+      ],
+    },
+    "id": "G36Nw4N4Qb1HE305M0V",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+  "hG": Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "v4817p72g9B28",
+        "H2Cbs5bqh",
+        "Wagc8Wv8jK6K6D77490GB",
+        "YIn7xDxQbT",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "1fx905L",
+        "9OgXUt",
+        "46giMKK1fEEP9IsCd57b46Lez9W75b",
+        "hE6X046ClAwqcJIqU4Jx14eaBPNpeh",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-07-07T03:00+00:00",
+      "eventCategories": Array [
+        "Social and Networking",
+        "Talks and Debates",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "6DuE916K6BgY028e98",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "s25JaUFMg96zfRF0vCZ0bN10Myc",
+          },
+        },
+      ],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [
+        "06/07/2018",
+        "04/07/2018",
+        "09/06/2018",
+        "14/05/2018",
+        "07/07/2018",
+      ],
+      "startTime": "2018-07-07T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "C68l",
+        "M6cCc5X3p60J55sCfBCs7jD8l",
+        "4Ll0RYyIa2y8dZ3FCBY6ES82lvQ4P",
+      ],
+    },
+    "id": "hG",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+}
+`;
