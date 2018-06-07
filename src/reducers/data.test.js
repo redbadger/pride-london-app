@@ -14,6 +14,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       events: [],
+      featuredEvents: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -31,6 +32,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       events: [],
+      featuredEvents: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -48,6 +50,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       events: [],
+      featuredEvents: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -80,6 +83,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       events: [],
+      featuredEvents: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -140,6 +144,7 @@ describe("Events reducer", () => {
     const initialState = {
       entries: [],
       events: [],
+      featuredEvents: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -158,6 +163,7 @@ describe("Events reducer", () => {
       const initialState = {
         entries: [],
         events: [],
+        featuredEvents: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -186,6 +192,7 @@ describe("Events reducer", () => {
       const initialState = {
         entries: [],
         events: [],
+        featuredEvents: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -215,10 +222,69 @@ describe("Events reducer", () => {
       expect(state.events).toMatchSnapshot();
     });
 
+    it("decodes featuredEvents", () => {
+      const initialState = {
+        entries: [],
+        events: [],
+        featuredEvents: [],
+        headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [
+          {
+            fields: {
+              title: { "en-GB": "title" },
+              events: { "en-GB": [] }
+            },
+            sys: {
+              id: "3O3SZPgYl2MUEWu2MoK2oi",
+              contentType: {
+                sys: {
+                  id: "featuredEvents"
+                }
+              },
+              revision: 1
+            }
+          }
+        ],
+        assets: [],
+        syncToken: "abc",
+        updated: true
+      };
+
+      const expected = [
+        {
+          id: "3O3SZPgYl2MUEWu2MoK2oi",
+          contentType: "featuredEvents",
+          revision: 1,
+          locale: "en-GB",
+          fields: {
+            title: "title",
+            events: []
+          }
+        }
+      ];
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.featuredEvents).toEqual(expected);
+    });
+
     it("decodes headerBanners", () => {
       const initialState = {
         entries: [],
         events: [],
+        featuredEvents: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -282,6 +348,7 @@ describe("Events reducer", () => {
       const initialState = {
         entries: [],
         events: [],
+        featuredEvents: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -340,6 +407,7 @@ describe("Events reducer", () => {
       const initialState = {
         entries: [],
         events: [],
+        featuredEvents: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -397,6 +465,7 @@ describe("Events reducer", () => {
       const initialState = {
         entries: [],
         events: [],
+        featuredEvents: [],
         headerBanners: [],
         images: {},
         performances: {},

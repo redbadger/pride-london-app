@@ -10,26 +10,50 @@ import {
   selectEvents,
   selectEventsMap,
   selectEventById,
+  selectLoading,
+  selectPerformanceById,
   selectPerformancesMap,
-  selectPerformanceById
+  selectRefreshing
 } from "./data";
 
-const defaultData: DataState = {
+const createData = (): DataState => ({
   entries: [],
   events: [],
+  featuredEvents: [],
   headerBanners: [],
   images: {},
   performances: {},
   sponsors: [],
   loading: false,
   refreshing: false
-};
+});
+
+describe("selectLoading", () => {
+  it("selects events", () => {
+    const data = createData();
+    data.loading = true;
+    const selected = selectLoading(data);
+
+    expect(selected).toEqual(true);
+  });
+});
+
+describe("selectRefreshing", () => {
+  it("selects events", () => {
+    const data = createData();
+    data.refreshing = true;
+    const selected = selectRefreshing(data);
+
+    expect(selected).toEqual(true);
+  });
+});
 
 describe("selectEvents", () => {
   it("selects events", () => {
-    const selected = selectEvents(defaultData);
+    const data = createData();
+    const selected = selectEvents(data);
 
-    expect(selected).toEqual(defaultData.events);
+    expect(selected).toEqual(data.events);
   });
 });
 
@@ -55,9 +79,10 @@ describe("selectEventById", () => {
 
 describe("selectPerformancesMap", () => {
   it("selects performances", () => {
-    const selected = selectPerformancesMap(defaultData);
+    const data = createData();
+    const selected = selectPerformancesMap(data);
 
-    expect(selected).toEqual(defaultData.performances);
+    expect(selected).toEqual(data.performances);
   });
 });
 
