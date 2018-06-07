@@ -83,16 +83,15 @@ const EventOverview = ({ event }: Props) => {
         </Text>
       </IconItem>
 
-      {event.fields.venueDetails &&
-        event.fields.venueDetails.includes(
-          strings.venueDetailsGenderNeutralToilets
-        ) && (
-          <IconItem source={genderNeutralIcon}>
-            <Text type="h4" color="lightNavyBlueColor">
-              {text.eventDetailsGenderNeutralToilets}
-            </Text>
-          </IconItem>
-        )}
+      {event.fields.venueDetails.includes(
+        strings.venueDetailsGenderNeutralToilets
+      ) && (
+        <IconItem source={genderNeutralIcon}>
+          <Text type="h4" color="lightNavyBlueColor">
+            {text.eventDetailsGenderNeutralToilets}
+          </Text>
+        </IconItem>
+      )}
 
       {event.fields.accessibilityOptions.length > 0 && (
         <IconItem source={accessibilityIcon}>
