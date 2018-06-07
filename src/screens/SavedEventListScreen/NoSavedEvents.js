@@ -45,7 +45,10 @@ class NoSavedEvents extends PureComponent<Props> {
               <Image style={styles.heart} source={iconSave} />
               &nbsp;{text.noSavedEventsPart2}
             </Text>
-            <ButtonPrimary onPress={this.eventList}>
+            <ButtonPrimary
+              onPress={this.eventList}
+              testID="no-saved-events-button"
+            >
               {text.noSavedEventsButton}
             </ButtonPrimary>
           </LayoutColumn>

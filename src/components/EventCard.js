@@ -91,7 +91,11 @@ class EventCard extends React.PureComponent<Props> {
               </Text>
             </View>
           </Touchable>
-          <SaveEventButton active={isSaved} onPress={this.handleToggleSave} />
+          <SaveEventButton
+            active={isSaved}
+            onPress={this.handleToggleSave}
+            testID={`${testID}-save-event-button`}
+          />
         </View>
       </View>
     );

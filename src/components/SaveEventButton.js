@@ -11,7 +11,8 @@ import text from "../constants/text";
 type Props = {
   active: boolean,
   onDark: boolean,
-  onPress: boolean => void
+  onPress: boolean => void,
+  testID?: string
 };
 
 type State = {
@@ -34,7 +35,8 @@ const triggerAnimation = (progress: Object, active: boolean) => {
 export default class SaveEventButton extends React.Component<Props, State> {
   static defaultProps = {
     active: false,
-    onDark: false
+    onDark: false,
+    testID: undefined
   };
 
   state = {};
@@ -81,6 +83,7 @@ export default class SaveEventButton extends React.Component<Props, State> {
         }
         onPress={this.handlePress}
         style={styles.button}
+        testID={this.props.testID}
       >
         <LottieView
           progress={this.state.progress}

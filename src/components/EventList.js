@@ -22,7 +22,8 @@ type Props = {
   removeSavedEvent: string => void,
   refreshing?: boolean,
   onRefresh?: () => void,
-  onPress: (id: string) => void
+  onPress: (id: string) => void,
+  testID?: string
 };
 
 type State = {
@@ -57,7 +58,8 @@ const eventIds = (events: EventDays): string[] =>
 class EventList extends Component<Props, State> {
   static defaultProps = {
     refreshing: false,
-    onRefresh: undefined
+    onRefresh: undefined,
+    testID: undefined
   };
 
   state = {
@@ -156,7 +158,7 @@ class EventList extends Component<Props, State> {
   renderSectionFooter = () => <View style={styles.sectionFooter} />;
 
   render() {
-    const { events, locale, refreshing, onRefresh } = this.props;
+    const { events, locale, refreshing, onRefresh, testID } = this.props;
 
     // There is a bug in Android, which causes the app to crash when
     // too many list item changes are animated at the same time. To
@@ -180,6 +182,7 @@ class EventList extends Component<Props, State> {
         refreshing={refreshing}
         onRefresh={onRefresh}
         windowSize={10}
+        testID={testID}
       />
     );
   }
