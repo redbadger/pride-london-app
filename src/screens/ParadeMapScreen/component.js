@@ -11,7 +11,6 @@ import { withNavigationFocus } from "../../lib/navigation";
 import type { NavigationProps } from "../../lib/navigation";
 
 export class ParadeMap extends Component<NavigationProps> {
-  focus: NavigationEventSubscription;
   constructor(props: NavigationProps) {
     super();
     this.focus = props.navigation.addListener("willFocus", () => null);
@@ -20,6 +19,8 @@ export class ParadeMap extends Component<NavigationProps> {
   componentWillUnmount() {
     this.focus.remove();
   }
+
+  focus: NavigationEventSubscription;
 
   render() {
     return (
