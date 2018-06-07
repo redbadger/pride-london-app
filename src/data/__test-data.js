@@ -4,6 +4,7 @@ import { gen, sampleOne as sample } from "@rgbboy/testcheck";
 import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
+import type { Maybe } from "../lib/maybe";
 import type { Event as EventDeprecated } from "./event-deprecated";
 import type { Event, EventCategoryName } from "./event";
 import type { FieldRef } from "./field-ref";
@@ -33,6 +34,9 @@ export const sampleArrayOf = <A>(
   generator: ValueGenerator<A>
 ): (number => Array<A>) => (size: number) =>
   sample(gen.array(generator, { size }), 30, 1);
+
+// In order for flow to trickle the types for gen.null we had to wrap it
+const generateNull = <A>(): ValueGenerator<Maybe<A>> => gen.null;
 
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
@@ -245,19 +249,19 @@ export const generateEventMinimum: ValueGenerator<Event> = gen({
     startTime: "2018-07-07T00:00+00:00",
     endTime: "2018-07-07T03:00+00:00",
     location: { lat: 0, lon: 10 },
-    addressLine1: gen.null,
-    addressLine2: gen.null,
-    city: gen.null,
-    postcode: gen.null,
+    addressLine1: generateNull(),
+    addressLine2: generateNull(),
+    city: generateNull(),
+    postcode: generateNull(),
     locationName: "locationName",
     eventPriceLow: 0,
     eventPriceHigh: 10,
     accessibilityOptions: [],
     eventDescription: "eventDescription",
-    accessibilityDetails: gen.null,
-    email: gen.null,
-    phone: gen.null,
-    ticketingUrl: gen.null,
+    accessibilityDetails: generateNull(),
+    email: generateNull(),
+    phone: generateNull(),
+    ticketingUrl: generateNull(),
     venueDetails: [],
     individualEventPicture: generateFieldRef,
     eventsListPicture: generateFieldRef,
