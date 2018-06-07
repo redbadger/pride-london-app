@@ -135,12 +135,12 @@ export const eventIsAfter = (date: DateTime) => (event: Event) => {
 export const selectEventsFromEntries = (entries: CmsEntry[]): Event[] =>
   ((entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
-  ): any[]): Event[]).map(
-    addPerformances(selectPerformancesFromEntries(entries))
-  );
-// THIS NEEDS FIXING TO FILTER PAST EVENTS
-// SHOULD MOVE TO THE FILTER
-// .filter(eventIsAfter(getEventFiltersState(state).showEventsAfter));
+  ): any[]): Event[])
+    .map(addPerformances(selectPerformancesFromEntries(entries)))
+    // THIS NEEDS FIXING TO FILTER PAST EVENTS
+    // SHOULD MOVE TO THE FILTER
+    // .filter(eventIsAfter(getEventFiltersState(state).showEventsAfter));
+    .filter(eventIsAfter(DateTime.fromISO("2018-06-07T00:00:00+01:00")));
 
 export const selectEvents = (state: State): Event[] =>
   selectEventsFromEntries(getDataState(state).entries);
