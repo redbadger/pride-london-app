@@ -19,6 +19,7 @@ import {
 const createData = (): DataState => ({
   entries: [],
   events: [],
+  featuredEvents: [],
   headerBanners: [],
   images: {},
   performances: {},
