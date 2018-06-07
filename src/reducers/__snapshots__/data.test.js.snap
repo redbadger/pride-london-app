@@ -7,32 +7,35 @@ Array [
     "fields": Object {
       "accessibilityDetails": "accessibilityDetails",
       "accessibilityOptions": Array [
-        "accessibilityOptionsA",
-        "accessibilityOptionsB",
+        "O84a35poabxKTJm2d5",
       ],
       "addressLine1": "addressLine1",
       "addressLine2": "addressLine2",
       "audience": Array [
-        "???",
+        "p7m",
+        "75ckc33EMZTM3",
       ],
       "city": "city",
       "email": "email",
       "endTime": "2018-07-07T03:00+00:00",
       "eventCategories": Array [
-        "Cabaret and Variety",
-        "Music",
+        "Nightlife",
+        "Social and Networking",
+        "Community",
+        "Health",
+        "Sports and Activities",
       ],
       "eventDescription": "eventDescription",
       "eventPriceHigh": 10,
       "eventPriceLow": 0,
       "eventsListPicture": Object {
         "sys": Object {
-          "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+          "id": "1nW21Av63nW",
         },
       },
       "individualEventPicture": Object {
         "sys": Object {
-          "id": "0q2m69N0G0Z761e",
+          "id": "2TmaX296B5e",
         },
       },
       "location": Object {
@@ -41,18 +44,185 @@ Array [
       },
       "locationName": "locationName",
       "name": "name",
-      "performances": Array [],
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "cow95kARTP95S5pLs7tm6KOkFH",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "Bfi4QOC31oT",
+          },
+        },
+      ],
       "phone": "phone",
       "postcode": "postcode",
-      "recurrenceDates": Array [],
+      "recurrenceDates": Array [
+        "08/07/2018",
+        "04/08/2018",
+      ],
       "startTime": "2018-07-07T00:00+00:00",
       "ticketingUrl": "ticketingUrl",
       "venueDetails": Array [
-        "venueDetailsA",
-        "venueDetailsB",
+        "6em2PtRZIhYQiRF44",
+        "Z7Z7T6bfuo7qFFz4s3fVA1LYD3lnx",
+        "XLrUX5MxwxR9qRvT8t4F3",
+        "7LIDGAlkK3Xg",
+        "jP6n64T086sxr3sTpxGPLO05J",
       ],
     },
-    "id": "m3w5",
+    "id": "r22",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+  Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "O84a35poabxKTJm2d5",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "p7m",
+        "75ckc33EMZTM3",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-07-08T03:00+00:00",
+      "eventCategories": Array [
+        "Nightlife",
+        "Social and Networking",
+        "Community",
+        "Health",
+        "Sports and Activities",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "1nW21Av63nW",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "2TmaX296B5e",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "cow95kARTP95S5pLs7tm6KOkFH",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "Bfi4QOC31oT",
+          },
+        },
+      ],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [
+        "07/07/2018",
+        "08/07/2018",
+        "04/08/2018",
+      ],
+      "startTime": "2018-07-08T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "6em2PtRZIhYQiRF44",
+        "Z7Z7T6bfuo7qFFz4s3fVA1LYD3lnx",
+        "XLrUX5MxwxR9qRvT8t4F3",
+        "7LIDGAlkK3Xg",
+        "jP6n64T086sxr3sTpxGPLO05J",
+      ],
+    },
+    "id": "r22-recurrence-08/07/2018",
+    "locale": "en-GB",
+    "revision": 1,
+  },
+  Object {
+    "contentType": "event",
+    "fields": Object {
+      "accessibilityDetails": "accessibilityDetails",
+      "accessibilityOptions": Array [
+        "O84a35poabxKTJm2d5",
+      ],
+      "addressLine1": "addressLine1",
+      "addressLine2": "addressLine2",
+      "audience": Array [
+        "p7m",
+        "75ckc33EMZTM3",
+      ],
+      "city": "city",
+      "email": "email",
+      "endTime": "2018-08-04T03:00+00:00",
+      "eventCategories": Array [
+        "Nightlife",
+        "Social and Networking",
+        "Community",
+        "Health",
+        "Sports and Activities",
+      ],
+      "eventDescription": "eventDescription",
+      "eventPriceHigh": 10,
+      "eventPriceLow": 0,
+      "eventsListPicture": Object {
+        "sys": Object {
+          "id": "1nW21Av63nW",
+        },
+      },
+      "individualEventPicture": Object {
+        "sys": Object {
+          "id": "2TmaX296B5e",
+        },
+      },
+      "location": Object {
+        "lat": 0,
+        "lon": 10,
+      },
+      "locationName": "locationName",
+      "name": "name",
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "cow95kARTP95S5pLs7tm6KOkFH",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "Bfi4QOC31oT",
+          },
+        },
+      ],
+      "phone": "phone",
+      "postcode": "postcode",
+      "recurrenceDates": Array [
+        "07/07/2018",
+        "08/07/2018",
+        "04/08/2018",
+      ],
+      "startTime": "2018-08-04T00:00+00:00",
+      "ticketingUrl": "ticketingUrl",
+      "venueDetails": Array [
+        "6em2PtRZIhYQiRF44",
+        "Z7Z7T6bfuo7qFFz4s3fVA1LYD3lnx",
+        "XLrUX5MxwxR9qRvT8t4F3",
+        "7LIDGAlkK3Xg",
+        "jP6n64T086sxr3sTpxGPLO05J",
+      ],
+    },
+    "id": "r22-recurrence-04/08/2018",
     "locale": "en-GB",
     "revision": 1,
   },
@@ -66,32 +236,35 @@ Array [
     "fields": Object {
       "accessibilityDetails": "accessibilityDetails",
       "accessibilityOptions": Array [
-        "accessibilityOptionsA",
-        "accessibilityOptionsB",
+        "FM6jre",
+        "b8Y2Ioy1qEC",
+        "0D98Lcd5il86y1sf4685Ba3s3RbTi4",
       ],
       "addressLine1": "addressLine1",
       "addressLine2": "addressLine2",
       "audience": Array [
-        "???",
+        "X2T77u30HfGQ978Ce",
+        "IsJqxf058AxsLcfAP7451huX7",
+        "",
       ],
       "city": "city",
       "email": "email",
       "endTime": "2018-08-02T03:00+00:00",
       "eventCategories": Array [
-        "Cabaret and Variety",
-        "Music",
+        "Exhibition and Tours",
+        "Community",
       ],
       "eventDescription": "eventDescription",
       "eventPriceHigh": 10,
       "eventPriceLow": 0,
       "eventsListPicture": Object {
         "sys": Object {
-          "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+          "id": "spcxVKZ8i3797",
         },
       },
       "individualEventPicture": Object {
         "sys": Object {
-          "id": "0q2m69N0G0Z761e",
+          "id": "l7g",
         },
       },
       "location": Object {
@@ -100,7 +273,28 @@ Array [
       },
       "locationName": "locationName",
       "name": "name",
-      "performances": Array [],
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "Bsqmx0ly0Fqqd477NXLD4",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "Gf6o218t6c",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "b91L9M20RL6Qz9BUbdB9",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "aMa7e9k4CwRc33C8Bu8h5AO2p8xJE",
+          },
+        },
+      ],
       "phone": "phone",
       "postcode": "postcode",
       "recurrenceDates": Array [
@@ -110,11 +304,11 @@ Array [
       "startTime": "2018-08-02T00:00+00:00",
       "ticketingUrl": "ticketingUrl",
       "venueDetails": Array [
-        "venueDetailsA",
-        "venueDetailsB",
+        "TBIuOS1mRo7nM",
+        "BKX3JLP68i0k2e",
       ],
     },
-    "id": "m3w5",
+    "id": "l503MHwD",
     "locale": "en-GB",
     "revision": 1,
   },
@@ -123,32 +317,35 @@ Array [
     "fields": Object {
       "accessibilityDetails": "accessibilityDetails",
       "accessibilityOptions": Array [
-        "accessibilityOptionsA",
-        "accessibilityOptionsB",
+        "FM6jre",
+        "b8Y2Ioy1qEC",
+        "0D98Lcd5il86y1sf4685Ba3s3RbTi4",
       ],
       "addressLine1": "addressLine1",
       "addressLine2": "addressLine2",
       "audience": Array [
-        "???",
+        "X2T77u30HfGQ978Ce",
+        "IsJqxf058AxsLcfAP7451huX7",
+        "",
       ],
       "city": "city",
       "email": "email",
       "endTime": "2018-08-03T03:00+00:00",
       "eventCategories": Array [
-        "Cabaret and Variety",
-        "Music",
+        "Exhibition and Tours",
+        "Community",
       ],
       "eventDescription": "eventDescription",
       "eventPriceHigh": 10,
       "eventPriceLow": 0,
       "eventsListPicture": Object {
         "sys": Object {
-          "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+          "id": "spcxVKZ8i3797",
         },
       },
       "individualEventPicture": Object {
         "sys": Object {
-          "id": "0q2m69N0G0Z761e",
+          "id": "l7g",
         },
       },
       "location": Object {
@@ -157,7 +354,28 @@ Array [
       },
       "locationName": "locationName",
       "name": "name",
-      "performances": Array [],
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "Bsqmx0ly0Fqqd477NXLD4",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "Gf6o218t6c",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "b91L9M20RL6Qz9BUbdB9",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "aMa7e9k4CwRc33C8Bu8h5AO2p8xJE",
+          },
+        },
+      ],
       "phone": "phone",
       "postcode": "postcode",
       "recurrenceDates": Array [
@@ -168,11 +386,11 @@ Array [
       "startTime": "2018-08-03T00:00+00:00",
       "ticketingUrl": "ticketingUrl",
       "venueDetails": Array [
-        "venueDetailsA",
-        "venueDetailsB",
+        "TBIuOS1mRo7nM",
+        "BKX3JLP68i0k2e",
       ],
     },
-    "id": "m3w5-recurrence-03/08/2018",
+    "id": "l503MHwD-recurrence-03/08/2018",
     "locale": "en-GB",
     "revision": 1,
   },
@@ -181,32 +399,35 @@ Array [
     "fields": Object {
       "accessibilityDetails": "accessibilityDetails",
       "accessibilityOptions": Array [
-        "accessibilityOptionsA",
-        "accessibilityOptionsB",
+        "FM6jre",
+        "b8Y2Ioy1qEC",
+        "0D98Lcd5il86y1sf4685Ba3s3RbTi4",
       ],
       "addressLine1": "addressLine1",
       "addressLine2": "addressLine2",
       "audience": Array [
-        "???",
+        "X2T77u30HfGQ978Ce",
+        "IsJqxf058AxsLcfAP7451huX7",
+        "",
       ],
       "city": "city",
       "email": "email",
       "endTime": "2018-08-04T03:00+00:00",
       "eventCategories": Array [
-        "Cabaret and Variety",
-        "Music",
+        "Exhibition and Tours",
+        "Community",
       ],
       "eventDescription": "eventDescription",
       "eventPriceHigh": 10,
       "eventPriceLow": 0,
       "eventsListPicture": Object {
         "sys": Object {
-          "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+          "id": "spcxVKZ8i3797",
         },
       },
       "individualEventPicture": Object {
         "sys": Object {
-          "id": "0q2m69N0G0Z761e",
+          "id": "l7g",
         },
       },
       "location": Object {
@@ -215,7 +436,28 @@ Array [
       },
       "locationName": "locationName",
       "name": "name",
-      "performances": Array [],
+      "performances": Array [
+        Object {
+          "sys": Object {
+            "id": "Bsqmx0ly0Fqqd477NXLD4",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "Gf6o218t6c",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "b91L9M20RL6Qz9BUbdB9",
+          },
+        },
+        Object {
+          "sys": Object {
+            "id": "aMa7e9k4CwRc33C8Bu8h5AO2p8xJE",
+          },
+        },
+      ],
       "phone": "phone",
       "postcode": "postcode",
       "recurrenceDates": Array [
@@ -226,11 +468,11 @@ Array [
       "startTime": "2018-08-04T00:00+00:00",
       "ticketingUrl": "ticketingUrl",
       "venueDetails": Array [
-        "venueDetailsA",
-        "venueDetailsB",
+        "TBIuOS1mRo7nM",
+        "BKX3JLP68i0k2e",
       ],
     },
-    "id": "m3w5-recurrence-04/08/2018",
+    "id": "l503MHwD-recurrence-04/08/2018",
     "locale": "en-GB",
     "revision": 1,
   },
@@ -241,6 +483,7 @@ exports[`Events reducer initialises with default state 1`] = `
 Object {
   "entries": Array [],
   "events": Array [],
+  "featuredEvents": Array [],
   "headerBanners": Array [],
   "images": Object {},
   "loading": true,

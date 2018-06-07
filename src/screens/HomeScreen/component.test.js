@@ -70,11 +70,13 @@ describe("HomeScreen Component", () => {
   });
 
   it("navigates to event when tapped", () => {
-    const output = render();
-    const eventTile = output.find({ testID: `event-tile-KAHR4` });
+    const featuredEvents = generateCMSEvents(3);
+    const { id } = featuredEvents[0].sys;
+    const output = render({ featuredEvents });
+    const eventTile = output.find({ testID: `event-tile-${id}` });
     eventTile.simulate("press");
     expect(navigation.navigate).toHaveBeenCalledWith(EVENT_DETAILS, {
-      eventId: "KAHR4"
+      eventId: id
     });
   });
 

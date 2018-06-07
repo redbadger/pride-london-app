@@ -1,6 +1,7 @@
 // @flow
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
+import { createSelector } from "reselect";
 import type { State } from "../../reducers";
 import type {
   EventCategoryName,
@@ -11,10 +12,10 @@ import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
-  selectEventsLoading,
-  selectEventsRefreshing,
   selectFilteredEvents
-} from "../../selectors/events";
+} from "../../selectors/events-deprecated";
+import { selectData } from "../../selectors";
+import { selectLoading, selectRefreshing } from "../../selectors/data";
 import Component from "./component";
 
 type StateProps = {
@@ -33,14 +34,18 @@ type DispatchProps = {
 
 type Props = StateProps & DispatchProps;
 
+const getDataLoading = createSelector([selectData], selectLoading);
+
+const getDataRefreshing = createSelector([selectData], selectRefreshing);
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (state: State): StateProps => ({
   events: groupEventsByStartTime(selectFilteredEvents(state)),
   savedEvents: state.savedEvents,
-  loading: selectEventsLoading(state),
-  refreshing: selectEventsRefreshing(state),
+  loading: getDataLoading(state),
+  refreshing: getDataRefreshing(state),
   selectedCategories: state.eventFilters.selectedFilters.categories
 });
 

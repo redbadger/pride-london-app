@@ -1,12 +1,8 @@
 import { DateTime } from "luxon";
 import {
-  getTimePeriod,
   groupEventsByStartTime,
-  groupPerformancesByPeriod,
   selectEvents,
   selectFeaturedEvents,
-  selectEventsLoading,
-  selectEventsRefreshing,
   selectEventById,
   selectFilteredEvents,
   selectFeaturedEventsByTitle,
@@ -14,7 +10,7 @@ import {
   selectSavedEvents,
   expandRecurringEventsInEntries,
   eventIsAfter
-} from "./events";
+} from "./events-deprecated";
 import { buildEventFilter } from "./event-filters";
 import { createEventFiltersState } from "../reducers/event-filters";
 
@@ -568,242 +564,6 @@ describe("expandRecurringEventsInEntries", () => {
   });
 });
 
-describe("getTimePeriod", () => {
-  it("5:59am is Evening (late)", () => {
-    const expected = "Evening";
-    const actual = getTimePeriod("2018-01-01T05:59");
-
-    expect(actual).toEqual(expected);
-  });
-  it("6:00am is Morning", () => {
-    const expected = "Morning";
-    const actual = getTimePeriod("2018-01-01T06:00");
-
-    expect(actual).toEqual(expected);
-  });
-  it("11:59am is Morning", () => {
-    const expected = "Morning";
-    const actual = getTimePeriod("2018-01-01T11:59");
-
-    expect(actual).toEqual(expected);
-  });
-  it("12:00am is Afternoon", () => {
-    const expected = "Afternoon";
-    const actual = getTimePeriod("2018-01-01T12:00");
-
-    expect(actual).toEqual(expected);
-  });
-  it("5:59pm is Afternoon", () => {
-    const expected = "Afternoon";
-    const actual = getTimePeriod("2018-01-01T17:59");
-
-    expect(actual).toEqual(expected);
-  });
-  it("6:00pm is Evening", () => {
-    const expected = "Evening";
-    const actual = getTimePeriod("2018-01-01T18:00");
-
-    expect(actual).toEqual(expected);
-  });
-});
-
-describe("groupPerformancesByPeriod", () => {
-  it("returns empty array when no performances exist", () => {
-    const expected = [];
-    const actual = groupPerformancesByPeriod([]);
-
-    expect(actual).toEqual(expected);
-  });
-
-  it("separates two individual performances by period and sorts", () => {
-    const performances = [
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T18:01:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      }
-    ];
-
-    const expected = [
-      [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        }
-      ],
-      [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T18:01:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        }
-      ]
-    ];
-    const actual = groupPerformancesByPeriod(performances);
-
-    expect(actual).toEqual(expected);
-  });
-
-  it("leaves two performances in the same period together", () => {
-    const performances = [
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T09:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      }
-    ];
-
-    const expected = [
-      [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T09:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        }
-      ]
-    ];
-    const actual = groupPerformancesByPeriod(performances);
-
-    expect(actual).toEqual(expected);
-  });
-
-  it("makes two groups", () => {
-    const performances = [
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T07:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      }
-    ];
-
-    const expected = [
-      [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T07:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T10:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        }
-      ],
-      [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        }
-      ]
-    ];
-    const actual = groupPerformancesByPeriod(performances);
-
-    expect(actual).toEqual(expected);
-  });
-
-  it("makes multiple groups", () => {
-    const performances = [
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-02T02:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T11:30:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      },
-      {
-        fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
-        sys: { contentType: { sys: { id: "performance" } } }
-      }
-    ];
-
-    const expected = [
-      [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T11:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T11:30:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        }
-      ],
-      [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T13:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        }
-      ],
-      [
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T18:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-01T19:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-02T00:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        },
-        {
-          fields: { startTime: { "en-GB": "2018-08-02T02:00:00" } },
-          sys: { contentType: { sys: { id: "performance" } } }
-        }
-      ]
-    ];
-    const actual = groupPerformancesByPeriod(performances);
-
-    expect(actual).toEqual(expected);
-  });
-});
-
 describe("selectEvents", () => {
   it("selects property", () => {
     const state = {
@@ -883,36 +643,6 @@ describe("selectFeaturedEvents", () => {
     expect(selected[0].fields.events["en-GB"]).toEqual([
       { sys: { type: "Link", linkType: "Entry", id: "3O3SZPgYl2MUEWu2MoK2oi" } }
     ]);
-  });
-});
-
-describe("selectEventsLoading", () => {
-  it("selects property", () => {
-    const loading = true;
-    const state = {
-      data: {
-        loading
-      }
-    };
-
-    const selected = selectEventsLoading(state);
-
-    expect(selected).toBe(loading);
-  });
-});
-
-describe("selectEventsRefreshing", () => {
-  it("selects property", () => {
-    const refreshing = true;
-    const state = {
-      data: {
-        refreshing
-      }
-    };
-
-    const selected = selectEventsRefreshing(state);
-
-    expect(selected).toBe(refreshing);
   });
 });
 

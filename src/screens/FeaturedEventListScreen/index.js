@@ -8,7 +8,7 @@ import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
   selectFeaturedEventsByTitle
-} from "../../selectors/events";
+} from "../../selectors/events-deprecated";
 import Component from "./component";
 
 type OwnProps = {

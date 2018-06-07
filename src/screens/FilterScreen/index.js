@@ -7,7 +7,7 @@ import {
   setEventFilters,
   clearEventFilters
 } from "../../actions/event-filters";
-import { selectFilteredEvents } from "../../selectors/events";
+import { selectFilteredEvents } from "../../selectors/events-deprecated";
 import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
 import Component from "./component";
 import text from "../../constants/text";
