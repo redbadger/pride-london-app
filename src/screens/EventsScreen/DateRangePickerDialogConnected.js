@@ -7,7 +7,7 @@ import {
   clearStagedEventFilters
 } from "../../actions/event-filters";
 import type { DateRange } from "../../data/date-time";
-import { selectFilteredEvents } from "../../selectors/events";
+import { selectFilteredEvents } from "../../selectors/events-deprecated";
 import {
   selectDateFilter,
   selectIsStagingFilters

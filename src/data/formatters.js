@@ -7,7 +7,7 @@ import {
 } from "../lib/date";
 import type { DateRange } from "./date-time";
 import text from "../constants/text";
-import { isFree } from "../selectors/event";
+import { isFree } from "../selectors/event-deprecated";
 
 export const formatDateRange = (dateRange: DateRange) =>
   dateRange.startDate !== dateRange.endDate

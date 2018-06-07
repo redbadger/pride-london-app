@@ -30,6 +30,8 @@ export default {
   tabParade: "Parade",
   tabSaved: "Saved",
   tabSupportUs: "Support us",
+  tabParadeMap: "Map",
+  tabParadeStages: "Stages",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
   categoryFilterButton: "Filter by event type",
@@ -138,7 +140,7 @@ export default {
   homeSupportUs: "Support us",
   homeSupportUsDescription: "Be part of the movement",
   paradeInformationScreen: {
-    headerTitle: "Parade",
+    headerTitle: "Parade Day - 7th July",
     pageHeading: "London Parade",
     pageSubheading: "Sunday 7th July",
     pageDescription:
