@@ -13,7 +13,7 @@ import {
   blackZeroColor,
   blackThirtyColor
 } from "../constants/colors";
-import type { EventCategoryName } from "../data/event";
+import type { EventCategoryName } from "../data/event-deprecated";
 
 type Props = {
   selectedCategories: Set<EventCategoryName>,

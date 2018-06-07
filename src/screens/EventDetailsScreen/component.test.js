@@ -8,7 +8,7 @@ import Component, {
   EventHeader,
   EventTickets
 } from "./component";
-import type { Event } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 
 const event: Event = ({
   fields: {
@@ -74,13 +74,6 @@ const event: Event = ({
   }
 }: any);
 
-const getAssetSource = () => ({
-  uri:
-    "https://images.ctfassets.net/n2o4hgsv6wcx/HNLFqItbkAmW8ssqQECIy/b1262a7a1180e87d14f852f265d9c36c/event-pride-in-the-park_1.jpg",
-  width: 256,
-  height: 100
-});
-
 const navigation: NavigationScreenProp<{ params: { eventId: string } }> = ({
   goBack: () => {}
 }: any);
@@ -89,7 +82,6 @@ it("renders correctly", () => {
   const output = shallow(
     <Component
       event={event}
-      getAssetSource={getAssetSource}
       isSaved
       navigation={navigation}
       toggleSaved={() => {}}
@@ -110,7 +102,6 @@ it("renders correctly with missing details", () => {
           accessibilityDetails: undefined
         }
       }}
-      getAssetSource={getAssetSource}
       navigation={navigation}
       toggleSaved={() => {}}
       setCategoryFilter={() => {}}

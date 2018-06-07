@@ -1,6 +1,6 @@
 // @flow
 import { selectEventIsFree } from "./event";
-import type { Event } from "../data/event";
+import type { Event } from "../data/event-deprecated";
 
 describe("selectEventIsFree", () => {
   it("returns true if both prices are 0", () => {

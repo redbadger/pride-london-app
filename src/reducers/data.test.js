@@ -1,4 +1,5 @@
 // @flow
+import { generateCMSEvent, sampleOne } from "../data/__test-data";
 import reducer from "./data";
 
 describe("Events reducer", () => {
@@ -12,7 +13,7 @@ describe("Events reducer", () => {
   it("sets loading flag for REQUEST_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -29,7 +30,7 @@ describe("Events reducer", () => {
   it("sets refreshing flag for REQUEST_UPDATE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -46,7 +47,7 @@ describe("Events reducer", () => {
   it("saves entries from RECEIVE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -73,13 +74,12 @@ describe("Events reducer", () => {
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
     expect(state.entries).toEqual(newCmsData.entries);
-    expect(state.assets).toBe(newCmsData.assets);
   });
 
   it("expands recurring events from RECEIVE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -134,13 +134,12 @@ describe("Events reducer", () => {
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
     expect(state.entries).toEqual(expected);
-    expect(state.assets).toBe(newCmsData.assets);
   });
 
   it("sets loading and refreshing to false for RECEIVE_CMS_ERROR action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
       headerBanners: [],
       images: {},
       performances: {},
@@ -155,10 +154,71 @@ describe("Events reducer", () => {
   });
 
   describe("RECEIVE_CMS_DATA action", () => {
+    it("decodes events", () => {
+      const initialState = {
+        entries: [],
+        events: [],
+        headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [sampleOne(generateCMSEvent)],
+        assets: [],
+        syncToken: "abc",
+        updated: true
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.events).toMatchSnapshot();
+    });
+
+    it("expands recurring events", () => {
+      const initialState = {
+        entries: [],
+        events: [],
+        headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const event = sampleOne(generateCMSEvent);
+      event.fields.startTime = { "en-GB": "2018-08-02T00:00+00:00" };
+      event.fields.endTime = { "en-GB": "2018-08-02T03:00+00:00" };
+      event.fields.recurrenceDates = { "en-GB": ["03/08/2018", "04/08/2018"] };
+
+      const newCmsData = {
+        entries: [event],
+        assets: [{ id: "1" }],
+        syncToken: "abc",
+        updated: true
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.events).toMatchSnapshot();
+    });
+
     it("decodes headerBanners", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -221,7 +281,7 @@ describe("Events reducer", () => {
     it("decodes performances", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -279,7 +339,7 @@ describe("Events reducer", () => {
     it("decodes performances", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},
@@ -336,7 +396,7 @@ describe("Events reducer", () => {
     it("decodes sponsors", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
         headerBanners: [],
         images: {},
         performances: {},

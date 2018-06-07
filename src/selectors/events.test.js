@@ -8,7 +8,6 @@ import {
   selectEventsLoading,
   selectEventsRefreshing,
   selectEventById,
-  selectAssetById,
   selectFilteredEvents,
   selectFeaturedEventsByTitle,
   uniqueEvents,
@@ -939,20 +938,6 @@ describe("selectEventById", () => {
     const selected = selectEventById(state, "1");
 
     expect(selected).toEqual(state.data.entries[0]);
-  });
-});
-
-describe("selectAssetById", () => {
-  it("selects asset from list", () => {
-    const state = {
-      data: {
-        assets: [{ sys: { id: "1" } }]
-      }
-    };
-
-    const selected = selectAssetById(state, "1");
-
-    expect(selected).toEqual(state.data.assets[0]);
   });
 });
 
