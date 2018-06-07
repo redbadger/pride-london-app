@@ -8,11 +8,8 @@ exports[`renders correctly 1`] = `
       "flex": 1,
     }
   }
+  testID="parade-information-screen"
 >
-  <Header
-    testID="page-heading-parade"
-    title="Parade"
-  />
   <ScrollView>
     <Component
       style={
