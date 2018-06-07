@@ -12,8 +12,7 @@ import Text from "../../components/Text";
 import TextLink from "../../components/TextLink";
 import text from "../../constants/text";
 import strings from "../../constants/strings";
-import type { Event } from "../../data/event-deprecated";
-import locale from "../../data/locale";
+import type { Event } from "../../data/event";
 import dateIcon from "../../../assets/images/date.png";
 import genderNeutralIcon from "../../../assets/images/genderNeutral.png";
 import accessibilityIcon from "../../../assets/images/accessibility.png";
@@ -27,8 +26,7 @@ type Props = {
 };
 
 const EventOverview = ({ event }: Props) => {
-  const startTime = event.fields.startTime[locale];
-  const endTime = event.fields.endTime[locale];
+  const { endTime, startTime } = event.fields;
   const dateFormat = FORMAT_SHORT_WEEKDAY_DATE;
   const dateDisplay = isSameDay(startTime, endTime)
     ? formatDate(startTime, dateFormat)
@@ -39,9 +37,9 @@ const EventOverview = ({ event }: Props) => {
   const timeDisplay = `${formatTime(startTime)} – ${formatTime(endTime)}`;
 
   const eventLocation = [
-    event.fields.location[locale].lat,
-    event.fields.location[locale].lon,
-    event.fields.locationName[locale]
+    event.fields.location.lat,
+    event.fields.location.lon,
+    event.fields.locationName
   ];
 
   return (
@@ -51,10 +49,10 @@ const EventOverview = ({ event }: Props) => {
           {dateDisplay}
         </Text>
         <Text type="small">{timeDisplay}</Text>
-        {event.fields.recurrenceDates && (
+        {event.fields.recurrenceDates.length > 0 && (
           <RecurrenceDates
-            recurrenceDates={event.fields.recurrenceDates[locale]}
-            startTime={event.fields.startTime[locale]}
+            recurrenceDates={event.fields.recurrenceDates}
+            startTime={event.fields.startTime}
           />
         )}
       </IconItem>
@@ -63,52 +61,48 @@ const EventOverview = ({ event }: Props) => {
         onPress={() => showLocation(...eventLocation)}
         source={locationIcon}
       >
-        <TextLink>{event.fields.locationName[locale]}</TextLink>
+        <TextLink>{event.fields.locationName}</TextLink>
         {event.fields.addressLine1 && (
-          <Text type="small">{event.fields.addressLine1[locale]}</Text>
+          <Text type="small">{event.fields.addressLine1}</Text>
         )}
         {event.fields.addressLine2 && (
-          <Text type="small">{event.fields.addressLine2[locale]}</Text>
+          <Text type="small">{event.fields.addressLine2}</Text>
         )}
-        {event.fields.city && (
-          <Text type="small">{event.fields.city[locale]}</Text>
-        )}
+        {event.fields.city && <Text type="small">{event.fields.city}</Text>}
         {event.fields.postcode && (
-          <Text type="small">{event.fields.postcode[locale]}</Text>
+          <Text type="small">{event.fields.postcode}</Text>
         )}
       </IconItem>
 
       <IconItem source={ticketsIcon}>
         <Text type="h4" color="lightNavyBlueColor">
           {formatLongEventPrice(
-            event.fields.eventPriceLow[locale],
-            event.fields.eventPriceHigh[locale]
+            event.fields.eventPriceLow,
+            event.fields.eventPriceHigh
           )}
         </Text>
       </IconItem>
 
-      {event.fields.venueDetails &&
-        event.fields.venueDetails[locale].includes(
-          strings.venueDetailsGenderNeutralToilets
-        ) && (
-          <IconItem source={genderNeutralIcon}>
-            <Text type="h4" color="lightNavyBlueColor">
-              {text.eventDetailsGenderNeutralToilets}
-            </Text>
-          </IconItem>
-        )}
+      {event.fields.venueDetails.includes(
+        strings.venueDetailsGenderNeutralToilets
+      ) && (
+        <IconItem source={genderNeutralIcon}>
+          <Text type="h4" color="lightNavyBlueColor">
+            {text.eventDetailsGenderNeutralToilets}
+          </Text>
+        </IconItem>
+      )}
 
-      {event.fields.accessibilityOptions &&
-        event.fields.accessibilityOptions[locale].length > 0 && (
-          <IconItem source={accessibilityIcon}>
-            <Text type="h4" color="lightNavyBlueColor">
-              {text.eventDetailsAccessibility}
-            </Text>
-            <Text type="small">
-              {event.fields.accessibilityOptions[locale].join(", ")}
-            </Text>
-          </IconItem>
-        )}
+      {event.fields.accessibilityOptions.length > 0 && (
+        <IconItem source={accessibilityIcon}>
+          <Text type="h4" color="lightNavyBlueColor">
+            {text.eventDetailsAccessibility}
+          </Text>
+          <Text type="small">
+            {event.fields.accessibilityOptions.join(", ")}
+          </Text>
+        </IconItem>
+      )}
     </IconList>
   );
 };
