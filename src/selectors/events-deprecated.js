@@ -1,6 +1,5 @@
 // @flow
 import R from "ramda";
-import { DateTime } from "luxon";
 import type { CmsEntry } from "../integrations/cms";
 import {
   compareAsc as compareDateAsc,
@@ -125,21 +124,13 @@ const addPerformances = (performances: Performance[]) => (event: Event) => {
   return event;
 };
 
-export const eventIsAfter = (date: DateTime) => (event: Event) => {
-  const endTime = DateTime.fromISO(event.fields.endTime[locale]);
-  return DateTime.max(date, endTime) === endTime;
-};
-
 // Type hack to force array filter to one type https://github.com/facebook/flow/issues/1915
 export const selectEventsFromEntries = (entries: CmsEntry[]): Event[] =>
   ((entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
-  ): any[]): Event[])
-    .map(addPerformances(selectPerformancesFromEntries(entries)))
-    // THIS NEEDS FIXING TO FILTER PAST EVENTS
-    // SHOULD MOVE TO THE FILTER
-    // .filter(eventIsAfter(getEventFiltersState(state).showEventsAfter));
-    .filter(eventIsAfter(DateTime.fromISO("2018-06-07T00:00:00+01:00")));
+  ): any[]): Event[]).map(
+    addPerformances(selectPerformancesFromEntries(entries))
+  );
 
 export const selectEvents = (state: State): Event[] =>
   selectEventsFromEntries(getDataState(state).entries);

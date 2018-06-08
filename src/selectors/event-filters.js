@@ -1,4 +1,5 @@
 // @flow
+import { DateTime } from "luxon";
 import {
   buildDateRangeFilter,
   buildTimeFilter,
@@ -12,6 +13,7 @@ import type { Event } from "../data/event-deprecated";
 import type { Time } from "../data/date-time";
 import type { State } from "../reducers";
 import type { Area, FilterCollection } from "../data/event-filters";
+import locale from "../data/locale";
 
 const getEventFiltersState = (state: State, selectStagedFilters: boolean) =>
   selectStagedFilters
@@ -52,18 +54,27 @@ const buildAreasFilter = (areas: Area[]) => {
   return (event: Event) => filters.some(filter => filter(event));
 };
 
-export const buildEventFilter = ({
-  date,
-  timeOfDay,
-  price,
-  audience,
-  venueDetails,
-  accessibilityOptions,
-  area,
-  categories
-}: FilterCollection): (Event => boolean) => {
+export const eventIsAfter = (date: DateTime) => (event: Event) => {
+  const endTime = DateTime.fromISO(event.fields.endTime[locale]);
+  return DateTime.max(date, endTime) === endTime;
+};
+
+export const buildEventFilter = (
+  showEventsAfter: DateTime,
+  {
+    date,
+    timeOfDay,
+    price,
+    audience,
+    venueDetails,
+    accessibilityOptions,
+    area,
+    categories
+  }: FilterCollection
+): (Event => boolean) => {
   const timeArray = Array.from(timeOfDay);
   const areaArray = Array.from(area);
+  const isAfter = eventIsAfter(showEventsAfter);
   const dateFilter: (event: Event) => boolean = date
     ? buildDateRangeFilter(date)
     : () => true;
@@ -90,6 +101,7 @@ export const buildEventFilter = ({
     categories.size > 0 ? buildCategoryFilter(categories) : () => true;
 
   return (event: Event) =>
+    isAfter(event) &&
     dateFilter(event) &&
     timeFilter(event) &&
     priceFilter(event) &&

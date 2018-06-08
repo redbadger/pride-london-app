@@ -261,9 +261,40 @@ describe("selectTagFilterSelectedCount", () => {
 });
 
 describe("buildEventFilter", () => {
+  const showEventsAfter = DateTime.fromISO("2018-07-07T00:00:00+01:00");
   const event = buildEvent({
     startTime: "2018-08-02T08:00:00",
     endTime: "2018-08-02T15:00:00"
+  });
+
+  it("returns a filter that only keeps events after showEventsAfter", () => {
+    const onlyAfter = DateTime.fromISO("2018-07-07T12:00:00+01:00");
+    const filterState = {
+      categories: new Set(),
+      date: null,
+      timeOfDay: new Set(["morning", "afternoon", "evening"]),
+      price: new Set(),
+      audience: new Set(),
+      venueDetails: new Set(),
+      accessibilityOptions: new Set(),
+      area: new Set()
+    };
+    const filter = buildEventFilter(onlyAfter, filterState);
+    const laterEvent = buildEvent({
+      startTime: "2018-07-07T00:00:00+01:00",
+      endTime: "2018-07-07T12:01:00+01:00"
+    });
+    const sameTimeEvent = buildEvent({
+      startTime: "2018-07-07T00:00:00+01:00",
+      endTime: "2018-07-07T12:00:00+01:00"
+    });
+    const earlierEvent = buildEvent({
+      startTime: "2018-07-07T00:00:00+01:00",
+      endTime: "2018-07-07T11:59:00+01:00"
+    });
+    expect(filter(laterEvent)).toEqual(true);
+    expect(filter(sameTimeEvent)).toEqual(false);
+    expect(filter(earlierEvent)).toEqual(false);
   });
 
   it("builds always truthy date filter when date is null", () => {
@@ -279,7 +310,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateRangeFilter).not.toHaveBeenCalled();
   });
@@ -298,7 +329,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(filterState.date);
   });
@@ -320,7 +351,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(filterState.date);
   });
@@ -336,7 +367,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).not.toHaveBeenCalled();
   });
@@ -352,7 +383,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).not.toHaveBeenCalled();
   });
@@ -372,7 +403,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildTimeFilter).toHaveBeenCalledWith("morning");
     expect(untypedBuildTimeFilter).toHaveBeenCalledWith("evening");
@@ -392,7 +423,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -410,7 +441,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -425,7 +456,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildPriceFilter).not.toHaveBeenCalled();
   });
@@ -443,7 +474,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -460,7 +491,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 
@@ -475,7 +506,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
@@ -493,7 +524,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -510,7 +541,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 
@@ -525,7 +556,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
@@ -543,7 +574,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -560,7 +591,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 
@@ -575,7 +606,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
@@ -593,7 +624,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(["Step free access"]),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -610,7 +641,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(["Step free access"]),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 
@@ -625,7 +656,7 @@ describe("buildEventFilter", () => {
       categories: new Set(),
       area: new Set()
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
     expect(untypedBuildAreaFilter).not.toHaveBeenCalled();
   });
@@ -643,7 +674,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set(["North"])
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -660,7 +691,7 @@ describe("buildEventFilter", () => {
       accessibilityOptions: new Set(),
       area: new Set(["North"])
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 
@@ -679,7 +710,7 @@ describe("buildEventFilter", () => {
       area: new Set(),
       categories: new Set(["Community"])
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -697,7 +728,7 @@ describe("buildEventFilter", () => {
       area: new Set(),
       categories: new Set(["Community"])
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
@@ -715,7 +746,7 @@ describe("buildEventFilter", () => {
       area: new Set(),
       categories: new Set(["Community"])
     };
-    const filter = buildEventFilter(filterState);
+    const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 });
