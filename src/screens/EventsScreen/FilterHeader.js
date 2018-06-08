@@ -23,7 +23,7 @@ export type Props = {
   numTagFiltersSelected: number
 };
 
-class FilterHeader extends React.PureComponent<Props, State> {
+class FilterHeader extends React.PureComponent<Props> {
   render() {
     const {
       dateFilter,

@@ -14,9 +14,9 @@ type Props = {
   title?: string,
   rightElement?: Node,
   testID?: string,
-  titleAccesible?: string,
+  titleAccesible?: boolean,
   titleLabel?: string,
-  titleAccessibilityTraits?: Array<String>,
+  titleAccessibilityTraits?: Array<string>,
   titleAccessibilityLiveRegion?: string
 };
 

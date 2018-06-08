@@ -10,6 +10,7 @@ const render = (
     selectedCategories: new Set(),
     onFilterCategoriesPress: () => {},
     onFilterButtonPress: () => {},
+    onDateFilterButtonPress: () => {},
     numTagFiltersSelected: 0
   }
 ) => shallow(<FilterHeader {...props} />);
@@ -21,6 +22,7 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
       numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
@@ -32,6 +34,7 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
       numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
@@ -43,6 +46,7 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
       numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
@@ -57,6 +61,7 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
       numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
@@ -68,6 +73,7 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
       numTagFiltersSelected: 2
     });
     expect(output).toMatchSnapshot();

@@ -11,7 +11,7 @@ import List from "./List";
 const navigation: NavigationScreenProp<*> = ({}: any);
 
 const render = props =>
-  shallow(<Component navigation={navigation} {...props} />);
+  shallow(<Component navigation={navigation} applyButtonText="" {...props} />);
 
 describe("CategoriesFilterScreen Component", () => {
   const events: Event[] = ([
