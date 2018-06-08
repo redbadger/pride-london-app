@@ -110,7 +110,6 @@ export const expandRecurringEventsInEntries = entries =>
 
 const getDataState = (state: State) => state.data;
 const getSavedEventsState = (state: State) => state.savedEvents;
-// const getEventFiltersState = (state: State) => state.eventFilters;
 
 const addPerformances = (performances: Performance[]) => (event: Event) => {
   const eventPerformances = R.view(fieldsPerformancesLocaleLens, event);
