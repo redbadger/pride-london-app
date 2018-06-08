@@ -5,7 +5,7 @@ import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { State } from "../../reducers";
 import type { Event, EventCategoryName } from "../../data/event-deprecated";
 import { setEventFilters } from "../../actions/event-filters";
-import { selectFilteredEvents } from "../../selectors/events-deprecated";
+import { selectStagedFilteredEvents } from "../../selectors";
 import Component from "./component";
 
 type OwnProps = {
@@ -33,7 +33,7 @@ const mapStateToProps = (
   { navigation }: OwnProps
 ): StateProps => ({
   navigation,
-  events: selectFilteredEvents(state, true),
+  events: selectStagedFilteredEvents(state),
   categories: state.eventFilters.selectedFilters.categories
 });
 

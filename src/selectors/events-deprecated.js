@@ -1,6 +1,6 @@
 // @flow
 import R from "ramda";
-import { DateTime } from "luxon";
+import type { CmsEntry } from "../integrations/cms";
 import {
   compareAsc as compareDateAsc,
   isSameDay,
@@ -11,7 +11,6 @@ import {
   FORMAT_EUROPEAN_DATE,
   FORMAT_CONTENTFUL_ISO
 } from "../lib/date";
-import { buildEventFilter } from "./event-filters";
 import type { State } from "../reducers";
 import type {
   Event,
@@ -20,6 +19,7 @@ import type {
   Performance,
   Reference
 } from "../data/event-deprecated";
+import { eventIsAfter } from "./event-filters";
 import locale from "../data/locale";
 
 const fieldsEventsLocaleLens = R.lensPath(["fields", "events", locale]);
@@ -110,15 +110,14 @@ export const expandRecurringEventsInEntries = entries =>
 
 const getDataState = (state: State) => state.data;
 const getSavedEventsState = (state: State) => state.savedEvents;
-const getEventFiltersState = (state: State) => state.eventFilters;
 
-const addPerformances = (state: State) => (event: Event) => {
-  const performances = R.view(fieldsPerformancesLocaleLens, event);
-  if (performances) {
+const addPerformances = (performances: Performance[]) => (event: Event) => {
+  const eventPerformances = R.view(fieldsPerformancesLocaleLens, event);
+  if (eventPerformances) {
     return R.set(
       fieldsPerformancesLocaleLens,
-      performances.map(performance =>
-        selectPerformanceById(state, performance.sys.id)
+      eventPerformances.map(performance =>
+        selectPerformanceById(performances, performance.sys.id)
       ),
       event
     );
@@ -126,18 +125,16 @@ const addPerformances = (state: State) => (event: Event) => {
   return event;
 };
 
-export const eventIsAfter = (date: DateTime) => (event: Event) => {
-  const endTime = DateTime.fromISO(event.fields.endTime[locale]);
-  return DateTime.max(date, endTime) === endTime;
-};
-
 // Type hack to force array filter to one type https://github.com/facebook/flow/issues/1915
-export const selectEvents = (state: State): Event[] =>
-  ((getDataState(state).entries.filter(
+export const selectEventsFromEntries = (entries: CmsEntry[]): Event[] =>
+  ((entries.filter(
     entry => entry.sys.contentType.sys.id === "event"
-  ): any[]): Event[])
-    .map(addPerformances(state))
-    .filter(eventIsAfter(getEventFiltersState(state).showEventsAfter));
+  ): any[]): Event[]).map(
+    addPerformances(selectPerformancesFromEntries(entries))
+  );
+
+export const selectEvents = (state: State): Event[] =>
+  selectEventsFromEntries(getDataState(state).entries);
 
 export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
   ((getDataState(state).entries.filter(
@@ -150,21 +147,26 @@ export const selectFeaturedEvents = (state: State): FeaturedEvents[] =>
     )
   );
 
-export const selectPerformances = (state: State) =>
-  ((getDataState(state).entries.filter(
+export const selectPerformancesFromEntries = (entries: CmsEntry[]) =>
+  ((entries.filter(
     entry => entry.sys.contentType.sys.id === "performance"
   ): any[]): Performance[]);
+
+export const selectPerformances = (state: State) =>
+  selectPerformancesFromEntries(getDataState(state).entries);
 
 export const selectEventById = (state: State, id: string): ?Event =>
   selectEvents(state).find(event => event.sys.id === id);
 
-export const selectPerformanceById = (state: State, id: string) =>
-  selectPerformances(state).find(performance => performance.sys.id === id);
+export const selectPerformanceById = (
+  performances: Performance[],
+  id: string
+) => performances.find(performance => performance.sys.id === id);
 
-export const selectFilteredEvents = (
-  state: State,
-  selectStagedFilters?: boolean = false
-) => selectEvents(state).filter(buildEventFilter(state, selectStagedFilters));
+export const filterEvents = (
+  events: Event[],
+  filter: Event => boolean
+): Event[] => events.filter(filter);
 
 export const selectFeaturedEventsByTitle = (state: State, title: string) => {
   const featured = selectFeaturedEvents(state).find(
@@ -174,17 +176,21 @@ export const selectFeaturedEventsByTitle = (state: State, title: string) => {
     return [];
   }
 
-  return featured.fields.events[locale].reduce((acc, item: Reference) => {
-    const event: ?Event = selectEventById(state, item.sys.id);
-    if (event) {
-      acc.push(event);
-    }
-    return acc;
-  }, []);
+  return featured.fields.events[locale]
+    .reduce((acc, item: Reference) => {
+      const event: ?Event = selectEventById(state, item.sys.id);
+      if (event) {
+        acc.push(event);
+      }
+      return acc;
+    }, [])
+    .filter(eventIsAfter(state.eventFilters.showEventsAfter));
 };
 
 export const selectSavedEvents = (state: State): Event[] => {
-  const events = selectEvents(state);
+  const events = selectEvents(state).filter(
+    eventIsAfter(state.eventFilters.showEventsAfter)
+  );
   const savedEvents = getSavedEventsState(state);
   return events.filter(event => savedEvents.has(event.sys.id));
 };

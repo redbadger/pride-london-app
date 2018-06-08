@@ -1,26 +1,17 @@
 import { DateTime } from "luxon";
+import { generateEvent, sampleArrayOf } from "../data/__test-data";
 import {
   groupEventsByStartTime,
   selectEvents,
   selectFeaturedEvents,
   selectEventById,
-  selectFilteredEvents,
+  filterEvents,
   selectFeaturedEventsByTitle,
   uniqueEvents,
   selectSavedEvents,
-  expandRecurringEventsInEntries,
-  eventIsAfter
+  expandRecurringEventsInEntries
 } from "./events-deprecated";
-import { buildEventFilter } from "./event-filters";
 import { createEventFiltersState } from "../reducers/event-filters";
-
-jest.mock("./event-filters", () => ({
-  buildEventFilter: jest.fn()
-}));
-
-beforeEach(() => {
-  buildEventFilter.mockReturnValue(() => true);
-});
 
 describe("uniqueEvents", () => {
   it("returns empty array when no events exist", () => {
@@ -671,99 +662,17 @@ describe("selectEventById", () => {
   });
 });
 
-describe("selectFilteredEvents", () => {
-  it("filters events using the buildEventFilter function", () => {
-    const mockFilter = jest
+describe("filterEvents", () => {
+  it("applies the passed filter to the passed events", () => {
+    const events = sampleArrayOf(generateEvent)(5);
+    const filter = jest
       .fn()
-      .mockReturnValue(false)
-      .mockReturnValueOnce(true);
-    buildEventFilter.mockReturnValue(mockFilter);
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(false)
+      .mockReturnValue(true);
+    const actual = filterEvents(events, filter);
 
-    const state = {
-      eventFilters: createEventFiltersState(
-        DateTime.fromISO("2018-07-07T00:00:00+01:00")
-      ),
-      data: {
-        entries: [
-          {
-            fields: {
-              startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
-              endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
-            },
-            sys: { contentType: { sys: { id: "event" } } }
-          },
-          {
-            fields: {
-              startTime: { "en-GB": "2018-08-01T12:00:00+01:00" },
-              endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
-            },
-            sys: { contentType: { sys: { id: "event" } } }
-          }
-        ]
-      }
-    };
-
-    const expected = [
-      {
-        fields: {
-          startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
-          endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
-        },
-        sys: { contentType: { sys: { id: "event" } } }
-      }
-    ];
-    const actual = selectFilteredEvents(state);
-
-    expect(actual).toEqual(expected);
-    expect(buildEventFilter).toHaveBeenCalledWith(state, false);
-    expect(mockFilter).toHaveBeenCalledTimes(2);
-  });
-
-  it("filters events using the buildEventFilter function with staged filters", () => {
-    const mockFilter = jest
-      .fn()
-      .mockReturnValue(false)
-      .mockReturnValueOnce(true);
-    buildEventFilter.mockReturnValue(mockFilter);
-
-    const state = {
-      eventFilters: createEventFiltersState(
-        DateTime.fromISO("2018-07-07T00:00:00+01:00")
-      ),
-      data: {
-        entries: [
-          {
-            fields: {
-              startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
-              endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
-            },
-            sys: { contentType: { sys: { id: "event" } } }
-          },
-          {
-            fields: {
-              startTime: { "en-GB": "2018-08-01T12:00:00+01:00" },
-              endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
-            },
-            sys: { contentType: { sys: { id: "event" } } }
-          }
-        ]
-      }
-    };
-
-    const expected = [
-      {
-        fields: {
-          startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
-          endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
-        },
-        sys: { contentType: { sys: { id: "event" } } }
-      }
-    ];
-    const actual = selectFilteredEvents(state, true);
-
-    expect(actual).toEqual(expected);
-    expect(buildEventFilter).toHaveBeenCalledWith(state, true);
-    expect(mockFilter).toHaveBeenCalledTimes(2);
+    expect(actual.length).toEqual(3);
   });
 });
 
@@ -777,7 +686,13 @@ describe("selectFeaturedEventsByTitle", () => {
         {
           fields: {
             title: { "en-GB": "Featured events" },
-            events: { "en-GB": [{ sys: { id: "1" } }, { sys: { id: "2" } }] }
+            events: {
+              "en-GB": [
+                { sys: { id: "1" } },
+                { sys: { id: "2" } },
+                { sys: { id: "3" } }
+              ]
+            }
           },
           sys: { contentType: { sys: { id: "featuredEvents" } } }
         },
@@ -794,6 +709,13 @@ describe("selectFeaturedEventsByTitle", () => {
             endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
           },
           sys: { id: "2", contentType: { sys: { id: "event" } } }
+        },
+        {
+          fields: {
+            startTime: { "en-GB": "2018-07-01T12:00:00+01:00" },
+            endTime: { "en-GB": "2018-07-01T14:00:00+01:00" }
+          },
+          sys: { id: "3", contentType: { sys: { id: "event" } } }
         }
       ]
     }
@@ -824,10 +746,27 @@ describe("selectFeaturedEventsByTitle", () => {
     ];
     expect(events).toEqual(expected);
   });
-});
 
-afterEach(() => {
-  buildEventFilter.mockReset();
+  it("filters events that are in the past", () => {
+    const events = selectFeaturedEventsByTitle(state, "Featured events");
+    const expected = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
+          endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
+        },
+        sys: { id: "1", contentType: { sys: { id: "event" } } }
+      },
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-01T12:00:00+01:00" },
+          endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
+        },
+        sys: { id: "2", contentType: { sys: { id: "event" } } }
+      }
+    ];
+    expect(events).toEqual(expected);
+  });
 });
 
 describe("selectSavedEvents", () => {
@@ -969,27 +908,5 @@ describe("selectSavedEvents", () => {
     const actual = selectSavedEvents(state);
 
     expect(actual).toEqual(expected);
-  });
-});
-
-describe("eventIsAfter", () => {
-  it("filters events before the passed date", () => {
-    const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
-    const event = {
-      fields: { endTime: { "en-GB": "2018-07-01T00:00:00+01:00" } },
-      sys: { id: "2", contentType: { sys: { id: "event" } } }
-    };
-
-    expect(eventIsAfter(date)(event)).toEqual(false);
-  });
-
-  it("does not filter events after the passed date", () => {
-    const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
-    const event = {
-      fields: { endTime: { "en-GB": "2018-08-01T00:00:00+01:00" } },
-      sys: { id: "2", contentType: { sys: { id: "event" } } }
-    };
-
-    expect(eventIsAfter(date)(event)).toEqual(true);
   });
 });

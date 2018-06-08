@@ -7,7 +7,7 @@ import {
   clearStagedEventFilters
 } from "../../actions/event-filters";
 import type { DateRange } from "../../data/date-time";
-import { selectFilteredEvents } from "../../selectors/events-deprecated";
+import { selectStagedFilteredEvents } from "../../selectors";
 import {
   selectDateFilter,
   selectIsStagingFilters
@@ -42,12 +42,12 @@ type Props = StateProps & DispatchProps;
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (state): StateProps => ({
   applyButtonText: text.filterPickerApply(
-    selectFilteredEvents(state, true).length
+    selectStagedFilteredEvents(state).length
   ),
   applyButtonLabel: text.filterPickerApplyLabel(
-    selectFilteredEvents(state, true).length
+    selectStagedFilteredEvents(state).length
   ),
-  applyButtonDisabled: selectFilteredEvents(state, true).length <= 0,
+  applyButtonDisabled: selectStagedFilteredEvents(state).length <= 0,
   dateRange: selectDateFilter(state, true),
   forceNewRange: !selectIsStagingFilters(state)
 });

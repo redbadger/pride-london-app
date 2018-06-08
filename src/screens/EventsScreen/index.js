@@ -10,11 +10,8 @@ import type {
 } from "../../data/event-deprecated";
 import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
-import {
-  groupEventsByStartTime,
-  selectFilteredEvents
-} from "../../selectors/events-deprecated";
-import { selectData } from "../../selectors";
+import { groupEventsByStartTime } from "../../selectors/events-deprecated";
+import { selectData, selectFilteredEvents } from "../../selectors";
 import { selectLoading, selectRefreshing } from "../../selectors/data";
 import Component from "./component";
 
