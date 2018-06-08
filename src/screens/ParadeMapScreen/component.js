@@ -29,9 +29,9 @@ export class ParadeMap extends Component<NavigationProps> {
         <MapView
           style={StyleSheet.absoluteFill}
           region={{
-            latitude: 51.51004,
+            latitude: 51.5085,
             longitude: -0.134192,
-            latitudeDelta: 0.018,
+            latitudeDelta: 0.02,
             longitudeDelta: 0.000000041
           }}
         >

@@ -18,8 +18,8 @@ exports[`renders correctly 1`] = `
   <MapView
     region={
       Object {
-        "latitude": 51.51004,
-        "latitudeDelta": 0.018,
+        "latitude": 51.5085,
+        "latitudeDelta": 0.02,
         "longitude": -0.134192,
         "longitudeDelta": 4.1e-8,
       }
