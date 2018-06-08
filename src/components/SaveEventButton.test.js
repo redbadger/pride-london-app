@@ -86,6 +86,7 @@ describe("update from inactive to active", () => {
       easing: Easing.linear,
       useNativeDriver: true
     });
+    // Disabling vibration: https://github.com/redbadger/pride-london-app/issues/351
     // expect(ReactNativeHapticFeedback.trigger).toBeCalledWith("impactHeavy");
   });
 });
