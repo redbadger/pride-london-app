@@ -125,7 +125,7 @@ platform :ios do
     # Post to Slack
     if defined?(options[:slack_webhook])
       slack(
-        message: "iOS build #{latestBuildNumber} promoted to Production!",
+        message: "iOS build #{latestBuildNumber} submitted for Review!",
         success: true,
         slack_url: options[:slack_webhook],
       )
