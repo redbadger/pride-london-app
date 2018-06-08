@@ -20,9 +20,10 @@ type State = {
 
 const triggerAnimation = (progress: Object, active: boolean) => {
   const value = active ? 1 : 0;
-  if (active) {
-    ReactNativeHapticFeedback.trigger("impactHeavy");
-  }
+  // Disabling vibration: https://github.com/redbadger/pride-london-app/issues/351
+  // if (active) {
+  //   ReactNativeHapticFeedback.trigger("impactHeavy");
+  // }
   Animated.timing(progress, {
     toValue: value,
     duration: value * 800,
