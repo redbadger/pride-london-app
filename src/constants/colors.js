@@ -54,6 +54,7 @@ export const tabBarActiveLineColor = "rgb(44, 218, 157)";
 export const tabBarActiveLabelColor = "rgb(45, 47, 127)";
 export const tabBarShadowColor = shadowColor;
 export const tabBarBorderColor = "rgba(0, 0, 0, 0.25)";
+export const topTabBarDividerColor = "rgba(255,255,255, 0.4)";
 
 // FILTER HEADER
 
