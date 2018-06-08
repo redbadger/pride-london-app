@@ -9,6 +9,7 @@ import {
   buildCategoryFilter
 } from "./basic-event-filters";
 import {
+  eventIsAfter,
   selectDateFilter,
   selectTimeFilter,
   buildEventFilter,
@@ -257,6 +258,28 @@ describe("selectTagFilterSelectedCount", () => {
 
     const count = selectTagFilterSelectedCount(state);
     expect(count).toBe(2);
+  });
+});
+
+describe("eventIsAfter", () => {
+  it("filters events before the passed date", () => {
+    const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
+    const event = buildEvent({
+      startTime: "2018-07-01T00:00:00+01:00",
+      endTime: "2018-07-01T12:00:00+01:00"
+    });
+
+    expect(eventIsAfter(date)(event)).toEqual(false);
+  });
+
+  it("does not filter events after the passed date", () => {
+    const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
+    const event = buildEvent({
+      startTime: "2018-08-01T00:00:00+01:00",
+      endTime: "2018-08-01T12:00:00+01:00"
+    });
+
+    expect(eventIsAfter(date)(event)).toEqual(true);
   });
 });
 
