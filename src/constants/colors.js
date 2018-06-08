@@ -66,12 +66,14 @@ export const interestButtonTextColor = whiteColor;
 export const filterButtonBorderColor = "rgb(44, 218, 157)";
 export const filterButtonTextColor = "rgb(44, 218, 157)";
 export const filterButtonsBgColor = darkBlueGreyTwoColor;
+
 // EVENT LIST
 
 export const eventListHeaderBgColor = lightishGreyColor;
 export const eventListHeaderColor = "rgb(51, 51, 51)";
 export const sectionHeaderBgColor = lightGreyColor;
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
+
 // DATE FILTER MODAL
 
 export const dateRangePickerTextColor = "rgb(45, 47, 127)";
