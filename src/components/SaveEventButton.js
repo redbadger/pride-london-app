@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Animated, Easing, StyleSheet } from "react-native";
-import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+// import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import LottieView from "lottie-react-native";
 import Touchable from "./Touchable";
 import heartAnimationLight from "../../assets/animations/save-event-light.json";
