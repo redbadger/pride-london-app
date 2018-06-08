@@ -1,13 +1,20 @@
 // @flow
 import { createSelector } from "reselect";
-import type { FilterCollection } from "../data/event-filters";
 import type { CmsEntry } from "../integrations/cms";
 import type { State } from "../reducers";
 import type { State as DataState } from "../reducers/data";
+import type { State as EventFiltersState } from "../data/event-filters";
 import { filterEvents, selectEventsFromEntries } from "./events-deprecated";
-import { buildEventFilter } from "./event-filters";
+import {
+  buildEventFilter,
+  selectShowEventsAfter,
+  selectFilters,
+  selectStagedFilters
+} from "./event-filters";
 
 export const selectData = (state: State): DataState => state.data;
+export const selectEventFilters = (state: State): EventFiltersState =>
+  state.eventFilters;
 
 // The selectors below are temporary so that we can memoize across
 // multiple components. This will be refactored.
@@ -15,19 +22,29 @@ const selectEntries = (data: DataState): CmsEntry[] => data.entries;
 
 const getEntries = createSelector([selectData], selectEntries);
 const getEvents = createSelector([getEntries], selectEventsFromEntries);
-const selectFilterCollection = (state: State): FilterCollection =>
-  state.eventFilters.selectedFilters;
-const getFilter = createSelector([selectFilterCollection], buildEventFilter);
+
+const getShowEventsAfter = createSelector(
+  [selectEventFilters],
+  selectShowEventsAfter
+);
+const getSelectedFilters = createSelector([selectEventFilters], selectFilters);
+const getStagedFilters = createSelector(
+  [selectEventFilters],
+  selectStagedFilters
+);
+
+const getSelectedFilter = createSelector(
+  [getShowEventsAfter, getSelectedFilters],
+  buildEventFilter
+);
 
 export const selectFilteredEvents = createSelector(
-  [getEvents, getFilter],
+  [getEvents, getSelectedFilter],
   filterEvents
 );
 
-const selectStagedFilterCollection = (state: State): FilterCollection =>
-  state.eventFilters.selectedFilters;
 const getStagedFilter = createSelector(
-  [selectStagedFilterCollection],
+  [getShowEventsAfter, getStagedFilters],
   buildEventFilter
 );
 
