@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="h4"
     >
-      Mon, 09 Jul 2018 – Sun, 15 Jul 2018
+      Sat, 07 Jul 2018
     </Text>
     <Text
       color="blackColor"
@@ -19,20 +19,18 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      11:00 – 18:00
+      00:00 – 03:00
     </Text>
     <RecurrenceDates
       recurrenceDates={
         Array [
+          "20/06/2018",
+          "07/07/2018",
           "10/07/2018",
-          "11/07/2018",
-          "12/07/2018",
-          "13/07/2018",
-          "14/07/2018",
-          "15/07/2018",
+          "09/10/2018",
         ]
       }
-      startTime="2018-07-09T11:00+01:00"
+      startTime="2018-07-07T00:00+00:00"
     />
   </IconItem>
   <IconItem
@@ -40,7 +38,7 @@ exports[`renders correctly 1`] = `
     source={1}
   >
     <TextLink>
-      Vauxhall Pleasure Gardens
+      locationName
     </TextLink>
     <Text
       color="blackColor"
@@ -48,7 +46,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      Vauxhall Pleasure Gardens
+      addressLine1
     </Text>
     <Text
       color="blackColor"
@@ -56,7 +54,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      Vauxhall Pleasure Gardens
+      addressLine2
     </Text>
     <Text
       color="blackColor"
@@ -64,7 +62,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      London
+      city
     </Text>
     <Text
       color="blackColor"
@@ -72,7 +70,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      EC1M 3HA
+      postcode
     </Text>
   </IconItem>
   <IconItem
@@ -84,19 +82,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="h4"
     >
-      £19.95 — £30
-    </Text>
-  </IconItem>
-  <IconItem
-    source={1}
-  >
-    <Text
-      color="lightNavyBlueColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      type="h4"
-    >
-      Gender neutral toilets
+      £0 — £10
     </Text>
   </IconItem>
   <IconItem
@@ -116,7 +102,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      Accessible Toilets, Hearing loop installed
+      CISQ3V775yDAcd3L8x5z6xmH9F1310, LiT957P92gV4B57HH6A04IO, iVoj4qUG6JMx597x47Bq2pxm0o
     </Text>
   </IconItem>
 </IconList>

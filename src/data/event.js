@@ -32,19 +32,23 @@ export type EventCategoryName =
   | "Health"
   | "Music";
 
-const decodeEventCategoryName = decode.oneOf([
-  decode.value("Cabaret and Variety"),
-  decode.value("Community"),
-  decode.value("Talks and Debates"),
-  decode.value("Film and Screenings"),
-  decode.value("Plays and Theatre"),
-  decode.value("Social and Networking"),
-  decode.value("Nightlife"),
-  decode.value("Exhibition and Tours"),
-  decode.value("Sports and Activities"),
-  decode.value("Health"),
-  decode.value("Music")
-]);
+export const eventCategoryNames = [
+  "Cabaret and Variety",
+  "Community",
+  "Talks and Debates",
+  "Film and Screenings",
+  "Plays and Theatre",
+  "Social and Networking",
+  "Nightlife",
+  "Exhibition and Tours",
+  "Sports and Activities",
+  "Health",
+  "Music"
+];
+
+const decodeEventCategoryName = decode.oneOf(
+  eventCategoryNames.map(decode.value)
+);
 
 export type Event = {
   // important to keep this at the top level so type refinement works
