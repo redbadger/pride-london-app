@@ -12,28 +12,43 @@ import tags from "../data/tags";
 import type { Event } from "../data/event-deprecated";
 import type { Time } from "../data/date-time";
 import type { State } from "../reducers";
-import type { Area, FilterCollection } from "../data/event-filters";
+import type {
+  Area,
+  FilterCollection,
+  State as EventFilters
+} from "../data/event-filters";
 import locale from "../data/locale";
 
-const getEventFiltersState = (state: State, selectStagedFilters: boolean) =>
-  selectStagedFilters
+export const selectShowEventsAfter = (eventFilters: EventFilters): DateTime =>
+  eventFilters.showEventsAfter;
+
+export const selectStagedFilters = (
+  eventFilters: EventFilters
+): FilterCollection => eventFilters.stagedFilters;
+
+export const selectFilters = (eventFilters: EventFilters): FilterCollection =>
+  eventFilters.selectedFilters;
+
+const getEventFiltersState = (state: State, selectStaged: boolean) =>
+  selectStaged
     ? state.eventFilters.stagedFilters
     : state.eventFilters.selectedFilters;
 
 export const selectDateFilter = (
   state: State,
-  selectStagedFilters?: boolean = false
-) => getEventFiltersState(state, selectStagedFilters).date;
+  selectStaged?: boolean = false
+) => getEventFiltersState(state, selectStaged).date;
+
 export const selectTimeFilter = (
   state: State,
-  selectStagedFilters?: boolean = false
-) => getEventFiltersState(state, selectStagedFilters).timeOfDay;
+  selectStaged?: boolean = false
+) => getEventFiltersState(state, selectStaged).timeOfDay;
 
 export const selectTagFilterSelectedCount = (
   state: State,
-  selectStagedFilters?: boolean = false
+  selectStaged?: boolean = false
 ) => {
-  const eventFilters = getEventFiltersState(state, selectStagedFilters);
+  const eventFilters = getEventFiltersState(state, selectStaged);
   return Object.keys(tags).reduce(
     (acc, tagName) =>
       acc + (eventFilters[tagName] ? eventFilters[tagName].size : 0),
