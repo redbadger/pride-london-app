@@ -30,7 +30,7 @@ type Props = {
 const SupportUsScreen = ({ navigation }: Props) => (
   <View style={styles.container}>
     <Header title={text.supportUsTitle} testID="page-heading-support-us" />
-    <ScrollView>
+    <ScrollView testID="support-us-main-content">
       <View style={styles.scrollContainer}>
         <ImageHeader
           image={supportUsAsIndividual}
@@ -46,6 +46,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
             navigation={navigation}
             url={DONATE}
             style={styles.buttonSpacing}
+            testID="support-us-donate-button"
           />
           <ButtonWithShapes
             color={warmPinkColor}
@@ -55,6 +56,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
             navigation={navigation}
             url="https://prideinlondon.org/volunteer"
             style={styles.buttonSpacing}
+            testID="support-us-volunteer-button"
           />
           <ButtonWithShapes
             color={vomitYellowColor}
@@ -65,6 +67,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
             url="https://www.thegayshop.co.uk/product-category/pride/pride-in-london-shop/"
             contrast
             style={styles.buttonSpacing}
+            testID="support-us-merchandise-button"
           />
         </ContentPadding>
         <ImageHeader
@@ -80,6 +83,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
             navigation={navigation}
             url={SPONSOR}
             style={styles.buttonSpacing}
+            testID="support-us-partner-button"
           />
         </ContentPadding>
       </View>

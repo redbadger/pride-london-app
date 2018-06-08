@@ -43,7 +43,7 @@ class SponsorScreen extends PureComponent<Props> {
     );
 
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container} testID="partner-screen">
         <Header
           leftElement={
             <Header.BackButton

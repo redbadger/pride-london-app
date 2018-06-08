@@ -92,7 +92,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
   renderContent() {
     const { selectedAmount, otherAmount } = this.state;
     return (
-      <ScrollView ref={this.scrollViewRef}>
+      <ScrollView ref={this.scrollViewRef} testID="donate-screen">
         <SafeAreaView style={styles.scrollContainer}>
           <ImageHeader image={donateHeader} title={text.donateHeader} />
           <ContentPadding>

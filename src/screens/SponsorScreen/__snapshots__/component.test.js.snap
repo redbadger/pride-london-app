@@ -8,6 +8,7 @@ exports[`SponsorScreen Component renders correctly 1`] = `
       "flex": 1,
     }
   }
+  testID="partner-screen"
 >
   <Header
     leftElement={
