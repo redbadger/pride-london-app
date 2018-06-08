@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when passed location props 1`] = `
+<ContentPadding
+  padding={
+    Object {
+      "large": Object {
+        "horizontal": 20,
+        "vertical": 20,
+      },
+      "medium": Object {
+        "horizontal": 16,
+        "vertical": 16,
+      },
+      "small": Object {
+        "horizontal": 8,
+        "vertical": 8,
+      },
+    }
+  }
+  style={Object {}}
+>
+  <Component
+    style={
+      Object {
+        "borderRadius": 5,
+        "borderWidth": 0,
+        "elevation": 3,
+        "shadowColor": "rgba(0, 0, 0, 0.2)",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 3,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 108,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          resizeMode="cover"
+          source={1}
+          style={
+            Object {
+              "width": 114,
+            }
+          }
+        />
+        <Component
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "flex": 1,
+              "paddingLeft": 8,
+              "paddingTop": 12,
+            }
+          }
+        >
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            numberOfLines={1}
+            style={
+              Object {
+                "paddingTop": 4,
+              }
+            }
+            type="h3"
+          >
+            Hello world
+          </Text>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            numberOfLines={3}
+            type="small"
+          >
+            This is a location description
+          </Text>
+        </Component>
+      </Component>
+    </Component>
+  </Component>
+</ContentPadding>
+`;
+
+exports[`renders correctly with default props 1`] = `
+<ContentPadding
+  padding={
+    Object {
+      "large": Object {
+        "horizontal": 20,
+        "vertical": 20,
+      },
+      "medium": Object {
+        "horizontal": 16,
+        "vertical": 16,
+      },
+      "small": Object {
+        "horizontal": 8,
+        "vertical": 8,
+      },
+    }
+  }
+  style={Object {}}
+>
+  <Component
+    style={
+      Object {
+        "borderRadius": 5,
+        "borderWidth": 0,
+        "elevation": 3,
+        "shadowColor": "rgba(0, 0, 0, 0.2)",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 3,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "borderRadius": 5,
+          "flexDirection": "row",
+          "height": 108,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Image
+          resizeMode="cover"
+          source={1}
+          style={
+            Object {
+              "width": 114,
+            }
+          }
+        />
+        <Component
+          style={
+            Object {
+              "backgroundColor": "#ffffff",
+              "flex": 1,
+              "paddingLeft": 8,
+              "paddingTop": 12,
+            }
+          }
+        >
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            numberOfLines={1}
+            style={
+              Object {
+                "paddingTop": 4,
+              }
+            }
+            type="h3"
+          >
+            Come back soon
+          </Text>
+          <Text
+            color="lightNavyBlueColor"
+            markdown={false}
+            markdownStyle={Object {}}
+            numberOfLines={3}
+            type="small"
+          >
+            We are currently adding the events to the map. Check back later!
+          </Text>
+        </Component>
+      </Component>
+    </Component>
+  </Component>
+</ContentPadding>
+`;
