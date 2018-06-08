@@ -34,6 +34,7 @@ class TopTabBar extends PureComponent<_TabBarBottomProps> {
   activeTabX: Animated.Value;
   activeTabWidth: Animated.Value;
 
+  // TODO function duplicated in NavigationTabBar
   updateActiveTabLine = () => {
     const { navigation } = this.props;
     const currentIndex = navigation.state.index;
