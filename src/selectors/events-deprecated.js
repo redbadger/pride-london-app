@@ -19,6 +19,7 @@ import type {
   Performance,
   Reference
 } from "../data/event-deprecated";
+import { eventIsAfter } from "./event-filters";
 import locale from "../data/locale";
 
 const fieldsEventsLocaleLens = R.lensPath(["fields", "events", locale]);
@@ -175,17 +176,21 @@ export const selectFeaturedEventsByTitle = (state: State, title: string) => {
     return [];
   }
 
-  return featured.fields.events[locale].reduce((acc, item: Reference) => {
-    const event: ?Event = selectEventById(state, item.sys.id);
-    if (event) {
-      acc.push(event);
-    }
-    return acc;
-  }, []);
+  return featured.fields.events[locale]
+    .reduce((acc, item: Reference) => {
+      const event: ?Event = selectEventById(state, item.sys.id);
+      if (event) {
+        acc.push(event);
+      }
+      return acc;
+    }, [])
+    .filter(eventIsAfter(state.eventFilters.showEventsAfter));
 };
 
 export const selectSavedEvents = (state: State): Event[] => {
-  const events = selectEvents(state);
+  const events = selectEvents(state).filter(
+    eventIsAfter(state.eventFilters.showEventsAfter)
+  );
   const savedEvents = getSavedEventsState(state);
   return events.filter(event => savedEvents.has(event.sys.id));
 };

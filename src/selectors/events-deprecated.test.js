@@ -9,8 +9,7 @@ import {
   selectFeaturedEventsByTitle,
   uniqueEvents,
   selectSavedEvents,
-  expandRecurringEventsInEntries,
-  eventIsAfter
+  expandRecurringEventsInEntries
 } from "./events-deprecated";
 import { createEventFiltersState } from "../reducers/event-filters";
 
@@ -687,7 +686,13 @@ describe("selectFeaturedEventsByTitle", () => {
         {
           fields: {
             title: { "en-GB": "Featured events" },
-            events: { "en-GB": [{ sys: { id: "1" } }, { sys: { id: "2" } }] }
+            events: {
+              "en-GB": [
+                { sys: { id: "1" } },
+                { sys: { id: "2" } },
+                { sys: { id: "3" } }
+              ]
+            }
           },
           sys: { contentType: { sys: { id: "featuredEvents" } } }
         },
@@ -704,6 +709,13 @@ describe("selectFeaturedEventsByTitle", () => {
             endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
           },
           sys: { id: "2", contentType: { sys: { id: "event" } } }
+        },
+        {
+          fields: {
+            startTime: { "en-GB": "2018-07-01T12:00:00+01:00" },
+            endTime: { "en-GB": "2018-07-01T14:00:00+01:00" }
+          },
+          sys: { id: "3", contentType: { sys: { id: "event" } } }
         }
       ]
     }
@@ -715,6 +727,27 @@ describe("selectFeaturedEventsByTitle", () => {
   });
 
   it("returns array of resolved events", () => {
+    const events = selectFeaturedEventsByTitle(state, "Featured events");
+    const expected = [
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-02T12:00:00+01:00" },
+          endTime: { "en-GB": "2018-08-02T14:00:00+01:00" }
+        },
+        sys: { id: "1", contentType: { sys: { id: "event" } } }
+      },
+      {
+        fields: {
+          startTime: { "en-GB": "2018-08-01T12:00:00+01:00" },
+          endTime: { "en-GB": "2018-08-01T14:00:00+01:00" }
+        },
+        sys: { id: "2", contentType: { sys: { id: "event" } } }
+      }
+    ];
+    expect(events).toEqual(expected);
+  });
+
+  it("filters events that are in the past", () => {
     const events = selectFeaturedEventsByTitle(state, "Featured events");
     const expected = [
       {
@@ -875,27 +908,5 @@ describe("selectSavedEvents", () => {
     const actual = selectSavedEvents(state);
 
     expect(actual).toEqual(expected);
-  });
-});
-
-describe("eventIsAfter", () => {
-  it("filters events before the passed date", () => {
-    const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
-    const event = {
-      fields: { endTime: { "en-GB": "2018-07-01T00:00:00+01:00" } },
-      sys: { id: "2", contentType: { sys: { id: "event" } } }
-    };
-
-    expect(eventIsAfter(date)(event)).toEqual(false);
-  });
-
-  it("does not filter events after the passed date", () => {
-    const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
-    const event = {
-      fields: { endTime: { "en-GB": "2018-08-01T00:00:00+01:00" } },
-      sys: { id: "2", contentType: { sys: { id: "event" } } }
-    };
-
-    expect(eventIsAfter(date)(event)).toEqual(true);
   });
 });
