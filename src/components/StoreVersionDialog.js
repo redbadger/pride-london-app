@@ -2,6 +2,9 @@
 import { Component } from "react";
 import { Alert, Linking } from "react-native";
 import VersionCheck from "react-native-version-check";
+import { connect } from "react-redux";
+import type { Connector } from "react-redux";
+
 import { appNameIos, appIdIos } from "../constants/app";
 import { now, addDays, startOfDay, isBefore } from "../lib/date";
 import {
@@ -9,6 +12,7 @@ import {
   getAppUpdateAskLaterTime
 } from "../integrations/storage";
 import text from "../constants/text";
+import { notifyReporter } from "../actions/reporting";
 
 type VersionInfo = {
   currentVersion: string,
@@ -16,7 +20,11 @@ type VersionInfo = {
   latestVersion: string
 };
 
-class StoreVersionDialog extends Component<{}> {
+type Props = {
+  onError: Error => void
+};
+
+class StoreVersionDialog extends Component<Props> {
   async componentDidMount() {
     const versionInfo: VersionInfo = await VersionCheck.needUpdate();
     const askLaterTime = await getAppUpdateAskLaterTime();
@@ -55,8 +63,7 @@ class StoreVersionDialog extends Component<{}> {
         await VersionCheck.getStoreUrl({ appName: appNameIos, appID: appIdIos })
       );
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log("Error fetching app store version: ", e);
+      this.props.onError(e);
     }
   };
 
@@ -70,4 +77,10 @@ class StoreVersionDialog extends Component<{}> {
   }
 }
 
-export default StoreVersionDialog;
+const mapDispatchToProps = dispatch => ({
+  onError: error => dispatch(notifyReporter(error))
+});
+
+const connector: Connector<{}, Props> = connect(undefined, mapDispatchToProps);
+
+export default connector(StoreVersionDialog);

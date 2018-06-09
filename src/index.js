@@ -23,7 +23,7 @@ bugsnagConfiguration.releaseStage = Config.RELEASE_STAGE
   : "dev";
 // Only send reports for releases from master branch
 bugsnagConfiguration.notifyReleaseStages = ["beta", "release"];
-const bugsnag = new Client(bugsnagConfiguration); // eslint-disable-line no-unused-vars
+const bugsnag = new Client(bugsnagConfiguration);
 
 // https://github.com/react-navigation/react-navigation/issues/3956#issuecomment-380648083
 YellowBox.ignoreWarnings([
@@ -37,7 +37,9 @@ if (UIManager.setLayoutAnimationEnabledExperimental) {
 
 const store = createStore(
   reducers,
-  composeWithDevTools(applyMiddleware(thunk, analytics))
+  composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument(bugsnag), analytics)
+  )
 );
 
 const handleNavigationChange = navigate(store.dispatch);
