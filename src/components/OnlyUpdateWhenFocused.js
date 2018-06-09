@@ -17,6 +17,8 @@ type State = {
   isFocused: boolean
 };
 
+// This component stops children from updating when the given navigation
+// is not inFocus (I.e. not in the state between willFocus and blurred)
 export class OnlyUpdateWhenFocusedComponent extends ReactComponent<
   Props,
   State
