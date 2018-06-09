@@ -17,6 +17,23 @@ export class ParadeMap extends Component<NavigationProps> {
     this.focus = props.navigation.addListener("willFocus", () => null);
   }
 
+  // componentDidMount() {
+  //   navigator.geolocation.getCurrentPosition(
+  //     position => {
+  //       this.setState({
+  //         latitude: position.coords.latitude,
+  //         longitude: position.coords.longitude,
+  //         error: null
+  //       });
+  //     },
+  //     error => this.setState({ error: error.message }),
+  //     {
+  //       enableHighAccuracy: false,
+  //       timeout: 200000,
+  //       maximumAge: 1000
+  //     }
+  //   );
+  // }
   componentWillUnmount() {
     this.focus.remove();
   }
@@ -34,6 +51,9 @@ export class ParadeMap extends Component<NavigationProps> {
             latitudeDelta: 0.02,
             longitudeDelta: 0.000000041
           }}
+          showsUserLocation
+          showsMyLocationButton
+          // followsUserLocation
         >
           <Polyline
             coordinates={paradeCoordinates}
@@ -55,8 +75,8 @@ export class ParadeMap extends Component<NavigationProps> {
               </Text>
             </View>
           </Marker>
+          <LocationCard />
         </MapView>
-        <LocationCard />
       </View>
     );
   }
