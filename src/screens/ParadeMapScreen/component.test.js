@@ -1,11 +1,9 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import { ParadeMap } from "./component";
+import ParadeMapScreen from "./component";
 
 it("renders correctly", () => {
-  const output = shallow(
-    <ParadeMap navigation={{ addListener: jest.fn() }} isFocused />
-  );
+  const output = shallow(<ParadeMapScreen />);
   expect(output).toMatchSnapshot();
 });

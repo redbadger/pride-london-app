@@ -2,7 +2,7 @@
 import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
-import { SavedEventListScreen as Component } from "./component";
+import Component from "./component";
 import EventList from "../../components/EventList";
 import Loading from "../../components/Loading";
 import NoSavedEvents from "./NoSavedEvents";
@@ -92,7 +92,6 @@ describe("SavedEventListScreen Component", () => {
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
-        isFocused
       />
     );
     expect(output).toMatchSnapshot();
@@ -110,7 +109,6 @@ describe("SavedEventListScreen Component", () => {
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
-        isFocused
       />
     );
 
@@ -131,7 +129,6 @@ describe("SavedEventListScreen Component", () => {
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
-        isFocused
       />
     );
 
@@ -152,7 +149,6 @@ describe("SavedEventListScreen Component", () => {
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
-        isFocused
       />
     );
 
@@ -164,29 +160,28 @@ describe("SavedEventListScreen Component", () => {
     expect(updateData).toHaveBeenCalled();
   });
 
-  describe("#shouldComponentUpdate", () => {
-    it("does not update when not focused", () => {
-      const output = shallow(
-        <Component
-          navigation={navigation}
-          events={events}
-          loading={false}
-          refreshing={false}
-          updateData={() => Promise.resolve()}
-          selectedCategories={new Set()}
-          addSavedEvent={() => {}}
-          removeSavedEvent={() => {}}
-          savedEvents={new Set()}
-          isFocused
-        />
-      );
-      const nextProps = {
-        isFocused: false
-      };
-
-      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
-
-      expect(shouldUpdate).toBe(false);
-    });
-  });
+  // describe("#shouldComponentUpdate", () => {
+  //   it("does not update when not focused", () => {
+  //     const output = shallow(
+  //       <Component
+  //         navigation={navigation}
+  //         events={events}
+  //         loading={false}
+  //         refreshing={false}
+  //         updateData={() => Promise.resolve()}
+  //         selectedCategories={new Set()}
+  //         addSavedEvent={() => {}}
+  //         removeSavedEvent={() => {}}
+  //         savedEvents={new Set()}
+  //       />
+  //     );
+  //     const nextProps = {
+  //       isFocused: false
+  //     };
+  //
+  //     const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+  //
+  //     expect(shouldUpdate).toBe(false);
+  //   });
+  // });
 });
