@@ -9,8 +9,15 @@ jest.mock("react-native-haptic-feedback", () => ({
   trigger: jest.fn()
 }));
 
+let timingSpy;
+
 beforeEach(() => {
   ReactNativeHapticFeedback.trigger.mockClear();
+  timingSpy = jest.spyOn(Animated, "timing");
+});
+
+afterEach(() => {
+  timingSpy.mockRestore();
 });
 
 it("renders correctly", () => {
@@ -75,19 +82,11 @@ describe("getDerivedStateFromProps", () => {
 describe("onPress", () => {
   describe("when active", () => {
     it("animates to start of animation", () => {
-      const mockAnimatedValue = {};
-      jest.mock("Animated", () => ({
-        timing: jest.fn(() => ({
-          start: jest.fn()
-        })),
-        Value: jest.fn(() => mockAnimatedValue)
-      }));
-
       const onPress = jest.fn();
       const output = shallow(<SaveEventButton active onPress={onPress} />);
 
       output.simulate("press");
-      expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
+      expect(Animated.timing).toBeCalledWith(expect.any(Animated.Value), {
         duration: 0,
         toValue: 0,
         easing: Easing.linear,
@@ -99,21 +98,13 @@ describe("onPress", () => {
 
   describe("when inactive", () => {
     it("animates the heart and vibrates", () => {
-      const mockAnimatedValue = {};
-      jest.mock("Animated", () => ({
-        timing: jest.fn(() => ({
-          start: jest.fn()
-        })),
-        Value: jest.fn(() => mockAnimatedValue)
-      }));
-
       const onPress = jest.fn();
       const output = shallow(
         <SaveEventButton active={false} onPress={onPress} />
       );
 
       output.simulate("press");
-      expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
+      expect(Animated.timing).toBeCalledWith(expect.any(Animated.Value), {
         duration: 800,
         toValue: 1,
         easing: Easing.linear,
@@ -122,5 +113,24 @@ describe("onPress", () => {
       expect(ReactNativeHapticFeedback.trigger).toBeCalledWith("impactHeavy");
       expect(onPress).toBeCalledWith(true);
     });
+  });
+});
+
+describe("unmount", () => {
+  it("does not crash when complete animation callback is called after unmount", () => {
+    const mockTimingValue = {
+      start: jest.fn(),
+      stop: jest.fn()
+    };
+    timingSpy.mockReturnValue(mockTimingValue);
+
+    const onPress = jest.fn();
+    const output = shallow(
+      <SaveEventButton active={false} onPress={onPress} />
+    );
+    output.simulate("press");
+    const completeAnimation = mockTimingValue.start.mock.calls[0][0];
+    output.unmount();
+    completeAnimation();
   });
 });

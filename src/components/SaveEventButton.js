@@ -49,6 +49,10 @@ export default class SaveEventButton extends React.Component<Props, State> {
     );
   }
 
+  componentWillUnmount() {
+    this.completeAnimation();
+  }
+
   startAnimation = (value: number) => {
     if (this.state.progress) {
       Animated.timing(this.state.progress, {
@@ -57,17 +61,17 @@ export default class SaveEventButton extends React.Component<Props, State> {
         easing: Easing.linear,
         useNativeDriver: true
       }).start(this.completeAnimation);
-
+      this.setState({ animating: true });
       if (value) {
         ReactNativeHapticFeedback.trigger("impactHeavy");
       }
-
-      this.setState({ animating: true });
     }
   };
 
   completeAnimation = () => {
-    this.setState({ animating: false });
+    if (this.state.animating) {
+      this.setState({ animating: false });
+    }
   };
 
   handlePress = () => {
