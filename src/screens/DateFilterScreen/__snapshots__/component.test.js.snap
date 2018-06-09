@@ -13,6 +13,7 @@ exports[`DateFilterScreen renders correctly 1`] = `
   <Header
     onCancel={[Function]}
     onReset={[Function]}
+    showReset={false}
     title="Select dates"
     titleLabel="Select dates"
   />

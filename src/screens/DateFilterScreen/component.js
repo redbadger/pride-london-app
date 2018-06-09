@@ -67,7 +67,7 @@ class DateFilterScreen extends PureComponent<Props> {
         <Header
           onCancel={onCancel}
           onReset={onReset}
-          dateRange={dateRange}
+          showReset={!!dateRange}
           title={title}
           titleLabel={titleLabel}
         />

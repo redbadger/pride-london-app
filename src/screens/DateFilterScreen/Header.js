@@ -7,12 +7,12 @@ import ActionButton from "../../components/ActionButton";
 type Props = {
   onCancel: () => void,
   onReset: () => void,
-  dateRange: string,
+  showReset: boolean,
   title: string,
   titleLabel: string
 };
 
-const Header = ({ onCancel, onReset, dateRange, title, titleLabel }: Props) => (
+const Header = ({ onCancel, onReset, showReset, title, titleLabel }: Props) => (
   <View>
     <CommonHeader
       leftElement={<CommonHeader.BackButton onPress={onCancel} />}
@@ -22,7 +22,7 @@ const Header = ({ onCancel, onReset, dateRange, title, titleLabel }: Props) => (
       titleAccessibilityTraits={["header"]}
       titleAccessibilityLiveRegion="polite"
       rightElement={
-        dateRange && <ActionButton label="Reset" onPress={onReset} />
+        showReset && <ActionButton label="Reset" onPress={onReset} />
       }
     />
   </View>

@@ -46,6 +46,7 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
       active={false}
       badgeValue={null}
       label="filter by date: Select dates"
+      onPress={[Function]}
       style={
         Object {
           "flex": 1,
@@ -124,6 +125,7 @@ exports[`renders correctly with any date and any time 1`] = `
       active={false}
       badgeValue={null}
       label="filter by date: Select dates"
+      onPress={[Function]}
       style={
         Object {
           "flex": 1,
@@ -202,6 +204,7 @@ exports[`renders correctly with date range and two times 1`] = `
       active={true}
       badgeValue={null}
       label="filter by date: 2 Feb - 3 Feb"
+      onPress={[Function]}
       style={
         Object {
           "flex": 1,
@@ -280,6 +283,7 @@ exports[`renders correctly with single date and single time 1`] = `
       active={true}
       badgeValue={null}
       label="filter by date: 2 Feb"
+      onPress={[Function]}
       style={
         Object {
           "flex": 1,
@@ -358,6 +362,7 @@ exports[`renders correctly with tag filters selected 1`] = `
       active={false}
       badgeValue={null}
       label="filter by date: Select dates"
+      onPress={[Function]}
       style={
         Object {
           "flex": 1,
