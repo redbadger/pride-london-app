@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Animated, Easing, StyleSheet } from "react-native";
-import ReactNativeHapticFeedback from "react-native-haptic-feedback";
+// import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import LottieView from "lottie-react-native";
 import Touchable from "./Touchable";
 import heartAnimationLight from "../../assets/animations/save-event-light.json";
@@ -20,9 +20,10 @@ type State = {
 
 const triggerAnimation = (progress: Object, active: boolean) => {
   const value = active ? 1 : 0;
-  if (active) {
-    ReactNativeHapticFeedback.trigger("impactHeavy");
-  }
+  // Disabling vibration: https://github.com/redbadger/pride-london-app/issues/351
+  // if (active) {
+  //   ReactNativeHapticFeedback.trigger("impactHeavy");
+  // }
   Animated.timing(progress, {
     toValue: value,
     duration: value * 800,
