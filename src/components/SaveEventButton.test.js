@@ -24,92 +24,103 @@ it("renders correctly when active", () => {
 });
 
 describe("getDerivedStateFromProps", () => {
-  it("returns state with progress as animated value of 1 when state.progress = null and props.active = true", () => {
-    const props = {
-      active: true,
-      onDark: false,
-      onPress: () => {}
-    };
-    const state = {};
-    expect(
-      SaveEventButton.getDerivedStateFromProps(props, state)
-    ).toMatchSnapshot();
-  });
-
-  it("returns state with progress as animated value of 0 when state.progress = null and props.active = false", () => {
-    const props = {
-      active: false,
-      onDark: false,
-      onPress: () => {}
-    };
-    const state = {};
-    expect(
-      SaveEventButton.getDerivedStateFromProps(props, state)
-    ).toMatchSnapshot();
-  });
-
-  it("returns null when progress does not exist", () => {
+  it("updates state while not animating and active", () => {
     const props = {
       active: true,
       onDark: false,
       onPress: () => {}
     };
     const state = {
+      animating: false,
+      progress: new Animated.Value(0)
+    };
+    expect(SaveEventButton.getDerivedStateFromProps(props, state)).toEqual({
+      animating: false,
+      progress: new Animated.Value(1)
+    });
+  });
+
+  it("updates state while not animating and inactive", () => {
+    const props = {
+      active: false,
+      onDark: false,
+      onPress: () => {}
+    };
+    const state = {
+      animating: false,
+      progress: new Animated.Value(1)
+    };
+    expect(SaveEventButton.getDerivedStateFromProps(props, state)).toEqual({
+      animating: false,
+      progress: new Animated.Value(0)
+    });
+  });
+
+  it("does not update state while animating", () => {
+    const props = {
+      active: true,
+      onDark: false,
+      onPress: () => {}
+    };
+    const state = {
+      animating: true,
       progress: new Animated.Value(1)
     };
     expect(SaveEventButton.getDerivedStateFromProps(props, state)).toEqual(
-      null
+      state
     );
   });
 });
 
-describe("update from inactive to active", () => {
-  it("animates the heart and vibrates", () => {
-    const mockAnimatedValue = {};
-    jest.mock("Animated", () => ({
-      timing: jest.fn(() => ({
-        start: jest.fn()
-      })),
-      Value: jest.fn(() => mockAnimatedValue)
-    }));
+describe("onPress", () => {
+  describe("when active", () => {
+    it("animates to start of animation", () => {
+      const mockAnimatedValue = {};
+      jest.mock("Animated", () => ({
+        timing: jest.fn(() => ({
+          start: jest.fn()
+        })),
+        Value: jest.fn(() => mockAnimatedValue)
+      }));
 
-    const onPress = () => {};
-    const output = shallow(
-      <SaveEventButton active={false} onPress={onPress} />
-    );
+      const onPress = jest.fn();
+      const output = shallow(<SaveEventButton active onPress={onPress} />);
 
-    output.setState({ progress: new Animated.Value(0) });
-    output.setProps({ active: true, onPress });
-    expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
-      duration: 800,
-      toValue: 1,
-      easing: Easing.linear,
-      useNativeDriver: true
+      output.simulate("press");
+      expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
+        duration: 0,
+        toValue: 0,
+        easing: Easing.linear,
+        useNativeDriver: true
+      });
+      expect(onPress).toBeCalledWith(false);
     });
-    expect(ReactNativeHapticFeedback.trigger).toBeCalledWith("impactHeavy");
   });
-});
 
-describe("update from active to inactive", () => {
-  it("animates to start of animation", () => {
-    const mockAnimatedValue = {};
-    jest.mock("Animated", () => ({
-      timing: jest.fn(() => ({
-        start: jest.fn()
-      })),
-      Value: jest.fn(() => mockAnimatedValue)
-    }));
+  describe("when inactive", () => {
+    it("animates the heart and vibrates", () => {
+      const mockAnimatedValue = {};
+      jest.mock("Animated", () => ({
+        timing: jest.fn(() => ({
+          start: jest.fn()
+        })),
+        Value: jest.fn(() => mockAnimatedValue)
+      }));
 
-    const onPress = () => {};
-    const output = shallow(<SaveEventButton active onPress={onPress} />);
+      const onPress = jest.fn();
+      const output = shallow(
+        <SaveEventButton active={false} onPress={onPress} />
+      );
 
-    output.setState({ progress: new Animated.Value(1) });
-    output.setProps({ active: false, onPress });
-    expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
-      duration: 0,
-      toValue: 0,
-      easing: Easing.linear,
-      useNativeDriver: true
+      output.simulate("press");
+      expect(Animated.timing).toBeCalledWith(mockAnimatedValue, {
+        duration: 800,
+        toValue: 1,
+        easing: Easing.linear,
+        useNativeDriver: true
+      });
+      expect(ReactNativeHapticFeedback.trigger).toBeCalledWith("impactHeavy");
+      expect(onPress).toBeCalledWith(true);
     });
   });
 });

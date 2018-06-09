@@ -15,20 +15,8 @@ type Props = {
 };
 
 type State = {
+  animating: boolean,
   progress?: Object
-};
-
-const triggerAnimation = (progress: Object, active: boolean) => {
-  const value = active ? 1 : 0;
-  if (active) {
-    ReactNativeHapticFeedback.trigger("impactHeavy");
-  }
-  Animated.timing(progress, {
-    toValue: value,
-    duration: value * 800,
-    easing: Easing.linear,
-    useNativeDriver: true
-  }).start();
 };
 
 export default class SaveEventButton extends React.Component<Props, State> {
@@ -38,16 +26,19 @@ export default class SaveEventButton extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    if (!prevState.progress) {
+    if (!prevState.animating) {
       const value = nextProps.active ? 1 : 0;
       return {
-        progress: new Animated.Value(value)
+        progress: new Animated.Value(value),
+        animating: false
       };
     }
-    return null;
+    return prevState;
   }
 
-  state = {};
+  state = {
+    animating: false
+  };
 
   shouldComponentUpdate(nextProps: Props) {
     return (
@@ -57,16 +48,26 @@ export default class SaveEventButton extends React.Component<Props, State> {
     );
   }
 
-  componentDidUpdate(prevProps: Props) {
-    // Only animate if props.active has changed,
-    // Animates heart when change from inactive -> active
-    // Snaps to start when change from active -> inactive
-    if (this.state.progress && this.props.active !== prevProps.active) {
-      triggerAnimation(this.state.progress, this.props.active);
+  startAnimation = value => {
+    if (value) {
+      ReactNativeHapticFeedback.trigger("impactHeavy");
     }
-  }
+
+    this.setState({ animating: true });
+    Animated.timing(this.state.progress, {
+      toValue: value,
+      duration: value * 800,
+      easing: Easing.linear,
+      useNativeDriver: true
+    }).start(this.completeAnimation);
+  };
+
+  completeAnimation = () => {
+    this.setState({ animating: false });
+  };
 
   handlePress = () => {
+    this.startAnimation(!this.props.active ? 1 : 0);
     this.props.onPress(!this.props.active);
   };
 
