@@ -23,6 +23,11 @@ const showEventsLabel = (numberOfEvents: number) => {
   return `Show ${numberOfEvents} selected events`;
 };
 
+export const calendarTitleLabel = (dateRange: string, incomplete: boolean) =>
+  `Selected: ${dateRange}${
+    incomplete ? ", pick another day to select range" : ""
+  }`;
+
 export default {
   backButtonAccessibilityLabel: "Back",
   tabHome: "Home",
@@ -182,5 +187,7 @@ export default {
         stageImage: "community"
       }
     ]
-  }
+  },
+  calendarNextMonth: "Next Month",
+  calendarPreviousMonth: "Previous Month"
 };

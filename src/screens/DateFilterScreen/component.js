@@ -3,10 +3,11 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import { lightNavyBlueColor, dialogBgColor } from "../../constants/colors";
-import Header from "./Header";
+import Header from "../../components/Header";
+import ActionButton from "../../components/ActionButton";
 import DateRangePicker from "./DateRangePicker";
 import Button from "../../components/ButtonPrimary";
-import text from "../../constants/text";
+import text, { calendarTitleLabel } from "../../constants/text";
 import { formatDateRange } from "../../data/formatters";
 import type { DateRange } from "../../data/date-time";
 
@@ -22,7 +23,7 @@ type Props = {
   forceNewRange: boolean
 };
 
-export const formatTitle = (dateRange: ?DateRange): string => {
+const formatTitle = (dateRange: ?DateRange): string => {
   if (!dateRange) return text.filterDayPickerTitle;
 
   return (
@@ -31,14 +32,13 @@ export const formatTitle = (dateRange: ?DateRange): string => {
   );
 };
 
-export const formatTitleLabel = (dateRange: ?DateRange): string => {
+const formatTitleLabel = (dateRange: ?DateRange): string => {
   if (!dateRange) return text.filterDayPickerTitle;
 
-  return `Selected: ${formatDateRange(dateRange)} ${
+  return calendarTitleLabel(
+    formatDateRange(dateRange),
     dateRange.startDate === dateRange.endDate
-      ? ", pick another day to select range"
-      : ""
-  }`;
+  );
 };
 
 class DateFilterScreen extends PureComponent<Props> {
@@ -65,11 +65,12 @@ class DateFilterScreen extends PureComponent<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <Header
-          onCancel={onCancel}
-          onReset={onReset}
-          showReset={!!dateRange}
+          leftElement={<Header.BackButton onPress={onCancel} />}
           title={title}
           titleLabel={titleLabel}
+          rightElement={
+            !!dateRange && <ActionButton label="Reset" onPress={onReset} />
+          }
         />
         <View style={styles.page}>
           <View>

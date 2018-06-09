@@ -12,6 +12,7 @@ describe("DateFilterScreen", () => {
       setParams: noOp
     };
   });
+
   it("renders correctly", () => {
     const output = shallow(
       <DateFilterScreen
@@ -24,6 +25,26 @@ describe("DateFilterScreen", () => {
         onApply={noOp}
         forceNewRange={false}
         dateRange={undefined}
+      />
+    );
+    expect(output).toMatchSnapshot();
+  });
+
+  it("renders correctly with date range", () => {
+    const output = shallow(
+      <DateFilterScreen
+        applyButtonLabel="Show all 26 events"
+        navigation={defaultNavigation}
+        applyButtonText="Show 26 events"
+        onChange={noOp}
+        onCancel={noOp}
+        onReset={noOp}
+        onApply={noOp}
+        forceNewRange={false}
+        dateRange={{
+          startDate: "2018-06-06",
+          endDate: "2018-06-07"
+        }}
       />
     );
     expect(output).toMatchSnapshot();
@@ -42,12 +63,15 @@ describe("DateFilterScreen", () => {
         onApply={noOp}
         onReset={onReset}
         forceNewRange={false}
-        dateRange={undefined}
+        dateRange={{
+          startDate: "2018-06-06",
+          endDate: "2018-06-07"
+        }}
       />
     );
 
-    const header = output.find("Header");
-    header.props().onReset();
+    const resetButton = output.find("Header").prop("rightElement");
+    shallow(resetButton).simulate("press");
 
     expect(onReset).toHaveBeenCalledWith();
   });
@@ -69,8 +93,8 @@ describe("DateFilterScreen", () => {
       />
     );
 
-    const header = output.find("Header");
-    header.props().onCancel();
+    const backButton = output.find("Header").prop("leftElement");
+    shallow(backButton).simulate("press");
 
     expect(onCancel).toHaveBeenCalledWith();
   });
@@ -98,6 +122,33 @@ describe("DateFilterScreen", () => {
     expect(onApply).toHaveBeenCalledWith();
   });
 
+  it("has title with a single ate selected", () => {
+    const onCancel = jest.fn();
+
+    const output = shallow(
+      <DateFilterScreen
+        applyButtonLabel="Show all 26 events"
+        navigation={defaultNavigation}
+        applyButtonText="Show 26 events"
+        onChange={noOp}
+        onReset={noOp}
+        onCancel={onCancel}
+        forceNewRange={false}
+        dateRange={{
+          startDate: "2018-06-06",
+          endDate: "2018-06-06"
+        }}
+      />
+    );
+
+    const header = output.find("Header");
+
+    expect(header.props().title).toEqual("6 Jun -");
+    expect(header.props().titleLabel).toEqual(
+      "Selected: 6 Jun, pick another day to select range"
+    );
+  });
+
   it("has title with a date range selected", () => {
     const onCancel = jest.fn();
 
@@ -120,6 +171,6 @@ describe("DateFilterScreen", () => {
     const header = output.find("Header");
 
     expect(header.props().title).toEqual("6 Jun - 7 Jun");
-    expect(header.props().titleLabel).toEqual("Selected: 6 Jun - 7 Jun ");
+    expect(header.props().titleLabel).toEqual("Selected: 6 Jun - 7 Jun");
   });
 });

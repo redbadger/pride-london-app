@@ -2,20 +2,19 @@
 import React from "react";
 import { Image } from "react-native";
 import { Calendar } from "react-native-calendars";
+import Day from "./DateRangePickerDay";
+import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
+import type { DateRange } from "../../data/date-time";
 import {
   toFormat as formatDate,
   isBefore,
   addDays,
   FORMAT_YEAR_MONTH_DAY
 } from "../../lib/date";
-import type { DateRange } from "../../data/date-time";
-import previousArrow from "./img/previous.png";
-import nextArrow from "./img/next.png";
-
-import Day from "./DateRangePickerDay";
-import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
-
 import { dateRangePickerTextColor } from "../../constants/colors";
+import text from "../../constants/text";
+import previousArrow from "../../../assets/images/calendarPrevious.png";
+import nextArrow from "../../../assets/images/calendarNext.png";
 
 const getSortedDateRange = (dates: DateRange) =>
   isBefore(dates.endDate, dates.startDate)
@@ -84,7 +83,7 @@ const getMarkedDates = (dateRange: ?DateRange, today: string): DayMarkings => {
 };
 
 const arrowLabel = direction =>
-  direction === "left" ? "Previous Month" : "Next Month";
+  direction === "left" ? text.calendarPreviousMonth : text.calendarNextMonth;
 
 const arrowSource = direction =>
   direction === "left" ? previousArrow : nextArrow;
