@@ -16,7 +16,7 @@ type Props = {
 
 type State = {
   animating: boolean,
-  progress?: Object
+  progress: ?Object
 };
 
 export default class SaveEventButton extends React.Component<Props, State> {
@@ -26,18 +26,19 @@ export default class SaveEventButton extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    if (!prevState.animating) {
+    if (!prevState.animating || !prevState.progress) {
       const value = nextProps.active ? 1 : 0;
       return {
         progress: new Animated.Value(value),
         animating: false
       };
     }
-    return prevState;
+    return null;
   }
 
   state = {
-    animating: false
+    animating: false,
+    progress: null
   };
 
   shouldComponentUpdate(nextProps: Props) {
@@ -48,18 +49,21 @@ export default class SaveEventButton extends React.Component<Props, State> {
     );
   }
 
-  startAnimation = value => {
-    if (value) {
-      ReactNativeHapticFeedback.trigger("impactHeavy");
-    }
+  startAnimation = (value: number) => {
+    if (this.state.progress) {
+      Animated.timing(this.state.progress, {
+        toValue: value,
+        duration: value * 800,
+        easing: Easing.linear,
+        useNativeDriver: true
+      }).start(this.completeAnimation);
 
-    this.setState({ animating: true });
-    Animated.timing(this.state.progress, {
-      toValue: value,
-      duration: value * 800,
-      easing: Easing.linear,
-      useNativeDriver: true
-    }).start(this.completeAnimation);
+      if (value) {
+        ReactNativeHapticFeedback.trigger("impactHeavy");
+      }
+
+      this.setState({ animating: true });
+    }
   };
 
   completeAnimation = () => {

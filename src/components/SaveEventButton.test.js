@@ -67,7 +67,7 @@ describe("getDerivedStateFromProps", () => {
       progress: new Animated.Value(1)
     };
     expect(SaveEventButton.getDerivedStateFromProps(props, state)).toEqual(
-      state
+      null
     );
   });
 });
