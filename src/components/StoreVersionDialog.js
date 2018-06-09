@@ -3,6 +3,11 @@ import { Component } from "react";
 import { Alert, Linking } from "react-native";
 import VersionCheck from "react-native-version-check";
 import { appNameIos, appIdIos } from "../constants/app";
+import { now, addDays, startOfDay, isBefore } from "../lib/date";
+import {
+  setAppUpdateAskLaterTime,
+  getAppUpdateAskLaterTime
+} from "../integrations/storage";
 
 type VersionInfo = {
   currentVersion: string,
@@ -13,8 +18,12 @@ type VersionInfo = {
 class StoreVersionDialog extends Component<{}> {
   async componentDidMount() {
     const versionInfo: VersionInfo = await VersionCheck.needUpdate();
+    const askLaterTime = await getAppUpdateAskLaterTime();
+    const updateMessageSuppressed =
+      !!askLaterTime && isBefore(now(), askLaterTime);
 
-    if (versionInfo.isNeeded) {
+    const showAppStoreAlert = versionInfo.isNeeded && !updateMessageSuppressed;
+    if (showAppStoreAlert) {
       this.handleAppStoreAlert();
     }
   }
@@ -24,6 +33,7 @@ class StoreVersionDialog extends Component<{}> {
       "New Update Available",
       "A new version of the app is available from the store. Do you want to update now?",
       [
+        { text: "Ask me later", onPress: this.handleAskLater },
         {
           text: "Cancel",
           style: "cancel"
@@ -44,6 +54,11 @@ class StoreVersionDialog extends Component<{}> {
       // eslint-disable-next-line no-console
       console.log("Error fetching app store version: ", e);
     }
+  };
+
+  handleAskLater = async () => {
+    const askLaterTime = startOfDay(addDays(now(), 1));
+    await setAppUpdateAskLaterTime(askLaterTime);
   };
 
   render() {

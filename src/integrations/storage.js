@@ -19,6 +19,7 @@ type CmsData = {
 };
 
 const CMS_DATA_KEY = "@CmsStore:data";
+const APP_UPDATE_ASK_LATER_KEY = "@StoreUpdate:askLaterTime";
 
 const addOrUpdateEntry = (entries, newEntry) => {
   const indexToUpdate = entries.findIndex(
@@ -158,3 +159,16 @@ export const storeSavedEvents = async (
   await AsyncStorageObj.setItem(SAVED_EVENTS_DATA_KEY, data);
   return events;
 };
+
+export const setAppUpdateAskLaterTime = async (
+  time: string,
+  AsyncStorageObj: AsyncStorage = AsyncStorage
+): Promise<void> => AsyncStorageObj.setItem(APP_UPDATE_ASK_LATER_KEY, time);
+
+export const getAppUpdateAskLaterTime = async (
+  AsyncStorageObj: AsyncStorage = AsyncStorage
+): Promise<string | null> => AsyncStorageObj.getItem(APP_UPDATE_ASK_LATER_KEY);
+
+export const removeAppUpdateAskLaterTime = async (
+  AsyncStorageObj: AsyncStorage = AsyncStorage
+): Promise<string> => AsyncStorageObj.removeItem(APP_UPDATE_ASK_LATER_KEY);
