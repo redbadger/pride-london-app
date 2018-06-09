@@ -8,6 +8,7 @@ import {
   setAppUpdateAskLaterTime,
   getAppUpdateAskLaterTime
 } from "../integrations/storage";
+import text from "../constants/text";
 
 type VersionInfo = {
   currentVersion: string,
@@ -30,16 +31,19 @@ class StoreVersionDialog extends Component<{}> {
 
   handleAppStoreAlert = () =>
     Alert.alert(
-      "New Update Available",
-      "A new version of the app is available from the store. Do you want to update now?",
+      text.storeVersionDialog.updateAvailable,
+      text.storeVersionDialog.newVersionDescription,
       [
-        { text: "Ask me later", onPress: this.handleAskLater },
         {
-          text: "Cancel",
+          text: text.storeVersionDialog.askMeLater,
+          onPress: this.handleAskLater
+        },
+        {
+          text: text.storeVersionDialog.cancel,
           style: "cancel"
         },
         {
-          text: "OK",
+          text: text.storeVersionDialog.ok,
           onPress: this.handleAppStoreLink
         }
       ]
