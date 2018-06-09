@@ -1,9 +1,10 @@
 // @flow
 import React, { Component } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
-import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { equals } from "ramda";
 import Header from "./Header";
+import { withNavigationFocus } from "../../lib/navigation";
+import type { NavigationProps } from "../../lib/navigation";
 import ContentPadding from "../../components/ContentPadding";
 import EventTile from "../../components/EventTile";
 import Loading from "../../components/Loading";
@@ -15,36 +16,42 @@ import {
   cardBgColor,
   titleTextColor,
   bgColor,
-  lightNavyBlueColor
+  whiteColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
-import type { Event } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
+import type { Event } from "../../data/event-deprecated";
+import type { ImageDetails } from "../../data/image";
 import type { HeaderBanner } from "../../data/header-banner";
 
 import locale from "../../data/locale";
 
 type Props = {
-  navigation: NavigationScreenProp<NavigationState>,
   headerBanners: HeaderBanner[],
   featuredEventsTitle: string,
   featuredEvents: Event[],
   loading: boolean,
-  getAssetSource: FieldRef => ImageSource
+  getImageDetails: string => ?ImageDetails
 };
 
-class HomeScreen extends Component<Props> {
-  shouldComponentUpdate = (nextProps: Props): boolean => {
+type AllProps = Props & NavigationProps;
+
+const getId = obj => obj.id;
+
+class HomeScreen extends Component<AllProps> {
+  shouldComponentUpdate = (nextProps: AllProps): boolean => {
+    if (!nextProps.isFocused) {
+      return false;
+    }
+
     const { loading, featuredEventsTitle } = this.props;
     const {
       loading: nextLoading,
       featuredEventsTitle: nextFeaturedEventsTitle
     } = nextProps;
 
-    const bannerIds = this.props.headerBanners.map(e => e.sys.id);
-    const nextBannerIds = nextProps.headerBanners.map(e => e.sys.id);
+    const bannerIds = this.props.headerBanners.map(getId);
+    const nextBannerIds = nextProps.headerBanners.map(getId);
 
     const ids = this.props.featuredEvents.map(e => e.sys.id);
     const nextIds = nextProps.featuredEvents.map(e => e.sys.id);
@@ -73,7 +80,7 @@ class HomeScreen extends Component<Props> {
       headerBanners,
       featuredEvents,
       featuredEventsTitle,
-      getAssetSource,
+      getImageDetails,
       navigation
     } = this.props;
 
@@ -87,46 +94,46 @@ class HomeScreen extends Component<Props> {
         <View style={styles.content}>
           <Header
             headerBanners={headerBanners}
-            getAssetSource={getAssetSource}
+            getImageDetails={getImageDetails}
             navigation={navigation}
           />
-          <ContentPadding style={styles.mainContentContainer}>
-            {loading && <Loading />}
-            <View style={styles.sectionTitle}>
-              <Text type="h2" style={{ color: titleTextColor }}>
-                {featuredEventsTitle}
-              </Text>
-              <Touchable onPress={this.eventList} testID="view-all">
-                <TextLink>{text.homeViewAll}</TextLink>
-              </Touchable>
-            </View>
-            <View style={styles.tilesContainer}>
-              {events.map((event, index) => (
-                <View
-                  key={event.sys.id}
-                  style={[
-                    styles.tileContainer,
-                    index % 2 === 0 && styles.startOfRowTileContainer
-                  ]}
-                >
-                  <Touchable
-                    style={styles.tile}
-                    onPress={() => this.eventDetails(event.sys.id)}
-                    testID={`event-tile-${event.sys.id}`}
+          {events.length > 0 && (
+            <ContentPadding style={styles.mainContentContainer}>
+              {loading && <Loading />}
+              <View style={styles.sectionTitle}>
+                <Text type="h2" style={{ color: titleTextColor }}>
+                  {featuredEventsTitle}
+                </Text>
+                <Touchable onPress={this.eventList} testID="view-all">
+                  <TextLink>{text.homeViewAll}</TextLink>
+                </Touchable>
+              </View>
+              <View style={styles.tilesContainer}>
+                {events.map((event, index) => (
+                  <View
+                    key={event.sys.id}
+                    style={[
+                      styles.tileContainer,
+                      index % 2 === 0 && styles.startOfRowTileContainer
+                    ]}
                   >
-                    <EventTile
-                      name={event.fields.name[locale]}
-                      date={event.fields.startTime[locale]}
-                      eventCategories={event.fields.eventCategories[locale]}
-                      image={getAssetSource(
-                        event.fields.eventsListPicture[locale]
-                      )}
-                    />
-                  </Touchable>
-                </View>
-              ))}
-            </View>
-          </ContentPadding>
+                    <Touchable
+                      style={styles.tile}
+                      onPress={() => this.eventDetails(event.sys.id)}
+                      testID={`event-tile-${event.sys.id}`}
+                    >
+                      <EventTile
+                        name={event.fields.name[locale]}
+                        date={event.fields.startTime[locale]}
+                        eventCategories={event.fields.eventCategories[locale]}
+                        imageReference={event.fields.eventsListPicture[locale]}
+                      />
+                    </Touchable>
+                  </View>
+                ))}
+              </View>
+            </ContentPadding>
+          )}
         </View>
       </ScrollView>
     );
@@ -135,7 +142,7 @@ class HomeScreen extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: lightNavyBlueColor
+    backgroundColor: whiteColor
   },
   content: {
     backgroundColor: cardBgColor
@@ -178,4 +185,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeScreen;
+export { HomeScreen };
+export default withNavigationFocus(HomeScreen);

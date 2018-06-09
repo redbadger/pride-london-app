@@ -2,19 +2,17 @@
 import React, { Component } from "react";
 import { LayoutAnimation, StyleSheet, SectionList, View } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
-import { equals, flatten } from "ramda";
+import { difference, equals, flatten, without } from "ramda";
 import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import SectionHeader from "./SectionHeader";
 import { whiteColor } from "../constants/colors";
-import type { SavedEvents, Event, EventDays } from "../data/event";
+import type { SavedEvents, Event, EventDays } from "../data/event-deprecated";
 import {
   toFormat as formatDate,
   FORMAT_WEEKDAY_DAY_MONTH,
   FORMAT_YEAR_MONTH_DAY
 } from "../lib/date";
-import type { FieldRef } from "../data/field-ref";
-import type { ImageSource } from "../data/get-asset-source";
 
 type Props = {
   locale: string,
@@ -24,13 +22,14 @@ type Props = {
   removeSavedEvent: string => void,
   refreshing?: boolean,
   onRefresh?: () => void,
-  onPress: (id: string) => void,
-  getAssetSource: FieldRef => ImageSource
+  onPress: (id: string) => void
 };
 
 type State = {
   eventIds: string[],
-  eventsChanged: boolean
+  eventsAdded: number,
+  eventsRemoved: number,
+  eventsReordered: boolean
 };
 
 type RenderItemInfo = {
@@ -61,16 +60,27 @@ class EventList extends Component<Props, State> {
 
   state = {
     eventIds: [],
-    eventsChanged: false
+    eventsAdded: 0,
+    eventsRemoved: 0,
+    eventsReordered: false
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    const ids = prevState.eventIds;
     const nextIds = eventIds(nextProps.events);
-    const eventsChanged =
-      prevState.eventIds.length > 0 && !equals(prevState.eventIds, nextIds);
+
+    const additions = difference(nextIds, ids);
+    const removals = difference(ids, nextIds);
+    const reordered = !equals(
+      without(additions, nextIds),
+      without(removals, ids)
+    );
+
     return {
       eventIds: nextIds,
-      eventsChanged
+      eventsAdded: additions.length,
+      eventsRemoved: removals.length,
+      eventsReordered: reordered
     };
   }
 
@@ -83,7 +93,9 @@ class EventList extends Component<Props, State> {
     } = nextProps;
 
     return (
-      nextState.eventsChanged ||
+      nextState.eventsAdded > 0 ||
+      nextState.eventsRemoved > 0 ||
+      nextState.eventsReordered ||
       locale !== nextLocale ||
       refreshing !== nextRefreshing ||
       savedEvents !== nextSavedEvents
@@ -102,8 +114,7 @@ class EventList extends Component<Props, State> {
       addSavedEvent,
       removeSavedEvent,
       locale,
-      onPress,
-      getAssetSource
+      onPress
     } = this.props;
 
     return (
@@ -116,7 +127,7 @@ class EventList extends Component<Props, State> {
           eventPriceHigh={item.fields.eventPriceHigh[locale]}
           startTime={item.fields.startTime[locale]}
           endTime={item.fields.endTime[locale]}
-          image={getAssetSource(item.fields.eventsListPicture[locale])}
+          imageReference={item.fields.eventsListPicture[locale]}
           isSaved={savedEvents.has(item.sys.id)}
           addSavedEvent={addSavedEvent}
           removeSavedEvent={removeSavedEvent}
@@ -144,7 +155,11 @@ class EventList extends Component<Props, State> {
   render() {
     const { events, locale, refreshing, onRefresh } = this.props;
 
-    if (this.state.eventsChanged) {
+    // There is a bug in Android, which causes the app to crash when
+    // too many list item changes are animated at the same time. To
+    // prevent the error we only animate single item changes.
+    const changes = this.state.eventsAdded + this.state.eventsRemoved;
+    if (changes === 1 && !this.state.eventsReordered) {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     }
 

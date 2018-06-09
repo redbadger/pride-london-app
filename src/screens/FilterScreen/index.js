@@ -7,7 +7,7 @@ import {
   setEventFilters,
   clearEventFilters
 } from "../../actions/event-filters";
-import { selectFilteredEvents } from "../../selectors/events";
+import { selectStagedFilteredEvents } from "../../selectors";
 import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
 import Component from "./component";
 import text from "../../constants/text";
@@ -40,7 +40,7 @@ const mapStateToProps = (
   state: State,
   { navigation }: OwnProps
 ): StateProps => {
-  const events = selectFilteredEvents(state, true);
+  const events = selectStagedFilteredEvents(state);
   return {
     navigation,
     applyButtonText: text.filterPickerApply(events.length),

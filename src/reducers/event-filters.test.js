@@ -178,5 +178,27 @@ describe("Event filters reducer", () => {
         expect(state.showEventsAfter).toEqual(newTime);
       }
     );
+
+    test("updates if new time is more than 60 minutes", () => {
+      const timeA = DateTime.fromISO("2018-08-01T13:00:00+01:00");
+      const timeB = DateTime.fromISO("2018-08-01T13:30:00+01:00");
+      const reducer = Reducer(() => timeB);
+      const state = reducer(createEventFiltersState(timeA), {
+        type: "NAVIGATION",
+        route: routesWithoutEvents[0]
+      });
+      expect(state.showEventsAfter).toEqual(timeB);
+    });
+
+    test("does not update if new time is less than 30 minutes", () => {
+      const timeA = DateTime.fromISO("2018-08-01T13:00:00+01:00");
+      const timeB = DateTime.fromISO("2018-08-01T13::29+01:00");
+      const reducer = Reducer(() => timeB);
+      const state = reducer(createEventFiltersState(timeA), {
+        type: "NAVIGATION",
+        route: routesWithoutEvents[0]
+      });
+      expect(state.showEventsAfter).toEqual(timeA);
+    });
   });
 });

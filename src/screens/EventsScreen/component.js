@@ -1,17 +1,16 @@
 // @flow
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type {
   EventCategoryName,
   SavedEvents,
   EventDays
-} from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
+} from "../../data/event-deprecated";
+import { withNavigationFocus } from "../../lib/navigation";
+import type { NavigationProps } from "../../lib/navigation";
 import EventList from "../../components/EventList";
 import FilterHeader from "./FilterHeaderConnected";
-import Loading from "../../components/Loading";
+import NoEvents from "./NoEvents";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
@@ -21,7 +20,6 @@ import {
 import locale from "../../data/locale";
 
 export type Props = {
-  navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
@@ -29,14 +27,15 @@ export type Props = {
   loading: boolean,
   refreshing: boolean,
   updateData: () => Promise<void>,
-  getAssetSource: FieldRef => ImageSource,
-  selectedCategories: Set<EventCategoryName>,
-  // route is not used directly, but triggers re-render on navigation
-  route: string // eslint-disable-line react/no-unused-prop-types
+  selectedCategories: Set<EventCategoryName>
 };
 
-class EventsScreen extends Component<Props> {
-  shouldComponentUpdate = () => this.props.navigation.isFocused();
+type AllProps = Props & NavigationProps;
+
+class EventsScreen extends Component<AllProps> {
+  shouldComponentUpdate(nextProps: AllProps) {
+    return nextProps.isFocused;
+  }
 
   handleFilterCategoriesPress = () => {
     this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
@@ -54,8 +53,7 @@ class EventsScreen extends Component<Props> {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
-      refreshing,
-      getAssetSource
+      refreshing
     } = this.props;
     return (
       <View style={styles.container}>
@@ -64,8 +62,8 @@ class EventsScreen extends Component<Props> {
           selectedCategories={this.props.selectedCategories}
           onFilterButtonPress={this.handleFilterButtonPress}
         />
-        {this.props.loading ? (
-          <Loading />
+        {this.props.loading || events.length < 1 ? (
+          <NoEvents />
         ) : (
           <EventList
             locale={locale}
@@ -80,7 +78,6 @@ class EventsScreen extends Component<Props> {
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
-            getAssetSource={getAssetSource}
           />
         )}
       </View>
@@ -95,4 +92,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EventsScreen;
+export { EventsScreen };
+export default withNavigationFocus(EventsScreen);

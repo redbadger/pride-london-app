@@ -32,4 +32,15 @@ describe("Pride App", () => {
     await element(by.id("support-us-tab-button")).tap();
     await expect(element(by.id("page-heading-support-us"))).toBeVisible();
   });
+
+  it("should start on Map screen when navigated to Parade tab", async () => {
+    await element(by.id("parade-tab-button")).tap();
+    await expect(element(by.id("parade-map-screen"))).toBeVisible();
+  });
+
+  it("should navigate to Parade Information Tab from Parade Map", async () => {
+    await element(by.id("parade-tab-button")).tap();
+    await element(by.id("parade-information-button")).tap();
+    await expect(element(by.id("parade-information-screen"))).toBeVisible();
+  });
 });

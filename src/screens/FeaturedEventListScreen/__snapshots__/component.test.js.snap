@@ -20,7 +20,6 @@ exports[`FeaturedEventListScreen Component renders correctly 1`] = `
   <EventList
     addSavedEvent={[Function]}
     events={Array []}
-    getAssetSource={[Function]}
     locale="en-GB"
     onPress={[Function]}
     refreshing={false}

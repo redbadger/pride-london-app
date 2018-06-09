@@ -5,7 +5,7 @@ import { filterBgColor } from "../../constants/colors";
 import categories from "../../constants/event-categories";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import ListItem from "./ListItem";
-import type { EventCategoryName } from "../../data/event";
+import type { EventCategoryName } from "../../data/event-deprecated";
 
 type Props = {
   locale: string,

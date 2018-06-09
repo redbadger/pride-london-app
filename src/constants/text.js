@@ -30,6 +30,8 @@ export default {
   tabParade: "Parade",
   tabSaved: "Saved",
   tabSupportUs: "Support us",
+  tabParadeMap: "Map",
+  tabParadeStages: "Stages",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
   categoryFilterButton: "Filter by event type",
@@ -124,6 +126,9 @@ export default {
   reset: "Reset",
   filterEvents: "Filter Events",
   runsFrom: "Runs from:",
+  noEventsTitle: "No events to show",
+  noEventsDetails:
+    "Try changing your filters to be less specific or check back later.",
   noSavedEventsTitle: "Where's the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
   noSavedEventsSaveButtonAlt: "'save this event' button",
@@ -135,7 +140,7 @@ export default {
   homeSupportUs: "Support us",
   homeSupportUsDescription: "Be part of the movement",
   paradeInformationScreen: {
-    headerTitle: "Parade",
+    headerTitle: "Parade Day - 7th July",
     pageHeading: "London Parade",
     pageSubheading: "Sunday 7th July",
     pageDescription:

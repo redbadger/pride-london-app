@@ -2,7 +2,7 @@
 import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
-import Component from "./component";
+import { SavedEventListScreen as Component } from "./component";
 import EventList from "../../components/EventList";
 import Loading from "../../components/Loading";
 import NoSavedEvents from "./NoSavedEvents";
@@ -88,11 +88,11 @@ describe("SavedEventListScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
+        isFocused
       />
     );
     expect(output).toMatchSnapshot();
@@ -106,11 +106,11 @@ describe("SavedEventListScreen Component", () => {
         loading
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
+        isFocused
       />
     );
 
@@ -127,11 +127,11 @@ describe("SavedEventListScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
+        isFocused
       />
     );
 
@@ -148,11 +148,11 @@ describe("SavedEventListScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={updateData}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
         savedEvents={new Set()}
+        isFocused
       />
     );
 
@@ -162,5 +162,31 @@ describe("SavedEventListScreen Component", () => {
       .onRefresh();
 
     expect(updateData).toHaveBeenCalled();
+  });
+
+  describe("#shouldComponentUpdate", () => {
+    it("does not update when not focused", () => {
+      const output = shallow(
+        <Component
+          navigation={navigation}
+          events={events}
+          loading={false}
+          refreshing={false}
+          updateData={() => Promise.resolve()}
+          selectedCategories={new Set()}
+          addSavedEvent={() => {}}
+          removeSavedEvent={() => {}}
+          savedEvents={new Set()}
+          isFocused
+        />
+      );
+      const nextProps = {
+        isFocused: false
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(false);
+    });
   });
 });

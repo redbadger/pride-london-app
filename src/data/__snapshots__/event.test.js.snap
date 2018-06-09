@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event decoder correctly decodes valid CMS event with all fields 1`] = `
+Object {
+  "contentType": "event",
+  "fields": Object {
+    "accessibilityDetails": "accessibilityDetails",
+    "accessibilityOptions": Array [
+      "WG3dQjnkVo",
+      "XLA8X82wzzA6",
+      "BHI9hy12J10cm",
+      "8zA9aus40c6Ael46C99709HocLl",
+    ],
+    "addressLine1": "addressLine1",
+    "addressLine2": "addressLine2",
+    "audience": Array [
+      "Vglv35495N98k",
+      "2",
+      "rDY8qmFO1oz17mbZKz19fHgB0Hn",
+      "be82idS3Rk5O7mBq1X",
+    ],
+    "city": "city",
+    "email": "email",
+    "endTime": "2018-07-07T03:00+00:00",
+    "eventCategories": Array [
+      "Film and Screenings",
+      "Exhibition and Tours",
+      "Sports and Activities",
+    ],
+    "eventDescription": "eventDescription",
+    "eventPriceHigh": 10,
+    "eventPriceLow": 0,
+    "eventsListPicture": Object {
+      "sys": Object {
+        "id": "ZrI3oW13195ylpcu75nd5sVwNN",
+      },
+    },
+    "individualEventPicture": Object {
+      "sys": Object {
+        "id": "0q2m69N0G0Z761e",
+      },
+    },
+    "location": Object {
+      "lat": 0,
+      "lon": 10,
+    },
+    "locationName": "locationName",
+    "name": "name",
+    "performances": Array [
+      Object {
+        "sys": Object {
+          "id": "e841984HixR8Los",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "0O7rGQ1wijsD",
+        },
+      },
+    ],
+    "phone": "phone",
+    "postcode": "postcode",
+    "recurrenceDates": Array [
+      "06/07/2018",
+      "04/07/2018",
+    ],
+    "startTime": "2018-07-07T00:00+00:00",
+    "ticketingUrl": "ticketingUrl",
+    "venueDetails": Array [
+      "6LbKV5M",
+      "GdB991VXq0FXL",
+      "",
+      "91kU05Y047r",
+    ],
+  },
+  "id": "hG",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;
+
+exports[`Event decoder correctly decodes valid CMS event with minimum fields 1`] = `
+Object {
+  "contentType": "event",
+  "fields": Object {
+    "accessibilityDetails": null,
+    "accessibilityOptions": Array [],
+    "addressLine1": null,
+    "addressLine2": null,
+    "audience": Array [],
+    "city": null,
+    "email": null,
+    "endTime": "2018-07-07T03:00+00:00",
+    "eventCategories": Array [
+      "Cabaret and Variety",
+      "Music",
+    ],
+    "eventDescription": "eventDescription",
+    "eventPriceHigh": 10,
+    "eventPriceLow": 0,
+    "eventsListPicture": Object {
+      "sys": Object {
+        "id": "0f9lQUJf",
+      },
+    },
+    "individualEventPicture": Object {
+      "sys": Object {
+        "id": "IAx5T1z2NAcvGk0eaPs36h4aj",
+      },
+    },
+    "location": Object {
+      "lat": 0,
+      "lon": 10,
+    },
+    "locationName": "locationName",
+    "name": "name",
+    "performances": Array [],
+    "phone": null,
+    "postcode": null,
+    "recurrenceDates": Array [],
+    "startTime": "2018-07-07T00:00+00:00",
+    "ticketingUrl": null,
+    "venueDetails": Array [],
+  },
+  "id": "hG",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;

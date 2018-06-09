@@ -60,6 +60,14 @@ fastlane ios release
 
 Build and Deploy a release to iTunes Connect
 
+### ios promote_to_production
+
+```
+fastlane ios promote_to_production
+```
+
+Promote to Production
+
 ### ios deploy_testflight
 
 ```

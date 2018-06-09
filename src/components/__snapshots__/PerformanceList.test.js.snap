@@ -70,18 +70,27 @@ exports[`renders correctly 1`] = `
           showMoreLabel="Show more"
         >
           <Component
-            key="2018-08-01T13:00:00"
+            key="2018-08-08T15:45+00:00"
           >
             <Performance
-              startTime="2018-08-01T13:00:00"
-              title="Jackie Potato"
+              startTime="2018-08-08T15:45+00:00"
+              title="title"
+            />
+            <SectionDivider />
+          </Component>
+          <Component
+            key="2018-07-07T06:40+00:00"
+          >
+            <Performance
+              startTime="2018-07-07T06:40+00:00"
+              title="title"
             />
           </Component>
         </Collapsible>
       </ContentPadding>
     </Component>
     <Component
-      key="Evening"
+      key="Afternoon"
     >
       <ContentPadding
         padding={Object {}}
@@ -109,7 +118,7 @@ exports[`renders correctly 1`] = `
           markdownStyle={Object {}}
           type="h3"
         >
-          Evening
+          Afternoon
         </Text>
       </ContentPadding>
       <ContentPadding
@@ -122,11 +131,20 @@ exports[`renders correctly 1`] = `
           showMoreLabel="Show more"
         >
           <Component
-            key="2018-08-01T18:00:00"
+            key="2018-08-08T15:45+00:00"
           >
             <Performance
-              startTime="2018-08-01T18:00:00"
-              title="Krystal Pools"
+              startTime="2018-08-08T15:45+00:00"
+              title="title"
+            />
+            <SectionDivider />
+          </Component>
+          <Component
+            key="2018-07-07T06:40+00:00"
+          >
+            <Performance
+              startTime="2018-07-07T06:40+00:00"
+              title="title"
             />
           </Component>
         </Collapsible>

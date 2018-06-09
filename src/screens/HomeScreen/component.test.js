@@ -1,19 +1,27 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import Component from "./component";
+import { HomeScreen as Component } from "./component";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import Loading from "../../components/Loading";
-import { generateHeaderBanners, generateEvents } from "./__test-data";
+import {
+  generateImageDetails,
+  generateHeaderBanner,
+  generateCMSEvent,
+  sampleArrayOf,
+  sampleOne
+} from "../../data/__test-data";
 
-const getAssetSource = jest.fn().mockReturnValue({
-  uri: "http://example.com/image.png",
-  width: 1,
-  height: 1
-});
+const getImageDetails = jest
+  .fn()
+  .mockReturnValue(sampleOne(generateImageDetails));
+
 const navigation: any = {
   navigate: jest.fn()
 };
+
+const generateHeaderBanners = sampleArrayOf(generateHeaderBanner);
+const generateCMSEvents = sampleArrayOf(generateCMSEvent);
 
 describe("HomeScreen Component", () => {
   const render = props =>
@@ -23,25 +31,23 @@ describe("HomeScreen Component", () => {
         loading={false}
         headerBanners={generateHeaderBanners(2)}
         featuredEventsTitle="Featured events"
-        featuredEvents={generateEvents(2)}
-        getAssetSource={getAssetSource}
+        featuredEvents={generateCMSEvents(2)}
+        getImageDetails={getImageDetails}
+        isFocused
         {...props}
       />
     );
 
   it("renders correctly", () => {
-    const featuredEvents = generateEvents(5);
+    const featuredEvents = generateCMSEvents(5);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetSource).toHaveBeenCalledTimes(4);
-    expect(getAssetSource).toHaveBeenCalledWith({ sys: { id: "asset1" } });
   });
 
   it("renders max 6 events", () => {
-    const featuredEvents = generateEvents(10);
+    const featuredEvents = generateCMSEvents(10);
     const output = render({ featuredEvents });
     expect(output).toMatchSnapshot();
-    expect(getAssetSource).toHaveBeenCalledTimes(6);
   });
 
   it("renders loading indicator when loading", () => {
@@ -64,11 +70,13 @@ describe("HomeScreen Component", () => {
   });
 
   it("navigates to event when tapped", () => {
-    const output = render();
-    const eventTile = output.find({ testID: "event-tile-1" });
+    const featuredEvents = generateCMSEvents(3);
+    const { id } = featuredEvents[0].sys;
+    const output = render({ featuredEvents });
+    const eventTile = output.find({ testID: `event-tile-${id}` });
     eventTile.simulate("press");
     expect(navigation.navigate).toHaveBeenCalledWith(EVENT_DETAILS, {
-      eventId: "1"
+      eventId: id
     });
   });
 
@@ -76,8 +84,9 @@ describe("HomeScreen Component", () => {
     const props = {
       headerBanners: generateHeaderBanners(2),
       featuredEventsTitle: "Title",
-      featuredEvents: generateEvents(3),
-      loading: false
+      featuredEvents: generateCMSEvents(3),
+      loading: false,
+      isFocused: true
     };
 
     it("stops updates if loading state, title and events are the same", () => {
@@ -85,8 +94,9 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
-        featuredEvents: generateEvents(3),
-        loading: false
+        featuredEvents: generateCMSEvents(3),
+        loading: false,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
@@ -99,8 +109,9 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
-        featuredEvents: generateEvents(5),
-        loading: false
+        featuredEvents: generateCMSEvents(5),
+        loading: false,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
@@ -113,8 +124,9 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Other Title",
-        featuredEvents: generateEvents(3),
-        loading: false
+        featuredEvents: generateCMSEvents(3),
+        loading: false,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
@@ -127,8 +139,9 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(2),
         featuredEventsTitle: "Title",
-        featuredEvents: generateEvents(3),
-        loading: true
+        featuredEvents: generateCMSEvents(3),
+        loading: true,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
@@ -141,18 +154,30 @@ describe("HomeScreen Component", () => {
       const nextProps = {
         headerBanners: generateHeaderBanners(3),
         featuredEventsTitle: "Title",
-        featuredEvents: generateEvents(3),
-        loading: false
+        featuredEvents: generateCMSEvents(3),
+        loading: false,
+        isFocused: true
       };
 
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
 
       expect(shouldUpdate).toBe(true);
     });
+
+    it("does not update when not focused", () => {
+      const output = render(props);
+      const nextProps = {
+        isFocused: false
+      };
+
+      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
+
+      expect(shouldUpdate).toBe(false);
+    });
   });
 });
 
 afterEach(() => {
-  getAssetSource.mockClear();
+  getImageDetails.mockClear();
   navigation.navigate.mockClear();
 });

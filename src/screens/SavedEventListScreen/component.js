@@ -1,10 +1,9 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { SavedEvents, EventDays } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
+import type { SavedEvents, EventDays } from "../../data/event-deprecated";
+import { withNavigationFocus } from "../../lib/navigation";
+import type { NavigationProps } from "../../lib/navigation";
 import EventList from "../../components/EventList";
 import text from "../../constants/text";
 import Loading from "../../components/Loading";
@@ -15,18 +14,22 @@ import locale from "../../data/locale";
 import NoSavedEvents from "./NoSavedEvents";
 
 export type Props = {
-  navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
   loading: boolean,
   refreshing: boolean,
-  updateData: () => Promise<void>,
-  getAssetSource: FieldRef => ImageSource
+  updateData: () => Promise<void>
 };
 
-class SavedEventListScreen extends PureComponent<Props> {
+type AllProps = Props & NavigationProps;
+
+class SavedEventListScreen extends Component<AllProps> {
+  shouldComponentUpdate(nextProps: AllProps) {
+    return nextProps.isFocused;
+  }
+
   render() {
     const {
       navigation,
@@ -36,8 +39,7 @@ class SavedEventListScreen extends PureComponent<Props> {
       addSavedEvent,
       removeSavedEvent,
       refreshing,
-      loading,
-      getAssetSource
+      loading
     } = this.props;
 
     return (
@@ -64,7 +66,6 @@ class SavedEventListScreen extends PureComponent<Props> {
               onPress={(eventId: string) => {
                 navigation.navigate(EVENT_DETAILS, { eventId });
               }}
-              getAssetSource={getAssetSource}
             />
           )}
       </View>
@@ -79,4 +80,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SavedEventListScreen;
+export { SavedEventListScreen };
+export default withNavigationFocus(SavedEventListScreen);
