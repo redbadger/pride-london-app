@@ -75,8 +75,8 @@ export class ParadeMap extends Component<NavigationProps> {
               </Text>
             </View>
           </Marker>
-          <LocationCard />
         </MapView>
+        <LocationCard />
       </View>
     );
   }
