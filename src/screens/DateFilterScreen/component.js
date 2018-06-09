@@ -2,9 +2,10 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import { lightNavyBlueColor, dialogBgColor } from "../../constants/colors";
+import { bgColor } from "../../constants/colors";
 import Header from "../../components/Header";
 import ActionButton from "../../components/ActionButton";
+import ContentPadding from "../../components/ContentPadding";
 import DateRangePicker from "./DateRangePicker";
 import Button from "../../components/ButtonPrimary";
 import text, { calendarTitleLabel } from "../../constants/text";
@@ -63,7 +64,10 @@ class DateFilterScreen extends PureComponent<Props> {
     const titleLabel = formatTitleLabel(dateRange);
 
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView
+        style={styles.flex}
+        forceInset={{ bottom: "always", top: "never" }}
+      >
         <Header
           leftElement={<Header.BackButton onPress={onCancel} />}
           title={title}
@@ -72,49 +76,34 @@ class DateFilterScreen extends PureComponent<Props> {
             !!dateRange && <ActionButton label="Reset" onPress={onReset} />
           }
         />
-        <View style={styles.page}>
-          <View>
-            <View style={styles.content}>
-              <DateRangePicker
-                onChange={onChange}
-                dateRange={dateRange}
-                forceNewRange={forceNewRange}
-              />
-            </View>
-            <View style={styles.applyButtonContainer}>
-              <Button
-                disabled={applyButtonDisabled}
-                onPress={onApply}
-                accessibilityLabel={applyButtonLabel}
-              >
-                {applyButtonText}
-              </Button>
-            </View>
-          </View>
+        <DateRangePicker
+          onChange={onChange}
+          dateRange={dateRange}
+          forceNewRange={forceNewRange}
+        />
+        <View style={styles.footer}>
+          <ContentPadding>
+            <Button
+              disabled={applyButtonDisabled}
+              onPress={onApply}
+              accessibilityLabel={applyButtonLabel}
+            >
+              {applyButtonText}
+            </Button>
+          </ContentPadding>
         </View>
       </SafeAreaView>
     );
   }
 }
 const styles = StyleSheet.create({
-  page: {
+  flex: {
     flex: 1,
-    padding: 16,
-    justifyContent: "center"
+    backgroundColor: bgColor
   },
-  container: {
-    flex: 1,
-    justifyContent: "space-between",
-    backgroundColor: lightNavyBlueColor
-  },
-  content: {
-    backgroundColor: dialogBgColor,
-    borderRadius: 4,
-    paddingBottom: 8,
-    paddingTop: 8
-  },
-  applyButtonContainer: {
-    marginTop: 16
+  footer: {
+    paddingVertical: 12,
+    backgroundColor: bgColor
   }
 });
 

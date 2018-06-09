@@ -2,11 +2,16 @@
 
 exports[`DateFilterScreen renders correctly 1`] = `
 <withOrientation
+  forceInset={
+    Object {
+      "bottom": "always",
+      "top": "never",
+    }
+  }
   style={
     Object {
-      "backgroundColor": "#2d2f7f",
+      "backgroundColor": "#ffffff",
       "flex": 1,
-      "justifyContent": "space-between",
     }
   }
 >
@@ -20,58 +25,46 @@ exports[`DateFilterScreen renders correctly 1`] = `
     title="Select dates"
     titleLabel="Select dates"
   />
+  <DateRangePicker
+    forceNewRange={false}
+    onChange={[Function]}
+  />
   <Component
     style={
       Object {
-        "flex": 1,
-        "justifyContent": "center",
-        "padding": 16,
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
       }
     }
   >
-    <Component>
-      <Component
-        style={
-          Object {
-            "backgroundColor": "#ffffff",
-            "borderRadius": 4,
-            "paddingBottom": 8,
-            "paddingTop": 8,
-          }
-        }
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+    >
+      <Button
+        accessibilityLabel="Show all 26 events"
+        disabled={false}
+        onPress={[Function]}
       >
-        <DateRangePicker
-          forceNewRange={false}
-          onChange={[Function]}
-        />
-      </Component>
-      <Component
-        style={
-          Object {
-            "marginTop": 16,
-          }
-        }
-      >
-        <Button
-          accessibilityLabel="Show all 26 events"
-          disabled={false}
-          onPress={[Function]}
-        >
-          Show 26 events
-        </Button>
-      </Component>
-    </Component>
+        Show 26 events
+      </Button>
+    </ContentPadding>
   </Component>
 </withOrientation>
 `;
 
 exports[`DateFilterScreen renders correctly with date range 1`] = `
 <withOrientation
+  forceInset={
+    Object {
+      "bottom": "always",
+      "top": "never",
+    }
+  }
   style={
     Object {
-      "backgroundColor": "#2d2f7f",
+      "backgroundColor": "#ffffff",
       "flex": 1,
-      "justifyContent": "space-between",
     }
   }
 >
@@ -91,53 +84,36 @@ exports[`DateFilterScreen renders correctly with date range 1`] = `
     title="6 Jun - 7 Jun"
     titleLabel="Selected: 6 Jun - 7 Jun"
   />
+  <DateRangePicker
+    dateRange={
+      Object {
+        "endDate": "2018-06-07",
+        "startDate": "2018-06-06",
+      }
+    }
+    forceNewRange={false}
+    onChange={[Function]}
+  />
   <Component
     style={
       Object {
-        "flex": 1,
-        "justifyContent": "center",
-        "padding": 16,
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
       }
     }
   >
-    <Component>
-      <Component
-        style={
-          Object {
-            "backgroundColor": "#ffffff",
-            "borderRadius": 4,
-            "paddingBottom": 8,
-            "paddingTop": 8,
-          }
-        }
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+    >
+      <Button
+        accessibilityLabel="Show all 26 events"
+        disabled={false}
+        onPress={[Function]}
       >
-        <DateRangePicker
-          dateRange={
-            Object {
-              "endDate": "2018-06-07",
-              "startDate": "2018-06-06",
-            }
-          }
-          forceNewRange={false}
-          onChange={[Function]}
-        />
-      </Component>
-      <Component
-        style={
-          Object {
-            "marginTop": 16,
-          }
-        }
-      >
-        <Button
-          accessibilityLabel="Show all 26 events"
-          disabled={false}
-          onPress={[Function]}
-        >
-          Show 26 events
-        </Button>
-      </Component>
-    </Component>
+        Show 26 events
+      </Button>
+    </ContentPadding>
   </Component>
 </withOrientation>
 `;

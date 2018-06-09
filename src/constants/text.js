@@ -187,7 +187,5 @@ export default {
         stageImage: "community"
       }
     ]
-  },
-  calendarNextMonth: "Next Month",
-  calendarPreviousMonth: "Previous Month"
+  }
 };
