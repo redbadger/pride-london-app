@@ -159,29 +159,4 @@ describe("SavedEventListScreen Component", () => {
 
     expect(updateData).toHaveBeenCalled();
   });
-
-  // describe("#shouldComponentUpdate", () => {
-  //   it("does not update when not focused", () => {
-  //     const output = shallow(
-  //       <Component
-  //         navigation={navigation}
-  //         events={events}
-  //         loading={false}
-  //         refreshing={false}
-  //         updateData={() => Promise.resolve()}
-  //         selectedCategories={new Set()}
-  //         addSavedEvent={() => {}}
-  //         removeSavedEvent={() => {}}
-  //         savedEvents={new Set()}
-  //       />
-  //     );
-  //     const nextProps = {
-  //       isFocused: false
-  //     };
-  //
-  //     const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
-  //
-  //     expect(shouldUpdate).toBe(false);
-  //   });
-  // });
 });
