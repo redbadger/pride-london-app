@@ -1,28 +1,24 @@
 // @flow
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
+import { createSelector } from "reselect";
 import type { State } from "../../reducers";
-import type { EventDays, SavedEvents } from "../../data/event";
-import type { ImageSource } from "../../data/get-asset-source";
-import type { FieldRef } from "../../data/field-ref";
-import getAssetSource from "../../data/get-asset-source";
+import type { EventDays, SavedEvents } from "../../data/event-deprecated";
 import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   groupEventsByStartTime,
-  selectEventsLoading,
-  selectEventsRefreshing,
-  selectSavedEvents,
-  selectAssetById
-} from "../../selectors/events";
+  selectSavedEvents
+} from "../../selectors/events-deprecated";
+import { selectData } from "../../selectors";
+import { selectLoading, selectRefreshing } from "../../selectors/data";
 import Component from "./component";
 
 type StateProps = {
   events: EventDays,
   savedEvents: SavedEvents,
   loading: boolean,
-  refreshing: boolean,
-  getAssetSource: FieldRef => ImageSource
+  refreshing: boolean
 };
 
 type DispatchProps = {
@@ -33,15 +29,18 @@ type DispatchProps = {
 
 type Props = StateProps & DispatchProps;
 
+const getDataLoading = createSelector([selectData], selectLoading);
+
+const getDataRefreshing = createSelector([selectData], selectRefreshing);
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (state: State): StateProps => ({
   events: groupEventsByStartTime(selectSavedEvents(state)),
   savedEvents: state.savedEvents,
-  loading: selectEventsLoading(state),
-  refreshing: selectEventsRefreshing(state),
-  getAssetSource: getAssetSource(id => selectAssetById(state, id))
+  loading: getDataLoading(state),
+  refreshing: getDataRefreshing(state)
 });
 
 const mapDispatchToProps = {

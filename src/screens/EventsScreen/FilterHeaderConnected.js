@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { State } from "../../reducers";
 import type { DateRange } from "../../data/date-time";
-import type { EventCategoryName } from "../../data/event";
+import type { EventCategoryName } from "../../data/event-deprecated";
 import {
   selectDateFilter,
   selectTagFilterSelectedCount

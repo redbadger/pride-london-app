@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`image decodeImageDetails correctly decodes valid CMS image 1`] = `
+Object {
+  "height": 985,
+  "id": "hG",
+  "revision": 1,
+  "uri": "https://red-badger.com/BhabSLtI692l05Qliy85.jpg",
+  "width": 890,
+}
+`;

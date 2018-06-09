@@ -139,7 +139,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         ],
       ]
     }
-    getAssetSource={[Function]}
     locale="en-GB"
     onPress={[Function]}
     onRefresh={[Function]}

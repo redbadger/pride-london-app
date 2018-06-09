@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { State } from "../../reducers";
-import type { Event, EventCategoryName } from "../../data/event";
+import type { Event, EventCategoryName } from "../../data/event-deprecated";
 import { setEventFilters } from "../../actions/event-filters";
-import { selectFilteredEvents } from "../../selectors/events";
+import { selectStagedFilteredEvents } from "../../selectors";
 import Component from "./component";
 import text from "../../constants/text";
 
@@ -16,7 +16,8 @@ type OwnProps = {
 type StateProps = {
   navigation: NavigationScreenProp<NavigationState>,
   events: Event[],
-  categories: Set<EventCategoryName>
+  categories: Set<EventCategoryName>,
+  applyButtonText: string
 };
 
 type DispatchProps = {
@@ -33,7 +34,7 @@ const mapStateToProps = (
   state: State,
   { navigation }: OwnProps
 ): StateProps => {
-  const events = selectFilteredEvents(state, true);
+  const events = selectStagedFilteredEvents(state);
   return {
     navigation,
     events,

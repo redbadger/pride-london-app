@@ -6,7 +6,7 @@ import type { State as DataState } from "./data";
 import EventFilters from "./event-filters";
 import type { State as EventFiltersState } from "../data/event-filters";
 import savedEvents from "./saved-events";
-import type { SavedEvents as SavedEventsState } from "../data/event";
+import type { SavedEvents as SavedEventsState } from "../data/event-deprecated";
 import splashScreen from "./splash-screen";
 import type { State as SplashScreenState } from "./splash-screen";
 

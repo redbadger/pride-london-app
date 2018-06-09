@@ -6,9 +6,9 @@ import {
   getHours,
   diff as dateDiff
 } from "../lib/date";
-import { selectEventIsFree } from "./event";
+import { selectEventIsFree } from "./event-deprecated";
 import areaBoundaries from "../data/areas";
-import type { Event, EventCategoryName } from "../data/event";
+import type { Event, EventCategoryName } from "../data/event-deprecated";
 import type { DateRange, Time } from "../data/date-time";
 import type { Area, StringFilterSet } from "../data/event-filters";
 

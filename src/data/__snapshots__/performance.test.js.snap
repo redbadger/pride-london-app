@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Performance decoder correctly decodes valid CMS sponsor 1`] = `
+exports[`Performance decoder correctly decodes valid CMS performance 1`] = `
 Object {
   "contentType": "performance",
   "fields": Object {
     "startTime": "2018-08-18T17:55+00:00",
     "title": "title",
   },
-  "id": "m3w5",
+  "id": "hG",
   "locale": "en-GB",
   "revision": 1,
 }

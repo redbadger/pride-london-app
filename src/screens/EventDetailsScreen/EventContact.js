@@ -1,18 +1,18 @@
 // @flow
 import React from "react";
 import { email as sendEmail, phonecall } from "react-native-communications";
-import LayoutColumn from "../../components/LayoutColumn";
-import Text from "../../components/Text";
 import IconItem from "./IconItem";
 import IconList from "./IconList";
+import LayoutColumn from "../../components/LayoutColumn";
+import Text from "../../components/Text";
+import TextLink from "../../components/TextLink";
+import text from "../../constants/text";
 import emailIcon from "../../../assets/images/email.png";
 import callIcon from "../../../assets/images/call.png";
-import text from "../../constants/text";
-import TextLink from "../../components/TextLink";
 
 type Props = {
-  email?: string,
-  phone?: string
+  email?: ?string,
+  phone?: ?string
 };
 
 const EventContact = ({ email, phone }: Props) => (
@@ -47,8 +47,8 @@ const EventContact = ({ email, phone }: Props) => (
 );
 
 EventContact.defaultProps = {
-  email: undefined,
-  phone: undefined
+  email: null,
+  phone: null
 };
 
 export default EventContact;

@@ -1,4 +1,5 @@
 // @flow
+import { generateCMSEvent, sampleOne } from "../data/__test-data";
 import reducer from "./data";
 
 describe("Events reducer", () => {
@@ -12,8 +13,10 @@ describe("Events reducer", () => {
   it("sets loading flag for REQUEST_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
+      featuredEvents: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: false,
@@ -28,8 +31,10 @@ describe("Events reducer", () => {
   it("sets refreshing flag for REQUEST_UPDATE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
+      featuredEvents: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: false,
@@ -44,8 +49,10 @@ describe("Events reducer", () => {
   it("saves entries from RECEIVE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
+      featuredEvents: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: true,
@@ -70,14 +77,15 @@ describe("Events reducer", () => {
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
     expect(state.entries).toEqual(newCmsData.entries);
-    expect(state.assets).toBe(newCmsData.assets);
   });
 
   it("expands recurring events from RECEIVE_CMS_DATA action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
+      featuredEvents: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: true,
@@ -130,14 +138,15 @@ describe("Events reducer", () => {
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
     expect(state.entries).toEqual(expected);
-    expect(state.assets).toBe(newCmsData.assets);
   });
 
   it("sets loading and refreshing to false for RECEIVE_CMS_ERROR action", () => {
     const initialState = {
       entries: [],
-      assets: [],
+      events: [],
+      featuredEvents: [],
       headerBanners: [],
+      images: {},
       performances: {},
       sponsors: [],
       loading: true,
@@ -150,11 +159,134 @@ describe("Events reducer", () => {
   });
 
   describe("RECEIVE_CMS_DATA action", () => {
+    it("decodes events", () => {
+      const initialState = {
+        entries: [],
+        events: [],
+        featuredEvents: [],
+        headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [sampleOne(generateCMSEvent, { seed: 1345 })],
+        assets: [],
+        syncToken: "abc",
+        updated: true
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.events).toMatchSnapshot();
+    });
+
+    it("expands recurring events", () => {
+      const initialState = {
+        entries: [],
+        events: [],
+        featuredEvents: [],
+        headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const event = sampleOne(generateCMSEvent, { seed: 3353 });
+      event.fields.startTime = { "en-GB": "2018-08-02T00:00+00:00" };
+      event.fields.endTime = { "en-GB": "2018-08-02T03:00+00:00" };
+      event.fields.recurrenceDates = { "en-GB": ["03/08/2018", "04/08/2018"] };
+
+      const newCmsData = {
+        entries: [event],
+        assets: [{ id: "1" }],
+        syncToken: "abc",
+        updated: true
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.events).toMatchSnapshot();
+    });
+
+    it("decodes featuredEvents", () => {
+      const initialState = {
+        entries: [],
+        events: [],
+        featuredEvents: [],
+        headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [
+          {
+            fields: {
+              title: { "en-GB": "title" },
+              events: { "en-GB": [] }
+            },
+            sys: {
+              id: "3O3SZPgYl2MUEWu2MoK2oi",
+              contentType: {
+                sys: {
+                  id: "featuredEvents"
+                }
+              },
+              revision: 1
+            }
+          }
+        ],
+        assets: [],
+        syncToken: "abc",
+        updated: true
+      };
+
+      const expected = [
+        {
+          id: "3O3SZPgYl2MUEWu2MoK2oi",
+          contentType: "featuredEvents",
+          revision: 1,
+          locale: "en-GB",
+          fields: {
+            title: "title",
+            events: []
+          }
+        }
+      ];
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.featuredEvents).toEqual(expected);
+    });
+
     it("decodes headerBanners", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
+        featuredEvents: [],
         headerBanners: [],
+        images: {},
         performances: {},
         sponsors: [],
         loading: true,
@@ -215,8 +347,69 @@ describe("Events reducer", () => {
     it("decodes performances", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
+        featuredEvents: [],
         headerBanners: [],
+        images: {},
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [],
+        assets: [
+          {
+            fields: {
+              file: {
+                "en-GB": {
+                  url: "//localhost/image.jpg",
+                  details: {
+                    image: {
+                      height: 100,
+                      width: 100
+                    }
+                  }
+                }
+              }
+            },
+            sys: {
+              id: "3O3SZPgYl2MUEWu2MoK2oi",
+              revision: 1
+            }
+          }
+        ],
+        syncToken: "abc",
+        updated: true
+      };
+
+      const expected = {
+        "3O3SZPgYl2MUEWu2MoK2oi": {
+          id: "3O3SZPgYl2MUEWu2MoK2oi",
+          revision: 1,
+          uri: "https://localhost/image.jpg",
+          width: 100,
+          height: 100
+        }
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      expect(state.images).toEqual(expected);
+    });
+
+    it("decodes performances", () => {
+      const initialState = {
+        entries: [],
+        events: [],
+        featuredEvents: [],
+        headerBanners: [],
+        images: {},
         performances: {},
         sponsors: [],
         loading: true,
@@ -271,8 +464,10 @@ describe("Events reducer", () => {
     it("decodes sponsors", () => {
       const initialState = {
         entries: [],
-        assets: [],
+        events: [],
+        featuredEvents: [],
         headerBanners: [],
+        images: {},
         performances: {},
         sponsors: [],
         loading: true,
