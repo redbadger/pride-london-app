@@ -9,7 +9,8 @@ describe("DateFilterScreen", () => {
   beforeEach(() => {
     defaultNavigation = {
       addListener: noOp,
-      setParams: noOp
+      setParams: noOp,
+      goBack: jest.fn()
     };
   });
 
@@ -20,10 +21,6 @@ describe("DateFilterScreen", () => {
         navigation={defaultNavigation}
         applyButtonText="Show 26 events"
         onChange={noOp}
-        onCancel={noOp}
-        onReset={noOp}
-        onApply={noOp}
-        forceNewRange={false}
         dateRange={undefined}
       />
     );
@@ -37,10 +34,6 @@ describe("DateFilterScreen", () => {
         navigation={defaultNavigation}
         applyButtonText="Show 26 events"
         onChange={noOp}
-        onCancel={noOp}
-        onReset={noOp}
-        onApply={noOp}
-        forceNewRange={false}
         dateRange={{
           startDate: "2018-06-06",
           endDate: "2018-06-07"
@@ -51,18 +44,13 @@ describe("DateFilterScreen", () => {
   });
 
   it("dispatches empty filters when 'Reset' button is pressed", () => {
-    const onReset = jest.fn();
-
+    const onChange = jest.fn();
     const output = shallow(
       <DateFilterScreen
         applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
         applyButtonText="Show 26 events"
-        onChange={noOp}
-        onCancel={noOp}
-        onApply={noOp}
-        onReset={onReset}
-        forceNewRange={false}
+        onChange={onChange}
         dateRange={{
           startDate: "2018-06-06",
           endDate: "2018-06-07"
@@ -73,22 +61,16 @@ describe("DateFilterScreen", () => {
     const resetButton = output.find("Header").prop("rightElement");
     shallow(resetButton).simulate("press");
 
-    expect(onReset).toHaveBeenCalledWith();
+    expect(onChange).toHaveBeenCalledWith(null);
   });
 
-  it("dispatches empty filters when 'Back' button is pressed", () => {
-    const onCancel = jest.fn();
-
+  it("goes back when 'Back' button is pressed", () => {
     const output = shallow(
       <DateFilterScreen
         applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
         applyButtonText="Show 26 events"
         onChange={noOp}
-        onReset={noOp}
-        onApply={noOp}
-        onCancel={onCancel}
-        forceNewRange={false}
         dateRange={undefined}
       />
     );
@@ -96,22 +78,16 @@ describe("DateFilterScreen", () => {
     const backButton = output.find("Header").prop("leftElement");
     shallow(backButton).simulate("press");
 
-    expect(onCancel).toHaveBeenCalledWith();
+    expect(defaultNavigation.goBack).toHaveBeenCalledWith();
   });
 
-  it("dispatches state update when Button is pressed", () => {
-    const onApply = jest.fn();
-
+  it("goes back when apply button is pressed", () => {
     const output = shallow(
       <DateFilterScreen
         applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
         applyButtonText="Show 26 events"
         onChange={noOp}
-        onReset={noOp}
-        onCancel={noOp}
-        onApply={onApply}
-        forceNewRange={false}
         dateRange={undefined}
       />
     );
@@ -119,21 +95,16 @@ describe("DateFilterScreen", () => {
     const button = output.find("Button").first();
     button.props().onPress();
 
-    expect(onApply).toHaveBeenCalledWith();
+    expect(defaultNavigation.goBack).toHaveBeenCalledWith();
   });
 
-  it("has title with a single ate selected", () => {
-    const onCancel = jest.fn();
-
+  it("has title with a single date selected", () => {
     const output = shallow(
       <DateFilterScreen
         applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
         applyButtonText="Show 26 events"
         onChange={noOp}
-        onReset={noOp}
-        onCancel={onCancel}
-        forceNewRange={false}
         dateRange={{
           startDate: "2018-06-06",
           endDate: "2018-06-06"
@@ -150,17 +121,12 @@ describe("DateFilterScreen", () => {
   });
 
   it("has title with a date range selected", () => {
-    const onCancel = jest.fn();
-
     const output = shallow(
       <DateFilterScreen
         applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
         applyButtonText="Show 26 events"
         onChange={noOp}
-        onReset={noOp}
-        onCancel={onCancel}
-        forceNewRange={false}
         dateRange={{
           startDate: "2018-06-06",
           endDate: "2018-06-07"

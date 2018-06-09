@@ -1,6 +1,7 @@
 // @flow
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import LinearGradient from "react-native-linear-gradient";
 import SafeAreaView from "react-native-safe-area-view";
 import {
@@ -18,14 +19,15 @@ import { formatDateRange } from "../../data/formatters";
 import type { DateRange } from "../../data/date-time";
 
 type Props = {
+  navigation: NavigationScreenProp<NavigationState>,
   applyButtonText: string,
   applyButtonLabel: string,
   applyButtonDisabled?: boolean,
   dateRange: ?DateRange,
-  onApply: () => void,
-  onCancel: () => void,
-  onReset: () => void,
-  onChange: (?DateRange) => void,
+  onChange: (?DateRange) => void
+};
+
+type State = {
   forceNewRange: boolean
 };
 
@@ -47,20 +49,32 @@ const formatTitleLabel = (dateRange: ?DateRange): string => {
   );
 };
 
-class DateFilterScreen extends PureComponent<Props> {
+class DateFilterScreen extends PureComponent<Props, State> {
   static defaultProps = {
     applyButtonDisabled: false
   };
 
+  state = {
+    forceNewRange: true
+  };
+
+  updateDateRange = (dateRange: ?DateRange) => {
+    this.setState({ forceNewRange: false });
+    this.props.onChange(dateRange);
+  };
+
+  resetDateRange = () => {
+    this.updateDateRange(null);
+  };
+
+  goBack = () => {
+    this.props.navigation.goBack();
+  };
+
   render() {
     const {
-      onChange,
       dateRange,
-      forceNewRange,
       applyButtonDisabled,
-      onApply,
-      onCancel,
-      onReset,
       applyButtonLabel,
       applyButtonText
     } = this.props;
@@ -74,18 +88,20 @@ class DateFilterScreen extends PureComponent<Props> {
         forceInset={{ bottom: "always", top: "never" }}
       >
         <Header
-          leftElement={<Header.BackButton onPress={onCancel} />}
+          leftElement={<Header.BackButton onPress={this.goBack} />}
           title={title}
           titleLabel={titleLabel}
           rightElement={
-            !!dateRange && <ActionButton label="Reset" onPress={onReset} />
+            !!dateRange && (
+              <ActionButton label="Reset" onPress={this.resetDateRange} />
+            )
           }
         />
         <View style={styles.calendarContainer}>
           <DateRangePicker
-            onChange={onChange}
+            onChange={this.updateDateRange}
             dateRange={dateRange}
-            forceNewRange={forceNewRange}
+            forceNewRange={this.state.forceNewRange}
           />
           <LinearGradient
             colors={[blackZeroColor, blackFifteenColor]}
@@ -96,7 +112,7 @@ class DateFilterScreen extends PureComponent<Props> {
           <ContentPadding>
             <Button
               disabled={applyButtonDisabled}
-              onPress={onApply}
+              onPress={this.goBack}
               accessibilityLabel={applyButtonLabel}
             >
               {applyButtonText}

@@ -33,7 +33,7 @@ exports[`DateFilterScreen renders correctly 1`] = `
     }
   >
     <DateRangePicker
-      forceNewRange={false}
+      forceNewRange={true}
       onChange={[Function]}
     />
     <LinearGradient
@@ -125,7 +125,7 @@ exports[`DateFilterScreen renders correctly with date range 1`] = `
           "startDate": "2018-06-06",
         }
       }
-      forceNewRange={false}
+      forceNewRange={true}
       onChange={[Function]}
     />
     <LinearGradient
