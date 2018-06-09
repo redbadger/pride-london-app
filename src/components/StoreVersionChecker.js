@@ -4,9 +4,15 @@ import { Alert, Linking } from "react-native";
 import VersionCheck from "react-native-version-check";
 import { appNameIos, appIdIos } from "../constants/app";
 
+type VersionInfo = {
+  currentVersion: string,
+  isNeeded: boolean,
+  latestVersion: string
+};
+
 class StoreVersionChecker extends Component<{}> {
   async componentDidMount() {
-    const versionInfo = await VersionCheck.needUpdate();
+    const versionInfo: VersionInfo = await VersionCheck.needUpdate();
 
     if (versionInfo.isNeeded) {
       this.handleAppStoreAlert();
