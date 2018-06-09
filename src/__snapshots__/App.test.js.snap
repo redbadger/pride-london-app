@@ -21,7 +21,7 @@ exports[`renders correctly 1`] = `
     barStyle="light-content"
     showHideTransition="fade"
   />
-  <StoreVersionChecker />
+  <StoreVersionDialog />
   <NavigationContainer
     onNavigationStateChange={[Function]}
   />

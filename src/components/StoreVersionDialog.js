@@ -10,7 +10,7 @@ type VersionInfo = {
   latestVersion: string
 };
 
-class StoreVersionChecker extends Component<{}> {
+class StoreVersionDialog extends Component<{}> {
   async componentDidMount() {
     const versionInfo: VersionInfo = await VersionCheck.needUpdate();
 
@@ -51,4 +51,4 @@ class StoreVersionChecker extends Component<{}> {
   }
 }
 
-export default StoreVersionChecker;
+export default StoreVersionDialog;
