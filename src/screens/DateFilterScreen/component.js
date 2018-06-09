@@ -1,8 +1,13 @@
 // @flow
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import SafeAreaView from "react-native-safe-area-view";
-import { bgColor } from "../../constants/colors";
+import {
+  bgColor,
+  blackZeroColor,
+  blackFifteenColor
+} from "../../constants/colors";
 import Header from "../../components/Header";
 import ActionButton from "../../components/ActionButton";
 import ContentPadding from "../../components/ContentPadding";
@@ -76,11 +81,17 @@ class DateFilterScreen extends PureComponent<Props> {
             !!dateRange && <ActionButton label="Reset" onPress={onReset} />
           }
         />
-        <DateRangePicker
-          onChange={onChange}
-          dateRange={dateRange}
-          forceNewRange={forceNewRange}
-        />
+        <View style={styles.calendarContainer}>
+          <DateRangePicker
+            onChange={onChange}
+            dateRange={dateRange}
+            forceNewRange={forceNewRange}
+          />
+          <LinearGradient
+            colors={[blackZeroColor, blackFifteenColor]}
+            style={[styles.bottomShadow]}
+          />
+        </View>
         <View style={styles.footer}>
           <ContentPadding>
             <Button
@@ -100,6 +111,16 @@ const styles = StyleSheet.create({
   flex: {
     flex: 1,
     backgroundColor: bgColor
+  },
+  calendarContainer: {
+    flex: 1
+  },
+  bottomShadow: {
+    width: "100%",
+    height: 8,
+    position: "absolute",
+    left: 0,
+    bottom: 0
   },
   footer: {
     paddingVertical: 12,

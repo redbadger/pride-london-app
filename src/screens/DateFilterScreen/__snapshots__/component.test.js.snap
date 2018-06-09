@@ -25,10 +25,37 @@ exports[`DateFilterScreen renders correctly 1`] = `
     title="Select dates"
     titleLabel="Select dates"
   />
-  <DateRangePicker
-    forceNewRange={false}
-    onChange={[Function]}
-  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <DateRangePicker
+      forceNewRange={false}
+      onChange={[Function]}
+    />
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0.1)",
+        ]
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "height": 8,
+            "left": 0,
+            "position": "absolute",
+            "width": "100%",
+          },
+        ]
+      }
+    />
+  </Component>
   <Component
     style={
       Object {
@@ -84,16 +111,43 @@ exports[`DateFilterScreen renders correctly with date range 1`] = `
     title="6 Jun - 7 Jun"
     titleLabel="Selected: 6 Jun - 7 Jun"
   />
-  <DateRangePicker
-    dateRange={
+  <Component
+    style={
       Object {
-        "endDate": "2018-06-07",
-        "startDate": "2018-06-06",
+        "flex": 1,
       }
     }
-    forceNewRange={false}
-    onChange={[Function]}
-  />
+  >
+    <DateRangePicker
+      dateRange={
+        Object {
+          "endDate": "2018-06-07",
+          "startDate": "2018-06-06",
+        }
+      }
+      forceNewRange={false}
+      onChange={[Function]}
+    />
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0.1)",
+        ]
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "height": 8,
+            "left": 0,
+            "position": "absolute",
+            "width": "100%",
+          },
+        ]
+      }
+    />
+  </Component>
   <Component
     style={
       Object {
