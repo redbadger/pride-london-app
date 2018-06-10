@@ -1,5 +1,5 @@
 app_identifier 'org.prideinlondon.festival'
-automatic_release(false)
+automatic_release(true)
 overwrite_screenshots(true)
 submit_for_review(true)
 submission_information({
