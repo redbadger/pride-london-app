@@ -4,20 +4,19 @@ import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { EventCategoryName } from "../../data/event";
-import type { Event } from "../../data/event-deprecated";
 import { lightNavyBlueColor } from "../../constants/colors";
 import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "./Header";
 import List from "./List";
+import text from "../../constants/text";
 
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  events: Event[],
+  numberOfEvents: number,
   categories: Set<EventCategoryName>,
   toggleCategoryFilter: (Set<EventCategoryName>, string) => void,
-  onClearAll: () => void,
-  applyButtonText: string
+  onClearAll: () => void
 };
 
 class CategoriesFilterScreen extends PureComponent<Props> {
@@ -34,7 +33,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { events, categories, applyButtonText } = this.props;
+    const { numberOfEvents, categories } = this.props;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -51,8 +50,12 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         </View>
         <View style={styles.footer}>
           <ContentPadding>
-            <Button onPress={this.applyFilters} disabled={!events.length}>
-              {applyButtonText}
+            <Button
+              onPress={this.applyFilters}
+              disabled={numberOfEvents <= 0}
+              accessibilityLabel={text.filterPickerApplyLabel(numberOfEvents)}
+            >
+              {text.filterPickerApply(numberOfEvents)}
             </Button>
           </ContentPadding>
         </View>

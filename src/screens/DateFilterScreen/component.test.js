@@ -17,11 +17,10 @@ describe("DateFilterScreen", () => {
   it("renders correctly", () => {
     const output = shallow(
       <DateFilterScreen
-        applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
-        applyButtonText="Show 26 events"
         onChange={noOp}
         dateRange={undefined}
+        numberOfEvents={26}
       />
     );
     expect(output).toMatchSnapshot();
@@ -30,14 +29,13 @@ describe("DateFilterScreen", () => {
   it("renders correctly with date range", () => {
     const output = shallow(
       <DateFilterScreen
-        applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
-        applyButtonText="Show 26 events"
         onChange={noOp}
         dateRange={{
           startDate: "2018-06-06",
           endDate: "2018-06-07"
         }}
+        numberOfEvents={26}
       />
     );
     expect(output).toMatchSnapshot();
@@ -47,14 +45,13 @@ describe("DateFilterScreen", () => {
     const onChange = jest.fn();
     const output = shallow(
       <DateFilterScreen
-        applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
-        applyButtonText="Show 26 events"
         onChange={onChange}
         dateRange={{
           startDate: "2018-06-06",
           endDate: "2018-06-07"
         }}
+        numberOfEvents={26}
       />
     );
 
@@ -67,11 +64,10 @@ describe("DateFilterScreen", () => {
   it("goes back when 'Back' button is pressed", () => {
     const output = shallow(
       <DateFilterScreen
-        applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
-        applyButtonText="Show 26 events"
         onChange={noOp}
         dateRange={undefined}
+        numberOfEvents={26}
       />
     );
 
@@ -84,11 +80,10 @@ describe("DateFilterScreen", () => {
   it("goes back when apply button is pressed", () => {
     const output = shallow(
       <DateFilterScreen
-        applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
-        applyButtonText="Show 26 events"
         onChange={noOp}
         dateRange={undefined}
+        numberOfEvents={26}
       />
     );
 
@@ -101,14 +96,13 @@ describe("DateFilterScreen", () => {
   it("has title with a single date selected", () => {
     const output = shallow(
       <DateFilterScreen
-        applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
-        applyButtonText="Show 26 events"
         onChange={noOp}
         dateRange={{
           startDate: "2018-06-06",
           endDate: "2018-06-06"
         }}
+        numberOfEvents={26}
       />
     );
 
@@ -123,14 +117,13 @@ describe("DateFilterScreen", () => {
   it("has title with a date range selected", () => {
     const output = shallow(
       <DateFilterScreen
-        applyButtonLabel="Show all 26 events"
         navigation={defaultNavigation}
-        applyButtonText="Show 26 events"
         onChange={noOp}
         dateRange={{
           startDate: "2018-06-06",
           endDate: "2018-06-07"
         }}
+        numberOfEvents={26}
       />
     );
 

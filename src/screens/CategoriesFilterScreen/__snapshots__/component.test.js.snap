@@ -48,9 +48,12 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       style={Object {}}
     >
       <Button
+        accessibilityLabel="Show 1 selected event"
         disabled={false}
         onPress={[Function]}
-      />
+      >
+        Show 1 event
+      </Button>
     </ContentPadding>
   </Component>
 </withOrientation>
@@ -96,9 +99,12 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
       style={Object {}}
     >
       <Button
+        accessibilityLabel="Show 1 selected event"
         disabled={false}
         onPress={[Function]}
-      />
+      >
+        Show 1 event
+      </Button>
     </ContentPadding>
   </Component>
 </withOrientation>

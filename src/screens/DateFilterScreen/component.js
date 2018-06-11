@@ -20,10 +20,8 @@ import type { DateRange } from "../../data/date-time";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  applyButtonText: string,
-  applyButtonLabel: string,
-  applyButtonDisabled?: boolean,
   dateRange: ?DateRange,
+  numberOfEvents: number,
   onChange: (?DateRange) => void
 };
 
@@ -50,10 +48,6 @@ const formatTitleLabel = (dateRange: ?DateRange): string => {
 };
 
 class DateFilterScreen extends PureComponent<Props, State> {
-  static defaultProps = {
-    applyButtonDisabled: false
-  };
-
   state = {
     forceNewRange: true
   };
@@ -72,12 +66,7 @@ class DateFilterScreen extends PureComponent<Props, State> {
   };
 
   render() {
-    const {
-      dateRange,
-      applyButtonDisabled,
-      applyButtonLabel,
-      applyButtonText
-    } = this.props;
+    const { dateRange, numberOfEvents } = this.props;
 
     const title = formatTitle(dateRange);
     const titleLabel = formatTitleLabel(dateRange);
@@ -111,11 +100,11 @@ class DateFilterScreen extends PureComponent<Props, State> {
         <View style={styles.footer}>
           <ContentPadding>
             <Button
-              disabled={applyButtonDisabled}
+              disabled={numberOfEvents <= 0}
               onPress={this.goBack}
-              accessibilityLabel={applyButtonLabel}
+              accessibilityLabel={text.filterPickerApplyLabel(numberOfEvents)}
             >
-              {applyButtonText}
+              {text.filterPickerApply(numberOfEvents)}
             </Button>
           </ContentPadding>
         </View>

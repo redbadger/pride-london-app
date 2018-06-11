@@ -11,12 +11,12 @@ import { bgColor } from "../../constants/colors";
 import type { FilterCollection, Area } from "../../data/event-filters";
 import Header from "./Header";
 import type { EventFiltersPayload } from "../../actions/event-filters";
+import text from "../../constants/text";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  applyButtonText: string,
   eventFilters: FilterCollection,
-  numEventsSelected: number,
+  numberOfEvents: number,
   numTagFiltersSelected: number,
   onChange: EventFiltersPayload => void
 };
@@ -58,12 +58,7 @@ class FilterScreen extends PureComponent<Props> {
   };
 
   render() {
-    const {
-      applyButtonText,
-      eventFilters,
-      numEventsSelected,
-      numTagFiltersSelected
-    } = this.props;
+    const { eventFilters, numberOfEvents, numTagFiltersSelected } = this.props;
     return (
       <SafeAreaView
         style={styles.flex}
@@ -84,9 +79,10 @@ class FilterScreen extends PureComponent<Props> {
           <ContentPadding>
             <Button
               onPress={this.handleApplyButtonPress}
-              disabled={numEventsSelected === 0}
+              disabled={numberOfEvents <= 0}
+              accessibilityLabel={text.filterPickerApplyLabel(numberOfEvents)}
             >
-              {applyButtonText}
+              {text.filterPickerApply(numberOfEvents)}
             </Button>
           </ContentPadding>
         </View>

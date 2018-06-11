@@ -7,7 +7,6 @@ import { setEventFilters } from "../../actions/event-filters";
 import { selectStagedFilteredEvents } from "../../selectors";
 import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
 import Component from "./component";
-import text from "../../constants/text";
 import type { FilterCollection } from "../../data/event-filters";
 import type { EventFiltersPayload } from "../../actions/event-filters";
 
@@ -17,9 +16,8 @@ type OwnProps = {
 
 type StateProps = {
   navigation: NavigationScreenProp<{ params: { title: string } }>,
-  applyButtonText: string,
   eventFilters: FilterCollection,
-  numEventsSelected: number,
+  numberOfEvents: number,
   numTagFiltersSelected: number
 };
 
@@ -39,8 +37,7 @@ const mapStateToProps = (
   const events = selectStagedFilteredEvents(state);
   return {
     navigation,
-    applyButtonText: text.filterPickerApply(events.length),
-    numEventsSelected: events.length,
+    numberOfEvents: events.length,
     numTagFiltersSelected: selectTagFilterSelectedCount(state, true),
     eventFilters: state.eventFilters.selectedFilters
   };

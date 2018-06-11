@@ -7,7 +7,6 @@ import type { DateRange } from "../../data/date-time";
 import type { State } from "../../reducers";
 import { selectStagedFilteredEvents } from "../../selectors";
 import { selectDateFilter } from "../../selectors/event-filters";
-import text from "../../constants/text";
 import Component from "./component";
 
 type OwnProps = {
@@ -16,10 +15,8 @@ type OwnProps = {
 
 type StateProps = {
   navigation: NavigationScreenProp<NavigationState>,
-  applyButtonText: string,
-  applyButtonLabel: string,
-  applyButtonDisabled?: boolean,
-  dateRange: ?DateRange
+  dateRange: ?DateRange,
+  numberOfEvents: number
 };
 
 type DispatchProps = {
@@ -34,16 +31,11 @@ type Props = StateProps & DispatchProps;
 const mapStateToProps = (
   state: State,
   { navigation }: OwnProps
-): StateProps => {
-  const events = selectStagedFilteredEvents(state);
-  return {
-    navigation,
-    applyButtonText: text.filterPickerApply(events.length),
-    applyButtonLabel: text.filterPickerApplyLabel(events.length),
-    applyButtonDisabled: events.length <= 0,
-    dateRange: selectDateFilter(state, true)
-  };
-};
+): StateProps => ({
+  navigation,
+  numberOfEvents: selectStagedFilteredEvents(state).length,
+  dateRange: selectDateFilter(state, true)
+});
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
   onChange: date => dispatch(setEventFilters({ date }))

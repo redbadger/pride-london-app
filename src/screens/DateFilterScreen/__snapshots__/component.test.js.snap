@@ -69,7 +69,7 @@ exports[`DateFilterScreen renders correctly 1`] = `
       style={Object {}}
     >
       <Button
-        accessibilityLabel="Show all 26 events"
+        accessibilityLabel="Show 26 selected events"
         disabled={false}
         onPress={[Function]}
       >
@@ -161,7 +161,7 @@ exports[`DateFilterScreen renders correctly with date range 1`] = `
       style={Object {}}
     >
       <Button
-        accessibilityLabel="Show all 26 events"
+        accessibilityLabel="Show 26 selected events"
         disabled={false}
         onPress={[Function]}
       >

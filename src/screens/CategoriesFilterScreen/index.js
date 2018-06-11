@@ -4,11 +4,9 @@ import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { State } from "../../reducers";
 import type { EventCategoryName } from "../../data/event";
-import type { Event } from "../../data/event-deprecated";
 import { setEventFilters } from "../../actions/event-filters";
 import { selectStagedFilteredEvents } from "../../selectors";
 import Component from "./component";
-import text from "../../constants/text";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>
@@ -16,9 +14,8 @@ type OwnProps = {
 
 type StateProps = {
   navigation: NavigationScreenProp<NavigationState>,
-  events: Event[],
   categories: Set<EventCategoryName>,
-  applyButtonText: string
+  numberOfEvents: number
 };
 
 type DispatchProps = {
@@ -34,15 +31,11 @@ type Props = StateProps & DispatchProps;
 const mapStateToProps = (
   state: State,
   { navigation }: OwnProps
-): StateProps => {
-  const events = selectStagedFilteredEvents(state);
-  return {
-    navigation,
-    events,
-    categories: state.eventFilters.selectedFilters.categories,
-    applyButtonText: text.filterPickerApply(events.length)
-  };
-};
+): StateProps => ({
+  navigation,
+  numberOfEvents: selectStagedFilteredEvents(state).length,
+  categories: state.eventFilters.selectedFilters.categories
+});
 
 const mapDispatchToProps = {
   toggleCategoryFilter: (originalCagegories, categoryLabel) => {

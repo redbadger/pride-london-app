@@ -53,6 +53,7 @@ exports[`FilterScreen renders correctly 1`] = `
       style={Object {}}
     >
       <Button
+        accessibilityLabel="Show 26 selected events"
         disabled={false}
         onPress={[Function]}
       >
