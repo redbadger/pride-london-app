@@ -7,7 +7,8 @@ import {
   buildStringSetFilter,
   buildAreaFilter
 } from "./basic-event-filters";
-import type { Event, EventCategoryName } from "../data/event-deprecated";
+import type { EventCategoryName } from "../data/event";
+import type { Event } from "../data/event-deprecated";
 
 export type BuildEventArguments = {
   startTime?: string,

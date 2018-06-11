@@ -6,7 +6,7 @@ import Touchable from "../../components/Touchable";
 import { whiteColor, blackColor } from "../../constants/colors";
 import whiteCheck from "../../../assets/images/whiteCheck.png";
 import blackCheck from "../../../assets/images/blackCheck.png";
-import type { EventCategory } from "../../data/event-deprecated";
+import type { EventCategory } from "../../data/event";
 import { checkboxAccessibilityLabel } from "../../data/accessibility";
 
 type ListItemProps = {

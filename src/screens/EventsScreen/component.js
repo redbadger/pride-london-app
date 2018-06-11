@@ -2,11 +2,8 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type {
-  EventCategoryName,
-  SavedEvents,
-  EventDays
-} from "../../data/event-deprecated";
+import type { EventCategoryName } from "../../data/event";
+import type { SavedEvents, EventDays } from "../../data/event-deprecated";
 import EventList from "../../components/EventList";
 import FilterHeader from "./FilterHeaderConnected";
 import NoEvents from "./NoEvents";

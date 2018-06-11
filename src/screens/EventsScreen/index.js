@@ -4,11 +4,8 @@ import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { createSelector } from "reselect";
 import type { State } from "../../reducers";
-import type {
-  EventCategoryName,
-  SavedEvents,
-  EventDays
-} from "../../data/event-deprecated";
+import type { EventCategoryName } from "../../data/event";
+import type { SavedEvents, EventDays } from "../../data/event-deprecated";
 import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import { groupEventsByStartTime } from "../../selectors/events-deprecated";
