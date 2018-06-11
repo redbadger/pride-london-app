@@ -109,7 +109,6 @@ export const expandRecurringEventsInEntries = entries =>
   }, []);
 
 const getDataState = (state: State) => state.data;
-const getSavedEventsState = (state: State) => state.savedEvents;
 
 const addPerformances = (performances: Performance[]) => (event: Event) => {
   const eventPerformances = R.view(fieldsPerformancesLocaleLens, event);
@@ -185,12 +184,4 @@ export const selectFeaturedEventsByTitle = (state: State, title: string) => {
       return acc;
     }, [])
     .filter(eventIsAfter(state.eventFilters.showEventsAfter));
-};
-
-export const selectSavedEvents = (state: State): Event[] => {
-  const events = selectEvents(state).filter(
-    eventIsAfter(state.eventFilters.showEventsAfter)
-  );
-  const savedEvents = getSavedEventsState(state);
-  return events.filter(event => savedEvents.has(event.sys.id));
 };
