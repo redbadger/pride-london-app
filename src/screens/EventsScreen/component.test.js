@@ -7,7 +7,7 @@ import FilterHeader from "./FilterHeaderConnected";
 import EventList from "../../components/EventList";
 import {
   EVENT_CATEGORIES_FILTER,
-  FILTER_MODAL,
+  EVENT_ATTRIBUTE_FILTER,
   EVENT_DETAILS,
   EVENT_LIST
 } from "../../constants/routes";
@@ -212,7 +212,7 @@ describe("EventsScreen Component", () => {
         .find(FilterHeader)
         .props()
         .onFilterButtonPress();
-      expect(navigationSpy).toBeCalledWith(FILTER_MODAL);
+      expect(navigationSpy).toBeCalledWith(EVENT_ATTRIBUTE_FILTER);
     });
 
     it("opens an event", () => {

@@ -52,8 +52,8 @@ import {
   PARADE_MAP,
   SAVED_EVENT_LIST,
   SUPPORT_US,
-  FILTER_MODAL,
-  DATE_FILTER_MODAL,
+  EVENT_ATTRIBUTE_FILTER,
+  EVENT_DATE_FILTER,
   DONATE,
   SPONSOR
 } from "./constants/routes";
@@ -154,8 +154,8 @@ const EventsStack = createStackNavigator(
     [EVENT_CATEGORIES_FILTER]: {
       screen: onlyUpdateWhenFocused(CategoriesFilterScreen)
     },
-    [DATE_FILTER_MODAL]: { screen: onlyUpdateWhenFocused(DateFilterScreen) },
-    [FILTER_MODAL]: { screen: onlyUpdateWhenFocused(FilterScreen) }
+    [EVENT_DATE_FILTER]: { screen: onlyUpdateWhenFocused(DateFilterScreen) },
+    [EVENT_ATTRIBUTE_FILTER]: { screen: onlyUpdateWhenFocused(FilterScreen) }
   },
   {
     initialRouteName: EVENT_LIST,

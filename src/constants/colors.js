@@ -74,7 +74,7 @@ export const eventListHeaderColor = "rgb(51, 51, 51)";
 export const sectionHeaderBgColor = lightGreyColor;
 export const sectionHeaderShadow = "rgba(0, 0, 0, 0.14)";
 
-// DATE FILTER MODAL
+// EVENT DATE FILTER
 
 export const dateRangePickerTextColor = "rgb(45, 47, 127)";
 export const dateRangePickerDotColor = "rgb(44, 218, 157)";
