@@ -1,4 +1,5 @@
 // @flow
+import type { EventCategoryName } from "./event";
 import type { FieldRef } from "./field-ref";
 
 export type Event = {
@@ -78,29 +79,6 @@ export type FeaturedEvents = {
 };
 
 export type EventDays = Event[][];
-
-export type EventCategory = {
-  label: EventCategoryName,
-  color: string,
-  contrast: boolean
-};
-
-export type EventCategoryName =
-  | "Cabaret and Variety"
-  | "Community"
-  | "Talks and Debates"
-  | "Film and Screenings"
-  | "Plays and Theatre"
-  | "Social and Networking"
-  | "Nightlife"
-  | "Exhibition and Tours"
-  | "Sports and Activities"
-  | "Health"
-  | "Music";
-
-export type EventCategoryMap = {
-  [string]: { [EventCategoryName]: EventCategory }
-};
 
 export type PerformancePeriods = Performance[][];
 
