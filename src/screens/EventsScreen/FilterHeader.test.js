@@ -3,6 +3,8 @@ import React from "react";
 import { shallow } from "enzyme";
 import FilterHeader from "./FilterHeader";
 import type { Props as ComponentProps } from "./FilterHeader";
+import FilterHeaderButton from "./FilterHeaderButton";
+import FilterHeaderCategories from "./FilterHeaderCategories";
 
 const render = (
   props: ComponentProps = {
@@ -77,5 +79,54 @@ describe("renders correctly", () => {
       numTagFiltersSelected: 2
     });
     expect(output).toMatchSnapshot();
+  });
+});
+
+describe("filter buttons", () => {
+  it("calls onFilterCategoriesPress when users presses categories filter button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: mock,
+      onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
+      numTagFiltersSelected: 0
+    });
+    output.find(FilterHeaderCategories).prop("onFilterPress")();
+
+    expect(mock).toBeCalledWith();
+  });
+
+  it("calls onDateFilterButtonPress when users presses date filter button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {},
+      onFilterButtonPress: () => {},
+      onDateFilterButtonPress: mock,
+      numTagFiltersSelected: 0
+    });
+    const button = output.find(FilterHeaderButton).at(0);
+    button.simulate("press");
+
+    expect(mock).toBeCalledWith();
+  });
+
+  it("calls onFilterButtonPress when users presses attribute filter button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {},
+      onFilterButtonPress: mock,
+      onDateFilterButtonPress: () => {},
+      numTagFiltersSelected: 0
+    });
+    const button = output.find(FilterHeaderButton).at(1);
+    button.simulate("press");
+
+    expect(mock).toBeCalledWith();
   });
 });
