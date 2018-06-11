@@ -1,6 +1,7 @@
 app_identifier 'org.prideinlondon.festival'
 precheck_include_in_app_purchases(false)
 precheck_default_rule_level(level: :error)
+automatic_release(true)
 overwrite_screenshots(true)
 submit_for_review(true)
 submission_information({
