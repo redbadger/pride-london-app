@@ -7,7 +7,7 @@ import CategoryPill from "./CategoryPill";
 import { imageBgColor, eventTileTextColor } from "../constants/colors";
 import { toFormat, FORMAT_SHORT_WEEKDAY_DAY_MONTH } from "../lib/date";
 import type { FieldRef } from "../data/field-ref";
-import type { EventCategoryName } from "../data/event-deprecated";
+import type { EventCategoryName } from "../data/event";
 
 type Props = {
   eventCategories: EventCategoryName[],

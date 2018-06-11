@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import type { NavigationScreenProp } from "react-navigation";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
@@ -13,7 +13,7 @@ import Header from "./Header";
 import type { EventFiltersPayload } from "../../actions/event-filters";
 
 type Props = {
-  navigation: NavigationScreenProp<{}>,
+  navigation: NavigationScreenProp<NavigationState>,
   applyButtonText: string,
   eventFilters: FilterCollection,
   numEventsSelected: number,

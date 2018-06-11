@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { Linking, StyleSheet, View } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import type { NavigationScreenProp } from "react-navigation";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event, EventCategoryName } from "../../data/event";
 import type { Performance } from "../../data/performance";
 import EventContact from "./EventContact";
@@ -28,7 +28,7 @@ import { EVENT_LIST } from "../../constants/routes";
 type EventHeaderProps = {
   isSaved: boolean,
   toggleSaved: boolean => void,
-  navigation: NavigationScreenProp<{ params: { eventId: string } }>
+  navigation: NavigationScreenProp<NavigationState>
 };
 
 export const EventHeader = ({

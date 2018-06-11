@@ -1,6 +1,6 @@
 // @flow
 import type { DateRange, Time } from "../data/date-time";
-import type { EventCategoryName } from "../data/event-deprecated";
+import type { EventCategoryName } from "../data/event";
 import type {
   Area,
   Price,
