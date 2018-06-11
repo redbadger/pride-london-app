@@ -142,7 +142,7 @@ export default {
   paradeInformationScreen: {
     headerTitle: "Parade Day - 7th July",
     pageHeading: "London Parade",
-    pageSubheading: "Sunday 7th July",
+    pageSubheading: "Saturday 7th July",
     pageDescription:
       "The Pride in London Parade provides a platform for every part of London’s LGBT+ community to raise awareness of LGBT+ issues and campaign for the freedoms that will allow us to live our lives on a genuinely equal footing. It gives us a chance to be visible and speak loudly to the rest of the world about what we have achieved, how far we have come and what is still needed.",
     stages: [
