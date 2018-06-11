@@ -1,6 +1,5 @@
 // @flow
-import type { Event } from "../data/event-deprecated";
-import locale from "../data/locale";
+import type { Event } from "../data/event";
 
 export const isFree = (priceLow: number, priceHigh: number) =>
   priceLow === 0 && priceHigh === 0;
@@ -8,6 +7,6 @@ export const isFree = (priceLow: number, priceHigh: number) =>
 // eslint-disable-next-line import/prefer-default-export
 export const selectEventIsFree = (event: Event) =>
   isFree(
-    event.fields.eventPriceLow[locale],
-    event.fields.eventPriceHigh[locale]
+    event.fields.eventPriceLow,
+    event.fields.eventPriceHigh
   );
