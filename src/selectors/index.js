@@ -8,7 +8,7 @@ import { filterEvents, selectEventsFromEntries } from "./events-deprecated";
 import {
   buildEventFilter,
   selectShowEventsAfter,
-  selectFilters,
+  selectSelectedFilters,
   selectStagedFilters
 } from "./event-filters";
 
@@ -27,7 +27,10 @@ const getShowEventsAfter = createSelector(
   [selectEventFilters],
   selectShowEventsAfter
 );
-const getSelectedFilters = createSelector([selectEventFilters], selectFilters);
+const getSelectedFilters = createSelector(
+  [selectEventFilters],
+  selectSelectedFilters
+);
 const getStagedFilters = createSelector(
   [selectEventFilters],
   selectStagedFilters
