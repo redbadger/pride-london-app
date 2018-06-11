@@ -1,262 +1,79 @@
 // @flow
 import { DateTime } from "luxon";
-import {
-  buildDateRangeFilter,
-  buildTimeFilter,
-  buildPriceFilter,
-  buildStringSetFilter,
-  buildAreaFilter,
-  buildCategoryFilter
-} from "./basic-event-filters";
+import { generateEvent, sampleOne } from "../data/__test-data";
 import {
   eventIsAfter,
   selectDateFilter,
   selectTimeFilter,
   buildEventFilter,
-  selectIsStagingFilters,
   selectTagFilterSelectedCount
 } from "./event-filters";
-import type { FilterCollection } from "../data/event-filters";
-import type { Event } from "../data/event-deprecated";
+import type {
+  Area,
+  Price,
+  Audience,
+  VenueDetail,
+  AccessibilityOption,
+  FilterCollection
+} from "../data/event-filters";
+import type { EventCategoryName } from "../data/event";
 
-jest.mock("./basic-event-filters");
-const untypedBuildDateRangeFilter: any = buildDateRangeFilter;
-const untypedBuildTimeFilter: any = buildTimeFilter;
-const untypedBuildPriceFilter: any = buildPriceFilter;
-const untypedBuildStringSetFilter: any = buildStringSetFilter;
-const untypedBuildAreaFilter: any = buildAreaFilter;
-const untypedBuildCategoryFilter: any = buildCategoryFilter;
-
-const buildState = (
-  selectedFilters: FilterCollection,
-  stagedFilters: FilterCollection
-) => ({
-  data: {
-    entries: [],
-    assets: [],
-    events: [],
-    featuredEvents: [],
-    headerBanners: [],
-    images: {},
-    performances: {},
-    sponsors: [],
-    loading: false,
-    refreshing: false
-  },
-  eventFilters: {
-    showEventsAfter: DateTime.fromISO("2018-07-07T00:00:00+01:00"),
-    selectedFilters,
-    stagedFilters
-  },
-  savedEvents: new Set(),
-  splashScreen: false
-});
-
-export type BuildEventArguments = {
-  startTime: string,
-  endTime: string,
-  categories?: Array<string>,
-  eventPriceLow?: number,
-  eventPriceHigh?: number
+export type BuildFilterCollection = {
+  date?: ?DateRange,
+  timeOfDay?: Set<Time>,
+  categories?: Set<EventCategoryName>,
+  price?: Set<Price>,
+  audience?: Set<Audience>,
+  venueDetails?: Set<VenueDetail>,
+  accessibilityOptions?: Set<AccessibilityOption>,
+  area?: Set<Area>
 };
 
-const buildEvent = ({
-  startTime,
-  endTime,
-  categories = [],
-  eventPriceLow = 0,
-  eventPriceHigh = 10
-}: BuildEventArguments) =>
-  (({
-    fields: {
-      startTime: { "en-GB": startTime },
-      endTime: { "en-GB": endTime },
-      categories: { "en-GB": categories },
-      eventPriceLow: { "en-GB": eventPriceLow },
-      eventPriceHigh: { "en-GB": eventPriceHigh }
-    }
-  }: any): Event);
+const buildFilterCollection = (
+  filter: BuildFilterCollection = {}
+): FilterCollection => ({
+  date: filter.date || null,
+  timeOfDay: filter.timeOfDay || new Set(),
+  categories: filter.categories || new Set(),
+  price: filter.price || new Set(),
+  audience: filter.audience || new Set(),
+  venueDetails: filter.venueDetails || new Set(),
+  accessibilityOptions: filter.accessibilityOptions || new Set(),
+  area: filter.area || new Set()
+});
 
 describe("selectDateFilter", () => {
   it("returns the date part of the eventFilters", () => {
-    const state = buildState(
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-        timeOfDay: new Set(["morning"]),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-02", endDate: "2018-01-02" },
-        timeOfDay: new Set(["morning"]),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
-    );
+    const date = { startDate: "2018-01-01", endDate: "2018-01-01" };
+    const filter = buildFilterCollection({
+      date
+    });
 
-    const actual = selectDateFilter(state);
-    expect(actual).toEqual({ startDate: "2018-01-01", endDate: "2018-01-01" });
-  });
-
-  it("returns the date part of the staged eventFilters", () => {
-    const state = buildState(
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-        timeOfDay: new Set(["morning"]),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-02", endDate: "2018-01-02" },
-        timeOfDay: new Set(["morning"]),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
-    );
-
-    const actual = selectDateFilter(state, true);
-    expect(actual).toEqual({ startDate: "2018-01-02", endDate: "2018-01-02" });
+    const actual = selectDateFilter(filter);
+    expect(actual).toEqual(date);
   });
 });
 
 describe("selectTimeFilter", () => {
   it("returns the time part of the eventFilters", () => {
     const timeOfDay = new Set(["morning"]);
-    const state = buildState(
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-        timeOfDay,
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-        timeOfDay: new Set(["afternoon"]),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
-    );
+    const filter = buildFilterCollection({
+      timeOfDay
+    });
 
-    const actual = selectTimeFilter(state);
+    const actual = selectTimeFilter(filter);
     expect(actual).toBe(timeOfDay);
-  });
-
-  it("returns the time part of the staged eventFilters", () => {
-    const timeOfDay = new Set(["afternoon"]);
-    const state = buildState(
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-        timeOfDay: new Set(["morning"]),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-        timeOfDay,
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
-    );
-
-    const actual = selectTimeFilter(state, true);
-    expect(actual).toBe(timeOfDay);
-  });
-});
-
-describe("selectIsStagingFilters", () => {
-  it("return falsee if staging filters are the same instance as selected filters", () => {
-    const filters = {
-      categories: new Set(),
-      date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-      timeOfDay: new Set(["morning"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
-    const state = buildState(filters, filters);
-
-    const actual = selectIsStagingFilters(state);
-    expect(actual).toBe(false);
-  });
-
-  it("return true otherwise", () => {
-    const state = buildState(
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-        timeOfDay: new Set(["morning"]),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      },
-      {
-        categories: new Set(),
-        date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-        timeOfDay: new Set(["morning"]),
-        price: new Set(),
-        audience: new Set(),
-        venueDetails: new Set(),
-        accessibilityOptions: new Set(),
-        area: new Set()
-      }
-    );
-
-    const actual = selectIsStagingFilters(state);
-    expect(actual).toBe(true);
   });
 });
 
 describe("selectTagFilterSelectedCount", () => {
   it("returns number of selected tag filters", () => {
-    const filters = {
-      categories: new Set(),
-      date: { startDate: "2018-01-01", endDate: "2018-01-01" },
+    const filter = buildFilterCollection({
       timeOfDay: new Set(["morning"]),
-      price: new Set(["free"]),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
-    const state = buildState(filters, filters);
+      price: new Set(["free"])
+    });
 
-    const count = selectTagFilterSelectedCount(state);
+    const count = selectTagFilterSelectedCount(filter);
     expect(count).toBe(2);
   });
 });
@@ -264,20 +81,18 @@ describe("selectTagFilterSelectedCount", () => {
 describe("eventIsAfter", () => {
   it("filters events before the passed date", () => {
     const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
-    const event = buildEvent({
-      startTime: "2018-07-01T00:00:00+01:00",
-      endTime: "2018-07-01T12:00:00+01:00"
-    });
+    const event = sampleOne(generateEvent);
+    event.fields.startTime = "2018-07-01T00:00:00+01:00";
+    event.fields.endTime = "2018-07-01T12:00:00+01:00";
 
     expect(eventIsAfter(date)(event)).toEqual(false);
   });
 
   it("does not filter events after the passed date", () => {
     const date = DateTime.fromISO("2018-07-07T00:00:00+01:00");
-    const event = buildEvent({
-      startTime: "2018-08-01T00:00:00+01:00",
-      endTime: "2018-08-01T12:00:00+01:00"
-    });
+    const event = sampleOne(generateEvent);
+    event.fields.startTime = "2018-08-01T00:00:00+01:00";
+    event.fields.endTime = "2018-08-01T12:00:00+01:00";
 
     expect(eventIsAfter(date)(event)).toEqual(true);
   });
@@ -285,500 +100,297 @@ describe("eventIsAfter", () => {
 
 describe("buildEventFilter", () => {
   const showEventsAfter = DateTime.fromISO("2018-07-07T00:00:00+01:00");
-  const event = buildEvent({
-    startTime: "2018-08-02T08:00:00",
-    endTime: "2018-08-02T15:00:00"
-  });
 
   it("returns a filter that only keeps events after showEventsAfter", () => {
     const onlyAfter = DateTime.fromISO("2018-07-07T12:00:00+01:00");
-    const filterState = {
-      categories: new Set(),
-      date: null,
-      timeOfDay: new Set(["morning", "afternoon", "evening"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection();
     const filter = buildEventFilter(onlyAfter, filterState);
-    const laterEvent = buildEvent({
-      startTime: "2018-07-07T00:00:00+01:00",
-      endTime: "2018-07-07T12:01:00+01:00"
-    });
-    const sameTimeEvent = buildEvent({
-      startTime: "2018-07-07T00:00:00+01:00",
-      endTime: "2018-07-07T12:00:00+01:00"
-    });
-    const earlierEvent = buildEvent({
-      startTime: "2018-07-07T00:00:00+01:00",
-      endTime: "2018-07-07T11:59:00+01:00"
-    });
+    const laterEvent = sampleOne(generateEvent);
+    laterEvent.fields.startTime = "2018-07-07T00:00:00+01:00";
+    laterEvent.fields.endTime = "2018-07-07T12:01:00+01:00";
+
+    const sameTimeEvent = sampleOne(generateEvent);
+    sameTimeEvent.fields.startTime = "2018-07-07T00:00:00+01:00";
+    sameTimeEvent.fields.endTime = "2018-07-07T12:00:00+01:00";
+
+    const earlierEvent = sampleOne(generateEvent);
+    earlierEvent.fields.startTime = "2018-07-07T00:00:00+01:00";
+    earlierEvent.fields.endTime = "2018-07-07T11:59:00+01:00";
+
     expect(filter(laterEvent)).toEqual(true);
     expect(filter(sameTimeEvent)).toEqual(false);
     expect(filter(earlierEvent)).toEqual(false);
   });
 
   it("builds always truthy date filter when date is null", () => {
-    untypedBuildTimeFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      categories: new Set(),
-      date: null,
-      timeOfDay: new Set(["morning", "afternoon", "evening"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      date: null
+    });
+    const event = sampleOne(generateEvent);
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildDateRangeFilter).not.toHaveBeenCalled();
   });
 
   it("builds date filter when date is a string", () => {
-    untypedBuildTimeFilter.mockReturnValue(() => true);
-    untypedBuildDateRangeFilter.mockReturnValue(() => true);
+    const filterState = buildFilterCollection({
+      date: { startDate: "2018-07-10", endDate: "2018-07-10" }
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.startTime = "2018-07-10T00:00:00+01:00";
+    event.fields.endTime = "2018-07-10T12:01:00+01:00";
 
-    const filterState = {
-      categories: new Set(),
-      date: { startDate: "2018-01-02", endDate: "2018-01-02" },
-      timeOfDay: new Set(["morning", "afternoon", "evening"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(filterState.date);
   });
 
   it("builds date range filter when date is a range", () => {
-    untypedBuildTimeFilter.mockReturnValue(() => true);
-    untypedBuildDateRangeFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      categories: new Set(),
+    const filterState = buildFilterCollection({
       date: {
-        startDate: "2018-08-02",
-        endDate: "2018-08-03"
-      },
-      timeOfDay: new Set(["morning", "afternoon", "evening"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+        startDate: "2018-07-10",
+        endDate: "2018-07-12"
+      }
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.startTime = "2018-07-09T00:00:00+01:00";
+    event.fields.endTime = "2018-07-13T12:01:00+01:00";
+
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildDateRangeFilter).toHaveBeenCalledWith(filterState.date);
+  });
+
+  it("builds filter, which returns false when date is not in range", () => {
+    const filterState = buildFilterCollection({
+      date: { startDate: "2018-07-10", endDate: "2018-07-11" }
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.startTime = "2018-07-12T00:00:00+01:00";
+    event.fields.endTime = "2018-07-13T12:01:00+01:00";
+
+    const filter = buildEventFilter(showEventsAfter, filterState);
+    expect(filter(event)).toBe(false);
   });
 
   it("builds always truthy time filter when time array is empty", () => {
-    const filterState = {
-      categories: new Set(),
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      timeOfDay: new Set()
+    });
+    const event = sampleOne(generateEvent);
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildTimeFilter).not.toHaveBeenCalled();
   });
 
   it("builds always truthy time filter when time array contains all possible values", () => {
-    const filterState = {
-      categories: new Set(),
-      date: null,
-      timeOfDay: new Set(["morning", "afternoon", "evening"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      timeOfDay: new Set(["morning", "afternoon", "evening"])
+    });
+    const event = sampleOne(generateEvent);
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildTimeFilter).not.toHaveBeenCalled();
   });
 
   it("builds time filter, which returns true when one of the times match", () => {
-    untypedBuildTimeFilter
-      .mockReturnValue(() => true)
-      .mockReturnValueOnce(() => false);
-
-    const filterState = {
-      categories: new Set(),
-      date: null,
-      timeOfDay: new Set(["morning", "evening"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      timeOfDay: new Set(["morning", "evening"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.startTime = "2018-07-10T06:00:00+01:00";
+    event.fields.endTime = "2018-07-10T10:00:00+01:00";
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildTimeFilter).toHaveBeenCalledWith("morning");
-    expect(untypedBuildTimeFilter).toHaveBeenCalledWith("evening");
   });
 
   it("builds filter, which returns false when time filter return false", () => {
-    untypedBuildTimeFilter.mockReturnValue(() => false);
-    untypedBuildDateRangeFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      categories: new Set(),
-      date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-      timeOfDay: new Set(["morning"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      timeOfDay: new Set(["morning"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.startTime = "2018-07-10T14:00:00+01:00";
+    event.fields.endTime = "2018-07-10T16:00:00+01:00";
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
-  it("builds filter, which returns false when date filter return false", () => {
-    untypedBuildTimeFilter.mockReturnValue(() => true);
-    untypedBuildDateRangeFilter.mockReturnValue(() => false);
-
-    const filterState = {
-      categories: new Set(),
-      date: { startDate: "2018-01-01", endDate: "2018-01-01" },
-      timeOfDay: new Set(["morning", "afternoon", "evening"]),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
-    const filter = buildEventFilter(showEventsAfter, filterState);
-    expect(filter(event)).toBe(false);
-  });
-
-  it("builds truthy price filter when price is false", () => {
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
-      area: new Set()
-    };
+  it("builds truthy price filter when price is empty", () => {
+    const filterState = buildFilterCollection({
+      price: new Set()
+    });
+    const event = sampleOne(generateEvent);
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildPriceFilter).not.toHaveBeenCalled();
   });
 
-  it("builds filter, which returns false when price filter returns false", () => {
-    untypedBuildPriceFilter.mockReturnValue(() => false);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(["free"]),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
-      area: new Set()
-    };
-    const filter = buildEventFilter(showEventsAfter, filterState);
-    expect(filter(event)).toBe(false);
-  });
-
-  it("builds filter, which returns true when price filter returns true", () => {
-    untypedBuildPriceFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(["free"]),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
-      area: new Set()
-    };
+  it("builds filter, which returns true when price filter is free and event is free", () => {
+    const filterState = buildFilterCollection({
+      price: new Set(["free"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.eventPriceLow = 0;
+    event.fields.eventPriceHigh = 0;
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
+  });
+
+  it("builds filter, which returns false when price filter is free and event is not free", () => {
+    const filterState = buildFilterCollection({
+      price: new Set(["free"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.eventPriceLow = 10;
+    event.fields.eventPriceHigh = 11;
+    const filter = buildEventFilter(showEventsAfter, filterState);
+    expect(filter(event)).toBe(false);
   });
 
   it("builds truthy audience filter when no audience selected", () => {
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      audience: new Set()
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.audience = [];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
 
-  it("builds filter, which returns false when audience filter returns false", () => {
-    untypedBuildStringSetFilter.mockReturnValue(() => false);
+  it("builds filter, which returns true when filter contains audience of event", () => {
+    const filterState = buildFilterCollection({
+      audience: new Set(["18+"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.audience = ["18+"];
+    const filter = buildEventFilter(showEventsAfter, filterState);
+    expect(filter(event)).toBe(true);
+  });
 
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(["18+"]),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
-      area: new Set()
-    };
+  it("builds filter, which returns false when filter does not contain audience of event", () => {
+    const filterState = buildFilterCollection({
+      audience: new Set(["18+"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.audience = [];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
-  });
-
-  it("builds filter, which returns true when audience filter returns true", () => {
-    untypedBuildStringSetFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(["18+"]),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
-      area: new Set()
-    };
-    const filter = buildEventFilter(showEventsAfter, filterState);
-    expect(filter(event)).toBe(true);
   });
 
   it("builds truthy venue details filter when no venue details selected", () => {
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      venueDetails: new Set()
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.venueDetails = [];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
 
-  it("builds filter, which returns false when venue details filter returns false", () => {
-    untypedBuildStringSetFilter.mockReturnValue(() => false);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(["Indoors"]),
-      categories: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+  it("builds filter, which returns false when filter does not contain venue details of event", () => {
+    const filterState = buildFilterCollection({
+      venueDetails: new Set(["Indoors"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.venueDetails = [];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
-  it("builds filter, which returns true when venue details filter returns true", () => {
-    untypedBuildStringSetFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(["Indoors"]),
-      categories: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set()
-    };
+  it("builds filter, which returns true when filter contains venue details of event", () => {
+    const filterState = buildFilterCollection({
+      venueDetails: new Set(["Indoors"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.venueDetails = ["Indoors"];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 
   it("builds truthy accessibility options filter when no accessibility options selected", () => {
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      accessibilityOptions: new Set()
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.accessibilityOptions = [];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildStringSetFilter).not.toHaveBeenCalled();
   });
 
   it("builds filter, which returns false when accessibility options filter returns false", () => {
-    untypedBuildStringSetFilter.mockReturnValue(() => false);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      categories: new Set(),
-      accessibilityOptions: new Set(["Step free access"]),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      accessibilityOptions: new Set(["Step free access"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.accessibilityOptions = [];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
   it("builds filter, which returns true when venue details filter returns true", () => {
-    untypedBuildStringSetFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      categories: new Set(),
-      accessibilityOptions: new Set(["Step free access"]),
-      area: new Set()
-    };
+    const filterState = buildFilterCollection({
+      accessibilityOptions: new Set(["Step free access"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.accessibilityOptions = ["Step free access"];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 
   it("builds truthy area filter when no areas selected", () => {
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      categories: new Set(),
+    const filterState = buildFilterCollection({
       area: new Set()
-    };
+    });
+    const event = sampleOne(generateEvent);
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
-    expect(untypedBuildAreaFilter).not.toHaveBeenCalled();
   });
 
   it("builds filter, which returns false when area filter returns false", () => {
-    untypedBuildAreaFilter.mockReturnValue(() => false);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      categories: new Set(),
-      accessibilityOptions: new Set(),
+    const filterState = buildFilterCollection({
       area: new Set(["North"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.location = {
+      lon: -0.14505099999996673,
+      lat: 51.478269
     };
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
-  it("builds filter, which returns true when venue details filter returns true", () => {
-    untypedBuildAreaFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      categories: new Set(),
-      accessibilityOptions: new Set(),
+  it("builds filter, which returns true when area filter returns true", () => {
+    const filterState = buildFilterCollection({
       area: new Set(["North"])
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.location = {
+      lon: -0.15343029999996816,
+      lat: 51.5352875
     };
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
 
-  it("builds category filter, which returns false when category filter return false", () => {
-    untypedBuildTimeFilter.mockReturnValue(() => true);
-
-    untypedBuildCategoryFilter.mockReturnValue(() => false);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set(),
-      categories: new Set(["Community"])
-    };
+  it("builds truthy area filter when no categories are selected", () => {
+    const filterState = buildFilterCollection({
+      categories: new Set()
+    });
+    const event = sampleOne(generateEvent);
     const filter = buildEventFilter(showEventsAfter, filterState);
-    expect(filter(event)).toBe(false);
+    expect(filter(event)).toBe(true);
   });
 
   it("builds category filter, which returns false when category filter return false", () => {
-    untypedBuildTimeFilter.mockReturnValue(() => true);
-    untypedBuildCategoryFilter.mockReturnValue(() => false);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set(),
+    const filterState = buildFilterCollection({
       categories: new Set(["Community"])
-    };
+    });
+    const event = sampleOne(generateEvent);
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(false);
   });
 
   it("builds category filter, which returns true when category filter return true", () => {
-    untypedBuildTimeFilter.mockReturnValue(() => true);
-    untypedBuildCategoryFilter.mockReturnValue(() => true);
-
-    const filterState = {
-      date: null,
-      timeOfDay: new Set(),
-      price: new Set(),
-      audience: new Set(),
-      venueDetails: new Set(),
-      accessibilityOptions: new Set(),
-      area: new Set(),
+    const filterState = buildFilterCollection({
       categories: new Set(["Community"])
-    };
+    });
+    const event = sampleOne(generateEvent);
+    event.fields.eventCategories = ["Community"];
     const filter = buildEventFilter(showEventsAfter, filterState);
     expect(filter(event)).toBe(true);
   });
-});
-
-afterEach(() => {
-  untypedBuildDateRangeFilter.mockReset();
-  untypedBuildTimeFilter.mockReset();
-  untypedBuildPriceFilter.mockReset();
-  untypedBuildStringSetFilter.mockReset();
-  untypedBuildAreaFilter.mockReset();
-  untypedBuildCategoryFilter.mockReset();
 });
