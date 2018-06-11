@@ -1,6 +1,6 @@
 // @flow
 import { generateEvent, sampleOne } from "../data/__test-data";
-import { selectEventIsFree } from "./event";
+import { groupEventsByStartTime, selectEventIsFree } from "./event";
 
 describe("selectEventIsFree", () => {
   it("returns true if both prices are 0", () => {
@@ -17,5 +17,82 @@ describe("selectEventIsFree", () => {
     event.fields.eventPriceHigh = 12;
 
     expect(selectEventIsFree(event)).toBe(false);
+  });
+});
+
+describe("groupEventsByStartTime", () => {
+  it("returns empty array when no events exist", () => {
+    const expected = [];
+    const actual = groupEventsByStartTime([]);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("separates two individual events by day and sorts", () => {
+    const eventA = sampleOne(generateEvent, { seed: 1234 });
+    eventA.fields.startTime = "2018-08-02T00:00:00";
+    const eventB = sampleOne(generateEvent, { seed: 1421 });
+    eventB.fields.startTime = "2018-08-01T00:00:00";
+
+    const events = [eventA, eventB];
+
+    const expected = [[eventB], [eventA]];
+    const actual = groupEventsByStartTime(events);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("leaves two events on the same day together", () => {
+    const eventA = sampleOne(generateEvent, { seed: 1234 });
+    eventA.fields.startTime = "2018-08-01T00:00:00";
+    const eventB = sampleOne(generateEvent, { seed: 1421 });
+    eventB.fields.startTime = "2018-08-01T10:00:00";
+
+    const events = [eventA, eventB];
+
+    const expected = [[eventA, eventB]];
+    const actual = groupEventsByStartTime(events);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("makes two groups", () => {
+    const eventA = sampleOne(generateEvent, { seed: 1234 });
+    eventA.fields.startTime = "2018-08-01T02:00:00";
+    const eventB = sampleOne(generateEvent, { seed: 1421 });
+    eventB.fields.startTime = "2018-08-02T02:00:00";
+    const eventC = sampleOne(generateEvent, { seed: 2452 });
+    eventC.fields.startTime = "2018-08-01T00:00:00";
+    const eventD = sampleOne(generateEvent, { seed: 3244 });
+    eventD.fields.startTime = "2018-08-02T03:00:00";
+    const eventE = sampleOne(generateEvent, { seed: 2344 });
+    eventE.fields.startTime = "2018-08-01T02:00:00";
+
+    const events = [eventA, eventB, eventC, eventD, eventE];
+
+    const expected = [[eventC, eventA, eventE], [eventB, eventD]];
+    const actual = groupEventsByStartTime(events);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("makes multiple groups", () => {
+    const eventA = sampleOne(generateEvent, { seed: 1234 });
+    eventA.fields.startTime = "2018-08-01T02:00:00";
+    const eventB = sampleOne(generateEvent, { seed: 1421 });
+    eventB.fields.startTime = "2018-08-02T02:00:00";
+    const eventC = sampleOne(generateEvent, { seed: 2452 });
+    eventC.fields.startTime = "2018-08-05T00:00:00";
+    const eventD = sampleOne(generateEvent, { seed: 3244 });
+    eventD.fields.startTime = "2018-08-04T03:00:00";
+    const eventE = sampleOne(generateEvent, { seed: 2344 });
+    eventE.fields.startTime = "2018-08-03T02:00:00";
+
+    const events = [eventA, eventB, eventC, eventD, eventE];
+
+    const expected = [[eventA], [eventB], [eventE], [eventD], [eventC]];
+    const actual = groupEventsByStartTime(events);
+
+    expect(actual).toEqual(expected);
   });
 });

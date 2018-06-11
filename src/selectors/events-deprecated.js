@@ -2,7 +2,6 @@
 import R from "ramda";
 import type { CmsEntry } from "../integrations/cms";
 import {
-  compareAsc as compareDateAsc,
   isSameDay,
   set as setDate,
   diff as diffDate,
@@ -15,7 +14,6 @@ import type { State } from "../reducers";
 import type {
   Event,
   FeaturedEvents,
-  EventDays,
   Performance,
   Reference
 } from "../data/event-deprecated";
@@ -30,16 +28,6 @@ const fieldsPerformancesLocaleLens = R.lensPath([
 ]);
 
 export const uniqueEvents = R.uniqBy(element => element.sys.id);
-
-const sortByStartTimeAsc = (a: Event | Performance, b: Event | Performance) =>
-  compareDateAsc(a.fields.startTime[locale], b.fields.startTime[locale]);
-
-export const groupEventsByStartTime = (events: Event[]): EventDays =>
-  R.groupWith(
-    (a: Event, b: Event) =>
-      isSameDay(a.fields.startTime[locale], b.fields.startTime[locale]),
-    events.sort(sortByStartTimeAsc)
-  );
 
 const generateRecurringEvent = event => recurrence => {
   const [recurrenceDay, recurrenceMonth, recurrenceYear] = recurrence.split(
