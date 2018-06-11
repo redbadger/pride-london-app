@@ -1,17 +1,15 @@
 // @flow
 import React from "react";
-import { Calendar } from "react-native-calendars";
+import { CalendarList } from "react-native-calendars";
+import Day from "./DateRangePickerDay";
+import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
+import type { DateRange } from "../../data/date-time";
 import {
   toFormat as formatDate,
   isBefore,
   addDays,
   FORMAT_YEAR_MONTH_DAY
 } from "../../lib/date";
-import type { DateRange } from "../../data/date-time";
-
-import Day from "./DateRangePickerDay";
-import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
-
 import { dateRangePickerTextColor } from "../../constants/colors";
 
 const getSortedDateRange = (dates: DateRange) =>
@@ -80,6 +78,9 @@ const getMarkedDates = (dateRange: ?DateRange, today: string): DayMarkings => {
   return addDateMark(getMarkedDateRange(dateRange), today);
 };
 
+const diffFullMonths = (a: Date, b: Date) =>
+  12 * (a.getFullYear() - b.getFullYear()) + a.getMonth() - b.getMonth();
+
 type Props = {
   onChange: DateRange => void,
   dateRange?: ?DateRange,
@@ -117,12 +118,16 @@ class DateRangePicker extends React.PureComponent<Props> {
     const dateRange = this.props.dateRange
       ? getSortedDateRange(this.props.dateRange)
       : this.props.dateRange;
+    const current =
+      dateRange && this.props.forceNewRange ? dateRange.startDate : null;
+    const pastScrollRange = diffFullMonths(
+      current ? new Date(current) : today,
+      today
+    );
 
     return (
-      <Calendar
-        current={
-          dateRange && this.props.forceNewRange ? dateRange.startDate : null
-        }
+      <CalendarList
+        current={current}
         markedDates={getMarkedDates(
           dateRange,
           formatDate(today.toISOString(), FORMAT_YEAR_MONTH_DAY)
@@ -132,6 +137,10 @@ class DateRangePicker extends React.PureComponent<Props> {
         dayComponent={Day}
         hideExtraDays
         theme={calendarTheme}
+        showScrollIndicator
+        pastScrollRange={pastScrollRange}
+        futureScrollRange={12}
+        calendarHeight={365}
       />
     );
   }
@@ -140,8 +149,6 @@ class DateRangePicker extends React.PureComponent<Props> {
 const calendarTheme = {
   "stylesheet.calendar.main": {
     week: {
-      marginLeft: 10,
-      marginRight: 10,
       marginTop: 7,
       marginBottom: 7,
       flexDirection: "row",
@@ -152,16 +159,12 @@ const calendarTheme = {
     monthText: {
       fontFamily: "Poppins-SemiBold",
       fontSize: 16,
-      margin: 10
+      marginVertical: 10
     },
     week: {
       marginTop: 7,
-      marginHorizontal: 10,
       flexDirection: "row",
       justifyContent: "space-around"
-    },
-    arrowImage: {
-      tintColor: dateRangePickerTextColor
     },
     dayHeader: {
       marginTop: 2,

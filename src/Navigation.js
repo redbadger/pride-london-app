@@ -22,6 +22,7 @@ import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FilterScreen from "./screens/FilterScreen";
 import CategoriesFilterScreen from "./screens/CategoriesFilterScreen";
+import DateFilterScreen from "./screens/DateFilterScreen";
 import SupportUsScreen from "./screens/SupportUsScreen";
 import SponsorScreen from "./screens/SponsorScreen";
 import iconHomeActive from "../assets/images/homeActive.png";
@@ -51,7 +52,8 @@ import {
   PARADE_MAP,
   SAVED_EVENT_LIST,
   SUPPORT_US,
-  FILTER_MODAL,
+  EVENT_ATTRIBUTE_FILTER,
+  EVENT_DATE_FILTER,
   DONATE,
   SPONSOR
 } from "./constants/routes";
@@ -152,7 +154,8 @@ const EventsStack = createStackNavigator(
     [EVENT_CATEGORIES_FILTER]: {
       screen: onlyUpdateWhenFocused(CategoriesFilterScreen)
     },
-    [FILTER_MODAL]: { screen: onlyUpdateWhenFocused(FilterScreen) }
+    [EVENT_DATE_FILTER]: { screen: onlyUpdateWhenFocused(DateFilterScreen) },
+    [EVENT_ATTRIBUTE_FILTER]: { screen: onlyUpdateWhenFocused(FilterScreen) }
   },
   {
     initialRouteName: EVENT_LIST,

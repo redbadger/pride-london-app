@@ -10,8 +10,9 @@ import NoEvents from "./NoEvents";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
+  EVENT_ATTRIBUTE_FILTER,
   EVENT_CATEGORIES_FILTER,
-  FILTER_MODAL
+  EVENT_DATE_FILTER
 } from "../../constants/routes";
 import locale from "../../data/locale";
 
@@ -47,7 +48,11 @@ class EventsScreen extends Component<Props> {
   };
 
   handleFilterButtonPress = () => {
-    this.props.navigation.navigate(FILTER_MODAL);
+    this.props.navigation.navigate(EVENT_ATTRIBUTE_FILTER);
+  };
+
+  handleDateFilterButtonPress = () => {
+    this.props.navigation.navigate(EVENT_DATE_FILTER);
   };
 
   render() {
@@ -66,6 +71,7 @@ class EventsScreen extends Component<Props> {
           onFilterCategoriesPress={this.handleFilterCategoriesPress}
           selectedCategories={this.props.selectedCategories}
           onFilterButtonPress={this.handleFilterButtonPress}
+          onDateFilterButtonPress={this.handleDateFilterButtonPress}
         />
         {this.props.loading || events.length < 1 ? (
           <NoEvents />

@@ -2,11 +2,6 @@
 
 exports[`Header renders correctly with all props 1`] = `
 <Component
-  accessibilityTraits={
-    Array [
-      "header",
-    ]
-  }
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -54,6 +49,14 @@ exports[`Header renders correctly with all props 1`] = `
       }
     >
       <Text
+        accessibilityLabel="Center"
+        accessibilityLiveRegion="polite"
+        accessibilityTraits={
+          Array [
+            "header",
+          ]
+        }
+        accessible={true}
         color="whiteColor"
         markdown={false}
         markdownStyle={Object {}}
@@ -85,11 +88,6 @@ exports[`Header renders correctly with all props 1`] = `
 
 exports[`Header renders correctly with default props 1`] = `
 <Component
-  accessibilityTraits={
-    Array [
-      "header",
-    ]
-  }
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -129,6 +127,13 @@ exports[`Header renders correctly with default props 1`] = `
       }
     >
       <Text
+        accessibilityLiveRegion="polite"
+        accessibilityTraits={
+          Array [
+            "header",
+          ]
+        }
+        accessible={true}
         color="whiteColor"
         markdown={false}
         markdownStyle={Object {}}
@@ -150,11 +155,6 @@ exports[`Header renders correctly with default props 1`] = `
 
 exports[`Header renders correctly with only onBack and rightElement 1`] = `
 <Component
-  accessibilityTraits={
-    Array [
-      "header",
-    ]
-  }
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -202,6 +202,13 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
       }
     >
       <Text
+        accessibilityLiveRegion="polite"
+        accessibilityTraits={
+          Array [
+            "header",
+          ]
+        }
+        accessible={true}
         color="whiteColor"
         markdown={false}
         markdownStyle={Object {}}
@@ -231,11 +238,6 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
 
 exports[`Header renders correctly with only title 1`] = `
 <Component
-  accessibilityTraits={
-    Array [
-      "header",
-    ]
-  }
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -275,6 +277,14 @@ exports[`Header renders correctly with only title 1`] = `
       }
     >
       <Text
+        accessibilityLabel="Center"
+        accessibilityLiveRegion="polite"
+        accessibilityTraits={
+          Array [
+            "header",
+          ]
+        }
+        accessible={true}
         color="whiteColor"
         markdown={false}
         markdownStyle={Object {}}

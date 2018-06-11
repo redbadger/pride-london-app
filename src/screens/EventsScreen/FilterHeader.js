@@ -3,7 +3,6 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { DateRange } from "../../data/date-time";
 import type { EventCategoryName } from "../../data/event";
-import DateRangePickerDialog from "./DateRangePickerDialogConnected";
 import FilterHeaderButton from "./FilterHeaderButton";
 import ContentPadding from "../../components/ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
@@ -19,33 +18,19 @@ export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateRange,
   onFilterButtonPress: () => void,
+  onDateFilterButtonPress: () => void,
   selectedCategories: Set<EventCategoryName>,
   numTagFiltersSelected: number
 };
 
-type State = {
-  datesPickerVisible: boolean
-};
-
-class FilterHeader extends React.PureComponent<Props, State> {
-  state = {
-    datesPickerVisible: false
-  };
-
-  showDatePicker = () => {
-    this.setState({ datesPickerVisible: true });
-  };
-
-  hideDatePicker = () => {
-    this.setState({ datesPickerVisible: false });
-  };
-
+class FilterHeader extends React.PureComponent<Props> {
   render() {
     const {
       dateFilter,
       onFilterCategoriesPress,
       selectedCategories,
       onFilterButtonPress,
+      onDateFilterButtonPress,
       numTagFiltersSelected
     } = this.props;
     const formattedDateFilter = dateFilter
@@ -67,7 +52,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
             active={!!dateFilter}
             text={formattedDateFilter}
             label={`filter by date: ${formattedDateFilter}`}
-            onPress={this.showDatePicker}
+            onPress={onDateFilterButtonPress}
             style={styles.filterButton}
           />
           <View style={styles.dividerLine} />
@@ -82,11 +67,6 @@ class FilterHeader extends React.PureComponent<Props, State> {
             }
           />
         </View>
-        <DateRangePickerDialog
-          onApply={this.hideDatePicker}
-          onCancel={this.hideDatePicker}
-          visible={this.state.datesPickerVisible}
-        />
       </View>
     );
   }

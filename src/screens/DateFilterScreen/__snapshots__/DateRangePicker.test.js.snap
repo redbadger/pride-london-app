@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly no dates 1`] = `
-<Calendar
+<CalendarList
+  calendarHeight={365}
   current={null}
   dayComponent={[Function]}
+  futureScrollRange={12}
   hideExtraDays={true}
   markedDates={
     Object {
@@ -14,12 +16,11 @@ exports[`renders correctly no dates 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -32,12 +33,11 @@ exports[`renders correctly no dates 1`] = `
         "monthText": Object {
           "fontFamily": "Poppins-SemiBold",
           "fontSize": 16,
-          "margin": 10,
+          "marginVertical": 10,
         },
         "week": Object {
           "flexDirection": "row",
           "justifyContent": "space-around",
-          "marginHorizontal": 10,
           "marginTop": 7,
         },
       },
@@ -46,8 +46,6 @@ exports[`renders correctly no dates 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-around",
           "marginBottom": 7,
-          "marginLeft": 10,
-          "marginRight": 10,
           "marginTop": 7,
         },
       },
@@ -57,9 +55,11 @@ exports[`renders correctly no dates 1`] = `
 `;
 
 exports[`renders correctly only startDate 1`] = `
-<Calendar
+<CalendarList
+  calendarHeight={365}
   current={null}
   dayComponent={[Function]}
+  futureScrollRange={12}
   hideExtraDays={true}
   markedDates={
     Object {
@@ -75,12 +75,11 @@ exports[`renders correctly only startDate 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -93,12 +92,11 @@ exports[`renders correctly only startDate 1`] = `
         "monthText": Object {
           "fontFamily": "Poppins-SemiBold",
           "fontSize": 16,
-          "margin": 10,
+          "marginVertical": 10,
         },
         "week": Object {
           "flexDirection": "row",
           "justifyContent": "space-around",
-          "marginHorizontal": 10,
           "marginTop": 7,
         },
       },
@@ -107,8 +105,6 @@ exports[`renders correctly only startDate 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-around",
           "marginBottom": 7,
-          "marginLeft": 10,
-          "marginRight": 10,
           "marginTop": 7,
         },
       },
@@ -118,9 +114,11 @@ exports[`renders correctly only startDate 1`] = `
 `;
 
 exports[`renders correctly startDate after endDate 1`] = `
-<Calendar
+<CalendarList
+  calendarHeight={365}
   current={null}
   dayComponent={[Function]}
+  futureScrollRange={12}
   hideExtraDays={true}
   markedDates={
     Object {
@@ -139,12 +137,11 @@ exports[`renders correctly startDate after endDate 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -157,12 +154,11 @@ exports[`renders correctly startDate after endDate 1`] = `
         "monthText": Object {
           "fontFamily": "Poppins-SemiBold",
           "fontSize": 16,
-          "margin": 10,
+          "marginVertical": 10,
         },
         "week": Object {
           "flexDirection": "row",
           "justifyContent": "space-around",
-          "marginHorizontal": 10,
           "marginTop": 7,
         },
       },
@@ -171,8 +167,6 @@ exports[`renders correctly startDate after endDate 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-around",
           "marginBottom": 7,
-          "marginLeft": 10,
-          "marginRight": 10,
           "marginTop": 7,
         },
       },
@@ -182,9 +176,11 @@ exports[`renders correctly startDate after endDate 1`] = `
 `;
 
 exports[`renders correctly startDate before endDate 1`] = `
-<Calendar
+<CalendarList
+  calendarHeight={365}
   current={null}
   dayComponent={[Function]}
+  futureScrollRange={12}
   hideExtraDays={true}
   markedDates={
     Object {
@@ -203,12 +199,11 @@ exports[`renders correctly startDate before endDate 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -221,12 +216,11 @@ exports[`renders correctly startDate before endDate 1`] = `
         "monthText": Object {
           "fontFamily": "Poppins-SemiBold",
           "fontSize": 16,
-          "margin": 10,
+          "marginVertical": 10,
         },
         "week": Object {
           "flexDirection": "row",
           "justifyContent": "space-around",
-          "marginHorizontal": 10,
           "marginTop": 7,
         },
       },
@@ -235,8 +229,6 @@ exports[`renders correctly startDate before endDate 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-around",
           "marginBottom": 7,
-          "marginLeft": 10,
-          "marginRight": 10,
           "marginTop": 7,
         },
       },
@@ -246,9 +238,11 @@ exports[`renders correctly startDate before endDate 1`] = `
 `;
 
 exports[`renders correctly startDate equals endDate 1`] = `
-<Calendar
+<CalendarList
+  calendarHeight={365}
   current={null}
   dayComponent={[Function]}
+  futureScrollRange={12}
   hideExtraDays={true}
   markedDates={
     Object {
@@ -264,12 +258,11 @@ exports[`renders correctly startDate equals endDate 1`] = `
   }
   markingType="period"
   onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
   theme={
     Object {
       "stylesheet.calendar.header": Object {
-        "arrowImage": Object {
-          "tintColor": "rgb(45, 47, 127)",
-        },
         "dayHeader": Object {
           "color": "rgb(45, 47, 127)",
           "fontFamily": "Roboto",
@@ -282,12 +275,11 @@ exports[`renders correctly startDate equals endDate 1`] = `
         "monthText": Object {
           "fontFamily": "Poppins-SemiBold",
           "fontSize": 16,
-          "margin": 10,
+          "marginVertical": 10,
         },
         "week": Object {
           "flexDirection": "row",
           "justifyContent": "space-around",
-          "marginHorizontal": 10,
           "marginTop": 7,
         },
       },
@@ -296,8 +288,6 @@ exports[`renders correctly startDate equals endDate 1`] = `
           "flexDirection": "row",
           "justifyContent": "space-around",
           "marginBottom": 7,
-          "marginLeft": 10,
-          "marginRight": 10,
           "marginTop": 7,
         },
       },

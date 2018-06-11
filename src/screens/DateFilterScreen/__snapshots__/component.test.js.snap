@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateFilterScreen renders correctly 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "bottom": "always",
+      "top": "never",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    leftElement={
+      <Unknown
+        onPress={[Function]}
+      />
+    }
+    rightElement={false}
+    title="Select dates"
+    titleLabel="Select dates"
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <DateRangePicker
+      forceNewRange={true}
+      onChange={[Function]}
+    />
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0.1)",
+        ]
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "height": 8,
+            "left": 0,
+            "position": "absolute",
+            "width": "100%",
+          },
+        ]
+      }
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
+      }
+    }
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+    >
+      <Button
+        accessibilityLabel="Show 26 selected events"
+        disabled={false}
+        onPress={[Function]}
+      >
+        Show 26 events
+      </Button>
+    </ContentPadding>
+  </Component>
+</withOrientation>
+`;
+
+exports[`DateFilterScreen renders correctly with date range 1`] = `
+<withOrientation
+  forceInset={
+    Object {
+      "bottom": "always",
+      "top": "never",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    leftElement={
+      <Unknown
+        onPress={[Function]}
+      />
+    }
+    rightElement={
+      <ActionButton
+        label="Reset"
+        onPress={[Function]}
+        style={Object {}}
+      />
+    }
+    title="6 Jun - 7 Jun"
+    titleLabel="Selected: 6 Jun - 7 Jun"
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <DateRangePicker
+      dateRange={
+        Object {
+          "endDate": "2018-06-07",
+          "startDate": "2018-06-06",
+        }
+      }
+      forceNewRange={true}
+      onChange={[Function]}
+    />
+    <LinearGradient
+      colors={
+        Array [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0.1)",
+        ]
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "height": 8,
+            "left": 0,
+            "position": "absolute",
+            "width": "100%",
+          },
+        ]
+      }
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingVertical": 12,
+      }
+    }
+  >
+    <ContentPadding
+      padding={Object {}}
+      style={Object {}}
+    >
+      <Button
+        accessibilityLabel="Show 26 selected events"
+        disabled={false}
+        onPress={[Function]}
+      >
+        Show 26 events
+      </Button>
+    </ContentPadding>
+  </Component>
+</withOrientation>
+`;

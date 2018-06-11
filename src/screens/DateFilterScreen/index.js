@@ -2,10 +2,11 @@
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { State } from "../../reducers";
-import type { EventCategoryName } from "../../data/event";
 import { setEventFilters } from "../../actions/event-filters";
+import type { DateRange } from "../../data/date-time";
+import type { State } from "../../reducers";
 import { selectStagedFilteredEvents } from "../../selectors";
+import { selectDateFilter } from "../../selectors/event-filters";
 import Component from "./component";
 
 type OwnProps = {
@@ -14,13 +15,12 @@ type OwnProps = {
 
 type StateProps = {
   navigation: NavigationScreenProp<NavigationState>,
-  categories: Set<EventCategoryName>,
+  dateRange: ?DateRange,
   numberOfEvents: number
 };
 
 type DispatchProps = {
-  toggleCategoryFilter: (Set<EventCategoryName>, string) => void,
-  onClearAll: () => void
+  onChange: (?DateRange) => void
 };
 
 type Props = StateProps & DispatchProps;
@@ -34,17 +34,12 @@ const mapStateToProps = (
 ): StateProps => ({
   navigation,
   numberOfEvents: selectStagedFilteredEvents(state).length,
-  categories: state.eventFilters.selectedFilters.categories
+  dateRange: selectDateFilter(state, true)
 });
 
-const mapDispatchToProps = {
-  toggleCategoryFilter: (originalCagegories, categoryLabel) => {
-    const categories = new Set(originalCagegories);
-    if (!categories.delete(categoryLabel)) categories.add(categoryLabel);
-    return setEventFilters({ categories });
-  },
-  onClearAll: () => setEventFilters({ categories: new Set() })
-};
+const mapDispatchToProps = (dispatch): DispatchProps => ({
+  onChange: date => dispatch(setEventFilters({ date }))
+});
 
 const connector: Connector<OwnProps, Props> = connect(
   mapStateToProps,

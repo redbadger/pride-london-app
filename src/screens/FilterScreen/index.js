@@ -3,14 +3,10 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
 import type { State } from "../../reducers";
-import {
-  setEventFilters,
-  clearEventFilters
-} from "../../actions/event-filters";
+import { setEventFilters } from "../../actions/event-filters";
 import { selectStagedFilteredEvents } from "../../selectors";
 import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
 import Component from "./component";
-import text from "../../constants/text";
 import type { FilterCollection } from "../../data/event-filters";
 import type { EventFiltersPayload } from "../../actions/event-filters";
 
@@ -20,15 +16,13 @@ type OwnProps = {
 
 type StateProps = {
   navigation: NavigationScreenProp<{ params: { title: string } }>,
-  applyButtonText: string,
   eventFilters: FilterCollection,
-  numEventsSelected: number,
+  numberOfEvents: number,
   numTagFiltersSelected: number
 };
 
 type DispatchProps = {
-  onChange: (eventFilters: EventFiltersPayload) => void,
-  onCancel: () => void
+  onChange: (eventFilters: EventFiltersPayload) => void
 };
 
 type Props = StateProps & DispatchProps;
@@ -43,16 +37,14 @@ const mapStateToProps = (
   const events = selectStagedFilteredEvents(state);
   return {
     navigation,
-    applyButtonText: text.filterPickerApply(events.length),
-    numEventsSelected: events.length,
+    numberOfEvents: events.length,
     numTagFiltersSelected: selectTagFilterSelectedCount(state, true),
     eventFilters: state.eventFilters.selectedFilters
   };
 };
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
-  onChange: eventFilters => dispatch(setEventFilters(eventFilters)),
-  onCancel: () => dispatch(clearEventFilters())
+  onChange: eventFilters => dispatch(setEventFilters(eventFilters))
 });
 
 const connector: Connector<OwnProps, Props> = connect(
