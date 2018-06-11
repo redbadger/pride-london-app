@@ -2,21 +2,20 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { filterBgColor } from "../../constants/colors";
-import categories from "../../constants/event-categories";
+import type { EventCategoryName } from "../../data/event";
+import { eventCategoryNames, getEventCategoryFromName } from "../../data/event";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import ListItem from "./ListItem";
-import type { EventCategoryName } from "../../data/event-deprecated";
 
 type Props = {
-  locale: string,
   stagedCategories: Set<EventCategoryName>,
   onPress: Function
 };
 
-const List = ({ locale, stagedCategories, onPress }: Props) => (
+const List = ({ stagedCategories, onPress }: Props) => (
   <ShadowedScrollView style={styles.container}>
-    {Object.keys(categories[locale]).map(key => {
-      const category = categories[locale][key];
+    {eventCategoryNames.map(name => {
+      const category = getEventCategoryFromName(name);
 
       return (
         <ListItem

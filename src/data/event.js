@@ -14,6 +14,7 @@ import type { Decoder } from "../lib/decode";
 import * as decode from "../lib/decode";
 import type { FieldRef } from "./field-ref";
 import decodeFieldRef from "./field-ref";
+import * as colors from "../constants/colors";
 
 export type Events = {
   [id: string]: Event
@@ -49,6 +50,91 @@ export const eventCategoryNames = [
 const decodeEventCategoryName = decode.oneOf(
   eventCategoryNames.map(decode.value)
 );
+
+export type EventCategory = {
+  label: EventCategoryName,
+  color: string,
+  contrast: boolean
+};
+
+// We use a switch here, rather than a look up so that we can ensure that
+// this function will always return an EventCategory.
+export const getEventCategoryFromName = (
+  category: EventCategoryName
+): EventCategory => {
+  switch (category) {
+    case "Cabaret and Variety":
+      return {
+        label: "Cabaret and Variety",
+        color: colors.coralColor,
+        contrast: false
+      };
+    case "Community":
+      return {
+        label: "Community",
+        color: colors.brightLightBlueColor,
+        contrast: true
+      };
+    case "Talks and Debates":
+      return {
+        label: "Talks and Debates",
+        color: colors.darkSkyBlueColor,
+        contrast: false
+      };
+    case "Film and Screenings":
+      return {
+        label: "Film and Screenings",
+        color: colors.lightTealColor,
+        contrast: true
+      };
+    case "Plays and Theatre":
+      return {
+        label: "Plays and Theatre",
+        color: colors.warmPinkColor,
+        contrast: false
+      };
+    case "Social and Networking":
+      return {
+        label: "Social and Networking",
+        color: colors.turquoiseBlueColor,
+        contrast: true
+      };
+    case "Nightlife":
+      return {
+        label: "Nightlife",
+        color: colors.yellowColor,
+        contrast: true
+      };
+    case "Exhibition and Tours":
+      return {
+        label: "Exhibition and Tours",
+        color: colors.brightPurpleColor,
+        contrast: false
+      };
+    case "Sports and Activities":
+      return {
+        label: "Sports and Activities",
+        color: colors.vomitYellowColor,
+        contrast: true
+      };
+    case "Health":
+      return {
+        label: "Health",
+        color: colors.bubblegumPinkColor,
+        contrast: true
+      };
+    case "Music":
+      return {
+        label: "Music",
+        color: colors.cornflowerBlueColor,
+        contrast: false
+      };
+    default:
+      // Default case with cast to enable flow exhaustive match. This will
+      // cause flow to error if passed anything other than an EventCategory;
+      return (category: empty);
+  }
+};
 
 export type Event = {
   // important to keep this at the top level so type refinement works

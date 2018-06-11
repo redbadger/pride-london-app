@@ -27,7 +27,6 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     }
   >
     <List
-      locale="en-GB"
       onPress={[Function]}
       stagedCategories={
         Set {
@@ -82,7 +81,6 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
     }
   >
     <List
-      locale="en-GB"
       onPress={[Function]}
       stagedCategories={Set {}}
     />
