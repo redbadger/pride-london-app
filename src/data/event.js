@@ -57,8 +57,8 @@ export type EventCategory = {
   contrast: boolean
 };
 
-// We use a switch here, rather than a look up so that we can safely state
-// that this function will always return an EventCategory.
+// We use a switch here, rather than a look up so that we can ensure that
+// this function will always return an EventCategory.
 export const getEventCategoryFromName = (
   category: EventCategoryName
 ): EventCategory => {
