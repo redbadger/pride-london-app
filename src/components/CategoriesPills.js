@@ -6,14 +6,13 @@ import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet
 import CategoryPill from "./CategoryPill";
 import Text, { scaleWithFont } from "./Text";
 import text from "../constants/text";
-
 import {
   darkBlueGreyTwoColor,
   eucalyptusGreenColor,
   blackZeroColor,
   blackThirtyColor
 } from "../constants/colors";
-import type { EventCategoryName } from "../data/event-deprecated";
+import type { EventCategoryName } from "../data/event";
 
 type Props = {
   selectedCategories: Set<EventCategoryName>,

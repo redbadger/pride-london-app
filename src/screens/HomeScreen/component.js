@@ -2,9 +2,8 @@
 import React, { Component } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
 import { equals } from "ramda";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Header from "./Header";
-import { withNavigationFocus } from "../../lib/navigation";
-import type { NavigationProps } from "../../lib/navigation";
 import ContentPadding from "../../components/ContentPadding";
 import EventTile from "../../components/EventTile";
 import Loading from "../../components/Loading";
@@ -27,6 +26,7 @@ import type { HeaderBanner } from "../../data/header-banner";
 import locale from "../../data/locale";
 
 type Props = {
+  navigation: NavigationScreenProp<NavigationState>,
   headerBanners: HeaderBanner[],
   featuredEventsTitle: string,
   featuredEvents: Event[],
@@ -34,16 +34,10 @@ type Props = {
   getImageDetails: string => ?ImageDetails
 };
 
-type AllProps = Props & NavigationProps;
-
 const getId = obj => obj.id;
 
-class HomeScreen extends Component<AllProps> {
-  shouldComponentUpdate = (nextProps: AllProps): boolean => {
-    if (!nextProps.isFocused) {
-      return false;
-    }
-
+class HomeScreen extends Component<Props> {
+  shouldComponentUpdate = (nextProps: Props): boolean => {
     const { loading, featuredEventsTitle } = this.props;
     const {
       loading: nextLoading,
@@ -185,5 +179,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export { HomeScreen };
-export default withNavigationFocus(HomeScreen);
+export default HomeScreen;

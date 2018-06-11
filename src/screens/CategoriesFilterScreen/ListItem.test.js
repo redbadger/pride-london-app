@@ -3,7 +3,7 @@ import React from "react";
 import { View } from "react-native";
 import { shallow } from "enzyme";
 import ListItem from "./ListItem";
-import type { EventCategory } from "../../data/event-deprecated";
+import type { EventCategory } from "../../data/event";
 
 const render = props => shallow(<ListItem {...props} />);
 

@@ -2,7 +2,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { DateRange } from "../../data/date-time";
-import type { EventCategoryName } from "../../data/event-deprecated";
+import type { EventCategoryName } from "../../data/event";
 import FilterHeaderButton from "./FilterHeaderButton";
 import ContentPadding from "../../components/ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";

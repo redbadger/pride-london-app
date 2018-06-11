@@ -2,7 +2,8 @@
 import React from "react";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { shallow } from "enzyme";
-import type { Event, EventCategoryName } from "../../data/event-deprecated";
+import type { EventCategoryName } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 import Component from "./component";
 import Header from "./Header";
 import Button from "../../components/ButtonPrimary";

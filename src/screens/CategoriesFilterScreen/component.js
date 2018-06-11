@@ -3,13 +3,13 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { Event, EventCategoryName } from "../../data/event-deprecated";
+import type { EventCategoryName } from "../../data/event";
+import type { Event } from "../../data/event-deprecated";
 import { lightNavyBlueColor } from "../../constants/colors";
 import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "./Header";
 import List from "./List";
-import locale from "../../data/locale";
 
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -45,7 +45,6 @@ class CategoriesFilterScreen extends PureComponent<Props> {
         />
         <View style={styles.list}>
           <List
-            locale={locale}
             stagedCategories={categories}
             onPress={this.handleFilterChange}
           />

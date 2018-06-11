@@ -8,7 +8,7 @@ import ActionButton from "../../components/ActionButton";
 import text from "../../constants/text";
 import { whiteColor } from "../../constants/colors";
 import CategoriesPills from "../../components/CategoriesPills";
-import type { EventCategoryName } from "../../data/event-deprecated";
+import type { EventCategoryName } from "../../data/event";
 
 type Props = {
   onBack: Function,
