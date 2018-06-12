@@ -164,7 +164,7 @@ describe("buildEventFilter", () => {
       date: { startDate: "2018-07-10", endDate: "2018-07-11" }
     });
     const event = sampleOne(generateEvent);
-    event.fields.startTime = "2018-07-12T00:00:00+01:00";
+    event.fields.startTime = "2018-07-12T12:01:00+01:00";
     event.fields.endTime = "2018-07-13T12:01:00+01:00";
 
     const filter = buildEventFilter(showEventsAfter, filterState);
