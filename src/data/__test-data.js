@@ -73,7 +73,7 @@ export const generateFeaturedEvents: ValueGenerator<FeaturedEvents> = gen({
   locale: "en-GB",
   revision: 1,
   fields: gen({
-    title: "title",
+    title: gen.alphaNumString.notEmpty(),
     events: gen.array(generateFieldRef, { minSize: 0, maxSize: 10 })
   })
 });
