@@ -72,8 +72,7 @@ describe("dateRangePickerDay", () => {
   it("renders a disabled day", () => {
     const output = render({
       date: date(2018, 7, 12),
-      marking: {},
-      state: "disabled"
+      marking: {}
     });
 
     expect(output).toMatchSnapshot();
@@ -86,14 +85,17 @@ describe("dateRangePickerDay", () => {
 
     const output = render({
       date: date(2018, 7, 12),
-      marking: {},
-      state: "disabled"
+      marking: {}
     });
 
     expect(output.props().disabled).toEqual(true);
     expect(output.props().accessibilityTraits).toContain("disabled");
     expect(output.children().props().style).toEqual(
-      expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
+      expect.objectContaining({
+        alignItems: "center",
+        alignSelf: "stretch",
+        flex: 1
+      })
     );
   });
 
@@ -104,8 +106,7 @@ describe("dateRangePickerDay", () => {
 
     const output = render({
       date: date(2018, 7, 12),
-      marking: {},
-      state: "disabled"
+      marking: {}
     });
 
     expect(output.props().disabled).toEqual(false);
@@ -137,34 +138,6 @@ describe("dateRangePickerDay", () => {
 
       expect(onLongPress).toHaveBeenCalled();
     });
-
-    it("ignores press when disabled", () => {
-      const onPress = jest.fn();
-      const output = render({
-        date: date(2018, 7, 12),
-        onPress,
-        marking: {},
-        state: "disabled"
-      });
-
-      output.simulate("press");
-
-      expect(onPress).not.toHaveBeenCalled();
-    });
-
-    it("ignores long press when disabled", () => {
-      const onLongPress = jest.fn();
-      const output = render({
-        date: date(2018, 7, 12),
-        onLongPress,
-        marking: {},
-        state: "disabled"
-      });
-
-      output.simulate("longPress");
-
-      expect(onLongPress).not.toHaveBeenCalled();
-    });
   });
 
   describe("#shouldComponentUpdate", () => {
@@ -176,26 +149,14 @@ describe("dateRangePickerDay", () => {
     it("stops update if state markings and date are the same", () => {
       const nextProps = {
         date: date(2018, 7, 12),
-        marking: { selected: true, startingDay: true, endingDay: true }
+        marking: { selected: true, startingDay: true, endingDay: true },
+        disabled: false
       };
 
       const output = render(props);
       const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
 
       expect(shouldUpdate).toBe(false);
-    });
-
-    it("updates when state changes", () => {
-      const nextProps = {
-        state: "disabled",
-        date: date(2018, 7, 12),
-        marking: { selected: true, startingDay: true, endingDay: true }
-      };
-
-      const output = render(props);
-      const shouldUpdate = output.instance().shouldComponentUpdate(nextProps);
-
-      expect(shouldUpdate).toBe(true);
     });
 
     it("updates when markings change", () => {
