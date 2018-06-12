@@ -25,9 +25,6 @@ export const selectEventFilters = (state: State): EventFiltersState =>
 export const selectSavedEvents = (state: State): SavedEvents =>
   state.savedEvents;
 
-// The selectors below are temporary so that we can memoize across
-// multiple components. This will be refactored.
-
 const getEvents = createSelector([selectData], selectEvents);
 
 const getShowEventsAfter = createSelector(
