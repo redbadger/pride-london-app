@@ -10,7 +10,7 @@ import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
   selectData,
   selectSavedEvents,
-  selectFilteredEventsMap
+  getFutureEventsMap
 } from "../../selectors";
 import { selectLoading, selectRefreshing } from "../../selectors/data";
 import { groupEventsByStartTime } from "../../selectors/event";
@@ -42,7 +42,7 @@ const getDataLoading = createSelector([selectData], selectLoading);
 const getDataRefreshing = createSelector([selectData], selectRefreshing);
 
 const getEvents = createSelector(
-  [selectSavedEvents, selectFilteredEventsMap],
+  [selectSavedEvents, getFutureEventsMap],
   resolveSavedEvents
 );
 
