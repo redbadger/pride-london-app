@@ -14,7 +14,7 @@ exports[`SponsorLogo Component renders correctly with Gold Level 1`] = `
     reference={
       Object {
         "sys": Object {
-          "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+          "id": "n2IQ6opic1Pj8",
         },
       }
     }
@@ -43,7 +43,7 @@ exports[`SponsorLogo Component renders correctly with Silver Level 1`] = `
     reference={
       Object {
         "sys": Object {
-          "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+          "id": "n2IQ6opic1Pj8",
         },
       }
     }

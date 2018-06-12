@@ -4,14 +4,13 @@ import type { Connector } from "react-redux";
 import { createSelector } from "reselect";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { State } from "../../reducers";
-import type { Event } from "../../data/event-deprecated";
+import type { Event } from "../../data/event";
 import type { HeaderBanner } from "../../data/header-banner";
 import type { ImageDetails } from "../../data/image";
 import { getImageDetails } from "../../data/image";
 import strings from "../../constants/strings";
-import { selectData } from "../../selectors";
+import { selectData, getFeaturedEventsResolvedEvents } from "../../selectors";
 import { selectLoading } from "../../selectors/data";
-import { selectFeaturedEventsByTitle } from "../../selectors/events-deprecated";
 import { selectHeaderBanners } from "../../selectors/header-banner";
 import Component from "./component";
 
@@ -42,7 +41,7 @@ const mapStateToProps = (
   navigation,
   headerBanners: selectHeaderBanners(state),
   featuredEventsTitle: strings.featuredEventsTitle,
-  featuredEvents: selectFeaturedEventsByTitle(
+  featuredEvents: getFeaturedEventsResolvedEvents(
     state,
     strings.featuredEventsTitle
   ),
