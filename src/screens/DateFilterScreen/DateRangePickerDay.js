@@ -100,12 +100,11 @@ export default class Day extends Component<DayProps> {
   };
 
   onPress = () => {
-    if (this.props.state !== "disabled") this.props.onPress(this.props.date);
+    this.props.onPress(this.props.date);
   };
 
   onLongPress = () => {
-    if (this.props.state !== "disabled")
-      this.props.onLongPress(this.props.date);
+    this.props.onLongPress(this.props.date);
   };
 
   render() {
