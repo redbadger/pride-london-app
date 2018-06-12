@@ -1,39 +1,48 @@
 // @flow
 import { createSelector } from "reselect";
-import type { CmsEntry } from "../integrations/cms";
 import type { State } from "../reducers";
 import type { State as DataState } from "../reducers/data";
+import type { SavedEvents } from "../data/event";
 import type { State as EventFiltersState } from "../data/event-filters";
-import { filterEvents, selectEventsFromEntries } from "./events-deprecated";
+import {
+  selectEvents,
+  selectEventsMap,
+  selectFeaturedEvents,
+  selectFeaturedEventsByTitle,
+  resolveEvents
+} from "./data";
+import { filterEvents } from "./event";
 import {
   buildEventFilter,
   selectShowEventsAfter,
-  selectFilters,
+  selectSelectedFilters,
   selectStagedFilters
 } from "./event-filters";
 
 export const selectData = (state: State): DataState => state.data;
 export const selectEventFilters = (state: State): EventFiltersState =>
   state.eventFilters;
+export const selectSavedEvents = (state: State): SavedEvents =>
+  state.savedEvents;
 
-// The selectors below are temporary so that we can memoize across
-// multiple components. This will be refactored.
-const selectEntries = (data: DataState): CmsEntry[] => data.entries;
-
-const getEntries = createSelector([selectData], selectEntries);
-const getEvents = createSelector([getEntries], selectEventsFromEntries);
+const getEvents = createSelector([selectData], selectEvents);
 
 const getShowEventsAfter = createSelector(
   [selectEventFilters],
   selectShowEventsAfter
 );
-const getSelectedFilters = createSelector([selectEventFilters], selectFilters);
-const getStagedFilters = createSelector(
+
+export const getSelectedFilters = createSelector(
+  [selectEventFilters],
+  selectSelectedFilters
+);
+
+export const getStagedFilters = createSelector(
   [selectEventFilters],
   selectStagedFilters
 );
 
-const getSelectedFilter = createSelector(
+export const getSelectedFilter = createSelector(
   [getShowEventsAfter, getSelectedFilters],
   buildEventFilter
 );
@@ -41,6 +50,11 @@ const getSelectedFilter = createSelector(
 export const selectFilteredEvents = createSelector(
   [getEvents, getSelectedFilter],
   filterEvents
+);
+
+export const selectFilteredEventsMap = createSelector(
+  [selectFilteredEvents],
+  selectEventsMap
 );
 
 const getStagedFilter = createSelector(
@@ -51,4 +65,24 @@ const getStagedFilter = createSelector(
 export const selectStagedFilteredEvents = createSelector(
   [getEvents, getStagedFilter],
   filterEvents
+);
+
+const getFeaturedEvents = createSelector([selectData], selectFeaturedEvents);
+const second = (a, b) => b;
+const getFeaturedEventsByTitle = createSelector(
+  [getFeaturedEvents, second],
+  selectFeaturedEventsByTitle
+);
+const getFeaturedEventsEvents = createSelector(
+  [getFeaturedEventsByTitle],
+  featuredEvents => {
+    if (featuredEvents) {
+      return featuredEvents.fields.events;
+    }
+    return [];
+  }
+);
+export const getFeaturedEventsResolvedEvents = createSelector(
+  [selectFilteredEventsMap, getFeaturedEventsEvents],
+  resolveEvents
 );

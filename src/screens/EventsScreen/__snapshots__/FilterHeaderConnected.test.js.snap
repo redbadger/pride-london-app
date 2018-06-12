@@ -43,7 +43,6 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       active={false}
       badgeValue={null}
       label="filter by date: Select dates"
-      onPress={[Function]}
       style={
         Object {
           "flex": 1,
@@ -72,11 +71,6 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       text="Filter by area, price..."
     />
   </Component>
-  <Connect(DateRangePickerDialog)
-    onApply={[Function]}
-    onCancel={[Function]}
-    visible={false}
-  />
 </Component>
 `;
 

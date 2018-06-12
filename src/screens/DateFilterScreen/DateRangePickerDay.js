@@ -14,8 +14,8 @@ import Text from "../../components/Text";
 
 import {
   dateRangePickerSelectedColor,
-  dateRangePickerDisabledTextColor,
-  dateRangePickerTextColor
+  dateRangePickerTextColor,
+  mediumGreyColor
 } from "../../constants/colors";
 
 export type CalendarDay = {
@@ -38,17 +38,16 @@ type DayMarking = {
 };
 
 type DayProps = {
-  state?: "disabled",
   marking: DayMarking,
   date: CalendarDay,
   onPress: Function,
   onLongPress: Function
 };
 
-const textStyle = (marking: DayMarking, state: ?"disabled") => [
+const textStyle = (marking: DayMarking, disabled: boolean) => [
   styles.text,
   marking.selected ? styles.selectedText : {},
-  state === "disabled" ? styles.disabledText : {}
+  disabled ? styles.disabledText : {}
 ];
 
 const leftFillerStyle = (marking: DayMarking) => [
@@ -81,37 +80,28 @@ const dotStyle = (marking: DayMarking) => [
 
 export default class Day extends Component<DayProps> {
   static defaultProps = {
-    state: undefined
+    disabled: false
   };
 
   shouldComponentUpdate = (nextProps: DayProps): boolean => {
-    const { state, marking, date } = this.props;
-    const {
-      state: nextState,
-      marking: nextMarking,
-      date: nextDate
-    } = nextProps;
+    const { marking, date } = this.props;
+    const { marking: nextMarking, date: nextDate } = nextProps;
 
-    return (
-      state !== nextState ||
-      !equals(marking, nextMarking) ||
-      !equals(date, nextDate)
-    );
+    return !equals(marking, nextMarking) || !equals(date, nextDate);
   };
 
   onPress = () => {
-    if (this.props.state !== "disabled") this.props.onPress(this.props.date);
+    this.props.onPress(this.props.date);
   };
 
   onLongPress = () => {
-    if (this.props.state !== "disabled")
-      this.props.onLongPress(this.props.date);
+    this.props.onLongPress(this.props.date);
   };
 
   render() {
-    const { state, marking, date } = this.props;
+    const { marking, date } = this.props;
     const dateNow = now();
-    const beforeToday =
+    const disabled =
       isBefore(date.dateString, dateNow) &&
       !isSameDay(date.dateString, dateNow);
     const label = toFormat(date.dateString, FORMAT_WEEKDAY_MONTH_DAY);
@@ -121,12 +111,12 @@ export default class Day extends Component<DayProps> {
       <TouchableWithoutFeedback
         onPress={this.onPress}
         onLongPress={this.onLongPress}
-        accessibilityTraits={beforeToday ? ["button", "disabled"] : traits}
+        accessibilityTraits={disabled ? ["button", "disabled"] : traits}
         accessibilityLabel={label}
         accessibilityComponentType="button"
-        disabled={beforeToday}
+        disabled={disabled}
       >
-        <View style={[styles.container, beforeToday ? styles.faded : {}]}>
+        <View style={styles.container}>
           {marking.selected && (
             <View style={styles.overlay}>
               <View style={leftFillerStyle(marking)} />
@@ -134,7 +124,7 @@ export default class Day extends Component<DayProps> {
             </View>
           )}
           <View style={dayStyle(marking)}>
-            <Text type="small" style={textStyle(marking, state)}>
+            <Text type="small" style={textStyle(marking, disabled)}>
               {date.day}
             </Text>
           </View>
@@ -156,9 +146,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     alignSelf: "stretch"
-  },
-  faded: {
-    opacity: 0.5
   },
   overlay: {
     position: "absolute",
@@ -189,7 +176,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   disabledText: {
-    color: dateRangePickerDisabledTextColor
+    color: mediumGreyColor
   },
   dot: {
     width: 4,

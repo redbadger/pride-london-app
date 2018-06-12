@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { State } from "../../reducers";
-import type { Event, EventCategoryName } from "../../data/event-deprecated";
+import type { EventCategoryName } from "../../data/event";
 import { setEventFilters } from "../../actions/event-filters";
 import { selectStagedFilteredEvents } from "../../selectors";
 import Component from "./component";
@@ -14,8 +14,8 @@ type OwnProps = {
 
 type StateProps = {
   navigation: NavigationScreenProp<NavigationState>,
-  events: Event[],
-  categories: Set<EventCategoryName>
+  categories: Set<EventCategoryName>,
+  numberOfEvents: number
 };
 
 type DispatchProps = {
@@ -33,7 +33,7 @@ const mapStateToProps = (
   { navigation }: OwnProps
 ): StateProps => ({
   navigation,
-  events: selectStagedFilteredEvents(state),
+  numberOfEvents: selectStagedFilteredEvents(state).length,
   categories: state.eventFilters.selectedFilters.categories
 });
 

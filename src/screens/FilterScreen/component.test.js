@@ -14,7 +14,7 @@ describe("FilterScreen", () => {
     const output = shallow(
       <FilterScreen
         navigation={navigation}
-        applyButtonText="Show 26 events"
+        numberOfEvents={26}
         onChange={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
@@ -35,7 +35,7 @@ describe("FilterScreen", () => {
     const output = shallow(
       <FilterScreen
         navigation={navigation}
-        applyButtonText="Show 26 events"
+        numberOfEvents={26}
         onChange={onChange}
         onCancel={() => {}}
         eventFilters={eventFilters}
@@ -66,11 +66,10 @@ describe("FilterScreen", () => {
     const output = shallow(
       <FilterScreen
         navigation={navigation}
-        applyButtonText="Show 26 events"
+        numberOfEvents={0}
         onChange={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
-        numEventsSelected={0}
       />
     );
 
@@ -89,12 +88,11 @@ describe("FilterScreen", () => {
     const output = shallow(
       <FilterScreen
         navigation={navigation}
-        applyButtonText="Show 26 events"
+        numberOfEvents={1}
         onChange={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
-        numEventsSelected={1}
       />
     );
 
@@ -113,12 +111,11 @@ describe("FilterScreen", () => {
     const output = shallow(
       <FilterScreen
         navigation={navigation}
-        applyButtonText="Show 26 events"
+        numberOfEvents={1}
         onChange={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
-        numEventsSelected={1}
       />
     );
 
@@ -137,12 +134,11 @@ describe("FilterScreen", () => {
     const output = shallow(
       <FilterScreen
         navigation={navigation}
-        applyButtonText="Show 26 events"
+        numberOfEvents={1}
         onChange={onChangeSpy}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
-        numEventsSelected={1}
       />
     );
 
@@ -162,12 +158,11 @@ describe("FilterScreen", () => {
     const output = shallow(
       <FilterScreen
         navigation={navigation}
-        applyButtonText="Show 26 events"
+        numberOfEvents={1}
         onChange={onChangeSpy}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
-        numEventsSelected={1}
       />
     );
 
@@ -187,12 +182,11 @@ describe("FilterScreen", () => {
     const output = shallow(
       <FilterScreen
         navigation={navigation}
-        applyButtonText="Show 26 events"
+        numberOfEvents={1}
         onChange={() => {}}
         onCancel={() => {}}
         eventFilters={eventFilters}
         numTagFiltersSelected={eventFilters.price.size}
-        numEventsSelected={1}
       />
     );
 

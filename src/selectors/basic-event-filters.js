@@ -6,20 +6,18 @@ import {
   getHours,
   diff as dateDiff
 } from "../lib/date";
-import { selectEventIsFree } from "./event-deprecated";
+import { selectEventIsFree } from "./event";
 import areaBoundaries from "../data/areas";
-import type { Event, EventCategoryName } from "../data/event-deprecated";
+import type { Event, EventCategoryName } from "../data/event";
 import type { DateRange, Time } from "../data/date-time";
 import type { Area, StringFilterSet } from "../data/event-filters";
-
-import locale from "../data/locale";
 
 export const buildDateRangeFilter = (date: DateRange) => (event: Event) =>
   areRangesOverlapping(
     startOfDay(date.startDate),
     endOfDay(date.endDate),
-    event.fields.startTime[locale],
-    event.fields.endTime[locale]
+    event.fields.startTime,
+    event.fields.endTime
   );
 
 type TimeFilter = (timeFilter: Time) => (event: Event) => boolean;
@@ -40,10 +38,10 @@ const rangeFromTime = (timeFilter: Time) => {
 export const buildTimeFilter: TimeFilter = (timeFilter: Time) => event => {
   const [rangeMin, rangeMax] = rangeFromTime(timeFilter);
   const relativeRangeMax = rangeMax - rangeMin;
-  const eventStartHour = getHours(event.fields.startTime[locale]);
+  const eventStartHour = getHours(event.fields.startTime);
   const eventDuration = dateDiff(
-    event.fields.endTime[locale],
-    event.fields.startTime[locale],
+    event.fields.endTime,
+    event.fields.startTime,
     "hours"
   ).hours;
   const relativeStartHour = (eventStartHour - rangeMin) % 24;
@@ -62,7 +60,7 @@ export const buildCategoryFilter = (categories: Set<EventCategoryName>) => {
     return (_: any) => true;
   }
   return (event: Event) =>
-    event.fields.eventCategories[locale].some(value =>
+    event.fields.eventCategories.some(value =>
       categories.has(((value: any): EventCategoryName))
     );
 };
@@ -80,7 +78,7 @@ export const buildStringSetFilter = (
   }
   return (event: Event) =>
     event.fields[fieldName]
-      ? event.fields[fieldName][locale].some(value => set.has(value))
+      ? event.fields[fieldName].some(value => set.has(value))
       : false;
 };
 
@@ -88,19 +86,19 @@ export const buildAreaFilter = (area: Area) => {
   switch (area) {
     case "North":
       return (event: Event) =>
-        event.fields.location[locale].lat >= areaBoundaries.northLatBoundary;
+        event.fields.location.lat >= areaBoundaries.northLatBoundary;
     case "East":
       return (event: Event) =>
-        event.fields.location[locale].lon >= areaBoundaries.eastLonBoundary;
+        event.fields.location.lon >= areaBoundaries.eastLonBoundary;
     case "South":
       return (event: Event) =>
-        event.fields.location[locale].lat <= areaBoundaries.southLatBoundary;
+        event.fields.location.lat <= areaBoundaries.southLatBoundary;
     case "West":
       return (event: Event) =>
-        event.fields.location[locale].lon <= areaBoundaries.westLonBoundary;
+        event.fields.location.lon <= areaBoundaries.westLonBoundary;
     case "Central":
       return (event: Event) => {
-        const { lat, lon } = event.fields.location[locale];
+        const { lat, lon } = event.fields.location;
         return (
           lat < areaBoundaries.northLatBoundary &&
           lon < areaBoundaries.eastLonBoundary &&
