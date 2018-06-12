@@ -6,7 +6,6 @@ import type { Event, EventDays } from "../data/event";
 export const isFree = (priceLow: number, priceHigh: number) =>
   priceLow === 0 && priceHigh === 0;
 
-// eslint-disable-next-line import/prefer-default-export
 export const selectEventIsFree = (event: Event) =>
   isFree(event.fields.eventPriceLow, event.fields.eventPriceHigh);
 
