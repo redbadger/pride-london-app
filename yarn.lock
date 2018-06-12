@@ -6085,6 +6085,12 @@ react-native-easy-markdown@^1.1.9:
   dependencies:
     simple-markdown "^0.1.1"
 
+react-native-fast-image@^4.0.14:
+  version "4.0.14"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-4.0.14.tgz#1e84c9a01b1471793e294ef4e7c3cc20e09562a0"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-haptic-feedback@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-haptic-feedback/-/react-native-haptic-feedback-1.1.0.tgz#e75fd660516c31390e15e5bbf09ff3d71c9eef0d"

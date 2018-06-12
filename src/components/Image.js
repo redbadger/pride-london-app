@@ -1,8 +1,9 @@
 // @flow
 import React from "react";
-import { Image as RNImage } from "react-native";
+// import { Image as RNImage } from "react-native";
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
+import { FastImage as RNImage } from 'react-native-fast-image'
 import type { ImageDetails } from "../data/image";
 import { getImageDetails as createImageDetailsGetter } from "../data/image";
 import type { FieldRef } from "../data/field-ref";

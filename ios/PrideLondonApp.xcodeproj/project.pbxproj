@@ -44,6 +44,7 @@
 		8672F5725E9B47EDA28DD112 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150F0056697F44E1A80D4DAF /* Roboto-Italic.ttf */; };
 		95A7B0F285774B6D8D5C7289 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE541190481E4DABADC5083F /* libBVLinearGradient.a */; };
 		9EA300765B924E11BB5DC9B0 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BA3D3CC2564F6D8C0B3766 /* Roboto-BoldItalic.ttf */; };
+		A5DB2FEA376C47989BE987A1 /* libFastImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D14743EE711D42628F87DD9D /* libFastImage.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B91D02D4207A4BF79A449F93 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3E9F6E137EF4895832E3D99 /* Poppins-MediumItalic.ttf */; };
 		C2B8A1AD4B0A4FE0A28159D1 /* libBugsnagReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 468586868A8E4813A990A022 /* libBugsnagReactNative.a */; };
@@ -164,6 +165,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
+		};
+		161775C820D052B000933E53 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC330833F5084254B6DB96CA /* FastImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A287971D1DE0C0A60081BDFA;
+			remoteInfo = FastImage;
 		};
 		1617937F201649D500BA3C13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -490,7 +498,9 @@
 		AC984739B4624E9481CEE51E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B02A5A5671CA4B19B5BCD0B4 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		BC330833F5084254B6DB96CA /* FastImage.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = FastImage.xcodeproj; path = "../node_modules/react-native-fast-image/ios/FastImage.xcodeproj"; sourceTree = "<group>"; };
 		C5C678778AAE46BC9D691AEC /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		D14743EE711D42628F87DD9D /* libFastImage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libFastImage.a; sourceTree = "<group>"; };
 		D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		F01A14F5D3B04CA0ABC22DC5 /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
 		F3E9F6E137EF4895832E3D99 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
@@ -538,6 +548,7 @@
 				0F97045F02ED482B9C1E9502 /* libRNReactNativeHapticFeedback.a in Frameworks */,
 				C2B8A1AD4B0A4FE0A28159D1 /* libBugsnagReactNative.a in Frameworks */,
 				318765D00A39443CB392160E /* libz.tbd in Frameworks */,
+				A5DB2FEA376C47989BE987A1 /* libFastImage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +693,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		161775C520D052B000933E53 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				161775C920D052B000933E53 /* libFastImage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		16ADAD8E20A073B6006CA650 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +784,7 @@
 				D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */,
 				2C3C38462ECD4655A9ABD826 /* BugsnagReactNative.xcodeproj */,
 				F01A14F5D3B04CA0ABC22DC5 /* AirMaps.xcodeproj */,
+				BC330833F5084254B6DB96CA /* FastImage.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -826,6 +846,7 @@
 				4136FF47A2BC434294DAD39E /* libLottieReactNative.a */,
 				9A07DCBA3E154DB190496711 /* libRNReactNativeHapticFeedback.a */,
 				468586868A8E4813A990A022 /* libBugsnagReactNative.a */,
+				D14743EE711D42628F87DD9D /* libFastImage.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -955,6 +976,10 @@
 				{
 					ProductGroup = 5AB34E3B2077745700E0E793 /* Products */;
 					ProjectRef = 5AB34E3A2077745700E0E793 /* BVLinearGradient.xcodeproj */;
+				},
+				{
+					ProductGroup = 161775C520D052B000933E53 /* Products */;
+					ProjectRef = BC330833F5084254B6DB96CA /* FastImage.xcodeproj */;
 				},
 				{
 					ProductGroup = 090907EC2090D39D005719EE /* Products */;
@@ -1123,6 +1148,13 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		161775C920D052B000933E53 /* libFastImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFastImage.a;
+			remoteRef = 161775C820D052B000933E53 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		16179380201649D500BA3C13 /* libjsinspector.a */ = {
@@ -1427,7 +1459,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export DEVELOPMENT_BUILD_CONFIGURATIONS=\"+(Debug)\"\nexport NODE_BINARY=node\n../node_modules/react-native-schemes-manager/lib/react-native-xcode.sh";
+			shellScript = "export DEVELOPMENT_BUILD_CONFIGURATIONS=\"+(Debug)\"\nexport NODE_BINARY=/Users/markholland/n/bin/node\n../node_modules/react-native-schemes-manager/lib/react-native-xcode.sh";
 		};
 		1696416D204301860058AF96 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1512,6 +1544,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1521,6 +1554,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1553,6 +1587,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1562,6 +1597,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1598,6 +1634,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1641,6 +1678,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1728,6 +1766,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1767,6 +1806,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1776,6 +1816,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1856,6 +1897,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1895,6 +1937,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1904,6 +1947,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1984,6 +2028,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonApp/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -2023,6 +2068,7 @@
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 				);
 				INFOPLIST_FILE = PrideLondonAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2032,6 +2078,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
