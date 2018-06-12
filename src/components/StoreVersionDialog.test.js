@@ -8,7 +8,7 @@ import StoreVersionDialog from "./StoreVersionDialog";
 import * as storage from "../integrations/storage";
 import * as date from "../lib/date";
 
-const nextTick = () => new Promise(resolve => setTimeout(resolve, 0));
+const nextTick = () => new Promise(process.nextTick);
 
 const mockStore = configureStore([thunk])({});
 
@@ -26,8 +26,6 @@ it("checks if new version available", async () => {
   jest.spyOn(Alert, "alert");
 
   shallow(<StoreVersionDialog store={mockStore} />).dive();
-
-  await nextTick();
 
   expect(VersionCheck.needUpdate).toHaveBeenCalled();
   expect(Alert.alert).not.toHaveBeenCalled();
@@ -74,8 +72,6 @@ it("does not show dialog if current time is before stored ask later time", async
   jest.spyOn(Alert, "alert");
 
   shallow(<StoreVersionDialog store={mockStore} />).dive();
-
-  await nextTick();
 
   expect(Alert.alert).not.toHaveBeenCalled();
 });
