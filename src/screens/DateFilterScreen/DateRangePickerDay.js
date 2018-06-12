@@ -38,7 +38,7 @@ type DayMarking = {
 };
 
 type DayProps = {
-  state?: "disabled",
+  disabled: boolean,
   marking: DayMarking,
   date: CalendarDay,
   onPress: Function,
@@ -81,19 +81,19 @@ const dotStyle = (marking: DayMarking) => [
 
 export default class Day extends Component<DayProps> {
   static defaultProps = {
-    state: undefined
+    disabled: false
   };
 
   shouldComponentUpdate = (nextProps: DayProps): boolean => {
-    const { state, marking, date } = this.props;
+    const { disabled, marking, date } = this.props;
     const {
-      state: nextState,
+      disabled: nextDisabled,
       marking: nextMarking,
       date: nextDate
     } = nextProps;
 
     return (
-      state !== nextState ||
+      disabled !== nextDisabled ||
       !equals(marking, nextMarking) ||
       !equals(date, nextDate)
     );
@@ -110,7 +110,7 @@ export default class Day extends Component<DayProps> {
   render() {
     const { marking, date } = this.props;
     const dateNow = now();
-    const beforeToday =
+    const disabled =
       isBefore(date.dateString, dateNow) &&
       !isSameDay(date.dateString, dateNow);
     const label = toFormat(date.dateString, FORMAT_WEEKDAY_MONTH_DAY);
@@ -120,10 +120,10 @@ export default class Day extends Component<DayProps> {
       <TouchableWithoutFeedback
         onPress={this.onPress}
         onLongPress={this.onLongPress}
-        accessibilityTraits={beforeToday ? ["button", "disabled"] : traits}
+        accessibilityTraits={disabled ? ["button", "disabled"] : traits}
         accessibilityLabel={label}
         accessibilityComponentType="button"
-        disabled={beforeToday}
+        disabled={disabled}
       >
         <View style={styles.container}>
           {marking.selected && (
@@ -133,7 +133,7 @@ export default class Day extends Component<DayProps> {
             </View>
           )}
           <View style={dayStyle(marking)}>
-            <Text type="small" style={textStyle(marking, beforeToday)}>
+            <Text type="small" style={textStyle(marking, disabled)}>
               {date.day}
             </Text>
           </View>
