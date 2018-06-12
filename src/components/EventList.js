@@ -7,7 +7,7 @@ import ContentPadding from "./ContentPadding";
 import EventCard from "./EventCard";
 import SectionHeader from "./SectionHeader";
 import { whiteColor } from "../constants/colors";
-import type { SavedEvents, Event, EventDays } from "../data/event-deprecated";
+import type { SavedEvents, Event, EventDays } from "../data/event";
 import {
   toFormat as formatDate,
   FORMAT_WEEKDAY_DAY_MONTH,
@@ -15,7 +15,6 @@ import {
 } from "../lib/date";
 
 type Props = {
-  locale: string,
   events: EventDays,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
@@ -40,17 +39,16 @@ type RenderSectionInfo = {
   section: SectionBase<Event> // eslint-disable-line react/no-unused-prop-types
 };
 
-const eventSections = (
-  events: EventDays,
-  locale: string
-): SectionBase<Event>[] =>
+const eventSections = (events: EventDays): SectionBase<Event>[] =>
   events.map(it => ({
     data: it,
-    key: formatDate(it[0].fields.startTime[locale], FORMAT_YEAR_MONTH_DAY)
+    key: formatDate(it[0].fields.startTime, FORMAT_YEAR_MONTH_DAY)
   }));
 
+const getId = (item: { id: string }): string => item.id;
+
 const eventIds = (events: EventDays): string[] =>
-  flatten(events.map(day => day.map(e => e.sys.id)));
+  flatten(events.map(day => day.map(getId)));
 
 class EventList extends Component<Props, State> {
   static defaultProps = {
@@ -85,9 +83,8 @@ class EventList extends Component<Props, State> {
   }
 
   shouldComponentUpdate(nextProps: Props, nextState: State) {
-    const { locale, refreshing, savedEvents } = this.props;
+    const { refreshing, savedEvents } = this.props;
     const {
-      locale: nextLocale,
       refreshing: nextRefreshing,
       savedEvents: nextSavedEvents
     } = nextProps;
@@ -96,7 +93,6 @@ class EventList extends Component<Props, State> {
       nextState.eventsAdded > 0 ||
       nextState.eventsRemoved > 0 ||
       nextState.eventsReordered ||
-      locale !== nextLocale ||
       refreshing !== nextRefreshing ||
       savedEvents !== nextSavedEvents
     );
@@ -106,29 +102,28 @@ class EventList extends Component<Props, State> {
 
   sectionSeparator = () => <View style={styles.sectionSeparator} />;
 
-  keyExtractor = (event: Event) => event.sys.id;
+  keyExtractor = getId;
 
   renderItem = ({ item }: RenderItemInfo) => {
     const {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
-      locale,
       onPress
     } = this.props;
 
     return (
       <ContentPadding>
         <EventCard
-          id={item.sys.id}
-          name={item.fields.name[locale]}
-          locationName={item.fields.locationName[locale]}
-          eventPriceLow={item.fields.eventPriceLow[locale]}
-          eventPriceHigh={item.fields.eventPriceHigh[locale]}
-          startTime={item.fields.startTime[locale]}
-          endTime={item.fields.endTime[locale]}
-          imageReference={item.fields.eventsListPicture[locale]}
-          isSaved={savedEvents.has(item.sys.id)}
+          id={item.id}
+          name={item.fields.name}
+          locationName={item.fields.locationName}
+          eventPriceLow={item.fields.eventPriceLow}
+          eventPriceHigh={item.fields.eventPriceHigh}
+          startTime={item.fields.startTime}
+          endTime={item.fields.endTime}
+          imageReference={item.fields.eventsListPicture}
+          isSaved={savedEvents.has(item.id)}
           addSavedEvent={addSavedEvent}
           removeSavedEvent={removeSavedEvent}
           onPress={onPress}
@@ -137,23 +132,19 @@ class EventList extends Component<Props, State> {
     );
   };
 
-  renderSectionHeader = ({ section }: RenderSectionInfo) => {
-    const { locale } = this.props;
-
-    return (
-      <SectionHeader
-        title={formatDate(
-          section.data[0].fields.startTime[locale],
-          FORMAT_WEEKDAY_DAY_MONTH
-        )}
-      />
-    );
-  };
+  renderSectionHeader = ({ section }: RenderSectionInfo) => (
+    <SectionHeader
+      title={formatDate(
+        section.data[0].fields.startTime,
+        FORMAT_WEEKDAY_DAY_MONTH
+      )}
+    />
+  );
 
   renderSectionFooter = () => <View style={styles.sectionFooter} />;
 
   render() {
-    const { events, locale, refreshing, onRefresh } = this.props;
+    const { events, refreshing, onRefresh } = this.props;
 
     // There is a bug in Android, which causes the app to crash when
     // too many list item changes are animated at the same time. To
@@ -166,7 +157,7 @@ class EventList extends Component<Props, State> {
     return (
       <SectionList
         stickySectionHeadersEnabled
-        sections={eventSections(events, locale)}
+        sections={eventSections(events)}
         renderSectionHeader={this.renderSectionHeader}
         renderSectionFooter={this.renderSectionFooter}
         renderItem={this.renderItem}

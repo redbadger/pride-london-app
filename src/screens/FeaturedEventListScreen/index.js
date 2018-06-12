@@ -1,14 +1,12 @@
 // @flow
-import { connect } from "react-redux";
 import type { Connector } from "react-redux";
+import { connect } from "react-redux";
 import type { NavigationScreenProp } from "react-navigation";
 import type { State } from "../../reducers";
-import type { SavedEvents, EventDays } from "../../data/event-deprecated";
+import type { SavedEvents, EventDays } from "../../data/event";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
-import {
-  groupEventsByStartTime,
-  selectFeaturedEventsByTitle
-} from "../../selectors/events-deprecated";
+import { getFeaturedEventsResolvedEvents } from "../../selectors";
+import { groupEventsByStartTime } from "../../selectors/event";
 import Component from "./component";
 
 type OwnProps = {
@@ -37,7 +35,7 @@ const mapStateToProps = (
 ): StateProps => ({
   navigation,
   events: groupEventsByStartTime(
-    selectFeaturedEventsByTitle(state, navigation.state.params.title)
+    getFeaturedEventsResolvedEvents(state, navigation.state.params.title)
   ),
   savedEvents: state.savedEvents
 });

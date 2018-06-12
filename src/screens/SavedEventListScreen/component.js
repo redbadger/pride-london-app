@@ -2,14 +2,13 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { SavedEvents, EventDays } from "../../data/event-deprecated";
+import type { SavedEvents, EventDays } from "../../data/event";
 import EventList from "../../components/EventList";
 import text from "../../constants/text";
 import Loading from "../../components/Loading";
 import Header from "../../components/Header";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
-import locale from "../../data/locale";
 import NoSavedEvents from "./NoSavedEvents";
 
 export type Props = {
@@ -53,7 +52,6 @@ class SavedEventListScreen extends Component<Props> {
         {!loading &&
           events.length !== 0 && (
             <EventList
-              locale={locale}
               events={events}
               savedEvents={savedEvents}
               addSavedEvent={addSavedEvent}
