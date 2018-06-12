@@ -108,7 +108,7 @@ export default class Day extends Component<DayProps> {
   };
 
   render() {
-    const { state, marking, date } = this.props;
+    const { marking, date } = this.props;
     const dateNow = now();
     const beforeToday =
       isBefore(date.dateString, dateNow) &&
