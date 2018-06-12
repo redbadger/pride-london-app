@@ -45,10 +45,10 @@ type DayProps = {
   onLongPress: Function
 };
 
-const textStyle = (marking: DayMarking, state: ?"disabled") => [
+const textStyle = (marking: DayMarking, disabled: boolean) => [
   styles.text,
   marking.selected ? styles.selectedText : {},
-  state === "disabled" ? styles.disabledText : {}
+  disabled ? styles.disabledText : {}
 ];
 
 const leftFillerStyle = (marking: DayMarking) => [
@@ -133,7 +133,7 @@ export default class Day extends Component<DayProps> {
             </View>
           )}
           <View style={dayStyle(marking)}>
-            <Text type="small" style={textStyle(marking, state)}>
+            <Text type="small" style={textStyle(marking, beforeToday)}>
               {date.day}
             </Text>
           </View>
