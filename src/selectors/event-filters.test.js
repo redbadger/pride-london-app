@@ -1,13 +1,6 @@
 // @flow
 import { DateTime } from "luxon";
 import { generateEvent, sampleOne } from "../data/__test-data";
-import {
-  eventIsAfter,
-  selectDateFilter,
-  selectTimeFilter,
-  buildEventFilter,
-  selectTagFilterSelectedCount
-} from "./event-filters";
 import type {
   Area,
   Price,
@@ -16,7 +9,15 @@ import type {
   AccessibilityOption,
   FilterCollection
 } from "../data/event-filters";
+import type { DateRange, Time } from "../data/date-time";
 import type { EventCategoryName } from "../data/event";
+import {
+  eventIsAfter,
+  selectDateFilter,
+  selectTimeFilter,
+  buildEventFilter,
+  selectTagFilterSelectedCount
+} from "./event-filters";
 
 export type BuildFilterCollection = {
   date?: ?DateRange,

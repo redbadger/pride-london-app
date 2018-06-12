@@ -1,7 +1,7 @@
 // @flow
 import R from "ramda";
 import { compareAsc as compareDateAsc, isSameDay } from "../lib/date";
-import type { Event } from "../data/event";
+import type { Event, EventDays } from "../data/event";
 
 export const isFree = (priceLow: number, priceHigh: number) =>
   priceLow === 0 && priceHigh === 0;
