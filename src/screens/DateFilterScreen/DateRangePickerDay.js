@@ -14,8 +14,8 @@ import Text from "../../components/Text";
 
 import {
   dateRangePickerSelectedColor,
-  dateRangePickerDisabledTextColor,
-  dateRangePickerTextColor
+  dateRangePickerTextColor,
+  mediumGreyColor
 } from "../../constants/colors";
 
 export type CalendarDay = {
@@ -125,7 +125,7 @@ export default class Day extends Component<DayProps> {
         accessibilityComponentType="button"
         disabled={beforeToday}
       >
-        <View style={[styles.container, beforeToday ? styles.faded : {}]}>
+        <View style={styles.container}>
           {marking.selected && (
             <View style={styles.overlay}>
               <View style={leftFillerStyle(marking)} />
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   disabledText: {
-    color: dateRangePickerDisabledTextColor
+    color: mediumGreyColor
   },
   dot: {
     width: 4,
