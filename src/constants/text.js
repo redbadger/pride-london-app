@@ -176,14 +176,14 @@ export default {
         stageHeading: "Family Stage",
         stageSubheading: "Golden Square",
         stageDescription:
-          "An intimate and fun stage, the best destination for fun and family entertainment",
+          "An intimate and fun stage, the best destination for fun and family entertainment.",
         stageImage: "family"
       },
       {
         stageHeading: "Community Village",
         stageSubheading: "Soho Square",
         stageDescription:
-          "Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to see find out more about some amazing charities and not for profit groups.",
+          "Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to find out more about some amazing charities and not for profit groups.",
         stageImage: "community"
       }
     ]

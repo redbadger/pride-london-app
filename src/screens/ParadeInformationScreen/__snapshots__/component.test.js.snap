@@ -163,7 +163,7 @@ exports[`renders correctly 1`] = `
               }
               type="text"
             >
-              An intimate and fun stage, the best destination for fun and family entertainment
+              An intimate and fun stage, the best destination for fun and family entertainment.
             </Text>
           </ContentPadding>
         </Component>
@@ -190,7 +190,7 @@ exports[`renders correctly 1`] = `
               }
               type="text"
             >
-              Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to see find out more about some amazing charities and not for profit groups.
+              Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to find out more about some amazing charities and not for profit groups.
             </Text>
           </ContentPadding>
         </Component>
