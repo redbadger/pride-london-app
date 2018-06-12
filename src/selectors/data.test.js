@@ -152,7 +152,6 @@ describe("resolveEvents", () => {
       [eventC.id]: eventC
     };
     const references = [{ sys: { id: "missing" } }];
-    // eventMap: Events references: FieldRef[]
     const resolved = resolveEvents(eventMap, references);
     expect(resolved).toEqual([]);
   });
