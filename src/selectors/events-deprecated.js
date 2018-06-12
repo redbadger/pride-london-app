@@ -150,11 +150,6 @@ export const selectPerformanceById = (
   id: string
 ) => performances.find(performance => performance.sys.id === id);
 
-export const filterEvents = (
-  events: Event[],
-  filter: Event => boolean
-): Event[] => events.filter(filter);
-
 export const selectFeaturedEventsByTitle = (state: State, title: string) => {
   const featured = selectFeaturedEvents(state).find(
     entry => entry.fields.title[locale] === title

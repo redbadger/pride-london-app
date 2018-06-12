@@ -18,3 +18,8 @@ export const groupEventsByStartTime = (events: Event[]): EventDays =>
     (a: Event, b: Event) => isSameDay(a.fields.startTime, b.fields.startTime),
     events.sort(sortByStartTimeAsc)
   );
+
+export const filterEvents = (
+  events: Event[],
+  filter: Event => boolean
+): Event[] => events.filter(filter);

@@ -1,6 +1,10 @@
 // @flow
-import { generateEvent, sampleOne } from "../data/__test-data";
-import { groupEventsByStartTime, selectEventIsFree } from "./event";
+import { generateEvent, sampleArrayOf, sampleOne } from "../data/__test-data";
+import {
+  filterEvents,
+  groupEventsByStartTime,
+  selectEventIsFree
+} from "./event";
 
 describe("selectEventIsFree", () => {
   it("returns true if both prices are 0", () => {
@@ -94,5 +98,19 @@ describe("groupEventsByStartTime", () => {
     const actual = groupEventsByStartTime(events);
 
     expect(actual).toEqual(expected);
+  });
+});
+
+describe("filterEvents", () => {
+  it("applies the passed filter to the passed events", () => {
+    const events = sampleArrayOf(generateEvent)(5);
+    const filter = jest
+      .fn()
+      .mockReturnValueOnce(false)
+      .mockReturnValueOnce(false)
+      .mockReturnValue(true);
+    const actual = filterEvents(events, filter);
+
+    expect(actual.length).toEqual(3);
   });
 });

@@ -1,10 +1,8 @@
 import { DateTime } from "luxon";
-import { generateEvent, sampleArrayOf } from "../data/__test-data";
 import {
   selectEvents,
   selectFeaturedEvents,
   selectEventById,
-  filterEvents,
   selectFeaturedEventsByTitle,
   uniqueEvents,
   expandRecurringEventsInEntries
@@ -448,20 +446,6 @@ describe("selectEventById", () => {
     const selected = selectEventById(state, "1");
 
     expect(selected).toEqual(state.data.entries[0]);
-  });
-});
-
-describe("filterEvents", () => {
-  it("applies the passed filter to the passed events", () => {
-    const events = sampleArrayOf(generateEvent)(5);
-    const filter = jest
-      .fn()
-      .mockReturnValueOnce(false)
-      .mockReturnValueOnce(false)
-      .mockReturnValue(true);
-    const actual = filterEvents(events, filter);
-
-    expect(actual.length).toEqual(3);
   });
 });
 
