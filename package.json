@@ -1,6 +1,6 @@
 {
   "name": "pride-london-app",
-  "version": "1.0.7",
+  "version": "2.0.1",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -21,7 +21,7 @@
     "lint": "eslint src",
     "flow": "flow src",
     "fix-xcode": "react-native-schemes-manager all",
-    "postinstall": "yarn fix-xcode",
+    "postinstall": "yarn fix-xcode; ./scripts/google-maps-ios.sh",
     "postversion": "react-native-version --reset-build"
   },
   "dependencies": {
@@ -40,7 +40,7 @@
     "react-native-haptic-feedback": "^1.1.0",
     "react-native-linear-gradient": "^2.4.0",
     "react-native-map-link": "^1.0.6",
-    "react-native-maps": "0.16.4",
+    "react-native-maps": "^0.21.0",
     "react-native-safe-area-view":
       "robbiemccorkell/react-native-safe-area-view",
     "react-native-splash-screen": "^3.0.6",
@@ -48,9 +48,11 @@
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
+    "@rgbboy/testcheck": "^1.0.0-rc.3",
     "babel-eslint": "^8.2.1",
     "babel-jest": "22.2.2",
     "babel-preset-react-native": "4.0.0",
@@ -67,10 +69,10 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-import-resolver-react-native": "^0.1.0",
     "eslint-plugin-detox": "^1.0.0",
-    "eslint-plugin-flowtype": "^2.43.0",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-flowtype": "^2.48.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.6.1",
+    "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-native": "^3.2.1",
     "flow-bin": "^0.67.0",
     "flow-typed": "^2.3.0",

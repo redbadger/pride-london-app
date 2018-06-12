@@ -1,15 +1,15 @@
 yarn-key: &yarn-key
   v1-dependencies-{{ checksum "yarn.lock" }}
 yarn-key-macos: &yarn-key-macos
-  v2-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
-npm-key-macos-e2e: &npm-key-macos-e2e
-  v2-dependencies-macos-e2e-{{ checksum "/Users/distiller/project/package.json" }}
+  v3-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
 gradle-key: &gradle-key
   v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 gems-key: &gems-key
   v1-gems-{{ checksum "Gemfile.lock" }}
 brew-key: &brew-key
   v1-brew-{{ checksum "BrewFile" }}
+nightly-key: &nightly-key
+  v0.1-nightly-{{ checksum "~/.pride-nightly/last-commit" }}
 android-artifacts-path: &android-artifacts-path
   $HOME/project/android/app/build/outputs
 artifacts-path-macos: &artifacts-path-macos
@@ -33,16 +33,6 @@ save-yarn-cache-macos: &save-yarn-cache-macos
     paths:
       - /Users/distiller/project/node_modules
     key: *yarn-key-macos
-
-# Detox doesn't play well with Yarn
-get-npm-cache-macos-e2e: &get-npm-cache-macos-e2e
-  restore_cache:
-    key: *npm-key-macos-e2e
-save-npm-cache-macos-e2e: &save-npm-cache-macos-e2e
-  save_cache:
-    paths:
-      - /Users/distiller/project/node_modules
-    key: *npm-key-macos-e2e
 
 restore-gradle-cache: &restore-gradle-cache
   restore_cache:
@@ -72,6 +62,15 @@ save-brew-cache: &save-brew-cache
     paths:
       - /usr/local/Homebrew
 
+restore-nightly-cache: &restore-nightly-cache
+  restore_cache:
+    key: *nightly-key
+save-nightly-cache: &save-nightly-cache
+  save_cache:
+    key: *nightly-key
+    paths:
+      - ~/.pride-nightly/cache
+
 yarn-dependencies: &yarn-dependencies
   run:
     name: Install dependencies
@@ -81,13 +80,6 @@ yarn-dependencies-macos: &yarn-dependencies-macos
   run:
     name: Install dependencies with Yarn
     command: yarn install
-    working_directory: /Users/distiller/project
-
-# Detox doesn't play well with Yarn
-npm-dependencies-macos-e2e: &npm-dependencies-macos-e2e
-  run:
-    name: Install dependencies with npm
-    command: npm install
     working_directory: /Users/distiller/project
 
 ruby-dependencies: &ruby-dependencies
@@ -215,6 +207,19 @@ bugsnag-upload-sourcemaps-ios: &bugsnag-upload-sourcemaps-ios
         $BUGSNAG_API_KEY
     working_directory: /Users/distiller/project
 
+generate-nightly-file: &generate-nightly-file
+  run:
+    name: Generate Nightly Last Commit File
+    command: |
+        mkdir -p ~/.pride-nightly
+        git rev-parse HEAD > ~/.pride-nightly/last-commit
+
+generate-nightly-cache: &generate-nightly-cache
+  run:
+    name: Generate Nightly Cache
+    command: |
+        mkdir -p ~/.pride-nightly/cache
+        cp ~/.pride-nightly/last-commit ~/.pride-nightly/cache/
 
 version: 2
 jobs:
@@ -474,13 +479,34 @@ jobs:
           command: |
               npm i -g detox-cli
               npm i -g react-native-cli
-      - <<: *get-npm-cache-macos-e2e
-      - <<: *npm-dependencies-macos-e2e
-      - <<: *save-npm-cache-macos-e2e
+      - <<: *get-yarn-cache-macos
+      - <<: *yarn-dependencies-macos
+      - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
-      - run: npm run test:e2e:release
+      - run: npx detox clean-framework-cache && npx detox build-framework-cache
+      - run: yarn test:e2e:release
       - store_artifacts:
           path: /tmp/screenshots
+
+  test-nightly:
+    <<: *job-defaults-macos
+    working_directory: /Users/distiller/project/ios
+    environment:
+      <<: *env-macos
+    steps:
+      - <<: *checkout-macos
+      - <<: *generate-nightly-file
+      - <<: *restore-nightly-cache
+      - run:
+          name: Run if not run before
+          command: |
+              if [ ! -f ~/.pride-nightly/cache/last-commit ]; then
+                echo "run build..."
+              else
+                echo "build not needed..."
+              fi
+      - <<: *generate-nightly-cache
+      - <<: *save-nightly-cache
 
 workflows:
   version: 2
@@ -524,3 +550,13 @@ workflows:
             branches:
               only:
                 - master
+  nightly-release:
+    triggers:
+      - schedule:
+          cron: "0 7 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - test-nightly

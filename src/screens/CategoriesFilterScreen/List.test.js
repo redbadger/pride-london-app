@@ -10,7 +10,7 @@ describe("List Component", () => {
   it("renders correctly", () => {
     const stagedCategories: Set<EventCategoryName> = new Set(["Music"]);
     const onPress = () => {};
-    const component = render({ locale: "en-GB", stagedCategories, onPress });
+    const component = render({ stagedCategories, onPress });
 
     expect(component).toMatchSnapshot();
   });

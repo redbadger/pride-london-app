@@ -4,20 +4,29 @@ import Config from "react-native-config";
 // force contentful SDK to use browser API
 import { createClient } from "contentful/dist/contentful.browser.min";
 import { saveCmsData, loadCmsData } from "./storage";
-import type { Asset } from "../data/asset";
-import type { Event, FeaturedEvents } from "../data/event";
 
-export type CmsEntry = Event | FeaturedEvents;
+// Eventually this should change to mixed
+export type CmsEntry = {
+  sys: {
+    id: string,
+    contentType: {
+      sys: {
+        id: string
+      }
+    },
+    revision: number
+  }
+};
 export type CmsData = {
   entries: CmsEntry[],
   deletedEntries: CmsEntry[],
-  assets: Asset[],
-  deletedAssets: Asset[],
+  assets: Object[],
+  deletedAssets: Object[],
   nextSyncToken: string
 };
 export type SavedData = {
   entries: CmsEntry[],
-  assets: Asset[],
+  assets: Object[],
   syncToken: string,
   updated: boolean
 };

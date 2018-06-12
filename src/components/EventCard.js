@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet } from "react-native";
+import ConnectedImageBackground from "./ImageBackground";
 import SaveEventButton from "./SaveEventButton";
 import Text, { scaleWithFont } from "./Text";
 import Touchable from "./Touchable";
@@ -10,7 +11,7 @@ import {
   whiteColor
 } from "../constants/colors";
 import { formatShortEventPrice, formatTime } from "../data/formatters";
-import type { ImageSource } from "../data/get-asset-source";
+import type { FieldRef } from "../data/field-ref";
 
 type Props = {
   id: string,
@@ -20,7 +21,7 @@ type Props = {
   eventPriceHigh: number,
   startTime: string,
   endTime: string,
-  image: ImageSource,
+  imageReference: FieldRef,
   isSaved: boolean,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
@@ -47,7 +48,7 @@ class EventCard extends React.PureComponent<Props> {
       locationName,
       startTime,
       endTime,
-      image,
+      imageReference,
       eventPriceLow,
       eventPriceHigh,
       isSaved,
@@ -59,9 +60,9 @@ class EventCard extends React.PureComponent<Props> {
       <View style={styles.container}>
         <View style={styles.eventCard}>
           <Touchable style={styles.touchable} onPress={() => onPress(id)}>
-            <ImageBackground
+            <ConnectedImageBackground
               style={styles.imageContainer}
-              source={image}
+              reference={imageReference}
               resizeMode="cover"
             >
               <View style={styles.eventPriceContainer}>
@@ -69,7 +70,7 @@ class EventCard extends React.PureComponent<Props> {
                   {formatShortEventPrice(eventPriceLow, eventPriceHigh)}
                 </Text>
               </View>
-            </ImageBackground>
+            </ConnectedImageBackground>
             <View style={styles.eventCardDetails}>
               <Text type="small" color="lightNavyBlueColor">
                 {timeDisplay}

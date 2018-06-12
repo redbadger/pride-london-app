@@ -6,7 +6,6 @@ import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet
 import CategoryPill from "./CategoryPill";
 import Text, { scaleWithFont } from "./Text";
 import text from "../constants/text";
-
 import {
   darkBlueGreyTwoColor,
   eucalyptusGreenColor,
@@ -31,7 +30,8 @@ const createAccessibilityLabel = (
 
 class CategoriesPills extends React.PureComponent<Props> {
   static defaultProps = {
-    style: {}
+    style: {},
+    onPress: undefined
   };
 
   onTouchStart = () => {

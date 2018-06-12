@@ -1,32 +1,63 @@
 // @flow
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
+import { createSelector } from "reselect";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import getAssetSource from "../../data/get-asset-source";
+import type { State } from "../../reducers";
+import type { EventDays, SavedEvents } from "../../data/event";
 import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import {
-  groupEventsByStartTime,
-  selectEventsLoading,
-  selectEventsRefreshing,
+  selectData,
   selectSavedEvents,
-  selectAssetById
-} from "../../selectors/events";
-import type { Props as ComponentProps } from "./component";
+  getFutureEventsMap
+} from "../../selectors";
+import { selectLoading, selectRefreshing } from "../../selectors/data";
+import { groupEventsByStartTime } from "../../selectors/event";
+import { resolveSavedEvents } from "../../selectors/saved-events";
 import Component from "./component";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>
 };
 
-type Props = ComponentProps & OwnProps;
+type StateProps = {
+  navigation: NavigationScreenProp<NavigationState>,
+  events: EventDays,
+  savedEvents: SavedEvents,
+  loading: boolean,
+  refreshing: boolean
+};
 
-const mapStateToProps = state => ({
-  events: groupEventsByStartTime(selectSavedEvents(state)),
-  savedEvents: state.savedEvents,
-  loading: selectEventsLoading(state),
-  refreshing: selectEventsRefreshing(state),
-  getAssetSource: getAssetSource(id => selectAssetById(state, id))
+type DispatchProps = {
+  updateData: () => Promise<void>,
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void
+};
+
+type Props = StateProps & DispatchProps;
+
+const getDataLoading = createSelector([selectData], selectLoading);
+
+const getDataRefreshing = createSelector([selectData], selectRefreshing);
+
+const getEvents = createSelector(
+  [selectSavedEvents, getFutureEventsMap],
+  resolveSavedEvents
+);
+
+// Note we must add a return type here for react-redux connect to work
+// with flow correctly. If not provided is silently fails if types do
+// not line up. See https://github.com/facebook/flow/issues/5343
+const mapStateToProps = (
+  state: State,
+  { navigation }: OwnProps
+): StateProps => ({
+  navigation,
+  events: groupEventsByStartTime(getEvents(state)),
+  savedEvents: selectSavedEvents(state),
+  loading: getDataLoading(state),
+  refreshing: getDataRefreshing(state)
 });
 
 const mapDispatchToProps = {
@@ -35,7 +66,7 @@ const mapDispatchToProps = {
   removeSavedEvent
 };
 
-const connector: Connector<OwnProps, Props> = connect(
+const connector: Connector<StateProps, Props> = connect(
   mapStateToProps,
   mapDispatchToProps
 );

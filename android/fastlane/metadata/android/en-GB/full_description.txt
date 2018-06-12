@@ -1,0 +1,18 @@
+‘Pride in London’ is about coming together to celebrate the diversity of LGBT+ people in this city. We created our app to help you plan your perfect Pride experience, to make new friends, and to try something new at events organised by the full spectrum of LGBT+ people throughout the Pride season.
+
+Discover new and exciting events during the Pride Festival:
+- Explore, buy tickets for, and get directions to LGBT+ events happening all across London during the month leading up to the big day.
+-Search for Festival events perfect for you based on filters such as date, price, accessibility needs etc.
+- Heart your favourite events to curate your very own list of cool things to do during the Festival.
+
+Plan what to do during Pride weekend
+- Find out who is performing on the main stages on Pride day and when.
+- View the parade route and where you can watch the parade.
+- Learn about the groups marching in the parade and when you might see them.
+- Access information offline so that even when there's no signal you can easily find your way around.
+
+Learn more about how you can support Pride
+- Find out how you can get involved in keeping Pride running by donating, volunteering or partnering with us.
+
+Got feedback?
+We built our app from the ground up again based on feedback from our users at Pride 2017. Please send any thoughts or suggestions to app@prideinlondon.org so that we can keep improving the app for next year.

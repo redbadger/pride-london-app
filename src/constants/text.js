@@ -23,6 +23,11 @@ const showEventsLabel = (numberOfEvents: number) => {
   return `Show ${numberOfEvents} selected events`;
 };
 
+export const calendarTitleLabel = (dateRange: string, incomplete: boolean) =>
+  `Selected: ${dateRange}${
+    incomplete ? ", pick another day to select range" : ""
+  }`;
+
 export default {
   backButtonAccessibilityLabel: "Back",
   tabHome: "Home",
@@ -30,6 +35,8 @@ export default {
   tabParade: "Parade",
   tabSaved: "Saved",
   tabSupportUs: "Support us",
+  tabParadeMap: "Map",
+  tabParadeStages: "Stages",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
   categoryFilterButton: "Filter by event type",
@@ -124,6 +131,9 @@ export default {
   reset: "Reset",
   filterEvents: "Filter Events",
   runsFrom: "Runs from:",
+  noEventsTitle: "No events to show",
+  noEventsDetails:
+    "Try changing your filters to be less specific or check back later.",
   noSavedEventsTitle: "Where's the love?",
   noSavedEventsPart1: "No favourites yet? Tap the",
   noSavedEventsSaveButtonAlt: "'save this event' button",
@@ -135,9 +145,9 @@ export default {
   homeSupportUs: "Support us",
   homeSupportUsDescription: "Be part of the movement",
   paradeInformationScreen: {
-    headerTitle: "Parade",
+    headerTitle: "Parade Day - 7th July",
     pageHeading: "London Parade",
-    pageSubheading: "Sunday 7th July",
+    pageSubheading: "Saturday 7th July",
     pageDescription:
       "The Pride in London Parade provides a platform for every part of London’s LGBT+ community to raise awareness of LGBT+ issues and campaign for the freedoms that will allow us to live our lives on a genuinely equal footing. It gives us a chance to be visible and speak loudly to the rest of the world about what we have achieved, how far we have come and what is still needed.",
     stages: [
@@ -166,14 +176,14 @@ export default {
         stageHeading: "Family Stage",
         stageSubheading: "Golden Square",
         stageDescription:
-          "An intimate and fun stage, the best destination for fun and family entertainment",
+          "An intimate and fun stage, the best destination for fun and family entertainment.",
         stageImage: "family"
       },
       {
         stageHeading: "Community Village",
         stageSubheading: "Soho Square",
         stageDescription:
-          "Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to see find out more about some amazing charities and not for profit groups.",
+          "Pride in London is proud to provide a platform for charity and not for profit groups in Soho Square. Pop along to find out more about some amazing charities and not for profit groups.",
         stageImage: "community"
       }
     ]

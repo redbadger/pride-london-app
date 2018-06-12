@@ -2,22 +2,23 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { SavedEvents, EventDays } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
+import type {
+  EventCategoryName,
+  SavedEvents,
+  EventDays
+} from "../../data/event";
 import EventList from "../../components/EventList";
-import FilterHeader from "../../components/ConnectedFilterHeader";
-import Loading from "../../components/Loading";
+import FilterHeader from "./FilterHeaderConnected";
+import NoEvents from "./NoEvents";
 import { bgColor } from "../../constants/colors";
 import {
   EVENT_DETAILS,
+  EVENT_ATTRIBUTE_FILTER,
   EVENT_CATEGORIES_FILTER,
-  FILTER_MODAL
+  EVENT_DATE_FILTER
 } from "../../constants/routes";
-import locale from "../../data/locale";
 
 export type Props = {
-  navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
@@ -25,19 +26,35 @@ export type Props = {
   loading: boolean,
   refreshing: boolean,
   updateData: () => Promise<void>,
-  getAssetSource: FieldRef => ImageSource,
-  selectedCategories: Set<string>
+  selectedCategories: Set<EventCategoryName>,
+  navigation: NavigationScreenProp<NavigationState>
 };
 
 class EventsScreen extends Component<Props> {
-  shouldComponentUpdate = () => this.props.navigation.isFocused();
+  shouldComponentUpdate(nextProps: Props) {
+    // Intentionally do not check this.props.navigation
+    return (
+      nextProps.events !== this.props.events ||
+      nextProps.savedEvents !== this.props.savedEvents ||
+      nextProps.addSavedEvent !== this.props.addSavedEvent ||
+      nextProps.removeSavedEvent !== this.props.removeSavedEvent ||
+      nextProps.loading !== this.props.loading ||
+      nextProps.refreshing !== this.props.refreshing ||
+      nextProps.updateData !== this.props.updateData ||
+      nextProps.selectedCategories !== this.props.selectedCategories
+    );
+  }
 
   handleFilterCategoriesPress = () => {
     this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
   };
 
   handleFilterButtonPress = () => {
-    this.props.navigation.navigate(FILTER_MODAL);
+    this.props.navigation.navigate(EVENT_ATTRIBUTE_FILTER);
+  };
+
+  handleDateFilterButtonPress = () => {
+    this.props.navigation.navigate(EVENT_DATE_FILTER);
   };
 
   render() {
@@ -48,8 +65,7 @@ class EventsScreen extends Component<Props> {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
-      refreshing,
-      getAssetSource
+      refreshing
     } = this.props;
     return (
       <View style={styles.container}>
@@ -57,12 +73,12 @@ class EventsScreen extends Component<Props> {
           onFilterCategoriesPress={this.handleFilterCategoriesPress}
           selectedCategories={this.props.selectedCategories}
           onFilterButtonPress={this.handleFilterButtonPress}
+          onDateFilterButtonPress={this.handleDateFilterButtonPress}
         />
-        {this.props.loading ? (
-          <Loading />
+        {this.props.loading || events.length < 1 ? (
+          <NoEvents />
         ) : (
           <EventList
-            locale={locale}
             events={events}
             savedEvents={savedEvents}
             addSavedEvent={addSavedEvent}
@@ -74,7 +90,6 @@ class EventsScreen extends Component<Props> {
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
-            getAssetSource={getAssetSource}
           />
         )}
       </View>

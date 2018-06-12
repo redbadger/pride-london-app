@@ -32,11 +32,6 @@ const generateSponsors = (count = 2): Sponsor[] =>
     )
     .reverse();
 
-const getAssetSource = jest.fn().mockReturnValue({
-  uri: "http://example.com/image.png",
-  width: 1,
-  height: 1
-});
 const navigation: any = {
   goBack: jest.fn()
 };
@@ -51,7 +46,6 @@ describe("SponsorScreen Component", () => {
       <Component
         navigation={navigation}
         sponsors={generateSponsors(2)}
-        getAssetSource={getAssetSource}
         {...props}
       />
     );
@@ -85,6 +79,5 @@ describe("SponsorScreen Component", () => {
 });
 
 afterEach(() => {
-  getAssetSource.mockClear();
   navigation.goBack.mockClear();
 });

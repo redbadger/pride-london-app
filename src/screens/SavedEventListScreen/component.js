@@ -1,17 +1,14 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { SavedEvents, EventDays } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
 import EventList from "../../components/EventList";
 import text from "../../constants/text";
 import Loading from "../../components/Loading";
 import Header from "../../components/Header";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
-import locale from "../../data/locale";
 import NoSavedEvents from "./NoSavedEvents";
 
 export type Props = {
@@ -22,11 +19,15 @@ export type Props = {
   removeSavedEvent: string => void,
   loading: boolean,
   refreshing: boolean,
-  updateData: () => Promise<void>,
-  getAssetSource: FieldRef => ImageSource
+  updateData: () => Promise<void>
 };
 
-class SavedEventListScreen extends PureComponent<Props> {
+class SavedEventListScreen extends Component<Props> {
+  shouldComponentUpdate(nextProps: Props) {
+    // may want to omit navigation from this check
+    return nextProps !== this.props;
+  }
+
   render() {
     const {
       navigation,
@@ -36,8 +37,7 @@ class SavedEventListScreen extends PureComponent<Props> {
       addSavedEvent,
       removeSavedEvent,
       refreshing,
-      loading,
-      getAssetSource
+      loading
     } = this.props;
 
     return (
@@ -52,7 +52,6 @@ class SavedEventListScreen extends PureComponent<Props> {
         {!loading &&
           events.length !== 0 && (
             <EventList
-              locale={locale}
               events={events}
               savedEvents={savedEvents}
               addSavedEvent={addSavedEvent}
@@ -64,7 +63,6 @@ class SavedEventListScreen extends PureComponent<Props> {
               onPress={(eventId: string) => {
                 navigation.navigate(EVENT_DETAILS, { eventId });
               }}
-              getAssetSource={getAssetSource}
             />
           )}
       </View>

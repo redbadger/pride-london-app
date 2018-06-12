@@ -13,15 +13,30 @@ type Props = {
   leftElement?: Node,
   title?: string,
   rightElement?: Node,
-  testID?: string
+  testID?: string,
+  titleLabel?: string
 };
 
-const Header = ({ leftElement, title, rightElement, testID }: Props) => (
-  <View accessibilityTraits={["header"]} style={styles.container}>
+const Header = ({
+  leftElement,
+  title,
+  rightElement,
+  testID,
+  titleLabel
+}: Props) => (
+  <View style={styles.container}>
     <ContentPadding style={styles.headerContent}>
       <View style={styles.first}>{leftElement}</View>
       <View style={styles.title}>
-        <Text type="h2" color="whiteColor" testID={testID}>
+        <Text
+          type="h2"
+          color="whiteColor"
+          testID={testID}
+          accessible
+          accessibilityLabel={titleLabel || title}
+          accessibilityTraits={["header"]}
+          accessibilityLiveRegion="polite"
+        >
           {title}
         </Text>
       </View>
@@ -34,7 +49,8 @@ Header.defaultProps = {
   leftElement: undefined,
   title: undefined,
   rightElement: undefined,
-  testID: undefined
+  testID: undefined,
+  titleLabel: undefined
 };
 
 const styles = StyleSheet.create({

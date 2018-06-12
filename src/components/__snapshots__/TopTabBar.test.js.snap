@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  onLayout={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "alignSelf": "center",
+      "backgroundColor": "#20215a",
+      "borderTopColor": "#20215a",
+      "borderTopWidth": 1,
+      "flexDirection": "row",
+      "height": 48,
+      "maxWidth": 440,
+      "width": "100%",
+    }
+  }
+  testID="top-tab-bar"
+>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    key="1"
+    onLayout={[Function]}
+    onPress={[Function]}
+    style={
+      Array [
+        false,
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "minWidth": 48,
+          "paddingBottom": 2,
+          "paddingHorizontal": 4,
+          "paddingTop": 4,
+        },
+      ]
+    }
+    testID="tab-0"
+  >
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "rgb(44, 218, 157)",
+          },
+          Object {
+            "fontFamily": "Roboto-Medium",
+            "textAlign": "center",
+          },
+        ]
+      }
+      type="small"
+    >
+      Tab 0
+    </Text>
+  </Touchable>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits={
+      Array [
+        "button",
+      ]
+    }
+    delayPressIn={50}
+    key="2"
+    onLayout={[Function]}
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "borderColor": "rgba(255,255,255, 0.4)",
+          "borderLeftWidth": 1,
+          "height": 48,
+        },
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "minWidth": 48,
+          "paddingBottom": 2,
+          "paddingHorizontal": 4,
+          "paddingTop": 4,
+        },
+      ]
+    }
+    testID="tab-1"
+  >
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+          },
+          Object {
+            "fontFamily": "Roboto-Medium",
+            "textAlign": "center",
+          },
+        ]
+      }
+      type="small"
+    >
+      Tab 1
+    </Text>
+  </Touchable>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgb(44, 218, 157)",
+          "height": 3,
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        },
+        Object {
+          "transform": Array [
+            Object {
+              "translateX": -0.5,
+            },
+            Object {
+              "scaleX": 0,
+            },
+          ],
+        },
+      ]
+    }
+  />
+</Component>
+`;

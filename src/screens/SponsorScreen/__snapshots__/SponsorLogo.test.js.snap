@@ -9,16 +9,16 @@ exports[`SponsorLogo Component renders correctly with Gold Level 1`] = `
     }
   }
 >
-  <Image
+  <Connect(Image)
     accessibilityLabel="sponsorName"
-    resizeMode="contain"
-    source={
+    reference={
       Object {
-        "height": 100,
-        "uri": "sponsorLogoUrl",
-        "width": 100,
+        "sys": Object {
+          "id": "n2IQ6opic1Pj8",
+        },
       }
     }
+    resizeMode="contain"
     style={
       Object {
         "maxHeight": "100%",
@@ -38,16 +38,16 @@ exports[`SponsorLogo Component renders correctly with Silver Level 1`] = `
     }
   }
 >
-  <Image
+  <Connect(Image)
     accessibilityLabel="sponsorName"
-    resizeMode="contain"
-    source={
+    reference={
       Object {
-        "height": 100,
-        "uri": "sponsorLogoUrl",
-        "width": 100,
+        "sys": Object {
+          "id": "n2IQ6opic1Pj8",
+        },
       }
     }
+    resizeMode="contain"
     style={
       Object {
         "maxHeight": "100%",

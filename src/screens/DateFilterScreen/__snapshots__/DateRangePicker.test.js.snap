@@ -1,0 +1,307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly no dates 1`] = `
+<CalendarList
+  calendarHeight={365}
+  current={null}
+  dayComponent={[Function]}
+  futureScrollRange={12}
+  hideExtraDays={true}
+  markedDates={
+    Object {
+      "2018-04-14": Object {
+        "marked": true,
+      },
+    }
+  }
+  markingType="period"
+  onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "color": "#2d2f7f",
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 18,
+          "lineHeight": 24,
+          "marginVertical": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
+/>
+`;
+
+exports[`renders correctly only startDate 1`] = `
+<CalendarList
+  calendarHeight={365}
+  current={null}
+  dayComponent={[Function]}
+  futureScrollRange={12}
+  hideExtraDays={true}
+  markedDates={
+    Object {
+      "2018-01-01": Object {
+        "endingDay": true,
+        "selected": true,
+        "startingDay": true,
+      },
+      "2018-04-14": Object {
+        "marked": true,
+      },
+    }
+  }
+  markingType="period"
+  onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "color": "#2d2f7f",
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 18,
+          "lineHeight": 24,
+          "marginVertical": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
+/>
+`;
+
+exports[`renders correctly startDate after endDate 1`] = `
+<CalendarList
+  calendarHeight={365}
+  current={null}
+  dayComponent={[Function]}
+  futureScrollRange={12}
+  hideExtraDays={true}
+  markedDates={
+    Object {
+      "2018-01-01": Object {
+        "selected": true,
+        "startingDay": true,
+      },
+      "2018-01-02": Object {
+        "endingDay": true,
+        "selected": true,
+      },
+      "2018-04-14": Object {
+        "marked": true,
+      },
+    }
+  }
+  markingType="period"
+  onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "color": "#2d2f7f",
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 18,
+          "lineHeight": 24,
+          "marginVertical": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
+/>
+`;
+
+exports[`renders correctly startDate before endDate 1`] = `
+<CalendarList
+  calendarHeight={365}
+  current={null}
+  dayComponent={[Function]}
+  futureScrollRange={12}
+  hideExtraDays={true}
+  markedDates={
+    Object {
+      "2018-01-01": Object {
+        "selected": true,
+        "startingDay": true,
+      },
+      "2018-01-02": Object {
+        "endingDay": true,
+        "selected": true,
+      },
+      "2018-04-14": Object {
+        "marked": true,
+      },
+    }
+  }
+  markingType="period"
+  onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "color": "#2d2f7f",
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 18,
+          "lineHeight": 24,
+          "marginVertical": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
+/>
+`;
+
+exports[`renders correctly startDate equals endDate 1`] = `
+<CalendarList
+  calendarHeight={365}
+  current={null}
+  dayComponent={[Function]}
+  futureScrollRange={12}
+  hideExtraDays={true}
+  markedDates={
+    Object {
+      "2018-01-01": Object {
+        "endingDay": true,
+        "selected": true,
+        "startingDay": true,
+      },
+      "2018-04-14": Object {
+        "marked": true,
+      },
+    }
+  }
+  markingType="period"
+  onDayPress={[Function]}
+  pastScrollRange={0}
+  showScrollIndicator={true}
+  theme={
+    Object {
+      "stylesheet.calendar.header": Object {
+        "dayHeader": Object {
+          "color": "rgb(45, 47, 127)",
+          "fontFamily": "Roboto",
+          "fontSize": 14,
+          "marginBottom": 7,
+          "marginTop": 2,
+          "textAlign": "center",
+          "width": 32,
+        },
+        "monthText": Object {
+          "color": "#2d2f7f",
+          "fontFamily": "Poppins-SemiBold",
+          "fontSize": 18,
+          "lineHeight": 24,
+          "marginVertical": 10,
+        },
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginTop": 7,
+        },
+      },
+      "stylesheet.calendar.main": Object {
+        "week": Object {
+          "flexDirection": "row",
+          "justifyContent": "space-around",
+          "marginBottom": 7,
+          "marginTop": 7,
+        },
+      },
+    }
+  }
+/>
+`;

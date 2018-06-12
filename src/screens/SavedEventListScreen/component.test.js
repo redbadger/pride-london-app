@@ -88,7 +88,6 @@ describe("SavedEventListScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -106,7 +105,6 @@ describe("SavedEventListScreen Component", () => {
         loading
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -127,7 +125,6 @@ describe("SavedEventListScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={() => Promise.resolve()}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}
@@ -148,7 +145,6 @@ describe("SavedEventListScreen Component", () => {
         loading={false}
         refreshing={false}
         updateData={updateData}
-        getAssetSource={() => ({ uri: "", width: 1, height: 1 })}
         selectedCategories={new Set()}
         addSavedEvent={() => {}}
         removeSavedEvent={() => {}}

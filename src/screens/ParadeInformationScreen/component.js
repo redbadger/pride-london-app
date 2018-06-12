@@ -3,7 +3,6 @@
 import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import Text from "../../components/Text";
-import Header from "../../components/Header";
 import ImageHeader from "../../components/ImageHeader";
 import ContentPadding from "../../components/ContentPadding";
 import LayoutColumn from "../../components/LayoutColumn";
@@ -25,43 +24,41 @@ const mapImage = {
   community: communityImg
 };
 
-const ParadeInformationScreen = () => {
-  const tx = text.paradeInformationScreen;
-  return (
-    <View style={styles.container}>
-      <Header title={tx.headerTitle} testID="page-heading-parade" />
-      <ScrollView>
-        <View style={styles.scrollPage}>
-          <LayoutColumn spacing={24}>
-            <ContentPadding>
-              <Text type="uber" color="lightNavyBlueColor">
-                {tx.pageHeading}
-              </Text>
-              <Text type="h2" color="lightNavyBlueColor">
-                {tx.pageSubheading}
-              </Text>
-              <Text style={styles.pageDescription}>{tx.pageDescription}</Text>
-            </ContentPadding>
-            {tx.stages.map(stage => (
-              <View key={stage.stageHeading}>
-                <ImageHeader
-                  image={mapImage[stage.stageImage]}
-                  title={stage.stageHeading}
-                  subtitle={stage.stageSubheading}
-                />
-                <ContentPadding>
-                  <Text style={styles.stageDescription}>
-                    {stage.stageDescription}
-                  </Text>
-                </ContentPadding>
-              </View>
-            ))}
-          </LayoutColumn>
-        </View>
-      </ScrollView>
-    </View>
-  );
-};
+const ParadeInformationScreen = () => (
+  <View style={styles.container} testID="parade-information-screen">
+    <ScrollView>
+      <View style={styles.scrollPage}>
+        <LayoutColumn spacing={24}>
+          <ContentPadding>
+            <Text type="uber" color="lightNavyBlueColor">
+              {text.paradeInformationScreen.pageHeading}
+            </Text>
+            <Text type="h2" color="lightNavyBlueColor">
+              {text.paradeInformationScreen.pageSubheading}
+            </Text>
+            <Text style={styles.pageDescription}>
+              {text.paradeInformationScreen.pageDescription}
+            </Text>
+          </ContentPadding>
+          {text.paradeInformationScreen.stages.map(stage => (
+            <View key={stage.stageHeading}>
+              <ImageHeader
+                image={mapImage[stage.stageImage]}
+                title={stage.stageHeading}
+                subtitle={stage.stageSubheading}
+              />
+              <ContentPadding>
+                <Text style={styles.stageDescription}>
+                  {stage.stageDescription}
+                </Text>
+              </ContentPadding>
+            </View>
+          ))}
+        </LayoutColumn>
+      </View>
+    </ScrollView>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

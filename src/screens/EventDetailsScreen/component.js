@@ -1,14 +1,17 @@
 // @flow
 import React, { PureComponent } from "react";
-import { Image, Linking, StyleSheet, View } from "react-native";
+import { Linking, StyleSheet, View } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import type { NavigationScreenProp } from "react-navigation";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
+import type { Event, EventCategoryName } from "../../data/event";
+import type { Performance } from "../../data/performance";
 import EventContact from "./EventContact";
 import EventOverview from "./EventOverview";
 import EventDescription from "./EventDescription";
 import EventMap from "./EventMap";
 import SaveEventButton from "../../components/SaveEventButton";
 import CategoryPill from "../../components/CategoryPill";
+import ConnectedImage from "../../components/Image";
 import Text from "../../components/Text";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
@@ -17,20 +20,16 @@ import LayoutColumn from "../../components/LayoutColumn";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SectionDivider from "../../components/SectionDivider";
 import PerformanceList from "../../components/PerformanceList";
-import { groupPerformancesByPeriod } from "../../selectors/events";
+import { groupPerformancesByPeriod } from "../../selectors/performance";
 import { whiteColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { Event, EventCategoryName } from "../../data/event";
-import type { FieldRef } from "../../data/field-ref";
-import type { ImageSource } from "../../data/get-asset-source";
-import locale from "../../data/locale";
 import { EVENT_LIST } from "../../constants/routes";
 
-type EventHeaderProps = {|
+type EventHeaderProps = {
   isSaved: boolean,
   toggleSaved: boolean => void,
-  navigation: NavigationScreenProp<{ params: { eventId: string } }>
-|};
+  navigation: NavigationScreenProp<NavigationState>
+};
 
 export const EventHeader = ({
   isSaved,
@@ -61,7 +60,7 @@ export const EventCategories = ({
   setCategoryFilter: EventCategoryName => void
 }) => (
   <View style={styles.categories}>
-    {event.fields.eventCategories[locale].map(categoryName => (
+    {event.fields.eventCategories.map(categoryName => (
       <CategoryPill
         key={categoryName}
         name={((categoryName: any): EventCategoryName)}
@@ -96,10 +95,10 @@ export const EventTickets = ({ url }: { url: string }) => (
 );
 
 type Props = {
-  event: Event,
-  getAssetSource: FieldRef => ImageSource,
+  event: ?Event,
   isSaved: boolean,
   navigation: NavigationScreenProp<{ params: { eventId: string } }>,
+  performances: Performance[],
   toggleSaved: boolean => void,
   setCategoryFilter: EventCategoryName => void
 };
@@ -110,7 +109,7 @@ class EventDetailsScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { event, getAssetSource, navigation, setCategoryFilter } = this.props;
+    const { event, navigation, performances, setCategoryFilter } = this.props;
     return (
       <View style={styles.container}>
         <EventHeader
@@ -118,78 +117,74 @@ class EventDetailsScreen extends PureComponent<Props> {
           toggleSaved={this.props.toggleSaved}
           navigation={navigation}
         />
-        <ShadowedScrollView topShadow={false}>
-          <View style={{ aspectRatio: 5 / 3 }}>
-            <Image
-              style={styles.image}
-              resizeMode="cover"
-              source={getAssetSource(
-                event.fields.individualEventPicture[locale]
-              )}
-            />
-          </View>
-          <View style={styles.content}>
-            <LayoutColumn spacing={20}>
-              <ContentPadding>
-                <Text type="h1" style={styles.h1}>
-                  {event.fields.name[locale]}
-                </Text>
-                <LayoutColumn spacing={20}>
-                  <EventCategories
-                    event={event}
-                    navigation={navigation}
-                    setCategoryFilter={setCategoryFilter}
-                  />
-                  <EventOverview event={event} />
-                  <SectionDivider />
-                  <EventDescription event={event} />
-                  <EventMap
-                    lat={event.fields.location[locale].lat}
-                    lon={event.fields.location[locale].lon}
-                    locationName={event.fields.locationName[locale]}
-                  />
-                  {event.fields.performances &&
-                    event.fields.performances[locale] && <SectionDivider />}
-                </LayoutColumn>
-              </ContentPadding>
-              {event.fields.performances &&
-                event.fields.performances[locale] && (
-                  <PerformanceList
-                    performances={groupPerformancesByPeriod(
-                      event.fields.performances[locale]
-                    )}
-                    locale={locale}
-                  />
-                )}
-              {(event.fields.accessibilityDetails ||
-                event.fields.email ||
-                event.fields.phone) && (
+        {event && (
+          <ShadowedScrollView topShadow={false}>
+            <View style={{ aspectRatio: 5 / 3 }}>
+              <ConnectedImage
+                style={styles.image}
+                resizeMode="cover"
+                reference={event.fields.individualEventPicture}
+              />
+            </View>
+            <View style={styles.content}>
+              <LayoutColumn spacing={20}>
                 <ContentPadding>
+                  <Text type="h1" style={styles.h1}>
+                    {event.fields.name}
+                  </Text>
                   <LayoutColumn spacing={20}>
-                    {event.fields.accessibilityDetails && <SectionDivider />}
-                    {event.fields.accessibilityDetails && (
-                      <EventAccessibility>
-                        {event.fields.accessibilityDetails[locale]}
-                      </EventAccessibility>
-                    )}
-                    {(event.fields.email || event.fields.phone) && (
-                      <SectionDivider />
-                    )}
-                    {(event.fields.email || event.fields.phone) && (
-                      <EventContact
-                        email={event.fields.email && event.fields.email[locale]}
-                        phone={event.fields.phone && event.fields.phone[locale]}
-                      />
-                    )}
+                    <EventCategories
+                      event={event}
+                      navigation={navigation}
+                      setCategoryFilter={setCategoryFilter}
+                    />
+                    <EventOverview event={event} />
+                    <SectionDivider />
+                    <EventDescription event={event} />
+                    <EventMap
+                      lat={event.fields.location.lat}
+                      lon={event.fields.location.lon}
+                      locationName={event.fields.locationName}
+                    />
+                    {performances.length > 0 && <SectionDivider />}
                   </LayoutColumn>
                 </ContentPadding>
-              )}
-            </LayoutColumn>
-          </View>
-        </ShadowedScrollView>
-        {event.fields.ticketingUrl && (
-          <EventTickets url={event.fields.ticketingUrl[locale]} />
+                {performances.length > 0 && (
+                  <PerformanceList
+                    performancePeriods={groupPerformancesByPeriod(performances)}
+                  />
+                )}
+                {(event.fields.accessibilityDetails ||
+                  event.fields.email ||
+                  event.fields.phone) && (
+                  <ContentPadding>
+                    <LayoutColumn spacing={20}>
+                      {event.fields.accessibilityDetails && <SectionDivider />}
+                      {event.fields.accessibilityDetails && (
+                        <EventAccessibility>
+                          {event.fields.accessibilityDetails}
+                        </EventAccessibility>
+                      )}
+                      {(event.fields.email || event.fields.phone) && (
+                        <SectionDivider />
+                      )}
+                      {(event.fields.email || event.fields.phone) && (
+                        <EventContact
+                          email={event.fields.email}
+                          phone={event.fields.phone}
+                        />
+                      )}
+                    </LayoutColumn>
+                  </ContentPadding>
+                )}
+              </LayoutColumn>
+            </View>
+          </ShadowedScrollView>
         )}
+        {event &&
+          event.fields.ticketingUrl && (
+            <EventTickets url={event.fields.ticketingUrl} />
+          )}
       </View>
     );
   }

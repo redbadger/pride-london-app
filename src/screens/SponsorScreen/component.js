@@ -13,14 +13,11 @@ import ShadowedScrollView from "../../components/ShadowedScrollView";
 import SponsorLogoContainer from "./SponsorLogoContainer";
 import { whiteColor, lightNavyBlueColor } from "../../constants/colors";
 import text from "../../constants/text";
-import type { ImageSource } from "../../data/get-asset-source";
 import type { Sponsor } from "../../data/sponsor";
-import type { FieldRef } from "../../data/field-ref";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
-  sponsors: Sponsor[],
-  getAssetSource: FieldRef => ImageSource
+  sponsors: Sponsor[]
 };
 
 class SponsorScreen extends PureComponent<Props> {
@@ -35,7 +32,7 @@ class SponsorScreen extends PureComponent<Props> {
   };
 
   render() {
-    const { navigation, sponsors, getAssetSource } = this.props;
+    const { navigation, sponsors } = this.props;
 
     const sortByName = R.sortBy(sponsor =>
       sponsor.fields.sponsorName.toLowerCase()
@@ -66,25 +63,21 @@ class SponsorScreen extends PureComponent<Props> {
             <SponsorLogoContainer
               sponsorLevel="Headline"
               sponsors={groupSponsors.Headline}
-              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingSmall}
             />
             <SponsorLogoContainer
               sponsorLevel="Gold"
               sponsors={groupSponsors.Gold}
-              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Silver"
               sponsors={groupSponsors.Silver}
-              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <SponsorLogoContainer
               sponsorLevel="Bronze"
               sponsors={groupSponsors.Bronze}
-              getAssetSource={getAssetSource}
               style={styles.sponsorLogoContainerSpacingLarge}
             />
             <Text style={styles.sponsorMainHeading} type="h1">

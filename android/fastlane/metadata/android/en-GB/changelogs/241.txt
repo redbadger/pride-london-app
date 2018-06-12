@@ -1,0 +1,2 @@
+- copy on accessibility removed
+- issue with scrolling fixed on Nexus 6p and S7
