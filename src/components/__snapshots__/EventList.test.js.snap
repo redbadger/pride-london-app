@@ -28,117 +28,271 @@ exports[`EventList renders correctly 1`] = `
       Object {
         "data": Array [
           Object {
+            "contentType": "event",
             "fields": Object {
-              "endTime": Object {
-                "en-GB": "2018-08-11T00:00",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": "0",
-              },
-              "eventPriceLow": Object {
-                "en-GB": "0",
-              },
+              "accessibilityDetails": "accessibilityDetails",
+              "accessibilityOptions": Array [
+                "WSij4JgI7M",
+                "sCXjm40YFOX",
+                "HCC",
+                "Upq7v7vqojgGw3ZxWu8467D1s93vy",
+              ],
+              "addressLine1": "addressLine1",
+              "addressLine2": "addressLine2",
+              "audience": Array [
+                "6Mx300MH3",
+                "P9rg2v12s3iLT4RBt8",
+              ],
+              "city": "city",
+              "email": "email",
+              "endTime": "2018-07-07T03:00+00:00",
+              "eventCategories": Array [
+                "Cabaret and Variety",
+                "Nightlife",
+                "Talks and Debates",
+              ],
+              "eventDescription": "eventDescription",
+              "eventPriceHigh": 10,
+              "eventPriceLow": 0,
               "eventsListPicture": Object {
-                "en-GB": "http://placekitten.com/200/300",
-              },
-              "locationName": Object {
-                "en-GB": "Somewhere",
-              },
-              "name": Object {
-                "en-GB": "some event",
-              },
-              "startTime": Object {
-                "en-GB": "2018-07-10T00:00",
-              },
-            },
-            "sys": Object {
-              "contentType": Object {
                 "sys": Object {
-                  "id": "",
+                  "id": "flfNj34w8",
                 },
               },
-              "id": "1",
-              "revision": 1,
-              "type": "",
+              "individualEventPicture": Object {
+                "sys": Object {
+                  "id": "QbJx",
+                },
+              },
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "locationName": "locationName",
+              "name": "name",
+              "performances": Array [
+                Object {
+                  "sys": Object {
+                    "id": "L6r5wPC6G4xo",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "Xj83B3NP3OmFJCQi7c08",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "cs373hh8PR4wgoxKi9v0QSmd7K4Cl",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "u8CZ318Y8ijlcsqLaZ0upUyeS",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "m8TW4421kNcXR3KDxGuj3xuw",
+                  },
+                },
+              ],
+              "phone": "phone",
+              "postcode": "postcode",
+              "recurrenceDates": Array [
+                "07/07/2018",
+              ],
+              "startTime": "2018-07-07T00:00+00:00",
+              "ticketingUrl": "ticketingUrl",
+              "venueDetails": Array [
+                "c3AO0te576",
+                "d4Jl024",
+                "4DyleDhLQ3FY7f7378oUqO",
+              ],
             },
+            "id": "iR6ipM478RJNErH1Zn3H",
+            "locale": "en-GB",
+            "revision": 1,
           },
           Object {
+            "contentType": "event",
             "fields": Object {
-              "endTime": Object {
-                "en-GB": "2018-08-11T00:00",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": "0",
-              },
-              "eventPriceLow": Object {
-                "en-GB": "0",
-              },
+              "accessibilityDetails": "accessibilityDetails",
+              "accessibilityOptions": Array [
+                "MoWA23t57twUKER",
+              ],
+              "addressLine1": "addressLine1",
+              "addressLine2": "addressLine2",
+              "audience": Array [
+                "96USgA66gVM",
+                "pf8kZkbUY5I5z5",
+                "g9umQJsp07MnoR17vFX",
+              ],
+              "city": "city",
+              "email": "email",
+              "endTime": "2018-07-07T03:00+00:00",
+              "eventCategories": Array [
+                "Sports and Activities",
+                "Music",
+                "Talks and Debates",
+                "Film and Screenings",
+                "Social and Networking",
+              ],
+              "eventDescription": "eventDescription",
+              "eventPriceHigh": 10,
+              "eventPriceLow": 0,
               "eventsListPicture": Object {
-                "en-GB": "http://placekitten.com/200/300",
+                "sys": Object {
+                  "id": "odNhS1t5DfN5hsBxV8",
+                },
               },
-              "locationName": Object {
-                "en-GB": "Somewhere",
-              },
-              "name": Object {
-                "en-GB": "some other",
-              },
-              "startTime": Object {
-                "en-GB": "2018-07-10T00:00",
-              },
-            },
-            "sys": Object {
-              "contentType": Object {
+              "individualEventPicture": Object {
                 "sys": Object {
                   "id": "",
                 },
               },
-              "id": "2",
-              "revision": 1,
-              "type": "",
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "locationName": "locationName",
+              "name": "name",
+              "performances": Array [
+                Object {
+                  "sys": Object {
+                    "id": "k4VFOvcSfk4S5Tdp501iQ50CJ25",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "a7iq2",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "2V35W4mcV8rvmBC16J77",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "4UW23nmGy8d9pQ31pG",
+                  },
+                },
+              ],
+              "phone": "phone",
+              "postcode": "postcode",
+              "recurrenceDates": Array [
+                "14/05/2018",
+                "07/07/2018",
+                "08/07/2018",
+                "23/06/2018",
+                "21/07/2018",
+              ],
+              "startTime": "2018-07-07T00:00+00:00",
+              "ticketingUrl": "ticketingUrl",
+              "venueDetails": Array [
+                "rMzdS6Vm6z932OSfDrE529D",
+                "R1wzkYv0a71vEt",
+                "lQVbOV5rBl1Bckayw9xY3z402s87oQ",
+                "KbZzA841p",
+                "nucsHnGUH",
+              ],
             },
+            "id": "Ox4L4rOU84242Wkuqzzotlv",
+            "locale": "en-GB",
+            "revision": 1,
           },
         ],
-        "key": "2018-07-10",
+        "key": "2018-07-07",
       },
       Object {
         "data": Array [
           Object {
+            "contentType": "event",
             "fields": Object {
-              "endTime": Object {
-                "en-GB": "2018-08-11T00:00",
-              },
-              "eventPriceHigh": Object {
-                "en-GB": "0",
-              },
-              "eventPriceLow": Object {
-                "en-GB": "0",
-              },
+              "accessibilityDetails": "accessibilityDetails",
+              "accessibilityOptions": Array [
+                "VP20P8ba6cTfuj8KoP98D45",
+                "9l8AHsxzz3sKF",
+                "JfGAH6jxzjptJbolMb82Jt23O",
+                "CJlV2Cr1hh",
+              ],
+              "addressLine1": "addressLine1",
+              "addressLine2": "addressLine2",
+              "audience": Array [
+                "04F7vXSFS03r6cy6Db",
+                "EkJINif68193eVi",
+                "ldi152nRBXURueKZJG",
+              ],
+              "city": "city",
+              "email": "email",
+              "endTime": "2018-07-07T03:00+00:00",
+              "eventCategories": Array [
+                "Social and Networking",
+                "Film and Screenings",
+              ],
+              "eventDescription": "eventDescription",
+              "eventPriceHigh": 10,
+              "eventPriceLow": 0,
               "eventsListPicture": Object {
-                "en-GB": "http://placekitten.com/200/300",
-              },
-              "locationName": Object {
-                "en-GB": "Somewhere",
-              },
-              "name": Object {
-                "en-GB": "some other",
-              },
-              "startTime": Object {
-                "en-GB": "2018-07-11T00:00",
-              },
-            },
-            "sys": Object {
-              "contentType": Object {
                 "sys": Object {
-                  "id": "",
+                  "id": "31Iho4ECdDKE35",
                 },
               },
-              "id": "2",
-              "revision": 1,
-              "type": "",
+              "individualEventPicture": Object {
+                "sys": Object {
+                  "id": "o",
+                },
+              },
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "locationName": "locationName",
+              "name": "name",
+              "performances": Array [
+                Object {
+                  "sys": Object {
+                    "id": "",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "7K2vd",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "qQ9b8u8C68SBbMpM09p",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "V0WCC1d7ShSc7M47Iy85m0",
+                  },
+                },
+              ],
+              "phone": "phone",
+              "postcode": "postcode",
+              "recurrenceDates": Array [
+                "04/07/2018",
+                "05/07/2018",
+                "30/09/2018",
+                "04/08/2018",
+                "21/07/2018",
+              ],
+              "startTime": "2018-07-07T00:00+00:00",
+              "ticketingUrl": "ticketingUrl",
+              "venueDetails": Array [
+                "7Jb",
+              ],
             },
+            "id": "Y5KehcPG931Nylh0",
+            "locale": "en-GB",
+            "revision": 1,
           },
         ],
-        "key": "2018-07-11",
+        "key": "2018-07-07",
       },
     ]
   }
@@ -165,17 +319,23 @@ exports[`EventList renders items correctly 1`] = `
 >
   <EventCard
     addSavedEvent={[Function]}
-    endTime="2018-08-11T00:00"
-    eventPriceHigh="0"
-    eventPriceLow="0"
-    id="1"
-    imageReference="http://placekitten.com/200/300"
+    endTime="2018-07-07T03:00+00:00"
+    eventPriceHigh={10}
+    eventPriceLow={0}
+    id="iR6ipM478RJNErH1Zn3H"
+    imageReference={
+      Object {
+        "sys": Object {
+          "id": "flfNj34w8",
+        },
+      }
+    }
     isSaved={false}
-    locationName="Somewhere"
-    name="some event"
+    locationName="locationName"
+    name="name"
     onPress={[Function]}
     removeSavedEvent={[Function]}
-    startTime="2018-07-10T00:00"
+    startTime="2018-07-07T00:00+00:00"
   />
 </ContentPadding>
 `;
@@ -194,7 +354,7 @@ exports[`EventList renders section headers correctly 1`] = `
 <SectionHeader
   badgeValue={undefined}
   hasShadow={true}
-  title="Tuesday 10 July"
+  title="Saturday 7 July"
 />
 `;
 
