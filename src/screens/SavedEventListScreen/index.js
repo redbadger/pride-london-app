@@ -16,6 +16,7 @@ import { selectLoading, selectRefreshing } from "../../selectors/data";
 import { groupEventsByStartTime } from "../../selectors/event";
 import { resolveSavedEvents } from "../../selectors/saved-events";
 import Component from "./component";
+import onlyUpdateWhenFocused from "../../components/OnlyUpdateWhenFocused";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>
@@ -71,4 +72,4 @@ const connector: Connector<StateProps, Props> = connect(
   mapDispatchToProps
 );
 
-export default connector(Component);
+export default connector(onlyUpdateWhenFocused(Component));

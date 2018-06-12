@@ -8,6 +8,7 @@ import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import { getFeaturedEventsResolvedEvents } from "../../selectors";
 import { groupEventsByStartTime } from "../../selectors/event";
 import Component from "./component";
+import onlyUpdateWhenFocused from "../../components/OnlyUpdateWhenFocused";
 
 type OwnProps = {
   navigation: NavigationScreenProp<{ params: { title: string } }>
@@ -50,4 +51,4 @@ const connector: Connector<OwnProps, Props> = connect(
   mapDispatchToProps
 );
 
-export default connector(Component);
+export default connector(onlyUpdateWhenFocused(Component));

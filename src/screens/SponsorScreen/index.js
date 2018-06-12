@@ -6,6 +6,7 @@ import type { State } from "../../reducers";
 import type { Sponsor } from "../../data/sponsor";
 import { selectSponsors } from "../../selectors/sponsors";
 import Component from "./component";
+import onlyUpdateWhenFocused from "../../components/OnlyUpdateWhenFocused";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>
@@ -30,4 +31,4 @@ const connector: Connector<OwnProps, Props> = connect(
   mapDispatchToProps
 );
 
-export default connector(Component);
+export default connector(onlyUpdateWhenFocused(Component));
