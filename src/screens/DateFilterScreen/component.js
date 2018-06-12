@@ -32,10 +32,7 @@ type State = {
 const formatTitle = (dateRange: ?DateRange): string => {
   if (!dateRange) return text.filterDayPickerTitle;
 
-  return (
-    formatDateRange(dateRange) +
-    (dateRange.startDate === dateRange.endDate ? " -" : "")
-  );
+  return formatDateRange(dateRange);
 };
 
 const formatTitleLabel = (dateRange: ?DateRange): string => {
