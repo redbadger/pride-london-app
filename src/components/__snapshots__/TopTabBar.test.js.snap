@@ -125,10 +125,9 @@ exports[`renders correctly 1`] = `
           "backgroundColor": "rgb(44, 218, 157)",
           "height": 3,
           "left": 0,
-          "marginLeft": "5%",
           "position": "absolute",
           "top": 0,
-          "width": "90%",
+          "width": "100%",
         },
         Object {
           "transform": Array [
