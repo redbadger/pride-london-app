@@ -1,8 +1,8 @@
 // @flow
 import { sampleOne, generateEvent } from "../data/__test-data";
-import { selectSavedEvents } from "./saved-events";
+import { resolveSavedEvents } from "./saved-events";
 
-describe("selectSavedEvents", () => {
+describe("resolveSavedEvents", () => {
   it("returns an array with events resolved", () => {
     const eventA = sampleOne(generateEvent, { seed: 1234 });
     const eventB = sampleOne(generateEvent, { seed: 4255 });
@@ -12,7 +12,7 @@ describe("selectSavedEvents", () => {
     };
     const savedEvents = new Set([eventA.id, eventB.id]);
 
-    const selected = selectSavedEvents(savedEvents, events);
+    const selected = resolveSavedEvents(savedEvents, events);
     expect(selected).toEqual([eventA, eventB]);
   });
 
@@ -25,7 +25,7 @@ describe("selectSavedEvents", () => {
     };
     const savedEvents = new Set([eventA.id, "missing"]);
 
-    const selected = selectSavedEvents(savedEvents, events);
+    const selected = resolveSavedEvents(savedEvents, events);
     expect(selected).toEqual([eventA]);
   });
 });

@@ -1,7 +1,7 @@
 // @flow
 import type { Event, Events, SavedEvents } from "../data/event";
 
-const selectSavedEventsHelp = (events: Events) => (
+const resolveSavedEventsHelp = (events: Events) => (
   acc: Event[],
   id: string
 ): Event[] => {
@@ -13,8 +13,8 @@ const selectSavedEventsHelp = (events: Events) => (
 };
 
 /* eslint-disable import/prefer-default-export */
-export const selectSavedEvents = (
+export const resolveSavedEvents = (
   savedEvents: SavedEvents,
   events: Events
 ): Event[] =>
-  Array.from(savedEvents.values()).reduce(selectSavedEventsHelp(events), []);
+  Array.from(savedEvents.values()).reduce(resolveSavedEventsHelp(events), []);
