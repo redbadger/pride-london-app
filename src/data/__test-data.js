@@ -5,7 +5,6 @@ import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
 import type { Maybe } from "../lib/maybe";
-import type { Event as EventDeprecated } from "./event-deprecated";
 import type { Event, EventCategoryName } from "./event";
 import type { FeaturedEvents } from "./featured-events";
 import type { FieldRef } from "./field-ref";
@@ -213,7 +212,7 @@ export const generateEvent: ValueGenerator<Event> = gen({
   })
 });
 
-export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
+export const generateCMSEvent: ValueGenerator<mixed> = gen({
   sys: gen({
     id: gen.alphaNumString.notEmpty(),
     contentType: {
