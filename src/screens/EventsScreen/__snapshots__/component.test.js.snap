@@ -53,12 +53,12 @@ exports[`EventsScreen Component renders correctly 1`] = `
               "eventPriceLow": 0,
               "eventsListPicture": Object {
                 "sys": Object {
-                  "id": "O",
+                  "id": "Sw",
                 },
               },
               "individualEventPicture": Object {
                 "sys": Object {
-                  "id": "",
+                  "id": "99ww8tQRq",
                 },
               },
               "location": Object {
@@ -70,17 +70,17 @@ exports[`EventsScreen Component renders correctly 1`] = `
               "performances": Array [
                 Object {
                   "sys": Object {
-                    "id": "ZJA27Vo1FL7",
+                    "id": "t3gcH9lwpBFJACtGC24P8lFR",
                   },
                 },
                 Object {
                   "sys": Object {
-                    "id": "4DphltPGd4c56iVt61315",
+                    "id": "DcH3",
                   },
                 },
                 Object {
                   "sys": Object {
-                    "id": "3XJ68wA04",
+                    "id": "gp493DYUByvSUyrw4uIGW8L5IEOw9",
                   },
                 },
               ],

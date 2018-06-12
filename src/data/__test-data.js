@@ -40,7 +40,7 @@ const generateNull = <A>(): ValueGenerator<Maybe<A>> => gen.null;
 
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
-    id: gen.alphaNumString
+    id: gen.alphaNumString.notEmpty()
   })
 });
 
