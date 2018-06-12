@@ -366,7 +366,7 @@ describe("Events reducer", () => {
       expect(state.performances).toEqual(expected);
     });
 
-    it.only("decodes sponsors", () => {
+    it("decodes sponsors", () => {
       const initialState = {
         events: [],
         featuredEvents: [],
