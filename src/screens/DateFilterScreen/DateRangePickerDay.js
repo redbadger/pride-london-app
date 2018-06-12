@@ -38,7 +38,6 @@ type DayMarking = {
 };
 
 type DayProps = {
-  disabled: boolean,
   marking: DayMarking,
   date: CalendarDay,
   onPress: Function,
@@ -85,18 +84,10 @@ export default class Day extends Component<DayProps> {
   };
 
   shouldComponentUpdate = (nextProps: DayProps): boolean => {
-    const { disabled, marking, date } = this.props;
-    const {
-      disabled: nextDisabled,
-      marking: nextMarking,
-      date: nextDate
-    } = nextProps;
+    const { marking, date } = this.props;
+    const { marking: nextMarking, date: nextDate } = nextProps;
 
-    return (
-      disabled !== nextDisabled ||
-      !equals(marking, nextMarking) ||
-      !equals(date, nextDate)
-    );
+    return !equals(marking, nextMarking) || !equals(date, nextDate);
   };
 
   onPress = () => {
