@@ -1,6 +1,6 @@
 // @flow
-import { Component as ReactComponent } from "react";
-import type { Node } from "react";
+import React, { Component as ReactComponent } from "react";
+import type { ComponentType, Node } from "react";
 import { withNavigation } from "react-navigation";
 import type {
   NavigationEventSubscription,
@@ -33,8 +33,8 @@ export class OnlyUpdateWhenFocusedComponent extends ReactComponent<
     };
   }
 
-  shouldComponentUpdate() {
-    return this.state.isFocused;
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
+    return nextState.isFocused;
   }
 
   componentDidMount() {
@@ -60,4 +60,14 @@ export class OnlyUpdateWhenFocusedComponent extends ReactComponent<
   }
 }
 
-export default withNavigation(OnlyUpdateWhenFocusedComponent);
+const OnlyUpdateWhenFocused = withNavigation(OnlyUpdateWhenFocusedComponent);
+
+const onlyUpdateWhenFocused = <A>(
+  Component: ComponentType<A>
+): (A => Node) => props => (
+  <OnlyUpdateWhenFocused>
+    <Component {...props} />
+  </OnlyUpdateWhenFocused>
+);
+
+export default onlyUpdateWhenFocused;
