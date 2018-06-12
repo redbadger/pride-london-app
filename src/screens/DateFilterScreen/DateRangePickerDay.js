@@ -156,9 +156,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "stretch"
   },
-  faded: {
-    opacity: 0.5
-  },
   overlay: {
     position: "absolute",
     height: FILLER_HEIGHT,
