@@ -16,14 +16,11 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -124,14 +121,11 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -231,14 +225,11 @@ exports[`dateRangePickerDay renders a disabled day 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -268,9 +259,7 @@ exports[`dateRangePickerDay renders a disabled day 1`] = `
               "textAlign": "center",
             },
             Object {},
-            Object {
-              "color": "rgb(203, 203, 203)",
-            },
+            Object {},
           ]
         }
         type="small"
@@ -297,14 +286,11 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -391,14 +377,11 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -528,14 +511,11 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -636,14 +616,11 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -743,14 +720,11 @@ exports[`dateRangePickerDay renders without date selection 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
