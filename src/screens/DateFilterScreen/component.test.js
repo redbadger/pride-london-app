@@ -108,7 +108,7 @@ describe("DateFilterScreen", () => {
 
     const header = output.find("Header");
 
-    expect(header.props().title).toEqual("6 Jun -");
+    expect(header.props().title).toEqual("6 Jun");
     expect(header.props().titleLabel).toEqual(
       "Selected: 6 Jun, pick another day to select range"
     );

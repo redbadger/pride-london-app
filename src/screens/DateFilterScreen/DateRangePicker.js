@@ -4,13 +4,17 @@ import { CalendarList } from "react-native-calendars";
 import Day from "./DateRangePickerDay";
 import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
 import type { DateRange } from "../../data/date-time";
+import { scaleFont } from "../../components/Text";
 import {
   toFormat as formatDate,
   isBefore,
   addDays,
   FORMAT_YEAR_MONTH_DAY
 } from "../../lib/date";
-import { dateRangePickerTextColor } from "../../constants/colors";
+import {
+  dateRangePickerTextColor,
+  lightNavyBlueColor
+} from "../../constants/colors";
 
 const getSortedDateRange = (dates: DateRange) =>
   isBefore(dates.endDate, dates.startDate)
@@ -158,8 +162,10 @@ const calendarTheme = {
   "stylesheet.calendar.header": {
     monthText: {
       fontFamily: "Poppins-SemiBold",
-      fontSize: 16,
-      marginVertical: 10
+      fontSize: scaleFont("h2", 18),
+      lineHeight: scaleFont("h2", 24),
+      marginVertical: 10,
+      color: lightNavyBlueColor
     },
     week: {
       marginTop: 7,

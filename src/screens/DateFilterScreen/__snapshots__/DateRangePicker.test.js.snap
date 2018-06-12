@@ -31,8 +31,10 @@ exports[`renders correctly no dates 1`] = `
           "width": 32,
         },
         "monthText": Object {
+          "color": "#2d2f7f",
           "fontFamily": "Poppins-SemiBold",
-          "fontSize": 16,
+          "fontSize": 18,
+          "lineHeight": 24,
           "marginVertical": 10,
         },
         "week": Object {
@@ -90,8 +92,10 @@ exports[`renders correctly only startDate 1`] = `
           "width": 32,
         },
         "monthText": Object {
+          "color": "#2d2f7f",
           "fontFamily": "Poppins-SemiBold",
-          "fontSize": 16,
+          "fontSize": 18,
+          "lineHeight": 24,
           "marginVertical": 10,
         },
         "week": Object {
@@ -152,8 +156,10 @@ exports[`renders correctly startDate after endDate 1`] = `
           "width": 32,
         },
         "monthText": Object {
+          "color": "#2d2f7f",
           "fontFamily": "Poppins-SemiBold",
-          "fontSize": 16,
+          "fontSize": 18,
+          "lineHeight": 24,
           "marginVertical": 10,
         },
         "week": Object {
@@ -214,8 +220,10 @@ exports[`renders correctly startDate before endDate 1`] = `
           "width": 32,
         },
         "monthText": Object {
+          "color": "#2d2f7f",
           "fontFamily": "Poppins-SemiBold",
-          "fontSize": 16,
+          "fontSize": 18,
+          "lineHeight": 24,
           "marginVertical": 10,
         },
         "week": Object {
@@ -273,8 +281,10 @@ exports[`renders correctly startDate equals endDate 1`] = `
           "width": 32,
         },
         "monthText": Object {
+          "color": "#2d2f7f",
           "fontFamily": "Poppins-SemiBold",
-          "fontSize": 16,
+          "fontSize": 18,
+          "lineHeight": 24,
           "marginVertical": 10,
         },
         "week": Object {
