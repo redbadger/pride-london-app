@@ -4,12 +4,19 @@ import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { createSelector } from "reselect";
 import type { State } from "../../reducers";
-import type { EventCategoryName } from "../../data/event";
-import type { SavedEvents, EventDays } from "../../data/event-deprecated";
+import type {
+  EventCategoryName,
+  EventDays,
+  SavedEvents
+} from "../../data/event";
 import { updateData } from "../../actions/data";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
-import { groupEventsByStartTime } from "../../selectors/events-deprecated";
-import { selectData, selectFilteredEvents } from "../../selectors";
+import { groupEventsByStartTime } from "../../selectors/event";
+import {
+  selectData,
+  selectFilteredEvents,
+  selectSavedEvents
+} from "../../selectors";
 import { selectLoading, selectRefreshing } from "../../selectors/data";
 import Component from "./component";
 
@@ -47,7 +54,7 @@ const mapStateToProps = (
 ): StateProps => ({
   navigation,
   events: groupEventsByStartTime(selectFilteredEvents(state)),
-  savedEvents: state.savedEvents,
+  savedEvents: selectSavedEvents(state),
   loading: getDataLoading(state),
   refreshing: getDataRefreshing(state),
   selectedCategories: state.eventFilters.selectedFilters.categories

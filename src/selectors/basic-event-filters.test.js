@@ -1,4 +1,5 @@
 // @flow
+import { generateEvent, sampleOne } from "../data/__test-data";
 import {
   buildCategoryFilter,
   buildDateRangeFilter,
@@ -7,8 +8,7 @@ import {
   buildStringSetFilter,
   buildAreaFilter
 } from "./basic-event-filters";
-import type { EventCategoryName } from "../data/event";
-import type { Event } from "../data/event-deprecated";
+import type { Event, EventCategoryName } from "../data/event";
 
 export type BuildEventArguments = {
   startTime?: string,
@@ -32,17 +32,16 @@ const buildEvent = ({
     lon: -0.15343029999996816,
     lat: 51.5352875
   }
-}: BuildEventArguments) =>
-  (({
-    fields: {
-      startTime: { "en-GB": startTime },
-      endTime: { "en-GB": endTime },
-      eventCategories: { "en-GB": eventCategories },
-      eventPriceLow: { "en-GB": eventPriceLow },
-      eventPriceHigh: { "en-GB": eventPriceHigh },
-      location: { "en-GB": location }
-    }
-  }: any): Event);
+}: BuildEventArguments): Event => {
+  const event = sampleOne(generateEvent);
+  event.fields.startTime = startTime;
+  event.fields.endTime = endTime;
+  event.fields.eventCategories = eventCategories;
+  event.fields.eventPriceLow = eventPriceLow;
+  event.fields.eventPriceHigh = eventPriceHigh;
+  event.fields.location = location;
+  return event;
+};
 
 describe("buildDateRangeFilter", () => {
   const event = buildEvent({
