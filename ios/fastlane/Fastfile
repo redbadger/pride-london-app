@@ -137,9 +137,8 @@ platform :ios do
   desc "Upload to TestFlight and notify testers"
   lane :deploy_testflight do
     testflight(
-      skip_submission: true,
-      distribute_external: false,
-      skip_waiting_for_build_processing: true
+      distribute_external: true,
+      notify_external_testers: false
     )
   end
 
