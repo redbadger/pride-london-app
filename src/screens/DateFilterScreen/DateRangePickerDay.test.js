@@ -69,15 +69,6 @@ describe("dateRangePickerDay", () => {
     expect(output).toMatchSnapshot();
   });
 
-  it("renders a disabled day", () => {
-    const output = render({
-      date: date(2018, 7, 12),
-      marking: {}
-    });
-
-    expect(output).toMatchSnapshot();
-  });
-
   it("renders a disabled day if before today", () => {
     jest
       .spyOn(dateLib, "now")
@@ -90,13 +81,7 @@ describe("dateRangePickerDay", () => {
 
     expect(output.props().disabled).toEqual(true);
     expect(output.props().accessibilityTraits).toContain("disabled");
-    expect(output.children().props().style).toEqual(
-      expect.objectContaining({
-        alignItems: "center",
-        alignSelf: "stretch",
-        flex: 1
-      })
-    );
+    expect(output).toMatchSnapshot();
   });
 
   it("does not render a disabled day if same day as today", () => {
@@ -111,9 +96,7 @@ describe("dateRangePickerDay", () => {
 
     expect(output.props().disabled).toEqual(false);
     expect(output.props().accessibilityTraits).not.toContain("disabled");
-    expect(output.children().props().style).not.toEqual(
-      expect.arrayContaining([expect.objectContaining({ opacity: 0.5 })])
-    );
+    expect(output).toMatchSnapshot();
   });
 
   describe("interaction", () => {
