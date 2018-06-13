@@ -9,7 +9,7 @@ import SectionHeader from "./SectionHeader";
 import { whiteColor } from "../constants/colors";
 import type { SavedEvents, Event, EventDays } from "../data/event";
 import {
-  toFormat as formatDate,
+  toLocalFormat as formatDate,
   FORMAT_WEEKDAY_DAY_MONTH,
   FORMAT_YEAR_MONTH_DAY
 } from "../lib/date";

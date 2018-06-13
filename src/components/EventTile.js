@@ -5,7 +5,7 @@ import ConnectedImageBackground from "../components/ImageBackground";
 import Text from "../components/Text";
 import CategoryPill from "./CategoryPill";
 import { imageBgColor, eventTileTextColor } from "../constants/colors";
-import { toFormat, FORMAT_SHORT_WEEKDAY_DAY_MONTH } from "../lib/date";
+import { toLocalFormat, FORMAT_SHORT_WEEKDAY_DAY_MONTH } from "../lib/date";
 import type { FieldRef } from "../data/field-ref";
 import type { EventCategoryName } from "../data/event";
 
@@ -31,7 +31,7 @@ const EventTile = ({ eventCategories, name, date, imageReference }: Props) => (
     </ConnectedImageBackground>
     <View style={styles.details}>
       <Text type="small" style={{ color: eventTileTextColor }}>
-        {toFormat(date, FORMAT_SHORT_WEEKDAY_DAY_MONTH)}
+        {toLocalFormat(date, FORMAT_SHORT_WEEKDAY_DAY_MONTH)}
       </Text>
       <Text
         type="h3"

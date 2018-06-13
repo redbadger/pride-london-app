@@ -2,7 +2,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import {
-  toFormat as formatDate,
+  toLocalFormat as formatDate,
   compareAsc as compareDateAsc,
   FORMAT_DAY_MONTH
 } from "../../lib/date";
