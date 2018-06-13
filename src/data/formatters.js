@@ -1,7 +1,7 @@
 // @flow
 
 import {
-  toLocalFormat as formatDate,
+  toLondonFormat as formatDate,
   FORMAT_DAY_MONTH,
   FORMAT_TIME_24
 } from "../lib/date";

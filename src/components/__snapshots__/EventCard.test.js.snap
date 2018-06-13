@@ -96,7 +96,7 @@ exports[`renders correctly 1`] = `
           markdownStyle={Object {}}
           type="small"
         >
-          11:12 – 12:12
+          12:12 – 13:12
         </Text>
         <Text
           color="lightNavyBlueColor"
@@ -228,7 +228,7 @@ exports[`renders correctly when the event is free 1`] = `
           markdownStyle={Object {}}
           type="small"
         >
-          11:12 – 12:12
+          12:12 – 13:12
         </Text>
         <Text
           color="lightNavyBlueColor"
@@ -360,7 +360,7 @@ exports[`renders correctly when there is a price range 1`] = `
           markdownStyle={Object {}}
           type="small"
         >
-          11:12 – 12:12
+          12:12 – 13:12
         </Text>
         <Text
           color="lightNavyBlueColor"
@@ -492,7 +492,7 @@ exports[`renders correctly when there is only one price 1`] = `
           markdownStyle={Object {}}
           type="small"
         >
-          11:12 – 12:12
+          12:12 – 13:12
         </Text>
         <Text
           color="lightNavyBlueColor"

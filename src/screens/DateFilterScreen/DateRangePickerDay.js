@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { View, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import { equals } from "ramda";
 import {
-  toLocalFormat,
+  toLondonFormat,
   now,
   isBefore,
   isSameDay,
@@ -104,7 +104,7 @@ export default class Day extends Component<DayProps> {
     const disabled =
       isBefore(date.dateString, dateNow) &&
       !isSameDay(date.dateString, dateNow);
-    const label = toLocalFormat(date.dateString, FORMAT_WEEKDAY_MONTH_DAY);
+    const label = toLondonFormat(date.dateString, FORMAT_WEEKDAY_MONTH_DAY);
     const traits = marking.selected ? ["button", "selected"] : ["button"];
 
     return (

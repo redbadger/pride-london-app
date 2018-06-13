@@ -6,7 +6,7 @@ import type { DayMarkings, CalendarDay } from "./DateRangePickerDay";
 import type { DateRange } from "../../data/date-time";
 import { scaleFont } from "../../components/Text";
 import {
-  toLocalFormat as formatDate,
+  toLondonFormat as formatDate,
   isBefore,
   addDays,
   FORMAT_YEAR_MONTH_DAY

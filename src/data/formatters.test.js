@@ -28,9 +28,9 @@ describe("formatDateRange", () => {
 
 describe("formatTime", () => {
   it("formats time correctly", () => {
-    const a = formatTime("2017-07-09T11:00");
+    const a = formatTime("2017-07-09T11:00+01:00");
     expect(a).toBe("11:00");
-    const b = formatTime("2017-07-09T06:00");
+    const b = formatTime("2017-07-09T06:00+01:00");
     expect(b).toBe("06:00");
   });
 });

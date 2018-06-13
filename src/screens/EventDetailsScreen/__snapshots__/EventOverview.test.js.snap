@@ -19,7 +19,7 @@ exports[`renders correctly 1`] = `
       markdownStyle={Object {}}
       type="small"
     >
-      00:00 – 03:00
+      01:00 – 04:00
     </Text>
     <RecurrenceDates
       recurrenceDates={
