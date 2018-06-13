@@ -1,4 +1,11 @@
-export default [
+export const region = {
+  latitude: 51.5085,
+  longitude: -0.134192,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.000000041
+};
+
+export const route = [
   { longitude: -0.14223, latitude: 51.51616 },
   { longitude: -0.14221, latitude: 51.5161 },
   { longitude: -0.14214, latitude: 51.51605 },
