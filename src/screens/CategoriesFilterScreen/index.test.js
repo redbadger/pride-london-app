@@ -17,8 +17,12 @@ const mockStore = configureStore([thunk]);
 
 const initialState = {
   data: {
-    entries: [],
-    assets: [],
+    events: [],
+    featuredEvents: [],
+    headerBanners: [],
+    images: {},
+    performances: {},
+    sponsors: [],
     loading: true,
     refreshing: false
   },

@@ -19,11 +19,9 @@ import {
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
-import type { Event } from "../../data/event-deprecated";
+import type { Event } from "../../data/event";
 import type { ImageDetails } from "../../data/image";
 import type { HeaderBanner } from "../../data/header-banner";
-
-import locale from "../../data/locale";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -47,8 +45,8 @@ class HomeScreen extends Component<Props> {
     const bannerIds = this.props.headerBanners.map(getId);
     const nextBannerIds = nextProps.headerBanners.map(getId);
 
-    const ids = this.props.featuredEvents.map(e => e.sys.id);
-    const nextIds = nextProps.featuredEvents.map(e => e.sys.id);
+    const ids = this.props.featuredEvents.map(getId);
+    const nextIds = nextProps.featuredEvents.map(getId);
 
     return (
       loading !== nextLoading ||
@@ -105,7 +103,7 @@ class HomeScreen extends Component<Props> {
               <View style={styles.tilesContainer}>
                 {events.map((event, index) => (
                   <View
-                    key={event.sys.id}
+                    key={event.id}
                     style={[
                       styles.tileContainer,
                       index % 2 === 0 && styles.startOfRowTileContainer
@@ -113,14 +111,14 @@ class HomeScreen extends Component<Props> {
                   >
                     <Touchable
                       style={styles.tile}
-                      onPress={() => this.eventDetails(event.sys.id)}
-                      testID={`event-tile-${event.sys.id}`}
+                      onPress={() => this.eventDetails(event.id)}
+                      testID={`event-tile-${event.id}`}
                     >
                       <EventTile
-                        name={event.fields.name[locale]}
-                        date={event.fields.startTime[locale]}
-                        eventCategories={event.fields.eventCategories[locale]}
-                        imageReference={event.fields.eventsListPicture[locale]}
+                        name={event.fields.name}
+                        date={event.fields.startTime}
+                        eventCategories={event.fields.eventCategories}
+                        imageReference={event.fields.eventsListPicture}
                       />
                     </Touchable>
                   </View>

@@ -142,8 +142,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     top: 0,
-    width: "90%",
-    marginLeft: "5%"
+    width: "100%"
   },
   tabBar: {
     flexDirection: "row",

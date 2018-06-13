@@ -170,6 +170,10 @@ export type Event = {
   }
 };
 
+export type SavedEvents = Set<string>;
+
+export type EventDays = Event[][];
+
 const maybeField = <A>(
   locale: string,
   field: string,

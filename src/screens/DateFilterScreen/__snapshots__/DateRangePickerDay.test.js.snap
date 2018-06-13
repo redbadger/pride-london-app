@@ -1,5 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`dateRangePickerDay does not render a disabled day if same day as today 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {},
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
 exports[`dateRangePickerDay renders a beginning of a range 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
@@ -16,14 +77,11 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -124,14 +182,11 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -216,29 +271,27 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
 </TouchableWithoutFeedback>
 `;
 
-exports[`dateRangePickerDay renders a disabled day 1`] = `
+exports[`dateRangePickerDay renders a disabled day if before today 1`] = `
 <TouchableWithoutFeedback
   accessibilityComponentType="button"
   accessibilityLabel="Sunday, August 12"
   accessibilityTraits={
     Array [
       "button",
+      "disabled",
     ]
   }
-  disabled={false}
+  disabled={true}
   onLongPress={[Function]}
   onPress={[Function]}
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -269,7 +322,7 @@ exports[`dateRangePickerDay renders a disabled day 1`] = `
             },
             Object {},
             Object {
-              "color": "rgb(203, 203, 203)",
+              "color": "#cecece",
             },
           ]
         }
@@ -297,14 +350,11 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -391,14 +441,11 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -528,14 +575,11 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -636,14 +680,11 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component
@@ -743,14 +784,11 @@ exports[`dateRangePickerDay renders without date selection 1`] = `
 >
   <Component
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "stretch",
-          "flex": 1,
-        },
-        Object {},
-      ]
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
     }
   >
     <Component

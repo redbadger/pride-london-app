@@ -2,8 +2,11 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { EventCategoryName } from "../../data/event";
-import type { SavedEvents, EventDays } from "../../data/event-deprecated";
+import type {
+  EventCategoryName,
+  SavedEvents,
+  EventDays
+} from "../../data/event";
 import EventList from "../../components/EventList";
 import FilterHeader from "./FilterHeaderConnected";
 import NoEvents from "./NoEvents";
@@ -14,7 +17,6 @@ import {
   EVENT_CATEGORIES_FILTER,
   EVENT_DATE_FILTER
 } from "../../constants/routes";
-import locale from "../../data/locale";
 
 export type Props = {
   events: EventDays,
@@ -77,7 +79,6 @@ class EventsScreen extends Component<Props> {
           <NoEvents />
         ) : (
           <EventList
-            locale={locale}
             events={events}
             savedEvents={savedEvents}
             addSavedEvent={addSavedEvent}
