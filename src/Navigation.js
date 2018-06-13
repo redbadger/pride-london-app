@@ -300,8 +300,6 @@ const TabNav = createBottomTabNavigator(
   {
     tabBarComponent: NavigationTabBar,
     tabBarPosition: "bottom",
-    swipeEnabled: false,
-    animationEnabled: false,
     initialRouteName: HOME,
     cardStyle: {
       backgroundColor: "blue"
