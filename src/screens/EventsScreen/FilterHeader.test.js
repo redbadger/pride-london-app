@@ -13,6 +13,7 @@ const render = (
     onFilterCategoriesPress: () => {},
     onFilterButtonPress: () => {},
     onDateFilterButtonPress: () => {},
+    resetAllFiltersPress: () => {},
     numTagFiltersSelected: 0
   }
 ) => shallow(<FilterHeader {...props} />);
@@ -25,6 +26,7 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
       numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
@@ -37,6 +39,7 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
       numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
@@ -49,6 +52,7 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
       numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
@@ -64,6 +68,7 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
       numTagFiltersSelected: 0
     });
     expect(output).toMatchSnapshot();
@@ -76,6 +81,7 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
       numTagFiltersSelected: 2
     });
     expect(output).toMatchSnapshot();
@@ -91,6 +97,7 @@ describe("filter buttons", () => {
       onFilterCategoriesPress: mock,
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
       numTagFiltersSelected: 0
     });
     output.find(FilterHeaderCategories).prop("onFilterPress")();
@@ -106,6 +113,7 @@ describe("filter buttons", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: mock,
+      resetAllFiltersPress: () => {},
       numTagFiltersSelected: 0
     });
     const button = output.find(FilterHeaderButton).at(0);
@@ -122,6 +130,7 @@ describe("filter buttons", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: mock,
       onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
       numTagFiltersSelected: 0
     });
     const button = output.find(FilterHeaderButton).at(1);

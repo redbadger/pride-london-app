@@ -17,16 +17,20 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <Component
-      style={
-        Object {
-          "paddingBottom": 12,
-          "paddingTop": 16,
+    <Component>
+      <Component
+        style={
+          Object {
+            "paddingBottom": 12,
+            "paddingTop": 16,
+          }
         }
-      }
-      testID="event-filter-header"
-    >
-      <FilterHeaderCategories />
+        testID="event-filter-header"
+      >
+        <FilterHeaderCategories
+          selectedCategories={Set {}}
+        />
+      </Component>
     </Component>
   </ContentPadding>
   <Component
@@ -78,6 +82,8 @@ exports[`ConnectedFilterHeader renders connector 1`] = `
 <FilterHeader
   dateFilter={null}
   numTagFiltersSelected={0}
+  resetAllFiltersPress={[Function]}
+  selectedCategories={Set {}}
   store={
     Object {
       "clearActions": [Function],

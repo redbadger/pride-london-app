@@ -20,10 +20,16 @@ export type Props = {
   onFilterButtonPress: () => void,
   onDateFilterButtonPress: () => void,
   selectedCategories: Set<EventCategoryName>,
-  numTagFiltersSelected: number
+  numTagFiltersSelected: number,
+  resetAllFiltersPress: () => void
 };
 
 class FilterHeader extends React.PureComponent<Props> {
+  static defaultProps = {
+    resetAllFiltersPress: () => {},
+    selectedCategories: new Set()
+  };
+
   render() {
     const {
       dateFilter,
@@ -31,20 +37,37 @@ class FilterHeader extends React.PureComponent<Props> {
       selectedCategories,
       onFilterButtonPress,
       onDateFilterButtonPress,
-      numTagFiltersSelected
+      numTagFiltersSelected,
+      resetAllFiltersPress
     } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
       : text.selectDates;
 
+    const anyAppliedFilters: boolean =
+      !!dateFilter || numTagFiltersSelected > 0 || selectedCategories.size > 0;
+
     return (
       <View accessibilityTraits={["header"]} style={styles.container}>
         <ContentPadding>
-          <View testID="event-filter-header" style={styles.content}>
-            <FilterHeaderCategories
-              onFilterPress={onFilterCategoriesPress}
-              selectedCategories={selectedCategories}
-            />
+          <View>
+            {anyAppliedFilters && (
+              <View style={styles.clearAllWrapper}>
+                <FilterHeaderButton
+                  active={false}
+                  text="Reset all filters"
+                  label="Reset all filters"
+                  style={styles.clearAll}
+                  onPress={resetAllFiltersPress}
+                />
+              </View>
+            )}
+            <View testID="event-filter-header" style={styles.content}>
+              <FilterHeaderCategories
+                onFilterPress={onFilterCategoriesPress}
+                selectedCategories={selectedCategories}
+              />
+            </View>
           </View>
         </ContentPadding>
         <View style={styles.contentFilters}>
@@ -93,6 +116,14 @@ const styles = StyleSheet.create({
     borderLeftWidth: StyleSheet.hairlineWidth,
     borderColor: whiteColor,
     opacity: 0.4
+  },
+  clearAll: {
+    minHeight: 0,
+    paddingTop: 16
+  },
+  clearAllWrapper: {
+    flexDirection: "row",
+    justifyContent: "flex-end"
   }
 });
 
