@@ -35,6 +35,7 @@
 		318765D00A39443CB392160E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4E3E0A0D0C4E578B19C5B2 /* libz.tbd */; };
 		3E67D28869C44E63B2795DC9 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F30F2CFAEF426BA05F1A4F /* libSplashScreen.a */; };
 		4D99DF92207A5AA0001A4C8A /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		4F68F3B720CFC21E0099F72E /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F68F3B420CFC19C0099F72E /* libReactNativePermissions.a */; };
 		55C92420D9A1453FB374D8D9 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 88788B71E6054B03A6B62D25 /* Poppins-BoldItalic.ttf */; };
 		5AB34E6B207774FD00E0E793 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB34E412077745700E0E793 /* libBVLinearGradient.a */; };
 		692D5633F6B843FBA8E8BE22 /* libLottie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE022A2E7224301B182CD7A /* libLottie.a */; };
@@ -354,6 +355,13 @@
 			remoteGlobalIDString = 11FA5C511C4A1296003AC2EE;
 			remoteInfo = AirMaps;
 		};
+		4F68F3B320CFC19C0099F72E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F68F38120CFC19C0099F72E /* ReactNativePermissions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D23B34F1C767B80008B4819;
+			remoteInfo = ReactNativePermissions;
+		};
 		5AB34E402077745700E0E793 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5AB34E3A2077745700E0E793 /* BVLinearGradient.xcodeproj */;
@@ -471,6 +479,7 @@
 		39B45C6580BE4CD4A6D4DEBC /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		4136FF47A2BC434294DAD39E /* libLottieReactNative.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLottieReactNative.a; sourceTree = "<group>"; };
 		468586868A8E4813A990A022 /* libBugsnagReactNative.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBugsnagReactNative.a; sourceTree = "<group>"; };
+		4F68F38120CFC19C0099F72E /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativePermissions.xcodeproj; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; };
 		50BA3D3CC2564F6D8C0B3766 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		5AB34E3A2077745700E0E793 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -512,6 +521,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F68F3B720CFC21E0099F72E /* libReactNativePermissions.a in Frameworks */,
 				5AB34E6B207774FD00E0E793 /* libBVLinearGradient.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				4D99DF92207A5AA0001A4C8A /* libRCTAnimation.a in Frameworks */,
@@ -715,6 +725,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4F68F38220CFC19C0099F72E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F68F3B420CFC19C0099F72E /* libReactNativePermissions.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5AB34E3B2077745700E0E793 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,6 +763,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				4F68F38120CFC19C0099F72E /* ReactNativePermissions.xcodeproj */,
 				5AB34E3A2077745700E0E793 /* BVLinearGradient.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -1020,6 +1039,10 @@
 				{
 					ProductGroup = D936DB9E201CD04F00662153 /* Products */;
 					ProjectRef = 686F40911AD148C6A00AD018 /* ReactNativeConfig.xcodeproj */;
+				},
+				{
+					ProductGroup = 4F68F38220CFC19C0099F72E /* Products */;
+					ProjectRef = 4F68F38120CFC19C0099F72E /* ReactNativePermissions.xcodeproj */;
 				},
 				{
 					ProductGroup = 16F5947A209CA1D900703940 /* Products */;
@@ -1317,6 +1340,13 @@
 			fileType = archive.ar;
 			path = libAirMaps.a;
 			remoteRef = 4F3F4DC620C68433004B6EF1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4F68F3B420CFC19C0099F72E /* libReactNativePermissions.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativePermissions.a;
+			remoteRef = 4F68F3B320CFC19C0099F72E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5AB34E412077745700E0E793 /* libBVLinearGradient.a */ = {
