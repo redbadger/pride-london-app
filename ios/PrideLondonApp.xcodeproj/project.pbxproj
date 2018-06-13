@@ -30,7 +30,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		165C368C20C18F9700B37E23 /* app-assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 165C368B20C18F9700B37E23 /* app-assets.xcassets */; };
 		16964196204301DC0058AF96 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16964194204301BF0058AF96 /* Crashlytics.framework */; };
 		16964197204301DF0058AF96 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16964195204301BF0058AF96 /* Fabric.framework */; };
 		318765D00A39443CB392160E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4E3E0A0D0C4E578B19C5B2 /* libz.tbd */; };
@@ -460,7 +459,6 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		150F0056697F44E1A80D4DAF /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		1650B649837A4A3B9F7A6FF4 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		165C368B20C18F9700B37E23 /* app-assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "app-assets.xcassets"; sourceTree = "<group>"; };
 		166018CE2043526D0093B336 /* fabric.properties */ = {isa = PBXFileReference; lastKnownFileType = text; name = fabric.properties; path = PrideLondonApp/fabric.properties; sourceTree = "<group>"; };
 		16964194204301BF0058AF96 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		16964195204301BF0058AF96 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -783,7 +781,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				165C368B20C18F9700B37E23 /* app-assets.xcassets */,
 				13B07FAE1A68108700A75B9A /* PrideLondonApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PrideLondonAppTests */,
@@ -1407,7 +1404,6 @@
 				F8104A261A66438F8FD11CDC /* Poppins-SemiBold.ttf in Resources */,
 				CEAF234A6DB24F138A0FDE42 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				C7BF4CAE82A24794807F8B14 /* Roboto-Bold.ttf in Resources */,
-				165C368C20C18F9700B37E23 /* app-assets.xcassets in Resources */,
 				9EA300765B924E11BB5DC9B0 /* Roboto-BoldItalic.ttf in Resources */,
 				8672F5725E9B47EDA28DD112 /* Roboto-Italic.ttf in Resources */,
 				F6B8F1C26F4A40CFB00E1EB5 /* Roboto-Medium.ttf in Resources */,
