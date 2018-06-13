@@ -31,7 +31,7 @@
 * [Install Yarn](https://yarnpkg.com/en/docs/install)
 * `$ yarn global add react-native-cli`
 
-More information on getting started can be found here: https://facebook.github.io/react-native/docs/getting-started.html under the `Building prodjects with React Native` tab.
+More information on getting started can be found here: https://facebook.github.io/react-native/docs/getting-started.html under the `Building projects with React Native` tab.
 
 #### General
 
