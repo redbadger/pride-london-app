@@ -26,6 +26,18 @@ class ParadeMapScreen extends Component<Props, State> {
 
   componentDidMount() {
     this.checkPermission();
+    this.didBlur = this.props.navigation.addListener(
+      "didBlur",
+      this.returnToParade.bind(this)
+    );
+  }
+
+  componentWillUnmount() {
+    this.didBlur.remove();
+  }
+
+  returnToParade() {
+    this.map.focus(region);
   }
 
   checkPermission = () => {
@@ -48,9 +60,12 @@ class ParadeMapScreen extends Component<Props, State> {
       <View style={styles.container} testID="parade-map-screen">
         <Map
           route={route}
-          region={region}
+          paradeRegion={region}
           terminals={terminals}
           permission={this.state.locationPermission}
+          ref={component => {
+            this.map = component;
+          }}
         />
         <LocationCard />
       </View>
