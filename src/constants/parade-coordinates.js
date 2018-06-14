@@ -1,3 +1,30 @@
+import { scaleWithFont } from "../components/Text";
+import { velvetColor } from "./colors";
+
+const terminalStyle = {
+  height: Math.max(18, scaleWithFont("xSmall", 18)),
+  width: Math.max(18, scaleWithFont("xSmall", 18)),
+  backgroundColor: velvetColor,
+  borderRadius: Math.max(9, scaleWithFont("xSmall", 9)),
+  justifyContent: "center",
+  alignItems: "center"
+};
+
+export const terminals = [
+  {
+    key: "start",
+    coordinates: { longitude: -0.14223, latitude: 51.51616 },
+    text: { text: "A", type: "xSmall", color: "whiteColor" },
+    style: terminalStyle
+  },
+  {
+    key: "finish",
+    coordinates: { longitude: -0.1265, latitude: 51.50499 },
+    text: { text: "B", type: "xSmall", color: "whiteColor" },
+    style: terminalStyle
+  }
+];
+
 export const region = {
   latitude: 51.5085,
   longitude: -0.134192,
