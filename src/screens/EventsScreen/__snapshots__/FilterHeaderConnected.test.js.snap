@@ -18,6 +18,10 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     style={Object {}}
   >
     <Component>
+      <ResetAllFiltersButton
+        onPress={[Function]}
+        visible={false}
+      />
       <Component
         style={
           Object {

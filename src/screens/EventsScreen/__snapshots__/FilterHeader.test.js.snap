@@ -18,6 +18,10 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     style={Object {}}
   >
     <Component>
+      <ResetAllFiltersButton
+        onPress={[Function]}
+        visible={false}
+      />
       <Component
         style={
           Object {
@@ -99,6 +103,10 @@ exports[`renders correctly with any date and any time 1`] = `
     style={Object {}}
   >
     <Component>
+      <ResetAllFiltersButton
+        onPress={[Function]}
+        visible={false}
+      />
       <Component
         style={
           Object {
@@ -180,28 +188,10 @@ exports[`renders correctly with date range and two times 1`] = `
     style={Object {}}
   >
     <Component>
-      <Component
-        style={
-          Object {
-            "flexDirection": "row",
-            "justifyContent": "flex-end",
-          }
-        }
-      >
-        <FilterHeaderButton
-          active={false}
-          badgeValue={null}
-          label="Reset all filters"
-          onPress={[Function]}
-          style={
-            Object {
-              "minHeight": 0,
-              "paddingTop": 16,
-            }
-          }
-          text="Reset all filters"
-        />
-      </Component>
+      <ResetAllFiltersButton
+        onPress={[Function]}
+        visible={true}
+      />
       <Component
         style={
           Object {
@@ -283,28 +273,10 @@ exports[`renders correctly with single date and single time 1`] = `
     style={Object {}}
   >
     <Component>
-      <Component
-        style={
-          Object {
-            "flexDirection": "row",
-            "justifyContent": "flex-end",
-          }
-        }
-      >
-        <FilterHeaderButton
-          active={false}
-          badgeValue={null}
-          label="Reset all filters"
-          onPress={[Function]}
-          style={
-            Object {
-              "minHeight": 0,
-              "paddingTop": 16,
-            }
-          }
-          text="Reset all filters"
-        />
-      </Component>
+      <ResetAllFiltersButton
+        onPress={[Function]}
+        visible={true}
+      />
       <Component
         style={
           Object {
@@ -386,28 +358,10 @@ exports[`renders correctly with tag filters selected 1`] = `
     style={Object {}}
   >
     <Component>
-      <Component
-        style={
-          Object {
-            "flexDirection": "row",
-            "justifyContent": "flex-end",
-          }
-        }
-      >
-        <FilterHeaderButton
-          active={false}
-          badgeValue={null}
-          label="Reset all filters"
-          onPress={[Function]}
-          style={
-            Object {
-              "minHeight": 0,
-              "paddingTop": 16,
-            }
-          }
-          text="Reset all filters"
-        />
-      </Component>
+      <ResetAllFiltersButton
+        onPress={[Function]}
+        visible={true}
+      />
       <Component
         style={
           Object {

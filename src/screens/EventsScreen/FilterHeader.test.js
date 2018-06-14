@@ -14,7 +14,8 @@ const render = (
     onFilterButtonPress: () => {},
     onDateFilterButtonPress: () => {},
     resetAllFiltersPress: () => {},
-    numTagFiltersSelected: 0
+    numTagFiltersSelected: 0,
+    scrollEventListToTop: () => {}
   }
 ) => shallow(<FilterHeader {...props} />);
 
@@ -27,7 +28,8 @@ describe("renders correctly", () => {
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
       resetAllFiltersPress: () => {},
-      numTagFiltersSelected: 0
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -40,7 +42,8 @@ describe("renders correctly", () => {
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
       resetAllFiltersPress: () => {},
-      numTagFiltersSelected: 0
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -53,7 +56,8 @@ describe("renders correctly", () => {
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
       resetAllFiltersPress: () => {},
-      numTagFiltersSelected: 0
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -69,7 +73,8 @@ describe("renders correctly", () => {
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
       resetAllFiltersPress: () => {},
-      numTagFiltersSelected: 0
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -82,7 +87,8 @@ describe("renders correctly", () => {
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
       resetAllFiltersPress: () => {},
-      numTagFiltersSelected: 2
+      numTagFiltersSelected: 2,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -98,7 +104,8 @@ describe("filter buttons", () => {
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
       resetAllFiltersPress: () => {},
-      numTagFiltersSelected: 0
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     output.find(FilterHeaderCategories).prop("onFilterPress")();
 
@@ -114,7 +121,8 @@ describe("filter buttons", () => {
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: mock,
       resetAllFiltersPress: () => {},
-      numTagFiltersSelected: 0
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     const button = output.find(FilterHeaderButton).at(0);
     button.simulate("press");
@@ -131,7 +139,8 @@ describe("filter buttons", () => {
       onFilterButtonPress: mock,
       onDateFilterButtonPress: () => {},
       resetAllFiltersPress: () => {},
-      numTagFiltersSelected: 0
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     const button = output.find(FilterHeaderButton).at(1);
     button.simulate("press");

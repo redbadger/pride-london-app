@@ -103,6 +103,7 @@ class EventList extends Component<Props, State> {
   sectionSeparator = () => <View style={styles.sectionSeparator} />;
 
   keyExtractor = getId;
+  sectionList = null;
 
   renderItem = ({ item }: RenderItemInfo) => {
     const {
@@ -168,6 +169,9 @@ class EventList extends Component<Props, State> {
         refreshing={refreshing}
         onRefresh={onRefresh}
         windowSize={10}
+        ref={sectionList => {
+          this.sectionList = sectionList;
+        }}
       />
     );
   }

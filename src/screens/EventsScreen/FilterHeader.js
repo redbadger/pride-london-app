@@ -13,6 +13,7 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 import { formatDateRange } from "../../data/formatters";
+import ResetAllFiltersButton from "./ResetAllFiltersButton";
 
 export type Props = {
   onFilterCategoriesPress: Function,
@@ -21,7 +22,8 @@ export type Props = {
   onDateFilterButtonPress: () => void,
   selectedCategories: Set<EventCategoryName>,
   numTagFiltersSelected: number,
-  resetAllFiltersPress: () => void
+  resetAllFiltersPress: () => void,
+  scrollEventListToTop: () => void
 };
 
 class FilterHeader extends React.PureComponent<Props> {
@@ -37,7 +39,8 @@ class FilterHeader extends React.PureComponent<Props> {
       onFilterButtonPress,
       onDateFilterButtonPress,
       numTagFiltersSelected,
-      resetAllFiltersPress
+      resetAllFiltersPress,
+      scrollEventListToTop
     } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
@@ -50,17 +53,13 @@ class FilterHeader extends React.PureComponent<Props> {
       <View accessibilityTraits={["header"]} style={styles.container}>
         <ContentPadding>
           <View>
-            {anyAppliedFilters && (
-              <View style={styles.clearAllWrapper}>
-                <FilterHeaderButton
-                  active={false}
-                  text="Reset all filters"
-                  label="Reset all filters"
-                  style={styles.clearAll}
-                  onPress={resetAllFiltersPress}
-                />
-              </View>
-            )}
+            <ResetAllFiltersButton
+              visible={anyAppliedFilters}
+              onPress={() => {
+                resetAllFiltersPress();
+                scrollEventListToTop();
+              }}
+            />
             <View testID="event-filter-header" style={styles.content}>
               <FilterHeaderCategories
                 onFilterPress={onFilterCategoriesPress}
@@ -115,14 +114,6 @@ const styles = StyleSheet.create({
     borderLeftWidth: StyleSheet.hairlineWidth,
     borderColor: whiteColor,
     opacity: 0.4
-  },
-  clearAll: {
-    minHeight: 0,
-    paddingTop: 16
-  },
-  clearAllWrapper: {
-    flexDirection: "row",
-    justifyContent: "flex-end"
   }
 });
 
