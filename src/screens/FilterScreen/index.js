@@ -14,10 +14,11 @@ import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
 import Component from "./component";
 import type { FilterCollection } from "../../data/event-filters";
 import type { EventFiltersPayload } from "../../actions/event-filters";
-import onlyUpdateWhenFocused from "../../components/OnlyUpdateWhenFocused";
+import withIsFocused from "../../components/WithIsFocused";
 
 type OwnProps = {
-  navigation: NavigationScreenProp<{ params: { title: string } }>
+  navigation: NavigationScreenProp<{ params: { title: string } }>,
+  isFocused: boolean
 };
 
 type StateProps = {
@@ -38,20 +39,25 @@ const getNumTagFiltersSelected = createSelector(
   selectTagFilterSelectedCount
 );
 
+let cache: StateProps;
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (
   state: State,
-  { navigation }: OwnProps
+  { navigation, isFocused }: OwnProps
 ): StateProps => {
-  const events = selectStagedFilteredEvents(state);
-  return {
-    navigation,
-    numberOfEvents: events.length,
-    numTagFiltersSelected: getNumTagFiltersSelected(state),
-    eventFilters: getSelectedFilters(state)
-  };
+  if (!cache || isFocused) {
+    const events = selectStagedFilteredEvents(state);
+    cache = {
+      navigation,
+      numberOfEvents: events.length,
+      numTagFiltersSelected: getNumTagFiltersSelected(state),
+      eventFilters: getSelectedFilters(state)
+    };
+  }
+  return cache;
 };
 
 const mapDispatchToProps = (dispatch): DispatchProps => ({
@@ -64,4 +70,4 @@ const connector: Connector<OwnProps, Props> = connect(
 );
 
 // $FlowFixMe
-export default connector(onlyUpdateWhenFocused(Component));
+export default withIsFocused(connector(Component));

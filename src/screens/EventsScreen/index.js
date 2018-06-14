@@ -19,10 +19,11 @@ import {
 } from "../../selectors";
 import { selectLoading, selectRefreshing } from "../../selectors/data";
 import Component from "./component";
-import onlyUpdateWhenFocused from "../../components/OnlyUpdateWhenFocused";
+import withIsFocused from "../../components/WithIsFocused";
 
 type OwnProps = {
-  navigation: NavigationScreenProp<NavigationState>
+  navigation: NavigationScreenProp<NavigationState>,
+  isFocused: boolean
 };
 
 type StateProps = {
@@ -46,20 +47,32 @@ const getDataLoading = createSelector([selectData], selectLoading);
 
 const getDataRefreshing = createSelector([selectData], selectRefreshing);
 
+const getGroupEventsByStartTime = createSelector(
+  [selectFilteredEvents],
+  groupEventsByStartTime
+);
+
+let cache: StateProps;
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (
   state: State,
-  { navigation }: OwnProps
-): StateProps => ({
-  navigation,
-  events: groupEventsByStartTime(selectFilteredEvents(state)),
-  savedEvents: selectSavedEvents(state),
-  loading: getDataLoading(state),
-  refreshing: getDataRefreshing(state),
-  selectedCategories: state.eventFilters.selectedFilters.categories
-});
+  { navigation, isFocused }: OwnProps
+): StateProps => {
+  if (!cache || isFocused) {
+    cache = {
+      navigation,
+      events: getGroupEventsByStartTime(state),
+      savedEvents: selectSavedEvents(state),
+      loading: getDataLoading(state),
+      refreshing: getDataRefreshing(state),
+      selectedCategories: state.eventFilters.selectedFilters.categories
+    };
+  }
+  return cache;
+};
 
 const mapDispatchToProps = {
   updateData,
@@ -67,9 +80,9 @@ const mapDispatchToProps = {
   removeSavedEvent
 };
 
-const connector: Connector<StateProps, Props> = connect(
+const connector: Connector<OwnProps, Props> = connect(
   mapStateToProps,
   mapDispatchToProps
 );
 
-export default connector(onlyUpdateWhenFocused(Component));
+export default withIsFocused(connector(Component));

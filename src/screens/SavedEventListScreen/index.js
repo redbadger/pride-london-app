@@ -16,9 +16,11 @@ import { selectLoading, selectRefreshing } from "../../selectors/data";
 import { groupEventsByStartTime } from "../../selectors/event";
 import { resolveSavedEvents } from "../../selectors/saved-events";
 import Component from "./component";
+import withIsFocused from "../../components/WithIsFocused";
 
 type OwnProps = {
-  navigation: NavigationScreenProp<NavigationState>
+  navigation: NavigationScreenProp<NavigationState>,
+  isFocused: boolean
 };
 
 type StateProps = {
@@ -46,19 +48,31 @@ const getEvents = createSelector(
   resolveSavedEvents
 );
 
+const getGroupEventsByStartTime = createSelector(
+  [getEvents],
+  groupEventsByStartTime
+);
+
+let cache: StateProps;
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (
   state: State,
-  { navigation }: OwnProps
-): StateProps => ({
-  navigation,
-  events: groupEventsByStartTime(getEvents(state)),
-  savedEvents: selectSavedEvents(state),
-  loading: getDataLoading(state),
-  refreshing: getDataRefreshing(state)
-});
+  { navigation, isFocused }: OwnProps
+): StateProps => {
+  if (!cache || isFocused) {
+    cache = {
+      navigation,
+      events: getGroupEventsByStartTime(state),
+      savedEvents: selectSavedEvents(state),
+      loading: getDataLoading(state),
+      refreshing: getDataRefreshing(state)
+    };
+  }
+  return cache;
+};
 
 const mapDispatchToProps = {
   updateData,
@@ -66,9 +80,9 @@ const mapDispatchToProps = {
   removeSavedEvent
 };
 
-const connector: Connector<StateProps, Props> = connect(
+const connector: Connector<OwnProps, Props> = connect(
   mapStateToProps,
   mapDispatchToProps
 );
 
-export default connector(Component);
+export default withIsFocused(connector(Component));
