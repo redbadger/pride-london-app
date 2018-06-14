@@ -32,10 +32,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
     <Header title={text.supportUsTitle} testID="page-heading-support-us" />
     <ScrollView>
       <View style={styles.scrollContainer}>
-        <ImageHeader
-          image={supportUsAsIndividual}
-          title={text.supportUsAsIndividual}
-        />
+
         <ContentPadding style={styles.sectionSpacing}>
           <ButtonWithShapes
             color={lightNavyBlueColor}
@@ -67,10 +64,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
             style={styles.buttonSpacing}
           />
         </ContentPadding>
-        <ImageHeader
-          image={supportUsAsBusiness}
-          title={text.supportUsAsBusiness}
-        />
+
         <ContentPadding style={styles.sectionSpacing}>
           <ButtonWithShapes
             color={turquoiseBlueColor}
