@@ -8,19 +8,26 @@ import { velvetColor } from "../../constants/colors";
 
 type Props = {
   route: any,
-  region: any,
+  paradeRegion: any,
   terminals: any,
   permission: boolean
 };
 
 class Map extends PureComponent<Props> {
+  focus(region) {
+    this.mapView.animateToRegion(region, 0);
+  }
+
   render() {
     return (
       <View style={StyleSheet.absoluteFill}>
         <MapView
           style={StyleSheet.absoluteFill}
-          initialRegion={this.props.region}
+          initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
+          ref={component => {
+            this.mapView = component;
+          }}
         >
           <Polyline
             coordinates={this.props.route}
