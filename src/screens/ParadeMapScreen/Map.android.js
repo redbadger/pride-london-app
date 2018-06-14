@@ -1,6 +1,6 @@
 // @flow
 import React, { Component, PureComponent } from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Text, { scaleWithFont } from "../../components/Text";
 import Touchable from "../../components/Touchable";
@@ -25,6 +25,7 @@ class Map extends PureComponent<Props> {
           style={StyleSheet.absoluteFill}
           initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
+          showsUserLocationButton={this.props.permission}
           ref={component => {
             this.mapView = component;
           }}
