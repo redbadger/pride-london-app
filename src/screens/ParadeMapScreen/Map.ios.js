@@ -1,8 +1,8 @@
 // @flow
-import React, { Component, PureComponent } from "react";
+import React, { Component } from "react";
 import { Image, View, StyleSheet } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
-import Text, { scaleWithFont } from "../../components/Text";
+import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import { velvetColor } from "../../constants/colors";
 
@@ -20,7 +20,7 @@ type State = {
   atUserLocation: boolean
 };
 
-class Map extends PureComponent<Props> {
+class Map extends Component<Props, State> {
   constructor() {
     super();
 
@@ -29,9 +29,25 @@ class Map extends PureComponent<Props> {
     };
   }
 
-  focus(region) {
+  onRegionChange = position => {
+    const { latitude: currentLat, longitude: currentLong } = position;
+    if (this.state.atUserLocation === true)
+      return this.setState({ atUserLocation: false });
+
+    return navigator.geolocation.getCurrentPosition(({ coords }) => {
+      const { latitude: userLat, longitude: userLong } = coords;
+      if (
+        userLat.toFixed(5) === currentLat.toFixed(5) &&
+        userLong.toFixed(5) === currentLong.toFixed(5)
+      ) {
+        this.setState({ atUserLocation: true });
+      }
+    });
+  };
+
+  focus = region => {
     this.mapView.animateToRegion(region, 0);
-  }
+  };
 
   moveToCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition(({ coords }) => {
@@ -43,22 +59,6 @@ class Map extends PureComponent<Props> {
         },
         500
       );
-    });
-  };
-
-  onRegionChange = position => {
-    const { latitude: currentLat, longitude: currentLong } = position;
-    if (this.state.atUserLocation === true)
-      return this.setState({ atUserLocation: false });
-
-    navigator.geolocation.getCurrentPosition(({ coords }) => {
-      const { latitude: userLat, longitude: userLong } = coords;
-      if (
-        userLat.toFixed(5) === currentLat.toFixed(5) &&
-        userLong.toFixed(5) === currentLong.toFixed(5)
-      ) {
-        this.setState({ atUserLocation: true });
-      }
     });
   };
 
@@ -80,17 +80,15 @@ class Map extends PureComponent<Props> {
             strokeColor={velvetColor}
             lineJoin="bevel"
           />
-          {this.props.terminals.map(terminal => {
-            return (
-              <Marker coordinate={terminal.coordinates} key={terminal.key}>
-                <View style={terminal.style}>
-                  <Text type={terminal.text.type} color={terminal.text.color}>
-                    {terminal.text.text}
-                  </Text>
-                </View>
-              </Marker>
-            );
-          })}
+          {this.props.terminals.map(terminal => (
+            <Marker coordinate={terminal.coordinates} key={terminal.key}>
+              <View style={terminal.style}>
+                <Text type={terminal.text.type} color={terminal.text.color}>
+                  {terminal.text.text}
+                </Text>
+              </View>
+            </Marker>
+          ))}
         </MapView>
         {this.props.permission && (
           <Touchable

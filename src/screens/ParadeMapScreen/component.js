@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Permissions from "react-native-permissions";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { route, region, terminals } from "../../constants/parade-coordinates";
@@ -36,9 +36,9 @@ class ParadeMapScreen extends Component<Props, State> {
     this.didBlur.remove();
   }
 
-  returnToParade() {
+  returnToParade = () => {
     this.map.focus(region);
-  }
+  };
 
   checkPermission = () => {
     Permissions.check("location").then(response => {
@@ -51,7 +51,8 @@ class ParadeMapScreen extends Component<Props, State> {
 
   requestPermission = () => {
     Permissions.request("location").then(response => {
-      this.setState({ locationPermission: true });
+      if (response === "authorized")
+        this.setState({ locationPermission: true });
     });
   };
 
