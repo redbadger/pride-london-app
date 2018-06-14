@@ -35,18 +35,22 @@ const initialState = {
   }
 };
 
+const defaultProps = {
+  selectedCategories: new Set()
+};
+
 const mockStore = configureStore([thunk]);
 
 describe("ConnectedFilterHeader", () => {
   it("renders connector", () => {
     const store = mockStore(initialState);
-    const output = shallow(<FilterHeader store={store} />);
+    const output = shallow(<FilterHeader store={store} {...defaultProps} />);
     expect(output).toMatchSnapshot();
   });
 
   it("renders component", () => {
     const store = mockStore(initialState);
-    const output = shallow(<FilterHeader store={store} />);
+    const output = shallow(<FilterHeader store={store} {...defaultProps} />);
     expect(output.dive()).toMatchSnapshot();
   });
 });

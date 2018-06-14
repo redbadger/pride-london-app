@@ -26,8 +26,7 @@ export type Props = {
 
 class FilterHeader extends React.PureComponent<Props> {
   static defaultProps = {
-    resetAllFiltersPress: () => {},
-    selectedCategories: new Set()
+    resetAllFiltersPress: () => {}
   };
 
   render() {
