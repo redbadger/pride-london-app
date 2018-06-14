@@ -95,7 +95,7 @@ class Map extends PureComponent<Props> {
         {this.props.permission && (
           <Touchable
             onPress={this.moveToCurrentLocation}
-            style={{ alignSelf: "flex-end", marginTop: 44 }}
+            style={styles.touchable}
           >
             <Image
               source={
@@ -103,7 +103,7 @@ class Map extends PureComponent<Props> {
                   ? locationButtonActive
                   : locationButtonInactive
               }
-              style={{ width: 44, height: 44 }}
+              style={styles.image}
             />
           </Touchable>
         )}
@@ -111,5 +111,16 @@ class Map extends PureComponent<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  touchable: {
+    alignSelf: "flex-end",
+    marginTop: 44
+  },
+  image: {
+    width: 44,
+    height: 44
+  }
+});
 
 export default Map;
