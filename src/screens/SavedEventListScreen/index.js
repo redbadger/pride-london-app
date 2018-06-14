@@ -46,6 +46,11 @@ const getEvents = createSelector(
   resolveSavedEvents
 );
 
+const getGroupEventsByStartTime = createSelector(
+  [getEvents],
+  groupEventsByStartTime
+);
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
@@ -54,7 +59,7 @@ const mapStateToProps = (
   { navigation }: OwnProps
 ): StateProps => ({
   navigation,
-  events: groupEventsByStartTime(getEvents(state)),
+  events: getGroupEventsByStartTime(state),
   savedEvents: selectSavedEvents(state),
   loading: getDataLoading(state),
   refreshing: getDataRefreshing(state)
