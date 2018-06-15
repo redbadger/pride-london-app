@@ -28,9 +28,9 @@ type Props = {
   refreshing?: boolean,
   onRefresh?: () => void,
   onPress: (id: string) => void,
-  scrollEventThrottle: number,
-  onScroll: () => void,
-  filterHeaderHeight: number
+  scrollEventThrottle?: number,
+  onScroll?: () => void,
+  filterHeaderHeight?: number
 };
 
 type State = {
@@ -62,7 +62,10 @@ const eventIds = (events: EventDays): string[] =>
 class EventList extends Component<Props, State> {
   static defaultProps = {
     refreshing: false,
-    onRefresh: undefined
+    onRefresh: undefined,
+    scrollEventThrottle: 1,
+    onScroll: () => {},
+    filterHeaderHeight: 120
   };
 
   state = {

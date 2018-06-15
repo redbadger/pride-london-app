@@ -31,31 +31,24 @@ export type Props = {
   navigation: NavigationScreenProp<NavigationState>
 };
 
-class EventsScreen extends Component<Props> {
+type State = {
+  filterHeaderHeight: number
+};
+
+class EventsScreen extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.eventListScrollValue = new Animated.Value(0);
-    this.filterHeaderHeight = 10;
-    this.clampedScrollValue = Animated.diffClamp(
-      this.eventListScrollValue.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-        extrapolateLeft: "clamp"
-      }),
-      0,
-      this.filterHeaderHeight
-    );
+    this.state = {
+      filterHeaderHeight: 10
+    };
 
-    this.headerTranslate = this.clampedScrollValue.interpolate({
-      inputRange: [0, this.filterHeaderHeight],
-      outputRange: [0, -this.filterHeaderHeight],
-      extrapolate: "clamp"
-    });
+    this.eventListScrollValue = new Animated.Value(0);
   }
 
-  shouldComponentUpdate(nextProps: Props) {
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
     // Intentionally do not check this.props.navigation
     return (
+      nextState.filterHeaderHeight !== this.state.filterHeaderHeight ||
       nextProps.events !== this.props.events ||
       nextProps.savedEvents !== this.props.savedEvents ||
       nextProps.addSavedEvent !== this.props.addSavedEvent ||
@@ -68,22 +61,7 @@ class EventsScreen extends Component<Props> {
 
   setFilterHeaderHeight = (e: ViewLayoutEvent) => {
     const { height } = e.nativeEvent.layout;
-    this.filterHeaderHeight = height;
-    this.clampedScrollValue = Animated.diffClamp(
-      this.eventListScrollValue.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-        extrapolateLeft: "clamp"
-      }),
-      0,
-      this.filterHeaderHeight
-    );
-
-    this.headerTranslate = this.clampedScrollValue.interpolate({
-      inputRange: [0, this.filterHeaderHeight],
-      outputRange: [0, -this.filterHeaderHeight],
-      extrapolate: "clamp"
-    });
+    this.setState({ filterHeaderHeight: height });
   };
 
   handleFilterCategoriesPress = () => {
@@ -98,8 +76,8 @@ class EventsScreen extends Component<Props> {
     this.props.navigation.navigate(EVENT_DATE_FILTER);
   };
 
-  headerTranslate: number;
-  filterHeaderHeight: number;
+  // headerTranslate: number;
+  // filterHeaderHeight: number;
   eventListScrollValue: Animated.Value;
   clampedScrollValue: any;
 
@@ -113,15 +91,29 @@ class EventsScreen extends Component<Props> {
       removeSavedEvent
     } = this.props;
 
-    console.log(render);
+    const clampedScrollValue = Animated.diffClamp(
+      this.eventListScrollValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1],
+        extrapolateLeft: "clamp"
+      }),
+      0,
+      this.state.filterHeaderHeight
+    );
+
+    const headerTranslate = clampedScrollValue.interpolate({
+      inputRange: [0, this.state.filterHeaderHeight],
+      outputRange: [0, -this.state.filterHeaderHeight],
+      extrapolate: "clamp"
+    });
 
     return (
       <Animated.View
         style={[
           styles.container,
           {
-            transform: [{ translateY: this.headerTranslate }],
-            marginBottom: -this.filterHeaderHeight
+            transform: [{ translateY: headerTranslate }],
+            marginBottom: -this.state.filterHeaderHeight
           }
         ]}
       >
@@ -148,7 +140,7 @@ class EventsScreen extends Component<Props> {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
             scrollEventThrottle={1}
-            filterHeaderHeight={this.filterHeaderHeight}
+            filterHeaderHeight={this.state.filterHeaderHeight}
             onScroll={Animated.event(
               [
                 {
