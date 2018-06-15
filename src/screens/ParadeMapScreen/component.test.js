@@ -48,20 +48,3 @@ describe("Parade Map Screen component", () => {
     checkSpy.mockClear();
   });
 });
-
-// describe("checkPermission", () => {
-//   it("calls requestPermission if permission is not authorized", () => {
-//     const checkSpy = jest
-//     .spyOn(Permissions, "check")
-
-//     const output = render();
-//     const mockRequest = output.instance().requestPermission = jest.fn()
-//     output.update()
-//     output.instance().checkPermission()
-//     checkSpy.mockResolvedValue('authorized').then(
-//       expect(mockRequest).toHaveBeenCalled()
-//     );
-//     expect(mockRequest).toHaveBeenCalled()
-//     jest.restoreAllMocks()
-//   });
-// });
