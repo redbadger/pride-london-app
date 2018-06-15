@@ -55,6 +55,7 @@
     "@rgbboy/testcheck": "^1.0.0-rc.3",
     "babel-eslint": "^8.2.1",
     "babel-jest": "22.2.2",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-preset-react-native": "4.0.0",
     "bugsnag-sourcemaps": "^1.0.3",
     "commander": "^2.13.0",
