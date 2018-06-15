@@ -5,7 +5,7 @@ import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { shallow } from "enzyme";
 import { DateTime } from "luxon";
-import Container from "./";
+import { Container } from "./";
 import { createEventFiltersState } from "../../reducers/event-filters";
 
 const navigation: NavigationScreenProp<*> = ({
@@ -36,7 +36,7 @@ describe("CategoriesFilterScreen Container", () => {
     it("removes the selected category from the payload if it was already staged", () => {
       const store = mockStore(initialState);
       const output = shallow(
-        <Container store={store} navigation={navigation} />
+        <Container store={store} navigation={navigation} isFocused />
       );
 
       output.props().toggleCategoryFilter(new Set(["Music", "Dance"]), "Music");
@@ -56,7 +56,7 @@ describe("CategoriesFilterScreen Container", () => {
     it("adds the selected category to the payload if it was not already staged", () => {
       const store = mockStore(initialState);
       const output = shallow(
-        <Container store={store} navigation={navigation} />
+        <Container store={store} navigation={navigation} isFocused />
       );
 
       output.props().toggleCategoryFilter(new Set(["Music", "Dance"]), "Music");

@@ -24,8 +24,16 @@ export type Props = {
 
 class SavedEventListScreen extends Component<Props> {
   shouldComponentUpdate(nextProps: Props) {
-    // may want to omit navigation from this check
-    return nextProps !== this.props;
+    // Intentionally do not check this.props.navigation
+    return (
+      nextProps.events !== this.props.events ||
+      nextProps.savedEvents !== this.props.savedEvents ||
+      nextProps.addSavedEvent !== this.props.addSavedEvent ||
+      nextProps.removeSavedEvent !== this.props.removeSavedEvent ||
+      nextProps.loading !== this.props.loading ||
+      nextProps.refreshing !== this.props.refreshing ||
+      nextProps.updateData !== this.props.updateData
+    );
   }
 
   render() {
