@@ -63,4 +63,6 @@ const connector: Connector<OwnProps, Props> = connect(
   mapDispatchToProps
 );
 
-export default withIsFocused(connector(Component));
+export const Container = connector(Component);
+
+export default withIsFocused(Container);
