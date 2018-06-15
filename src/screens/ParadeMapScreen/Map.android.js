@@ -34,7 +34,9 @@ class Map extends Component<Props> {
           initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
           showsUserLocationButton={this.props.permission}
-          ref={component => (this.mapView = component)}
+          ref={component => {
+            this.mapView = component;
+          }}
         >
           <Polyline
             coordinates={this.props.route}

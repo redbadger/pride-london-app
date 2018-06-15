@@ -35,9 +35,6 @@ class Map extends Component<Props, State> {
     };
   }
 
-  // $FlowFixMe
-  mapView: ElementRef;
-
   onRegionChange = (position: Coordinates) => {
     const { latitude: currentLat, longitude: currentLong } = position;
     if (this.state.atUserLocation === true)
@@ -71,6 +68,9 @@ class Map extends Component<Props, State> {
     });
   };
 
+  // $FlowFixMe
+  mapView: ElementRef;
+
   render() {
     return (
       <View style={StyleSheet.absoluteFill}>
@@ -79,7 +79,9 @@ class Map extends Component<Props, State> {
           initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
           onRegionChange={this.onRegionChange}
-          ref={component => (this.mapView = component)}
+          ref={component => {
+            this.mapView = component;
+          }}
         >
           <Polyline
             coordinates={this.props.route}

@@ -25,10 +25,6 @@ class ParadeMapScreen extends Component<Props, State> {
     };
   }
 
-  // $FlowFixMe: For some reason flow doesn't know about React.createRef.
-  map: ElementRef;
-  didBlur: Function;
-
   componentDidMount() {
     this.checkPermission();
     this.didBlur = this.props.navigation.addListener(
@@ -41,15 +37,21 @@ class ParadeMapScreen extends Component<Props, State> {
     this.didBlur.remove();
   }
 
+  // $FlowFixMe: For some reason flow doesn't know about React.createRef.
+  map: ElementRef;
+  didBlur: Function;
+
   returnToParade = () => {
     this.map.focus(region);
   };
 
   checkPermission = () => {
     Permissions.check("location").then(response => {
-      response === "authorized"
-        ? this.setState({ locationPermission: true })
-        : this.requestPermission();
+      if (response === "authorized") {
+        this.setState({ locationPermission: true });
+      } else {
+        this.requestPermission();
+      }
     });
   };
 
@@ -68,7 +70,9 @@ class ParadeMapScreen extends Component<Props, State> {
           paradeRegion={region}
           terminals={terminals}
           permission={this.state.locationPermission}
-          ref={component => (this.map = component)}
+          ref={component => {
+            this.map = component;
+          }}
         />
         <LocationCard />
       </View>
