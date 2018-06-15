@@ -19,6 +19,8 @@ exports[`ConnectedFilterHeader renders component 1`] = `
   >
     <Component>
       <ResetAllFiltersButton
+        animationDelay={50}
+        animationTime={200}
         onPress={[Function]}
         visible={false}
       />

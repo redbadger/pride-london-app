@@ -7,7 +7,9 @@ import text from "../../constants/text";
 
 type Props = {
   visible: boolean,
-  onPress: () => void
+  onPress: () => void,
+  animationTime: number,
+  animationDelay: number
 };
 
 type State = {
@@ -17,11 +19,13 @@ type State = {
 const DEFAULT_HEIGHT = 120;
 const DEFAULT_FADE_VALUE = 1;
 const DEFAULT_TOP_OFFSET_VALUE = 1;
-const FADE_ANIMATION_TIME = 200;
-const TOP_OFFSET_ANIMATION_TIME = 400;
-const TOP_OSSET_ANIMATION_DELAY = 50;
 
 class ResetAllFiltersButton extends React.Component<Props, State> {
+  static defaultProps = {
+    animationTime: 200,
+    animationDelay: 50
+  };
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -35,31 +39,36 @@ class ResetAllFiltersButton extends React.Component<Props, State> {
   };
 
   fadeOut = (): void => {
-    this.props.onPress();
-    this.setState({ isAnimating: true });
+    const { animationTime, animationDelay } = this.props;
 
     Animated.parallel([
       Animated.timing(this.fadeValue, {
         toValue: 0,
-        duration: FADE_ANIMATION_TIME
+        duration: animationTime / 2
       }),
       Animated.timing(this.topOffset, {
         toValue: -this.height,
-        duration: TOP_OFFSET_ANIMATION_TIME,
+        duration: animationTime,
         easing: Easing.out(Easing.quad),
-        delay: TOP_OSSET_ANIMATION_DELAY
+        delay: animationDelay
       })
     ]).start(this.animationFinished);
   };
 
-  reset = (): void => {
+  resetAllFilters = (): void => {
+    this.props.onPress();
+    this.setState({ isAnimating: true });
+    this.fadeOut();
+  };
+
+  resetAnimation = (): void => {
     this.topOffset = new Animated.Value(DEFAULT_TOP_OFFSET_VALUE);
     this.fadeValue = new Animated.Value(DEFAULT_FADE_VALUE);
   };
 
   animationFinished = (): void => {
     this.setState({ isAnimating: false });
-    this.reset();
+    this.resetAnimation();
   };
 
   topOffset: Animated.Value = new Animated.Value(DEFAULT_TOP_OFFSET_VALUE);
@@ -82,7 +91,7 @@ class ResetAllFiltersButton extends React.Component<Props, State> {
             text={text.resetAllFilters}
             label={text.resetAllFilters}
             style={styles.clearAll}
-            onPress={() => this.fadeOut()}
+            onPress={this.resetAllFilters}
           />
         </Animated.View>
       )
