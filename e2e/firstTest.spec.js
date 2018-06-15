@@ -1,6 +1,9 @@
 const { takeScreenshot } = require("./helpers");
 
 describe("Pride App", () => {
+  beforeAll(async () => {
+    await device.launchApp({ permissions: { location: "always" } });
+  });
   beforeEach(async () => {
     await device.reloadReactNative();
   });
