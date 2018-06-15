@@ -18,7 +18,7 @@ type State = {
 
 const DEFAULT_HEIGHT = 120;
 const DEFAULT_FADE_VALUE = 1;
-const DEFAULT_TOP_OFFSET_VALUE = 1;
+const DEFAULT_TOP_OFFSET_VALUE = 0;
 
 class ResetAllFiltersButton extends React.Component<Props, State> {
   static defaultProps = {

@@ -12,7 +12,7 @@ exports[`renders correctly 1`] = `
         "justifyContent": "flex-end",
       },
       Object {
-        "marginTop": 1,
+        "marginTop": 0,
         "opacity": 1,
       },
     ]

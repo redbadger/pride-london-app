@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import { Animated } from "react-native";
 import { shallow } from "enzyme";
 import ResetAllFiltersButton from "./ResetAllFiltersButton";
 import FilterHeaderButton from "./FilterHeaderButton";
@@ -35,4 +36,25 @@ it("calls onPress method when pressed", () => {
     .onPress();
 
   expect(onPress).toHaveBeenCalled();
+});
+
+it("resets animation after being pressed", () => {
+  const onPress = jest.fn();
+  const output = shallow(
+    <ResetAllFiltersButton
+      visible
+      onPress={onPress}
+      animationTime={0}
+      animationDelay={0}
+    />
+  );
+
+  output
+    .find(FilterHeaderButton)
+    .props()
+    .onPress();
+
+  expect(output.state().isAnimating).toBeFalsy();
+  expect(output.instance().fadeValue).toEqual(new Animated.Value(1));
+  expect(output.instance().topOffset).toEqual(new Animated.Value(0));
 });
