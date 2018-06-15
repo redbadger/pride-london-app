@@ -35,7 +35,7 @@ class Map extends Component<Props, State> {
     setTimeout(() => this.setState({ margin: !this.state.margin }), 500);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     if (prevProps.permission !== this.props.permission) {
       setTimeout(() => this.setState({ margin: !this.state.margin }), 500);
     }
