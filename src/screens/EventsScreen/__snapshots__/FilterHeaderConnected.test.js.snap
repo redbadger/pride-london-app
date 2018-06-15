@@ -19,16 +19,16 @@ exports[`ConnectedFilterHeader renders component 1`] = `
   >
     <Component>
       <ResetAllFiltersButton
-        animationDelay={50}
-        animationTime={200}
+        animationDelay={0}
+        animationTime={300}
         onPress={[Function]}
         visible={false}
       />
       <Component
         style={
           Object {
+            "marginTop": 16,
             "paddingBottom": 12,
-            "paddingTop": 16,
           }
         }
         testID="event-filter-header"

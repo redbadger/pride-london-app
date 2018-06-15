@@ -1,11 +1,21 @@
 // @flow
 import React from "react";
-import { Animated } from "react-native";
+import { Animated, InteractionManager } from "react-native";
 import { shallow } from "enzyme";
 import ResetAllFiltersButton from "./ResetAllFiltersButton";
 import FilterHeaderButton from "./FilterHeaderButton";
 
 const noOp = () => {};
+
+let runAfterInteractionsSpy;
+
+beforeEach(() => {
+  runAfterInteractionsSpy = jest
+    .spyOn(InteractionManager, "runAfterInteractions")
+    .mockImplementation(() => ({
+      runAfterInteractions: jest.fn()
+    }));
+});
 
 it("renders correctly", () => {
   const output = shallow(<ResetAllFiltersButton visible onPress={noOp} />);
@@ -20,13 +30,13 @@ it("does not render when visible=false", () => {
 });
 
 it("calls onPress method when pressed", () => {
-  const onPress = jest.fn();
+  const mockOnPress = jest.fn();
   const output = shallow(
     <ResetAllFiltersButton
       visible
-      onPress={onPress}
       animationTime={0}
       animationDelay={0}
+      onPress={mockOnPress}
     />
   );
 
@@ -35,7 +45,8 @@ it("calls onPress method when pressed", () => {
     .props()
     .onPress();
 
-  expect(onPress).toHaveBeenCalled();
+  expect(runAfterInteractionsSpy).toHaveBeenCalled();
+  expect(mockOnPress).toHaveBeenCalled();
 });
 
 it("resets animation after being pressed", () => {

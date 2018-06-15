@@ -22,8 +22,8 @@ const DEFAULT_TOP_OFFSET_VALUE = 0;
 
 class ResetAllFiltersButton extends React.PureComponent<Props, State> {
   static defaultProps = {
-    animationTime: 200,
-    animationDelay: 100
+    animationTime: 300,
+    animationDelay: 0
   };
 
   constructor(props: Props) {
@@ -57,11 +57,11 @@ class ResetAllFiltersButton extends React.PureComponent<Props, State> {
   };
 
   resetAllFilters = (): void => {
+    this.props.onPress();
     InteractionManager.runAfterInteractions(() => {
-      this.props.onPress();
+      this.setState({ isAnimating: true });
+      this.fadeOut();
     });
-    this.setState({ isAnimating: true });
-    this.fadeOut();
   };
 
   resetAnimation = (): void => {

@@ -19,16 +19,16 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
   >
     <Component>
       <ResetAllFiltersButton
-        animationDelay={50}
-        animationTime={200}
+        animationDelay={0}
+        animationTime={300}
         onPress={[Function]}
         visible={false}
       />
       <Component
         style={
           Object {
+            "marginTop": 16,
             "paddingBottom": 12,
-            "paddingTop": 16,
           }
         }
         testID="event-filter-header"
@@ -106,16 +106,16 @@ exports[`renders correctly with any date and any time 1`] = `
   >
     <Component>
       <ResetAllFiltersButton
-        animationDelay={50}
-        animationTime={200}
+        animationDelay={0}
+        animationTime={300}
         onPress={[Function]}
         visible={false}
       />
       <Component
         style={
           Object {
+            "marginTop": 16,
             "paddingBottom": 12,
-            "paddingTop": 16,
           }
         }
         testID="event-filter-header"
@@ -193,16 +193,16 @@ exports[`renders correctly with date range and two times 1`] = `
   >
     <Component>
       <ResetAllFiltersButton
-        animationDelay={50}
-        animationTime={200}
+        animationDelay={0}
+        animationTime={300}
         onPress={[Function]}
         visible={true}
       />
       <Component
         style={
           Object {
+            "marginTop": 16,
             "paddingBottom": 12,
-            "paddingTop": 16,
           }
         }
         testID="event-filter-header"
@@ -280,16 +280,16 @@ exports[`renders correctly with single date and single time 1`] = `
   >
     <Component>
       <ResetAllFiltersButton
-        animationDelay={50}
-        animationTime={200}
+        animationDelay={0}
+        animationTime={300}
         onPress={[Function]}
         visible={true}
       />
       <Component
         style={
           Object {
+            "marginTop": 16,
             "paddingBottom": 12,
-            "paddingTop": 16,
           }
         }
         testID="event-filter-header"
@@ -367,16 +367,16 @@ exports[`renders correctly with tag filters selected 1`] = `
   >
     <Component>
       <ResetAllFiltersButton
-        animationDelay={50}
-        animationTime={200}
+        animationDelay={0}
+        animationTime={300}
         onPress={[Function]}
         visible={true}
       />
       <Component
         style={
           Object {
+            "marginTop": 16,
             "paddingBottom": 12,
-            "paddingTop": 16,
           }
         }
         testID="event-filter-header"
