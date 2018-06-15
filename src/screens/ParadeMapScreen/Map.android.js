@@ -1,21 +1,30 @@
 // @flow
 import React, { Component } from "react";
+import type { ElementRef } from "react";
 import { View, StyleSheet } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Text from "../../components/Text";
 import { velvetColor } from "../../constants/colors";
+import type {
+  Coordinates,
+  Region,
+  Terminals
+} from "../../constants/parade-coordinates";
 
 type Props = {
-  route: any,
-  paradeRegion: any,
-  terminals: any,
+  route: Array<Coordinates>,
+  paradeRegion: Region,
+  terminals: Array<Terminals>,
   permission: boolean
 };
 
 class Map extends Component<Props> {
-  focus(region) {
+  focus(region: Region) {
     this.mapView.animateToRegion(region, 0);
   }
+
+  // $FlowFixMe: For some reason flow doesn't know about React.createRef.
+  mapView: ElementRef = React.createRef();
 
   render() {
     return (
@@ -25,9 +34,7 @@ class Map extends Component<Props> {
           initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
           showsUserLocationButton={this.props.permission}
-          ref={component => {
-            this.mapView = component;
-          }}
+          ref={this.mapView}
         >
           <Polyline
             coordinates={this.props.route}

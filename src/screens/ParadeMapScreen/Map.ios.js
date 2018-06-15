@@ -1,18 +1,24 @@
 // @flow
 import React, { Component } from "react";
+import type { ElementRef } from "react";
 import { Image, View, StyleSheet } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import { velvetColor } from "../../constants/colors";
+import type {
+  Coordinates,
+  Region,
+  Terminals
+} from "../../constants/parade-coordinates";
 
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
 
 type Props = {
-  route: any,
-  paradeRegion: any,
-  terminals: any,
+  route: Array<Coordinates>,
+  paradeRegion: Region,
+  terminals: Array<Terminals>,
   permission: boolean
 };
 
@@ -29,7 +35,10 @@ class Map extends Component<Props, State> {
     };
   }
 
-  onRegionChange = position => {
+  // $FlowFixMe: For some reason flow doesn't know about React.createRef.
+  mapView: ElementRef = React.createRef();
+
+  onRegionChange = (position: Coordinates) => {
     const { latitude: currentLat, longitude: currentLong } = position;
     if (this.state.atUserLocation === true)
       return this.setState({ atUserLocation: false });
@@ -45,7 +54,7 @@ class Map extends Component<Props, State> {
     });
   };
 
-  focus = region => {
+  focus = (region: Region) => {
     this.mapView.animateToRegion(region, 0);
   };
 
@@ -70,9 +79,7 @@ class Map extends Component<Props, State> {
           initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
           onRegionChange={this.onRegionChange}
-          ref={component => {
-            this.mapView = component;
-          }}
+          ref={this.mapView}
         >
           <Polyline
             coordinates={this.props.route}

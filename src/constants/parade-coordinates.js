@@ -1,3 +1,4 @@
+// @flow
 import { scaleWithFont } from "../components/Text";
 import { velvetColor } from "./colors";
 
@@ -157,3 +158,22 @@ export const route = [
   { longitude: -0.12664, latitude: 51.50497 },
   { longitude: -0.1265, latitude: 51.50499 }
 ];
+
+export type Terminals = {
+  key: string,
+  coordinates: { longitude: number, latitude: number },
+  text: { text: string, type: string, color: string },
+  style: any
+};
+
+export type Coordinates = {
+  latitude: number,
+  longitude: number
+};
+
+export type Region = {
+  latitude: number,
+  longitude: number,
+  latitudeDelta: number,
+  longitudeDelta: number
+};
