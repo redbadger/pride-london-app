@@ -14,6 +14,7 @@ import { selectTagFilterSelectedCount } from "../../selectors/event-filters";
 import Component from "./component";
 import type { FilterCollection } from "../../data/event-filters";
 import type { EventFiltersPayload } from "../../actions/event-filters";
+import onlyUpdateWhenFocused from "../../components/OnlyUpdateWhenFocused";
 
 type OwnProps = {
   navigation: NavigationScreenProp<{ params: { title: string } }>
@@ -63,4 +64,4 @@ const connector: Connector<OwnProps, Props> = connect(
 );
 
 // $FlowFixMe
-export default connector(Component);
+export default connector(onlyUpdateWhenFocused(Component));

@@ -9,6 +9,7 @@ import type { State } from "../../reducers";
 import { getStagedFilters, selectStagedFilteredEvents } from "../../selectors";
 import { selectDateFilter } from "../../selectors/event-filters";
 import Component from "./component";
+import onlyUpdateWhenFocused from "../../components/OnlyUpdateWhenFocused";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>
@@ -49,4 +50,4 @@ const connector: Connector<OwnProps, Props> = connect(
   mapDispatchToProps
 );
 
-export default connector(Component);
+export default connector(onlyUpdateWhenFocused(Component));

@@ -19,6 +19,7 @@ import {
 } from "../../selectors";
 import { selectLoading, selectRefreshing } from "../../selectors/data";
 import Component from "./component";
+import onlyUpdateWhenFocused from "../../components/OnlyUpdateWhenFocused";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>
@@ -45,6 +46,11 @@ const getDataLoading = createSelector([selectData], selectLoading);
 
 const getDataRefreshing = createSelector([selectData], selectRefreshing);
 
+const getGroupEventsByStartTime = createSelector(
+  [selectFilteredEvents],
+  groupEventsByStartTime
+);
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
@@ -53,7 +59,7 @@ const mapStateToProps = (
   { navigation }: OwnProps
 ): StateProps => ({
   navigation,
-  events: groupEventsByStartTime(selectFilteredEvents(state)),
+  events: getGroupEventsByStartTime(state),
   savedEvents: selectSavedEvents(state),
   loading: getDataLoading(state),
   refreshing: getDataRefreshing(state),
@@ -71,4 +77,4 @@ const connector: Connector<StateProps, Props> = connect(
   mapDispatchToProps
 );
 
-export default connector(Component);
+export default connector(onlyUpdateWhenFocused(Component));

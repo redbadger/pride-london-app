@@ -22,28 +22,43 @@ const createNavigation = ({ isFocused }) => {
   };
 };
 
-it("does not update if props.navigation.isFocused returns true", () => {
+it("intializes state to props.navigation.isFocused", () => {
   const { navigation } = createNavigation({ isFocused: () => true });
   const output = shallow(
     <OnlyUpdateWhenFocusedComponent navigation={navigation}>
       <Text>Hello</Text>
     </OnlyUpdateWhenFocusedComponent>
   );
-  expect(output.instance().shouldComponentUpdate()).toEqual(true);
+  expect(output.state()).toEqual({ isFocused: true });
 });
 
-it("does update if props.navigation.isFocused returns false", () => {
-  const { navigation } = createNavigation({ isFocused: () => false });
+it("does update if nextState.isFocused returns true", () => {
+  const { navigation } = createNavigation({ isFocused: () => true });
   const output = shallow(
     <OnlyUpdateWhenFocusedComponent navigation={navigation}>
       <Text>Hello</Text>
     </OnlyUpdateWhenFocusedComponent>
   );
-
-  expect(output.instance().shouldComponentUpdate()).toEqual(false);
+  expect(
+    output.instance().shouldComponentUpdate({ navigation }, { isFocused: true })
+  ).toEqual(true);
 });
 
-it("does update after navigation emits willFocus", () => {
+it("does not update if nextState.isFocused returns false", () => {
+  const { navigation } = createNavigation({ isFocused: () => true });
+  const output = shallow(
+    <OnlyUpdateWhenFocusedComponent navigation={navigation}>
+      <Text>Hello</Text>
+    </OnlyUpdateWhenFocusedComponent>
+  );
+  expect(
+    output
+      .instance()
+      .shouldComponentUpdate({ navigation }, { isFocused: false })
+  ).toEqual(false);
+});
+
+it("sets state.isFocused to true when navigation emits willFocus", () => {
   const { navigation, listeners } = createNavigation({
     isFocused: () => false
   });
@@ -53,10 +68,10 @@ it("does update after navigation emits willFocus", () => {
     </OnlyUpdateWhenFocusedComponent>
   );
   listeners.willFocus();
-  expect(output.instance().shouldComponentUpdate()).toEqual(true);
+  expect(output.state()).toEqual({ isFocused: true });
 });
 
-it("does not update after navigation emits willBlur", () => {
+it("sets state.isFocused to false when navigation emits willBlur", () => {
   const { navigation, listeners } = createNavigation({ isFocused: () => true });
   const output = shallow(
     <OnlyUpdateWhenFocusedComponent navigation={navigation}>
@@ -64,5 +79,5 @@ it("does not update after navigation emits willBlur", () => {
     </OnlyUpdateWhenFocusedComponent>
   );
   listeners.willBlur();
-  expect(output.instance().shouldComponentUpdate()).toEqual(false);
+  expect(output.state()).toEqual({ isFocused: false });
 });
