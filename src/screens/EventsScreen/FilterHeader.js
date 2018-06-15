@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: filterBgColor
   },
   content: {
-    paddingTop: 16,
+    marginTop: 16,
     paddingBottom: 12
   },
   contentFilters: {

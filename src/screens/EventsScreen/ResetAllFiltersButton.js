@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Animated, StyleSheet, Easing } from "react-native";
+import { Animated, StyleSheet, Easing, InteractionManager } from "react-native";
 import type { ViewLayoutEvent } from "react-native/Libraries/Components/View/ViewPropTypes";
 import FilterHeaderButton from "./FilterHeaderButton";
 import text from "../../constants/text";
@@ -20,10 +20,10 @@ const DEFAULT_HEIGHT = 120;
 const DEFAULT_FADE_VALUE = 1;
 const DEFAULT_TOP_OFFSET_VALUE = 0;
 
-class ResetAllFiltersButton extends React.Component<Props, State> {
+class ResetAllFiltersButton extends React.PureComponent<Props, State> {
   static defaultProps = {
     animationTime: 200,
-    animationDelay: 50
+    animationDelay: 100
   };
 
   constructor(props: Props) {
@@ -44,7 +44,8 @@ class ResetAllFiltersButton extends React.Component<Props, State> {
     Animated.parallel([
       Animated.timing(this.fadeValue, {
         toValue: 0,
-        duration: animationTime / 2
+        duration: animationTime / 2,
+        delay: animationDelay
       }),
       Animated.timing(this.topOffset, {
         toValue: -this.height,
@@ -56,7 +57,9 @@ class ResetAllFiltersButton extends React.Component<Props, State> {
   };
 
   resetAllFilters = (): void => {
-    this.props.onPress();
+    InteractionManager.runAfterInteractions(() => {
+      this.props.onPress();
+    });
     this.setState({ isAnimating: true });
     this.fadeOut();
   };
