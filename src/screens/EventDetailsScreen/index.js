@@ -71,7 +71,7 @@ const mapStateToProps = (
 ): StateProps => {
   if (!cache || isFocused) {
     const id = navigation.state.params.eventId;
-    const event = getEventById(state, navigation.state.params.eventId);
+    const event = getEventById(state, id);
     const performancesById = getPerformancesMap(state);
     const performances = event
       ? event.fields.performances.reduce(
