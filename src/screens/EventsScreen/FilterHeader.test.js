@@ -5,6 +5,7 @@ import FilterHeader from "./FilterHeader";
 import type { Props as ComponentProps } from "./FilterHeader";
 import FilterHeaderButton from "./FilterHeaderButton";
 import FilterHeaderCategories from "./FilterHeaderCategories";
+import ResetAllFiltersButton from "./ResetAllFiltersButton";
 
 const render = (
   props: ComponentProps = {
@@ -144,6 +145,26 @@ describe("filter buttons", () => {
     });
     const button = output.find(FilterHeaderButton).at(1);
     button.simulate("press");
+
+    expect(mock).toBeCalledWith();
+  });
+
+  it("calls scrollEventListToTop when users presses 'Reset all filters' button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(["Music"]),
+      onFilterCategoriesPress: () => {},
+      onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: mock
+    });
+    output
+      .find(ResetAllFiltersButton)
+      .props()
+      .onPress();
 
     expect(mock).toBeCalledWith();
   });
