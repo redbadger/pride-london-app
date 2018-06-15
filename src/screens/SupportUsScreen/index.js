@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, InteractionManager } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import supportUsAsIndividual from "../../../assets/images/supportUsAsIndividual.jpg";
 import supportUsAsBusiness from "../../../assets/images/supportUsAsBusiness.jpg";
@@ -27,59 +27,77 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>
 };
 
-const SupportUsScreen = ({ navigation }: Props) => (
-  <View style={styles.container}>
-    <Header title={text.supportUsTitle} testID="page-heading-support-us" />
-    <ScrollView>
-      <View style={styles.scrollContainer}>
+class SupportUsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      renderPlaceholder: true
+    };
+  }
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({ renderPlaceholder: false });
+    });
+  }
 
-        <ContentPadding style={styles.sectionSpacing}>
-          <ButtonWithShapes
-            color={lightNavyBlueColor}
-            title={text.supportUsDonate}
-            description={text.supportUsDonateDescription}
-            bgBottomLeft={supportUsDonateBgBottomLeft}
-            bgTopRight={supportUsDonateBgTopRight}
-            navigation={navigation}
-            url={DONATE}
-            style={styles.buttonSpacing}
-          />
-          <ButtonWithShapes
-            color={warmPinkColor}
-            title={text.supportUsVolunteer}
-            description={text.supportUsVolunteerDescription}
-            bgTopRight={supportUsVolunteerBgTopRight}
-            navigation={navigation}
-            url="https://prideinlondon.org/volunteer"
-            style={styles.buttonSpacing}
-          />
-          <ButtonWithShapes
-            color={vomitYellowColor}
-            title={text.supportUsShop}
-            description={text.supportUsShopDescription}
-            bgBottomRight={supportUsShopBgBottomRight}
-            navigation={navigation}
-            url="https://www.thegayshop.co.uk/product-category/pride/pride-in-london-shop/"
-            contrast
-            style={styles.buttonSpacing}
-          />
-        </ContentPadding>
+  render() {
+    if (this.state.renderPlaceholder) {
+      return <View />;
+    }
+    return (
+      <View style={styles.container}>
+        <Header title={text.supportUsTitle} testID="page-heading-support-us" />
+        <ScrollView>
+          <View style={styles.scrollContainer}>
+            <ContentPadding style={styles.sectionSpacing}>
+              <ButtonWithShapes
+                color={lightNavyBlueColor}
+                title={text.supportUsDonate}
+                description={text.supportUsDonateDescription}
+                bgBottomLeft={supportUsDonateBgBottomLeft}
+                bgTopRight={supportUsDonateBgTopRight}
+                navigation={this.props.navigation}
+                url={DONATE}
+                style={styles.buttonSpacing}
+              />
+              <ButtonWithShapes
+                color={warmPinkColor}
+                title={text.supportUsVolunteer}
+                description={text.supportUsVolunteerDescription}
+                bgTopRight={supportUsVolunteerBgTopRight}
+                navigation={this.props.navigation}
+                url="https://prideinlondon.org/volunteer"
+                style={styles.buttonSpacing}
+              />
+              <ButtonWithShapes
+                color={vomitYellowColor}
+                title={text.supportUsShop}
+                description={text.supportUsShopDescription}
+                bgBottomRight={supportUsShopBgBottomRight}
+                navigation={this.props.navigation}
+                url="https://www.thegayshop.co.uk/product-category/pride/pride-in-london-shop/"
+                contrast
+                style={styles.buttonSpacing}
+              />
+            </ContentPadding>
 
-        <ContentPadding style={styles.sectionSpacing}>
-          <ButtonWithShapes
-            color={turquoiseBlueColor}
-            title={text.supportUsSponsor}
-            description={text.supportUsSponsorDescription}
-            bgTopRight={supportUsSponsorBgTopRight}
-            navigation={navigation}
-            url={SPONSOR}
-            style={styles.buttonSpacing}
-          />
-        </ContentPadding>
+            <ContentPadding style={styles.sectionSpacing}>
+              <ButtonWithShapes
+                color={turquoiseBlueColor}
+                title={text.supportUsSponsor}
+                description={text.supportUsSponsorDescription}
+                bgTopRight={supportUsSponsorBgTopRight}
+                navigation={this.props.navigation}
+                url={SPONSOR}
+                style={styles.buttonSpacing}
+              />
+            </ContentPadding>
+          </View>
+        </ScrollView>
       </View>
-    </ScrollView>
-  </View>
-);
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
