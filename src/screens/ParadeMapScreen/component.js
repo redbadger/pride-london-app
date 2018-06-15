@@ -26,7 +26,7 @@ class ParadeMapScreen extends Component<Props, State> {
   }
 
   // $FlowFixMe: For some reason flow doesn't know about React.createRef.
-  map: ElementRef = React.createRef();
+  map: ElementRef;
   didBlur: Function;
 
   componentDidMount() {
@@ -68,7 +68,7 @@ class ParadeMapScreen extends Component<Props, State> {
           paradeRegion={region}
           terminals={terminals}
           permission={this.state.locationPermission}
-          ref={this.map}
+          ref={component => (this.map = component)}
         />
         <LocationCard />
       </View>

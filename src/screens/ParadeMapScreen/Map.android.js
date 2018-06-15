@@ -23,8 +23,8 @@ class Map extends Component<Props> {
     this.mapView.animateToRegion(region, 0);
   }
 
-  // $FlowFixMe: For some reason flow doesn't know about React.createRef.
-  mapView: ElementRef = React.createRef();
+  // $FlowFixMe
+  mapView: ElementRef;
 
   render() {
     return (
@@ -34,7 +34,7 @@ class Map extends Component<Props> {
           initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
           showsUserLocationButton={this.props.permission}
-          ref={this.mapView}
+          ref={component => (this.mapView = component)}
         >
           <Polyline
             coordinates={this.props.route}

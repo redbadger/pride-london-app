@@ -35,8 +35,8 @@ class Map extends Component<Props, State> {
     };
   }
 
-  // $FlowFixMe: For some reason flow doesn't know about React.createRef.
-  mapView: ElementRef = React.createRef();
+  // $FlowFixMe
+  mapView: ElementRef;
 
   onRegionChange = (position: Coordinates) => {
     const { latitude: currentLat, longitude: currentLong } = position;
@@ -79,7 +79,7 @@ class Map extends Component<Props, State> {
           initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
           onRegionChange={this.onRegionChange}
-          ref={this.mapView}
+          ref={component => (this.mapView = component)}
         >
           <Polyline
             coordinates={this.props.route}
