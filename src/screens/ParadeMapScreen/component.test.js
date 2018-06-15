@@ -15,8 +15,7 @@ const render = props =>
   );
 
 jest.mock("react-native-permissions", () => ({
-  check: jest.fn(),
-  request: jest.fn()
+  check: jest.fn()
 }));
 
 describe("Parade Map Screen component", () => {
