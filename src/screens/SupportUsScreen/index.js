@@ -2,8 +2,8 @@
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import supportUsAsIndividual from "../../../assets/images/supportUsAsIndividual.jpg";
-import supportUsAsBusiness from "../../../assets/images/supportUsAsBusiness.jpg";
+// import supportUsAsIndividual from "../../../assets/images/supportUsAsIndividual.jpg";
+// import supportUsAsBusiness from "../../../assets/images/supportUsAsBusiness.jpg";
 import supportUsDonateBgBottomLeft from "../../../assets/images/supportUsDonateBgBottomLeft.png";
 import supportUsDonateBgTopRight from "../../../assets/images/supportUsDonateBgTopRight.png";
 import supportUsVolunteerBgTopRight from "../../../assets/images/supportUsVolunteerBgTopRight.png";
@@ -33,7 +33,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
     <ScrollView>
       <View style={styles.scrollContainer}>
         <ImageHeader
-          image={supportUsAsIndividual}
+          image={{ uri: "support_us_as_individual" }}
           title={text.supportUsAsIndividual}
         />
         <ContentPadding style={styles.sectionSpacing}>
@@ -68,7 +68,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
           />
         </ContentPadding>
         <ImageHeader
-          image={supportUsAsBusiness}
+          image={{ uri: "support_us_as_business" }}
           title={text.supportUsAsBusiness}
         />
         <ContentPadding style={styles.sectionSpacing}>
