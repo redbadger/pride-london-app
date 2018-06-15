@@ -18,7 +18,29 @@ type Props = {
   permission: boolean
 };
 
-class Map extends Component<Props> {
+type State = {
+  margin: boolean
+};
+
+class Map extends Component<Props, State> {
+  constructor() {
+    super();
+
+    this.state = {
+      margin: false
+    };
+  }
+
+  componentWillMount() {
+    setTimeout(() => this.setState({ margin: !this.state.margin }), 500);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.permission !== this.props.permission) {
+      setTimeout(() => this.setState({ margin: !this.state.margin }), 500);
+    }
+  }
+
   focus(region: Region) {
     this.mapView.animateToRegion(region, 0);
   }
@@ -30,7 +52,10 @@ class Map extends Component<Props> {
     return (
       <View style={styles.absoluteFill}>
         <MapView
-          style={styles.absoluteFill}
+          style={[
+            styles.absoluteFill,
+            this.state.margin ? styles.marginTrue : styles.marginFalse
+          ]}
           initialRegion={this.props.paradeRegion}
           showsUserLocation={this.props.permission}
           showsUserLocationButton={this.props.permission}
@@ -62,6 +87,12 @@ class Map extends Component<Props> {
 const styles = StyleSheet.create({
   absoluteFill: {
     ...StyleSheet.absoluteFillObject
+  },
+  marginTrue: {
+    margin: 1
+  },
+  marginFalse: {
+    margin: 0
   }
 });
 
