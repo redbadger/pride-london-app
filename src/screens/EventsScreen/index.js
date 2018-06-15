@@ -17,7 +17,7 @@ import {
   selectFilteredEvents,
   selectSavedEvents
 } from "../../selectors";
-import { selectLoading, selectRefreshing } from "../../selectors/data";
+import { selectLoading } from "../../selectors/data";
 import Component from "./component";
 
 type OwnProps = {
@@ -29,7 +29,6 @@ type StateProps = {
   events: EventDays,
   savedEvents: SavedEvents,
   loading: boolean,
-  refreshing: boolean,
   selectedCategories: Set<EventCategoryName>
 };
 
@@ -43,8 +42,6 @@ type Props = StateProps & DispatchProps;
 
 const getDataLoading = createSelector([selectData], selectLoading);
 
-const getDataRefreshing = createSelector([selectData], selectRefreshing);
-
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
@@ -56,7 +53,7 @@ const mapStateToProps = (
   events: groupEventsByStartTime(selectFilteredEvents(state)),
   savedEvents: selectSavedEvents(state),
   loading: getDataLoading(state),
-  refreshing: getDataRefreshing(state),
+  // refreshing: getDataRefreshing(state),
   selectedCategories: state.eventFilters.selectedFilters.categories
 });
 

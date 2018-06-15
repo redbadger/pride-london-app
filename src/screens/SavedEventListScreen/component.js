@@ -18,7 +18,6 @@ export type Props = {
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
   loading: boolean,
-  refreshing: boolean,
   updateData: () => Promise<void>
 };
 
@@ -36,7 +35,6 @@ class SavedEventListScreen extends Component<Props> {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
-      refreshing,
       loading
     } = this.props;
 
@@ -56,7 +54,6 @@ class SavedEventListScreen extends Component<Props> {
               savedEvents={savedEvents}
               addSavedEvent={addSavedEvent}
               removeSavedEvent={removeSavedEvent}
-              refreshing={refreshing}
               onRefresh={() => {
                 updateData();
               }}

@@ -1,6 +1,12 @@
 // @flow
 import React, { Component } from "react";
-import { LayoutAnimation, StyleSheet, SectionList, View } from "react-native";
+import {
+  LayoutAnimation,
+  StyleSheet,
+  SectionList,
+  View,
+  Animated
+} from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
 import { difference, equals, flatten, without } from "ramda";
 import ContentPadding from "./ContentPadding";
@@ -21,7 +27,10 @@ type Props = {
   removeSavedEvent: string => void,
   refreshing?: boolean,
   onRefresh?: () => void,
-  onPress: (id: string) => void
+  onPress: (id: string) => void,
+  scrollEventThrottle: number,
+  onScroll: () => void,
+  filterHeaderHeight: number
 };
 
 type State = {
@@ -83,17 +92,13 @@ class EventList extends Component<Props, State> {
   }
 
   shouldComponentUpdate(nextProps: Props, nextState: State) {
-    const { refreshing, savedEvents } = this.props;
-    const {
-      refreshing: nextRefreshing,
-      savedEvents: nextSavedEvents
-    } = nextProps;
+    const { savedEvents } = this.props;
+    const { savedEvents: nextSavedEvents } = nextProps;
 
     return (
       nextState.eventsAdded > 0 ||
       nextState.eventsRemoved > 0 ||
       nextState.eventsReordered ||
-      refreshing !== nextRefreshing ||
       savedEvents !== nextSavedEvents
     );
   }
@@ -154,20 +159,27 @@ class EventList extends Component<Props, State> {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     }
 
+    const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
+
     return (
-      <SectionList
+      <AnimatedSectionList
         stickySectionHeadersEnabled
         sections={eventSections(events)}
         renderSectionHeader={this.renderSectionHeader}
         renderSectionFooter={this.renderSectionFooter}
         renderItem={this.renderItem}
         keyExtractor={this.keyExtractor}
-        contentContainerStyle={styles.container}
+        contentContainerStyle={[
+          styles.container,
+          { paddingBottom: this.props.filterHeaderHeight }
+        ]}
         ItemSeparatorComponent={this.itemSeparator}
         SectionSeparatorComponent={this.sectionSeparator}
         refreshing={refreshing}
         onRefresh={onRefresh}
         windowSize={10}
+        scrollEventThrottle={this.props.scrollEventThrottle}
+        onScroll={this.props.onScroll}
       />
     );
   }

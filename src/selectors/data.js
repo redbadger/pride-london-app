@@ -19,8 +19,6 @@ const reduceToMapHelp = <A>(
 
 export const selectLoading = (data: DataState): boolean => data.loading;
 
-export const selectRefreshing = (data: DataState): boolean => data.refreshing;
-
 export const selectEvents = (data: DataState): Array<Event> => data.events;
 
 export const selectEventsMap = (events: Array<Event>): Events =>

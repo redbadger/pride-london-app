@@ -1,7 +1,9 @@
 // @flow
+/* eslint react-native/no-inline-styles:0 */
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Animated, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
+import type { ViewLayoutEvent } from "react-native/Libraries/Components/View/ViewPropTypes";
 import type {
   EventCategoryName,
   SavedEvents,
@@ -24,13 +26,33 @@ export type Props = {
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
   loading: boolean,
-  refreshing: boolean,
   updateData: () => Promise<void>,
   selectedCategories: Set<EventCategoryName>,
   navigation: NavigationScreenProp<NavigationState>
 };
 
 class EventsScreen extends Component<Props> {
+  constructor(props: Props) {
+    super(props);
+    this.eventListScrollValue = new Animated.Value(0);
+    this.filterHeaderHeight = 10;
+    this.clampedScrollValue = Animated.diffClamp(
+      this.eventListScrollValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1],
+        extrapolateLeft: "clamp"
+      }),
+      0,
+      this.filterHeaderHeight
+    );
+
+    this.headerTranslate = this.clampedScrollValue.interpolate({
+      inputRange: [0, this.filterHeaderHeight],
+      outputRange: [0, -this.filterHeaderHeight],
+      extrapolate: "clamp"
+    });
+  }
+
   shouldComponentUpdate(nextProps: Props) {
     // Intentionally do not check this.props.navigation
     return (
@@ -39,11 +61,30 @@ class EventsScreen extends Component<Props> {
       nextProps.addSavedEvent !== this.props.addSavedEvent ||
       nextProps.removeSavedEvent !== this.props.removeSavedEvent ||
       nextProps.loading !== this.props.loading ||
-      nextProps.refreshing !== this.props.refreshing ||
       nextProps.updateData !== this.props.updateData ||
       nextProps.selectedCategories !== this.props.selectedCategories
     );
   }
+
+  setFilterHeaderHeight = (e: ViewLayoutEvent) => {
+    const { height } = e.nativeEvent.layout;
+    this.filterHeaderHeight = height;
+    this.clampedScrollValue = Animated.diffClamp(
+      this.eventListScrollValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1],
+        extrapolateLeft: "clamp"
+      }),
+      0,
+      this.filterHeaderHeight
+    );
+
+    this.headerTranslate = this.clampedScrollValue.interpolate({
+      inputRange: [0, this.filterHeaderHeight],
+      outputRange: [0, -this.filterHeaderHeight],
+      extrapolate: "clamp"
+    });
+  };
 
   handleFilterCategoriesPress = () => {
     this.props.navigation.navigate(EVENT_CATEGORIES_FILTER);
@@ -57,6 +98,11 @@ class EventsScreen extends Component<Props> {
     this.props.navigation.navigate(EVENT_DATE_FILTER);
   };
 
+  headerTranslate: number;
+  filterHeaderHeight: number;
+  eventListScrollValue: Animated.Value;
+  clampedScrollValue: any;
+
   render() {
     const {
       navigation,
@@ -64,17 +110,29 @@ class EventsScreen extends Component<Props> {
       events,
       savedEvents,
       addSavedEvent,
-      removeSavedEvent,
-      refreshing
+      removeSavedEvent
     } = this.props;
+
+    console.log(render);
+
     return (
-      <View style={styles.container}>
-        <FilterHeader
-          onFilterCategoriesPress={this.handleFilterCategoriesPress}
-          selectedCategories={this.props.selectedCategories}
-          onFilterButtonPress={this.handleFilterButtonPress}
-          onDateFilterButtonPress={this.handleDateFilterButtonPress}
-        />
+      <Animated.View
+        style={[
+          styles.container,
+          {
+            transform: [{ translateY: this.headerTranslate }],
+            marginBottom: -this.filterHeaderHeight
+          }
+        ]}
+      >
+        <View onLayout={this.setFilterHeaderHeight}>
+          <FilterHeader
+            onFilterCategoriesPress={this.handleFilterCategoriesPress}
+            selectedCategories={this.props.selectedCategories}
+            onFilterButtonPress={this.handleFilterButtonPress}
+            onDateFilterButtonPress={this.handleDateFilterButtonPress}
+          />
+        </View>
         {this.props.loading || events.length < 1 ? (
           <NoEvents />
         ) : (
@@ -83,16 +141,27 @@ class EventsScreen extends Component<Props> {
             savedEvents={savedEvents}
             addSavedEvent={addSavedEvent}
             removeSavedEvent={removeSavedEvent}
-            refreshing={refreshing}
             onRefresh={() => {
               updateData();
             }}
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
+            scrollEventThrottle={1}
+            filterHeaderHeight={this.filterHeaderHeight}
+            onScroll={Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    contentOffset: { y: this.eventListScrollValue }
+                  }
+                }
+              ],
+              { useNativeDriver: true }
+            )}
           />
         )}
-      </View>
+      </Animated.View>
     );
   }
 }

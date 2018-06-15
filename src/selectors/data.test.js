@@ -16,7 +16,6 @@ import {
   selectLoading,
   selectPerformanceById,
   selectPerformancesMap,
-  selectRefreshing,
   resolveEvents
 } from "./data";
 
@@ -36,16 +35,6 @@ describe("selectLoading", () => {
     const data = createData();
     data.loading = true;
     const selected = selectLoading(data);
-
-    expect(selected).toEqual(true);
-  });
-});
-
-describe("selectRefreshing", () => {
-  it("selects events", () => {
-    const data = createData();
-    data.refreshing = true;
-    const selected = selectRefreshing(data);
 
     expect(selected).toEqual(true);
   });

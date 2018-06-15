@@ -12,7 +12,7 @@ import {
   selectSavedEvents,
   getFutureEventsMap
 } from "../../selectors";
-import { selectLoading, selectRefreshing } from "../../selectors/data";
+import { selectLoading } from "../../selectors/data";
 import { groupEventsByStartTime } from "../../selectors/event";
 import { resolveSavedEvents } from "../../selectors/saved-events";
 import Component from "./component";
@@ -25,8 +25,7 @@ type StateProps = {
   navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
   savedEvents: SavedEvents,
-  loading: boolean,
-  refreshing: boolean
+  loading: boolean
 };
 
 type DispatchProps = {
@@ -38,8 +37,6 @@ type DispatchProps = {
 type Props = StateProps & DispatchProps;
 
 const getDataLoading = createSelector([selectData], selectLoading);
-
-const getDataRefreshing = createSelector([selectData], selectRefreshing);
 
 const getEvents = createSelector(
   [selectSavedEvents, getFutureEventsMap],
@@ -56,8 +53,7 @@ const mapStateToProps = (
   navigation,
   events: groupEventsByStartTime(getEvents(state)),
   savedEvents: selectSavedEvents(state),
-  loading: getDataLoading(state),
-  refreshing: getDataRefreshing(state)
+  loading: getDataLoading(state)
 });
 
 const mapDispatchToProps = {

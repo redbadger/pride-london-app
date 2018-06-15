@@ -1,12 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EventsScreen Component renders correctly 1`] = `
-<Component
+<AnimatedComponent
   style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "flex": 1,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+      },
+      Object {
+        "transform": Array [
+          Object {
+            "translateY": 0,
+          },
+        ],
+      },
+    ]
   }
 >
   <Connect(FilterHeader)
@@ -107,20 +116,31 @@ exports[`EventsScreen Component renders correctly 1`] = `
     }
     onPress={[Function]}
     onRefresh={[Function]}
+    onScroll={[Function]}
     refreshing={false}
     removeSavedEvent={[Function]}
     savedEvents={Set {}}
+    scrollEventThrottle={1}
   />
-</Component>
+</AnimatedComponent>
 `;
 
 exports[`EventsScreen Component renders correctly when loading 1`] = `
-<Component
+<AnimatedComponent
   style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "flex": 1,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+      },
+      Object {
+        "transform": Array [
+          Object {
+            "translateY": 0,
+          },
+        ],
+      },
+    ]
   }
 >
   <Connect(FilterHeader)
@@ -130,16 +150,25 @@ exports[`EventsScreen Component renders correctly when loading 1`] = `
     selectedCategories={Set {}}
   />
   <NoEvents />
-</Component>
+</AnimatedComponent>
 `;
 
 exports[`EventsScreen Component renders correctly with no events 1`] = `
-<Component
+<AnimatedComponent
   style={
-    Object {
-      "backgroundColor": "#ffffff",
-      "flex": 1,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+      },
+      Object {
+        "transform": Array [
+          Object {
+            "translateY": 0,
+          },
+        ],
+      },
+    ]
   }
 >
   <Connect(FilterHeader)
@@ -149,5 +178,5 @@ exports[`EventsScreen Component renders correctly with no events 1`] = `
     selectedCategories={Set {}}
   />
   <NoEvents />
-</Component>
+</AnimatedComponent>
 `;
