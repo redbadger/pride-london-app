@@ -11,6 +11,13 @@ it("renders correctly", () => {
   expect(output).toMatchSnapshot();
 });
 
+it("does not render when visible=false", () => {
+  const output = shallow(
+    <ResetAllFiltersButton visible={false} onPress={noOp} />
+  );
+  expect(output).toMatchSnapshot();
+});
+
 it("calls onPress method when pressed", () => {
   const onPress = jest.fn();
   const output = shallow(

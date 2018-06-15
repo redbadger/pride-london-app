@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`does not render when visible=false 1`] = `""`;
+
 exports[`renders correctly 1`] = `
 <AnimatedComponent
   onLayout={[Function]}
