@@ -58,3 +58,13 @@ it("resets animation after being pressed", () => {
   expect(output.instance().fadeValue).toEqual(new Animated.Value(1));
   expect(output.instance().topOffset).toEqual(new Animated.Value(0));
 });
+
+it("sets header height for use with animation", () => {
+  const output = shallow(<ResetAllFiltersButton visible onPress={noOp} />);
+  const mockEvent = {
+    nativeEvent: { layout: { height: 100 } }
+  };
+  output.instance().setButtonHeight(mockEvent);
+
+  expect(output.instance().height).toEqual(100);
+});
