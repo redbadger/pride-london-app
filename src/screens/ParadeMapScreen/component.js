@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import type { ElementRef } from "react";
 import { StyleSheet, View } from "react-native";
-import Permissions from "react-native-permissions";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { route, region, terminals } from "../../constants/parade-coordinates";
 import LocationCard from "./LocationCard";
@@ -12,24 +11,11 @@ type Props = {
   navigation: NavigationScreenProp<NavigationState>
 };
 
-type State = {
-  locationPermission: boolean
-};
-
-class ParadeMapScreen extends Component<Props, State> {
-  constructor() {
-    super();
-
-    this.state = {
-      locationPermission: false
-    };
-  }
-
+class ParadeMapScreen extends Component<Props> {
   componentDidMount() {
-    this.checkPermission();
     this.didBlur = this.props.navigation.addListener(
       "didBlur",
-      this.returnToParade.bind(this)
+      this.returnToParade
     );
   }
 
@@ -37,29 +23,12 @@ class ParadeMapScreen extends Component<Props, State> {
     this.didBlur.remove();
   }
 
-  // $FlowFixMe: For some reason flow doesn't know about React.createRef.
-  map: ElementRef;
+  // $FlowFixMe
+  mapRef: ElementRef<typeof Map> = React.createRef();
   didBlur: Function;
 
   returnToParade = () => {
-    this.map.focus(region);
-  };
-
-  checkPermission = () => {
-    Permissions.check("location").then(response => {
-      if (response === "authorized") {
-        this.setState({ locationPermission: true });
-      } else {
-        this.requestPermission();
-      }
-    });
-  };
-
-  requestPermission = () => {
-    Permissions.request("location").then(response => {
-      if (response === "authorized")
-        this.setState({ locationPermission: true });
-    });
+    this.mapRef.current.focus(region);
   };
 
   render() {
@@ -69,10 +38,7 @@ class ParadeMapScreen extends Component<Props, State> {
           route={route}
           paradeRegion={region}
           terminals={terminals}
-          permission={this.state.locationPermission}
-          ref={component => {
-            this.map = component;
-          }}
+          ref={this.mapRef}
         />
         <LocationCard />
       </View>

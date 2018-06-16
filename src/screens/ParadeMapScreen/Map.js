@@ -1,8 +1,9 @@
 // @flow
 import React, { Component } from "react";
 import type { ElementRef } from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, Platform, View, StyleSheet } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
+import Permissions from "react-native-permissions";
 import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import { velvetColor } from "../../constants/colors";
@@ -15,61 +16,87 @@ import type {
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
 
+type PermissionStatus = "authorized" | "denied" | "restricted" | "undetermined";
+const neverAskStatuses = Platform.select({
+  android: new Set(["restricted"]),
+  ios: new Set(["denied", "restricted"])
+});
+
 type Props = {
   route: Array<Coordinates>,
   paradeRegion: Region,
-  terminals: Array<Terminals>,
-  permission: boolean
+  terminals: Array<Terminals>
 };
 
 type State = {
+  locationPermission: ?PermissionStatus,
   atUserLocation: boolean
 };
 
 class Map extends Component<Props, State> {
-  constructor() {
-    super();
+  state = {
+    locationPermission: undefined,
+    atUserLocation: false
+  };
 
-    this.state = {
-      atUserLocation: false
-    };
+  componentDidMount() {
+    this.locationPermissionPromise = Permissions.check("location");
+    this.locationPermissionPromise.then(response => {
+      this.setState({ locationPermission: response });
+    });
   }
 
   onRegionChange = (position: Coordinates) => {
     const { latitude: currentLat, longitude: currentLong } = position;
-    if (this.state.atUserLocation === true)
-      return this.setState({ atUserLocation: false });
-
-    return navigator.geolocation.getCurrentPosition(({ coords }) => {
-      const { latitude: userLat, longitude: userLong } = coords;
-      if (
-        userLat.toFixed(5) === currentLat.toFixed(5) &&
-        userLong.toFixed(5) === currentLong.toFixed(5)
-      ) {
-        this.setState({ atUserLocation: true });
-      }
-    });
+    if (this.state.atUserLocation) {
+      this.setState({ atUserLocation: false });
+    } else if (this.state.locationPermission === "authorized") {
+      navigator.geolocation.getCurrentPosition(({ coords }) => {
+        const { latitude: userLat, longitude: userLong } = coords;
+        if (
+          userLat.toFixed(5) === currentLat.toFixed(5) &&
+          userLong.toFixed(5) === currentLong.toFixed(5)
+        ) {
+          this.setState({ atUserLocation: true });
+        }
+      });
+    }
   };
+
+  locationPermissionPromise: Promise<PermissionStatus>;
 
   focus = (region: Region) => {
-    this.mapView.animateToRegion(region, 0);
+    this.mapViewRef.current.animateToRegion(region, 0);
   };
 
-  moveToCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition(({ coords }) => {
-      const { latitude, longitude } = coords;
-      this.mapView.animateToCoordinate(
-        {
-          latitude,
-          longitude
-        },
-        500
-      );
-    });
+  confirmLocationPermission = async (): Promise<PermissionStatus> => {
+    let locationPermission = await this.locationPermissionPromise;
+    if (
+      locationPermission !== "authorized" &&
+      !neverAskStatuses.has(this.state.locationPermission)
+    ) {
+      locationPermission = await Permissions.request("location");
+      this.setState({ locationPermission });
+    }
+
+    return locationPermission;
+  };
+
+  moveToCurrentLocation = async () => {
+    const locationPermission = await this.confirmLocationPermission();
+    if (locationPermission === "authorized") {
+      navigator.geolocation.getCurrentPosition(({ coords }) => {
+        const { latitude, longitude } = coords;
+        this.mapViewRef.current.animateToCoordinate(
+          { latitude, longitude },
+          500
+        );
+      });
+    }
   };
 
   // $FlowFixMe
-  mapView: ElementRef;
+  mapViewRef: ElementRef<typeof MapView> = React.createRef();
 
   render() {
     return (
@@ -77,11 +104,10 @@ class Map extends Component<Props, State> {
         <MapView
           style={StyleSheet.absoluteFill}
           initialRegion={this.props.paradeRegion}
-          showsUserLocation={this.props.permission}
+          showsUserLocation={this.state.locationPermission === "authorized"}
+          showsMyLocationButton={false}
           onRegionChange={this.onRegionChange}
-          ref={component => {
-            this.mapView = component;
-          }}
+          ref={this.mapViewRef}
         >
           <Polyline
             coordinates={this.props.route}
@@ -99,12 +125,13 @@ class Map extends Component<Props, State> {
             </Marker>
           ))}
         </MapView>
-        {this.props.permission && (
+        {!neverAskStatuses.has(this.state.locationPermission) && (
           <Touchable
             onPress={this.moveToCurrentLocation}
             style={styles.touchable}
           >
             <Image
+              accessibilityLabel="Show my location"
               source={
                 this.state.atUserLocation
                   ? locationButtonActive
@@ -122,7 +149,8 @@ class Map extends Component<Props, State> {
 const styles = StyleSheet.create({
   touchable: {
     alignSelf: "flex-end",
-    marginTop: 44
+    marginTop: Platform.OS === "ios" ? 44 : 8,
+    marginRight: Platform.OS === "ios" ? 0 : 8
   },
   image: {
     width: 44,

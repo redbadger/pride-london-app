@@ -1,608 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Map component does not render a location button if permission is false 1`] = `
-<Component
-  style={
-    Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
-    }
-  }
->
-  <MapView
-    initialRegion={
-      Object {
-        "latitude": 51.5085,
-        "latitudeDelta": 0.02,
-        "longitude": -0.134192,
-        "longitudeDelta": 4.1e-8,
-      }
-    }
-    onRegionChange={[Function]}
-    showsUserLocation={false}
-    style={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
-    }
-  >
-    <MapPolyline
-      coordinates={
-        Array [
-          Object {
-            "latitude": 51.51616,
-            "longitude": -0.14223,
-          },
-          Object {
-            "latitude": 51.5161,
-            "longitude": -0.14221,
-          },
-          Object {
-            "latitude": 51.51605,
-            "longitude": -0.14214,
-          },
-          Object {
-            "latitude": 51.51603,
-            "longitude": -0.14212,
-          },
-          Object {
-            "latitude": 51.51596,
-            "longitude": -0.1421,
-          },
-          Object {
-            "latitude": 51.51589,
-            "longitude": -0.14207,
-          },
-          Object {
-            "latitude": 51.51563,
-            "longitude": -0.14198,
-          },
-          Object {
-            "latitude": 51.51538,
-            "longitude": -0.1419,
-          },
-          Object {
-            "latitude": 51.51532,
-            "longitude": -0.14189,
-          },
-          Object {
-            "latitude": 51.51523,
-            "longitude": -0.14186,
-          },
-          Object {
-            "latitude": 51.51511,
-            "longitude": -0.14182,
-          },
-          Object {
-            "latitude": 51.5149,
-            "longitude": -0.14176,
-          },
-          Object {
-            "latitude": 51.5146,
-            "longitude": -0.14166,
-          },
-          Object {
-            "latitude": 51.51445,
-            "longitude": -0.14161,
-          },
-          Object {
-            "latitude": 51.51438,
-            "longitude": -0.14158,
-          },
-          Object {
-            "latitude": 51.5143,
-            "longitude": -0.14154,
-          },
-          Object {
-            "latitude": 51.5142,
-            "longitude": -0.14148,
-          },
-          Object {
-            "latitude": 51.51415,
-            "longitude": -0.14145,
-          },
-          Object {
-            "latitude": 51.51409,
-            "longitude": -0.1414,
-          },
-          Object {
-            "latitude": 51.51404,
-            "longitude": -0.14133,
-          },
-          Object {
-            "latitude": 51.51399,
-            "longitude": -0.14128,
-          },
-          Object {
-            "latitude": 51.51393,
-            "longitude": -0.14123,
-          },
-          Object {
-            "latitude": 51.51387,
-            "longitude": -0.14118,
-          },
-          Object {
-            "latitude": 51.51379,
-            "longitude": -0.14112,
-          },
-          Object {
-            "latitude": 51.51372,
-            "longitude": -0.14107,
-          },
-          Object {
-            "latitude": 51.51361,
-            "longitude": -0.14097,
-          },
-          Object {
-            "latitude": 51.51343,
-            "longitude": -0.14079,
-          },
-          Object {
-            "latitude": 51.51314,
-            "longitude": -0.14055,
-          },
-          Object {
-            "latitude": 51.51278,
-            "longitude": -0.14022,
-          },
-          Object {
-            "latitude": 51.51247,
-            "longitude": -0.13994,
-          },
-          Object {
-            "latitude": 51.51219,
-            "longitude": -0.13969,
-          },
-          Object {
-            "latitude": 51.51212,
-            "longitude": -0.13962,
-          },
-          Object {
-            "latitude": 51.51208,
-            "longitude": -0.13959,
-          },
-          Object {
-            "latitude": 51.51205,
-            "longitude": -0.13955,
-          },
-          Object {
-            "latitude": 51.51179,
-            "longitude": -0.13933,
-          },
-          Object {
-            "latitude": 51.51172,
-            "longitude": -0.13927,
-          },
-          Object {
-            "latitude": 51.51166,
-            "longitude": -0.13921,
-          },
-          Object {
-            "latitude": 51.51162,
-            "longitude": -0.13917,
-          },
-          Object {
-            "latitude": 51.51109,
-            "longitude": -0.1387,
-          },
-          Object {
-            "latitude": 51.51047,
-            "longitude": -0.13814,
-          },
-          Object {
-            "latitude": 51.51043,
-            "longitude": -0.13811,
-          },
-          Object {
-            "latitude": 51.51037,
-            "longitude": -0.13804,
-          },
-          Object {
-            "latitude": 51.51034,
-            "longitude": -0.138,
-          },
-          Object {
-            "latitude": 51.51029,
-            "longitude": -0.13792,
-          },
-          Object {
-            "latitude": 51.51025,
-            "longitude": -0.13784,
-          },
-          Object {
-            "latitude": 51.5102,
-            "longitude": -0.13774,
-          },
-          Object {
-            "latitude": 51.51016,
-            "longitude": -0.13762,
-          },
-          Object {
-            "latitude": 51.51012,
-            "longitude": -0.13753,
-          },
-          Object {
-            "latitude": 51.51009,
-            "longitude": -0.13741,
-          },
-          Object {
-            "latitude": 51.51006,
-            "longitude": -0.13729,
-          },
-          Object {
-            "latitude": 51.51002,
-            "longitude": -0.13712,
-          },
-          Object {
-            "latitude": 51.51,
-            "longitude": -0.13698,
-          },
-          Object {
-            "latitude": 51.50998,
-            "longitude": -0.13687,
-          },
-          Object {
-            "latitude": 51.50997,
-            "longitude": -0.13678,
-          },
-          Object {
-            "latitude": 51.50996,
-            "longitude": -0.13664,
-          },
-          Object {
-            "latitude": 51.50995,
-            "longitude": -0.13651,
-          },
-          Object {
-            "latitude": 51.50995,
-            "longitude": -0.13638,
-          },
-          Object {
-            "latitude": 51.50995,
-            "longitude": -0.13632,
-          },
-          Object {
-            "latitude": 51.50996,
-            "longitude": -0.1362,
-          },
-          Object {
-            "latitude": 51.50996,
-            "longitude": -0.13607,
-          },
-          Object {
-            "latitude": 51.50997,
-            "longitude": -0.13601,
-          },
-          Object {
-            "latitude": 51.50998,
-            "longitude": -0.13593,
-          },
-          Object {
-            "latitude": 51.50998,
-            "longitude": -0.13591,
-          },
-          Object {
-            "latitude": 51.51,
-            "longitude": -0.13576,
-          },
-          Object {
-            "latitude": 51.51003,
-            "longitude": -0.13564,
-          },
-          Object {
-            "latitude": 51.51005,
-            "longitude": -0.13553,
-          },
-          Object {
-            "latitude": 51.51007,
-            "longitude": -0.1354,
-          },
-          Object {
-            "latitude": 51.51011,
-            "longitude": -0.13526,
-          },
-          Object {
-            "latitude": 51.51013,
-            "longitude": -0.13517,
-          },
-          Object {
-            "latitude": 51.51014,
-            "longitude": -0.13515,
-          },
-          Object {
-            "latitude": 51.51014,
-            "longitude": -0.13514,
-          },
-          Object {
-            "latitude": 51.51014,
-            "longitude": -0.13513,
-          },
-          Object {
-            "latitude": 51.51014,
-            "longitude": -0.13512,
-          },
-          Object {
-            "latitude": 51.51013,
-            "longitude": -0.1351,
-          },
-          Object {
-            "latitude": 51.50972,
-            "longitude": -0.13483,
-          },
-          Object {
-            "latitude": 51.50964,
-            "longitude": -0.13476,
-          },
-          Object {
-            "latitude": 51.50953,
-            "longitude": -0.13465,
-          },
-          Object {
-            "latitude": 51.50925,
-            "longitude": -0.13438,
-          },
-          Object {
-            "latitude": 51.50918,
-            "longitude": -0.13433,
-          },
-          Object {
-            "latitude": 51.50858,
-            "longitude": -0.13381,
-          },
-          Object {
-            "latitude": 51.50718,
-            "longitude": -0.13228,
-          },
-          Object {
-            "latitude": 51.50734,
-            "longitude": -0.13182,
-          },
-          Object {
-            "latitude": 51.50764,
-            "longitude": -0.131,
-          },
-          Object {
-            "latitude": 51.50765,
-            "longitude": -0.13097,
-          },
-          Object {
-            "latitude": 51.50765,
-            "longitude": -0.13092,
-          },
-          Object {
-            "latitude": 51.50765,
-            "longitude": -0.13087,
-          },
-          Object {
-            "latitude": 51.50765,
-            "longitude": -0.13082,
-          },
-          Object {
-            "latitude": 51.50765,
-            "longitude": -0.13078,
-          },
-          Object {
-            "latitude": 51.50762,
-            "longitude": -0.1305,
-          },
-          Object {
-            "latitude": 51.50761,
-            "longitude": -0.13032,
-          },
-          Object {
-            "latitude": 51.50758,
-            "longitude": -0.13007,
-          },
-          Object {
-            "latitude": 51.50756,
-            "longitude": -0.12995,
-          },
-          Object {
-            "latitude": 51.50746,
-            "longitude": -0.12905,
-          },
-          Object {
-            "latitude": 51.50745,
-            "longitude": -0.12894,
-          },
-          Object {
-            "latitude": 51.50744,
-            "longitude": -0.12887,
-          },
-          Object {
-            "latitude": 51.50743,
-            "longitude": -0.12872,
-          },
-          Object {
-            "latitude": 51.5074,
-            "longitude": -0.12847,
-          },
-          Object {
-            "latitude": 51.50737,
-            "longitude": -0.1283,
-          },
-          Object {
-            "latitude": 51.50734,
-            "longitude": -0.12821,
-          },
-          Object {
-            "latitude": 51.50732,
-            "longitude": -0.12817,
-          },
-          Object {
-            "latitude": 51.50728,
-            "longitude": -0.12808,
-          },
-          Object {
-            "latitude": 51.50727,
-            "longitude": -0.12807,
-          },
-          Object {
-            "latitude": 51.50718,
-            "longitude": -0.12796,
-          },
-          Object {
-            "latitude": 51.50716,
-            "longitude": -0.12793,
-          },
-          Object {
-            "latitude": 51.50713,
-            "longitude": -0.12775,
-          },
-          Object {
-            "latitude": 51.5071,
-            "longitude": -0.12771,
-          },
-          Object {
-            "latitude": 51.50707,
-            "longitude": -0.12766,
-          },
-          Object {
-            "latitude": 51.50702,
-            "longitude": -0.12761,
-          },
-          Object {
-            "latitude": 51.50697,
-            "longitude": -0.12756,
-          },
-          Object {
-            "latitude": 51.50692,
-            "longitude": -0.12749,
-          },
-          Object {
-            "latitude": 51.50665,
-            "longitude": -0.12738,
-          },
-          Object {
-            "latitude": 51.50631,
-            "longitude": -0.12721,
-          },
-          Object {
-            "latitude": 51.50626,
-            "longitude": -0.12722,
-          },
-          Object {
-            "latitude": 51.50623,
-            "longitude": -0.12721,
-          },
-          Object {
-            "latitude": 51.5062,
-            "longitude": -0.12721,
-          },
-          Object {
-            "latitude": 51.50613,
-            "longitude": -0.12717,
-          },
-          Object {
-            "latitude": 51.50598,
-            "longitude": -0.12709,
-          },
-          Object {
-            "latitude": 51.50584,
-            "longitude": -0.12702,
-          },
-          Object {
-            "latitude": 51.5056,
-            "longitude": -0.12692,
-          },
-          Object {
-            "latitude": 51.50534,
-            "longitude": -0.1268,
-          },
-          Object {
-            "latitude": 51.50517,
-            "longitude": -0.12672,
-          },
-          Object {
-            "latitude": 51.50497,
-            "longitude": -0.12664,
-          },
-          Object {
-            "latitude": 51.50499,
-            "longitude": -0.1265,
-          },
-        ]
-      }
-      lineCap="round"
-      lineJoin="bevel"
-      strokeColor="#660c63"
-      strokeWidth={5}
-    />
-    <MapMarker
-      coordinate={
-        Object {
-          "latitude": 51.51616,
-          "longitude": -0.14223,
-        }
-      }
-      key="start"
-      stopPropagation={false}
-    >
-      <Component
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#660c63",
-            "borderRadius": 9,
-            "height": 18,
-            "justifyContent": "center",
-            "width": 18,
-          }
-        }
-      >
-        <Text
-          color="whiteColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          type="xSmall"
-        >
-          A
-        </Text>
-      </Component>
-    </MapMarker>
-    <MapMarker
-      coordinate={
-        Object {
-          "latitude": 51.50499,
-          "longitude": -0.1265,
-        }
-      }
-      key="finish"
-      stopPropagation={false}
-    >
-      <Component
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#660c63",
-            "borderRadius": 9,
-            "height": 18,
-            "justifyContent": "center",
-            "width": 18,
-          }
-        }
-      >
-        <Text
-          color="whiteColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          type="xSmall"
-        >
-          B
-        </Text>
-      </Component>
-    </MapMarker>
-  </MapView>
-</Component>
-`;
-
 exports[`Map component renders correctly 1`] = `
 <Component
   style={
@@ -625,7 +22,8 @@ exports[`Map component renders correctly 1`] = `
       }
     }
     onRegionChange={[Function]}
-    showsUserLocation={true}
+    showsMyLocationButton={false}
+    showsUserLocation={false}
     style={
       Object {
         "bottom": 0,
@@ -1215,11 +613,13 @@ exports[`Map component renders correctly 1`] = `
     style={
       Object {
         "alignSelf": "flex-end",
+        "marginRight": 0,
         "marginTop": 44,
       }
     }
   >
     <Image
+      accessibilityLabel="Show my location"
       source={1}
       style={
         Object {
@@ -1229,5 +629,609 @@ exports[`Map component renders correctly 1`] = `
       }
     />
   </Touchable>
+</Component>
+`;
+
+exports[`Map component renders without location button when permission was denied 1`] = `
+<Component
+  style={
+    Object {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <MapView
+    initialRegion={
+      Object {
+        "latitude": 51.5085,
+        "latitudeDelta": 0.02,
+        "longitude": -0.134192,
+        "longitudeDelta": 4.1e-8,
+      }
+    }
+    onRegionChange={[Function]}
+    showsMyLocationButton={false}
+    showsUserLocation={false}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <MapPolyline
+      coordinates={
+        Array [
+          Object {
+            "latitude": 51.51616,
+            "longitude": -0.14223,
+          },
+          Object {
+            "latitude": 51.5161,
+            "longitude": -0.14221,
+          },
+          Object {
+            "latitude": 51.51605,
+            "longitude": -0.14214,
+          },
+          Object {
+            "latitude": 51.51603,
+            "longitude": -0.14212,
+          },
+          Object {
+            "latitude": 51.51596,
+            "longitude": -0.1421,
+          },
+          Object {
+            "latitude": 51.51589,
+            "longitude": -0.14207,
+          },
+          Object {
+            "latitude": 51.51563,
+            "longitude": -0.14198,
+          },
+          Object {
+            "latitude": 51.51538,
+            "longitude": -0.1419,
+          },
+          Object {
+            "latitude": 51.51532,
+            "longitude": -0.14189,
+          },
+          Object {
+            "latitude": 51.51523,
+            "longitude": -0.14186,
+          },
+          Object {
+            "latitude": 51.51511,
+            "longitude": -0.14182,
+          },
+          Object {
+            "latitude": 51.5149,
+            "longitude": -0.14176,
+          },
+          Object {
+            "latitude": 51.5146,
+            "longitude": -0.14166,
+          },
+          Object {
+            "latitude": 51.51445,
+            "longitude": -0.14161,
+          },
+          Object {
+            "latitude": 51.51438,
+            "longitude": -0.14158,
+          },
+          Object {
+            "latitude": 51.5143,
+            "longitude": -0.14154,
+          },
+          Object {
+            "latitude": 51.5142,
+            "longitude": -0.14148,
+          },
+          Object {
+            "latitude": 51.51415,
+            "longitude": -0.14145,
+          },
+          Object {
+            "latitude": 51.51409,
+            "longitude": -0.1414,
+          },
+          Object {
+            "latitude": 51.51404,
+            "longitude": -0.14133,
+          },
+          Object {
+            "latitude": 51.51399,
+            "longitude": -0.14128,
+          },
+          Object {
+            "latitude": 51.51393,
+            "longitude": -0.14123,
+          },
+          Object {
+            "latitude": 51.51387,
+            "longitude": -0.14118,
+          },
+          Object {
+            "latitude": 51.51379,
+            "longitude": -0.14112,
+          },
+          Object {
+            "latitude": 51.51372,
+            "longitude": -0.14107,
+          },
+          Object {
+            "latitude": 51.51361,
+            "longitude": -0.14097,
+          },
+          Object {
+            "latitude": 51.51343,
+            "longitude": -0.14079,
+          },
+          Object {
+            "latitude": 51.51314,
+            "longitude": -0.14055,
+          },
+          Object {
+            "latitude": 51.51278,
+            "longitude": -0.14022,
+          },
+          Object {
+            "latitude": 51.51247,
+            "longitude": -0.13994,
+          },
+          Object {
+            "latitude": 51.51219,
+            "longitude": -0.13969,
+          },
+          Object {
+            "latitude": 51.51212,
+            "longitude": -0.13962,
+          },
+          Object {
+            "latitude": 51.51208,
+            "longitude": -0.13959,
+          },
+          Object {
+            "latitude": 51.51205,
+            "longitude": -0.13955,
+          },
+          Object {
+            "latitude": 51.51179,
+            "longitude": -0.13933,
+          },
+          Object {
+            "latitude": 51.51172,
+            "longitude": -0.13927,
+          },
+          Object {
+            "latitude": 51.51166,
+            "longitude": -0.13921,
+          },
+          Object {
+            "latitude": 51.51162,
+            "longitude": -0.13917,
+          },
+          Object {
+            "latitude": 51.51109,
+            "longitude": -0.1387,
+          },
+          Object {
+            "latitude": 51.51047,
+            "longitude": -0.13814,
+          },
+          Object {
+            "latitude": 51.51043,
+            "longitude": -0.13811,
+          },
+          Object {
+            "latitude": 51.51037,
+            "longitude": -0.13804,
+          },
+          Object {
+            "latitude": 51.51034,
+            "longitude": -0.138,
+          },
+          Object {
+            "latitude": 51.51029,
+            "longitude": -0.13792,
+          },
+          Object {
+            "latitude": 51.51025,
+            "longitude": -0.13784,
+          },
+          Object {
+            "latitude": 51.5102,
+            "longitude": -0.13774,
+          },
+          Object {
+            "latitude": 51.51016,
+            "longitude": -0.13762,
+          },
+          Object {
+            "latitude": 51.51012,
+            "longitude": -0.13753,
+          },
+          Object {
+            "latitude": 51.51009,
+            "longitude": -0.13741,
+          },
+          Object {
+            "latitude": 51.51006,
+            "longitude": -0.13729,
+          },
+          Object {
+            "latitude": 51.51002,
+            "longitude": -0.13712,
+          },
+          Object {
+            "latitude": 51.51,
+            "longitude": -0.13698,
+          },
+          Object {
+            "latitude": 51.50998,
+            "longitude": -0.13687,
+          },
+          Object {
+            "latitude": 51.50997,
+            "longitude": -0.13678,
+          },
+          Object {
+            "latitude": 51.50996,
+            "longitude": -0.13664,
+          },
+          Object {
+            "latitude": 51.50995,
+            "longitude": -0.13651,
+          },
+          Object {
+            "latitude": 51.50995,
+            "longitude": -0.13638,
+          },
+          Object {
+            "latitude": 51.50995,
+            "longitude": -0.13632,
+          },
+          Object {
+            "latitude": 51.50996,
+            "longitude": -0.1362,
+          },
+          Object {
+            "latitude": 51.50996,
+            "longitude": -0.13607,
+          },
+          Object {
+            "latitude": 51.50997,
+            "longitude": -0.13601,
+          },
+          Object {
+            "latitude": 51.50998,
+            "longitude": -0.13593,
+          },
+          Object {
+            "latitude": 51.50998,
+            "longitude": -0.13591,
+          },
+          Object {
+            "latitude": 51.51,
+            "longitude": -0.13576,
+          },
+          Object {
+            "latitude": 51.51003,
+            "longitude": -0.13564,
+          },
+          Object {
+            "latitude": 51.51005,
+            "longitude": -0.13553,
+          },
+          Object {
+            "latitude": 51.51007,
+            "longitude": -0.1354,
+          },
+          Object {
+            "latitude": 51.51011,
+            "longitude": -0.13526,
+          },
+          Object {
+            "latitude": 51.51013,
+            "longitude": -0.13517,
+          },
+          Object {
+            "latitude": 51.51014,
+            "longitude": -0.13515,
+          },
+          Object {
+            "latitude": 51.51014,
+            "longitude": -0.13514,
+          },
+          Object {
+            "latitude": 51.51014,
+            "longitude": -0.13513,
+          },
+          Object {
+            "latitude": 51.51014,
+            "longitude": -0.13512,
+          },
+          Object {
+            "latitude": 51.51013,
+            "longitude": -0.1351,
+          },
+          Object {
+            "latitude": 51.50972,
+            "longitude": -0.13483,
+          },
+          Object {
+            "latitude": 51.50964,
+            "longitude": -0.13476,
+          },
+          Object {
+            "latitude": 51.50953,
+            "longitude": -0.13465,
+          },
+          Object {
+            "latitude": 51.50925,
+            "longitude": -0.13438,
+          },
+          Object {
+            "latitude": 51.50918,
+            "longitude": -0.13433,
+          },
+          Object {
+            "latitude": 51.50858,
+            "longitude": -0.13381,
+          },
+          Object {
+            "latitude": 51.50718,
+            "longitude": -0.13228,
+          },
+          Object {
+            "latitude": 51.50734,
+            "longitude": -0.13182,
+          },
+          Object {
+            "latitude": 51.50764,
+            "longitude": -0.131,
+          },
+          Object {
+            "latitude": 51.50765,
+            "longitude": -0.13097,
+          },
+          Object {
+            "latitude": 51.50765,
+            "longitude": -0.13092,
+          },
+          Object {
+            "latitude": 51.50765,
+            "longitude": -0.13087,
+          },
+          Object {
+            "latitude": 51.50765,
+            "longitude": -0.13082,
+          },
+          Object {
+            "latitude": 51.50765,
+            "longitude": -0.13078,
+          },
+          Object {
+            "latitude": 51.50762,
+            "longitude": -0.1305,
+          },
+          Object {
+            "latitude": 51.50761,
+            "longitude": -0.13032,
+          },
+          Object {
+            "latitude": 51.50758,
+            "longitude": -0.13007,
+          },
+          Object {
+            "latitude": 51.50756,
+            "longitude": -0.12995,
+          },
+          Object {
+            "latitude": 51.50746,
+            "longitude": -0.12905,
+          },
+          Object {
+            "latitude": 51.50745,
+            "longitude": -0.12894,
+          },
+          Object {
+            "latitude": 51.50744,
+            "longitude": -0.12887,
+          },
+          Object {
+            "latitude": 51.50743,
+            "longitude": -0.12872,
+          },
+          Object {
+            "latitude": 51.5074,
+            "longitude": -0.12847,
+          },
+          Object {
+            "latitude": 51.50737,
+            "longitude": -0.1283,
+          },
+          Object {
+            "latitude": 51.50734,
+            "longitude": -0.12821,
+          },
+          Object {
+            "latitude": 51.50732,
+            "longitude": -0.12817,
+          },
+          Object {
+            "latitude": 51.50728,
+            "longitude": -0.12808,
+          },
+          Object {
+            "latitude": 51.50727,
+            "longitude": -0.12807,
+          },
+          Object {
+            "latitude": 51.50718,
+            "longitude": -0.12796,
+          },
+          Object {
+            "latitude": 51.50716,
+            "longitude": -0.12793,
+          },
+          Object {
+            "latitude": 51.50713,
+            "longitude": -0.12775,
+          },
+          Object {
+            "latitude": 51.5071,
+            "longitude": -0.12771,
+          },
+          Object {
+            "latitude": 51.50707,
+            "longitude": -0.12766,
+          },
+          Object {
+            "latitude": 51.50702,
+            "longitude": -0.12761,
+          },
+          Object {
+            "latitude": 51.50697,
+            "longitude": -0.12756,
+          },
+          Object {
+            "latitude": 51.50692,
+            "longitude": -0.12749,
+          },
+          Object {
+            "latitude": 51.50665,
+            "longitude": -0.12738,
+          },
+          Object {
+            "latitude": 51.50631,
+            "longitude": -0.12721,
+          },
+          Object {
+            "latitude": 51.50626,
+            "longitude": -0.12722,
+          },
+          Object {
+            "latitude": 51.50623,
+            "longitude": -0.12721,
+          },
+          Object {
+            "latitude": 51.5062,
+            "longitude": -0.12721,
+          },
+          Object {
+            "latitude": 51.50613,
+            "longitude": -0.12717,
+          },
+          Object {
+            "latitude": 51.50598,
+            "longitude": -0.12709,
+          },
+          Object {
+            "latitude": 51.50584,
+            "longitude": -0.12702,
+          },
+          Object {
+            "latitude": 51.5056,
+            "longitude": -0.12692,
+          },
+          Object {
+            "latitude": 51.50534,
+            "longitude": -0.1268,
+          },
+          Object {
+            "latitude": 51.50517,
+            "longitude": -0.12672,
+          },
+          Object {
+            "latitude": 51.50497,
+            "longitude": -0.12664,
+          },
+          Object {
+            "latitude": 51.50499,
+            "longitude": -0.1265,
+          },
+        ]
+      }
+      lineCap="round"
+      lineJoin="bevel"
+      strokeColor="#660c63"
+      strokeWidth={5}
+    />
+    <MapMarker
+      coordinate={
+        Object {
+          "latitude": 51.51616,
+          "longitude": -0.14223,
+        }
+      }
+      key="start"
+      stopPropagation={false}
+    >
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#660c63",
+            "borderRadius": 9,
+            "height": 18,
+            "justifyContent": "center",
+            "width": 18,
+          }
+        }
+      >
+        <Text
+          color="whiteColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="xSmall"
+        >
+          A
+        </Text>
+      </Component>
+    </MapMarker>
+    <MapMarker
+      coordinate={
+        Object {
+          "latitude": 51.50499,
+          "longitude": -0.1265,
+        }
+      }
+      key="finish"
+      stopPropagation={false}
+    >
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#660c63",
+            "borderRadius": 9,
+            "height": 18,
+            "justifyContent": "center",
+            "width": 18,
+          }
+        }
+      >
+        <Text
+          color="whiteColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="xSmall"
+        >
+          B
+        </Text>
+      </Component>
+    </MapMarker>
+  </MapView>
 </Component>
 `;

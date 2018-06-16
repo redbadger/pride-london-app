@@ -24,7 +24,6 @@ exports[`Parade Map Screen component renders correctly 1`] = `
         "longitudeDelta": 4.1e-8,
       }
     }
-    permission={false}
     route={
       Array [
         Object {
