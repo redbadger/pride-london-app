@@ -92,7 +92,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
   renderContent() {
     const { selectedAmount, otherAmount } = this.state;
     return (
-      <ScrollView ref={this.scrollViewRef} testID="donate-screen">
+      <ScrollView ref={this.scrollViewRef}>
         <SafeAreaView style={styles.scrollContainer}>
           <ImageHeader image={donateHeader} title={text.donateHeader} />
           <ContentPadding>
@@ -153,7 +153,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} testID="donate-screen">
         {this.renderHeader()}
         <KeyboardAvoidingView behavior="padding" enabled style={styles.content}>
           {this.renderContent()}

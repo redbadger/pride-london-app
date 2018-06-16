@@ -83,7 +83,7 @@ const SupportUsScreen = ({ navigation }: Props) => (
             navigation={navigation}
             url={SPONSOR}
             style={styles.buttonSpacing}
-            testID="support-us-partner-button"
+            testID="support-us-sponsor-button"
           />
         </ContentPadding>
       </View>

@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SponsorScreen Component renders correctly 1`] = `
-<withOrientation
+<Component
   style={
     Object {
       "backgroundColor": "#ffffff",
       "flex": 1,
     }
   }
-  testID="partner-screen"
+  testID="sponsor-screen"
 >
   <Header
     leftElement={
@@ -192,5 +192,5 @@ exports[`SponsorScreen Component renders correctly 1`] = `
       </Button>
     </ContentPadding>
   </Component>
-</withOrientation>
+</Component>
 `;

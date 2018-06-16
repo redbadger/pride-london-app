@@ -113,7 +113,7 @@ exports[`renders correctly 1`] = `
               "marginTop": 12,
             }
           }
-          testID="support-us-partner-button"
+          testID="support-us-sponsor-button"
           title="Partner with us"
           url="SPONSOR"
         />

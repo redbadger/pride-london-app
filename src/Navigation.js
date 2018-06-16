@@ -75,6 +75,7 @@ const withShadow = Component => props => (
     <LinearGradient
       colors={[transparent, tabBarShadowColor]}
       style={styles.shadow}
+      pointerEvents="none"
     />
   </View>
 );

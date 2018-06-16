@@ -8,6 +8,7 @@ exports[`renders correctly 1`] = `
       "flex": 1,
     }
   }
+  testID="donate-screen"
 >
   <Header
     leftElement={
@@ -26,9 +27,7 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <ScrollView
-      testID="donate-screen"
-    >
+    <ScrollView>
       <withOrientation
         style={
           Object {
