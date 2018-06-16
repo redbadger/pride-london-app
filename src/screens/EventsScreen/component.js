@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from "react";
+import type { ElementRef } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type {
@@ -60,8 +61,9 @@ class EventsScreen extends Component<Props> {
   };
 
   scrollEventListToTop = () => {
-    if (this.eventList && this.eventList.sectionList) {
-      this.eventList.sectionList.scrollToLocation({
+    const eventList = this.eventListRef.current;
+    if (eventList && eventList.sectionList) {
+      eventList.sectionList.scrollToLocation({
         itemIndex: 0,
         sectionIndex: 0,
         viewOffset: DEFAULT_SEPARATOR_HEIGHT,
@@ -71,7 +73,8 @@ class EventsScreen extends Component<Props> {
     }
   };
 
-  eventList = null;
+  // $FlowFixMe
+  eventListRef: ElementRef<typeof EventList> = React.createRef();
 
   render() {
     const {
@@ -107,9 +110,7 @@ class EventsScreen extends Component<Props> {
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
-            ref={eventList => {
-              this.eventList = eventList;
-            }}
+            ref={this.eventListRef}
           />
         )}
       </View>

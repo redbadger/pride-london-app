@@ -53,4 +53,18 @@ describe("ConnectedFilterHeader", () => {
     const output = shallow(<FilterHeader store={store} {...defaultProps} />);
     expect(output.dive()).toMatchSnapshot();
   });
+
+  it("dispatches clear filters action", () => {
+    const store = mockStore(initialState);
+    const output = shallow(<FilterHeader store={store} {...defaultProps} />);
+
+    output.props().resetAllFiltersPress();
+
+    const actions = store.getActions();
+    expect(actions).toEqual([
+      {
+        type: "CLEAR_EVENT_FILTERS"
+      }
+    ]);
+  });
 });
