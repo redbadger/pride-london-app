@@ -33,6 +33,10 @@ class ResetAllFiltersButton extends React.PureComponent<Props, State> {
     };
   }
 
+  componentWillUnmount() {
+    this.animationFinished();
+  }
+
   setButtonHeight = (e: ViewLayoutEvent): void => {
     const { height } = e.nativeEvent.layout;
     this.height = height;
@@ -70,8 +74,10 @@ class ResetAllFiltersButton extends React.PureComponent<Props, State> {
   };
 
   animationFinished = (): void => {
-    this.setState({ isAnimating: false });
-    this.resetAnimation();
+    if (this.state.isAnimating) {
+      this.setState({ isAnimating: false });
+      this.resetAnimation();
+    }
   };
 
   topOffset: Animated.Value = new Animated.Value(DEFAULT_TOP_OFFSET_VALUE);
