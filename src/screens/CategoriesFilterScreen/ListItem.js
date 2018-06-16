@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from "react";
 import { StyleSheet, View, Animated, Dimensions, Image } from "react-native";
+import { hyphenate } from "../../lib/string";
 import Text from "../../components/Text";
 import Touchable from "../../components/Touchable";
 import { whiteColor, blackColor } from "../../constants/colors";
@@ -74,6 +75,7 @@ class ListItem extends Component<
           category.label,
           selected
         )}
+        testID={`categories-filter-list-item-${hyphenate(category.label)}`}
       >
         <Animated.View
           style={[

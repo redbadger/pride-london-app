@@ -2,6 +2,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
+import { hyphenate } from "../lib/string";
 import Text from "./Text";
 import Touchable from "./Touchable";
 import type { EventCategoryName } from "../data/event";
@@ -31,6 +32,7 @@ const CategoryPill = ({ name, style, numberOfLines, onPress }: Props) => {
       type="h3"
       numberOfLines={numberOfLines}
       style={[styles.categoryPillText, categoryStyleColor(name)]}
+      testID={`category-pill-${hyphenate(name)}`}
     >
       {name}
     </Text>

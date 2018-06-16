@@ -21,7 +21,8 @@ type Props = {
   removeSavedEvent: string => void,
   refreshing?: boolean,
   onRefresh?: () => void,
-  onPress: (id: string) => void
+  onPress: (id: string) => void,
+  testID?: string
 };
 
 type State = {
@@ -31,18 +32,23 @@ type State = {
   eventsReordered: boolean
 };
 
+type Section = SectionBase<Event> & { index: number };
+
 type RenderItemInfo = {
-  item: Event // eslint-disable-line react/no-unused-prop-types
+  item: Event, // eslint-disable-line react/no-unused-prop-types
+  index: number,
+  section: Section
 };
 
 type RenderSectionInfo = {
-  section: SectionBase<Event> // eslint-disable-line react/no-unused-prop-types
+  section: Section // eslint-disable-line react/no-unused-prop-types
 };
 
-const eventSections = (events: EventDays): SectionBase<Event>[] =>
-  events.map(it => ({
+const eventSections = (events: EventDays): Section[] =>
+  events.map((it, index) => ({
     data: it,
-    key: formatDate(it[0].fields.startTime, FORMAT_YEAR_MONTH_DAY)
+    key: formatDate(it[0].fields.startTime, FORMAT_YEAR_MONTH_DAY),
+    index
   }));
 
 const getId = (item: { id: string }): string => item.id;
@@ -53,7 +59,8 @@ const eventIds = (events: EventDays): string[] =>
 class EventList extends Component<Props, State> {
   static defaultProps = {
     refreshing: false,
-    onRefresh: undefined
+    onRefresh: undefined,
+    testID: undefined
   };
 
   state = {
@@ -105,7 +112,7 @@ class EventList extends Component<Props, State> {
   keyExtractor = getId;
   sectionList = null;
 
-  renderItem = ({ item }: RenderItemInfo) => {
+  renderItem = ({ item, index, section }: RenderItemInfo) => {
     const {
       savedEvents,
       addSavedEvent,
@@ -128,6 +135,7 @@ class EventList extends Component<Props, State> {
           addSavedEvent={addSavedEvent}
           removeSavedEvent={removeSavedEvent}
           onPress={onPress}
+          testID={`event-card-${index}-${section.index}`}
         />
       </ContentPadding>
     );
@@ -145,7 +153,7 @@ class EventList extends Component<Props, State> {
   renderSectionFooter = () => <View style={styles.sectionFooter} />;
 
   render() {
-    const { events, refreshing, onRefresh } = this.props;
+    const { events, refreshing, onRefresh, testID } = this.props;
 
     // There is a bug in Android, which causes the app to crash when
     // too many list item changes are animated at the same time. To
@@ -169,6 +177,7 @@ class EventList extends Component<Props, State> {
         refreshing={refreshing}
         onRefresh={onRefresh}
         windowSize={10}
+        testID={testID}
         ref={sectionList => {
           this.sectionList = sectionList;
         }}

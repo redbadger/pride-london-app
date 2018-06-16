@@ -2,7 +2,6 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import { email as sendEmail } from "react-native-communications";
-import SafeAreaView from "react-native-safe-area-view";
 import R from "ramda";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import ContentPadding from "../../components/ContentPadding";
@@ -43,7 +42,7 @@ class SponsorScreen extends PureComponent<Props> {
     );
 
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container} testID="sponsor-screen">
         <Header
           leftElement={
             <Header.BackButton
@@ -101,7 +100,7 @@ class SponsorScreen extends PureComponent<Props> {
             </Button>
           </ContentPadding>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 }

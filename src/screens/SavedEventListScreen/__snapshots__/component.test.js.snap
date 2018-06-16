@@ -132,6 +132,7 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
     refreshing={false}
     removeSavedEvent={[Function]}
     savedEvents={Set {}}
+    testID="saved-event-list"
   />
 </Component>
 `;

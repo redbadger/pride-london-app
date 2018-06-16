@@ -81,6 +81,7 @@ class FilterScreen extends PureComponent<Props> {
               onPress={this.handleApplyButtonPress}
               disabled={numberOfEvents <= 0}
               accessibilityLabel={text.filterPickerApplyLabel(numberOfEvents)}
+              testID="apply-area-and-price-filter-button"
             >
               {text.filterPickerApply(numberOfEvents)}
             </Button>
