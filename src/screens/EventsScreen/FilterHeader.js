@@ -31,6 +31,11 @@ class FilterHeader extends React.PureComponent<Props> {
     resetAllFiltersPress: () => {}
   };
 
+  resetAllFilters = () => {
+    this.props.resetAllFiltersPress();
+    this.props.scrollEventListToTop();
+  };
+
   render() {
     const {
       dateFilter,
@@ -38,9 +43,7 @@ class FilterHeader extends React.PureComponent<Props> {
       selectedCategories,
       onFilterButtonPress,
       onDateFilterButtonPress,
-      numTagFiltersSelected,
-      resetAllFiltersPress,
-      scrollEventListToTop
+      numTagFiltersSelected
     } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
@@ -55,10 +58,7 @@ class FilterHeader extends React.PureComponent<Props> {
           <View>
             <ResetAllFiltersButton
               visible={anyAppliedFilters}
-              onPress={() => {
-                resetAllFiltersPress();
-                scrollEventListToTop();
-              }}
+              onPress={this.resetAllFilters}
             />
             <View testID="event-filter-header" style={styles.content}>
               <FilterHeaderCategories
