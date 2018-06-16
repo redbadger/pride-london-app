@@ -187,5 +187,6 @@ export default {
         stageImage: "community"
       }
     ]
-  }
+  },
+  resetAllFilters: "Reset all filters"
 };

@@ -5,6 +5,7 @@ import FilterHeader from "./FilterHeader";
 import type { Props as ComponentProps } from "./FilterHeader";
 import FilterHeaderButton from "./FilterHeaderButton";
 import FilterHeaderCategories from "./FilterHeaderCategories";
+import ResetAllFiltersButton from "./ResetAllFiltersButton";
 
 const render = (
   props: ComponentProps = {
@@ -13,7 +14,9 @@ const render = (
     onFilterCategoriesPress: () => {},
     onFilterButtonPress: () => {},
     onDateFilterButtonPress: () => {},
-    numTagFiltersSelected: 0
+    resetAllFiltersPress: () => {},
+    numTagFiltersSelected: 0,
+    scrollEventListToTop: () => {}
   }
 ) => shallow(<FilterHeader {...props} />);
 
@@ -25,7 +28,9 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -37,7 +42,9 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -49,7 +56,9 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -64,7 +73,9 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -76,7 +87,9 @@ describe("renders correctly", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
-      numTagFiltersSelected: 2
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 2,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -91,7 +104,9 @@ describe("filter buttons", () => {
       onFilterCategoriesPress: mock,
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     output.find(FilterHeaderCategories).prop("onFilterPress")();
 
@@ -106,7 +121,9 @@ describe("filter buttons", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
       onDateFilterButtonPress: mock,
-      numTagFiltersSelected: 0
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     const button = output.find(FilterHeaderButton).at(0);
     button.simulate("press");
@@ -122,10 +139,32 @@ describe("filter buttons", () => {
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: mock,
       onDateFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     const button = output.find(FilterHeaderButton).at(1);
     button.simulate("press");
+
+    expect(mock).toBeCalledWith();
+  });
+
+  it("calls scrollEventListToTop when users presses 'Reset all filters' button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(["Music"]),
+      onFilterCategoriesPress: () => {},
+      onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: mock
+    });
+    output
+      .find(ResetAllFiltersButton)
+      .props()
+      .onPress();
 
     expect(mock).toBeCalledWith();
   });

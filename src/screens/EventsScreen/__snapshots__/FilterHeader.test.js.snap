@@ -17,19 +17,27 @@ exports[`renders correctly with any date and any time (empty time set) 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <Component
-      style={
-        Object {
-          "paddingBottom": 12,
-          "paddingTop": 16,
-        }
-      }
-      testID="event-filter-header"
-    >
-      <FilterHeaderCategories
-        onFilterPress={[Function]}
-        selectedCategories={Set {}}
+    <Component>
+      <ResetAllFiltersButton
+        animationDelay={0}
+        animationTime={300}
+        onPress={[Function]}
+        visible={false}
       />
+      <Component
+        style={
+          Object {
+            "marginTop": 16,
+            "paddingBottom": 12,
+          }
+        }
+        testID="event-filter-header"
+      >
+        <FilterHeaderCategories
+          onFilterPress={[Function]}
+          selectedCategories={Set {}}
+        />
+      </Component>
     </Component>
   </ContentPadding>
   <Component
@@ -96,19 +104,27 @@ exports[`renders correctly with any date and any time 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <Component
-      style={
-        Object {
-          "paddingBottom": 12,
-          "paddingTop": 16,
-        }
-      }
-      testID="event-filter-header"
-    >
-      <FilterHeaderCategories
-        onFilterPress={[Function]}
-        selectedCategories={Set {}}
+    <Component>
+      <ResetAllFiltersButton
+        animationDelay={0}
+        animationTime={300}
+        onPress={[Function]}
+        visible={false}
       />
+      <Component
+        style={
+          Object {
+            "marginTop": 16,
+            "paddingBottom": 12,
+          }
+        }
+        testID="event-filter-header"
+      >
+        <FilterHeaderCategories
+          onFilterPress={[Function]}
+          selectedCategories={Set {}}
+        />
+      </Component>
     </Component>
   </ContentPadding>
   <Component
@@ -175,19 +191,27 @@ exports[`renders correctly with date range and two times 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <Component
-      style={
-        Object {
-          "paddingBottom": 12,
-          "paddingTop": 16,
-        }
-      }
-      testID="event-filter-header"
-    >
-      <FilterHeaderCategories
-        onFilterPress={[Function]}
-        selectedCategories={Set {}}
+    <Component>
+      <ResetAllFiltersButton
+        animationDelay={0}
+        animationTime={300}
+        onPress={[Function]}
+        visible={true}
       />
+      <Component
+        style={
+          Object {
+            "marginTop": 16,
+            "paddingBottom": 12,
+          }
+        }
+        testID="event-filter-header"
+      >
+        <FilterHeaderCategories
+          onFilterPress={[Function]}
+          selectedCategories={Set {}}
+        />
+      </Component>
     </Component>
   </ContentPadding>
   <Component
@@ -254,19 +278,27 @@ exports[`renders correctly with single date and single time 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <Component
-      style={
-        Object {
-          "paddingBottom": 12,
-          "paddingTop": 16,
-        }
-      }
-      testID="event-filter-header"
-    >
-      <FilterHeaderCategories
-        onFilterPress={[Function]}
-        selectedCategories={Set {}}
+    <Component>
+      <ResetAllFiltersButton
+        animationDelay={0}
+        animationTime={300}
+        onPress={[Function]}
+        visible={true}
       />
+      <Component
+        style={
+          Object {
+            "marginTop": 16,
+            "paddingBottom": 12,
+          }
+        }
+        testID="event-filter-header"
+      >
+        <FilterHeaderCategories
+          onFilterPress={[Function]}
+          selectedCategories={Set {}}
+        />
+      </Component>
     </Component>
   </ContentPadding>
   <Component
@@ -333,19 +365,27 @@ exports[`renders correctly with tag filters selected 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <Component
-      style={
-        Object {
-          "paddingBottom": 12,
-          "paddingTop": 16,
-        }
-      }
-      testID="event-filter-header"
-    >
-      <FilterHeaderCategories
-        onFilterPress={[Function]}
-        selectedCategories={Set {}}
+    <Component>
+      <ResetAllFiltersButton
+        animationDelay={0}
+        animationTime={300}
+        onPress={[Function]}
+        visible={true}
       />
+      <Component
+        style={
+          Object {
+            "marginTop": 16,
+            "paddingBottom": 12,
+          }
+        }
+        testID="event-filter-header"
+      >
+        <FilterHeaderCategories
+          onFilterPress={[Function]}
+          selectedCategories={Set {}}
+        />
+      </Component>
     </Component>
   </ContentPadding>
   <Component
