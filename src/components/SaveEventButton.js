@@ -27,6 +27,11 @@ export default class SaveEventButton extends React.Component<Props, State> {
     testID: undefined
   };
 
+  state = {
+    animating: false,
+    progress: null
+  };
+
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     if (!prevState.animating || !prevState.progress) {
       const value = nextProps.active ? 1 : 0;
@@ -37,11 +42,6 @@ export default class SaveEventButton extends React.Component<Props, State> {
     }
     return null;
   }
-
-  state = {
-    animating: false,
-    progress: null
-  };
 
   shouldComponentUpdate(nextProps: Props) {
     return (
