@@ -76,7 +76,7 @@ exports[`renders correctly 1`] = `
           centerText={false}
           color="#c3d30e"
           contrast={true}
-          description="Visit our online shop on The Gay UK"
+          description="Visit our online shop on TheGayShop"
           navigation={null}
           style={
             Object {

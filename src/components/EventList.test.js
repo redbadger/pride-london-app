@@ -1,107 +1,15 @@
+// @flow
 import React from "react";
 import { LayoutAnimation } from "react-native";
 import { shallow } from "enzyme";
+import { generateEvent, sampleOne } from "../data/__test-data";
 import EventList from "./EventList";
 
-const events = [
-  [
-    {
-      sys: {
-        id: "1",
-        type: "",
-        contentType: { sys: { id: "" } },
-        revision: 1
-      },
-      fields: {
-        name: {
-          "en-GB": "some event"
-        },
-        startTime: {
-          "en-GB": "2018-07-10T00:00"
-        },
-        endTime: {
-          "en-GB": "2018-08-11T00:00"
-        },
-        locationName: {
-          "en-GB": "Somewhere"
-        },
-        eventPriceLow: {
-          "en-GB": "0"
-        },
-        eventPriceHigh: {
-          "en-GB": "0"
-        },
-        eventsListPicture: {
-          "en-GB": "http://placekitten.com/200/300"
-        }
-      }
-    },
-    {
-      sys: {
-        id: "2",
-        type: "",
-        contentType: { sys: { id: "" } },
-        revision: 1
-      },
-      fields: {
-        name: {
-          "en-GB": "some other"
-        },
-        startTime: {
-          "en-GB": "2018-07-10T00:00"
-        },
-        endTime: {
-          "en-GB": "2018-08-11T00:00"
-        },
-        locationName: {
-          "en-GB": "Somewhere"
-        },
-        eventPriceLow: {
-          "en-GB": "0"
-        },
-        eventPriceHigh: {
-          "en-GB": "0"
-        },
-        eventsListPicture: {
-          "en-GB": "http://placekitten.com/200/300"
-        }
-      }
-    }
-  ],
-  [
-    {
-      sys: {
-        id: "2",
-        type: "",
-        contentType: { sys: { id: "" } },
-        revision: 1
-      },
-      fields: {
-        name: {
-          "en-GB": "some other"
-        },
-        startTime: {
-          "en-GB": "2018-07-11T00:00"
-        },
-        endTime: {
-          "en-GB": "2018-08-11T00:00"
-        },
-        locationName: {
-          "en-GB": "Somewhere"
-        },
-        eventPriceLow: {
-          "en-GB": "0"
-        },
-        eventPriceHigh: {
-          "en-GB": "0"
-        },
-        eventsListPicture: {
-          "en-GB": "http://placekitten.com/200/300"
-        }
-      }
-    }
-  ]
-];
+const eventA = sampleOne(generateEvent, { seed: 1234 });
+const eventB = sampleOne(generateEvent, { seed: 6426 });
+const eventC = sampleOne(generateEvent, { seed: 2344 });
+
+const events = [[eventA, eventB], [eventC]];
 
 let configureNextSpy;
 beforeEach(() => {
@@ -115,7 +23,6 @@ describe("EventList", () => {
     shallow(
       <EventList
         events={events}
-        locale="en-GB"
         refreshing={false}
         onRefresh={() => {}}
         onPress={() => {}}
@@ -203,20 +110,18 @@ describe("EventList", () => {
     const keyExtractor = render().prop("keyExtractor");
     const key = keyExtractor(events[0][0]);
 
-    expect(key).toBe("1");
+    expect(key).toBe(events[0][0].id);
   });
 
   describe("#shouldComponentUpdate", () => {
     const props = {
-      locale: "en-GB",
       refreshing: false,
       events,
       savedEvents: new Set()
     };
 
-    it("stops update if locale, refresing and events stay the same", () => {
+    it("stops update if refresing and events stay the same", () => {
       const nextProps = {
-        locale: "en-GB",
         refreshing: false,
         savedEvents: props.savedEvents
       };
@@ -232,27 +137,8 @@ describe("EventList", () => {
       expect(shouldUpdate).toBe(false);
     });
 
-    it("allows update when locale changes", () => {
-      const nextProps = {
-        locale: "en-US",
-        refreshing: false,
-        savedEvents: props.savedEvents
-      };
-      const nextState = {
-        eventsChanged: false
-      };
-
-      const output = render(props);
-      const shouldUpdate = output
-        .instance()
-        .shouldComponentUpdate(nextProps, nextState);
-
-      expect(shouldUpdate).toBe(true);
-    });
-
     it("allows update when refreshing", () => {
       const nextProps = {
-        locale: "en-GB",
         refreshing: true,
         savedEvents: props.savedEvents
       };
@@ -270,7 +156,6 @@ describe("EventList", () => {
 
     it("allows update when events change", () => {
       const nextProps = {
-        locale: "en-GB",
         refreshing: false,
         savedEvents: props.savedEvents
       };
@@ -290,7 +175,6 @@ describe("EventList", () => {
 
     it("allows savedEvents change", () => {
       const nextProps = {
-        locale: "en-GB",
         refreshing: false,
         savedEvents: new Set(["test"])
       };

@@ -1,4 +1,5 @@
 // @flow
+import { DateTime } from "luxon";
 import {
   buildDateRangeFilter,
   buildTimeFilter,
@@ -8,39 +9,35 @@ import {
   buildCategoryFilter
 } from "./basic-event-filters";
 import tags from "../data/tags";
-import type { Event } from "../data/event-deprecated";
+import type { Event } from "../data/event";
 import type { Time } from "../data/date-time";
-import type { State } from "../reducers";
-import type { Area } from "../data/event-filters";
+import type {
+  Area,
+  FilterCollection,
+  State as EventFilters
+} from "../data/event-filters";
 
-const getEventFiltersState = (state: State, selectStagedFilters: boolean) =>
-  selectStagedFilters
-    ? state.eventFilters.stagedFilters
-    : state.eventFilters.selectedFilters;
+export const selectShowEventsAfter = (eventFilters: EventFilters): DateTime =>
+  eventFilters.showEventsAfter;
 
-export const selectDateFilter = (
-  state: State,
-  selectStagedFilters?: boolean = false
-) => getEventFiltersState(state, selectStagedFilters).date;
-export const selectTimeFilter = (
-  state: State,
-  selectStagedFilters?: boolean = false
-) => getEventFiltersState(state, selectStagedFilters).timeOfDay;
+export const selectStagedFilters = (
+  eventFilters: EventFilters
+): FilterCollection => eventFilters.stagedFilters;
 
-export const selectTagFilterSelectedCount = (
-  state: State,
-  selectStagedFilters?: boolean = false
-) => {
-  const eventFilters = getEventFiltersState(state, selectStagedFilters);
-  return Object.keys(tags).reduce(
-    (acc, tagName) =>
-      acc + (eventFilters[tagName] ? eventFilters[tagName].size : 0),
+export const selectSelectedFilters = (
+  eventFilters: EventFilters
+): FilterCollection => eventFilters.selectedFilters;
+
+export const selectDateFilter = (filters: FilterCollection) => filters.date;
+
+export const selectTimeFilter = (filters: FilterCollection) =>
+  filters.timeOfDay;
+
+export const selectTagFilterSelectedCount = (filters: FilterCollection) =>
+  Object.keys(tags).reduce(
+    (acc, tagName) => acc + (filters[tagName] ? filters[tagName].size : 0),
     0
   );
-};
-
-export const selectIsStagingFilters = (state: State): boolean =>
-  state.eventFilters.stagedFilters !== state.eventFilters.selectedFilters;
 
 const buildTimesFilter = (times: Time[]) => {
   const filters = times.map(time => buildTimeFilter(time));
@@ -52,11 +49,14 @@ const buildAreasFilter = (areas: Area[]) => {
   return (event: Event) => filters.some(filter => filter(event));
 };
 
+export const eventIsAfter = (date: DateTime) => (event: Event) => {
+  const endTime = DateTime.fromISO(event.fields.endTime);
+  return DateTime.max(date, endTime) === endTime;
+};
+
 export const buildEventFilter = (
-  state: State,
-  selectStagedFilters?: boolean = false
-) => {
-  const {
+  showEventsAfter: DateTime,
+  {
     date,
     timeOfDay,
     price,
@@ -65,9 +65,11 @@ export const buildEventFilter = (
     accessibilityOptions,
     area,
     categories
-  } = getEventFiltersState(state, selectStagedFilters);
+  }: FilterCollection
+): (Event => boolean) => {
   const timeArray = Array.from(timeOfDay);
   const areaArray = Array.from(area);
+  const isAfter = eventIsAfter(showEventsAfter);
   const dateFilter: (event: Event) => boolean = date
     ? buildDateRangeFilter(date)
     : () => true;
@@ -94,6 +96,7 @@ export const buildEventFilter = (
     categories.size > 0 ? buildCategoryFilter(categories) : () => true;
 
   return (event: Event) =>
+    isAfter(event) &&
     dateFilter(event) &&
     timeFilter(event) &&
     priceFilter(event) &&

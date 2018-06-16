@@ -17,16 +17,26 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <Component
-      style={
-        Object {
-          "paddingBottom": 12,
-          "paddingTop": 16,
+    <Component>
+      <ResetAllFiltersButton
+        animationDelay={0}
+        animationTime={300}
+        onPress={[Function]}
+        visible={false}
+      />
+      <Component
+        style={
+          Object {
+            "marginTop": 16,
+            "paddingBottom": 12,
+          }
         }
-      }
-      testID="event-filter-header"
-    >
-      <FilterHeaderCategories />
+        testID="event-filter-header"
+      >
+        <FilterHeaderCategories
+          selectedCategories={Set {}}
+        />
+      </Component>
     </Component>
   </ContentPadding>
   <Component
@@ -43,7 +53,6 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       active={false}
       badgeValue={null}
       label="filter by date: Select dates"
-      onPress={[Function]}
       style={
         Object {
           "flex": 1,
@@ -74,11 +83,6 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       text="Filter by area, price..."
     />
   </Component>
-  <Connect(DateRangePickerDialog)
-    onApply={[Function]}
-    onCancel={[Function]}
-    visible={false}
-  />
 </Component>
 `;
 
@@ -86,6 +90,8 @@ exports[`ConnectedFilterHeader renders connector 1`] = `
 <FilterHeader
   dateFilter={null}
   numTagFiltersSelected={0}
+  resetAllFiltersPress={[Function]}
+  selectedCategories={Set {}}
   store={
     Object {
       "clearActions": [Function],

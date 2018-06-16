@@ -1,25 +1,32 @@
 // @flow
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import type { NavigationScreenProp } from "react-navigation";
-import type { SavedEvents, EventDays } from "../../data/event-deprecated";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
+import type { SavedEvents, EventDays } from "../../data/event";
 import EventList from "../../components/EventList";
 import Header from "../../components/Header";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
 
-import locale from "../../data/locale";
-
 export type Props = {
-  navigation: NavigationScreenProp<{ params: { title: string } }>,
+  navigation: NavigationScreenProp<NavigationState>,
   events: EventDays,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
   removeSavedEvent: string => void
 };
 
-class FeaturedEventsListScreen extends PureComponent<Props> {
+class FeaturedEventsListScreen extends Component<Props> {
+  shouldComponentUpdate(nextProps: Props) {
+    // intentionally do not check this.props.navigation
+    return (
+      nextProps.events !== this.props.events ||
+      nextProps.savedEvents !== this.props.savedEvents ||
+      nextProps.addSavedEvent !== this.props.addSavedEvent ||
+      nextProps.removeSavedEvent !== this.props.removeSavedEvent
+    );
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -34,7 +41,6 @@ class FeaturedEventsListScreen extends PureComponent<Props> {
           title={text.featuredEventListTitle}
         />
         <EventList
-          locale={locale}
           events={this.props.events}
           savedEvents={this.props.savedEvents}
           addSavedEvent={this.props.addSavedEvent}

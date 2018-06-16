@@ -12,7 +12,7 @@ import text from "../../constants/text";
 import Text, { scaleWithFont } from "../../components/Text";
 import CategoriesPills from "../../components/CategoriesPills";
 import chevronRightImg from "../../../assets/images/chevronRight.png";
-import type { EventCategoryName } from "../../data/event-deprecated";
+import type { EventCategoryName } from "../../data/event";
 
 type Props = {
   selectedCategories: Set<EventCategoryName>,

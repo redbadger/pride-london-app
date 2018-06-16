@@ -94,7 +94,7 @@ class EventCard extends React.PureComponent<Props> {
           <SaveEventButton
             active={isSaved}
             onPress={this.handleToggleSave}
-            testID={`${testID}-save-event-button`}
+            testID={testID ? `${testID}-save-event-button` : undefined}
           />
         </View>
       </View>

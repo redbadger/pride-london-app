@@ -2,9 +2,8 @@
 import React, { Component } from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
 import { equals } from "ramda";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Header from "./Header";
-import { withNavigationFocus } from "../../lib/navigation";
-import type { NavigationProps } from "../../lib/navigation";
 import ContentPadding from "../../components/ContentPadding";
 import EventTile from "../../components/EventTile";
 import Loading from "../../components/Loading";
@@ -20,13 +19,12 @@ import {
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
-import type { Event } from "../../data/event-deprecated";
+import type { Event } from "../../data/event";
 import type { ImageDetails } from "../../data/image";
 import type { HeaderBanner } from "../../data/header-banner";
 
-import locale from "../../data/locale";
-
 type Props = {
+  navigation: NavigationScreenProp<NavigationState>,
   headerBanners: HeaderBanner[],
   featuredEventsTitle: string,
   featuredEvents: Event[],
@@ -34,16 +32,10 @@ type Props = {
   getImageDetails: string => ?ImageDetails
 };
 
-type AllProps = Props & NavigationProps;
-
 const getId = obj => obj.id;
 
-class HomeScreen extends Component<AllProps> {
-  shouldComponentUpdate = (nextProps: AllProps): boolean => {
-    if (!nextProps.isFocused) {
-      return false;
-    }
-
+class HomeScreen extends Component<Props> {
+  shouldComponentUpdate = (nextProps: Props): boolean => {
     const { loading, featuredEventsTitle } = this.props;
     const {
       loading: nextLoading,
@@ -53,8 +45,8 @@ class HomeScreen extends Component<AllProps> {
     const bannerIds = this.props.headerBanners.map(getId);
     const nextBannerIds = nextProps.headerBanners.map(getId);
 
-    const ids = this.props.featuredEvents.map(e => e.sys.id);
-    const nextIds = nextProps.featuredEvents.map(e => e.sys.id);
+    const ids = this.props.featuredEvents.map(getId);
+    const nextIds = nextProps.featuredEvents.map(getId);
 
     return (
       loading !== nextLoading ||
@@ -111,7 +103,7 @@ class HomeScreen extends Component<AllProps> {
               <View style={styles.tilesContainer}>
                 {events.map((event, index) => (
                   <View
-                    key={event.sys.id}
+                    key={event.id}
                     style={[
                       styles.tileContainer,
                       index % 2 === 0 && styles.startOfRowTileContainer
@@ -119,14 +111,14 @@ class HomeScreen extends Component<AllProps> {
                   >
                     <Touchable
                       style={styles.tile}
-                      onPress={() => this.eventDetails(event.sys.id)}
+                      onPress={() => this.eventDetails(event.id)}
                       testID={`event-tile-${index}`}
                     >
                       <EventTile
-                        name={event.fields.name[locale]}
-                        date={event.fields.startTime[locale]}
-                        eventCategories={event.fields.eventCategories[locale]}
-                        imageReference={event.fields.eventsListPicture[locale]}
+                        name={event.fields.name}
+                        date={event.fields.startTime}
+                        eventCategories={event.fields.eventCategories}
+                        imageReference={event.fields.eventsListPicture}
                       />
                     </Touchable>
                   </View>
@@ -185,5 +177,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export { HomeScreen };
-export default withNavigationFocus(HomeScreen);
+export default HomeScreen;

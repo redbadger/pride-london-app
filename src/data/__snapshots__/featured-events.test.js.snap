@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeaturedEvents decoder correctly decodes valid CMSFeaturedEvents 1`] = `
+Object {
+  "contentType": "featuredEvents",
+  "fields": Object {
+    "events": Array [
+      Object {
+        "sys": Object {
+          "id": "Ii3rT8J7D7oRAsi73e2G",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "k9XA4bnQ5lc3pH7IRmnTf7wdX9FLFT",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "78",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "A",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "66xFJ9CdsFOL2f3P68Muj8G9",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "fJ7T9A223S7qRj",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "7oFWgkXAs8AsHxk1kF2xG1syba124B",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "V04M29qi81C6Hvn",
+        },
+      },
+      Object {
+        "sys": Object {
+          "id": "Vg8771gCXu861",
+        },
+      },
+    ],
+    "title": "title",
+  },
+  "id": "hG",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;

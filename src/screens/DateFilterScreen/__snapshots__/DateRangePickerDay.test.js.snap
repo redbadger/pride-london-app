@@ -1,0 +1,840 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dateRangePickerDay does not render a disabled day if same day as today 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {},
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
+exports[`dateRangePickerDay renders a beginning of a range 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      />
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+    </Component>
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
+exports[`dateRangePickerDay renders a beginning of a range 2`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      />
+    </Component>
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
+exports[`dateRangePickerDay renders a disabled day if before today 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "disabled",
+    ]
+  }
+  disabled={true}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {},
+            Object {
+              "color": "#cecece",
+            },
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
+exports[`dateRangePickerDay renders a marked day 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {},
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "borderRadius": 2,
+              "height": 4,
+              "marginBottom": 5,
+              "width": 4,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
+exports[`dateRangePickerDay renders a marked, selected day 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+    </Component>
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "borderRadius": 2,
+              "height": 4,
+              "marginBottom": 5,
+              "width": 4,
+            },
+            Object {
+              "backgroundColor": "rgb(45, 47, 127)",
+            },
+          ]
+        }
+      />
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
+exports[`dateRangePickerDay renders a middle of a range 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "rgb(44, 218, 157)",
+            },
+          ]
+        }
+      />
+    </Component>
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
+exports[`dateRangePickerDay renders with a single selected day 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+      "selected",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "height": 35,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      />
+      <Component
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "height": 35,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+          ]
+        }
+      />
+    </Component>
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "rgb(44, 218, 157)",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(45, 47, 127)",
+              "fontWeight": "bold",
+            },
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;
+
+exports[`dateRangePickerDay renders without date selection 1`] = `
+<TouchableWithoutFeedback
+  accessibilityComponentType="button"
+  accessibilityLabel="Sunday, August 12"
+  accessibilityTraits={
+    Array [
+      "button",
+    ]
+  }
+  disabled={false}
+  onLongPress={[Function]}
+  onPress={[Function]}
+  testID="calendar-day-2018-7-12"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "rgb(44, 218, 157)",
+            "borderRadius": 17,
+            "height": 35,
+            "width": 34,
+          },
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
+      }
+    >
+      <Text
+        color="blackColor"
+        markdown={false}
+        markdownStyle={Object {}}
+        style={
+          Array [
+            Object {
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+            Object {},
+            Object {},
+          ]
+        }
+        type="small"
+      >
+        12
+      </Text>
+    </Component>
+  </Component>
+</TouchableWithoutFeedback>
+`;

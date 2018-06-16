@@ -1,13 +1,14 @@
 // @flow
 import R from "ramda";
 import type { DataAction } from "../actions/data";
-import type { CmsEntry } from "../integrations/cms";
 import type { Event } from "../data/event";
+import type { FeaturedEvents } from "../data/featured-events";
 import type { HeaderBanner } from "../data/header-banner";
 import type { Images } from "../data/image";
 import type { Performances } from "../data/performance";
 import type { Sponsor } from "../data/sponsor";
 import { decodeEvent, expandRecurringEvents } from "../data/event";
+import decodeFeaturedEvents from "../data/featured-events";
 import decodeHeaderBanner from "../data/header-banner";
 import { decodeImageDetails } from "../data/image";
 import decodePerformance from "../data/performance";
@@ -16,11 +17,10 @@ import locale from "../data/locale";
 import type { Decoder } from "../lib/decode";
 import { filterMap as decodeFilterMap, map as decodeMap } from "../lib/decode";
 import { withDefault as resultWithDefault } from "../lib/result";
-import { expandRecurringEventsInEntries } from "../selectors/events-deprecated";
 
 export type State = {
-  entries: CmsEntry[],
   events: Event[],
+  featuredEvents: FeaturedEvents[],
   headerBanners: HeaderBanner[],
   images: Images,
   performances: Performances,
@@ -30,8 +30,8 @@ export type State = {
 };
 
 const defaultState = {
-  entries: [],
   events: [],
+  featuredEvents: [],
   headerBanners: [],
   images: {},
   performances: {},
@@ -39,8 +39,6 @@ const defaultState = {
   loading: true,
   refreshing: false
 };
-
-const processEntries = entries => expandRecurringEventsInEntries(entries);
 
 type ObjectWithId<A> = {
   id: string
@@ -61,6 +59,10 @@ const decodeEvents: Decoder<Array<Event>> = decodeMap(
   events => R.unnest(events.map(expandRecurringEvents)),
   decodeFilterMap(decodeEvent(locale))
 );
+
+const decodeFeaturedEventsCollection: Decoder<
+  Array<FeaturedEvents>
+> = decodeFilterMap(decodeFeaturedEvents(locale));
 
 const decodeHeaderBanners: Decoder<Array<HeaderBanner>> = decodeFilterMap(
   decodeHeaderBanner(locale)
@@ -98,8 +100,11 @@ const reducer = (state: State = defaultState, action: DataAction) => {
       return {
         loading: false,
         refreshing: false,
-        entries: processEntries(action.data.entries),
         events: resultWithDefault([], decodeEvents(action.data.entries)),
+        featuredEvents: resultWithDefault(
+          [],
+          decodeFeaturedEventsCollection(action.data.entries)
+        ),
         headerBanners: resultWithDefault(
           [],
           decodeHeaderBanners(action.data.entries)

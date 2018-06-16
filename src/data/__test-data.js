@@ -5,8 +5,8 @@ import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
 import type { Maybe } from "../lib/maybe";
-import type { Event as EventDeprecated } from "./event-deprecated";
 import type { Event, EventCategoryName } from "./event";
+import type { FeaturedEvents } from "./featured-events";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
 import type { ImageDetails } from "./image";
@@ -40,7 +40,7 @@ const generateNull = <A>(): ValueGenerator<Maybe<A>> => gen.null;
 
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
-    id: gen.alphaNumString
+    id: gen.alphaNumString.notEmpty()
   })
 });
 
@@ -65,6 +65,37 @@ export const generateImageURI: ValueGenerator<string> = gen.alphaNumString.then(
 
 // will change this when we refactor FieldRef
 export const generateCMSFieldRef: ValueGenerator<mixed> = generateFieldRef;
+
+export const generateFeaturedEvents: ValueGenerator<FeaturedEvents> = gen({
+  contentType: "featuredEvents",
+  id: gen.alphaNumString.notEmpty(),
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    title: gen.alphaNumString.notEmpty(),
+    events: gen.array(generateFieldRef, { minSize: 0, maxSize: 10 })
+  })
+});
+
+export const generateCMSFeaturedEvents: ValueGenerator<mixed> = gen({
+  sys: {
+    id: gen.alphaNumString.notEmpty(),
+    contentType: {
+      sys: {
+        id: "featuredEvents"
+      }
+    },
+    revision: 1
+  },
+  fields: gen({
+    title: {
+      "en-GB": "title"
+    },
+    events: gen({
+      "en-GB": gen.array(generateFieldRef, { minSize: 0, maxSize: 10 })
+    })
+  })
+});
 
 export const generateImageDetails: ValueGenerator<ImageDetails> = gen({
   id: gen.alphaNumString.notEmpty(),
@@ -181,7 +212,7 @@ export const generateEvent: ValueGenerator<Event> = gen({
   })
 });
 
-export const generateCMSEvent: ValueGenerator<EventDeprecated> = gen({
+export const generateCMSEvent: ValueGenerator<mixed> = gen({
   sys: gen({
     id: gen.alphaNumString.notEmpty(),
     contentType: {

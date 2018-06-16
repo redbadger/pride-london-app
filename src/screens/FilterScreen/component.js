@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-import type { NavigationScreenProp } from "react-navigation";
+import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import ShadowedScrollView from "../../components/ShadowedScrollView";
 import Button from "../../components/ButtonPrimary";
 import ContentPadding from "../../components/ContentPadding";
@@ -11,12 +11,12 @@ import { bgColor } from "../../constants/colors";
 import type { FilterCollection, Area } from "../../data/event-filters";
 import Header from "./Header";
 import type { EventFiltersPayload } from "../../actions/event-filters";
+import text from "../../constants/text";
 
 type Props = {
-  navigation: NavigationScreenProp<{}>,
-  applyButtonText: string,
+  navigation: NavigationScreenProp<NavigationState>,
   eventFilters: FilterCollection,
-  numEventsSelected: number,
+  numberOfEvents: number,
   numTagFiltersSelected: number,
   onChange: EventFiltersPayload => void
 };
@@ -58,12 +58,7 @@ class FilterScreen extends PureComponent<Props> {
   };
 
   render() {
-    const {
-      applyButtonText,
-      eventFilters,
-      numEventsSelected,
-      numTagFiltersSelected
-    } = this.props;
+    const { eventFilters, numberOfEvents, numTagFiltersSelected } = this.props;
     return (
       <SafeAreaView
         style={styles.flex}
@@ -84,10 +79,11 @@ class FilterScreen extends PureComponent<Props> {
           <ContentPadding>
             <Button
               onPress={this.handleApplyButtonPress}
-              disabled={numEventsSelected === 0}
+              disabled={numberOfEvents <= 0}
+              accessibilityLabel={text.filterPickerApplyLabel(numberOfEvents)}
               testID="apply-area-and-price-filter-button"
             >
-              {applyButtonText}
+              {text.filterPickerApply(numberOfEvents)}
             </Button>
           </ContentPadding>
         </View>

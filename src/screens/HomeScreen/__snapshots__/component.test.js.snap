@@ -28,7 +28,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
               "headingLine2": "headingLine2",
               "heroImage": Object {
                 "sys": Object {
-                  "id": "un",
+                  "id": "2re6B7z5h1VJ0y",
                 },
               },
               "subHeading": "subHeading",
@@ -45,7 +45,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
               "headingLine2": "headingLine2",
               "heroImage": Object {
                 "sys": Object {
-                  "id": "5CL1KU8X302K1Z5z8dNUPMs5c4aS0",
+                  "id": "X4El6Ef26uBA32r",
                 },
               },
               "subHeading": "subHeading",
@@ -120,7 +120,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
         }
       >
         <Component
-          key="K8pft"
+          key="hG"
           style={
             Array [
               Object {
@@ -165,17 +165,14 @@ exports[`HomeScreen Component renders correctly 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Film and Screenings",
-                  "Nightlife",
-                  "Music",
-                  "Exhibition and Tours",
-                  "Sports and Activities",
+                  "Social and Networking",
+                  "Talks and Debates",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "sD7CKhNJ85Q1A5msV33d6z2ZOpt",
+                    "id": "8iB636ntgq3B632hFy6uHIt7kC",
                   },
                 }
               }
@@ -184,7 +181,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="r1QiIwgIQ7X60Q2aWr4FmDvRw"
+          key="5obj688Cj3vM"
           style={
             Array [
               Object {
@@ -227,15 +224,17 @@ exports[`HomeScreen Component renders correctly 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Social and Networking",
+                  "Cabaret and Variety",
+                  "Health",
+                  "Nightlife",
                   "Music",
-                  "Sports and Activities",
+                  "Talks and Debates",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "i1rG1R19dEi3GJXGmftzSR0C",
+                    "id": "b8Gmbw5l8QQWmULc94kd5U4",
                   },
                 }
               }
@@ -244,7 +243,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="67Jac7w2DoNB0lcPhi82xV84"
+          key="Ii3rT8J7D7oRAsi73e2G"
           style={
             Array [
               Object {
@@ -289,16 +288,14 @@ exports[`HomeScreen Component renders correctly 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Plays and Theatre",
-                  "Sports and Activities",
-                  "Film and Screenings",
                   "Talks and Debates",
+                  "Sports and Activities",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "b9VUE8Pmwhi0JXmZWqL",
+                    "id": "brWIC",
                   },
                 }
               }
@@ -307,7 +304,7 @@ exports[`HomeScreen Component renders correctly 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="gH51Ec3MDIb"
+          key="24f3tJ9kLEIsCL0O8y881NG4pjYP2"
           style={
             Array [
               Object {
@@ -350,14 +347,17 @@ exports[`HomeScreen Component renders correctly 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
-                  "Exhibition and Tours",
+                  "Social and Networking",
+                  "Nightlife",
+                  "Music",
+                  "Community",
+                  "Film and Screenings",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "ZeRTx8wCF",
+                    "id": "H7xkAV37pJQ8Wj6g8wEd",
                   },
                 }
               }
@@ -399,7 +399,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               "headingLine2": "headingLine2",
               "heroImage": Object {
                 "sys": Object {
-                  "id": "un",
+                  "id": "2re6B7z5h1VJ0y",
                 },
               },
               "subHeading": "subHeading",
@@ -416,7 +416,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               "headingLine2": "headingLine2",
               "heroImage": Object {
                 "sys": Object {
-                  "id": "5CL1KU8X302K1Z5z8dNUPMs5c4aS0",
+                  "id": "X4El6Ef26uBA32r",
                 },
               },
               "subHeading": "subHeading",
@@ -491,7 +491,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
         }
       >
         <Component
-          key="K8pft"
+          key="hG"
           style={
             Array [
               Object {
@@ -536,17 +536,14 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Film and Screenings",
-                  "Nightlife",
-                  "Music",
-                  "Exhibition and Tours",
-                  "Sports and Activities",
+                  "Social and Networking",
+                  "Talks and Debates",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "sD7CKhNJ85Q1A5msV33d6z2ZOpt",
+                    "id": "8iB636ntgq3B632hFy6uHIt7kC",
                   },
                 }
               }
@@ -555,7 +552,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="r1QiIwgIQ7X60Q2aWr4FmDvRw"
+          key="5obj688Cj3vM"
           style={
             Array [
               Object {
@@ -598,15 +595,17 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Social and Networking",
+                  "Cabaret and Variety",
+                  "Health",
+                  "Nightlife",
                   "Music",
-                  "Sports and Activities",
+                  "Talks and Debates",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "i1rG1R19dEi3GJXGmftzSR0C",
+                    "id": "b8Gmbw5l8QQWmULc94kd5U4",
                   },
                 }
               }
@@ -615,7 +614,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="67Jac7w2DoNB0lcPhi82xV84"
+          key="Ii3rT8J7D7oRAsi73e2G"
           style={
             Array [
               Object {
@@ -660,16 +659,14 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Plays and Theatre",
-                  "Sports and Activities",
-                  "Film and Screenings",
                   "Talks and Debates",
+                  "Sports and Activities",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "b9VUE8Pmwhi0JXmZWqL",
+                    "id": "brWIC",
                   },
                 }
               }
@@ -678,7 +675,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="gH51Ec3MDIb"
+          key="24f3tJ9kLEIsCL0O8y881NG4pjYP2"
           style={
             Array [
               Object {
@@ -721,14 +718,17 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Cabaret and Variety",
-                  "Exhibition and Tours",
+                  "Social and Networking",
+                  "Nightlife",
+                  "Music",
+                  "Community",
+                  "Film and Screenings",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "ZeRTx8wCF",
+                    "id": "H7xkAV37pJQ8Wj6g8wEd",
                   },
                 }
               }
@@ -737,7 +737,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="5n22QycLpKe1o"
+          key="Lh09pJ3"
           style={
             Array [
               Object {
@@ -782,15 +782,17 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Film and Screenings",
                   "Music",
-                  "Talks and Debates",
+                  "Sports and Activities",
+                  "Film and Screenings",
+                  "Community",
+                  "Health",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "3FVY9BK0i55WU3kG",
+                    "id": "4z0W7qShu4ms511HGbT",
                   },
                 }
               }
@@ -799,7 +801,7 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
           </Touchable>
         </Component>
         <Component
-          key="b6wZbwMDTlXYK5j"
+          key="LWl2GmyPCp6r35lxTSxt5x1lr"
           style={
             Array [
               Object {
@@ -842,16 +844,13 @@ exports[`HomeScreen Component renders max 6 events 1`] = `
               date="2018-07-07T00:00+00:00"
               eventCategories={
                 Array [
-                  "Plays and Theatre",
-                  "Cabaret and Variety",
-                  "Community",
                   "Social and Networking",
                 ]
               }
               imageReference={
                 Object {
                   "sys": Object {
-                    "id": "kyr7K991ry2cm2h6vJUr",
+                    "id": "9bKufQ65T7",
                   },
                 }
               }

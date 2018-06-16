@@ -1,6 +1,6 @@
 // @flow
 import type { DateRange, Time } from "../data/date-time";
-import type { EventCategoryName } from "../data/event-deprecated";
+import type { EventCategoryName } from "../data/event";
 import type {
   Area,
   Price,
@@ -61,4 +61,4 @@ export const clearStagedEventFilters = () => (
 
 export const clearEventFilters = () => (
   dispatch: Dispatch<EventFiltersAction>
-) => dispatch({ type: "CLEAR__EVENT_FILTERS" });
+) => dispatch({ type: "CLEAR_EVENT_FILTERS" });

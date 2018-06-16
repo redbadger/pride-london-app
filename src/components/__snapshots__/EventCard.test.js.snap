@@ -49,7 +49,7 @@ exports[`renders correctly 1`] = `
         reference={
           Object {
             "sys": Object {
-              "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+              "id": "n2IQ6opic1Pj8",
             },
           }
         }
@@ -127,7 +127,6 @@ exports[`renders correctly 1`] = `
       active={false}
       onDark={false}
       onPress={[Function]}
-      testID="undefined-save-event-button"
     />
   </Component>
 </Component>
@@ -182,7 +181,7 @@ exports[`renders correctly when the event is free 1`] = `
         reference={
           Object {
             "sys": Object {
-              "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+              "id": "n2IQ6opic1Pj8",
             },
           }
         }
@@ -260,7 +259,6 @@ exports[`renders correctly when the event is free 1`] = `
       active={false}
       onDark={false}
       onPress={[Function]}
-      testID="undefined-save-event-button"
     />
   </Component>
 </Component>
@@ -315,7 +313,7 @@ exports[`renders correctly when there is a price range 1`] = `
         reference={
           Object {
             "sys": Object {
-              "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+              "id": "n2IQ6opic1Pj8",
             },
           }
         }
@@ -393,7 +391,6 @@ exports[`renders correctly when there is a price range 1`] = `
       active={false}
       onDark={false}
       onPress={[Function]}
-      testID="undefined-save-event-button"
     />
   </Component>
 </Component>
@@ -448,7 +445,7 @@ exports[`renders correctly when there is only one price 1`] = `
         reference={
           Object {
             "sys": Object {
-              "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+              "id": "n2IQ6opic1Pj8",
             },
           }
         }
@@ -526,7 +523,6 @@ exports[`renders correctly when there is only one price 1`] = `
       active={false}
       onDark={false}
       onPress={[Function]}
-      testID="undefined-save-event-button"
     />
   </Component>
 </Component>

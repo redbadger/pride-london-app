@@ -127,7 +127,6 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
         ],
       }
     }
-    locale="en-GB"
     onPress={[Function]}
     onRefresh={[Function]}
     refreshing={false}

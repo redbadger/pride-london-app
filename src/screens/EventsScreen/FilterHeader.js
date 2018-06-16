@@ -2,8 +2,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { DateRange } from "../../data/date-time";
-import type { EventCategoryName } from "../../data/event-deprecated";
-import DateRangePickerDialog from "./DateRangePickerDialogConnected";
+import type { EventCategoryName } from "../../data/event";
 import FilterHeaderButton from "./FilterHeaderButton";
 import ContentPadding from "../../components/ContentPadding";
 import FilterHeaderCategories from "./FilterHeaderCategories";
@@ -14,30 +13,27 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 import { formatDateRange } from "../../data/formatters";
+import ResetAllFiltersButton from "./ResetAllFiltersButton";
 
 export type Props = {
   onFilterCategoriesPress: Function,
   dateFilter: ?DateRange,
   onFilterButtonPress: () => void,
+  onDateFilterButtonPress: () => void,
   selectedCategories: Set<EventCategoryName>,
-  numTagFiltersSelected: number
+  numTagFiltersSelected: number,
+  resetAllFiltersPress: () => void,
+  scrollEventListToTop: () => void
 };
 
-type State = {
-  datesPickerVisible: boolean
-};
-
-class FilterHeader extends React.PureComponent<Props, State> {
-  state = {
-    datesPickerVisible: false
+class FilterHeader extends React.PureComponent<Props> {
+  static defaultProps = {
+    resetAllFiltersPress: () => {}
   };
 
-  showDatePicker = () => {
-    this.setState({ datesPickerVisible: true });
-  };
-
-  hideDatePicker = () => {
-    this.setState({ datesPickerVisible: false });
+  resetAllFilters = () => {
+    this.props.resetAllFiltersPress();
+    this.props.scrollEventListToTop();
   };
 
   render() {
@@ -46,20 +42,30 @@ class FilterHeader extends React.PureComponent<Props, State> {
       onFilterCategoriesPress,
       selectedCategories,
       onFilterButtonPress,
+      onDateFilterButtonPress,
       numTagFiltersSelected
     } = this.props;
     const formattedDateFilter = dateFilter
       ? formatDateRange(dateFilter)
       : text.selectDates;
 
+    const anyAppliedFilters: boolean =
+      !!dateFilter || numTagFiltersSelected > 0 || selectedCategories.size > 0;
+
     return (
       <View accessibilityTraits={["header"]} style={styles.container}>
         <ContentPadding>
-          <View testID="event-filter-header" style={styles.content}>
-            <FilterHeaderCategories
-              onFilterPress={onFilterCategoriesPress}
-              selectedCategories={selectedCategories}
+          <View>
+            <ResetAllFiltersButton
+              visible={anyAppliedFilters}
+              onPress={this.resetAllFilters}
             />
+            <View testID="event-filter-header" style={styles.content}>
+              <FilterHeaderCategories
+                onFilterPress={onFilterCategoriesPress}
+                selectedCategories={selectedCategories}
+              />
+            </View>
           </View>
         </ContentPadding>
         <View style={styles.contentFilters}>
@@ -67,7 +73,7 @@ class FilterHeader extends React.PureComponent<Props, State> {
             active={!!dateFilter}
             text={formattedDateFilter}
             label={`filter by date: ${formattedDateFilter}`}
-            onPress={this.showDatePicker}
+            onPress={onDateFilterButtonPress}
             style={styles.filterButton}
             testID="open-date-filters-button"
           />
@@ -84,11 +90,6 @@ class FilterHeader extends React.PureComponent<Props, State> {
             testID="open-area-and-price-filters-button"
           />
         </View>
-        <DateRangePickerDialog
-          onApply={this.hideDatePicker}
-          onCancel={this.hideDatePicker}
-          visible={this.state.datesPickerVisible}
-        />
       </View>
     );
   }
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: filterBgColor
   },
   content: {
-    paddingTop: 16,
+    marginTop: 16,
     paddingBottom: 12
   },
   contentFilters: {

@@ -27,7 +27,6 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
     }
   >
     <List
-      locale="en-GB"
       onPress={[Function]}
       stagedCategories={
         Set {
@@ -49,6 +48,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       style={Object {}}
     >
       <Button
+        accessibilityLabel="Show 1 selected event"
         disabled={false}
         onPress={[Function]}
         testID="apply-category-filter-button"
@@ -83,7 +83,6 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
     }
   >
     <List
-      locale="en-GB"
       onPress={[Function]}
       stagedCategories={Set {}}
     />
@@ -101,11 +100,12 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
       style={Object {}}
     >
       <Button
+        accessibilityLabel="Show 1 selected event"
         disabled={false}
         onPress={[Function]}
         testID="apply-category-filter-button"
       >
-        Show all events
+        Show 1 event
       </Button>
     </ContentPadding>
   </Component>

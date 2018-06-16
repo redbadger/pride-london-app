@@ -5,18 +5,17 @@ import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet
 import { hyphenate } from "../lib/string";
 import Text from "./Text";
 import Touchable from "./Touchable";
-import eventCategories from "../constants/event-categories";
-import locale from "../data/locale";
+import type { EventCategoryName } from "../data/event";
+import { getEventCategoryFromName } from "../data/event";
 import { blackColor, whiteColor } from "../constants/colors";
-import type { EventCategoryName } from "../data/event-deprecated";
 
 const categoryStyleColor = (category: EventCategoryName) => {
-  const categoryData = eventCategories[locale][category];
+  const categoryData = getEventCategoryFromName(category);
   return { color: categoryData.contrast ? blackColor : whiteColor };
 };
 
 const categoryStyleBackgroundColor = (category: EventCategoryName) => {
-  const categoryData = eventCategories[locale][category];
+  const categoryData = getEventCategoryFromName(category);
   return { backgroundColor: categoryData.color };
 };
 
