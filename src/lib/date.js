@@ -24,6 +24,13 @@ const parse = (date: string) => LuxonDateTime.fromISO(date, { setZone: true });
 export const toFormat = (date: string, format: string) =>
   parse(date).toFormat(format);
 
+export const toLondonFormat = (date: string, format: string) =>
+  // Note setZone transforms the timezone and time but retains
+  // the epoch time. Essentially it keeps the same value
+  parse(date)
+    .setZone("utc+1")
+    .toFormat(format);
+
 export const isBefore = (d1: string, d2: string) => +parse(d1) < +parse(d2);
 
 export const now = () =>

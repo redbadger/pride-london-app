@@ -21,7 +21,7 @@ exports[`renders correctly 1`] = `
     }
     type="text"
   >
-    12:00
+    13:00
   </Text>
   <Text
     color="blackColor"

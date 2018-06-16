@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import {
-  toFormat as formatDate,
+  toLondonFormat as formatDate,
   isSameDay,
   FORMAT_SHORT_WEEKDAY_DATE
 } from "../../lib/date";
