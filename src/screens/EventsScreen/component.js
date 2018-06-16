@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from "react";
+import type { ElementRef } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type {
@@ -30,6 +31,8 @@ export type Props = {
   navigation: NavigationScreenProp<NavigationState>
 };
 
+const DEFAULT_SEPARATOR_HEIGHT: number = 40;
+
 class EventsScreen extends Component<Props> {
   shouldComponentUpdate(nextProps: Props) {
     // Intentionally do not check this.props.navigation
@@ -57,6 +60,22 @@ class EventsScreen extends Component<Props> {
     this.props.navigation.navigate(EVENT_DATE_FILTER);
   };
 
+  scrollEventListToTop = () => {
+    const eventList = this.eventListRef.current;
+    if (eventList && eventList.sectionList) {
+      eventList.sectionList.scrollToLocation({
+        itemIndex: 0,
+        sectionIndex: 0,
+        viewOffset: DEFAULT_SEPARATOR_HEIGHT,
+        viewPosition: 0,
+        animated: false
+      });
+    }
+  };
+
+  // $FlowFixMe
+  eventListRef: ElementRef<typeof EventList> = React.createRef();
+
   render() {
     const {
       navigation,
@@ -74,6 +93,7 @@ class EventsScreen extends Component<Props> {
           selectedCategories={this.props.selectedCategories}
           onFilterButtonPress={this.handleFilterButtonPress}
           onDateFilterButtonPress={this.handleDateFilterButtonPress}
+          scrollEventListToTop={this.scrollEventListToTop}
         />
         {this.props.loading || events.length < 1 ? (
           <NoEvents />
@@ -90,6 +110,7 @@ class EventsScreen extends Component<Props> {
             onPress={(eventId: string) => {
               navigation.navigate(EVENT_DETAILS, { eventId });
             }}
+            ref={this.eventListRef}
           />
         )}
       </View>

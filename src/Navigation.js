@@ -58,7 +58,6 @@ import {
   SPONSOR
 } from "./constants/routes";
 import text from "./constants/text";
-import OnlyUpdateWhenFocused from "./components/OnlyUpdateWhenFocused";
 import NavigationTabBar from "./components/NavigationTabBar";
 import Header from "./components/Header";
 import TopTabBar from "./components/TopTabBar";
@@ -78,12 +77,6 @@ const withShadow = Component => props => (
       style={styles.shadow}
     />
   </View>
-);
-
-const onlyUpdateWhenFocused = Component => props => (
-  <OnlyUpdateWhenFocused>
-    <Component {...props} />
-  </OnlyUpdateWhenFocused>
 );
 
 const styles = StyleSheet.create({
@@ -134,10 +127,10 @@ export const hideTabBarOnSubRoutes = (
 
 const HomeStack = createStackNavigator(
   {
-    [HOME]: { screen: onlyUpdateWhenFocused(withShadow(HomeScreen)) },
-    [EVENT_DETAILS]: { screen: onlyUpdateWhenFocused(EventDetailsScreen) },
+    [HOME]: { screen: withShadow(HomeScreen) },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen },
     [FEATURED_EVENT_LIST]: {
-      screen: onlyUpdateWhenFocused(FeaturedEventListScreen)
+      screen: FeaturedEventListScreen
     }
   },
   {
@@ -149,13 +142,13 @@ const HomeStack = createStackNavigator(
 
 const EventsStack = createStackNavigator(
   {
-    [EVENT_LIST]: { screen: onlyUpdateWhenFocused(withShadow(EventsScreen)) },
-    [EVENT_DETAILS]: { screen: onlyUpdateWhenFocused(EventDetailsScreen) },
+    [EVENT_LIST]: { screen: withShadow(EventsScreen) },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen },
     [EVENT_CATEGORIES_FILTER]: {
-      screen: onlyUpdateWhenFocused(CategoriesFilterScreen)
+      screen: CategoriesFilterScreen
     },
-    [EVENT_DATE_FILTER]: { screen: onlyUpdateWhenFocused(DateFilterScreen) },
-    [EVENT_ATTRIBUTE_FILTER]: { screen: onlyUpdateWhenFocused(FilterScreen) }
+    [EVENT_DATE_FILTER]: { screen: DateFilterScreen },
+    [EVENT_ATTRIBUTE_FILTER]: { screen: FilterScreen }
   },
   {
     initialRouteName: EVENT_LIST,
@@ -174,13 +167,13 @@ const EventsStack = createStackNavigator(
 const ParadeTabNav = createMaterialTopTabNavigator(
   {
     [PARADE_MAP]: {
-      screen: onlyUpdateWhenFocused(ParadeMapScreen),
+      screen: ParadeMapScreen,
       navigationOptions: {
         tabBarLabel: text.tabParadeMap
       }
     },
     [PARADE_INFORMATION]: {
-      screen: onlyUpdateWhenFocused(ParadeInformationScreen),
+      screen: ParadeInformationScreen,
       navigationOptions: {
         tabBarLabel: text.tabParadeStages
       }
@@ -234,9 +227,9 @@ const ParadeStack = createStackNavigator(
 const SavedStack = createStackNavigator(
   {
     [SAVED_EVENT_LIST]: {
-      screen: onlyUpdateWhenFocused(withShadow(SavedEventListScreen))
+      screen: withShadow(SavedEventListScreen)
     },
-    [EVENT_DETAILS]: { screen: onlyUpdateWhenFocused(EventDetailsScreen) }
+    [EVENT_DETAILS]: { screen: EventDetailsScreen }
   },
   {
     initialRouteName: SAVED_EVENT_LIST,
@@ -254,10 +247,10 @@ const SavedStack = createStackNavigator(
 const SupportUsStack = createStackNavigator(
   {
     [SUPPORT_US]: {
-      screen: onlyUpdateWhenFocused(withShadow(SupportUsScreen))
+      screen: withShadow(SupportUsScreen)
     },
-    [DONATE]: { screen: onlyUpdateWhenFocused(DonateScreen) },
-    [SPONSOR]: { screen: onlyUpdateWhenFocused(SponsorScreen) }
+    [DONATE]: { screen: DonateScreen },
+    [SPONSOR]: { screen: SponsorScreen }
   },
   {
     initialRouteName: SUPPORT_US,
@@ -307,8 +300,6 @@ const TabNav = createBottomTabNavigator(
   {
     tabBarComponent: NavigationTabBar,
     tabBarPosition: "bottom",
-    swipeEnabled: false,
-    animationEnabled: false,
     initialRouteName: HOME,
     cardStyle: {
       backgroundColor: "blue"

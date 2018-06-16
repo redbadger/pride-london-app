@@ -13,6 +13,7 @@ exports[`EventsScreen Component renders correctly 1`] = `
     onDateFilterButtonPress={[Function]}
     onFilterButtonPress={[Function]}
     onFilterCategoriesPress={[Function]}
+    scrollEventListToTop={[Function]}
     selectedCategories={Set {}}
   />
   <EventList
@@ -127,6 +128,7 @@ exports[`EventsScreen Component renders correctly when loading 1`] = `
     onDateFilterButtonPress={[Function]}
     onFilterButtonPress={[Function]}
     onFilterCategoriesPress={[Function]}
+    scrollEventListToTop={[Function]}
     selectedCategories={Set {}}
   />
   <NoEvents />
@@ -146,6 +148,7 @@ exports[`EventsScreen Component renders correctly with no events 1`] = `
     onDateFilterButtonPress={[Function]}
     onFilterButtonPress={[Function]}
     onFilterCategoriesPress={[Function]}
+    scrollEventListToTop={[Function]}
     selectedCategories={Set {}}
   />
   <NoEvents />
