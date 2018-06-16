@@ -13,7 +13,9 @@ exports[`renders correctly 1`] = `
     testID="page-heading-support-us"
     title="Support us"
   />
-  <ScrollView>
+  <ScrollView
+    testID="support-us-main-content"
+  >
     <Component
       style={
         Object {
@@ -49,6 +51,7 @@ exports[`renders correctly 1`] = `
               "marginTop": 12,
             }
           }
+          testID="support-us-donate-button"
           title="Donate"
           url="DONATE"
         />
@@ -64,6 +67,7 @@ exports[`renders correctly 1`] = `
               "marginTop": 12,
             }
           }
+          testID="support-us-volunteer-button"
           title="Volunteer"
           url="https://prideinlondon.org/volunteer"
         />
@@ -79,6 +83,7 @@ exports[`renders correctly 1`] = `
               "marginTop": 12,
             }
           }
+          testID="support-us-merchandise-button"
           title="Buy merchandise"
           url="https://www.thegayshop.co.uk/product-category/pride/pride-in-london-shop/"
         />
@@ -108,6 +113,7 @@ exports[`renders correctly 1`] = `
               "marginTop": 12,
             }
           }
+          testID="support-us-sponsor-button"
           title="Partner with us"
           url="SPONSOR"
         />

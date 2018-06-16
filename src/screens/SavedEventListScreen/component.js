@@ -71,6 +71,7 @@ class SavedEventListScreen extends Component<Props> {
               onPress={(eventId: string) => {
                 navigation.navigate(EVENT_DETAILS, { eventId });
               }}
+              testID="saved-event-list"
             />
           )}
       </View>

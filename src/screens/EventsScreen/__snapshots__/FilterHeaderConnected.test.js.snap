@@ -58,6 +58,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
           "flex": 1,
         }
       }
+      testID="open-date-filters-button"
       text="Select dates"
     />
     <Component
@@ -78,6 +79,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
           "flex": 1,
         }
       }
+      testID="open-area-and-price-filters-button"
       text="Filter by area, price..."
     />
   </Component>

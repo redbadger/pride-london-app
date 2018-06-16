@@ -72,6 +72,7 @@ exports[`DateFilterScreen renders correctly 1`] = `
         accessibilityLabel="Show 26 selected events"
         disabled={false}
         onPress={[Function]}
+        testID="apply-date-filter-button"
       >
         Show 26 events
       </Button>
@@ -164,6 +165,7 @@ exports[`DateFilterScreen renders correctly with date range 1`] = `
         accessibilityLabel="Show 26 selected events"
         disabled={false}
         onPress={[Function]}
+        testID="apply-date-filter-button"
       >
         Show 26 events
       </Button>

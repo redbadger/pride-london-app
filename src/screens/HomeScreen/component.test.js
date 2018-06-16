@@ -72,7 +72,7 @@ describe("HomeScreen Component", () => {
     const featuredEvents = generateEvents(3);
     const { id } = featuredEvents[0];
     const output = render({ featuredEvents });
-    const eventTile = output.find({ testID: `event-tile-${id}` });
+    const eventTile = output.find({ testID: `event-tile-0` });
     eventTile.simulate("press");
     expect(navigation.navigate).toHaveBeenCalledWith(EVENT_DETAILS, {
       eventId: id

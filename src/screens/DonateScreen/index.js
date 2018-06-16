@@ -153,7 +153,7 @@ class DonateScreen extends React.PureComponent<Props, State> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} testID="donate-screen">
         {this.renderHeader()}
         <KeyboardAvoidingView behavior="padding" enabled style={styles.content}>
           {this.renderContent()}
