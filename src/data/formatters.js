@@ -1,13 +1,13 @@
 // @flow
 
 import {
-  toFormat as formatDate,
+  toLondonFormat as formatDate,
   FORMAT_DAY_MONTH,
   FORMAT_TIME_24
 } from "../lib/date";
 import type { DateRange } from "./date-time";
 import text from "../constants/text";
-import { isFree } from "../selectors/event-deprecated";
+import { isFree } from "../selectors/event";
 
 export const formatDateRange = (dateRange: DateRange) =>
   dateRange.startDate !== dateRange.endDate

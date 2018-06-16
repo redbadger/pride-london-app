@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does not render when visible=false 1`] = `""`;
+
+exports[`renders correctly 1`] = `
+<AnimatedComponent
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "flex-end",
+      },
+      Object {
+        "marginTop": 0,
+        "opacity": 1,
+      },
+    ]
+  }
+>
+  <FilterHeaderButton
+    active={false}
+    badgeValue={null}
+    label="Reset all filters"
+    onPress={[Function]}
+    style={
+      Object {
+        "minHeight": 0,
+        "paddingTop": 16,
+      }
+    }
+    text="Reset all filters"
+  />
+</AnimatedComponent>
+`;

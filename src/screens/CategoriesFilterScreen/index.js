@@ -4,19 +4,20 @@ import type { Connector } from "react-redux";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { State } from "../../reducers";
 import type { EventCategoryName } from "../../data/event";
-import type { Event } from "../../data/event-deprecated";
 import { setEventFilters } from "../../actions/event-filters";
 import { selectStagedFilteredEvents } from "../../selectors";
 import Component from "./component";
+import withIsFocused from "../../components/WithIsFocused";
 
 type OwnProps = {
-  navigation: NavigationScreenProp<NavigationState>
+  navigation: NavigationScreenProp<NavigationState>,
+  isFocused: boolean
 };
 
 type StateProps = {
   navigation: NavigationScreenProp<NavigationState>,
-  events: Event[],
-  categories: Set<EventCategoryName>
+  categories: Set<EventCategoryName>,
+  numberOfEvents: number
 };
 
 type DispatchProps = {
@@ -26,17 +27,24 @@ type DispatchProps = {
 
 type Props = StateProps & DispatchProps;
 
+let cache: StateProps;
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (
   state: State,
-  { navigation }: OwnProps
-): StateProps => ({
-  navigation,
-  events: selectStagedFilteredEvents(state),
-  categories: state.eventFilters.selectedFilters.categories
-});
+  { navigation, isFocused }: OwnProps
+): StateProps => {
+  if (!cache || isFocused) {
+    cache = {
+      navigation,
+      numberOfEvents: selectStagedFilteredEvents(state).length,
+      categories: state.eventFilters.selectedFilters.categories
+    };
+  }
+  return cache;
+};
 
 const mapDispatchToProps = {
   toggleCategoryFilter: (originalCagegories, categoryLabel) => {
@@ -52,4 +60,6 @@ const connector: Connector<OwnProps, Props> = connect(
   mapDispatchToProps
 );
 
-export default connector(Component);
+export const Container = connector(Component);
+
+export default withIsFocused(Container);

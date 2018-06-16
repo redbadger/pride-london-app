@@ -1,7 +1,6 @@
 // @flow
 import R from "ramda";
 import type { DataAction } from "../actions/data";
-import type { CmsEntry } from "../integrations/cms";
 import type { Event } from "../data/event";
 import type { FeaturedEvents } from "../data/featured-events";
 import type { HeaderBanner } from "../data/header-banner";
@@ -18,10 +17,8 @@ import locale from "../data/locale";
 import type { Decoder } from "../lib/decode";
 import { filterMap as decodeFilterMap, map as decodeMap } from "../lib/decode";
 import { withDefault as resultWithDefault } from "../lib/result";
-import { expandRecurringEventsInEntries } from "../selectors/events-deprecated";
 
 export type State = {
-  entries: CmsEntry[],
   events: Event[],
   featuredEvents: FeaturedEvents[],
   headerBanners: HeaderBanner[],
@@ -33,7 +30,6 @@ export type State = {
 };
 
 const defaultState = {
-  entries: [],
   events: [],
   featuredEvents: [],
   headerBanners: [],
@@ -43,8 +39,6 @@ const defaultState = {
   loading: true,
   refreshing: false
 };
-
-const processEntries = entries => expandRecurringEventsInEntries(entries);
 
 type ObjectWithId<A> = {
   id: string
@@ -106,7 +100,6 @@ const reducer = (state: State = defaultState, action: DataAction) => {
       return {
         loading: false,
         refreshing: false,
-        entries: processEntries(action.data.entries),
         events: resultWithDefault([], decodeEvents(action.data.entries)),
         featuredEvents: resultWithDefault(
           [],

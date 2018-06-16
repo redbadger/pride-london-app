@@ -2,14 +2,12 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import type { SavedEvents, EventDays } from "../../data/event-deprecated";
+import type { SavedEvents, EventDays } from "../../data/event";
 import EventList from "../../components/EventList";
 import Header from "../../components/Header";
 import { bgColor } from "../../constants/colors";
 import { EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
-
-import locale from "../../data/locale";
 
 export type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -43,7 +41,6 @@ class FeaturedEventsListScreen extends Component<Props> {
           title={text.featuredEventListTitle}
         />
         <EventList
-          locale={locale}
           events={this.props.events}
           savedEvents={this.props.savedEvents}
           addSavedEvent={this.props.addSavedEvent}

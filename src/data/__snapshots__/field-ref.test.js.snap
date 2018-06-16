@@ -3,7 +3,7 @@
 exports[`FieldRef decoder correctly decodes valid CMS fielf reference 1`] = `
 Object {
   "sys": Object {
-    "id": "0QoT7Bd87I2Em7K7wxD882tVO10Q12",
+    "id": "n2IQ6opic1Pj8",
   },
 }
 `;

@@ -1,5 +1,6 @@
 import {
   toFormat,
+  toLondonFormat,
   isBefore,
   addDays,
   compareAsc,
@@ -10,12 +11,36 @@ import {
   set,
   diff,
   add,
-  now
+  now,
+  FORMAT_CONTENTFUL_ISO,
+  FORMAT_WEEKDAY_MONTH_DAY
 } from "./date";
 
 describe("toFormat", () => {
   it("formats a date with a given format string", () => {
-    expect(toFormat("2018-07-07T04:00+01:00", "YYYY-MM-DD")).toMatchSnapshot();
+    expect(
+      toFormat("2018-07-07T04:00+01:00", FORMAT_WEEKDAY_MONTH_DAY)
+    ).toEqual("Saturday, July 7");
+  });
+
+  it("preserves timezone", () => {
+    expect(toFormat("2018-07-07T04:00+14:00", FORMAT_CONTENTFUL_ISO)).toEqual(
+      "2018-07-07T04:00+14:00"
+    );
+  });
+});
+
+describe("toLondonFormat", () => {
+  it("formats a date with a given format string", () => {
+    expect(
+      toLondonFormat("2018-07-07T04:00+01:00", FORMAT_WEEKDAY_MONTH_DAY)
+    ).toEqual("Saturday, July 7");
+  });
+
+  it("converts to +01:00 timezone", () => {
+    expect(
+      toLondonFormat("2018-07-07T04:00+14:00", FORMAT_CONTENTFUL_ISO)
+    ).toEqual("2018-07-06T15:00+01:00");
   });
 });
 

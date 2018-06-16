@@ -1,10 +1,11 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import DateRangePickerDialog from "./DateRangePickerDialogConnected";
 import FilterHeader from "./FilterHeader";
-import FilterHeaderButton from "./FilterHeaderButton";
 import type { Props as ComponentProps } from "./FilterHeader";
+import FilterHeaderButton from "./FilterHeaderButton";
+import FilterHeaderCategories from "./FilterHeaderCategories";
+import ResetAllFiltersButton from "./ResetAllFiltersButton";
 
 const render = (
   props: ComponentProps = {
@@ -12,7 +13,10 @@ const render = (
     selectedCategories: new Set(),
     onFilterCategoriesPress: () => {},
     onFilterButtonPress: () => {},
-    numTagFiltersSelected: 0
+    onDateFilterButtonPress: () => {},
+    resetAllFiltersPress: () => {},
+    numTagFiltersSelected: 0,
+    scrollEventListToTop: () => {}
   }
 ) => shallow(<FilterHeader {...props} />);
 
@@ -23,7 +27,10 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -34,7 +41,10 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -45,7 +55,10 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -59,7 +72,10 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
-      numTagFiltersSelected: 0
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
@@ -70,26 +86,86 @@ describe("renders correctly", () => {
       selectedCategories: new Set(),
       onFilterCategoriesPress: () => {},
       onFilterButtonPress: () => {},
-      numTagFiltersSelected: 2
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 2,
+      scrollEventListToTop: () => {}
     });
     expect(output).toMatchSnapshot();
   });
 });
 
-it("opens date picker when users presses date filter button", () => {
-  const output = render();
-  const filterDateButton = output.find(FilterHeaderButton).at(0);
-  filterDateButton.simulate("press");
+describe("filter buttons", () => {
+  it("calls onFilterCategoriesPress when users presses categories filter button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: mock,
+      onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
+    });
+    output.find(FilterHeaderCategories).prop("onFilterPress")();
 
-  expect(output.state("datesPickerVisible")).toBe(true);
-});
+    expect(mock).toBeCalledWith();
+  });
 
-it("closes date picker when users presses applies changes", () => {
-  const output = render();
-  output.setState({ datesPickerVisible: true });
+  it("calls onDateFilterButtonPress when users presses date filter button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {},
+      onFilterButtonPress: () => {},
+      onDateFilterButtonPress: mock,
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
+    });
+    const button = output.find(FilterHeaderButton).at(0);
+    button.simulate("press");
 
-  const datePicker = output.find(DateRangePickerDialog);
-  datePicker.simulate("apply");
+    expect(mock).toBeCalledWith();
+  });
 
-  expect(output.state("datesPickerVisible")).toBe(false);
+  it("calls onFilterButtonPress when users presses attribute filter button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(),
+      onFilterCategoriesPress: () => {},
+      onFilterButtonPress: mock,
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: () => {}
+    });
+    const button = output.find(FilterHeaderButton).at(1);
+    button.simulate("press");
+
+    expect(mock).toBeCalledWith();
+  });
+
+  it("calls scrollEventListToTop when users presses 'Reset all filters' button", () => {
+    const mock = jest.fn();
+    const output = render({
+      dateFilter: null,
+      selectedCategories: new Set(["Music"]),
+      onFilterCategoriesPress: () => {},
+      onFilterButtonPress: () => {},
+      onDateFilterButtonPress: () => {},
+      resetAllFiltersPress: () => {},
+      numTagFiltersSelected: 0,
+      scrollEventListToTop: mock
+    });
+    output
+      .find(ResetAllFiltersButton)
+      .props()
+      .onPress();
+
+    expect(mock).toBeCalledWith();
+  });
 });

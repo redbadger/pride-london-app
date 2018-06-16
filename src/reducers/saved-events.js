@@ -1,7 +1,7 @@
 // @flow
 import type { Reducer } from "redux";
 import type { SavedEventAction } from "../actions/saved-events";
-import type { SavedEvents as State } from "../data/event-deprecated";
+import type { SavedEvents as State } from "../data/event";
 
 const defaultState = new Set();
 

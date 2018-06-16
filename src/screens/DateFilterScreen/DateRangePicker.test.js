@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Calendar } from "react-native-calendars";
+import { CalendarList } from "react-native-calendars";
 import { shallow } from "enzyme";
 import DateRangePicker from "./DateRangePicker";
 
@@ -65,6 +65,50 @@ describe("renders correctly", () => {
   });
 });
 
+describe("pastScrollRange", () => {
+  it("shows today if nothing selected", () => {
+    const output = shallow(
+      <DateRangePicker
+        onChange={() => {}}
+        dateRange={undefined}
+        forceNewRange
+        today={new Date("2018-04-14")}
+      />
+    );
+
+    expect(output.prop("current")).toBe(null);
+    expect(output.prop("pastScrollRange")).toBe(0);
+  });
+
+  it("shows today when selection starts in current month", () => {
+    const output = shallow(
+      <DateRangePicker
+        onChange={() => {}}
+        dateRange={{ startDate: "2018-04-20", endDate: "2018-04-22" }}
+        forceNewRange
+        today={new Date("2018-04-14")}
+      />
+    );
+
+    expect(output.prop("current")).toBe("2018-04-20");
+    expect(output.prop("pastScrollRange")).toBe(0);
+  });
+
+  it("shows selected month and enables scoll back to today", () => {
+    const output = shallow(
+      <DateRangePicker
+        onChange={() => {}}
+        dateRange={{ startDate: "2018-05-20", endDate: "2018-05-22" }}
+        forceNewRange
+        today={new Date("2018-04-14")}
+      />
+    );
+
+    expect(output.prop("current")).toBe("2018-05-20");
+    expect(output.prop("pastScrollRange")).toBe(1);
+  });
+});
+
 describe("onChange", () => {
   const render = (onChange, dateRange) => {
     const output = shallow(
@@ -74,7 +118,7 @@ describe("onChange", () => {
         forceNewRange={false}
       />
     );
-    return output.find(Calendar).prop("onDayPress");
+    return output.find(CalendarList).prop("onDayPress");
   };
   const getCalendarDay = dateString => ({
     year: 0,
