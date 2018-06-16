@@ -11,12 +11,9 @@ describe("e2e/saved-events", () => {
 
   it("should display the empty saved events screen by default", async () => {
     await element(by.id("saved-events-tab-button")).tap();
+    await expect(element(by.id("page-heading-saved-events"))).toBeVisible();
 
     await expect(element(by.text("Where's the love?"))).toBeVisible();
-  });
-
-  it("should navigate from the empty saved events screen to the events listing screen", async () => {
-    await element(by.id("saved-events-tab-button")).tap();
 
     await element(by.id("no-saved-events-button")).tap();
 

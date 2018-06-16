@@ -30,6 +30,7 @@ describe("e2e/events", () => {
   it("should display events", async () => {
     await element(by.id("events-tab-button")).tap();
 
+    await expect(element(by.id("event-filter-header"))).toBeVisible();
     await expect(element(by.id("event-card-0-0"))).toBeVisible();
   });
 

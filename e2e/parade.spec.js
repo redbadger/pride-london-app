@@ -12,6 +12,7 @@ describe("e2e/parade", () => {
   it("should display the map by default", async () => {
     await element(by.id("parade-tab-button")).tap();
 
+    await expect(element(by.id("page-heading-parade"))).toBeVisible();
     await expect(element(by.id("parade-map-screen"))).toBeVisible();
   });
 

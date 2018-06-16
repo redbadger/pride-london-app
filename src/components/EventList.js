@@ -44,10 +44,11 @@ type RenderSectionInfo = {
   section: Section // eslint-disable-line react/no-unused-prop-types
 };
 
-const eventSections = (events: EventDays): SectionBase<Event>[] =>
-  events.map(it => ({
+const eventSections = (events: EventDays): Section[] =>
+  events.map((it, index) => ({
     data: it,
-    key: formatDate(it[0].fields.startTime, FORMAT_YEAR_MONTH_DAY)
+    key: formatDate(it[0].fields.startTime, FORMAT_YEAR_MONTH_DAY),
+    index
   }));
 
 const getId = (item: { id: string }): string => item.id;
