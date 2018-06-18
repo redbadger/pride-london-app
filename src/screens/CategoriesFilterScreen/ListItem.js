@@ -70,7 +70,7 @@ class ListItem extends Component<
         style={styles.itemContainer}
         onPress={() => onPress(category.label)}
         accessibilityComponentType="none"
-        accessibilityTraits={["none"]}
+        accessibilityTraits={selected ? ["selected"] : ["none"]}
         accessibilityLabel={checkboxAccessibilityLabel(
           category.label,
           selected

@@ -19,7 +19,7 @@ type Props = {
 const CheckBox = ({ checked, label, onChange, style }: Props) => (
   <Touchable
     accessibilityComponentType="none"
-    accessibilityTraits={["none"]}
+    accessibilityTraits={checked ? ["selected"] : ["none"]}
     accessibilityLabel={checkboxAccessibilityLabel(label, checked)}
     onPress={onChange}
     style={[styles.container, style]}

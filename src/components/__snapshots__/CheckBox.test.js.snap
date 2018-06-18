@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <Touchable
   accessibilityComponentType="none"
-  accessibilityLabel="Bananas, checkbox, empty"
+  accessibilityLabel="Bananas"
   accessibilityTraits={
     Array [
       "none",
@@ -44,10 +44,10 @@ exports[`renders correctly 1`] = `
 exports[`renders correctly when checked 1`] = `
 <Touchable
   accessibilityComponentType="none"
-  accessibilityLabel="Bananas, checkbox, selected"
+  accessibilityLabel="Bananas"
   accessibilityTraits={
     Array [
-      "none",
+      "selected",
     ]
   }
   delayPressIn={50}
