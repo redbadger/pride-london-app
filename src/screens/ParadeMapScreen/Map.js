@@ -1,7 +1,13 @@
 // @flow
 import React, { Component } from "react";
 import type { ElementRef } from "react";
-import { Image, Platform, View, StyleSheet } from "react-native";
+import {
+  Image,
+  Platform,
+  View,
+  StyleSheet,
+  TouchableNativeFeedback
+} from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
 import Text from "../../components/Text";
@@ -129,6 +135,7 @@ class Map extends Component<Props, State> {
           <Touchable
             onPress={this.moveToCurrentLocation}
             style={styles.touchable}
+            background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
           >
             <Image
               accessibilityLabel="Show my location"

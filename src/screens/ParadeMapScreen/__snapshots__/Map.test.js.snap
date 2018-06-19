@@ -608,6 +608,7 @@ exports[`Map component renders correctly 1`] = `
         "button",
       ]
     }
+    background={Object {}}
     delayPressIn={50}
     onPress={[Function]}
     style={
