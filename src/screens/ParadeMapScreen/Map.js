@@ -23,7 +23,7 @@ import locationButtonActive from "../../../assets/images/location-active.png";
 
 type PermissionStatus = "authorized" | "denied" | "restricted" | "undetermined";
 const neverAskStatuses = Platform.select({
-  android: new Set(["restricted"]),
+  android: new Set(),
   ios: new Set(["denied", "restricted"])
 });
 
@@ -132,10 +132,7 @@ class Map extends Component<Props, State> {
         </MapView>
         {!neverAskStatuses.has(this.state.locationPermission) && (
           <View style={styles.touchable}>
-            <TouchableWithoutFeedback
-              onPress={this.moveToCurrentLocation}
-              style={styles.touchable}
-            >
+            <TouchableWithoutFeedback onPress={this.moveToCurrentLocation}>
               <Image
                 accessibilityLabel="Show my location"
                 source={
