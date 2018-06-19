@@ -1,10 +1,10 @@
 // @flow
 import { shallow } from "enzyme";
 import React from "react";
+import { TouchableWithoutFeedback } from "react-native";
 import MapView from "react-native-maps";
 import Permissions from "react-native-permissions";
 import Map from "./Map";
-import Touchable from "../../components/Touchable";
 import {
   region as paradeRegion,
   route,
@@ -153,7 +153,7 @@ describe("Map component", () => {
       const animateToCoordinate = jest.fn();
       output.instance().mapViewRef.current = { animateToCoordinate };
 
-      output.find(Touchable).simulate("press");
+      output.find(TouchableWithoutFeedback).simulate("press");
       await new Promise(resolve => setTimeout(resolve));
 
       expect(navigator.geolocation.getCurrentPosition).toHaveBeenCalled();
@@ -178,7 +178,7 @@ describe("Map component", () => {
 
       const output = render(regionProps);
 
-      output.find(Touchable).simulate("press");
+      output.find(TouchableWithoutFeedback).simulate("press");
       await new Promise(resolve => setTimeout(resolve));
 
       expect(Permissions.request).toHaveBeenCalledWith("location");
@@ -191,7 +191,7 @@ describe("Map component", () => {
 
       const output = render(regionProps);
 
-      output.find(Touchable).simulate("press");
+      output.find(TouchableWithoutFeedback).simulate("press");
       await new Promise(resolve => setTimeout(resolve));
 
       expect(Permissions.request).not.toHaveBeenCalled();

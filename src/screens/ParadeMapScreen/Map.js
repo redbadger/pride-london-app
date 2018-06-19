@@ -11,7 +11,6 @@ import {
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
 import Text from "../../components/Text";
-import Touchable from "../../components/Touchable";
 import { velvetColor } from "../../constants/colors";
 import type {
   Coordinates,
