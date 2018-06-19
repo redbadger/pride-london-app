@@ -59,6 +59,10 @@ export const generateDateString: ValueGenerator<string> = gen.int.then(int =>
   }).toFormat(FORMAT_CONTENTFUL_ISO)
 );
 
+export const generateURL: ValueGenerator<string> = gen.alphaNumString.then(
+  value => `https://red-badger.com/${value}`
+);
+
 export const generateImageURI: ValueGenerator<string> = gen.alphaNumString.then(
   name => `//red-badger.com/${name}.jpg`
 );
@@ -325,6 +329,68 @@ export const generateCMSEventMinimum: ValueGenerator<mixed> = gen({
     eventDescription: { "en-GB": "eventDescription" },
     individualEventPicture: gen({ "en-GB": generateFieldRef }),
     eventsListPicture: gen({ "en-GB": generateFieldRef })
+  })
+});
+
+const paradeGroupSections = [
+  "Section A",
+  "Section B",
+  "Section C",
+  "Section D",
+  "Section E",
+  "Section F",
+  "Section G"
+];
+
+export const generateParadeGroup: ValueGenerator<Performance> = gen({
+  contentType: "paradeGroup",
+  id: gen.alphaNumString.notEmpty(),
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    name: gen.alphaNumString.notEmpty(),
+    section: gen.oneOf(paradeGroupSections),
+    facebookURL: gen.oneOf([gen.null, generateURL]),
+    twitterURL: gen.oneOf([gen.null, generateURL]),
+    websiteURL: gen.oneOf([gen.null, generateURL])
+  })
+});
+
+export const generateCMSParadeGroup: ValueGenerator<mixed> = gen({
+  sys: {
+    id: gen.alphaNumString.notEmpty(),
+    contentType: {
+      sys: {
+        id: "paradeGroup"
+      }
+    },
+    revision: 1
+  },
+  fields: gen({
+    name: gen({
+      "en-GB": gen.alphaNumString.notEmpty()
+    }),
+    section: gen({
+      "en-GB": gen.oneOf(paradeGroupSections)
+    }),
+    facebookURL: gen.oneOf([
+      gen.undefined,
+      gen({
+        "en-GB": generateURL
+      })
+    ]),
+    twitterURL: gen.oneOf([
+      gen.undefined,
+      gen({
+        "en-GB": generateURL
+      })
+    ]),
+    websiteURL: gen.oneOf([
+      gen.undefined,
+      gen({
+        "en-GB": generateURL
+      })
+    ])
   })
 });
 

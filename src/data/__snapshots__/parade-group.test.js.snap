@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parade Group decoder correctly decodes valid CMS Parade Group 1`] = `
+Object {
+  "contentType": "paradeGroup",
+  "fields": Object {
+    "facebookURL": "https://red-badger.com/24f3tJ9kLEIsCL0O8y881NG4pjYP2",
+    "name": "BhabSLtI692l05Qliy85",
+    "section": "Section E",
+    "twitterURL": "https://red-badger.com/Lh09pJ3",
+    "websiteURL": null,
+  },
+  "id": "hG",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;
