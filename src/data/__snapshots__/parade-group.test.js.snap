@@ -15,3 +15,19 @@ Object {
   "revision": 1,
 }
 `;
+
+exports[`Parade Group decoder correctly decodes valid CMS Parade Group with missing optional fields 1`] = `
+Object {
+  "contentType": "paradeGroup",
+  "fields": Object {
+    "facebookURL": null,
+    "name": "test",
+    "section": "Section A",
+    "twitterURL": null,
+    "websiteURL": null,
+  },
+  "id": "jU1T9830fV3Bl3Z3fk7yktQp",
+  "locale": "en-GB",
+  "revision": 1,
+}
+`;

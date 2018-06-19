@@ -14,6 +14,24 @@ describe("Parade Group", () => {
       }
     });
 
+    it("correctly decodes valid CMS Parade Group with missing optional fields", () => {
+      const data: mixed = sampleOne(generateCMSParadeGroup, { seed: 1234 });
+      data.fields = {
+        name: {
+          "en-GB": "test"
+        },
+        section: {
+          "en-GB": "Section A"
+        }
+      };
+
+      const decoded = decodeParadeGroup("en-GB")(data);
+      expect(decoded.ok).toEqual(true);
+      if (decoded.ok) {
+        expect(decoded.value).toMatchSnapshot();
+      }
+    });
+
     it("fails if a property is missing", () => {
       const data: mixed = {
         fields: {},
