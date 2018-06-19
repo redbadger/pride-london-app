@@ -6,7 +6,7 @@ import {
   Platform,
   View,
   StyleSheet,
-  TouchableNativeFeedback
+  TouchableWithoutFeedback
 } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
@@ -132,21 +132,22 @@ class Map extends Component<Props, State> {
           ))}
         </MapView>
         {!neverAskStatuses.has(this.state.locationPermission) && (
-          <Touchable
-            onPress={this.moveToCurrentLocation}
-            style={styles.touchable}
-            background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-          >
-            <Image
-              accessibilityLabel="Show my location"
-              source={
-                this.state.atUserLocation
-                  ? locationButtonActive
-                  : locationButtonInactive
-              }
-              style={styles.image}
-            />
-          </Touchable>
+          <View style={styles.touchable}>
+            <TouchableWithoutFeedback
+              onPress={this.moveToCurrentLocation}
+              style={styles.touchable}
+            >
+              <Image
+                accessibilityLabel="Show my location"
+                source={
+                  this.state.atUserLocation
+                    ? locationButtonActive
+                    : locationButtonInactive
+                }
+                style={styles.image}
+              />
+            </TouchableWithoutFeedback>
+          </View>
         )}
       </View>
     );
