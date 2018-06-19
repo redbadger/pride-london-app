@@ -612,13 +612,6 @@ exports[`Map component renders correctly 1`] = `
   >
     <TouchableWithoutFeedback
       onPress={[Function]}
-      style={
-        Object {
-          "alignSelf": "flex-end",
-          "marginRight": 0,
-          "marginTop": 44,
-        }
-      }
     >
       <Image
         accessibilityLabel="Show my location"
