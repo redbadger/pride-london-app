@@ -356,9 +356,9 @@ export const generateParadeGroup: ValueGenerator<ParadeGroup> = gen({
   fields: gen({
     name: gen.alphaNumString.notEmpty(),
     section: gen.oneOf(paradeGroupSections),
-    facebookURL: generateMaybe(generateURL),
-    twitterURL: generateMaybe(generateURL),
-    websiteURL: generateMaybe(generateURL)
+    facebookUrl: generateMaybe(generateURL),
+    twitterUrl: generateMaybe(generateURL),
+    websiteUrl: generateMaybe(generateURL)
   })
 });
 
@@ -379,19 +379,19 @@ export const generateCMSParadeGroup: ValueGenerator<mixed> = gen({
     section: gen({
       "en-GB": gen.oneOf(paradeGroupSections)
     }),
-    facebookURL: gen.oneOf([
+    facebookUrl: gen.oneOf([
       gen.undefined,
       gen({
         "en-GB": generateURL
       })
     ]),
-    twitterURL: gen.oneOf([
+    twitterUrl: gen.oneOf([
       gen.undefined,
       gen({
         "en-GB": generateURL
       })
     ]),
-    websiteURL: gen.oneOf([
+    websiteUrl: gen.oneOf([
       gen.undefined,
       gen({
         "en-GB": generateURL

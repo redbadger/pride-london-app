@@ -12,9 +12,9 @@ export type ParadeGroup = {
   fields: {
     name: string,
     section: string,
-    facebookURL: Maybe<string>,
-    twitterURL: Maybe<string>,
-    websiteURL: Maybe<string>
+    facebookUrl: Maybe<string>,
+    twitterUrl: Maybe<string>,
+    websiteUrl: Maybe<string>
   }
 };
 
@@ -39,9 +39,9 @@ const decodeParadeGroup = (locale: string): Decoder<ParadeGroup> =>
       decode.shape({
         name: decode.at(["name", locale], decode.string),
         section: decode.at(["section", locale], decode.string),
-        facebookURL: maybeField(locale, "facebookURL", decode.string),
-        twitterURL: maybeField(locale, "twitterURL", decode.string),
-        websiteURL: maybeField(locale, "websiteURL", decode.string)
+        facebookUrl: maybeField(locale, "facebookUrl", decode.string),
+        twitterUrl: maybeField(locale, "twitterUrl", decode.string),
+        websiteUrl: maybeField(locale, "websiteUrl", decode.string)
       })
     )
   });

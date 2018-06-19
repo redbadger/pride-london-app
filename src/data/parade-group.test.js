@@ -14,7 +14,7 @@ describe("Parade Group", () => {
       }
     });
 
-    it.only("correctly decodes valid CMS Parade Group with missing optional fields", () => {
+    it("correctly decodes valid CMS Parade Group with missing optional fields", () => {
       const data: mixed = {
         sys: {
           id: "jU1T9830fV3Bl3Z3fk7yktQp",
