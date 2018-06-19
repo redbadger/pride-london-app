@@ -5,11 +5,13 @@ import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
 import type { Maybe } from "../lib/maybe";
+import { some, none } from "../lib/maybe";
 import type { Event, EventCategoryName } from "./event";
 import type { FeaturedEvents } from "./featured-events";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
 import type { ImageDetails } from "./image";
+import type { ParadeGroup } from "./parade-group";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
 import { eventCategoryNames } from "./event";
@@ -37,6 +39,10 @@ export const sampleArrayOf = <A>(
 
 // In order for flow to trickle the types for gen.null we had to wrap it
 const generateNull = <A>(): ValueGenerator<Maybe<A>> => gen.null;
+
+const generateMaybe = <A>(
+  generator: ValueGenerator<A>
+): ValueGenerator<Maybe<A>> => gen.oneOf([none(), generator.then(some)]);
 
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
@@ -342,7 +348,7 @@ const paradeGroupSections = [
   "Section G"
 ];
 
-export const generateParadeGroup: ValueGenerator<Performance> = gen({
+export const generateParadeGroup: ValueGenerator<ParadeGroup> = gen({
   contentType: "paradeGroup",
   id: gen.alphaNumString.notEmpty(),
   locale: "en-GB",
@@ -350,9 +356,9 @@ export const generateParadeGroup: ValueGenerator<Performance> = gen({
   fields: gen({
     name: gen.alphaNumString.notEmpty(),
     section: gen.oneOf(paradeGroupSections),
-    facebookURL: gen.oneOf([gen.null, generateURL]),
-    twitterURL: gen.oneOf([gen.null, generateURL]),
-    websiteURL: gen.oneOf([gen.null, generateURL])
+    facebookURL: generateMaybe(generateURL),
+    twitterURL: generateMaybe(generateURL),
+    websiteURL: generateMaybe(generateURL)
   })
 });
 

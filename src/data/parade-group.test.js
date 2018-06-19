@@ -14,14 +14,24 @@ describe("Parade Group", () => {
       }
     });
 
-    it("correctly decodes valid CMS Parade Group with missing optional fields", () => {
-      const data: mixed = sampleOne(generateCMSParadeGroup, { seed: 1234 });
-      data.fields = {
-        name: {
-          "en-GB": "test"
+    it.only("correctly decodes valid CMS Parade Group with missing optional fields", () => {
+      const data: mixed = {
+        sys: {
+          id: "jU1T9830fV3Bl3Z3fk7yktQp",
+          contentType: {
+            sys: {
+              id: "paradeGroup"
+            }
+          },
+          revision: 1
         },
-        section: {
-          "en-GB": "Section A"
+        fields: {
+          name: {
+            "en-GB": "mm2T1WpGuu4k03kl04088fDh1B5V"
+          },
+          section: {
+            "en-GB": "Section C"
+          }
         }
       };
 
