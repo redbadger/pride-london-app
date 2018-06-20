@@ -23,7 +23,7 @@ import locationButtonActive from "../../../assets/images/location-active.png";
 
 type PermissionStatus = "authorized" | "denied" | "restricted" | "undetermined";
 const neverAskStatuses = Platform.select({
-  android: new Set(),
+  android: new Set(["restricted"]),
   ios: new Set(["denied", "restricted"])
 });
 
