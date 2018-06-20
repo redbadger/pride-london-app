@@ -13,14 +13,16 @@ import {
 type Props = {
   children?: string,
   disabled?: boolean,
-  onPress?: Function
+  onPress?: Function,
+  testID?: string
 };
 
-const Button = ({ children, disabled, onPress }: Props) => (
+const Button = ({ children, disabled, onPress, testID }: Props) => (
   <Touchable
     style={[styles.button, disabled ? styles.disabledButton : {}]}
     onPress={onPress}
     disabled={disabled}
+    testID={testID}
   >
     <Text type="h2" style={[styles.text, disabled ? styles.disabledText : {}]}>
       {children}
@@ -31,7 +33,8 @@ const Button = ({ children, disabled, onPress }: Props) => (
 Button.defaultProps = {
   children: "",
   disabled: false,
-  onPress: () => {}
+  onPress: () => {},
+  testID: undefined
 };
 
 const styles = StyleSheet.create({

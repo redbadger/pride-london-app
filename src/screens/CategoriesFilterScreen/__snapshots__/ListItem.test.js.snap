@@ -21,6 +21,7 @@ exports[`ListItem Component renders correctly 1`] = `
       "position": "relative",
     }
   }
+  testID="categories-filter-list-item-music"
 >
   <AnimatedComponent
     style={
@@ -101,6 +102,7 @@ exports[`ListItem Component renders correctly without selected 1`] = `
       "position": "relative",
     }
   }
+  testID="categories-filter-list-item-music"
 >
   <AnimatedComponent
     style={

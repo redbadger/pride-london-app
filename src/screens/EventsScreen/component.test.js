@@ -9,6 +9,7 @@ import EventList from "../../components/EventList";
 import {
   EVENT_CATEGORIES_FILTER,
   EVENT_ATTRIBUTE_FILTER,
+  EVENT_DATE_FILTER,
   EVENT_DETAILS,
   EVENT_LIST
 } from "../../constants/routes";
@@ -101,6 +102,40 @@ describe("EventsScreen Component", () => {
     expect(updateData).toHaveBeenCalled();
   });
 
+  it("scrolls event list to top on scrollEventListToTop", () => {
+    const output = shallow(
+      <Component
+        navigation={navigation}
+        events={[[event]]}
+        loading={false}
+        refreshing={false}
+        updateData={() => Promise.resolve()}
+        selectedCategories={new Set()}
+        addSavedEvent={() => {}}
+        removeSavedEvent={() => {}}
+        savedEvents={new Set()}
+        route={EVENT_LIST}
+      />
+    );
+
+    const scrollToLocation = jest.fn();
+    output.instance().eventListRef.current = {
+      sectionList: { scrollToLocation }
+    };
+    output
+      .find(FilterHeader)
+      .props()
+      .scrollEventListToTop();
+
+    expect(scrollToLocation).toHaveBeenCalledWith({
+      itemIndex: 0,
+      sectionIndex: 0,
+      viewOffset: 40,
+      viewPosition: 0,
+      animated: false
+    });
+  });
+
   describe("navigation", () => {
     const navigationSpy = jest.fn();
     const nav: NavigationScreenProp<NavigationState> = ({
@@ -134,12 +169,20 @@ describe("EventsScreen Component", () => {
       expect(navigationSpy).toBeCalledWith(EVENT_CATEGORIES_FILTER);
     });
 
-    it("opens the categories filter", () => {
+    it("opens the attribute filter", () => {
       output
         .find(FilterHeader)
         .props()
         .onFilterButtonPress();
       expect(navigationSpy).toBeCalledWith(EVENT_ATTRIBUTE_FILTER);
+    });
+
+    it("opens the date filter", () => {
+      output
+        .find(FilterHeader)
+        .props()
+        .onDateFilterButtonPress();
+      expect(navigationSpy).toBeCalledWith(EVENT_DATE_FILTER);
     });
 
     it("opens an event", () => {

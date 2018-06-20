@@ -100,6 +100,7 @@ class DateFilterScreen extends PureComponent<Props, State> {
               disabled={numberOfEvents <= 0}
               onPress={this.goBack}
               accessibilityLabel={text.filterPickerApplyLabel(numberOfEvents)}
+              testID="apply-date-filter-button"
             >
               {text.filterPickerApply(numberOfEvents)}
             </Button>

@@ -8,6 +8,7 @@ exports[`renders correctly 1`] = `
       "flex": 1,
     }
   }
+  testID="donate-screen"
 >
   <Header
     leftElement={

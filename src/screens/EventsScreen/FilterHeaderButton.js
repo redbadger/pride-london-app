@@ -14,7 +14,8 @@ type Props = {
   onRef?: Function,
   style?: ViewStyleProp,
   badgeValue?: ?number,
-  active: boolean
+  active: boolean,
+  testID?: string
 };
 
 const FilterHeaderButton = ({
@@ -24,13 +25,15 @@ const FilterHeaderButton = ({
   style,
   badgeValue,
   active,
-  label
+  label,
+  testID
 }: Props) => (
   <Touchable
     style={[styles.button, style]}
     onPress={onPress}
     ref={onRef}
     accessibilityLabel={label}
+    testID={testID}
   >
     <Text
       type="small"
@@ -52,7 +55,8 @@ const FilterHeaderButton = ({
 FilterHeaderButton.defaultProps = {
   onRef: undefined,
   style: {},
-  badgeValue: null
+  badgeValue: null,
+  testID: undefined
 };
 
 const styles = StyleSheet.create({

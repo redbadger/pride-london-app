@@ -10,7 +10,7 @@ type Props = {
 
 const NumberBadge = ({ value }: Props) => (
   <View style={styles.badge}>
-    <Text type="xSmall" style={styles.value}>
+    <Text type="xSmall" style={styles.value} testID="number-badge">
       {value}
     </Text>
   </View>

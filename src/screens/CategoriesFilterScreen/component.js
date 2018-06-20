@@ -54,6 +54,7 @@ class CategoriesFilterScreen extends PureComponent<Props> {
               onPress={this.applyFilters}
               disabled={numberOfEvents <= 0}
               accessibilityLabel={text.filterPickerApplyLabel(numberOfEvents)}
+              testID="apply-category-filter-button"
             >
               {text.filterPickerApply(numberOfEvents)}
             </Button>

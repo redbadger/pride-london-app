@@ -56,6 +56,7 @@ exports[`FilterScreen renders correctly 1`] = `
         accessibilityLabel="Show 26 selected events"
         disabled={false}
         onPress={[Function]}
+        testID="apply-area-and-price-filter-button"
       >
         Show 26 events
       </Button>

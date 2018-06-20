@@ -13,6 +13,7 @@ import {
 } from "../../constants/colors";
 import text from "../../constants/text";
 import { formatDateRange } from "../../data/formatters";
+import ResetAllFiltersButton from "./ResetAllFiltersButton";
 
 export type Props = {
   onFilterCategoriesPress: Function,
@@ -20,10 +21,21 @@ export type Props = {
   onFilterButtonPress: () => void,
   onDateFilterButtonPress: () => void,
   selectedCategories: Set<EventCategoryName>,
-  numTagFiltersSelected: number
+  numTagFiltersSelected: number,
+  resetAllFiltersPress: () => void,
+  scrollEventListToTop: () => void
 };
 
 class FilterHeader extends React.PureComponent<Props> {
+  static defaultProps = {
+    resetAllFiltersPress: () => {}
+  };
+
+  resetAllFilters = () => {
+    this.props.resetAllFiltersPress();
+    this.props.scrollEventListToTop();
+  };
+
   render() {
     const {
       dateFilter,
@@ -37,14 +49,23 @@ class FilterHeader extends React.PureComponent<Props> {
       ? formatDateRange(dateFilter)
       : text.selectDates;
 
+    const anyAppliedFilters: boolean =
+      !!dateFilter || numTagFiltersSelected > 0 || selectedCategories.size > 0;
+
     return (
       <View accessibilityTraits={["header"]} style={styles.container}>
         <ContentPadding>
-          <View testID="event-filter-header" style={styles.content}>
-            <FilterHeaderCategories
-              onFilterPress={onFilterCategoriesPress}
-              selectedCategories={selectedCategories}
+          <View>
+            <ResetAllFiltersButton
+              visible={anyAppliedFilters}
+              onPress={this.resetAllFilters}
             />
+            <View testID="event-filter-header" style={styles.content}>
+              <FilterHeaderCategories
+                onFilterPress={onFilterCategoriesPress}
+                selectedCategories={selectedCategories}
+              />
+            </View>
           </View>
         </ContentPadding>
         <View style={styles.contentFilters}>
@@ -54,6 +75,7 @@ class FilterHeader extends React.PureComponent<Props> {
             label={`filter by date: ${formattedDateFilter}`}
             onPress={onDateFilterButtonPress}
             style={styles.filterButton}
+            testID="open-date-filters-button"
           />
           <View style={styles.dividerLine} />
           <FilterHeaderButton
@@ -65,6 +87,7 @@ class FilterHeader extends React.PureComponent<Props> {
             badgeValue={
               numTagFiltersSelected > 0 ? numTagFiltersSelected : null
             }
+            testID="open-area-and-price-filters-button"
           />
         </View>
       </View>
@@ -77,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: filterBgColor
   },
   content: {
-    paddingTop: 16,
+    marginTop: 16,
     paddingBottom: 12
   },
   contentFilters: {

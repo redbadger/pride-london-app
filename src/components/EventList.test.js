@@ -85,7 +85,13 @@ describe("EventList", () => {
 
   it("renders items correctly", () => {
     const renderItem = render().prop("renderItem");
-    const output = renderItem({ item: events[0][0] });
+    const output = renderItem({
+      item: events[0][0],
+      index: 0,
+      section: {
+        index: 0
+      }
+    });
 
     expect(output).toMatchSnapshot();
   });

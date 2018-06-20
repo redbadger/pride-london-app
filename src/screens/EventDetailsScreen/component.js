@@ -111,7 +111,7 @@ class EventDetailsScreen extends PureComponent<Props> {
   render() {
     const { event, navigation, performances, setCategoryFilter } = this.props;
     return (
-      <View style={styles.container}>
+      <View style={styles.container} testID="event-details-screen">
         <EventHeader
           isSaved={this.props.isSaved}
           toggleSaved={this.props.toggleSaved}
