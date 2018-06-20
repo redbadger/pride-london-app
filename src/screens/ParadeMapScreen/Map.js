@@ -6,7 +6,8 @@ import {
   Platform,
   View,
   StyleSheet,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  Linking
 } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
@@ -24,7 +25,7 @@ import locationButtonActive from "../../../assets/images/location-active.png";
 type PermissionStatus = "authorized" | "denied" | "restricted" | "undetermined";
 const neverAskStatuses = Platform.select({
   android: new Set(["restricted"]),
-  ios: new Set(["denied", "restricted"])
+  ios: new Set(["restricted"])
 });
 
 type Props = {
@@ -97,6 +98,8 @@ class Map extends Component<Props, State> {
           500
         );
       });
+    } else if (Platform.OS === "ios" && locationPermission === "denied") {
+      Linking.openURL("app-settings:");
     }
   };
 
