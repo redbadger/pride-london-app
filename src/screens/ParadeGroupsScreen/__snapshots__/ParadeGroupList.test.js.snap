@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ParadeGroupList renders correctly 1`] = `
+<SectionList
+  ItemSeparatorComponent={[Function]}
+  SectionSeparatorComponent={[Function]}
+  contentContainerStyle={
+    Object {
+      "backgroundColor": "#ffffff",
+      "paddingTop": 0,
+    }
+  }
+  data={Array []}
+  disableVirtualization={false}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  onEndReachedThreshold={2}
+  renderItem={[Function]}
+  renderSectionFooter={[Function]}
+  renderSectionHeader={[Function]}
+  scrollEventThrottle={50}
+  sections={
+    Array [
+      Object {
+        "data": Array [
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": "https://red-badger.com",
+              "name": "A Test Parade Group",
+              "section": "Section A",
+              "twitterUrl": "https://red-badger.com",
+              "websiteUrl": "https://red-badger.com",
+            },
+            "id": "ABC",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ],
+        "index": 0,
+        "key": "A",
+      },
+      Object {
+        "data": Array [
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": null,
+              "name": "Test Parade Group",
+              "section": "Section B",
+              "twitterUrl": null,
+              "websiteUrl": null,
+            },
+            "id": "DEF",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ],
+        "index": 1,
+        "key": "T",
+      },
+    ]
+  }
+  stickySectionHeadersEnabled={true}
+  updateCellsBatchingPeriod={50}
+  windowSize={10}
+/>
+`;
+
+exports[`ParadeGroupList renders item separators correctly 1`] = `
+<Component
+  style={
+    Object {
+      "height": 12,
+    }
+  }
+/>
+`;
+
+exports[`ParadeGroupList renders section footers correctly 1`] = `
+<Component
+  style={
+    Object {
+      "height": 6,
+    }
+  }
+/>
+`;
+
+exports[`ParadeGroupList renders section separators correctly 1`] = `
+<Component
+  style={
+    Object {
+      "height": 6,
+    }
+  }
+/>
+`;

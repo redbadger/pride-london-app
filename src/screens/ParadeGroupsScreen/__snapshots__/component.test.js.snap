@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+  testID="parade-groups-screen"
+>
+  <ParadeGroupList
+    paradeGroups={
+      Array [
+        Array [
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": "https://red-badger.com",
+              "name": "A Test Parade Group",
+              "section": "Section A",
+              "twitterUrl": "https://red-badger.com",
+              "websiteUrl": "https://red-badger.com",
+            },
+            "id": "ABC",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": null,
+              "name": "Test Parade Group",
+              "section": "Section B",
+              "twitterUrl": null,
+              "websiteUrl": null,
+            },
+            "id": "DEF",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ],
+      ]
+    }
+  />
+</Component>
+`;
