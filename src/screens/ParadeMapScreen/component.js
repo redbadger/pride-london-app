@@ -14,8 +14,13 @@ const renderMap = () => (
       latitude: 51.5085,
       longitude: -0.134192,
       latitudeDelta: 0.02,
-      longitudeDelta: 0.00000004
+      longitudeDelta: 0.02
     }}
+    showsPointsOfInterest={false}
+    showsScale={false}
+    showsBuildings={false}
+    showsTraffic={false}
+    showsIndoors={false}
   >
     <Polyline
       coordinates={paradeCoordinates}

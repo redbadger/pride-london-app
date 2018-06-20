@@ -44,9 +44,14 @@ exports[`renders correctly 1`] = `
         "latitude": 51.5085,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
-        "longitudeDelta": 4e-8,
+        "longitudeDelta": 0.02,
       }
     }
+    showsBuildings={false}
+    showsIndoors={false}
+    showsPointsOfInterest={false}
+    showsScale={false}
+    showsTraffic={false}
     style={
       Object {
         "bottom": 0,
