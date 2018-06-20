@@ -9,6 +9,6 @@ it("renders correctly", () => {
 });
 
 it("does not render map when not focused", () => {
-  const output = shallow(<ParadeMapScreen />);
+  const output = shallow(<ParadeMapScreen isFocused={false} />);
   expect(output).toMatchSnapshot();
 });
