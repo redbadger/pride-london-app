@@ -88,13 +88,17 @@ class Map extends Component<Props, State> {
   moveToCurrentLocation = async () => {
     const locationPermission = await this.confirmLocationPermission();
     if (locationPermission === "authorized") {
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-        const { latitude, longitude } = coords;
-        this.mapViewRef.current.animateToCoordinate(
-          { latitude, longitude },
-          500
-        );
-      });
+      navigator.geolocation.getCurrentPosition(
+        ({ coords }) => {
+          const { latitude, longitude } = coords;
+          this.mapViewRef.current.animateToCoordinate(
+            { latitude, longitude },
+            500
+          );
+        },
+        null,
+        { enableHighAccuracy: true, timeout: 2000 }
+      );
     } else if (Platform.OS === "ios" && locationPermission === "denied") {
       Linking.openURL("app-settings:");
     }
