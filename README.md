@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/maintainability)](https://codeclimate.com/github/redbadger/pride-london-app/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2cf8ebe7b80ee5c1650d/test_coverage)](https://codeclimate.com/github/redbadger/pride-london-app/test_coverage)
 
-iOS https://itunes.apple.com/gb/app/pride-in-london/id1250496471
+iOS: https://itunes.apple.com/gb/app/pride-in-london/id1250496471
 
 Android: https://play.google.com/store/apps/details?id=org.prideinlondon.festival
 
