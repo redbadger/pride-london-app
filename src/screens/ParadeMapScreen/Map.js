@@ -132,16 +132,21 @@ class Map extends Component<Props, State> {
         </MapView>
         {!neverAskStatuses.has(this.state.locationPermission) && (
           <View style={styles.touchable}>
-            <TouchableWithoutFeedback onPress={this.moveToCurrentLocation}>
-              <Image
-                accessibilityLabel="Show my location"
-                source={
-                  this.state.atUserLocation
-                    ? locationButtonActive
-                    : locationButtonInactive
-                }
-                style={styles.image}
-              />
+            <TouchableWithoutFeedback
+              onPress={this.moveToCurrentLocation}
+              hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
+            >
+              <View>
+                <Image
+                  accessibilityLabel="Show my location"
+                  source={
+                    this.state.atUserLocation
+                      ? locationButtonActive
+                      : locationButtonInactive
+                  }
+                  style={styles.image}
+                />
+              </View>
             </TouchableWithoutFeedback>
           </View>
         )}
@@ -153,8 +158,10 @@ class Map extends Component<Props, State> {
 const styles = StyleSheet.create({
   touchable: {
     alignSelf: "flex-end",
-    marginTop: Platform.OS === "ios" ? 44 : 8,
-    marginRight: Platform.OS === "ios" ? 0 : 8
+    paddingTop: Platform.OS === "ios" ? 44 : 8,
+    paddingRight: Platform.OS === "ios" ? 0 : 8,
+    paddingLeft: 10,
+    paddingBottom: 10
   },
   image: {
     width: 44,

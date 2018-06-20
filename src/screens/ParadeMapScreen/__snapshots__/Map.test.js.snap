@@ -605,24 +605,36 @@ exports[`Map component renders correctly 1`] = `
     style={
       Object {
         "alignSelf": "flex-end",
-        "marginRight": 0,
-        "marginTop": 44,
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 0,
+        "paddingTop": 44,
       }
     }
   >
     <TouchableWithoutFeedback
+      hitSlop={
+        Object {
+          "bottom": 10,
+          "left": 10,
+          "right": 10,
+          "top": 10,
+        }
+      }
       onPress={[Function]}
     >
-      <Image
-        accessibilityLabel="Show my location"
-        source={1}
-        style={
-          Object {
-            "height": 44,
-            "width": 44,
+      <Component>
+        <Image
+          accessibilityLabel="Show my location"
+          source={1}
+          style={
+            Object {
+              "height": 44,
+              "width": 44,
+            }
           }
-        }
-      />
+        />
+      </Component>
     </TouchableWithoutFeedback>
   </Component>
 </Component>
