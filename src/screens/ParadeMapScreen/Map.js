@@ -96,8 +96,8 @@ class Map extends Component<Props, State> {
             500
           );
         },
-        null,
-        { enableHighAccuracy: true, timeout: 2000 }
+        () => {},
+        { enableHighAccuracy: true, timeout: 2000, maximumAge: 10000 }
       );
     } else if (Platform.OS === "ios" && locationPermission === "denied") {
       Linking.openURL("app-settings:");
