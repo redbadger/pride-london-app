@@ -23,10 +23,7 @@ import locationButtonInactive from "../../../assets/images/location-inactive.png
 import locationButtonActive from "../../../assets/images/location-active.png";
 
 type PermissionStatus = "authorized" | "denied" | "restricted" | "undetermined";
-const neverAskStatuses = Platform.select({
-  android: new Set(["restricted"]),
-  ios: new Set(["restricted"])
-});
+const neverAskStatuses = new Set(["restricted"]);
 
 type Props = {
   route: Array<Coordinates>,
