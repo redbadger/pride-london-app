@@ -44,7 +44,7 @@ exports[`renders correctly 1`] = `
         "latitude": 51.5085,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
-        "longitudeDelta": 4.1e-8,
+        "longitudeDelta": 4e-8,
       }
     }
     style={

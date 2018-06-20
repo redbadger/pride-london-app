@@ -14,7 +14,7 @@ const renderMap = () => (
       latitude: 51.5085,
       longitude: -0.134192,
       latitudeDelta: 0.02,
-      longitudeDelta: 0.000000041
+      longitudeDelta: 0.00000004
     }}
   >
     <Polyline
