@@ -96,8 +96,20 @@ class Map extends Component<Props, State> {
             500
           );
         },
-        () => {},
-        { enableHighAccuracy: true, timeout: 2000, maximumAge: 10000 }
+        () => {
+          navigator.geolocation.getCurrentPosition(
+            ({ coords }) => {
+              const { latitude, longitude } = coords;
+              this.mapViewRef.current.animateToCoordinate(
+                { latitude, longitude },
+                500
+              );
+            },
+            () => {},
+            { enableHighAccuracy: false, timeout: 500, maximumAge: 10000 }
+          );
+        },
+        { enableHighAccuracy: true, timeout: 500, maximumAge: 10000 }
       );
     } else if (Platform.OS === "ios" && locationPermission === "denied") {
       Linking.openURL("app-settings:");
