@@ -5,11 +5,13 @@ import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
 import type { Maybe } from "../lib/maybe";
+import { some } from "../lib/maybe";
 import type { Event, EventCategoryName } from "./event";
 import type { FeaturedEvents } from "./featured-events";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
 import type { ImageDetails } from "./image";
+import type { ParadeGroup } from "../screens/ParadeGroupsScreen/parade-group";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
 import { eventCategoryNames } from "./event";
@@ -38,6 +40,10 @@ export const sampleArrayOf = <A>(
 // In order for flow to trickle the types for gen.null we had to wrap it
 const generateNull = <A>(): ValueGenerator<Maybe<A>> => gen.null;
 
+const generateMaybe = <A>(
+  generator: ValueGenerator<A>
+): ValueGenerator<Maybe<A>> => gen.oneOf([gen.null, generator.then(some)]);
+
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
     id: gen.alphaNumString.notEmpty()
@@ -57,6 +63,10 @@ export const generateDateString: ValueGenerator<string> = gen.int.then(int =>
   DateTime.fromMillis(baseTime + int * int * int * fiveMinutes, {
     zone: "UTC"
   }).toFormat(FORMAT_CONTENTFUL_ISO)
+);
+
+export const generateURL: ValueGenerator<string> = gen.alphaNumString.then(
+  value => `https://red-badger.com/${value}`
 );
 
 export const generateImageURI: ValueGenerator<string> = gen.alphaNumString.then(
@@ -325,6 +335,30 @@ export const generateCMSEventMinimum: ValueGenerator<mixed> = gen({
     eventDescription: { "en-GB": "eventDescription" },
     individualEventPicture: gen({ "en-GB": generateFieldRef }),
     eventsListPicture: gen({ "en-GB": generateFieldRef })
+  })
+});
+
+const paradeGroupSections = [
+  "Section A",
+  "Section B",
+  "Section C",
+  "Section D",
+  "Section E",
+  "Section F",
+  "Section G"
+];
+
+export const generateParadeGroup: ValueGenerator<ParadeGroup> = gen({
+  contentType: "paradeGroup",
+  id: gen.alphaNumString.notEmpty(),
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    name: gen.alphaNumString.notEmpty(),
+    section: gen.oneOf(paradeGroupSections),
+    facebookUrl: generateMaybe(generateURL),
+    twitterUrl: generateMaybe(generateURL),
+    websiteUrl: generateMaybe(generateURL)
   })
 });
 
