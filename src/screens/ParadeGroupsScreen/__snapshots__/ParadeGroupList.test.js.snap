@@ -28,19 +28,19 @@ exports[`ParadeGroupList renders correctly 1`] = `
           Object {
             "contentType": "paradeGroup",
             "fields": Object {
-              "facebookUrl": "https://red-badger.com",
-              "name": "A Test Parade Group",
-              "section": "Section A",
-              "twitterUrl": "https://red-badger.com",
-              "websiteUrl": "https://red-badger.com",
+              "facebookUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+              "name": "1x2yj",
+              "section": "Section F",
+              "twitterUrl": "https://red-badger.com/9bP1RB90H",
+              "websiteUrl": "https://red-badger.com/eip8IG6Kik565CkXG",
             },
-            "id": "ABC",
+            "id": "d18Cp545J4C996o5",
             "locale": "en-GB",
             "revision": 1,
           },
         ],
         "index": 0,
-        "key": "A",
+        "key": "1",
       },
       Object {
         "data": Array [
@@ -48,18 +48,18 @@ exports[`ParadeGroupList renders correctly 1`] = `
             "contentType": "paradeGroup",
             "fields": Object {
               "facebookUrl": null,
-              "name": "Test Parade Group",
-              "section": "Section B",
-              "twitterUrl": null,
-              "websiteUrl": null,
+              "name": "99b3j372i",
+              "section": "Section F",
+              "twitterUrl": "https://red-badger.com/3K6989xRF5UXeYRQ43y4",
+              "websiteUrl": "https://red-badger.com/U8vZ3SjWR8f763prj6la40kMR",
             },
-            "id": "DEF",
+            "id": "642gdEs5xmkdO5v541Oau11NM7T",
             "locale": "en-GB",
             "revision": 1,
           },
         ],
         "index": 1,
-        "key": "T",
+        "key": "9",
       },
     ]
   }
@@ -79,6 +79,23 @@ exports[`ParadeGroupList renders item separators correctly 1`] = `
 />
 `;
 
+exports[`ParadeGroupList renders items correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={Object {}}
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="text"
+  >
+    Name: 
+    1x2yj
+  </Text>
+</ContentPadding>
+`;
+
 exports[`ParadeGroupList renders section footers correctly 1`] = `
 <Component
   style={
@@ -86,6 +103,14 @@ exports[`ParadeGroupList renders section footers correctly 1`] = `
       "height": 6,
     }
   }
+/>
+`;
+
+exports[`ParadeGroupList renders section headers correctly 1`] = `
+<SectionHeader
+  badgeValue={undefined}
+  hasShadow={true}
+  title="1"
 />
 `;
 

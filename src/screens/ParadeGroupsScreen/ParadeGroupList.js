@@ -54,7 +54,6 @@ class ParadeGroupList extends Component<Props> {
   sectionSeparator = () => <View style={styles.sectionSeparator} />;
 
   keyExtractor = getId;
-  sectionList = null;
 
   renderItem = ({ item }: RenderItemInfo) => (
     <ContentPadding>
@@ -82,11 +81,8 @@ class ParadeGroupList extends Component<Props> {
         contentContainerStyle={styles.container}
         ItemSeparatorComponent={this.itemSeparator}
         SectionSeparatorComponent={this.sectionSeparator}
-        windowSize={10}
         testID={testID}
-        ref={sectionList => {
-          this.sectionList = sectionList;
-        }}
+        windowSize={10}
       />
     );
   }
