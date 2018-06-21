@@ -25,7 +25,7 @@ type RenderSectionInfo = {
   section: Section // eslint-disable-line react/no-unused-prop-types
 };
 
-const sectionTitle = (paradeGroup: ParadeGroup): string =>
+export const sectionTitle = (paradeGroup: ParadeGroup): string =>
   paradeGroup.fields.name.charAt(0).toUpperCase();
 
 const sections = (sectionedParadeGroups: ParadeGroup[][]): Section[] =>

@@ -2,12 +2,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import R from "ramda";
-import ParadeGroupList from "./ParadeGroupList";
+import ParadeGroupList, { sectionTitle } from "./ParadeGroupList";
 import type { ParadeGroup } from "./parade-group";
 import { bgColor } from "../../constants/colors";
-
-const sectionTitle = (paradeGroup: ParadeGroup): string =>
-  paradeGroup.fields.name.charAt(0).toUpperCase();
 
 const groupByName = R.groupWith(
   (a: ParadeGroup, b: ParadeGroup) => sectionTitle(a) === sectionTitle(b)
