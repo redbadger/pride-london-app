@@ -1,5 +1,156 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`#sortAndGroupByName sorts ParadeGroups by name and groups them 1`] = `
+Array [
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/r0LLAzLf4jkD2PBsV6p8f0X3qm7GZ",
+        "name": "4qif4q",
+        "section": "Section F",
+        "twitterUrl": null,
+        "websiteUrl": "https://red-badger.com/3T0OHw7M",
+      },
+      "id": "QPIB7DYkm7Z",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/P460A2Y",
+        "name": "66xFJ9CdsFOL2f3P68Muj8G9",
+        "section": "Section C",
+        "twitterUrl": "https://red-badger.com/R3MYG9m",
+        "websiteUrl": null,
+      },
+      "id": "k9XA4bnQ5lc3pH7IRmnTf7wdX9FLFT",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/hSD80ML7HPK",
+        "name": "68U935Hqz65100my",
+        "section": "Section C",
+        "twitterUrl": null,
+        "websiteUrl": "https://red-badger.com/3ITqp0H4STlxJ03b216r2gcnw",
+      },
+      "id": "g3QY",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": null,
+        "name": "8",
+        "section": "Section G",
+        "twitterUrl": null,
+        "websiteUrl": "https://red-badger.com/8sl",
+      },
+      "id": "69ZJ0a0IU64JZ",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/kbvy9f2BQz53Jx7nu36R1K2",
+        "name": "9KYBVw1B0r2TwKsSLwS3Xk",
+        "section": "Section E",
+        "twitterUrl": "https://red-badger.com/",
+        "websiteUrl": null,
+      },
+      "id": "6UhHUJO234eCj",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/29P43",
+        "name": "cV99LvgB81BvJ8zP3mvJa6NbA4QIBu",
+        "section": "Section C",
+        "twitterUrl": null,
+        "websiteUrl": "https://red-badger.com/J",
+      },
+      "id": "908Q3Y5y7fj4xsav535QvA",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/74Mh7Ks7Y1OQ6B9UzMS3O3",
+        "name": "dH32ww7rFcMiZx2ErCw5H5OEj88I",
+        "section": "Section G",
+        "twitterUrl": "https://red-badger.com/Uk2E",
+        "websiteUrl": "https://red-badger.com/gBYvD0bY2IlSOHaq",
+      },
+      "id": "0z4",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/5B2",
+        "name": "j4KZB5Id06ptaB1EnhR716i8",
+        "section": "Section F",
+        "twitterUrl": "https://red-badger.com/L3ieKm0K2MuR3r",
+        "websiteUrl": null,
+      },
+      "id": "v3bvylwKk9k6qto22Tjt48H1",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/KS634FeFp2070DdT2pY7rC4n9",
+        "name": "Z0h4",
+        "section": "Section B",
+        "twitterUrl": null,
+        "websiteUrl": "https://red-badger.com/C8IObnmQvY99lOSIu9XaxnUuX76f8W",
+      },
+      "id": "0H2q0dclb0OGlheKwcx4b",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": null,
+        "name": "ZU3wdsh5Dg3Od4O5bJ",
+        "section": "Section E",
+        "twitterUrl": null,
+        "websiteUrl": null,
+      },
+      "id": "vbMOT47431VSzcbrqd47Sq",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+]
+`;
+
 exports[`renders correctly 1`] = `
 <Component
   style={
@@ -27,6 +178,8 @@ exports[`renders correctly 1`] = `
             "locale": "en-GB",
             "revision": 1,
           },
+        ],
+        Array [
           Object {
             "contentType": "paradeGroup",
             "fields": Object {
@@ -40,6 +193,8 @@ exports[`renders correctly 1`] = `
             "locale": "en-GB",
             "revision": 1,
           },
+        ],
+        Array [
           Object {
             "contentType": "paradeGroup",
             "fields": Object {
