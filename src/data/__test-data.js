@@ -261,7 +261,8 @@ export const generateCMSEvent: ValueGenerator<mixed> = gen({
     },
     recurrenceDates: {
       "en-GB": gen.array(generateDate, { minSize: 1, maxSize: 5 })
-    }
+    },
+    stage: { "en-GB": gen.boolean }
   })
 });
 
