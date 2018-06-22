@@ -11,7 +11,7 @@ import {
   selectFeaturedEventsByTitle,
   resolveEvents
 } from "./data";
-import { filterEvents } from "./event";
+import { filterEvents, getStages } from "./event";
 import {
   buildEventFilter,
   selectShowEventsAfter,
@@ -99,3 +99,5 @@ export const getFeaturedEventsResolvedEvents = createSelector(
   [getFutureEventsMap, getFeaturedEventsEvents],
   resolveEvents
 );
+
+export const selectStages = createSelector([getEvents], getStages);
