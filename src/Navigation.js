@@ -16,7 +16,7 @@ import DonateScreen from "./screens/DonateScreen";
 import EventsScreen from "./screens/EventsScreen";
 import EventDetailsScreen from "./screens/EventDetailsScreen";
 import FeaturedEventListScreen from "./screens/FeaturedEventListScreen";
-import ParadeInformationScreen from "./screens/ParadeInformationScreen";
+import ParadeGroupsScreen from "./screens/ParadeGroupsScreen";
 import ParadeMapScreen from "./screens/ParadeMapScreen";
 import SavedEventListScreen from "./screens/SavedEventListScreen";
 import HomeScreen from "./screens/HomeScreen";
@@ -48,7 +48,7 @@ import {
   HOME,
   EVENT_CATEGORIES_FILTER,
   PARADE, // should be able to remove this
-  PARADE_INFORMATION,
+  PARADE_GROUPS,
   PARADE_MAP,
   SAVED_EVENT_LIST,
   SUPPORT_US,
@@ -104,7 +104,7 @@ export const getTabTestId = (routeName: string) => {
       return "events-tab-button";
     case PARADE:
       return "parade-tab-button";
-    case PARADE_INFORMATION:
+    case PARADE_GROUPS:
       return "parade-information-button";
     case PARADE_MAP:
       return "parade-map-button";
@@ -175,10 +175,10 @@ const ParadeTabNav = createMaterialTopTabNavigator(
         tabBarLabel: text.tabParadeMap
       }
     },
-    [PARADE_INFORMATION]: {
-      screen: ParadeInformationScreen,
+    [PARADE_GROUPS]: {
+      screen: ParadeGroupsScreen,
       navigationOptions: {
-        tabBarLabel: text.tabParadeStages
+        tabBarLabel: text.tabParadeGroups
       }
     }
   },
