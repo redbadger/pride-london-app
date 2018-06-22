@@ -3,7 +3,7 @@
 exports[`ParadeGroupList renders correctly 1`] = `
 <SectionList
   ItemSeparatorComponent={[Function]}
-  SectionSeparatorComponent={[Function]}
+  ListHeaderComponent={[Function]}
   contentContainerStyle={
     Object {
       "backgroundColor": "#ffffff",
@@ -18,7 +18,6 @@ exports[`ParadeGroupList renders correctly 1`] = `
   maxToRenderPerBatch={10}
   onEndReachedThreshold={2}
   renderItem={[Function]}
-  renderSectionFooter={[Function]}
   renderSectionHeader={[Function]}
   scrollEventThrottle={50}
   sections={
@@ -70,13 +69,12 @@ exports[`ParadeGroupList renders correctly 1`] = `
 `;
 
 exports[`ParadeGroupList renders item separators correctly 1`] = `
-<Component
-  style={
-    Object {
-      "height": 12,
-    }
-  }
-/>
+<ContentPadding
+  padding={Object {}}
+  style={Object {}}
+>
+  <SectionDivider />
+</ContentPadding>
 `;
 
 exports[`ParadeGroupList renders items correctly 1`] = `
@@ -84,26 +82,24 @@ exports[`ParadeGroupList renders items correctly 1`] = `
   padding={Object {}}
   style={Object {}}
 >
-  <Text
-    color="blackColor"
-    markdown={false}
-    markdownStyle={Object {}}
-    type="text"
-  >
-    Name: 
-    1x2yj
-  </Text>
-</ContentPadding>
-`;
-
-exports[`ParadeGroupList renders section footers correctly 1`] = `
-<Component
-  style={
-    Object {
-      "height": 6,
+  <ParadeGroupDetails
+    paradeGroup={
+      Object {
+        "contentType": "paradeGroup",
+        "fields": Object {
+          "facebookUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+          "name": "1x2yj",
+          "section": "Section F",
+          "twitterUrl": "https://red-badger.com/9bP1RB90H",
+          "websiteUrl": "https://red-badger.com/eip8IG6Kik565CkXG",
+        },
+        "id": "d18Cp545J4C996o5",
+        "locale": "en-GB",
+        "revision": 1,
+      }
     }
-  }
-/>
+  />
+</ContentPadding>
 `;
 
 exports[`ParadeGroupList renders section headers correctly 1`] = `
@@ -111,15 +107,5 @@ exports[`ParadeGroupList renders section headers correctly 1`] = `
   badgeValue={undefined}
   hasShadow={true}
   title="1"
-/>
-`;
-
-exports[`ParadeGroupList renders section separators correctly 1`] = `
-<Component
-  style={
-    Object {
-      "height": 6,
-    }
-  }
 />
 `;

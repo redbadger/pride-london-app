@@ -24,13 +24,6 @@ describe("ParadeGroupList", () => {
     expect(output).toMatchSnapshot();
   });
 
-  it("renders section footers correctly", () => {
-    const renderSectionFooter = render().prop("renderSectionFooter");
-    const output = renderSectionFooter({ section: { data: paradeGroups[0] } });
-
-    expect(output).toMatchSnapshot();
-  });
-
   it("renders items correctly", () => {
     const renderItem = render().prop("renderItem");
     const output = renderItem({
@@ -47,15 +40,6 @@ describe("ParadeGroupList", () => {
   it("renders item separators correctly", () => {
     const ItemSeparatorComponent = render().prop("ItemSeparatorComponent");
     const output = shallow(<ItemSeparatorComponent />);
-
-    expect(output).toMatchSnapshot();
-  });
-
-  it("renders section separators correctly", () => {
-    const SectionSeparatorComponent = render().prop(
-      "SectionSeparatorComponent"
-    );
-    const output = shallow(<SectionSeparatorComponent />);
 
     expect(output).toMatchSnapshot();
   });

@@ -1,12 +1,15 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, SectionList, View } from "react-native";
+import { StyleSheet, SectionList } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
 import type { ParadeGroup } from "./parade-group";
+import ParadeGroupDetails from "./ParadeGroupDetails";
 import ContentPadding from "../../components/ContentPadding";
+import SectionDivider from "../../components/SectionDivider";
 import SectionHeader from "../../components/SectionHeader";
 import Text from "../../components/Text";
 import { whiteColor } from "../../constants/colors";
+import text from "../../constants/text";
 
 type Props = {
   paradeGroups: ParadeGroup[][],
@@ -49,15 +52,19 @@ class ParadeGroupList extends Component<Props> {
     return paradeGroups !== nextParadeGroups;
   }
 
-  itemSeparator = () => <View style={styles.itemSeparator} />;
+  itemSeparator = () => (
+    <ContentPadding>
+      <SectionDivider />
+    </ContentPadding>
+  );
 
-  sectionSeparator = () => <View style={styles.sectionSeparator} />;
+  // sectionSeparator = () => <View style={styles.sectionSeparator} />;
 
   keyExtractor = getId;
 
   renderItem = ({ item }: RenderItemInfo) => (
     <ContentPadding>
-      <Text>Name: {item.fields.name}</Text>
+      <ParadeGroupDetails paradeGroup={item} />
     </ContentPadding>
   );
 
@@ -65,7 +72,14 @@ class ParadeGroupList extends Component<Props> {
     <SectionHeader title={sectionTitle(section.data[0])} />
   );
 
-  renderSectionFooter = () => <View style={styles.sectionFooter} />;
+  renderHeader = () => (
+    <ContentPadding>
+      <Text style={styles.title} type="h2" color="lightNavyBlueColor">
+        {text.paradeGroups.title}
+      </Text>
+      <Text style={styles.description}>{text.paradeGroups.description}</Text>
+    </ContentPadding>
+  );
 
   render() {
     const { paradeGroups, testID } = this.props;
@@ -75,12 +89,11 @@ class ParadeGroupList extends Component<Props> {
         stickySectionHeadersEnabled
         sections={sections(paradeGroups)}
         renderSectionHeader={this.renderSectionHeader}
-        renderSectionFooter={this.renderSectionFooter}
         renderItem={this.renderItem}
         keyExtractor={this.keyExtractor}
         contentContainerStyle={styles.container}
         ItemSeparatorComponent={this.itemSeparator}
-        SectionSeparatorComponent={this.sectionSeparator}
+        ListHeaderComponent={this.renderHeader}
         testID={testID}
         windowSize={10}
       />
@@ -89,18 +102,16 @@ class ParadeGroupList extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  itemSeparator: {
-    height: 12
-  },
-  sectionSeparator: {
-    height: 6
-  },
   container: {
     paddingTop: 0,
     backgroundColor: whiteColor
   },
-  sectionFooter: {
-    height: 6
+  title: {
+    paddingTop: 24,
+    paddingBottom: 8
+  },
+  description: {
+    paddingBottom: 16
   }
 });
 
