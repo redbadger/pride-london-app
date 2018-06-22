@@ -5,13 +5,13 @@ import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
 import type { Maybe } from "../lib/maybe";
-import { some } from "../lib/maybe";
+import { some, none } from "../lib/maybe";
 import type { Event, EventCategoryName } from "./event";
 import type { FeaturedEvents } from "./featured-events";
 import type { FieldRef } from "./field-ref";
 import type { HeaderBanner } from "./header-banner";
 import type { ImageDetails } from "./image";
-import type { ParadeGroup } from "../screens/ParadeGroupsScreen/parade-group";
+import type { ParadeGroup } from "./parade-group";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
 import { eventCategoryNames } from "./event";
@@ -42,7 +42,7 @@ const generateNull = <A>(): ValueGenerator<Maybe<A>> => gen.null;
 
 const generateMaybe = <A>(
   generator: ValueGenerator<A>
-): ValueGenerator<Maybe<A>> => gen.oneOf([gen.null, generator.then(some)]);
+): ValueGenerator<Maybe<A>> => gen.oneOf([none(), generator.then(some)]);
 
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
@@ -359,6 +359,44 @@ export const generateParadeGroup: ValueGenerator<ParadeGroup> = gen({
     facebookUrl: generateMaybe(generateURL),
     twitterUrl: generateMaybe(generateURL),
     websiteUrl: generateMaybe(generateURL)
+  })
+});
+
+export const generateCMSParadeGroup: ValueGenerator<mixed> = gen({
+  sys: {
+    id: gen.alphaNumString.notEmpty(),
+    contentType: {
+      sys: {
+        id: "paradeGroup"
+      }
+    },
+    revision: 1
+  },
+  fields: gen({
+    name: gen({
+      "en-GB": gen.alphaNumString.notEmpty()
+    }),
+    section: gen({
+      "en-GB": gen.oneOf(paradeGroupSections)
+    }),
+    facebookUrl: gen.oneOf([
+      gen.undefined,
+      gen({
+        "en-GB": generateURL
+      })
+    ]),
+    twitterUrl: gen.oneOf([
+      gen.undefined,
+      gen({
+        "en-GB": generateURL
+      })
+    ]),
+    websiteUrl: gen.oneOf([
+      gen.undefined,
+      gen({
+        "en-GB": generateURL
+      })
+    ])
   })
 });
 
