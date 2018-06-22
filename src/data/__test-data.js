@@ -5,7 +5,7 @@ import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
 import type { Maybe } from "../lib/maybe";
-import { some, none } from "../lib/maybe";
+import { some } from "../lib/maybe";
 import type { Event, EventCategoryName } from "./event";
 import type { FeaturedEvents } from "./featured-events";
 import type { FieldRef } from "./field-ref";
@@ -42,7 +42,7 @@ const generateNull = <A>(): ValueGenerator<Maybe<A>> => gen.null;
 
 const generateMaybe = <A>(
   generator: ValueGenerator<A>
-): ValueGenerator<Maybe<A>> => gen.oneOf([none(), generator.then(some)]);
+): ValueGenerator<Maybe<A>> => gen.oneOf([gen.null, generator.then(some)]);
 
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
