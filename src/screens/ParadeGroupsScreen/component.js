@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import R from "ramda";
 import ParadeGroupList, { sectionTitle } from "./ParadeGroupList";
-import type { ParadeGroup } from "./parade-group";
+import type { ParadeGroup } from "../../data/parade-group";
 import { bgColor } from "../../constants/colors";
 
 const groupByName = R.groupWith(

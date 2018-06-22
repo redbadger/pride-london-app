@@ -1,10 +1,10 @@
 // @flow
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
-import type { ParadeGroup } from "./parade-group";
+import type { ParadeGroup } from "../../data/parade-group";
 import type { State } from "../../reducers";
-import Component from "./component";
 import withIsFocused from "../../components/WithIsFocused";
+import Component from "./component";
 
 type OwnProps = {
   isFocused: boolean
@@ -22,7 +22,7 @@ let cache: Props;
 const mapStateToProps = (state: State, { isFocused }: OwnProps): Props => {
   if (!cache || isFocused) {
     cache = {
-      paradeGroups: []
+      paradeGroups: state.data.paradeGroups
     };
   }
   return cache;

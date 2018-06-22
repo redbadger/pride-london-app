@@ -2,7 +2,7 @@
 import React, { PureComponent } from "react";
 import type { ElementRef } from "react";
 import { Animated, Easing, Linking, StyleSheet, View } from "react-native";
-import type { ParadeGroup } from "./parade-group";
+import type { ParadeGroup } from "../../data/parade-group";
 import Text from "../../components/Text";
 import TextLink from "../../components/TextLink";
 import Touchable from "../../components/Touchable";

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { StyleSheet, SectionList } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
-import type { ParadeGroup } from "./parade-group";
+import type { ParadeGroup } from "../../data/parade-group";
 import ParadeGroupDetails from "./ParadeGroupDetails";
 import ContentPadding from "../../components/ContentPadding";
 import SectionDivider from "../../components/SectionDivider";
