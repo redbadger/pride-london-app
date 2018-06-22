@@ -1,7 +1,8 @@
 // @flow
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
+import type { Event } from "../../data/event";
 import paradeCoordinates from "../../constants/parade-coordinates";
 import { velvetColor } from "../../constants/colors";
 import Text, { scaleWithFont } from "../../components/Text";
@@ -46,15 +47,20 @@ const renderMap = () => (
 );
 
 type Props = {
-  isFocused: boolean
+  isFocused: boolean,
+  stages: Event[]
 };
 
-const ParadeMapScreen = ({ isFocused }: Props) => (
-  <View style={styles.container} testID="parade-map-screen">
-    {isFocused ? renderMap() : null}
-    <LocationCard />
-  </View>
-);
+class ParadeMapScreen extends Component<Props> {
+  render() {
+    return (
+      <View style={styles.container} testID="parade-map-screen">
+        {this.props.isFocused ? renderMap() : null}
+        <LocationCard />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
