@@ -65,11 +65,8 @@ Object {
       "postcode": "postcode",
       "recurrenceDates": Array [
         "04/07/2018",
-        "20/06/2018",
-        "10/07/2018",
-        "02/07/2018",
-        "19/07/2018",
       ],
+      "stage": true,
       "startTime": "2018-07-07T00:00+00:00",
       "ticketingUrl": "ticketingUrl",
       "venueDetails": Array [
@@ -145,10 +142,10 @@ Object {
       "phone": "phone",
       "postcode": "postcode",
       "recurrenceDates": Array [
-        "10/07/2018",
-        "17/06/2018",
-        "15/07/2018",
+        "18/08/2018",
+        "18/08/2018",
       ],
+      "stage": true,
       "startTime": "2018-07-07T00:00+00:00",
       "ticketingUrl": "ticketingUrl",
       "venueDetails": Array [
@@ -215,12 +212,12 @@ Object {
       "phone": "phone",
       "postcode": "postcode",
       "recurrenceDates": Array [
-        "06/07/2018",
-        "04/07/2018",
-        "09/06/2018",
-        "14/05/2018",
+        "12/07/2018",
+        "12/07/2018",
+        "13/08/2018",
         "07/07/2018",
       ],
+      "stage": true,
       "startTime": "2018-07-07T00:00+00:00",
       "ticketingUrl": "ticketingUrl",
       "venueDetails": Array [
