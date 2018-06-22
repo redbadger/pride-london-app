@@ -10,9 +10,11 @@ const groupByName = R.groupWith(
   (a: ParadeGroup, b: ParadeGroup) => sectionTitle(a) === sectionTitle(b)
 );
 
-export const sortAndGroupByName: (ParadeGroup[]) => ParadeGroup[][] = R.compose(
-  groupByName,
-  R.sortBy(R.compose(R.toUpper, R.prop("name"), R.prop("fields")))
+export const sortAndGroupByName: (ParadeGroup[]) => ParadeGroup[][] = R.memoize(
+  R.compose(
+    groupByName,
+    R.sortBy(R.compose(R.toUpper, R.prop("name"), R.prop("fields")))
+  )
 );
 
 type Props = {
