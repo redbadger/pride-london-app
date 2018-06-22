@@ -36,7 +36,7 @@ export default {
   tabSaved: "Saved",
   tabSupportUs: "Support us",
   tabParadeMap: "Map",
-  tabParadeStages: "Stages",
+  tabParadeGroups: "Groups",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
   categoryFilterButton: "Filter by event type",
@@ -144,6 +144,17 @@ export default {
   homeViewAll: "View all",
   homeSupportUs: "Support us",
   homeSupportUsDescription: "Be part of the movement",
+  paradeGroups: {
+    title:
+      "The Pride in London Parade takes place on Saturday 7 July 2018 from 12pm.",
+    description:
+      "Parade groups are split into sections. The first groups are in section A, whilst those near the end are in section G. Below you can find the section that each parade group belongs to. During the parade our presenters will announce each section passing by.",
+    linkLabelFacebook: "Facebook",
+    linkLabelTwitter: "Twitter",
+    linkLabelWebsite: "Website",
+    expandAccessibilityLabel: "Show more",
+    collapseAccessibilityLabel: "Show less"
+  },
   paradeInformationScreen: {
     headerTitle: "Parade Day - 7th July",
     pageHeading: "London Parade",
