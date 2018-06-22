@@ -6,7 +6,6 @@ import withIsFocused from "../../components/WithIsFocused";
 import Component from "./component";
 import type { Event } from "../../data/event";
 import { selectStages } from "../../selectors";
-import { networkInterfaces } from "os";
 
 type OwnProps = {
   isFocused: boolean
