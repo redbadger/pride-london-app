@@ -1,6 +1,7 @@
 // @flow
 import {
   generateCMSEvent,
+  generateCMSParadeGroup,
   generateCMSSponsor,
   sampleOne
 } from "../data/__test-data";
@@ -20,6 +21,7 @@ describe("Events reducer", () => {
       featuredEvents: [],
       headerBanners: [],
       images: {},
+      paradeGroups: [],
       performances: {},
       sponsors: [],
       loading: false,
@@ -37,6 +39,7 @@ describe("Events reducer", () => {
       featuredEvents: [],
       headerBanners: [],
       images: {},
+      paradeGroups: [],
       performances: {},
       sponsors: [],
       loading: false,
@@ -54,6 +57,7 @@ describe("Events reducer", () => {
       featuredEvents: [],
       headerBanners: [],
       images: {},
+      paradeGroups: [],
       performances: {},
       sponsors: [],
       loading: true,
@@ -72,6 +76,7 @@ describe("Events reducer", () => {
         featuredEvents: [],
         headerBanners: [],
         images: {},
+        paradeGroups: [],
         performances: {},
         sponsors: [],
         loading: true,
@@ -100,6 +105,7 @@ describe("Events reducer", () => {
         featuredEvents: [],
         headerBanners: [],
         images: {},
+        paradeGroups: [],
         performances: {},
         sponsors: [],
         loading: true,
@@ -137,6 +143,7 @@ describe("Events reducer", () => {
         featuredEvents: [],
         headerBanners: [],
         images: {},
+        paradeGroups: [],
         performances: {},
         sponsors: [],
         loading: true,
@@ -194,6 +201,7 @@ describe("Events reducer", () => {
         featuredEvents: [],
         headerBanners: [],
         images: {},
+        paradeGroups: [],
         performances: {},
         sponsors: [],
         loading: true,
@@ -257,6 +265,7 @@ describe("Events reducer", () => {
         featuredEvents: [],
         headerBanners: [],
         images: {},
+        paradeGroups: [],
         performances: {},
         sponsors: [],
         loading: true,
@@ -309,12 +318,43 @@ describe("Events reducer", () => {
       expect(state.images).toEqual(expected);
     });
 
+    it("decodes parade groups", () => {
+      const initialState = {
+        events: [],
+        featuredEvents: [],
+        headerBanners: [],
+        images: {},
+        paradeGroups: [],
+        performances: {},
+        sponsors: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [sampleOne(generateCMSParadeGroup, { seed: 6534 })],
+        assets: [],
+        syncToken: "abc",
+        updated: true
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      // $FlowFixMe
+      expect(state.paradeGroups[0].id).toEqual(newCmsData.entries[0].sys.id);
+    });
+
     it("decodes performances", () => {
       const initialState = {
         events: [],
         featuredEvents: [],
         headerBanners: [],
         images: {},
+        paradeGroups: [],
         performances: {},
         sponsors: [],
         loading: true,
@@ -372,6 +412,7 @@ describe("Events reducer", () => {
         featuredEvents: [],
         headerBanners: [],
         images: {},
+        paradeGroups: [],
         performances: {},
         sponsors: [],
         loading: true,

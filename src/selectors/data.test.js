@@ -25,6 +25,7 @@ const createData = (): DataState => ({
   featuredEvents: [],
   headerBanners: [],
   images: {},
+  paradeGroups: [],
   performances: {},
   sponsors: [],
   loading: false,
