@@ -12,7 +12,8 @@ import {
   getAppUpdateAskLaterTime
 } from "../integrations/storage";
 import text from "../constants/text";
-import { notifyReporter } from "../actions/reporting";
+import { ERROR } from "../actions/error";
+import type { ErrorAction } from "../actions/error";
 
 type VersionInfo = {
   currentVersion: string,
@@ -78,7 +79,7 @@ class StoreVersionDialog extends Component<Props> {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onError: error => dispatch(notifyReporter(error))
+  onError: error => dispatch(({ type: ERROR, payload: error }: ErrorAction))
 });
 
 const connector: Connector<{}, Props> = connect(undefined, mapDispatchToProps);

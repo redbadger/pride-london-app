@@ -9,7 +9,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import Config from "react-native-config";
 import { Client, Configuration } from "bugsnag-react-native";
 
-import analytics from "./integrations/analytics";
+import analyticsMiddleware from "./integrations/analytics";
+import errorMiddleware from "./integrations/errors";
 import reducers from "./reducers";
 import { init } from "./actions";
 import { getData, backgroundRefreshData } from "./actions/data";
@@ -38,7 +39,7 @@ if (UIManager.setLayoutAnimationEnabledExperimental) {
 const store = createStore(
   reducers,
   composeWithDevTools(
-    applyMiddleware(thunk.withExtraArgument(bugsnag), analytics)
+    applyMiddleware(thunk, analyticsMiddleware, errorMiddleware(bugsnag))
   )
 );
 
