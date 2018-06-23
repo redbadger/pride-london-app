@@ -2,17 +2,14 @@
 import React from "react";
 import {
   findNodeHandle,
-  Image,
   Platform,
   StyleSheet,
+  Switch,
   UIManager
 } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
-
-import checkboxUrl from "../../assets/images/checkBox.png";
-import checkBoxCheckedUrl from "../../assets/images/checkBoxChecked.png";
 
 type Props = {
   checked: boolean,
@@ -21,10 +18,17 @@ type Props = {
   style?: ViewStyleProp
 };
 
-class CheckBox extends React.PureComponent<Props> {
+class CheckBox extends React.Component<Props> {
   static defaultProps = {
     style: {}
   };
+
+  shouldComponentUpdate(nextProps: Props) {
+    return (
+      this.props.label !== nextProps.label ||
+      this.props.checked !== nextProps.checked
+    );
+  }
 
   componentDidUpdate(prevProps: Props) {
     if (Platform.OS === "android") {
@@ -38,20 +42,27 @@ class CheckBox extends React.PureComponent<Props> {
     }
   }
 
+  onPress = () => {
+    this.props.onChange();
+  };
+
   render() {
-    const { checked, label, onChange, style } = this.props;
+    const { checked, label, style } = this.props;
 
     return (
       <Touchable
-        accessibilityComponentType={
-          checked ? "radiobutton_checked" : "radiobutton_unchecked"
-        }
-        accessibilityTraits={checked ? ["selected", "button"] : ["button"]}
-        onPress={onChange}
+        accessible={false}
+        onPress={this.onPress}
         style={[styles.container, style]}
       >
-        <Text style={styles.text}>{label}</Text>
-        <Image source={checked ? checkBoxCheckedUrl : checkboxUrl} />
+        <Text accessible={false} style={styles.text}>
+          {label}
+        </Text>
+        <Switch
+          accessibilityLabel={label}
+          onValueChange={this.onPress}
+          value={checked}
+        />
       </Touchable>
     );
   }

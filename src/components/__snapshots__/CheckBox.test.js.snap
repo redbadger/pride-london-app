@@ -2,12 +2,13 @@
 
 exports[`renders correctly 1`] = `
 <Touchable
-  accessibilityComponentType="radiobutton_unchecked"
+  accessibilityComponentType="button"
   accessibilityTraits={
     Array [
       "button",
     ]
   }
+  accessible={false}
   delayPressIn={50}
   onPress={[Function]}
   style={
@@ -22,6 +23,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    accessible={false}
     color="blackColor"
     markdown={false}
     markdownStyle={Object {}}
@@ -34,21 +36,24 @@ exports[`renders correctly 1`] = `
   >
     Bananas
   </Text>
-  <Image
-    source={1}
+  <Switch
+    accessibilityLabel="Bananas"
+    disabled={false}
+    onValueChange={[Function]}
+    value={false}
   />
 </Touchable>
 `;
 
 exports[`renders correctly when checked 1`] = `
 <Touchable
-  accessibilityComponentType="radiobutton_checked"
+  accessibilityComponentType="button"
   accessibilityTraits={
     Array [
-      "selected",
       "button",
     ]
   }
+  accessible={false}
   delayPressIn={50}
   onPress={[Function]}
   style={
@@ -63,6 +68,7 @@ exports[`renders correctly when checked 1`] = `
   }
 >
   <Text
+    accessible={false}
     color="blackColor"
     markdown={false}
     markdownStyle={Object {}}
@@ -75,8 +81,11 @@ exports[`renders correctly when checked 1`] = `
   >
     Bananas
   </Text>
-  <Image
-    source={1}
+  <Switch
+    accessibilityLabel="Bananas"
+    disabled={false}
+    onValueChange={[Function]}
+    value={true}
   />
 </Touchable>
 `;
