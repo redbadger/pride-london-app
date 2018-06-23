@@ -2,11 +2,10 @@
 
 exports[`renders correctly 1`] = `
 <Touchable
-  accessibilityComponentType="none"
-  accessibilityLabel="Bananas"
+  accessibilityComponentType="radiobutton_unchecked"
   accessibilityTraits={
     Array [
-      "none",
+      "button",
     ]
   }
   delayPressIn={50}
@@ -43,11 +42,11 @@ exports[`renders correctly 1`] = `
 
 exports[`renders correctly when checked 1`] = `
 <Touchable
-  accessibilityComponentType="none"
-  accessibilityLabel="Bananas"
+  accessibilityComponentType="radiobutton_checked"
   accessibilityTraits={
     Array [
       "selected",
+      "button",
     ]
   }
   delayPressIn={50}
