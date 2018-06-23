@@ -3,9 +3,11 @@ import React, { Component } from "react";
 import type { Node } from "react";
 import { Animated, Dimensions, Easing, StyleSheet, View } from "react-native";
 import SplashScreenControler from "react-native-splash-screen";
+import LottieView from "lottie-react-native";
 
 import Text from "../../components/Text";
-import { lightNavyBlueColor } from "../../constants/colors";
+import { lightNavyBlueColor, whiteColor } from "../../constants/colors";
+import heartAnimation from "../../../assets/animations/save-event-light.json";
 
 export type SplashScreenProps = {
   children: Node,
@@ -14,12 +16,14 @@ export type SplashScreenProps = {
 };
 
 type State = {
-  progress: ?Object
+  heart: ?Object,
+  slide: ?Object
 };
 
 class SplashScreen extends Component<SplashScreenProps, State> {
   state = {
-    progress: null
+    heart: null,
+    slide: null
   };
 
   componentDidMount() {
@@ -30,24 +34,36 @@ class SplashScreen extends Component<SplashScreenProps, State> {
     nextProps: SplashScreenProps,
     prevState: State
   ) {
-    if (!prevState.progress) {
-      const progress = new Animated.Value(0);
-      return { progress };
+    if (!prevState.slide || !prevState.heart) {
+      return {
+        heart: new Animated.Value(0),
+        slide: new Animated.Value(0)
+      };
     }
 
     return null;
   }
 
   componentDidUpdate() {
-    if (this.props.state !== "hiding") return;
+    if (this.props.state !== "hiding" || !this.state.heart || !this.state.slide)
+      return;
 
-    if (this.state.progress) {
-      Animated.timing(this.state.progress, {
-        toValue: 1,
-        easing: Easing.in(Easing.back(2)),
-        duration: 600
-      }).start(this.props.onAnimationComplete);
-    }
+    const heart = Animated.timing(this.state.heart, {
+      toValue: 1,
+      easing: Easing.linear,
+      duration: 800,
+      useNativeDriver: true
+    });
+
+    // $FlowFixMe - wtf.
+    const slide = Animated.timing(this.state.slide, {
+      toValue: 1,
+      easing: Easing.in(Easing.back(2)),
+      duration: 600,
+      useNativeDriver: true
+    });
+
+    Animated.stagger(500, [heart, slide]).start(this.props.onAnimationComplete);
   }
 
   overlayStyle = (y: number) => ({
@@ -56,22 +72,39 @@ class SplashScreen extends Component<SplashScreenProps, State> {
 
   render() {
     const screenHeight = Dimensions.get("window").height;
-    const y = !this.state.progress
+    const slide = !this.state.slide
       ? 0
-      : this.state.progress.interpolate({
+      : this.state.slide.interpolate({
           inputRange: [0, 1],
           outputRange: [0, -screenHeight]
+        });
+
+    const heart = !this.state.heart
+      ? 0
+      : this.state.heart.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 1]
         });
 
     return (
       <View style={styles.container}>
         {this.props.children}
         {this.props.state !== "hidden" && (
-          <Animated.View style={[styles.overlay, this.overlayStyle(y)]}>
+          <Animated.View style={[styles.overlay, this.overlayStyle(slide)]}>
             <View style={styles.content}>
-              <Text style={styles.text} color="whiteColor">
-                Ni!
-              </Text>
+              <View style={styles.discover}>
+                <Text type="h1">Discover</Text>
+              </View>
+              <View style={styles.plan}>
+                <Text type="h1">Plan</Text>
+              </View>
+              <View style={styles.love}>
+                <LottieView
+                  progress={heart}
+                  source={heartAnimation}
+                  loop={false}
+                />
+              </View>
             </View>
           </Animated.View>
         )}
@@ -100,8 +133,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  text: {
-    textAlign: "center"
+  discover: {
+    margin: 2,
+    padding: 5,
+    backgroundColor: whiteColor
+  },
+  plan: {
+    margin: 2,
+    padding: 5,
+    backgroundColor: whiteColor
+  },
+  love: {
+    margin: 2,
+    width: 150,
+    height: 150
   }
 });
 
