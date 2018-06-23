@@ -21,8 +21,10 @@ exports[`renders correctly 1`] = `
     barStyle="light-content"
     showHideTransition="fade"
   />
-  <NavigationContainer
-    onNavigationStateChange={[Function]}
-  />
+  <Connect(SplashScreen)>
+    <NavigationContainer
+      onNavigationStateChange={[Function]}
+    />
+  </Connect(SplashScreen)>
 </withOrientation>
 `;
