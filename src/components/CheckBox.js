@@ -1,6 +1,12 @@
 // @flow
 import React from "react";
-import { findNodeHandle, Image, StyleSheet, UIManager } from "react-native";
+import {
+  findNodeHandle,
+  Image,
+  Platform,
+  StyleSheet,
+  UIManager
+} from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
 import Touchable from "./Touchable";
@@ -21,12 +27,14 @@ class CheckBox extends React.PureComponent<Props> {
   };
 
   componentDidUpdate(prevProps: Props) {
-    // Notify user, that the radio button changed to checked state.
-    if (this.props.checked && !prevProps.checked) {
-      UIManager.sendAccessibilityEvent(
-        findNodeHandle(this),
-        UIManager.AccessibilityEventTypes.typeViewClicked
-      );
+    if (Platform.OS === "android") {
+      // Notify user, that the radio button changed to checked state.
+      if (this.props.checked && !prevProps.checked) {
+        UIManager.sendAccessibilityEvent(
+          findNodeHandle(this),
+          UIManager.AccessibilityEventTypes.typeViewClicked
+        );
+      }
     }
   }
 
