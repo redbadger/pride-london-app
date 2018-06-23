@@ -41,6 +41,7 @@
       "error",
       {
         "devDependencies": [
+          "**/e2e/**/*.js",
           "**/scripts/**/*.js",
           "**/*.test.js",
           "**/setup-tests.js"

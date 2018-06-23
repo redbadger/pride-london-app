@@ -7,38 +7,51 @@ import { velvetColor } from "../../constants/colors";
 import Text, { scaleWithFont } from "../../components/Text";
 import LocationCard from "./LocationCard";
 
-const ParadeMapScreen = () => (
+const renderMap = () => (
+  <MapView
+    style={StyleSheet.absoluteFill}
+    initialRegion={{
+      latitude: 51.5085,
+      longitude: -0.134192,
+      latitudeDelta: 0.02,
+      longitudeDelta: 0.02
+    }}
+    showsPointsOfInterest={false}
+    showsScale={false}
+    showsBuildings={false}
+    showsTraffic={false}
+    showsIndoors={false}
+  >
+    <Polyline
+      coordinates={paradeCoordinates}
+      strokeWidth={5}
+      strokeColor={velvetColor}
+      lineJoin="bevel"
+    />
+    <Marker coordinate={{ longitude: -0.14223, latitude: 51.51616 }}>
+      <View style={styles.markerView}>
+        <Text type="xSmall" color="whiteColor">
+          A
+        </Text>
+      </View>
+    </Marker>
+    <Marker coordinate={{ longitude: -0.1265, latitude: 51.50499 }}>
+      <View style={styles.markerView}>
+        <Text type="xSmall" color="whiteColor">
+          B
+        </Text>
+      </View>
+    </Marker>
+  </MapView>
+);
+
+type Props = {
+  isFocused: boolean
+};
+
+const ParadeMapScreen = ({ isFocused }: Props) => (
   <View style={styles.container} testID="parade-map-screen">
-    <MapView
-      style={StyleSheet.absoluteFill}
-      region={{
-        latitude: 51.5085,
-        longitude: -0.134192,
-        latitudeDelta: 0.02,
-        longitudeDelta: 0.000000041
-      }}
-    >
-      <Polyline
-        coordinates={paradeCoordinates}
-        strokeWidth={5}
-        strokeColor={velvetColor}
-        lineJoin="bevel"
-      />
-      <Marker coordinate={{ longitude: -0.14223, latitude: 51.51616 }}>
-        <View style={styles.markerView}>
-          <Text type="xSmall" color="whiteColor">
-            A
-          </Text>
-        </View>
-      </Marker>
-      <Marker coordinate={{ longitude: -0.1265, latitude: 51.50499 }}>
-        <View style={styles.markerView}>
-          <Text type="xSmall" color="whiteColor">
-            B
-          </Text>
-        </View>
-      </Marker>
-    </MapView>
+    {isFocused ? renderMap() : null}
     <LocationCard />
   </View>
 );

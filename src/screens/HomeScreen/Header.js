@@ -85,6 +85,7 @@ const Header = ({ headerBanners, getImageDetails, navigation }: Props) => {
           bgTopRight={homeSupportUsBgTopRight}
           navigation={navigation}
           url={SUPPORT_US}
+          testID="home-header-support-us-button"
         />
       </ContentPadding>
     </View>

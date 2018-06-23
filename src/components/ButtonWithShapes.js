@@ -27,7 +27,8 @@ type Props = {|
   navigation: NavigationScreenProp<NavigationState>,
   url: string,
   contrast?: boolean,
-  style?: ViewStyleProp
+  style?: ViewStyleProp,
+  testID?: string
 |};
 
 const isExternalLink = (url: string) =>
@@ -48,7 +49,8 @@ class SupportUsButton extends React.PureComponent<Props> {
     bgTopRight: undefined,
     bgBottomRight: undefined,
     contrast: false,
-    style: {}
+    style: {},
+    testID: undefined
   };
 
   onPress = () => {
@@ -70,7 +72,8 @@ class SupportUsButton extends React.PureComponent<Props> {
       bgBottomRight,
       url,
       contrast,
-      style
+      style,
+      testID
     } = this.props;
 
     return (
@@ -78,6 +81,7 @@ class SupportUsButton extends React.PureComponent<Props> {
         accessibilityTraits={[isExternalLink ? "link" : "button"]}
         onPress={this.onPress}
         style={[styles.button, { backgroundColor: color }, style]}
+        testID={testID}
       >
         {bgBottomLeft && (
           <Image source={bgBottomLeft} style={styles.bgBottomLeft} />

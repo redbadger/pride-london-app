@@ -51,6 +51,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
         accessibilityLabel="Show 1 selected event"
         disabled={false}
         onPress={[Function]}
+        testID="apply-category-filter-button"
       >
         Show 1 event
       </Button>
@@ -102,6 +103,7 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
         accessibilityLabel="Show 1 selected event"
         disabled={false}
         onPress={[Function]}
+        testID="apply-category-filter-button"
       >
         Show 1 event
       </Button>

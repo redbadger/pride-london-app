@@ -11,7 +11,8 @@ import text from "../constants/text";
 type Props = {
   active: boolean,
   onDark: boolean,
-  onPress: boolean => void
+  onPress: boolean => void,
+  testID?: string
 };
 
 type State = {
@@ -22,7 +23,13 @@ type State = {
 export default class SaveEventButton extends React.Component<Props, State> {
   static defaultProps = {
     active: false,
-    onDark: false
+    onDark: false,
+    testID: undefined
+  };
+
+  state = {
+    animating: false,
+    progress: null
   };
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
@@ -35,11 +42,6 @@ export default class SaveEventButton extends React.Component<Props, State> {
     }
     return null;
   }
-
-  state = {
-    animating: false,
-    progress: null
-  };
 
   shouldComponentUpdate(nextProps: Props) {
     return (
@@ -90,6 +92,7 @@ export default class SaveEventButton extends React.Component<Props, State> {
         }
         onPress={this.handlePress}
         style={styles.button}
+        testID={this.props.testID}
       >
         <LottieView
           progress={this.state.progress}

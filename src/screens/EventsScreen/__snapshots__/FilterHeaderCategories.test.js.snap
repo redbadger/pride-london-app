@@ -21,6 +21,7 @@ exports[`FilterHeaderCategories CategoriesFilterButton component renders correct
       "width": 44,
     }
   }
+  testID="categories-filter-button"
 >
   <Image
     source={1}
@@ -85,6 +86,7 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
         "paddingLeft": 8,
       }
     }
+    testID="open-category-filters-button"
   >
     <Text
       color="blackColor"

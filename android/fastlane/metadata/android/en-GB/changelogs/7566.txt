@@ -1,0 +1,5 @@
+The Pride app showcases the diversity of the Pride in London 2018 festival and parade, key features include:
+- a filterable events listing
+- ability to save events
+- key information about the parade and
+- the ability to support Pride in London via donations and volunteering opportunities

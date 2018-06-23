@@ -16,7 +16,8 @@ import {
   buildEventFilter,
   selectShowEventsAfter,
   selectSelectedFilters,
-  selectStagedFilters
+  selectStagedFilters,
+  eventIsAfter
 } from "./event-filters";
 
 export const selectData = (state: State): DataState => state.data;
@@ -52,10 +53,7 @@ export const selectFilteredEvents = createSelector(
   filterEvents
 );
 
-export const selectFilteredEventsMap = createSelector(
-  [selectFilteredEvents],
-  selectEventsMap
-);
+export const getEventsMap = createSelector([getEvents], selectEventsMap);
 
 const getStagedFilter = createSelector(
   [getShowEventsAfter, getStagedFilters],
@@ -65,6 +63,21 @@ const getStagedFilter = createSelector(
 export const selectStagedFilteredEvents = createSelector(
   [getEvents, getStagedFilter],
   filterEvents
+);
+
+const getShowEventsAfterFilter = createSelector(
+  [getShowEventsAfter],
+  eventIsAfter
+);
+
+const selectFutureEvents = createSelector(
+  [getEvents, getShowEventsAfterFilter],
+  filterEvents
+);
+
+export const getFutureEventsMap = createSelector(
+  [selectFutureEvents],
+  selectEventsMap
 );
 
 const getFeaturedEvents = createSelector([selectData], selectFeaturedEvents);
@@ -83,6 +96,6 @@ const getFeaturedEventsEvents = createSelector(
   }
 );
 export const getFeaturedEventsResolvedEvents = createSelector(
-  [selectFilteredEventsMap, getFeaturedEventsEvents],
+  [getFutureEventsMap, getFeaturedEventsEvents],
   resolveEvents
 );
