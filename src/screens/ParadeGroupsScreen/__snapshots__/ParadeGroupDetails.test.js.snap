@@ -1,478 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`when collapsed renders correctly with all fields 1`] = `
+exports[`renders correctly with all fields 1`] = `
 <Component
   style={
     Object {
-      "alignItems": "flex-start",
-      "flex": 0,
-      "flexDirection": "row",
-      "flexGrow": 1,
-      "flexShrink": 1,
+      "paddingBottom": 10,
+      "paddingTop": 16,
     }
   }
 >
-  <Touchable
-    accessibilityComponentType="button"
-    accessibilityLabel="Show more"
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
-    delayPressIn={50}
-    onPress={[Function]}
-    style={Object {}}
-  >
-    <AnimatedComponent
-      source={1}
-      style={
-        Array [
-          Object {
-            "height": 24,
-            "width": 24,
-          },
-          Object {
-            "transform": Array [
-              Object {
-                "rotate": "90deg",
-              },
-            ],
-          },
-        ]
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "paddingTop": 4,
       }
-    />
-  </Touchable>
+    }
+    type="h3"
+  >
+    A Test Parade Group
+  </Text>
   <Component
     style={
       Object {
-        "flex": 0,
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "paddingBottom": 10,
-        "paddingTop": 10,
+        "alignItems": "flex-start",
       }
     }
   >
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      type="h4"
-    >
-      A Test Parade Group
-    </Text>
-    <AnimatedComponent
-      style={
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
         Array [
-          Object {
-            "overflow": "hidden",
-          },
-          Object {
-            "height": 4,
-          },
+          "button",
         ]
       }
+      delayPressIn={50}
+      onPress={[Function]}
     >
-      <Component
-        style={
-          Object {
-            "minHeight": 32,
-          }
-        }
-      >
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Facebook
-          </TextLink>
-        </Touchable>
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Twitter
-          </TextLink>
-        </Touchable>
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Website
-          </TextLink>
-        </Touchable>
-      </Component>
-    </AnimatedComponent>
+      <TextLink>
+        Facebook Page
+      </TextLink>
+    </Touchable>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      onPress={[Function]}
+    >
+      <TextLink>
+        Twitter Profile
+      </TextLink>
+    </Touchable>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      onPress={[Function]}
+    >
+      <TextLink>
+        Website
+      </TextLink>
+    </Touchable>
   </Component>
 </Component>
 `;
 
-exports[`when collapsed renders correctly with missing fields 1`] = `
+exports[`renders correctly with missing fields 1`] = `
 <Component
   style={
     Object {
-      "alignItems": "flex-start",
-      "flex": 0,
-      "flexDirection": "row",
-      "flexGrow": 1,
-      "flexShrink": 1,
+      "paddingBottom": 10,
+      "paddingTop": 16,
     }
   }
 >
-  <Touchable
-    accessibilityComponentType="button"
-    accessibilityLabel="Show more"
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
-    delayPressIn={50}
-    onPress={[Function]}
-    style={Object {}}
-  >
-    <AnimatedComponent
-      source={1}
-      style={
-        Array [
-          Object {
-            "height": 24,
-            "width": 24,
-          },
-          Object {
-            "transform": Array [
-              Object {
-                "rotate": "90deg",
-              },
-            ],
-          },
-        ]
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "paddingTop": 4,
       }
-    />
-  </Touchable>
+    }
+    type="h3"
+  >
+    Test Parade Group
+  </Text>
   <Component
     style={
       Object {
-        "flex": 0,
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "paddingBottom": 10,
-        "paddingTop": 10,
+        "alignItems": "flex-start",
       }
     }
-  >
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      type="h4"
-    >
-      Test Parade Group
-    </Text>
-    <AnimatedComponent
-      style={
-        Array [
-          Object {
-            "overflow": "hidden",
-          },
-          Object {
-            "height": 4,
-          },
-        ]
-      }
-    >
-      <Component
-        style={
-          Object {
-            "minHeight": 32,
-          }
-        }
-      />
-    </AnimatedComponent>
-  </Component>
-</Component>
-`;
-
-exports[`when expanded renders correctly 1`] = `
-<Component
-  style={
-    Object {
-      "alignItems": "flex-start",
-      "flex": 0,
-      "flexDirection": "row",
-      "flexGrow": 1,
-      "flexShrink": 1,
-    }
-  }
->
-  <Touchable
-    accessibilityComponentType="button"
-    accessibilityLabel="Show more"
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
-    delayPressIn={50}
-    onPress={[Function]}
-    style={Object {}}
-  >
-    <AnimatedComponent
-      source={1}
-      style={
-        Array [
-          Object {
-            "height": 24,
-            "width": 24,
-          },
-          Object {
-            "transform": Array [
-              Object {
-                "rotate": "90deg",
-              },
-            ],
-          },
-        ]
-      }
-    />
-  </Touchable>
-  <Component
-    style={
-      Object {
-        "flex": 0,
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "paddingBottom": 10,
-        "paddingTop": 10,
-      }
-    }
-  >
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      type="h4"
-    >
-      A Test Parade Group
-    </Text>
-    <AnimatedComponent
-      style={
-        Array [
-          Object {
-            "overflow": "hidden",
-          },
-          Object {
-            "height": 4,
-          },
-        ]
-      }
-    >
-      <Component
-        style={
-          Object {
-            "minHeight": 32,
-          }
-        }
-      >
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Facebook
-          </TextLink>
-        </Touchable>
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Twitter
-          </TextLink>
-        </Touchable>
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Website
-          </TextLink>
-        </Touchable>
-      </Component>
-    </AnimatedComponent>
-  </Component>
-</Component>
-`;
-
-exports[`when expanded then collapsed renders correctly 1`] = `
-<Component
-  style={
-    Object {
-      "alignItems": "flex-start",
-      "flex": 0,
-      "flexDirection": "row",
-      "flexGrow": 1,
-      "flexShrink": 1,
-    }
-  }
->
-  <Touchable
-    accessibilityComponentType="button"
-    accessibilityLabel="Show more"
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
-    delayPressIn={50}
-    onPress={[Function]}
-    style={Object {}}
-  >
-    <AnimatedComponent
-      source={1}
-      style={
-        Array [
-          Object {
-            "height": 24,
-            "width": 24,
-          },
-          Object {
-            "transform": Array [
-              Object {
-                "rotate": "90deg",
-              },
-            ],
-          },
-        ]
-      }
-    />
-  </Touchable>
-  <Component
-    style={
-      Object {
-        "flex": 0,
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "paddingBottom": 10,
-        "paddingTop": 10,
-      }
-    }
-  >
-    <Text
-      color="blackColor"
-      markdown={false}
-      markdownStyle={Object {}}
-      type="h4"
-    >
-      A Test Parade Group
-    </Text>
-    <AnimatedComponent
-      style={
-        Array [
-          Object {
-            "overflow": "hidden",
-          },
-          Object {
-            "height": 4,
-          },
-        ]
-      }
-    >
-      <Component
-        style={
-          Object {
-            "minHeight": 32,
-          }
-        }
-      >
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Facebook
-          </TextLink>
-        </Touchable>
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Twitter
-          </TextLink>
-        </Touchable>
-        <Touchable
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          delayPressIn={50}
-          onPress={[Function]}
-        >
-          <TextLink>
-            Website
-          </TextLink>
-        </Touchable>
-      </Component>
-    </AnimatedComponent>
-  </Component>
+  />
 </Component>
 `;

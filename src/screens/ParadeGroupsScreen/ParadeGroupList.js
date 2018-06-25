@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, SectionList } from "react-native";
+import { StyleSheet, SectionList, View } from "react-native";
 import type { SectionBase } from "react-native/Libraries/Lists/SectionList";
 import type { ParadeGroup } from "../../data/parade-group";
 import ParadeGroupDetails from "./ParadeGroupDetails";
@@ -54,7 +54,9 @@ class ParadeGroupList extends Component<Props> {
 
   itemSeparator = () => (
     <ContentPadding>
-      <SectionDivider />
+      <View style={styles.divider}>
+        <SectionDivider />
+      </View>
     </ContentPadding>
   );
 
@@ -105,6 +107,9 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 0,
     backgroundColor: whiteColor
+  },
+  divider: {
+    paddingTop: 4
   },
   title: {
     paddingTop: 24,

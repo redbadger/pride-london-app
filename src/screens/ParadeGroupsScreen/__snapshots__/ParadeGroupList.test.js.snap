@@ -71,7 +71,15 @@ exports[`ParadeGroupList renders item separators correctly 1`] = `
   padding={Object {}}
   style={Object {}}
 >
-  <SectionDivider />
+  <Component
+    style={
+      Object {
+        "paddingTop": 4,
+      }
+    }
+  >
+    <SectionDivider />
+  </Component>
 </ContentPadding>
 `;
 

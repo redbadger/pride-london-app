@@ -149,8 +149,8 @@ export default {
       "The Pride in London Parade takes place on Saturday 7 July 2018 from 12pm.",
     description:
       "Parade groups are split into sections. The first groups are in section A, whilst those near the end are in section G. Below you can find the section that each parade group belongs to. During the parade our presenters will announce each section passing by.",
-    linkLabelFacebook: "Facebook",
-    linkLabelTwitter: "Twitter",
+    linkLabelFacebook: "Facebook Page",
+    linkLabelTwitter: "Twitter Profile",
     linkLabelWebsite: "Website",
     expandAccessibilityLabel: "Show more",
     collapseAccessibilityLabel: "Show less"
