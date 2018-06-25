@@ -50,7 +50,7 @@ class Map extends Component<Props, State> {
       }}
       key={stage.id}
       onPress={() => this.handleMarkerPress(stage)}
-      stopPropagation={true}
+      stopPropagation
     >
       <Image
         source={
@@ -95,8 +95,7 @@ class Map extends Component<Props, State> {
           <Marker
             coordinate={{ longitude: -0.14223, latitude: 51.51616 }}
             centerOffset={{ x: 0, y: -15 }}
-            anchor={{ x: 1, y: 1 }}
-            stopPropagation={true}
+            stopPropagation
           >
             <View style={styles.markerView}>
               <View style={styles.markerTextWrapper}>
@@ -110,8 +109,7 @@ class Map extends Component<Props, State> {
           <Marker
             coordinate={{ longitude: -0.1265, latitude: 51.50499 }}
             centerOffset={{ x: 0, y: -15 }}
-            anchor={{ x: 1, y: 1 }}
-            stopPropagation={true}
+            stopPropagation
           >
             <View style={styles.markerView}>
               <View style={styles.markerTextWrapper}>
