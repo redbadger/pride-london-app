@@ -211,7 +211,8 @@ const ParadeTabNav = createMaterialTopTabNavigator(
 
 const ParadeStack = createStackNavigator(
   {
-    [PARADE]: { screen: ParadeTabNav }
+    [PARADE]: { screen: ParadeTabNav },
+    [EVENT_DETAILS]: { screen: EventDetailsScreen }
   },
   {
     initialRouteName: PARADE,
