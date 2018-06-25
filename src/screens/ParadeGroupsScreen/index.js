@@ -6,6 +6,8 @@ import type { State } from "../../reducers";
 import withIsFocused from "../../components/WithIsFocused";
 import Component from "./component";
 
+import { generateParadeGroup, sampleArrayOf } from "../../data/__test-data";
+
 type OwnProps = {
   isFocused: boolean
 };
@@ -16,13 +18,16 @@ type Props = {
 
 let cache: Props;
 
+// @TODO: REMOVE THIS BEFORE MERGING TO MASTER
+const paradeGroups = sampleArrayOf(generateParadeGroup)(200);
+
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (state: State, { isFocused }: OwnProps): Props => {
   if (!cache || isFocused) {
     cache = {
-      paradeGroups: state.data.paradeGroups
+      paradeGroups
     };
   }
   return cache;
