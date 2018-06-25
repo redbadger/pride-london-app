@@ -1,9 +1,7 @@
 // @flow
 import React from "react";
-import { Image } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { shallow } from "enzyme";
-import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { generateEvent, sampleOne } from "../../data/__test-data";
 import Map from "./Map";
 
