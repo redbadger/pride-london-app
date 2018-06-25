@@ -76,7 +76,6 @@ class ParadeGroupDetails extends PureComponent<Props, State> {
   render() {
     const {
       name,
-      section,
       facebookUrl,
       twitterUrl,
       websiteUrl
@@ -107,7 +106,6 @@ class ParadeGroupDetails extends PureComponent<Props, State> {
           <Text type="h4">{name}</Text>
           <Animated.View style={[styles.animatedContainer, { height }]}>
             <View style={styles.collapsable} ref={this.collapsable}>
-              <Text style={styles.section}>{section}</Text>
               {facebookUrl &&
                 renderURL(text.paradeGroups.linkLabelFacebook, facebookUrl)}
               {twitterUrl &&
@@ -148,9 +146,6 @@ const styles = StyleSheet.create({
   },
   collapsable: {
     minHeight: 32 // required to stop text from collapsing
-  },
-  section: {
-    paddingTop: 8
   }
 });
 

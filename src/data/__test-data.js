@@ -338,16 +338,6 @@ export const generateCMSEventMinimum: ValueGenerator<mixed> = gen({
   })
 });
 
-const paradeGroupSections = [
-  "Section A",
-  "Section B",
-  "Section C",
-  "Section D",
-  "Section E",
-  "Section F",
-  "Section G"
-];
-
 export const generateParadeGroup: ValueGenerator<ParadeGroup> = gen({
   contentType: "paradeGroup",
   id: gen.alphaNumString.notEmpty(),
@@ -355,7 +345,6 @@ export const generateParadeGroup: ValueGenerator<ParadeGroup> = gen({
   revision: 1,
   fields: gen({
     name: gen.alphaNumString.notEmpty(),
-    section: gen.oneOf(paradeGroupSections),
     facebookUrl: generateMaybe(generateURL),
     twitterUrl: generateMaybe(generateURL),
     websiteUrl: generateMaybe(generateURL)
@@ -375,9 +364,6 @@ export const generateCMSParadeGroup: ValueGenerator<mixed> = gen({
   fields: gen({
     name: gen({
       "en-GB": gen.alphaNumString.notEmpty()
-    }),
-    section: gen({
-      "en-GB": gen.oneOf(paradeGroupSections)
     }),
     facebookUrl: gen.oneOf([
       gen.undefined,

@@ -27,11 +27,10 @@ exports[`ParadeGroupList renders correctly 1`] = `
           Object {
             "contentType": "paradeGroup",
             "fields": Object {
-              "facebookUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+              "facebookUrl": "https://red-badger.com/CTB4f2a0Khyl0b1T4lOFk11H",
               "name": "1x2yj",
-              "section": "Section F",
-              "twitterUrl": "https://red-badger.com/9bP1RB90H",
-              "websiteUrl": "https://red-badger.com/eip8IG6Kik565CkXG",
+              "twitterUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+              "websiteUrl": null,
             },
             "id": "d18Cp545J4C996o5",
             "locale": "en-GB",
@@ -46,11 +45,10 @@ exports[`ParadeGroupList renders correctly 1`] = `
           Object {
             "contentType": "paradeGroup",
             "fields": Object {
-              "facebookUrl": null,
+              "facebookUrl": "https://red-badger.com/U",
               "name": "99b3j372i",
-              "section": "Section F",
-              "twitterUrl": "https://red-badger.com/3K6989xRF5UXeYRQ43y4",
-              "websiteUrl": "https://red-badger.com/U8vZ3SjWR8f763prj6la40kMR",
+              "twitterUrl": null,
+              "websiteUrl": "https://red-badger.com/R7yfk3P4z96cTKJtb7",
             },
             "id": "642gdEs5xmkdO5v541Oau11NM7T",
             "locale": "en-GB",
@@ -87,11 +85,10 @@ exports[`ParadeGroupList renders items correctly 1`] = `
       Object {
         "contentType": "paradeGroup",
         "fields": Object {
-          "facebookUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+          "facebookUrl": "https://red-badger.com/CTB4f2a0Khyl0b1T4lOFk11H",
           "name": "1x2yj",
-          "section": "Section F",
-          "twitterUrl": "https://red-badger.com/9bP1RB90H",
-          "websiteUrl": "https://red-badger.com/eip8IG6Kik565CkXG",
+          "twitterUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+          "websiteUrl": null,
         },
         "id": "d18Cp545J4C996o5",
         "locale": "en-GB",

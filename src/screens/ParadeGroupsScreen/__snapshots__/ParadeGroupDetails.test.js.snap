@@ -82,19 +82,6 @@ exports[`when collapsed renders correctly with all fields 1`] = `
           }
         }
       >
-        <Text
-          color="blackColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          style={
-            Object {
-              "paddingTop": 8,
-            }
-          }
-          type="text"
-        >
-          Section A
-        </Text>
         <Touchable
           accessibilityComponentType="button"
           accessibilityTraits={
@@ -224,21 +211,7 @@ exports[`when collapsed renders correctly with missing fields 1`] = `
             "minHeight": 32,
           }
         }
-      >
-        <Text
-          color="blackColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          style={
-            Object {
-              "paddingTop": 8,
-            }
-          }
-          type="text"
-        >
-          Section B
-        </Text>
-      </Component>
+      />
     </AnimatedComponent>
   </Component>
 </Component>
@@ -326,19 +299,6 @@ exports[`when expanded renders correctly 1`] = `
           }
         }
       >
-        <Text
-          color="blackColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          style={
-            Object {
-              "paddingTop": 8,
-            }
-          }
-          type="text"
-        >
-          Section A
-        </Text>
         <Touchable
           accessibilityComponentType="button"
           accessibilityTraits={
@@ -469,19 +429,6 @@ exports[`when expanded then collapsed renders correctly 1`] = `
           }
         }
       >
-        <Text
-          color="blackColor"
-          markdown={false}
-          markdownStyle={Object {}}
-          style={
-            Object {
-              "paddingTop": 8,
-            }
-          }
-          type="text"
-        >
-          Section A
-        </Text>
         <Touchable
           accessibilityComponentType="button"
           accessibilityTraits={
