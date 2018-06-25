@@ -105,7 +105,7 @@ export const getTabTestId = (routeName: string) => {
     case PARADE:
       return "parade-tab-button";
     case PARADE_GROUPS:
-      return "parade-information-button";
+      return "parade-groups-button";
     case PARADE_MAP:
       return "parade-map-button";
     case SAVED_EVENT_LIST:
