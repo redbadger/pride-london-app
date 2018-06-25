@@ -23,7 +23,9 @@ platform :ios do
       clean: true,
       export_method: options[:export_method],
       configuration: options[:configuration],
-      scheme: "PrideLondonApp"
+      scheme: "PrideLondonApp",
+      silent: true,
+      suppress_xcode_output: true,
     )
   end
 
