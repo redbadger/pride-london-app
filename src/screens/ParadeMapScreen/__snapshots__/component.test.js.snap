@@ -18,10 +18,10 @@ exports[`Parade Map Screen component renders correctly 1`] = `
   <Map
     paradeRegion={
       Object {
-        "latitude": 51.5085,
+        "latitude": 51.51004,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
-        "longitudeDelta": 4.1e-8,
+        "longitudeDelta": 0.000002,
       }
     }
     route={
@@ -514,10 +514,6 @@ exports[`Parade Map Screen component renders correctly 1`] = `
           "latitude": 51.50497,
           "longitude": -0.12664,
         },
-        Object {
-          "latitude": 51.50499,
-          "longitude": -0.1265,
-        },
       ]
     }
     terminals={
@@ -544,8 +540,8 @@ exports[`Parade Map Screen component renders correctly 1`] = `
         },
         Object {
           "coordinates": Object {
-            "latitude": 51.50499,
-            "longitude": -0.1265,
+            "latitude": 51.50497,
+            "longitude": -0.12664,
           },
           "key": "finish",
           "style": Object {

@@ -15,10 +15,10 @@ exports[`Map component renders correctly 1`] = `
   <MapView
     initialRegion={
       Object {
-        "latitude": 51.5085,
+        "latitude": 51.51004,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
-        "longitudeDelta": 4.1e-8,
+        "longitudeDelta": 0.000002,
       }
     }
     onRegionChange={[Function]}
@@ -525,10 +525,6 @@ exports[`Map component renders correctly 1`] = `
             "latitude": 51.50497,
             "longitude": -0.12664,
           },
-          Object {
-            "latitude": 51.50499,
-            "longitude": -0.1265,
-          },
         ]
       }
       lineCap="round"
@@ -571,8 +567,8 @@ exports[`Map component renders correctly 1`] = `
     <MapMarker
       coordinate={
         Object {
-          "latitude": 51.50499,
-          "longitude": -0.1265,
+          "latitude": 51.50497,
+          "longitude": -0.12664,
         }
       }
       key="finish"
@@ -655,10 +651,10 @@ exports[`Map component renders without location button when permission was denie
   <MapView
     initialRegion={
       Object {
-        "latitude": 51.5085,
+        "latitude": 51.51004,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
-        "longitudeDelta": 4.1e-8,
+        "longitudeDelta": 0.000002,
       }
     }
     onRegionChange={[Function]}
@@ -1165,10 +1161,6 @@ exports[`Map component renders without location button when permission was denie
             "latitude": 51.50497,
             "longitude": -0.12664,
           },
-          Object {
-            "latitude": 51.50499,
-            "longitude": -0.1265,
-          },
         ]
       }
       lineCap="round"
@@ -1211,8 +1203,8 @@ exports[`Map component renders without location button when permission was denie
     <MapMarker
       coordinate={
         Object {
-          "latitude": 51.50499,
-          "longitude": -0.1265,
+          "latitude": 51.50497,
+          "longitude": -0.12664,
         }
       }
       key="finish"
