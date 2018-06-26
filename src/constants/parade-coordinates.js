@@ -20,7 +20,7 @@ export const terminals = [
   },
   {
     key: "finish",
-    coordinates: { longitude: -0.1265, latitude: 51.50499 },
+    coordinates: { longitude: -0.12664, latitude: 51.50497 },
     text: { text: "B", type: "xSmall", color: "whiteColor" },
     style: terminalStyle
   }
@@ -155,8 +155,7 @@ export const route = [
   { longitude: -0.12692, latitude: 51.5056 },
   { longitude: -0.1268, latitude: 51.50534 },
   { longitude: -0.12672, latitude: 51.50517 },
-  { longitude: -0.12664, latitude: 51.50497 },
-  { longitude: -0.1265, latitude: 51.50499 }
+  { longitude: -0.12664, latitude: 51.50497 }
 ];
 
 export type Terminals = {
