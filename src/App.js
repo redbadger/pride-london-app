@@ -16,13 +16,13 @@ const App = ({ onNavigationStateChange }: Props) => (
     forceInset={{ top: "always", bottom: "never" }}
     style={styles.container}
   >
+    <BadConnection />
     <StatusBar
       animated
       barStyle="light-content"
       backgroundColor={lightNavyBlueColor}
     />
     <Navigation onNavigationStateChange={onNavigationStateChange} />
-    <BadConnection />
   </SafeAreaView>
 );
 

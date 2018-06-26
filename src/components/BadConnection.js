@@ -10,6 +10,7 @@ import {
 import { badConnectionBackgroundColor, whiteColor } from "../constants/colors";
 import text from "../constants/text";
 import Text from "./Text";
+import StatusBarAlert from "react-native-statusbar-alert";
 
 type State = {
   hasInternetConnection: boolean
@@ -51,18 +52,17 @@ class BadConnection extends React.Component<{}, State> {
   };
 
   render() {
-    const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
     return (
-      <AnimatedSafeAreaView
-        style={[
-          styles.container,
-          { transform: [{ translateY: this.translateY }] }
-        ]}
+      <StatusBarAlert
+        visible
+        style={{
+          padding: 5
+        }}
       >
         <Text type="h3" style={styles.text}>
           {text.badConnection}
         </Text>
-      </AnimatedSafeAreaView>
+      </StatusBarAlert>
     );
   }
 }
