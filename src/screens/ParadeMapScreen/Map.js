@@ -71,7 +71,7 @@ class Map extends Component<Props, State> {
         <MapView
           style={StyleSheet.absoluteFill}
           initialRegion={{
-            latitude: 51.5085,
+            latitude: 51.51004,
             longitude: -0.134192,
             latitudeDelta: 0.02,
             longitudeDelta: 0.000002
