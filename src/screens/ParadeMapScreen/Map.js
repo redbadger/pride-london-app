@@ -7,7 +7,8 @@ import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
-  Linking
+  Linking,
+  Alert
 } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
@@ -105,11 +106,16 @@ class Map extends Component<Props, State> {
                 500
               );
             },
-            () => {},
-            { enableHighAccuracy: false, timeout: 500, maximumAge: 10000 }
+            () => {
+              Alert.alert(
+                "We couldn't find your location",
+                "GPS or other location finding magic might not be available, please try again later"
+              );
+            },
+            { enableHighAccuracy: false, timeout: 3000, maximumAge: 10000 }
           );
         },
-        { enableHighAccuracy: true, timeout: 500, maximumAge: 10000 }
+        { enableHighAccuracy: true, timeout: 3000, maximumAge: 10000 }
       );
     } else if (Platform.OS === "ios" && locationPermission === "denied") {
       Linking.openURL("app-settings:");
