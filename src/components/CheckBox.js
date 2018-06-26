@@ -1,20 +1,12 @@
 // @flow
 import React from "react";
-import {
-  findNodeHandle,
-  Image,
-  NativeModules,
-  StyleSheet,
-  TouchableOpacity as Touchable
-} from "react-native";
+import { Image, StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
-// import Touchable from "./Touchable";
+import { SelectableTouchable } from "./Touchable";
 
 import checkboxUrl from "../../assets/images/checkBox.png";
 import checkBoxCheckedUrl from "../../assets/images/checkBoxChecked.png";
-
-const { SelectableHelper } = NativeModules;
 
 type Props = {
   checked: boolean,
@@ -28,10 +20,6 @@ class CheckBox extends React.Component<Props> {
     style: {}
   };
 
-  componentDidMount() {
-    SelectableHelper.makeSelectable(findNodeHandle(this.touchableRef.current));
-  }
-
   shouldComponentUpdate(nextProps: Props) {
     return (
       this.props.label !== nextProps.label ||
@@ -43,25 +31,21 @@ class CheckBox extends React.Component<Props> {
     this.props.onChange();
   };
 
-  // $FlowFixMe
-  touchableRef = React.createRef();
-
   render() {
     const { checked, label, style } = this.props;
 
     return (
-      <Touchable
+      <SelectableTouchable
         accessibilityComponentType={
           checked ? "radiobutton_checked" : "radiobutton_unchecked"
         }
         accessibilityTraits={checked ? ["button", "selected"] : ["button"]}
         onPress={this.onPress}
         style={[styles.container, style]}
-        ref={this.touchableRef}
       >
         <Text style={styles.text}>{label}</Text>
         <Image source={checked ? checkBoxCheckedUrl : checkboxUrl} />
-      </Touchable>
+      </SelectableTouchable>
     );
   }
 }

@@ -1,28 +1,37 @@
 // @flow
 import React from "react";
 import { StyleSheet, TouchableNativeFeedback, View } from "react-native";
+import { makeSelectable } from "react-native-accessible-selectable";
 import type { TouchableProps } from "./TouchableTypes";
 import { TouchableDefaultProps } from "./TouchableTypes";
 
-const Touchable = ({
-  children,
-  style,
-  onPress,
-  disabled,
-  ...props
-}: TouchableProps) => (
-  <TouchableNativeFeedback
-    background={TouchableNativeFeedback.SelectableBackground()}
-    onPress={onPress}
-    disabled={disabled}
-    {...props}
-  >
-    <View style={[styles.defaults, style]}>{children}</View>
-  </TouchableNativeFeedback>
+const SelectableTouchableNativeFeedback = makeSelectable(
+  TouchableNativeFeedback
 );
 
-Touchable.defaultProps = {
-  ...TouchableDefaultProps
+const createTouchable = BaseTouchable => {
+  const Touchable = ({
+    children,
+    style,
+    onPress,
+    disabled,
+    ...props
+  }: TouchableProps) => (
+    <BaseTouchable
+      background={TouchableNativeFeedback.SelectableBackground()}
+      onPress={onPress}
+      disabled={disabled}
+      {...props}
+    >
+      <View style={[styles.defaults, style]}>{children}</View>
+    </BaseTouchable>
+  );
+
+  Touchable.defaultProps = {
+    ...TouchableDefaultProps
+  };
+
+  return Touchable;
 };
 
 const styles = StyleSheet.create({
@@ -33,4 +42,8 @@ const styles = StyleSheet.create({
   }
 });
 
+const Touchable = createTouchable(TouchableNativeFeedback);
+const SelectableTouchable = createTouchable(SelectableTouchableNativeFeedback);
+
 export default Touchable;
+export { SelectableTouchable };
