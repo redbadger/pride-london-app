@@ -3,7 +3,9 @@ import React from "react";
 import { shallow } from "enzyme";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import { generateEvent, sampleOne } from "../../data/__test-data";
+import { EVENT_DETAILS } from "../../constants/routes";
 import ParadeMapScreen from "./component";
+import Map from "./Map";
 
 const navigation: NavigationScreenProp<NavigationState> = ({
   navigate: () => {}
@@ -39,4 +41,30 @@ it("does not render map when not focused", () => {
     />
   );
   expect(output).toMatchSnapshot();
+});
+
+it("opens an event", () => {
+  const navigationSpy = jest.fn();
+  const nav: NavigationScreenProp<NavigationState> = ({
+    navigate: navigationSpy
+  }: any);
+  const output = shallow(
+    <ParadeMapScreen
+      isFocused
+      navigation={nav}
+      stages={[stages]}
+      addSavedEvent={() => {}}
+      removeSavedEvent={() => {}}
+      onPress={() => {}}
+      savedEvents={new Set()}
+    />
+  );
+
+  output
+    .find(Map)
+    .props()
+    .onPress(1);
+
+  expect(navigationSpy).toBeCalledWith(EVENT_DETAILS, { eventId: 1 });
+  jest.clearAllMocks();
 });
