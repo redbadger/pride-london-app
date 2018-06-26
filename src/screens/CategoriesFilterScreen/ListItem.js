@@ -3,12 +3,11 @@ import React, { Component } from "react";
 import { StyleSheet, View, Animated, Dimensions, Image } from "react-native";
 import { hyphenate } from "../../lib/string";
 import Text from "../../components/Text";
-import Touchable from "../../components/Touchable";
+import { SelectableTouchable } from "../../components/Touchable";
 import { whiteColor, blackColor } from "../../constants/colors";
 import whiteCheck from "../../../assets/images/whiteCheck.png";
 import blackCheck from "../../../assets/images/blackCheck.png";
 import type { EventCategory } from "../../data/event";
-import { checkboxAccessibilityLabel } from "../../data/accessibility";
 
 type ListItemProps = {
   category: EventCategory,
@@ -66,15 +65,13 @@ class ListItem extends Component<
     const textColor = selected && category.contrast ? blackColor : whiteColor;
 
     return (
-      <Touchable
+      <SelectableTouchable
         style={styles.itemContainer}
         onPress={() => onPress(category.label)}
-        accessibilityComponentType="none"
-        accessibilityTraits={selected ? ["selected"] : ["none"]}
-        accessibilityLabel={checkboxAccessibilityLabel(
-          category.label,
-          selected
-        )}
+        accessibilityComponentType={
+          selected ? "radiobutton_checked" : "radiobutton_unchecked"
+        }
+        accessibilityTraits={selected ? ["button", "selected"] : ["button"]}
         testID={`categories-filter-list-item-${hyphenate(category.label)}`}
       >
         <Animated.View
@@ -113,7 +110,7 @@ class ListItem extends Component<
             {category.label}
           </Text>
         </View>
-      </Touchable>
+      </SelectableTouchable>
     );
   }
 }
