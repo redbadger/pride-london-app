@@ -27,10 +27,10 @@ export const terminals = [
 ];
 
 export const region = {
-  latitude: 51.5085,
+  latitude: 51.51004,
   longitude: -0.134192,
   latitudeDelta: 0.02,
-  longitudeDelta: 0.000000041
+  longitudeDelta: 0.000002
 };
 
 export const route = [
