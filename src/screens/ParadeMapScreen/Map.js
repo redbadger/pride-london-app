@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import type { Event, SavedEvents } from "../../data/event";
 import paradeCoordinates from "../../constants/parade-coordinates";
