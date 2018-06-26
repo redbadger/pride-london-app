@@ -1,26 +1,11 @@
 // @flow
 import React, { Component } from "react";
 import type { Node } from "react";
-import {
-  Animated,
-  Dimensions,
-  Easing,
-  Image,
-  StyleSheet,
-  View
-} from "react-native";
+import { Animated, Dimensions, Easing, StyleSheet, View } from "react-native";
 import SplashScreenControler from "react-native-splash-screen";
-import LottieView from "lottie-react-native";
 
-import Text from "../../components/Text";
-import {
-  lightNavyBlueColor,
-  brightLightBlueColor,
-  warmPinkColor
-} from "../../constants/colors";
-
-import logo from "../../../assets/images/logo.png";
-import heartAnimation from "../../../assets/animations/save-event-light.json";
+import { lightNavyBlueColor } from "../../constants/colors";
+import Welcome from "./Welcome";
 
 export type SplashScreenProps = {
   children: Node,
@@ -92,39 +77,13 @@ class SplashScreen extends Component<SplashScreenProps, State> {
           outputRange: [0, -screenHeight]
         });
 
-    const heart = !this.state.heart
-      ? 0
-      : this.state.heart.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, 1]
-        });
-
     return (
       <View style={styles.container}>
         {this.props.children}
         {this.props.state !== "hidden" && (
           <Animated.View style={[styles.overlay, this.overlayStyle(slide)]}>
             <View style={styles.content}>
-              <View style={styles.discoverPlanLove}>
-                <View style={styles.discover}>
-                  <Text type="uber" style={styles.discoverText}>
-                    Discover
-                  </Text>
-                </View>
-                <View style={styles.plan}>
-                  <Text type="uber" style={styles.planText}>
-                    Plan
-                  </Text>
-                </View>
-                <View style={styles.love}>
-                  <LottieView
-                    progress={heart}
-                    source={heartAnimation}
-                    loop={false}
-                  />
-                </View>
-              </View>
-              <Image source={logo} style={styles.logo} />
+              <Welcome animationProgress={this.state.heart} />
             </View>
           </Animated.View>
         )}
@@ -152,39 +111,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
-  },
-  discoverPlanLove: {
-    marginBottom: 200,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  discover: {
-    marginBottom: 20,
-    paddingHorizontal: 12,
-    backgroundColor: brightLightBlueColor
-  },
-  discoverText: {
-    lineHeight: 0,
-    color: lightNavyBlueColor
-  },
-  plan: {
-    paddingHorizontal: 12,
-    backgroundColor: warmPinkColor
-  },
-  planText: {
-    lineHeight: 0,
-    color: lightNavyBlueColor
-  },
-  love: {
-    margin: 0,
-    padding: 0,
-    width: 120,
-    height: 120
-  },
-  logo: {
-    position: "absolute",
-    bottom: 80
   }
 });
 
