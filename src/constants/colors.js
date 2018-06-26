@@ -102,3 +102,6 @@ export const supportUsButtonShadow = "rgba(0, 0, 0, 0.2)";
 // SPONSOR
 
 export const sponsorLogoBackgroundColor = "rgba(243, 243, 243, 0.5)";
+
+// Bad BadConnection
+export const badConnectionBackgroundColor = "#86949D";

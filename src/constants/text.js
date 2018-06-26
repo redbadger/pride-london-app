@@ -188,5 +188,6 @@ export default {
       }
     ]
   },
-  resetAllFilters: "Reset all filters"
+  resetAllFilters: "Reset all filters",
+  badConnection: "Bad connection, some features won't work"
 };

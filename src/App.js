@@ -5,6 +5,7 @@ import type { NavigationState } from "react-navigation";
 import SafeAreaView from "react-native-safe-area-view";
 import { lightNavyBlueColor } from "./constants/colors";
 import Navigation from "./Navigation";
+import BadConnection from "./components/BadConnection";
 
 export type Props = {
   onNavigationStateChange: (NavigationState, NavigationState) => void
@@ -21,6 +22,7 @@ const App = ({ onNavigationStateChange }: Props) => (
       backgroundColor={lightNavyBlueColor}
     />
     <Navigation onNavigationStateChange={onNavigationStateChange} />
+    <BadConnection />
   </SafeAreaView>
 );
 
