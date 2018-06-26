@@ -9,7 +9,7 @@ import {
   lightNavyBlueColor,
   transparent
 } from "../../constants/colors";
-import Text from "../../components/Text";
+import Text, { scaleWithFont } from "../../components/Text";
 import EventCard from "../../components/EventCard";
 import ContentPadding from "../../components/ContentPadding";
 import stageIconActive from "../../../assets/images/stageIconActive.png";
@@ -51,15 +51,12 @@ class Map extends Component<Props, State> {
       key={stage.id}
       onPress={() => this.handleMarkerPress(stage)}
       stopPropagation
-    >
-      <Image
-        source={
-          this.state.activeMarker === stage.id
-            ? stageIconActive
-            : stageIconInactive
-        }
-      />
-    </Marker>
+      image={
+        this.state.activeMarker === stage.id
+          ? stageIconActive
+          : stageIconInactive
+      }
+    />
   );
 
   render() {
@@ -77,7 +74,7 @@ class Map extends Component<Props, State> {
             latitude: 51.5085,
             longitude: -0.134192,
             latitudeDelta: 0.02,
-            longitudeDelta: 0.02
+            longitudeDelta: 0.000002
           }}
           showsPointsOfInterest={false}
           showsScale={false}
@@ -161,12 +158,18 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   markerView: {
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "center"
   },
   markerTextWrapper: {
     paddingHorizontal: 8,
     paddingVertical: 2,
-    backgroundColor: lightNavyBlueColor
+    backgroundColor: lightNavyBlueColor,
+    height: Math.max(30, scaleWithFont("h4", 30)),
+    width: Math.max(60, scaleWithFont("h4", 60)),
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 2
   },
   tileContainer: {
     width: "100%"

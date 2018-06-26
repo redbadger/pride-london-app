@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
         "latitude": 51.5085,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
-        "longitudeDelta": 0.02,
+        "longitudeDelta": 0.000002,
       }
     }
     onPress={[Function]}
@@ -567,15 +567,21 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "alignItems": "center",
+            "justifyContent": "center",
           }
         }
       >
         <Component
           style={
             Object {
+              "alignItems": "center",
               "backgroundColor": "#2d2f7f",
+              "borderRadius": 2,
+              "height": 30,
+              "justifyContent": "center",
               "paddingHorizontal": 8,
               "paddingVertical": 2,
+              "width": 60,
             }
           }
         >
@@ -630,15 +636,21 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "alignItems": "center",
+            "justifyContent": "center",
           }
         }
       >
         <Component
           style={
             Object {
+              "alignItems": "center",
               "backgroundColor": "#2d2f7f",
+              "borderRadius": 2,
+              "height": 30,
+              "justifyContent": "center",
               "paddingHorizontal": 8,
               "paddingVertical": 2,
+              "width": 60,
             }
           }
         >
@@ -681,14 +693,11 @@ exports[`renders correctly 1`] = `
           "longitude": 10,
         }
       }
+      image={1}
       key="QF4dTqmpn9z5ItEizAZ"
       onPress={[Function]}
       stopPropagation={true}
-    >
-      <Image
-        source={1}
-      />
-    </MapMarker>
+    />
   </MapView>
 </Component>
 `;
