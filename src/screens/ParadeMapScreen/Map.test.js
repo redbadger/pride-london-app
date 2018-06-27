@@ -127,23 +127,6 @@ describe("Map component", () => {
     });
   });
 
-  describe("focus", () => {
-    it("returns focus to parade route", () => {
-      // $FlowFixMe
-      Permissions.check.mockReturnValue(Promise.resolve("authorized"));
-
-      const output = render(regionProps);
-
-      const animateToRegion = jest.fn();
-      output.instance().mapViewRef.current = { animateToRegion };
-
-      const region = {};
-      output.instance().focus(region);
-
-      expect(animateToRegion).toHaveBeenCalledWith(region, 0);
-    });
-  });
-
   describe("moveToCurrentLocation", () => {
     it("moves to user location when authorized", async () => {
       // $FlowFixMe

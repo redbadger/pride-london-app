@@ -15,14 +15,19 @@ exports[`Map component renders correctly 1`] = `
   <MapView
     initialRegion={
       Object {
-        "latitude": 51.51004,
+        "latitude": 51.5085,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
         "longitudeDelta": 0.000002,
       }
     }
     onRegionChange={[Function]}
+    showsBuildings={false}
+    showsIndoors={false}
     showsMyLocationButton={false}
+    showsPointsOfInterest={false}
+    showsScale={false}
+    showsTraffic={false}
     showsUserLocation={false}
     style={
       Object {
@@ -651,14 +656,19 @@ exports[`Map component renders without location button when permission was denie
   <MapView
     initialRegion={
       Object {
-        "latitude": 51.51004,
+        "latitude": 51.5085,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
         "longitudeDelta": 0.000002,
       }
     }
     onRegionChange={[Function]}
+    showsBuildings={false}
+    showsIndoors={false}
     showsMyLocationButton={false}
+    showsPointsOfInterest={false}
+    showsScale={false}
+    showsTraffic={false}
     showsUserLocation={false}
     style={
       Object {

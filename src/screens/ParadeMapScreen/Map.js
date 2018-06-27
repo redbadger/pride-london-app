@@ -69,10 +69,6 @@ class Map extends Component<Props, State> {
 
   locationPermissionPromise: Promise<PermissionStatus>;
 
-  focus = (region: Region) => {
-    this.mapViewRef.current.animateToRegion(region, 0);
-  };
-
   confirmLocationPermission = async (): Promise<PermissionStatus> => {
     let locationPermission = await this.locationPermissionPromise;
     if (
@@ -135,6 +131,11 @@ class Map extends Component<Props, State> {
           showsMyLocationButton={false}
           onRegionChange={this.onRegionChange}
           ref={this.mapViewRef}
+          showsPointsOfInterest={false}
+          showsScale={false}
+          showsBuildings={false}
+          showsTraffic={false}
+          showsIndoors={false}
         >
           <Polyline
             coordinates={this.props.route}

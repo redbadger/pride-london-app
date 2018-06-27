@@ -1,6 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Parade Map Screen component renders correctly 1`] = `
+exports[`does not render map when not focused 1`] = `
+<Component
+  style={
+    Object {
+      "bottom": 0,
+      "flexDirection": "column",
+      "justifyContent": "flex-end",
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+  testID="parade-map-screen"
+>
+  <LocationCard
+    image={1}
+    name="Come back soon"
+    text="We are currently adding the events to the map. Check back later!"
+  />
+</Component>
+`;
+
+exports[`renders correctly 1`] = `
 <Component
   style={
     Object {
@@ -18,7 +41,7 @@ exports[`Parade Map Screen component renders correctly 1`] = `
   <Map
     paradeRegion={
       Object {
-        "latitude": 51.51004,
+        "latitude": 51.5085,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
         "longitudeDelta": 0.000002,
