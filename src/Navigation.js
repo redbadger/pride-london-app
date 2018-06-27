@@ -197,14 +197,6 @@ const ParadeTabNav = createMaterialTopTabNavigator(
       },
       upperCaseLabel: false,
       getTabTestID: getTabTestId
-    },
-    navigationOptions: {
-      header: (
-        <Header
-          title={text.paradeInformationScreen.headerTitle}
-          testID="page-heading-parade"
-        />
-      )
     }
   }
 );
@@ -217,10 +209,7 @@ const ParadeStack = createStackNavigator(
     initialRouteName: PARADE,
     navigationOptions: {
       header: (
-        <Header
-          title={text.paradeInformationScreen.headerTitle}
-          testID="page-heading-parade"
-        />
+        <Header title={text.parade.headerTitle} testID="page-heading-parade" />
       )
     },
     cardStyle: styles.card
