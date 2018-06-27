@@ -28,8 +28,13 @@ type RenderSectionInfo = {
   section: Section // eslint-disable-line react/no-unused-prop-types
 };
 
-export const sectionTitle = (paradeGroup: ParadeGroup): string =>
-  paradeGroup.fields.name.charAt(0).toUpperCase();
+export const sectionTitle = (paradeGroup: ParadeGroup): string => {
+  const leadingCharacter = paradeGroup.fields.name.charAt(0).toUpperCase();
+  if (Number.isNaN(parseInt(leadingCharacter, 10))) {
+    return leadingCharacter;
+  }
+  return "#";
+};
 
 const sections = (sectionedParadeGroups: ParadeGroup[][]): Section[] =>
   sectionedParadeGroups.map((paradeGroups, index) => ({

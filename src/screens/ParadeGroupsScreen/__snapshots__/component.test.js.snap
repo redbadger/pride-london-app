@@ -15,8 +15,6 @@ Array [
       "locale": "en-GB",
       "revision": 1,
     },
-  ],
-  Array [
     Object {
       "contentType": "paradeGroup",
       "fields": Object {
@@ -41,8 +39,6 @@ Array [
       "locale": "en-GB",
       "revision": 1,
     },
-  ],
-  Array [
     Object {
       "contentType": "paradeGroup",
       "fields": Object {
@@ -55,8 +51,6 @@ Array [
       "locale": "en-GB",
       "revision": 1,
     },
-  ],
-  Array [
     Object {
       "contentType": "paradeGroup",
       "fields": Object {
@@ -167,8 +161,6 @@ exports[`renders correctly 1`] = `
             "locale": "en-GB",
             "revision": 1,
           },
-        ],
-        Array [
           Object {
             "contentType": "paradeGroup",
             "fields": Object {

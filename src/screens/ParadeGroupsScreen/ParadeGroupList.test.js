@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
-import ParadeGroupList from "./ParadeGroupList";
+import ParadeGroupList, { sectionTitle } from "./ParadeGroupList";
 import { generateParadeGroup, sampleOne } from "../../data/__test-data";
 
 describe("ParadeGroupList", () => {
@@ -56,5 +56,19 @@ describe("ParadeGroupList", () => {
     const key = keyExtractor(paradeGroups[0][0]);
 
     expect(key).toBe(paradeGroups[0][0].id);
+  });
+});
+
+describe("sectionTitle", () => {
+  it("returns the first letter of the name in uppercase", () => {
+    const paradeGroup = sampleOne(generateParadeGroup, { seed: 5432 });
+    paradeGroup.fields.name = "a parade group name";
+    expect(sectionTitle(paradeGroup)).toEqual("A");
+  });
+
+  it("returns # if the first letter of the name is numeric", () => {
+    const paradeGroup = sampleOne(generateParadeGroup, { seed: 3245 });
+    paradeGroup.fields.name = "7 Dwarves";
+    expect(sectionTitle(paradeGroup)).toEqual("#");
   });
 });
