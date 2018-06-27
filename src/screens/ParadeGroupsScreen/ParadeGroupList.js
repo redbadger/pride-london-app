@@ -73,11 +73,13 @@ class ParadeGroupList extends Component<Props> {
   );
 
   renderHeader = () => (
-    <ContentPadding>
-      <Text style={styles.title} type="h2" color="lightNavyBlueColor">
-        {text.paradeGroups.title}
+    <ContentPadding style={styles.descriptionContainer}>
+      <Text type="h1">{text.paradeGroups.title}</Text>
+      <Text style={styles.h2} type="h2" color="lightNavyBlueColor">
+        {text.paradeGroups.subTitle}
       </Text>
-      <Text style={styles.description}>{text.paradeGroups.description}</Text>
+      <Text style={styles.paragraph}>{text.paradeGroups.paragraph1}</Text>
+      <Text style={styles.paragraph}>{text.paradeGroups.paragraph2}</Text>
     </ContentPadding>
   );
 
@@ -106,12 +108,15 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     backgroundColor: whiteColor
   },
-  title: {
-    paddingTop: 24,
-    paddingBottom: 8
+  descriptionContainer: {
+    marginTop: 24,
+    marginBottom: 16
   },
-  description: {
-    paddingBottom: 16
+  h2: {
+    marginBottom: 4
+  },
+  paragraph: {
+    marginBottom: 8
   }
 });
 

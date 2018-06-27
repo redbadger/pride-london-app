@@ -66,6 +66,66 @@ exports[`ParadeGroupList renders correctly 1`] = `
 />
 `;
 
+exports[`ParadeGroupList renders header correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={
+    Object {
+      "marginBottom": 16,
+      "marginTop": 24,
+    }
+  }
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h1"
+  >
+    London Parade
+  </Text>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "marginBottom": 4,
+      }
+    }
+    type="h2"
+  >
+    Saturday 7 July from 12pm
+  </Text>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+    type="text"
+  >
+    The Pride in London Parade is a platform for every part of London’s LGBT+ community. These groups, nearly 500 in total, represent our most diverse Pride in London yet. From LGBT+ parent groups and student services to sports clubs and national charities, we are proud to give a platform to our community representatives, supporters and allies.
+  </Text>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+    type="text"
+  >
+    Find out who you can expect to see on the day from the list below.
+  </Text>
+</ContentPadding>
+`;
+
 exports[`ParadeGroupList renders item separators correctly 1`] = `
 <ContentPadding
   padding={Object {}}

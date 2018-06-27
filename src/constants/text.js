@@ -36,7 +36,7 @@ export default {
   tabSaved: "Saved",
   tabSupportUs: "Support us",
   tabParadeMap: "Map",
-  tabParadeGroups: "Groups",
+  tabParadeGroups: "Parade groups",
   featuredEventListTitle: "Featured events",
   filterByInterest: "All event types",
   categoryFilterButton: "Filter by event type",
@@ -144,11 +144,16 @@ export default {
   homeViewAll: "View all",
   homeSupportUs: "Support us",
   homeSupportUsDescription: "Be part of the movement",
+  parade: {
+    headerTitle: "Parade - 7 July from 12pm"
+  },
   paradeGroups: {
-    title:
-      "The Pride in London Parade takes place on Saturday 7 July 2018 from 12pm.",
-    description:
-      "Parade groups are split into sections. The first groups are in section A, whilst those near the end are in section G. Below you can find the section that each parade group belongs to. During the parade our presenters will announce each section passing by.",
+    title: "London Parade",
+    subTitle: "Saturday 7 July from 12pm",
+    paragraph1:
+      "The Pride in London Parade is a platform for every part of London’s LGBT+ community. These groups, nearly 500 in total, represent our most diverse Pride in London yet. From LGBT+ parent groups and student services to sports clubs and national charities, we are proud to give a platform to our community representatives, supporters and allies.",
+    paragraph2:
+      "Find out who you can expect to see on the day from the list below.",
     linkLabelFacebook: "Facebook Page",
     linkLabelTwitter: "Twitter Profile",
     linkLabelWebsite: "Website",
@@ -156,9 +161,8 @@ export default {
     collapseAccessibilityLabel: "Show less"
   },
   paradeInformationScreen: {
-    headerTitle: "Parade Day - 7th July",
     pageHeading: "London Parade",
-    pageSubheading: "Saturday 7th July",
+    pageSubheading: "Saturday 7 July",
     pageDescription:
       "The Pride in London Parade provides a platform for every part of London’s LGBT+ community to raise awareness of LGBT+ issues and campaign for the freedoms that will allow us to live our lives on a genuinely equal footing. It gives us a chance to be visible and speak loudly to the rest of the world about what we have achieved, how far we have come and what is still needed.",
     stages: [

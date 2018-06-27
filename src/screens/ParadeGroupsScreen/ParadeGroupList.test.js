@@ -17,6 +17,13 @@ describe("ParadeGroupList", () => {
     expect(output).toMatchSnapshot();
   });
 
+  it("renders header correctly", () => {
+    const renderHeader = render().prop("ListHeaderComponent");
+    const output = renderHeader();
+
+    expect(output).toMatchSnapshot();
+  });
+
   it("renders section headers correctly", () => {
     const renderSectionHeader = render().prop("renderSectionHeader");
     const output = renderSectionHeader({ section: { data: paradeGroups[0] } });
