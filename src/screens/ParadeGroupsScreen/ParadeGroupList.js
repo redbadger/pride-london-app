@@ -63,8 +63,6 @@ class ParadeGroupList extends Component<Props> {
     </ContentPadding>
   );
 
-  // sectionSeparator = () => <View style={styles.sectionSeparator} />;
-
   keyExtractor = getId;
 
   renderItem = ({ item }: RenderItemInfo) => (
