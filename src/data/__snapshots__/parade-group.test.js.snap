@@ -4,10 +4,9 @@ exports[`Parade Group decoder correctly decodes valid CMS Parade Group 1`] = `
 Object {
   "contentType": "paradeGroup",
   "fields": Object {
-    "facebookUrl": "https://red-badger.com/24f3tJ9kLEIsCL0O8y881NG4pjYP2",
+    "facebookUrl": "https://red-badger.com/Ii3rT8J7D7oRAsi73e2G",
     "name": "BhabSLtI692l05Qliy85",
-    "section": "Section E",
-    "twitterUrl": "https://red-badger.com/Lh09pJ3",
+    "twitterUrl": "https://red-badger.com/24f3tJ9kLEIsCL0O8y881NG4pjYP2",
     "websiteUrl": null,
   },
   "id": "hG",
@@ -22,7 +21,6 @@ Object {
   "fields": Object {
     "facebookUrl": null,
     "name": "mm2T1WpGuu4k03kl04088fDh1B5V",
-    "section": "Section C",
     "twitterUrl": null,
     "websiteUrl": null,
   },
