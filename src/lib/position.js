@@ -1,6 +1,7 @@
 // @flow
-export const getCurrentPosition = function(options) {
-  return new Promise(function(resolve, reject) {
+/* eslint-disable import/prefer-default-export */
+
+export const getCurrentPosition = options =>
+  new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, options);
   });
-};

@@ -24,8 +24,12 @@ import type {
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
 
-type PermissionStatus = "authorized" | "denied" | "restricted" | "undetermined";
-const neverAskStatuses = new Set(["restricted"]);
+type PermissionStatus =
+  | "authorized"
+  | "denied"
+  | "restricted"
+  | "undetermined"
+  | "checking";
 const shouldNeverAsk = (status: PermissionStatus) => status === "restricted";
 
 type Props = {
@@ -39,6 +43,38 @@ type State = {
   atUserLocation: boolean
 };
 
+export const checkLocationPermission = setState => {
+  setState({ locationPermission: "checking" });
+  return Permissions.check("location").then(response => {
+    setState({ locationPermission: response });
+  });
+};
+
+export const requestLocationPermission = (setState, state) => {
+  if (shouldNeverAsk(state.locationPermission)) return Promise.resolve();
+  setState({ locationPermission: "asking" });
+  return Permissions.request("location").then(response => {
+    setState({ locationPermission: response });
+  });
+};
+
+const withHighAccuracy = {
+  enableHighAccuracy: true,
+  timeout: 3000,
+  maximumAge: 10000
+};
+
+const withLowAccuracy = {
+  enableHighAccuracy: false,
+  timeout: 3000,
+  maximumAge: 10000
+};
+
+const animateToCoordinate = ref => ({ coords }) => {
+  const { latitude, longitude } = coords;
+  ref.current.animateToCoordinate({ latitude, longitude }, 500);
+};
+
 class Map extends Component<Props, State> {
   state = {
     locationPermission: "undetermined",
@@ -46,75 +82,50 @@ class Map extends Component<Props, State> {
   };
 
   componentDidMount() {
-    this.locationPermissionPromise = Permissions.check("location");
-    this.locationPermissionPromise.then(response => {
-      this.setState({ locationPermission: response });
-    });
+    checkLocationPermission(this.setState.bind(this));
   }
 
   onRegionChange = (position: Coordinates) => {
-    const { latitude: currentLat, longitude: currentLong } = position;
     if (this.state.atUserLocation) {
       this.setState({ atUserLocation: false });
     } else if (this.state.locationPermission === "authorized") {
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-        const { latitude: userLat, longitude: userLong } = coords;
-        if (
-          userLat.toFixed(5) === currentLat.toFixed(5) &&
-          userLong.toFixed(5) === currentLong.toFixed(5)
-        ) {
-          this.setState({ atUserLocation: true });
-        }
-      });
+      getCurrentPosition(withHighAccuracy).then(
+        this.checkAtUserLocation(position)
+      );
     }
   };
 
-  locationPermissionPromise: Promise<PermissionStatus>;
-
-  confirmLocationPermission = async (): Promise<PermissionStatus> => {
-    let locationPermission = await this.locationPermissionPromise;
+  checkAtUserLocation = (mapCoordinate: Coordinates) => ({ coords }) => {
     if (
-      locationPermission !== "authorized" &&
-      !shouldNeverAsk(this.state.locationPermission)
-    ) {
-      locationPermission = await Permissions.request("location");
-      this.setState({ locationPermission });
-    }
-
-    return locationPermission;
+      mapCoordinate.latitude.toFixed(5) === coords.latitude.toFixed(5) &&
+      mapCoordinate.longitude.toFixed(5) === coords.longitude.toFixed(5)
+    )
+      this.setState({ atUserLocation: true });
   };
 
-  moveToCurrentLocation = async () => {
-    const locationPermission = await this.confirmLocationPermission();
-    if (locationPermission === "authorized") {
-      const withHighAccuracy = {
-        enableHighAccuracy: true,
-        timeout: 3000,
-        maximumAge: 10000
-      };
-      const withLowAccuracy = {
-        enableHighAccuracy: false,
-        timeout: 3000,
-        maximumAge: 10000
-      };
-
-      const animateToCoordinate = ref => ({ coords }) => {
-        const { latitude, longitude } = coords;
-        ref.current.animateToCoordinate({ latitude, longitude }, 500);
-      };
-
-      getCurrentPosition(withHighAccuracy)
-        .catch(() => getCurrentPosition(withLowAccuracy))
-        .then(animateToCoordinate(this.mapViewRef))
-        .catch(() => {
-          Alert.alert(
-            "We couldn't find your location",
-            "GPS or other location finding magic might not be available, please try again later"
-          );
-        });
-    } else if (Platform.OS === "ios" && locationPermission === "denied") {
-      Linking.openURL("app-settings:");
-    }
+  moveToCurrentLocation = () => {
+    return requestLocationPermission(this.setState.bind(this), this.state).then(
+      () => {
+        if (this.state.locationPermission === "authorized") {
+          return getCurrentPosition(withHighAccuracy)
+            .catch(() => {
+              getCurrentPosition(withLowAccuracy);
+            })
+            .then(animateToCoordinate(this.mapViewRef))
+            .catch(() => {
+              Alert.alert(
+                "We couldn't find your location",
+                "GPS or other location finding magic might not be available, please try again later"
+              );
+            });
+        } else if (
+          Platform.OS === "ios" &&
+          this.state.locationPermission === "denied"
+        ) {
+          Linking.openURL("app-settings:");
+        }
+      }
+    );
   };
 
   // $FlowFixMe
