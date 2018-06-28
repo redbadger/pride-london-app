@@ -28,9 +28,11 @@ type RenderSectionInfo = {
   section: Section // eslint-disable-line react/no-unused-prop-types
 };
 
+const isOnlyAlpha = RegExp("[A-Z]");
+
 export const sectionTitle = (paradeGroup: ParadeGroup): string => {
   const leadingCharacter = paradeGroup.fields.name.charAt(0).toUpperCase();
-  if (Number.isNaN(parseInt(leadingCharacter, 10))) {
+  if (isOnlyAlpha.test(leadingCharacter)) {
     return leadingCharacter;
   }
   return "#";

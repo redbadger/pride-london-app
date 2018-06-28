@@ -71,4 +71,10 @@ describe("sectionTitle", () => {
     paradeGroup.fields.name = "7 Dwarves";
     expect(sectionTitle(paradeGroup)).toEqual("#");
   });
+
+  it("returns # if the first letter of the name is a symbol", () => {
+    const paradeGroup = sampleOne(generateParadeGroup, { seed: 3245 });
+    paradeGroup.fields.name = "$$$";
+    expect(sectionTitle(paradeGroup)).toEqual("#");
+  });
 });
