@@ -41,7 +41,6 @@ afterEach(() => {
 
 describe("Map component", () => {
   it("renders correctly", () => {
-    // $FlowFixMe
     Permissions.check.mockReturnValue(Promise.resolve("authorized"));
 
     const output = render(regionProps);
@@ -65,7 +64,7 @@ describe("Map component", () => {
 
     const output = render(regionProps);
 
-    expect(output.state().locationPermission).toBeUndefined();
+    expect(output.state().locationPermission).toEqual("undetermined");
     expect(Permissions.check).toHaveBeenCalledWith("location");
 
     await Promise.resolve();

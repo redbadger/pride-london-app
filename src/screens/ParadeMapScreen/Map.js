@@ -14,6 +14,7 @@ import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
 import Text from "../../components/Text";
 import { velvetColor } from "../../constants/colors";
+import { getCurrentPosition } from "../../lib/position";
 import type {
   Coordinates,
   Region,
@@ -25,6 +26,7 @@ import locationButtonActive from "../../../assets/images/location-active.png";
 
 type PermissionStatus = "authorized" | "denied" | "restricted" | "undetermined";
 const neverAskStatuses = new Set(["restricted"]);
+const shouldNeverAsk = (status: PermissionStatus) => status === "restricted";
 
 type Props = {
   route: Array<Coordinates>,
@@ -33,13 +35,13 @@ type Props = {
 };
 
 type State = {
-  locationPermission: ?PermissionStatus,
+  locationPermission: PermissionStatus,
   atUserLocation: boolean
 };
 
 class Map extends Component<Props, State> {
   state = {
-    locationPermission: undefined,
+    locationPermission: "undetermined",
     atUserLocation: false
   };
 
@@ -73,7 +75,7 @@ class Map extends Component<Props, State> {
     let locationPermission = await this.locationPermissionPromise;
     if (
       locationPermission !== "authorized" &&
-      !neverAskStatuses.has(this.state.locationPermission)
+      !shouldNeverAsk(this.state.locationPermission)
     ) {
       locationPermission = await Permissions.request("location");
       this.setState({ locationPermission });
@@ -85,34 +87,31 @@ class Map extends Component<Props, State> {
   moveToCurrentLocation = async () => {
     const locationPermission = await this.confirmLocationPermission();
     if (locationPermission === "authorized") {
-      navigator.geolocation.getCurrentPosition(
-        ({ coords }) => {
-          const { latitude, longitude } = coords;
-          this.mapViewRef.current.animateToCoordinate(
-            { latitude, longitude },
-            500
+      const withHighAccuracy = {
+        enableHighAccuracy: true,
+        timeout: 3000,
+        maximumAge: 10000
+      };
+      const withLowAccuracy = {
+        enableHighAccuracy: false,
+        timeout: 3000,
+        maximumAge: 10000
+      };
+
+      const animateToCoordinate = ref => ({ coords }) => {
+        const { latitude, longitude } = coords;
+        ref.current.animateToCoordinate({ latitude, longitude }, 500);
+      };
+
+      getCurrentPosition(withHighAccuracy)
+        .catch(() => getCurrentPosition(withLowAccuracy))
+        .then(animateToCoordinate(this.mapViewRef))
+        .catch(() => {
+          Alert.alert(
+            "We couldn't find your location",
+            "GPS or other location finding magic might not be available, please try again later"
           );
-        },
-        () => {
-          navigator.geolocation.getCurrentPosition(
-            ({ coords }) => {
-              const { latitude, longitude } = coords;
-              this.mapViewRef.current.animateToCoordinate(
-                { latitude, longitude },
-                500
-              );
-            },
-            () => {
-              Alert.alert(
-                "We couldn't find your location",
-                "GPS or other location finding magic might not be available, please try again later"
-              );
-            },
-            { enableHighAccuracy: false, timeout: 3000, maximumAge: 10000 }
-          );
-        },
-        { enableHighAccuracy: true, timeout: 3000, maximumAge: 10000 }
-      );
+        });
     } else if (Platform.OS === "ios" && locationPermission === "denied") {
       Linking.openURL("app-settings:");
     }
@@ -153,7 +152,7 @@ class Map extends Component<Props, State> {
             </Marker>
           ))}
         </MapView>
-        {!neverAskStatuses.has(this.state.locationPermission) && (
+        {!shouldNeverAsk(this.state.locationPermission) && (
           <View style={styles.touchable}>
             <TouchableWithoutFeedback
               onPress={this.moveToCurrentLocation}
