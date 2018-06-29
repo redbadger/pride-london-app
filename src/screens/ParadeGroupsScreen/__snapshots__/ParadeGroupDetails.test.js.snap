@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with all fields 1`] = `
+<Component
+  style={
+    Object {
+      "paddingBottom": 10,
+      "paddingTop": 16,
+    }
+  }
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "paddingTop": 4,
+      }
+    }
+    type="h3"
+  >
+    A Test Parade Group
+  </Text>
+  <Component
+    style={
+      Object {
+        "alignItems": "flex-start",
+      }
+    }
+  >
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      onPress={[Function]}
+    >
+      <TextLink>
+        Facebook Page
+      </TextLink>
+    </Touchable>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      onPress={[Function]}
+    >
+      <TextLink>
+        Twitter Profile
+      </TextLink>
+    </Touchable>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits={
+        Array [
+          "button",
+        ]
+      }
+      delayPressIn={50}
+      onPress={[Function]}
+    >
+      <TextLink>
+        Website
+      </TextLink>
+    </Touchable>
+  </Component>
+</Component>
+`;
+
+exports[`renders correctly with missing fields 1`] = `
+<Component
+  style={
+    Object {
+      "paddingBottom": 10,
+      "paddingTop": 16,
+    }
+  }
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "paddingTop": 4,
+      }
+    }
+    type="h3"
+  >
+    Test Parade Group
+  </Text>
+  <Component
+    style={
+      Object {
+        "alignItems": "flex-start",
+      }
+    }
+  />
+</Component>
+`;
