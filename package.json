@@ -56,7 +56,7 @@
     "@rgbboy/testcheck": "^1.0.0-rc.3",
     "babel-eslint": "^8.2.1",
     "babel-jest": "23.2.0",
-    "babel-preset-react-native": "^4.0.0",
+    "babel-preset-react-native": "^5.0.1",
     "bugsnag-sourcemaps": "^1.0.3",
     "commander": "^2.13.0",
     "contentful-management": "^4.1.4",
