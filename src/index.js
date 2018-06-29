@@ -9,7 +9,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import Config from "react-native-config";
 import { Client, Configuration } from "bugsnag-react-native";
 
-import analytics from "./integrations/analytics";
+import analyticsMiddleware from "./integrations/analytics";
+import errorMiddleware from "./integrations/errors";
 import reducers from "./reducers";
 import { init } from "./actions";
 import { getData, backgroundRefreshData } from "./actions/data";
@@ -23,7 +24,7 @@ bugsnagConfiguration.releaseStage = Config.RELEASE_STAGE
   : "dev";
 // Only send reports for releases from master branch
 bugsnagConfiguration.notifyReleaseStages = ["beta", "release"];
-const bugsnag = new Client(bugsnagConfiguration); // eslint-disable-line no-unused-vars
+const bugsnag = new Client(bugsnagConfiguration);
 
 // https://github.com/react-navigation/react-navigation/issues/3956#issuecomment-380648083
 YellowBox.ignoreWarnings([
@@ -37,7 +38,9 @@ if (UIManager.setLayoutAnimationEnabledExperimental) {
 
 const store = createStore(
   reducers,
-  composeWithDevTools(applyMiddleware(thunk, analytics))
+  composeWithDevTools(
+    applyMiddleware(thunk, analyticsMiddleware, errorMiddleware(bugsnag))
+  )
 );
 
 const handleNavigationChange = navigate(store.dispatch);

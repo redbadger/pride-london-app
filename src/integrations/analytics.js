@@ -1,14 +1,13 @@
 // @flow
 import { NativeModules } from "react-native";
-import type { InitAction } from "../actions";
+import type { MiddlewareActions } from "../actions";
 import { INIT } from "../actions";
-import type { NavigationAction } from "../actions/navigation";
 import { NAVIGATION } from "../actions/navigation";
 import { HOME } from "../constants/routes";
 
 const { Analytics } = NativeModules;
 
-const trackEvent = (action: Action) => {
+const trackEvent = (action: MiddlewareActions) => {
   switch (action.type) {
     case INIT:
       Analytics.trackEvent("Screen Event", { screen: HOME });
@@ -23,9 +22,9 @@ const trackEvent = (action: Action) => {
   }
 };
 
-type Action = NavigationAction | InitAction;
-
-const analytics = () => (next: Action => mixed) => (action: Action) => {
+const analytics = () => (next: MiddlewareActions => mixed) => (
+  action: MiddlewareActions
+) => {
   trackEvent(action);
   return next(action);
 };

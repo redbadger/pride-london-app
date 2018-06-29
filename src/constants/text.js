@@ -203,5 +203,13 @@ export default {
       }
     ]
   },
+  storeVersionDialog: {
+    updateAvailable: "New Update Available",
+    newVersionDescription:
+      "A new version of the app is available from the store. Do you want to update now?",
+    askMeLater: "Ask me later",
+    cancel: "Cancel",
+    ok: "OK"
+  },
   resetAllFilters: "Reset all filters"
 };
