@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import type { ElementRef } from "react";
 import {
   Image,
@@ -12,15 +12,19 @@ import {
 } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
+import type { Event, SavedEvents } from "../../data/event";
 import Text from "../../components/Text";
-import { velvetColor } from "../../constants/colors";
+import { warmPinkColor } from "../../constants/colors";
 import { getCurrentPosition } from "../../lib/position";
 import type {
   Coordinates,
   Region,
   Terminals
 } from "../../constants/parade-coordinates";
-
+import EventCard from "../../components/EventCard";
+import ContentPadding from "../../components/ContentPadding";
+import stageIconActive from "../../../assets/images/stageIconActive.png";
+import stageIconInactive from "../../../assets/images/stageIconInactive.png";
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
 
@@ -37,12 +41,19 @@ const shouldNeverAsk = (status: PermissionStatus) => status === "restricted";
 type Props = {
   route: Array<Coordinates>,
   paradeRegion: Region,
-  terminals: Array<Terminals>
+  terminals: Array<Terminals>,
+  stages: Array<Event>,
+  savedEvents: SavedEvents,
+  addSavedEvent: string => void,
+  removeSavedEvent: string => void,
+  onEventCardPress: (id: string) => void
 };
 
 type State = {
   locationPermission: PermissionStatus,
-  atUserLocation: boolean
+  atUserLocation: boolean,
+  activeMarker: ?string,
+  tileDetails: ?Event
 };
 
 type setStateArguments = {
@@ -90,8 +101,10 @@ const animateToCoordinate = ref => (coords: Coordinates) => {
   ref.current.animateToCoordinate({ latitude, longitude }, 500);
 };
 
-class Map extends Component<Props, State> {
+class Map extends PureComponent<Props, State> {
   state = {
+    activeMarker: null,
+    tileDetails: null,
     locationPermission: "undetermined",
     atUserLocation: false
   };
@@ -108,6 +121,14 @@ class Map extends Component<Props, State> {
         this.checkAtUserLocation(position)
       );
     }
+  };
+
+  handleMarkerPress(stage: Event) {
+    this.setState({ tileDetails: stage, activeMarker: stage.id });
+  }
+
+  handleMapPress = () => {
+    this.setState({ tileDetails: null, activeMarker: null });
   };
 
   checkAtUserLocation = (mapCoordinate: Coordinates) => (
@@ -145,9 +166,32 @@ class Map extends Component<Props, State> {
   // $FlowFixMe
   mapViewRef: ElementRef<typeof MapView> = React.createRef();
 
+  renderStageMarker = (stage: Event) => (
+    <Marker
+      coordinate={{
+        longitude: stage.fields.location.lon,
+        latitude: stage.fields.location.lat
+      }}
+      key={stage.id}
+      onPress={() => this.handleMarkerPress(stage)}
+      stopPropagation
+      image={
+        this.state.activeMarker === stage.id
+          ? stageIconActive
+          : stageIconInactive
+      }
+    />
+  );
+
   render() {
+    const {
+      savedEvents,
+      addSavedEvent,
+      removeSavedEvent,
+      onEventCardPress
+    } = this.props;
     return (
-      <View style={StyleSheet.absoluteFill}>
+      <View style={styles.mapWrapper}>
         <MapView
           style={StyleSheet.absoluteFill}
           initialRegion={this.props.paradeRegion}
@@ -160,23 +204,35 @@ class Map extends Component<Props, State> {
           showsBuildings={false}
           showsTraffic={false}
           showsIndoors={false}
+          onPress={this.handleMapPress}
         >
           <Polyline
             coordinates={this.props.route}
             strokeWidth={5}
-            strokeColor={velvetColor}
+            strokeColor={warmPinkColor}
             lineJoin="bevel"
           />
           {this.props.terminals.map(terminal => (
-            <Marker coordinate={terminal.coordinates} key={terminal.key}>
-              <View style={terminal.style}>
-                <Text type={terminal.text.type} color={terminal.text.color}>
-                  {terminal.text.text}
-                </Text>
+            <Marker
+              coordinate={terminal.coordinates}
+              key={terminal.key}
+              centerOffset={{ x: 0, y: -15 }}
+              stopPropagation
+            >
+              <View style={terminal.style.markerView}>
+                <View style={terminal.style.markerTextWrapper}>
+                  <Text type={terminal.text.type} color={terminal.text.color}>
+                    {terminal.text.text}
+                  </Text>
+                </View>
+                <View style={terminal.style.triangle} />
               </View>
             </Marker>
           ))}
+          {this.props.stages.length > 0 &&
+            this.props.stages.map(this.renderStageMarker)}
         </MapView>
+
         {!shouldNeverAsk(this.state.locationPermission) && (
           <View style={styles.touchable}>
             <TouchableWithoutFeedback
@@ -197,16 +253,50 @@ class Map extends Component<Props, State> {
             </TouchableWithoutFeedback>
           </View>
         )}
+        {this.state.tileDetails && (
+          <View style={styles.tileContainer}>
+            <ContentPadding
+              padding={{
+                small: { horizontal: 8, vertical: 8 },
+                medium: { horizontal: 16, vertical: 16 },
+                large: { horizontal: 20, vertical: 20 }
+              }}
+            >
+              <EventCard
+                id={this.state.tileDetails.id}
+                name={this.state.tileDetails.fields.name}
+                locationName={this.state.tileDetails.fields.locationName}
+                eventPriceLow={this.state.tileDetails.fields.eventPriceLow}
+                eventPriceHigh={this.state.tileDetails.fields.eventPriceHigh}
+                startTime={this.state.tileDetails.fields.startTime}
+                endTime={this.state.tileDetails.fields.endTime}
+                imageReference={this.state.tileDetails.fields.eventsListPicture}
+                isSaved={savedEvents.has(this.state.tileDetails.id)}
+                addSavedEvent={addSavedEvent}
+                removeSavedEvent={removeSavedEvent}
+                onPress={onEventCardPress}
+              />
+            </ContentPadding>
+          </View>
+        )}
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  mapWrapper: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  tileContainer: {
+    width: "100%"
+  },
   touchable: {
     alignSelf: "flex-end",
     marginTop: Platform.OS === "ios" ? 44 : 8,
-    paddingRight: Platform.OS === "ios" ? 0 : 8,
+    paddingRight: Platform.OS === "ios" ? 9 : 8,
     paddingLeft: 10,
     paddingBottom: 10
   },

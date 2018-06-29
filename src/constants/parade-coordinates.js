@@ -1,27 +1,48 @@
 // @flow
 import { scaleWithFont } from "../components/Text";
-import { velvetColor } from "./colors";
+import { lightNavyBlueColor, transparent } from "./colors";
 
 const terminalStyle = {
-  height: Math.max(18, scaleWithFont("xSmall", 18)),
-  width: Math.max(18, scaleWithFont("xSmall", 18)),
-  backgroundColor: velvetColor,
-  borderRadius: Math.max(9, scaleWithFont("xSmall", 9)),
-  justifyContent: "center",
-  alignItems: "center"
+  markerView: {
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  markerTextWrapper: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    backgroundColor: lightNavyBlueColor,
+    height: Math.max(30, scaleWithFont("h4", 30)),
+    width: Math.max(60, scaleWithFont("h4", 60)),
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 2
+  },
+  triangle: {
+    width: 0,
+    height: 0,
+    backgroundColor: transparent,
+    borderStyle: "solid",
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderBottomWidth: 10,
+    borderLeftColor: transparent,
+    borderRightColor: transparent,
+    borderBottomColor: lightNavyBlueColor,
+    transform: [{ rotate: "180deg" }]
+  }
 };
 
 export const terminals = [
   {
     key: "start",
     coordinates: { longitude: -0.14223, latitude: 51.51616 },
-    text: { text: "A", type: "xSmall", color: "whiteColor" },
+    text: { text: "Start", type: "h4", color: "whiteColor" },
     style: terminalStyle
   },
   {
     key: "finish",
     coordinates: { longitude: -0.12664, latitude: 51.50497 },
-    text: { text: "B", type: "xSmall", color: "whiteColor" },
+    text: { text: "Finish", type: "h4", color: "whiteColor" },
     style: terminalStyle
   }
 ];

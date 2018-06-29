@@ -166,7 +166,8 @@ export type Event = {
     individualEventPicture: FieldRef,
     eventsListPicture: FieldRef,
     performances: Array<FieldRef>,
-    recurrenceDates: Array<string>
+    recurrenceDates: Array<string>,
+    stage: boolean
   }
 };
 
@@ -277,7 +278,8 @@ export const decodeEvent = (locale: string): Decoder<Event> =>
           "recurrenceDates",
           decode.array(decode.string),
           []
-        )
+        ),
+        stage: maybeFieldWithDefault(locale, "stage", decode.boolean, false)
       })
     )
   });

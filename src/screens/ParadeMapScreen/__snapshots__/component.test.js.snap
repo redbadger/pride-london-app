@@ -14,13 +14,7 @@ exports[`does not render map when not focused 1`] = `
     }
   }
   testID="parade-map-screen"
->
-  <LocationCard
-    image={1}
-    name="Come back soon"
-    text="We are currently adding the events to the map. Check back later!"
-  />
-</Component>
+/>
 `;
 
 exports[`renders correctly 1`] = `
@@ -39,6 +33,8 @@ exports[`renders correctly 1`] = `
   testID="parade-map-screen"
 >
   <Map
+    addSavedEvent={[Function]}
+    onEventCardPress={[Function]}
     paradeRegion={
       Object {
         "latitude": 51.5085,
@@ -47,6 +43,7 @@ exports[`renders correctly 1`] = `
         "longitudeDelta": 0.000002,
       }
     }
+    removeSavedEvent={[Function]}
     route={
       Array [
         Object {
@@ -539,6 +536,91 @@ exports[`renders correctly 1`] = `
         },
       ]
     }
+    savedEvents={Set {}}
+    stages={
+      Array [
+        Object {
+          "contentType": "event",
+          "fields": Object {
+            "accessibilityDetails": "accessibilityDetails",
+            "accessibilityOptions": Array [
+              "dmsFhe9C732jAxJ2oCAFv8vi0B",
+              "AY957Prtj00U0nq",
+              "mr9XTUQr6iQap9o7NYHRjN3xX93a",
+              "5YYd69ZsuKxA",
+            ],
+            "addressLine1": "addressLine1",
+            "addressLine2": "addressLine2",
+            "audience": Array [
+              "Z4a",
+              "yAr1NR9z56dtW8a53dKOxsknYzp",
+              "i1D",
+              "mX1P6999LbV7z3oxYPD6R0Alj11cb8",
+              "qqEtmOF46hkCR3Tc4SGRu5jxZ5d8",
+            ],
+            "city": "city",
+            "email": "email",
+            "endTime": "2018-07-07T03:00+00:00",
+            "eventCategories": Array [
+              "Cabaret and Variety",
+              "Film and Screenings",
+              "Health",
+              "Plays and Theatre",
+            ],
+            "eventDescription": "eventDescription",
+            "eventPriceHigh": 10,
+            "eventPriceLow": 0,
+            "eventsListPicture": Object {
+              "sys": Object {
+                "id": "Sw",
+              },
+            },
+            "individualEventPicture": Object {
+              "sys": Object {
+                "id": "99ww8tQRq",
+              },
+            },
+            "location": Object {
+              "lat": 0,
+              "lon": 10,
+            },
+            "locationName": "locationName",
+            "name": "name",
+            "performances": Array [
+              Object {
+                "sys": Object {
+                  "id": "t3gcH9lwpBFJACtGC24P8lFR",
+                },
+              },
+              Object {
+                "sys": Object {
+                  "id": "DcH3",
+                },
+              },
+              Object {
+                "sys": Object {
+                  "id": "gp493DYUByvSUyrw4uIGW8L5IEOw9",
+                },
+              },
+            ],
+            "phone": "phone",
+            "postcode": "postcode",
+            "recurrenceDates": Array [
+              "31/05/2018",
+            ],
+            "stage": true,
+            "startTime": "2018-07-07T00:00+00:00",
+            "ticketingUrl": "ticketingUrl",
+            "venueDetails": Array [
+              "p36SA7hUd97vAklm",
+            ],
+          },
+          "id": "QF4dTqmpn9z5ItEizAZ",
+          "locale": "en-GB",
+          "revision": 1,
+        },
+      ]
+    }
     terminals={
       Array [
         Object {
@@ -548,17 +630,42 @@ exports[`renders correctly 1`] = `
           },
           "key": "start",
           "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#660c63",
-            "borderRadius": 9,
-            "height": 18,
-            "justifyContent": "center",
-            "width": 18,
+            "markerTextWrapper": Object {
+              "alignItems": "center",
+              "backgroundColor": "#2d2f7f",
+              "borderRadius": 2,
+              "height": 30,
+              "justifyContent": "center",
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+              "width": 60,
+            },
+            "markerView": Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            "triangle": Object {
+              "backgroundColor": "transparent",
+              "borderBottomColor": "#2d2f7f",
+              "borderBottomWidth": 10,
+              "borderLeftColor": "transparent",
+              "borderLeftWidth": 5,
+              "borderRightColor": "transparent",
+              "borderRightWidth": 5,
+              "borderStyle": "solid",
+              "height": 0,
+              "transform": Array [
+                Object {
+                  "rotate": "180deg",
+                },
+              ],
+              "width": 0,
+            },
           },
           "text": Object {
             "color": "whiteColor",
-            "text": "A",
-            "type": "xSmall",
+            "text": "Start",
+            "type": "h4",
           },
         },
         Object {
@@ -568,26 +675,46 @@ exports[`renders correctly 1`] = `
           },
           "key": "finish",
           "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "#660c63",
-            "borderRadius": 9,
-            "height": 18,
-            "justifyContent": "center",
-            "width": 18,
+            "markerTextWrapper": Object {
+              "alignItems": "center",
+              "backgroundColor": "#2d2f7f",
+              "borderRadius": 2,
+              "height": 30,
+              "justifyContent": "center",
+              "paddingHorizontal": 8,
+              "paddingVertical": 2,
+              "width": 60,
+            },
+            "markerView": Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+            },
+            "triangle": Object {
+              "backgroundColor": "transparent",
+              "borderBottomColor": "#2d2f7f",
+              "borderBottomWidth": 10,
+              "borderLeftColor": "transparent",
+              "borderLeftWidth": 5,
+              "borderRightColor": "transparent",
+              "borderRightWidth": 5,
+              "borderStyle": "solid",
+              "height": 0,
+              "transform": Array [
+                Object {
+                  "rotate": "180deg",
+                },
+              ],
+              "width": 0,
+            },
           },
           "text": Object {
             "color": "whiteColor",
-            "text": "B",
-            "type": "xSmall",
+            "text": "Finish",
+            "type": "h4",
           },
         },
       ]
     }
-  />
-  <LocationCard
-    image={1}
-    name="Come back soon"
-    text="We are currently adding the events to the map. Check back later!"
   />
 </Component>
 `;

@@ -218,7 +218,8 @@ export const generateEvent: ValueGenerator<Event> = gen({
     individualEventPicture: generateFieldRef,
     eventsListPicture: generateFieldRef,
     performances: gen.array(generateFieldRef, { minSize: 1, maxSize: 5 }),
-    recurrenceDates: gen.array(generateDate, { minSize: 1, maxSize: 5 })
+    recurrenceDates: gen.array(generateDate, { minSize: 1, maxSize: 5 }),
+    stage: gen.boolean
   })
 });
 
@@ -271,7 +272,8 @@ export const generateCMSEvent: ValueGenerator<mixed> = gen({
     },
     recurrenceDates: {
       "en-GB": gen.array(generateDate, { minSize: 1, maxSize: 5 })
-    }
+    },
+    stage: { "en-GB": gen.boolean }
   })
 });
 
@@ -307,7 +309,8 @@ export const generateEventMinimum: ValueGenerator<Event> = gen({
     individualEventPicture: generateFieldRef,
     eventsListPicture: generateFieldRef,
     performances: [],
-    recurrenceDates: []
+    recurrenceDates: [],
+    stage: false
   })
 });
 

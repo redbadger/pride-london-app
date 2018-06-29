@@ -22,3 +22,6 @@ export const filterEvents = (
   events: Event[],
   filter: Event => boolean
 ): Event[] => events.filter(filter);
+
+export const getStages = (events: Event[]) =>
+  events.filter(event => event.fields.stage);
