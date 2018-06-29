@@ -28,9 +28,6 @@ describe("Parade Group", () => {
         fields: {
           name: {
             "en-GB": "mm2T1WpGuu4k03kl04088fDh1B5V"
-          },
-          section: {
-            "en-GB": "Section C"
           }
         }
       };

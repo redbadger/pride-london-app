@@ -6054,6 +6054,10 @@ react-lifecycles-compat@^3:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.2.tgz#7279047275bd727a912e25f734c0559527e84eff"
 
+react-native-accessible-selectable@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-accessible-selectable/-/react-native-accessible-selectable-0.1.0.tgz#0c779a79a5d2d74afdc9cd166afb6dafd5f06095"
+
 react-native-calendars@^1.17.4:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.18.2.tgz#772106cc02559529e9032e7ea72431a442f8bcd9"
