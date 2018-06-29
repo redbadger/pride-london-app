@@ -15,7 +15,7 @@ exports[`Map component renders correctly 1`] = `
     Object {
       "alignItems": "center",
       "bottom": 0,
-      "justifyContent": "flex-end",
+      "justifyContent": "space-between",
       "left": 0,
       "position": "absolute",
       "right": 0,
@@ -709,7 +709,7 @@ exports[`Map component renders correctly 1`] = `
         "marginTop": 44,
         "paddingBottom": 10,
         "paddingLeft": 10,
-        "paddingRight": 0,
+        "paddingRight": 9,
       }
     }
   >
@@ -747,7 +747,7 @@ exports[`Map component renders without location button when permission was denie
     Object {
       "alignItems": "center",
       "bottom": 0,
-      "justifyContent": "flex-end",
+      "justifyContent": "space-between",
       "left": 0,
       "position": "absolute",
       "right": 0,

@@ -11,17 +11,17 @@ const navigation: NavigationScreenProp<NavigationState> = ({
   navigate: () => {}
 }: any);
 
-const stages = sampleOne(generateEvent, { seed: 5728 });
+const stage = sampleOne(generateEvent, { seed: 5728 });
 
 it("renders correctly", () => {
   const output = shallow(
     <ParadeMapScreen
       isFocused
       navigation={navigation}
-      stages={[stages]}
+      stages={[stage]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
-      onPress={() => {}}
+      onEventCardPress={() => {}}
       savedEvents={new Set()}
     />
   );
@@ -33,10 +33,10 @@ it("does not render map when not focused", () => {
     <ParadeMapScreen
       isFocused={false}
       navigation={navigation}
-      stages={[stages]}
+      stages={[stage]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
-      onPress={() => {}}
+      onEventCardPress={() => {}}
       savedEvents={new Set()}
     />
   );
@@ -52,10 +52,10 @@ it("opens an event", () => {
     <ParadeMapScreen
       isFocused
       navigation={nav}
-      stages={[stages]}
+      stages={[stage]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
-      onPress={() => {}}
+      onEventCardPress={() => {}}
       savedEvents={new Set()}
     />
   );
@@ -63,7 +63,7 @@ it("opens an event", () => {
   output
     .find(Map)
     .props()
-    .onPress(1);
+    .onEventCardPress(1);
 
   expect(navigationSpy).toBeCalledWith(EVENT_DETAILS, { eventId: 1 });
   jest.clearAllMocks();

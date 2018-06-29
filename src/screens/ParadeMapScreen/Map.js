@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import type { ElementRef } from "react";
 import {
   Image,
@@ -46,7 +46,7 @@ type Props = {
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
-  onPress: (id: string) => void
+  onEventCardPress: (id: string) => void
 };
 
 type State = {
@@ -101,7 +101,7 @@ const animateToCoordinate = ref => (coords: Coordinates) => {
   ref.current.animateToCoordinate({ latitude, longitude }, 500);
 };
 
-class Map extends Component<Props, State> {
+class Map extends PureComponent<Props, State> {
   state = {
     activeMarker: null,
     tileDetails: null,
@@ -188,7 +188,7 @@ class Map extends Component<Props, State> {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
-      onPress
+      onEventCardPress
     } = this.props;
     return (
       <View style={styles.mapWrapper}>
@@ -274,7 +274,7 @@ class Map extends Component<Props, State> {
                 isSaved={savedEvents.has(this.state.tileDetails.id)}
                 addSavedEvent={addSavedEvent}
                 removeSavedEvent={removeSavedEvent}
-                onPress={onPress}
+                onPress={onEventCardPress}
               />
             </ContentPadding>
           </View>
@@ -287,17 +287,16 @@ class Map extends Component<Props, State> {
 const styles = StyleSheet.create({
   mapWrapper: {
     ...StyleSheet.absoluteFillObject,
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     alignItems: "center"
   },
   tileContainer: {
     width: "100%"
   },
-
   touchable: {
     alignSelf: "flex-end",
     marginTop: Platform.OS === "ios" ? 44 : 8,
-    paddingRight: Platform.OS === "ios" ? 0 : 8,
+    paddingRight: Platform.OS === "ios" ? 9 : 8,
     paddingLeft: 10,
     paddingBottom: 10
   },

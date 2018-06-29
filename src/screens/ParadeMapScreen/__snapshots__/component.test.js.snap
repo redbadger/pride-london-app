@@ -34,7 +34,7 @@ exports[`renders correctly 1`] = `
 >
   <Map
     addSavedEvent={[Function]}
-    onPress={[Function]}
+    onEventCardPress={[Function]}
     paradeRegion={
       Object {
         "latitude": 51.5085,

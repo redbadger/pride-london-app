@@ -20,7 +20,7 @@ const render = props =>
       stages={[stages]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
-      onPress={() => {}}
+      onEventCardPress={() => {}}
       savedEvents={new Set()}
     />
   );

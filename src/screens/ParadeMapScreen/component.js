@@ -36,7 +36,7 @@ class ParadeMapScreen extends PureComponent<Props> {
             savedEvents={savedEvents}
             addSavedEvent={addSavedEvent}
             removeSavedEvent={removeSavedEvent}
-            onPress={(eventId: string) => {
+            onEventCardPress={(eventId: string) => {
               this.props.navigation.navigate(EVENT_DETAILS, { eventId });
             }}
           />
