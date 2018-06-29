@@ -1,12 +1,6 @@
-const { takeScreenshot } = require("./helpers");
-
 describe("e2e/saved-events", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
-  });
-
-  afterEach(async () => {
-    await takeScreenshot();
   });
 
   it("should display the empty saved events screen by default", async () => {

@@ -11,12 +11,12 @@
     "test": "TZ=UTC jest src --maxWorkers=2",
     "test:e2e": "yarn test:e2e:build && yarn test:e2e:run",
     "test:e2e:dev":
-      "detox test -c ios.sim.debug --reuse --loglevel verbose --debug-synchronization 1000",
+      "detox test -c ios.sim.debug --reuse --record-logs failing --take-screenshots failing",
     "test:e2e:run":
-      "detox test -c ios.sim.debug --loglevel verbose --debug-synchronization 1000",
+      "detox test -c ios.sim.debug --record-logs failing --record-videos failing --take-screenshots failing",
     "test:e2e:build": "detox build -c ios.sim.debug",
     "test:e2e:release":
-      "detox build -c ios.sim.release && detox test -c ios.sim.release",
+      "detox build -c ios.sim.release && detox test -c ios.sim.release --record-logs all --record-videos all --take-screenshots all",
     "precommit": "lint-staged",
     "lint": "eslint src",
     "flow": "flow src",
@@ -61,7 +61,7 @@
     "bugsnag-sourcemaps": "^1.0.3",
     "commander": "^2.13.0",
     "contentful-management": "^4.1.4",
-    "detox": "^7.3.3",
+    "detox": "^8.0.0",
     "dotenv": "^5.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
