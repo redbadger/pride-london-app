@@ -43,7 +43,7 @@ exports[`renders correctly 1`] = `
             markdownStyle={Object {}}
             type="h2"
           >
-            Saturday 7th July
+            Saturday 7 July
           </Text>
           <Text
             color="blackColor"
