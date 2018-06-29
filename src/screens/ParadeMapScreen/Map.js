@@ -30,6 +30,7 @@ type PermissionStatus =
   | "restricted"
   | "undetermined"
   | "checking";
+
 const shouldNeverAsk = (status: PermissionStatus) => status === "restricted";
 
 type Props = {
@@ -43,18 +44,26 @@ type State = {
   atUserLocation: boolean
 };
 
-export const checkLocationPermission = setState => {
+export const checkLocationPermission = (
+  setState: Function
+): Promise<PermissionStatus> => {
   setState({ locationPermission: "checking" });
   return Permissions.check("location").then(response => {
     setState({ locationPermission: response });
+    return response;
   });
 };
 
-export const requestLocationPermission = (setState, state) => {
-  if (shouldNeverAsk(state.locationPermission)) return Promise.resolve();
+export const requestLocationPermission = (
+  setState: Function,
+  state: State
+): Promise<PermissionStatus> => {
+  if (shouldNeverAsk(state.locationPermission))
+    return Promise.resolve(state.locationPermission);
   setState({ locationPermission: "asking" });
   return Permissions.request("location").then(response => {
     setState({ locationPermission: response });
+    return response;
   });
 };
 
@@ -70,7 +79,7 @@ const withLowAccuracy = {
   maximumAge: 10000
 };
 
-const animateToCoordinate = ref => ({ coords }) => {
+const animateToCoordinate = ref => (coords: Coordinates) => {
   const { latitude, longitude } = coords;
   ref.current.animateToCoordinate({ latitude, longitude }, 500);
 };
@@ -95,38 +104,37 @@ class Map extends Component<Props, State> {
     }
   };
 
-  checkAtUserLocation = (mapCoordinate: Coordinates) => ({ coords }) => {
+  checkAtUserLocation = (mapCoordinate: Coordinates) => (
+    coords: Coordinates
+  ) => {
+    const { latitude, longitude } = coords;
     if (
-      mapCoordinate.latitude.toFixed(5) === coords.latitude.toFixed(5) &&
-      mapCoordinate.longitude.toFixed(5) === coords.longitude.toFixed(5)
+      mapCoordinate.latitude.toFixed(5) === latitude.toFixed(5) &&
+      mapCoordinate.longitude.toFixed(5) === longitude.toFixed(5)
     )
       this.setState({ atUserLocation: true });
   };
 
-  moveToCurrentLocation = () => {
-    return requestLocationPermission(this.setState.bind(this), this.state).then(
-      () => {
-        if (this.state.locationPermission === "authorized") {
-          return getCurrentPosition(withHighAccuracy)
-            .catch(() => {
-              getCurrentPosition(withLowAccuracy);
-            })
-            .then(animateToCoordinate(this.mapViewRef))
-            .catch(() => {
-              Alert.alert(
-                "We couldn't find your location",
-                "GPS or other location finding magic might not be available, please try again later"
-              );
-            });
-        } else if (
-          Platform.OS === "ios" &&
-          this.state.locationPermission === "denied"
-        ) {
-          Linking.openURL("app-settings:");
-        }
+  moveToCurrentLocation = (): Promise<void> =>
+    requestLocationPermission(this.setState.bind(this), this.state).then(() => {
+      if (this.state.locationPermission === "authorized") {
+        return getCurrentPosition(withHighAccuracy)
+          .catch(() => getCurrentPosition(withLowAccuracy))
+          .then(animateToCoordinate(this.mapViewRef))
+          .catch(() => {
+            Alert.alert(
+              "We couldn't find your location",
+              "GPS or other location finding magic might not be available, please try again later"
+            );
+          });
+      } else if (
+        Platform.OS === "ios" &&
+        this.state.locationPermission === "denied"
+      ) {
+        Linking.openURL("app-settings:");
       }
-    );
-  };
+      return Promise.resolve();
+    });
 
   // $FlowFixMe
   mapViewRef: ElementRef<typeof MapView> = React.createRef();

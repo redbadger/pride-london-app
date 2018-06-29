@@ -21,38 +21,32 @@ const regionProps = {
   permission: true
 };
 
-jest.mock("react-native-permissions", () => ({
-  check: jest.fn(),
-  request: jest.fn()
-}));
-
 let getCurrentPositionSpy;
+let permissionRequestSpy;
+let permissionCheckSpy;
 
 beforeEach(() => {
   getCurrentPositionSpy = jest.spyOn(position, "getCurrentPosition");
+  permissionRequestSpy = jest.spyOn(Permissions, "request");
+  permissionCheckSpy = jest.spyOn(Permissions, "check");
 });
 
 afterEach(() => {
-  // $FlowFixMe
-  Permissions.check.mockClear();
-  // $FlowFixMe
-  Permissions.request.mockClear();
-  // navigator.geolocation.getCurrentPosition.mockClear();
   getCurrentPositionSpy.mockRestore();
+  permissionRequestSpy.mockRestore();
+  permissionCheckSpy.mockRestore();
 });
 
 describe("Map component", () => {
   it("renders correctly", () => {
-    // $FlowFixMe
-    Permissions.check.mockReturnValue(Promise.resolve("authorized"));
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
     const output = render(regionProps);
     expect(output).toMatchSnapshot();
   });
 
   it("renders without location button when permission was denied", async () => {
-    // $FlowFixMe
-    Permissions.check.mockReturnValue(Promise.resolve("restricted"));
+    permissionCheckSpy.mockReturnValue(Promise.resolve("restricted"));
 
     const output = render(regionProps);
     await Promise.resolve();
@@ -62,13 +56,12 @@ describe("Map component", () => {
   });
 
   it("checks location permission on mount", async () => {
-    // $FlowFixMe
-    Permissions.check.mockReturnValue(Promise.resolve("authorized"));
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
     const output = render(regionProps);
 
     expect(output.state().locationPermission).toEqual("checking");
-    expect(Permissions.check).toHaveBeenCalledWith("location");
+    expect(permissionCheckSpy).toHaveBeenCalledWith("location");
 
     await Promise.resolve();
 
@@ -77,8 +70,7 @@ describe("Map component", () => {
 
   describe("onRegionChange", () => {
     it("sets atUserLocation to false when user navigates away", () => {
-      // $FlowFixMe
-      Permissions.check.mockReturnValue(Promise.resolve("authorized"));
+      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
       const output = render(regionProps);
       output.setState({ atUserLocation: true });
@@ -91,8 +83,7 @@ describe("Map component", () => {
     });
 
     it("checks geolocation and updates atUserLocation accordingly", async () => {
-      // $FlowFixMe
-      Permissions.check.mockReturnValue(Promise.resolve("authorized"));
+      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
       getCurrentPositionSpy.mockReturnValue(
         Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
       );
@@ -110,8 +101,7 @@ describe("Map component", () => {
     });
 
     it("checks geolocation and updates atUserLocation accordingly", async () => {
-      // $FlowFixMe
-      Permissions.check.mockReturnValue(Promise.resolve("denied"));
+      permissionCheckSpy.mockReturnValue(Promise.resolve("denied"));
       getCurrentPositionSpy.mockReturnValue(
         Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
       );
@@ -130,12 +120,10 @@ describe("Map component", () => {
 
   describe("moveToCurrentLocation", () => {
     it("moves to user location when authorized", async () => {
-      // $FlowFixMe
-      Permissions.check.mockReturnValue(Promise.resolve("authorized"));
-      // $FlowFixMe
-      Permissions.request.mockReturnValue(Promise.resolve("authorized"));
+      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
+      permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
       getCurrentPositionSpy.mockReturnValue(
-        Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
+        Promise.resolve({ latitude: 0, longitude: 0 })
       );
 
       const output = render(regionProps);
@@ -153,10 +141,8 @@ describe("Map component", () => {
     });
 
     it("requests permission when undetermined", async () => {
-      // $FlowFixMe
-      Permissions.check.mockReturnValue(Promise.resolve("undetermined"));
-      // $FlowFixMe
-      Permissions.request.mockReturnValue(Promise.resolve("authorized"));
+      permissionCheckSpy.mockReturnValue(Promise.resolve("undetermined"));
+      permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
       getCurrentPositionSpy.mockReturnValue(
         Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
       );
@@ -170,8 +156,7 @@ describe("Map component", () => {
     });
 
     it("does not request permission when restricted", async () => {
-      // $FlowFixMe
-      Permissions.check.mockResolvedValue("restricted");
+      permissionCheckSpy.mockReturnValue(Promise.resolve("restricted"));
       getCurrentPositionSpy.mockReturnValue(
         Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
       );
@@ -188,8 +173,7 @@ describe("Map component", () => {
 
   describe("checkLocationPermission", () => {
     it("will set initial state to checking", () => {
-      // $FlowFixMe
-      Permissions.check.mockReturnValue(Promise.resolve("authorized"));
+      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
       const mockSetState = jest.fn();
       checkLocationPermission(mockSetState);
 
@@ -199,8 +183,7 @@ describe("Map component", () => {
     });
 
     it("will update state to resolved value of permission check", () => {
-      // $FlowFixMe
-      Permissions.check.mockReturnValue(Promise.resolve("authorized"));
+      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
       const mockSetState = jest.fn();
       return checkLocationPermission(mockSetState).then(() => {
@@ -212,10 +195,9 @@ describe("Map component", () => {
   });
 
   describe("requestLocationPermission", () => {
-    const state = { locationPermission: "undetermined" };
+    const state = { locationPermission: "undetermined", atUserLocation: false };
     it("will set initial state to asking", () => {
-      // $FlowFixMe
-      Permissions.request.mockReturnValue(Promise.resolve("authorized"));
+      permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
       const mockSetState = jest.fn();
       requestLocationPermission(mockSetState, state);
 
@@ -225,8 +207,7 @@ describe("Map component", () => {
     });
 
     it("will update state to resolved value of permission check", () => {
-      // $FlowFixMe
-      Permissions.request.mockReturnValue(Promise.resolve("authorized"));
+      permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
       const mockSetState = jest.fn();
       return requestLocationPermission(mockSetState, state).then(() => {
         expect(mockSetState.mock.calls[1][0]).toEqual({
