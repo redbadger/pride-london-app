@@ -1,12 +1,6 @@
-const { takeScreenshot } = require("./helpers");
-
 describe("e2e/support-us", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
-  });
-
-  afterEach(async () => {
-    await takeScreenshot();
   });
 
   it("should display links to relevant sections", async () => {

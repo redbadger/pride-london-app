@@ -1,4 +1,3 @@
-const { takeScreenshot } = require("./helpers");
 const { formatDateRange } = require("../src/data/formatters");
 
 const formattedDateNumber = num => (num < 10 ? `0${num}` : num);
@@ -21,10 +20,6 @@ const dateRange = {
 describe("e2e/events", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
-  });
-
-  afterEach(async () => {
-    await takeScreenshot();
   });
 
   it("should display events", async () => {
