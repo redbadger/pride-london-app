@@ -199,14 +199,14 @@ class Map extends Component<Props, State> {
 const styles = StyleSheet.create({
   touchable: {
     alignSelf: "flex-end",
-    paddingTop: Platform.OS === "ios" ? 44 : 8,
+    marginTop: Platform.OS === "ios" ? 44 : 8,
     paddingRight: Platform.OS === "ios" ? 0 : 8,
     paddingLeft: 10,
     paddingBottom: 10
   },
   image: {
-    width: 44,
-    height: 44
+    width: 48,
+    height: 48
   }
 });
 

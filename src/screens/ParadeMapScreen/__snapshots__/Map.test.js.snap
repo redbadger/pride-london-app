@@ -606,10 +606,10 @@ exports[`Map component renders correctly 1`] = `
     style={
       Object {
         "alignSelf": "flex-end",
+        "marginTop": 44,
         "paddingBottom": 10,
         "paddingLeft": 10,
         "paddingRight": 0,
-        "paddingTop": 44,
       }
     }
   >
@@ -630,8 +630,8 @@ exports[`Map component renders correctly 1`] = `
           source={1}
           style={
             Object {
-              "height": 44,
-              "width": 44,
+              "height": 48,
+              "width": 48,
             }
           }
         />
