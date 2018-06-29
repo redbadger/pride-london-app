@@ -17,7 +17,7 @@ const render = props =>
   shallow(
     <Map
       {...props}
-      stages={[stages]}
+      stages={[stage]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
       onEventCardPress={() => {}}
@@ -25,7 +25,7 @@ const render = props =>
     />
   );
 
-const stages = sampleOne(generateEvent, { seed: 5728 });
+const stage = sampleOne(generateEvent, { seed: 5728 });
 
 const regionProps = {
   paradeRegion,
