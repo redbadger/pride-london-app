@@ -161,7 +161,6 @@ exports[`ParadeGroupList renders items correctly 1`] = `
 
 exports[`ParadeGroupList renders section headers correctly 1`] = `
 <SectionHeader
-  badgeValue={undefined}
   hasShadow={true}
   title="#"
 />
