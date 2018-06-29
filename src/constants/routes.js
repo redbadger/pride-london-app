@@ -10,7 +10,13 @@ export const PARADE = "PARADE";
 export const SUPPORT_US = "SUPPORT_US";
 export const DONATE = "DONATE";
 export const SPONSOR = "SPONSOR";
-export const PARADE_INFORMATION = "PARADE_INFORMATION";
+export const PARADE_GROUPS = "PARADE_GROUPS";
 export const PARADE_MAP = "PARADE_MAP";
 
-export const routesWithoutEvents = [PARADE, DONATE, SPONSOR, SUPPORT_US];
+export const routesWithoutEvents = [
+  PARADE,
+  PARADE_GROUPS,
+  DONATE,
+  SPONSOR,
+  SUPPORT_US
+];
