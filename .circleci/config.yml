@@ -462,9 +462,9 @@ jobs:
     <<: *job-defaults-macos
     working_directory: /Users/distiller/project
     environment:
-      - <<: *env-macos
-      - <<: *clear-bugsnag-api-key
+      <<: *env-macos
     steps:
+      - <<: *clear-bugsnag-api-key
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
       - run:
