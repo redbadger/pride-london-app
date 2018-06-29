@@ -70,7 +70,6 @@ exports[`EventHeader renders correctly 1`] = `
       active={true}
       onDark={true}
       onPress={[Function]}
-      testID={undefined}
     />
   }
 />

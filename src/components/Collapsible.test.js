@@ -64,9 +64,9 @@ describe("collapsing behaviour", () => {
       ).toBe("more");
     });
 
-    it("limits the height to maxHeight");
+    // it("limits the height to maxHeight");
 
-    it("sets the gradient opacity to 1");
+    // it("sets the gradient opacity to 1");
   });
 
   describe("when expanded", () => {

@@ -34,14 +34,11 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
+    <Component
       type="h4"
     >
       some thing
-    </Text>
+    </Component>
   </Component>
 </Component>
 `;
@@ -88,14 +85,11 @@ exports[`renders correctly when passed an onPress handler 1`] = `
       }
     }
   >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
+    <Component
       type="h4"
     >
       some thing
-    </Text>
+    </Component>
   </Touchable>
 </Component>
 `;

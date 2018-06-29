@@ -15,13 +15,9 @@ exports[`collapsing behaviour when content does not exceed limit renders correct
         onLayout={[Function]}
         testID="children"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Component>
           Hello
-        </Text>
+        </Component>
       </Component>
     </AnimatedComponent>
   </Component>
@@ -43,13 +39,9 @@ exports[`collapsing behaviour when content exceeds limit renders correctly 1`] =
         onLayout={[Function]}
         testID="children"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Component>
           Hello
-        </Text>
+        </Component>
       </Component>
     </AnimatedComponent>
     <AnimatedComponent
@@ -124,13 +116,9 @@ exports[`collapsing behaviour when expanded renders correctly 1`] = `
         onLayout={[Function]}
         testID="children"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Component>
           Hello
-        </Text>
+        </Component>
       </Component>
     </AnimatedComponent>
     <AnimatedComponent
@@ -205,13 +193,9 @@ exports[`renders correctly 1`] = `
         onLayout={[Function]}
         testID="children"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Component>
           Hello
-        </Text>
+        </Component>
       </Component>
     </AnimatedComponent>
   </Component>

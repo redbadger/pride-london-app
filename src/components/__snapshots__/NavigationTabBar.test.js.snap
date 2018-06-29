@@ -77,13 +77,9 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
+          <Component>
             0
-          </Text>
+          </Component>
         </Component>
         <Component
           style={
@@ -100,13 +96,9 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
+          <Component>
             0
-          </Text>
+          </Component>
         </Component>
       </Component>
       <Text
@@ -171,13 +163,9 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
+          <Component>
             1
-          </Text>
+          </Component>
         </Component>
         <Component
           style={
@@ -194,13 +182,9 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
+          <Component>
             1
-          </Text>
+          </Component>
         </Component>
       </Component>
       <Text
