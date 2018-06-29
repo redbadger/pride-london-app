@@ -1,10 +1,11 @@
 // @flow
-import { shallow } from "enzyme";
 import React from "react";
+import MapView, { Marker } from "react-native-maps";
+import { shallow } from "enzyme";
 import { TouchableWithoutFeedback } from "react-native";
-import MapView from "react-native-maps";
 import Permissions from "react-native-permissions";
 import Map, { checkLocationPermission, requestLocationPermission } from "./Map";
+import { generateEvent, sampleOne } from "../../data/__test-data";
 import * as position from "../../lib/position";
 import {
   region as paradeRegion,
@@ -12,7 +13,19 @@ import {
   terminals
 } from "../../constants/parade-coordinates";
 
-const render = props => shallow(<Map {...props} />);
+const render = props =>
+  shallow(
+    <Map
+      {...props}
+      stages={[stage]}
+      addSavedEvent={() => {}}
+      removeSavedEvent={() => {}}
+      onEventCardPress={() => {}}
+      savedEvents={new Set()}
+    />
+  );
+
+const stage = sampleOne(generateEvent, { seed: 5728 });
 
 const regionProps = {
   paradeRegion,
@@ -45,6 +58,41 @@ describe("Map component", () => {
     expect(output).toMatchSnapshot();
   });
 
+  it("updates state when stage is clicked", () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
+
+    const output = render(regionProps);
+    const markerPressSpy = jest.spyOn(output.instance(), "handleMarkerPress");
+    output.find(Marker).forEach(child => {
+      child.simulate("press");
+    });
+    expect(markerPressSpy).toHaveBeenCalled();
+    expect(output.state()).toMatchSnapshot();
+    jest.clearAllMocks();
+  });
+
+  it("clears state when map is clicked", () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
+
+    const output = render(regionProps);
+    output.setState({
+      activeMarker: "QF4dTqmpn9z5ItEizAZ",
+      tileDetails: {
+        id: "QF4dTqmpn9z5ItEizAZ",
+        fields: {
+          name: "name",
+          locationName: "locationName",
+          eventPriceHigh: 10,
+          eventPriceLow: 0,
+          startTime: "2018-07-07T00:00+00:00",
+          endTime: "2018-07-07T03:00+00:00"
+        }
+      }
+    });
+    output.find(MapView).simulate("press");
+    expect(output.state()).toMatchSnapshot();
+  });
+
   it("renders without location button when permission was denied", async () => {
     permissionCheckSpy.mockReturnValue(Promise.resolve("restricted"));
 
@@ -67,158 +115,163 @@ describe("Map component", () => {
 
     expect(output.state().locationPermission).toBe("authorized");
   });
+});
 
-  describe("onRegionChange", () => {
-    it("sets atUserLocation to false when user navigates away", () => {
-      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
+describe("onRegionChange", () => {
+  it("sets atUserLocation to false when user navigates away", () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
-      const output = render(regionProps);
-      output.setState({ atUserLocation: true });
+    const output = render(regionProps);
+    output.setState({ atUserLocation: true });
 
-      output
-        .find(MapView)
-        .simulate("regionChange", { latitude: 0, longitude: 0 });
+    output
+      .find(MapView)
+      .simulate("regionChange", { latitude: 0, longitude: 0 });
 
-      expect(output.state().atUserLocation).toBe(false);
-    });
+    expect(output.state().atUserLocation).toBe(false);
+  });
 
-    it("checks geolocation and updates atUserLocation accordingly", async () => {
-      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
-      getCurrentPositionSpy.mockReturnValue(
-        Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
-      );
-      const output = render(regionProps);
-      output.setState({ atUserLocation: false });
+  it("checks geolocation and updates atUserLocation accordingly", async () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
+    getCurrentPositionSpy.mockReturnValue(
+      Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
+    );
+    const output = render(regionProps);
+    output.setState({ atUserLocation: false });
 
-      await Promise.resolve();
+    await Promise.resolve();
 
-      output
-        .find(MapView)
-        .simulate("regionChange", { latitude: 0, longitude: 0 });
-      expect(getCurrentPositionSpy).toHaveBeenCalled();
+    output
+      .find(MapView)
+      .simulate("regionChange", { latitude: 0, longitude: 0 });
+    expect(getCurrentPositionSpy).toHaveBeenCalled();
 
-      output.setState({ atUserLocation: true });
-    });
+    output.setState({ atUserLocation: true });
+  });
 
-    it("checks geolocation and updates atUserLocation accordingly", async () => {
-      permissionCheckSpy.mockReturnValue(Promise.resolve("denied"));
-      getCurrentPositionSpy.mockReturnValue(
-        Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
-      );
+  it("checks geolocation and updates atUserLocation accordingly", async () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("denied"));
+    getCurrentPositionSpy.mockReturnValue(
+      Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
+    );
 
-      const output = render(regionProps);
-      output.setState({ atUserLocation: false });
+    const output = render(regionProps);
+    output.setState({ atUserLocation: false });
 
-      await Promise.resolve();
+    await Promise.resolve();
 
-      output
-        .find(MapView)
-        .simulate("regionChange", { latitude: 0, longitude: 0 });
-      expect(getCurrentPositionSpy).not.toHaveBeenCalled();
+    output
+      .find(MapView)
+      .simulate("regionChange", { latitude: 0, longitude: 0 });
+    expect(getCurrentPositionSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe("moveToCurrentLocation", () => {
+  it("moves to user location when authorized", async () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
+    permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
+    getCurrentPositionSpy.mockReturnValue(
+      Promise.resolve({ latitude: 0, longitude: 0 })
+    );
+
+    const output = render(regionProps);
+    const animateToCoordinate = jest.fn();
+
+    output.instance().mapViewRef.current = { animateToCoordinate };
+
+    const handler = output.find(TouchableWithoutFeedback).prop("onPress");
+    await handler();
+
+    expect(animateToCoordinate).toHaveBeenCalledWith(
+      { latitude: 0, longitude: 0 },
+      500
+    );
+  });
+
+  it("requests permission when undetermined", async () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("undetermined"));
+    permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
+    getCurrentPositionSpy.mockReturnValue(
+      Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
+    );
+
+    const output = render(regionProps);
+
+    output.find(TouchableWithoutFeedback).simulate("press");
+    await new Promise(resolve => setTimeout(resolve));
+    expect(Permissions.request).toHaveBeenCalledWith("location");
+    expect(getCurrentPositionSpy).toHaveBeenCalled();
+  });
+
+  it("does not request permission when restricted", async () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("restricted"));
+    getCurrentPositionSpy.mockReturnValue(
+      Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
+    );
+
+    const output = render(regionProps);
+
+    await new Promise(resolve => setTimeout(resolve));
+    output.find(TouchableWithoutFeedback).simulate("press");
+
+    expect(Permissions.request).not.toHaveBeenCalled();
+    expect(getCurrentPositionSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe("checkLocationPermission", () => {
+  it("will set initial state to checking", () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
+    const mockSetState = jest.fn();
+    checkLocationPermission(mockSetState);
+
+    expect(mockSetState).toHaveBeenCalledWith({
+      locationPermission: "checking"
     });
   });
 
-  describe("moveToCurrentLocation", () => {
-    it("moves to user location when authorized", async () => {
-      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
-      permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
-      getCurrentPositionSpy.mockReturnValue(
-        Promise.resolve({ latitude: 0, longitude: 0 })
-      );
+  it("will update state to resolved value of permission check", () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
-      const output = render(regionProps);
-      const animateToCoordinate = jest.fn();
-
-      output.instance().mapViewRef.current = { animateToCoordinate };
-
-      const handler = output.find(TouchableWithoutFeedback).prop("onPress");
-      await handler();
-
-      expect(animateToCoordinate).toHaveBeenCalledWith(
-        { latitude: 0, longitude: 0 },
-        500
-      );
+    const mockSetState = jest.fn();
+    return checkLocationPermission(mockSetState).then(() => {
+      expect(mockSetState.mock.calls[1][0]).toEqual({
+        locationPermission: "authorized"
+      });
     });
+  });
+});
 
-    it("requests permission when undetermined", async () => {
-      permissionCheckSpy.mockReturnValue(Promise.resolve("undetermined"));
-      permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
-      getCurrentPositionSpy.mockReturnValue(
-        Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
-      );
+describe("requestLocationPermission", () => {
+  const state = {
+    locationPermission: "undetermined",
+    atUserLocation: false,
+    activeMarker: null,
+    tileDetails: null
+  };
+  it("will set initial state to asking", () => {
+    permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
+    const mockSetState = jest.fn();
+    requestLocationPermission(mockSetState, state);
 
-      const output = render(regionProps);
-
-      output.find(TouchableWithoutFeedback).simulate("press");
-      await new Promise(resolve => setTimeout(resolve));
-      expect(Permissions.request).toHaveBeenCalledWith("location");
-      expect(getCurrentPositionSpy).toHaveBeenCalled();
-    });
-
-    it("does not request permission when restricted", async () => {
-      permissionCheckSpy.mockReturnValue(Promise.resolve("restricted"));
-      getCurrentPositionSpy.mockReturnValue(
-        Promise.resolve({ coords: { latitude: 0, longitude: 0 } })
-      );
-
-      const output = render(regionProps);
-
-      await new Promise(resolve => setTimeout(resolve));
-      output.find(TouchableWithoutFeedback).simulate("press");
-
-      expect(Permissions.request).not.toHaveBeenCalled();
-      expect(getCurrentPositionSpy).not.toHaveBeenCalled();
+    expect(mockSetState).toHaveBeenCalledWith({
+      locationPermission: "asking"
     });
   });
 
-  describe("checkLocationPermission", () => {
-    it("will set initial state to checking", () => {
-      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
-      const mockSetState = jest.fn();
-      checkLocationPermission(mockSetState);
-
-      expect(mockSetState).toHaveBeenCalledWith({
-        locationPermission: "checking"
-      });
-    });
-
-    it("will update state to resolved value of permission check", () => {
-      permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
-
-      const mockSetState = jest.fn();
-      return checkLocationPermission(mockSetState).then(() => {
-        expect(mockSetState.mock.calls[1][0]).toEqual({
-          locationPermission: "authorized"
-        });
+  it("will update state to resolved value of permission check", () => {
+    permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
+    const mockSetState = jest.fn();
+    return requestLocationPermission(mockSetState, state).then(() => {
+      expect(mockSetState.mock.calls[1][0]).toEqual({
+        locationPermission: "authorized"
       });
     });
   });
 
-  describe("requestLocationPermission", () => {
-    const state = { locationPermission: "undetermined", atUserLocation: false };
-    it("will set initial state to asking", () => {
-      permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
-      const mockSetState = jest.fn();
-      requestLocationPermission(mockSetState, state);
-
-      expect(mockSetState).toHaveBeenCalledWith({
-        locationPermission: "asking"
-      });
-    });
-
-    it("will update state to resolved value of permission check", () => {
-      permissionRequestSpy.mockReturnValue(Promise.resolve("authorized"));
-      const mockSetState = jest.fn();
-      return requestLocationPermission(mockSetState, state).then(() => {
-        expect(mockSetState.mock.calls[1][0]).toEqual({
-          locationPermission: "authorized"
-        });
-      });
-    });
-
-    it("will return if location permission is restricted", () => {
-      const mockSetState = jest.fn();
-      expect(mockSetState).not.toHaveBeenCalled();
-    });
+  it("will return if location permission is restricted", () => {
+    const mockSetState = jest.fn();
+    expect(mockSetState).not.toHaveBeenCalled();
   });
 });

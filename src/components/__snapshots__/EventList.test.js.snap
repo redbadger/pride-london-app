@@ -100,8 +100,11 @@ exports[`EventList renders correctly 1`] = `
               "phone": "phone",
               "postcode": "postcode",
               "recurrenceDates": Array [
-                "07/07/2018",
+                "01/07/2018",
+                "08/07/2018",
+                "08/08/2018",
               ],
+              "stage": false,
               "startTime": "2018-07-07T00:00+00:00",
               "ticketingUrl": "ticketingUrl",
               "venueDetails": Array [
@@ -182,12 +185,12 @@ exports[`EventList renders correctly 1`] = `
               "phone": "phone",
               "postcode": "postcode",
               "recurrenceDates": Array [
-                "14/05/2018",
-                "07/07/2018",
-                "08/07/2018",
-                "23/06/2018",
-                "21/07/2018",
+                "06/09/2018",
+                "06/07/2018",
+                "30/08/2018",
+                "13/08/2018",
               ],
+              "stage": true,
               "startTime": "2018-07-07T00:00+00:00",
               "ticketingUrl": "ticketingUrl",
               "venueDetails": Array [
@@ -276,12 +279,13 @@ exports[`EventList renders correctly 1`] = `
               "phone": "phone",
               "postcode": "postcode",
               "recurrenceDates": Array [
-                "04/07/2018",
-                "05/07/2018",
-                "30/09/2018",
-                "04/08/2018",
+                "01/07/2018",
+                "13/08/2018",
+                "06/09/2018",
                 "21/07/2018",
+                "07/07/2018",
               ],
+              "stage": true,
               "startTime": "2018-07-07T00:00+00:00",
               "ticketingUrl": "ticketingUrl",
               "venueDetails": Array [
