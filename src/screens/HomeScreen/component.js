@@ -23,6 +23,7 @@ import text from "../../constants/text";
 import type { Event } from "../../data/event";
 import type { ImageDetails } from "../../data/image";
 import type { HeaderBanner } from "../../data/header-banner";
+import partnershipWithSally from "../../../assets/images/partnershipWithSally.png";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -124,13 +125,19 @@ class HomeScreen extends Component<Props> {
                     </Touchable>
                   </View>
                 ))}
-                <View styles={styles.partnershipBar}>
-                  <Text> Made in Partnership with Red Badger </Text>
-                  <Image />
-                </View>
               </View>
             </ContentPadding>
           )}
+          <View style={styles.partnershipBar}>
+            <View style={styles.innerBar}>
+              <ContentPadding>
+                <Text type="xSmall" style={styles.partnershipText}>
+                  {text.partnershipWithSally}
+                </Text>
+              </ContentPadding>
+            </View>
+            <Image style={styles.sallyImage} source={partnershipWithSally} />
+          </View>
         </View>
       </ScrollView>
     );
@@ -155,7 +162,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   tilesContainer: {
-    flex: 1,
     flexDirection: "row",
     flexWrap: "wrap"
   },
@@ -181,8 +187,20 @@ const styles = StyleSheet.create({
     backgroundColor: bgColor
   },
   partnershipBar: {
-    height: 20,
-    backgroundColor: lightNavyBlueColor
+    height: 42
+  },
+  innerBar: {
+    backgroundColor: lightNavyBlueColor,
+    marginTop: 15,
+    paddingVertical: 2
+  },
+  partnershipText: {
+    alignSelf: "flex-end",
+    color: whiteColor
+  },
+  sallyImage: {
+    position: "absolute",
+    left: 15
   }
 });
 
