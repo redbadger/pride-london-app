@@ -50,9 +50,11 @@
   },
   "devDependencies": {
     "@rgbboy/testcheck": "^1.0.0-rc.3",
+    "@babel/core": "7.0.0-beta.47",
+    "babel-core": "^7.0.0-beta.47",
     "babel-eslint": "^8.2.5",
     "babel-jest": "23.2.0",
-    "babel-preset-react-native": "^5.0.1",
+    "babel-preset-react-native": "^5.0.2",
     "bugsnag-sourcemaps": "^1.0.3",
     "commander": "^2.16.0",
     "contentful-management": "^5.1.4",
