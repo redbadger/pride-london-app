@@ -5,7 +5,8 @@
     "node": true,
     "react-native/react-native": true,
     "detox/detox": true,
-    "mocha": true
+    "mocha": true,
+    "jasmine": true
   },
   "extends": [
     "airbnb",
