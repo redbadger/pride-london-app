@@ -6,13 +6,17 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
-    "run-android": "node node_modules/react-native/local-cli/cli.js run-android --appId org.prideinlondon.festival.dev --variant devDebug",
+    "run-android":
+      "node node_modules/react-native/local-cli/cli.js run-android --appId org.prideinlondon.festival.dev --variant devDebug",
     "test": "TZ=UTC jest src --maxWorkers=2",
     "test:e2e": "yarn test:e2e:build && yarn test:e2e:run",
-    "test:e2e:dev": "detox test -c ios.sim.debug --reuse --loglevel verbose --debug-synchronization 1000",
-    "test:e2e:run": "detox test -c ios.sim.debug --loglevel verbose --debug-synchronization 1000",
+    "test:e2e:dev":
+      "detox test -c ios.sim.debug --reuse --record-logs failing --take-screenshots failing",
+    "test:e2e:run":
+      "detox test -c ios.sim.debug --record-logs failing --take-screenshots failing",
     "test:e2e:build": "detox build -c ios.sim.debug",
-    "test:e2e:release": "detox build -c ios.sim.release && detox test -c ios.sim.release",
+    "test:e2e:release":
+      "detox build -c ios.sim.release && detox test -c ios.sim.release --record-logs failing --take-screenshots failing",
     "precommit": "lint-staged",
     "lint": "eslint src",
     "flow": "flow src",
@@ -39,7 +43,8 @@
     "react-native-map-link": "^1.0.6",
     "react-native-maps": "^0.21.0",
     "react-native-permissions": "^1.1.1",
-    "react-native-safe-area-view": "robbiemccorkell/react-native-safe-area-view",
+    "react-native-safe-area-view":
+      "robbiemccorkell/react-native-safe-area-view",
     "react-native-splash-screen": "^3.0.6",
     "react-navigation": "^2.0.1",
     "react-redux": "^5.0.7",
@@ -56,7 +61,7 @@
     "bugsnag-sourcemaps": "^1.0.3",
     "commander": "^2.16.0",
     "contentful-management": "^5.1.4",
-    "detox": "^7.3.3",
+    "detox": "^8.0.0",
     "dotenv": "^6.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -92,16 +97,12 @@
     "react-native-safe-area-view": "robbiemccorkell/react-native-safe-area-view"
   },
   "rnpm": {
-    "assets": [
-      "./assets/fonts/"
-    ]
+    "assets": ["./assets/fonts/"]
   },
   "jest": {
     "preset": "react-native",
     "setupTestFrameworkScriptFile": "<rootDir>src/setup-tests.js",
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation)"
     ],
@@ -111,35 +112,30 @@
     "collectCoverage": true
   },
   "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "./README.md": [
-      "markdown-toc -i",
-      "git add"
-    ]
+    "*.{js,json,css,md}": ["prettier --write", "git add"],
+    "./README.md": ["markdown-toc -i", "git add"]
   },
   "xcodeSchemes": {
     "Debug": [],
-    "Release": [
-      "AdhocAlpha",
-      "AdhocBeta"
-    ]
+    "Release": ["AdhocAlpha", "AdhocBeta"]
   },
   "detox": {
     "test-runner": "jest",
     "runner-config": "e2e/config.json",
     "configurations": {
       "ios.sim.debug": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/PrideLondonApp.app",
-        "build": "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build -quiet | xcpretty",
+        "binaryPath":
+          "ios/build/Build/Products/Debug-iphonesimulator/PrideLondonApp.app",
+        "build":
+          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build -quiet | xcpretty",
         "type": "ios.simulator",
         "name": "iPhone 7"
       },
       "ios.sim.release": {
-        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/PrideLondonApp.app",
-        "build": "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet | xcpretty",
+        "binaryPath":
+          "ios/build/Build/Products/Release-iphonesimulator/PrideLondonApp.app",
+        "build":
+          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet | xcpretty",
         "type": "ios.simulator",
         "name": "iPhone 7"
       }

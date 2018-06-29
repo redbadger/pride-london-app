@@ -1,12 +1,6 @@
-const { takeScreenshot } = require("./helpers");
-
 describe("e2e/home", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
-  });
-
-  afterEach(async () => {
-    await takeScreenshot();
   });
 
   it("should start on Home screen", async () => {
