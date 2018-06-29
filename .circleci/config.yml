@@ -193,7 +193,7 @@ clear-bugsnag-api-key: &clear-bugsnag-api-key
   run:
     name: clear value of BUGSNAG_API_KEY
     command: |
-      echo 'export BUGSNAG_API_KEY=1' >> $BASH_ENV
+      echo 'export BUGSNAG_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
       source $BASH_ENV
 
 bugsnag-upload-sourcemaps-android: &bugsnag-upload-sourcemaps-android
