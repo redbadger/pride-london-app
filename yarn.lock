@@ -6054,6 +6054,10 @@ react-lifecycles-compat@^3:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.2.tgz#7279047275bd727a912e25f734c0559527e84eff"
 
+react-native-accessible-selectable@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-accessible-selectable/-/react-native-accessible-selectable-0.1.0.tgz#0c779a79a5d2d74afdc9cd166afb6dafd5f06095"
+
 react-native-calendars@^1.17.4:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.18.2.tgz#772106cc02559529e9032e7ea72431a442f8bcd9"
@@ -6128,6 +6132,10 @@ react-native-mock@^0.3.1:
     react-dom "^15.4.0"
     react-timer-mixin "^0.13.3"
     warning "^2.1.0"
+
+react-native-permissions@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-1.1.1.tgz#4876004681ff8556454613d85249b01baff9b35b"
 
 react-native-safe-area-view@^0.7.0, react-native-safe-area-view@robbiemccorkell/react-native-safe-area-view:
   version "0.6.0"

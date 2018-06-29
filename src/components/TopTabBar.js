@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     minWidth: 48,
     flexGrow: 1,
+    flexBasis: 1,
     paddingHorizontal: 4,
     paddingTop: 4,
     paddingBottom: 2

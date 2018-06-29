@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event, SavedEvents } from "../../data/event";
 import { EVENT_DETAILS } from "../../constants/routes";
+import { route, region, terminals } from "../../constants/parade-coordinates";
 import Map from "./Map";
 
 type Props = {
@@ -28,6 +29,9 @@ class ParadeMapScreen extends PureComponent<Props> {
       <View style={styles.container} testID="parade-map-screen">
         {isFocused ? (
           <Map
+            route={route}
+            paradeRegion={region}
+            terminals={terminals}
             stages={stages}
             savedEvents={savedEvents}
             addSavedEvent={addSavedEvent}

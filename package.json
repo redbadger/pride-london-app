@@ -16,7 +16,7 @@
       "detox test -c ios.sim.debug --loglevel verbose --debug-synchronization 1000",
     "test:e2e:build": "detox build -c ios.sim.debug",
     "test:e2e:release":
-      "detox build -c ios.sim.release && detox test -c ios.sim.release --loglevel verbose --debug-synchronization 1000",
+      "detox build -c ios.sim.release && detox test -c ios.sim.release",
     "precommit": "lint-staged",
     "lint": "eslint src",
     "flow": "flow src",
@@ -33,6 +33,7 @@
     "ramda": "^0.25.0",
     "react": "16.3.1",
     "react-native": "0.55.4",
+    "react-native-accessible-selectable": "^0.1.0",
     "react-native-calendars": "^1.17.4",
     "react-native-communications": "^2.2.1",
     "react-native-config": "^0.11.5",
@@ -41,6 +42,7 @@
     "react-native-linear-gradient": "^2.4.0",
     "react-native-map-link": "^1.0.6",
     "react-native-maps": "^0.21.0",
+    "react-native-permissions": "^1.1.1",
     "react-native-safe-area-view":
       "robbiemccorkell/react-native-safe-area-view",
     "react-native-splash-screen": "^3.0.6",
@@ -125,7 +127,7 @@
         "binaryPath":
           "ios/build/Build/Products/Debug-iphonesimulator/PrideLondonApp.app",
         "build":
-          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build -quiet | xcpretty",
         "type": "ios.simulator",
         "name": "iPhone 7"
       },
@@ -133,7 +135,7 @@
         "binaryPath":
           "ios/build/Build/Products/Release-iphonesimulator/PrideLondonApp.app",
         "build":
-          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+          "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet | xcpretty",
         "type": "ios.simulator",
         "name": "iPhone 7"
       }

@@ -1,21 +1,47 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
-import MapView, { Polyline, Marker } from "react-native-maps";
-import type { Event, SavedEvents } from "../../data/event";
-import paradeCoordinates from "../../constants/parade-coordinates";
+import type { ElementRef } from "react";
 import {
-  warmPinkColor,
-  lightNavyBlueColor,
-  transparent
-} from "../../constants/colors";
-import Text, { scaleWithFont } from "../../components/Text";
+  Image,
+  Platform,
+  View,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Linking,
+  Alert
+} from "react-native";
+import MapView, { Polyline, Marker } from "react-native-maps";
+import Permissions from "react-native-permissions";
+import type { Event, SavedEvents } from "../../data/event";
+import Text from "../../components/Text";
+import { warmPinkColor } from "../../constants/colors";
+import { getCurrentPosition } from "../../lib/position";
+import type {
+  Coordinates,
+  Region,
+  Terminals
+} from "../../constants/parade-coordinates";
 import EventCard from "../../components/EventCard";
 import ContentPadding from "../../components/ContentPadding";
 import stageIconActive from "../../../assets/images/stageIconActive.png";
 import stageIconInactive from "../../../assets/images/stageIconInactive.png";
+import locationButtonInactive from "../../../assets/images/location-inactive.png";
+import locationButtonActive from "../../../assets/images/location-active.png";
+
+type PermissionStatus =
+  | "authorized"
+  | "denied"
+  | "restricted"
+  | "undetermined"
+  | "checking"
+  | "asking";
+
+const shouldNeverAsk = (status: PermissionStatus) => status === "restricted";
 
 type Props = {
+  route: Array<Coordinates>,
+  paradeRegion: Region,
+  terminals: Array<Terminals>,
   stages: Array<Event>,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
@@ -24,14 +50,77 @@ type Props = {
 };
 
 type State = {
+  locationPermission: PermissionStatus,
+  atUserLocation: boolean,
   activeMarker: ?string,
   tileDetails: ?Event
+};
+
+type setStateArguments = {
+  locationPermission?: PermissionStatus,
+  atUserLocation?: boolean
+};
+
+export const checkLocationPermission = (
+  setState: setStateArguments => void
+): Promise<PermissionStatus> => {
+  setState({ locationPermission: "checking" });
+  return Permissions.check("location").then(response => {
+    setState({ locationPermission: response });
+    return response;
+  });
+};
+
+export const requestLocationPermission = (
+  setState: setStateArguments => void,
+  state: State
+): Promise<PermissionStatus> => {
+  if (shouldNeverAsk(state.locationPermission))
+    return Promise.resolve(state.locationPermission);
+  setState({ locationPermission: "asking" });
+  return Permissions.request("location").then(response => {
+    setState({ locationPermission: response });
+    return response;
+  });
+};
+
+const withHighAccuracy = {
+  enableHighAccuracy: true,
+  timeout: 3000,
+  maximumAge: 10000
+};
+
+const withLowAccuracy = {
+  enableHighAccuracy: false,
+  timeout: 3000,
+  maximumAge: 10000
+};
+
+const animateToCoordinate = ref => (coords: Coordinates) => {
+  const { latitude, longitude } = coords;
+  ref.current.animateToCoordinate({ latitude, longitude }, 500);
 };
 
 class Map extends Component<Props, State> {
   state = {
     activeMarker: null,
-    tileDetails: null
+    tileDetails: null,
+    locationPermission: "undetermined",
+    atUserLocation: false
+  };
+
+  componentDidMount() {
+    checkLocationPermission(this.setState.bind(this));
+  }
+
+  onRegionChange = (position: Coordinates) => {
+    if (this.state.atUserLocation) {
+      this.setState({ atUserLocation: false });
+    } else if (this.state.locationPermission === "authorized") {
+      getCurrentPosition(withHighAccuracy).then(
+        this.checkAtUserLocation(position)
+      );
+    }
   };
 
   handleMarkerPress(stage: Event) {
@@ -41,6 +130,41 @@ class Map extends Component<Props, State> {
   handleMapPress = () => {
     this.setState({ tileDetails: null, activeMarker: null });
   };
+
+  checkAtUserLocation = (mapCoordinate: Coordinates) => (
+    coords: Coordinates
+  ) => {
+    const { latitude, longitude } = coords;
+    if (
+      mapCoordinate.latitude.toFixed(5) === latitude.toFixed(5) &&
+      mapCoordinate.longitude.toFixed(5) === longitude.toFixed(5)
+    )
+      this.setState({ atUserLocation: true });
+  };
+
+  moveToCurrentLocation = (): Promise<void> =>
+    requestLocationPermission(this.setState.bind(this), this.state).then(() => {
+      if (this.state.locationPermission === "authorized") {
+        return getCurrentPosition(withHighAccuracy)
+          .catch(() => getCurrentPosition(withLowAccuracy))
+          .then(animateToCoordinate(this.mapViewRef))
+          .catch(() => {
+            Alert.alert(
+              "We couldn't find your location",
+              "GPS or other location finding magic might not be available, please try again later"
+            );
+          });
+      } else if (
+        Platform.OS === "ios" &&
+        this.state.locationPermission === "denied"
+      ) {
+        Linking.openURL("app-settings:");
+      }
+      return Promise.resolve();
+    });
+
+  // $FlowFixMe
+  mapViewRef: ElementRef<typeof MapView> = React.createRef();
 
   renderStageMarker = (stage: Event) => (
     <Marker
@@ -70,12 +194,11 @@ class Map extends Component<Props, State> {
       <View style={styles.mapWrapper}>
         <MapView
           style={StyleSheet.absoluteFill}
-          initialRegion={{
-            latitude: 51.51004,
-            longitude: -0.134192,
-            latitudeDelta: 0.02,
-            longitudeDelta: 0.000002
-          }}
+          initialRegion={this.props.paradeRegion}
+          showsUserLocation={this.state.locationPermission === "authorized"}
+          showsMyLocationButton={false}
+          onRegionChange={this.onRegionChange}
+          ref={this.mapViewRef}
           showsPointsOfInterest={false}
           showsScale={false}
           showsBuildings={false}
@@ -84,42 +207,52 @@ class Map extends Component<Props, State> {
           onPress={this.handleMapPress}
         >
           <Polyline
-            coordinates={paradeCoordinates}
+            coordinates={this.props.route}
             strokeWidth={5}
             strokeColor={warmPinkColor}
             lineJoin="bevel"
           />
-          <Marker
-            coordinate={{ longitude: -0.14223, latitude: 51.51616 }}
-            centerOffset={{ x: 0, y: -15 }}
-            stopPropagation
-          >
-            <View style={styles.markerView}>
-              <View style={styles.markerTextWrapper}>
-                <Text type="h4" color="whiteColor">
-                  Start
-                </Text>
+          {this.props.terminals.map(terminal => (
+            <Marker
+              coordinate={terminal.coordinates}
+              key={terminal.key}
+              centerOffset={{ x: 0, y: -15 }}
+              stopPropagation
+            >
+              <View style={terminal.style.markerView}>
+                <View style={terminal.style.markerTextWrapper}>
+                  <Text type={terminal.text.type} color={terminal.text.color}>
+                    {terminal.text.text}
+                  </Text>
+                </View>
+                <View style={terminal.style.triangle} />
               </View>
-              <View style={styles.triangle} />
-            </View>
-          </Marker>
-          <Marker
-            coordinate={{ longitude: -0.1265, latitude: 51.50499 }}
-            centerOffset={{ x: 0, y: -15 }}
-            stopPropagation
-          >
-            <View style={styles.markerView}>
-              <View style={styles.markerTextWrapper}>
-                <Text type="h4" color="whiteColor">
-                  Finish
-                </Text>
-              </View>
-              <View style={styles.triangle} />
-            </View>
-          </Marker>
+            </Marker>
+          ))}
           {this.props.stages.length > 0 &&
-            this.props.stages.map(stage => this.renderStageMarker(stage))}
+            this.props.stages.map(this.renderStageMarker)}
         </MapView>
+
+        {!shouldNeverAsk(this.state.locationPermission) && (
+          <View style={styles.touchable}>
+            <TouchableWithoutFeedback
+              onPress={this.moveToCurrentLocation}
+              hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
+            >
+              <View>
+                <Image
+                  accessibilityLabel="Show my location"
+                  source={
+                    this.state.atUserLocation
+                      ? locationButtonActive
+                      : locationButtonInactive
+                  }
+                  style={styles.image}
+                />
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        )}
         {this.state.tileDetails && (
           <View style={styles.tileContainer}>
             <ContentPadding
@@ -157,35 +290,20 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center"
   },
-  markerView: {
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  markerTextWrapper: {
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    backgroundColor: lightNavyBlueColor,
-    height: Math.max(30, scaleWithFont("h4", 30)),
-    width: Math.max(60, scaleWithFont("h4", 60)),
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 2
-  },
   tileContainer: {
     width: "100%"
   },
-  triangle: {
-    width: 0,
-    height: 0,
-    backgroundColor: transparent,
-    borderStyle: "solid",
-    borderLeftWidth: 5,
-    borderRightWidth: 5,
-    borderBottomWidth: 10,
-    borderLeftColor: transparent,
-    borderRightColor: transparent,
-    borderBottomColor: lightNavyBlueColor,
-    transform: [{ rotate: "180deg" }]
+
+  touchable: {
+    alignSelf: "flex-end",
+    marginTop: Platform.OS === "ios" ? 44 : 8,
+    paddingRight: Platform.OS === "ios" ? 0 : 8,
+    paddingLeft: 10,
+    paddingBottom: 10
+  },
+  image: {
+    width: 48,
+    height: 48
   }
 });
 
