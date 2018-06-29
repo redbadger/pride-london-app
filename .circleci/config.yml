@@ -466,7 +466,11 @@ jobs:
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
-      - <<: *clear-bugsnag-api-key
+      - run:
+          name: Clear value of BUGSNAG_API_KEY
+          command: |
+            echo 'export BUGSNAG_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
+            source $BASH_ENV
       - run:
           name: Install xcpretty
           command: |
