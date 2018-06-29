@@ -187,7 +187,8 @@ const styles = StyleSheet.create({
     backgroundColor: bgColor
   },
   partnershipBar: {
-    height: 42
+    height: 42,
+    marginBottom: 4
   },
   innerBar: {
     backgroundColor: lightNavyBlueColor,
