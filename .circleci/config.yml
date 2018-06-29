@@ -490,7 +490,7 @@ jobs:
       - run: npx detox clean-framework-cache && npx detox build-framework-cache
       - run: yarn test:e2e:release
       - store_artifacts:
-          path: /artifacts
+          path: artifacts/
 
   test-nightly:
     <<: *job-defaults-macos
