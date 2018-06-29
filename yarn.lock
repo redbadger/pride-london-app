@@ -6133,6 +6133,10 @@ react-native-mock@^0.3.1:
     react-timer-mixin "^0.13.3"
     warning "^2.1.0"
 
+react-native-permissions@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-1.1.1.tgz#4876004681ff8556454613d85249b01baff9b35b"
+
 react-native-safe-area-view@^0.7.0, react-native-safe-area-view@robbiemccorkell/react-native-safe-area-view:
   version "0.6.0"
   resolved "https://codeload.github.com/robbiemccorkell/react-native-safe-area-view/tar.gz/508961b3e20acb7815331213bcea2d0ad600ff46"

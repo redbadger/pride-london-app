@@ -1,4 +1,39 @@
-export default [
+// @flow
+import { scaleWithFont } from "../components/Text";
+import { velvetColor } from "./colors";
+
+const terminalStyle = {
+  height: Math.max(18, scaleWithFont("xSmall", 18)),
+  width: Math.max(18, scaleWithFont("xSmall", 18)),
+  backgroundColor: velvetColor,
+  borderRadius: Math.max(9, scaleWithFont("xSmall", 9)),
+  justifyContent: "center",
+  alignItems: "center"
+};
+
+export const terminals = [
+  {
+    key: "start",
+    coordinates: { longitude: -0.14223, latitude: 51.51616 },
+    text: { text: "A", type: "xSmall", color: "whiteColor" },
+    style: terminalStyle
+  },
+  {
+    key: "finish",
+    coordinates: { longitude: -0.12664, latitude: 51.50497 },
+    text: { text: "B", type: "xSmall", color: "whiteColor" },
+    style: terminalStyle
+  }
+];
+
+export const region = {
+  latitude: 51.5085,
+  longitude: -0.134192,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.000002
+};
+
+export const route = [
   { longitude: -0.14223, latitude: 51.51616 },
   { longitude: -0.14221, latitude: 51.5161 },
   { longitude: -0.14214, latitude: 51.51605 },
@@ -120,6 +155,24 @@ export default [
   { longitude: -0.12692, latitude: 51.5056 },
   { longitude: -0.1268, latitude: 51.50534 },
   { longitude: -0.12672, latitude: 51.50517 },
-  { longitude: -0.12664, latitude: 51.50497 },
-  { longitude: -0.1265, latitude: 51.50499 }
+  { longitude: -0.12664, latitude: 51.50497 }
 ];
+
+export type Terminals = {
+  key: string,
+  coordinates: { longitude: number, latitude: number },
+  text: { text: string, type: string, color: string },
+  style: any
+};
+
+export type Coordinates = {
+  latitude: number,
+  longitude: number
+};
+
+export type Region = {
+  latitude: number,
+  longitude: number,
+  latitudeDelta: number,
+  longitudeDelta: number
+};
