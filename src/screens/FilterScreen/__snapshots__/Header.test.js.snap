@@ -2,11 +2,7 @@
 
 exports[`applies styles to clear button when showClear=true 1`] = `
 <Header
-  leftElement={
-    <Unknown
-      onPress={undefined}
-    />
-  }
+  leftElement={<Unknown />}
   rightElement={
     <ActionButton
       label="Reset"
@@ -20,11 +16,7 @@ exports[`applies styles to clear button when showClear=true 1`] = `
 
 exports[`renders correctly 1`] = `
 <Header
-  leftElement={
-    <Unknown
-      onPress={undefined}
-    />
-  }
+  leftElement={<Unknown />}
   rightElement={null}
   title="Filter Events"
 />
