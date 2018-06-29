@@ -29,7 +29,8 @@ type PermissionStatus =
   | "denied"
   | "restricted"
   | "undetermined"
-  | "checking";
+  | "checking"
+  | "asking";
 
 const shouldNeverAsk = (status: PermissionStatus) => status === "restricted";
 
@@ -44,8 +45,13 @@ type State = {
   atUserLocation: boolean
 };
 
+type setStateArguments = {
+  locationPermission?: PermissionStatus,
+  atUserLocation?: boolean
+};
+
 export const checkLocationPermission = (
-  setState: Function
+  setState: setStateArguments => void
 ): Promise<PermissionStatus> => {
   setState({ locationPermission: "checking" });
   return Permissions.check("location").then(response => {
@@ -55,7 +61,7 @@ export const checkLocationPermission = (
 };
 
 export const requestLocationPermission = (
-  setState: Function,
+  setState: setStateArguments => void,
   state: State
 ): Promise<PermissionStatus> => {
   if (shouldNeverAsk(state.locationPermission))
