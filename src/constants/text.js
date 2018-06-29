@@ -203,5 +203,6 @@ export default {
       }
     ]
   },
+  partnershipWithSally: "Made in partnership with Red Badger",
   resetAllFilters: "Reset all filters"
 };
