@@ -1,27 +1,34 @@
 // @flow
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { makeSelectable } from "react-native-accessible-selectable";
 import type { TouchableProps } from "./TouchableTypes";
 import { TouchableDefaultProps } from "./TouchableTypes";
 
-const Touchable = ({ children, style, ...props }: TouchableProps) => {
-  const accessibilityTraits =
-    props.accessibilityTraits ||
-    (props.disabled ? ["button", "disabled"] : ["button"]);
-  return (
-    <TouchableOpacity
-      style={[styles.defaults, style]}
-      {...props}
-      accessibilityTraits={accessibilityTraits}
-    >
-      {children}
-    </TouchableOpacity>
-  );
-};
+const SelectableTouchableOpacity = makeSelectable(TouchableOpacity);
 
-Touchable.defaultProps = {
-  ...TouchableDefaultProps,
-  delayPressIn: 50
+const createTouchable = BaseTouchable => {
+  const Touchable = ({ children, style, ...props }: TouchableProps) => {
+    const accessibilityTraits =
+      props.accessibilityTraits ||
+      (props.disabled ? ["button", "disabled"] : ["button"]);
+    return (
+      <BaseTouchable
+        style={[styles.defaults, style]}
+        {...props}
+        accessibilityTraits={accessibilityTraits}
+      >
+        {children}
+      </BaseTouchable>
+    );
+  };
+
+  Touchable.defaultProps = {
+    ...TouchableDefaultProps,
+    delayPressIn: 50
+  };
+
+  return Touchable;
 };
 
 const styles = StyleSheet.create({
@@ -32,4 +39,8 @@ const styles = StyleSheet.create({
   }
 });
 
+const Touchable = createTouchable(TouchableOpacity);
+const SelectableTouchable = createTouchable(SelectableTouchableOpacity);
+
 export default Touchable;
+export { SelectableTouchable };
