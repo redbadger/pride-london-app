@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View, Image } from "react-native";
 import { equals } from "ramda";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Header from "./Header";
@@ -15,7 +15,8 @@ import {
   cardBgColor,
   titleTextColor,
   bgColor,
-  whiteColor
+  whiteColor,
+  lightNavyBlueColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
@@ -123,6 +124,10 @@ class HomeScreen extends Component<Props> {
                     </Touchable>
                   </View>
                 ))}
+                <View styles={styles.partnershipBar}>
+                  <Text> Made in Partnership with Red Badger </Text>
+                  <Image />
+                </View>
               </View>
             </ContentPadding>
           )}
@@ -174,6 +179,10 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 3,
     backgroundColor: bgColor
+  },
+  partnershipBar: {
+    height: 20,
+    backgroundColor: lightNavyBlueColor
   }
 });
 
