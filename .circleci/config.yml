@@ -189,6 +189,13 @@ release-api-keys: &release-api-keys
       echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
       source $BASH_ENV
 
+clear-bugsnag-api-key: &clear-bugsnag-api-key
+  run:
+    name: clear value of BUGSNAG_API_KEY
+    command: |
+      echo 'export BUGSNAG_API_KEY=1' >> $BASH_ENV
+      source $BASH_ENV
+
 bugsnag-upload-sourcemaps-android: &bugsnag-upload-sourcemaps-android
   run:
     name: Generate js sourcemaps and upload to Bugsnag
@@ -456,6 +463,7 @@ jobs:
     working_directory: /Users/distiller/project
     environment:
       <<: *env-macos
+      <<: *clear-bugsnag-api-key
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
