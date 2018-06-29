@@ -1,12 +1,6 @@
-const { takeScreenshot } = require("./helpers");
-
 describe("e2e/parade", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
-  });
-
-  afterEach(async () => {
-    await takeScreenshot();
   });
 
   it("should display the map by default", async () => {
