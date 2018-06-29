@@ -464,7 +464,6 @@ jobs:
     environment:
       <<: *env-macos
     steps:
-      - <<: *clear-bugsnag-api-key
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
       - run:
@@ -494,6 +493,7 @@ jobs:
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
+      - <<: *clear-bugsnag-api-key
       - <<: *generate-env-macos
       - run: npx detox clean-framework-cache && npx detox build-framework-cache
       - run: yarn test:e2e:release
