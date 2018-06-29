@@ -3,8 +3,7 @@ import React from "react";
 import { Image, StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import Text from "./Text";
-import Touchable from "./Touchable";
-import { checkboxAccessibilityLabel } from "../data/accessibility";
+import { SelectableTouchable } from "./Touchable";
 
 import checkboxUrl from "../../assets/images/checkBox.png";
 import checkBoxCheckedUrl from "../../assets/images/checkBoxChecked.png";
@@ -16,22 +15,40 @@ type Props = {
   style?: ViewStyleProp
 };
 
-const CheckBox = ({ checked, label, onChange, style }: Props) => (
-  <Touchable
-    accessibilityComponentType="none"
-    accessibilityTraits={["none"]}
-    accessibilityLabel={checkboxAccessibilityLabel(label, checked)}
-    onPress={onChange}
-    style={[styles.container, style]}
-  >
-    <Text style={styles.text}>{label}</Text>
-    <Image source={checked ? checkBoxCheckedUrl : checkboxUrl} />
-  </Touchable>
-);
+class CheckBox extends React.Component<Props> {
+  static defaultProps = {
+    style: {}
+  };
 
-CheckBox.defaultProps = {
-  style: {}
-};
+  shouldComponentUpdate(nextProps: Props) {
+    return (
+      this.props.label !== nextProps.label ||
+      this.props.checked !== nextProps.checked
+    );
+  }
+
+  onPress = () => {
+    this.props.onChange();
+  };
+
+  render() {
+    const { checked, label, style } = this.props;
+
+    return (
+      <SelectableTouchable
+        accessibilityComponentType={
+          checked ? "radiobutton_checked" : "radiobutton_unchecked"
+        }
+        accessibilityTraits={checked ? ["button", "selected"] : ["button"]}
+        onPress={this.onPress}
+        style={[styles.container, style]}
+      >
+        <Text style={styles.text}>{label}</Text>
+        <Image source={checked ? checkBoxCheckedUrl : checkboxUrl} />
+      </SelectableTouchable>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

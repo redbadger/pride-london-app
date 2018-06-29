@@ -5,12 +5,14 @@ import type { Event } from "../data/event";
 import type { FeaturedEvents } from "../data/featured-events";
 import type { HeaderBanner } from "../data/header-banner";
 import type { Images } from "../data/image";
+import type { ParadeGroup } from "../data/parade-group";
 import type { Performances } from "../data/performance";
 import type { Sponsor } from "../data/sponsor";
 import { decodeEvent, expandRecurringEvents } from "../data/event";
 import decodeFeaturedEvents from "../data/featured-events";
 import decodeHeaderBanner from "../data/header-banner";
 import { decodeImageDetails } from "../data/image";
+import decodeParadeGroup from "../data/parade-group";
 import decodePerformance from "../data/performance";
 import decodeSponsor from "../data/sponsor";
 import locale from "../data/locale";
@@ -23,6 +25,7 @@ export type State = {
   featuredEvents: FeaturedEvents[],
   headerBanners: HeaderBanner[],
   images: Images,
+  paradeGroups: ParadeGroup[],
   performances: Performances,
   sponsors: Sponsor[],
   loading: boolean,
@@ -34,6 +37,7 @@ const defaultState = {
   featuredEvents: [],
   headerBanners: [],
   images: {},
+  paradeGroups: [],
   performances: {},
   sponsors: [],
   loading: true,
@@ -73,6 +77,10 @@ const decodeImages: Decoder<Images> = decodeMap(
   decodeFilterMap(decodeImageDetails(locale))
 );
 
+const decodeParadeGroups: Decoder<Array<ParadeGroup>> = decodeFilterMap(
+  decodeParadeGroup(locale)
+);
+
 const decodePerformances: Decoder<Performances> = decodeMap(
   performances => performances.reduce(reduceToMapHelp, {}),
   decodeFilterMap(decodePerformance(locale))
@@ -110,6 +118,10 @@ const reducer = (state: State = defaultState, action: DataAction) => {
           decodeHeaderBanners(action.data.entries)
         ),
         images: resultWithDefault({}, decodeImages(action.data.assets)),
+        paradeGroups: resultWithDefault(
+          [],
+          decodeParadeGroups(action.data.entries)
+        ),
         performances: resultWithDefault(
           {},
           decodePerformances(action.data.entries)

@@ -20,6 +20,10 @@ jest.mock("react-native", () => {
   };
 });
 
+jest.mock("react-native-accessible-selectable", () => ({
+  makeSelectable: jest.fn(Component => Component)
+}));
+
 it("renders correctly", () => {
   const style = { borderRadius: 2 };
   const output = shallow(<Touchable style={style}>Hello</Touchable>);
