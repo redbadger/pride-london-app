@@ -222,6 +222,13 @@
 			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
 			remoteInfo = "privatedata-tvOS";
 		};
+		167803A620E697270011E1A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA04F738F872444891A61631 /* RNAccessibleSelectable.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNAccessibleSelectable;
+		};
 		16ADAD9120A073B6006CA650 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2C3C38462ECD4655A9ABD826 /* BugsnagReactNative.xcodeproj */;
@@ -695,6 +702,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1678037420E697270011E1A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				167803A720E697270011E1A9 /* libRNAccessibleSelectable.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		16ADAD8E20A073B6006CA650 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1049,6 +1064,10 @@
 					ProjectRef = 4F68F38120CFC19C0099F72E /* ReactNativePermissions.xcodeproj */;
 				},
 				{
+					ProductGroup = 1678037420E697270011E1A9 /* Products */;
+					ProjectRef = BA04F738F872444891A61631 /* RNAccessibleSelectable.xcodeproj */;
+				},
+				{
 					ProductGroup = 16F5947A209CA1D900703940 /* Products */;
 					ProjectRef = D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */;
 				},
@@ -1211,6 +1230,13 @@
 			fileType = archive.ar;
 			path = "libprivatedata-tvOS.a";
 			remoteRef = 1617938D201649D500BA3C13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		167803A720E697270011E1A9 /* libRNAccessibleSelectable.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNAccessibleSelectable.a;
+			remoteRef = 167803A620E697270011E1A9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		16ADAD9220A073B6006CA650 /* libBugsnagReactNative.a */ = {

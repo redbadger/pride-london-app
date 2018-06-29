@@ -425,6 +425,7 @@ jobs:
     environment:
       <<: *env-macos
       RELEASE_STAGE: "release"
+      DSYM_PATH: "/Users/distiller/project/output/gym/PrideLondonApp.app.dSYM.zip"
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
@@ -448,7 +449,8 @@ jobs:
                 ci_build_num:$CIRCLE_BUILD_NUM \
                 release_stage:$RELEASE_STAGE \
                 bugsnag_api_key:$BUGSNAG_API_KEY \
-                slack_webhook:$SLACK_WEBHOOK
+                slack_webhook:$SLACK_WEBHOOK \
+                dsym_path:$DSYM_PATH
       - <<: *bugsnag-upload-sourcemaps-ios
 
   e2e-ios:

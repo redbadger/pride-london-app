@@ -107,7 +107,7 @@ platform :ios do
       if options[:submit]
         deploy_testflight
         download_dsyms(version: get_version_number)
-        upload_symbols_to_bugsnag
+        upload_symbols_to_bugsnag(symbol_maps_path:options[:dsym_path])
         send_build_to_bugsnag(
           api_key: options[:bugsnag_api_key],
           release_stage: options[:release_stage]
