@@ -3,14 +3,9 @@ import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import LottieView from "lottie-react-native";
 
-import Text from "../../components/Text";
-
-import {
-  lightNavyBlueColor,
-  brightLightBlueColor,
-  warmPinkColor
-} from "../../constants/colors";
+import { lightNavyBlueColor } from "../../constants/colors";
 import logo from "../../../assets/images/logo.png";
+import splash from "../../../assets/images/splash.png";
 import heartAnimation from "../../../assets/animations/save-event-light.json";
 
 export type Props = {
@@ -20,16 +15,7 @@ export type Props = {
 const Welcome = ({ animationProgress }: Props) => (
   <View style={styles.container}>
     <View style={styles.discoverPlanLove}>
-      <View style={styles.discover}>
-        <Text type="uber" style={styles.discoverText}>
-          Discover
-        </Text>
-      </View>
-      <View style={styles.plan}>
-        <Text type="uber" style={styles.planText}>
-          Plan
-        </Text>
-      </View>
+      <Image source={splash} style={styles.discoverPlan} />
       <View style={styles.love}>
         <LottieView
           progress={animationProgress}
@@ -59,28 +45,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  discover: {
-    marginBottom: 20,
-    paddingHorizontal: 12,
-    backgroundColor: brightLightBlueColor
-  },
-  discoverText: {
-    lineHeight: 0,
-    color: lightNavyBlueColor
-  },
-  plan: {
-    paddingHorizontal: 12,
-    backgroundColor: warmPinkColor
-  },
-  planText: {
-    lineHeight: 0,
-    color: lightNavyBlueColor
+  discoverPlan: {
+    width: 172,
+    height: 236
   },
   love: {
+    position: "absolute",
+    bottom: 0,
     margin: 0,
     padding: 0,
     width: 120,
-    height: 120
+    height: 120,
+    backgroundColor: lightNavyBlueColor
   },
   logo: {
     // same as discover plan love, must match native
