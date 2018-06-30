@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View, Image } from "react-native";
 import { equals } from "ramda";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import Header from "./Header";
@@ -15,13 +15,15 @@ import {
   cardBgColor,
   titleTextColor,
   bgColor,
-  whiteColor
+  whiteColor,
+  lightNavyBlueColor
 } from "../../constants/colors";
 import { FEATURED_EVENT_LIST, EVENT_DETAILS } from "../../constants/routes";
 import text from "../../constants/text";
 import type { Event } from "../../data/event";
 import type { ImageDetails } from "../../data/image";
 import type { HeaderBanner } from "../../data/header-banner";
+import partnershipWithSally from "../../../assets/images/partnershipWithSally.png";
 
 type Props = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -126,6 +128,16 @@ class HomeScreen extends Component<Props> {
               </View>
             </ContentPadding>
           )}
+          <View style={styles.partnershipBar}>
+            <View style={styles.innerBar}>
+              <ContentPadding>
+                <Text type="xSmall" style={styles.partnershipText}>
+                  {text.partnershipWithSally}
+                </Text>
+              </ContentPadding>
+            </View>
+            <Image style={styles.sallyImage} source={partnershipWithSally} />
+          </View>
         </View>
       </ScrollView>
     );
@@ -150,7 +162,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   tilesContainer: {
-    flex: 1,
     flexDirection: "row",
     flexWrap: "wrap"
   },
@@ -174,6 +185,23 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 3,
     backgroundColor: bgColor
+  },
+  partnershipBar: {
+    height: 42,
+    marginBottom: 4
+  },
+  innerBar: {
+    backgroundColor: lightNavyBlueColor,
+    marginTop: 15,
+    paddingVertical: 2
+  },
+  partnershipText: {
+    alignSelf: "flex-end",
+    color: whiteColor
+  },
+  sallyImage: {
+    position: "absolute",
+    left: 15
   }
 });
 

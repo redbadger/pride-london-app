@@ -459,6 +459,10 @@ jobs:
     steps:
       - <<: *checkout-macos
       - <<: *set-ruby-version-macos
+      - run:
+          name: Install xcpretty
+          command: |
+            gem install xcpretty
       # Not using a workspace here as Node and Yarn versions
       # differ between the macOS image and the Docker containers above.
       - <<: *fabric-secrets-ios
@@ -486,7 +490,7 @@ jobs:
       - run: npx detox clean-framework-cache && npx detox build-framework-cache
       - run: yarn test:e2e:release
       - store_artifacts:
-          path: /tmp/screenshots
+          path: artifacts/
 
   test-nightly:
     <<: *job-defaults-macos

@@ -89,10 +89,8 @@ exports[`EventsScreen Component renders correctly 1`] = `
               "postcode": "postcode",
               "recurrenceDates": Array [
                 "31/05/2018",
-                "13/09/2018",
-                "07/05/2018",
-                "04/04/2018",
               ],
+              "stage": true,
               "startTime": "2018-07-07T00:00+00:00",
               "ticketingUrl": "ticketingUrl",
               "venueDetails": Array [

@@ -63,10 +63,6 @@ describe("collapsing behaviour", () => {
           .text()
       ).toBe("more");
     });
-
-    it("limits the height to maxHeight");
-
-    it("sets the gradient opacity to 1");
   });
 
   describe("when expanded", () => {

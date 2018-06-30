@@ -2,11 +2,11 @@
 
 exports[`ListItem Component renders correctly 1`] = `
 <Touchable
-  accessibilityComponentType="none"
-  accessibilityLabel="Music, checkbox, selected"
+  accessibilityComponentType="radiobutton_checked"
   accessibilityTraits={
     Array [
-      "none",
+      "button",
+      "selected",
     ]
   }
   delayPressIn={50}
@@ -83,11 +83,10 @@ exports[`ListItem Component renders correctly 1`] = `
 
 exports[`ListItem Component renders correctly without selected 1`] = `
 <Touchable
-  accessibilityComponentType="none"
-  accessibilityLabel="Music, checkbox, empty"
+  accessibilityComponentType="radiobutton_unchecked"
   accessibilityTraits={
     Array [
-      "none",
+      "button",
     ]
   }
   delayPressIn={50}
