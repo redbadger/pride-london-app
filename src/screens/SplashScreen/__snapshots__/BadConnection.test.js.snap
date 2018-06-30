@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when showing 1`] = `
+<Component
+  style={
+    Object {
+      "bottom": "10%",
+      "position": "absolute",
+    }
+  }
+>
+  <Component>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "#ffffff",
+          "textAlign": "center",
+        }
+      }
+      type="h1"
+    >
+      It's not you, it's wifi!
+    </Text>
+  </Component>
+  <Component
+    style={Object {}}
+  >
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "#ffffff",
+          "padding": 20,
+          "textAlign": "center",
+        }
+      }
+      type="h2"
+    >
+      We can't find a good connection - please try again when you connection is restored
+    </Text>
+  </Component>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "minHeight": 48,
+      }
+    }
+  >
+    <Button
+      disabled={false}
+      onPress={[Function]}
+    >
+      Try again
+    </Button>
+  </ContentPadding>
+</Component>
+`;
+
+exports[`renders correctly when with no data 1`] = `
+<Component
+  style={
+    Object {
+      "bottom": "10%",
+      "position": "absolute",
+    }
+  }
+>
+  <Component>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "#ffffff",
+          "textAlign": "center",
+        }
+      }
+      type="h1"
+    >
+      It's not you, it's wifi!
+    </Text>
+  </Component>
+  <Component
+    style={Object {}}
+  >
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "#ffffff",
+          "padding": 20,
+          "textAlign": "center",
+        }
+      }
+      type="h2"
+    >
+      We can't find a good connection - please try again when you connection is restored
+    </Text>
+  </Component>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "minHeight": 48,
+      }
+    }
+  >
+    <Button
+      disabled={false}
+      onPress={[Function]}
+    >
+      Try again
+    </Button>
+  </ContentPadding>
+</Component>
+`;
+
+exports[`renders correctly when with no data and loading 1`] = `
+<Component
+  style={
+    Object {
+      "bottom": "10%",
+      "position": "absolute",
+    }
+  }
+>
+  <Component>
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "#ffffff",
+          "textAlign": "center",
+        }
+      }
+      type="h1"
+    >
+      It's not you, it's wifi!
+    </Text>
+  </Component>
+  <Component
+    style={Object {}}
+  >
+    <Text
+      color="blackColor"
+      markdown={false}
+      markdownStyle={Object {}}
+      style={
+        Object {
+          "color": "#ffffff",
+          "padding": 20,
+          "textAlign": "center",
+        }
+      }
+      type="h2"
+    >
+      We can't find a good connection - please try again when you connection is restored
+    </Text>
+  </Component>
+  <ContentPadding
+    padding={Object {}}
+    style={
+      Object {
+        "alignSelf": "stretch",
+        "minHeight": 48,
+      }
+    }
+  >
+    <Button
+      disabled={false}
+      onPress={[Function]}
+    >
+      Try again
+    </Button>
+  </ContentPadding>
+</Component>
+`;

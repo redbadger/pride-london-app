@@ -27,7 +27,8 @@ describe("Events reducer", () => {
       sponsors: [],
       amenities: [],
       loading: false,
-      refreshing: false
+      refreshing: false,
+      noDataReceived: false
     };
     const state = reducer(initialState, { type: "REQUEST_CMS_DATA" });
 
@@ -46,7 +47,8 @@ describe("Events reducer", () => {
       sponsors: [],
       amenities: [],
       loading: false,
-      refreshing: false
+      refreshing: false,
+      noDataReceived: false
     };
     const state = reducer(initialState, { type: "REQUEST_UPDATE_CMS_DATA" });
 
@@ -54,7 +56,7 @@ describe("Events reducer", () => {
     expect(state.refreshing).toBe(true);
   });
 
-  it("sets loading and refreshing to false for RECEIVE_CMS_ERROR action", () => {
+  it("sets loading and refreshing to false for NO_DATA_RECEIVED action", () => {
     const initialState = {
       events: [],
       featuredEvents: [],
@@ -65,12 +67,14 @@ describe("Events reducer", () => {
       sponsors: [],
       amenities: [],
       loading: true,
-      refreshing: true
+      refreshing: true,
+      noDataReceived: false
     };
-    const state = reducer(initialState, { type: "RECEIVE_CMS_ERROR" });
+    const state = reducer(initialState, { type: "NO_DATA_RECEIVED" });
 
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
+    expect(state.noDataReceived).toBe(true);
   });
 
   describe("RECEIVE_CMS_DATA action", () => {
@@ -85,7 +89,8 @@ describe("Events reducer", () => {
         sponsors: [],
         amenities: [],
         loading: true,
-        refreshing: false
+        refreshing: false,
+        noDataRecived: true
       };
 
       const newCmsData = {
@@ -102,6 +107,7 @@ describe("Events reducer", () => {
       });
 
       expect(state.events).toMatchSnapshot();
+      expect(state.noDataReceived).toBe(false);
     });
 
     it("expands recurring events", () => {
@@ -115,7 +121,8 @@ describe("Events reducer", () => {
         sponsors: [],
         amenities: [],
         loading: true,
-        refreshing: false
+        refreshing: false,
+        noDataRecived: false
       };
 
       const event = sampleOne(generateCMSEvent, { seed: 3353 });

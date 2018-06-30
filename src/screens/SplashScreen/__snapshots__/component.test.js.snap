@@ -56,6 +56,9 @@ exports[`renders correctly when showing 1`] = `
     >
       <Welcome
         animationProgress={0}
+        getData={[Function]}
+        loading={false}
+        noDataReceived={false}
       />
     </Component>
   </AnimatedComponent>

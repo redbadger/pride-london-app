@@ -32,7 +32,8 @@ export type State = {
   sponsors: Sponsor[],
   amenities: Amenity[],
   loading: boolean,
-  refreshing: boolean
+  refreshing: boolean,
+  noDataReceived: boolean
 };
 
 const defaultState = {
@@ -45,7 +46,8 @@ const defaultState = {
   sponsors: [],
   amenities: [],
   loading: true,
-  refreshing: false
+  refreshing: false,
+  noDataReceived: false
 };
 
 type ObjectWithId<A> = {
@@ -116,6 +118,7 @@ const reducer = (state: State = defaultState, action: DataAction) => {
       return {
         loading: false,
         refreshing: false,
+        noDataReceived: false,
         events: resultWithDefault([], decodeEvents(action.data.entries)),
         featuredEvents: resultWithDefault(
           [],
@@ -137,14 +140,16 @@ const reducer = (state: State = defaultState, action: DataAction) => {
         sponsors: resultWithDefault([], decodeSponsors(action.data.entries)),
         amenities: resultWithDefault([], decodeAmenities(action.data.entries))
       };
-    case "RECEIVE_CMS_ERROR":
+    case "NO_DATA_RECEIVED":
       return {
         ...state,
         loading: false,
-        refreshing: false
+        refreshing: false,
+        noDataReceived: true
       };
     default:
       return state;
   }
 };
+
 export default reducer;

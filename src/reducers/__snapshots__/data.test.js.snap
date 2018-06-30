@@ -496,6 +496,7 @@ Object {
   "headerBanners": Array [],
   "images": Object {},
   "loading": true,
+  "noDataReceived": false,
   "paradeGroups": Array [],
   "performances": Object {},
   "refreshing": false,

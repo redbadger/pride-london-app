@@ -30,7 +30,8 @@ const createData = (): DataState => ({
   sponsors: [],
   amenities: [],
   loading: false,
-  refreshing: false
+  refreshing: false,
+  noDataReceived: false
 });
 
 describe("selectLoading", () => {

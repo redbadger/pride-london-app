@@ -8,11 +8,21 @@ import logo from "../../../assets/images/logo.png";
 import splash from "../../../assets/images/splash.png";
 import heartAnimation from "../../../assets/animations/save-event-light.json";
 
+import BadConnection from "./BadConnection";
+
 export type Props = {
-  animationProgress: ?Object
+  animationProgress: ?Object,
+  noDataReceived: boolean,
+  loading: boolean,
+  getData: () => void
 };
 
-const Welcome = ({ animationProgress }: Props) => (
+const Welcome = ({
+  animationProgress,
+  noDataReceived,
+  loading,
+  getData
+}: Props) => (
   <View style={styles.container}>
     <View style={styles.discoverPlanLove}>
       <Image source={splash} style={styles.discoverPlan} />
@@ -26,7 +36,8 @@ const Welcome = ({ animationProgress }: Props) => (
         />
       </View>
     </View>
-    <Image source={logo} style={styles.logo} />
+    {noDataReceived && <BadConnection loading={loading} getData={getData} />}
+    {!noDataReceived && <Image source={logo} style={styles.logo} />}
   </View>
 );
 

@@ -10,7 +10,10 @@ import Welcome from "./Welcome";
 export type SplashScreenProps = {
   children: Node,
   onAnimationComplete: () => any,
-  state: "showing" | "hiding" | "hidden"
+  state: "showing" | "hiding" | "hidden",
+  noDataReceived: boolean,
+  loading: boolean,
+  getData: () => void
 };
 
 type State = {
@@ -41,9 +44,14 @@ class SplashScreen extends Component<SplashScreenProps, State> {
   componentDidUpdate() {
     SplashScreenController.hide();
 
-    if (this.props.state !== "hiding" || !this.state.heart || !this.state.slide)
-      return;
+    if (this.props.state !== "hiding") return;
+    if (!this.props.noDataReceived) {
+      this.animateOut();
+    }
+  }
 
+  animateOut = () => {
+    if (!this.state.heart || !this.state.slide) return;
     const heart = Animated.timing(this.state.heart, {
       toValue: 1,
       easing: Easing.linear,
@@ -60,7 +68,7 @@ class SplashScreen extends Component<SplashScreenProps, State> {
     });
 
     Animated.stagger(500, [heart, slide]).start(this.props.onAnimationComplete);
-  }
+  };
 
   overlayStyle = (y: number) => ({
     transform: [{ translateY: y }]
@@ -68,6 +76,7 @@ class SplashScreen extends Component<SplashScreenProps, State> {
 
   render() {
     const screenHeight = Dimensions.get("window").height;
+    const { noDataReceived, loading, getData } = this.props;
     const slide = !this.state.slide
       ? 0
       : this.state.slide.interpolate({
@@ -81,7 +90,12 @@ class SplashScreen extends Component<SplashScreenProps, State> {
         {this.props.state !== "hidden" && (
           <Animated.View style={[styles.overlay, this.overlayStyle(slide)]}>
             <View style={styles.content}>
-              <Welcome animationProgress={this.state.heart} />
+              <Welcome
+                animationProgress={this.state.heart}
+                noDataReceived={noDataReceived}
+                loading={loading}
+                getData={getData}
+              />
             </View>
           </Animated.View>
         )}

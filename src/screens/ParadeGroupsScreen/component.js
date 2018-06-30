@@ -13,7 +13,13 @@ const groupByName = R.groupWith(
 export const sortAndGroupByName: (ParadeGroup[]) => ParadeGroup[][] = R.memoize(
   R.compose(
     groupByName,
-    R.sortBy(R.compose(R.toUpper, R.prop("name"), R.prop("fields")))
+    R.sortBy(
+      R.compose(
+        R.toUpper,
+        R.prop("name"),
+        R.prop("fields")
+      )
+    )
   )
 );
 
