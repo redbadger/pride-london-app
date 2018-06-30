@@ -1,11 +1,15 @@
 // @flow
 import React from "react";
-import MapView, { Marker } from "react-native-maps";
+import MapView from "react-native-maps";
 import { shallow } from "enzyme";
 import { TouchableWithoutFeedback } from "react-native";
 import Permissions from "react-native-permissions";
 import Map, { checkLocationPermission, requestLocationPermission } from "./Map";
-import { generateEvent, sampleOne } from "../../data/__test-data";
+import {
+  generateEvent,
+  generateAmenity,
+  sampleOne
+} from "../../data/__test-data";
 import * as position from "../../lib/position";
 import {
   region as paradeRegion,
@@ -18,6 +22,7 @@ const render = props =>
     <Map
       {...props}
       stages={[stage]}
+      amenities={[amenity]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
       onEventCardPress={() => {}}
@@ -26,6 +31,7 @@ const render = props =>
   );
 
 const stage = sampleOne(generateEvent, { seed: 5728 });
+const amenity = sampleOne(generateAmenity, { seed: 5728 });
 
 const regionProps = {
   paradeRegion,
@@ -62,11 +68,9 @@ describe("Map component", () => {
     permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
     const output = render(regionProps);
-    const markerPressSpy = jest.spyOn(output.instance(), "handleMarkerPress");
-    output.find(Marker).forEach(child => {
-      child.simulate("press");
-    });
-    expect(markerPressSpy).toHaveBeenCalled();
+    const stageMarkers = output.find("StageMarkers");
+    stageMarkers.props().handleMarkerPress(stage);
+
     expect(output.state()).toMatchSnapshot();
     jest.clearAllMocks();
   });
