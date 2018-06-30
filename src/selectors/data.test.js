@@ -28,6 +28,7 @@ const createData = (): DataState => ({
   paradeGroups: [],
   performances: {},
   sponsors: [],
+  amenities: [],
   loading: false,
   refreshing: false
 });

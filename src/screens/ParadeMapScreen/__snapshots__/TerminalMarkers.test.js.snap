@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TerminalMarkers component renders correctly 1`] = `
+<React.Fragment>
+  <MapMarker
+    centerOffset={
+      Object {
+        "x": 0,
+        "y": -15,
+      }
+    }
+    coordinate={
+      Object {
+        "latitude": 51.51616,
+        "longitude": -0.14223,
+      }
+    }
+    key="start"
+    stopPropagation={true}
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#2d2f7f",
+            "borderRadius": 2,
+            "height": 30,
+            "justifyContent": "center",
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+            "width": 60,
+          }
+        }
+      >
+        <Text
+          color="whiteColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="h4"
+        >
+          Start
+        </Text>
+      </Component>
+      <Component
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "borderBottomColor": "#2d2f7f",
+            "borderBottomWidth": 10,
+            "borderLeftColor": "transparent",
+            "borderLeftWidth": 5,
+            "borderRightColor": "transparent",
+            "borderRightWidth": 5,
+            "borderStyle": "solid",
+            "height": 0,
+            "transform": Array [
+              Object {
+                "rotate": "180deg",
+              },
+            ],
+            "width": 0,
+          }
+        }
+      />
+    </Component>
+  </MapMarker>
+  <MapMarker
+    centerOffset={
+      Object {
+        "x": 0,
+        "y": -15,
+      }
+    }
+    coordinate={
+      Object {
+        "latitude": 51.50497,
+        "longitude": -0.12664,
+      }
+    }
+    key="finish"
+    stopPropagation={true}
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#2d2f7f",
+            "borderRadius": 2,
+            "height": 30,
+            "justifyContent": "center",
+            "paddingHorizontal": 8,
+            "paddingVertical": 2,
+            "width": 60,
+          }
+        }
+      >
+        <Text
+          color="whiteColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          type="h4"
+        >
+          Finish
+        </Text>
+      </Component>
+      <Component
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "borderBottomColor": "#2d2f7f",
+            "borderBottomWidth": 10,
+            "borderLeftColor": "transparent",
+            "borderLeftWidth": 5,
+            "borderRightColor": "transparent",
+            "borderRightWidth": 5,
+            "borderStyle": "solid",
+            "height": 0,
+            "transform": Array [
+              Object {
+                "rotate": "180deg",
+              },
+            ],
+            "width": 0,
+          }
+        }
+      />
+    </Component>
+  </MapMarker>
+</React.Fragment>
+`;

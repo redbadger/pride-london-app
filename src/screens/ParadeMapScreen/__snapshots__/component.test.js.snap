@@ -34,10 +34,27 @@ exports[`renders correctly 1`] = `
 >
   <Map
     addSavedEvent={[Function]}
+    amenities={
+      Array [
+        Object {
+          "contentType": "amenity",
+          "fields": Object {
+            "location": Object {
+              "lat": 0,
+              "lon": 10,
+            },
+            "type": "Toilet",
+          },
+          "id": "20nBC086o2kwuMWHp8FqMyUV",
+          "locale": "en-GB",
+          "revision": 1,
+        },
+      ]
+    }
     onEventCardPress={[Function]}
     paradeRegion={
       Object {
-        "latitude": 51.5085,
+        "latitude": 51.512,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
         "longitudeDelta": 0.000002,
@@ -629,44 +646,7 @@ exports[`renders correctly 1`] = `
             "longitude": -0.14223,
           },
           "key": "start",
-          "style": Object {
-            "markerTextWrapper": Object {
-              "alignItems": "center",
-              "backgroundColor": "#2d2f7f",
-              "borderRadius": 2,
-              "height": 30,
-              "justifyContent": "center",
-              "paddingHorizontal": 8,
-              "paddingVertical": 2,
-              "width": 60,
-            },
-            "markerView": Object {
-              "alignItems": "center",
-              "justifyContent": "center",
-            },
-            "triangle": Object {
-              "backgroundColor": "transparent",
-              "borderBottomColor": "#2d2f7f",
-              "borderBottomWidth": 10,
-              "borderLeftColor": "transparent",
-              "borderLeftWidth": 5,
-              "borderRightColor": "transparent",
-              "borderRightWidth": 5,
-              "borderStyle": "solid",
-              "height": 0,
-              "transform": Array [
-                Object {
-                  "rotate": "180deg",
-                },
-              ],
-              "width": 0,
-            },
-          },
-          "text": Object {
-            "color": "whiteColor",
-            "text": "Start",
-            "type": "h4",
-          },
+          "text": "Start",
         },
         Object {
           "coordinates": Object {
@@ -674,44 +654,7 @@ exports[`renders correctly 1`] = `
             "longitude": -0.12664,
           },
           "key": "finish",
-          "style": Object {
-            "markerTextWrapper": Object {
-              "alignItems": "center",
-              "backgroundColor": "#2d2f7f",
-              "borderRadius": 2,
-              "height": 30,
-              "justifyContent": "center",
-              "paddingHorizontal": 8,
-              "paddingVertical": 2,
-              "width": 60,
-            },
-            "markerView": Object {
-              "alignItems": "center",
-              "justifyContent": "center",
-            },
-            "triangle": Object {
-              "backgroundColor": "transparent",
-              "borderBottomColor": "#2d2f7f",
-              "borderBottomWidth": 10,
-              "borderLeftColor": "transparent",
-              "borderLeftWidth": 5,
-              "borderRightColor": "transparent",
-              "borderRightWidth": 5,
-              "borderStyle": "solid",
-              "height": 0,
-              "transform": Array [
-                Object {
-                  "rotate": "180deg",
-                },
-              ],
-              "width": 0,
-            },
-          },
-          "text": Object {
-            "color": "whiteColor",
-            "text": "Finish",
-            "type": "h4",
-          },
+          "text": "Finish",
         },
       ]
     }
