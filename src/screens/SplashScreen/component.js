@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import type { Node } from "react";
 import { Animated, Dimensions, Easing, StyleSheet, View } from "react-native";
-import SplashScreenControler from "react-native-splash-screen";
+import SplashScreenController from "react-native-splash-screen";
 
 import { lightNavyBlueColor } from "../../constants/colors";
 import Welcome from "./Welcome";
@@ -25,7 +25,7 @@ class SplashScreen extends Component<SplashScreenProps, State> {
   };
 
   componentDidMount() {
-    SplashScreenControler.hide();
+    SplashScreenController.hide();
   }
 
   static getDerivedStateFromProps(
