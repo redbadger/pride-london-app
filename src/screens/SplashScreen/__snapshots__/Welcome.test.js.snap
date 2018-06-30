@@ -17,64 +17,31 @@ exports[`renders correctly when showing 1`] = `
       Object {
         "alignItems": "center",
         "flexDirection": "column",
+        "height": 236,
         "justifyContent": "center",
         "marginBottom": 200,
+        "width": 172,
       }
     }
   >
-    <Component
+    <Image
+      source={1}
       style={
         Object {
-          "backgroundColor": "#2acfff",
-          "marginBottom": 20,
-          "paddingHorizontal": 12,
+          "height": 236,
+          "width": 172,
         }
       }
-    >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#2d2f7f",
-            "lineHeight": 0,
-          }
-        }
-        type="uber"
-      >
-        Discover
-      </Text>
-    </Component>
+    />
     <Component
       style={
         Object {
-          "backgroundColor": "#fc4984",
-          "paddingHorizontal": 12,
-        }
-      }
-    >
-      <Text
-        color="blackColor"
-        markdown={false}
-        markdownStyle={Object {}}
-        style={
-          Object {
-            "color": "#2d2f7f",
-            "lineHeight": 0,
-          }
-        }
-        type="uber"
-      >
-        Plan
-      </Text>
-    </Component>
-    <Component
-      style={
-        Object {
+          "backgroundColor": "#2d2f7f",
+          "bottom": 0,
           "height": 120,
           "margin": 0,
           "padding": 0,
+          "position": "absolute",
           "width": 120,
         }
       }
@@ -2022,7 +1989,9 @@ exports[`renders correctly when showing 1`] = `
     style={
       Object {
         "bottom": 70,
+        "height": 67,
         "position": "absolute",
+        "width": 172,
       }
     }
   />
