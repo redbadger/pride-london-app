@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import MapView, { Marker } from "react-native-maps";
+import MapView from "react-native-maps";
 import { shallow } from "enzyme";
 import { TouchableWithoutFeedback } from "react-native";
 import Permissions from "react-native-permissions";
@@ -68,11 +68,9 @@ describe("Map component", () => {
     permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
     const output = render(regionProps);
-    const markerPressSpy = jest.spyOn(output.instance(), "handleMarkerPress");
-    output.find(Marker).forEach(child => {
-      child.simulate("press");
-    });
-    expect(markerPressSpy).toHaveBeenCalled();
+    const stageMarkers = output.find("StageMarkers");
+    stageMarkers.props().handleMarkerPress(stage);
+
     expect(output.state()).toMatchSnapshot();
     jest.clearAllMocks();
   });
@@ -120,29 +118,6 @@ describe("Map component", () => {
     await Promise.resolve();
 
     expect(output.state().locationPermission).toBe("authorized");
-  });
-
-  it("renders recurring stage event once", () => {
-    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
-
-    const recurrenceStage = {
-      ...stage,
-      id: `${stage.id}-reucrrence-2018-07-07`
-    };
-
-    const output = shallow(
-      <Map
-        {...regionProps}
-        stages={[stage, recurrenceStage]}
-        amenities={[amenity]}
-        addSavedEvent={() => {}}
-        removeSavedEvent={() => {}}
-        onEventCardPress={() => {}}
-        savedEvents={new Set()}
-      />
-    );
-
-    expect(output.find("MapMarker").length).toBe(3);
   });
 });
 

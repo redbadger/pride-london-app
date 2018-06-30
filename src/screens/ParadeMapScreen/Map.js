@@ -12,10 +12,10 @@ import {
 } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
-import { uniqWith, eqBy } from "ramda";
 import type { Event, SavedEvents } from "../../data/event";
 import type { Amenity } from "../../data/amenity";
 import AmenityMarkers from "./AmenityMarkers";
+import StageMarkers from "./StageMarkers";
 import Text from "../../components/Text";
 import { warmPinkColor } from "../../constants/colors";
 import { getCurrentPosition } from "../../lib/position";
@@ -26,8 +26,6 @@ import type {
 } from "../../constants/parade-coordinates";
 import EventCard from "../../components/EventCard";
 import ContentPadding from "../../components/ContentPadding";
-import stageIconActive from "../../../assets/images/stageIconActive.png";
-import stageIconInactive from "../../../assets/images/stageIconInactive.png";
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
 
@@ -127,9 +125,9 @@ class Map extends PureComponent<Props, State> {
     }
   };
 
-  handleMarkerPress(stage: Event) {
+  handleMarkerPress = (stage: Event) => {
     this.setState({ tileDetails: stage, activeMarker: stage.id });
-  }
+  };
 
   handleMapPress = () => {
     this.setState({ tileDetails: null, activeMarker: null });
@@ -170,36 +168,15 @@ class Map extends PureComponent<Props, State> {
   // $FlowFixMe
   mapViewRef: ElementRef<typeof MapView> = React.createRef();
 
-  renderStageMarker = (stage: Event) => (
-    <Marker
-      zIndex={1}
-      coordinate={{
-        longitude: stage.fields.location.lon,
-        latitude: stage.fields.location.lat
-      }}
-      key={stage.id}
-      onPress={() => this.handleMarkerPress(stage)}
-      stopPropagation
-      image={
-        this.state.activeMarker === stage.id
-          ? stageIconActive
-          : stageIconInactive
-      }
-    />
-  );
-
   render() {
     const {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
       onEventCardPress,
-      amenities
+      amenities,
+      stages
     } = this.props;
-
-    const uniqueStages = uniqWith(eqBy(stage => stage.id.split("-")[0]))(
-      this.props.stages
-    );
 
     return (
       <View style={styles.mapWrapper}>
@@ -241,7 +218,11 @@ class Map extends PureComponent<Props, State> {
             </Marker>
           ))}
           <AmenityMarkers amenities={amenities} />
-          {uniqueStages.length > 0 && uniqueStages.map(this.renderStageMarker)}
+          <StageMarkers
+            stages={stages}
+            handleMarkerPress={this.handleMarkerPress}
+            activeMarker={this.state.activeMarker}
+          />
         </MapView>
 
         {!shouldNeverAsk(this.state.locationPermission) && (
