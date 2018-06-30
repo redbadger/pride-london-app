@@ -1728,8 +1728,8 @@
 				PIL_DISPLAY_NAME = "Pride in LDN";
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
 				PRODUCT_NAME = PrideLondonApp;
-				PROVISIONING_PROFILE = "4c82a347-359f-4613-b253-a79edd192dea";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore org.prideinlondon.festival";
+				PROVISIONING_PROFILE = "9ecf282e-0dec-481e-9417-4d2a43a328a0";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
