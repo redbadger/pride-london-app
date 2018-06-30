@@ -5,7 +5,11 @@ import { shallow } from "enzyme";
 import { TouchableWithoutFeedback } from "react-native";
 import Permissions from "react-native-permissions";
 import Map, { checkLocationPermission, requestLocationPermission } from "./Map";
-import { generateEvent, sampleOne } from "../../data/__test-data";
+import {
+  generateEvent,
+  generateAmenity,
+  sampleOne
+} from "../../data/__test-data";
 import * as position from "../../lib/position";
 import {
   region as paradeRegion,
@@ -18,6 +22,7 @@ const render = props =>
     <Map
       {...props}
       stages={[stage]}
+      amenities={[amenity]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
       onEventCardPress={() => {}}
@@ -26,6 +31,7 @@ const render = props =>
   );
 
 const stage = sampleOne(generateEvent, { seed: 5728 });
+const amenity = sampleOne(generateAmenity, { seed: 5728 });
 
 const regionProps = {
   paradeRegion,

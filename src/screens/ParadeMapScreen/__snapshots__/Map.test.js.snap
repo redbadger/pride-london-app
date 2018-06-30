@@ -701,6 +701,17 @@ exports[`Map component renders correctly 1`] = `
       onPress={[Function]}
       stopPropagation={true}
     />
+    <MapMarker
+      coordinate={
+        Object {
+          "latitude": 0,
+          "longitude": 10,
+        }
+      }
+      image={1}
+      key="20nBC086o2kwuMWHp8FqMyUV"
+      stopPropagation={true}
+    />
   </MapView>
   <Component
     style={
@@ -1431,6 +1442,17 @@ exports[`Map component renders without location button when permission was denie
       image={1}
       key="QF4dTqmpn9z5ItEizAZ"
       onPress={[Function]}
+      stopPropagation={true}
+    />
+    <MapMarker
+      coordinate={
+        Object {
+          "latitude": 0,
+          "longitude": 10,
+        }
+      }
+      image={1}
+      key="20nBC086o2kwuMWHp8FqMyUV"
       stopPropagation={true}
     />
   </MapView>

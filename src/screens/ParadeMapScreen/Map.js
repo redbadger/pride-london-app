@@ -13,6 +13,7 @@ import {
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
 import type { Event, SavedEvents } from "../../data/event";
+import type { Amenity } from "../../data/amenity";
 import Text from "../../components/Text";
 import { warmPinkColor } from "../../constants/colors";
 import { getCurrentPosition } from "../../lib/position";
@@ -27,6 +28,8 @@ import stageIconActive from "../../../assets/images/stageIconActive.png";
 import stageIconInactive from "../../../assets/images/stageIconInactive.png";
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
+import amenityIconFirstAid from "../../../assets/images/amenityIconFirstAid.png";
+import amenityIconToilet from "../../../assets/images/amenityIconToilet.png";
 
 type PermissionStatus =
   | "authorized"
@@ -43,6 +46,7 @@ type Props = {
   paradeRegion: Region,
   terminals: Array<Terminals>,
   stages: Array<Event>,
+  amenities: Array<Amenity>,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
@@ -99,6 +103,11 @@ const withLowAccuracy = {
 const animateToCoordinate = ref => (coords: Coordinates) => {
   const { latitude, longitude } = coords;
   ref.current.animateToCoordinate({ latitude, longitude }, 500);
+};
+
+const amenityIconMap = {
+  Toilet: amenityIconToilet,
+  "First Aid": amenityIconFirstAid
 };
 
 class Map extends PureComponent<Props, State> {
@@ -183,6 +192,18 @@ class Map extends PureComponent<Props, State> {
     />
   );
 
+  renderAmenityMarker = (amenity: Amenity) => (
+    <Marker
+      coordinate={{
+        longitude: amenity.fields.location.lon,
+        latitude: amenity.fields.location.lat
+      }}
+      key={amenity.id}
+      stopPropagation
+      image={amenityIconMap[amenity.fields.type]}
+    />
+  );
+
   render() {
     const {
       savedEvents,
@@ -231,6 +252,8 @@ class Map extends PureComponent<Props, State> {
           ))}
           {this.props.stages.length > 0 &&
             this.props.stages.map(this.renderStageMarker)}
+          {this.props.amenities.length > 0 &&
+            this.props.amenities.map(this.renderAmenityMarker)}
         </MapView>
 
         {!shouldNeverAsk(this.state.locationPermission) && (

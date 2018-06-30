@@ -34,6 +34,23 @@ exports[`renders correctly 1`] = `
 >
   <Map
     addSavedEvent={[Function]}
+    amenities={
+      Array [
+        Object {
+          "contentType": "amenity",
+          "fields": Object {
+            "location": Object {
+              "lat": 0,
+              "lon": 10,
+            },
+            "type": "Toilet",
+          },
+          "id": "20nBC086o2kwuMWHp8FqMyUV",
+          "locale": "en-GB",
+          "revision": 1,
+        },
+      ]
+    }
     onEventCardPress={[Function]}
     paradeRegion={
       Object {
