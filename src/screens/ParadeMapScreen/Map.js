@@ -194,12 +194,12 @@ class Map extends PureComponent<Props, State> {
 
   renderAmenityMarker = (amenity: Amenity) => (
     <Marker
+      pointerEvents="none"
       coordinate={{
         longitude: amenity.fields.location.lon,
         latitude: amenity.fields.location.lat
       }}
       key={amenity.id}
-      stopPropagation
       image={amenityIconMap[amenity.fields.type]}
     />
   );
@@ -250,10 +250,10 @@ class Map extends PureComponent<Props, State> {
               </View>
             </Marker>
           ))}
-          {this.props.stages.length > 0 &&
-            this.props.stages.map(this.renderStageMarker)}
           {this.props.amenities.length > 0 &&
             this.props.amenities.map(this.renderAmenityMarker)}
+          {this.props.stages.length > 0 &&
+            this.props.stages.map(this.renderStageMarker)}
         </MapView>
 
         {!shouldNeverAsk(this.state.locationPermission) && (
