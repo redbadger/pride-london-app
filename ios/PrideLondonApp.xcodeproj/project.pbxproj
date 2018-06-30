@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -32,7 +31,6 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		16964196204301DC0058AF96 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16964194204301BF0058AF96 /* Crashlytics.framework */; };
 		16964197204301DF0058AF96 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16964195204301BF0058AF96 /* Fabric.framework */; };
-		2C8FA14ED70043A499454177 /* libRNAccessibleSelectable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CDAA3B859204B7991C840B7 /* libRNAccessibleSelectable.a */; };
 		318765D00A39443CB392160E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4E3E0A0D0C4E578B19C5B2 /* libz.tbd */; };
 		3E67D28869C44E63B2795DC9 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F30F2CFAEF426BA05F1A4F /* libSplashScreen.a */; };
 		4D99DF92207A5AA0001A4C8A /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -59,6 +57,7 @@
 		F6B8F1C26F4A40CFB00E1EB5 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78508C36FC5F4F7C8214447C /* Roboto-Medium.ttf */; };
 		F8104A261A66438F8FD11CDC /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EE179CD91BE4527B8A8A205 /* Poppins-SemiBold.ttf */; };
 		FC84244B2A4F4565BBCADEE5 /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4136FF47A2BC434294DAD39E /* libLottieReactNative.a */; };
+		2C8FA14ED70043A499454177 /* libRNAccessibleSelectable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CDAA3B859204B7991C840B7 /* libRNAccessibleSelectable.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -391,13 +390,6 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
-		775E6C0220E7A519009A95ED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BA04F738F872444891A61631 /* RNAccessibleSelectable.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNAccessibleSelectable;
-		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -490,7 +482,6 @@
 		4F68F38120CFC19C0099F72E /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativePermissions.xcodeproj; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; };
 		50BA3D3CC2564F6D8C0B3766 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		5AB34E3A2077745700E0E793 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
-		5CDAA3B859204B7991C840B7 /* libRNAccessibleSelectable.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAccessibleSelectable.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6428AA583D204A5785008825 /* Lottie.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Lottie.xcodeproj; path = "../node_modules/lottie-ios/Lottie.xcodeproj"; sourceTree = "<group>"; };
 		653D79F0DBE4465EB8939DCB /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
@@ -508,7 +499,6 @@
 		AC984739B4624E9481CEE51E /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B02A5A5671CA4B19B5BCD0B4 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
-		BA04F738F872444891A61631 /* RNAccessibleSelectable.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAccessibleSelectable.xcodeproj; path = "../node_modules/react-native-accessible-selectable/ios/RNAccessibleSelectable.xcodeproj"; sourceTree = "<group>"; };
 		C5C678778AAE46BC9D691AEC /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		D5588D9015F648D6A5EC66E7 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		F01A14F5D3B04CA0ABC22DC5 /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
@@ -516,6 +506,8 @@
 		F7F30F2CFAEF426BA05F1A4F /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		F8C91E1E19B24BFD87EAF972 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		FE541190481E4DABADC5083F /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
+		BA04F738F872444891A61631 /* RNAccessibleSelectable.xcodeproj */ = {isa = PBXFileReference; name = "RNAccessibleSelectable.xcodeproj"; path = "../node_modules/react-native-accessible-selectable/ios/RNAccessibleSelectable.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		5CDAA3B859204B7991C840B7 /* libRNAccessibleSelectable.a */ = {isa = PBXFileReference; name = "libRNAccessibleSelectable.a"; path = "libRNAccessibleSelectable.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -762,14 +754,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		775E6BFE20E7A519009A95ED /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				775E6C0320E7A519009A95ED /* libRNAccessibleSelectable.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,7 +849,6 @@
 				4136FF47A2BC434294DAD39E /* libLottieReactNative.a */,
 				9A07DCBA3E154DB190496711 /* libRNReactNativeHapticFeedback.a */,
 				468586868A8E4813A990A022 /* libBugsnagReactNative.a */,
-				5CDAA3B859204B7991C840B7 /* libRNAccessibleSelectable.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1064,10 +1047,6 @@
 				{
 					ProductGroup = 4F68F38220CFC19C0099F72E /* Products */;
 					ProjectRef = 4F68F38120CFC19C0099F72E /* ReactNativePermissions.xcodeproj */;
-				},
-				{
-					ProductGroup = 775E6BFE20E7A519009A95ED /* Products */;
-					ProjectRef = BA04F738F872444891A61631 /* RNAccessibleSelectable.xcodeproj */;
 				},
 				{
 					ProductGroup = 16F5947A209CA1D900703940 /* Products */;
@@ -1402,13 +1381,6 @@
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		775E6C0320E7A519009A95ED /* libRNAccessibleSelectable.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNAccessibleSelectable.a;
-			remoteRef = 775E6C0220E7A519009A95ED /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1728,8 +1700,8 @@
 				PIL_DISPLAY_NAME = "Pride in LDN";
 				PRODUCT_BUNDLE_IDENTIFIER = org.prideinlondon.festival;
 				PRODUCT_NAME = PrideLondonApp;
-				PROVISIONING_PROFILE = "9ecf282e-0dec-481e-9417-4d2a43a328a0";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc org.prideinlondon.festival";
+				PROVISIONING_PROFILE = "4c82a347-359f-4613-b253-a79edd192dea";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore org.prideinlondon.festival";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
