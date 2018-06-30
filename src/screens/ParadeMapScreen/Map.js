@@ -10,13 +10,13 @@ import {
   Linking,
   Alert
 } from "react-native";
-import MapView, { Polyline, Marker } from "react-native-maps";
+import MapView, { Polyline } from "react-native-maps";
 import Permissions from "react-native-permissions";
 import type { Event, SavedEvents } from "../../data/event";
 import type { Amenity } from "../../data/amenity";
 import AmenityMarkers from "./AmenityMarkers";
 import StageMarkers from "./StageMarkers";
-import Text from "../../components/Text";
+import TerminalMarkers from "./TerminalMarkers";
 import { warmPinkColor } from "../../constants/colors";
 import { getCurrentPosition } from "../../lib/position";
 import type {
@@ -175,7 +175,8 @@ class Map extends PureComponent<Props, State> {
       removeSavedEvent,
       onEventCardPress,
       amenities,
-      stages
+      stages,
+      terminals
     } = this.props;
 
     return (
@@ -200,23 +201,7 @@ class Map extends PureComponent<Props, State> {
             strokeColor={warmPinkColor}
             lineJoin="bevel"
           />
-          {this.props.terminals.map(terminal => (
-            <Marker
-              coordinate={terminal.coordinates}
-              key={terminal.key}
-              centerOffset={{ x: 0, y: -15 }}
-              stopPropagation
-            >
-              <View style={terminal.style.markerView}>
-                <View style={terminal.style.markerTextWrapper}>
-                  <Text type={terminal.text.type} color={terminal.text.color}>
-                    {terminal.text.text}
-                  </Text>
-                </View>
-                <View style={terminal.style.triangle} />
-              </View>
-            </Marker>
-          ))}
+          <TerminalMarkers terminals={terminals} />
           <AmenityMarkers amenities={amenities} />
           <StageMarkers
             stages={stages}
