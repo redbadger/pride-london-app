@@ -697,9 +697,9 @@ exports[`Map component renders correctly 1`] = `
         }
       }
       image={1}
-      key="QF4dTqmpn9z5ItEizAZ"
-      onPress={[Function]}
-      stopPropagation={true}
+      key="20nBC086o2kwuMWHp8FqMyUV"
+      pointerEvents="none"
+      stopPropagation={false}
     />
     <MapMarker
       coordinate={
@@ -709,8 +709,10 @@ exports[`Map component renders correctly 1`] = `
         }
       }
       image={1}
-      key="20nBC086o2kwuMWHp8FqMyUV"
+      key="QF4dTqmpn9z5ItEizAZ"
+      onPress={[Function]}
       stopPropagation={true}
+      zIndex={1}
     />
   </MapView>
   <Component
@@ -1440,9 +1442,9 @@ exports[`Map component renders without location button when permission was denie
         }
       }
       image={1}
-      key="QF4dTqmpn9z5ItEizAZ"
-      onPress={[Function]}
-      stopPropagation={true}
+      key="20nBC086o2kwuMWHp8FqMyUV"
+      pointerEvents="none"
+      stopPropagation={false}
     />
     <MapMarker
       coordinate={
@@ -1452,8 +1454,10 @@ exports[`Map component renders without location button when permission was denie
         }
       }
       image={1}
-      key="20nBC086o2kwuMWHp8FqMyUV"
+      key="QF4dTqmpn9z5ItEizAZ"
+      onPress={[Function]}
       stopPropagation={true}
+      zIndex={1}
     />
   </MapView>
 </Component>

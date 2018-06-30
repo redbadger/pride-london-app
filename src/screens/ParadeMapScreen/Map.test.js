@@ -121,6 +121,29 @@ describe("Map component", () => {
 
     expect(output.state().locationPermission).toBe("authorized");
   });
+
+  it("renders recurring stage event once", () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
+
+    const recurrenceStage = {
+      ...stage,
+      id: `${stage.id}-reucrrence-2018-07-07`
+    };
+
+    const output = shallow(
+      <Map
+        {...regionProps}
+        stages={[stage, recurrenceStage]}
+        amenities={[amenity]}
+        addSavedEvent={() => {}}
+        removeSavedEvent={() => {}}
+        onEventCardPress={() => {}}
+        savedEvents={new Set()}
+      />
+    );
+
+    expect(output.find("MapMarker").length).toBe(4);
+  });
 });
 
 describe("onRegionChange", () => {

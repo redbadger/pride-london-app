@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import MapView, { Polyline, Marker } from "react-native-maps";
 import Permissions from "react-native-permissions";
+import { uniqWith, eqBy } from "ramda";
 import type { Event, SavedEvents } from "../../data/event";
 import type { Amenity } from "../../data/amenity";
 import Text from "../../components/Text";
@@ -210,8 +211,14 @@ class Map extends PureComponent<Props, State> {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
-      onEventCardPress
+      onEventCardPress,
+      amenities
     } = this.props;
+
+    const uniqueStages = uniqWith(eqBy(stage => stage.id.split("-")[0]))(
+      this.props.stages
+    );
+
     return (
       <View style={styles.mapWrapper}>
         <MapView
@@ -251,10 +258,8 @@ class Map extends PureComponent<Props, State> {
               </View>
             </Marker>
           ))}
-          {this.props.amenities.length > 0 &&
-            this.props.amenities.map(this.renderAmenityMarker)}
-          {this.props.stages.length > 0 &&
-            this.props.stages.map(this.renderStageMarker)}
+          {amenities.length > 0 && amenities.map(this.renderAmenityMarker)}
+          {uniqueStages.length > 0 && uniqueStages.map(this.renderStageMarker)}
         </MapView>
 
         {!shouldNeverAsk(this.state.locationPermission) && (
