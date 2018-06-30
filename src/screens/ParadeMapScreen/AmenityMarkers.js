@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import React, { Fragment } from "react";
 import { Marker } from "react-native-maps";
 import type { Amenity } from "../../data/amenity";
 import amenityIconFirstAid from "../../../assets/images/amenityIconFirstAid.png";
@@ -19,17 +19,21 @@ const AmenityMarkers = ({ amenities }: Props) => {
     return null;
   }
 
-  return amenities.map(amenity => (
-    <Marker
-      pointerEvents="none"
-      coordinate={{
-        longitude: amenity.fields.location.lon,
-        latitude: amenity.fields.location.lat
-      }}
-      key={amenity.id}
-      image={iconMap[amenity.fields.type]}
-    />
-  ));
+  return (
+    <Fragment>
+      {amenities.map(amenity => (
+        <Marker
+          pointerEvents="none"
+          coordinate={{
+            longitude: amenity.fields.location.lon,
+            latitude: amenity.fields.location.lat
+          }}
+          key={amenity.id}
+          image={iconMap[amenity.fields.type]}
+        />
+      ))}
+    </Fragment>
+  );
 };
 
 export default AmenityMarkers;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AmenityMarkers component renders correctly 1`] = `
-Array [
+<React.Fragment>
   <MapMarker
     coordinate={
       Object {
@@ -13,6 +13,6 @@ Array [
     key="20nBC086o2kwuMWHp8FqMyUV"
     pointerEvents="none"
     stopPropagation={false}
-  />,
-]
+  />
+</React.Fragment>
 `;
