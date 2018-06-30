@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   discoverPlanLove: {
+    // these dimensions must match the native screens
+    width: 172, // 342 516
+    height: 236, // 472 708
     marginBottom: 200,
     flexDirection: "column",
     justifyContent: "center",
@@ -80,6 +83,9 @@ const styles = StyleSheet.create({
     height: 120
   },
   logo: {
+    // same as discover plan love, must match native
+    width: 172,
+    height: 67,
     position: "absolute",
     bottom: 70
   }
