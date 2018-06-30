@@ -12,7 +12,8 @@ export type SplashScreenProps = {
   onAnimationComplete: () => any,
   state: "showing" | "hiding" | "hidden",
   noDataReceived: boolean,
-  loading: boolean
+  loading: boolean,
+  getData: () => void
 };
 
 type State = {
@@ -45,14 +46,14 @@ class SplashScreen extends Component<SplashScreenProps, State> {
   }
 
   componentDidUpdate() {
-    if (this.props.state !== "hiding" || !this.state.heart || !this.state.slide)
-      return;
+    if (this.props.state !== "hiding") return;
     if (!this.props.noDataReceived) {
       this.animateOut();
     }
   }
 
   animateOut = () => {
+    if (!this.state.heart || !this.state.slide) return;
     const heart = Animated.timing(this.state.heart, {
       toValue: 1,
       easing: Easing.linear,

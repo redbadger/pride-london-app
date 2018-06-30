@@ -14,7 +14,8 @@ type OwnProps = {
 };
 
 type DispatchProps = {
-  onAnimationComplete: () => any
+  onAnimationComplete: () => any,
+  getData: () => any
 };
 
 type StateProps = OwnProps & {

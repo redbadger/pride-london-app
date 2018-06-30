@@ -20,8 +20,6 @@ export type DataAction =
  * content as fast as possible.
  */
 
-let counter = 0;
-
 export const getData = (getCmsDataFn: typeof getCmsData = getCmsData) => async (
   dispatch: Dispatch<DataAction>
 ) => {
@@ -29,27 +27,16 @@ export const getData = (getCmsDataFn: typeof getCmsData = getCmsData) => async (
     type: "REQUEST_CMS_DATA"
   });
 
-  if (counter < 2) {
-    counter += 1;
-    setTimeout(() => {
-      dispatch({
-        type: "NO_DATA_RECEIVED"
-      });
-    }, 1000);
-  } else {
-    try {
-      const cmsData = await getCmsDataFn();
-      dispatch({
-        type: "RECEIVE_CMS_DATA",
-        data: cmsData
-      });
-    } catch (e) {
-      setTimeout(() => {
-        dispatch({
-          type: "NO_DATA_RECEIVED"
-        });
-      }, 1000);
-    }
+  try {
+    const cmsData = await getCmsDataFn();
+    dispatch({
+      type: "RECEIVE_CMS_DATA",
+      data: cmsData
+    });
+  } catch (e) {
+    dispatch({
+      type: "NO_DATA_RECEIVED"
+    });
   }
 };
 

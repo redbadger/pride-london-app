@@ -25,9 +25,6 @@ describe("getData", () => {
     await getData(mockGetCmsData)(mockDispatch);
 
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: "REQUEST_CMS_DATA"
-    });
-    expect(mockDispatch).toHaveBeenCalledWith({
       type: "NO_DATA_RECEIVED"
     });
   });

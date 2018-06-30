@@ -25,7 +25,8 @@ describe("Events reducer", () => {
       performances: {},
       sponsors: [],
       loading: false,
-      refreshing: false
+      refreshing: false,
+      noDataReceived: false
     };
     const state = reducer(initialState, { type: "REQUEST_CMS_DATA" });
 
@@ -43,7 +44,8 @@ describe("Events reducer", () => {
       performances: {},
       sponsors: [],
       loading: false,
-      refreshing: false
+      refreshing: false,
+      noDataReceived: false
     };
     const state = reducer(initialState, { type: "REQUEST_UPDATE_CMS_DATA" });
 
@@ -61,12 +63,14 @@ describe("Events reducer", () => {
       performances: {},
       sponsors: [],
       loading: true,
-      refreshing: true
+      refreshing: true,
+      noDataReceived: false
     };
     const state = reducer(initialState, { type: "NO_DATA_RECEIVED" });
 
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
+    expect(state.noDataReceived).toBe(true);
   });
 
   describe("RECEIVE_CMS_DATA action", () => {
@@ -80,7 +84,8 @@ describe("Events reducer", () => {
         performances: {},
         sponsors: [],
         loading: true,
-        refreshing: false
+        refreshing: false,
+        noDataRecived: true
       };
 
       const newCmsData = {
@@ -97,6 +102,7 @@ describe("Events reducer", () => {
       });
 
       expect(state.events).toMatchSnapshot();
+      expect(state.noDataReceived).toBe(false);
     });
 
     it("expands recurring events", () => {
@@ -109,7 +115,8 @@ describe("Events reducer", () => {
         performances: {},
         sponsors: [],
         loading: true,
-        refreshing: false
+        refreshing: false,
+        noDataRecived: false
       };
 
       const event = sampleOne(generateCMSEvent, { seed: 3353 });

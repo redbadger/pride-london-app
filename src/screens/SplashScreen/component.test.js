@@ -13,7 +13,13 @@ const staggerMock = jest.spyOn(Animated, "stagger").mockImplementation(() => ({
 
 it("renders correctly when showing", () => {
   const output = shallow(
-    <SplashScreen state="showing" onAnimationComplete={() => {}}>
+    <SplashScreen
+      state="showing"
+      onAnimationComplete={() => {}}
+      loading={false}
+      noDataReceived={false}
+      getData={() => {}}
+    >
       hello
     </SplashScreen>
   );
@@ -23,7 +29,13 @@ it("renders correctly when showing", () => {
 
 it("renders correctly when hidden", () => {
   const output = shallow(
-    <SplashScreen state="hidden" onAnimationComplete={() => {}}>
+    <SplashScreen
+      state="hidden"
+      onAnimationComplete={() => {}}
+      loading={false}
+      noDataReceived={false}
+      getData={() => {}}
+    >
       hello
     </SplashScreen>
   );
@@ -34,7 +46,14 @@ it("renders correctly when hidden", () => {
 describe("Animation", () => {
   it("creates animated values", () => {
     const state = SplashScreen.getDerivedStateFromProps(
-      { children: <View />, onAnimationComplete: () => {}, state: "showing" },
+      {
+        children: <View />,
+        onAnimationComplete: () => {},
+        state: "showing",
+        noDataReceived: false,
+        loading: false,
+        getData: () => {}
+      },
       { heart: null, slide: null }
     );
 
@@ -49,7 +68,14 @@ describe("Animation", () => {
 
   it("does not reset the values if they exist", () => {
     const state = SplashScreen.getDerivedStateFromProps(
-      { children: <View />, onAnimationComplete: () => {}, state: "showing" },
+      {
+        children: <View />,
+        onAnimationComplete: () => {},
+        state: "showing",
+        noDataReceived: false,
+        loading: false,
+        getData: () => {}
+      },
       { heart: new Animated.Value(0), slide: new Animated.Value(0) }
     );
 
@@ -58,7 +84,13 @@ describe("Animation", () => {
 
   it("does not animate unless the state is 'hiding'", () => {
     const instance = shallow(
-      <SplashScreen state="hidden" onAnimationComplete={() => {}}>
+      <SplashScreen
+        state="hidden"
+        onAnimationComplete={() => {}}
+        loading={false}
+        noDataReceived={false}
+        getData={() => {}}
+      >
         <View />
       </SplashScreen>
     ).instance();
@@ -70,7 +102,13 @@ describe("Animation", () => {
 
   it("starts the animations when the state is 'hiding'", () => {
     const screen = shallow(
-      <SplashScreen state="hiding" onAnimationComplete={() => {}}>
+      <SplashScreen
+        state="hiding"
+        onAnimationComplete={() => {}}
+        loading={false}
+        noDataReceived={false}
+        getData={() => {}}
+      >
         <View />
       </SplashScreen>
     );
@@ -94,7 +132,13 @@ describe("Animation", () => {
   it("calls onAnimationCompleteProp when the animation is done", () => {
     const onAnimation = () => {};
     const screen = shallow(
-      <SplashScreen state="hiding" onAnimationComplete={onAnimation}>
+      <SplashScreen
+        state="hiding"
+        onAnimationComplete={onAnimation}
+        loading={false}
+        noDataReceived={false}
+        getData={() => {}}
+      >
         <View />
       </SplashScreen>
     );
