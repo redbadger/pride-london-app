@@ -15,6 +15,7 @@ import Permissions from "react-native-permissions";
 import { uniqWith, eqBy } from "ramda";
 import type { Event, SavedEvents } from "../../data/event";
 import type { Amenity } from "../../data/amenity";
+import AmenityMarkers from "./AmenityMarkers";
 import Text from "../../components/Text";
 import { warmPinkColor } from "../../constants/colors";
 import { getCurrentPosition } from "../../lib/position";
@@ -29,8 +30,6 @@ import stageIconActive from "../../../assets/images/stageIconActive.png";
 import stageIconInactive from "../../../assets/images/stageIconInactive.png";
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
-import amenityIconFirstAid from "../../../assets/images/amenityIconFirstAid.png";
-import amenityIconToilet from "../../../assets/images/amenityIconToilet.png";
 
 type PermissionStatus =
   | "authorized"
@@ -104,11 +103,6 @@ const withLowAccuracy = {
 const animateToCoordinate = ref => (coords: Coordinates) => {
   const { latitude, longitude } = coords;
   ref.current.animateToCoordinate({ latitude, longitude }, 500);
-};
-
-const amenityIconMap = {
-  Toilet: amenityIconToilet,
-  "First Aid": amenityIconFirstAid
 };
 
 class Map extends PureComponent<Props, State> {
@@ -194,18 +188,6 @@ class Map extends PureComponent<Props, State> {
     />
   );
 
-  renderAmenityMarker = (amenity: Amenity) => (
-    <Marker
-      pointerEvents="none"
-      coordinate={{
-        longitude: amenity.fields.location.lon,
-        latitude: amenity.fields.location.lat
-      }}
-      key={amenity.id}
-      image={amenityIconMap[amenity.fields.type]}
-    />
-  );
-
   render() {
     const {
       savedEvents,
@@ -258,7 +240,7 @@ class Map extends PureComponent<Props, State> {
               </View>
             </Marker>
           ))}
-          {amenities.length > 0 && amenities.map(this.renderAmenityMarker)}
+          <AmenityMarkers amenities={amenities} />
           {uniqueStages.length > 0 && uniqueStages.map(this.renderStageMarker)}
         </MapView>
 

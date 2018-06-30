@@ -142,7 +142,7 @@ describe("Map component", () => {
       />
     );
 
-    expect(output.find("MapMarker").length).toBe(4);
+    expect(output.find("MapMarker").length).toBe(3);
   });
 });
 

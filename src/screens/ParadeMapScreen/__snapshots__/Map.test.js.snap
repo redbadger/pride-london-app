@@ -689,17 +689,24 @@ exports[`Map component renders correctly 1`] = `
         />
       </Component>
     </MapMarker>
-    <MapMarker
-      coordinate={
-        Object {
-          "latitude": 0,
-          "longitude": 10,
-        }
+    <AmenityMarkers
+      amenities={
+        Array [
+          Object {
+            "contentType": "amenity",
+            "fields": Object {
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "type": "Toilet",
+            },
+            "id": "20nBC086o2kwuMWHp8FqMyUV",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ]
       }
-      image={1}
-      key="20nBC086o2kwuMWHp8FqMyUV"
-      pointerEvents="none"
-      stopPropagation={false}
     />
     <MapMarker
       coordinate={
@@ -1434,17 +1441,24 @@ exports[`Map component renders without location button when permission was denie
         />
       </Component>
     </MapMarker>
-    <MapMarker
-      coordinate={
-        Object {
-          "latitude": 0,
-          "longitude": 10,
-        }
+    <AmenityMarkers
+      amenities={
+        Array [
+          Object {
+            "contentType": "amenity",
+            "fields": Object {
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "type": "Toilet",
+            },
+            "id": "20nBC086o2kwuMWHp8FqMyUV",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ]
       }
-      image={1}
-      key="20nBC086o2kwuMWHp8FqMyUV"
-      pointerEvents="none"
-      stopPropagation={false}
     />
     <MapMarker
       coordinate={
