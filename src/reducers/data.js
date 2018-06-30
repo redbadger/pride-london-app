@@ -142,7 +142,5 @@ const reducer = (state: State = defaultState, action: DataAction) => {
       return state;
   }
 };
-export default reducer;
 
-// RECEIVE_CMS_DATA;
-// NO_DATA_RECEIVED;
+export default reducer;

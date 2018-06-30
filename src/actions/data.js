@@ -19,7 +19,6 @@ export type DataAction =
  * This is supposed to be used when the app starts to show
  * content as fast as possible.
  */
-
 export const getData = (getCmsDataFn: typeof getCmsData = getCmsData) => async (
   dispatch: Dispatch<DataAction>
 ) => {
