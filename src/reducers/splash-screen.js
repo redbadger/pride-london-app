@@ -1,21 +1,23 @@
 // @flow
 import type { Reducer } from "redux";
-import SplashScreen from "react-native-splash-screen";
 import type { DataAction } from "../actions/data";
+import type { SplashScreenAction } from "../actions/splash-screen";
 
-export type State = boolean;
-const defaultState = true;
+export type State = "showing" | "hiding" | "hidden";
+const defaultState = "showing";
 
-const splashScreen: Reducer<State, DataAction> = (
+type SupportedAction = DataAction | SplashScreenAction;
+
+const splashScreen: Reducer<State, SupportedAction> = (
   state: State = defaultState,
-  action: DataAction
+  action: SupportedAction
 ) => {
-  // We want to hide the splash screen on "INIT"
-  // eventually and give a nice indication that data
-  // is still loading.
   if (action.type === "RECEIVE_CMS_DATA") {
-    SplashScreen.hide();
-    return false;
+    return "hiding";
+  }
+
+  if (action.type === "HIDE_SPLASH_SCREEN") {
+    return "hidden";
   }
 
   return state;
