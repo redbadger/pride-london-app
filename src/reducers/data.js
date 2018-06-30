@@ -8,6 +8,7 @@ import type { Images } from "../data/image";
 import type { ParadeGroup } from "../data/parade-group";
 import type { Performances } from "../data/performance";
 import type { Sponsor } from "../data/sponsor";
+import type { Amenity } from "../data/amenity";
 import { decodeEvent, expandRecurringEvents } from "../data/event";
 import decodeFeaturedEvents from "../data/featured-events";
 import decodeHeaderBanner from "../data/header-banner";
@@ -15,6 +16,7 @@ import { decodeImageDetails } from "../data/image";
 import decodeParadeGroup from "../data/parade-group";
 import decodePerformance from "../data/performance";
 import decodeSponsor from "../data/sponsor";
+import decodeAmenity from "../data/amenity";
 import locale from "../data/locale";
 import type { Decoder } from "../lib/decode";
 import { filterMap as decodeFilterMap, map as decodeMap } from "../lib/decode";
@@ -28,6 +30,7 @@ export type State = {
   paradeGroups: ParadeGroup[],
   performances: Performances,
   sponsors: Sponsor[],
+  amenities: Amenity[],
   loading: boolean,
   refreshing: boolean,
   noDataReceived: boolean
@@ -41,6 +44,7 @@ const defaultState = {
   paradeGroups: [],
   performances: {},
   sponsors: [],
+  amenities: [],
   loading: true,
   refreshing: false,
   noDataReceived: false
@@ -92,6 +96,10 @@ const decodeSponsors: Decoder<Array<Sponsor>> = decodeFilterMap(
   decodeSponsor(locale)
 );
 
+const decodeAmenities: Decoder<Array<Amenity>> = decodeFilterMap(
+  decodeAmenity(locale)
+);
+
 const reducer = (state: State = defaultState, action: DataAction) => {
   switch (action.type) {
     case "REQUEST_CMS_DATA":
@@ -129,7 +137,8 @@ const reducer = (state: State = defaultState, action: DataAction) => {
           {},
           decodePerformances(action.data.entries)
         ),
-        sponsors: resultWithDefault([], decodeSponsors(action.data.entries))
+        sponsors: resultWithDefault([], decodeSponsors(action.data.entries)),
+        amenities: resultWithDefault([], decodeAmenities(action.data.entries))
       };
     case "NO_DATA_RECEIVED":
       return {

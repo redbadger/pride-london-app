@@ -2,7 +2,11 @@
 import React from "react";
 import { shallow } from "enzyme";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import { generateEvent, sampleOne } from "../../data/__test-data";
+import {
+  generateEvent,
+  generateAmenity,
+  sampleOne
+} from "../../data/__test-data";
 import { EVENT_DETAILS } from "../../constants/routes";
 import ParadeMapScreen from "./component";
 import Map from "./Map";
@@ -12,6 +16,7 @@ const navigation: NavigationScreenProp<NavigationState> = ({
 }: any);
 
 const stage = sampleOne(generateEvent, { seed: 5728 });
+const amenity = sampleOne(generateAmenity, { seed: 5728 });
 
 it("renders correctly", () => {
   const output = shallow(
@@ -19,6 +24,7 @@ it("renders correctly", () => {
       isFocused
       navigation={navigation}
       stages={[stage]}
+      amenities={[amenity]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
       onEventCardPress={() => {}}
@@ -34,6 +40,7 @@ it("does not render map when not focused", () => {
       isFocused={false}
       navigation={navigation}
       stages={[stage]}
+      amenities={[amenity]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
       onEventCardPress={() => {}}
@@ -53,6 +60,7 @@ it("opens an event", () => {
       isFocused
       navigation={nav}
       stages={[stage]}
+      amenities={[amenity]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
       onEventCardPress={() => {}}

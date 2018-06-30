@@ -1,60 +1,44 @@
 // @flow
-import { scaleWithFont } from "../components/Text";
-import { lightNavyBlueColor, transparent } from "./colors";
 
-const terminalStyle = {
-  markerView: {
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  markerTextWrapper: {
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    backgroundColor: lightNavyBlueColor,
-    height: Math.max(30, scaleWithFont("h4", 30)),
-    width: Math.max(60, scaleWithFont("h4", 60)),
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 2
-  },
-  triangle: {
-    width: 0,
-    height: 0,
-    backgroundColor: transparent,
-    borderStyle: "solid",
-    borderLeftWidth: 5,
-    borderRightWidth: 5,
-    borderBottomWidth: 10,
-    borderLeftColor: transparent,
-    borderRightColor: transparent,
-    borderBottomColor: lightNavyBlueColor,
-    transform: [{ rotate: "180deg" }]
-  }
+export type Terminals = {
+  key: string,
+  coordinates: { longitude: number, latitude: number },
+  text: string
 };
 
-export const terminals = [
+export type Coordinates = {
+  latitude: number,
+  longitude: number
+};
+
+export type Region = {
+  latitude: number,
+  longitude: number,
+  latitudeDelta: number,
+  longitudeDelta: number
+};
+
+export const terminals: Terminals[] = [
   {
     key: "start",
     coordinates: { longitude: -0.14223, latitude: 51.51616 },
-    text: { text: "Start", type: "h4", color: "whiteColor" },
-    style: terminalStyle
+    text: "Start"
   },
   {
     key: "finish",
     coordinates: { longitude: -0.12664, latitude: 51.50497 },
-    text: { text: "Finish", type: "h4", color: "whiteColor" },
-    style: terminalStyle
+    text: "Finish"
   }
 ];
 
-export const region = {
-  latitude: 51.5085,
+export const region: Region = {
+  latitude: 51.512,
   longitude: -0.134192,
   latitudeDelta: 0.02,
   longitudeDelta: 0.000002
 };
 
-export const route = [
+export const route: Coordinates[] = [
   { longitude: -0.14223, latitude: 51.51616 },
   { longitude: -0.14221, latitude: 51.5161 },
   { longitude: -0.14214, latitude: 51.51605 },
@@ -178,22 +162,3 @@ export const route = [
   { longitude: -0.12672, latitude: 51.50517 },
   { longitude: -0.12664, latitude: 51.50497 }
 ];
-
-export type Terminals = {
-  key: string,
-  coordinates: { longitude: number, latitude: number },
-  text: { text: string, type: string, color: string },
-  style: any
-};
-
-export type Coordinates = {
-  latitude: number,
-  longitude: number
-};
-
-export type Region = {
-  latitude: number,
-  longitude: number,
-  latitudeDelta: number,
-  longitudeDelta: number
-};

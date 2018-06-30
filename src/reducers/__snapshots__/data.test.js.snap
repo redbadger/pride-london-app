@@ -490,6 +490,7 @@ Array [
 
 exports[`Events reducer initialises with default state 1`] = `
 Object {
+  "amenities": Array [],
   "events": Array [],
   "featuredEvents": Array [],
   "headerBanners": Array [],
