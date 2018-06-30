@@ -10,7 +10,7 @@ export type DataAction =
       data: SavedData
     }
   | { type: "REQUEST_UPDATE_CMS_DATA" }
-  | { type: "RECEIVE_CMS_ERROR" };
+  | { type: "NO_DATA_RECEIVED" };
 
 /**
  * Loads data from local storage and falls back to asking
@@ -19,6 +19,9 @@ export type DataAction =
  * This is supposed to be used when the app starts to show
  * content as fast as possible.
  */
+
+let counter = 0;
+
 export const getData = (getCmsDataFn: typeof getCmsData = getCmsData) => async (
   dispatch: Dispatch<DataAction>
 ) => {
@@ -26,16 +29,27 @@ export const getData = (getCmsDataFn: typeof getCmsData = getCmsData) => async (
     type: "REQUEST_CMS_DATA"
   });
 
-  try {
-    const cmsData = await getCmsDataFn();
-    dispatch({
-      type: "RECEIVE_CMS_DATA",
-      data: cmsData
-    });
-  } catch (e) {
-    dispatch({
-      type: "RECEIVE_CMS_ERROR"
-    });
+  if (counter < 2) {
+    counter += 1;
+    setTimeout(() => {
+      dispatch({
+        type: "NO_DATA_RECEIVED"
+      });
+    }, 1000);
+  } else {
+    try {
+      const cmsData = await getCmsDataFn();
+      dispatch({
+        type: "RECEIVE_CMS_DATA",
+        data: cmsData
+      });
+    } catch (e) {
+      setTimeout(() => {
+        dispatch({
+          type: "NO_DATA_RECEIVED"
+        });
+      }, 1000);
+    }
   }
 };
 
@@ -88,7 +102,7 @@ export const updateData = (
     });
   } catch (e) {
     dispatch({
-      type: "RECEIVE_CMS_ERROR"
+      type: "NO_DATA_RECEIVED"
     });
   }
 };

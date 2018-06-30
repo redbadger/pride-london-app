@@ -51,7 +51,7 @@ describe("Events reducer", () => {
     expect(state.refreshing).toBe(true);
   });
 
-  it("sets loading and refreshing to false for RECEIVE_CMS_ERROR action", () => {
+  it("sets loading and refreshing to false for NO_DATA_RECEIVED action", () => {
     const initialState = {
       events: [],
       featuredEvents: [],
@@ -63,7 +63,7 @@ describe("Events reducer", () => {
       loading: true,
       refreshing: true
     };
-    const state = reducer(initialState, { type: "RECEIVE_CMS_ERROR" });
+    const state = reducer(initialState, { type: "NO_DATA_RECEIVED" });
 
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);

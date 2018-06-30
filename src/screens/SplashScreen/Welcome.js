@@ -4,6 +4,7 @@ import { Image, StyleSheet, View } from "react-native";
 import LottieView from "lottie-react-native";
 
 import Text from "../../components/Text";
+import BadConnection from "./BadConnection";
 
 import {
   lightNavyBlueColor,
@@ -14,10 +15,18 @@ import logo from "../../../assets/images/logo.png";
 import heartAnimation from "../../../assets/animations/save-event-light.json";
 
 export type Props = {
-  animationProgress: ?Object
+  animationProgress: ?Object,
+  noDataReceived: boolean,
+  loading: boolean,
+  getData: () => void
 };
 
-const Welcome = ({ animationProgress }: Props) => (
+const Welcome = ({
+  animationProgress,
+  noDataReceived,
+  loading,
+  getData
+}: Props) => (
   <View style={styles.container}>
     <View style={styles.discoverPlanLove}>
       <View style={styles.discover}>
@@ -38,7 +47,8 @@ const Welcome = ({ animationProgress }: Props) => (
         />
       </View>
     </View>
-    <Image source={logo} style={styles.logo} />
+    {noDataReceived && <BadConnection loading={loading} getData={getData} />}
+    {!noDataReceived && <Image source={logo} style={styles.logo} />}
   </View>
 );
 
