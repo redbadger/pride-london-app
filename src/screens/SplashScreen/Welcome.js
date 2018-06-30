@@ -3,16 +3,12 @@ import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import LottieView from "lottie-react-native";
 
-import Text from "../../components/Text";
-import BadConnection from "./BadConnection";
-
-import {
-  lightNavyBlueColor,
-  brightLightBlueColor,
-  warmPinkColor
-} from "../../constants/colors";
+import { lightNavyBlueColor } from "../../constants/colors";
 import logo from "../../../assets/images/logo.png";
+import splash from "../../../assets/images/splash.png";
 import heartAnimation from "../../../assets/animations/save-event-light.json";
+
+import BadConnection from "./BadConnection";
 
 export type Props = {
   animationProgress: ?Object,
@@ -29,21 +25,14 @@ const Welcome = ({
 }: Props) => (
   <View style={styles.container}>
     <View style={styles.discoverPlanLove}>
-      <View style={styles.discover}>
-        <Text type="uber" style={styles.discoverText}>
-          Discover
-        </Text>
-      </View>
-      <View style={styles.plan}>
-        <Text type="uber" style={styles.planText}>
-          Plan
-        </Text>
-      </View>
+      <Image source={splash} style={styles.discoverPlan} />
       <View style={styles.love}>
         <LottieView
           progress={animationProgress}
           source={heartAnimation}
           loop={false}
+          style={styles.loveAnimation}
+          resizeMode="cover"
         />
       </View>
     </View>
@@ -61,37 +50,37 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   discoverPlanLove: {
+    // these dimensions must match the native screens
+    width: 172, // 342 516
+    height: 236, // 472 708
     marginBottom: 200,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
   },
-  discover: {
-    marginBottom: 20,
-    paddingHorizontal: 12,
-    backgroundColor: brightLightBlueColor
-  },
-  discoverText: {
-    lineHeight: 0,
-    color: lightNavyBlueColor
-  },
-  plan: {
-    paddingHorizontal: 12,
-    backgroundColor: warmPinkColor
-  },
-  planText: {
-    lineHeight: 0,
-    color: lightNavyBlueColor
+  discoverPlan: {
+    width: 172,
+    height: 236
   },
   love: {
+    position: "absolute",
+    bottom: 0,
     margin: 0,
     padding: 0,
     width: 120,
-    height: 120
+    height: 120,
+    backgroundColor: lightNavyBlueColor
   },
   logo: {
+    // same as discover plan love, must match native
+    width: 172,
+    height: 67,
     position: "absolute",
     bottom: 70
+  },
+  loveAnimation: {
+    width: "100%",
+    height: "100%"
   }
 });
 
