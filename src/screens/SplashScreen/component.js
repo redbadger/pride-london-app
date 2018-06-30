@@ -24,10 +24,6 @@ class SplashScreen extends Component<SplashScreenProps, State> {
     slide: null
   };
 
-  componentDidMount() {
-    SplashScreenController.hide();
-  }
-
   static getDerivedStateFromProps(
     nextProps: SplashScreenProps,
     prevState: State
@@ -43,6 +39,8 @@ class SplashScreen extends Component<SplashScreenProps, State> {
   }
 
   componentDidUpdate() {
+    SplashScreenController.hide();
+
     if (this.props.state !== "hiding" || !this.state.heart || !this.state.slide)
       return;
 
