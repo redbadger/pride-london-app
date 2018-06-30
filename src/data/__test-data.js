@@ -5,7 +5,7 @@ import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";
 import type { Maybe } from "../lib/maybe";
-import { some, none } from "../lib/maybe";
+import { some } from "../lib/maybe";
 import type { Event, EventCategoryName } from "./event";
 import type { FeaturedEvents } from "./featured-events";
 import type { FieldRef } from "./field-ref";
@@ -42,7 +42,7 @@ const generateNull = <A>(): ValueGenerator<Maybe<A>> => gen.null;
 
 const generateMaybe = <A>(
   generator: ValueGenerator<A>
-): ValueGenerator<Maybe<A>> => gen.oneOf([none(), generator.then(some)]);
+): ValueGenerator<Maybe<A>> => gen.oneOf([gen.null, generator.then(some)]);
 
 export const generateFieldRef: ValueGenerator<FieldRef> = gen({
   sys: gen({
@@ -218,7 +218,8 @@ export const generateEvent: ValueGenerator<Event> = gen({
     individualEventPicture: generateFieldRef,
     eventsListPicture: generateFieldRef,
     performances: gen.array(generateFieldRef, { minSize: 1, maxSize: 5 }),
-    recurrenceDates: gen.array(generateDate, { minSize: 1, maxSize: 5 })
+    recurrenceDates: gen.array(generateDate, { minSize: 1, maxSize: 5 }),
+    stage: gen.boolean
   })
 });
 
@@ -271,7 +272,8 @@ export const generateCMSEvent: ValueGenerator<mixed> = gen({
     },
     recurrenceDates: {
       "en-GB": gen.array(generateDate, { minSize: 1, maxSize: 5 })
-    }
+    },
+    stage: { "en-GB": gen.boolean }
   })
 });
 
@@ -307,7 +309,8 @@ export const generateEventMinimum: ValueGenerator<Event> = gen({
     individualEventPicture: generateFieldRef,
     eventsListPicture: generateFieldRef,
     performances: [],
-    recurrenceDates: []
+    recurrenceDates: [],
+    stage: false
   })
 });
 
@@ -338,16 +341,6 @@ export const generateCMSEventMinimum: ValueGenerator<mixed> = gen({
   })
 });
 
-const paradeGroupSections = [
-  "Section A",
-  "Section B",
-  "Section C",
-  "Section D",
-  "Section E",
-  "Section F",
-  "Section G"
-];
-
 export const generateParadeGroup: ValueGenerator<ParadeGroup> = gen({
   contentType: "paradeGroup",
   id: gen.alphaNumString.notEmpty(),
@@ -355,7 +348,6 @@ export const generateParadeGroup: ValueGenerator<ParadeGroup> = gen({
   revision: 1,
   fields: gen({
     name: gen.alphaNumString.notEmpty(),
-    section: gen.oneOf(paradeGroupSections),
     facebookUrl: generateMaybe(generateURL),
     twitterUrl: generateMaybe(generateURL),
     websiteUrl: generateMaybe(generateURL)
@@ -375,9 +367,6 @@ export const generateCMSParadeGroup: ValueGenerator<mixed> = gen({
   fields: gen({
     name: gen({
       "en-GB": gen.alphaNumString.notEmpty()
-    }),
-    section: gen({
-      "en-GB": gen.oneOf(paradeGroupSections)
     }),
     facebookUrl: gen.oneOf([
       gen.undefined,

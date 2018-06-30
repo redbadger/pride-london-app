@@ -11,7 +11,6 @@ export type ParadeGroup = {
   revision: number,
   fields: {
     name: string,
-    section: string,
     facebookUrl: Maybe<string>,
     twitterUrl: Maybe<string>,
     websiteUrl: Maybe<string>
@@ -38,7 +37,6 @@ const decodeParadeGroup = (locale: string): Decoder<ParadeGroup> =>
       "fields",
       decode.shape({
         name: decode.at(["name", locale], decode.string),
-        section: decode.at(["section", locale], decode.string),
         facebookUrl: maybeField(locale, "facebookUrl", decode.string),
         twitterUrl: maybeField(locale, "twitterUrl", decode.string),
         websiteUrl: maybeField(locale, "websiteUrl", decode.string)

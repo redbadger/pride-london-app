@@ -1,12 +1,6 @@
-const { takeScreenshot } = require("./helpers");
-
 describe("e2e/parade", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
-  });
-
-  afterEach(async () => {
-    await takeScreenshot();
   });
 
   it("should display the map by default", async () => {
@@ -19,15 +13,15 @@ describe("e2e/parade", () => {
   it("should navigate to the parade information tab", async () => {
     await element(by.id("parade-tab-button")).tap();
 
-    await element(by.id("parade-information-button")).tap();
+    await element(by.id("parade-groups-button")).tap();
 
-    await expect(element(by.id("parade-information-screen"))).toBeVisible();
+    await expect(element(by.id("parade-groups-screen"))).toBeVisible();
   });
 
   it("should navigate back to map tab", async () => {
     await element(by.id("parade-tab-button")).tap();
 
-    await element(by.id("parade-information-button")).tap();
+    await element(by.id("parade-groups-button")).tap();
     await element(by.id("parade-map-button")).tap();
 
     await expect(element(by.id("parade-map-screen"))).toBeVisible();

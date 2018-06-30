@@ -11,7 +11,8 @@ import {
   shape,
   oneOf,
   map,
-  filterMap
+  filterMap,
+  boolean
 } from "./decode";
 
 describe("succeed", () => {
@@ -23,6 +24,30 @@ describe("succeed", () => {
     expect(result.ok).toEqual(true);
     if (result.ok) {
       expect(result.value).toEqual(1);
+    }
+  });
+});
+
+describe("boolean", () => {
+  it("succeeds when decoding boolean types", () => {
+    const input: mixed = true;
+
+    const result = boolean(input);
+
+    expect(result.ok).toEqual(true);
+    if (result.ok) {
+      expect(result.value).toEqual(true);
+    }
+  });
+
+  it("fails when decoding non boolean types", () => {
+    const input: mixed = 1;
+
+    const result = boolean(input);
+
+    expect(result.ok).toEqual(false);
+    if (!result.ok) {
+      expect(result.error).toEqual("value is not a boolean");
     }
   });
 });

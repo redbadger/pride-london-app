@@ -1,4 +1,60 @@
-export default [
+// @flow
+import { scaleWithFont } from "../components/Text";
+import { lightNavyBlueColor, transparent } from "./colors";
+
+const terminalStyle = {
+  markerView: {
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  markerTextWrapper: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    backgroundColor: lightNavyBlueColor,
+    height: Math.max(30, scaleWithFont("h4", 30)),
+    width: Math.max(60, scaleWithFont("h4", 60)),
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 2
+  },
+  triangle: {
+    width: 0,
+    height: 0,
+    backgroundColor: transparent,
+    borderStyle: "solid",
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderBottomWidth: 10,
+    borderLeftColor: transparent,
+    borderRightColor: transparent,
+    borderBottomColor: lightNavyBlueColor,
+    transform: [{ rotate: "180deg" }]
+  }
+};
+
+export const terminals = [
+  {
+    key: "start",
+    coordinates: { longitude: -0.14223, latitude: 51.51616 },
+    text: { text: "Start", type: "h4", color: "whiteColor" },
+    style: terminalStyle
+  },
+  {
+    key: "finish",
+    coordinates: { longitude: -0.12664, latitude: 51.50497 },
+    text: { text: "Finish", type: "h4", color: "whiteColor" },
+    style: terminalStyle
+  }
+];
+
+export const region = {
+  latitude: 51.5085,
+  longitude: -0.134192,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.000002
+};
+
+export const route = [
   { longitude: -0.14223, latitude: 51.51616 },
   { longitude: -0.14221, latitude: 51.5161 },
   { longitude: -0.14214, latitude: 51.51605 },
@@ -120,6 +176,24 @@ export default [
   { longitude: -0.12692, latitude: 51.5056 },
   { longitude: -0.1268, latitude: 51.50534 },
   { longitude: -0.12672, latitude: 51.50517 },
-  { longitude: -0.12664, latitude: 51.50497 },
-  { longitude: -0.1265, latitude: 51.50499 }
+  { longitude: -0.12664, latitude: 51.50497 }
 ];
+
+export type Terminals = {
+  key: string,
+  coordinates: { longitude: number, latitude: number },
+  text: { text: string, type: string, color: string },
+  style: any
+};
+
+export type Coordinates = {
+  latitude: number,
+  longitude: number
+};
+
+export type Region = {
+  latitude: number,
+  longitude: number,
+  latitudeDelta: number,
+  longitudeDelta: number
+};
