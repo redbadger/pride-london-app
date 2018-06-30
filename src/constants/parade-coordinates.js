@@ -1,49 +1,15 @@
 // @flow
-import { scaleWithFont } from "../components/Text";
-import { lightNavyBlueColor, transparent } from "./colors";
-
-const terminalStyle = {
-  markerView: {
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  markerTextWrapper: {
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    backgroundColor: lightNavyBlueColor,
-    height: Math.max(30, scaleWithFont("h4", 30)),
-    width: Math.max(60, scaleWithFont("h4", 60)),
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 2
-  },
-  triangle: {
-    width: 0,
-    height: 0,
-    backgroundColor: transparent,
-    borderStyle: "solid",
-    borderLeftWidth: 5,
-    borderRightWidth: 5,
-    borderBottomWidth: 10,
-    borderLeftColor: transparent,
-    borderRightColor: transparent,
-    borderBottomColor: lightNavyBlueColor,
-    transform: [{ rotate: "180deg" }]
-  }
-};
 
 export const terminals = [
   {
     key: "start",
     coordinates: { longitude: -0.14223, latitude: 51.51616 },
-    text: { text: "Start", type: "h4", color: "whiteColor" },
-    style: terminalStyle
+    text: { text: "Start", type: "h4", color: "whiteColor" }
   },
   {
     key: "finish",
     coordinates: { longitude: -0.12664, latitude: 51.50497 },
-    text: { text: "Finish", type: "h4", color: "whiteColor" },
-    style: terminalStyle
+    text: { text: "Finish", type: "h4", color: "whiteColor" }
   }
 ];
 
@@ -182,8 +148,7 @@ export const route = [
 export type Terminals = {
   key: string,
   coordinates: { longitude: number, latitude: number },
-  text: { text: string, type: string, color: string },
-  style: any
+  text: { text: string, type: string, color: string }
 };
 
 export type Coordinates = {
