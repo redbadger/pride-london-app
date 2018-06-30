@@ -26,8 +26,8 @@ const TerminalMarkers = ({ terminals }: Props) => {
         >
           <View style={styles.markerView}>
             <View style={styles.markerTextWrapper}>
-              <Text type={terminal.text.type} color={terminal.text.color}>
-                {terminal.text.text}
+              <Text type="h4" color="whiteColor">
+                {terminal.text}
               </Text>
             </View>
             <View style={styles.triangle} />

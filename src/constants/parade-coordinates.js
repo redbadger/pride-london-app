@@ -1,26 +1,44 @@
 // @flow
 
-export const terminals = [
+export type Terminals = {
+  key: string,
+  coordinates: { longitude: number, latitude: number },
+  text: string
+};
+
+export type Coordinates = {
+  latitude: number,
+  longitude: number
+};
+
+export type Region = {
+  latitude: number,
+  longitude: number,
+  latitudeDelta: number,
+  longitudeDelta: number
+};
+
+export const terminals: Terminals[] = [
   {
     key: "start",
     coordinates: { longitude: -0.14223, latitude: 51.51616 },
-    text: { text: "Start", type: "h4", color: "whiteColor" }
+    text: "Start"
   },
   {
     key: "finish",
     coordinates: { longitude: -0.12664, latitude: 51.50497 },
-    text: { text: "Finish", type: "h4", color: "whiteColor" }
+    text: "Finish"
   }
 ];
 
-export const region = {
+export const region: Region = {
   latitude: 51.512,
   longitude: -0.134192,
   latitudeDelta: 0.02,
   longitudeDelta: 0.000002
 };
 
-export const route = [
+export const route: Coordinates[] = [
   { longitude: -0.14223, latitude: 51.51616 },
   { longitude: -0.14221, latitude: 51.5161 },
   { longitude: -0.14214, latitude: 51.51605 },
@@ -144,21 +162,3 @@ export const route = [
   { longitude: -0.12672, latitude: 51.50517 },
   { longitude: -0.12664, latitude: 51.50497 }
 ];
-
-export type Terminals = {
-  key: string,
-  coordinates: { longitude: number, latitude: number },
-  text: { text: string, type: string, color: string }
-};
-
-export type Coordinates = {
-  latitude: number,
-  longitude: number
-};
-
-export type Region = {
-  latitude: number,
-  longitude: number,
-  latitudeDelta: number,
-  longitudeDelta: number
-};
