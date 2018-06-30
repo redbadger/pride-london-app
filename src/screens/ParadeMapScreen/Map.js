@@ -177,6 +177,7 @@ class Map extends PureComponent<Props, State> {
 
   renderStageMarker = (stage: Event) => (
     <Marker
+      zIndex={1}
       coordinate={{
         longitude: stage.fields.location.lon,
         latitude: stage.fields.location.lat
