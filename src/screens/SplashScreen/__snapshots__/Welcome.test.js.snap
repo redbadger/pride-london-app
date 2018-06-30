@@ -49,6 +49,7 @@ exports[`renders correctly when showing 1`] = `
       <AnimatedComponent
         loop={false}
         progress={null}
+        resizeMode="cover"
         source={
           Object {
             "assets": Array [],
@@ -1979,6 +1980,12 @@ exports[`renders correctly when showing 1`] = `
             "op": 37,
             "v": "5.1.9",
             "w": 48,
+          }
+        }
+        style={
+          Object {
+            "height": "100%",
+            "width": "100%",
           }
         }
       />
