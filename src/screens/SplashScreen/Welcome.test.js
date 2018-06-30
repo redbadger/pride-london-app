@@ -15,3 +15,16 @@ it("renders correctly when showing", () => {
 
   expect(output).toMatchSnapshot();
 });
+
+it("renders correctly when with no data", () => {
+  const output = shallow(
+    <Welcome
+      animationProgress={null}
+      getData={() => {}}
+      noDataReceived
+      loading={false}
+    />
+  );
+
+  expect(output).toMatchSnapshot();
+});
