@@ -21,6 +21,8 @@ const Welcome = ({ animationProgress }: Props) => (
           progress={animationProgress}
           source={heartAnimation}
           loop={false}
+          style={styles.loveAnimation}
+          resizeMode="cover"
         />
       </View>
     </View>
@@ -64,6 +66,10 @@ const styles = StyleSheet.create({
     height: 67,
     position: "absolute",
     bottom: 70
+  },
+  loveAnimation: {
+    width: "100%",
+    height: "100%"
   }
 });
 
