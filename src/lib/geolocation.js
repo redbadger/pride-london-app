@@ -126,6 +126,18 @@ export const locationStream = () =>
     };
   });
 
+/*
+Returns a stream of LocationStatus values. Automatically streams
+location updates if permissions allow this to be done passively.
+Example steaming output:
+|-A---B---C---D---E
+Where:
+A = Checking
+B = Authorized + Awaiting
+C = Authorized + Tracking(1, 1)
+D = Authorized + Tracking(1, 2)
+E = Authorized + Error
+*/
 export const passiveLocationStream = () =>
   checkPermissionStream().pipe(
     map(permissionToLocationStatus),
@@ -137,6 +149,19 @@ export const passiveLocationStream = () =>
     })
   );
 
+/*
+Returns a stream of LocationStatus values. This will prompt the user
+to authorize getting location information. Automatically streams
+location updates if resulting permission allows this.
+Example steaming output:
+|-A---B---C---D---E
+Where:
+A = Requesting
+B = Authorized + Awaiting
+C = Authorized + Tracking(1, 1)
+D = Authorized + Tracking(1, 2)
+E = Authorized + Error
+*/
 export const activeLocationStream = () =>
   requestPermissionStream().pipe(
     map(permissionToLocationStatus),
