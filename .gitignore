@@ -78,3 +78,5 @@ com_crashlytics_export_strings.xml
 # Bundle artifact
 *.jsbundle
 
+# Detox
+artifacts/

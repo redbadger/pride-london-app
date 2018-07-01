@@ -10,7 +10,7 @@ export type DataAction =
       data: SavedData
     }
   | { type: "REQUEST_UPDATE_CMS_DATA" }
-  | { type: "RECEIVE_CMS_ERROR" };
+  | { type: "NO_DATA_RECEIVED" };
 
 /**
  * Loads data from local storage and falls back to asking
@@ -34,7 +34,7 @@ export const getData = (getCmsDataFn: typeof getCmsData = getCmsData) => async (
     });
   } catch (e) {
     dispatch({
-      type: "RECEIVE_CMS_ERROR"
+      type: "NO_DATA_RECEIVED"
     });
   }
 };
@@ -88,7 +88,7 @@ export const updateData = (
     });
   } catch (e) {
     dispatch({
-      type: "RECEIVE_CMS_ERROR"
+      type: "NO_DATA_RECEIVED"
     });
   }
 };

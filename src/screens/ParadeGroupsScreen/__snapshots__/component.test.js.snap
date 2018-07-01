@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#sortAndGroupByName sorts ParadeGroups by name and groups them 1`] = `
+Array [
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/l0i9wT2pz67o",
+        "name": "4qif4q",
+        "twitterUrl": "https://red-badger.com/r0LLAzLf4jkD2PBsV6p8f0X3qm7GZ",
+        "websiteUrl": null,
+      },
+      "id": "QPIB7DYkm7Z",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": null,
+        "name": "66xFJ9CdsFOL2f3P68Muj8G9",
+        "twitterUrl": "https://red-badger.com/P460A2Y",
+        "websiteUrl": null,
+      },
+      "id": "k9XA4bnQ5lc3pH7IRmnTf7wdX9FLFT",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": null,
+        "name": "68U935Hqz65100my",
+        "twitterUrl": "https://red-badger.com/hSD80ML7HPK",
+        "websiteUrl": "https://red-badger.com/pAbcOza3u300",
+      },
+      "id": "g3QY",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/Eu5G5X",
+        "name": "8",
+        "twitterUrl": null,
+        "websiteUrl": null,
+      },
+      "id": "69ZJ0a0IU64JZ",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/6r",
+        "name": "9KYBVw1B0r2TwKsSLwS3Xk",
+        "twitterUrl": "https://red-badger.com/kbvy9f2BQz53Jx7nu36R1K2",
+        "websiteUrl": "https://red-badger.com/DpCxv0T7ic81Yc67IC732r8ZA5s",
+      },
+      "id": "6UhHUJO234eCj",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": null,
+        "name": "cV99LvgB81BvJ8zP3mvJa6NbA4QIBu",
+        "twitterUrl": "https://red-badger.com/29P43",
+        "websiteUrl": "https://red-badger.com/uTAfO3T13Mh",
+      },
+      "id": "908Q3Y5y7fj4xsav535QvA",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/j3ZTvlkuZ1BM3d145X1lfO3TuphYjA",
+        "name": "dH32ww7rFcMiZx2ErCw5H5OEj88I",
+        "twitterUrl": "https://red-badger.com/74Mh7Ks7Y1OQ6B9UzMS3O3",
+        "websiteUrl": null,
+      },
+      "id": "0z4",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/fDU4O",
+        "name": "j4KZB5Id06ptaB1EnhR716i8",
+        "twitterUrl": "https://red-badger.com/5B2",
+        "websiteUrl": null,
+      },
+      "id": "v3bvylwKk9k6qto22Tjt48H1",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+  Array [
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": null,
+        "name": "Z0h4",
+        "twitterUrl": "https://red-badger.com/KS634FeFp2070DdT2pY7rC4n9",
+        "websiteUrl": "https://red-badger.com/Y0GvE7YK4N0p",
+      },
+      "id": "0H2q0dclb0OGlheKwcx4b",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+    Object {
+      "contentType": "paradeGroup",
+      "fields": Object {
+        "facebookUrl": "https://red-badger.com/1CYenig",
+        "name": "ZU3wdsh5Dg3Od4O5bJ",
+        "twitterUrl": null,
+        "websiteUrl": "https://red-badger.com/bFe25Bysg56fOrs0cCN09ofT63t3",
+      },
+      "id": "vbMOT47431VSzcbrqd47Sq",
+      "locale": "en-GB",
+      "revision": 1,
+    },
+  ],
+]
+`;
+
+exports[`renders correctly 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+  testID="parade-groups-screen"
+>
+  <ParadeGroupList
+    paradeGroups={
+      Array [
+        Array [
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": "https://red-badger.com/CTB4f2a0Khyl0b1T4lOFk11H",
+              "name": "1x2yj",
+              "twitterUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+              "websiteUrl": null,
+            },
+            "id": "d18Cp545J4C996o5",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": "https://red-badger.com/U",
+              "name": "99b3j372i",
+              "twitterUrl": null,
+              "websiteUrl": "https://red-badger.com/R7yfk3P4z96cTKJtb7",
+            },
+            "id": "642gdEs5xmkdO5v541Oau11NM7T",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ],
+        Array [
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": null,
+              "name": "w6PEBGjV01WHhj9",
+              "twitterUrl": null,
+              "websiteUrl": null,
+            },
+            "id": "LCUP4D33RDtZPmk2q9b6yvSStOJkzA",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ],
+      ]
+    }
+  />
+</Component>
+`;

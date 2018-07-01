@@ -1,4 +1,44 @@
-export default [
+// @flow
+
+export type Terminals = {
+  key: string,
+  coordinates: { longitude: number, latitude: number },
+  text: string
+};
+
+export type Coordinates = {
+  latitude: number,
+  longitude: number
+};
+
+export type Region = {
+  latitude: number,
+  longitude: number,
+  latitudeDelta: number,
+  longitudeDelta: number
+};
+
+export const terminals: Terminals[] = [
+  {
+    key: "start",
+    coordinates: { longitude: -0.14223, latitude: 51.51616 },
+    text: "Start"
+  },
+  {
+    key: "finish",
+    coordinates: { longitude: -0.12664, latitude: 51.50497 },
+    text: "Finish"
+  }
+];
+
+export const region: Region = {
+  latitude: 51.512,
+  longitude: -0.134192,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.000002
+};
+
+export const route: Coordinates[] = [
   { longitude: -0.14223, latitude: 51.51616 },
   { longitude: -0.14221, latitude: 51.5161 },
   { longitude: -0.14214, latitude: 51.51605 },
@@ -120,6 +160,5 @@ export default [
   { longitude: -0.12692, latitude: 51.5056 },
   { longitude: -0.1268, latitude: 51.50534 },
   { longitude: -0.12672, latitude: 51.50517 },
-  { longitude: -0.12664, latitude: 51.50497 },
-  { longitude: -0.1265, latitude: 51.50499 }
+  { longitude: -0.12664, latitude: 51.50497 }
 ];

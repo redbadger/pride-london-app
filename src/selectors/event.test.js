@@ -3,7 +3,8 @@ import { generateEvent, sampleArrayOf, sampleOne } from "../data/__test-data";
 import {
   filterEvents,
   groupEventsByStartTime,
-  selectEventIsFree
+  selectEventIsFree,
+  getStages
 } from "./event";
 
 describe("selectEventIsFree", () => {
@@ -112,5 +113,33 @@ describe("filterEvents", () => {
     const actual = filterEvents(events, filter);
 
     expect(actual.length).toEqual(3);
+  });
+});
+
+describe("getStages", () => {
+  it("returns empty array when no events exist", () => {
+    const expected = [];
+    const actual = getStages([]);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("returns only events which are stages", () => {
+    const eventA = sampleOne(generateEvent, { seed: 1234 });
+    eventA.fields.stage = true;
+    const eventB = sampleOne(generateEvent, { seed: 1421 });
+    eventB.fields.stage = false;
+    const eventC = sampleOne(generateEvent, { seed: 2452 });
+    eventC.fields.stage = false;
+    const eventD = sampleOne(generateEvent, { seed: 3244 });
+    eventD.fields.stage = true;
+    const eventE = sampleOne(generateEvent, { seed: 2344 });
+    eventE.fields.stage = false;
+
+    const events = [eventA, eventB, eventC, eventD, eventE];
+
+    const expected = [eventA, eventD];
+    const actual = getStages(events);
+    expect(actual).toEqual(expected);
   });
 });

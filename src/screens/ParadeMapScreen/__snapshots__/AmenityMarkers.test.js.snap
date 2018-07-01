@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AmenityMarkers component renders correctly 1`] = `
+<React.Fragment>
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 0,
+        "longitude": 10,
+      }
+    }
+    image={1}
+    key="20nBC086o2kwuMWHp8FqMyUV"
+    pointerEvents="none"
+    stopPropagation={false}
+  />
+</React.Fragment>
+`;

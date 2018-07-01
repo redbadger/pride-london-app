@@ -3,6 +3,7 @@ import type { Event, Events } from "../data/event";
 import type { FeaturedEvents } from "../data/featured-events";
 import type { FieldRef } from "../data/field-ref";
 import type { Performance, Performances } from "../data/performance";
+import type { Amenity } from "../data/amenity";
 import type { State as DataState } from "../reducers/data";
 
 type ObjectWithId<A> = {
@@ -45,6 +46,9 @@ export const selectFeaturedEventsByTitle = (
   title: string
 ): ?FeaturedEvents =>
   featuredEventsList.find(entry => entry.fields.title === title);
+
+export const selectAmenities = (data: DataState): Array<Amenity> =>
+  data.amenities;
 
 const resolveEventsHelp = (eventMap: Events) => (
   acc: Event[],

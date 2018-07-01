@@ -3,6 +3,7 @@ import {
   generateCMSEvent,
   generateCMSParadeGroup,
   generateCMSSponsor,
+  generateCMSAmenity,
   sampleOne
 } from "../data/__test-data";
 import reducer from "./data";
@@ -24,8 +25,10 @@ describe("Events reducer", () => {
       paradeGroups: [],
       performances: {},
       sponsors: [],
+      amenities: [],
       loading: false,
-      refreshing: false
+      refreshing: false,
+      noDataReceived: false
     };
     const state = reducer(initialState, { type: "REQUEST_CMS_DATA" });
 
@@ -42,8 +45,10 @@ describe("Events reducer", () => {
       paradeGroups: [],
       performances: {},
       sponsors: [],
+      amenities: [],
       loading: false,
-      refreshing: false
+      refreshing: false,
+      noDataReceived: false
     };
     const state = reducer(initialState, { type: "REQUEST_UPDATE_CMS_DATA" });
 
@@ -51,7 +56,7 @@ describe("Events reducer", () => {
     expect(state.refreshing).toBe(true);
   });
 
-  it("sets loading and refreshing to false for RECEIVE_CMS_ERROR action", () => {
+  it("sets loading and refreshing to false for NO_DATA_RECEIVED action", () => {
     const initialState = {
       events: [],
       featuredEvents: [],
@@ -60,13 +65,16 @@ describe("Events reducer", () => {
       paradeGroups: [],
       performances: {},
       sponsors: [],
+      amenities: [],
       loading: true,
-      refreshing: true
+      refreshing: true,
+      noDataReceived: false
     };
-    const state = reducer(initialState, { type: "RECEIVE_CMS_ERROR" });
+    const state = reducer(initialState, { type: "NO_DATA_RECEIVED" });
 
     expect(state.loading).toBe(false);
     expect(state.refreshing).toBe(false);
+    expect(state.noDataReceived).toBe(true);
   });
 
   describe("RECEIVE_CMS_DATA action", () => {
@@ -79,8 +87,10 @@ describe("Events reducer", () => {
         paradeGroups: [],
         performances: {},
         sponsors: [],
+        amenities: [],
         loading: true,
-        refreshing: false
+        refreshing: false,
+        noDataRecived: true
       };
 
       const newCmsData = {
@@ -97,6 +107,7 @@ describe("Events reducer", () => {
       });
 
       expect(state.events).toMatchSnapshot();
+      expect(state.noDataReceived).toBe(false);
     });
 
     it("expands recurring events", () => {
@@ -108,8 +119,10 @@ describe("Events reducer", () => {
         paradeGroups: [],
         performances: {},
         sponsors: [],
+        amenities: [],
         loading: true,
-        refreshing: false
+        refreshing: false,
+        noDataRecived: false
       };
 
       const event = sampleOne(generateCMSEvent, { seed: 3353 });
@@ -146,6 +159,7 @@ describe("Events reducer", () => {
         paradeGroups: [],
         performances: {},
         sponsors: [],
+        amenities: [],
         loading: true,
         refreshing: false
       };
@@ -204,6 +218,7 @@ describe("Events reducer", () => {
         paradeGroups: [],
         performances: {},
         sponsors: [],
+        amenities: [],
         loading: true,
         refreshing: false
       };
@@ -268,6 +283,7 @@ describe("Events reducer", () => {
         paradeGroups: [],
         performances: {},
         sponsors: [],
+        amenities: [],
         loading: true,
         refreshing: false
       };
@@ -327,6 +343,7 @@ describe("Events reducer", () => {
         paradeGroups: [],
         performances: {},
         sponsors: [],
+        amenities: [],
         loading: true,
         refreshing: false
       };
@@ -357,6 +374,7 @@ describe("Events reducer", () => {
         paradeGroups: [],
         performances: {},
         sponsors: [],
+        amenities: [],
         loading: true,
         refreshing: false
       };
@@ -415,6 +433,7 @@ describe("Events reducer", () => {
         paradeGroups: [],
         performances: {},
         sponsors: [],
+        amenities: [],
         loading: true,
         refreshing: false
       };
@@ -434,6 +453,37 @@ describe("Events reducer", () => {
 
       // $FlowFixMe
       expect(state.sponsors[0].id).toEqual(newCmsData.entries[0].sys.id);
+    });
+
+    it("decodes amenities", () => {
+      const initialState = {
+        events: [],
+        featuredEvents: [],
+        headerBanners: [],
+        images: {},
+        paradeGroups: [],
+        performances: {},
+        sponsors: [],
+        amenities: [],
+        loading: true,
+        refreshing: false
+      };
+
+      const newCmsData = {
+        entries: [sampleOne(generateCMSAmenity, { seed: 6534 })],
+        assets: [],
+        syncToken: "abc",
+        updated: true
+      };
+
+      // $FlowFixMe
+      const state = reducer(initialState, {
+        type: "RECEIVE_CMS_DATA",
+        data: newCmsData
+      });
+
+      // $FlowFixMe
+      expect(state.amenities[0].id).toEqual(newCmsData.entries[0].sys.id);
     });
   });
 });
