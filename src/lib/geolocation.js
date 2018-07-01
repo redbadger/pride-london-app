@@ -1,0 +1,149 @@
+// @flow
+import Permissions from "react-native-permissions";
+import { Observable, defer, merge, of } from "rxjs";
+import { map, switchMap } from "rxjs/operators";
+
+export type Coordinate = {
+  latitude: number,
+  longitude: number
+};
+
+export type LocationValue =
+  | { type: "awaiting" }
+  | { type: "error" }
+  | { type: "tracking", coords: Coordinate };
+
+export type LocationStatus =
+  | { type: "authorized", location: LocationValue }
+  | { type: "checking" }
+  | { type: "denied" }
+  | { type: "requesting" }
+  | { type: "restricted" }
+  | { type: "undetermined" };
+
+export const getLocation = (location: LocationStatus): ?Coordinate => {
+  if (location.type === "authorized" && location.location.type === "tracking") {
+    return location.location.coords;
+  }
+  return null;
+};
+
+export const shouldNeverRequest = (status: LocationStatus): boolean => {
+  if (status.type === "restricted") {
+    return true;
+  }
+  return false;
+};
+
+export const shouldRequest = (status: LocationStatus): boolean => {
+  if (status.type === "denied" || status.type === "undetermined") {
+    return true;
+  }
+  return false;
+};
+
+export type PositionRequestOptions = {
+  enableHighAccuracy: boolean,
+  timeout: number,
+  maximumAge: number
+};
+
+export const defaultLocationStatus: LocationStatus = {
+  type: "undetermined"
+};
+
+const authorized = (location: LocationValue): LocationStatus => ({
+  type: "authorized",
+  location
+});
+
+const locationAwaiting: LocationValue = {
+  type: "awaiting"
+};
+
+const locationError: LocationValue = {
+  type: "error"
+};
+
+const locationTracking = (coords): LocationValue => ({
+  type: "tracking",
+  coords
+});
+
+const permissionToLocationStatus = (value: string): LocationStatus => {
+  switch (value) {
+    case "authorized":
+      return {
+        type: "authorized",
+        location: locationAwaiting
+      };
+    case "checking":
+      return {
+        type: "checking"
+      };
+    case "denied":
+      return {
+        type: "denied"
+      };
+    case "requesting":
+      return {
+        type: "requesting"
+      };
+    case "restricted":
+      return {
+        type: "restricted"
+      };
+    default:
+      return {
+        type: "undetermined"
+      };
+  }
+};
+
+export const checkPermissionStream = () =>
+  merge(of("checking"), defer(() => Permissions.check("location")));
+
+export const requestPermissionStream = () =>
+  merge(of("requesting"), defer(() => Permissions.request("location")));
+
+const options = {
+  timeout: 3000,
+  maximumAge: 60000,
+  enableHighAccuracy: false,
+  distanceFilter: 5
+};
+
+export const locationStream = () =>
+  Observable.create(observer => {
+    const watchId = navigator.geolocation.watchPosition(
+      value => observer.next(locationTracking(value.coords)),
+      () => observer.next(locationError),
+      options
+    );
+
+    return () => {
+      navigator.geolocation.clearWatch(watchId);
+    };
+  });
+
+export const passiveLocationStream = () =>
+  checkPermissionStream().pipe(
+    map(permissionToLocationStatus),
+    switchMap(value => {
+      if (value.type === "authorized") {
+        return merge(of(value), locationStream().pipe(map(authorized)));
+      }
+      return of(value);
+    })
+  );
+
+export const activeLocationStream = () =>
+  requestPermissionStream().pipe(
+    map(permissionToLocationStatus),
+    switchMap(value => {
+      if (value.type === "authorized") {
+        return merge(of(value), locationStream().pipe(map(authorized)));
+      }
+      return of(value);
+    })
+  );
