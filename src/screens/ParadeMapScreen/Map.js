@@ -7,7 +7,6 @@ import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
-  Linking,
   Alert
 } from "react-native";
 import type { Subscription } from "rxjs";
@@ -94,45 +93,36 @@ class Map extends PureComponent<Props, State> {
   }
 
   componentDidUpdate() {
-    if (this.state.moveToUserLocation) {
-      if (this.state.userLocation.type === "authorized") {
-        const { location } = this.state.userLocation;
+    if (
+      this.state.moveToUserLocation &&
+      this.state.userLocation.type === "authorized"
+    ) {
+      const { location } = this.state.userLocation;
 
-        // Authorized + tracking
-        if (location.type === "tracking") {
-          // eslint-disable-next-line react/no-did-update-set-state
-          this.setState({
-            moveToUserLocation: false
-          });
-          const { latitude, longitude } = location.coords;
-          this.mapViewRef.current.animateToCoordinate(
-            { latitude, longitude },
-            500
-          );
-          return;
-        }
-
-        // Authorized + error
-        if (location.type === "error") {
-          // eslint-disable-next-line react/no-did-update-set-state
-          this.setState({
-            moveToUserLocation: false
-          });
-          Alert.alert(
-            "We couldn't find your location",
-            "GPS or other location finding magic might not be available, please try again later"
-          );
-          return;
-        }
-      }
-
-      // Denied
-      if (this.state.userLocation.type === "denied" && Platform.OS === "ios") {
+      // Authorized + tracking
+      if (location.type === "tracking") {
         // eslint-disable-next-line react/no-did-update-set-state
         this.setState({
           moveToUserLocation: false
         });
-        Linking.openURL("app-settings:");
+        const { latitude, longitude } = location.coords;
+        this.mapViewRef.current.animateToCoordinate(
+          { latitude, longitude },
+          500
+        );
+        return;
+      }
+
+      // Authorized + error
+      if (location.type === "error") {
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          moveToUserLocation: false
+        });
+        Alert.alert(
+          "We couldn't find your location",
+          "GPS or other location finding magic might not be available, please try again later"
+        );
       }
     }
   }
