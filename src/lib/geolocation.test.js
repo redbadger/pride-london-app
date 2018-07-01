@@ -200,7 +200,7 @@ describe("passiveLocationStream", () => {
       });
   });
 
-  it(" with result of checking", done => {
+  it("emits result of checking", done => {
     expect.assertions(1);
     // $FlowFixMe
     Permissions.check.mockReturnValue(Promise.resolve("authorized"));
@@ -253,7 +253,7 @@ describe("activeLocationStream", () => {
       });
   });
 
-  it(" with result of checking", done => {
+  it("emits result of requesting", done => {
     expect.assertions(1);
     // $FlowFixMe
     Permissions.request.mockReturnValue(Promise.resolve("authorized"));
