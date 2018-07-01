@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when hidden 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  hello
+</Component>
+`;
+
+exports[`renders correctly when showing 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  hello
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#2d2f7f",
+          "bottom": 0,
+          "height": "160%",
+          "position": "absolute",
+          "width": "100%",
+        },
+        Object {
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "bottom": 0,
+          "flexDirection": "column",
+          "height": "62.5%",
+          "justifyContent": "center",
+          "position": "absolute",
+          "width": "100%",
+        }
+      }
+    >
+      <Welcome
+        animationProgress={0}
+        getData={[Function]}
+        loading={false}
+        noDataReceived={false}
+      />
+    </Component>
+  </AnimatedComponent>
+</Component>
+`;

@@ -9,6 +9,7 @@ import {
   selectEventsMap,
   selectFeaturedEvents,
   selectFeaturedEventsByTitle,
+  selectAmenities,
   resolveEvents
 } from "./data";
 import { filterEvents, getStages } from "./event";
@@ -101,3 +102,5 @@ export const getFeaturedEventsResolvedEvents = createSelector(
 );
 
 export const selectStages = createSelector([getEvents], getStages);
+
+export const getAmenities = createSelector([selectData], selectAmenities);

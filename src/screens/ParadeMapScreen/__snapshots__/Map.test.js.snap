@@ -17,7 +17,7 @@ exports[`Map component renders correctly 1`] = `
   <MapView
     initialRegion={
       Object {
-        "latitude": 51.5085,
+        "latitude": 51.512,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
         "longitudeDelta": 0.000002,
@@ -540,157 +540,134 @@ exports[`Map component renders correctly 1`] = `
       strokeColor="#fc4984"
       strokeWidth={5}
     />
-    <MapMarker
-      centerOffset={
-        Object {
-          "x": 0,
-          "y": -15,
-        }
-      }
-      coordinate={
-        Object {
-          "latitude": 51.51616,
-          "longitude": -0.14223,
-        }
-      }
-      key="start"
-      stopPropagation={true}
-    >
-      <Component
-        style={
+    <TerminalMarkers
+      terminals={
+        Array [
           Object {
-            "alignItems": "center",
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Component
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#2d2f7f",
-              "borderRadius": 2,
-              "height": 30,
-              "justifyContent": "center",
-              "paddingHorizontal": 8,
-              "paddingVertical": 2,
-              "width": 60,
-            }
-          }
-        >
-          <Text
-            color="whiteColor"
-            markdown={false}
-            markdownStyle={Object {}}
-            type="h4"
-          >
-            Start
-          </Text>
-        </Component>
-        <Component
-          style={
-            Object {
-              "backgroundColor": "transparent",
-              "borderBottomColor": "#2d2f7f",
-              "borderBottomWidth": 10,
-              "borderLeftColor": "transparent",
-              "borderLeftWidth": 5,
-              "borderRightColor": "transparent",
-              "borderRightWidth": 5,
-              "borderStyle": "solid",
-              "height": 0,
-              "transform": Array [
+            "coordinates": Object {
+              "latitude": 51.51616,
+              "longitude": -0.14223,
+            },
+            "key": "start",
+            "text": "Start",
+          },
+          Object {
+            "coordinates": Object {
+              "latitude": 51.50497,
+              "longitude": -0.12664,
+            },
+            "key": "finish",
+            "text": "Finish",
+          },
+        ]
+      }
+    />
+    <AmenityMarkers
+      amenities={
+        Array [
+          Object {
+            "contentType": "amenity",
+            "fields": Object {
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "type": "Toilet",
+            },
+            "id": "20nBC086o2kwuMWHp8FqMyUV",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ]
+      }
+    />
+    <StageMarkers
+      activeMarker={null}
+      handleMarkerPress={[Function]}
+      stages={
+        Array [
+          Object {
+            "contentType": "event",
+            "fields": Object {
+              "accessibilityDetails": "accessibilityDetails",
+              "accessibilityOptions": Array [
+                "dmsFhe9C732jAxJ2oCAFv8vi0B",
+                "AY957Prtj00U0nq",
+                "mr9XTUQr6iQap9o7NYHRjN3xX93a",
+                "5YYd69ZsuKxA",
+              ],
+              "addressLine1": "addressLine1",
+              "addressLine2": "addressLine2",
+              "audience": Array [
+                "Z4a",
+                "yAr1NR9z56dtW8a53dKOxsknYzp",
+                "i1D",
+                "mX1P6999LbV7z3oxYPD6R0Alj11cb8",
+                "qqEtmOF46hkCR3Tc4SGRu5jxZ5d8",
+              ],
+              "city": "city",
+              "email": "email",
+              "endTime": "2018-07-07T03:00+00:00",
+              "eventCategories": Array [
+                "Cabaret and Variety",
+                "Film and Screenings",
+                "Health",
+                "Plays and Theatre",
+              ],
+              "eventDescription": "eventDescription",
+              "eventPriceHigh": 10,
+              "eventPriceLow": 0,
+              "eventsListPicture": Object {
+                "sys": Object {
+                  "id": "Sw",
+                },
+              },
+              "individualEventPicture": Object {
+                "sys": Object {
+                  "id": "99ww8tQRq",
+                },
+              },
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "locationName": "locationName",
+              "name": "name",
+              "performances": Array [
                 Object {
-                  "rotate": "180deg",
+                  "sys": Object {
+                    "id": "t3gcH9lwpBFJACtGC24P8lFR",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "DcH3",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "gp493DYUByvSUyrw4uIGW8L5IEOw9",
+                  },
                 },
               ],
-              "width": 0,
-            }
-          }
-        />
-      </Component>
-    </MapMarker>
-    <MapMarker
-      centerOffset={
-        Object {
-          "x": 0,
-          "y": -15,
-        }
-      }
-      coordinate={
-        Object {
-          "latitude": 51.50497,
-          "longitude": -0.12664,
-        }
-      }
-      key="finish"
-      stopPropagation={true}
-    >
-      <Component
-        style={
-          Object {
-            "alignItems": "center",
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Component
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#2d2f7f",
-              "borderRadius": 2,
-              "height": 30,
-              "justifyContent": "center",
-              "paddingHorizontal": 8,
-              "paddingVertical": 2,
-              "width": 60,
-            }
-          }
-        >
-          <Text
-            color="whiteColor"
-            markdown={false}
-            markdownStyle={Object {}}
-            type="h4"
-          >
-            Finish
-          </Text>
-        </Component>
-        <Component
-          style={
-            Object {
-              "backgroundColor": "transparent",
-              "borderBottomColor": "#2d2f7f",
-              "borderBottomWidth": 10,
-              "borderLeftColor": "transparent",
-              "borderLeftWidth": 5,
-              "borderRightColor": "transparent",
-              "borderRightWidth": 5,
-              "borderStyle": "solid",
-              "height": 0,
-              "transform": Array [
-                Object {
-                  "rotate": "180deg",
-                },
+              "phone": "phone",
+              "postcode": "postcode",
+              "recurrenceDates": Array [
+                "31/05/2018",
               ],
-              "width": 0,
-            }
-          }
-        />
-      </Component>
-    </MapMarker>
-    <MapMarker
-      coordinate={
-        Object {
-          "latitude": 0,
-          "longitude": 10,
-        }
+              "stage": true,
+              "startTime": "2018-07-07T00:00+00:00",
+              "ticketingUrl": "ticketingUrl",
+              "venueDetails": Array [
+                "p36SA7hUd97vAklm",
+              ],
+            },
+            "id": "QF4dTqmpn9z5ItEizAZ",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ]
       }
-      image={1}
-      key="QF4dTqmpn9z5ItEizAZ"
-      onPress={[Function]}
-      stopPropagation={true}
     />
   </MapView>
   <Component
@@ -749,7 +726,7 @@ exports[`Map component renders without location button when permission is restri
   <MapView
     initialRegion={
       Object {
-        "latitude": 51.5085,
+        "latitude": 51.512,
         "latitudeDelta": 0.02,
         "longitude": -0.134192,
         "longitudeDelta": 0.000002,
@@ -1272,157 +1249,134 @@ exports[`Map component renders without location button when permission is restri
       strokeColor="#fc4984"
       strokeWidth={5}
     />
-    <MapMarker
-      centerOffset={
-        Object {
-          "x": 0,
-          "y": -15,
-        }
-      }
-      coordinate={
-        Object {
-          "latitude": 51.51616,
-          "longitude": -0.14223,
-        }
-      }
-      key="start"
-      stopPropagation={true}
-    >
-      <Component
-        style={
+    <TerminalMarkers
+      terminals={
+        Array [
           Object {
-            "alignItems": "center",
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Component
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#2d2f7f",
-              "borderRadius": 2,
-              "height": 30,
-              "justifyContent": "center",
-              "paddingHorizontal": 8,
-              "paddingVertical": 2,
-              "width": 60,
-            }
-          }
-        >
-          <Text
-            color="whiteColor"
-            markdown={false}
-            markdownStyle={Object {}}
-            type="h4"
-          >
-            Start
-          </Text>
-        </Component>
-        <Component
-          style={
-            Object {
-              "backgroundColor": "transparent",
-              "borderBottomColor": "#2d2f7f",
-              "borderBottomWidth": 10,
-              "borderLeftColor": "transparent",
-              "borderLeftWidth": 5,
-              "borderRightColor": "transparent",
-              "borderRightWidth": 5,
-              "borderStyle": "solid",
-              "height": 0,
-              "transform": Array [
+            "coordinates": Object {
+              "latitude": 51.51616,
+              "longitude": -0.14223,
+            },
+            "key": "start",
+            "text": "Start",
+          },
+          Object {
+            "coordinates": Object {
+              "latitude": 51.50497,
+              "longitude": -0.12664,
+            },
+            "key": "finish",
+            "text": "Finish",
+          },
+        ]
+      }
+    />
+    <AmenityMarkers
+      amenities={
+        Array [
+          Object {
+            "contentType": "amenity",
+            "fields": Object {
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "type": "Toilet",
+            },
+            "id": "20nBC086o2kwuMWHp8FqMyUV",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ]
+      }
+    />
+    <StageMarkers
+      activeMarker={null}
+      handleMarkerPress={[Function]}
+      stages={
+        Array [
+          Object {
+            "contentType": "event",
+            "fields": Object {
+              "accessibilityDetails": "accessibilityDetails",
+              "accessibilityOptions": Array [
+                "dmsFhe9C732jAxJ2oCAFv8vi0B",
+                "AY957Prtj00U0nq",
+                "mr9XTUQr6iQap9o7NYHRjN3xX93a",
+                "5YYd69ZsuKxA",
+              ],
+              "addressLine1": "addressLine1",
+              "addressLine2": "addressLine2",
+              "audience": Array [
+                "Z4a",
+                "yAr1NR9z56dtW8a53dKOxsknYzp",
+                "i1D",
+                "mX1P6999LbV7z3oxYPD6R0Alj11cb8",
+                "qqEtmOF46hkCR3Tc4SGRu5jxZ5d8",
+              ],
+              "city": "city",
+              "email": "email",
+              "endTime": "2018-07-07T03:00+00:00",
+              "eventCategories": Array [
+                "Cabaret and Variety",
+                "Film and Screenings",
+                "Health",
+                "Plays and Theatre",
+              ],
+              "eventDescription": "eventDescription",
+              "eventPriceHigh": 10,
+              "eventPriceLow": 0,
+              "eventsListPicture": Object {
+                "sys": Object {
+                  "id": "Sw",
+                },
+              },
+              "individualEventPicture": Object {
+                "sys": Object {
+                  "id": "99ww8tQRq",
+                },
+              },
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "locationName": "locationName",
+              "name": "name",
+              "performances": Array [
                 Object {
-                  "rotate": "180deg",
+                  "sys": Object {
+                    "id": "t3gcH9lwpBFJACtGC24P8lFR",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "DcH3",
+                  },
+                },
+                Object {
+                  "sys": Object {
+                    "id": "gp493DYUByvSUyrw4uIGW8L5IEOw9",
+                  },
                 },
               ],
-              "width": 0,
-            }
-          }
-        />
-      </Component>
-    </MapMarker>
-    <MapMarker
-      centerOffset={
-        Object {
-          "x": 0,
-          "y": -15,
-        }
-      }
-      coordinate={
-        Object {
-          "latitude": 51.50497,
-          "longitude": -0.12664,
-        }
-      }
-      key="finish"
-      stopPropagation={true}
-    >
-      <Component
-        style={
-          Object {
-            "alignItems": "center",
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Component
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#2d2f7f",
-              "borderRadius": 2,
-              "height": 30,
-              "justifyContent": "center",
-              "paddingHorizontal": 8,
-              "paddingVertical": 2,
-              "width": 60,
-            }
-          }
-        >
-          <Text
-            color="whiteColor"
-            markdown={false}
-            markdownStyle={Object {}}
-            type="h4"
-          >
-            Finish
-          </Text>
-        </Component>
-        <Component
-          style={
-            Object {
-              "backgroundColor": "transparent",
-              "borderBottomColor": "#2d2f7f",
-              "borderBottomWidth": 10,
-              "borderLeftColor": "transparent",
-              "borderLeftWidth": 5,
-              "borderRightColor": "transparent",
-              "borderRightWidth": 5,
-              "borderStyle": "solid",
-              "height": 0,
-              "transform": Array [
-                Object {
-                  "rotate": "180deg",
-                },
+              "phone": "phone",
+              "postcode": "postcode",
+              "recurrenceDates": Array [
+                "31/05/2018",
               ],
-              "width": 0,
-            }
-          }
-        />
-      </Component>
-    </MapMarker>
-    <MapMarker
-      coordinate={
-        Object {
-          "latitude": 0,
-          "longitude": 10,
-        }
+              "stage": true,
+              "startTime": "2018-07-07T00:00+00:00",
+              "ticketingUrl": "ticketingUrl",
+              "venueDetails": Array [
+                "p36SA7hUd97vAklm",
+              ],
+            },
+            "id": "QF4dTqmpn9z5ItEizAZ",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ]
       }
-      image={1}
-      key="QF4dTqmpn9z5ItEizAZ"
-      onPress={[Function]}
-      stopPropagation={true}
     />
   </MapView>
 </Component>

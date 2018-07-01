@@ -204,5 +204,11 @@ export default {
     ]
   },
   partnershipWithSally: "Made in partnership with Red Badger",
-  resetAllFilters: "Reset all filters"
+  resetAllFilters: "Reset all filters",
+  badConnection: {
+    title: "It's not you, it's wifi!",
+    message:
+      "We can't find a good connection - please try again when you connection is restored",
+    button: "Try again"
+  }
 };

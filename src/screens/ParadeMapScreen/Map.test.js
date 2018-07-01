@@ -1,11 +1,15 @@
 // @flow
 import React from "react";
-import MapView, { Marker } from "react-native-maps";
+import MapView from "react-native-maps";
 import { shallow } from "enzyme";
 import { TouchableWithoutFeedback } from "react-native";
 import * as Rx from "rxjs";
 import Map from "./Map";
-import { generateEvent, sampleOne } from "../../data/__test-data";
+import {
+  generateEvent,
+  generateAmenity,
+  sampleOne
+} from "../../data/__test-data";
 import * as Geolocation from "../../lib/geolocation";
 import {
   region as paradeRegion,
@@ -18,6 +22,7 @@ const render = props =>
     <Map
       {...props}
       stages={[stage]}
+      amenities={[amenity]}
       addSavedEvent={() => {}}
       removeSavedEvent={() => {}}
       onEventCardPress={() => {}}
@@ -26,6 +31,7 @@ const render = props =>
   );
 
 const stage = sampleOne(generateEvent, { seed: 5728 });
+const amenity = sampleOne(generateAmenity, { seed: 5728 });
 
 const regionProps = {
   paradeRegion,
@@ -96,12 +102,10 @@ describe("Map component", () => {
     expect(subscription.unsubscribe).toBeCalled();
   });
 
-  it("sets tileDetails and activeMarker state when stage is clicked", () => {
+  it("updates tileDetails and activeMarker state when stage is clicked", () => {
     const output = render(regionProps);
-    output
-      .find(Marker)
-      .last()
-      .simulate("press");
+    const stageMarkers = output.find("StageMarkers");
+    stageMarkers.props().handleMarkerPress(stage);
     expect(output.state().tileDetails).toEqual(stage);
     expect(output.state().activeMarker).toEqual(stage.id);
   });

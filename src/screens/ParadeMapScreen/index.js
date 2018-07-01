@@ -7,7 +7,8 @@ import withIsFocused from "../../components/WithIsFocused";
 import Component from "./component";
 import { addSavedEvent, removeSavedEvent } from "../../actions/saved-events";
 import type { Event, SavedEvents } from "../../data/event";
-import { selectStages, selectSavedEvents } from "../../selectors";
+import type { Amenity } from "../../data/amenity";
+import { selectStages, selectSavedEvents, getAmenities } from "../../selectors";
 
 type OwnProps = {
   navigation: NavigationScreenProp<NavigationState>,
@@ -17,6 +18,7 @@ type OwnProps = {
 type StateProps = {
   navigation: NavigationScreenProp<NavigationState>,
   stages: Event[],
+  amenities: Amenity[],
   isFocused: boolean,
   savedEvents: SavedEvents
 };
@@ -36,6 +38,7 @@ const mapStateToProps = (
   { navigation, isFocused }: OwnProps
 ): StateProps => ({
   navigation,
+  amenities: getAmenities(state),
   stages: selectStages(state),
   isFocused,
   savedEvents: selectSavedEvents(state)

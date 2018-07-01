@@ -14,6 +14,7 @@ import type { ImageDetails } from "./image";
 import type { ParadeGroup } from "./parade-group";
 import type { Performance } from "./performance";
 import type { Sponsor } from "./sponsor";
+import type { Amenity } from "./amenity";
 import { eventCategoryNames } from "./event";
 
 type Options = {
@@ -448,5 +449,32 @@ export const generateCMSSponsor: ValueGenerator<mixed> = gen({
     sponsorLogo: { "en-GB": generateFieldRef },
     sponsorUrl: { "en-GB": "sponsorUrl" },
     sponsorLevel: { "en-GB": "Headline" }
+  }
+});
+
+export const generateAmenity: ValueGenerator<Amenity> = gen({
+  contentType: "amenity",
+  id: gen.alphaNumString.notEmpty(),
+  locale: "en-GB",
+  revision: 1,
+  fields: gen({
+    type: "Toilet",
+    location: { lat: 0, lon: 10 }
+  })
+});
+
+export const generateCMSAmenity: ValueGenerator<mixed> = gen({
+  sys: {
+    id: gen.alphaNumString.notEmpty(),
+    contentType: {
+      sys: {
+        id: "amenity"
+      }
+    },
+    revision: 1
+  },
+  fields: {
+    type: { "en-GB": "Toilet" },
+    location: { "en-GB": { lat: 0, lon: 10 } }
   }
 });

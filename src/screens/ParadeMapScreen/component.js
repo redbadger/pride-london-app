@@ -3,6 +3,7 @@ import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import type { Event, SavedEvents } from "../../data/event";
+import type { Amenity } from "../../data/amenity";
 import { EVENT_DETAILS } from "../../constants/routes";
 import { route, region, terminals } from "../../constants/parade-coordinates";
 import Map from "./Map";
@@ -10,6 +11,7 @@ import Map from "./Map";
 type Props = {
   isFocused: boolean,
   stages: Event[],
+  amenities: Amenity[],
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
@@ -21,6 +23,7 @@ class ParadeMapScreen extends PureComponent<Props> {
     const {
       isFocused,
       stages,
+      amenities,
       savedEvents,
       addSavedEvent,
       removeSavedEvent
@@ -33,6 +36,7 @@ class ParadeMapScreen extends PureComponent<Props> {
             paradeRegion={region}
             terminals={terminals}
             stages={stages}
+            amenities={amenities}
             savedEvents={savedEvents}
             addSavedEvent={addSavedEvent}
             removeSavedEvent={removeSavedEvent}

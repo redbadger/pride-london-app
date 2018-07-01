@@ -11,9 +11,12 @@ import {
   Alert
 } from "react-native";
 import type { Subscription } from "rxjs";
-import MapView, { Polyline, Marker } from "react-native-maps";
+import MapView, { Polyline } from "react-native-maps";
 import type { Event, SavedEvents } from "../../data/event";
-import Text from "../../components/Text";
+import type { Amenity } from "../../data/amenity";
+import AmenityMarkers from "./AmenityMarkers";
+import StageMarkers from "./StageMarkers";
+import TerminalMarkers from "./TerminalMarkers";
 import { warmPinkColor } from "../../constants/colors";
 import type {
   Coordinates,
@@ -22,8 +25,6 @@ import type {
 } from "../../constants/parade-coordinates";
 import EventCard from "../../components/EventCard";
 import ContentPadding from "../../components/ContentPadding";
-import stageIconActive from "../../../assets/images/stageIconActive.png";
-import stageIconInactive from "../../../assets/images/stageIconInactive.png";
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
 import type { LocationStatus, Coordinate } from "../../lib/geolocation";
@@ -41,6 +42,7 @@ type Props = {
   paradeRegion: Region,
   terminals: Array<Terminals>,
   stages: Array<Event>,
+  amenities: Array<Amenity>,
   savedEvents: SavedEvents,
   addSavedEvent: string => void,
   removeSavedEvent: string => void,
@@ -142,9 +144,9 @@ class Map extends PureComponent<Props, State> {
     this.setState({ mapLocation: position });
   };
 
-  handleMarkerPress(stage: Event) {
+  handleMarkerPress = (stage: Event) => {
     this.setState({ tileDetails: stage, activeMarker: stage.id });
-  }
+  };
 
   handleMapPress = () => {
     this.setState({ tileDetails: null, activeMarker: null });
@@ -171,30 +173,17 @@ class Map extends PureComponent<Props, State> {
 
   userLocationSubscription: ?Subscription = null;
 
-  renderStageMarker = (stage: Event) => (
-    <Marker
-      coordinate={{
-        longitude: stage.fields.location.lon,
-        latitude: stage.fields.location.lat
-      }}
-      key={stage.id}
-      onPress={() => this.handleMarkerPress(stage)}
-      stopPropagation
-      image={
-        this.state.activeMarker === stage.id
-          ? stageIconActive
-          : stageIconInactive
-      }
-    />
-  );
-
   render() {
     const {
       savedEvents,
       addSavedEvent,
       removeSavedEvent,
-      onEventCardPress
+      onEventCardPress,
+      amenities,
+      stages,
+      terminals
     } = this.props;
+
     return (
       <View style={styles.mapWrapper}>
         <MapView
@@ -217,25 +206,13 @@ class Map extends PureComponent<Props, State> {
             strokeColor={warmPinkColor}
             lineJoin="bevel"
           />
-          {this.props.terminals.map(terminal => (
-            <Marker
-              coordinate={terminal.coordinates}
-              key={terminal.key}
-              centerOffset={{ x: 0, y: -15 }}
-              stopPropagation
-            >
-              <View style={terminal.style.markerView}>
-                <View style={terminal.style.markerTextWrapper}>
-                  <Text type={terminal.text.type} color={terminal.text.color}>
-                    {terminal.text.text}
-                  </Text>
-                </View>
-                <View style={terminal.style.triangle} />
-              </View>
-            </Marker>
-          ))}
-          {this.props.stages.length > 0 &&
-            this.props.stages.map(this.renderStageMarker)}
+          <TerminalMarkers terminals={terminals} />
+          <AmenityMarkers amenities={amenities} />
+          <StageMarkers
+            stages={stages}
+            handleMarkerPress={this.handleMarkerPress}
+            activeMarker={this.state.activeMarker}
+          />
         </MapView>
 
         {!shouldNeverRequest(this.state.userLocation) && (
