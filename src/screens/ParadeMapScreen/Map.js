@@ -128,6 +128,10 @@ class Map extends PureComponent<Props, State> {
 
       // Denied
       if (this.state.userLocation.type === "denied" && Platform.OS === "ios") {
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          moveToUserLocation: false
+        });
         Linking.openURL("app-settings:");
       }
     }
