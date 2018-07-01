@@ -21,9 +21,12 @@ export type LocationStatus =
   | { type: "restricted" }
   | { type: "undetermined" };
 
-export const getLocation = (location: LocationStatus): ?Coordinate => {
-  if (location.type === "authorized" && location.location.type === "tracking") {
-    return location.location.coords;
+export const getLocation = (locationStatus: LocationStatus): ?Coordinate => {
+  if (
+    locationStatus.type === "authorized" &&
+    locationStatus.location.type === "tracking"
+  ) {
+    return locationStatus.location.coords;
   }
   return null;
 };
