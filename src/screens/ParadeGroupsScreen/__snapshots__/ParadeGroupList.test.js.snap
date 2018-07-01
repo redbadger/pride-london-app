@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ParadeGroupList renders correctly 1`] = `
+<SectionList
+  ItemSeparatorComponent={[Function]}
+  ListHeaderComponent={[Function]}
+  contentContainerStyle={
+    Object {
+      "backgroundColor": "#ffffff",
+      "paddingTop": 0,
+    }
+  }
+  data={Array []}
+  disableVirtualization={false}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  onEndReachedThreshold={2}
+  renderItem={[Function]}
+  renderSectionHeader={[Function]}
+  scrollEventThrottle={50}
+  sections={
+    Array [
+      Object {
+        "data": Array [
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": "https://red-badger.com/CTB4f2a0Khyl0b1T4lOFk11H",
+              "name": "1x2yj",
+              "twitterUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+              "websiteUrl": null,
+            },
+            "id": "d18Cp545J4C996o5",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ],
+        "index": 0,
+        "key": "#",
+      },
+      Object {
+        "data": Array [
+          Object {
+            "contentType": "paradeGroup",
+            "fields": Object {
+              "facebookUrl": "https://red-badger.com/U",
+              "name": "99b3j372i",
+              "twitterUrl": null,
+              "websiteUrl": "https://red-badger.com/R7yfk3P4z96cTKJtb7",
+            },
+            "id": "642gdEs5xmkdO5v541Oau11NM7T",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ],
+        "index": 1,
+        "key": "#",
+      },
+    ]
+  }
+  stickySectionHeadersEnabled={true}
+  updateCellsBatchingPeriod={50}
+  windowSize={10}
+/>
+`;
+
+exports[`ParadeGroupList renders header correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={
+    Object {
+      "marginBottom": 16,
+      "marginTop": 24,
+    }
+  }
+>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    type="h1"
+  >
+    London Parade
+  </Text>
+  <Text
+    color="lightNavyBlueColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "marginBottom": 4,
+      }
+    }
+    type="h2"
+  >
+    Saturday 7 July from 12pm
+  </Text>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+    type="text"
+  >
+    The Pride in London Parade is a platform for every part of London’s LGBT+ community. These groups, nearly 500 in total, represent our most diverse Pride in London yet. From LGBT+ parent groups and student services to sports clubs and national charities, we are proud to give a platform to our community representatives, supporters and allies.
+  </Text>
+  <Text
+    color="blackColor"
+    markdown={false}
+    markdownStyle={Object {}}
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+    type="text"
+  >
+    Find out who you can expect to see on the day from the list below.
+  </Text>
+</ContentPadding>
+`;
+
+exports[`ParadeGroupList renders item separators correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={Object {}}
+>
+  <SectionDivider />
+</ContentPadding>
+`;
+
+exports[`ParadeGroupList renders items correctly 1`] = `
+<ContentPadding
+  padding={Object {}}
+  style={Object {}}
+>
+  <ParadeGroupDetails
+    paradeGroup={
+      Object {
+        "contentType": "paradeGroup",
+        "fields": Object {
+          "facebookUrl": "https://red-badger.com/CTB4f2a0Khyl0b1T4lOFk11H",
+          "name": "1x2yj",
+          "twitterUrl": "https://red-badger.com/1r59u1Oj4T7D55BUw",
+          "websiteUrl": null,
+        },
+        "id": "d18Cp545J4C996o5",
+        "locale": "en-GB",
+        "revision": 1,
+      }
+    }
+  />
+</ContentPadding>
+`;
+
+exports[`ParadeGroupList renders section headers correctly 1`] = `
+<SectionHeader
+  hasShadow={true}
+  title="#"
+/>
+`;

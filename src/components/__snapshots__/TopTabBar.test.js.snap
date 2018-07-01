@@ -34,6 +34,7 @@ exports[`renders correctly 1`] = `
         false,
         Object {
           "alignItems": "center",
+          "flexBasis": 1,
           "flexDirection": "row",
           "flexGrow": 1,
           "minWidth": 48,
@@ -86,6 +87,7 @@ exports[`renders correctly 1`] = `
         },
         Object {
           "alignItems": "center",
+          "flexBasis": 1,
           "flexDirection": "row",
           "flexGrow": 1,
           "minWidth": 48,

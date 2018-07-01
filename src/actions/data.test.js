@@ -18,17 +18,14 @@ describe("getData", () => {
     });
   });
 
-  it("dispatches REQUEST_CMS_DATA then RECEIVE_CMS_ERROR on error", async () => {
+  it("dispatches REQUEST_CMS_DATA then NO_DATA_RECEIVED on error", async () => {
     const mockGetCmsData = () => Promise.reject(new Error("no network"));
     const mockDispatch = jest.fn();
 
     await getData(mockGetCmsData)(mockDispatch);
 
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: "REQUEST_CMS_DATA"
-    });
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: "RECEIVE_CMS_ERROR"
+      type: "NO_DATA_RECEIVED"
     });
   });
 });
@@ -84,7 +81,7 @@ describe("updateData", () => {
     });
   });
 
-  it("dispatches REQUEST_UPDATE_CMS_DATA then RECEIVE_CMS_ERROR on error", async () => {
+  it("dispatches REQUEST_UPDATE_CMS_DATA then NO_DATA_RECEIVED on error", async () => {
     const mockUpdateCmsData = () => Promise.reject(new Error("no network"));
     const mockDispatch = jest.fn();
 
@@ -94,7 +91,7 @@ describe("updateData", () => {
       type: "REQUEST_UPDATE_CMS_DATA"
     });
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: "RECEIVE_CMS_ERROR"
+      type: "NO_DATA_RECEIVED"
     });
   });
 });

@@ -12,6 +12,13 @@ export type Decoder<A> = mixed => Result<string, A>;
 
 export const succeed = <A>(v: A): Decoder<A> => () => ok(v);
 
+export const boolean: Decoder<boolean> = (v: mixed) => {
+  if (typeof v === "boolean") {
+    return ok(v);
+  }
+  return error("value is not a boolean");
+};
+
 export const string: Decoder<string> = (v: mixed) => {
   if (typeof v === "string") {
     return ok(v);

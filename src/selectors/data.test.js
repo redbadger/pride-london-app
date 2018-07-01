@@ -28,8 +28,10 @@ const createData = (): DataState => ({
   paradeGroups: [],
   performances: {},
   sponsors: [],
+  amenities: [],
   loading: false,
-  refreshing: false
+  refreshing: false,
+  noDataReceived: false
 });
 
 describe("selectLoading", () => {
