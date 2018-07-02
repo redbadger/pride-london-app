@@ -127,6 +127,10 @@ class Map extends PureComponent<Props, State> {
 
   handleMarkerPress = (stage: Event) => {
     this.setState({ tileDetails: stage, activeMarker: stage.id });
+    animateToCoordinate(this.mapViewRef)({
+      latitude: stage.fields.location.lat,
+      longitude: stage.fields.location.lon
+    });
   };
 
   handleMapPress = () => {

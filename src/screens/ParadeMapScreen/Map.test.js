@@ -64,17 +64,6 @@ describe("Map component", () => {
     expect(output).toMatchSnapshot();
   });
 
-  it("updates state when stage is clicked", () => {
-    permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
-
-    const output = render(regionProps);
-    const stageMarkers = output.find("StageMarkers");
-    stageMarkers.props().handleMarkerPress(stage);
-
-    expect(output.state()).toMatchSnapshot();
-    jest.clearAllMocks();
-  });
-
   it("clears state when map is clicked", () => {
     permissionCheckSpy.mockReturnValue(Promise.resolve("authorized"));
 
@@ -277,5 +266,35 @@ describe("requestLocationPermission", () => {
   it("will return if location permission is restricted", () => {
     const mockSetState = jest.fn();
     expect(mockSetState).not.toHaveBeenCalled();
+  });
+});
+
+describe("handleMarkerPress", () => {
+  it("updates state with stage marker details", () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("undetermined"));
+    const output = render(regionProps);
+    const animateToCoordinate = jest.fn();
+
+    output.instance().mapViewRef.current = { animateToCoordinate };
+    const handleMarkerPressSpy = output.instance().handleMarkerPress;
+    handleMarkerPressSpy(stage);
+    expect(output.state().tileDetails).toEqual(stage);
+    expect(output.state().activeMarker).toEqual(stage.id);
+    jest.clearAllMocks();
+  });
+
+  it("animates to stage coordinates", () => {
+    permissionCheckSpy.mockReturnValue(Promise.resolve("undetermined"));
+    const output = render(regionProps);
+    const animateToCoordinate = jest.fn();
+
+    output.instance().mapViewRef.current = { animateToCoordinate };
+    const handleMarkerPressSpy = output.instance().handleMarkerPress;
+    handleMarkerPressSpy(stage);
+    expect(animateToCoordinate.mock.calls[0][0]).toEqual({
+      latitude: stage.fields.location.lat,
+      longitude: stage.fields.location.lon
+    });
+    jest.clearAllMocks();
   });
 });
