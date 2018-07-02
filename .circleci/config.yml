@@ -418,6 +418,8 @@ jobs:
                 release_stage:$RELEASE_STAGE \
                 bugsnag_api_key:$BUGSNAG_API_KEY
       - <<: *bugsnag-upload-sourcemaps-ios
+      - store_artifacts:
+          path: /Users/distiller/project/output
 
   release-ios:
     <<: *job-defaults-macos
