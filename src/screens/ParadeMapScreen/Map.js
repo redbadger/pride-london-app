@@ -6,8 +6,7 @@ import {
   Platform,
   View,
   StyleSheet,
-  TouchableWithoutFeedback,
-  Alert
+  TouchableWithoutFeedback
 } from "react-native";
 import type { Subscription } from "rxjs";
 import MapView, { Polyline } from "react-native-maps";
@@ -24,6 +23,7 @@ import type {
 } from "../../constants/parade-coordinates";
 import EventCard from "../../components/EventCard";
 import ContentPadding from "../../components/ContentPadding";
+import MessageBanner from "../../components/MessageBanner";
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
 import type { LocationStatus, Coordinate } from "../../lib/geolocation";
@@ -99,31 +99,34 @@ class Map extends PureComponent<Props, State> {
     ) {
       const { location } = this.state.userLocation;
 
-      // Authorized + tracking
-      if (location.type === "tracking") {
-        // eslint-disable-next-line react/no-did-update-set-state
-        this.setState({
-          moveToUserLocation: false
-        });
-        const { latitude, longitude } = location.coords;
-        this.mapViewRef.current.animateToCoordinate(
-          { latitude, longitude },
-          500
-        );
-        return;
-      }
+      // // Authorized + tracking
+      // if (location.type === "tracking") {
+      //   // eslint-disable-next-line react/no-did-update-set-state
+      //   this.setState({
+      //     moveToUserLocation: false
+      //   });
+      //   const { latitude, longitude } = location.coords;
+      //   this.mapViewRef.current.animateToCoordinate(
+      //     { latitude, longitude },
+      //     500
+      //   );
+      //   return;
+      // }
 
       // Authorized + error
-      if (location.type === "error") {
-        // eslint-disable-next-line react/no-did-update-set-state
-        this.setState({
-          moveToUserLocation: false
-        });
-        Alert.alert(
-          "We couldn't find your location",
-          "GPS or other location finding magic might not be available, please try again later"
-        );
-      }
+      // if (location.type === "error") {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        moveToUserLocation: false
+      });
+      // this.messageBannerRef.current.props.message = "Hello World";
+      // console.log(this.messageBannerRef.current);
+      // this.messageBannerRef.current.handleAnimation()
+      this.messageBannerRef.current.initialize(
+        "We couldn't find your location",
+        "GPS or other location finding magic might not be available, please try again later"
+      );
+      // }
     }
   }
 
@@ -173,6 +176,8 @@ class Map extends PureComponent<Props, State> {
 
   // $FlowFixMe
   mapViewRef: ElementRef<typeof MapView> = React.createRef();
+  // $FlowFixMe
+  messageBannerRef: ElementRef<typeof MessageBanner> = React.createRef();
 
   userLocationSubscription: ?Subscription = null;
 
@@ -189,6 +194,7 @@ class Map extends PureComponent<Props, State> {
 
     return (
       <View style={styles.mapWrapper}>
+        <MessageBanner ref={this.messageBannerRef} />
         <MapView
           style={StyleSheet.absoluteFill}
           initialRegion={this.props.paradeRegion}
