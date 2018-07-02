@@ -4,13 +4,17 @@ import { View, StyleSheet } from "react-native";
 import { Marker } from "react-native-maps";
 import Text, { scaleWithFont } from "../../components/Text";
 import { lightNavyBlueColor, transparent } from "../../constants/colors";
-import type { Terminals } from "../../constants/parade-coordinates";
+import type {
+  Terminals,
+  Coordinates
+} from "../../constants/parade-coordinates";
 
 type Props = {
-  terminals: Terminals[]
+  terminals: Terminals[],
+  markerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
 };
 
-const TerminalMarkers = ({ terminals }: Props) => {
+const TerminalMarkers = ({ terminals, markerSelect }: Props) => {
   if (terminals.length === 0) {
     return null;
   }
@@ -23,6 +27,7 @@ const TerminalMarkers = ({ terminals }: Props) => {
           key={terminal.key}
           centerOffset={{ x: 0, y: -15 }}
           stopPropagation
+          onSelect={markerSelect}
         >
           <View style={styles.markerView}>
             <View style={styles.markerTextWrapper}>
