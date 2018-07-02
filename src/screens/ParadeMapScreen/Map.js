@@ -151,11 +151,11 @@ class Map extends PureComponent<Props, State> {
       if (this.userLocationSubscription) {
         this.userLocationSubscription.unsubscribe();
       }
-      this.userLocationSubscription = activeLocationStream().subscribe(
-        value => {
-          this.setState({ userLocation: value });
-        }
-      );
+      this.userLocationSubscription = activeLocationStream(
+        this.state.userLocation
+      ).subscribe(value => {
+        this.setState({ userLocation: value });
+      });
     }
     this.setState({
       moveToUserLocation: true

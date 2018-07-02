@@ -1,4 +1,5 @@
 // @flow
+import { Linking, Platform } from "react-native";
 import Permissions from "react-native-permissions";
 import { Observable, defer, merge, of } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
@@ -165,13 +166,26 @@ C = Authorized + Tracking(1, 1)
 D = Authorized + Tracking(1, 2)
 E = Authorized + Error
 */
-export const activeLocationStream = () =>
-  requestPermissionStream().pipe(
+export const activeLocationStream = (locationStatus: LocationStatus) => {
+  const mapper =
+    locationStatus.type === "denied"
+      ? value => {
+          if (value === "denied" && Platform.OS === "ios") {
+            Linking.openURL("app-settings:");
+            return "undetermined";
+          }
+          return value;
+        }
+      : value => value;
+
+  return requestPermissionStream().pipe(
+    map(mapper),
     map(permissionToLocationStatus),
     switchMap(value => {
-      if (value.type === "authorized") {
+      if (value.type === "authorized" || value.type === "undetermined") {
         return merge(of(value), locationStream().pipe(map(authorized)));
       }
       return of(value);
     })
   );
+};

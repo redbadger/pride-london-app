@@ -1,4 +1,5 @@
 // @flow
+import { Linking, Platform } from "react-native";
 import Permissions from "react-native-permissions";
 import { last, skip, take } from "rxjs/operators";
 import {
@@ -11,6 +12,15 @@ import {
   shouldNeverRequest,
   shouldRequest
 } from "./geolocation";
+
+jest.mock("react-native", () => ({
+  Platform: {
+    OS: "android"
+  },
+  Linking: {
+    openURL: jest.fn()
+  }
+}));
 
 jest.mock("react-native-permissions", () => ({
   check: jest.fn(),
@@ -31,6 +41,9 @@ afterEach(() => {
   Permissions.check.mockRestore();
   // $FlowFixMe
   Permissions.request.mockRestore();
+  // $FlowFixMe
+  Linking.openURL.mockRestore();
+  Platform.OS = "android";
 });
 
 const callbackSuccessWith = value => success =>
@@ -245,7 +258,7 @@ describe("activeLocationStream", () => {
     expect.assertions(1);
     // $FlowFixMe
     Permissions.request.mockReturnValue(Promise.resolve("authorized"));
-    activeLocationStream()
+    activeLocationStream({ type: "undetermined" })
       .pipe(take(1))
       .subscribe(value => {
         expect(value).toEqual({ type: "requesting" });
@@ -257,7 +270,7 @@ describe("activeLocationStream", () => {
     expect.assertions(1);
     // $FlowFixMe
     Permissions.request.mockReturnValue(Promise.resolve("authorized"));
-    activeLocationStream()
+    activeLocationStream({ type: "undetermined" })
       .pipe(
         skip(1),
         take(1)
@@ -278,7 +291,7 @@ describe("activeLocationStream", () => {
     watchPosition.mockImplementationOnce(
       callbackSuccessWith({ coords: { latitude: 1, longitude: 2 } })
     );
-    activeLocationStream()
+    activeLocationStream({ type: "undetermined" })
       .pipe(
         skip(2),
         take(1)
@@ -290,5 +303,62 @@ describe("activeLocationStream", () => {
         });
         done();
       });
+  });
+
+  it("subscribes to location if request is undetermined", done => {
+    expect.assertions(1);
+    // $FlowFixMe
+    Permissions.request.mockReturnValue(Promise.resolve("undetermined"));
+    watchPosition.mockImplementationOnce(
+      callbackSuccessWith({ coords: { latitude: 1, longitude: 2 } })
+    );
+    activeLocationStream({ type: "denied" })
+      .pipe(
+        skip(2),
+        take(1)
+      )
+      .subscribe(value => {
+        expect(value).toEqual({
+          type: "authorized",
+          location: { type: "tracking", coords: { latitude: 1, longitude: 2 } }
+        });
+        done();
+      });
+  });
+
+  describe("when passed a denied LocationStatus", () => {
+    it("maps denied requests to undetermined on iOS", done => {
+      expect.assertions(1);
+      // $FlowFixMe
+      Permissions.request.mockReturnValue(Promise.resolve("denied"));
+      Platform.OS = "ios";
+      activeLocationStream({ type: "denied" })
+        .pipe(
+          skip(1),
+          take(1)
+        )
+        .subscribe(value => {
+          expect(value).toEqual({
+            type: "undetermined"
+          });
+          done();
+        });
+    });
+
+    it("navigates user to settings page if request is denied on iOS", done => {
+      expect.assertions(1);
+      // $FlowFixMe
+      Permissions.request.mockReturnValue(Promise.resolve("denied"));
+      Platform.OS = "ios";
+      activeLocationStream({ type: "denied" })
+        .pipe(
+          skip(1),
+          take(1)
+        )
+        .subscribe(() => {
+          expect(Linking.openURL).toBeCalledWith("app-settings:");
+          done();
+        });
+    });
   });
 });
