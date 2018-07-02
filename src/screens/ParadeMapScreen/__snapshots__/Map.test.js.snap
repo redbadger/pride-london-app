@@ -581,11 +581,6 @@ exports[`Map component renders correctly 1`] = `
           },
         ]
       }
-      mapRef={
-        Object {
-          "current": null,
-        }
-      }
       markerSelect={[Function]}
     />
     <StageMarkers
@@ -1297,11 +1292,6 @@ exports[`Map component renders without location button when permission is restri
             "revision": 1,
           },
         ]
-      }
-      mapRef={
-        Object {
-          "current": null,
-        }
       }
       markerSelect={[Function]}
     />

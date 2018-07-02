@@ -102,14 +102,6 @@ describe("Map component", () => {
     expect(subscription.unsubscribe).toBeCalled();
   });
 
-  it("updates tileDetails and activeMarker state when stage is clicked", () => {
-    const output = render(regionProps);
-    const stageMarkers = output.find("StageMarkers");
-    stageMarkers.props().handleMarkerPress(stage);
-    expect(output.state().tileDetails).toEqual(stage);
-    expect(output.state().activeMarker).toEqual(stage.id);
-  });
-
   it("clears tileDetails and activeMarker state when map is clicked", () => {
     const output = render(regionProps);
     output.setState({
