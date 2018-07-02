@@ -7,18 +7,16 @@ import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
-  Linking,
   Alert
 } from "react-native";
+import type { Subscription } from "rxjs";
 import MapView, { Polyline } from "react-native-maps";
-import Permissions from "react-native-permissions";
 import type { Event, SavedEvents } from "../../data/event";
 import type { Amenity } from "../../data/amenity";
 import AmenityMarkers from "./AmenityMarkers";
 import StageMarkers from "./StageMarkers";
 import TerminalMarkers from "./TerminalMarkers";
 import { warmPinkColor } from "../../constants/colors";
-import { getCurrentPosition } from "../../lib/position";
 import type {
   Coordinates,
   Region,
@@ -28,16 +26,15 @@ import EventCard from "../../components/EventCard";
 import ContentPadding from "../../components/ContentPadding";
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
-
-type PermissionStatus =
-  | "authorized"
-  | "denied"
-  | "restricted"
-  | "undetermined"
-  | "checking"
-  | "asking";
-
-const shouldNeverAsk = (status: PermissionStatus) => status === "restricted";
+import type { LocationStatus, Coordinate } from "../../lib/geolocation";
+import {
+  passiveLocationStream,
+  activeLocationStream,
+  defaultLocationStatus,
+  getLocation,
+  shouldNeverRequest,
+  shouldRequest
+} from "../../lib/geolocation";
 
 type Props = {
   route: Array<Coordinates>,
@@ -52,83 +49,102 @@ type Props = {
 };
 
 type State = {
-  locationPermission: PermissionStatus,
-  atUserLocation: boolean,
   activeMarker: ?string,
+  userLocation: LocationStatus,
+  mapLocation: ?Coordinate,
+  moveToUserLocation: boolean,
   tileDetails: ?Event
 };
 
-type setStateArguments = {
-  locationPermission?: PermissionStatus,
-  atUserLocation?: boolean
-};
-
-export const checkLocationPermission = (
-  setState: setStateArguments => void
-): Promise<PermissionStatus> => {
-  setState({ locationPermission: "checking" });
-  return Permissions.check("location").then(response => {
-    setState({ locationPermission: response });
-    return response;
-  });
-};
-
-export const requestLocationPermission = (
-  setState: setStateArguments => void,
-  state: State
-): Promise<PermissionStatus> => {
-  if (shouldNeverAsk(state.locationPermission))
-    return Promise.resolve(state.locationPermission);
-  setState({ locationPermission: "asking" });
-  return Permissions.request("location").then(response => {
-    setState({ locationPermission: response });
-    return response;
-  });
-};
-
-const withHighAccuracy = {
-  enableHighAccuracy: true,
-  timeout: 3000,
-  maximumAge: 10000
-};
-
-const withLowAccuracy = {
-  enableHighAccuracy: false,
-  timeout: 3000,
-  maximumAge: 10000
-};
-
-const animateToCoordinate = ref => (coords: Coordinates) => {
-  const { latitude, longitude } = coords;
-  ref.current.animateToCoordinate({ latitude, longitude }, 500);
+const checkAtUserLocation = (
+  mapLocation: ?Coordinate,
+  userLocation: LocationStatus
+) => {
+  if (
+    mapLocation &&
+    userLocation.type === "authorized" &&
+    userLocation.location.type === "tracking" &&
+    userLocation.location.coords.latitude.toFixed(5) ===
+      mapLocation.latitude.toFixed(5) &&
+    userLocation.location.coords.longitude.toFixed(5) ===
+      mapLocation.longitude.toFixed(5)
+  ) {
+    return true;
+  }
+  return false;
 };
 
 class Map extends PureComponent<Props, State> {
-  state = {
-    activeMarker: null,
-    tileDetails: null,
-    locationPermission: "undetermined",
-    atUserLocation: false
-  };
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      activeMarker: null,
+      tileDetails: null,
+      userLocation: defaultLocationStatus,
+      mapLocation: null,
+      moveToUserLocation: false
+    };
+  }
 
   componentDidMount() {
-    checkLocationPermission(this.setState.bind(this));
+    this.userLocationSubscription = passiveLocationStream().subscribe(value => {
+      this.setState({ userLocation: value });
+    });
+  }
+
+  componentDidUpdate() {
+    if (
+      this.state.moveToUserLocation &&
+      this.state.userLocation.type === "authorized"
+    ) {
+      const { location } = this.state.userLocation;
+
+      // Authorized + tracking
+      if (location.type === "tracking") {
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          moveToUserLocation: false
+        });
+        const { latitude, longitude } = location.coords;
+        this.mapViewRef.current.animateToCoordinate(
+          { latitude, longitude },
+          500
+        );
+        return;
+      }
+
+      // Authorized + error
+      if (location.type === "error") {
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          moveToUserLocation: false
+        });
+        Alert.alert(
+          "We couldn't find your location",
+          "GPS or other location finding magic might not be available, please try again later"
+        );
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.userLocationSubscription) {
+      this.userLocationSubscription.unsubscribe();
+      this.userLocationSubscription = null;
+    }
   }
 
   onRegionChange = (position: Coordinates) => {
-    if (this.state.atUserLocation) {
-      this.setState({ atUserLocation: false });
-    } else if (this.state.locationPermission === "authorized") {
-      getCurrentPosition(withHighAccuracy).then(
-        this.checkAtUserLocation(position)
-      );
-    }
+    this.setState({ mapLocation: position });
   };
 
   handleIOSMarkerSelect = (event: {
     nativeEvent: { coordinate: Coordinates }
   }) => {
-    animateToCoordinate(this.mapViewRef)(event.nativeEvent.coordinate);
+    this.mapViewRef.current.animateToCoordinate(
+      event.nativeEvent.coordinate,
+      500
+    );
   };
 
   handleMarkerPress = (stage: Event) => {
@@ -139,40 +155,26 @@ class Map extends PureComponent<Props, State> {
     this.setState({ tileDetails: null, activeMarker: null });
   };
 
-  checkAtUserLocation = (mapCoordinate: Coordinates) => (
-    coords: Coordinates
-  ) => {
-    const { latitude, longitude } = coords;
-    if (
-      mapCoordinate.latitude.toFixed(5) === latitude.toFixed(5) &&
-      mapCoordinate.longitude.toFixed(5) === longitude.toFixed(5)
-    )
-      this.setState({ atUserLocation: true });
-  };
-
-  moveToCurrentLocation = (): Promise<void> =>
-    requestLocationPermission(this.setState.bind(this), this.state).then(() => {
-      if (this.state.locationPermission === "authorized") {
-        return getCurrentPosition(withHighAccuracy)
-          .catch(() => getCurrentPosition(withLowAccuracy))
-          .then(animateToCoordinate(this.mapViewRef))
-          .catch(() => {
-            Alert.alert(
-              "We couldn't find your location",
-              "GPS or other location finding magic might not be available, please try again later"
-            );
-          });
-      } else if (
-        Platform.OS === "ios" &&
-        this.state.locationPermission === "denied"
-      ) {
-        Linking.openURL("app-settings:");
+  moveToUserLocation = () => {
+    if (shouldRequest(this.state.userLocation)) {
+      if (this.userLocationSubscription) {
+        this.userLocationSubscription.unsubscribe();
       }
-      return Promise.resolve();
+      this.userLocationSubscription = activeLocationStream(
+        this.state.userLocation
+      ).subscribe(value => {
+        this.setState({ userLocation: value });
+      });
+    }
+    this.setState({
+      moveToUserLocation: true
     });
+  };
 
   // $FlowFixMe
   mapViewRef: ElementRef<typeof MapView> = React.createRef();
+
+  userLocationSubscription: ?Subscription = null;
 
   render() {
     const {
@@ -190,7 +192,7 @@ class Map extends PureComponent<Props, State> {
         <MapView
           style={StyleSheet.absoluteFill}
           initialRegion={this.props.paradeRegion}
-          showsUserLocation={this.state.locationPermission === "authorized"}
+          showsUserLocation={!!getLocation(this.state.userLocation)}
           showsMyLocationButton={false}
           onRegionChange={this.onRegionChange}
           ref={this.mapViewRef}
@@ -214,7 +216,6 @@ class Map extends PureComponent<Props, State> {
           <AmenityMarkers
             amenities={amenities}
             markerSelect={this.handleIOSMarkerSelect}
-            mapRef={this.mapViewRef}
           />
           <StageMarkers
             stages={stages}
@@ -224,17 +225,20 @@ class Map extends PureComponent<Props, State> {
           />
         </MapView>
 
-        {!shouldNeverAsk(this.state.locationPermission) && (
+        {!shouldNeverRequest(this.state.userLocation) && (
           <View style={styles.touchable}>
             <TouchableWithoutFeedback
-              onPress={this.moveToCurrentLocation}
+              onPress={this.moveToUserLocation}
               hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
             >
               <View>
                 <Image
                   accessibilityLabel="Show my location"
                   source={
-                    this.state.atUserLocation
+                    checkAtUserLocation(
+                      this.state.mapLocation,
+                      this.state.userLocation
+                    )
                       ? locationButtonActive
                       : locationButtonInactive
                   }

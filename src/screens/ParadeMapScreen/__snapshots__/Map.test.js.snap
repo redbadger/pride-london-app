@@ -1,14 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Map component clears state when map is clicked 1`] = `
-Object {
-  "activeMarker": null,
-  "atUserLocation": false,
-  "locationPermission": "checking",
-  "tileDetails": null,
-}
-`;
-
 exports[`Map component renders correctly 1`] = `
 <Component
   style={
@@ -726,7 +717,7 @@ exports[`Map component renders correctly 1`] = `
 </Component>
 `;
 
-exports[`Map component renders without location button when permission was denied 1`] = `
+exports[`Map component renders without location button when permission is restricted 1`] = `
 <Component
   style={
     Object {
