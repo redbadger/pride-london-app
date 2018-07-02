@@ -1,14 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Map component clears state when map is clicked 1`] = `
-Object {
-  "activeMarker": null,
-  "atUserLocation": false,
-  "locationPermission": "checking",
-  "tileDetails": null,
-}
-`;
-
 exports[`Map component renders correctly 1`] = `
 <Component
   style={
@@ -718,7 +709,7 @@ exports[`Map component renders correctly 1`] = `
 </Component>
 `;
 
-exports[`Map component renders without location button when permission was denied 1`] = `
+exports[`Map component renders without location button when permission is restricted 1`] = `
 <Component
   style={
     Object {
@@ -1389,92 +1380,4 @@ exports[`Map component renders without location button when permission was denie
     />
   </MapView>
 </Component>
-`;
-
-exports[`Map component updates state when stage is clicked 1`] = `
-Object {
-  "activeMarker": "QF4dTqmpn9z5ItEizAZ",
-  "atUserLocation": false,
-  "locationPermission": "checking",
-  "tileDetails": Object {
-    "contentType": "event",
-    "fields": Object {
-      "accessibilityDetails": "accessibilityDetails",
-      "accessibilityOptions": Array [
-        "dmsFhe9C732jAxJ2oCAFv8vi0B",
-        "AY957Prtj00U0nq",
-        "mr9XTUQr6iQap9o7NYHRjN3xX93a",
-        "5YYd69ZsuKxA",
-      ],
-      "addressLine1": "addressLine1",
-      "addressLine2": "addressLine2",
-      "audience": Array [
-        "Z4a",
-        "yAr1NR9z56dtW8a53dKOxsknYzp",
-        "i1D",
-        "mX1P6999LbV7z3oxYPD6R0Alj11cb8",
-        "qqEtmOF46hkCR3Tc4SGRu5jxZ5d8",
-      ],
-      "city": "city",
-      "email": "email",
-      "endTime": "2018-07-07T03:00+00:00",
-      "eventCategories": Array [
-        "Cabaret and Variety",
-        "Film and Screenings",
-        "Health",
-        "Plays and Theatre",
-      ],
-      "eventDescription": "eventDescription",
-      "eventPriceHigh": 10,
-      "eventPriceLow": 0,
-      "eventsListPicture": Object {
-        "sys": Object {
-          "id": "Sw",
-        },
-      },
-      "individualEventPicture": Object {
-        "sys": Object {
-          "id": "99ww8tQRq",
-        },
-      },
-      "location": Object {
-        "lat": 0,
-        "lon": 10,
-      },
-      "locationName": "locationName",
-      "name": "name",
-      "performances": Array [
-        Object {
-          "sys": Object {
-            "id": "t3gcH9lwpBFJACtGC24P8lFR",
-          },
-        },
-        Object {
-          "sys": Object {
-            "id": "DcH3",
-          },
-        },
-        Object {
-          "sys": Object {
-            "id": "gp493DYUByvSUyrw4uIGW8L5IEOw9",
-          },
-        },
-      ],
-      "phone": "phone",
-      "postcode": "postcode",
-      "recurrenceDates": Array [
-        "31/05/2018",
-      ],
-      "stage": true,
-      "startTime": "2018-07-07T00:00+00:00",
-      "ticketingUrl": "ticketingUrl",
-      "venueDetails": Array [
-        "p36SA7hUd97vAklm",
-      ],
-    },
-    "id": "QF4dTqmpn9z5ItEizAZ",
-    "locale": "en-GB",
-    "revision": 1,
-  },
-}
 `;
