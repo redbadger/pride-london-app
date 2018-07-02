@@ -18,14 +18,11 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <Component
         type="h4"
       >
         some thing
-      </Text>
+      </Component>
     </IconItem>
     <IconItem
       onPress={[Function]}
@@ -35,14 +32,11 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <Component
         type="h4"
       >
         some thing
-      </Text>
+      </Component>
     </IconItem>
   </LayoutColumn>
 </Component>

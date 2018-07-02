@@ -31,13 +31,9 @@ exports[`Header renders correctly with all props 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
+      <Component>
         Left
-      </Text>
+      </Component>
     </Component>
     <Component
       style={
@@ -74,13 +70,9 @@ exports[`Header renders correctly with all props 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
+      <Component>
         Right
-      </Text>
+      </Component>
     </Component>
   </ContentPadding>
 </Component>
@@ -184,13 +176,9 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
+      <Component>
         Left
-      </Text>
+      </Component>
     </Component>
     <Component
       style={
@@ -224,13 +212,9 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
+      <Component>
         Right
-      </Text>
+      </Component>
     </Component>
   </ContentPadding>
 </Component>
