@@ -1,8 +1,8 @@
 // @flow
-import { Linking, Platform } from "react-native";
+import { Alert, Linking, Platform } from "react-native";
 import Permissions from "react-native-permissions";
 import { Observable, defer, merge, of } from "rxjs";
-import { map, switchMap } from "rxjs/operators";
+import { map, switchMap, tap } from "rxjs/operators";
 
 export type Coordinate = {
   latitude: number,
@@ -56,22 +56,31 @@ export const defaultLocationStatus: LocationStatus = {
   type: "undetermined"
 };
 
-const authorized = (location: LocationValue): LocationStatus => ({
-  type: "authorized",
-  location
-});
-
 const locationAwaiting: LocationValue = {
   type: "awaiting"
 };
 
-const locationError: LocationValue = {
-  type: "error"
+const locationStatusFromErrorCode = (code: number): LocationStatus => {
+  // denied
+  if (code === 1) {
+    return {
+      type: "denied"
+    };
+  }
+  return {
+    type: "authorized",
+    location: {
+      type: "error"
+    }
+  };
 };
 
-const locationTracking = (coords): LocationValue => ({
-  type: "tracking",
-  coords
+const locationStatusAuthorizedTracking = (coords): LocationStatus => ({
+  type: "authorized",
+  location: {
+    type: "tracking",
+    coords
+  }
 });
 
 const permissionToLocationStatus = (value: string): LocationStatus => {
@@ -117,11 +126,11 @@ const options = {
   distanceFilter: 5
 };
 
-export const locationStream = () =>
+export const locationStatusStream = () =>
   Observable.create(observer => {
     const watchId = navigator.geolocation.watchPosition(
-      value => observer.next(locationTracking(value.coords)),
-      () => observer.next(locationError),
+      value => observer.next(locationStatusAuthorizedTracking(value.coords)),
+      ({ code }) => observer.next(locationStatusFromErrorCode(code)),
       options
     );
 
@@ -147,11 +156,31 @@ export const passiveLocationStream = () =>
     map(permissionToLocationStatus),
     switchMap(value => {
       if (value.type === "authorized") {
-        return merge(of(value), locationStream().pipe(map(authorized)));
+        return merge(of(value), locationStatusStream());
       }
       return of(value);
     })
   );
+
+const noop = () => {};
+
+const showDeniedAlertToIOS = value => {
+  if (value === "denied" && Platform.OS === "ios") {
+    Alert.alert(
+      "We can't get your location",
+      "Enable location access in your Settings to help find your way around the Parade.",
+      [
+        {
+          text: "Take me to my Settings",
+          onPress: () => Linking.openURL("app-settings:")
+        },
+        {
+          text: "OK"
+        }
+      ]
+    );
+  }
+};
 
 /*
 Returns a stream of LocationStatus values. This will prompt the user
@@ -167,23 +196,15 @@ D = Authorized + Tracking(1, 2)
 E = Authorized + Error
 */
 export const activeLocationStream = (locationStatus: LocationStatus) => {
-  const mapper =
-    locationStatus.type === "denied"
-      ? value => {
-          if (value === "denied" && Platform.OS === "ios") {
-            Linking.openURL("app-settings:");
-            return "undetermined";
-          }
-          return value;
-        }
-      : value => value;
+  const showAlert =
+    locationStatus.type === "denied" ? showDeniedAlertToIOS : noop;
 
   return requestPermissionStream().pipe(
-    map(mapper),
+    tap(showAlert),
     map(permissionToLocationStatus),
     switchMap(value => {
-      if (value.type === "authorized" || value.type === "undetermined") {
-        return merge(of(value), locationStream().pipe(map(authorized)));
+      if (value.type === "authorized") {
+        return merge(of(value), locationStatusStream());
       }
       return of(value);
     })

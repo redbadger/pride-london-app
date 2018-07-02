@@ -1,5 +1,5 @@
 // @flow
-import { Linking, Platform } from "react-native";
+import { Alert, Linking, Platform } from "react-native";
 import Permissions from "react-native-permissions";
 import { last, skip, take } from "rxjs/operators";
 import {
@@ -7,7 +7,7 @@ import {
   checkPermissionStream,
   activeLocationStream,
   requestPermissionStream,
-  locationStream,
+  locationStatusStream,
   getLocation,
   shouldNeverRequest,
   shouldRequest
@@ -19,6 +19,9 @@ jest.mock("react-native", () => ({
   },
   Linking: {
     openURL: jest.fn()
+  },
+  Alert: {
+    alert: jest.fn()
   }
 }));
 
@@ -41,6 +44,8 @@ afterEach(() => {
   Permissions.check.mockRestore();
   // $FlowFixMe
   Permissions.request.mockRestore();
+  // $FlowFixMe
+  Alert.alert.mockRestore();
   // $FlowFixMe
   Linking.openURL.mockRestore();
   Platform.OS = "android";
@@ -162,26 +167,43 @@ describe("requestPermissionStream", () => {
   });
 });
 
-describe("LocationStream", () => {
-  it("emits values from subscribing to watchPosition", done => {
+describe("locationStatusStream", () => {
+  it("emits authorized + tracking when watchPosition emits values", done => {
     expect.assertions(1);
     watchPosition.mockImplementationOnce(
       callbackSuccessWith({ coords: { latitude: 1, longitude: 2 } })
     );
-    locationStream().subscribe(value => {
+    locationStatusStream().subscribe(value => {
       expect(value).toEqual({
-        type: "tracking",
-        coords: { latitude: 1, longitude: 2 }
+        type: "authorized",
+        location: {
+          type: "tracking",
+          coords: { latitude: 1, longitude: 2 }
+        }
       });
       done();
     });
   });
 
-  it("emits errors from subscribing to watchPosition", done => {
+  it("emits authorized + error when watchPosition emits errors", done => {
     expect.assertions(1);
     watchPosition.mockImplementationOnce(callbackErrorWith({ code: 2 }));
-    locationStream().subscribe(value => {
-      expect(value).toEqual({ type: "error" });
+    locationStatusStream().subscribe(value => {
+      expect(value).toEqual({
+        type: "authorized",
+        location: { type: "error" }
+      });
+      done();
+    });
+  });
+
+  it("emits denied when watchPosition emits errors with code 1", done => {
+    expect.assertions(1);
+    watchPosition.mockImplementationOnce(callbackErrorWith({ code: 1 }));
+    locationStatusStream().subscribe(value => {
+      expect(value).toEqual({
+        type: "denied"
+      });
       done();
     });
   });
@@ -192,7 +214,7 @@ describe("LocationStream", () => {
       setTimeout(() => cb({ coords: { longitude: 1, latititude: 2 } }));
       return 123;
     });
-    const stream = locationStream().subscribe(() => {
+    const stream = locationStatusStream().subscribe(() => {
       stream.unsubscribe();
       expect(clearWatch).toBeCalledWith(123);
       done();
@@ -305,30 +327,9 @@ describe("activeLocationStream", () => {
       });
   });
 
-  it("subscribes to location if request is undetermined", done => {
-    expect.assertions(1);
-    // $FlowFixMe
-    Permissions.request.mockReturnValue(Promise.resolve("undetermined"));
-    watchPosition.mockImplementationOnce(
-      callbackSuccessWith({ coords: { latitude: 1, longitude: 2 } })
-    );
-    activeLocationStream({ type: "denied" })
-      .pipe(
-        skip(2),
-        take(1)
-      )
-      .subscribe(value => {
-        expect(value).toEqual({
-          type: "authorized",
-          location: { type: "tracking", coords: { latitude: 1, longitude: 2 } }
-        });
-        done();
-      });
-  });
-
   describe("when passed a denied LocationStatus", () => {
-    it("maps denied requests to undetermined on iOS", done => {
-      expect.assertions(1);
+    it("triggers alert on iOS when denied", done => {
+      expect.assertions(4);
       // $FlowFixMe
       Permissions.request.mockReturnValue(Promise.resolve("denied"));
       Platform.OS = "ios";
@@ -337,15 +338,23 @@ describe("activeLocationStream", () => {
           skip(1),
           take(1)
         )
-        .subscribe(value => {
-          expect(value).toEqual({
-            type: "undetermined"
-          });
+        .subscribe(() => {
+          const [
+            title,
+            description,
+            [negative, positive]
+          ] = Alert.alert.mock.calls[0];
+          expect(title).toEqual("We can't get your location");
+          expect(description).toEqual(
+            "Enable location access in your Settings to help find your way around the Parade."
+          );
+          expect(negative.text).toEqual("Take me to my Settings");
+          expect(positive.text).toEqual("OK");
           done();
         });
     });
 
-    it("navigates user to settings page if request is denied on iOS", done => {
+    it("navigates user to settings page if user selects first alert CTA", done => {
       expect.assertions(1);
       // $FlowFixMe
       Permissions.request.mockReturnValue(Promise.resolve("denied"));
@@ -356,6 +365,8 @@ describe("activeLocationStream", () => {
           take(1)
         )
         .subscribe(() => {
+          const { onPress } = Alert.alert.mock.calls[0][2][0];
+          onPress();
           expect(Linking.openURL).toBeCalledWith("app-settings:");
           done();
         });
