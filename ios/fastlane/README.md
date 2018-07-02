@@ -100,6 +100,12 @@ fastlane ios devices
 
 Add devices
 
+### ios refresh_dsyms
+
+```
+fastlane ios refresh_dsyms
+```
+
 ---
 
 This README.md is auto-generated and will be re-generated every time [fastlane](https://fastlane.tools) is run.
