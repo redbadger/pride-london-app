@@ -348,8 +348,8 @@ describe("activeLocationStream", () => {
           expect(description).toEqual(
             "Enable location access in your Settings to help find your way around the Parade."
           );
-          expect(negative.text).toEqual("Take me to my Settings");
-          expect(positive.text).toEqual("OK");
+          expect(negative.text).toEqual("Cancel");
+          expect(positive.text).toEqual("Go to my Settings");
           done();
         });
     });
@@ -365,7 +365,7 @@ describe("activeLocationStream", () => {
           take(1)
         )
         .subscribe(() => {
-          const { onPress } = Alert.alert.mock.calls[0][2][0];
+          const { onPress } = Alert.alert.mock.calls[0][2][1];
           onPress();
           expect(Linking.openURL).toBeCalledWith("app-settings:");
           done();

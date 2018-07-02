@@ -171,11 +171,11 @@ const showDeniedAlertToIOS = value => {
       "Enable location access in your Settings to help find your way around the Parade.",
       [
         {
-          text: "Take me to my Settings",
-          onPress: () => Linking.openURL("app-settings:")
+          text: "Cancel"
         },
         {
-          text: "OK"
+          text: "Go to my Settings",
+          onPress: () => Linking.openURL("app-settings:")
         }
       ]
     );
