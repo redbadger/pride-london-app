@@ -3,16 +3,23 @@ import React, { Fragment } from "react";
 import { Marker } from "react-native-maps";
 import { uniqWith, eqBy } from "ramda";
 import type { Event } from "../../data/event";
+import type { Coordinates } from "../../constants/parade-coordinates";
 import stageIconActive from "../../../assets/images/stageIconActive.png";
 import stageIconInactive from "../../../assets/images/stageIconInactive.png";
 
 type Props = {
   stages: Event[],
   activeMarker: ?string,
-  handleMarkerPress: (stage: Event) => void
+  handleMarkerPress: (stage: Event) => void,
+  markerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
 };
 
-const StageMarkers = ({ stages, handleMarkerPress, activeMarker }: Props) => {
+const StageMarkers = ({
+  stages,
+  handleMarkerPress,
+  markerSelect,
+  activeMarker
+}: Props) => {
   if (stages.length === 0) {
     return null;
   }
@@ -34,6 +41,7 @@ const StageMarkers = ({ stages, handleMarkerPress, activeMarker }: Props) => {
           image={
             activeMarker === stage.id ? stageIconActive : stageIconInactive
           }
+          onSelect={markerSelect}
         />
       ))}
     </Fragment>
