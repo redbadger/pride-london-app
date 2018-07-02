@@ -16,6 +16,7 @@ exports[`TerminalMarkers component renders correctly 1`] = `
       }
     }
     key="start"
+    onSelect={[Function]}
     stopPropagation={true}
   >
     <Component
@@ -86,6 +87,7 @@ exports[`TerminalMarkers component renders correctly 1`] = `
       }
     }
     key="finish"
+    onSelect={[Function]}
     stopPropagation={true}
   >
     <Component

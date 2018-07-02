@@ -102,14 +102,6 @@ describe("Map component", () => {
     expect(subscription.unsubscribe).toBeCalled();
   });
 
-  it("updates tileDetails and activeMarker state when stage is clicked", () => {
-    const output = render(regionProps);
-    const stageMarkers = output.find("StageMarkers");
-    stageMarkers.props().handleMarkerPress(stage);
-    expect(output.state().tileDetails).toEqual(stage);
-    expect(output.state().activeMarker).toEqual(stage.id);
-  });
-
   it("clears tileDetails and activeMarker state when map is clicked", () => {
     const output = render(regionProps);
     output.setState({
@@ -170,5 +162,42 @@ describe("moveToCurrentLocation", () => {
         activeSubscription
       );
     });
+  });
+});
+
+describe("handleMarkerPress", () => {
+  it("updates state with stage marker details", () => {
+    const output = render(regionProps);
+    const animateToCoordinate = jest.fn();
+
+    output.instance().mapViewRef.current = { animateToCoordinate };
+    const handleMarkerPressSpy = output.instance().handleMarkerPress;
+    handleMarkerPressSpy(stage);
+    expect(output.state().tileDetails).toEqual(stage);
+    expect(output.state().activeMarker).toEqual(stage.id);
+    jest.clearAllMocks();
+  });
+});
+
+describe("handleIOSMarkerSelect", () => {
+  it("animates to marker coordinates", () => {
+    const output = render(regionProps);
+    const animateToCoordinate = jest.fn();
+
+    output.instance().mapViewRef.current = { animateToCoordinate };
+    const handleIOSMarkerSelectSpy = output.instance().handleIOSMarkerSelect;
+    handleIOSMarkerSelectSpy({
+      nativeEvent: {
+        coordinate: {
+          latitude: stage.fields.location.lat,
+          longitude: stage.fields.location.lon
+        }
+      }
+    });
+    expect(animateToCoordinate.mock.calls[0][0]).toEqual({
+      latitude: stage.fields.location.lat,
+      longitude: stage.fields.location.lon
+    });
+    jest.clearAllMocks();
   });
 });
