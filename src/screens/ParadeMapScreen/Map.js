@@ -125,12 +125,14 @@ class Map extends PureComponent<Props, State> {
     }
   };
 
+  handleIOSMarkerSelect = (event: {
+    nativeEvent: { coordinate: Coordinates }
+  }) => {
+    animateToCoordinate(this.mapViewRef)(event.nativeEvent.coordinate);
+  };
+
   handleMarkerPress = (stage: Event) => {
     this.setState({ tileDetails: stage, activeMarker: stage.id });
-    animateToCoordinate(this.mapViewRef)({
-      latitude: stage.fields.location.lat,
-      longitude: stage.fields.location.lon
-    });
   };
 
   handleMapPress = () => {
@@ -205,12 +207,20 @@ class Map extends PureComponent<Props, State> {
             strokeColor={warmPinkColor}
             lineJoin="bevel"
           />
-          <TerminalMarkers terminals={terminals} />
-          <AmenityMarkers amenities={amenities} />
+          <TerminalMarkers
+            terminals={terminals}
+            markerSelect={this.handleIOSMarkerSelect}
+          />
+          <AmenityMarkers
+            amenities={amenities}
+            markerSelect={this.handleIOSMarkerSelect}
+            mapRef={this.mapViewRef}
+          />
           <StageMarkers
             stages={stages}
             handleMarkerPress={this.handleMarkerPress}
             activeMarker={this.state.activeMarker}
+            markerSelect={this.handleIOSMarkerSelect}
           />
         </MapView>
 

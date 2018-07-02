@@ -282,15 +282,24 @@ describe("handleMarkerPress", () => {
     expect(output.state().activeMarker).toEqual(stage.id);
     jest.clearAllMocks();
   });
+});
 
-  it("animates to stage coordinates", () => {
+describe("handleIOSMarkerSelect", () => {
+  it("animates to marker coordinates", () => {
     permissionCheckSpy.mockReturnValue(Promise.resolve("undetermined"));
     const output = render(regionProps);
     const animateToCoordinate = jest.fn();
 
     output.instance().mapViewRef.current = { animateToCoordinate };
-    const handleMarkerPressSpy = output.instance().handleMarkerPress;
-    handleMarkerPressSpy(stage);
+    const handleIOSMarkerSelectSpy = output.instance().handleIOSMarkerSelect;
+    handleIOSMarkerSelectSpy({
+      nativeEvent: {
+        coordinate: {
+          latitude: stage.fields.location.lat,
+          longitude: stage.fields.location.lon
+        }
+      }
+    });
     expect(animateToCoordinate.mock.calls[0][0]).toEqual({
       latitude: stage.fields.location.lat,
       longitude: stage.fields.location.lon
