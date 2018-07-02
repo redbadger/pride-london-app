@@ -1,6 +1,6 @@
 {
   "name": "pride-london-app",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -46,7 +46,8 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "rxjs": "^6.2.1"
   },
   "devDependencies": {
     "@rgbboy/testcheck": "^1.0.0-rc.3",
