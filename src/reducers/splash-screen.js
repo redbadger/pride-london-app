@@ -12,7 +12,7 @@ const splashScreen: Reducer<State, SupportedAction> = (
   state: State = defaultState,
   action: SupportedAction
 ) => {
-  if (action.type === "RECEIVE_CMS_DATA") {
+  if (action.type === "RECEIVE_CMS_DATA" && state === "showing") {
     return "hiding";
   }
 

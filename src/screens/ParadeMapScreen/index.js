@@ -30,26 +30,19 @@ type DispatchProps = {
 
 type Props = StateProps & DispatchProps;
 
-let cache: StateProps;
-
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
 // not line up. See https://github.com/facebook/flow/issues/5343
 const mapStateToProps = (
   state: State,
   { navigation, isFocused }: OwnProps
-): StateProps => {
-  if (!cache || isFocused) {
-    cache = {
-      navigation,
-      stages: selectStages(state),
-      amenities: getAmenities(state),
-      isFocused,
-      savedEvents: selectSavedEvents(state)
-    };
-  }
-  return cache;
-};
+): StateProps => ({
+  navigation,
+  amenities: getAmenities(state),
+  stages: selectStages(state),
+  isFocused,
+  savedEvents: selectSavedEvents(state)
+});
 
 const mapDispatchToProps = {
   addSavedEvent,
