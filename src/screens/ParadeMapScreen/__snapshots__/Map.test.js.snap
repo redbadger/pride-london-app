@@ -14,6 +14,7 @@ exports[`Map component renders correctly 1`] = `
     }
   }
 >
+  <MessageBanner />
   <MapView
     initialRegion={
       Object {
@@ -726,6 +727,7 @@ exports[`Map component renders without location button when permission is restri
     }
   }
 >
+  <MessageBanner />
   <MapView
     initialRegion={
       Object {

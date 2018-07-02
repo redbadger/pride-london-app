@@ -99,34 +99,33 @@ class Map extends PureComponent<Props, State> {
     ) {
       const { location } = this.state.userLocation;
 
-      // // Authorized + tracking
-      // if (location.type === "tracking") {
-      //   // eslint-disable-next-line react/no-did-update-set-state
-      //   this.setState({
-      //     moveToUserLocation: false
-      //   });
-      //   const { latitude, longitude } = location.coords;
-      //   this.mapViewRef.current.animateToCoordinate(
-      //     { latitude, longitude },
-      //     500
-      //   );
-      //   return;
-      // }
+      // Authorized + tracking
+      if (location.type === "tracking") {
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          moveToUserLocation: false
+        });
+        const { latitude, longitude } = location.coords;
+        this.mapViewRef.current.animateToCoordinate(
+          { latitude, longitude },
+          500
+        );
+        return;
+      }
 
       // Authorized + error
-      // if (location.type === "error") {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        moveToUserLocation: false
-      });
-      // this.messageBannerRef.current.props.message = "Hello World";
-      // console.log(this.messageBannerRef.current);
-      // this.messageBannerRef.current.handleAnimation()
-      this.messageBannerRef.current.initialize(
-        "We couldn't find your location",
-        "GPS or other location finding magic might not be available, please try again later"
-      );
-      // }
+      if (location.type === "error") {
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          moveToUserLocation: false
+        });
+        this.messageBannerRef.current.props.message = "Hello World";
+        this.messageBannerRef.current.handleAnimation();
+        this.messageBannerRef.current.initialize(
+          "We couldn't find your location",
+          "GPS or other location finding magic might not be available, please try again later"
+        );
+      }
     }
   }
 

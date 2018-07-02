@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+<AnimatedComponent
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#2cda9d",
+        "elevation": 1,
+        "height": 90,
+        "justifyContent": "flex-start",
+        "left": 0,
+        "position": "absolute",
+        "top": -90,
+        "width": "100%",
+        "zIndex": 1,
+      },
+      Object {
+        "transform": Array [
+          Object {
+            "translateY": 0,
+          },
+        ],
+      },
+    ]
+  }
+>
+  <TouchableWithoutFeedback
+    onPress={[Function]}
+  >
+    <Component
+      style={
+        Array [
+          Object {
+            "flex": 1,
+            "justifyContent": "space-between",
+          },
+          Object {
+            "backgroundColor": null,
+          },
+        ]
+      }
+    >
+      <ContentPadding
+        padding={
+          Object {
+            "large": Object {
+              "horizontal": 20,
+              "vertical": 20,
+            },
+            "medium": Object {
+              "horizontal": 16,
+              "vertical": 16,
+            },
+            "small": Object {
+              "horizontal": 8,
+              "vertical": 8,
+            },
+          }
+        }
+        style={Object {}}
+      >
+        <Text
+          color="blackColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          style={
+            Object {
+              "color": null,
+            }
+          }
+          type="h3"
+        />
+        <Text
+          color="blackColor"
+          markdown={false}
+          markdownStyle={Object {}}
+          style={
+            Object {
+              "color": null,
+            }
+          }
+          type="small"
+        />
+      </ContentPadding>
+    </Component>
+  </TouchableWithoutFeedback>
+</AnimatedComponent>
+`;
