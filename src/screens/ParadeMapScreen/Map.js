@@ -53,6 +53,7 @@ type State = {
   userLocation: LocationStatus,
   mapLocation: ?Coordinate,
   moveToUserLocation: boolean,
+  showLocationErrorBanner: boolean,
   tileDetails: ?Event
 };
 
@@ -82,6 +83,7 @@ class Map extends PureComponent<Props, State> {
       tileDetails: null,
       userLocation: defaultLocationStatus,
       mapLocation: null,
+      showLocationErrorBanner: false,
       moveToUserLocation: false
     };
   }
@@ -119,12 +121,6 @@ class Map extends PureComponent<Props, State> {
         this.setState({
           moveToUserLocation: false
         });
-        this.messageBannerRef.current.props.message = "Hello World";
-        this.messageBannerRef.current.handleAnimation();
-        this.messageBannerRef.current.initialize(
-          "We couldn't find your location",
-          "GPS or other location finding magic might not be available, please try again later"
-        );
       }
     }
   }
@@ -193,7 +189,13 @@ class Map extends PureComponent<Props, State> {
 
     return (
       <View style={styles.mapWrapper}>
-        <MessageBanner ref={this.messageBannerRef} />
+        {this.state.userLocation.type === "authorized" &&
+          this.state.userLocation.location.type === "error" && (
+            <MessageBanner
+              title="We couldn't find your location"
+              message="GPS or other location finding magic might not be available, please try again later"
+            />
+          )}
         <MapView
           style={StyleSheet.absoluteFill}
           initialRegion={this.props.paradeRegion}

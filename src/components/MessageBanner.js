@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import {
   View,
   StyleSheet,
@@ -13,32 +13,24 @@ import {
 } from "../constants/colors";
 import ContentPadding from "../components/ContentPadding";
 
-type State = {
-  title: ?string,
-  message: ?string,
-  backgroundColor: ?string,
-  textColor: ?string
+type Props = {
+  title: string,
+  message: string
 };
 
-type Props = {};
-
-class MessageBanner extends Component<Props, State> {
+class MessageBanner extends PureComponent<Props> {
   constructor() {
     super();
-
-    this.state = {
-      title: null,
-      message: null,
-      backgroundColor: null,
-      textColor: null
-    };
-
     this.isAnimating = false;
     this.bannerTop = new Animated.Value(0);
   }
 
   bannerTop: Animated.Value;
   isAnimating: boolean;
+
+  componentDidMount() {
+    this.handleAnimation();
+  }
 
   slideAnimation = (value: number, delay: number) =>
     Animated.timing(this.bannerTop, {
@@ -47,18 +39,6 @@ class MessageBanner extends Component<Props, State> {
       useNativeDriver: true,
       delay
     });
-
-  initialize = (
-    title: string,
-    message: string,
-    backgroundColor: string = eucalyptusGreenColor,
-    textColor: string = categoriesFilterButtonBgColor
-  ) => {
-    this.setState(
-      { title, message, backgroundColor, textColor },
-      this.handleAnimation
-    );
-  };
 
   handleAnimation = () => {
     if (!this.isAnimating) {
@@ -79,6 +59,8 @@ class MessageBanner extends Component<Props, State> {
   };
 
   render() {
+    const { title, message } = this.props;
+
     return (
       <Animated.View
         style={[
@@ -87,12 +69,7 @@ class MessageBanner extends Component<Props, State> {
         ]}
       >
         <TouchableWithoutFeedback onPress={this.stopAnimation}>
-          <View
-            style={[
-              styles.messageContainer,
-              { backgroundColor: this.state.backgroundColor }
-            ]}
-          >
+          <View style={styles.messageContainer}>
             <ContentPadding
               padding={{
                 small: { horizontal: 8, vertical: 8 },
@@ -100,11 +77,11 @@ class MessageBanner extends Component<Props, State> {
                 large: { horizontal: 20, vertical: 20 }
               }}
             >
-              <Text type="h3" style={{ color: this.state.textColor }}>
-                {this.state.title}
+              <Text type="h3" style={styles.messageText}>
+                {title}
               </Text>
-              <Text type="small" style={{ color: this.state.textColor }}>
-                {this.state.message}
+              <Text type="small" style={styles.messageText}>
+                {message}
               </Text>
             </ContentPadding>
           </View>
@@ -118,6 +95,9 @@ const styles = StyleSheet.create({
   messageContainer: {
     flex: 1,
     justifyContent: "space-between"
+  },
+  messageText: {
+    color: categoriesFilterButtonBgColor
   },
   wrapperView: {
     position: "absolute",

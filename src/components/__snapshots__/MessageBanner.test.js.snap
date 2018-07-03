@@ -30,15 +30,10 @@ exports[`it renders correctly 1`] = `
   >
     <Component
       style={
-        Array [
-          Object {
-            "flex": 1,
-            "justifyContent": "space-between",
-          },
-          Object {
-            "backgroundColor": null,
-          },
-        ]
+        Object {
+          "flex": 1,
+          "justifyContent": "space-between",
+        }
       }
     >
       <ContentPadding
@@ -66,22 +61,26 @@ exports[`it renders correctly 1`] = `
           markdownStyle={Object {}}
           style={
             Object {
-              "color": null,
+              "color": "rgb(25, 26, 71)",
             }
           }
           type="h3"
-        />
+        >
+          Testing the message title
+        </Text>
         <Text
           color="blackColor"
           markdown={false}
           markdownStyle={Object {}}
           style={
             Object {
-              "color": null,
+              "color": "rgb(25, 26, 71)",
             }
           }
           type="small"
-        />
+        >
+          Testing the message banner
+        </Text>
       </ContentPadding>
     </Component>
   </TouchableWithoutFeedback>
