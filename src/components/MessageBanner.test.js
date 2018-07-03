@@ -11,9 +11,7 @@ const defaultProps = {
   message: "Testing the message banner"
 };
 
-const render = props => {
-  return shallow(<MessageBanner {...props} />);
-};
+const render = props => shallow(<MessageBanner {...props} />);
 
 beforeEach(() => {
   timingSpy = jest.spyOn(Animated, "timing").mockImplementation(() => ({
@@ -35,23 +33,13 @@ it("should animate the banner", () => {
       start: jest.fn()
     }));
 
-  const timingSpy = jest.spyOn(Animated, "timing");
-
-  const output = render(defaultProps);
-  const instance = output.instance();
+  render(defaultProps);
 
   expect(sequenceSpy).toHaveBeenCalled();
   expect(timingSpy).toHaveBeenCalledTimes(2);
-  expect(timingSpy.mock.calls[0][0]);
 });
 
 it("should be able to reverse initial animation", () => {
-  const timingSpy = jest.spyOn(Animated, "timing").mockImplementation(() => ({
-    start: () => {
-      return { finished: true };
-    }
-  }));
-
   const output = render(defaultProps);
   const instance = output.instance();
 

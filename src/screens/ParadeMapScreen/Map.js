@@ -53,7 +53,6 @@ type State = {
   userLocation: LocationStatus,
   mapLocation: ?Coordinate,
   moveToUserLocation: boolean,
-  showLocationErrorBanner: boolean,
   tileDetails: ?Event
 };
 
@@ -83,7 +82,6 @@ class Map extends PureComponent<Props, State> {
       tileDetails: null,
       userLocation: defaultLocationStatus,
       mapLocation: null,
-      showLocationErrorBanner: false,
       moveToUserLocation: false
     };
   }
