@@ -541,6 +541,7 @@ exports[`Map component renders correctly 1`] = `
       strokeWidth={5}
     />
     <TerminalMarkers
+      markerSelect={[Function]}
       terminals={
         Array [
           Object {
@@ -580,10 +581,12 @@ exports[`Map component renders correctly 1`] = `
           },
         ]
       }
+      markerSelect={[Function]}
     />
     <StageMarkers
       activeMarker={null}
       handleMarkerPress={[Function]}
+      markerSelect={[Function]}
       stages={
         Array [
           Object {
@@ -1250,6 +1253,7 @@ exports[`Map component renders without location button when permission is restri
       strokeWidth={5}
     />
     <TerminalMarkers
+      markerSelect={[Function]}
       terminals={
         Array [
           Object {
@@ -1289,10 +1293,12 @@ exports[`Map component renders without location button when permission is restri
           },
         ]
       }
+      markerSelect={[Function]}
     />
     <StageMarkers
       activeMarker={null}
       handleMarkerPress={[Function]}
+      markerSelect={[Function]}
       stages={
         Array [
           Object {

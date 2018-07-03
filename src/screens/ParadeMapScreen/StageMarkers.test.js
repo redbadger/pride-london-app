@@ -15,6 +15,7 @@ describe("AmenityMarkers component", () => {
         // eslint-disable-next-line no-unused-vars
         handleMarkerPress={(_: Event) => {}}
         activeMarker={null}
+        markerSelect={() => {}}
       />
     );
     expect(output).toMatchSnapshot();
@@ -27,6 +28,7 @@ describe("AmenityMarkers component", () => {
         // eslint-disable-next-line no-unused-vars
         handleMarkerPress={(_: Event) => {}}
         activeMarker={null}
+        markerSelect={() => {}}
       />
     );
     expect(output.children().length).toBe(0);
@@ -44,6 +46,7 @@ describe("AmenityMarkers component", () => {
         // eslint-disable-next-line no-unused-vars
         handleMarkerPress={(_: Event) => {}}
         activeMarker={null}
+        markerSelect={() => {}}
       />
     );
 
@@ -57,6 +60,7 @@ describe("AmenityMarkers component", () => {
         stages={[stage]}
         handleMarkerPress={mockHandleMarkerPress}
         activeMarker={null}
+        markerSelect={() => {}}
       />
     );
 

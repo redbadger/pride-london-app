@@ -217,4 +217,10 @@ platform :ios do
       force_for_new_devices: true
     )
   end
+
+  lane :refresh_dsyms do |options|
+    download_dsyms(version: options[:version])
+    upload_symbols_to_bugsnag
+    clean_build_artifacts
+  end
 end

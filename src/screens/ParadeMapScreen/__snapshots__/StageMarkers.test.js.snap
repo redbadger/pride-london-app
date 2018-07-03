@@ -12,6 +12,7 @@ exports[`AmenityMarkers component renders correctly 1`] = `
     image={1}
     key="QF4dTqmpn9z5ItEizAZ"
     onPress={[Function]}
+    onSelect={[Function]}
     stopPropagation={true}
     zIndex={1}
   />
