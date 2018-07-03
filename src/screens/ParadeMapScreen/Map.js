@@ -188,7 +188,7 @@ class Map extends PureComponent<Props, State> {
     return (
       <View style={styles.mapWrapper}>
         {this.state.userLocation.type === "authorized" &&
-          this.state.userLocation.location.type === "error" && (
+          this.state.userLocation.location.type === "tracking" && (
             <MessageBanner
               title="We couldn't find your location"
               message="GPS or other location finding magic might not be available, please try again later"

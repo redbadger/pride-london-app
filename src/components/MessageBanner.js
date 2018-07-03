@@ -53,7 +53,7 @@ class MessageBanner extends PureComponent<Props> {
     }
   };
 
-  stopAnimation = () => {
+  resetAnimation = () => {
     this.slideAnimation(0, 0).start(({ finished }) => {
       if (finished) this.isAnimating = false;
     });
@@ -69,7 +69,7 @@ class MessageBanner extends PureComponent<Props> {
           { transform: [{ translateY: this.bannerTop }] }
         ]}
       >
-        <TouchableWithoutFeedback onPress={this.stopAnimation}>
+        <TouchableWithoutFeedback onPress={this.resetAnimation}>
           <View style={styles.messageContainer}>
             <ContentPadding
               padding={{

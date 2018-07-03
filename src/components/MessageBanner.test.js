@@ -17,62 +17,71 @@ beforeEach(() => {
   timingSpy = jest.spyOn(Animated, "timing").mockImplementation(() => ({
     start: jest.fn()
   }));
+  jest.useFakeTimers();
 });
 
-afterEach(() => timingSpy.mockRestore());
+afterEach(() => {
+  timingSpy.mockRestore();
+  jest.clearAllTimers();
+});
 
-it("it renders correctly", () => {
+it("renders with no errors", () => {
   const output = render(defaultProps);
   expect(output).toMatchSnapshot();
 });
 
-it("should animate the banner", () => {
-  const sequenceSpy = jest
-    .spyOn(Animated, "sequence")
-    .mockImplementation(() => ({
-      start: jest.fn()
-    }));
+describe("handleAnimation", () => {
+  it("should run animation sequence when mounted", () => {
+    const sequenceSpy = jest
+      .spyOn(Animated, "sequence")
+      .mockImplementation(() => ({
+        start: jest.fn()
+      }));
 
-  render(defaultProps);
+    render(defaultProps);
 
-  expect(sequenceSpy).toHaveBeenCalled();
-  expect(timingSpy).toHaveBeenCalledTimes(2);
+    expect(sequenceSpy).toHaveBeenCalled();
+  });
+
+  it("should run animation sequence with correct values", () => {
+    render(defaultProps);
+
+    expect(timingSpy).toHaveBeenCalledTimes(2);
+    expect(timingSpy.mock.calls[0][1].toValue).toEqual(90);
+    expect(timingSpy.mock.calls[1][1].toValue).toEqual(0);
+  });
+
+  it("should set isAnimating to true on animation start", () => {
+    const output = render(defaultProps);
+    expect(output.instance().isAnimating).toEqual(true);
+  });
+
+  it("should reset isAnimating to false after animation is complete", () => {
+    const output = render(defaultProps);
+
+    setTimeout(() => {
+      expect(output.instance().isAnimating).toEqual(false);
+    });
+  });
 });
 
-it("should be able to reverse initial animation", () => {
-  const output = render(defaultProps);
-  const instance = output.instance();
+describe("resetAnimation", () => {
+  it("should be able to reset initial animation value to 0", () => {
+    const output = render(defaultProps);
+    const instance = output.instance();
 
-  instance.stopAnimation();
-  expect(timingSpy).toHaveBeenCalled();
+    instance.resetAnimation();
+    expect(timingSpy).toHaveBeenCalledTimes(3);
+    expect(timingSpy.mock.calls[2][1].toValue).toEqual(0);
+  });
+
+  it("should reset isAnimating to false after animation is complete", () => {
+    const output = render(defaultProps);
+    const instance = output.instance();
+
+    instance.resetAnimation();
+    setTimeout(() => {
+      expect(output.instance().isAnimating).toEqual(false);
+    });
+  });
 });
-
-// // handleAnimation
-// it("animates message banner", () => {
-//   const sequenceSpy = jest
-//     .spyOn(Animated, "sequence")
-//     .mockImplementation(() => ({
-//       start: jest.fn()
-//     }));
-
-//   const timingSpy = jest.spyOn(Animated, "timing").mockImplementation(() => ({
-//     start: jest.fn()
-//   }));
-
-//   const output = shallow(<MessageBanner />);
-//   const instance = output.instance();
-
-//   instance.handleAnimation();
-
-//   expect(sequenceSpy).toHaveBeenCalled();
-//   expect(timingSpy).toHaveBeenCalled();
-// });
-
-// intitialize
-// checking if state is updated with message data values
-
-// handleAnimation
-// once animation is finished, check if state isAnimating property is set to false
-
-// stopAnimation
-// once animation is finished, check if state isAnimating property is set to false
