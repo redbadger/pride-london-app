@@ -25,12 +25,12 @@ class MessageBanner extends PureComponent<Props> {
     this.bannerTop = new Animated.Value(0);
   }
 
-  bannerTop: Animated.Value;
-  isAnimating: boolean;
-
   componentDidMount() {
     this.handleAnimation();
   }
+
+  bannerTop: Animated.Value;
+  isAnimating: boolean;
 
   slideAnimation = (value: number, delay: number) =>
     Animated.timing(this.bannerTop, {
@@ -43,6 +43,7 @@ class MessageBanner extends PureComponent<Props> {
   handleAnimation = () => {
     if (!this.isAnimating) {
       this.isAnimating = true;
+
       Animated.sequence([
         this.slideAnimation(Math.max(scaleWithFont("h3", 90), 90), 0),
         this.slideAnimation(0, 7000)
