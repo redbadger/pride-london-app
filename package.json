@@ -23,7 +23,7 @@
   "dependencies": {
     "bugsnag-react-native": "^2.9.3",
     "contentful": "^5.0.5",
-    "core-js": "^2.5.6",
+    "jsc-android": "^224109.0.0",
     "lottie-react-native": "2.3.2",
     "luxon": "^1.2.0",
     "ramda": "^0.25.0",

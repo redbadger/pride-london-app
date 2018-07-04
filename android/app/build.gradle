@@ -222,6 +222,12 @@ repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'org.webkit:android-jsc:r224109'
+    }
+}
+
 dependencies {
     implementation project(':react-native-haptic-feedback')
     implementation project(':lottie-react-native')

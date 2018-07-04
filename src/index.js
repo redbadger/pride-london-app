@@ -1,5 +1,4 @@
 // @flow
-import "core-js/modules/es7.string.pad-start";
 import React, { Component } from "react";
 import { AppState, UIManager, YellowBox } from "react-native";
 import { createStore, applyMiddleware } from "redux";
