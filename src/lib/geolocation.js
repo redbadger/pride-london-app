@@ -2,7 +2,17 @@
 import { Alert, Linking, Platform } from "react-native";
 import Permissions from "react-native-permissions";
 import { Observable, defer, merge, of } from "rxjs";
-import { map, switchMap, tap } from "rxjs/operators";
+import {
+  catchError,
+  map,
+  partition,
+  share,
+  skip,
+  switchMap,
+  take,
+  tap,
+  timeout
+} from "rxjs/operators";
 
 export type Coordinate = {
   latitude: number,
@@ -60,6 +70,13 @@ const locationAwaiting: LocationValue = {
   type: "awaiting"
 };
 
+const locationStatusAuthorizedError = {
+  type: "authorized",
+  location: {
+    type: "error"
+  }
+};
+
 const locationStatusFromErrorCode = (code: number): LocationStatus => {
   // denied
   if (code === 1) {
@@ -67,12 +84,7 @@ const locationStatusFromErrorCode = (code: number): LocationStatus => {
       type: "denied"
     };
   }
-  return {
-    type: "authorized",
-    location: {
-      type: "error"
-    }
-  };
+  return locationStatusAuthorizedError;
 };
 
 const locationStatusAuthorizedTracking = (coords): LocationStatus => ({
@@ -126,8 +138,8 @@ const options = {
   distanceFilter: 5
 };
 
-export const locationStatusStream = () =>
-  Observable.create(observer => {
+export const locationStatusStream = () => {
+  const stream = Observable.create(observer => {
     const watchId = navigator.geolocation.watchPosition(
       value => observer.next(locationStatusAuthorizedTracking(value.coords)),
       ({ code }) => observer.next(locationStatusFromErrorCode(code)),
@@ -138,6 +150,17 @@ export const locationStatusStream = () =>
       navigator.geolocation.clearWatch(watchId);
     };
   });
+  const [first, other] = stream.pipe(
+    share(),
+    partition((value, index) => index === 0)
+  );
+  const timedOut = first.pipe(
+    timeout(3000),
+    catchError(() => of(locationStatusAuthorizedError)),
+    take(1)
+  );
+  return merge(timedOut, first);
+};
 
 /*
 Returns a stream of LocationStatus values. Automatically streams
