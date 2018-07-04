@@ -680,7 +680,7 @@ exports[`Map component renders correctly 1`] = `
         "marginTop": 44,
         "paddingBottom": 10,
         "paddingLeft": 10,
-        "paddingRight": 9,
+        "paddingRight": 0,
       }
     }
   >
