@@ -172,7 +172,7 @@ describe("handleMarkerPress", () => {
 
     output.instance().mapViewRef.current = { animateToCoordinate };
     const handleMarkerPressSpy = output.instance().handleMarkerPress;
-    handleMarkerPressSpy(stage);
+    handleMarkerPressSpy(stage.id, stage);
     expect(output.state().tileDetails).toEqual(stage);
     expect(output.state().activeMarker).toEqual(stage.id);
     jest.clearAllMocks();

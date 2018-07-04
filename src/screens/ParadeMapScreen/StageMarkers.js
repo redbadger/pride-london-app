@@ -10,7 +10,7 @@ import stageIconInactive from "../../../assets/images/stageIconInactive.png";
 type Props = {
   stages: Event[],
   activeMarker: ?string,
-  handleMarkerPress: (stage: Event) => void,
+  handleMarkerPress: (markerID: string, stage: Event) => void,
   markerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
 };
 
@@ -36,7 +36,7 @@ const StageMarkers = ({
             latitude: stage.fields.location.lat
           }}
           key={stage.id}
-          onPress={() => handleMarkerPress(stage)}
+          onPress={() => handleMarkerPress(stage.id, stage)}
           stopPropagation
           image={
             activeMarker === stage.id ? stageIconActive : stageIconInactive

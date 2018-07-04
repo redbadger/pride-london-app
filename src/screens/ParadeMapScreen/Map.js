@@ -147,8 +147,11 @@ class Map extends PureComponent<Props, State> {
     );
   };
 
-  handleMarkerPress = (stage: Event) => {
-    this.setState({ tileDetails: stage, activeMarker: stage.id });
+  handleMarkerPress = (markerID: string, stage: ?Event) => {
+    this.setState({
+      tileDetails: stage,
+      activeMarker: markerID
+    });
   };
 
   handleMapPress = () => {
@@ -215,6 +218,8 @@ class Map extends PureComponent<Props, State> {
           />
           <AmenityMarkers
             amenities={amenities}
+            handleMarkerPress={this.handleMarkerPress}
+            activeMarker={this.state.activeMarker}
             markerSelect={this.handleIOSMarkerSelect}
           />
           <StageMarkers

@@ -3,7 +3,6 @@ import React from "react";
 import { shallow } from "enzyme";
 import StageMarkers from "./StageMarkers";
 import { generateEvent, sampleOne } from "../../data/__test-data";
-import type { Event } from "../../data/event";
 
 const stage = sampleOne(generateEvent, { seed: 5728 });
 
@@ -12,8 +11,7 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <StageMarkers
         stages={[stage]}
-        // eslint-disable-next-line no-unused-vars
-        handleMarkerPress={(_: Event) => {}}
+        handleMarkerPress={() => {}}
         activeMarker={null}
         markerSelect={() => {}}
       />
@@ -25,8 +23,7 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <StageMarkers
         stages={[]}
-        // eslint-disable-next-line no-unused-vars
-        handleMarkerPress={(_: Event) => {}}
+        handleMarkerPress={() => {}}
         activeMarker={null}
         markerSelect={() => {}}
       />
@@ -43,8 +40,7 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <StageMarkers
         stages={[stage, recurrenceStage]}
-        // eslint-disable-next-line no-unused-vars
-        handleMarkerPress={(_: Event) => {}}
+        handleMarkerPress={() => {}}
         activeMarker={null}
         markerSelect={() => {}}
       />

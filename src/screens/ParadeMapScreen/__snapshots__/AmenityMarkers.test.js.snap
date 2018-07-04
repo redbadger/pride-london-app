@@ -11,9 +11,9 @@ exports[`AmenityMarkers component renders correctly 1`] = `
     }
     image={1}
     key="20nBC086o2kwuMWHp8FqMyUV"
+    onPress={[Function]}
     onSelect={[Function]}
-    pointerEvents="none"
-    stopPropagation={false}
+    stopPropagation={true}
   />
 </React.Fragment>
 `;
