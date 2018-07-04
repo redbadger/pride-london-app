@@ -159,6 +159,7 @@ platform :ios do
 
   desc "Upload to Beta by Fabric"
   lane :deploy_fabric do |options|
+    upload_symbols_to_crashlytics
     crashlytics(
       api_token: options[:api_token],
       build_secret: options[:build_secret],
