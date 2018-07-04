@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
   touchable: {
     alignSelf: "flex-end",
     marginTop: Platform.OS === "ios" ? 44 : 8,
-    paddingRight: Platform.OS === "ios" ? 9 : 8,
+    paddingRight: Platform.OS === "ios" ? 0 : 8,
     paddingLeft: 10,
     paddingBottom: 10
   },
