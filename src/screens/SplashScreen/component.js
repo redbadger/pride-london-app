@@ -41,9 +41,11 @@ class SplashScreen extends Component<SplashScreenProps, State> {
     return null;
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     SplashScreenController.hide();
+  }
 
+  componentDidUpdate() {
     if (this.props.state !== "hiding") return;
     if (!this.props.noDataReceived) {
       this.animateOut();
