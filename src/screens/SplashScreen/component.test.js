@@ -2,6 +2,7 @@
 import React from "react";
 import { View, Animated } from "react-native";
 import { shallow } from "enzyme";
+import SplashScreenController from "react-native-splash-screen";
 import SplashScreen from "./component";
 
 // all this mocking is making me sad.
@@ -10,6 +11,7 @@ const timingMock = jest.spyOn(Animated, "timing");
 const staggerMock = jest.spyOn(Animated, "stagger").mockImplementation(() => ({
   start: startMock
 }));
+const splashScreenControllerMock = jest.spyOn(SplashScreenController, "hide");
 
 it("renders correctly when showing", () => {
   const output = shallow(
@@ -41,6 +43,22 @@ it("renders correctly when hidden", () => {
   );
 
   expect(output).toMatchSnapshot();
+});
+
+it("calls splash screen controller hide on component mount", () => {
+  shallow(
+    <SplashScreen
+      state="showing"
+      onAnimationComplete={() => {}}
+      loading={false}
+      noDataReceived={false}
+      getData={() => {}}
+    >
+      hello
+    </SplashScreen>
+  );
+
+  expect(splashScreenControllerMock).toHaveBeenCalled();
 });
 
 describe("Animation", () => {
