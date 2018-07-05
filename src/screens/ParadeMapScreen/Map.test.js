@@ -179,6 +179,16 @@ describe("handleMarkerPress", () => {
   });
 });
 
+describe("dismissEventTile", () => {
+  it("updates state clearing stage marker details", () => {
+    const output = render(regionProps);
+    const dismissEventTileSpy = output.instance().dismissEventTile;
+    dismissEventTileSpy();
+    expect(output.state().tileDetails).toEqual(null);
+    expect(output.state().activeMarker).toEqual(null);
+  });
+});
+
 describe("handleIOSMarkerSelect", () => {
   it("animates to marker coordinates", () => {
     const output = render(regionProps);
