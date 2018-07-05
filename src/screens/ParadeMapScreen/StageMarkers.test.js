@@ -21,6 +21,19 @@ describe("AmenityMarkers component", () => {
     expect(output).toMatchSnapshot();
   });
 
+  it("renders correctly when it's the currently selected stage", () => {
+    const output = shallow(
+      <StageMarkers
+        stages={[stage]}
+        // eslint-disable-next-line no-unused-vars
+        handleMarkerPress={(_: Event) => {}}
+        activeMarker={stage.id}
+        markerSelect={() => {}}
+      />
+    );
+    expect(output).toMatchSnapshot();
+  });
+
   it("renders nothing when no amenities provided", () => {
     const output = shallow(
       <StageMarkers
