@@ -232,6 +232,7 @@ describe("locationStatusStream", () => {
     watchPosition.mockImplementationOnce(cb => {
       callback = cb;
     });
+    // See https://github.com/ReactiveX/rxjs/blob/master/doc/marble-testing.md
     const scheduler = new TestScheduler((actual, expected) => {
       expect(actual).toEqual(expected);
     });
@@ -253,6 +254,7 @@ describe("locationStatusStream", () => {
     watchPosition.mockImplementationOnce(cb => {
       callback = cb;
     });
+    // See https://github.com/ReactiveX/rxjs/blob/master/doc/marble-testing.md
     const scheduler = new TestScheduler((actual, expected) => {
       expect(actual).toEqual(expected);
     });
