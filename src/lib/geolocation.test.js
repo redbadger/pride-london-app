@@ -2,7 +2,7 @@
 import { Alert, Linking, Platform } from "react-native";
 import Permissions from "react-native-permissions";
 import { TestScheduler } from "rxjs/testing";
-import { merge, VirtualTimeScheduler, empty } from "rxjs";
+import { merge, empty } from "rxjs";
 import { last, skip, take, tap, flatMap } from "rxjs/operators";
 import {
   passiveLocationStream,
