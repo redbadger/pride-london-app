@@ -116,6 +116,8 @@ class Map extends PureComponent<Props, State> {
       // Authorized + error
       if (location.type === "error") {
         // eslint-disable-next-line react/no-did-update-set-state
+        this.messageBannerRef.current.handleAnimation();
+
         this.setState({
           moveToUserLocation: false
         });
@@ -187,13 +189,11 @@ class Map extends PureComponent<Props, State> {
 
     return (
       <View style={styles.mapWrapper}>
-        {this.state.userLocation.type === "authorized" &&
-          this.state.userLocation.location.type === "tracking" && (
-            <MessageBanner
-              title="We couldn't find your location"
-              message="GPS or other location finding magic might not be available, please try again later"
-            />
-          )}
+        <MessageBanner
+          title="We couldn't find your location"
+          message="GPS or other location finding magic might not be available, please try again later"
+          ref={this.messageBannerRef}
+        />
         <MapView
           style={StyleSheet.absoluteFill}
           initialRegion={this.props.paradeRegion}

@@ -32,7 +32,6 @@ exports[`renders with no errors 1`] = `
       style={
         Object {
           "flex": 1,
-          "justifyContent": "space-between",
         }
       }
     >

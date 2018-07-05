@@ -25,10 +25,6 @@ class MessageBanner extends PureComponent<Props> {
     this.bannerTop = new Animated.Value(0);
   }
 
-  componentDidMount() {
-    this.handleAnimation();
-  }
-
   bannerTop: Animated.Value;
   isAnimating: boolean;
 
@@ -94,8 +90,7 @@ class MessageBanner extends PureComponent<Props> {
 
 const styles = StyleSheet.create({
   messageContainer: {
-    flex: 1,
-    justifyContent: "space-between"
+    flex: 1
   },
   messageText: {
     color: categoriesFilterButtonBgColor
