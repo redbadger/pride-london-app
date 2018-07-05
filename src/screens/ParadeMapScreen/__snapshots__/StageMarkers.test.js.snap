@@ -22,3 +22,26 @@ exports[`AmenityMarkers component renders correctly 1`] = `
   />
 </React.Fragment>
 `;
+
+exports[`AmenityMarkers component renders correctly when it's the currently selected stage 1`] = `
+<React.Fragment>
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 0,
+        "longitude": 10,
+      }
+    }
+    image={1}
+    key="QF4dTqmpn9z5ItEizAZ"
+    onPress={[Function]}
+    onSelect={[Function]}
+    stopPropagation={true}
+    style={
+      Object {
+        "zIndex": 1001,
+      }
+    }
+  />
+</React.Fragment>
+`;
