@@ -2,7 +2,6 @@
 import React from "react";
 import {
   toLondonFormat as formatDate,
-  isSameDay,
   FORMAT_SHORT_WEEKDAY_DATE
 } from "../../lib/date";
 import { formatLongEventPrice, formatTime } from "../../data/formatters";
@@ -28,12 +27,6 @@ type Props = {
 const EventOverview = ({ event }: Props) => {
   const { endTime, startTime } = event.fields;
   const dateFormat = FORMAT_SHORT_WEEKDAY_DATE;
-  const dateDisplay = isSameDay(startTime, endTime)
-    ? formatDate(startTime, dateFormat)
-    : `${formatDate(startTime, dateFormat)} – ${formatDate(
-        endTime,
-        dateFormat
-      )}`;
   const timeDisplay = `${formatTime(startTime)} – ${formatTime(endTime)}`;
 
   const eventLocation = [
@@ -46,7 +39,7 @@ const EventOverview = ({ event }: Props) => {
     <IconList>
       <IconItem source={dateIcon}>
         <Text type="h4" color="lightNavyBlueColor">
-          {dateDisplay}
+          {formatDate(startTime, dateFormat)}
         </Text>
         <Text type="small">{timeDisplay}</Text>
         {event.fields.recurrenceDates.length > 0 && (
