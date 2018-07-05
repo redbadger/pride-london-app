@@ -1,18 +1,8 @@
 // @flow
 import { Alert, Linking, Platform } from "react-native";
 import Permissions from "react-native-permissions";
-import { Observable, defer, merge, of } from "rxjs";
-import {
-  catchError,
-  map,
-  partition,
-  share,
-  skip,
-  switchMap,
-  take,
-  tap,
-  timeout
-} from "rxjs/operators";
+import { Observable, defer, merge, of, race } from "rxjs";
+import { delay, map, share, switchMap, tap } from "rxjs/operators";
 
 export type Coordinate = {
   latitude: number,
@@ -149,17 +139,12 @@ export const locationStatusStream = () => {
     return () => {
       navigator.geolocation.clearWatch(watchId);
     };
-  });
-  const [first, other] = stream.pipe(
-    share(),
-    partition((value, index) => index === 0)
+  }).pipe(share());
+  const timedOut = merge(
+    of(locationStatusAuthorizedError).pipe(delay(3000)),
+    stream
   );
-  const timedOut = first.pipe(
-    timeout(3000),
-    catchError(() => of(locationStatusAuthorizedError)),
-    take(1)
-  );
-  return merge(timedOut, first);
+  return race(stream, timedOut);
 };
 
 /*
