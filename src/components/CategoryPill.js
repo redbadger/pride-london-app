@@ -3,7 +3,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import type { ViewStyleProp } from "react-native/Libraries/StyleSheet/StyleSheet";
 import { hyphenate } from "../lib/string";
-import Text from "./Text";
+import Text, { scaleFont } from "./Text";
 import Touchable from "./Touchable";
 import type { EventCategoryName } from "../data/event";
 import { getEventCategoryFromName } from "../data/event";
@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
   },
   categoryPillText: {
     color: whiteColor,
-    paddingTop: 3
+    paddingTop: 3,
+    fontSize: scaleFont("h3", 15) // tweak h3 to be slightly smaller (GH-155)
   }
 });
 

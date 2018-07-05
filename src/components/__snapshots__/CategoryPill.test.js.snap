@@ -24,6 +24,7 @@ exports[`CategoryPill Component renders correctly 1`] = `
       Array [
         Object {
           "color": "#ffffff",
+          "fontSize": 15,
           "paddingTop": 3,
         },
         Object {
