@@ -1,4 +1,4 @@
-fastlane_version "2.96.1"
+fastlane_version "2.99.0"
 
 default_platform :ios
 
@@ -216,5 +216,11 @@ platform :ios do
       app_identifier: "org.prideinlondon.festival.beta",
       force_for_new_devices: true
     )
+  end
+
+  lane :refresh_dsyms do |options|
+    download_dsyms(version: options[:version])
+    upload_symbols_to_bugsnag
+    clean_build_artifacts
   end
 end

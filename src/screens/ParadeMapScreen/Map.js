@@ -147,7 +147,7 @@ class Map extends PureComponent<Props, State> {
     this.setState({ tileDetails: stage, activeMarker: stage.id });
   };
 
-  handleMapPress = () => {
+  dismissEventTile = () => {
     this.setState({ tileDetails: null, activeMarker: null });
   };
 
@@ -206,7 +206,7 @@ class Map extends PureComponent<Props, State> {
           showsBuildings={false}
           showsTraffic={false}
           showsIndoors={false}
-          onPress={this.handleMapPress}
+          onPress={this.dismissEventTile}
         >
           <Polyline
             coordinates={this.props.route}
@@ -217,10 +217,12 @@ class Map extends PureComponent<Props, State> {
           <TerminalMarkers
             terminals={terminals}
             markerSelect={this.handleIOSMarkerSelect}
+            handleMarkerPress={this.dismissEventTile}
           />
           <AmenityMarkers
             amenities={amenities}
             markerSelect={this.handleIOSMarkerSelect}
+            handleMarkerPress={this.dismissEventTile}
           />
           <StageMarkers
             stages={stages}
@@ -296,7 +298,7 @@ const styles = StyleSheet.create({
   touchable: {
     alignSelf: "flex-end",
     marginTop: Platform.OS === "ios" ? 44 : 8,
-    paddingRight: Platform.OS === "ios" ? 9 : 8,
+    paddingRight: Platform.OS === "ios" ? 0 : 8,
     paddingLeft: 10,
     paddingBottom: 10
   },
