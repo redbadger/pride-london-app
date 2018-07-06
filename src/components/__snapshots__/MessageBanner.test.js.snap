@@ -25,7 +25,9 @@ exports[`renders with no errors 1`] = `
     ]
   }
 >
-  <TouchableWithoutFeedback>
+  <TouchableWithoutFeedback
+    onPress={[Function]}
+  >
     <Component
       style={
         Object {

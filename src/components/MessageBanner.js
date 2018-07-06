@@ -65,7 +65,7 @@ class MessageBanner extends PureComponent<Props> {
           { transform: [{ translateY: this.bannerTop }] }
         ]}
       >
-        <TouchableWithoutFeedback onPress={this.resetAnimation}>
+        <TouchableWithoutFeedback onPress={this.hideBanner}>
           <View style={styles.messageContainer}>
             <ContentPadding
               padding={{
