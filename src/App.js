@@ -20,6 +20,7 @@ const App = ({ onNavigationStateChange }: Props) => (
       animated
       barStyle="light-content"
       backgroundColor={lightNavyBlueColor}
+      translucent
     />
     <SplashScreen>
       <Navigation onNavigationStateChange={onNavigationStateChange} />
