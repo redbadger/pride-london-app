@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { StyleSheet, ScrollView, View, Image } from "react-native";
 import { equals } from "ramda";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
-import { isIphoneX } from "react-native-iphone-x-helper";
 import Header from "./Header";
 import ContentPadding from "../../components/ContentPadding";
 import EventTile from "../../components/EventTile";
@@ -85,64 +84,62 @@ class HomeScreen extends Component<Props> {
     const events = featuredEvents.slice(0, eventsCount);
 
     return (
-      <View>
-        <ScrollView testID="home-screen" style={styles.container}>
-          <View style={styles.content}>
-            <Header
-              headerBanners={headerBanners}
-              getImageDetails={getImageDetails}
-              navigation={navigation}
-            />
-            {events.length > 0 && (
-              <ContentPadding style={styles.mainContentContainer}>
-                {loading && <Loading />}
-                <View style={styles.sectionTitle}>
-                  <Text type="h2" style={{ color: titleTextColor }}>
-                    {featuredEventsTitle}
-                  </Text>
-                  <Touchable onPress={this.eventList} testID="view-all">
-                    <TextLink>{text.homeViewAll}</TextLink>
-                  </Touchable>
-                </View>
-                <View style={styles.tilesContainer}>
-                  {events.map((event, index) => (
-                    <View
-                      key={event.id}
-                      style={[
-                        styles.tileContainer,
-                        index % 2 === 0 && styles.startOfRowTileContainer
-                      ]}
-                    >
-                      <Touchable
-                        style={styles.tile}
-                        onPress={() => this.eventDetails(event.id)}
-                        testID={`event-tile-${index}`}
-                      >
-                        <EventTile
-                          name={event.fields.name}
-                          date={event.fields.startTime}
-                          eventCategories={event.fields.eventCategories}
-                          imageReference={event.fields.eventsListPicture}
-                        />
-                      </Touchable>
-                    </View>
-                  ))}
-                </View>
-              </ContentPadding>
-            )}
-            <View style={styles.partnershipBar}>
-              <View style={styles.innerBar}>
-                <ContentPadding>
-                  <Text type="xSmall" style={styles.partnershipText}>
-                    {text.partnershipWithSally}
-                  </Text>
-                </ContentPadding>
+      <ScrollView testID="home-screen" style={styles.container}>
+        <View style={styles.content}>
+          <Header
+            headerBanners={headerBanners}
+            getImageDetails={getImageDetails}
+            navigation={navigation}
+          />
+          {events.length > 0 && (
+            <ContentPadding style={styles.mainContentContainer}>
+              {loading && <Loading />}
+              <View style={styles.sectionTitle}>
+                <Text type="h2" style={{ color: titleTextColor }}>
+                  {featuredEventsTitle}
+                </Text>
+                <Touchable onPress={this.eventList} testID="view-all">
+                  <TextLink>{text.homeViewAll}</TextLink>
+                </Touchable>
               </View>
-              <Image style={styles.sallyImage} source={partnershipWithSally} />
+              <View style={styles.tilesContainer}>
+                {events.map((event, index) => (
+                  <View
+                    key={event.id}
+                    style={[
+                      styles.tileContainer,
+                      index % 2 === 0 && styles.startOfRowTileContainer
+                    ]}
+                  >
+                    <Touchable
+                      style={styles.tile}
+                      onPress={() => this.eventDetails(event.id)}
+                      testID={`event-tile-${index}`}
+                    >
+                      <EventTile
+                        name={event.fields.name}
+                        date={event.fields.startTime}
+                        eventCategories={event.fields.eventCategories}
+                        imageReference={event.fields.eventsListPicture}
+                      />
+                    </Touchable>
+                  </View>
+                ))}
+              </View>
+            </ContentPadding>
+          )}
+          <View style={styles.partnershipBar}>
+            <View style={styles.innerBar}>
+              <ContentPadding>
+                <Text type="xSmall" style={styles.partnershipText}>
+                  {text.partnershipWithSally}
+                </Text>
+              </ContentPadding>
             </View>
+            <Image style={styles.sallyImage} source={partnershipWithSally} />
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -150,10 +147,6 @@ class HomeScreen extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: whiteColor
-  },
-  statusBarPadding: {
-    height: 14,
-    backgroundColor: lightNavyBlueColor
   },
   content: {
     backgroundColor: cardBgColor

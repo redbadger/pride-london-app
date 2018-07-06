@@ -19,7 +19,6 @@ const App = ({ onNavigationStateChange }: Props) => (
     <StatusBar
       animated
       barStyle="light-content"
-      style={styles.statusBar}
       backgroundColor={lightNavyBlueColor}
       translucent
     />
