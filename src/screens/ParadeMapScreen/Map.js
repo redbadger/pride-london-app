@@ -120,7 +120,7 @@ class Map extends PureComponent<Props, State> {
           moveToUserLocation: false
         });
 
-        this.messageBannerRef.current.handleAnimation();
+        this.messageBannerRef.current.showBanner();
       }
     }
   }

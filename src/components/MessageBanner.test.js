@@ -30,16 +30,16 @@ it("renders with no errors", () => {
   expect(output).toMatchSnapshot();
 });
 
-describe("handleAnimation", () => {
+describe("showBanner", () => {
   it("should run animation sequence when handleAnimation is called", () => {
     const output = render(defaultProps);
-    output.instance().handleAnimation();
+    output.instance().showBanner();
     expect(sequenceSpy).toHaveBeenCalled();
   });
 
   it("should run animation sequence with correct values", () => {
     const output = render(defaultProps);
-    output.instance().handleAnimation();
+    output.instance().showBanner();
     expect(timingSpy.mock.calls[0][1].toValue).toEqual(90);
     expect(timingSpy.mock.calls[1][1].toValue).toEqual(0);
   });
@@ -53,7 +53,7 @@ describe("handleAnimation", () => {
 
     const output = render(defaultProps);
 
-    output.instance().handleAnimation();
+    output.instance().showBanner();
     const completeAnimation = mockTimingValue.start.mock.calls[0][0];
 
     completeAnimation(({ finished }) => {
@@ -66,57 +66,30 @@ describe("handleAnimation", () => {
     const output = render(defaultProps);
     output.instance().isAnimating = true;
 
-    output.instance().handleAnimation();
+    output.instance().showBanner();
     expect(sequenceSpy).not.toHaveBeenCalled();
   });
 });
 
-describe("resetAnimation", () => {
+describe("hideBanner", () => {
   it("should be able to reset initial animation value to 0", () => {
     const output = render(defaultProps);
     const instance = output.instance();
 
-    instance.resetAnimation();
+    instance.hideBanner();
     expect(timingSpy).toHaveBeenCalledTimes(1);
     expect(timingSpy.mock.calls[0][1].toValue).toEqual(0);
   });
 
   it("should reset isAnimating to false after animation is complete", () => {
-    // const mockTimingValue = {
-    //   start: jest.fn(),
-    //   stop: jest.fn()
-    // };
-
-    // timingSpy.mockReturnValue(mockTimingValue);
-
     const output = render(defaultProps);
     output.instance().isAnimating = true;
     output.instance().slideAnimation = () => ({
       start: callback => callback({ finished: true })
     });
-    // console.log(output.instance().slideAnimation);
 
-    output.instance().resetAnimation();
+    output.instance().hideBanner();
 
     expect(output.instance().isAnimating).toEqual(false);
-
-    // const completeAnimation = mockTimingValue.start.mock.calls[0][0];
-
-    // completeAnimation(() => {
-    //   console.log('hello');
-    // });
-
-    // console.log(completeAnimation());
-    // console.log(mockTimingValue.start.mock.calls)
-
-    // completeAnimation(obj => {
-    //   console.log(obj);
-    //   // expect(output.instance().isAnimating).toEqual(false);
-    // });
-
-    // completeAnimation(({ finished }) => {
-    //   expect(finished).toBe(false);
-    //   expect(output.instance().isAnimating).toEqual(false);
-    // });
   });
 });

@@ -36,7 +36,7 @@ class MessageBanner extends PureComponent<Props> {
       delay
     });
 
-  handleAnimation = () => {
+  showBanner = () => {
     if (!this.isAnimating) {
       this.isAnimating = true;
 
@@ -49,7 +49,7 @@ class MessageBanner extends PureComponent<Props> {
     }
   };
 
-  resetAnimation = () => {
+  hideBanner = () => {
     this.slideAnimation(0, 0).start(({ finished }) => {
       if (finished) this.isAnimating = false;
     });
