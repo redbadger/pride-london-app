@@ -208,6 +208,26 @@ describe("locationStatusStream", () => {
     });
   });
 
+  it.only("emits authorized + error when watchPosition does not emit first value in 3000ms", done => {
+    expect.assertions(1);
+    jest.useFakeTimers();
+    watchPosition.mockImplementationOnce(cb => {
+      setTimeout(() => cb({ coords: { longitude: 1, latititude: 2 } }), 3001);
+    });
+    locationStatusStream()
+      .pipe(take(1))
+      .subscribe(value => {
+        expect(value).toEqual({
+          type: "authorized",
+          location: {
+            type: "error"
+          }
+        });
+        done();
+      });
+    jest.runAllTimers();
+  });
+
   it("clears watch callback when unsubscribed", done => {
     expect.assertions(1);
     watchPosition.mockImplementationOnce(cb => {
