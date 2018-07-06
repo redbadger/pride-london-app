@@ -33,8 +33,8 @@ const App = ({ onNavigationStateChange }: Props) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: lightNavyBlueColor
-    // paddingTop: isIphoneX() ? 50 : 0
+    backgroundColor: lightNavyBlueColor,
+    paddingTop: isIphoneX() ? 50 : 0
   }
 });
 

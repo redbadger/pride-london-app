@@ -86,7 +86,6 @@ class HomeScreen extends Component<Props> {
 
     return (
       <View>
-        {isIphoneX() && <View style={styles.statusBarPadding} />}
         <ScrollView testID="home-screen" style={styles.container}>
           <View style={styles.content}>
             <Header
