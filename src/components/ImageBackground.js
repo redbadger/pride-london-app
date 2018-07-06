@@ -21,9 +21,11 @@ export const ImageBackground = ({
   reference,
   getImageDetails,
   ...props
-}: Props) => (
-  <RNImageBackground source={getImageDetails(reference.sys.id)} {...props} />
-);
+}: Props) => {
+  const imgSrc = getImageDetails(reference.sys.id, { width: 50, height: 25 });
+  console.log("ImageBackground source", imgSrc);
+  return <RNImageBackground source={imgSrc} {...props} />;
+};
 
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do
