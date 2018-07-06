@@ -116,11 +116,11 @@ class Map extends PureComponent<Props, State> {
       // Authorized + error
       if (location.type === "error") {
         // eslint-disable-next-line react/no-did-update-set-state
-        this.messageBannerRef.current.handleAnimation();
-
         this.setState({
           moveToUserLocation: false
         });
+
+        this.messageBannerRef.current.handleAnimation();
       }
     }
   }
