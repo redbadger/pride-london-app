@@ -228,7 +228,7 @@ describe("locationStatusStream", () => {
   });
 
   it("emits authorized + error when watchPosition does not emit first value in 3000ms", () => {
-    let callback = () => {};
+    let callback = v => v;
     watchPosition.mockImplementationOnce(cb => {
       callback = cb;
     });
@@ -250,7 +250,7 @@ describe("locationStatusStream", () => {
   });
 
   it("emits authorized + tracking when watchPosition emits first value within 3000ms", () => {
-    let callback = () => {};
+    let callback = v => v;
     watchPosition.mockImplementationOnce(cb => {
       callback = cb;
     });
