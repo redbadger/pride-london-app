@@ -6,8 +6,7 @@ import {
   Platform,
   View,
   StyleSheet,
-  TouchableWithoutFeedback,
-  Alert
+  TouchableWithoutFeedback
 } from "react-native";
 import type { Subscription } from "rxjs";
 import MapView, { Polyline } from "react-native-maps";
@@ -24,6 +23,7 @@ import type {
 } from "../../constants/parade-coordinates";
 import EventCard from "../../components/EventCard";
 import ContentPadding from "../../components/ContentPadding";
+import MessageBanner from "../../components/MessageBanner";
 import locationButtonInactive from "../../../assets/images/location-inactive.png";
 import locationButtonActive from "../../../assets/images/location-active.png";
 import type { LocationStatus, Coordinate } from "../../lib/geolocation";
@@ -119,10 +119,8 @@ class Map extends PureComponent<Props, State> {
         this.setState({
           moveToUserLocation: false
         });
-        Alert.alert(
-          "We couldn't find your location",
-          "GPS or other location finding magic might not be available, please try again later"
-        );
+
+        this.messageBannerRef.current.showBanner();
       }
     }
   }
@@ -154,7 +152,7 @@ class Map extends PureComponent<Props, State> {
     });
   };
 
-  handleMapPress = () => {
+  dismissEventTile = () => {
     this.setState({ tileDetails: null, activeMarker: null });
   };
 
@@ -176,6 +174,8 @@ class Map extends PureComponent<Props, State> {
 
   // $FlowFixMe
   mapViewRef: ElementRef<typeof MapView> = React.createRef();
+  // $FlowFixMe
+  messageBannerRef: ElementRef<typeof MessageBanner> = React.createRef();
 
   userLocationSubscription: ?Subscription = null;
 
@@ -192,6 +192,11 @@ class Map extends PureComponent<Props, State> {
 
     return (
       <View style={styles.mapWrapper}>
+        <MessageBanner
+          title="We couldn't find your location"
+          message="GPS or other location finding magic might not be available, please try again later"
+          ref={this.messageBannerRef}
+        />
         <MapView
           style={StyleSheet.absoluteFill}
           initialRegion={this.props.paradeRegion}
@@ -204,7 +209,7 @@ class Map extends PureComponent<Props, State> {
           showsBuildings={false}
           showsTraffic={false}
           showsIndoors={false}
-          onPress={this.handleMapPress}
+          onPress={this.dismissEventTile}
         >
           <Polyline
             coordinates={this.props.route}
@@ -215,12 +220,14 @@ class Map extends PureComponent<Props, State> {
           <TerminalMarkers
             terminals={terminals}
             markerSelect={this.handleIOSMarkerSelect}
+            handleMarkerPress={this.dismissEventTile}
           />
           <AmenityMarkers
             amenities={amenities}
             handleMarkerPress={this.handleMarkerPress}
             activeMarker={this.state.activeMarker}
             markerSelect={this.handleIOSMarkerSelect}
+            handleMarkerPress={this.dismissEventTile}
           />
           <StageMarkers
             stages={stages}
@@ -296,7 +303,7 @@ const styles = StyleSheet.create({
   touchable: {
     alignSelf: "flex-end",
     marginTop: Platform.OS === "ios" ? 44 : 8,
-    paddingRight: Platform.OS === "ios" ? 9 : 8,
+    paddingRight: Platform.OS === "ios" ? 0 : 8,
     paddingLeft: 10,
     paddingBottom: 10
   },

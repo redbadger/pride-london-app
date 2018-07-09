@@ -1,7 +1,9 @@
 // @flow
 import { Alert, Linking, Platform } from "react-native";
 import Permissions from "react-native-permissions";
-import { last, skip, take } from "rxjs/operators";
+import { TestScheduler } from "rxjs/testing";
+import { merge, empty } from "rxjs";
+import { last, skip, take, tap, flatMap } from "rxjs/operators";
 import {
   passiveLocationStream,
   checkPermissionStream,
@@ -38,6 +40,23 @@ global.navigator = {
 };
 
 const { clearWatch, watchPosition } = navigator.geolocation;
+
+const streamValues = {
+  c: { coords: { longitude: 1, latititude: 2 } },
+  e: {
+    type: "authorized",
+    location: {
+      type: "error"
+    }
+  },
+  t: {
+    type: "authorized",
+    location: {
+      type: "tracking",
+      coords: { longitude: 1, latititude: 2 }
+    }
+  }
+};
 
 afterEach(() => {
   // $FlowFixMe
@@ -205,6 +224,50 @@ describe("locationStatusStream", () => {
         type: "denied"
       });
       done();
+    });
+  });
+
+  it("emits authorized + error when watchPosition does not emit first value in 3000ms", () => {
+    let callback = v => v;
+    watchPosition.mockImplementationOnce(cb => {
+      callback = cb;
+    });
+    // See https://github.com/ReactiveX/rxjs/blob/master/doc/marble-testing.md
+    const scheduler = new TestScheduler((actual, expected) => {
+      expect(actual).toEqual(expected);
+    });
+
+    scheduler.run(({ cold, expectObservable }) => {
+      const watchCallback = cold(" 3000ms --c-c-c", streamValues).pipe(
+        tap(v => callback(v)),
+        flatMap(() => empty())
+      );
+      expectObservable(merge(locationStatusStream(), watchCallback)).toBe(
+        " 3000ms e-t-t-t",
+        streamValues
+      );
+    });
+  });
+
+  it("emits authorized + tracking when watchPosition emits first value within 3000ms", () => {
+    let callback = v => v;
+    watchPosition.mockImplementationOnce(cb => {
+      callback = cb;
+    });
+    // See https://github.com/ReactiveX/rxjs/blob/master/doc/marble-testing.md
+    const scheduler = new TestScheduler((actual, expected) => {
+      expect(actual).toEqual(expected);
+    });
+
+    scheduler.run(({ cold, expectObservable }) => {
+      const watchCallback = cold(" 2999ms c-c-c", streamValues).pipe(
+        tap(v => callback(v)),
+        flatMap(() => empty())
+      );
+      expectObservable(merge(locationStatusStream(), watchCallback)).toBe(
+        " 2999ms t-t-t",
+        streamValues
+      );
     });
   });
 
