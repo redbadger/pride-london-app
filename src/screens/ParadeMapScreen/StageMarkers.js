@@ -42,11 +42,7 @@ const StageMarkers = ({
             activeMarker === stage.id ? stageIconActive : stageIconInactive
           }
           onSelect={markerSelect}
-          style={
-            activeMarker === stage.id
-              ? styles.stageMarkerActiveStyle
-              : styles.stageMarkerInactiveStyle
-          }
+          style={activeMarker === stage.id ? styles.active : styles.inactive}
         />
       ))}
     </Fragment>
@@ -54,10 +50,10 @@ const StageMarkers = ({
 };
 
 const styles = StyleSheet.create({
-  stageMarkerInactiveStyle: {
+  inactive: {
     zIndex: 1
   },
-  stageMarkerActiveStyle: {
+  active: {
     // React Native Maps adds a constant to the currently open callout, but if the stage marker is active we want to move it above this
     // https://github.com/react-community/react-native-maps/blob/080678b24f886c3b8104206f2f80452ee723243a/lib/ios/AirMaps/AIRMapMarker.m#L316
     zIndex: 1001
