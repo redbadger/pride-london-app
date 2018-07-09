@@ -1,6 +1,8 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
+import { Marker } from "react-native-maps";
+import type { Event } from "../../data/event";
 import StageMarkers from "./StageMarkers";
 import { generateEvent, sampleOne } from "../../data/__test-data";
 
@@ -11,9 +13,10 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <StageMarkers
         stages={[stage]}
-        handleMarkerPress={() => {}}
+        // eslint-disable-next-line no-unused-vars
+        onMarkerPress={(_: Event) => {}}
         activeMarker={null}
-        markerSelect={() => {}}
+        onMarkerSelect={() => {}}
       />
     );
     expect(output).toMatchSnapshot();
@@ -24,9 +27,9 @@ describe("AmenityMarkers component", () => {
       <StageMarkers
         stages={[stage]}
         // eslint-disable-next-line no-unused-vars
-        handleMarkerPress={(_: Event) => {}}
+        onMarkerPress={(_: Event) => {}}
         activeMarker={stage.id}
-        markerSelect={() => {}}
+        onMarkerSelect={() => {}}
       />
     );
     expect(output).toMatchSnapshot();
@@ -36,9 +39,10 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <StageMarkers
         stages={[]}
-        handleMarkerPress={() => {}}
+        // eslint-disable-next-line no-unused-vars
+        onMarkerPress={(_: Event) => {}}
         activeMarker={null}
-        markerSelect={() => {}}
+        onMarkerSelect={() => {}}
       />
     );
     expect(output.children().length).toBe(0);
@@ -53,27 +57,28 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <StageMarkers
         stages={[stage, recurrenceStage]}
-        handleMarkerPress={() => {}}
+        // eslint-disable-next-line no-unused-vars
+        onMarkerPress={(_: Event) => {}}
         activeMarker={null}
-        markerSelect={() => {}}
+        onMarkerSelect={() => {}}
       />
     );
 
     expect(output.find("MapMarker").length).toBe(1);
   });
 
-  it("calls callback function when pressed", () => {
+  it("calls onMarkerPress function when pressed", () => {
     const mockHandleMarkerPress = jest.fn();
     const output = shallow(
       <StageMarkers
         stages={[stage]}
-        handleMarkerPress={mockHandleMarkerPress}
         activeMarker={null}
-        markerSelect={() => {}}
+        onMarkerPress={mockHandleMarkerPress}
+        onMarkerSelect={() => {}}
       />
     );
 
-    output.find("MapMarker").simulate("press");
+    output.find(Marker).simulate("press");
 
     expect(mockHandleMarkerPress).toHaveBeenCalled();
   });

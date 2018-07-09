@@ -11,14 +11,14 @@ import stageIconInactive from "../../../assets/images/stageIconInactive.png";
 type Props = {
   stages: Event[],
   activeMarker: ?string,
-  handleMarkerPress: (markerID: string, stage: Event) => void,
-  markerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
+  onMarkerPress: (stage: Event) => void,
+  onMarkerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
 };
 
 const StageMarkers = ({
   stages,
-  handleMarkerPress,
-  markerSelect,
+  onMarkerPress,
+  onMarkerSelect,
   activeMarker
 }: Props) => {
   if (stages.length === 0) {
@@ -36,12 +36,12 @@ const StageMarkers = ({
             latitude: stage.fields.location.lat
           }}
           key={stage.id}
-          onPress={() => handleMarkerPress(stage.id, stage)}
           stopPropagation
           image={
             activeMarker === stage.id ? stageIconActive : stageIconInactive
           }
-          onSelect={markerSelect}
+          onPress={() => onMarkerPress(stage)}
+          onSelect={onMarkerSelect}
           style={activeMarker === stage.id ? styles.active : styles.inactive}
         />
       ))}
