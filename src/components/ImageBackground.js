@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import React, { Component } from "react";
 import { ImageBackground as RNImageBackground } from "react-native";
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
@@ -17,15 +17,49 @@ type StateProps = {
 
 type Props = OwnProps & StateProps;
 
-export const ImageBackground = ({
+/*export const ImageBackground = ({
   reference,
   getImageDetails,
   ...props
 }: Props) => {
-  const imgSrc = getImageDetails(reference.sys.id, { width: 50, height: 25 });
-  console.log("ImageBackground source", imgSrc);
-  return <RNImageBackground source={imgSrc} {...props} />;
-};
+
+};*/
+
+class ImageBackground extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { imageSize: null };
+  }
+
+  render() {
+    const { reference, getImageDetails, ...props } = this.props;
+
+    const imageNotLoadedPlaceholder = {
+      uri:
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5/hPwAIAgL/4d1j8wAAAABJRU5ErkJggg=="
+    };
+    const imgSrc = this.state.imageSize
+      ? getImageDetails(reference.sys.id, {
+          width: this.state.imageSize.width,
+          height: this.state.imageSize.height
+        })
+      : imageNotLoadedPlaceholder;
+    return (
+      <RNImageBackground
+        onLayout={({
+          nativeEvent: {
+            layout: { width, height }
+          }
+        }) => {
+          console.log(this.state.imageSize);
+          this.setState({ imageSize: { width, height } });
+        }}
+        source={imgSrc}
+        {...props}
+      />
+    );
+  }
+}
 
 // Note we must add a return type here for react-redux connect to work
 // with flow correctly. If not provided is silently fails if types do

@@ -24,7 +24,7 @@ export const getImageDetails = (images: Images) => (
     const imageDetails = images[id];
     const imageUriWithResizingBehaviourParameters = `${imageDetails.uri}?w=${
       dimensions.width
-    }&h=${dimensions.height}&fit=pad`;
+    }&h=${dimensions.height}&fit=fill`;
     return Object.assign({}, imageDetails, {
       uri: imageUriWithResizingBehaviourParameters
     });
