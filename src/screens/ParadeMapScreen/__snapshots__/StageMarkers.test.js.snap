@@ -9,7 +9,11 @@ exports[`AmenityMarkers component renders correctly 1`] = `
         "longitude": 10,
       }
     }
-    image={1}
+    image={
+      Object {
+        "testUri": "../../../assets/images/stageIconInactive.png",
+      }
+    }
     key="QF4dTqmpn9z5ItEizAZ"
     onPress={[Function]}
     onSelect={[Function]}
@@ -32,7 +36,11 @@ exports[`AmenityMarkers component renders correctly when it's the currently sele
         "longitude": 10,
       }
     }
-    image={1}
+    image={
+      Object {
+        "testUri": "../../../assets/images/stageIconActive.png",
+      }
+    }
     key="QF4dTqmpn9z5ItEizAZ"
     onPress={[Function]}
     onSelect={[Function]}

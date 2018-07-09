@@ -44,7 +44,11 @@ exports[`ListItem Component renders correctly 1`] = `
   />
   <Image
     height={20}
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/blackCheck.png",
+      }
+    }
     style={
       Object {
         "marginLeft": 6,

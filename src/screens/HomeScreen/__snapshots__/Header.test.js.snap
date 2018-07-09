@@ -120,8 +120,16 @@ exports[`renders correctly 1`] = `
     }
   >
     <SupportUsButton
-      bgBottomLeft={1}
-      bgTopRight={1}
+      bgBottomLeft={
+        Object {
+          "testUri": "../../../assets/images/homeSupportUsBgBottomLeft.png",
+        }
+      }
+      bgTopRight={
+        Object {
+          "testUri": "../../../assets/images/homeSupportUsBgTopRight.png",
+        }
+      }
       centerText={true}
       color="#2d2f7f"
       contrast={false}

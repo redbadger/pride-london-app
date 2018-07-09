@@ -63,7 +63,11 @@ exports[`renders correctly 1`] = `
           key="Trafalgar Square"
         >
           <ImageHeader
-            image={1}
+            image={
+              Object {
+                "testUri": "../../../assets/images/trafalgarSquare.jpg",
+              }
+            }
             subtitle=""
             title="Trafalgar Square"
           />
@@ -90,7 +94,11 @@ exports[`renders correctly 1`] = `
           key="Cabaret Stage"
         >
           <ImageHeader
-            image={1}
+            image={
+              Object {
+                "testUri": "../../../assets/images/cabaret.jpg",
+              }
+            }
             subtitle="Dean Street"
             title="Cabaret Stage"
           />
@@ -117,7 +125,11 @@ exports[`renders correctly 1`] = `
           key="Women's / Diva Stage"
         >
           <ImageHeader
-            image={1}
+            image={
+              Object {
+                "testUri": "../../../assets/images/womensStage2018.jpg",
+              }
+            }
             subtitle="Leicester Square"
             title="Women's / Diva Stage"
           />
@@ -144,7 +156,11 @@ exports[`renders correctly 1`] = `
           key="Family Stage"
         >
           <ImageHeader
-            image={1}
+            image={
+              Object {
+                "testUri": "../../../assets/images/familyArea.jpg",
+              }
+            }
             subtitle="Golden Square"
             title="Family Stage"
           />
@@ -171,7 +187,11 @@ exports[`renders correctly 1`] = `
           key="Community Village"
         >
           <ImageHeader
-            image={1}
+            image={
+              Object {
+                "testUri": "../../../assets/images/community.jpg",
+              }
+            }
             subtitle="Soho Square"
             title="Community Village"
           />

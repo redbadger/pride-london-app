@@ -24,7 +24,11 @@ exports[`FilterHeaderCategories CategoriesFilterButton component renders correct
   testID="categories-filter-button"
 >
   <Image
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/chevronRight.png",
+      }
+    }
   />
 </Touchable>
 `;

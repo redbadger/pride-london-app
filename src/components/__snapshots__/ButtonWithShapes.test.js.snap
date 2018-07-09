@@ -74,7 +74,11 @@ exports[`picks different icon for external links 1`] = `
         Fruit...
       </Text>
       <Image
-        source={1}
+        source={
+          Object {
+            "testUri": "../../../assets/images/externalLinkWhite.png",
+          }
+        }
         style={
           Object {
             "alignSelf": "center",
@@ -179,7 +183,11 @@ exports[`picks different icon for external links with contrast color 1`] = `
         Fruit...
       </Text>
       <Image
-        source={1}
+        source={
+          Object {
+            "testUri": "../../../assets/images/externalLinkBlue.png",
+          }
+        }
         style={
           Object {
             "alignSelf": "center",
@@ -284,7 +292,11 @@ exports[`renders correctly 1`] = `
         Fruit...
       </Text>
       <Image
-        source={1}
+        source={
+          Object {
+            "testUri": "../../../assets/images/externalLinkWhite.png",
+          }
+        }
         style={
           Object {
             "alignSelf": "center",

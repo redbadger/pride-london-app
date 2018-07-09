@@ -3,7 +3,11 @@
 exports[`renders correctly 1`] = `
 <IconList>
   <IconItem
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/date.png",
+      }
+    }
   >
     <Text
       color="lightNavyBlueColor"
@@ -33,7 +37,11 @@ exports[`renders correctly 1`] = `
   </IconItem>
   <IconItem
     onPress={[Function]}
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/location.png",
+      }
+    }
   >
     <TextLink>
       locationName
@@ -72,7 +80,11 @@ exports[`renders correctly 1`] = `
     </Text>
   </IconItem>
   <IconItem
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/tickets.png",
+      }
+    }
   >
     <Text
       color="lightNavyBlueColor"
@@ -84,7 +96,11 @@ exports[`renders correctly 1`] = `
     </Text>
   </IconItem>
   <IconItem
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/accessibility.png",
+      }
+    }
   >
     <Text
       color="lightNavyBlueColor"

@@ -705,7 +705,11 @@ exports[`Map component renders correctly 1`] = `
       <Component>
         <Image
           accessibilityLabel="Show my location"
-          source={1}
+          source={
+            Object {
+              "testUri": "../../../assets/images/location-inactive.png",
+            }
+          }
           style={
             Object {
               "height": 48,

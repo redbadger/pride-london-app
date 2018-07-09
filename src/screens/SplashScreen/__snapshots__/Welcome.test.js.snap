@@ -25,7 +25,11 @@ exports[`renders correctly when showing 1`] = `
     }
   >
     <Image
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/splash.png",
+        }
+      }
       style={
         Object {
           "height": 236,
@@ -1992,7 +1996,11 @@ exports[`renders correctly when showing 1`] = `
     </Component>
   </Component>
   <Image
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/logo.png",
+      }
+    }
     style={
       Object {
         "bottom": 70,
@@ -2030,7 +2038,11 @@ exports[`renders correctly when with no data 1`] = `
     }
   >
     <Image
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/splash.png",
+        }
+      }
       style={
         Object {
           "height": 236,

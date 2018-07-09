@@ -4,16 +4,32 @@ import { shallow } from "enzyme";
 import AmenityMarkers from "./AmenityMarkers";
 import { generateAmenity, sampleOne } from "../../data/__test-data";
 
-const amenity = sampleOne(generateAmenity, { seed: 5728 });
+const amenities = [
+  sampleOne(generateAmenity, { seed: 5728 }),
+  sampleOne(generateAmenity, { seed: 1234 }),
+  sampleOne(generateAmenity, { seed: 4535 })
+];
 
 describe("AmenityMarkers component", () => {
   it("renders correctly", () => {
     const output = shallow(
       <AmenityMarkers
-        amenities={[amenity]}
+        amenities={amenities}
         markerSelect={() => {}}
         handleMarkerPress={() => {}}
         activeMarker={undefined}
+      />
+    );
+    expect(output).toMatchSnapshot();
+  });
+
+  it("renders active amenity correctly", () => {
+    const output = shallow(
+      <AmenityMarkers
+        amenities={amenities}
+        markerSelect={() => {}}
+        handleMarkerPress={() => {}}
+        activeMarker={amenities[0].id}
       />
     );
     expect(output).toMatchSnapshot();
