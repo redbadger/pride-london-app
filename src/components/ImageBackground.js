@@ -36,7 +36,7 @@ class ImageBackground extends Component<Props, State> {
 
     const imageNotLoadedPlaceholder = {
       uri:
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5/hPwAIAgL/4d1j8wAAAABJRU5ErkJggg=="
+        "data:image/png;base64,  iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
     };
     const imgSrc = this.state.imageSize
       ? getImageDetails(reference.sys.id, {
