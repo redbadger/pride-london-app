@@ -17,43 +17,39 @@ type StateProps = {
 
 type Props = OwnProps & StateProps;
 
-/*export const ImageBackground = ({
-  reference,
-  getImageDetails,
-  ...props
-}: Props) => {
-
-};*/
-
 class ImageBackground extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { imageSize: null };
   }
 
+  onLayout({
+    nativeEvent: {
+      layout: { width, height }
+    }
+  }) {
+    this.setState({ imageSize: { width, height } });
+  }
+
   render() {
     const { reference, getImageDetails, ...props } = this.props;
 
+    // Single transparent pixel rendered initally so image size can be measured
     const imageNotLoadedPlaceholder = {
       uri:
         "data:image/png;base64,  iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
     };
+
     const imgSrc = this.state.imageSize
       ? getImageDetails(reference.sys.id, {
           width: this.state.imageSize.width,
           height: this.state.imageSize.height
         })
       : imageNotLoadedPlaceholder;
+
     return (
       <RNImageBackground
-        onLayout={({
-          nativeEvent: {
-            layout: { width, height }
-          }
-        }) => {
-          console.log(this.state.imageSize);
-          this.setState({ imageSize: { width, height } });
-        }}
+        onLayout={this.onLayout.bind(this)}
         source={imgSrc}
         {...props}
       />
