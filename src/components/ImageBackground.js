@@ -17,7 +17,7 @@ type StateProps = {
 
 type Props = OwnProps & StateProps;
 
-class ImageBackground extends Component<Props, State> {
+export class ImageBackground extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { imageSize: null };
