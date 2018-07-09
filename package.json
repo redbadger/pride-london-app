@@ -89,9 +89,6 @@
     "react-test-renderer": "16.2.0",
     "redux-mock-store": "^1.5.3"
   },
-  "resolutions": {
-    "react-native-safe-area-view": "robbiemccorkell/react-native-safe-area-view"
-  },
   "rnpm": {
     "assets": [
       "./assets/fonts/"
