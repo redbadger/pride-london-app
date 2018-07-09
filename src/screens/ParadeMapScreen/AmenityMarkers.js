@@ -12,8 +12,8 @@ import amenityIconToiletActive from "../../../assets/images/amenityIconToiletAct
 type Props = {
   amenities: Amenity[],
   activeMarker: ?string,
-  handleMarkerPress: (markerID: string) => void,
-  markerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
+  onMarkerPress: (amenity: Amenity) => void,
+  onMarkerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
 };
 
 const iconMap = {
@@ -29,8 +29,8 @@ const activeIconMap = {
 const AmenityMarkers = ({
   amenities,
   activeMarker,
-  handleMarkerPress,
-  markerSelect
+  onMarkerPress,
+  onMarkerSelect
 }: Props) => {
   if (amenities.length === 0) {
     return null;
@@ -44,7 +44,6 @@ const AmenityMarkers = ({
             latitude: amenity.fields.location.lat
           }}
           stopPropagation
-          onPress={() => handleMarkerPress(amenity.id)}
           key={amenity.id}
           style={activeMarker === amenity.id ? styles.active : styles.inactive}
           image={
@@ -52,7 +51,8 @@ const AmenityMarkers = ({
               ? activeIconMap[amenity.fields.type]
               : iconMap[amenity.fields.type]
           }
-          onSelect={markerSelect}
+          onPress={() => onMarkerPress(amenity)}
+          onSelect={onMarkerSelect}
         />
       ))}
     </Fragment>

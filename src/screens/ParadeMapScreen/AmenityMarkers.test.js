@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
+import { Marker } from "react-native-maps";
 import AmenityMarkers from "./AmenityMarkers";
 import { generateAmenity, sampleOne } from "../../data/__test-data";
 
@@ -16,7 +17,6 @@ describe("AmenityMarkers component", () => {
       <AmenityMarkers
         amenities={amenities}
         markerSelect={() => {}}
-        handleMarkerPress={() => {}}
         activeMarker={undefined}
       />
     );
@@ -28,7 +28,6 @@ describe("AmenityMarkers component", () => {
       <AmenityMarkers
         amenities={amenities}
         markerSelect={() => {}}
-        handleMarkerPress={() => {}}
         activeMarker={amenities[0].id}
       />
     );
@@ -40,10 +39,28 @@ describe("AmenityMarkers component", () => {
       <AmenityMarkers
         amenities={[]}
         markerSelect={() => {}}
-        handleMarkerPress={() => {}}
         activeMarker={undefined}
       />
     );
     expect(output.children().length).toBe(0);
+  });
+
+  it("calls onMarkerPress function when pressed", () => {
+    const mockHandleMarkerPress = jest.fn();
+    const output = shallow(
+      <AmenityMarkers
+        amenities={amenities}
+        activeMarker={null}
+        onMarkerPress={mockHandleMarkerPress}
+        onMarkerSelect={() => {}}
+      />
+    );
+
+    output
+      .find(Marker)
+      .first()
+      .simulate("press");
+
+    expect(mockHandleMarkerPress).toHaveBeenCalled();
   });
 });
