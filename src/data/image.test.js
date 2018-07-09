@@ -17,6 +17,25 @@ describe("image", () => {
 
       expect(getter(imageDetails.id)).toEqual(imageDetails);
     });
+
+    it("returns the correct imageDetails when dimensions are provided", () => {
+      const imageDetails: ImageDetails = sampleOne(generateImageDetails);
+      const imageDimensions = { width: 500, height: 200 };
+      const imageDetailsWithDimensions = {
+        ...imageDetails,
+        uri: `${imageDetails.uri}?w=${imageDimensions.width}&h=${
+          imageDimensions.height
+        }&fit=fill`
+      };
+
+      const getter = getImageDetails({
+        [imageDetails.id]: imageDetails
+      });
+
+      expect(getter(imageDetails.id, imageDimensions)).toEqual(
+        imageDetailsWithDimensions
+      );
+    });
   });
 
   describe("decodeImageDetails", () => {
