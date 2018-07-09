@@ -23,13 +23,13 @@ export class ImageBackground extends Component<Props, State> {
     this.state = { imageSize: null };
   }
 
-  onLayout({
+  onLayout = ({
     nativeEvent: {
       layout: { width, height }
     }
-  }) {
+  }) => {
     this.setState({ imageSize: { width, height } });
-  }
+  };
 
   render() {
     const { reference, getImageDetails, ...props } = this.props;
@@ -48,11 +48,7 @@ export class ImageBackground extends Component<Props, State> {
       : imageNotLoadedPlaceholder;
 
     return (
-      <RNImageBackground
-        onLayout={this.onLayout.bind(this)}
-        source={imgSrc}
-        {...props}
-      />
+      <RNImageBackground onLayout={this.onLayout} source={imgSrc} {...props} />
     );
   }
 }
