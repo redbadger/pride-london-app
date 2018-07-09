@@ -11,10 +11,15 @@ import type {
 
 type Props = {
   terminals: Terminals[],
-  markerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
+  onMarkerPress: () => void,
+  onMarkerSelect: (event: { nativeEvent: { coordinate: Coordinates } }) => void
 };
 
-const TerminalMarkers = ({ terminals, markerSelect }: Props) => {
+const TerminalMarkers = ({
+  terminals,
+  onMarkerPress,
+  onMarkerSelect
+}: Props) => {
   if (terminals.length === 0) {
     return null;
   }
@@ -27,7 +32,8 @@ const TerminalMarkers = ({ terminals, markerSelect }: Props) => {
           key={terminal.key}
           centerOffset={{ x: 0, y: -15 }}
           stopPropagation
-          onSelect={markerSelect}
+          onPress={onMarkerPress}
+          onSelect={onMarkerSelect}
         >
           <View style={styles.markerView}>
             <View style={styles.markerTextWrapper}>
