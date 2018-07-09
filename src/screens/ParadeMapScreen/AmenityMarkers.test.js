@@ -16,7 +16,8 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <AmenityMarkers
         amenities={amenities}
-        markerSelect={() => {}}
+        onMarkerPress={() => {}}
+        onMarkerSelect={() => {}}
         activeMarker={undefined}
       />
     );
@@ -27,7 +28,8 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <AmenityMarkers
         amenities={amenities}
-        markerSelect={() => {}}
+        onMarkerPress={() => {}}
+        onMarkerSelect={() => {}}
         activeMarker={amenities[0].id}
       />
     );
@@ -38,7 +40,8 @@ describe("AmenityMarkers component", () => {
     const output = shallow(
       <AmenityMarkers
         amenities={[]}
-        markerSelect={() => {}}
+        onMarkerPress={() => {}}
+        onMarkerSelect={() => {}}
         activeMarker={undefined}
       />
     );
