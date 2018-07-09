@@ -545,8 +545,8 @@ exports[`Map component renders correctly 1`] = `
       strokeWidth={5}
     />
     <TerminalMarkers
-      handleMarkerPress={[Function]}
-      markerSelect={[Function]}
+      onMarkerPress={[Function]}
+      onMarkerSelect={[Function]}
       terminals={
         Array [
           Object {
@@ -568,32 +568,10 @@ exports[`Map component renders correctly 1`] = `
         ]
       }
     />
-    <AmenityMarkers
-      activeMarker={null}
-      amenities={
-        Array [
-          Object {
-            "contentType": "amenity",
-            "fields": Object {
-              "location": Object {
-                "lat": 0,
-                "lon": 10,
-              },
-              "type": "Toilet",
-            },
-            "id": "20nBC086o2kwuMWHp8FqMyUV",
-            "locale": "en-GB",
-            "revision": 1,
-          },
-        ]
-      }
-      handleMarkerPress={[Function]}
-      markerSelect={[Function]}
-    />
     <StageMarkers
       activeMarker={null}
-      handleMarkerPress={[Function]}
-      markerSelect={[Function]}
+      onMarkerPress={[Function]}
+      onMarkerSelect={[Function]}
       stages={
         Array [
           Object {
@@ -678,6 +656,28 @@ exports[`Map component renders correctly 1`] = `
           },
         ]
       }
+    />
+    <AmenityMarkers
+      activeMarker={null}
+      amenities={
+        Array [
+          Object {
+            "contentType": "amenity",
+            "fields": Object {
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "type": "Toilet",
+            },
+            "id": "20nBC086o2kwuMWHp8FqMyUV",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ]
+      }
+      onMarkerPress={[Function]}
+      onMarkerSelect={[Function]}
     />
   </MapView>
   <Component
@@ -1268,8 +1268,8 @@ exports[`Map component renders without location button when permission is restri
       strokeWidth={5}
     />
     <TerminalMarkers
-      handleMarkerPress={[Function]}
-      markerSelect={[Function]}
+      onMarkerPress={[Function]}
+      onMarkerSelect={[Function]}
       terminals={
         Array [
           Object {
@@ -1291,32 +1291,10 @@ exports[`Map component renders without location button when permission is restri
         ]
       }
     />
-    <AmenityMarkers
-      activeMarker={null}
-      amenities={
-        Array [
-          Object {
-            "contentType": "amenity",
-            "fields": Object {
-              "location": Object {
-                "lat": 0,
-                "lon": 10,
-              },
-              "type": "Toilet",
-            },
-            "id": "20nBC086o2kwuMWHp8FqMyUV",
-            "locale": "en-GB",
-            "revision": 1,
-          },
-        ]
-      }
-      handleMarkerPress={[Function]}
-      markerSelect={[Function]}
-    />
     <StageMarkers
       activeMarker={null}
-      handleMarkerPress={[Function]}
-      markerSelect={[Function]}
+      onMarkerPress={[Function]}
+      onMarkerSelect={[Function]}
       stages={
         Array [
           Object {
@@ -1401,6 +1379,28 @@ exports[`Map component renders without location button when permission is restri
           },
         ]
       }
+    />
+    <AmenityMarkers
+      activeMarker={null}
+      amenities={
+        Array [
+          Object {
+            "contentType": "amenity",
+            "fields": Object {
+              "location": Object {
+                "lat": 0,
+                "lon": 10,
+              },
+              "type": "Toilet",
+            },
+            "id": "20nBC086o2kwuMWHp8FqMyUV",
+            "locale": "en-GB",
+            "revision": 1,
+          },
+        ]
+      }
+      onMarkerPress={[Function]}
+      onMarkerSelect={[Function]}
     />
   </MapView>
 </Component>

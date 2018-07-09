@@ -145,11 +145,12 @@ class Map extends PureComponent<Props, State> {
     );
   };
 
-  handleMarkerPress = (markerID: string, stage: ?Event) => {
-    this.setState({
-      tileDetails: stage,
-      activeMarker: markerID
-    });
+  handleAmenityPress = (amenity: Amenity) => {
+    this.setState({ tileDetails: null, activeMarker: amenity.id });
+  };
+
+  handleStagePress = (stage: Event) => {
+    this.setState({ tileDetails: stage, activeMarker: stage.id });
   };
 
   dismissEventTile = () => {
@@ -219,21 +220,20 @@ class Map extends PureComponent<Props, State> {
           />
           <TerminalMarkers
             terminals={terminals}
-            markerSelect={this.handleIOSMarkerSelect}
-            handleMarkerPress={this.dismissEventTile}
-          />
-          <AmenityMarkers
-            amenities={amenities}
-            handleMarkerPress={this.handleMarkerPress}
-            activeMarker={this.state.activeMarker}
-            markerSelect={this.handleIOSMarkerSelect}
-            handleMarkerPress={this.dismissEventTile}
+            onMarkerPress={this.dismissEventTile}
+            onMarkerSelect={this.handleIOSMarkerSelect}
           />
           <StageMarkers
             stages={stages}
-            handleMarkerPress={this.handleMarkerPress}
             activeMarker={this.state.activeMarker}
-            markerSelect={this.handleIOSMarkerSelect}
+            onMarkerPress={this.handleStagePress}
+            onMarkerSelect={this.handleIOSMarkerSelect}
+          />
+          <AmenityMarkers
+            amenities={amenities}
+            activeMarker={this.state.activeMarker}
+            onMarkerPress={this.handleAmenityPress}
+            onMarkerSelect={this.handleIOSMarkerSelect}
           />
         </MapView>
 
