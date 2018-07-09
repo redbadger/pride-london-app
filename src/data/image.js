@@ -20,15 +20,15 @@ export const getImageDetails = (images: Images) => (
 ): ?ImageDetails => {
   if (!dimensions) {
     return images[id];
-  } else {
-    const imageDetails = images[id];
-    const imageUriWithResizingBehaviourParameters = `${imageDetails.uri}?w=${
-      dimensions.width
-    }&h=${dimensions.height}&fit=fill`;
-    return Object.assign({}, imageDetails, {
-      uri: imageUriWithResizingBehaviourParameters
-    });
   }
+
+  const imageDetails = images[id];
+  const imageUriWithResizingBehaviourParameters = `${imageDetails.uri}?w=${
+    dimensions.width
+  }&h=${dimensions.height}&fit=fill`;
+  return Object.assign({}, imageDetails, {
+    uri: imageUriWithResizingBehaviourParameters
+  });
 };
 
 export const decodeImageDetails = (locale: string): Decoder<ImageDetails> =>
