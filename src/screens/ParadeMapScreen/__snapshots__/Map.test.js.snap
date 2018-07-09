@@ -14,6 +14,10 @@ exports[`Map component renders correctly 1`] = `
     }
   }
 >
+  <MessageBanner
+    message="GPS or other location finding magic might not be available, please try again later"
+    title="We couldn't find your location"
+  />
   <MapView
     initialRegion={
       Object {
@@ -728,6 +732,10 @@ exports[`Map component renders without location button when permission is restri
     }
   }
 >
+  <MessageBanner
+    message="GPS or other location finding magic might not be available, please try again later"
+    title="We couldn't find your location"
+  />
   <MapView
     initialRegion={
       Object {
