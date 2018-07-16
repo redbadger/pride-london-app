@@ -16,7 +16,7 @@ export type ImageDetails = {
 
 export const getImageDetails = (images: Images) => (
   id: string,
-  dimensions: { width: number, height: number }
+  dimensions: ?{ width: number, height: number }
 ): ?ImageDetails => {
   if (!dimensions) {
     return images[id];

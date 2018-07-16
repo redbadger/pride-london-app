@@ -11,8 +11,12 @@ type OwnProps = {
   reference: FieldRef
 };
 
+type State = {
+  imageSize: ?{ width: number, height: number }
+};
+
 type StateProps = {
-  getImageDetails: string => ?ImageDetails
+  getImageDetails: (string, { width: number, height: number }) => ?ImageDetails
 };
 
 type Props = OwnProps & StateProps;
@@ -23,12 +27,13 @@ export class ImageBackground extends Component<Props, State> {
     this.state = { imageSize: null };
   }
 
-  onLayout = ({
-    nativeEvent: {
-      layout: { width, height }
-    }
-  }) => {
-    this.setState({ imageSize: { width, height } });
+  onLayout = (event: Object) => {
+    this.setState({
+      imageSize: {
+        width: event.nativeEvent.layout.width,
+        height: event.nativeEvent.layout.height
+      }
+    });
   };
 
   render() {
