@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`renders image correctly 1`] = `
 <ImageBackground
   accessibilityLabel="Test Label"
+  onLayout={[Function]}
   resizeMode="contain"
   source={
     Object {
@@ -11,6 +12,19 @@ exports[`renders correctly 1`] = `
       "revision": 1,
       "uri": "https://red-badger.com/56K46slQYXyq6SOU4UzWUW8eL7iJg.jpg",
       "width": 891,
+    }
+  }
+/>
+`;
+
+exports[`renders placeholder image correctly 1`] = `
+<ImageBackground
+  accessibilityLabel="Test Label"
+  onLayout={[Function]}
+  resizeMode="contain"
+  source={
+    Object {
+      "uri": "data:image/png;base64,  iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
     }
   }
 />
