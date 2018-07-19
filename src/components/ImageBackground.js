@@ -6,6 +6,7 @@ import type { Connector } from "react-redux";
 import type { ImageDetails } from "../data/image";
 import { getImageDetails as createImageDetailsGetter } from "../data/image";
 import type { FieldRef } from "../data/field-ref";
+import type { LayoutEvent } from "react-native/Libraries/Types/CoreEventTypes";
 
 type OwnProps = {
   reference: FieldRef
@@ -27,7 +28,7 @@ export class ImageBackground extends Component<Props, State> {
     this.state = { imageSize: null };
   }
 
-  onLayout = (event: Object) => {
+  onLayout = (event: LayoutEvent) => {
     this.setState({
       imageSize: {
         width: event.nativeEvent.layout.width,
