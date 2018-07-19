@@ -38,6 +38,15 @@ describe("image", () => {
     });
   });
 
+  it("returns correctly when dimensions are provided but there is no image details for image id", () => {
+    const imageDimensions = { width: 500, height: 200 };
+    const imageId = "image-id";
+
+    const getter = getImageDetails({});
+
+    expect(getter(imageId, imageDimensions)).toBeUndefined();
+  });
+
   describe("decodeImageDetails", () => {
     it("correctly decodes valid CMS image", () => {
       const data: mixed = sampleOne(generateCMSImage);
