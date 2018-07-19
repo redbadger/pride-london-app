@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import { ImageBackground as RNImageBackground } from "react-native";
 import { connect } from "react-redux";
 import type { Connector } from "react-redux";
+import type { LayoutEvent } from "react-native/Libraries/Types/CoreEventTypes";
 import type { ImageDetails } from "../data/image";
 import { getImageDetails as createImageDetailsGetter } from "../data/image";
 import type { FieldRef } from "../data/field-ref";
-import type { LayoutEvent } from "react-native/Libraries/Types/CoreEventTypes";
 
 type OwnProps = {
   reference: FieldRef
