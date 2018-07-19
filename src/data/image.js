@@ -18,11 +18,13 @@ export const getImageDetails = (images: Images) => (
   id: string,
   dimensions: ?{ width: number, height: number }
 ): ?ImageDetails => {
-  if (!dimensions) {
-    return images[id];
+  const imageDetails = images[id];
+
+  // Image details might be undefined in case of unpublished image
+  if (!dimensions || !imageDetails) {
+    return imageDetails;
   }
 
-  const imageDetails = images[id];
   const imageUriWithResizingBehaviourParameters = `${imageDetails.uri}?w=${
     dimensions.width
   }&h=${dimensions.height}&fit=fill`;
