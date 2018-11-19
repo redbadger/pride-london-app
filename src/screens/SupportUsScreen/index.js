@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, Linking } from "react-native";
 import type { NavigationScreenProp, NavigationState } from "react-navigation";
 import supportUsAsIndividual from "../../../assets/images/supportUsAsIndividual.jpg";
 import supportUsAsBusiness from "../../../assets/images/supportUsAsBusiness.jpg";
@@ -13,6 +13,8 @@ import ButtonWithShapes from "../../components/ButtonWithShapes";
 import ContentPadding from "../../components/ContentPadding";
 import Header from "../../components/Header";
 import ImageHeader from "../../components/ImageHeader";
+import TextLink from "../../components/TextLink";
+import Touchable from "../../components/Touchable";
 import {
   lightNavyBlueColor,
   warmPinkColor,
@@ -86,6 +88,11 @@ const SupportUsScreen = ({ navigation }: Props) => (
             testID="support-us-sponsor-button"
           />
         </ContentPadding>
+        <ContentPadding style={[styles.sectionSpacing, styles.privacy]}>
+          <Touchable onPress={() => Linking.openURL(text.privacyPolicyUrl)}>
+            <TextLink>{text.privacyPolicyText}</TextLink>
+          </Touchable>
+        </ContentPadding>
       </View>
     </ScrollView>
   </View>
@@ -106,6 +113,9 @@ const styles = StyleSheet.create({
   },
   buttonSpacing: {
     marginTop: 12
+  },
+  privacy: {
+    alignItems: "center"
   }
 });
 

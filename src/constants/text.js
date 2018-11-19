@@ -210,5 +210,7 @@ export default {
     message:
       "We can't find a good connection - please try again when you connection is restored",
     button: "Try again"
-  }
+  },
+  privacyPolicyText: "Privacy policy",
+  privacyPolicyUrl: "https://prideinlondon.org/privacy"
 };

@@ -118,6 +118,34 @@ exports[`renders correctly 1`] = `
           url="SPONSOR"
         />
       </ContentPadding>
+      <ContentPadding
+        padding={Object {}}
+        style={
+          Array [
+            Object {
+              "marginBottom": 16,
+            },
+            Object {
+              "alignItems": "center",
+            },
+          ]
+        }
+      >
+        <Touchable
+          accessibilityComponentType="button"
+          accessibilityTraits={
+            Array [
+              "button",
+            ]
+          }
+          delayPressIn={50}
+          onPress={[Function]}
+        >
+          <TextLink>
+            Privacy policy
+          </TextLink>
+        </Touchable>
+      </ContentPadding>
     </Component>
   </ScrollView>
 </Component>
