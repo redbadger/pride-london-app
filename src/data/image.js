@@ -15,23 +15,8 @@ export type ImageDetails = {
 };
 
 export const getImageDetails = (images: Images) => (
-  id: string,
-  dimensions: ?{ width: number, height: number }
-): ?ImageDetails => {
-  const imageDetails = images[id];
-
-  // Image details might be undefined in case of unpublished image
-  if (!dimensions || !imageDetails) {
-    return imageDetails;
-  }
-
-  const imageUriWithResizingBehaviourParameters = `${imageDetails.uri}?w=${
-    dimensions.width
-  }&h=${dimensions.height}&fit=fill`;
-  return Object.assign({}, imageDetails, {
-    uri: imageUriWithResizingBehaviourParameters
-  });
-};
+  id: string
+): ?ImageDetails => images[id];
 
 export const decodeImageDetails = (locale: string): Decoder<ImageDetails> =>
   decode.shape({
