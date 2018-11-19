@@ -189,7 +189,7 @@ release-api-keys: &release-api-keys
       echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
       source $BASH_ENV
 
-release-api-keys: &demo-api-keys
+demo-api-keys: &demo-api-keys
   run:
     name: Set demo API keys
     command: |
