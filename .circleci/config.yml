@@ -1,19 +1,11 @@
-yarn-key: &yarn-key
-  v1-dependencies-{{ checksum "yarn.lock" }}
-yarn-key-macos: &yarn-key-macos
-  v3-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
-gradle-key: &gradle-key
-  v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
-gems-key: &gems-key
-  v1-gems-{{ checksum "Gemfile.lock" }}
-brew-key: &brew-key
-  v1-brew-{{ checksum "BrewFile" }}
-nightly-key: &nightly-key
-  v0.1-nightly-{{ checksum "~/.pride-nightly/last-commit" }}
-android-artifacts-path: &android-artifacts-path
-  $HOME/project/android/app/build/outputs
-artifacts-path-macos: &artifacts-path-macos
-  /Users/distiller/project/output
+yarn-key: &yarn-key v1-dependencies-{{ checksum "yarn.lock" }}
+yarn-key-macos: &yarn-key-macos v3-dependencies-macos-{{ checksum "/Users/distiller/project/yarn.lock" }}
+gradle-key: &gradle-key v1-jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+gems-key: &gems-key v1-gems-{{ checksum "Gemfile.lock" }}
+brew-key: &brew-key v1-brew-{{ checksum "BrewFile" }}
+nightly-key: &nightly-key v0.1-nightly-{{ checksum "~/.pride-nightly/last-commit" }}
+android-artifacts-path: &android-artifacts-path $HOME/project/android/app/build/outputs
+artifacts-path-macos: &artifacts-path-macos /Users/distiller/project/output
 
 get-yarn-cache: &get-yarn-cache
   restore_cache:
@@ -159,7 +151,7 @@ checkout-macos: &checkout-macos
 set-ruby-version-macos: &set-ruby-version-macos
   run:
     name: Set Ruby Version
-    command:  echo "ruby-2.4" > ~/.ruby-version
+    command: echo "ruby-2.4" > ~/.ruby-version
 
 set-node-version-macos: &set-node-version-macos
   run:
@@ -189,37 +181,46 @@ release-api-keys: &release-api-keys
       echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
       source $BASH_ENV
 
+release-api-keys: &demo-api-keys
+  run:
+    name: Set demo API keys
+    command: |
+      echo 'export CONTENTFUL_SPACE_ID=$DEMO_CONTENTFUL_SPACE_ID' >> $BASH_ENV
+      echo 'export CONTENTFUL_API_KEY=$DEMO_CONTENTFUL_API_KEY' >> $BASH_ENV
+      echo 'export GOOGLE_MAPS_API_KEY=$RELEASE_GOOGLE_MAPS_API_KEY' >> $BASH_ENV
+      source $BASH_ENV
+
 bugsnag-upload-sourcemaps-android: &bugsnag-upload-sourcemaps-android
   run:
     name: Generate js sourcemaps and upload to Bugsnag
     command: |
-        ./scripts/upload-sourcemaps.sh \
-        android \
-        $BUGSNAG_API_KEY
+      ./scripts/upload-sourcemaps.sh \
+      android \
+      $BUGSNAG_API_KEY
     working_directory: ~/project
 
 bugsnag-upload-sourcemaps-ios: &bugsnag-upload-sourcemaps-ios
   run:
     name: Generate js sourcemaps and upload to Bugsnag
     command: |
-        ./scripts/upload-sourcemaps.sh \
-        ios \
-        $BUGSNAG_API_KEY
+      ./scripts/upload-sourcemaps.sh \
+      ios \
+      $BUGSNAG_API_KEY
     working_directory: /Users/distiller/project
 
 generate-nightly-file: &generate-nightly-file
   run:
     name: Generate Nightly Last Commit File
     command: |
-        mkdir -p ~/.pride-nightly
-        git rev-parse HEAD > ~/.pride-nightly/last-commit
+      mkdir -p ~/.pride-nightly
+      git rev-parse HEAD > ~/.pride-nightly/last-commit
 
 generate-nightly-cache: &generate-nightly-cache
   run:
     name: Generate Nightly Cache
     command: |
-        mkdir -p ~/.pride-nightly/cache
-        cp ~/.pride-nightly/last-commit ~/.pride-nightly/cache/
+      mkdir -p ~/.pride-nightly/cache
+      cp ~/.pride-nightly/last-commit ~/.pride-nightly/cache/
 
 version: 2
 jobs:
@@ -234,9 +235,9 @@ jobs:
       - run:
           name: Test reporter status
           command: |
-              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-              chmod +x ./cc-test-reporter
-              ./cc-test-reporter before-build
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
       - <<: *yarn-dependencies
       - <<: *save-yarn-cache
       - run:
@@ -248,8 +249,8 @@ jobs:
       - run:
           name: Unit test
           command: |
-              yarn test
-              ./cc-test-reporter after-build
+            yarn test
+            ./cc-test-reporter after-build
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -273,17 +274,17 @@ jobs:
       - <<: *save-gradle-cache
       - <<: *generate-env
       - run:
-            name: Build Alpha binary and upload for distribution
-            command: |
-                bundle exec fastlane alpha \
-                submit:true \
-                apk_path:$APK_PATH \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
-                fabric_api_token:$FABRIC_API_KEY \
-                fabric_build_secret:$FABRIC_BUILD_SECRET \
-                fabric_groups:$FABRIC_GROUPS \
-                commit_sha:$CIRCLE_SHA1
+          name: Build Alpha binary and upload for distribution
+          command: |
+            bundle exec fastlane alpha \
+            submit:true \
+            apk_path:$APK_PATH \
+            api_token:$HOCKEY_APP_TOKEN \
+            app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
+            fabric_api_token:$FABRIC_API_KEY \
+            fabric_build_secret:$FABRIC_BUILD_SECRET \
+            fabric_groups:$FABRIC_GROUPS \
+            commit_sha:$CIRCLE_SHA1
       - <<: *store-artifacts-docker
 
   beta-android:
@@ -305,17 +306,17 @@ jobs:
       - <<: *save-gradle-cache
       - <<: *generate-env
       - run:
-            name: Build Beta binary and upload for distribution
-            command: |
-                bundle exec fastlane beta \
-                submit:true \
-                apk_path:$APK_PATH \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
-                fabric_api_token:$FABRIC_API_KEY \
-                fabric_build_secret:$FABRIC_BUILD_SECRET \
-                fabric_groups:$FABRIC_GROUPS \
-                commit_sha:$CIRCLE_SHA1
+          name: Build Beta binary and upload for distribution
+          command: |
+            bundle exec fastlane beta \
+            submit:true \
+            apk_path:$APK_PATH \
+            api_token:$HOCKEY_APP_TOKEN \
+            app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
+            fabric_api_token:$FABRIC_API_KEY \
+            fabric_build_secret:$FABRIC_BUILD_SECRET \
+            fabric_groups:$FABRIC_GROUPS \
+            commit_sha:$CIRCLE_SHA1
       - <<: *bugsnag-upload-sourcemaps-android
       - <<: *store-artifacts-docker
 
@@ -339,14 +340,44 @@ jobs:
       - <<: *release-api-keys
       - <<: *generate-env
       - run:
-            name: Build Release binary and upload for distribution
-            command: |
-                bundle exec fastlane release \
-                submit:true \
-                apk_path:$APK_PATH \
-                upload_key:$PLAY_STORE_UPLOAD_KEY_PATH \
-                ci_build_num:$CIRCLE_BUILD_NUM \
-                slack_webhook:$SLACK_WEBHOOK
+          name: Build Release binary and upload for distribution
+          command: |
+            bundle exec fastlane release \
+            submit:true \
+            apk_path:$APK_PATH \
+            upload_key:$PLAY_STORE_UPLOAD_KEY_PATH \
+            ci_build_num:$CIRCLE_BUILD_NUM \
+            slack_webhook:$SLACK_WEBHOOK
+      - <<: *bugsnag-upload-sourcemaps-android
+
+  release-demo-android:
+    <<: *job-defaults-docker
+    environment:
+      <<: *env-docker
+      APK_PATH: "./app/build/outputs/apk/production/release/app-production-release.apk"
+      RELEASE_STAGE: "demo"
+    steps:
+      - <<: *checkout-docker
+      - <<: *workspace-docker
+      - <<: *android-release-secrets
+      - <<: *fabric-secrets-android
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *restore-gradle-cache
+      - <<: *android-dependencies
+      - <<: *save-gradle-cache
+      - <<: *demo-api-keys
+      - <<: *generate-env
+      - run:
+          name: Build Release binary and upload for distribution
+          command: |
+            bundle exec fastlane release \
+            submit:true \
+            apk_path:$APK_PATH \
+            upload_key:$PLAY_STORE_UPLOAD_KEY_PATH \
+            ci_build_num:$CIRCLE_BUILD_NUM \
+            slack_webhook:$SLACK_WEBHOOK
       - <<: *bugsnag-upload-sourcemaps-android
 
   alpha-ios:
@@ -369,17 +400,17 @@ jobs:
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
       - run:
-            name: Build Alpha binary and upload for distribution
-            command: |
-                bundle exec fastlane alpha \
-                submit:true \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
-                fabric_api_token:$FABRIC_API_KEY \
-                fabric_build_secret:$FABRIC_BUILD_SECRET \
-                fabric_groups:$FABRIC_GROUPS \
-                ci_build_num:$CIRCLE_BUILD_NUM \
-                commit_sha:$CIRCLE_SHA1
+          name: Build Alpha binary and upload for distribution
+          command: |
+            bundle exec fastlane alpha \
+            submit:true \
+            api_token:$HOCKEY_APP_TOKEN \
+            app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
+            fabric_api_token:$FABRIC_API_KEY \
+            fabric_build_secret:$FABRIC_BUILD_SECRET \
+            fabric_groups:$FABRIC_GROUPS \
+            ci_build_num:$CIRCLE_BUILD_NUM \
+            commit_sha:$CIRCLE_SHA1
       - store_artifacts:
           path: /Users/distiller/project/output
 
@@ -404,19 +435,19 @@ jobs:
       - <<: *save-yarn-cache-macos
       - <<: *generate-env-macos
       - run:
-            name: Build Beta binary and upload for distribution
-            command: |
-                bundle exec fastlane beta \
-                submit:true \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
-                fabric_api_token:$FABRIC_API_KEY \
-                fabric_build_secret:$FABRIC_BUILD_SECRET \
-                fabric_groups:$FABRIC_GROUPS \
-                ci_build_num:$CIRCLE_BUILD_NUM \
-                commit_sha:$CIRCLE_SHA1 \
-                release_stage:$RELEASE_STAGE \
-                bugsnag_api_key:$BUGSNAG_API_KEY
+          name: Build Beta binary and upload for distribution
+          command: |
+            bundle exec fastlane beta \
+            submit:true \
+            api_token:$HOCKEY_APP_TOKEN \
+            app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
+            fabric_api_token:$FABRIC_API_KEY \
+            fabric_build_secret:$FABRIC_BUILD_SECRET \
+            fabric_groups:$FABRIC_GROUPS \
+            ci_build_num:$CIRCLE_BUILD_NUM \
+            commit_sha:$CIRCLE_SHA1 \
+            release_stage:$RELEASE_STAGE \
+            bugsnag_api_key:$BUGSNAG_API_KEY
       - <<: *bugsnag-upload-sourcemaps-ios
       - store_artifacts:
           path: /Users/distiller/project/output
@@ -443,14 +474,46 @@ jobs:
       - <<: *release-api-keys
       - <<: *generate-env-macos
       - run:
-            name: Build Release binary and upload for distribution
-            command: |
-                bundle exec fastlane release \
-                submit:true \
-                ci_build_num:$CIRCLE_BUILD_NUM \
-                release_stage:$RELEASE_STAGE \
-                bugsnag_api_key:$BUGSNAG_API_KEY \
-                slack_webhook:$SLACK_WEBHOOK
+          name: Build Release binary and upload for distribution
+          command: |
+            bundle exec fastlane release \
+            submit:true \
+            ci_build_num:$CIRCLE_BUILD_NUM \
+            release_stage:$RELEASE_STAGE \
+            bugsnag_api_key:$BUGSNAG_API_KEY \
+            slack_webhook:$SLACK_WEBHOOK
+      - <<: *bugsnag-upload-sourcemaps-ios
+
+  release-demo-ios:
+    <<: *job-defaults-macos
+    working_directory: /Users/distiller/project/ios
+    environment:
+      <<: *env-macos
+      RELEASE_STAGE: "demo"
+    steps:
+      - <<: *checkout-macos
+      - <<: *set-ruby-version-macos
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - <<: *fabric-secrets-ios
+      - <<: *restore-gems-cache
+      - <<: *ruby-dependencies
+      - <<: *save-gems-cache
+      - <<: *set-node-version-macos
+      - <<: *get-yarn-cache-macos
+      - <<: *yarn-dependencies-macos
+      - <<: *save-yarn-cache-macos
+      - <<: *demo-api-keys
+      - <<: *generate-env-macos
+      - run:
+          name: Build Release binary and upload for demo distribution
+          command: |
+            bundle exec fastlane release \
+            submit:true \
+            ci_build_num:$CIRCLE_BUILD_NUM \
+            release_stage:$RELEASE_STAGE \
+            bugsnag_api_key:$BUGSNAG_API_KEY \
+            slack_webhook:$SLACK_WEBHOOK
       - <<: *bugsnag-upload-sourcemaps-ios
 
   e2e-ios:
@@ -476,15 +539,15 @@ jobs:
       - run:
           name: Install HomeBrew dependencies
           command: |
-              brew tap homebrew/bundle
-              brew bundle
+            brew tap homebrew/bundle
+            brew bundle
       - <<: *save-brew-cache
       - <<: *set-node-version-macos
       - run:
           name: Install global npm dependencies
           command: |
-              npm i -g detox-cli
-              npm i -g react-native-cli
+            npm i -g detox-cli
+            npm i -g react-native-cli
       - <<: *get-yarn-cache-macos
       - <<: *yarn-dependencies-macos
       - <<: *save-yarn-cache-macos
@@ -506,11 +569,11 @@ jobs:
       - run:
           name: Run if not run before
           command: |
-              if [ ! -f ~/.pride-nightly/cache/last-commit ]; then
-                echo "run build..."
-              else
-                echo "build not needed..."
-              fi
+            if [ ! -f ~/.pride-nightly/cache/last-commit ]; then
+              echo "run build..."
+            else
+              echo "build not needed..."
+            fi
       - <<: *generate-nightly-cache
       - <<: *save-nightly-cache
 
@@ -544,18 +607,23 @@ workflows:
             branches:
               only:
                 - master
-      - release-android:
+      - release-demo-android:
           requires:
             - build
           filters:
             branches:
               only:
-                - master
+                - demo-rc
       - release-ios:
           filters:
             branches:
               only:
                 - master
+      - release-demo-ios:
+          filters:
+            branches:
+              only:
+                - demo-rc
   nightly-release:
     triggers:
       - schedule:
