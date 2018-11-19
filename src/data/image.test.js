@@ -17,34 +17,6 @@ describe("image", () => {
 
       expect(getter(imageDetails.id)).toEqual(imageDetails);
     });
-
-    it("returns the correct imageDetails when dimensions are provided", () => {
-      const imageDetails: ImageDetails = sampleOne(generateImageDetails);
-      const imageDimensions = { width: 500, height: 200 };
-      const imageDetailsWithDimensions = {
-        ...imageDetails,
-        uri: `${imageDetails.uri}?w=${imageDimensions.width}&h=${
-          imageDimensions.height
-        }&fit=fill`
-      };
-
-      const getter = getImageDetails({
-        [imageDetails.id]: imageDetails
-      });
-
-      expect(getter(imageDetails.id, imageDimensions)).toEqual(
-        imageDetailsWithDimensions
-      );
-    });
-  });
-
-  it("returns correctly when dimensions are provided but there is no image details for image id", () => {
-    const imageDimensions = { width: 500, height: 200 };
-    const imageId = "image-id";
-
-    const getter = getImageDetails({});
-
-    expect(getter(imageId, imageDimensions)).toBeUndefined();
   });
 
   describe("decodeImageDetails", () => {
