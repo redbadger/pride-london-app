@@ -607,6 +607,13 @@ workflows:
             branches:
               only:
                 - master
+      - release-android:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
       - release-demo-android:
           requires:
             - build
