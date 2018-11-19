@@ -96,7 +96,6 @@ platform :ios do
   desc "Build and Deploy a release to iTunes Connect"
   lane :release do |options|
     begin
-      ensure_git_branch(branch: "master")
       increment_build_number(build_number:options[:ci_build_num])
       build(
         match_type: "appstore",
