@@ -310,6 +310,10 @@ exports[`Header.BackButton renders correctly with default props 1`] = `
 <IconButton
   accessibilityLabel="Back"
   onPress={[Function]}
-  source={1}
+  source={
+    Object {
+      "testUri": "../../../assets/images/chevron-left-white.png",
+    }
+  }
 />
 `;

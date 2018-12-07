@@ -26,7 +26,11 @@ exports[`renders correctly 1`] = `
       }
     >
       <ImageHeader
-        image={1}
+        image={
+          Object {
+            "testUri": "../../../assets/images/supportUsAsIndividual.jpg",
+          }
+        }
         subtitle=""
         title="As an individual"
       />
@@ -39,8 +43,16 @@ exports[`renders correctly 1`] = `
         }
       >
         <SupportUsButton
-          bgBottomLeft={1}
-          bgTopRight={1}
+          bgBottomLeft={
+            Object {
+              "testUri": "../../../assets/images/supportUsDonateBgBottomLeft.png",
+            }
+          }
+          bgTopRight={
+            Object {
+              "testUri": "../../../assets/images/supportUsDonateBgTopRight.png",
+            }
+          }
           centerText={false}
           color="#2d2f7f"
           contrast={false}
@@ -56,7 +68,11 @@ exports[`renders correctly 1`] = `
           url="DONATE"
         />
         <SupportUsButton
-          bgTopRight={1}
+          bgTopRight={
+            Object {
+              "testUri": "../../../assets/images/supportUsVolunteerBgTopRight.png",
+            }
+          }
           centerText={false}
           color="#fc4984"
           contrast={false}
@@ -72,7 +88,11 @@ exports[`renders correctly 1`] = `
           url="https://prideinlondon.org/volunteer"
         />
         <SupportUsButton
-          bgBottomRight={1}
+          bgBottomRight={
+            Object {
+              "testUri": "../../../assets/images/supportUsShopBgBottomRight.png",
+            }
+          }
           centerText={false}
           color="#c3d30e"
           contrast={true}
@@ -89,7 +109,11 @@ exports[`renders correctly 1`] = `
         />
       </ContentPadding>
       <ImageHeader
-        image={1}
+        image={
+          Object {
+            "testUri": "../../../assets/images/supportUsAsBusiness.jpg",
+          }
+        }
         subtitle=""
         title="As a business"
       />
@@ -102,7 +126,11 @@ exports[`renders correctly 1`] = `
         }
       >
         <SupportUsButton
-          bgTopRight={1}
+          bgTopRight={
+            Object {
+              "testUri": "../../../assets/images/supportUsSponsorBgTopRight.png",
+            }
+          }
           centerText={false}
           color="#00a3bd"
           contrast={false}

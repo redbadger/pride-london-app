@@ -13,7 +13,11 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
     }
   >
     <Image
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/sponsorGold.png",
+        }
+      }
     />
     <Text
       color="lightNavyBlueColor"
@@ -146,7 +150,11 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
     }
   >
     <Image
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/sponsorSilver.png",
+        }
+      }
     />
     <Text
       color="lightNavyBlueColor"

@@ -15,7 +15,11 @@ exports[`renders correctly 1`] = `
       spacing={12}
     >
       <Image
-        source={1}
+        source={
+          Object {
+            "testUri": "../../../assets/images/howToSaveEvents.png",
+          }
+        }
         style={
           Object {
             "alignSelf": "center",
@@ -53,7 +57,11 @@ exports[`renders correctly 1`] = `
         No favourites yet? Tap the
          
         <Image
-          source={1}
+          source={
+            Object {
+              "testUri": "../../../assets/images/save.png",
+            }
+          }
           style={
             Object {
               "height": 21,

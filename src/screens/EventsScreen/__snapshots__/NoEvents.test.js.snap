@@ -12,7 +12,11 @@ exports[`renders correctly 1`] = `
     }
   >
     <Image
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/emptyList.png",
+        }
+      }
       style={
         Object {
           "alignSelf": "center",

@@ -1,5 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AmenityMarkers component renders active amenity correctly 1`] = `
+<React.Fragment>
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 0,
+        "longitude": 10,
+      }
+    }
+    image={
+      Object {
+        "testUri": "../../../assets/images/amenityIconToiletActive.png",
+      }
+    }
+    key="20nBC086o2kwuMWHp8FqMyUV"
+    onPress={[Function]}
+    onSelect={[Function]}
+    stopPropagation={true}
+    style={
+      Object {
+        "zIndex": 1001,
+      }
+    }
+  />
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 0,
+        "longitude": 10,
+      }
+    }
+    image={
+      Object {
+        "testUri": "../../../assets/images/amenityIconToilet.png",
+      }
+    }
+    key="mm2T1WpGuu4k03kl04088fDh1B5V"
+    onPress={[Function]}
+    onSelect={[Function]}
+    stopPropagation={true}
+    style={
+      Object {
+        "zIndex": 1,
+      }
+    }
+  />
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 0,
+        "longitude": 10,
+      }
+    }
+    image={
+      Object {
+        "testUri": "../../../assets/images/amenityIconToilet.png",
+      }
+    }
+    key="ue5m21"
+    onPress={[Function]}
+    onSelect={[Function]}
+    stopPropagation={true}
+    style={
+      Object {
+        "zIndex": 1,
+      }
+    }
+  />
+</React.Fragment>
+`;
+
 exports[`AmenityMarkers component renders correctly 1`] = `
 <React.Fragment>
   <MapMarker
@@ -9,11 +80,64 @@ exports[`AmenityMarkers component renders correctly 1`] = `
         "longitude": 10,
       }
     }
-    image={1}
+    image={
+      Object {
+        "testUri": "../../../assets/images/amenityIconToilet.png",
+      }
+    }
     key="20nBC086o2kwuMWHp8FqMyUV"
+    onPress={[Function]}
     onSelect={[Function]}
-    pointerEvents="none"
-    stopPropagation={false}
+    stopPropagation={true}
+    style={
+      Object {
+        "zIndex": 1,
+      }
+    }
+  />
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 0,
+        "longitude": 10,
+      }
+    }
+    image={
+      Object {
+        "testUri": "../../../assets/images/amenityIconToilet.png",
+      }
+    }
+    key="mm2T1WpGuu4k03kl04088fDh1B5V"
+    onPress={[Function]}
+    onSelect={[Function]}
+    stopPropagation={true}
+    style={
+      Object {
+        "zIndex": 1,
+      }
+    }
+  />
+  <MapMarker
+    coordinate={
+      Object {
+        "latitude": 0,
+        "longitude": 10,
+      }
+    }
+    image={
+      Object {
+        "testUri": "../../../assets/images/amenityIconToilet.png",
+      }
+    }
+    key="ue5m21"
+    onPress={[Function]}
+    onSelect={[Function]}
+    stopPropagation={true}
+    style={
+      Object {
+        "zIndex": 1,
+      }
+    }
   />
 </React.Fragment>
 `;

@@ -35,7 +35,11 @@ exports[`renders correctly 1`] = `
     Bananas
   </Text>
   <Image
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/checkBox.png",
+      }
+    }
   />
 </Touchable>
 `;
@@ -76,7 +80,11 @@ exports[`renders correctly when checked 1`] = `
     Bananas
   </Text>
   <Image
-    source={1}
+    source={
+      Object {
+        "testUri": "../../../assets/images/checkBoxChecked.png",
+      }
+    }
   />
 </Touchable>
 `;

@@ -15,7 +15,11 @@ exports[`renders correctly 1`] = `
   <IconList>
     <IconItem
       onPress={[Function]}
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/email.png",
+        }
+      }
     >
       <TextLink>
         milo@red-badger.com
@@ -23,7 +27,11 @@ exports[`renders correctly 1`] = `
     </IconItem>
     <IconItem
       onPress={[Function]}
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/call.png",
+        }
+      }
     >
       <TextLink>
         1-800-555-WOOF
@@ -48,7 +56,11 @@ exports[`renders correctly when only email is given 1`] = `
   <IconList>
     <IconItem
       onPress={[Function]}
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/email.png",
+        }
+      }
     >
       <TextLink>
         milo@red-badger.com
@@ -73,7 +85,11 @@ exports[`renders correctly when only phone is given 1`] = `
   <IconList>
     <IconItem
       onPress={[Function]}
-      source={1}
+      source={
+        Object {
+          "testUri": "../../../assets/images/call.png",
+        }
+      }
     >
       <TextLink>
         1-800-555-WOOF

@@ -38,7 +38,11 @@ exports[`renders correctly 1`] = `
         }
       >
         <ImageHeader
-          image={1}
+          image={
+            Object {
+              "testUri": "../../../assets/images/donateHeader.jpg",
+            }
+          }
           subtitle=""
           title={
             Array [

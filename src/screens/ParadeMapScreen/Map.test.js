@@ -165,27 +165,41 @@ describe("moveToCurrentLocation", () => {
   });
 });
 
-describe("handleMarkerPress", () => {
+describe("dismissEventTile", () => {
+  it("updates state clearing stage marker details", () => {
+    const output = render(regionProps);
+    const { dismissEventTile } = output.instance();
+    dismissEventTile();
+    expect(output.state().tileDetails).toEqual(null);
+    expect(output.state().activeMarker).toEqual(null);
+  });
+});
+
+describe("handleAmenityPress", () => {
+  it("updates state with amenity marker details", () => {
+    const output = render(regionProps);
+    const animateToCoordinate = jest.fn();
+
+    output.instance().mapViewRef.current = { animateToCoordinate };
+    const { handleAmenityPress } = output.instance();
+    handleAmenityPress(amenity);
+    expect(output.state().tileDetails).toEqual(null);
+    expect(output.state().activeMarker).toEqual(amenity.id);
+    jest.clearAllMocks();
+  });
+});
+
+describe("handleStagePress", () => {
   it("updates state with stage marker details", () => {
     const output = render(regionProps);
     const animateToCoordinate = jest.fn();
 
     output.instance().mapViewRef.current = { animateToCoordinate };
-    const handleMarkerPressSpy = output.instance().handleMarkerPress;
-    handleMarkerPressSpy(stage);
+    const { handleStagePress } = output.instance();
+    handleStagePress(stage);
     expect(output.state().tileDetails).toEqual(stage);
     expect(output.state().activeMarker).toEqual(stage.id);
     jest.clearAllMocks();
-  });
-});
-
-describe("dismissEventTile", () => {
-  it("updates state clearing stage marker details", () => {
-    const output = render(regionProps);
-    const dismissEventTileSpy = output.instance().dismissEventTile;
-    dismissEventTileSpy();
-    expect(output.state().tileDetails).toEqual(null);
-    expect(output.state().activeMarker).toEqual(null);
   });
 });
 
@@ -195,8 +209,8 @@ describe("handleIOSMarkerSelect", () => {
     const animateToCoordinate = jest.fn();
 
     output.instance().mapViewRef.current = { animateToCoordinate };
-    const handleIOSMarkerSelectSpy = output.instance().handleIOSMarkerSelect;
-    handleIOSMarkerSelectSpy({
+    const { handleIOSMarkerSelect } = output.instance();
+    handleIOSMarkerSelect({
       nativeEvent: {
         coordinate: {
           latitude: stage.fields.location.lat,
