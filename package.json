@@ -39,7 +39,7 @@
     "react-native-map-link": "^1.0.6",
     "react-native-maps": "^0.21.0",
     "react-native-permissions": "^1.1.1",
-    "react-native-safe-area-view": "robbiemccorkell/react-native-safe-area-view",
+    "react-native-safe-area-view": "0.11.0",
     "react-native-splash-screen": "^3.0.6",
     "react-navigation": "^2.0.1",
     "react-redux": "^5.0.7",
@@ -88,9 +88,6 @@
     "react-native-version": "^2.6.2",
     "react-test-renderer": "16.2.0",
     "redux-mock-store": "^1.5.3"
-  },
-  "resolutions": {
-    "react-native-safe-area-view": "robbiemccorkell/react-native-safe-area-view"
   },
   "rnpm": {
     "assets": [
