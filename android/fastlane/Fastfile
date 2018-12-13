@@ -42,15 +42,6 @@ platform :android do
         groups: options[:fabric_groups],
         notify: false,
       )
-      deploy_hockey(
-        commit_sha: options[:commit_sha],
-        api_token: options[:api_token],
-        app_id: options[:app_id],
-        apk_path: options[:apk_path],
-        status: "2",
-        notify: "0",
-        notes: notes,
-      )
     end
   end
 
@@ -65,15 +56,6 @@ platform :android do
         notes: notes,
         groups: options[:fabric_groups],
         notify: true,
-      )
-      deploy_hockey(
-        commit_sha: options[:commit_sha],
-        api_token: options[:api_token],
-        app_id: options[:app_id],
-        apk_path: options[:apk_path],
-        status: "2",
-        notify: "1",
-        notes: notes,
       )
     end
   end
@@ -91,19 +73,6 @@ platform :android do
     rescue => exception
       notify_failure(exception, options[:slack_webhook], options[:ci_build_num])
     end
-  end
-
-  desc "Deploy to HockeyApp"
-  lane :deploy_hockey do |options|
-    hockey(
-      api_token: options[:api_token],
-      public_identifier: options[:app_id],
-      apk: options[:apk_path],
-      notes: options[:notes],
-      status: options[:status],
-      notify: options[:notify],
-      commit_sha: options[:commit_sha]
-      )
   end
 
   desc "Deploy to Beta by Fabric"

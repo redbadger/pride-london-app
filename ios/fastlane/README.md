@@ -76,14 +76,6 @@ fastlane ios deploy_testflight
 
 Upload to TestFlight and notify testers
 
-### ios deploy_hockey
-
-```
-fastlane ios deploy_hockey
-```
-
-Upload to HockeyApp
-
 ### ios deploy_fabric
 
 ```
