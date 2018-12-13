@@ -2,10 +2,11 @@ const { formatDateRange } = require("../src/data/formatters");
 
 const formattedDateNumber = num => (num < 10 ? `0${num}` : num);
 
-const today = new Date();
-const thisDay = today.getDate();
-const thisMonth = today.getMonth() + 1;
-const thisYear = today.getFullYear();
+// We hardcode a date that ensures events
+const festivalStartDay = new Date("2019-07-01");
+const thisDay = festivalStartDay.getDate();
+const thisMonth = festivalStartDay.getMonth() + 1;
+const thisYear = festivalStartDay.getFullYear();
 const lastDayOfMonth = new Date(thisYear, thisMonth, 0).getDate();
 
 const formattedDay = formattedDateNumber(thisDay);
