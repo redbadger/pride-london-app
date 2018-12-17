@@ -1,16 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterSectionList renders correctly 1`] = `
-<React.Fragment>
-  <React.Fragment
-    key="price"
-  >
-    <SectionHeader
-      badgeValue={1}
-      hasShadow={false}
-      title="Price"
-    />
-    <ScreenSizeProvider />
-  </React.Fragment>
-</React.Fragment>
+<Fragment>
+  <SectionHeader
+    badgeValue={1}
+    hasShadow={false}
+    title="Price"
+  />
+  <ScreenSizeProvider>
+    <Component />
+  </ScreenSizeProvider>
+</Fragment>
 `;

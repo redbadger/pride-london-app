@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TerminalMarkers component renders correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <MapMarker
     centerOffset={
       Object {
@@ -144,5 +144,5 @@ exports[`TerminalMarkers component renders correctly 1`] = `
       />
     </View>
   </MapMarker>
-</React.Fragment>
+</Fragment>
 `;
