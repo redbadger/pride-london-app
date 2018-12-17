@@ -23,14 +23,14 @@ exports[`FilterHeaderCategories CategoriesFilterButton component renders correct
   }
   testID="categories-filter-button"
 >
-  <Image
+  <Component
     source={1}
   />
 </Touchable>
 `;
 
 exports[`FilterHeaderCategories Component renders correctly 1`] = `
-<Component
+<View
   onPress={[Function]}
   style={
     Object {
@@ -106,11 +106,11 @@ exports[`FilterHeaderCategories Component renders correctly 1`] = `
       onPress={[Function]}
     />
   </Touchable>
-</Component>
+</View>
 `;
 
 exports[`FilterHeaderCategories Component renders multiple category pills with selected categories and accessibility label 1`] = `
-<Component
+<View
   style={
     Object {
       "flexDirection": "row",
@@ -137,5 +137,5 @@ exports[`FilterHeaderCategories Component renders multiple category pills with s
   <CategoriesFilterButton
     onPress={[Function]}
   />
-</Component>
+</View>
 `;

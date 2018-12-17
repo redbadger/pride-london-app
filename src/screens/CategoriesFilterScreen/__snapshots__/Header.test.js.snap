@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Component renders correctly 1`] = `
-<Component>
+<View>
   <Header
     leftElement={
       <Unknown
@@ -29,7 +29,7 @@ exports[`Header Component renders correctly 1`] = `
     >
       Showing
     </Text>
-    <Component
+    <View
       style={
         Object {
           "height": 44,
@@ -42,7 +42,7 @@ exports[`Header Component renders correctly 1`] = `
         selectedCategories={Set {}}
         style={Object {}}
       />
-    </Component>
+    </View>
   </ContentPadding>
-</Component>
+</View>
 `;

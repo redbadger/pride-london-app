@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Map component renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "alignItems": "center",
@@ -679,7 +679,7 @@ exports[`Map component renders correctly 1`] = `
       }
     />
   </MapView>
-  <Component
+  <View
     style={
       Object {
         "alignSelf": "flex-end",
@@ -701,8 +701,8 @@ exports[`Map component renders correctly 1`] = `
       }
       onPress={[Function]}
     >
-      <Component>
-        <Image
+      <View>
+        <Component
           accessibilityLabel="Show my location"
           source={1}
           style={
@@ -712,14 +712,14 @@ exports[`Map component renders correctly 1`] = `
             }
           }
         />
-      </Component>
+      </View>
     </TouchableWithoutFeedback>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Map component renders without location button when permission is restricted 1`] = `
-<Component
+<View
   style={
     Object {
       "alignItems": "center",
@@ -1397,5 +1397,5 @@ exports[`Map component renders without location button when permission is restri
       }
     />
   </MapView>
-</Component>
+</View>
 `;

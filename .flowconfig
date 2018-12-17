@@ -5,6 +5,9 @@
 # Ignore broken react-native-linear-gradient prop annotations
 .*/node_modules/react-native-linear-gradient/*
 
+# Ignore dependency
+.*/node_modules/@rgbboy/testcheck/*
+
 ; Ignore "BUCK" generated dirs
 <PROJECT_ROOT>/\.buckd/
 

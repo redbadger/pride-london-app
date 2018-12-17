@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Component
+  <View
     onLayout={[Function]}
     style={
       Object {
@@ -54,7 +54,7 @@ exports[`renders correctly 1`] = `
       }
       testID="tab-0"
     >
-      <Component
+      <View
         style={
           Object {
             "flex": 1,
@@ -62,7 +62,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <Component
+        <View
           style={
             Array [
               Object {
@@ -77,15 +77,11 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
+          <Text>
             0
           </Text>
-        </Component>
-        <Component
+        </View>
+        <View
           style={
             Array [
               Object {
@@ -100,15 +96,11 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
+          <Text>
             0
           </Text>
-        </Component>
-      </Component>
+        </View>
+      </View>
       <Text
         color="blackColor"
         markdown={false}
@@ -148,7 +140,7 @@ exports[`renders correctly 1`] = `
       }
       testID="tab-1"
     >
-      <Component
+      <View
         style={
           Object {
             "flex": 1,
@@ -156,7 +148,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <Component
+        <View
           style={
             Array [
               Object {
@@ -171,15 +163,11 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
+          <Text>
             1
           </Text>
-        </Component>
-        <Component
+        </View>
+        <View
           style={
             Array [
               Object {
@@ -194,15 +182,11 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
+          <Text>
             1
           </Text>
-        </Component>
-      </Component>
+        </View>
+      </View>
       <Text
         color="blackColor"
         markdown={false}
@@ -242,6 +226,6 @@ exports[`renders correctly 1`] = `
         ]
       }
     />
-  </Component>
+  </View>
 </withOrientation>
 `;

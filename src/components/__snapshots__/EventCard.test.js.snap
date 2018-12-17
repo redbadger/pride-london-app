@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -18,7 +18,7 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Object {
         "borderRadius": 5,
@@ -60,7 +60,7 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <Component
+        <View
           style={
             Object {
               "backgroundColor": "#2d2f7f",
@@ -79,9 +79,9 @@ exports[`renders correctly 1`] = `
           >
             Free
           </Text>
-        </Component>
+        </View>
       </Connect(ImageBackground)>
-      <Component
+      <View
         style={
           Object {
             "flex": 1,
@@ -121,19 +121,19 @@ exports[`renders correctly 1`] = `
         >
           location
         </Text>
-      </Component>
+      </View>
     </Touchable>
     <SaveEventButton
       active={false}
       onDark={false}
       onPress={[Function]}
     />
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`renders correctly when the event is free 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -150,7 +150,7 @@ exports[`renders correctly when the event is free 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Object {
         "borderRadius": 5,
@@ -192,7 +192,7 @@ exports[`renders correctly when the event is free 1`] = `
           }
         }
       >
-        <Component
+        <View
           style={
             Object {
               "backgroundColor": "#2d2f7f",
@@ -211,9 +211,9 @@ exports[`renders correctly when the event is free 1`] = `
           >
             Free
           </Text>
-        </Component>
+        </View>
       </Connect(ImageBackground)>
-      <Component
+      <View
         style={
           Object {
             "flex": 1,
@@ -253,19 +253,19 @@ exports[`renders correctly when the event is free 1`] = `
         >
           location
         </Text>
-      </Component>
+      </View>
     </Touchable>
     <SaveEventButton
       active={false}
       onDark={false}
       onPress={[Function]}
     />
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`renders correctly when there is a price range 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -282,7 +282,7 @@ exports[`renders correctly when there is a price range 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Object {
         "borderRadius": 5,
@@ -324,7 +324,7 @@ exports[`renders correctly when there is a price range 1`] = `
           }
         }
       >
-        <Component
+        <View
           style={
             Object {
               "backgroundColor": "#2d2f7f",
@@ -343,9 +343,9 @@ exports[`renders correctly when there is a price range 1`] = `
           >
             From £12
           </Text>
-        </Component>
+        </View>
       </Connect(ImageBackground)>
-      <Component
+      <View
         style={
           Object {
             "flex": 1,
@@ -385,19 +385,19 @@ exports[`renders correctly when there is a price range 1`] = `
         >
           location
         </Text>
-      </Component>
+      </View>
     </Touchable>
     <SaveEventButton
       active={false}
       onDark={false}
       onPress={[Function]}
     />
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`renders correctly when there is only one price 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -414,7 +414,7 @@ exports[`renders correctly when there is only one price 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Object {
         "borderRadius": 5,
@@ -456,7 +456,7 @@ exports[`renders correctly when there is only one price 1`] = `
           }
         }
       >
-        <Component
+        <View
           style={
             Object {
               "backgroundColor": "#2d2f7f",
@@ -475,9 +475,9 @@ exports[`renders correctly when there is only one price 1`] = `
           >
             £12
           </Text>
-        </Component>
+        </View>
       </Connect(ImageBackground)>
-      <Component
+      <View
         style={
           Object {
             "flex": 1,
@@ -517,13 +517,13 @@ exports[`renders correctly when there is only one price 1`] = `
         >
           location
         </Text>
-      </Component>
+      </View>
     </Touchable>
     <SaveEventButton
       active={false}
       onDark={false}
       onPress={[Function]}
     />
-  </Component>
-</Component>
+  </View>
+</View>
 `;

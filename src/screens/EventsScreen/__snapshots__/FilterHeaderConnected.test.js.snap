@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ConnectedFilterHeader renders component 1`] = `
-<Component
+<View
   accessibilityTraits={
     Array [
       "header",
@@ -17,14 +17,14 @@ exports[`ConnectedFilterHeader renders component 1`] = `
     padding={Object {}}
     style={Object {}}
   >
-    <Component>
+    <View>
       <ResetAllFiltersButton
         animationDelay={0}
         animationTime={300}
         onPress={[Function]}
         visible={false}
       />
-      <Component
+      <View
         style={
           Object {
             "marginTop": 16,
@@ -36,10 +36,10 @@ exports[`ConnectedFilterHeader renders component 1`] = `
         <FilterHeaderCategories
           selectedCategories={Set {}}
         />
-      </Component>
-    </Component>
+      </View>
+    </View>
   </ContentPadding>
-  <Component
+  <View
     style={
       Object {
         "backgroundColor": "#20215a",
@@ -61,7 +61,7 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       testID="open-date-filters-button"
       text="Select dates"
     />
-    <Component
+    <View
       style={
         Object {
           "borderColor": "#ffffff",
@@ -82,8 +82,8 @@ exports[`ConnectedFilterHeader renders component 1`] = `
       testID="open-area-and-price-filters-button"
       text="Filter by area, price..."
     />
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`ConnectedFilterHeader renders connector 1`] = `

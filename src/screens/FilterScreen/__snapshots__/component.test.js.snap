@@ -40,7 +40,7 @@ exports[`FilterScreen renders correctly 1`] = `
       handleCheckboxChange={[Function]}
     />
   </ShadowedScrollView>
-  <Component
+  <View
     style={
       Object {
         "backgroundColor": "#ffffff",
@@ -61,6 +61,6 @@ exports[`FilterScreen renders correctly 1`] = `
         Show 26 events
       </Button>
     </ContentPadding>
-  </Component>
+  </View>
 </withOrientation>
 `;

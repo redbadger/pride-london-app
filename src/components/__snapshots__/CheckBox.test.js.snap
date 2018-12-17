@@ -34,7 +34,7 @@ exports[`renders correctly 1`] = `
   >
     Bananas
   </Text>
-  <Image
+  <Component
     source={1}
   />
 </Touchable>
@@ -75,7 +75,7 @@ exports[`renders correctly when checked 1`] = `
   >
     Bananas
   </Text>
-  <Image
+  <Component
     source={1}
   />
 </Touchable>

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SavedEventListScreen Component renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -134,11 +134,11 @@ Pink for Pink tours will be putting the movers, shakers and shimmiers under a la
     savedEvents={Set {}}
     testID="saved-event-list"
   />
-</Component>
+</View>
 `;
 
 exports[`SavedEventListScreen Component renders no saved events screen when there are no events 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -157,5 +157,5 @@ exports[`SavedEventListScreen Component renders no saved events screen when ther
       }
     }
   />
-</Component>
+</View>
 `;

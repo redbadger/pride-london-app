@@ -1,20 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<TouchableNativeFeedback
+<DummyTouchableNativeFeedback
   accessibilityComponentType="button"
   accessibilityTraits={
     Array [
       "button",
     ]
   }
-  background="mock background"
+  background={Object {}}
 >
   <View
     style={
       Array [
         Object {
-          "color": "red",
+          "justifyContent": "center",
+          "minHeight": 44,
+          "minWidth": 44,
         },
         Object {
           "borderRadius": 2,
@@ -24,5 +26,5 @@ exports[`renders correctly 1`] = `
   >
     Hello
   </View>
-</TouchableNativeFeedback>
+</DummyTouchableNativeFeedback>
 `;

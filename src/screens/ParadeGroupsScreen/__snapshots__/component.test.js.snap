@@ -136,7 +136,7 @@ Array [
 `;
 
 exports[`renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -191,5 +191,5 @@ exports[`renders correctly 1`] = `
       ]
     }
   />
-</Component>
+</View>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly when showing 1`] = `
-<Component
+<View
   style={
     Object {
       "alignItems": "center",
@@ -12,7 +12,7 @@ exports[`renders correctly when showing 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -24,7 +24,7 @@ exports[`renders correctly when showing 1`] = `
       }
     }
   >
-    <Image
+    <Component
       source={1}
       style={
         Object {
@@ -33,7 +33,7 @@ exports[`renders correctly when showing 1`] = `
         }
       }
     />
-    <Component
+    <View
       style={
         Object {
           "backgroundColor": "#2d2f7f",
@@ -1989,9 +1989,9 @@ exports[`renders correctly when showing 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
-  <Image
+    </View>
+  </View>
+  <Component
     source={1}
     style={
       Object {
@@ -2002,11 +2002,11 @@ exports[`renders correctly when showing 1`] = `
       }
     }
   />
-</Component>
+</View>
 `;
 
 exports[`renders correctly when with no data 1`] = `
-<Component
+<View
   style={
     Object {
       "alignItems": "center",
@@ -2017,7 +2017,7 @@ exports[`renders correctly when with no data 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -2029,7 +2029,7 @@ exports[`renders correctly when with no data 1`] = `
       }
     }
   >
-    <Image
+    <Component
       source={1}
       style={
         Object {
@@ -2038,7 +2038,7 @@ exports[`renders correctly when with no data 1`] = `
         }
       }
     />
-    <Component
+    <View
       style={
         Object {
           "backgroundColor": "#2d2f7f",
@@ -3994,11 +3994,11 @@ exports[`renders correctly when with no data 1`] = `
           }
         }
       />
-    </Component>
-  </Component>
+    </View>
+  </View>
   <BadConnection
     getData={[Function]}
     loading={false}
   />
-</Component>
+</View>
 `;

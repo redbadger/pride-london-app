@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component>
+<View>
   <Text
     color="lightNavyBlueColor"
     markdown={false}
@@ -29,5 +29,5 @@ exports[`renders correctly 1`] = `
       eventDescription
     </Text>
   </Collapsible>
-</Component>
+</View>
 `;

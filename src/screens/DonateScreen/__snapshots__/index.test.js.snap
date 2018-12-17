@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -134,7 +134,7 @@ exports[`renders correctly 1`] = `
           >
             The minimum donation amount is £2.
           </Text>
-          <Component
+          <View
             style={
               Object {
                 "marginTop": 16,
@@ -148,10 +148,10 @@ exports[`renders correctly 1`] = `
             >
               Donate
             </Button>
-          </Component>
+          </View>
         </ContentPadding>
       </withOrientation>
     </ScrollView>
   </KeyboardAvoidingView>
-</Component>
+</View>
 `;

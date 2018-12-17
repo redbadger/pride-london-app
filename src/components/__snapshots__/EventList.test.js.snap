@@ -309,7 +309,7 @@ exports[`EventList renders correctly 1`] = `
 `;
 
 exports[`EventList renders item separators correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "height": 12,
@@ -348,7 +348,7 @@ exports[`EventList renders items correctly 1`] = `
 `;
 
 exports[`EventList renders section footers correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "height": 6,
@@ -365,7 +365,7 @@ exports[`EventList renders section headers correctly 1`] = `
 `;
 
 exports[`EventList renders section separators correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "height": 6,

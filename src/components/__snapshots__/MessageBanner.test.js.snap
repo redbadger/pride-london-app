@@ -28,7 +28,7 @@ exports[`renders with no errors 1`] = `
   <TouchableWithoutFeedback
     onPress={[Function]}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -81,7 +81,7 @@ exports[`renders with no errors 1`] = `
           Testing the message banner
         </Text>
       </ContentPadding>
-    </Component>
+    </View>
   </TouchableWithoutFeedback>
 </AnimatedComponent>
 `;
