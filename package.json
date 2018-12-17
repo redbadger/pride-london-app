@@ -28,7 +28,7 @@
     "luxon": "^1.2.0",
     "ramda": "^0.25.0",
     "react": "16.3.1",
-    "react-native": "0.55.4",
+    "react-native": "0.57.0",
     "react-native-accessible-selectable": "^0.1.0",
     "react-native-calendars": "^1.17.4",
     "react-native-communications": "^2.2.1",
@@ -50,6 +50,7 @@
     "rxjs": "^6.2.1"
   },
   "devDependencies": {
+    "@babel/plugin-external-helpers": "^7.2.0",
     "@rgbboy/testcheck": "^1.0.0-rc.3",
     "babel-eslint": "^8.2.5",
     "babel-jest": "23.2.0",
@@ -81,13 +82,15 @@
     "lint-staged": "^7.2.0",
     "lorem-ipsum": "^1.0.5",
     "markdown-toc": "^1.2.0",
+    "metro-react-native-babel-preset": "^0.48.5",
     "prettier": "^1.13.7",
     "react-dom": "^16.2.0",
     "react-native-mock": "^0.3.1",
     "react-native-schemes-manager": "^1.0.1",
     "react-native-version": "^2.6.2",
     "react-test-renderer": "16.2.0",
-    "redux-mock-store": "^1.5.3"
+    "redux-mock-store": "^1.5.3",
+    "schedule": "0.4.0"
   },
   "rnpm": {
     "assets": [

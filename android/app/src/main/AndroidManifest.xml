@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-feature android:name="android.hardware.location.gps" />
     <uses-feature android:name="android.hardware.location.network" />
-    
+
     <application
       android:name=".MainApplication"
       tools:replace="android:allowBackup"
@@ -35,6 +35,6 @@
       <meta-data
         android:name="com.bugsnag.android.API_KEY"
         android:value="@string/BUGSNAG_API_KEY" />
-     </application>
+    </application>
 
 </manifest>
