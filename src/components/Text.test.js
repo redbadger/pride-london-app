@@ -2,7 +2,6 @@
 import React from "react";
 import { PixelRatio } from "react-native";
 import { shallow } from "enzyme";
-import Markdown from "react-native-easy-markdown";
 import Text, { scaleFont, scaleWithFont } from "./Text";
 import { lightNavyBlueColor } from "../constants/colors";
 
