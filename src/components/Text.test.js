@@ -30,14 +30,6 @@ it("renders markdown component based on flag", () => {
   expect(output).toMatchSnapshot();
 });
 
-it("does not render markdown images", () => {
-  const output = shallow(
-    <Text markdown>![Test](https://placehold.it/320x320.png)</Text>
-  );
-  const markdown = output.find(Markdown).shallow();
-  expect(markdown).toMatchSnapshot();
-});
-
 it("passes custom styles down to component", () => {
   const style = { fontSize: 300 };
   const output = shallow(<Text style={style}>Some text</Text>);
