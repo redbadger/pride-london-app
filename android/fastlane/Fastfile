@@ -1,4 +1,4 @@
-fastlane_version "2.110.0"
+fastlane_version "2.111.0"
 
 default_platform :android
 
