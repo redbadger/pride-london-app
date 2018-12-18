@@ -105,6 +105,7 @@ class ListItem extends Component<
             style={styles.check}
           />
         )}
+        {/* $FlowFixMe */}
         <View onLayout={this.handleOnLayout}>
           <Text type="h1" style={[styles.itemText, { color: textColor }]}>
             {category.label}

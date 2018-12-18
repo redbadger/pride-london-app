@@ -1,4 +1,5 @@
 // @flow
+// $FlowFixMe
 import getAccessibilityLabel from "./accessibilityLabel.android";
 
 const cases = [

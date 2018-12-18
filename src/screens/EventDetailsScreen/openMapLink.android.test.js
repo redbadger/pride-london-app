@@ -1,5 +1,6 @@
 // @flow
 import { Linking } from "react-native";
+// $FlowFixMe
 import openMapLink from "./openMapLink.android";
 
 let openURLSpy;
