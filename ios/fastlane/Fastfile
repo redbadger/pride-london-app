@@ -17,7 +17,7 @@ platform :ios do
     match(
       type: options[:match_type],
       app_identifier: options[:app_identifier],
-      readonly: true
+      readonly: false
     )
     gym(
       clean: true,
