@@ -171,9 +171,10 @@ platform :ios do
 
   desc "Add devices"
   lane :devices do |options|
-    register_devices(devices: {
-      "Example device name" => "Example UUID",
-    })
+    devices = {
+      # "Example device name" => "1234567890ABCD",
+    }
+    register_devices(devices: devices)
     match(
       type: "development",
       app_identifier: "org.prideinlondon.festival",
