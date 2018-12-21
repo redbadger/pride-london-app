@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component
+<View
   accessibilityLabel="A number, 13.37, text field; double tap to edit"
   accessible={true}
   style={Object {}}
@@ -48,5 +48,5 @@ exports[`renders correctly 1`] = `
     underlineColorAndroid="transparent"
     value="13.37"
   />
-</Component>
+</View>
 `;

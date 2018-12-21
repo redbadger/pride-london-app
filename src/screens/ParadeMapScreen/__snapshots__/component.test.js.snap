@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`does not render map when not focused 1`] = `
-<Component
+<View
   style={
     Object {
       "bottom": 0,
@@ -18,7 +18,7 @@ exports[`does not render map when not focused 1`] = `
 `;
 
 exports[`renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "bottom": 0,
@@ -659,5 +659,5 @@ exports[`renders correctly 1`] = `
       ]
     }
   />
-</Component>
+</View>
 `;

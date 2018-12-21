@@ -14,7 +14,7 @@ exports[`renders correctly 1`] = `
     <LayoutColumn
       spacing={12}
     >
-      <Image
+      <Component
         source={1}
         style={
           Object {
@@ -52,7 +52,7 @@ exports[`renders correctly 1`] = `
       >
         No favourites yet? Tap the
          
-        <Image
+        <Component
           source={1}
           style={
             Object {

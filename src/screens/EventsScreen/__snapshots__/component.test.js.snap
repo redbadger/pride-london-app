@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EventsScreen Component renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -110,11 +110,11 @@ exports[`EventsScreen Component renders correctly 1`] = `
     removeSavedEvent={[Function]}
     savedEvents={Set {}}
   />
-</Component>
+</View>
 `;
 
 exports[`EventsScreen Component renders correctly when loading 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -130,11 +130,11 @@ exports[`EventsScreen Component renders correctly when loading 1`] = `
     selectedCategories={Set {}}
   />
   <NoEvents />
-</Component>
+</View>
 `;
 
 exports[`EventsScreen Component renders correctly with no events 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -150,5 +150,5 @@ exports[`EventsScreen Component renders correctly with no events 1`] = `
     selectedCategories={Set {}}
   />
   <NoEvents />
-</Component>
+</View>
 `;

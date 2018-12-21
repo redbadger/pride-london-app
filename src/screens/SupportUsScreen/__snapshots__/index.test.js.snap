@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -16,7 +16,7 @@ exports[`renders correctly 1`] = `
   <ScrollView
     testID="support-us-main-content"
   >
-    <Component
+    <View
       style={
         Object {
           "alignSelf": "center",
@@ -118,7 +118,7 @@ exports[`renders correctly 1`] = `
           url="SPONSOR"
         />
       </ContentPadding>
-    </Component>
+    </View>
   </ScrollView>
-</Component>
+</View>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly when showing 1`] = `
-<Component
+<View
   style={
     Object {
       "bottom": "10%",
@@ -9,7 +9,7 @@ exports[`renders correctly when showing 1`] = `
     }
   }
 >
-  <Component>
+  <View>
     <Text
       color="blackColor"
       markdown={false}
@@ -24,8 +24,8 @@ exports[`renders correctly when showing 1`] = `
     >
       It's not you, it's wifi!
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={Object {}}
   >
     <Text
@@ -43,7 +43,7 @@ exports[`renders correctly when showing 1`] = `
     >
       We can't find a good connection - please try again when you connection is restored
     </Text>
-  </Component>
+  </View>
   <ContentPadding
     padding={Object {}}
     style={
@@ -60,11 +60,11 @@ exports[`renders correctly when showing 1`] = `
       Try again
     </Button>
   </ContentPadding>
-</Component>
+</View>
 `;
 
 exports[`renders correctly when with no data 1`] = `
-<Component
+<View
   style={
     Object {
       "bottom": "10%",
@@ -72,7 +72,7 @@ exports[`renders correctly when with no data 1`] = `
     }
   }
 >
-  <Component>
+  <View>
     <Text
       color="blackColor"
       markdown={false}
@@ -87,8 +87,8 @@ exports[`renders correctly when with no data 1`] = `
     >
       It's not you, it's wifi!
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={Object {}}
   >
     <Text
@@ -106,7 +106,7 @@ exports[`renders correctly when with no data 1`] = `
     >
       We can't find a good connection - please try again when you connection is restored
     </Text>
-  </Component>
+  </View>
   <ContentPadding
     padding={Object {}}
     style={
@@ -123,11 +123,11 @@ exports[`renders correctly when with no data 1`] = `
       Try again
     </Button>
   </ContentPadding>
-</Component>
+</View>
 `;
 
 exports[`renders correctly when with no data and loading 1`] = `
-<Component
+<View
   style={
     Object {
       "bottom": "10%",
@@ -135,7 +135,7 @@ exports[`renders correctly when with no data and loading 1`] = `
     }
   }
 >
-  <Component>
+  <View>
     <Text
       color="blackColor"
       markdown={false}
@@ -150,8 +150,8 @@ exports[`renders correctly when with no data and loading 1`] = `
     >
       It's not you, it's wifi!
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={Object {}}
   >
     <Text
@@ -169,7 +169,7 @@ exports[`renders correctly when with no data and loading 1`] = `
     >
       We can't find a good connection - please try again when you connection is restored
     </Text>
-  </Component>
+  </View>
   <ContentPadding
     padding={Object {}}
     style={
@@ -186,5 +186,5 @@ exports[`renders correctly when with no data and loading 1`] = `
       Try again
     </Button>
   </ContentPadding>
-</Component>
+</View>
 `;

@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
+// $FlowFixMe
 import KeyboardAvoidingView from "./KeyboardAvoidingView.android";
 
 it("renders correctly", () => {

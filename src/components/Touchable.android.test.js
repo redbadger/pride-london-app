@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { shallow } from "enzyme";
+// $FlowFixMe
 import Touchable from "./Touchable.android";
 
 jest.mock("react-native", () => {

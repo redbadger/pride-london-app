@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders correctly with all props 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -22,7 +22,7 @@ exports[`Header renders correctly with all props 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-start",
@@ -31,15 +31,11 @@ exports[`Header renders correctly with all props 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
+      <Text>
         Left
       </Text>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -64,8 +60,8 @@ exports[`Header renders correctly with all props 1`] = `
       >
         Center
       </Text>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -74,20 +70,16 @@ exports[`Header renders correctly with all props 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
+      <Text>
         Right
       </Text>
-    </Component>
+    </View>
   </ContentPadding>
-</Component>
+</View>
 `;
 
 exports[`Header renders correctly with default props 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -108,7 +100,7 @@ exports[`Header renders correctly with default props 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-start",
@@ -117,7 +109,7 @@ exports[`Header renders correctly with default props 1`] = `
         }
       }
     />
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -139,8 +131,8 @@ exports[`Header renders correctly with default props 1`] = `
         markdownStyle={Object {}}
         type="h2"
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -150,11 +142,11 @@ exports[`Header renders correctly with default props 1`] = `
       }
     />
   </ContentPadding>
-</Component>
+</View>
 `;
 
 exports[`Header renders correctly with only onBack and rightElement 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -175,7 +167,7 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-start",
@@ -184,15 +176,11 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
+      <Text>
         Left
       </Text>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -214,8 +202,8 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
         markdownStyle={Object {}}
         type="h2"
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -224,20 +212,16 @@ exports[`Header renders correctly with only onBack and rightElement 1`] = `
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-      >
+      <Text>
         Right
       </Text>
-    </Component>
+    </View>
   </ContentPadding>
-</Component>
+</View>
 `;
 
 exports[`Header renders correctly with only title 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#2d2f7f",
@@ -258,7 +242,7 @@ exports[`Header renders correctly with only title 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-start",
@@ -267,7 +251,7 @@ exports[`Header renders correctly with only title 1`] = `
         }
       }
     />
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -292,8 +276,8 @@ exports[`Header renders correctly with only title 1`] = `
       >
         Center
       </Text>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -303,7 +287,7 @@ exports[`Header renders correctly with only title 1`] = `
       }
     />
   </ContentPadding>
-</Component>
+</View>
 `;
 
 exports[`Header.BackButton renders correctly with default props 1`] = `

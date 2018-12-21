@@ -19,7 +19,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
       }
     }
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -34,8 +34,8 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
         }
       }
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "backgroundColor": "#2d2f7f",
@@ -56,7 +56,7 @@ exports[`CategoriesFilterScreen Component renders correctly 1`] = `
         Show 1 event
       </Button>
     </ContentPadding>
-  </Component>
+  </View>
 </withOrientation>
 `;
 
@@ -75,7 +75,7 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
     onClearAll={[Function]}
     selectedCategories={Set {}}
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -86,8 +86,8 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
       onPress={[Function]}
       stagedCategories={Set {}}
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "backgroundColor": "#2d2f7f",
@@ -108,6 +108,6 @@ exports[`CategoriesFilterScreen Component renders correctly with no categories s
         Show 1 event
       </Button>
     </ContentPadding>
-  </Component>
+  </View>
 </withOrientation>
 `;

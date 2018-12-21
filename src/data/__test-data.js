@@ -1,6 +1,7 @@
 // @flow
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { gen, sampleOne as sample } from "@rgbboy/testcheck";
+// $FlowFixMe
+import { gen, sampleOne as sample } from "@rgbboy/testcheck"; // eslint-disable-line import/no-extraneous-dependencies
+// $FlowFixMe
 import type { ValueGenerator } from "@rgbboy/testcheck";
 import { DateTime } from "luxon";
 import { FORMAT_CONTENTFUL_ISO, FORMAT_EUROPEAN_DATE } from "../lib/date";

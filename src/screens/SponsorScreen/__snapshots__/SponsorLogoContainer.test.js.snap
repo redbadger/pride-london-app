@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = `
-<Component
+<View
   style={Object {}}
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -12,7 +12,7 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
       }
     }
   >
-    <Image
+    <Component
       source={1}
     />
     <Text
@@ -31,8 +31,8 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
        
       partners
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "flexDirection": "row",
@@ -41,7 +41,7 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
       }
     }
   >
-    <Component
+    <View
       key="1"
       style={
         Array [
@@ -83,8 +83,8 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
           sponsorName="some other"
         />
       </Touchable>
-    </Component>
-    <Component
+    </View>
+    <View
       key="2"
       style={
         Array [
@@ -128,16 +128,16 @@ exports[`SponsorLogoContainer Component renders correctly with Gold Level 1`] = 
           sponsorName="some other"
         />
       </Touchable>
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] = `
-<Component
+<View
   style={Object {}}
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -145,7 +145,7 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
       }
     }
   >
-    <Image
+    <Component
       source={1}
     />
     <Text
@@ -164,8 +164,8 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
        
       partners
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "flexDirection": "row",
@@ -174,7 +174,7 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
       }
     }
   >
-    <Component
+    <View
       key="1"
       style={
         Array [
@@ -216,8 +216,8 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
           sponsorName="some other"
         />
       </Touchable>
-    </Component>
-    <Component
+    </View>
+    <View
       key="2"
       style={
         Array [
@@ -261,7 +261,7 @@ exports[`SponsorLogoContainer Component renders correctly with Silver Level 1`] 
           sponsorName="some other"
         />
       </Touchable>
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;

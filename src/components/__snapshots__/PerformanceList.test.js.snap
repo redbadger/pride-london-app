@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component>
+<View>
   <ContentPadding
     padding={Object {}}
     style={Object {}}
@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
   <LayoutColumn
     spacing={20}
   >
-    <Component
+    <View
       key="Afternoon"
     >
       <ContentPadding
@@ -69,7 +69,7 @@ exports[`renders correctly 1`] = `
           showLessLabel="Show less"
           showMoreLabel="Show more"
         >
-          <Component
+          <View
             key="2018-08-08T15:45+00:00"
           >
             <Performance
@@ -77,19 +77,19 @@ exports[`renders correctly 1`] = `
               title="title"
             />
             <SectionDivider />
-          </Component>
-          <Component
+          </View>
+          <View
             key="2018-07-07T06:40+00:00"
           >
             <Performance
               startTime="2018-07-07T06:40+00:00"
               title="title"
             />
-          </Component>
+          </View>
         </Collapsible>
       </ContentPadding>
-    </Component>
-    <Component
+    </View>
+    <View
       key="Afternoon"
     >
       <ContentPadding
@@ -130,7 +130,7 @@ exports[`renders correctly 1`] = `
           showLessLabel="Show less"
           showMoreLabel="Show more"
         >
-          <Component
+          <View
             key="2018-08-08T15:45+00:00"
           >
             <Performance
@@ -138,18 +138,18 @@ exports[`renders correctly 1`] = `
               title="title"
             />
             <SectionDivider />
-          </Component>
-          <Component
+          </View>
+          <View
             key="2018-07-07T06:40+00:00"
           >
             <Performance
               startTime="2018-07-07T06:40+00:00"
               title="title"
             />
-          </Component>
+          </View>
         </Collapsible>
       </ContentPadding>
-    </Component>
+    </View>
   </LayoutColumn>
-</Component>
+</View>
 `;

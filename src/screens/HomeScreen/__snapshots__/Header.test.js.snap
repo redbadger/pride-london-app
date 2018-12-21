@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<Component>
-  <Component
+<View>
+  <View
     style={
       Array [
         Object {
@@ -14,7 +14,7 @@ exports[`renders correctly 1`] = `
       ]
     }
   >
-    <Image
+    <Component
       resizeMode="contain"
       source={
         Object {
@@ -107,7 +107,7 @@ exports[`renders correctly 1`] = `
         subHeading
       </Text>
     </ContentPadding>
-  </Component>
+  </View>
   <ContentPadding
     padding={Object {}}
     style={
@@ -133,7 +133,7 @@ exports[`renders correctly 1`] = `
       url="SUPPORT_US"
     />
   </ContentPadding>
-</Component>
+</View>
 `;
 
 exports[`renders nothing when no banner is available 1`] = `""`;

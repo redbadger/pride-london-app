@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly when hidden 1`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -9,11 +9,11 @@ exports[`renders correctly when hidden 1`] = `
   }
 >
   hello
-</Component>
+</View>
 `;
 
 exports[`renders correctly when showing 1`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -41,7 +41,7 @@ exports[`renders correctly when showing 1`] = `
       ]
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -60,7 +60,7 @@ exports[`renders correctly when showing 1`] = `
         loading={false}
         noDataReceived={false}
       />
-    </Component>
+    </View>
   </AnimatedComponent>
-</Component>
+</View>
 `;

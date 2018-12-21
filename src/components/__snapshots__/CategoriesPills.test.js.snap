@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CategoriesPills Component renders correctly 1`] = `
-<Component
+<View
   accessibilityLabel="0 event types selected"
   accessible={true}
   style={
@@ -33,5 +33,5 @@ exports[`CategoriesPills Component renders correctly 1`] = `
   >
     All events
   </Text>
-</Component>
+</View>
 `;

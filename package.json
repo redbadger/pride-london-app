@@ -27,8 +27,8 @@
     "lottie-react-native": "2.3.2",
     "luxon": "^1.2.0",
     "ramda": "^0.25.0",
-    "react": "16.3.1",
-    "react-native": "0.55.4",
+    "react": "16.6.3",
+    "react-native": "0.57.8",
     "react-native-accessible-selectable": "^0.1.0",
     "react-native-calendars": "^1.17.4",
     "react-native-communications": "^2.2.1",
@@ -50,18 +50,19 @@
     "rxjs": "^6.2.1"
   },
   "devDependencies": {
+    "@babel/plugin-external-helpers": "^7.2.0",
     "@rgbboy/testcheck": "^1.0.0-rc.3",
     "babel-eslint": "^8.2.5",
     "babel-jest": "23.2.0",
-    "babel-preset-react-native": "4.0.0",
+    "babel-plugin-jest-hoist": "^23.2.0",
     "bugsnag-sourcemaps": "^1.0.3",
     "commander": "^2.16.0",
     "contentful-management": "^5.1.4",
-    "detox": "^8.0.0",
+    "detox": "^9.1.2",
     "dotenv": "^6.0.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "^3.3.4",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -72,8 +73,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.9.1",
     "eslint-plugin-react-native": "^3.2.1",
-    "flow-bin": "^0.67.0",
-    "flow-typed": "^2.3.0",
+    "flow-bin": "^0.78.0",
+    "flow-typed": "^2.5.1",
     "glow": "^1.2.2",
     "husky": "^0.14.3",
     "jest": "23.2.0",
@@ -81,13 +82,15 @@
     "lint-staged": "^7.2.0",
     "lorem-ipsum": "^1.0.5",
     "markdown-toc": "^1.2.0",
+    "metro-react-native-babel-preset": "^0.48.5",
     "prettier": "^1.13.7",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.6.3",
     "react-native-mock": "^0.3.1",
     "react-native-schemes-manager": "^1.0.1",
     "react-native-version": "^2.6.2",
-    "react-test-renderer": "16.2.0",
-    "redux-mock-store": "^1.5.3"
+    "react-test-renderer": "16.6.3",
+    "redux-mock-store": "^1.5.3",
+    "schedule": "0.4.0"
   },
   "rnpm": {
     "assets": [
@@ -100,6 +103,9 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation)"
     ],
@@ -131,13 +137,13 @@
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/PrideLondonApp.app",
-        "build": "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build -quiet | xcpretty",
+        "build": "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build -quiet UseNewBuildSystem=NO | xcpretty",
         "type": "ios.simulator",
         "name": "iPhone 7"
       },
       "ios.sim.release": {
         "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/PrideLondonApp.app",
-        "build": "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet | xcpretty",
+        "build": "xcodebuild -project ios/PrideLondonApp.xcodeproj -scheme PrideLondonApp -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet UseNewBuildSystem=NO | xcpretty",
         "type": "ios.simulator",
         "name": "iPhone 7"
       }

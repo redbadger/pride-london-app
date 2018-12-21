@@ -2,7 +2,6 @@
 import React from "react";
 import { PixelRatio } from "react-native";
 import { shallow } from "enzyme";
-import Markdown from "react-native-easy-markdown";
 import Text, { scaleFont, scaleWithFont } from "./Text";
 import { lightNavyBlueColor } from "../constants/colors";
 
@@ -28,14 +27,6 @@ it("renders markdown component based on flag", () => {
   const output = shallow(<Text markdown>**Some markdown**</Text>);
 
   expect(output).toMatchSnapshot();
-});
-
-it("does not render markdown images", () => {
-  const output = shallow(
-    <Text markdown>![Test](https://placehold.it/320x320.png)</Text>
-  );
-  const markdown = output.find(Markdown).shallow();
-  expect(markdown).toMatchSnapshot();
 });
 
 it("passes custom styles down to component", () => {

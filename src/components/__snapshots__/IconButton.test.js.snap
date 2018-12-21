@@ -12,7 +12,7 @@ exports[`renders correctly 1`] = `
   delayPressIn={50}
   onPress={[Function]}
 >
-  <Image
+  <Component
     source={
       Object {
         "uri": "/super-awesome-image.jpg",

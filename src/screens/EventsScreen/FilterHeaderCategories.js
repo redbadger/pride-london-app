@@ -42,6 +42,7 @@ CategoriesFilterButton.defaultProps = {
 
 const FilterHeaderCategories = ({ selectedCategories, onFilterPress }: Props) =>
   selectedCategories.size === 0 ? (
+    // $FlowFixMe
     <View style={styles.contentInterest} onPress={onFilterPress}>
       {PixelRatio.getFontScale() < 1.5 && (
         <Text

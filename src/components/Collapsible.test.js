@@ -4,6 +4,9 @@ import { Text } from "react-native";
 import { shallow } from "enzyme";
 import Collapsible from "./Collapsible";
 
+// https://github.com/facebook/jest/issues/4359#issuecomment-413238977
+jest.useFakeTimers();
+
 it("renders correctly", () => {
   const output = shallow(
     <Collapsible>

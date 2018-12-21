@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FilterList renders correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <CheckBox
     checked={true}
     key="free"
@@ -19,5 +19,5 @@ exports[`FilterList renders correctly 1`] = `
       ]
     }
   />
-</React.Fragment>
+</Fragment>
 `;

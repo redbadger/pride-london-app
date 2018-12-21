@@ -146,7 +146,7 @@ store-artifacts-docker: &store-artifacts-docker
 
 job-defaults-macos: &job-defaults-macos
   macos:
-    xcode: "9.2.0"
+    xcode: "10.1.0"
   shell: /bin/bash --login -o pipefail
 
 env-macos: &env-macos
@@ -519,7 +519,7 @@ workflows:
   node-android-ios:
     jobs:
       - build
-      - e2e-ios
+      # - e2e-ios
       - alpha-android:
           requires:
             - build

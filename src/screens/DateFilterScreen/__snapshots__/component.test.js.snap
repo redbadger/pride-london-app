@@ -25,7 +25,7 @@ exports[`DateFilterScreen renders correctly 1`] = `
     title="Select dates"
     titleLabel="Select dates"
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -55,8 +55,8 @@ exports[`DateFilterScreen renders correctly 1`] = `
         ]
       }
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "backgroundColor": "#ffffff",
@@ -77,7 +77,7 @@ exports[`DateFilterScreen renders correctly 1`] = `
         Show 26 events
       </Button>
     </ContentPadding>
-  </Component>
+  </View>
 </withOrientation>
 `;
 
@@ -112,7 +112,7 @@ exports[`DateFilterScreen renders correctly with date range 1`] = `
     title="6 Jun - 7 Jun"
     titleLabel="Selected: 6 Jun - 7 Jun"
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -148,8 +148,8 @@ exports[`DateFilterScreen renders correctly with date range 1`] = `
         ]
       }
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "backgroundColor": "#ffffff",
@@ -170,6 +170,6 @@ exports[`DateFilterScreen renders correctly with date range 1`] = `
         Show 26 events
       </Button>
     </ContentPadding>
-  </Component>
+  </View>
 </withOrientation>
 `;

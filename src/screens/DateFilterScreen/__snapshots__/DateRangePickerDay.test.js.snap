@@ -14,7 +14,7 @@ exports[`dateRangePickerDay does not render a disabled day if same day as today 
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -23,7 +23,7 @@ exports[`dateRangePickerDay does not render a disabled day if same day as today 
       }
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -57,8 +57,8 @@ exports[`dateRangePickerDay does not render a disabled day if same day as today 
       >
         12
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;
 
@@ -77,7 +77,7 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -86,7 +86,7 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -99,7 +99,7 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
         }
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -112,7 +112,7 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
           ]
         }
       />
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -125,8 +125,8 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
           ]
         }
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Array [
           Object {
@@ -163,8 +163,8 @@ exports[`dateRangePickerDay renders a beginning of a range 1`] = `
       >
         12
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;
 
@@ -183,7 +183,7 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -192,7 +192,7 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -205,7 +205,7 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
         }
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -218,7 +218,7 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
           ]
         }
       />
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -231,8 +231,8 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
           ]
         }
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Array [
           Object {
@@ -269,8 +269,8 @@ exports[`dateRangePickerDay renders a beginning of a range 2`] = `
       >
         12
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;
 
@@ -289,7 +289,7 @@ exports[`dateRangePickerDay renders a disabled day if before today 1`] = `
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -298,7 +298,7 @@ exports[`dateRangePickerDay renders a disabled day if before today 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -334,8 +334,8 @@ exports[`dateRangePickerDay renders a disabled day if before today 1`] = `
       >
         12
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;
 
@@ -353,7 +353,7 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -362,7 +362,7 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -396,8 +396,8 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
       >
         12
       </Text>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -410,7 +410,7 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
         }
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -425,8 +425,8 @@ exports[`dateRangePickerDay renders a marked day 1`] = `
           ]
         }
       />
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;
 
@@ -445,7 +445,7 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -454,7 +454,7 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -467,7 +467,7 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
         }
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -480,7 +480,7 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
           ]
         }
       />
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -493,8 +493,8 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
           ]
         }
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Array [
           Object {
@@ -531,8 +531,8 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
       >
         12
       </Text>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -545,7 +545,7 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
         }
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -560,8 +560,8 @@ exports[`dateRangePickerDay renders a marked, selected day 1`] = `
           ]
         }
       />
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;
 
@@ -580,7 +580,7 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -589,7 +589,7 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -602,7 +602,7 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
         }
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -615,7 +615,7 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
           ]
         }
       />
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -628,8 +628,8 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
           ]
         }
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Array [
           Object {
@@ -666,8 +666,8 @@ exports[`dateRangePickerDay renders a middle of a range 1`] = `
       >
         12
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;
 
@@ -686,7 +686,7 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -695,7 +695,7 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "flex-end",
@@ -708,7 +708,7 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
         }
       }
     >
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -721,7 +721,7 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
           ]
         }
       />
-      <Component
+      <View
         style={
           Array [
             Object {
@@ -734,8 +734,8 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
           ]
         }
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Array [
           Object {
@@ -772,8 +772,8 @@ exports[`dateRangePickerDay renders with a single selected day 1`] = `
       >
         12
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;
 
@@ -791,7 +791,7 @@ exports[`dateRangePickerDay renders without date selection 1`] = `
   onPress={[Function]}
   testID="calendar-day-2019-7-12"
 >
-  <Component
+  <View
     style={
       Object {
         "alignItems": "center",
@@ -800,7 +800,7 @@ exports[`dateRangePickerDay renders without date selection 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -834,7 +834,7 @@ exports[`dateRangePickerDay renders without date selection 1`] = `
       >
         12
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </TouchableWithoutFeedback>
 `;

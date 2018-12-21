@@ -24,7 +24,7 @@ exports[`EventAccessibility renders correctly 1`] = `
 `;
 
 exports[`EventCategories renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "flexDirection": "row",
@@ -55,7 +55,7 @@ exports[`EventCategories renders correctly 1`] = `
       }
     }
   />
-</Component>
+</View>
 `;
 
 exports[`EventHeader renders correctly 1`] = `
@@ -97,7 +97,7 @@ exports[`EventTickets renders correctly 1`] = `
 `;
 
 exports[`renders correctly 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -121,7 +121,7 @@ exports[`renders correctly 1`] = `
     style={Object {}}
     topShadow={false}
   >
-    <Component
+    <View
       style={
         Object {
           "aspectRatio": 1.6666666666666667,
@@ -144,8 +144,8 @@ exports[`renders correctly 1`] = `
           }
         }
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "marginBottom": 32,
@@ -490,16 +490,16 @@ exports[`renders correctly 1`] = `
           </LayoutColumn>
         </ContentPadding>
       </LayoutColumn>
-    </Component>
+    </View>
   </ShadowedScrollView>
   <EventTickets
     url="ticketingUrl"
   />
-</Component>
+</View>
 `;
 
 exports[`renders correctly with missing details 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "#ffffff",
@@ -523,7 +523,7 @@ exports[`renders correctly with missing details 1`] = `
     style={Object {}}
     topShadow={false}
   >
-    <Component
+    <View
       style={
         Object {
           "aspectRatio": 1.6666666666666667,
@@ -546,8 +546,8 @@ exports[`renders correctly with missing details 1`] = `
           }
         }
       />
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "marginBottom": 32,
@@ -746,7 +746,7 @@ exports[`renders correctly with missing details 1`] = `
           </LayoutColumn>
         </ContentPadding>
       </LayoutColumn>
-    </Component>
+    </View>
   </ShadowedScrollView>
-</Component>
+</View>
 `;

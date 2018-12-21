@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`collapsing behaviour when content does not exceed limit renders correctly 1`] = `
-<Component>
-  <Component>
+<View>
+  <View>
     <AnimatedComponent
       scrollEnabled={false}
       style={
@@ -11,26 +11,22 @@ exports[`collapsing behaviour when content does not exceed limit renders correct
         }
       }
     >
-      <Component
+      <View
         onLayout={[Function]}
         testID="children"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Text>
           Hello
         </Text>
-      </Component>
+      </View>
     </AnimatedComponent>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`collapsing behaviour when content exceeds limit renders correctly 1`] = `
-<Component>
-  <Component>
+<View>
+  <View>
     <AnimatedComponent
       scrollEnabled={false}
       style={
@@ -39,18 +35,14 @@ exports[`collapsing behaviour when content exceeds limit renders correctly 1`] =
         }
       }
     >
-      <Component
+      <View
         onLayout={[Function]}
         testID="children"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Text>
           Hello
         </Text>
-      </Component>
+      </View>
     </AnimatedComponent>
     <AnimatedComponent
       style={
@@ -84,7 +76,7 @@ exports[`collapsing behaviour when content exceeds limit renders correctly 1`] =
         }
       />
     </AnimatedComponent>
-  </Component>
+  </View>
   <Touchable
     accessibilityComponentType="button"
     accessibilityTraits={
@@ -106,12 +98,12 @@ exports[`collapsing behaviour when content exceeds limit renders correctly 1`] =
       more
     </TextLink>
   </Touchable>
-</Component>
+</View>
 `;
 
 exports[`collapsing behaviour when expanded renders correctly 1`] = `
-<Component>
-  <Component>
+<View>
+  <View>
     <AnimatedComponent
       scrollEnabled={false}
       style={
@@ -120,18 +112,14 @@ exports[`collapsing behaviour when expanded renders correctly 1`] = `
         }
       }
     >
-      <Component
+      <View
         onLayout={[Function]}
         testID="children"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Text>
           Hello
         </Text>
-      </Component>
+      </View>
     </AnimatedComponent>
     <AnimatedComponent
       style={
@@ -165,7 +153,7 @@ exports[`collapsing behaviour when expanded renders correctly 1`] = `
         }
       />
     </AnimatedComponent>
-  </Component>
+  </View>
   <Touchable
     accessibilityComponentType="button"
     accessibilityTraits={
@@ -187,12 +175,12 @@ exports[`collapsing behaviour when expanded renders correctly 1`] = `
       less
     </TextLink>
   </Touchable>
-</Component>
+</View>
 `;
 
 exports[`renders correctly 1`] = `
-<Component>
-  <Component>
+<View>
+  <View>
     <AnimatedComponent
       scrollEnabled={false}
       style={
@@ -201,19 +189,15 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      <Component
+      <View
         onLayout={[Function]}
         testID="children"
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Text>
           Hello
         </Text>
-      </Component>
+      </View>
     </AnimatedComponent>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
