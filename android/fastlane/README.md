@@ -68,14 +68,6 @@ fastlane android release
 
 Build and deploy to Play Store
 
-### android deploy_hockey
-
-```
-fastlane android deploy_hockey
-```
-
-Deploy to HockeyApp
-
 ### android deploy_fabric
 
 ```

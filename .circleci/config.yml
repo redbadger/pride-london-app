@@ -278,8 +278,6 @@ jobs:
                 bundle exec fastlane alpha \
                 submit:true \
                 apk_path:$APK_PATH \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_ANDROID_ALPHA_APP_ID \
                 fabric_api_token:$FABRIC_API_KEY \
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
@@ -310,8 +308,6 @@ jobs:
                 bundle exec fastlane beta \
                 submit:true \
                 apk_path:$APK_PATH \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_ANDROID_BETA_APP_ID \
                 fabric_api_token:$FABRIC_API_KEY \
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
@@ -373,8 +369,6 @@ jobs:
             command: |
                 bundle exec fastlane alpha \
                 submit:true \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_IOS_ALPHA_APP_ID \
                 fabric_api_token:$FABRIC_API_KEY \
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
@@ -408,8 +402,6 @@ jobs:
             command: |
                 bundle exec fastlane beta \
                 submit:true \
-                api_token:$HOCKEY_APP_TOKEN \
-                app_id:$HOCKEY_APP_IOS_BETA_APP_ID \
                 fabric_api_token:$FABRIC_API_KEY \
                 fabric_build_secret:$FABRIC_BUILD_SECRET \
                 fabric_groups:$FABRIC_GROUPS \
