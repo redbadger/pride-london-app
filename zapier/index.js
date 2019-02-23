@@ -15,16 +15,16 @@ const parse = input => {
         "en-GB": input.name
       },
       addressLine1: {
-        "en-GB": ""
+        "en-GB": input.addressLine1
       },
       addressLine2: {
-        "en-GB": ""
+        "en-GB": input.addressLine2
       },
       city: {
-        "en-GB": ""
+        "en-GB": input.city
       },
       postcode: {
-        "en-GB": ""
+        "en-GB": input.postcode
       },
       locationName: {
         "en-GB": input.locationName

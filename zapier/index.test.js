@@ -1,25 +1,26 @@
 const parse = require("./index");
 
+// All inputs come into Zapier as strings
 const createInput = () => ({
   name: "",
-  addressLine1: "", // missing
-  addressLine2: "", // missing
-  city: "", // missing
-  postcode: "", // missing
-  locationName: "", // string
-  hasTickets: "", // string boolean
-  isEventPriceFree: "", // set eventPriceLow and eventPriceHigh to 0
-  eventPrice: "", // set eventPriceLow and eventPriceHigh to this value
-  eventPriceLow: "", // set eventPriceLow to this value
-  eventPriceHigh: "", // set eventPriceHigh to this value
-  eventDescription: "", // string
-  ticketingUrl: "", // string to URL
-  accessibilityOptions: "", // comma seperated to list of string
-  eventCategories: "", // comma seperated to list of string
-  audience: "", // comma seperated to list of string
-  accessibilityDetails: "", // string
-  email: "", // optional string
-  phone: "" // optional string
+  addressLine1: "",
+  addressLine2: "",
+  city: "",
+  postcode: "",
+  locationName: "",
+  hasTickets: "",
+  isEventPriceFree: "",
+  eventPrice: "",
+  eventPriceLow: "",
+  eventPriceHigh: "",
+  eventDescription: "",
+  ticketingUrl: "",
+  accessibilityOptions: "",
+  eventCategories: "",
+  audience: "",
+  accessibilityDetails: "",
+  email: "",
+  phone: ""
 });
 
 describe("parse", () => {
@@ -36,6 +37,70 @@ describe("parse", () => {
       input.name = "Event Name";
       const output = parse(input);
       expect(output.fields.name["en-GB"]).toEqual("Event Name");
+    });
+  });
+
+  describe(".addressLine1", () => {
+    it("is parsed when empty", () => {
+      const input = createInput();
+      input.addressLine1 = "";
+      const output = parse(input);
+      expect(output.fields.addressLine1["en-GB"]).toEqual("");
+    });
+
+    it("is parsed when present", () => {
+      const input = createInput();
+      input.addressLine1 = "Address Line 1";
+      const output = parse(input);
+      expect(output.fields.addressLine1["en-GB"]).toEqual("Address Line 1");
+    });
+  });
+
+  describe(".addressLine2", () => {
+    it("is parsed when empty", () => {
+      const input = createInput();
+      input.addressLine2 = "";
+      const output = parse(input);
+      expect(output.fields.addressLine2["en-GB"]).toEqual("");
+    });
+
+    it("is parsed when present", () => {
+      const input = createInput();
+      input.addressLine2 = "Address Line 2";
+      const output = parse(input);
+      expect(output.fields.addressLine2["en-GB"]).toEqual("Address Line 2");
+    });
+  });
+
+  describe(".city", () => {
+    it("is parsed when empty", () => {
+      const input = createInput();
+      input.city = "";
+      const output = parse(input);
+      expect(output.fields.city["en-GB"]).toEqual("");
+    });
+
+    it("is parsed when present", () => {
+      const input = createInput();
+      input.city = "City";
+      const output = parse(input);
+      expect(output.fields.city["en-GB"]).toEqual("City");
+    });
+  });
+
+  describe(".postcode", () => {
+    it("is parsed when empty", () => {
+      const input = createInput();
+      input.postcode = "";
+      const output = parse(input);
+      expect(output.fields.postcode["en-GB"]).toEqual("");
+    });
+
+    it("is parsed when present", () => {
+      const input = createInput();
+      input.postcode = "SW1A 1AA";
+      const output = parse(input);
+      expect(output.fields.postcode["en-GB"]).toEqual("SW1A 1AA");
     });
   });
 
