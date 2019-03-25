@@ -20,7 +20,8 @@ const createInput = () => ({
   audience: "",
   accessibilityDetails: "",
   email: "",
-  phone: ""
+  phone: "",
+  venueDetails: ""
 });
 
 describe("parse", () => {
@@ -295,6 +296,26 @@ describe("parse", () => {
       input.phone = "075555555";
       const output = parse(input);
       expect(output.fields.phone["en-GB"]).toEqual("075555555");
+    });
+  });
+
+  describe(".venueDetails", () => {
+    it("is parsed when empty", () => {
+      const input = createInput();
+      input.venueDetails = "";
+      const output = parse(input);
+      expect(output.fields.venueDetails["en-GB"]).toEqual([]);
+    });
+
+    it("is parsed when present", () => {
+      const input = createInput();
+      input.venueDetails = "Gender neutral toilets, \nOutdoors, \nIndoors";
+      const output = parse(input);
+      expect(output.fields.venueDetails["en-GB"]).toEqual([
+        "Gender neutral toilets",
+        "Outdoors",
+        "Indoors"
+      ]);
     });
   });
 });

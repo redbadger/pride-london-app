@@ -72,7 +72,7 @@ const parse = input => {
         "en-GB": input.phone
       },
       venueDetails: {
-        "en-GB": []
+        "en-GB": parseMultiple(input.venueDetails)
       }
     }
   };
