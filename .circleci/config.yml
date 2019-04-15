@@ -235,7 +235,7 @@ jobs:
   # build is a reserved job name for running circleci locally
   build:
     docker:
-      - image: circleci/node:9.3
+      - image: circleci/node:10.11
     working_directory: ~/project
     steps:
       - checkout
