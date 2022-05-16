@@ -556,13 +556,13 @@ workflows:
             branches:
               only:
                 - master
-  nightly-release:
-    triggers:
-      - schedule:
-          cron: "0 7 * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - test-nightly
+  # nightly-release:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 7 * * *"
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - test-nightly
