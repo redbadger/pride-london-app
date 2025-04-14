@@ -57,6 +57,7 @@ CategoryPill.defaultProps = {
 const styles = StyleSheet.create({
   categoryPill: {
     minHeight: 20,
+    maxWidth: 110,
     paddingLeft: 5,
     paddingRight: 5
   },
